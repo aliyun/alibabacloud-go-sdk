@@ -695,6 +695,349 @@ func (s *ApplyRefundResponse) SetBody(v *ApplyRefundResponseBody) *ApplyRefundRe
 	return s
 }
 
+type ApplyRefundWithDesignatedTbUidRequest struct {
+	BizId            *string                                        `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64                                         `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	GoodsStatus      *int32                                         `json:"GoodsStatus,omitempty" xml:"GoodsStatus,omitempty"`
+	Message          *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Proofs           []*ApplyRefundWithDesignatedTbUidRequestProofs `json:"Proofs,omitempty" xml:"Proofs,omitempty" type:"Repeated"`
+	ReasonId         *int64                                         `json:"ReasonId,omitempty" xml:"ReasonId,omitempty"`
+	RefundCode       *int32                                         `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	RefundCount      *int32                                         `json:"RefundCount,omitempty" xml:"RefundCount,omitempty"`
+	RefundFee        *int64                                         `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+	SubLmOrderId     *string                                        `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string                                        `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64                                         `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string                                        `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetBizId(v string) *ApplyRefundWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetDisputeId(v int64) *ApplyRefundWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetGoodsStatus(v int32) *ApplyRefundWithDesignatedTbUidRequest {
+	s.GoodsStatus = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetMessage(v string) *ApplyRefundWithDesignatedTbUidRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetProofs(v []*ApplyRefundWithDesignatedTbUidRequestProofs) *ApplyRefundWithDesignatedTbUidRequest {
+	s.Proofs = v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetReasonId(v int64) *ApplyRefundWithDesignatedTbUidRequest {
+	s.ReasonId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetRefundCode(v int32) *ApplyRefundWithDesignatedTbUidRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetRefundCount(v int32) *ApplyRefundWithDesignatedTbUidRequest {
+	s.RefundCount = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetRefundFee(v int64) *ApplyRefundWithDesignatedTbUidRequest {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *ApplyRefundWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetTbAccountType(v string) *ApplyRefundWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetTbUserId(v int64) *ApplyRefundWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *ApplyRefundWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type ApplyRefundWithDesignatedTbUidRequestProofs struct {
+	MessagePic     *string `json:"MessagePic,omitempty" xml:"MessagePic,omitempty"`
+	MessagePicDesc *string `json:"MessagePicDesc,omitempty" xml:"MessagePicDesc,omitempty"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidRequestProofs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidRequestProofs) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequestProofs) SetMessagePic(v string) *ApplyRefundWithDesignatedTbUidRequestProofs {
+	s.MessagePic = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidRequestProofs) SetMessagePicDesc(v string) *ApplyRefundWithDesignatedTbUidRequestProofs {
+	s.MessagePicDesc = &v
+	return s
+}
+
+type ApplyRefundWithDesignatedTbUidShrinkRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	GoodsStatus      *int32  `json:"GoodsStatus,omitempty" xml:"GoodsStatus,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ProofsShrink     *string `json:"Proofs,omitempty" xml:"Proofs,omitempty"`
+	ReasonId         *int64  `json:"ReasonId,omitempty" xml:"ReasonId,omitempty"`
+	RefundCode       *int32  `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	RefundCount      *int32  `json:"RefundCount,omitempty" xml:"RefundCount,omitempty"`
+	RefundFee        *int64  `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetBizId(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetDisputeId(v int64) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetGoodsStatus(v int32) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.GoodsStatus = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetMessage(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetProofsShrink(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.ProofsShrink = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetReasonId(v int64) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.ReasonId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetRefundCode(v int32) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetRefundCount(v int32) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundCount = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetRefundFee(v int64) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetSubLmOrderId(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetTbAccountType(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetTbUserId(v int64) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidShrinkRequest) SetThirdPartyUserId(v string) *ApplyRefundWithDesignatedTbUidShrinkRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type ApplyRefundWithDesignatedTbUidResponseBody struct {
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                          `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *ApplyRefundWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetCode(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetLogsId(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetMessage(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetModel(v *ApplyRefundWithDesignatedTbUidResponseBodyModel) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetPageSize(v int64) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetRequestId(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetSubCode(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetSubMessage(v string) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetSuccess(v bool) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *ApplyRefundWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ApplyRefundWithDesignatedTbUidResponseBodyModel struct {
+	DisputeId     *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	DisputeStatus *int32  `json:"DisputeStatus,omitempty" xml:"DisputeStatus,omitempty"`
+	DisputeType   *int32  `json:"DisputeType,omitempty" xml:"DisputeType,omitempty"`
+	SubLmOrderId  *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeId(v int64) *ApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeStatus(v int32) *ApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeStatus = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeType(v int32) *ApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeType = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponseBodyModel) SetSubLmOrderId(v string) *ApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.SubLmOrderId = &v
+	return s
+}
+
+type ApplyRefundWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyRefundWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyRefundWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *ApplyRefundWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponse) SetStatusCode(v int32) *ApplyRefundWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyRefundWithDesignatedTbUidResponse) SetBody(v *ApplyRefundWithDesignatedTbUidResponseBody) *ApplyRefundWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type BatchRegistAnonymousTbAccountRequest struct {
 	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	IdJsonList *string `json:"IdJsonList,omitempty" xml:"IdJsonList,omitempty"`
@@ -911,6 +1254,277 @@ func (s *CancelOrderResponse) SetBody(v *CancelOrderResponseBody) *CancelOrderRe
 	return s
 }
 
+type CancelOrderWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmOrderId        *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s CancelOrderWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderWithDesignatedTbUidRequest) SetBizId(v string) *CancelOrderWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidRequest) SetLmOrderId(v int64) *CancelOrderWithDesignatedTbUidRequest {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidRequest) SetTbAccountType(v string) *CancelOrderWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidRequest) SetTbUserId(v int64) *CancelOrderWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *CancelOrderWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type CancelOrderWithDesignatedTbUidResponseBody struct {
+	Code       *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CancelOrderWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetCode(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetLogsId(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetMessage(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetModel(v map[string]interface{}) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetPageSize(v int64) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetRequestId(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetSubCode(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetSubMessage(v string) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetSuccess(v bool) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *CancelOrderWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CancelOrderWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelOrderWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelOrderWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOrderWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *CancelOrderWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponse) SetStatusCode(v int32) *CancelOrderWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelOrderWithDesignatedTbUidResponse) SetBody(v *CancelOrderWithDesignatedTbUidResponseBody) *CancelOrderWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
+type CancelRealTbAccountSupportRequest struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s CancelRealTbAccountSupportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRealTbAccountSupportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRealTbAccountSupportRequest) SetBizId(v string) *CancelRealTbAccountSupportRequest {
+	s.BizId = &v
+	return s
+}
+
+type CancelRealTbAccountSupportResponseBody struct {
+	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string     `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string     `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CancelRealTbAccountSupportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRealTbAccountSupportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetCode(v string) *CancelRealTbAccountSupportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetLogsId(v string) *CancelRealTbAccountSupportResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetMessage(v string) *CancelRealTbAccountSupportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetModel(v interface{}) *CancelRealTbAccountSupportResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetPageNumber(v int64) *CancelRealTbAccountSupportResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetPageSize(v int64) *CancelRealTbAccountSupportResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetRequestId(v string) *CancelRealTbAccountSupportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetSubCode(v string) *CancelRealTbAccountSupportResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetSubMessage(v string) *CancelRealTbAccountSupportResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetSuccess(v bool) *CancelRealTbAccountSupportResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponseBody) SetTotalCount(v int64) *CancelRealTbAccountSupportResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CancelRealTbAccountSupportResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelRealTbAccountSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelRealTbAccountSupportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRealTbAccountSupportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRealTbAccountSupportResponse) SetHeaders(v map[string]*string) *CancelRealTbAccountSupportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponse) SetStatusCode(v int32) *CancelRealTbAccountSupportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelRealTbAccountSupportResponse) SetBody(v *CancelRealTbAccountSupportResponseBody) *CancelRealTbAccountSupportResponse {
+	s.Body = v
+	return s
+}
+
 type CancelRefundRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -1057,6 +1671,160 @@ func (s *CancelRefundResponse) SetBody(v *CancelRefundResponseBody) *CancelRefun
 	return s
 }
 
+type CancelRefundWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s CancelRefundWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRefundWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetBizId(v string) *CancelRefundWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetDisputeId(v int64) *CancelRefundWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *CancelRefundWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetTbAccountType(v string) *CancelRefundWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetTbUserId(v int64) *CancelRefundWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *CancelRefundWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type CancelRefundWithDesignatedTbUidResponseBody struct {
+	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CancelRefundWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRefundWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetCode(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetLogsId(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetMessage(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetModel(v interface{}) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetPageSize(v int64) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetRequestId(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetSubCode(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetSubMessage(v string) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetSuccess(v bool) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *CancelRefundWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CancelRefundWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelRefundWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelRefundWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelRefundWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *CancelRefundWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponse) SetStatusCode(v int32) *CancelRefundWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelRefundWithDesignatedTbUidResponse) SetBody(v *CancelRefundWithDesignatedTbUidResponseBody) *CancelRefundWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type ConfirmDisburseRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -1158,6 +1926,154 @@ func (s *ConfirmDisburseResponse) SetStatusCode(v int32) *ConfirmDisburseRespons
 }
 
 func (s *ConfirmDisburseResponse) SetBody(v *ConfirmDisburseResponseBody) *ConfirmDisburseResponse {
+	s.Body = v
+	return s
+}
+
+type ConfirmDisburseWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmOrderId        *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidRequest) SetBizId(v string) *ConfirmDisburseWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidRequest) SetLmOrderId(v int64) *ConfirmDisburseWithDesignatedTbUidRequest {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidRequest) SetTbAccountType(v string) *ConfirmDisburseWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidRequest) SetTbUserId(v int64) *ConfirmDisburseWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *ConfirmDisburseWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type ConfirmDisburseWithDesignatedTbUidResponseBody struct {
+	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetCode(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetLogsId(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetMessage(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetModel(v interface{}) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetPageSize(v int64) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetRequestId(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetSubCode(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetSubMessage(v string) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetSuccess(v bool) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *ConfirmDisburseWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ConfirmDisburseWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ConfirmDisburseWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfirmDisburseWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *ConfirmDisburseWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponse) SetStatusCode(v int32) *ConfirmDisburseWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfirmDisburseWithDesignatedTbUidResponse) SetBody(v *ConfirmDisburseWithDesignatedTbUidResponseBody) *ConfirmDisburseWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -1988,13 +2904,14 @@ type CreateOrderTransactionDetailFileResponseBody struct {
 	LogsId      *string                `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
 	Message     *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	PageNumber  *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RecordId    *string                `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s CreateOrderTransactionDetailFileResponseBody) String() string {
@@ -2423,6 +3340,474 @@ func (s *CreateOrderV2Response) SetStatusCode(v int32) *CreateOrderV2Response {
 }
 
 func (s *CreateOrderV2Response) SetBody(v *CreateOrderV2ResponseBody) *CreateOrderV2Response {
+	s.Body = v
+	return s
+}
+
+type CreateOrderWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BuyerMessages    *string `json:"BuyerMessages,omitempty" xml:"BuyerMessages,omitempty"`
+	DeliveryAddress  *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	DeliveryInfo     *string `json:"DeliveryInfo,omitempty" xml:"DeliveryInfo,omitempty"`
+	ExtInfo          *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	OrderExpireTime  *int64  `json:"OrderExpireTime,omitempty" xml:"OrderExpireTime,omitempty"`
+	OrderItems       *string `json:"OrderItems,omitempty" xml:"OrderItems,omitempty"`
+	OutTradeId       *string `json:"OutTradeId,omitempty" xml:"OutTradeId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s CreateOrderWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetBizId(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetBuyerMessages(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.BuyerMessages = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetDeliveryAddress(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetDeliveryInfo(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.DeliveryInfo = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetExtInfo(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetOrderExpireTime(v int64) *CreateOrderWithDesignatedTbUidRequest {
+	s.OrderExpireTime = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetOrderItems(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.OrderItems = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetOutTradeId(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.OutTradeId = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetTbAccountType(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetTbUserId(v int64) *CreateOrderWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *CreateOrderWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type CreateOrderWithDesignatedTbUidResponseBody struct {
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                          `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *CreateOrderWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateOrderWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetCode(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetLogsId(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetMessage(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetModel(v *CreateOrderWithDesignatedTbUidResponseBodyModel) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetPageSize(v int64) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetRequestId(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetSubCode(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetSubMessage(v string) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetSuccess(v bool) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *CreateOrderWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateOrderWithDesignatedTbUidResponseBodyModel struct {
+	AllIdsMap   map[string]map[string]interface{} `json:"AllIdsMap,omitempty" xml:"AllIdsMap,omitempty"`
+	App         *string                           `json:"App,omitempty" xml:"App,omitempty"`
+	LmOrderIds  []*string                         `json:"LmOrderIds,omitempty" xml:"LmOrderIds,omitempty" type:"Repeated"`
+	OrderIds    []*string                         `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	PayTradeIds []*string                         `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+	RedirectUrl *string                           `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+}
+
+func (s CreateOrderWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetAllIdsMap(v map[string]map[string]interface{}) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.AllIdsMap = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetApp(v string) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.App = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetLmOrderIds(v []*string) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderIds = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetOrderIds(v []*string) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.OrderIds = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetPayTradeIds(v []*string) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.PayTradeIds = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponseBodyModel) SetRedirectUrl(v string) *CreateOrderWithDesignatedTbUidResponseBodyModel {
+	s.RedirectUrl = &v
+	return s
+}
+
+type CreateOrderWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrderWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrderWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrderWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *CreateOrderWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponse) SetStatusCode(v int32) *CreateOrderWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrderWithDesignatedTbUidResponse) SetBody(v *CreateOrderWithDesignatedTbUidResponseBody) *CreateOrderWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOutDiscountOrderWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BuyerMessages    *string `json:"BuyerMessages,omitempty" xml:"BuyerMessages,omitempty"`
+	DeliveryAddress  *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	DeliveryInfo     *string `json:"DeliveryInfo,omitempty" xml:"DeliveryInfo,omitempty"`
+	ExtInfo          *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	OrderExpireTime  *int64  `json:"OrderExpireTime,omitempty" xml:"OrderExpireTime,omitempty"`
+	OrderItems       *string `json:"OrderItems,omitempty" xml:"OrderItems,omitempty"`
+	OutDiscountInfos *string `json:"OutDiscountInfos,omitempty" xml:"OutDiscountInfos,omitempty"`
+	OutTradeId       *string `json:"OutTradeId,omitempty" xml:"OutTradeId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetBizId(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetBuyerMessages(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.BuyerMessages = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetDeliveryAddress(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetDeliveryInfo(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.DeliveryInfo = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetExtInfo(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetOrderExpireTime(v int64) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.OrderExpireTime = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetOrderItems(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.OrderItems = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetOutDiscountInfos(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.OutDiscountInfos = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetOutTradeId(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.OutTradeId = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetTbAccountType(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetTbUserId(v int64) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *CreateOutDiscountOrderWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type CreateOutDiscountOrderWithDesignatedTbUidResponseBody struct {
+	Code       *string                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                                     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetCode(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetLogsId(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetMessage(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetModel(v *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetPageSize(v int64) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetRequestId(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetSubCode(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetSubMessage(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetSuccess(v bool) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *CreateOutDiscountOrderWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel struct {
+	AllIdsMap   map[string]map[string]interface{} `json:"AllIdsMap,omitempty" xml:"AllIdsMap,omitempty"`
+	App         *string                           `json:"App,omitempty" xml:"App,omitempty"`
+	LmOrderIds  []*string                         `json:"LmOrderIds,omitempty" xml:"LmOrderIds,omitempty" type:"Repeated"`
+	OrderIds    []*string                         `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	PayTradeIds []*string                         `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+	RedirectUrl *string                           `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetAllIdsMap(v map[string]map[string]interface{}) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.AllIdsMap = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetApp(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.App = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetLmOrderIds(v []*string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderIds = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetOrderIds(v []*string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.OrderIds = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetPayTradeIds(v []*string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.PayTradeIds = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel) SetRedirectUrl(v string) *CreateOutDiscountOrderWithDesignatedTbUidResponseBodyModel {
+	s.RedirectUrl = &v
+	return s
+}
+
+type CreateOutDiscountOrderWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOutDiscountOrderWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOutDiscountOrderWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *CreateOutDiscountOrderWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponse) SetStatusCode(v int32) *CreateOutDiscountOrderWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOutDiscountOrderWithDesignatedTbUidResponse) SetBody(v *CreateOutDiscountOrderWithDesignatedTbUidResponseBody) *CreateOutDiscountOrderWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -3727,12 +5112,13 @@ type DownloadCpsBillFileResponseBody struct {
 	Message     *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	OssUrl      *string                `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	PageNumber  *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DownloadCpsBillFileResponseBody) String() string {
@@ -3862,12 +5248,13 @@ type DownloadItemBillFileResponseBody struct {
 	Message     *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	OssUrl      *string                `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	PageNumber  *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DownloadItemBillFileResponseBody) String() string {
@@ -3997,12 +5384,13 @@ type DownloadOrderTransactionDetailFileResponseBody struct {
 	Message     *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	OssUrl      *string                `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 	PageNumber  *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode     *string                `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage  *string                `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success     *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount  *int64                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DownloadOrderTransactionDetailFileResponseBody) String() string {
@@ -4354,6 +5742,218 @@ func (s *EnableOrderResponse) SetStatusCode(v int32) *EnableOrderResponse {
 }
 
 func (s *EnableOrderResponse) SetBody(v *EnableOrderResponseBody) *EnableOrderResponse {
+	s.Body = v
+	return s
+}
+
+type EnableOrderWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmOrderId        *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s EnableOrderWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderWithDesignatedTbUidRequest) SetBizId(v string) *EnableOrderWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidRequest) SetLmOrderId(v int64) *EnableOrderWithDesignatedTbUidRequest {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidRequest) SetTbAccountType(v string) *EnableOrderWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidRequest) SetTbUserId(v int64) *EnableOrderWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *EnableOrderWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type EnableOrderWithDesignatedTbUidResponseBody struct {
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                          `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *EnableOrderWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetCode(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetLogsId(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetMessage(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetModel(v *EnableOrderWithDesignatedTbUidResponseBodyModel) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetPageSize(v int64) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetRequestId(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetSubCode(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetSubMessage(v string) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetSuccess(v bool) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *EnableOrderWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type EnableOrderWithDesignatedTbUidResponseBodyModel struct {
+	LmOrderList []*EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList `json:"LmOrderList,omitempty" xml:"LmOrderList,omitempty" type:"Repeated"`
+	OrderIds    []*string                                                     `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
+	PayTradeIds []*string                                                     `json:"PayTradeIds,omitempty" xml:"PayTradeIds,omitempty" type:"Repeated"`
+	RedirectUrl *string                                                       `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModel) SetLmOrderList(v []*EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) *EnableOrderWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderList = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModel) SetOrderIds(v []*string) *EnableOrderWithDesignatedTbUidResponseBodyModel {
+	s.OrderIds = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModel) SetPayTradeIds(v []*string) *EnableOrderWithDesignatedTbUidResponseBodyModel {
+	s.PayTradeIds = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModel) SetRedirectUrl(v string) *EnableOrderWithDesignatedTbUidResponseBodyModel {
+	s.RedirectUrl = &v
+	return s
+}
+
+type EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList struct {
+	ExtJson          map[string]*string `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	LmOrderId        *string            `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	SubLmOrderIdList []*string          `json:"SubLmOrderIdList,omitempty" xml:"SubLmOrderIdList,omitempty" type:"Repeated"`
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) SetExtJson(v map[string]*string) *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList {
+	s.ExtJson = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) SetLmOrderId(v string) *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList) SetSubLmOrderIdList(v []*string) *EnableOrderWithDesignatedTbUidResponseBodyModelLmOrderList {
+	s.SubLmOrderIdList = v
+	return s
+}
+
+type EnableOrderWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableOrderWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableOrderWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableOrderWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *EnableOrderWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponse) SetStatusCode(v int32) *EnableOrderWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableOrderWithDesignatedTbUidResponse) SetBody(v *EnableOrderWithDesignatedTbUidResponseBody) *EnableOrderWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -7402,6 +9002,265 @@ func (s *InitApplyRefundResponse) SetBody(v *InitApplyRefundResponseBody) *InitA
 	return s
 }
 
+type InitApplyRefundWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	RefundCode       *int32  `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetBizId(v string) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetDisputeId(v int64) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetRefundCode(v int32) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetTbAccountType(v string) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetTbUserId(v int64) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *InitApplyRefundWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type InitApplyRefundWithDesignatedTbUidResponseBody struct {
+	Code       *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                              `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *InitApplyRefundWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetCode(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetLogsId(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetMessage(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetModel(v *InitApplyRefundWithDesignatedTbUidResponseBodyModel) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetPageSize(v int64) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetRequestId(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetSubCode(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetSubMessage(v string) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetSuccess(v bool) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *InitApplyRefundWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type InitApplyRefundWithDesignatedTbUidResponseBodyModel struct {
+	BizClaimType     *int32                                                                 `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
+	LmOrderId        *string                                                                `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	MainOrderRefund  *bool                                                                  `json:"MainOrderRefund,omitempty" xml:"MainOrderRefund,omitempty"`
+	MaxRefundFeeData *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData   `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
+	RefundReasonList []*InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList `json:"RefundReasonList,omitempty" xml:"RefundReasonList,omitempty" type:"Repeated"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModel) SetBizClaimType(v int32) *InitApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.BizClaimType = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModel) SetLmOrderId(v string) *InitApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModel) SetMainOrderRefund(v bool) *InitApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.MainOrderRefund = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModel) SetMaxRefundFeeData(v *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) *InitApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.MaxRefundFeeData = v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModel) SetRefundReasonList(v []*InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) *InitApplyRefundWithDesignatedTbUidResponseBodyModel {
+	s.RefundReasonList = v
+	return s
+}
+
+type InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData struct {
+	MaxRefundFee *int64 `json:"MaxRefundFee,omitempty" xml:"MaxRefundFee,omitempty"`
+	MinRefundFee *int64 `json:"MinRefundFee,omitempty" xml:"MinRefundFee,omitempty"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMaxRefundFee(v int64) *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MaxRefundFee = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMinRefundFee(v int64) *InitApplyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MinRefundFee = &v
+	return s
+}
+
+type InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList struct {
+	ProofRequired      *bool   `json:"ProofRequired,omitempty" xml:"ProofRequired,omitempty"`
+	ReasonTextId       *int64  `json:"ReasonTextId,omitempty" xml:"ReasonTextId,omitempty"`
+	ReasonTips         *string `json:"ReasonTips,omitempty" xml:"ReasonTips,omitempty"`
+	RefundDescRequired *bool   `json:"RefundDescRequired,omitempty" xml:"RefundDescRequired,omitempty"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetProofRequired(v bool) *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ProofRequired = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetReasonTextId(v int64) *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ReasonTextId = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetReasonTips(v string) *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ReasonTips = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetRefundDescRequired(v bool) *InitApplyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.RefundDescRequired = &v
+	return s
+}
+
+type InitApplyRefundWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InitApplyRefundWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitApplyRefundWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *InitApplyRefundWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponse) SetStatusCode(v int32) *InitApplyRefundWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitApplyRefundWithDesignatedTbUidResponse) SetBody(v *InitApplyRefundWithDesignatedTbUidResponseBody) *InitApplyRefundWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type InitModifyRefundRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizClaimType          *int32  `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
@@ -7643,6 +9502,265 @@ func (s *InitModifyRefundResponse) SetStatusCode(v int32) *InitModifyRefundRespo
 }
 
 func (s *InitModifyRefundResponse) SetBody(v *InitModifyRefundResponseBody) *InitModifyRefundResponse {
+	s.Body = v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	RefundCode       *int32  `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetBizId(v string) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetDisputeId(v int64) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetRefundCode(v int32) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetTbAccountType(v string) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetTbUserId(v int64) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *InitModifyRefundWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidResponseBody struct {
+	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                               `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *InitModifyRefundWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetCode(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetLogsId(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetMessage(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetModel(v *InitModifyRefundWithDesignatedTbUidResponseBodyModel) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetPageSize(v int64) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetRequestId(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetSubCode(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetSubMessage(v string) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetSuccess(v bool) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *InitModifyRefundWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidResponseBodyModel struct {
+	BizClaimType     *int32                                                                  `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
+	LmOrderId        *string                                                                 `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	MainOrderRefund  *bool                                                                   `json:"MainOrderRefund,omitempty" xml:"MainOrderRefund,omitempty"`
+	MaxRefundFeeData *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData   `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
+	RefundReasonList []*InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList `json:"RefundReasonList,omitempty" xml:"RefundReasonList,omitempty" type:"Repeated"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModel) SetBizClaimType(v int32) *InitModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.BizClaimType = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModel) SetLmOrderId(v string) *InitModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModel) SetMainOrderRefund(v bool) *InitModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.MainOrderRefund = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModel) SetMaxRefundFeeData(v *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) *InitModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.MaxRefundFeeData = v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModel) SetRefundReasonList(v []*InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) *InitModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.RefundReasonList = v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData struct {
+	MaxRefundFee *int64 `json:"MaxRefundFee,omitempty" xml:"MaxRefundFee,omitempty"`
+	MinRefundFee *int64 `json:"MinRefundFee,omitempty" xml:"MinRefundFee,omitempty"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMaxRefundFee(v int64) *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MaxRefundFee = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMinRefundFee(v int64) *InitModifyRefundWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MinRefundFee = &v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList struct {
+	ProofRequired      *bool   `json:"ProofRequired,omitempty" xml:"ProofRequired,omitempty"`
+	ReasonTextId       *int64  `json:"ReasonTextId,omitempty" xml:"ReasonTextId,omitempty"`
+	ReasonTips         *string `json:"ReasonTips,omitempty" xml:"ReasonTips,omitempty"`
+	RefundDescRequired *bool   `json:"RefundDescRequired,omitempty" xml:"RefundDescRequired,omitempty"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetProofRequired(v bool) *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ProofRequired = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetReasonTextId(v int64) *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ReasonTextId = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetReasonTips(v string) *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.ReasonTips = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList) SetRefundDescRequired(v bool) *InitModifyRefundWithDesignatedTbUidResponseBodyModelRefundReasonList {
+	s.RefundDescRequired = &v
+	return s
+}
+
+type InitModifyRefundWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InitModifyRefundWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitModifyRefundWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *InitModifyRefundWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponse) SetStatusCode(v int32) *InitModifyRefundWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitModifyRefundWithDesignatedTbUidResponse) SetBody(v *InitModifyRefundWithDesignatedTbUidResponseBody) *InitModifyRefundWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -8984,6 +11102,111 @@ func (s *ModifyBasicAndBizItemsResponse) SetBody(v *ModifyBasicAndBizItemsRespon
 	return s
 }
 
+type ModifyBasicItemSupplierPriceRequest struct {
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmItemId      *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmShopId      *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	SkuId         *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SupplierPrice *int64  `json:"SupplierPrice,omitempty" xml:"SupplierPrice,omitempty"`
+}
+
+func (s ModifyBasicItemSupplierPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBasicItemSupplierPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBasicItemSupplierPriceRequest) SetBizId(v string) *ModifyBasicItemSupplierPriceRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceRequest) SetLmItemId(v string) *ModifyBasicItemSupplierPriceRequest {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceRequest) SetLmShopId(v int64) *ModifyBasicItemSupplierPriceRequest {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceRequest) SetSkuId(v int64) *ModifyBasicItemSupplierPriceRequest {
+	s.SkuId = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceRequest) SetSupplierPrice(v int64) *ModifyBasicItemSupplierPriceRequest {
+	s.SupplierPrice = &v
+	return s
+}
+
+type ModifyBasicItemSupplierPriceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBasicItemSupplierPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBasicItemSupplierPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBasicItemSupplierPriceResponseBody) SetCode(v string) *ModifyBasicItemSupplierPriceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceResponseBody) SetMessage(v string) *ModifyBasicItemSupplierPriceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceResponseBody) SetModel(v bool) *ModifyBasicItemSupplierPriceResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceResponseBody) SetRequestId(v string) *ModifyBasicItemSupplierPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBasicItemSupplierPriceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyBasicItemSupplierPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBasicItemSupplierPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBasicItemSupplierPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBasicItemSupplierPriceResponse) SetHeaders(v map[string]*string) *ModifyBasicItemSupplierPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceResponse) SetStatusCode(v int32) *ModifyBasicItemSupplierPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBasicItemSupplierPriceResponse) SetBody(v *ModifyBasicItemSupplierPriceResponseBody) *ModifyBasicItemSupplierPriceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyBizItemsRequest struct {
 	BizId    *string                          `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	ItemList []*ModifyBizItemsRequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
@@ -9732,6 +11955,348 @@ func (s *ModifyRefundResponse) SetBody(v *ModifyRefundResponseBody) *ModifyRefun
 	return s
 }
 
+type ModifyRefundWithDesignatedTbUidRequest struct {
+	BizId            *string                                         `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64                                          `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	GoodsStatus      *int32                                          `json:"GoodsStatus,omitempty" xml:"GoodsStatus,omitempty"`
+	Message          *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Proofs           []*ModifyRefundWithDesignatedTbUidRequestProofs `json:"Proofs,omitempty" xml:"Proofs,omitempty" type:"Repeated"`
+	ReasonId         *int64                                          `json:"ReasonId,omitempty" xml:"ReasonId,omitempty"`
+	RefundCode       *int32                                          `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	RefundCount      *int32                                          `json:"RefundCount,omitempty" xml:"RefundCount,omitempty"`
+	RefundFee        *int64                                          `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+	SubLmOrderId     *string                                         `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string                                         `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64                                          `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string                                         `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetBizId(v string) *ModifyRefundWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetDisputeId(v int64) *ModifyRefundWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetGoodsStatus(v int32) *ModifyRefundWithDesignatedTbUidRequest {
+	s.GoodsStatus = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetMessage(v string) *ModifyRefundWithDesignatedTbUidRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetProofs(v []*ModifyRefundWithDesignatedTbUidRequestProofs) *ModifyRefundWithDesignatedTbUidRequest {
+	s.Proofs = v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetReasonId(v int64) *ModifyRefundWithDesignatedTbUidRequest {
+	s.ReasonId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetRefundCode(v int32) *ModifyRefundWithDesignatedTbUidRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetRefundCount(v int32) *ModifyRefundWithDesignatedTbUidRequest {
+	s.RefundCount = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetRefundFee(v int64) *ModifyRefundWithDesignatedTbUidRequest {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *ModifyRefundWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetTbAccountType(v string) *ModifyRefundWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetTbUserId(v int64) *ModifyRefundWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *ModifyRefundWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type ModifyRefundWithDesignatedTbUidRequestProofs struct {
+	MessagePic     *string `json:"MessagePic,omitempty" xml:"MessagePic,omitempty"`
+	MessagePicDesc *string `json:"MessagePicDesc,omitempty" xml:"MessagePicDesc,omitempty"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidRequestProofs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidRequestProofs) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequestProofs) SetMessagePic(v string) *ModifyRefundWithDesignatedTbUidRequestProofs {
+	s.MessagePic = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidRequestProofs) SetMessagePicDesc(v string) *ModifyRefundWithDesignatedTbUidRequestProofs {
+	s.MessagePicDesc = &v
+	return s
+}
+
+type ModifyRefundWithDesignatedTbUidShrinkRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	GoodsStatus      *int32  `json:"GoodsStatus,omitempty" xml:"GoodsStatus,omitempty"`
+	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ProofsShrink     *string `json:"Proofs,omitempty" xml:"Proofs,omitempty"`
+	ReasonId         *int64  `json:"ReasonId,omitempty" xml:"ReasonId,omitempty"`
+	RefundCode       *int32  `json:"RefundCode,omitempty" xml:"RefundCode,omitempty"`
+	RefundCount      *int32  `json:"RefundCount,omitempty" xml:"RefundCount,omitempty"`
+	RefundFee        *int64  `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetBizId(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetDisputeId(v int64) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetGoodsStatus(v int32) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.GoodsStatus = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetMessage(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetProofsShrink(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.ProofsShrink = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetReasonId(v int64) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.ReasonId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetRefundCode(v int32) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundCode = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetRefundCount(v int32) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundCount = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetRefundFee(v int64) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetSubLmOrderId(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetTbAccountType(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetTbUserId(v int64) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidShrinkRequest) SetThirdPartyUserId(v string) *ModifyRefundWithDesignatedTbUidShrinkRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type ModifyRefundWithDesignatedTbUidResponseBody struct {
+	Code       *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *ModifyRefundWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetCode(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetLogsId(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetMessage(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetModel(v *ModifyRefundWithDesignatedTbUidResponseBodyModel) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetPageSize(v int64) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetRequestId(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetSubCode(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetSubMessage(v string) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetSuccess(v bool) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *ModifyRefundWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ModifyRefundWithDesignatedTbUidResponseBodyModel struct {
+	DisputeId     *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	DisputeStatus *int32  `json:"DisputeStatus,omitempty" xml:"DisputeStatus,omitempty"`
+	DisputeType   *int32  `json:"DisputeType,omitempty" xml:"DisputeType,omitempty"`
+	SubLmOrderId  *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeId(v int64) *ModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeStatus(v int32) *ModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeStatus = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBodyModel) SetDisputeType(v int32) *ModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.DisputeType = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponseBodyModel) SetSubLmOrderId(v string) *ModifyRefundWithDesignatedTbUidResponseBodyModel {
+	s.SubLmOrderId = &v
+	return s
+}
+
+type ModifyRefundWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyRefundWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyRefundWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *ModifyRefundWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponse) SetStatusCode(v int32) *ModifyRefundWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyRefundWithDesignatedTbUidResponse) SetBody(v *ModifyRefundWithDesignatedTbUidResponseBody) *ModifyRefundWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type ModifySettleAccountRequest struct {
 	AccountChannel    *string `json:"AccountChannel,omitempty" xml:"AccountChannel,omitempty"`
 	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
@@ -9974,9 +12539,10 @@ func (s *ModifySupplierPriceAndPriceCentRequest) SetSupplierPrice(v string) *Mod
 }
 
 type ModifySupplierPriceAndPriceCentResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10231,6 +12797,130 @@ func (s *NotifyWithholdFundResponse) SetStatusCode(v int32) *NotifyWithholdFundR
 }
 
 func (s *NotifyWithholdFundResponse) SetBody(v *NotifyWithholdFundResponseBody) *NotifyWithholdFundResponse {
+	s.Body = v
+	return s
+}
+
+type OpenRealTbAccountSupportRequest struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s OpenRealTbAccountSupportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenRealTbAccountSupportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenRealTbAccountSupportRequest) SetBizId(v string) *OpenRealTbAccountSupportRequest {
+	s.BizId = &v
+	return s
+}
+
+type OpenRealTbAccountSupportResponseBody struct {
+	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s OpenRealTbAccountSupportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenRealTbAccountSupportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetCode(v string) *OpenRealTbAccountSupportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetLogsId(v string) *OpenRealTbAccountSupportResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetMessage(v string) *OpenRealTbAccountSupportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetModel(v interface{}) *OpenRealTbAccountSupportResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetPageNumber(v int64) *OpenRealTbAccountSupportResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetPageSize(v int64) *OpenRealTbAccountSupportResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetRequestId(v string) *OpenRealTbAccountSupportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetSubCode(v string) *OpenRealTbAccountSupportResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetSubMessage(v string) *OpenRealTbAccountSupportResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetSuccess(v bool) *OpenRealTbAccountSupportResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponseBody) SetTotalCount(v int64) *OpenRealTbAccountSupportResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type OpenRealTbAccountSupportResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenRealTbAccountSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OpenRealTbAccountSupportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenRealTbAccountSupportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenRealTbAccountSupportResponse) SetHeaders(v map[string]*string) *OpenRealTbAccountSupportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponse) SetStatusCode(v int32) *OpenRealTbAccountSupportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenRealTbAccountSupportResponse) SetBody(v *OpenRealTbAccountSupportResponseBody) *OpenRealTbAccountSupportResponse {
 	s.Body = v
 	return s
 }
@@ -10719,10 +13409,11 @@ type QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSku
 	LmActivityId   *int64  `json:"LmActivityId,omitempty" xml:"LmActivityId,omitempty"`
 	LmItemId       *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
 	ReservedPrice  *int64  `json:"ReservedPrice,omitempty" xml:"ReservedPrice,omitempty"`
-	SkuId          *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	SkuPicUrl      *string `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
-	SkuTitle       *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
-	Tips           *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// skuID
+	SkuId     *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuPicUrl *string `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
+	SkuTitle  *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Tips      *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 }
 
 func (s QueryActivityItemsResponseBodyLmActivityItemModelListLmActivityItemModelSkuModelListLmActivityItemSkuModel) String() string {
@@ -14304,7 +16995,8 @@ func (s *QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActi
 
 type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku struct {
 	ActivityPrice *int64 `json:"ActivityPrice,omitempty" xml:"ActivityPrice,omitempty"`
-	SkuId         *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	// skuId
+	SkuId *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivityItemActivityItemSkuListActivityItemSku) String() string {
@@ -14440,7 +17132,8 @@ type QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivity
 	Points       *int64 `json:"Points,omitempty" xml:"Points,omitempty"`
 	PointsAmount *int64 `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
 	PriceCent    *int64 `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
-	SkuId        *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	// skuId
+	SkuId *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemActivitiesActivityActivitySessionsActivitySessionActivitySessionItemActivitySessionItemSkuList) String() string {
@@ -14496,8 +17189,9 @@ type QueryBizItemsWithActivityResponseBodyItemListItemSkuListSku struct {
 	PointsKey       *string `json:"PointsKey,omitempty" xml:"PointsKey,omitempty"`
 	PriceCent       *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
 	Quantity        *int64  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	SkuId           *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	Status          *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// skuId
+	SkuId  *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryBizItemsWithActivityResponseBodyItemListItemSkuListSku) String() string {
@@ -14770,6 +17464,211 @@ func (s *QueryBudgetTicketItemListByBizIdResponse) SetBody(v *QueryBudgetTicketI
 	return s
 }
 
+type QueryChannelItemBillDownloadUrlRequest struct {
+	BillId     *string `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	BillPeriod *string `json:"BillPeriod,omitempty" xml:"BillPeriod,omitempty"`
+	BillStatus *string `json:"BillStatus,omitempty" xml:"BillStatus,omitempty"`
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	LmShopId   *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	LmShopName *string `json:"LmShopName,omitempty" xml:"LmShopName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QueryChannelItemBillDownloadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChannelItemBillDownloadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetBillId(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetBillPeriod(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.BillPeriod = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetBillStatus(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.BillStatus = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetBizId(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetBizName(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.BizName = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetLmShopId(v int64) *QueryChannelItemBillDownloadUrlRequest {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetLmShopName(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.LmShopName = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetPageNumber(v int32) *QueryChannelItemBillDownloadUrlRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetPageSize(v int32) *QueryChannelItemBillDownloadUrlRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlRequest) SetTenantId(v string) *QueryChannelItemBillDownloadUrlRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QueryChannelItemBillDownloadUrlResponseBody struct {
+	Code      *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId    *string                                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *QueryChannelItemBillDownloadUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBody) SetCode(v string) *QueryChannelItemBillDownloadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBody) SetLogsId(v string) *QueryChannelItemBillDownloadUrlResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBody) SetMessage(v string) *QueryChannelItemBillDownloadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBody) SetModel(v *QueryChannelItemBillDownloadUrlResponseBodyModel) *QueryChannelItemBillDownloadUrlResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBody) SetRequestId(v string) *QueryChannelItemBillDownloadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryChannelItemBillDownloadUrlResponseBodyModel struct {
+	Data       []*QueryChannelItemBillDownloadUrlResponseBodyModelData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNumber *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModel) SetData(v []*QueryChannelItemBillDownloadUrlResponseBodyModelData) *QueryChannelItemBillDownloadUrlResponseBodyModel {
+	s.Data = v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModel) SetPageNumber(v int32) *QueryChannelItemBillDownloadUrlResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModel) SetPageSize(v int32) *QueryChannelItemBillDownloadUrlResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModel) SetTotal(v int32) *QueryChannelItemBillDownloadUrlResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type QueryChannelItemBillDownloadUrlResponseBodyModelData struct {
+	BillId          *string `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	FileDownloadUrl *string `json:"FileDownloadUrl,omitempty" xml:"FileDownloadUrl,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBodyModelData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChannelItemBillDownloadUrlResponseBodyModelData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModelData) SetBillId(v string) *QueryChannelItemBillDownloadUrlResponseBodyModelData {
+	s.BillId = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModelData) SetFileDownloadUrl(v string) *QueryChannelItemBillDownloadUrlResponseBodyModelData {
+	s.FileDownloadUrl = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponseBodyModelData) SetMessage(v string) *QueryChannelItemBillDownloadUrlResponseBodyModelData {
+	s.Message = &v
+	return s
+}
+
+type QueryChannelItemBillDownloadUrlResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryChannelItemBillDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryChannelItemBillDownloadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryChannelItemBillDownloadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponse) SetHeaders(v map[string]*string) *QueryChannelItemBillDownloadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponse) SetStatusCode(v int32) *QueryChannelItemBillDownloadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryChannelItemBillDownloadUrlResponse) SetBody(v *QueryChannelItemBillDownloadUrlResponseBody) *QueryChannelItemBillDownloadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type QueryGuideItemGroupRequest struct {
 	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -15034,12 +17933,13 @@ type QueryGuideItemGroupForCrowdOperationResponseBody struct {
 	Message    *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	Model      []*QueryGuideItemGroupForCrowdOperationResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
 	PageNumber *int64                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCode    *string                                                  `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-	SubMessage *string                                                  `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
-	Success    *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryGuideItemGroupForCrowdOperationResponseBody) String() string {
@@ -16747,11 +19647,12 @@ type QueryItemDetailInnerResponseBodyItemSkus struct {
 	Quantity     *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	ReservePrice *int64  `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 	SkuDesc      *string `json:"SkuDesc,omitempty" xml:"SkuDesc,omitempty"`
-	SkuId        *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	SkuPicUrl    *string `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
-	SkuPvs       *string `json:"SkuPvs,omitempty" xml:"SkuPvs,omitempty"`
-	SkuTitle     *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// skuid
+	SkuId     *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuPicUrl *string `json:"SkuPicUrl,omitempty" xml:"SkuPicUrl,omitempty"`
+	SkuPvs    *string `json:"SkuPvs,omitempty" xml:"SkuPvs,omitempty"`
+	SkuTitle  *string `json:"SkuTitle,omitempty" xml:"SkuTitle,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryItemDetailInnerResponseBodyItemSkus) String() string {
@@ -17862,7 +20763,8 @@ func (s *QueryItemInventoryResponseBodyItemListItemSkuList) SetSku(v []*QueryIte
 
 type QueryItemInventoryResponseBodyItemListItemSkuListSku struct {
 	Inventory *QueryItemInventoryResponseBodyItemListItemSkuListSkuInventory `json:"Inventory,omitempty" xml:"Inventory,omitempty" type:"Struct"`
-	SkuId     *int64                                                         `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	// skuId
+	SkuId *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s QueryItemInventoryResponseBodyItemListItemSkuListSku) String() string {
@@ -18111,7 +21013,8 @@ func (s *QueryItemInventoryV2ResponseBodyItemListItemSkuList) SetSku(v []*QueryI
 
 type QueryItemInventoryV2ResponseBodyItemListItemSkuListSku struct {
 	Inventory *QueryItemInventoryV2ResponseBodyItemListItemSkuListSkuInventory `json:"Inventory,omitempty" xml:"Inventory,omitempty" type:"Struct"`
-	SkuId     *int64                                                           `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	// skuid
+	SkuId *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
 }
 
 func (s QueryItemInventoryV2ResponseBodyItemListItemSkuListSku) String() string {
@@ -20286,6 +23189,426 @@ func (s *QueryOrderAndPaymentListResponse) SetBody(v *QueryOrderAndPaymentListRe
 	return s
 }
 
+type QueryOrderAndPaymentListWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	FilterOption     *string `json:"FilterOption,omitempty" xml:"FilterOption,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetBizId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetFilterOption(v string) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.FilterOption = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetPageNumber(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetPageSize(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetTbAccountType(v string) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetTbUserId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBody struct {
+	Code       *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                                         `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	PageNumber *int64                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetCode(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetLogsId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetMessage(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetModel(v []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetPageSize(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetRequestId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetSubCode(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetSubMessage(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetSuccess(v bool) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel struct {
+	CreateTime          *string                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableStatus        *int32                                                                             `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ExtJson             *string                                                                            `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	FundStructureModels []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
+	LmOrderId           *int64                                                                             `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	LmPaymentId         *string                                                                            `json:"LmPaymentId,omitempty" xml:"LmPaymentId,omitempty"`
+	LogisticsStatus     *int32                                                                             `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
+	OrderAmount         *int64                                                                             `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
+	OrderStatus         *int32                                                                             `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	PostFee             *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee               `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
+	ShopName            *string                                                                            `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	SubOrderList        []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Repeated"`
+	TbOrderId           *int64                                                                             `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetCreateTime(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetEnableStatus(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetExtJson(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.ExtJson = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetFundStructureModels(v []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.FundStructureModels = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetLmOrderId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetLmPaymentId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.LmPaymentId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetLogisticsStatus(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.LogisticsStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetOrderAmount(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.OrderAmount = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetOrderStatus(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetPostFee(v *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.PostFee = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetShopName(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.ShopName = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetSubOrderList(v []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.SubOrderList = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel) SetTbOrderId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModel {
+	s.TbOrderId = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundAmount(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundType(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) SetFundAmount(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee) SetFundType(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList struct {
+	EnableStatus  *int32                                                                                   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ItemId        *int64                                                                                   `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemPic       *string                                                                                  `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
+	ItemPriceList []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Repeated"`
+	ItemTitle     *string                                                                                  `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmItemId      *string                                                                                  `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmOrderId     *int64                                                                                   `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	Number        *int64                                                                                   `json:"Number,omitempty" xml:"Number,omitempty"`
+	OrderStatus   *int32                                                                                   `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// skuId
+	SkuId     *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuName   *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	TbOrderId *int64  `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetEnableStatus(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemPic(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemPic = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemPriceList(v []*QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemPriceList = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemTitle(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetLmItemId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetLmOrderId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetNumber(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.Number = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetOrderStatus(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetSkuId(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetSkuName(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.SkuName = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList) SetTbOrderId(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.TbOrderId = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundAmount(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundAmountMoney(v int64) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundType(v string) *QueryOrderAndPaymentListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderAndPaymentListWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderAndPaymentListWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *QueryOrderAndPaymentListWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponse) SetStatusCode(v int32) *QueryOrderAndPaymentListWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderAndPaymentListWithDesignatedTbUidResponse) SetBody(v *QueryOrderAndPaymentListWithDesignatedTbUidResponseBody) *QueryOrderAndPaymentListWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type QueryOrderCommissionRateRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -22134,6 +25457,420 @@ func (s *QueryOrderListResponse) SetBody(v *QueryOrderListResponseBody) *QueryOr
 	return s
 }
 
+type QueryOrderListWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	FilterOption     *string `json:"FilterOption,omitempty" xml:"FilterOption,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetBizId(v string) *QueryOrderListWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetFilterOption(v string) *QueryOrderListWithDesignatedTbUidRequest {
+	s.FilterOption = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetPageNumber(v int32) *QueryOrderListWithDesignatedTbUidRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetPageSize(v int32) *QueryOrderListWithDesignatedTbUidRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetTbAccountType(v string) *QueryOrderListWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetTbUserId(v int64) *QueryOrderListWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *QueryOrderListWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBody struct {
+	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                               `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*QueryOrderListWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	PageNumber *int64                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetCode(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetLogsId(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetMessage(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetModel(v []*QueryOrderListWithDesignatedTbUidResponseBodyModel) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetPageSize(v int64) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetRequestId(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetSubCode(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetSubMessage(v string) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetSuccess(v bool) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *QueryOrderListWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBodyModel struct {
+	CreateTime          *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableStatus        *int32                                                                   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ExtJson             *string                                                                  `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	FundStructureModels []*QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels `json:"FundStructureModels,omitempty" xml:"FundStructureModels,omitempty" type:"Repeated"`
+	LmOrderId           *int64                                                                   `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	LogisticsStatus     *int32                                                                   `json:"LogisticsStatus,omitempty" xml:"LogisticsStatus,omitempty"`
+	OrderAmount         *int64                                                                   `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
+	OrderStatus         *int32                                                                   `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	PostFee             *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee               `json:"PostFee,omitempty" xml:"PostFee,omitempty" type:"Struct"`
+	ShopName            *string                                                                  `json:"ShopName,omitempty" xml:"ShopName,omitempty"`
+	SubOrderList        []*QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList        `json:"SubOrderList,omitempty" xml:"SubOrderList,omitempty" type:"Repeated"`
+	TbOrderId           *int64                                                                   `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetCreateTime(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetEnableStatus(v int32) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetExtJson(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.ExtJson = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetFundStructureModels(v []*QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.FundStructureModels = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetLmOrderId(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetLogisticsStatus(v int32) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.LogisticsStatus = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetOrderAmount(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.OrderAmount = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetOrderStatus(v int32) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetPostFee(v *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.PostFee = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetShopName(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.ShopName = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetSubOrderList(v []*QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.SubOrderList = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModel) SetTbOrderId(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModel {
+	s.TbOrderId = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundAmount(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundAmountMoney(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels) SetFundType(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelFundStructureModels {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) SetFundAmount(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) SetFundAmountMoney(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee) SetFundType(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelPostFee {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList struct {
+	EnableStatus  *int32                                                                         `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	ItemId        *int64                                                                         `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemPic       *string                                                                        `json:"ItemPic,omitempty" xml:"ItemPic,omitempty"`
+	ItemPriceList []*QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList `json:"ItemPriceList,omitempty" xml:"ItemPriceList,omitempty" type:"Repeated"`
+	ItemTitle     *string                                                                        `json:"ItemTitle,omitempty" xml:"ItemTitle,omitempty"`
+	LmItemId      *string                                                                        `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmOrderId     *int64                                                                         `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	Number        *int64                                                                         `json:"Number,omitempty" xml:"Number,omitempty"`
+	OrderStatus   *int32                                                                         `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// skuId
+	SkuId     *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuName   *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	TbOrderId *int64  `json:"TbOrderId,omitempty" xml:"TbOrderId,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetEnableStatus(v int32) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemId(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemPic(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemPic = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemPriceList(v []*QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemPriceList = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetItemTitle(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.ItemTitle = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetLmItemId(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetLmOrderId(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetNumber(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.Number = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetOrderStatus(v int32) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetSkuId(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.SkuId = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetSkuName(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.SkuName = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList) SetTbOrderId(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderList {
+	s.TbOrderId = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList struct {
+	FundAmount      *int64  `json:"FundAmount,omitempty" xml:"FundAmount,omitempty"`
+	FundAmountMoney *int64  `json:"FundAmountMoney,omitempty" xml:"FundAmountMoney,omitempty"`
+	FundType        *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundAmount(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundAmount = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundAmountMoney(v int64) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundAmountMoney = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList) SetFundType(v string) *QueryOrderListWithDesignatedTbUidResponseBodyModelSubOrderListItemPriceList {
+	s.FundType = &v
+	return s
+}
+
+type QueryOrderListWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderListWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderListWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *QueryOrderListWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponse) SetStatusCode(v int32) *QueryOrderListWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderListWithDesignatedTbUidResponse) SetBody(v *QueryOrderListWithDesignatedTbUidResponseBody) *QueryOrderListWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type QueryOrderLogisticsRequest struct {
 	AccountType           *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -22410,6 +26147,501 @@ func (s *QueryOrderLogisticsResponse) SetStatusCode(v int32) *QueryOrderLogistic
 }
 
 func (s *QueryOrderLogisticsResponse) SetBody(v *QueryOrderLogisticsResponseBody) *QueryOrderLogisticsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	LmOrderId        *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidRequest) SetBizId(v string) *QueryOrderLogisticsWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidRequest) SetLmOrderId(v int64) *QueryOrderLogisticsWithDesignatedTbUidRequest {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidRequest) SetTbAccountType(v string) *QueryOrderLogisticsWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidRequest) SetTbUserId(v int64) *QueryOrderLogisticsWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *QueryOrderLogisticsWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBody struct {
+	Code       *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                                    `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	PageNumber *int64                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetCode(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetLogsId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetMessage(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetModel(v []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetPageSize(v int64) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetRequestId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetSubCode(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetSubMessage(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetSuccess(v bool) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *QueryOrderLogisticsWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel struct {
+	DataProvider         *string                                                                       `json:"DataProvider,omitempty" xml:"DataProvider,omitempty"`
+	DataProviderTitle    *string                                                                       `json:"DataProviderTitle,omitempty" xml:"DataProviderTitle,omitempty"`
+	Fetcher              *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher               `json:"Fetcher,omitempty" xml:"Fetcher,omitempty" type:"Struct"`
+	LogisticsCompanyCode *string                                                                       `json:"LogisticsCompanyCode,omitempty" xml:"LogisticsCompanyCode,omitempty"`
+	LogisticsCompanyName *string                                                                       `json:"LogisticsCompanyName,omitempty" xml:"LogisticsCompanyName,omitempty"`
+	LogisticsDetailList  []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList `json:"LogisticsDetailList,omitempty" xml:"LogisticsDetailList,omitempty" type:"Repeated"`
+	MailNo               *string                                                                       `json:"MailNo,omitempty" xml:"MailNo,omitempty"`
+	PackageGoodItems     []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems    `json:"PackageGoodItems,omitempty" xml:"PackageGoodItems,omitempty" type:"Repeated"`
+	Receiver             *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver              `json:"Receiver,omitempty" xml:"Receiver,omitempty" type:"Struct"`
+	RequestId            *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetDataProvider(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.DataProvider = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetDataProviderTitle(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.DataProviderTitle = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetFetcher(v *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.Fetcher = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetLogisticsCompanyCode(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.LogisticsCompanyCode = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetLogisticsCompanyName(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.LogisticsCompanyName = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetLogisticsDetailList(v []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.LogisticsDetailList = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetMailNo(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.MailNo = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetPackageGoodItems(v []*QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.PackageGoodItems = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetReceiver(v *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.Receiver = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel) SetRequestId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModel {
+	s.RequestId = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) SetAddress(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher {
+	s.Address = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) SetName(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) SetPhoneNumber(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) SetRequestId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher) SetZipCode(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelFetcher {
+	s.ZipCode = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList struct {
+	OcurrTimeStr *string `json:"OcurrTimeStr,omitempty" xml:"OcurrTimeStr,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StanderdDesc *string `json:"StanderdDesc,omitempty" xml:"StanderdDesc,omitempty"`
+	StatusIcon   *string `json:"StatusIcon,omitempty" xml:"StatusIcon,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) SetOcurrTimeStr(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList {
+	s.OcurrTimeStr = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) SetRequestId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) SetStanderdDesc(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList {
+	s.StanderdDesc = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList) SetStatusIcon(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelLogisticsDetailList {
+	s.StatusIcon = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems struct {
+	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) SetItemId(v int64) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems {
+	s.ItemId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) SetLmItemId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) SetName(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems) SetQuantity(v int32) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelPackageGoodItems {
+	s.Quantity = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ZipCode     *string `json:"ZipCode,omitempty" xml:"ZipCode,omitempty"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) SetAddress(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver {
+	s.Address = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) SetName(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) SetPhoneNumber(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) SetRequestId(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver) SetZipCode(v string) *QueryOrderLogisticsWithDesignatedTbUidResponseBodyModelReceiver {
+	s.ZipCode = &v
+	return s
+}
+
+type QueryOrderLogisticsWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryOrderLogisticsWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOrderLogisticsWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *QueryOrderLogisticsWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponse) SetStatusCode(v int32) *QueryOrderLogisticsWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryOrderLogisticsWithDesignatedTbUidResponse) SetBody(v *QueryOrderLogisticsWithDesignatedTbUidResponseBody) *QueryOrderLogisticsWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRealTbAccountSupportRequest struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s QueryRealTbAccountSupportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRealTbAccountSupportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRealTbAccountSupportRequest) SetBizId(v string) *QueryRealTbAccountSupportRequest {
+	s.BizId = &v
+	return s
+}
+
+type QueryRealTbAccountSupportResponseBody struct {
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryRealTbAccountSupportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRealTbAccountSupportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetCode(v string) *QueryRealTbAccountSupportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetLogsId(v string) *QueryRealTbAccountSupportResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetMessage(v string) *QueryRealTbAccountSupportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetModel(v bool) *QueryRealTbAccountSupportResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetPageNumber(v int64) *QueryRealTbAccountSupportResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetPageSize(v int64) *QueryRealTbAccountSupportResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetRequestId(v string) *QueryRealTbAccountSupportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetSubCode(v string) *QueryRealTbAccountSupportResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetSubMessage(v string) *QueryRealTbAccountSupportResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetSuccess(v bool) *QueryRealTbAccountSupportResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponseBody) SetTotalCount(v int64) *QueryRealTbAccountSupportResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryRealTbAccountSupportResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRealTbAccountSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRealTbAccountSupportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRealTbAccountSupportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRealTbAccountSupportResponse) SetHeaders(v map[string]*string) *QueryRealTbAccountSupportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponse) SetStatusCode(v int32) *QueryRealTbAccountSupportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRealTbAccountSupportResponse) SetBody(v *QueryRealTbAccountSupportResponseBody) *QueryRealTbAccountSupportResponse {
 	s.Body = v
 	return s
 }
@@ -22722,6 +26954,366 @@ func (s *QueryRefundApplicationDetailResponse) SetStatusCode(v int32) *QueryRefu
 }
 
 func (s *QueryRefundApplicationDetailResponse) SetBody(v *QueryRefundApplicationDetailResponseBody) *QueryRefundApplicationDetailResponse {
+	s.Body = v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidRequest) SetBizId(v string) *QueryRefundApplyWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *QueryRefundApplyWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidRequest) SetTbAccountType(v string) *QueryRefundApplyWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidRequest) SetTbUserId(v int64) *QueryRefundApplyWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *QueryRefundApplyWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidResponseBody struct {
+	Code       *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                               `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *QueryRefundApplyWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                               `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                               `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetCode(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetLogsId(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetMessage(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetModel(v *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetPageSize(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetRequestId(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetSubCode(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetSubMessage(v string) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetSuccess(v bool) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidResponseBodyModel struct {
+	ApplyDisputeDesc             *string                                                               `json:"ApplyDisputeDesc,omitempty" xml:"ApplyDisputeDesc,omitempty"`
+	ApplyReasonText              *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText  `json:"ApplyReasonText,omitempty" xml:"ApplyReasonText,omitempty" type:"Struct"`
+	BizClaimType                 *int32                                                                `json:"BizClaimType,omitempty" xml:"BizClaimType,omitempty"`
+	DisputeCreateTime            *string                                                               `json:"DisputeCreateTime,omitempty" xml:"DisputeCreateTime,omitempty"`
+	DisputeDesc                  *string                                                               `json:"DisputeDesc,omitempty" xml:"DisputeDesc,omitempty"`
+	DisputeEndTime               *string                                                               `json:"DisputeEndTime,omitempty" xml:"DisputeEndTime,omitempty"`
+	DisputeId                    *int64                                                                `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	DisputeStatus                *int32                                                                `json:"DisputeStatus,omitempty" xml:"DisputeStatus,omitempty"`
+	DisputeType                  *int32                                                                `json:"DisputeType,omitempty" xml:"DisputeType,omitempty"`
+	LmOrderId                    *string                                                               `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	MaxRefundFeeData             *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData `json:"MaxRefundFeeData,omitempty" xml:"MaxRefundFeeData,omitempty" type:"Struct"`
+	OrderLogisticsStatus         *int32                                                                `json:"OrderLogisticsStatus,omitempty" xml:"OrderLogisticsStatus,omitempty"`
+	RealRefundFee                *int64                                                                `json:"RealRefundFee,omitempty" xml:"RealRefundFee,omitempty"`
+	RefundFee                    *int64                                                                `json:"RefundFee,omitempty" xml:"RefundFee,omitempty"`
+	RefunderAddress              *string                                                               `json:"RefunderAddress,omitempty" xml:"RefunderAddress,omitempty"`
+	RefunderName                 *string                                                               `json:"RefunderName,omitempty" xml:"RefunderName,omitempty"`
+	RefunderTel                  *string                                                               `json:"RefunderTel,omitempty" xml:"RefunderTel,omitempty"`
+	RefunderZipCode              *string                                                               `json:"RefunderZipCode,omitempty" xml:"RefunderZipCode,omitempty"`
+	ReturnGoodCount              *int32                                                                `json:"ReturnGoodCount,omitempty" xml:"ReturnGoodCount,omitempty"`
+	ReturnGoodLogisticsStatus    *int32                                                                `json:"ReturnGoodLogisticsStatus,omitempty" xml:"ReturnGoodLogisticsStatus,omitempty"`
+	SellerAgreeMsg               *string                                                               `json:"SellerAgreeMsg,omitempty" xml:"SellerAgreeMsg,omitempty"`
+	SellerRefuseAgreementMessage *string                                                               `json:"SellerRefuseAgreementMessage,omitempty" xml:"SellerRefuseAgreementMessage,omitempty"`
+	SellerRefuseReason           *string                                                               `json:"SellerRefuseReason,omitempty" xml:"SellerRefuseReason,omitempty"`
+	SubLmOrderId                 *string                                                               `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetApplyDisputeDesc(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.ApplyDisputeDesc = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetApplyReasonText(v *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.ApplyReasonText = v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetBizClaimType(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.BizClaimType = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeCreateTime(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeCreateTime = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeDesc(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeDesc = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeEndTime(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeEndTime = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeId(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeStatus(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeStatus = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetDisputeType(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.DisputeType = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetLmOrderId(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetMaxRefundFeeData(v *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.MaxRefundFeeData = v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetOrderLogisticsStatus(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.OrderLogisticsStatus = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRealRefundFee(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RealRefundFee = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRefundFee(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RefundFee = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRefunderAddress(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RefunderAddress = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRefunderName(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RefunderName = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRefunderTel(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RefunderTel = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetRefunderZipCode(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.RefunderZipCode = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetReturnGoodCount(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.ReturnGoodCount = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetReturnGoodLogisticsStatus(v int32) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.ReturnGoodLogisticsStatus = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetSellerAgreeMsg(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.SellerAgreeMsg = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetSellerRefuseAgreementMessage(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.SellerRefuseAgreementMessage = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetSellerRefuseReason(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.SellerRefuseReason = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModel) SetSubLmOrderId(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModel {
+	s.SubLmOrderId = &v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText struct {
+	ProofRequired      *bool   `json:"ProofRequired,omitempty" xml:"ProofRequired,omitempty"`
+	ReasonTextId       *int64  `json:"ReasonTextId,omitempty" xml:"ReasonTextId,omitempty"`
+	ReasonTips         *string `json:"ReasonTips,omitempty" xml:"ReasonTips,omitempty"`
+	RefundDescRequired *bool   `json:"RefundDescRequired,omitempty" xml:"RefundDescRequired,omitempty"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) SetProofRequired(v bool) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText {
+	s.ProofRequired = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) SetReasonTextId(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText {
+	s.ReasonTextId = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) SetReasonTips(v string) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText {
+	s.ReasonTips = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText) SetRefundDescRequired(v bool) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelApplyReasonText {
+	s.RefundDescRequired = &v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData struct {
+	MaxRefundFee *int64 `json:"MaxRefundFee,omitempty" xml:"MaxRefundFee,omitempty"`
+	MinRefundFee *int64 `json:"MinRefundFee,omitempty" xml:"MinRefundFee,omitempty"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMaxRefundFee(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MaxRefundFee = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData) SetMinRefundFee(v int64) *QueryRefundApplyWithDesignatedTbUidResponseBodyModelMaxRefundFeeData {
+	s.MinRefundFee = &v
+	return s
+}
+
+type QueryRefundApplyWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryRefundApplyWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryRefundApplyWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *QueryRefundApplyWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponse) SetStatusCode(v int32) *QueryRefundApplyWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryRefundApplyWithDesignatedTbUidResponse) SetBody(v *QueryRefundApplyWithDesignatedTbUidResponseBody) *QueryRefundApplyWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -23053,6 +27645,205 @@ func (s *QueryStatementsResponse) SetStatusCode(v int32) *QueryStatementsRespons
 }
 
 func (s *QueryStatementsResponse) SetBody(v *QueryStatementsResponseBody) *QueryStatementsResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySupplierItemBillDownloadUrlRequest struct {
+	BillId     *string `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	BillPeriod *string `json:"BillPeriod,omitempty" xml:"BillPeriod,omitempty"`
+	BillStatus *string `json:"BillStatus,omitempty" xml:"BillStatus,omitempty"`
+	BizId      *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	LmShopId   *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	LmShopName *string `json:"LmShopName,omitempty" xml:"LmShopName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QuerySupplierItemBillDownloadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySupplierItemBillDownloadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetBillId(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetBillPeriod(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.BillPeriod = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetBillStatus(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.BillStatus = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetBizId(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetBizName(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.BizName = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetLmShopId(v int64) *QuerySupplierItemBillDownloadUrlRequest {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetLmShopName(v string) *QuerySupplierItemBillDownloadUrlRequest {
+	s.LmShopName = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetPageNumber(v int32) *QuerySupplierItemBillDownloadUrlRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlRequest) SetPageSize(v int32) *QuerySupplierItemBillDownloadUrlRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QuerySupplierItemBillDownloadUrlResponseBody struct {
+	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId    *string                                            `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message   *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *QuerySupplierItemBillDownloadUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBody) SetCode(v string) *QuerySupplierItemBillDownloadUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBody) SetLogsId(v string) *QuerySupplierItemBillDownloadUrlResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBody) SetMessage(v string) *QuerySupplierItemBillDownloadUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBody) SetModel(v *QuerySupplierItemBillDownloadUrlResponseBodyModel) *QuerySupplierItemBillDownloadUrlResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBody) SetRequestId(v string) *QuerySupplierItemBillDownloadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QuerySupplierItemBillDownloadUrlResponseBodyModel struct {
+	Data       []*QuerySupplierItemBillDownloadUrlResponseBodyModelData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32                                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModel) SetData(v []*QuerySupplierItemBillDownloadUrlResponseBodyModelData) *QuerySupplierItemBillDownloadUrlResponseBodyModel {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModel) SetPageNumber(v int32) *QuerySupplierItemBillDownloadUrlResponseBodyModel {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModel) SetPageSize(v int32) *QuerySupplierItemBillDownloadUrlResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModel) SetTotal(v int32) *QuerySupplierItemBillDownloadUrlResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type QuerySupplierItemBillDownloadUrlResponseBodyModelData struct {
+	BillId          *string `json:"BillId,omitempty" xml:"BillId,omitempty"`
+	FileDownloadUrl *string `json:"FileDownloadUrl,omitempty" xml:"FileDownloadUrl,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBodyModelData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponseBodyModelData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModelData) SetBillId(v string) *QuerySupplierItemBillDownloadUrlResponseBodyModelData {
+	s.BillId = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModelData) SetFileDownloadUrl(v string) *QuerySupplierItemBillDownloadUrlResponseBodyModelData {
+	s.FileDownloadUrl = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponseBodyModelData) SetMessage(v string) *QuerySupplierItemBillDownloadUrlResponseBodyModelData {
+	s.Message = &v
+	return s
+}
+
+type QuerySupplierItemBillDownloadUrlResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySupplierItemBillDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySupplierItemBillDownloadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponse) SetHeaders(v map[string]*string) *QuerySupplierItemBillDownloadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponse) SetStatusCode(v int32) *QuerySupplierItemBillDownloadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySupplierItemBillDownloadUrlResponse) SetBody(v *QuerySupplierItemBillDownloadUrlResponseBody) *QuerySupplierItemBillDownloadUrlResponse {
 	s.Body = v
 	return s
 }
@@ -24093,6 +28884,188 @@ func (s *QueryUpcomingMoviesResponse) SetBody(v *QueryUpcomingMoviesResponseBody
 	return s
 }
 
+type QueryUserAccountRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s QueryUserAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserAccountRequest) SetBizId(v string) *QueryUserAccountRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryUserAccountRequest) SetThirdPartyUserId(v string) *QueryUserAccountRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type QueryUserAccountResponseBody struct {
+	Code       *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                            `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *QueryUserAccountResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                            `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                            `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryUserAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserAccountResponseBody) SetCode(v string) *QueryUserAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetLogsId(v string) *QueryUserAccountResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetMessage(v string) *QueryUserAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetModel(v *QueryUserAccountResponseBodyModel) *QueryUserAccountResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetPageNumber(v int64) *QueryUserAccountResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetPageSize(v int64) *QueryUserAccountResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetRequestId(v string) *QueryUserAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetSubCode(v string) *QueryUserAccountResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetSubMessage(v string) *QueryUserAccountResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetSuccess(v bool) *QueryUserAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBody) SetTotalCount(v int64) *QueryUserAccountResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryUserAccountResponseBodyModel struct {
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CUserId       *string `json:"CUserId,omitempty" xml:"CUserId,omitempty"`
+	ExtInfo       *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	LmUid         *int64  `json:"LmUid,omitempty" xml:"LmUid,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TbAccountType *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId      *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+}
+
+func (s QueryUserAccountResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserAccountResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetBizId(v string) *QueryUserAccountResponseBodyModel {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetCUserId(v string) *QueryUserAccountResponseBodyModel {
+	s.CUserId = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetExtInfo(v string) *QueryUserAccountResponseBodyModel {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetLmUid(v int64) *QueryUserAccountResponseBodyModel {
+	s.LmUid = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetRequestId(v string) *QueryUserAccountResponseBodyModel {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetTbAccountType(v string) *QueryUserAccountResponseBodyModel {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *QueryUserAccountResponseBodyModel) SetTbUserId(v int64) *QueryUserAccountResponseBodyModel {
+	s.TbUserId = &v
+	return s
+}
+
+type QueryUserAccountResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryUserAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryUserAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryUserAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryUserAccountResponse) SetHeaders(v map[string]*string) *QueryUserAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryUserAccountResponse) SetStatusCode(v int32) *QueryUserAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryUserAccountResponse) SetBody(v *QueryUserAccountResponseBody) *QueryUserAccountResponse {
+	s.Body = v
+	return s
+}
+
 type QueryUserGameProcessRequest struct {
 	AccountType      *string                `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	BizId            *string                `json:"BizId,omitempty" xml:"BizId,omitempty"`
@@ -24675,6 +29648,200 @@ func (s *QueryWithholdTradeResponse) SetStatusCode(v int32) *QueryWithholdTradeR
 }
 
 func (s *QueryWithholdTradeResponse) SetBody(v *QueryWithholdTradeResponseBody) *QueryWithholdTradeResponse {
+	s.Body = v
+	return s
+}
+
+type RebindTbAccountRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s RebindTbAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindTbAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebindTbAccountRequest) SetBizId(v string) *RebindTbAccountRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *RebindTbAccountRequest) SetTbAccountType(v string) *RebindTbAccountRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RebindTbAccountRequest) SetTbUserId(v int64) *RebindTbAccountRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *RebindTbAccountRequest) SetThirdPartyUserId(v string) *RebindTbAccountRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type RebindTbAccountResponseBody struct {
+	Code       *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                           `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *RebindTbAccountResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                           `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                           `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RebindTbAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindTbAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebindTbAccountResponseBody) SetCode(v string) *RebindTbAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetLogsId(v string) *RebindTbAccountResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetMessage(v string) *RebindTbAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetModel(v *RebindTbAccountResponseBodyModel) *RebindTbAccountResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetPageNumber(v int64) *RebindTbAccountResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetPageSize(v int64) *RebindTbAccountResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetRequestId(v string) *RebindTbAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetSubCode(v string) *RebindTbAccountResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetSubMessage(v string) *RebindTbAccountResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetSuccess(v bool) *RebindTbAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBody) SetTotalCount(v int64) *RebindTbAccountResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type RebindTbAccountResponseBodyModel struct {
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CUserId       *string `json:"CUserId,omitempty" xml:"CUserId,omitempty"`
+	ExtInfo       *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	LmUid         *int64  `json:"LmUid,omitempty" xml:"LmUid,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TbAccountType *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId      *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+}
+
+func (s RebindTbAccountResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindTbAccountResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetBizId(v string) *RebindTbAccountResponseBodyModel {
+	s.BizId = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetCUserId(v string) *RebindTbAccountResponseBodyModel {
+	s.CUserId = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetExtInfo(v string) *RebindTbAccountResponseBodyModel {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetLmUid(v int64) *RebindTbAccountResponseBodyModel {
+	s.LmUid = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetRequestId(v string) *RebindTbAccountResponseBodyModel {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetTbAccountType(v string) *RebindTbAccountResponseBodyModel {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RebindTbAccountResponseBodyModel) SetTbUserId(v int64) *RebindTbAccountResponseBodyModel {
+	s.TbUserId = &v
+	return s
+}
+
+type RebindTbAccountResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebindTbAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebindTbAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindTbAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebindTbAccountResponse) SetHeaders(v map[string]*string) *RebindTbAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebindTbAccountResponse) SetStatusCode(v int32) *RebindTbAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebindTbAccountResponse) SetBody(v *RebindTbAccountResponseBody) *RebindTbAccountResponse {
 	s.Body = v
 	return s
 }
@@ -25759,6 +30926,201 @@ func (s *RegisterSettleAccountResponse) SetStatusCode(v int32) *RegisterSettleAc
 }
 
 func (s *RegisterSettleAccountResponse) SetBody(v *RegisterSettleAccountResponseBody) *RegisterSettleAccountResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterUserAccountRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s RegisterUserAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserAccountRequest) SetBizId(v string) *RegisterUserAccountRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *RegisterUserAccountRequest) SetTbAccountType(v string) *RegisterUserAccountRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RegisterUserAccountRequest) SetTbUserId(v int64) *RegisterUserAccountRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *RegisterUserAccountRequest) SetThirdPartyUserId(v string) *RegisterUserAccountRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type RegisterUserAccountResponseBody struct {
+	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                               `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *RegisterUserAccountResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RegisterUserAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserAccountResponseBody) SetCode(v string) *RegisterUserAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetLogsId(v string) *RegisterUserAccountResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetMessage(v string) *RegisterUserAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetModel(v *RegisterUserAccountResponseBodyModel) *RegisterUserAccountResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetPageNumber(v int64) *RegisterUserAccountResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetPageSize(v int64) *RegisterUserAccountResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetRequestId(v string) *RegisterUserAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetSubCode(v string) *RegisterUserAccountResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetSubMessage(v string) *RegisterUserAccountResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetSuccess(v bool) *RegisterUserAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBody) SetTotalCount(v int64) *RegisterUserAccountResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type RegisterUserAccountResponseBodyModel struct {
+	BizId         *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CUserId       *string `json:"CUserId,omitempty" xml:"CUserId,omitempty"`
+	ExtInfo       *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	LmUid         *int64  `json:"LmUid,omitempty" xml:"LmUid,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TbAccountType *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId      *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+}
+
+func (s RegisterUserAccountResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserAccountResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetBizId(v string) *RegisterUserAccountResponseBodyModel {
+	s.BizId = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetCUserId(v string) *RegisterUserAccountResponseBodyModel {
+	s.CUserId = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetExtInfo(v string) *RegisterUserAccountResponseBodyModel {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetLmUid(v int64) *RegisterUserAccountResponseBodyModel {
+	s.LmUid = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetRequestId(v string) *RegisterUserAccountResponseBodyModel {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetTbAccountType(v string) *RegisterUserAccountResponseBodyModel {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponseBodyModel) SetTbUserId(v int64) *RegisterUserAccountResponseBodyModel {
+	s.TbUserId = &v
+	return s
+}
+
+type RegisterUserAccountResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RegisterUserAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterUserAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterUserAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterUserAccountResponse) SetHeaders(v map[string]*string) *RegisterUserAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterUserAccountResponse) SetStatusCode(v int32) *RegisterUserAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RegisterUserAccountResponse) SetBody(v *RegisterUserAccountResponseBody) *RegisterUserAccountResponse {
 	s.Body = v
 	return s
 }
@@ -26987,6 +32349,1647 @@ func (s *RenderOrderResponse) SetBody(v *RenderOrderResponseBody) *RenderOrderRe
 	return s
 }
 
+type RenderOrderWithDesignatedTbUidRequest struct {
+	BizId            *string                                          `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DeliveryAddress  *string                                          `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	ItemList         []*RenderOrderWithDesignatedTbUidRequestItemList `json:"ItemList,omitempty" xml:"ItemList,omitempty" type:"Repeated"`
+	TbAccountType    *string                                          `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64                                           `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string                                          `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetBizId(v string) *RenderOrderWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetDeliveryAddress(v string) *RenderOrderWithDesignatedTbUidRequest {
+	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetItemList(v []*RenderOrderWithDesignatedTbUidRequestItemList) *RenderOrderWithDesignatedTbUidRequest {
+	s.ItemList = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetTbAccountType(v string) *RenderOrderWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetTbUserId(v int64) *RenderOrderWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *RenderOrderWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidRequestItemList struct {
+	ItemId   *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	SkuId    *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidRequestItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidRequestItemList) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequestItemList) SetItemId(v int64) *RenderOrderWithDesignatedTbUidRequestItemList {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequestItemList) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidRequestItemList {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequestItemList) SetQuantity(v int32) *RenderOrderWithDesignatedTbUidRequestItemList {
+	s.Quantity = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidRequestItemList) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidRequestItemList {
+	s.SkuId = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidShrinkRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	DeliveryAddress  *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
+	ItemListShrink   *string `json:"ItemList,omitempty" xml:"ItemList,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetBizId(v string) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetDeliveryAddress(v string) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.DeliveryAddress = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetItemListShrink(v string) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.ItemListShrink = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetTbAccountType(v string) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetTbUserId(v int64) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidShrinkRequest) SetThirdPartyUserId(v string) *RenderOrderWithDesignatedTbUidShrinkRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBody struct {
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                          `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *RenderOrderWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetCode(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetLogsId(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetModel(v *RenderOrderWithDesignatedTbUidResponseBodyModel) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetPageSize(v int64) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetRequestId(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetSubCode(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetSubMessage(v string) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetSuccess(v bool) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *RenderOrderWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModel struct {
+	AddressInfos               []*RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos               `json:"AddressInfos,omitempty" xml:"AddressInfos,omitempty" type:"Repeated"`
+	BuyerCurrentPoints         *int64                                                                       `json:"BuyerCurrentPoints,omitempty" xml:"BuyerCurrentPoints,omitempty"`
+	CanSell                    *bool                                                                        `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	ExtInfo                    map[string]*string                                                           `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	Message                    *string                                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RenderOrderInfos           []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos           `json:"RenderOrderInfos,omitempty" xml:"RenderOrderInfos,omitempty" type:"Repeated"`
+	UnsellableRenderOrderInfos []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos `json:"UnsellableRenderOrderInfos,omitempty" xml:"UnsellableRenderOrderInfos,omitempty" type:"Repeated"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetAddressInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.AddressInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetBuyerCurrentPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.BuyerCurrentPoints = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetCanSell(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.CanSell = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetExtInfo(v map[string]*string) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetRenderOrderInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.RenderOrderInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModel) SetUnsellableRenderOrderInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) *RenderOrderWithDesignatedTbUidResponseBodyModel {
+	s.UnsellableRenderOrderInfos = v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos struct {
+	AddressDetail    *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
+	AddressId        *int64  `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	DivisionCode     *string `json:"DivisionCode,omitempty" xml:"DivisionCode,omitempty"`
+	IsDefault        *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Receiver         *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	ReceiverPhone    *string `json:"ReceiverPhone,omitempty" xml:"ReceiverPhone,omitempty"`
+	TownDivisionCode *string `json:"TownDivisionCode,omitempty" xml:"TownDivisionCode,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetAddressDetail(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.AddressDetail = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetAddressId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.AddressId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetDivisionCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.DivisionCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetIsDefault(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetReceiver(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.Receiver = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetReceiverPhone(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.ReceiverPhone = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos) SetTownDivisionCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelAddressInfos {
+	s.TownDivisionCode = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos struct {
+	CanSell         *bool                                                                             `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	DeliveryInfos   []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos   `json:"DeliveryInfos,omitempty" xml:"DeliveryInfos,omitempty" type:"Repeated"`
+	ExtInfo         map[string]*string                                                                `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	InvoiceInfo     *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo       `json:"InvoiceInfo,omitempty" xml:"InvoiceInfo,omitempty" type:"Struct"`
+	LmItemInfos     []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos     `json:"LmItemInfos,omitempty" xml:"LmItemInfos,omitempty" type:"Repeated"`
+	Message         *string                                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	SellerId        *int64                                                                            `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	ShopPromInstVOS []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS `json:"ShopPromInstVOS,omitempty" xml:"ShopPromInstVOS,omitempty" type:"Repeated"`
+	TbShopName      *string                                                                           `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetCanSell(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.CanSell = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetDeliveryInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.DeliveryInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetExtInfo(v map[string]*string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetInvoiceInfo(v *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.InvoiceInfo = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetLmItemInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.LmItemInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.SellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetShopPromInstVOS(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.ShopPromInstVOS = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos) SetTbShopName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfos {
+	s.TbShopName = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// id
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PostFee     *int64  `json:"PostFee,omitempty" xml:"PostFee,omitempty"`
+	ServiceType *int64  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) SetDisplayName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) SetId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos {
+	s.Id = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) SetPostFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos {
+	s.PostFee = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos) SetServiceType(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosDeliveryInfos {
+	s.ServiceType = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo struct {
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo) SetDesc(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo {
+	s.Desc = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo) SetType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosInvoiceInfo {
+	s.Type = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos struct {
+	ActualPrice     *int64                                                                                       `json:"ActualPrice,omitempty" xml:"ActualPrice,omitempty"`
+	CanSell         *bool                                                                                        `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	Cash            *int64                                                                                       `json:"Cash,omitempty" xml:"Cash,omitempty"`
+	Features        map[string]*string                                                                           `json:"Features,omitempty" xml:"Features,omitempty"`
+	ItemId          *int64                                                                                       `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName        *string                                                                                      `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemPicUrl      *string                                                                                      `json:"ItemPicUrl,omitempty" xml:"ItemPicUrl,omitempty"`
+	ItemPromInstVOS []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS `json:"ItemPromInstVOS,omitempty" xml:"ItemPromInstVOS,omitempty" type:"Repeated"`
+	ItemUrl         *string                                                                                      `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	LmItemId        *string                                                                                      `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Message         *string                                                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	PointPrice      *int64                                                                                       `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	Points          *int64                                                                                       `json:"Points,omitempty" xml:"Points,omitempty"`
+	PromotionFee    *int64                                                                                       `json:"PromotionFee,omitempty" xml:"PromotionFee,omitempty"`
+	Quantity        *int32                                                                                       `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservePrice    *int64                                                                                       `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SellerId        *int64                                                                                       `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	SellerNick      *string                                                                                      `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
+	// skuid
+	SkuId           *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuName         *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	TbShopName      *string `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+	VirtualItemType *string `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetActualPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ActualPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetCanSell(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.CanSell = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetCash(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.Cash = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetFeatures(v map[string]*string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.Features = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetItemName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ItemName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetItemPicUrl(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ItemPicUrl = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetItemPromInstVOS(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ItemPromInstVOS = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetItemUrl(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ItemUrl = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetPointPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetPromotionFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.PromotionFee = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetQuantity(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.Quantity = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetReservePrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.SellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetSellerNick(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.SellerNick = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetSkuName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.SkuName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetTbShopName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.TbShopName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos) SetVirtualItemType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfos {
+	s.VirtualItemType = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS struct {
+	AvailableItems []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems `json:"AvailableItems,omitempty" xml:"AvailableItems,omitempty" type:"Repeated"`
+	CanUse         *bool                                                                                                      `json:"CanUse,omitempty" xml:"CanUse,omitempty"`
+	DiscountPrice  *int64                                                                                                     `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	ExpireTime     *int64                                                                                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId     *string                                                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level          *string                                                                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
+	LmItemId       *string                                                                                                    `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PromotionName  *string                                                                                                    `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionType  *string                                                                                                    `json:"PromotionType,omitempty" xml:"PromotionType,omitempty"`
+	Reason         *string                                                                                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Selected       *bool                                                                                                      `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	SkuIds         []*int64                                                                                                   `json:"SkuIds,omitempty" xml:"SkuIds,omitempty" type:"Repeated"`
+	SpecialPrice   *int64                                                                                                     `json:"SpecialPrice,omitempty" xml:"SpecialPrice,omitempty"`
+	SubBizCode     *string                                                                                                    `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
+	TbSellerId     *int64                                                                                                     `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	ThresholdPrice *int64                                                                                                     `json:"ThresholdPrice,omitempty" xml:"ThresholdPrice,omitempty"`
+	UseStartTime   *int64                                                                                                     `json:"UseStartTime,omitempty" xml:"UseStartTime,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetAvailableItems(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.AvailableItems = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetCanUse(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.CanUse = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetDiscountPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetExpireTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetInstanceId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetLevel(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Level = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetPromotionName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetPromotionType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.PromotionType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetReason(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Reason = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetSelected(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Selected = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetSkuIds(v []*int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SkuIds = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetSpecialPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SpecialPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetSubBizCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SubBizCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetThresholdPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.ThresholdPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS) SetUseStartTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.UseStartTime = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems struct {
+	ItemId       *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId     *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmShopId     *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	Number       *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	Points       *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount *int64  `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	PriceCent    *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Removed      *bool   `json:"Removed,omitempty" xml:"Removed,omitempty"`
+	// skuid
+	SkuId      *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	TbSellerId *int64 `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	UserPayFee *int64 `json:"UserPayFee,omitempty" xml:"UserPayFee,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetLmShopId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetNumber(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Number = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPointsAmount(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPriceCent(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetRemoved(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Removed = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetUserPayFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.UserPayFee = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS struct {
+	AvailableItems []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems `json:"AvailableItems,omitempty" xml:"AvailableItems,omitempty" type:"Repeated"`
+	CanUse         *bool                                                                                           `json:"CanUse,omitempty" xml:"CanUse,omitempty"`
+	DiscountPrice  *int64                                                                                          `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	ExpireTime     *int64                                                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId     *string                                                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level          *string                                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
+	LmItemId       *string                                                                                         `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PromotionName  *string                                                                                         `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionType  *string                                                                                         `json:"PromotionType,omitempty" xml:"PromotionType,omitempty"`
+	Reason         *string                                                                                         `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Selected       *bool                                                                                           `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	SkuIds         []*int64                                                                                        `json:"SkuIds,omitempty" xml:"SkuIds,omitempty" type:"Repeated"`
+	SpecialPrice   *int64                                                                                          `json:"SpecialPrice,omitempty" xml:"SpecialPrice,omitempty"`
+	SubBizCode     *string                                                                                         `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
+	TbSellerId     *int64                                                                                          `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	ThresholdPrice *int64                                                                                          `json:"ThresholdPrice,omitempty" xml:"ThresholdPrice,omitempty"`
+	UseStartTime   *int64                                                                                          `json:"UseStartTime,omitempty" xml:"UseStartTime,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetAvailableItems(v []*RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.AvailableItems = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetCanUse(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.CanUse = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetDiscountPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetExpireTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetInstanceId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetLevel(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.Level = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetPromotionName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetPromotionType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.PromotionType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetReason(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.Reason = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetSelected(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.Selected = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetSkuIds(v []*int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.SkuIds = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetSpecialPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.SpecialPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetSubBizCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.SubBizCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetThresholdPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.ThresholdPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS) SetUseStartTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOS {
+	s.UseStartTime = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems struct {
+	ItemId       *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId     *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmShopId     *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	Number       *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	Points       *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount *int64  `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	PriceCent    *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Removed      *bool   `json:"Removed,omitempty" xml:"Removed,omitempty"`
+	SkuId        *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	TbSellerId   *int64  `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	UserPayFee   *int64  `json:"UserPayFee,omitempty" xml:"UserPayFee,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetLmShopId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetNumber(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Number = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetPointsAmount(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetPriceCent(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetRemoved(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Removed = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems) SetUserPayFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.UserPayFee = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos struct {
+	CanSell         *bool                                                                                       `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	DeliveryInfos   []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos   `json:"DeliveryInfos,omitempty" xml:"DeliveryInfos,omitempty" type:"Repeated"`
+	ExtInfo         map[string]*string                                                                          `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	InvoiceInfo     *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo       `json:"InvoiceInfo,omitempty" xml:"InvoiceInfo,omitempty" type:"Struct"`
+	LmItemInfos     []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos     `json:"LmItemInfos,omitempty" xml:"LmItemInfos,omitempty" type:"Repeated"`
+	Message         *string                                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	SellerId        *int64                                                                                      `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	ShopPromInstVOS []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS `json:"ShopPromInstVOS,omitempty" xml:"ShopPromInstVOS,omitempty" type:"Repeated"`
+	TbShopName      *string                                                                                     `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetCanSell(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.CanSell = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetDeliveryInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.DeliveryInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetExtInfo(v map[string]*string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.ExtInfo = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetInvoiceInfo(v *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.InvoiceInfo = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetLmItemInfos(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.LmItemInfos = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.SellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetShopPromInstVOS(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.ShopPromInstVOS = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos) SetTbShopName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfos {
+	s.TbShopName = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// id
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PostFee     *int64  `json:"PostFee,omitempty" xml:"PostFee,omitempty"`
+	ServiceType *int64  `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) SetDisplayName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) SetId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos {
+	s.Id = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) SetPostFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos {
+	s.PostFee = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos) SetServiceType(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosDeliveryInfos {
+	s.ServiceType = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo struct {
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo) SetDesc(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo {
+	s.Desc = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo) SetType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosInvoiceInfo {
+	s.Type = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos struct {
+	ActualPrice     *int64                                                                                                 `json:"ActualPrice,omitempty" xml:"ActualPrice,omitempty"`
+	CanSell         *bool                                                                                                  `json:"CanSell,omitempty" xml:"CanSell,omitempty"`
+	Cash            *int64                                                                                                 `json:"Cash,omitempty" xml:"Cash,omitempty"`
+	Features        map[string]*string                                                                                     `json:"Features,omitempty" xml:"Features,omitempty"`
+	ItemId          *int64                                                                                                 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName        *string                                                                                                `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ItemPicUrl      *string                                                                                                `json:"ItemPicUrl,omitempty" xml:"ItemPicUrl,omitempty"`
+	ItemPromInstVOS []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS `json:"ItemPromInstVOS,omitempty" xml:"ItemPromInstVOS,omitempty" type:"Repeated"`
+	ItemUrl         *string                                                                                                `json:"ItemUrl,omitempty" xml:"ItemUrl,omitempty"`
+	LmItemId        *string                                                                                                `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	Message         *string                                                                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PointPrice      *int64                                                                                                 `json:"PointPrice,omitempty" xml:"PointPrice,omitempty"`
+	Points          *int64                                                                                                 `json:"Points,omitempty" xml:"Points,omitempty"`
+	PromotionFee    *int64                                                                                                 `json:"PromotionFee,omitempty" xml:"PromotionFee,omitempty"`
+	Quantity        *int32                                                                                                 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	ReservePrice    *int64                                                                                                 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	SellerId        *int64                                                                                                 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	SellerNick      *string                                                                                                `json:"SellerNick,omitempty" xml:"SellerNick,omitempty"`
+	// skuid
+	SkuId           *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	SkuName         *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
+	TbShopName      *string `json:"TbShopName,omitempty" xml:"TbShopName,omitempty"`
+	VirtualItemType *string `json:"VirtualItemType,omitempty" xml:"VirtualItemType,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetActualPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ActualPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetCanSell(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.CanSell = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetCash(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.Cash = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetFeatures(v map[string]*string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.Features = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetItemName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ItemName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetItemPicUrl(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ItemPicUrl = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetItemPromInstVOS(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ItemPromInstVOS = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetItemUrl(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ItemUrl = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetMessage(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.Message = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetPointPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.PointPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetPromotionFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.PromotionFee = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetQuantity(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.Quantity = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetReservePrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.ReservePrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.SellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetSellerNick(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.SellerNick = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetSkuName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.SkuName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetTbShopName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.TbShopName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos) SetVirtualItemType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfos {
+	s.VirtualItemType = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS struct {
+	AvailableItems []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems `json:"AvailableItems,omitempty" xml:"AvailableItems,omitempty" type:"Repeated"`
+	CanUse         *bool                                                                                                                `json:"CanUse,omitempty" xml:"CanUse,omitempty"`
+	DiscountPrice  *int64                                                                                                               `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	ExpireTime     *int64                                                                                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId     *string                                                                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level          *string                                                                                                              `json:"Level,omitempty" xml:"Level,omitempty"`
+	LmItemId       *string                                                                                                              `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PromotionName  *string                                                                                                              `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionType  *string                                                                                                              `json:"PromotionType,omitempty" xml:"PromotionType,omitempty"`
+	Reason         *string                                                                                                              `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Selected       *bool                                                                                                                `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// skuid
+	SkuIds         []*int64 `json:"SkuIds,omitempty" xml:"SkuIds,omitempty" type:"Repeated"`
+	SpecialPrice   *int64   `json:"SpecialPrice,omitempty" xml:"SpecialPrice,omitempty"`
+	SubBizCode     *string  `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
+	TbSellerId     *int64   `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	ThresholdPrice *int64   `json:"ThresholdPrice,omitempty" xml:"ThresholdPrice,omitempty"`
+	UseStartTime   *int64   `json:"UseStartTime,omitempty" xml:"UseStartTime,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetAvailableItems(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.AvailableItems = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetCanUse(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.CanUse = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetDiscountPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetExpireTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetInstanceId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetLevel(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Level = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetPromotionName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetPromotionType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.PromotionType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetReason(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Reason = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetSelected(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.Selected = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetSkuIds(v []*int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SkuIds = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetSpecialPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SpecialPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetSubBizCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.SubBizCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetThresholdPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.ThresholdPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS) SetUseStartTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOS {
+	s.UseStartTime = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems struct {
+	ItemId       *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId     *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmShopId     *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	Number       *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	Points       *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount *int64  `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	PriceCent    *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Removed      *bool   `json:"Removed,omitempty" xml:"Removed,omitempty"`
+	// skuid
+	SkuId      *int64 `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	TbSellerId *int64 `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	UserPayFee *int64 `json:"UserPayFee,omitempty" xml:"UserPayFee,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetLmShopId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetNumber(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Number = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPointsAmount(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetPriceCent(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetRemoved(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.Removed = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems) SetUserPayFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosLmItemInfosItemPromInstVOSAvailableItems {
+	s.UserPayFee = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS struct {
+	AvailableItems []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems `json:"AvailableItems,omitempty" xml:"AvailableItems,omitempty" type:"Repeated"`
+	CanUse         *bool                                                                                                     `json:"CanUse,omitempty" xml:"CanUse,omitempty"`
+	DiscountPrice  *int64                                                                                                    `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	ExpireTime     *int64                                                                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId     *string                                                                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Level          *string                                                                                                   `json:"Level,omitempty" xml:"Level,omitempty"`
+	LmItemId       *string                                                                                                   `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	PromotionName  *string                                                                                                   `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	PromotionType  *string                                                                                                   `json:"PromotionType,omitempty" xml:"PromotionType,omitempty"`
+	Reason         *string                                                                                                   `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Selected       *bool                                                                                                     `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	SkuIds         []*int64                                                                                                  `json:"SkuIds,omitempty" xml:"SkuIds,omitempty" type:"Repeated"`
+	SpecialPrice   *int64                                                                                                    `json:"SpecialPrice,omitempty" xml:"SpecialPrice,omitempty"`
+	SubBizCode     *string                                                                                                   `json:"SubBizCode,omitempty" xml:"SubBizCode,omitempty"`
+	TbSellerId     *int64                                                                                                    `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	ThresholdPrice *int64                                                                                                    `json:"ThresholdPrice,omitempty" xml:"ThresholdPrice,omitempty"`
+	UseStartTime   *int64                                                                                                    `json:"UseStartTime,omitempty" xml:"UseStartTime,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetAvailableItems(v []*RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.AvailableItems = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetCanUse(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.CanUse = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetDiscountPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetExpireTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetInstanceId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetLevel(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.Level = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetPromotionName(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetPromotionType(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.PromotionType = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetReason(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.Reason = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetSelected(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.Selected = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetSkuIds(v []*int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.SkuIds = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetSpecialPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.SpecialPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetSubBizCode(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.SubBizCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetThresholdPrice(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.ThresholdPrice = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS) SetUseStartTime(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOS {
+	s.UseStartTime = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems struct {
+	ItemId       *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	LmItemId     *string `json:"LmItemId,omitempty" xml:"LmItemId,omitempty"`
+	LmShopId     *int64  `json:"LmShopId,omitempty" xml:"LmShopId,omitempty"`
+	Number       *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	Points       *int64  `json:"Points,omitempty" xml:"Points,omitempty"`
+	PointsAmount *int64  `json:"PointsAmount,omitempty" xml:"PointsAmount,omitempty"`
+	PriceCent    *int64  `json:"PriceCent,omitempty" xml:"PriceCent,omitempty"`
+	Removed      *bool   `json:"Removed,omitempty" xml:"Removed,omitempty"`
+	SkuId        *int64  `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
+	TbSellerId   *int64  `json:"TbSellerId,omitempty" xml:"TbSellerId,omitempty"`
+	UserPayFee   *int64  `json:"UserPayFee,omitempty" xml:"UserPayFee,omitempty"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetItemId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.ItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetLmItemId(v string) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.LmItemId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetLmShopId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.LmShopId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetNumber(v int32) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Number = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetPoints(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Points = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetPointsAmount(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.PointsAmount = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetPriceCent(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.PriceCent = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetRemoved(v bool) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.Removed = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetSkuId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.SkuId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetTbSellerId(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.TbSellerId = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems) SetUserPayFee(v int64) *RenderOrderWithDesignatedTbUidResponseBodyModelUnsellableRenderOrderInfosShopPromInstVOSAvailableItems {
+	s.UserPayFee = &v
+	return s
+}
+
+type RenderOrderWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenderOrderWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenderOrderWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenderOrderWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *RenderOrderWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponse) SetStatusCode(v int32) *RenderOrderWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenderOrderWithDesignatedTbUidResponse) SetBody(v *RenderOrderWithDesignatedTbUidResponseBody) *RenderOrderWithDesignatedTbUidResponse {
+	s.Body = v
+	return s
+}
+
 type RepayForPayUrlRequest struct {
 	BizId                 *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	BizUid                *string `json:"BizUid,omitempty" xml:"BizUid,omitempty"`
@@ -27210,6 +34213,188 @@ func (s *RepayOrderResponse) SetStatusCode(v int32) *RepayOrderResponse {
 }
 
 func (s *RepayOrderResponse) SetBody(v *RepayOrderResponseBody) *RepayOrderResponse {
+	s.Body = v
+	return s
+}
+
+type RepayWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ExtJson          *string `json:"ExtJson,omitempty" xml:"ExtJson,omitempty"`
+	LmOrderId        *int64  `json:"LmOrderId,omitempty" xml:"LmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s RepayWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepayWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetBizId(v string) *RepayWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetExtJson(v string) *RepayWithDesignatedTbUidRequest {
+	s.ExtJson = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetLmOrderId(v int64) *RepayWithDesignatedTbUidRequest {
+	s.LmOrderId = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetTbAccountType(v string) *RepayWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetTbUserId(v int64) *RepayWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *RepayWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type RepayWithDesignatedTbUidResponseBody struct {
+	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string                                    `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      *RepayWithDesignatedTbUidResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	PageNumber *int64                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string                                    `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string                                    `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s RepayWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepayWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetCode(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetLogsId(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetMessage(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetModel(v *RepayWithDesignatedTbUidResponseBodyModel) *RepayWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *RepayWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetPageSize(v int64) *RepayWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetRequestId(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetSubCode(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetSubMessage(v string) *RepayWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetSuccess(v bool) *RepayWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *RepayWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type RepayWithDesignatedTbUidResponseBodyModel struct {
+	App             *string `json:"App,omitempty" xml:"App,omitempty"`
+	FrontUrl        *string `json:"FrontUrl,omitempty" xml:"FrontUrl,omitempty"`
+	IsOnlyPaidPoint *bool   `json:"IsOnlyPaidPoint,omitempty" xml:"IsOnlyPaidPoint,omitempty"`
+}
+
+func (s RepayWithDesignatedTbUidResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepayWithDesignatedTbUidResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *RepayWithDesignatedTbUidResponseBodyModel) SetApp(v string) *RepayWithDesignatedTbUidResponseBodyModel {
+	s.App = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBodyModel) SetFrontUrl(v string) *RepayWithDesignatedTbUidResponseBodyModel {
+	s.FrontUrl = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponseBodyModel) SetIsOnlyPaidPoint(v bool) *RepayWithDesignatedTbUidResponseBodyModel {
+	s.IsOnlyPaidPoint = &v
+	return s
+}
+
+type RepayWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RepayWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RepayWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RepayWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RepayWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *RepayWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponse) SetStatusCode(v int32) *RepayWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RepayWithDesignatedTbUidResponse) SetBody(v *RepayWithDesignatedTbUidResponseBody) *RepayWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -27643,10 +34828,11 @@ func (s *StartUserGameShrinkRequest) SetUserApp(v string) *StartUserGameShrinkRe
 }
 
 type StartUserGameResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *StartUserGameResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code    *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *StartUserGameResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s StartUserGameResponseBody) String() string {
@@ -27914,6 +35100,172 @@ func (s *SubmitReturnGoodLogisticsResponse) SetStatusCode(v int32) *SubmitReturn
 }
 
 func (s *SubmitReturnGoodLogisticsResponse) SetBody(v *SubmitReturnGoodLogisticsResponseBody) *SubmitReturnGoodLogisticsResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitReturnGoodLogisticsWithDesignatedTbUidRequest struct {
+	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CpCode           *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	DisputeId        *int64  `json:"DisputeId,omitempty" xml:"DisputeId,omitempty"`
+	LogisticsNo      *string `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
+	SubLmOrderId     *string `json:"SubLmOrderId,omitempty" xml:"SubLmOrderId,omitempty"`
+	TbAccountType    *string `json:"TbAccountType,omitempty" xml:"TbAccountType,omitempty"`
+	TbUserId         *int64  `json:"TbUserId,omitempty" xml:"TbUserId,omitempty"`
+	ThirdPartyUserId *string `json:"ThirdPartyUserId,omitempty" xml:"ThirdPartyUserId,omitempty"`
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetBizId(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetCpCode(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.CpCode = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetDisputeId(v int64) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.DisputeId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetLogisticsNo(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.LogisticsNo = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetSubLmOrderId(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.SubLmOrderId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetTbAccountType(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.TbAccountType = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetTbUserId(v int64) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.TbUserId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) SetThirdPartyUserId(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest {
+	s.ThirdPartyUserId = &v
+	return s
+}
+
+type SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody struct {
+	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	LogsId     *string     `json:"LogsId,omitempty" xml:"LogsId,omitempty"`
+	Message    *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model      interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	PageNumber *int64      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// pageSize
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCode    *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	SubMessage *string `json:"SubMessage,omitempty" xml:"SubMessage,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetCode(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetLogsId(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.LogsId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetMessage(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetModel(v interface{}) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetPageNumber(v int64) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetPageSize(v int64) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetRequestId(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetSubCode(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.SubCode = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetSubMessage(v string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.SubMessage = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetSuccess(v bool) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) SetTotalCount(v int64) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type SubmitReturnGoodLogisticsWithDesignatedTbUidResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitReturnGoodLogisticsWithDesignatedTbUidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse) SetHeaders(v map[string]*string) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse) SetStatusCode(v int32) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse) SetBody(v *SubmitReturnGoodLogisticsWithDesignatedTbUidResponseBody) *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse {
 	s.Body = v
 	return s
 }
@@ -29137,6 +36489,104 @@ func (client *Client) ApplyRefund(request *ApplyRefundRequest) (_result *ApplyRe
 	return _result, _err
 }
 
+func (client *Client) ApplyRefundWithDesignatedTbUidWithOptions(tmpReq *ApplyRefundWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *ApplyRefundWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ApplyRefundWithDesignatedTbUidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Proofs)) {
+		request.ProofsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Proofs, tea.String("Proofs"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoodsStatus)) {
+		body["GoodsStatus"] = request.GoodsStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		body["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProofsShrink)) {
+		body["Proofs"] = request.ProofsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonId)) {
+		body["ReasonId"] = request.ReasonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCode)) {
+		body["RefundCode"] = request.RefundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCount)) {
+		body["RefundCount"] = request.RefundCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundFee)) {
+		body["RefundFee"] = request.RefundFee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyRefundWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyRefundWithDesignatedTbUid(request *ApplyRefundWithDesignatedTbUidRequest) (_result *ApplyRefundWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.ApplyRefundWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchRegistAnonymousTbAccountWithOptions(request *BatchRegistAnonymousTbAccountRequest, runtime *util.RuntimeOptions) (_result *BatchRegistAnonymousTbAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29249,6 +36699,110 @@ func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelO
 	return _result, _err
 }
 
+func (client *Client) CancelOrderWithDesignatedTbUidWithOptions(request *CancelOrderWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *CancelOrderWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmOrderId)) {
+		body["LmOrderId"] = request.LmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOrderWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelOrderWithDesignatedTbUid(request *CancelOrderWithDesignatedTbUidRequest) (_result *CancelOrderWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CancelOrderWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelRealTbAccountSupportWithOptions(request *CancelRealTbAccountSupportRequest, runtime *util.RuntimeOptions) (_result *CancelRealTbAccountSupportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelRealTbAccountSupport"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelRealTbAccountSupportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelRealTbAccountSupport(request *CancelRealTbAccountSupportRequest) (_result *CancelRealTbAccountSupportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelRealTbAccountSupportResponse{}
+	_body, _err := client.CancelRealTbAccountSupportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelRefundWithOptions(request *CancelRefundRequest, runtime *util.RuntimeOptions) (_result *CancelRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29317,6 +36871,70 @@ func (client *Client) CancelRefund(request *CancelRefundRequest) (_result *Cance
 	return _result, _err
 }
 
+func (client *Client) CancelRefundWithDesignatedTbUidWithOptions(request *CancelRefundWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *CancelRefundWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelRefundWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelRefundWithDesignatedTbUid(request *CancelRefundWithDesignatedTbUidRequest) (_result *CancelRefundWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CancelRefundWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ConfirmDisburseWithOptions(request *ConfirmDisburseRequest, runtime *util.RuntimeOptions) (_result *ConfirmDisburseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29374,6 +36992,66 @@ func (client *Client) ConfirmDisburse(request *ConfirmDisburseRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmDisburseResponse{}
 	_body, _err := client.ConfirmDisburseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ConfirmDisburseWithDesignatedTbUidWithOptions(request *ConfirmDisburseWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *ConfirmDisburseWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmOrderId)) {
+		body["LmOrderId"] = request.LmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmDisburseWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfirmDisburseWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConfirmDisburseWithDesignatedTbUid(request *ConfirmDisburseWithDesignatedTbUidRequest) (_result *ConfirmDisburseWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfirmDisburseWithDesignatedTbUidResponse{}
+	_body, _err := client.ConfirmDisburseWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29800,6 +37478,178 @@ func (client *Client) CreateOrderV2(request *CreateOrderV2Request) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrderV2Response{}
 	_body, _err := client.CreateOrderV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrderWithDesignatedTbUidWithOptions(request *CreateOrderWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *CreateOrderWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerMessages)) {
+		body["BuyerMessages"] = request.BuyerMessages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryAddress)) {
+		body["DeliveryAddress"] = request.DeliveryAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryInfo)) {
+		body["DeliveryInfo"] = request.DeliveryInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		body["ExtInfo"] = request.ExtInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderExpireTime)) {
+		body["OrderExpireTime"] = request.OrderExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderItems)) {
+		body["OrderItems"] = request.OrderItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutTradeId)) {
+		body["OutTradeId"] = request.OutTradeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrderWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrderWithDesignatedTbUid(request *CreateOrderWithDesignatedTbUidRequest) (_result *CreateOrderWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CreateOrderWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOutDiscountOrderWithDesignatedTbUidWithOptions(request *CreateOutDiscountOrderWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *CreateOutDiscountOrderWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerMessages)) {
+		body["BuyerMessages"] = request.BuyerMessages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryAddress)) {
+		body["DeliveryAddress"] = request.DeliveryAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryInfo)) {
+		body["DeliveryInfo"] = request.DeliveryInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		body["ExtInfo"] = request.ExtInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderExpireTime)) {
+		body["OrderExpireTime"] = request.OrderExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderItems)) {
+		body["OrderItems"] = request.OrderItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDiscountInfos)) {
+		body["OutDiscountInfos"] = request.OutDiscountInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutTradeId)) {
+		body["OutTradeId"] = request.OutTradeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOutDiscountOrderWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOutDiscountOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOutDiscountOrderWithDesignatedTbUid(request *CreateOutDiscountOrderWithDesignatedTbUidRequest) (_result *CreateOutDiscountOrderWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOutDiscountOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CreateOutDiscountOrderWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30526,6 +38376,66 @@ func (client *Client) EnableOrder(request *EnableOrderRequest) (_result *EnableO
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableOrderResponse{}
 	_body, _err := client.EnableOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableOrderWithDesignatedTbUidWithOptions(request *EnableOrderWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *EnableOrderWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmOrderId)) {
+		body["LmOrderId"] = request.LmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableOrderWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableOrderWithDesignatedTbUid(request *EnableOrderWithDesignatedTbUidRequest) (_result *EnableOrderWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.EnableOrderWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31651,6 +39561,74 @@ func (client *Client) InitApplyRefund(request *InitApplyRefundRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) InitApplyRefundWithDesignatedTbUidWithOptions(request *InitApplyRefundWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *InitApplyRefundWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCode)) {
+		body["RefundCode"] = request.RefundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitApplyRefundWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitApplyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitApplyRefundWithDesignatedTbUid(request *InitApplyRefundWithDesignatedTbUidRequest) (_result *InitApplyRefundWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitApplyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.InitApplyRefundWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitModifyRefundWithOptions(request *InitModifyRefundRequest, runtime *util.RuntimeOptions) (_result *InitModifyRefundResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31720,6 +39698,74 @@ func (client *Client) InitModifyRefund(request *InitModifyRefundRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &InitModifyRefundResponse{}
 	_body, _err := client.InitModifyRefundWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InitModifyRefundWithDesignatedTbUidWithOptions(request *InitModifyRefundWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *InitModifyRefundWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCode)) {
+		body["RefundCode"] = request.RefundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InitModifyRefundWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitModifyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InitModifyRefundWithDesignatedTbUid(request *InitModifyRefundWithDesignatedTbUidRequest) (_result *InitModifyRefundWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitModifyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.InitModifyRefundWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31996,6 +40042,66 @@ func (client *Client) ModifyBasicAndBizItems(request *ModifyBasicAndBizItemsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBasicAndBizItemsResponse{}
 	_body, _err := client.ModifyBasicAndBizItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBasicItemSupplierPriceWithOptions(request *ModifyBasicItemSupplierPriceRequest, runtime *util.RuntimeOptions) (_result *ModifyBasicItemSupplierPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmItemId)) {
+		query["LmItemId"] = request.LmItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmShopId)) {
+		query["LmShopId"] = request.LmShopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkuId)) {
+		query["SkuId"] = request.SkuId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupplierPrice)) {
+		query["SupplierPrice"] = request.SupplierPrice
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBasicItemSupplierPrice"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBasicItemSupplierPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBasicItemSupplierPrice(request *ModifyBasicItemSupplierPriceRequest) (_result *ModifyBasicItemSupplierPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBasicItemSupplierPriceResponse{}
+	_body, _err := client.ModifyBasicItemSupplierPriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32291,6 +40397,104 @@ func (client *Client) ModifyRefund(request *ModifyRefundRequest) (_result *Modif
 	return _result, _err
 }
 
+func (client *Client) ModifyRefundWithDesignatedTbUidWithOptions(tmpReq *ModifyRefundWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *ModifyRefundWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyRefundWithDesignatedTbUidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Proofs)) {
+		request.ProofsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Proofs, tea.String("Proofs"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoodsStatus)) {
+		body["GoodsStatus"] = request.GoodsStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		body["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProofsShrink)) {
+		body["Proofs"] = request.ProofsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonId)) {
+		body["ReasonId"] = request.ReasonId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCode)) {
+		body["RefundCode"] = request.RefundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundCount)) {
+		body["RefundCount"] = request.RefundCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefundFee)) {
+		body["RefundFee"] = request.RefundFee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyRefundWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyRefundWithDesignatedTbUid(request *ModifyRefundWithDesignatedTbUidRequest) (_result *ModifyRefundWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyRefundWithDesignatedTbUidResponse{}
+	_body, _err := client.ModifyRefundWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifySettleAccountWithOptions(request *ModifySettleAccountRequest, runtime *util.RuntimeOptions) (_result *ModifySettleAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32556,6 +40760,50 @@ func (client *Client) NotifyWithholdFund(request *NotifyWithholdFundRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &NotifyWithholdFundResponse{}
 	_body, _err := client.NotifyWithholdFundWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OpenRealTbAccountSupportWithOptions(request *OpenRealTbAccountSupportRequest, runtime *util.RuntimeOptions) (_result *OpenRealTbAccountSupportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenRealTbAccountSupport"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenRealTbAccountSupportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OpenRealTbAccountSupport(request *OpenRealTbAccountSupportRequest) (_result *OpenRealTbAccountSupportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenRealTbAccountSupportResponse{}
+	_body, _err := client.OpenRealTbAccountSupportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33580,6 +41828,86 @@ func (client *Client) QueryBudgetTicketItemListByBizId(request *QueryBudgetTicke
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBudgetTicketItemListByBizIdResponse{}
 	_body, _err := client.QueryBudgetTicketItemListByBizIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryChannelItemBillDownloadUrlWithOptions(request *QueryChannelItemBillDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *QueryChannelItemBillDownloadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		body["BillId"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillPeriod)) {
+		body["BillPeriod"] = request.BillPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillStatus)) {
+		body["BillStatus"] = request.BillStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizName)) {
+		body["BizName"] = request.BizName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmShopId)) {
+		body["LmShopId"] = request.LmShopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmShopName)) {
+		body["LmShopName"] = request.LmShopName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryChannelItemBillDownloadUrl"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryChannelItemBillDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryChannelItemBillDownloadUrl(request *QueryChannelItemBillDownloadUrlRequest) (_result *QueryChannelItemBillDownloadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryChannelItemBillDownloadUrlResponse{}
+	_body, _err := client.QueryChannelItemBillDownloadUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34651,6 +42979,74 @@ func (client *Client) QueryOrderAndPaymentList(request *QueryOrderAndPaymentList
 	return _result, _err
 }
 
+func (client *Client) QueryOrderAndPaymentListWithDesignatedTbUidWithOptions(request *QueryOrderAndPaymentListWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *QueryOrderAndPaymentListWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterOption)) {
+		body["FilterOption"] = request.FilterOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrderAndPaymentListWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderAndPaymentListWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrderAndPaymentListWithDesignatedTbUid(request *QueryOrderAndPaymentListWithDesignatedTbUidRequest) (_result *QueryOrderAndPaymentListWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrderAndPaymentListWithDesignatedTbUidResponse{}
+	_body, _err := client.QueryOrderAndPaymentListWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryOrderCommissionRateWithOptions(request *QueryOrderCommissionRateRequest, runtime *util.RuntimeOptions) (_result *QueryOrderCommissionRateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35003,6 +43399,74 @@ func (client *Client) QueryOrderList(request *QueryOrderListRequest) (_result *Q
 	return _result, _err
 }
 
+func (client *Client) QueryOrderListWithDesignatedTbUidWithOptions(request *QueryOrderListWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *QueryOrderListWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterOption)) {
+		body["FilterOption"] = request.FilterOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrderListWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderListWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrderListWithDesignatedTbUid(request *QueryOrderListWithDesignatedTbUidRequest) (_result *QueryOrderListWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrderListWithDesignatedTbUidResponse{}
+	_body, _err := client.QueryOrderListWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryOrderLogisticsWithOptions(request *QueryOrderLogisticsRequest, runtime *util.RuntimeOptions) (_result *QueryOrderLogisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35067,6 +43531,110 @@ func (client *Client) QueryOrderLogistics(request *QueryOrderLogisticsRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryOrderLogisticsWithDesignatedTbUidWithOptions(request *QueryOrderLogisticsWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *QueryOrderLogisticsWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmOrderId)) {
+		body["LmOrderId"] = request.LmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrderLogisticsWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryOrderLogisticsWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryOrderLogisticsWithDesignatedTbUid(request *QueryOrderLogisticsWithDesignatedTbUidRequest) (_result *QueryOrderLogisticsWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryOrderLogisticsWithDesignatedTbUidResponse{}
+	_body, _err := client.QueryOrderLogisticsWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRealTbAccountSupportWithOptions(request *QueryRealTbAccountSupportRequest, runtime *util.RuntimeOptions) (_result *QueryRealTbAccountSupportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRealTbAccountSupport"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRealTbAccountSupportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRealTbAccountSupport(request *QueryRealTbAccountSupportRequest) (_result *QueryRealTbAccountSupportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRealTbAccountSupportResponse{}
+	_body, _err := client.QueryRealTbAccountSupportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryRefundApplicationDetailWithOptions(request *QueryRefundApplicationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRefundApplicationDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35124,6 +43692,66 @@ func (client *Client) QueryRefundApplicationDetail(request *QueryRefundApplicati
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRefundApplicationDetailResponse{}
 	_body, _err := client.QueryRefundApplicationDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryRefundApplyWithDesignatedTbUidWithOptions(request *QueryRefundApplyWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *QueryRefundApplyWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRefundApplyWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryRefundApplyWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryRefundApplyWithDesignatedTbUid(request *QueryRefundApplyWithDesignatedTbUidRequest) (_result *QueryRefundApplyWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryRefundApplyWithDesignatedTbUidResponse{}
+	_body, _err := client.QueryRefundApplyWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35212,6 +43840,82 @@ func (client *Client) QueryStatements(request *QueryStatementsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryStatementsResponse{}
 	_body, _err := client.QueryStatementsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySupplierItemBillDownloadUrlWithOptions(request *QuerySupplierItemBillDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *QuerySupplierItemBillDownloadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		body["BillId"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillPeriod)) {
+		body["BillPeriod"] = request.BillPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillStatus)) {
+		body["BillStatus"] = request.BillStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizName)) {
+		body["BizName"] = request.BizName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmShopId)) {
+		body["LmShopId"] = request.LmShopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmShopName)) {
+		body["LmShopName"] = request.LmShopName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySupplierItemBillDownloadUrl"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySupplierItemBillDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySupplierItemBillDownloadUrl(request *QuerySupplierItemBillDownloadUrlRequest) (_result *QuerySupplierItemBillDownloadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySupplierItemBillDownloadUrlResponse{}
+	_body, _err := client.QuerySupplierItemBillDownloadUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35451,6 +44155,54 @@ func (client *Client) QueryUpcomingMovies(request *QueryUpcomingMoviesRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryUserAccountWithOptions(request *QueryUserAccountRequest, runtime *util.RuntimeOptions) (_result *QueryUserAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUserAccount"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryUserAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryUserAccount(request *QueryUserAccountRequest) (_result *QueryUserAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryUserAccountResponse{}
+	_body, _err := client.QueryUserAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryUserGameProcessWithOptions(tmpReq *QueryUserGameProcessRequest, runtime *util.RuntimeOptions) (_result *QueryUserGameProcessResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -35610,6 +44362,62 @@ func (client *Client) QueryWithholdTrade(request *QueryWithholdTradeRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWithholdTradeResponse{}
 	_body, _err := client.QueryWithholdTradeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RebindTbAccountWithOptions(request *RebindTbAccountRequest, runtime *util.RuntimeOptions) (_result *RebindTbAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebindTbAccount"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebindTbAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebindTbAccount(request *RebindTbAccountRequest) (_result *RebindTbAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebindTbAccountResponse{}
+	_body, _err := client.RebindTbAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36081,6 +44889,62 @@ func (client *Client) RegisterSettleAccount(request *RegisterSettleAccountReques
 	return _result, _err
 }
 
+func (client *Client) RegisterUserAccountWithOptions(request *RegisterUserAccountRequest, runtime *util.RuntimeOptions) (_result *RegisterUserAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterUserAccount"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterUserAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterUserAccount(request *RegisterUserAccountRequest) (_result *RegisterUserAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterUserAccountResponse{}
+	_body, _err := client.RegisterUserAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReleaseMovieSeatWithOptions(request *ReleaseMovieSeatRequest, runtime *util.RuntimeOptions) (_result *ReleaseMovieSeatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36387,6 +45251,76 @@ func (client *Client) RenderOrder(request *RenderOrderRequest) (_result *RenderO
 	return _result, _err
 }
 
+func (client *Client) RenderOrderWithDesignatedTbUidWithOptions(tmpReq *RenderOrderWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *RenderOrderWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RenderOrderWithDesignatedTbUidShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ItemList)) {
+		request.ItemListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemList, tea.String("ItemList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeliveryAddress)) {
+		body["DeliveryAddress"] = request.DeliveryAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemListShrink)) {
+		body["ItemList"] = request.ItemListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenderOrderWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenderOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenderOrderWithDesignatedTbUid(request *RenderOrderWithDesignatedTbUidRequest) (_result *RenderOrderWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenderOrderWithDesignatedTbUidResponse{}
+	_body, _err := client.RenderOrderWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RepayForPayUrlWithOptions(request *RepayForPayUrlRequest, runtime *util.RuntimeOptions) (_result *RepayForPayUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36504,6 +45438,70 @@ func (client *Client) RepayOrder(request *RepayOrderRequest) (_result *RepayOrde
 	runtime := &util.RuntimeOptions{}
 	_result = &RepayOrderResponse{}
 	_body, _err := client.RepayOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RepayWithDesignatedTbUidWithOptions(request *RepayWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *RepayWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtJson)) {
+		body["ExtJson"] = request.ExtJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LmOrderId)) {
+		body["LmOrderId"] = request.LmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RepayWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RepayWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RepayWithDesignatedTbUid(request *RepayWithDesignatedTbUidRequest) (_result *RepayWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RepayWithDesignatedTbUidResponse{}
+	_body, _err := client.RepayWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36792,6 +45790,78 @@ func (client *Client) SubmitReturnGoodLogistics(request *SubmitReturnGoodLogisti
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitReturnGoodLogisticsResponse{}
 	_body, _err := client.SubmitReturnGoodLogisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitReturnGoodLogisticsWithDesignatedTbUidWithOptions(request *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest, runtime *util.RuntimeOptions) (_result *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CpCode)) {
+		body["CpCode"] = request.CpCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisputeId)) {
+		body["DisputeId"] = request.DisputeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogisticsNo)) {
+		body["LogisticsNo"] = request.LogisticsNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubLmOrderId)) {
+		body["SubLmOrderId"] = request.SubLmOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbAccountType)) {
+		body["TbAccountType"] = request.TbAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TbUserId)) {
+		body["TbUserId"] = request.TbUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartyUserId)) {
+		body["ThirdPartyUserId"] = request.ThirdPartyUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitReturnGoodLogisticsWithDesignatedTbUid"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitReturnGoodLogisticsWithDesignatedTbUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitReturnGoodLogisticsWithDesignatedTbUid(request *SubmitReturnGoodLogisticsWithDesignatedTbUidRequest) (_result *SubmitReturnGoodLogisticsWithDesignatedTbUidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitReturnGoodLogisticsWithDesignatedTbUidResponse{}
+	_body, _err := client.SubmitReturnGoodLogisticsWithDesignatedTbUidWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
