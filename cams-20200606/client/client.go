@@ -2342,6 +2342,360 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 	return s
 }
 
+type GetChatappTemplateDetailRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	// The unique identifier of the WhatsApp account that you register.
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// Assigned by ISV for RAM user authentication and authorization.
+	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The language that is used in the message template.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The code of the message template.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s GetChatappTemplateDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailRequest) SetCustSpaceId(v string) *GetChatappTemplateDetailRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetCustWabaId(v string) *GetChatappTemplateDetailRequest {
+	s.CustWabaId = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetIsvCode(v string) *GetChatappTemplateDetailRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetLanguage(v string) *GetChatappTemplateDetailRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetTemplateCode(v string) *GetChatappTemplateDetailRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailRequest) SetTemplateType(v string) *GetChatappTemplateDetailRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponseBody struct {
+	// The HTTP status code returned.
+	//
+	// *   A code of OK indicates that the call is successful.
+	// *   Other codes indicate that the call fails. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetChatappTemplateDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetChatappTemplateDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponseBody) SetCode(v string) *GetChatappTemplateDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBody) SetData(v *GetChatappTemplateDetailResponseBodyData) *GetChatappTemplateDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBody) SetMessage(v string) *GetChatappTemplateDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBody) SetRequestId(v string) *GetChatappTemplateDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponseBodyData struct {
+	// The review status of the message template. Valid values:
+	//
+	// *   **pass**: The message template is approved.
+	// *   **fail**: The message template is rejected.
+	// *   **auditing**: The message template is being reviewed.
+	// *   **unaudit**: The review is suspended.
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The category of the message template. Valid values:
+	//
+	// *   **ACCOUNT_UPDATE**: account update
+	// *   **PAYMENT_UPDATE**: payment update
+	// *   **PERSONAL_FINANCE\_UPDATE**: personal finance update
+	// *   **SHIPPING_UPDATE**: traffic update
+	// *   **RESERVATION_UPDATE**: reservation update
+	// *   **ISSUE_RESOLUTION**: issue resolution
+	// *   **APPOINTMENT_UPDATE**: appointment update
+	// *   **TRANSPORTATION_UPDATE**: logistics information update
+	// *   **TICKET_UPDATE**: ticket update
+	// *   **ALERT_UPDATE**: alert update
+	// *   **AUTO_REPLY**: auto reply
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The components of the message template.
+	Components []*GetChatappTemplateDetailResponseBodyDataComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The examples of variables.
+	Example map[string]*string `json:"Example,omitempty" xml:"Example,omitempty"`
+	// The language that is used in the message template.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The name of the message template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The code of the message template.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s GetChatappTemplateDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetAuditStatus(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetCategory(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetComponents(v []*GetChatappTemplateDetailResponseBodyDataComponents) *GetChatappTemplateDetailResponseBodyData {
+	s.Components = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetExample(v map[string]*string) *GetChatappTemplateDetailResponseBodyData {
+	s.Example = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetLanguage(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetName(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetTemplateCode(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyData) SetTemplateType(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.TemplateType = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponseBodyDataComponents struct {
+	// This parameter applies only to components of the **BUTTONS** type. This parameter is passed in by converting its original JSON structure into a string.
+	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// The description of the file.
+	Caption  *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the file.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The format.
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The text of the message to be sent.
+	Text     *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	ThumbUrl *string `json:"ThumbUrl,omitempty" xml:"ThumbUrl,omitempty"`
+	// The type of the component. Valid values:
+	//
+	// *   **BODY**
+	// *   **HEADER**
+	// *   **FOOTER**
+	// *   **BUTTONS**
+	//
+	// **
+	//
+	// **Note** A component of the **BODY** type cannot exceed 1,024 characters in length. A component of the **HEADER** or **FOOTER** type cannot exceed 60 characters in length.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL of the material.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponents) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetButtons(v []*GetChatappTemplateDetailResponseBodyDataComponentsButtons) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Buttons = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetCaption(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Caption = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetDuration(v int32) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFileName(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFileType(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFormat(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Format = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetText(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Text = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetThumbUrl(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.ThumbUrl = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetType(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Type = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetUrl(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Url = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
+	// The mobile phone number. This parameter is valid only if the Type parameter is set to **PHONE_NUMBER**.
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// The display name of the button.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The type of the button. Valid values:
+	//
+	// *   **PHONE_NUMBER**: a phone call button
+	// *   **URL**: a URL button
+	// *   **QUICK_REPLY**: a quick reply button
+	//
+	// **
+	//
+	// **Note**
+	//
+	// *   A quick reply button cannot coexist with a phone call button or a URL button in a message template.
+	//
+	// *   You can add a combination of two URL buttons or a combination of a URL button and a phone call button to a message template.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The URL to be accessed when you click the URL button.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The type of the URL. Valid values:
+	//
+	// *   **static**: a static URL
+	// *   **dynamic**: a dynamic URL
+	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponentsButtons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponentsButtons) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetPhoneNumber(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetText(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.Text = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetType(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.Type = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetUrl(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.Url = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetUrlType(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.UrlType = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetChatappTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetChatappTemplateDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponse) SetHeaders(v map[string]*string) *GetChatappTemplateDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponse) SetStatusCode(v int32) *GetChatappTemplateDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailResponseBody) *GetChatappTemplateDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetChatappUploadAuthorizationRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 }
@@ -2927,6 +3281,313 @@ func (s *IsvGetAppIdResponse) SetStatusCode(v int32) *IsvGetAppIdResponse {
 }
 
 func (s *IsvGetAppIdResponse) SetBody(v *IsvGetAppIdResponseBody) *IsvGetAppIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListChatappTemplateRequest struct {
+	// The review status of the message template. Valid values:
+	//
+	// *   **pass**: The message template is approved.
+	// *   **fail**: The message template is rejected.
+	// *   **auditing**: The message template is being reviewed.
+	// *   **unaudit**: The review is suspended.
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	// The unique identifier of the WhatsApp account that you register.
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// Assigned by ISV for RAM user authentication and authorization.
+	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The language that is used in the message template.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The name of the message template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The paging settings.
+	Page         *ListChatappTemplateRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	TemplateType *string                         `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListChatappTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateRequest) SetAuditStatus(v string) *ListChatappTemplateRequest {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetCustSpaceId(v string) *ListChatappTemplateRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetCustWabaId(v string) *ListChatappTemplateRequest {
+	s.CustWabaId = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetIsvCode(v string) *ListChatappTemplateRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetLanguage(v string) *ListChatappTemplateRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetName(v string) *ListChatappTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetPage(v *ListChatappTemplateRequestPage) *ListChatappTemplateRequest {
+	s.Page = v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetTemplateType(v string) *ListChatappTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type ListChatappTemplateRequestPage struct {
+	// The number of the page to return. Default value: 1.
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The number of message templates to return on each page. Default value: 10.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListChatappTemplateRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateRequestPage) SetIndex(v int32) *ListChatappTemplateRequestPage {
+	s.Index = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequestPage) SetSize(v int32) *ListChatappTemplateRequestPage {
+	s.Size = &v
+	return s
+}
+
+type ListChatappTemplateShrinkRequest struct {
+	// The review status of the message template. Valid values:
+	//
+	// *   **pass**: The message template is approved.
+	// *   **fail**: The message template is rejected.
+	// *   **auditing**: The message template is being reviewed.
+	// *   **unaudit**: The review is suspended.
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Deprecated
+	// The unique identifier of the WhatsApp account that you register.
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// Assigned by ISV for RAM user authentication and authorization.
+	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
+	// The language that is used in the message template.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The name of the message template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The paging settings.
+	PageShrink   *string `json:"Page,omitempty" xml:"Page,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListChatappTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetAuditStatus(v string) *ListChatappTemplateShrinkRequest {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetCustSpaceId(v string) *ListChatappTemplateShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetCustWabaId(v string) *ListChatappTemplateShrinkRequest {
+	s.CustWabaId = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetIsvCode(v string) *ListChatappTemplateShrinkRequest {
+	s.IsvCode = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetLanguage(v string) *ListChatappTemplateShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetName(v string) *ListChatappTemplateShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetPageShrink(v string) *ListChatappTemplateShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetTemplateType(v string) *ListChatappTemplateShrinkRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type ListChatappTemplateResponseBody struct {
+	// The HTTP status code returned.
+	//
+	// *   A code of OK indicates that the call is successful.
+	// *   Other codes indicate that the call fails. For more information, see [Error codes](~~196974~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message templates.
+	ListTemplate []*ListChatappTemplateResponseBodyListTemplate `json:"ListTemplate,omitempty" xml:"ListTemplate,omitempty" type:"Repeated"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListChatappTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateResponseBody) SetCode(v string) *ListChatappTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBody) SetListTemplate(v []*ListChatappTemplateResponseBodyListTemplate) *ListChatappTemplateResponseBody {
+	s.ListTemplate = v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBody) SetMessage(v string) *ListChatappTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBody) SetRequestId(v string) *ListChatappTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListChatappTemplateResponseBodyListTemplate struct {
+	// The review status of the message template. Valid values:
+	//
+	// *   **pass**: The message template is approved.
+	// *   **fail**: The message template is rejected.
+	// *   **auditing**: The message template is being reviewed.
+	// *   **unaudit**: The review is suspended.
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The category of the message template. Valid values:
+	//
+	// *   **ACCOUNT_UPDATE**: account update
+	// *   **PAYMENT_UPDATE**: payment update
+	// *   **PERSONAL_FINANCE\_UPDATE**: personal finance update
+	// *   **SHIPPING_UPDATE**: traffic update
+	// *   **RESERVATION_UPDATE**: reservation update
+	// *   **ISSUE_RESOLUTION**: issue resolution
+	// *   **APPOINTMENT_UPDATE**: appointment update
+	// *   **TRANSPORTATION_UPDATE**: logistics information update
+	// *   **TICKET_UPDATE**: ticket update
+	// *   **ALERT_UPDATE**: alert update
+	// *   **AUTO_REPLY**: auto reply
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The language that is used in the message template.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The code of the message template.
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The name of the message template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListChatappTemplateResponseBodyListTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateResponseBodyListTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetAuditStatus(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetCategory(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.Category = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetLanguage(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.Language = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetTemplateCode(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetTemplateName(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetTemplateType(v string) *ListChatappTemplateResponseBodyListTemplate {
+	s.TemplateType = &v
+	return s
+}
+
+type ListChatappTemplateResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListChatappTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChatappTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChatappTemplateResponse) SetHeaders(v map[string]*string) *ListChatappTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChatappTemplateResponse) SetStatusCode(v int32) *ListChatappTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody) *ListChatappTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -6212,6 +6873,85 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 	return _result, _err
 }
 
+/**
+ * ### QPS limit
+ * You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request GetChatappTemplateDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetChatappTemplateDetailResponse
+ */
+func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTemplateDetailRequest, runtime *util.RuntimeOptions) (_result *GetChatappTemplateDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		query["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatappTemplateDetail"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatappTemplateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * ### QPS limit
+ * You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request GetChatappTemplateDetailRequest
+ * @return GetChatappTemplateDetailResponse
+ */
+func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetailRequest) (_result *GetChatappTemplateDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetChatappTemplateDetailResponse{}
+	_body, _err := client.GetChatappTemplateDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetChatappUploadAuthorizationWithOptions(request *GetChatappUploadAuthorizationRequest, runtime *util.RuntimeOptions) (_result *GetChatappUploadAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6505,6 +7245,99 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 	runtime := &util.RuntimeOptions{}
 	_result = &IsvGetAppIdResponse{}
 	_body, _err := client.IsvGetAppIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ### QPS limit
+ * You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param tmpReq ListChatappTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListChatappTemplateResponse
+ */
+func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplateRequest, runtime *util.RuntimeOptions) (_result *ListChatappTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListChatappTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuditStatus)) {
+		query["AuditStatus"] = request.AuditStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		query["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsvCode)) {
+		query["IsvCode"] = request.IsvCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		query["Page"] = request.PageShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChatappTemplate"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChatappTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * ### QPS limit
+ * You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+ *
+ * @param request ListChatappTemplateRequest
+ * @return ListChatappTemplateResponse
+ */
+func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (_result *ListChatappTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChatappTemplateResponse{}
+	_body, _err := client.ListChatappTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
