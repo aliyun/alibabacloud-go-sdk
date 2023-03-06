@@ -707,6 +707,7 @@ type ApplyAddRequest struct {
 	CorpName                  *string                                  `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId                  *string                                  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName                *string                                  `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField               *string                                  `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList      []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	ExternalTravelerStandard  *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
 	FlightBudget              *int64                                   `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
@@ -765,6 +766,11 @@ func (s *ApplyAddRequest) SetDepartId(v string) *ApplyAddRequest {
 
 func (s *ApplyAddRequest) SetDepartName(v string) *ApplyAddRequest {
 	s.DepartName = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetExtendField(v string) *ApplyAddRequest {
+	s.ExtendField = &v
 	return s
 }
 
@@ -1345,6 +1351,7 @@ type ApplyAddShrinkRequest struct {
 	CorpName                       *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId                       *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName                     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
 	ExternalTravelerStandardShrink *string `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty"`
 	FlightBudget                   *int64  `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
@@ -1403,6 +1410,11 @@ func (s *ApplyAddShrinkRequest) SetDepartId(v string) *ApplyAddShrinkRequest {
 
 func (s *ApplyAddShrinkRequest) SetDepartName(v string) *ApplyAddShrinkRequest {
 	s.DepartName = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetExtendField(v string) *ApplyAddShrinkRequest {
+	s.ExtendField = &v
 	return s
 }
 
@@ -2662,6 +2674,7 @@ type ApplyModifyRequest struct {
 	CorpName                 *string                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId                 *string                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName               *string                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField              *string                                     `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList     []*ApplyModifyRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	ExternalTravelerStandard *ApplyModifyRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
 	FlightBudget             *int64                                      `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
@@ -2718,6 +2731,11 @@ func (s *ApplyModifyRequest) SetDepartId(v string) *ApplyModifyRequest {
 
 func (s *ApplyModifyRequest) SetDepartName(v string) *ApplyModifyRequest {
 	s.DepartName = &v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetExtendField(v string) *ApplyModifyRequest {
+	s.ExtendField = &v
 	return s
 }
 
@@ -3288,6 +3306,7 @@ type ApplyModifyShrinkRequest struct {
 	CorpName                       *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId                       *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName                     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
 	ExternalTravelerStandardShrink *string `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty"`
 	FlightBudget                   *int64  `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
@@ -3344,6 +3363,11 @@ func (s *ApplyModifyShrinkRequest) SetDepartId(v string) *ApplyModifyShrinkReque
 
 func (s *ApplyModifyShrinkRequest) SetDepartName(v string) *ApplyModifyShrinkRequest {
 	s.DepartName = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetExtendField(v string) *ApplyModifyShrinkRequest {
+	s.ExtendField = &v
 	return s
 }
 
@@ -3687,6 +3711,7 @@ type ApplyQueryResponseBodyModule struct {
 	CorpName             *string                                             `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId             *string                                             `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName           *string                                             `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField          *string                                             `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList []*ApplyQueryResponseBodyModuleExternalTravelerList `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	FlightBudget         *int64                                              `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
 	GmtCreate            *string                                             `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
@@ -3760,6 +3785,11 @@ func (s *ApplyQueryResponseBodyModule) SetDepartId(v string) *ApplyQueryResponse
 
 func (s *ApplyQueryResponseBodyModule) SetDepartName(v string) *ApplyQueryResponseBodyModule {
 	s.DepartName = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModule) SetExtendField(v string) *ApplyQueryResponseBodyModule {
+	s.ExtendField = &v
 	return s
 }
 
@@ -11664,6 +11694,1384 @@ func (s *FlightItineraryScanQueryResponse) SetBody(v *FlightItineraryScanQueryRe
 	return s
 }
 
+type FlightListingSearchHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s FlightListingSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchHeaders) SetCommonHeaders(v map[string]*string) *FlightListingSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightListingSearchHeaders) SetXAcsBtripCorpToken(v string) *FlightListingSearchHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type FlightListingSearchRequest struct {
+	AirlineCode *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	CabinClass  *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	DepCityCode *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate     *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+}
+
+func (s FlightListingSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchRequest) SetAirlineCode(v string) *FlightListingSearchRequest {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchRequest) SetArrCityCode(v string) *FlightListingSearchRequest {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchRequest) SetCabinClass(v string) *FlightListingSearchRequest {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightListingSearchRequest) SetDepCityCode(v string) *FlightListingSearchRequest {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchRequest) SetDepDate(v string) *FlightListingSearchRequest {
+	s.DepDate = &v
+	return s
+}
+
+type FlightListingSearchResponseBody struct {
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightListingSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightListingSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBody) SetCode(v string) *FlightListingSearchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBody) SetMessage(v string) *FlightListingSearchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBody) SetModule(v *FlightListingSearchResponseBodyModule) *FlightListingSearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBody) SetRequestId(v string) *FlightListingSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBody) SetSuccess(v bool) *FlightListingSearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBody) SetTraceId(v string) *FlightListingSearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModule struct {
+	FlightList []*FlightListingSearchResponseBodyModuleFlightList `json:"flight_list,omitempty" xml:"flight_list,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModule) SetFlightList(v []*FlightListingSearchResponseBodyModuleFlightList) *FlightListingSearchResponseBodyModule {
+	s.FlightList = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightList struct {
+	AirlineInfo       *FlightListingSearchResponseBodyModuleFlightListAirlineInfo      `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo    *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo   `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrDate           *string                                                          `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	BasicCabinPrice   *int32                                                           `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice        *int32                                                           `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin             *string                                                          `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string                                                          `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CarrierAirline    *string                                                          `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
+	CarrierNo         *string                                                          `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
+	DepAirportInfo    *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo   `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode       *string                                                          `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate           *string                                                          `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	Discount          *int32                                                           `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo          *string                                                          `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightRuleList    []*FlightListingSearchResponseBodyModuleFlightListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
+	FlightRuleListStr *string                                                          `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
+	FlightSize        *string                                                          `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightType        *string                                                          `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	InvoiceType       *int32                                                           `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	IsProtocol        *bool                                                            `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	IsShare           *bool                                                            `json:"is_share,omitempty" xml:"is_share,omitempty"`
+	IsStop            *bool                                                            `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
+	IsTransfer        *bool                                                            `json:"is_transfer,omitempty" xml:"is_transfer,omitempty"`
+	MealDesc          *string                                                          `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	OilPrice          *int32                                                           `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	OtaItemId         *string                                                          `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	Price             *int32                                                           `json:"price,omitempty" xml:"price,omitempty"`
+	ProductType       *int64                                                           `json:"product_type,omitempty" xml:"product_type,omitempty"`
+	ProductTypeDesc   *string                                                          `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
+	PromotionPrice    *string                                                          `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	RemainedSeatCount *string                                                          `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
+	SecretParams      *string                                                          `json:"secret_params,omitempty" xml:"secret_params,omitempty"`
+	SegmentNumber     *string                                                          `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
+	StopArrTime       *string                                                          `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity          *string                                                          `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime       *string                                                          `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	TicketPrice       *int32                                                           `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice        *string                                                          `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TripType          *int32                                                           `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetAirlineInfo(v *FlightListingSearchResponseBodyModuleFlightListAirlineInfo) *FlightListingSearchResponseBodyModuleFlightList {
+	s.AirlineInfo = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetArrAirportInfo(v *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) *FlightListingSearchResponseBodyModuleFlightList {
+	s.ArrAirportInfo = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetArrDate(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetBasicCabinPrice(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetBuildPrice(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetCabin(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetCabinClass(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetCarrierAirline(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.CarrierAirline = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetCarrierNo(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.CarrierNo = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetDepAirportInfo(v *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) *FlightListingSearchResponseBodyModuleFlightList {
+	s.DepAirportInfo = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetDepCityCode(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetDepDate(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetDiscount(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.Discount = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetFlightNo(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetFlightRuleList(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleList) *FlightListingSearchResponseBodyModuleFlightList {
+	s.FlightRuleList = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetFlightRuleListStr(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.FlightRuleListStr = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetFlightSize(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.FlightSize = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetFlightType(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.FlightType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetInvoiceType(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetIsProtocol(v bool) *FlightListingSearchResponseBodyModuleFlightList {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetIsShare(v bool) *FlightListingSearchResponseBodyModuleFlightList {
+	s.IsShare = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetIsStop(v bool) *FlightListingSearchResponseBodyModuleFlightList {
+	s.IsStop = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetIsTransfer(v bool) *FlightListingSearchResponseBodyModuleFlightList {
+	s.IsTransfer = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetMealDesc(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.MealDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetOilPrice(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetOtaItemId(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetPrice(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.Price = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetProductType(v int64) *FlightListingSearchResponseBodyModuleFlightList {
+	s.ProductType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetProductTypeDesc(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.ProductTypeDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetPromotionPrice(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.PromotionPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetRemainedSeatCount(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.RemainedSeatCount = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetSecretParams(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.SecretParams = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetSegmentNumber(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.SegmentNumber = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetStopArrTime(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.StopArrTime = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetStopCity(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.StopCity = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetStopDepTime(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.StopDepTime = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetTicketPrice(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetTotalPrice(v string) *FlightListingSearchResponseBodyModuleFlightList {
+	s.TotalPrice = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightList) SetTripType(v int32) *FlightListingSearchResponseBodyModuleFlightList {
+	s.TripType = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListAirlineInfo struct {
+	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineCode(v string) *FlightListingSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineName(v string) *FlightListingSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineName = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineSimpleName(v string) *FlightListingSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineSimpleName = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListArrAirportInfo struct {
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) SetAirportCode(v string) *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) SetAirportName(v string) *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) SetCityCode(v string) *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) SetCityName(v string) *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo) SetTerminal(v string) *FlightListingSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListDepAirportInfo struct {
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) SetAirportCode(v string) *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) SetAirportName(v string) *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) SetCityCode(v string) *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) SetCityName(v string) *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo) SetTerminal(v string) *FlightListingSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleList struct {
+	BaggageInfo    *string                                                                      `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
+	BaggageItem    *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
+	ChangeRule     *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
+	ChangeRuleItem *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
+	Extra          *string                                                                      `json:"extra,omitempty" xml:"extra,omitempty"`
+	RefundRule     *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
+	RefundRuleItem *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
+	SignRule       *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule       `json:"sign_rule,omitempty" xml:"sign_rule,omitempty" type:"Struct"`
+	TuigaiqianInfo *string                                                                      `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
+	UpgradeRule    *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule    `json:"upgrade_rule,omitempty" xml:"upgrade_rule,omitempty" type:"Struct"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetBaggageInfo(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.BaggageInfo = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetBaggageItem(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.BaggageItem = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetChangeRule(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.ChangeRule = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetChangeRuleItem(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.ChangeRuleItem = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetExtra(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.Extra = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetRefundRule(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.RefundRule = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetRefundRuleItem(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.RefundRuleItem = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetSignRule(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.SignRule = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetTuigaiqianInfo(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.TuigaiqianInfo = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleList) SetUpgradeRule(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) *FlightListingSearchResponseBodyModuleFlightListFlightRuleList {
+	s.UpgradeRule = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem struct {
+	BaggageSubItems []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
+	Index           *int32                                                                                     `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                    `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                    `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                     `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetBaggageSubItems(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.BaggageSubItems = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetIndex(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTableHead(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTips(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Tips = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetType(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Type = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems struct {
+	BaggageSubContentVisualizes []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
+	ExtraContentVisualizes      []interface{}                                                                                                         `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
+	IsStruct                    *bool                                                                                                                 `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                               `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                               `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetBaggageSubContentVisualizes(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.BaggageSubContentVisualizes = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetExtraContentVisualizes(v []interface{}) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.ExtraContentVisualizes = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetIsStruct(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetPtc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
+	BaggageDesc           []*string                                                                                                                      `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	BaggageSubContentType *int32                                                                                                                         `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
+	Description           *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
+	ImageDO               *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
+	IsHighlight           *bool                                                                                                                          `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                        `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageDesc(v []*string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageDesc = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageSubContentType(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageSubContentType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetDescription(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.Description = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetImageDO(v *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.ImageDO = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetIsHighlight(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.IsHighlight = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetSubTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.SubTitle = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetDesc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Desc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetIcon(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Icon = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetImage(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetImage(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetLargest(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Largest = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetMiddle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Middle = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetSmallest(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Smallest = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips struct {
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetLogo(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.Logo = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetTipsDesc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.TipsDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetTipsImage(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.TipsImage = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule struct {
+	Able *bool                                                                          `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) SetAble(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule) SetInfo(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRule {
+	s.Info = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetCost(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetCostPercent(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTimeStamp(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTimeType(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem struct {
+	ExtraContents  []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                       `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                    `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                      `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                      `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetExtraContents(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetIndex(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetRefundSubItems(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetSubTableHead(v []*string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetTableHead(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetType(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                         `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                       `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetIsStruct(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetPtc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetRefundSubContents(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule struct {
+	Able *bool                                                                          `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) SetAble(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule) SetInfo(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRule {
+	s.Info = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetCost(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetCostPercent(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTimeStamp(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTimeType(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem struct {
+	ExtraContents  []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                       `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                    `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                      `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                      `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetExtraContents(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetIndex(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetRefundSubItems(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetSubTableHead(v []*string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetTableHead(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetType(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                         `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                       `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                       `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetIsStruct(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetPtc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetRefundSubContents(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule struct {
+	Able *bool                                                                        `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) SetAble(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule) SetInfo(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRule {
+	s.Info = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetCost(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetCostPercent(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTimeStamp(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTimeType(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule struct {
+	Able *bool                                                                           `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) SetAble(v bool) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) SetInfo(v []*FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule {
+	s.Info = v
+	return s
+}
+
+type FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetContent(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetCost(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetCostPercent(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTimeStamp(v int32) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTimeType(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTitle(v string) *FlightListingSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightListingSearchResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightListingSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightListingSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightListingSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlightListingSearchResponse) SetHeaders(v map[string]*string) *FlightListingSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightListingSearchResponse) SetStatusCode(v int32) *FlightListingSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightListingSearchResponse) SetBody(v *FlightListingSearchResponseBody) *FlightListingSearchResponse {
+	s.Body = v
+	return s
+}
+
 type FlightOrderDetailInfoHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -13685,6 +15093,2416 @@ func (s *FlightOrderQueryResponse) SetStatusCode(v int32) *FlightOrderQueryRespo
 }
 
 func (s *FlightOrderQueryResponse) SetBody(v *FlightOrderQueryResponseBody) *FlightOrderQueryResponse {
+	s.Body = v
+	return s
+}
+
+type FlightOtaSearchHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s FlightOtaSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchHeaders) SetCommonHeaders(v map[string]*string) *FlightOtaSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *FlightOtaSearchHeaders) SetXAcsBtripCorpToken(v string) *FlightOtaSearchHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type FlightOtaSearchRequest struct {
+	AirlineCode     *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	ArrCityCode     *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	CabinClass      *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CarrierFlightNo *string `json:"carrier_flight_no,omitempty" xml:"carrier_flight_no,omitempty"`
+	DepCityCode     *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate         *string `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	FlightNo        *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+}
+
+func (s FlightOtaSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchRequest) SetAirlineCode(v string) *FlightOtaSearchRequest {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetArrCityCode(v string) *FlightOtaSearchRequest {
+	s.ArrCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetCabinClass(v string) *FlightOtaSearchRequest {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetCarrierFlightNo(v string) *FlightOtaSearchRequest {
+	s.CarrierFlightNo = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetDepCityCode(v string) *FlightOtaSearchRequest {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetDepDate(v string) *FlightOtaSearchRequest {
+	s.DepDate = &v
+	return s
+}
+
+func (s *FlightOtaSearchRequest) SetFlightNo(v string) *FlightOtaSearchRequest {
+	s.FlightNo = &v
+	return s
+}
+
+type FlightOtaSearchResponseBody struct {
+	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *FlightOtaSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                            `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBody) SetCode(v string) *FlightOtaSearchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBody) SetMessage(v string) *FlightOtaSearchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBody) SetModule(v *FlightOtaSearchResponseBodyModule) *FlightOtaSearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBody) SetRequestId(v string) *FlightOtaSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBody) SetSuccess(v bool) *FlightOtaSearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBody) SetTraceId(v string) *FlightOtaSearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModule struct {
+	FlightList []*FlightOtaSearchResponseBodyModuleFlightList `json:"flight_list,omitempty" xml:"flight_list,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModule) SetFlightList(v []*FlightOtaSearchResponseBodyModuleFlightList) *FlightOtaSearchResponseBodyModule {
+	s.FlightList = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightList struct {
+	AirlineInfo       *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo      `json:"airline_info,omitempty" xml:"airline_info,omitempty" type:"Struct"`
+	ArrAirportInfo    *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo   `json:"arr_airport_info,omitempty" xml:"arr_airport_info,omitempty" type:"Struct"`
+	ArrDate           *string                                                      `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	BuildPrice        *int32                                                       `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin             *string                                                      `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string                                                      `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinInfoList     []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoList  `json:"cabin_info_list,omitempty" xml:"cabin_info_list,omitempty" type:"Repeated"`
+	CarrierAirline    *string                                                      `json:"carrier_airline,omitempty" xml:"carrier_airline,omitempty"`
+	CarrierNo         *string                                                      `json:"carrier_no,omitempty" xml:"carrier_no,omitempty"`
+	DepAirportInfo    *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo   `json:"dep_airport_info,omitempty" xml:"dep_airport_info,omitempty" type:"Struct"`
+	DepCityCode       *string                                                      `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepDate           *string                                                      `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
+	Discount          *int32                                                       `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo          *string                                                      `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightRuleList    []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
+	FlightRuleListStr *string                                                      `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
+	FlightSize        *string                                                      `json:"flight_size,omitempty" xml:"flight_size,omitempty"`
+	FlightType        *string                                                      `json:"flight_type,omitempty" xml:"flight_type,omitempty"`
+	InvoiceType       *int32                                                       `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	IsProtocol        *bool                                                        `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	IsShare           *bool                                                        `json:"is_share,omitempty" xml:"is_share,omitempty"`
+	IsStop            *bool                                                        `json:"is_stop,omitempty" xml:"is_stop,omitempty"`
+	IsTransfer        *bool                                                        `json:"is_transfer,omitempty" xml:"is_transfer,omitempty"`
+	MealDesc          *string                                                      `json:"meal_desc,omitempty" xml:"meal_desc,omitempty"`
+	OilPrice          *int32                                                       `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	OtaItemId         *string                                                      `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	Price             *int32                                                       `json:"price,omitempty" xml:"price,omitempty"`
+	ProductType       *int64                                                       `json:"product_type,omitempty" xml:"product_type,omitempty"`
+	ProductTypeDesc   *string                                                      `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
+	PromotionPrice    *string                                                      `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	RemainedSeatCount *string                                                      `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
+	SecretParams      *string                                                      `json:"secret_params,omitempty" xml:"secret_params,omitempty"`
+	SegmentNumber     *string                                                      `json:"segment_number,omitempty" xml:"segment_number,omitempty"`
+	StopArrTime       *string                                                      `json:"stop_arr_time,omitempty" xml:"stop_arr_time,omitempty"`
+	StopCity          *string                                                      `json:"stop_city,omitempty" xml:"stop_city,omitempty"`
+	StopDepTime       *string                                                      `json:"stop_dep_time,omitempty" xml:"stop_dep_time,omitempty"`
+	TicketPrice       *int32                                                       `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice        *string                                                      `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	TripType          *int32                                                       `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetAirlineInfo(v *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.AirlineInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetArrAirportInfo(v *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.ArrAirportInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetArrDate(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.ArrDate = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetBuildPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetCabin(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetCabinClass(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetCabinInfoList(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.CabinInfoList = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetCarrierAirline(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.CarrierAirline = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetCarrierNo(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.CarrierNo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetDepAirportInfo(v *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.DepAirportInfo = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetDepCityCode(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.DepCityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetDepDate(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.DepDate = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetDiscount(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.Discount = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetFlightNo(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.FlightNo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetFlightRuleList(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.FlightRuleList = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetFlightRuleListStr(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.FlightRuleListStr = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetFlightSize(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.FlightSize = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetFlightType(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.FlightType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetInvoiceType(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetIsProtocol(v bool) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetIsShare(v bool) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.IsShare = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetIsStop(v bool) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.IsStop = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetIsTransfer(v bool) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.IsTransfer = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetMealDesc(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.MealDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetOilPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetOtaItemId(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.Price = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetProductType(v int64) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.ProductType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetProductTypeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.ProductTypeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetPromotionPrice(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.PromotionPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetRemainedSeatCount(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.RemainedSeatCount = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetSecretParams(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.SecretParams = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetSegmentNumber(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.SegmentNumber = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetStopArrTime(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.StopArrTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetStopCity(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.StopCity = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetStopDepTime(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.StopDepTime = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetTicketPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetTotalPrice(v string) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.TotalPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightList) SetTripType(v int32) *FlightOtaSearchResponseBodyModuleFlightList {
+	s.TripType = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListAirlineInfo struct {
+	AirlineCode       *string `json:"airline_code,omitempty" xml:"airline_code,omitempty"`
+	AirlineName       *string `json:"airline_name,omitempty" xml:"airline_name,omitempty"`
+	AirlineSimpleName *string `json:"airline_simple_name,omitempty" xml:"airline_simple_name,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineCode(v string) *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineName(v string) *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo) SetAirlineSimpleName(v string) *FlightOtaSearchResponseBodyModuleFlightListAirlineInfo {
+	s.AirlineSimpleName = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo struct {
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) SetAirportCode(v string) *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) SetAirportName(v string) *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) SetCityCode(v string) *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) SetCityName(v string) *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo) SetTerminal(v string) *FlightOtaSearchResponseBodyModuleFlightListArrAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoList struct {
+	AgentId           *int64                                                                    `json:"agent_id,omitempty" xml:"agent_id,omitempty"`
+	BasicCabinPrice   *int32                                                                    `json:"basic_cabin_price,omitempty" xml:"basic_cabin_price,omitempty"`
+	BuildPrice        *int32                                                                    `json:"build_price,omitempty" xml:"build_price,omitempty"`
+	Cabin             *string                                                                   `json:"cabin,omitempty" xml:"cabin,omitempty"`
+	CabinClass        *string                                                                   `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	CabinClassName    *string                                                                   `json:"cabin_class_name,omitempty" xml:"cabin_class_name,omitempty"`
+	ChildCabin        *string                                                                   `json:"child_cabin,omitempty" xml:"child_cabin,omitempty"`
+	ClassName         *string                                                                   `json:"class_name,omitempty" xml:"class_name,omitempty"`
+	ClassRule         *string                                                                   `json:"class_rule,omitempty" xml:"class_rule,omitempty"`
+	Discount          *string                                                                   `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightRuleList    []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList `json:"flight_rule_list,omitempty" xml:"flight_rule_list,omitempty" type:"Repeated"`
+	FlightRuleListStr *string                                                                   `json:"flight_rule_list_str,omitempty" xml:"flight_rule_list_str,omitempty"`
+	InvoiceType       *int32                                                                    `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	IsProtocol        *bool                                                                     `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	OilPrice          *int32                                                                    `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
+	OrderParams       *string                                                                   `json:"order_params,omitempty" xml:"order_params,omitempty"`
+	OtaItemId         *string                                                                   `json:"ota_item_id,omitempty" xml:"ota_item_id,omitempty"`
+	Price             *int32                                                                    `json:"price,omitempty" xml:"price,omitempty"`
+	ProductType       *int64                                                                    `json:"product_type,omitempty" xml:"product_type,omitempty"`
+	ProductTypeDesc   *string                                                                   `json:"product_type_desc,omitempty" xml:"product_type_desc,omitempty"`
+	PromotionPrice    *string                                                                   `json:"promotion_price,omitempty" xml:"promotion_price,omitempty"`
+	RemainedSeatCount *string                                                                   `json:"remained_seat_count,omitempty" xml:"remained_seat_count,omitempty"`
+	TicketPrice       *int32                                                                    `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice        *int32                                                                    `json:"total_price,omitempty" xml:"total_price,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetAgentId(v int64) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.AgentId = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetBasicCabinPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.BasicCabinPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetBuildPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.BuildPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetCabin(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.Cabin = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetCabinClass(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetCabinClassName(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.CabinClassName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetChildCabin(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.ChildCabin = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetClassName(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.ClassName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetClassRule(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.ClassRule = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetDiscount(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.Discount = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetFlightRuleList(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.FlightRuleList = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetFlightRuleListStr(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.FlightRuleListStr = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetInvoiceType(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.InvoiceType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetIsProtocol(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetOilPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.OilPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetOrderParams(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.OrderParams = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetOtaItemId(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.OtaItemId = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.Price = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetProductType(v int64) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.ProductType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetProductTypeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.ProductTypeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetPromotionPrice(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.PromotionPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetRemainedSeatCount(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.RemainedSeatCount = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetTicketPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.TicketPrice = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList) SetTotalPrice(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoList {
+	s.TotalPrice = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList struct {
+	BaggageInfo    *string                                                                               `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
+	BaggageItem    *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
+	ChangeRule     *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
+	ChangeRuleItem *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
+	Extra          *string                                                                               `json:"extra,omitempty" xml:"extra,omitempty"`
+	RefundRule     *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
+	RefundRuleItem *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
+	SignRule       *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule       `json:"sign_rule,omitempty" xml:"sign_rule,omitempty" type:"Struct"`
+	TuigaiqianInfo *string                                                                               `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
+	UpgradeRule    *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule    `json:"upgrade_rule,omitempty" xml:"upgrade_rule,omitempty" type:"Struct"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetBaggageInfo(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.BaggageInfo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetBaggageItem(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.BaggageItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetChangeRule(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.ChangeRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetChangeRuleItem(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.ChangeRuleItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetExtra(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.Extra = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetRefundRule(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.RefundRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetRefundRuleItem(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.RefundRuleItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetSignRule(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.SignRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetTuigaiqianInfo(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.TuigaiqianInfo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList) SetUpgradeRule(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleList {
+	s.UpgradeRule = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem struct {
+	BaggageSubItems []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
+	Index           *int32                                                                                              `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                             `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                             `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                              `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetBaggageSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.BaggageSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetTips(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.Tips = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems struct {
+	BaggageSubContentVisualizes []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
+	ExtraContentVisualizes      []interface{}                                                                                                                  `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
+	IsStruct                    *bool                                                                                                                          `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                                        `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                                        `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) SetBaggageSubContentVisualizes(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems {
+	s.BaggageSubContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) SetExtraContentVisualizes(v []interface{}) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems {
+	s.ExtraContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
+	BaggageDesc           []*string                                                                                                                               `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	BaggageSubContentType *int32                                                                                                                                  `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
+	Description           *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
+	ImageDO               *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
+	IsHighlight           *bool                                                                                                                                   `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                                 `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageDesc(v []*string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageDesc = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageSubContentType(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageSubContentType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetDescription(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.Description = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetImageDO(v *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.ImageDO = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetIsHighlight(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.IsHighlight = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetSubTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.SubTitle = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Desc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetIcon(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Icon = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetImage(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetImage(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetLargest(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Largest = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetMiddle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Middle = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetSmallest(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Smallest = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips struct {
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) SetLogo(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips {
+	s.Logo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) SetTipsDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips {
+	s.TipsDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips) SetTipsImage(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBaggageItemTips {
+	s.TipsImage = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule struct {
+	Able *bool                                                                                   `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem struct {
+	ExtraContents  []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                                `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                             `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                               `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                               `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                                `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetExtraContents(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetRefundSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetSubTableHead(v []*string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                                  `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                                `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                                `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) SetRefundSubContents(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule struct {
+	Able *bool                                                                                   `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem struct {
+	ExtraContents  []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                                `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                             `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                               `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                               `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                                `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetExtraContents(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetRefundSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetSubTableHead(v []*string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                                  `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                                `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                                `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) SetRefundSubContents(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule struct {
+	Able *bool                                                                                 `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListSignRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule struct {
+	Able *bool                                                                                    `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListUpgradeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo struct {
+	AirportCode *string `json:"airport_code,omitempty" xml:"airport_code,omitempty"`
+	AirportName *string `json:"airport_name,omitempty" xml:"airport_name,omitempty"`
+	CityCode    *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Terminal    *string `json:"terminal,omitempty" xml:"terminal,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) SetAirportCode(v string) *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.AirportCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) SetAirportName(v string) *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.AirportName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) SetCityCode(v string) *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) SetCityName(v string) *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo) SetTerminal(v string) *FlightOtaSearchResponseBodyModuleFlightListDepAirportInfo {
+	s.Terminal = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleList struct {
+	BaggageInfo    *string                                                                  `json:"baggage_info,omitempty" xml:"baggage_info,omitempty"`
+	BaggageItem    *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem    `json:"baggage_item,omitempty" xml:"baggage_item,omitempty" type:"Struct"`
+	ChangeRule     *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule     `json:"change_rule,omitempty" xml:"change_rule,omitempty" type:"Struct"`
+	ChangeRuleItem *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem `json:"change_rule_item,omitempty" xml:"change_rule_item,omitempty" type:"Struct"`
+	Extra          *string                                                                  `json:"extra,omitempty" xml:"extra,omitempty"`
+	RefundRule     *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule     `json:"refund_rule,omitempty" xml:"refund_rule,omitempty" type:"Struct"`
+	RefundRuleItem *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem `json:"refund_rule_item,omitempty" xml:"refund_rule_item,omitempty" type:"Struct"`
+	SignRule       *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule       `json:"sign_rule,omitempty" xml:"sign_rule,omitempty" type:"Struct"`
+	TuigaiqianInfo *string                                                                  `json:"tuigaiqian_info,omitempty" xml:"tuigaiqian_info,omitempty"`
+	UpgradeRule    *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule    `json:"upgrade_rule,omitempty" xml:"upgrade_rule,omitempty" type:"Struct"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetBaggageInfo(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.BaggageInfo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetBaggageItem(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.BaggageItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetChangeRule(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.ChangeRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetChangeRuleItem(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.ChangeRuleItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetExtra(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.Extra = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetRefundRule(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.RefundRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetRefundRuleItem(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.RefundRuleItem = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetSignRule(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.SignRule = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetTuigaiqianInfo(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.TuigaiqianInfo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList) SetUpgradeRule(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleList {
+	s.UpgradeRule = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem struct {
+	BaggageSubItems []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems `json:"baggage_sub_items,omitempty" xml:"baggage_sub_items,omitempty" type:"Repeated"`
+	Index           *int32                                                                                 `json:"index,omitempty" xml:"index,omitempty"`
+	TableHead       *string                                                                                `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Tips            *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips              `json:"tips,omitempty" xml:"tips,omitempty" type:"Struct"`
+	Title           *string                                                                                `json:"title,omitempty" xml:"title,omitempty"`
+	Type            *int32                                                                                 `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetBaggageSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.BaggageSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTips(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Tips = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems struct {
+	BaggageSubContentVisualizes []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
+	ExtraContentVisualizes      []interface{}                                                                                                     `json:"extra_content_visualizes,omitempty" xml:"extra_content_visualizes,omitempty" type:"Repeated"`
+	IsStruct                    *bool                                                                                                             `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc                         *string                                                                                                           `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	Title                       *string                                                                                                           `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetBaggageSubContentVisualizes(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.BaggageSubContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetExtraContentVisualizes(v []interface{}) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.ExtraContentVisualizes = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes struct {
+	BaggageDesc           []*string                                                                                                                  `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty" type:"Repeated"`
+	BaggageSubContentType *int32                                                                                                                     `json:"baggage_sub_content_type,omitempty" xml:"baggage_sub_content_type,omitempty"`
+	Description           *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription `json:"description,omitempty" xml:"description,omitempty" type:"Struct"`
+	ImageDO               *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO     `json:"image_d_o,omitempty" xml:"image_d_o,omitempty" type:"Struct"`
+	IsHighlight           *bool                                                                                                                      `json:"is_highlight,omitempty" xml:"is_highlight,omitempty"`
+	SubTitle              *string                                                                                                                    `json:"sub_title,omitempty" xml:"sub_title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageDesc(v []*string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageDesc = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetBaggageSubContentType(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.BaggageSubContentType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetDescription(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.Description = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetImageDO(v *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.ImageDO = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetIsHighlight(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.IsHighlight = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes) SetSubTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizes {
+	s.SubTitle = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription struct {
+	Desc  *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Desc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetIcon(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Icon = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetImage(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesDescription {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO struct {
+	Image    *string `json:"image,omitempty" xml:"image,omitempty"`
+	Largest  *string `json:"largest,omitempty" xml:"largest,omitempty"`
+	Middle   *string `json:"middle,omitempty" xml:"middle,omitempty"`
+	Smallest *string `json:"smallest,omitempty" xml:"smallest,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetImage(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Image = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetLargest(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Largest = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetMiddle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Middle = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO) SetSmallest(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggageSubItemsBaggageSubContentVisualizesImageDO {
+	s.Smallest = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips struct {
+	Logo      *string `json:"logo,omitempty" xml:"logo,omitempty"`
+	TipsDesc  *string `json:"tips_desc,omitempty" xml:"tips_desc,omitempty"`
+	TipsImage *string `json:"tips_image,omitempty" xml:"tips_image,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetLogo(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.Logo = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetTipsDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.TipsDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips) SetTipsImage(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemTips {
+	s.TipsImage = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule struct {
+	Able *bool                                                                      `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem struct {
+	ExtraContents  []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                   `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                  `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                  `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetExtraContents(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetRefundSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetSubTableHead(v []*string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                     `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                   `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                   `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetRefundSubContents(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule struct {
+	Able *bool                                                                      `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem struct {
+	ExtraContents  []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents  `json:"extra_contents,omitempty" xml:"extra_contents,omitempty" type:"Repeated"`
+	Index          *int32                                                                                   `json:"index,omitempty" xml:"index,omitempty"`
+	RefundSubItems []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems `json:"refund_sub_items,omitempty" xml:"refund_sub_items,omitempty" type:"Repeated"`
+	SubTableHead   []*string                                                                                `json:"sub_table_head,omitempty" xml:"sub_table_head,omitempty" type:"Repeated"`
+	TableHead      *string                                                                                  `json:"table_head,omitempty" xml:"table_head,omitempty"`
+	Title          *string                                                                                  `json:"title,omitempty" xml:"title,omitempty"`
+	Type           *int32                                                                                   `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetExtraContents(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.ExtraContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetIndex(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetRefundSubItems(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.RefundSubItems = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetSubTableHead(v []*string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.SubTableHead = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetTableHead(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.TableHead = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Title = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem) SetType(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItem {
+	s.Type = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemExtraContents {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems struct {
+	IsStruct          *bool                                                                                                     `json:"is_struct,omitempty" xml:"is_struct,omitempty"`
+	Ptc               *string                                                                                                   `json:"ptc,omitempty" xml:"ptc,omitempty"`
+	RefundSubContents []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents `json:"refund_sub_contents,omitempty" xml:"refund_sub_contents,omitempty" type:"Repeated"`
+	Title             *string                                                                                                   `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetIsStruct(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.IsStruct = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetPtc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Ptc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetRefundSubContents(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.RefundSubContents = v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItems {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents struct {
+	FeeDesc  *string `json:"fee_desc,omitempty" xml:"fee_desc,omitempty"`
+	FeeRange *string `json:"fee_range,omitempty" xml:"fee_range,omitempty"`
+	Style    *int32  `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeDesc(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeDesc = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetFeeRange(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.FeeRange = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents) SetStyle(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRefundSubItemsRefundSubContents {
+	s.Style = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule struct {
+	Able *bool                                                                    `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListSignRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule struct {
+	Able *bool                                                                       `json:"able,omitempty" xml:"able,omitempty"`
+	Info []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo `json:"info,omitempty" xml:"info,omitempty" type:"Repeated"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) SetAble(v bool) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule {
+	s.Able = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule) SetInfo(v []*FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRule {
+	s.Info = v
+	return s
+}
+
+type FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	Cost        *int32  `json:"cost,omitempty" xml:"cost,omitempty"`
+	CostPercent *int32  `json:"cost_percent,omitempty" xml:"cost_percent,omitempty"`
+	TimeStamp   *int32  `json:"time_stamp,omitempty" xml:"time_stamp,omitempty"`
+	TimeType    *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
+	Title       *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetContent(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetCost(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Cost = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetCostPercent(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.CostPercent = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTimeStamp(v int32) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTimeType(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.TimeType = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo) SetTitle(v string) *FlightOtaSearchResponseBodyModuleFlightListFlightRuleListUpgradeRuleInfo {
+	s.Title = &v
+	return s
+}
+
+type FlightOtaSearchResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FlightOtaSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FlightOtaSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightOtaSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FlightOtaSearchResponse) SetHeaders(v map[string]*string) *FlightOtaSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FlightOtaSearchResponse) SetStatusCode(v int32) *FlightOtaSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FlightOtaSearchResponse) SetBody(v *FlightOtaSearchResponseBody) *FlightOtaSearchResponse {
 	s.Body = v
 	return s
 }
@@ -21587,6 +25405,136 @@ func (s *InvoiceSearchResponse) SetStatusCode(v int32) *InvoiceSearchResponse {
 }
 
 func (s *InvoiceSearchResponse) SetBody(v *InvoiceSearchResponseBody) *InvoiceSearchResponse {
+	s.Body = v
+	return s
+}
+
+type IsvRuleSaveHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s IsvRuleSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveHeaders) SetCommonHeaders(v map[string]*string) *IsvRuleSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IsvRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *IsvRuleSaveHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type IsvRuleSaveRequest struct {
+	BookType *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
+	Status   *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s IsvRuleSaveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveRequest) SetBookType(v string) *IsvRuleSaveRequest {
+	s.BookType = &v
+	return s
+}
+
+func (s *IsvRuleSaveRequest) SetStatus(v int32) *IsvRuleSaveRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *IsvRuleSaveRequest) SetUserId(v string) *IsvRuleSaveRequest {
+	s.UserId = &v
+	return s
+}
+
+type IsvRuleSaveResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module    *string `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IsvRuleSaveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveResponseBody) SetCode(v string) *IsvRuleSaveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponseBody) SetMessage(v string) *IsvRuleSaveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponseBody) SetModule(v string) *IsvRuleSaveResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponseBody) SetRequestId(v string) *IsvRuleSaveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponseBody) SetSuccess(v bool) *IsvRuleSaveResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponseBody) SetTraceId(v string) *IsvRuleSaveResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IsvRuleSaveResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IsvRuleSaveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IsvRuleSaveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveResponse) SetHeaders(v map[string]*string) *IsvRuleSaveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IsvRuleSaveResponse) SetStatusCode(v int32) *IsvRuleSaveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IsvRuleSaveResponse) SetBody(v *IsvRuleSaveResponseBody) *IsvRuleSaveResponse {
 	s.Body = v
 	return s
 }
@@ -30946,6 +34894,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		body["depart_name"] = request.DepartName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtendField)) {
+		body["extend_field"] = request.ExtendField
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExternalTravelerListShrink)) {
 		body["external_traveler_list"] = request.ExternalTravelerListShrink
 	}
@@ -31381,6 +35333,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.DepartName)) {
 		body["depart_name"] = request.DepartName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendField)) {
+		body["extend_field"] = request.ExtendField
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExternalTravelerListShrink)) {
@@ -33509,6 +37465,77 @@ func (client *Client) FlightItineraryScanQuery(request *FlightItineraryScanQuery
 	return _result, _err
 }
 
+func (client *Client) FlightListingSearchWithOptions(request *FlightListingSearchRequest, headers *FlightListingSearchHeaders, runtime *util.RuntimeOptions) (_result *FlightListingSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AirlineCode)) {
+		query["airline_code"] = request.AirlineCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArrCityCode)) {
+		query["arr_city_code"] = request.ArrCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CabinClass)) {
+		query["cabin_class"] = request.CabinClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepCityCode)) {
+		query["dep_city_code"] = request.DepCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepDate)) {
+		query["dep_date"] = request.DepDate
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightListingSearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/flight/action/listing-search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightListingSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightListingSearch(request *FlightListingSearchRequest) (_result *FlightListingSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightListingSearchHeaders{}
+	_result = &FlightListingSearchResponse{}
+	_body, _err := client.FlightListingSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) FlightOrderDetailInfoWithOptions(request *FlightOrderDetailInfoRequest, headers *FlightOrderDetailInfoHeaders, runtime *util.RuntimeOptions) (_result *FlightOrderDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33711,6 +37738,85 @@ func (client *Client) FlightOrderQuery(request *FlightOrderQueryRequest) (_resul
 	headers := &FlightOrderQueryHeaders{}
 	_result = &FlightOrderQueryResponse{}
 	_body, _err := client.FlightOrderQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FlightOtaSearchWithOptions(request *FlightOtaSearchRequest, headers *FlightOtaSearchHeaders, runtime *util.RuntimeOptions) (_result *FlightOtaSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AirlineCode)) {
+		query["airline_code"] = request.AirlineCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArrCityCode)) {
+		query["arr_city_code"] = request.ArrCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CabinClass)) {
+		query["cabin_class"] = request.CabinClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CarrierFlightNo)) {
+		query["carrier_flight_no"] = request.CarrierFlightNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepCityCode)) {
+		query["dep_city_code"] = request.DepCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DepDate)) {
+		query["dep_date"] = request.DepDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlightNo)) {
+		query["flight_no"] = request.FlightNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FlightOtaSearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-flight/v1/flight/action/ota-search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FlightOtaSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FlightOtaSearch(request *FlightOtaSearchRequest) (_result *FlightOtaSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &FlightOtaSearchHeaders{}
+	_result = &FlightOtaSearchResponse{}
+	_body, _err := client.FlightOtaSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34832,6 +38938,69 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 	headers := &InvoiceSearchHeaders{}
 	_result = &InvoiceSearchResponse{}
 	_body, _err := client.InvoiceSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IsvRuleSaveWithOptions(request *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BookType)) {
+		body["book_type"] = request.BookType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IsvRuleSave"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/rule"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IsvRuleSaveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IsvRuleSave(request *IsvRuleSaveRequest) (_result *IsvRuleSaveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IsvRuleSaveHeaders{}
+	_result = &IsvRuleSaveResponse{}
+	_body, _err := client.IsvRuleSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
