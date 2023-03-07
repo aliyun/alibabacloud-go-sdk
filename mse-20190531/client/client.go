@@ -17402,6 +17402,8 @@ type ImportServicesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	FcServiceName  *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
+	FcVersion      *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The information about services.
@@ -17433,6 +17435,16 @@ func (s ImportServicesRequest) GoString() string {
 
 func (s *ImportServicesRequest) SetAcceptLanguage(v string) *ImportServicesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ImportServicesRequest) SetFcServiceName(v string) *ImportServicesRequest {
+	s.FcServiceName = &v
+	return s
+}
+
+func (s *ImportServicesRequest) SetFcVersion(v string) *ImportServicesRequest {
+	s.FcVersion = &v
 	return s
 }
 
@@ -17515,6 +17527,8 @@ type ImportServicesShrinkRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	FcServiceName  *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
+	FcVersion      *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The information about services.
@@ -17546,6 +17560,16 @@ func (s ImportServicesShrinkRequest) GoString() string {
 
 func (s *ImportServicesShrinkRequest) SetAcceptLanguage(v string) *ImportServicesShrinkRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ImportServicesShrinkRequest) SetFcServiceName(v string) *ImportServicesShrinkRequest {
+	s.FcServiceName = &v
+	return s
+}
+
+func (s *ImportServicesShrinkRequest) SetFcVersion(v string) *ImportServicesShrinkRequest {
+	s.FcVersion = &v
 	return s
 }
 
@@ -44595,6 +44619,14 @@ func (client *Client) ImportServicesWithOptions(tmpReq *ImportServicesRequest, r
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FcServiceName)) {
+		query["FcServiceName"] = request.FcServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FcVersion)) {
+		query["FcVersion"] = request.FcVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
