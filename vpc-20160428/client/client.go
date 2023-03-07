@@ -17131,6 +17131,8 @@ func (s *DeleteVirtualBorderRouterResponse) SetBody(v *DeleteVirtualBorderRouter
 }
 
 type DeleteVpcRequest struct {
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	ForceDelete          *bool   `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -17145,6 +17147,16 @@ func (s DeleteVpcRequest) String() string {
 
 func (s DeleteVpcRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteVpcRequest) SetDryRun(v bool) *DeleteVpcRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteVpcRequest) SetForceDelete(v bool) *DeleteVpcRequest {
+	s.ForceDelete = &v
+	return s
 }
 
 func (s *DeleteVpcRequest) SetOwnerAccount(v string) *DeleteVpcRequest {
@@ -21626,7 +21638,7 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag) SetValue(v string) 
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath struct {
-	TrafficPathList []*string `json:"trafficPathList,omitempty" xml:"trafficPathList,omitempty" type:"Repeated"`
+	TrafficPathList []*string `json:"TrafficPathList,omitempty" xml:"TrafficPathList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath) String() string {
@@ -68638,6 +68650,14 @@ func (client *Client) DeleteVpcWithOptions(request *DeleteVpcRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceDelete)) {
+		query["ForceDelete"] = request.ForceDelete
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
