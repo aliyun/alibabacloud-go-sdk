@@ -7814,6 +7814,7 @@ func (s *DeleteQualityRuleResponse) SetBody(v *DeleteQualityRuleResponseBody) *D
 }
 
 type DeleteRemindRequest struct {
+	// The ID of the custom alert rule.
 	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
 }
 
@@ -7831,12 +7832,18 @@ func (s *DeleteRemindRequest) SetRemindId(v int64) *DeleteRemindRequest {
 }
 
 type DeleteRemindResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the custom alert rule is deleted. Valid values: true and false. The value true indicates that the custom alert rule is deleted. The value false indicates that the custom alert rule fails to be deleted.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteRemindResponseBody) String() string {
@@ -44545,6 +44552,105 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 	return s
 }
 
+type SubmitDataServiceApiRequest struct {
+	ApiId     *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TenantId  *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s SubmitDataServiceApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDataServiceApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDataServiceApiRequest) SetApiId(v int64) *SubmitDataServiceApiRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiRequest) SetProjectId(v int64) *SubmitDataServiceApiRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiRequest) SetTenantId(v int64) *SubmitDataServiceApiRequest {
+	s.TenantId = &v
+	return s
+}
+
+type SubmitDataServiceApiResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitDataServiceApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDataServiceApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDataServiceApiResponseBody) SetData(v bool) *SubmitDataServiceApiResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponseBody) SetErrorCode(v string) *SubmitDataServiceApiResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponseBody) SetHttpStatusCode(v int32) *SubmitDataServiceApiResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponseBody) SetRequestId(v string) *SubmitDataServiceApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponseBody) SetSuccess(v bool) *SubmitDataServiceApiResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitDataServiceApiResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDataServiceApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDataServiceApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDataServiceApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDataServiceApiResponse) SetHeaders(v map[string]*string) *SubmitDataServiceApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponse) SetStatusCode(v int32) *SubmitDataServiceApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDataServiceApiResponse) SetBody(v *SubmitDataServiceApiResponseBody) *SubmitDataServiceApiResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitFileRequest struct {
 	// The description of the commit operation.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -45414,6 +45520,7 @@ func (s *TopTenElapsedTimeInstanceResponse) SetBody(v *TopTenElapsedTimeInstance
 }
 
 type TopTenErrorTimesInstanceRequest struct {
+	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the ID.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -45431,8 +45538,10 @@ func (s *TopTenErrorTimesInstanceRequest) SetProjectId(v int64) *TopTenErrorTime
 }
 
 type TopTenErrorTimesInstanceResponseBody struct {
+	// The ranking of nodes on which errors occur.
 	InstanceErrorRank *TopTenErrorTimesInstanceResponseBodyInstanceErrorRank `json:"InstanceErrorRank,omitempty" xml:"InstanceErrorRank,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TopTenErrorTimesInstanceResponseBody) String() string {
@@ -45454,8 +45563,10 @@ func (s *TopTenErrorTimesInstanceResponseBody) SetRequestId(v string) *TopTenErr
 }
 
 type TopTenErrorTimesInstanceResponseBodyInstanceErrorRank struct {
-	ErrorRank  []*TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank `json:"ErrorRank,omitempty" xml:"ErrorRank,omitempty" type:"Repeated"`
-	UpdateTime *int64                                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ranking of nodes on which errors occur within the last month.
+	ErrorRank []*TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank `json:"ErrorRank,omitempty" xml:"ErrorRank,omitempty" type:"Repeated"`
+	// The time when the ranking was updated.
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s TopTenErrorTimesInstanceResponseBodyInstanceErrorRank) String() string {
@@ -45477,12 +45588,22 @@ func (s *TopTenErrorTimesInstanceResponseBodyInstanceErrorRank) SetUpdateTime(v 
 }
 
 type TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	NodeId      *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProgramType *int32  `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The number of errors that occur on the node.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The ID of the node.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The user identifier (UID) of the Alibaba Cloud account used by the owner of the node.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The type of the node.
+	//
+	// Valid values:
+	//
+	// 6 (Shell node), 10 (ODPS SQL node), 11 (ODPS MR node), 23 (Data Integration node), 24 (ODPS Script node), 99 (zero load node), 221 (PyODPS 2 node), 225 (ODPS Spark node), 227 (EMR Hive node), 228 (EMR Spark node), 229 (EMR Spark SQL node), 230 (EMR MR node), 239 (OSS object inspection node), 257 (EMR Shell node), 258 (EMR Spark Shell node), 259 (EMR Presto node), 260 (EMR Impala node), 900 (real-time data synchronization node), 1089 (cross-tenant collaboration node), 1091 (Hologres development node), 1093 (Hologres SQL node), 1100 (assignment node), and 1221 (PyODPS 3 node).
+	ProgramType *int32 `json:"ProgramType,omitempty" xml:"ProgramType,omitempty"`
+	// The ID of the DataWorks workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank) String() string {
@@ -48123,9 +48244,12 @@ func (s *UpdateMetaTableIntroWikiResponse) SetBody(v *UpdateMetaTableIntroWikiRe
 }
 
 type UpdateNodeOwnerRequest struct {
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The ID of the node. You can call the [ListNodes](~~173979~~) operation to query the ID.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The environment where the node runs. Valid values: DEV and PROD. The value DEV indicates the development environment. The value PROD indicates the production environment.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Alibaba Cloud account ID of the node owner. You can log on to the DataWorks console and move the pointer over the profile picture in the upper-right corner to view the ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateNodeOwnerRequest) String() string {
@@ -48152,8 +48276,13 @@ func (s *UpdateNodeOwnerRequest) SetUserId(v string) *UpdateNodeOwnerRequest {
 }
 
 type UpdateNodeOwnerResponseBody struct {
+	// The ID of the request. You can use the ID to obtain logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: indicates that the request is successful.
+	// *   false: indicates that the request fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateNodeOwnerResponseBody) String() string {
@@ -48417,26 +48546,66 @@ func (s *UpdateQualityFollowerResponse) SetBody(v *UpdateQualityFollowerResponse
 }
 
 type UpdateQualityRuleRequest struct {
-	BlockType         *int32  `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	Checker           *int32  `json:"Checker,omitempty" xml:"Checker,omitempty"`
-	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The strength of the monitoring rule. The strength of a monitoring rule indicates the importance of the rule. Valid values:
+	//
+	// *   1: indicates that the monitoring rule is a strong rule.
+	//
+	// *   0: indicates that the monitoring rule is a weak rule.
+	//
+	//     You can specify whether a monitoring rule is a strong rule based on your business requirements. If a strong rule is used and a critical alert is triggered, nodes are blocked.
+	BlockType *int32 `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// The ID of the checker. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the checker.
+	Checker *int32 `json:"Checker,omitempty" xml:"Checker,omitempty"`
+	// The description of the monitoring rule.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The threshold for a critical alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements. If a strong rule is used and an error alert is triggered, nodes are blocked.
 	CriticalThreshold *string `json:"CriticalThreshold,omitempty" xml:"CriticalThreshold,omitempty"`
-	EntityId          *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	ExpectValue       *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	MethodName        *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
-	OpenSwitch        *bool   `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
-	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	PredictType       *int32  `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
-	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Property          *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	PropertyType      *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	RuleName          *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleType          *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	TemplateId        *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Trend             *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
-	WarningThreshold  *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
-	WhereCondition    *string `json:"WhereCondition,omitempty" xml:"WhereCondition,omitempty"`
+	// The ID of the partition filter expression. You can call the [GetQualityEntity](~~173995~~) operation to obtain the ID of the partition filter expression.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The expected value of the monitoring result.
+	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
+	// The ID of the monitoring rule. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method that is used to collect sample data, such as avg, count, sum, min, max, count_distinct, user_defined, table_count, table_size, table_dt_load_count, table_dt_refuseload_count, null_value, null_value/table_count, (table_count-count_distinct)/table_count, or table_count-count_distinct.
+	MethodName *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	// Specifies whether to enable the monitoring rule in the production environment.
+	//
+	// *   true: The monitoring rule is triggered when the associated auto triggered node that generates the output data starts to run.
+	// *   false: The monitoring rule is not triggered when the associated auto triggered node that generates the output data starts to run.
+	OpenSwitch *bool `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
+	// The comparison operator, such as >, >=, =, ≠, <, or <=.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Specifies whether the threshold is a dynamic threshold. Valid values:
+	//
+	// *   0: indicates that the threshold is not a dynamic threshold.
+	// *   2: indicates that the threshold is a dynamic threshold.
+	PredictType *int32 `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
+	// The name of the compute engine instance or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The name of the field to be monitored.
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The data type of the field.
+	PropertyType *string `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
+	// The name of the monitoring rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the monitoring rule. Valid values:
+	//
+	// *   0: The monitoring rule is created by the system.
+	// *   1: The monitoring rule is created by a user.
+	// *   2: The monitoring rule is a workspace-level rule.
+	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The ID of the monitoring template. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring template that is used to create the monitoring rule.
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The trend of the monitoring result. Valid values:
+	//
+	// *   up: increasing
+	// *   down: decreasing
+	// *   abs: absolute value
+	Trend *string `json:"Trend,omitempty" xml:"Trend,omitempty"`
+	// The threshold for a warning alert. The threshold indicates the deviation of the monitoring result from the expected value. You can customize this threshold based on your business requirements.
+	WarningThreshold *string `json:"WarningThreshold,omitempty" xml:"WarningThreshold,omitempty"`
+	// The filter condition or custom SQL statement that is used for monitoring.
+	WhereCondition *string `json:"WhereCondition,omitempty" xml:"WhereCondition,omitempty"`
 }
 
 func (s UpdateQualityRuleRequest) String() string {
@@ -48548,12 +48717,18 @@ func (s *UpdateQualityRuleRequest) SetWhereCondition(v string) *UpdateQualityRul
 }
 
 type UpdateQualityRuleResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the monitoring rule is updated.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can troubleshoot issues based on the ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateQualityRuleResponseBody) String() string {
@@ -48624,24 +48799,95 @@ func (s *UpdateQualityRuleResponse) SetBody(v *UpdateQualityRuleResponseBody) *U
 }
 
 type UpdateRemindRequest struct {
-	AlertInterval *int32  `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
-	AlertMethods  *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
-	AlertTargets  *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
-	AlertUnit     *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
-	BaselineIds   *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
+	// The intervals at which alert notifications are sent. Unit: seconds. Minimum value: 1200. Default value: 1800.
+	AlertInterval *int32 `json:"AlertInterval,omitempty" xml:"AlertInterval,omitempty"`
+	// The notification method. Valid values:
+	//
+	// *   MAIL: Alert notifications are sent by emails.
+	// *   SMS: Alert notifications are sent by text messages.
+	// *   PHONE: Alert notifications are sent by phone calls. You can use this notification method only in DataWorks Professional Edition or more advanced editions.
+	// *   DINGROBOTS: Alert notifications are sent by DingTalk messages. You can use this notification method only if the RobotUrls parameter is configured.
+	// *   WEBHOOKS (WeCom or Lark chatbot): Alert notifications are sent by WeCom or Lark messages. If you want to use this notification method, you must configure the Webhooks parameter.
+	//
+	// You can specify multiple notification methods. Separate the specified notification methods with commas (,).
+	AlertMethods *string `json:"AlertMethods,omitempty" xml:"AlertMethods,omitempty"`
+	// The value format required by this parameter varies based on the value that you specify for the AlertUnit parameter. Take note of the following items:
+	//
+	// *   If the AlertUnit parameter is set to OWNER, leave this parameter empty.
+	// *   If the AlertUnit parameter is set to OTHER, set this parameter to the unique ID (UID) of the specified user. You can specify multiple IDs. Separate them with commas (,). You can specify a maximum of 10 IDs.
+	AlertTargets *string `json:"AlertTargets,omitempty" xml:"AlertTargets,omitempty"`
+	// The recipient to whom alert notifications are sent. Valid values: OWNER and OTHER. The value OWNER indicates that alert notifications are sent to the object owner. The value OTHER indicates that alert notifications are sent to a specified user.
+	AlertUnit *string `json:"AlertUnit,omitempty" xml:"AlertUnit,omitempty"`
+	// The ID of the baseline to which the custom alert rule is applied.. An alert rule can monitor a maximum of five baselines. Separate multiple IDs with commas (,).
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to BASELINE.
+	BaselineIds *string `json:"BaselineIds,omitempty" xml:"BaselineIds,omitempty"`
+	// The ID of the workflow to which the custom alert rule is applied.. An alert rule can monitor a maximum of five workflows. Separate multiple IDs with commas (,).
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to BIZPROCESS.
 	BizProcessIds *string `json:"BizProcessIds,omitempty" xml:"BizProcessIds,omitempty"`
-	Detail        *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	DndEnd        *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
-	MaxAlertTimes *int32  `json:"MaxAlertTimes,omitempty" xml:"MaxAlertTimes,omitempty"`
-	NodeIds       *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RemindId      *int64  `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
-	RemindName    *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
-	RemindType    *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
-	RemindUnit    *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
-	RobotUrls     *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
-	UseFlag       *bool   `json:"UseFlag,omitempty" xml:"UseFlag,omitempty"`
-	Webhooks      *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
+	// The details of the conditions that trigger an alert.
+	//
+	// *   If the RemindType parameter is set to FINISHED, leave this parameter empty.
+	//
+	// *   If the RemindType parameter is set to UNFINISHED, set this parameter to key-value pairs. Example: {"hour":23,"minu":59}. Valid values of hour: 0 to 47. Valid values of minu: 0 to 59.
+	//
+	// *   If the RemindType parameter is set to ERROR, leave this parameter empty.
+	//
+	// *   If the RemindType parameter is set to CYCLE_UNFINISHED, set this parameter to key-value pairs in the JSON format. Example: {"1":"05:50","2":"06:50","3":"07:50","4":"08:50","5":"09:50","6":"10:50","7":"11:50","8":"12:50","9":"13:50","10":"14:50","11":"15:50","12":"16:50","13":"17:50","14":"18:50","15":"19:50","16":"20:50","17":"21:50","18":"22:50","19":"23:50","20":"24:50","21":"25:50"}.
+	//
+	//     A key in the JSON string indicates the sequence number of a cycle. Valid values of keys: 1 to 288. A value in the JSON string indicates the time in point when a monitored instance times out in the relevant cycle. Values must be in the format of hh:mm. Valid values of hh: 0 to 47. Valid values of mm: 0 to 59.
+	//
+	// *   If the RemindType parameter is set to TIMEOUT, set this parameter to the timeout period. Unit: seconds. Example: 1800. This indicates that an alert notification is sent if the duration of a monitored instance exceeds 30 minutes.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The end of the period during which no alert notifications are sent. Specify the time in the hh:mm format. Valid values of hh: 0 to 23. Valid values of mm: 0 to 59.
+	DndEnd *string `json:"DndEnd,omitempty" xml:"DndEnd,omitempty"`
+	// The maximum number of alerts. Valid values: 1 to 10. Default value: 3.
+	MaxAlertTimes *int32 `json:"MaxAlertTimes,omitempty" xml:"MaxAlertTimes,omitempty"`
+	// The ID of the node to which the custom alert rule is applied.. An alert rule can monitor a maximum of 50 nodes. Separate multiple IDs with commas (,).
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to NODE.
+	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// The ID of the workspace to which the custom alert rule is applied.. Only one workspace can be specified for a custom alert rule.
+	//
+	// This parameter takes effect when you set the RemindUnit parameter to PROJECT.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the custom alert rule.
+	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
+	// The name of the custom alert rule. The name must be 1 to 128 characters in length.
+	RemindName *string `json:"RemindName,omitempty" xml:"RemindName,omitempty"`
+	// The condition that triggers the alert rule. Valid values:
+	//
+	// *   FINISHED: The system monitors an instance when it starts to run and sends an alert notification after the running of the instance is complete.
+	// *   UNFINISHED: The system monitors an instance when it starts to run and sends an alert notification if the instance is still running at the specified point in time.
+	// *   ERROR: The system monitors an instance when it starts to run and sends an alert notification if an error occurs.
+	// *   CYCLE_UNFINISHED: The system sends an alert notification if a monitored instance is still running at the end of the specified cycle. In most cases, you can configure this trigger condition for node instances that are scheduled to run by hour.
+	// *   TIMEOUT: The system monitors an instance when it starts to run and sends an alert notification if the instance is still running after the specified period ends. In most cases, you can configure this trigger condition to monitor the duration of node instances.
+	//
+	// For more information, see [Manage custom alert rules](~~138172~~).
+	RemindType *string `json:"RemindType,omitempty" xml:"RemindType,omitempty"`
+	// The type of the object to which the custom alert rule is applied.. Valid values:
+	//
+	// *   NODE: node
+	// *   BASELINE: baseline
+	// *   PROJECT: workspace
+	// *   BIZPROCESS: workflow
+	RemindUnit *string `json:"RemindUnit,omitempty" xml:"RemindUnit,omitempty"`
+	// The webhook URL of the DingTalk chatbot. You can specify multiple webhook URLs. Separate them with commas (,).
+	//
+	// If this parameter is set to undefined, the specified webhook URLs are cleared.
+	RobotUrls *string `json:"RobotUrls,omitempty" xml:"RobotUrls,omitempty"`
+	// Specifies whether to enable the alert rule. Valid values:
+	//
+	// *   true: enables the alert rule.
+	// *   false: disables the alert rule.
+	UseFlag *bool `json:"UseFlag,omitempty" xml:"UseFlag,omitempty"`
+	// The webhook URL of the WeCom or Lark chatbot. You can specify multiple webhook URLs. Separate the specified webhook URLs with commas (,). The WEBHOOKS notification method must be specified for alertMethods. If this parameter is set to undefined, the specified webhook URLs are cleared.
+	//
+	// Only DataWorks Enterprise Edition supports this parameter.
+	//
+	// The webhook URL-based alerting feature is supported in the following regions: China (Shanghai), China (Chengdu), China (Zhangjiakou), China (Beijing), China (Hangzhou), China (Shenzhen), China (Hong Kong), Germany (Frankfurt), and Singapore.
+	Webhooks *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 
 func (s UpdateRemindRequest) String() string {
@@ -48743,12 +48989,21 @@ func (s *UpdateRemindRequest) SetWebhooks(v string) *UpdateRemindRequest {
 }
 
 type UpdateRemindResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the modification to the custom alert rule succeeds.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateRemindResponseBody) String() string {
@@ -63054,6 +63309,58 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInstanceResponse{}
 	_body, _err := client.StopInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDataServiceApiWithOptions(request *SubmitDataServiceApiRequest, runtime *util.RuntimeOptions) (_result *SubmitDataServiceApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDataServiceApi"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDataServiceApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDataServiceApi(request *SubmitDataServiceApiRequest) (_result *SubmitDataServiceApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDataServiceApiResponse{}
+	_body, _err := client.SubmitDataServiceApiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
