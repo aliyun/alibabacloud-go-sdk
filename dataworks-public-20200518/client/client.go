@@ -43342,6 +43342,111 @@ func (s *RunTriggerNodeResponse) SetBody(v *RunTriggerNodeResponseBody) *RunTrig
 	return s
 }
 
+type SaveDataServiceApiTestResultRequest struct {
+	ApiId            *int64  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AutoGenerate     *bool   `json:"AutoGenerate,omitempty" xml:"AutoGenerate,omitempty"`
+	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
+	ProjectId        *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ResultSample     *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+}
+
+func (s SaveDataServiceApiTestResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDataServiceApiTestResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDataServiceApiTestResultRequest) SetApiId(v int64) *SaveDataServiceApiTestResultRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultRequest) SetAutoGenerate(v bool) *SaveDataServiceApiTestResultRequest {
+	s.AutoGenerate = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultRequest) SetFailResultSample(v string) *SaveDataServiceApiTestResultRequest {
+	s.FailResultSample = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultRequest) SetProjectId(v int64) *SaveDataServiceApiTestResultRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultRequest) SetResultSample(v string) *SaveDataServiceApiTestResultRequest {
+	s.ResultSample = &v
+	return s
+}
+
+type SaveDataServiceApiTestResultResponseBody struct {
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveDataServiceApiTestResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDataServiceApiTestResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDataServiceApiTestResultResponseBody) SetData(v bool) *SaveDataServiceApiTestResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultResponseBody) SetHttpStatusCode(v int32) *SaveDataServiceApiTestResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultResponseBody) SetRequestId(v string) *SaveDataServiceApiTestResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultResponseBody) SetSuccess(v bool) *SaveDataServiceApiTestResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveDataServiceApiTestResultResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveDataServiceApiTestResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveDataServiceApiTestResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveDataServiceApiTestResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveDataServiceApiTestResultResponse) SetHeaders(v map[string]*string) *SaveDataServiceApiTestResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultResponse) SetStatusCode(v int32) *SaveDataServiceApiTestResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveDataServiceApiTestResultResponse) SetBody(v *SaveDataServiceApiTestResultResponseBody) *SaveDataServiceApiTestResultResponse {
+	s.Body = v
+	return s
+}
+
 type ScanSensitiveDataRequest struct {
 	// The data that you want to check.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
@@ -62794,6 +62899,66 @@ func (client *Client) RunTriggerNode(request *RunTriggerNodeRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RunTriggerNodeResponse{}
 	_body, _err := client.RunTriggerNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveDataServiceApiTestResultWithOptions(request *SaveDataServiceApiTestResultRequest, runtime *util.RuntimeOptions) (_result *SaveDataServiceApiTestResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoGenerate)) {
+		body["AutoGenerate"] = request.AutoGenerate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
+		body["FailResultSample"] = request.FailResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
+		body["ResultSample"] = request.ResultSample
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveDataServiceApiTestResult"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveDataServiceApiTestResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveDataServiceApiTestResult(request *SaveDataServiceApiTestResultRequest) (_result *SaveDataServiceApiTestResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveDataServiceApiTestResultResponse{}
+	_body, _err := client.SaveDataServiceApiTestResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
