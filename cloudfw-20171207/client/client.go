@@ -685,7 +685,7 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
 	// The ID of the region to which the VPC belongs.
 	//
-	// >  For more information about the regions, see [Supported regions](~~195657~~).
+	// > For more information about the regions, see [Supported regions](~~195657~~).
 	VpcRegion *string `json:"VpcRegion,omitempty" xml:"VpcRegion,omitempty"`
 }
 
@@ -1433,7 +1433,7 @@ type DeleteVpcFirewallCenConfigureRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The list of VPC firewall IDs.
+	// The instance IDs of VPC firewalls.
 	VpcFirewallIdList []*string `json:"VpcFirewallIdList,omitempty" xml:"VpcFirewallIdList,omitempty" type:"Repeated"`
 }
 
@@ -1508,14 +1508,14 @@ func (s *DeleteVpcFirewallCenConfigureResponse) SetBody(v *DeleteVpcFirewallCenC
 }
 
 type DeleteVpcFirewallConfigureRequest struct {
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The list of the VPC firewall IDs.
+	// The instance IDs of VPC firewalls.
 	VpcFirewallIdList []*string `json:"VpcFirewallIdList,omitempty" xml:"VpcFirewallIdList,omitempty" type:"Repeated"`
 }
 
@@ -4857,7 +4857,7 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **in**: inbound
 	// *   **out**: outbound
 	//
-	// > If you do not specify this parameter, the intrusion events in both inbound and outbound directions are queried.
+	// > If you do not specify this parameter, the intrusion events that are recorded for both inbound and outbound traffic are queried.
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
@@ -4882,7 +4882,7 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **true**: does not query the information about the geographical locations of IP addresses.
 	// *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
 	NoLocation *string `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
-	// The order in which you want to sort the query results. Valid values:
+	// The order in which you want to sort the results. Valid values:
 	//
 	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
@@ -4896,7 +4896,7 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **1**: alerting
 	// *   **2**: blocking
 	//
-	// > If you do not specify this parameter, the intrusion events that are detected by firewalls in both states are queried.
+	// > If you do not specify this parameter, all intrusion events that are detected by the firewall are queried, regardless of the firewall status.
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	// The module of the rule that is used to detect the intrusion events. Valid values:
 	//
@@ -4904,9 +4904,9 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **2**: virtual patching
 	// *   **4**: threat intelligence
 	//
-	// > If you do not specify this parameter, the intrusion events that are detected by using all rules are queried.
+	// > If you do not specify this parameter, the intrusion events that are detected by all rules are queried.
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The field based on which the results are sorted. Valid values:
+	// The field based on which you want to sort the results. Valid values:
 	//
 	// *   **VulLevel**: The results are sorted based on the risk level field. This is the default value.
 	// *   **LastTime**: The results are sorted based on the most recent occurrence time.
@@ -5047,7 +5047,7 @@ type DescribeRiskEventGroupResponseBody struct {
 	DataList []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of intrusion events.
+	// The total number of risk events.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5095,7 +5095,7 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The description of the intrusion event.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The direction of the traffic for the intrusion events. Valid values:
+	// The direction of the traffic for the intrusion event. Valid values:
 	//
 	// *   **in**: inbound
 	// *   **out**: outbound
@@ -5110,12 +5110,12 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The time when the intrusion event was first detected. The value is a UNIX timestamp. Unit: seconds.
 	FirstEventTime *int32 `json:"FirstEventTime,omitempty" xml:"FirstEventTime,omitempty"`
-	// The information about the geographical location of the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
+	// The geographical information about the IP address. The value is a struct that contains the following parameters: **CityId**, **CityName**, **CountryId**, and **CountryName**.\
 	// ****************
 	IPLocationInfo *DescribeRiskEventGroupResponseBodyDataListIPLocationInfo `json:"IPLocationInfo,omitempty" xml:"IPLocationInfo,omitempty" type:"Struct"`
 	// The time when the intrusion event was last detected. The value is a UNIX timestamp. Unit: seconds.
 	LastEventTime *int32 `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
-	// The information about the private IP address of the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
+	// The information about the private IP address in the intrusion event. The value is an array that contains the following parameters: **RegionNo**, **ResourceInstanceId**, **ResourceInstanceName**, and **ResourcePrivateIP**.\
 	// ****************
 	ResourcePrivateIPList []*DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList `json:"ResourcePrivateIPList,omitempty" xml:"ResourcePrivateIPList,omitempty" type:"Repeated"`
 	// The type of the public IP address in the intrusion event. Valid values:
@@ -5143,7 +5143,7 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
 	// The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
 	SrcIPTag *string `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
-	// The source private IP addresses of the intrusion event.
+	// An array that consists of the source private IP addresses in the intrusion event.
 	SrcPrivateIPList []*string `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
 	// The tag added to the threat intelligence that is provided for major events.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
@@ -5622,24 +5622,20 @@ func (s *DescribeUserAssetIPTrafficInfoResponse) SetBody(v *DescribeUserAssetIPT
 }
 
 type DescribeVpcFirewallAclGroupListRequest struct {
-	// The number of the page to return.
-	//
-	// Default value: 1.
+	// The number of the page to return. Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether VPC firewalls are configured. Valid values:
 	//
-	// - **notconfigured**: VPC firewalls are not configured.
-	// - **configured**: VPC firewalls are configured.
-	// - If this parameter is left empty, all policy groups of access control policies are queried.
+	// *   **notconfigured**: VPC firewalls are not configured.
+	// *   **configured**: VPC firewalls are configured.
+	// *   If this parameter is left empty, all policy groups of access control policies are queried.
 	FirewallConfigureStatus *string `json:"FirewallConfigureStatus,omitempty" xml:"FirewallConfigureStatus,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
-	// - **zh**: Chinese (default)
-	// - **en**: English
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Maximum value: 50.
+	// The number of entries to return on each page. Maximum value: 50.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5708,17 +5704,18 @@ type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
 	//
 	// Valid values:
 	//
-	// - If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
+	// *   If the VPC firewall is used to protect a Cloud Enterprise Network (CEN) instance, the value of this parameter is the ID of the CEN instance.
 	//
-	// Example: cen-ervw0g12b5jbw****
-	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
+	//     Example: cen-ervw0g12b5jbw\*\*\*\*
 	//
-	// Example: vfw-a42bbb7b887148c9****
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the ID of the VPC firewall instance.
+	//
+	//     Example: vfw-a42bbb7b887148c9\*\*\*\*
 	AclGroupId *string `json:"AclGroupId,omitempty" xml:"AclGroupId,omitempty"`
 	// The name of the policy group. Valid values:
 	//
-	// - If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
-	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
+	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter is the name of the CEN instance.
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
 	AclGroupName *string `json:"AclGroupName,omitempty" xml:"AclGroupName,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
@@ -5786,7 +5783,7 @@ type DescribeVpcFirewallCenDetailRequest struct {
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+	// > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -5875,11 +5872,11 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
 	// The name of the connection between two network instances.
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	// The CIDR blocks that are protected by the VPC firewall.
+	// An array consisting of the CIDR blocks that are protected by the VPC firewall.
 	DefendCidrList []*string `json:"DefendCidrList,omitempty" xml:"DefendCidrList,omitempty" type:"Repeated"`
-	// The Elastic Network Interfaces (ENIs).
+	// An array that consists of the elastic network interfaces (ENIs).
 	EniList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList `json:"EniList,omitempty" xml:"EniList,omitempty" type:"Repeated"`
-	// The ID of the vSwitch. The value of this parameter is returned only when the RouteMode parameter is set to manual.
+	// The ID of the specified vSwitch when the routing mode is manual.
 	ManualVSwitchId *string `json:"ManualVSwitchId,omitempty" xml:"ManualVSwitchId,omitempty"`
 	// The ID of the VPC for which the VPC firewall is created.
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
@@ -5893,10 +5890,10 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The routing mode. Valid values:
 	//
-	// *   auto
-	// *   manual
+	// *   auto: automatic mode
+	// *   manual: manual mode
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
-	// Indicates whether the routing mode can be set to manual. Valid values:
+	// Indicates whether the manual routing mode is supported. Valid values:
 	//
 	// *   **1**: yes
 	// *   **0**: no
@@ -5908,7 +5905,7 @@ type DescribeVpcFirewallCenDetailResponseBodyLocalVpc struct {
 	// *   **Basic**: Basic Edition
 	// *   **Enterprise**: Enterprise Edition
 	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
-	// The CIDR blocks of the VPC.
+	// An array that consists of the CIDR blocks of the VPC.
 	VpcCidrTableList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -6035,9 +6032,9 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList) SetEniPrivateI
 }
 
 type DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList struct {
-	// The route entries of the VPC.
+	// An array that consists of the route entries for the VPC.
 	RouteEntryList []*DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
-	// The ID of the route table for the VPC.
+	// The route table ID of the VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
 
@@ -6124,17 +6121,17 @@ type DescribeVpcFirewallCenListRequest struct {
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not created.
-	// *   **configured**: The VPC firewall is created but is not enabled.
+	// *   **notconfigured**: The VPC firewall is not configured.
+	// *   **configured**: The VPC firewall is configured but is not enabled.
 	//
-	// >  If you do not specify this parameter, VPC firewalls in all states are queried.
+	// > If you do not specify this parameter, VPC firewalls in all states are queried.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is manged by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
+	// The UID of the member that is managed by your Alibaba Cloud account. The member is also an Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The ID of the network instance.
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" xml:"NetworkInstanceId,omitempty"`
@@ -6145,14 +6142,14 @@ type DescribeVpcFirewallCenListRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPC.
 	//
-	// >  For more information about the regions, see [Supported regions](~~195657~~).
+	// > For more information about the regions, see [Supported regions](~~195657~~).
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The routing mode of the VPC firewall. Valid values:
 	//
 	// *   **auto**: automatic mode
 	// *   **manual**: manual mode
 	//
-	// >  If you do not specify this parameter, VPC firewalls in all routing modes are queried.
+	// > If you do not specify this parameter, VPC firewalls in all routing modes are queried.
 	RouteMode *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
 	// The type of the transit router. Valid values:
 	//
@@ -6243,7 +6240,7 @@ type DescribeVpcFirewallCenListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of VPC firewalls.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the VPC firewall.
+	// An array that consists of the details about the VPC firewall.
 	VpcFirewalls []*DescribeVpcFirewallCenListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -6281,7 +6278,7 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **notconfigured**: The VPC firewall is not configured.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	// The information about the intrusion prevention system (IPS) configuration.
 	IpsConfig *DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
@@ -6291,11 +6288,11 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// Indicates whether the VPC firewall can be automatically enabled to protect VPC traffic based on route learning. Valid values:
 	//
-	// - **passed**: The VPC firewall can be automatically enabled.
-	// - **failed**: The VPC firewall cannot be automatically enabled.
-	// - **unknown**: The VPC firewall is in an unknown state.
+	// *   **passed**: The VPC firewall can be automatically enabled.
+	// *   **failed**: The VPC firewall cannot be automatically enabled.
+	// *   **unknown**: The VPC firewall is in an unknown state.
 	PrecheckStatus *string `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
-	// Indicates whether you can create a VPC firewall in a region. Valid values:
+	// Indicates whether you can create a VPC firewall in a specified region. Valid values:
 	//
 	// *   **enable**: yes
 	// *   **disable**: no
@@ -6303,7 +6300,7 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
 	// The result code of the operation that creates the VPC firewall. Valid values:
 	//
 	// *   **Unauthorized**: Cloud Firewall is not authorized to access the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
-	// *   **RegionDisable**: .VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
+	// *   **RegionDisable**: VPC Firewall is not supported in the region of the VPC for which the VPC firewall is created, and the VPC firewall cannot be created.
 	// *   **OpsDisable**: You are not allowed to create the VPC firewall.
 	// *   **VbrNotSupport**: The VPC firewall cannot be created for a VBR that is attached to the CEN instance.
 	// *   Empty string: You can create a VPC firewall for the network instance.
@@ -6385,18 +6382,18 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetVpcFirewallName(
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig struct {
 	// Indicates whether basic protection is enabled. Valid values:
 	//
-	// - **1**: yes
-	// - **0**: no
+	// *   **1**: yes
+	// *   **0**: no
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
 	// Indicates whether virtual patching is enabled. Valid values:
 	//
-	// - **1**: yes
-	// - **0**: no
+	// *   **1**: yes
+	// *   **0**: no
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
-	// - **1**: block mode
-	// - **0**: monitor mode
+	// *   **1**: block mode
+	// *   **0**: monitor mode
 	RunMode *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
 }
 
@@ -6426,7 +6423,7 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig) SetRunMode
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc struct {
 	// Indicates whether the VPC is granted the required permissions. The value is fixed as **authorized**, which indicates that the VPC is granted the required permissions.
 	AuthorizationStatus *string `json:"AuthorizationStatus,omitempty" xml:"AuthorizationStatus,omitempty"`
-	// The CIDR blocks that are protected by the VPC firewall.
+	// An array consisting of the CIDR blocks that are protected by the VPC firewall.
 	DefendCidrList []*string `json:"DefendCidrList,omitempty" xml:"DefendCidrList,omitempty" type:"Repeated"`
 	// The ID of the specified vSwitch when the routing mode is manual.
 	ManualVSwitchId *string `json:"ManualVSwitchId,omitempty" xml:"ManualVSwitchId,omitempty"`
@@ -6454,12 +6451,12 @@ type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc struct {
 	// *   **1**: yes
 	// *   **0**: no
 	SupportManualMode *string `json:"SupportManualMode,omitempty" xml:"SupportManualMode,omitempty"`
-	// The type of the CEN transit router. Valid values:
+	// The edition of the CEN transit router. Valid values:
 	//
 	// *   **Basic**: Basic Edition transit router
 	// *   **Enterprise**: Enterprise Edition transit router
 	TransitRouterType *string `json:"TransitRouterType,omitempty" xml:"TransitRouterType,omitempty"`
-	// The CIDR block of the VPC.
+	// An array that consists of the CIDR blocks of the VPC.
 	VpcCidrTableList []*DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -6546,7 +6543,7 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc) SetVpcName(
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList struct {
-	// The route entries for the VPC.
+	// An array that consists of the route entries for the VPC.
 	RouteEntryList []*DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The route table ID of the VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
@@ -6573,7 +6570,7 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableL
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList struct {
 	// The destination CIDR block of the VPC.
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The instance ID for the next hop of the VPC.
+	// The instance ID of the next hop for the VPC.
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
 }
 
@@ -7517,10 +7514,10 @@ type DescribeVpcFirewallListRequest struct {
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not created.
-	// *   **configured**: The VPC firewall is created.
+	// *   **notconfigured**: The VPC firewall is not configured.
+	// *   **configured**: The VPC firewall is configured.
 	//
-	// >  If you do not specify this parameter, VPC firewalls in all states are queried.
+	// > If you do not specify this parameter, VPC firewalls in all states are queried.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
@@ -7537,7 +7534,7 @@ type DescribeVpcFirewallListRequest struct {
 	PeerUid *string `json:"PeerUid,omitempty" xml:"PeerUid,omitempty"`
 	// The region ID of the VPC.
 	//
-	// >  For more information about the regions, see [Supported regions](~~195657~~).
+	// > For more information about the regions, see [Supported regions](~~195657~~).
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
@@ -7615,7 +7612,7 @@ type DescribeVpcFirewallListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of VPC firewalls.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the VPC firewalls.
+	// An array that consists of the details about the VPC firewalls.
 	VpcFirewalls []*DescribeVpcFirewallListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -7656,7 +7653,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	//
 	// *   **opened**: The VPC firewall is enabled.
 	// *   **closed**: The VPC firewall is disabled.
-	// *   **notconfigured**: The VPC firewall is not created.
+	// *   **notconfigured**: The VPC firewall is not configured.
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
 	// The information about the intrusion prevention system (IPS) configuration.
 	IpsConfig *DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
@@ -7799,7 +7796,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the local VPC.
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The CIDR blocks of the local VPC.
+	// An array that consists of the CIDR blocks of the local VPC.
 	VpcCidrTableList []*DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The ID of the local VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -7846,7 +7843,7 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc) SetVpcName(v s
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList struct {
-	// The route entries of the local VPC.
+	// An array that consists of the route entries of the local VPC.
 	RouteEntryList []*DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The ID of the route table for the local VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
@@ -7902,7 +7899,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the peer VPC.
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The CIDR blocks of the peer VPC.
+	// An array that consists of the CIDR blocks of the peer VPC.
 	VpcCidrTableList []*DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The ID of the peer VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -7949,7 +7946,7 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc) SetVpcName(v st
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList struct {
-	// The route entries of the peer VPC.
+	// An array that consists of the route entries of the peer VPC.
 	RouteEntryList []*DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
 	// The ID of the route table for the peer VPC.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
@@ -9328,7 +9325,7 @@ type ModifyVpcFirewallCenConfigureRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
+	// > You can call the [DescribeVpcFirewallCenList](~~345777~~) operation to query the instance IDs of VPC firewalls.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	// The instance name of the VPC firewall.
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
@@ -9504,7 +9501,7 @@ func (s *ModifyVpcFirewallCenSwitchStatusResponse) SetBody(v *ModifyVpcFirewallC
 }
 
 type ModifyVpcFirewallConfigureRequest struct {
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
@@ -9514,7 +9511,7 @@ type ModifyVpcFirewallConfigureRequest struct {
 	// *   **RouteTableId**: the ID of the route table for the local VPC.
 	// *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the local VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the local VPC.
 	//
-	// >  You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of local VPCs for VPC firewalls.
+	// > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of local VPCs for VPC firewalls.
 	LocalVpcCidrTableList *string `json:"LocalVpcCidrTableList,omitempty" xml:"LocalVpcCidrTableList,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
@@ -9523,11 +9520,11 @@ type ModifyVpcFirewallConfigureRequest struct {
 	// *   **RouteTableId**: the ID of the route table for the peer VPC.
 	// *   **RouteEntryList**: The value is a JSON string that contains the DestinationCidr and NextHopInstanceId parameters. The DestinationCidr parameter indicates the destination CIDR block of the peer VPC. The NextHopInstanceId parameter indicates the instance ID of the next hop for the peer VPC.
 	//
-	// >  You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
+	// > You can call the [DescribeVpcFirewallDetail](~~342892~~) operation to query the CIDR blocks of peer VPCs for VPC firewalls.
 	PeerVpcCidrTableList *string `json:"PeerVpcCidrTableList,omitempty" xml:"PeerVpcCidrTableList,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+	// > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 	// The instance name of the VPC firewall.
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
@@ -10087,10 +10084,10 @@ func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetBody(v *ModifyVpcFirewall
 type ModifyVpcFirewallSwitchStatusRequest struct {
 	// Specifies whether to enable the VPC firewall. Valid values:
 	//
-	// *   **open**: enables the VPC firewall.
-	// *   **close**: disables the VPC firewall.
+	// *   **open**: yes
+	// *   **close**: no
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
@@ -10099,7 +10096,7 @@ type ModifyVpcFirewallSwitchStatusRequest struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
+	// > You can call the [DescribeVpcFirewallList](~~342932~~) operation to query the instance IDs of VPC firewalls.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -10445,22 +10442,36 @@ func (s *PutEnableAllFwSwitchResponse) SetBody(v *PutEnableAllFwSwitchResponseBo
 }
 
 type PutEnableFwSwitchRequest struct {
-	// The list of IP addresses.
+	// The IP addresses.
 	//
-	// >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
 	IpaddrList []*string `json:"IpaddrList,omitempty" xml:"IpaddrList,omitempty" type:"Repeated"`
-	// The language of the content within the request and response.
+	// The language of the content within the response.
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The list of regions.
+	// The regions.
 	//
-	// >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
 	RegionList []*string `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
-	// The list of asset types.
+	// The types of the assets.
 	//
-	// >  You must specify at least one of the IpaddrList, RegionList, ResourceTypeList parameters.
+	// Valid values:
+	//
+	// *   BastionHostIP: the egress IP address of a bastion host
+	// *   BastionHostIngressIP: the ingress IP address of a bastion host
+	// *   EcsEIP: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+	// *   EcsPublicIP: the public IP address of an ECS instance
+	// *   EIP: the EIP
+	// *   EniEIP: the EIP of an elastic network interface (ENI)
+	// *   NatEIP: the EIP of a NAT gateway
+	// *   SlbEIP: the EIP of a Server Load Balancer (SLB) instance
+	// *   SlbPublicIP: the public IP address of an SLB instance
+	// *   NatPublicIP: the public IP address of a NAT gateway
+	// *   HAVIP: the high-availability virtual IP address (HAVIP)
+	//
+	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
 	ResourceTypeList []*string `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
@@ -11037,9 +11048,9 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 }
 
 /**
- * You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
+ * You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
  * ## Limits
- * You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateVpcFirewallCenConfigureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11107,9 +11118,9 @@ func (client *Client) CreateVpcFirewallCenConfigureWithOptions(request *CreateVp
 }
 
 /**
- * You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
+ * You can call the CreateVpcFirewallCenConfigure operation to create a VPC firewall. The VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. The VPC firewall cannot protect mutual access traffic between VBRs, between CCN instances, or between VBRs and CCN instances. For more information, see [VPC firewall limits](~~172295~~).
  * ## Limits
- * You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateVpcFirewallCenConfigureRequest
  * @return CreateVpcFirewallCenConfigureResponse
@@ -11547,10 +11558,9 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 }
 
 /**
- * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure) operation.
+ * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteVpcFirewallCenConfigureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11598,10 +11608,9 @@ func (client *Client) DeleteVpcFirewallCenConfigureWithOptions(request *DeleteVp
 }
 
 /**
- * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure) operation.
+ * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. When the number of calls to this operation per second exceeds the limit, throttling is triggered. Throttling may affect your business. We recommend that you take note of the limit on this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteVpcFirewallCenConfigureRequest
  * @return DeleteVpcFirewallCenConfigureResponse
@@ -11618,10 +11627,9 @@ func (client *Client) DeleteVpcFirewallCenConfigure(request *DeleteVpcFirewallCe
 }
 
 /**
- * You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteVpcFirewallConfigureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11669,10 +11677,9 @@ func (client *Client) DeleteVpcFirewallConfigureWithOptions(request *DeleteVpcFi
 }
 
 /**
- * You can call the DeleteVpcFirewallConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the DeleteVpcFirewallCenConfigure operation to delete a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteVpcFirewallConfigureRequest
  * @return DeleteVpcFirewallConfigureResponse
@@ -12637,7 +12644,7 @@ func (client *Client) DescribePolicyPriorUsed(request *DescribePolicyPriorUsedRe
 }
 
 /**
- * You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the information about the geographical locations of IP addresses, set the NoLocation parameter to true. This prevents query timeout.
+ * You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -12763,7 +12770,7 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 }
 
 /**
- * You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the information about the geographical locations of IP addresses, set the NoLocation parameter to true. This prevents query timeout.
+ * You can call the DescribeRiskEventGroup operation to query and download the details of intrusion events. We recommend that you query the details of 5 to 10 intrusion events at a time. If you do not need to query the geographical information about IP addresses, you can set the NoLocation parameter to true to prevent query timeout.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -12899,9 +12906,9 @@ func (client *Client) DescribeVpcFirewallAclGroupList(request *DescribeVpcFirewa
 }
 
 /**
- * You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall controls mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+ * You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallCenDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12953,9 +12960,9 @@ func (client *Client) DescribeVpcFirewallCenDetailWithOptions(request *DescribeV
 }
 
 /**
- * You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall controls mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
+ * You can call the DescribeVpcFirewallCenDetail operation to query the details about a VPC firewall. The VPC firewall protects access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallCenDetailRequest
  * @return DescribeVpcFirewallCenDetailResponse
@@ -12974,7 +12981,7 @@ func (client *Client) DescribeVpcFirewallCenDetail(request *DescribeVpcFirewallC
 /**
  * You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallCenListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13068,7 +13075,7 @@ func (client *Client) DescribeVpcFirewallCenListWithOptions(request *DescribeVpc
 /**
  * You can call the DescribeVpcFirewallCenList operation to query VPC firewalls. A VPC firewall protects mutual access traffic between a specified VPC and a network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallCenListRequest
  * @return DescribeVpcFirewallCenListResponse
@@ -14033,8 +14040,7 @@ func (client *Client) ModifyPolicyAdvancedConfig(request *ModifyPolicyAdvancedCo
 }
 
 /**
- * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure) operation.
+ * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14088,8 +14094,7 @@ func (client *Client) ModifyVpcFirewallCenConfigureWithOptions(request *ModifyVp
 }
 
 /**
- * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance.
- * Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcenconfigure) operation.
+ * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a CEN instance. The network instance can be a VPC, a virtual border router (VBR), or a Cloud Connect Network (CCN) instance. Before you call this operation, make sure that you have created a VPC firewall by calling the [CreateVpcFirewallCenConfigure](~~345772~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14183,10 +14188,9 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatus(request *ModifyVpcFirewal
 }
 
 /**
- * You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyVpcFirewallConfigureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14246,10 +14250,9 @@ func (client *Client) ModifyVpcFirewallConfigureWithOptions(request *ModifyVpcFi
 }
 
 /**
- * You can call the ModifyVpcFirewallConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the ModifyVpcFirewallCenConfigure operation to modify the configurations of a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyVpcFirewallConfigureRequest
  * @return ModifyVpcFirewallConfigureResponse
@@ -14541,8 +14544,8 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfig(request *ModifyVpcFirewa
 }
 
 /**
- * You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall can control traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall controls mutual access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer controls mutual access traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+ * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14596,8 +14599,8 @@ func (client *Client) ModifyVpcFirewallSwitchStatusWithOptions(request *ModifyVp
 }
 
 /**
- * You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall can control traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall controls mutual access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer controls mutual access traffic between two VPCs that are connected by using an Express Connect circuit.
- * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallconfigure) operation.
+ * You can call the ModifyVpcFirewallSwitchStatus operation to enable or disable a VPC firewall. The VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit. After you enable the VPC firewall, the VPC firewall protects access traffic between two VPCs that are connected by using an Express Connect circuit. After you disable the VPC firewall, the VPC firewall no longer protects access traffic between two VPCs that are connected by using an Express Connect circuit.
+ * Before you call the operation, make sure that you created a VPC firewall by calling the [CreateVpcFirewallConfigure](~~342893~~) operation.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14833,7 +14836,7 @@ func (client *Client) PutEnableAllFwSwitch(request *PutEnableAllFwSwitchRequest)
 /**
  * You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request PutEnableFwSwitchRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14891,7 +14894,7 @@ func (client *Client) PutEnableFwSwitchWithOptions(request *PutEnableFwSwitchReq
 /**
  * You can call the PutEnableFwSwitch operation to enable a firewall. After you enable a firewall, traffic passes through Cloud Firewall.
  * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request PutEnableFwSwitchRequest
  * @return PutEnableFwSwitchResponse
