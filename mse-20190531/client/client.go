@@ -6464,8 +6464,9 @@ type CreateOrUpdateSwimmingLaneGroupRequest struct {
 	// Specifies whether to enable canary release for messaging.
 	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
 	// The name.
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RecordCanaryDetail *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
 	// The region ID.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The service source. Valid value: edasmsc.
@@ -6549,6 +6550,11 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetNamespace(v string) *CreateO
 	return s
 }
 
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRecordCanaryDetail(v bool) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.RecordCanaryDetail = &v
+	return s
+}
+
 func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetRegion(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
 	s.Region = &v
 	return s
@@ -6573,7 +6579,7 @@ type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
 	// The status code. The value 200 is returned if the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the data.
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *CreateOrUpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The dynamic part in the error message.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error code returned if the request failed.
@@ -6603,7 +6609,7 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetCode(v int32) *CreateOr
 	return s
 }
 
-func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetData(v interface{}) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetData(v *CreateOrUpdateSwimmingLaneGroupResponseBodyData) *CreateOrUpdateSwimmingLaneGroupResponseBody {
 	s.Data = v
 	return s
 }
@@ -6635,6 +6641,101 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *Cr
 
 func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBody {
 	s.Success = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
+	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	DbGrayEnable           *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
+	Enable                 *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
+	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RecordCanaryDetail     *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetAppIds(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.AppIds = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetDbGrayEnable(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.DbGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetEnable(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetEntryApp(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetId(v int64) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetMessageQueueFilterSide(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.MessageQueueFilterSide = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetMessageQueueGrayEnable(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.MessageQueueGrayEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetName(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetNamespace(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetRecordCanaryDetail(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.RecordCanaryDetail = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetRegion(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetSource(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetStatus(v int32) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetUserId(v string) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.UserId = &v
 	return s
 }
 
@@ -9535,7 +9636,10 @@ type DeleteSwimmingLaneGroupRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s DeleteSwimmingLaneGroupRequest) String() string {
@@ -9553,6 +9657,21 @@ func (s *DeleteSwimmingLaneGroupRequest) SetAcceptLanguage(v string) *DeleteSwim
 
 func (s *DeleteSwimmingLaneGroupRequest) SetGroupId(v int64) *DeleteSwimmingLaneGroupRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetNamespace(v string) *DeleteSwimmingLaneGroupRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetRegion(v string) *DeleteSwimmingLaneGroupRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetName(v string) *DeleteSwimmingLaneGroupRequest {
+	s.Name = &v
 	return s
 }
 
@@ -28678,7 +28797,7 @@ type QueryAllSwimmingLaneGroupResponseBody struct {
 	// The status code. A value of 200 is returned if the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the data.
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data []*QueryAllSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The dynamic part in the error message.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error code returned if the request failed.
@@ -28712,7 +28831,7 @@ func (s *QueryAllSwimmingLaneGroupResponseBody) SetCode(v int32) *QueryAllSwimmi
 	return s
 }
 
-func (s *QueryAllSwimmingLaneGroupResponseBody) SetData(v interface{}) *QueryAllSwimmingLaneGroupResponseBody {
+func (s *QueryAllSwimmingLaneGroupResponseBody) SetData(v []*QueryAllSwimmingLaneGroupResponseBodyData) *QueryAllSwimmingLaneGroupResponseBody {
 	s.Data = v
 	return s
 }
@@ -28744,6 +28863,101 @@ func (s *QueryAllSwimmingLaneGroupResponseBody) SetRequestId(v string) *QueryAll
 
 func (s *QueryAllSwimmingLaneGroupResponseBody) SetSuccess(v bool) *QueryAllSwimmingLaneGroupResponseBody {
 	s.Success = &v
+	return s
+}
+
+type QueryAllSwimmingLaneGroupResponseBodyData struct {
+	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	DbGrayEnable           *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
+	Enable                 *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
+	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
+	MessageQueueGrayEnable *bool   `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RecordCanaryDetail     *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
+	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryAllSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAllSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetAppIds(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.AppIds = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetDbGrayEnable(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.DbGrayEnable = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetEnable(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetEntryApp(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.EntryApp = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetId(v int64) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetMessageQueueFilterSide(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.MessageQueueFilterSide = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetMessageQueueGrayEnable(v bool) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.MessageQueueGrayEnable = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetName(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetNamespace(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRecordCanaryDetail(v bool) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.RecordCanaryDetail = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRegion(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetSource(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetStatus(v int32) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetUserId(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
+	s.UserId = &v
 	return s
 }
 
@@ -41389,6 +41603,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(request *Create
 		query["Namespace"] = request.Namespace
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecordCanaryDetail)) {
+		query["RecordCanaryDetail"] = request.RecordCanaryDetail
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
 	}
@@ -42499,6 +42717,18 @@ func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimming
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
 	}
 
 	req := &openapi.OpenApiRequest{
