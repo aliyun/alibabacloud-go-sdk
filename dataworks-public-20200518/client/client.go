@@ -4278,6 +4278,7 @@ type CreateQualityEntityRequest struct {
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The partition expression.
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the maxcompute project or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The name of the table.
@@ -4304,6 +4305,11 @@ func (s *CreateQualityEntityRequest) SetEnvType(v string) *CreateQualityEntityRe
 
 func (s *CreateQualityEntityRequest) SetMatchExpression(v string) *CreateQualityEntityRequest {
 	s.MatchExpression = &v
+	return s
+}
+
+func (s *CreateQualityEntityRequest) SetProjectId(v int64) *CreateQualityEntityRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -4405,7 +4411,8 @@ type CreateQualityFollowerRequest struct {
 	// The ID of the partition filter expression.
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The user ID of the subscriber.
-	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	Follower  *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the computing engine instance or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -4430,6 +4437,11 @@ func (s *CreateQualityFollowerRequest) SetEntityId(v int64) *CreateQualityFollow
 
 func (s *CreateQualityFollowerRequest) SetFollower(v string) *CreateQualityFollowerRequest {
 	s.Follower = &v
+	return s
+}
+
+func (s *CreateQualityFollowerRequest) SetProjectId(v int64) *CreateQualityFollowerRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -4688,6 +4700,7 @@ type CreateQualityRuleRequest struct {
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// Specifies whether the monitoring rule is a dynamic threshold rule. Valid values: 0 and 2. 0 indicates that the monitoring rule is not a dynamic threshold rule. 2 indicates that the monitoring rule is a dynamic threshold rule.
 	PredictType *int32 `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
+	ProjectId   *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The fields that you want to monitor. If you want to monitor all fields in a table and check the table rows, set this parameter to table_count. If you want to monitor all fields in a table and check the table size, set this parameter to table_size.
@@ -4762,6 +4775,11 @@ func (s *CreateQualityRuleRequest) SetOperator(v string) *CreateQualityRuleReque
 
 func (s *CreateQualityRuleRequest) SetPredictType(v int32) *CreateQualityRuleRequest {
 	s.PredictType = &v
+	return s
+}
+
+func (s *CreateQualityRuleRequest) SetProjectId(v int64) *CreateQualityRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -7334,7 +7352,8 @@ type DeleteQualityEntityRequest struct {
 	// The ID of the partition filter expression.
 	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The type of the compute engine instance or data source. Valid values: EMR, Hologres, AnalyticDB for PostgreSQL, CDH, MaxCompute, Kafka and DataHub.
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	EnvType   *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -7354,6 +7373,11 @@ func (s *DeleteQualityEntityRequest) SetEntityId(v int64) *DeleteQualityEntityRe
 
 func (s *DeleteQualityEntityRequest) SetEnvType(v string) *DeleteQualityEntityRequest {
 	s.EnvType = &v
+	return s
+}
+
+func (s *DeleteQualityEntityRequest) SetProjectId(v int64) *DeleteQualityEntityRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -7447,6 +7471,7 @@ func (s *DeleteQualityEntityResponse) SetBody(v *DeleteQualityEntityResponseBody
 type DeleteQualityFollowerRequest struct {
 	// The ID of the subscription relationship between the partition filter expression and the subscriber. You can call the [GetQualityFollower](~~174000~~) operation to obtain the ID of the subscription relationship.
 	FollowerId *int64 `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
+	ProjectId  *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine or data source for which the partition filter expression is configured. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Monitoring Rules page of Data Quality to obtain the name.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -7461,6 +7486,11 @@ func (s DeleteQualityFollowerRequest) GoString() string {
 
 func (s *DeleteQualityFollowerRequest) SetFollowerId(v int64) *DeleteQualityFollowerRequest {
 	s.FollowerId = &v
+	return s
+}
+
+func (s *DeleteQualityFollowerRequest) SetProjectId(v int64) *DeleteQualityFollowerRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -7707,6 +7737,7 @@ func (s *DeleteQualityRelativeNodeResponse) SetBody(v *DeleteQualityRelativeNode
 }
 
 type DeleteQualityRuleRequest struct {
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the database engine or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The ID of the rule.
@@ -7719,6 +7750,11 @@ func (s DeleteQualityRuleRequest) String() string {
 
 func (s DeleteQualityRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteQualityRuleRequest) SetProjectId(v int64) *DeleteQualityRuleRequest {
+	s.ProjectId = &v
+	return s
 }
 
 func (s *DeleteQualityRuleRequest) SetProjectName(v string) *DeleteQualityRuleRequest {
@@ -23979,6 +24015,7 @@ type GetQualityEntityRequest struct {
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The partition filter expression.
 	MatchExpression *string `json:"MatchExpression,omitempty" xml:"MatchExpression,omitempty"`
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The name of the partitioned table. You can call the [GetMetaTablePartition](~~173923~~) operation to obtain the name.
@@ -24000,6 +24037,11 @@ func (s *GetQualityEntityRequest) SetEnvType(v string) *GetQualityEntityRequest 
 
 func (s *GetQualityEntityRequest) SetMatchExpression(v string) *GetQualityEntityRequest {
 	s.MatchExpression = &v
+	return s
+}
+
+func (s *GetQualityEntityRequest) SetProjectId(v int64) *GetQualityEntityRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -24229,6 +24271,7 @@ func (s *GetQualityEntityResponse) SetBody(v *GetQualityEntityResponseBody) *Get
 
 type GetQualityFollowerRequest struct {
 	EntityId    *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -24242,6 +24285,11 @@ func (s GetQualityFollowerRequest) GoString() string {
 
 func (s *GetQualityFollowerRequest) SetEntityId(v int64) *GetQualityFollowerRequest {
 	s.EntityId = &v
+	return s
+}
+
+func (s *GetQualityFollowerRequest) SetProjectId(v int64) *GetQualityFollowerRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -24392,6 +24440,7 @@ func (s *GetQualityFollowerResponse) SetBody(v *GetQualityFollowerResponseBody) 
 }
 
 type GetQualityRuleRequest struct {
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The ID of the monitoring rule. You can call the [ListQualityRules](~~173995~~) operation to query the ID.
@@ -24404,6 +24453,11 @@ func (s GetQualityRuleRequest) String() string {
 
 func (s GetQualityRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetQualityRuleRequest) SetProjectId(v int64) *GetQualityRuleRequest {
+	s.ProjectId = &v
+	return s
 }
 
 func (s *GetQualityRuleRequest) SetProjectName(v string) *GetQualityRuleRequest {
@@ -38124,7 +38178,8 @@ type ListQualityResultsByEntityRequest struct {
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
@@ -38156,6 +38211,11 @@ func (s *ListQualityResultsByEntityRequest) SetPageNumber(v int32) *ListQualityR
 
 func (s *ListQualityResultsByEntityRequest) SetPageSize(v int32) *ListQualityResultsByEntityRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListQualityResultsByEntityRequest) SetProjectId(v int64) *ListQualityResultsByEntityRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -38700,7 +38760,8 @@ type ListQualityResultsByRuleRequest struct {
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source for which data quality is monitored.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The ID of the monitoring rule. You can use the ID and information such as a partition filter expression to perform a joint query.
@@ -38731,6 +38792,11 @@ func (s *ListQualityResultsByRuleRequest) SetPageNumber(v int32) *ListQualityRes
 
 func (s *ListQualityResultsByRuleRequest) SetPageSize(v int32) *ListQualityResultsByRuleRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListQualityResultsByRuleRequest) SetProjectId(v int64) *ListQualityResultsByRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -39273,7 +39339,8 @@ type ListQualityRulesRequest struct {
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 20.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source. You can obtain the name from data source configurations.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -39298,6 +39365,11 @@ func (s *ListQualityRulesRequest) SetPageNumber(v int32) *ListQualityRulesReques
 
 func (s *ListQualityRulesRequest) SetPageSize(v int32) *ListQualityRulesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListQualityRulesRequest) SetProjectId(v int64) *ListQualityRulesRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -45330,17 +45402,10 @@ func (s *TestDataServiceApiResponse) SetBody(v *TestDataServiceApiResponseBody) 
 }
 
 type TestNetworkConnectionRequest struct {
-	// The name of the data source.
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The environment to which the data source belongs. Valid values:
-	//
-	// *   0: development environment
-	// *   1: production environment
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the DataWorks workspace to which the data source belongs. You can call the [ListProjects](~~178393~~) operation to query the ID of the workspace.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The identifier of the resource group. You can call the [ListResourceGroups](~~173913~~) operation to query the identifier of the resource group.
-	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ResourceGroup  *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 }
 
 func (s TestNetworkConnectionRequest) String() string {
@@ -45372,15 +45437,9 @@ func (s *TestNetworkConnectionRequest) SetResourceGroup(v string) *TestNetworkCo
 }
 
 type TestNetworkConnectionResponseBody struct {
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the connectivity test.
-	TaskList *TestNetworkConnectionResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskList  *TestNetworkConnectionResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
 }
 
 func (s TestNetworkConnectionResponseBody) String() string {
@@ -45407,13 +45466,8 @@ func (s *TestNetworkConnectionResponseBody) SetTaskList(v *TestNetworkConnection
 }
 
 type TestNetworkConnectionResponseBodyTaskList struct {
-	// The reason why the data source and resource group failed the connectivity test. If data source and the resource group passed the connectivity test, this parameter is left empty.
 	ConnectMessage *string `json:"ConnectMessage,omitempty" xml:"ConnectMessage,omitempty"`
-	// The result of the connectivity test. Valid values:
-	//
-	// *   true: The data source and the resource group passed the connectivity test.
-	// *   false: The data source and the resource group failed the connectivity test. You can troubleshoot issues based on the ConnectMessage parameter.
-	ConnectStatus *bool `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
+	ConnectStatus  *bool   `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
 }
 
 func (s TestNetworkConnectionResponseBodyTaskList) String() string {
@@ -46537,40 +46591,10 @@ func (s *UpdateConnectionResponse) SetBody(v *UpdateConnectionResponseBody) *Upd
 }
 
 type UpdateDIProjectConfigRequest struct {
-	// The type of the destinations of the synchronization solutions. This parameter cannot be left empty.
-	//
-	// Valid values: analyticdb_for_mysql, odps, elasticsearch, holo, mysql, and polardb.
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The new default global configuration of synchronization solutions. The value indicates the processing rules of different types of DDL messages. The value must be in the JSON format. Example:
-	//
-	// {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}
-	//
-	// Field description:
-	//
-	// *   RENAMECOLUMN: renames a column.
-	// *   DROPTABLE: deletes a table.
-	// *   CREATETABLE: creates a table.
-	// *   MODIFYCOLUMN: changes the data type of a column.
-	// *   TRUNCATETABLE: clears a table.
-	// *   DROPCOLUMN: deletes a column.
-	// *   ADDCOLUMN: creates a column.
-	// *   RENAMETABLE: renames a table.
-	//
-	// DataWorks processes a DDL message of a specific type based on the following rules:
-	//
-	// *   WARNING: ignores the message and records an alert in real-time synchronization logs. The alert contains information about the situation that the message is ignored because of an execution error.
-	// *   IGNORE: discards the message and does not send it to the destination.
-	// *   CRITICAL: terminates the real-time synchronization node and sets the node status to Failed.
-	// *   NORMAL: sends the message to the destination to process the message. Each destination processes DDL messages based on its own business logic. If DataWorks adopts the NORMAL policy, DataWorks only forwards DDL messages.
-	ProjectConfig *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
-	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the sources of the synchronization solutions.
-	//
-	// Valid values: oracle, mysql, polardb, datahub, drds, and analyticdb_for_mysql.
-	//
-	// If you do not configure this parameter, DataWorks applies the default global configuration to all sources.
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	ProjectConfig   *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s UpdateDIProjectConfigRequest) String() string {
@@ -46602,15 +46626,9 @@ func (s *UpdateDIProjectConfigRequest) SetSourceType(v string) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBody struct {
-	// The information about the modification.
-	Data *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   true: The request was successful.
-	// *   false: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data      *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDIProjectConfigResponseBody) String() string {
@@ -46637,10 +46655,6 @@ func (s *UpdateDIProjectConfigResponseBody) SetSuccess(v bool) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBodyData struct {
-	// Indicates whether the default global configuration of synchronization solutions was modified. Valid values:
-	//
-	// *   success: The default global configuration of synchronization solutions was modified.
-	// *   fail: The default global configuration of synchronization solutions failed to be modified.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -48530,13 +48544,10 @@ func (s *UpdateNodeRunModeResponse) SetBody(v *UpdateNodeRunModeResponseBody) *U
 }
 
 type UpdateQualityFollowerRequest struct {
-	// The notification method. Valid values: 1, 2, 4, and 5. 1 indicates that the notification is sent by email. 2 indicates that the notification is sent by email and text message. 4 indicates that the notification is sent by a DingTalk chatbot. 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group.
-	AlarmMode *int32 `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
-	// The name of the subscriber.
-	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	// The ID of the subscription relationship.
-	FollowerId *int64 `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
-	// The name of the computing engine instance or data source.
+	AlarmMode   *int32  `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
+	Follower    *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	FollowerId  *int64  `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
+	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -48563,24 +48574,23 @@ func (s *UpdateQualityFollowerRequest) SetFollowerId(v int64) *UpdateQualityFoll
 	return s
 }
 
+func (s *UpdateQualityFollowerRequest) SetProjectId(v int64) *UpdateQualityFollowerRequest {
+	s.ProjectId = &v
+	return s
+}
+
 func (s *UpdateQualityFollowerRequest) SetProjectName(v string) *UpdateQualityFollowerRequest {
 	s.ProjectName = &v
 	return s
 }
 
 type UpdateQualityFollowerResponseBody struct {
-	// Indicates whether the subscription relationship is updated.
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateQualityFollowerResponseBody) String() string {
@@ -48685,6 +48695,7 @@ type UpdateQualityRuleRequest struct {
 	// *   0: indicates that the threshold is not a dynamic threshold.
 	// *   2: indicates that the threshold is a dynamic threshold.
 	PredictType *int32 `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
+	ProjectId   *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The name of the compute engine instance or data source. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the name.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The name of the field to be monitored.
@@ -48773,6 +48784,11 @@ func (s *UpdateQualityRuleRequest) SetOperator(v string) *UpdateQualityRuleReque
 
 func (s *UpdateQualityRuleRequest) SetPredictType(v int32) *UpdateQualityRuleRequest {
 	s.PredictType = &v
+	return s
+}
+
+func (s *UpdateQualityRuleRequest) SetProjectId(v int64) *UpdateQualityRuleRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -52553,6 +52569,10 @@ func (client *Client) CreateQualityEntityWithOptions(request *CreateQualityEntit
 		body["MatchExpression"] = request.MatchExpression
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -52611,6 +52631,10 @@ func (client *Client) CreateQualityFollowerWithOptions(request *CreateQualityFol
 
 	if !tea.BoolValue(util.IsUnset(request.Follower)) {
 		body["Follower"] = request.Follower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -52763,6 +52787,10 @@ func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.PredictType)) {
 		body["PredictType"] = request.PredictType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -53970,6 +53998,10 @@ func (client *Client) DeleteQualityEntityWithOptions(request *DeleteQualityEntit
 		body["EnvType"] = request.EnvType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -54023,6 +54055,10 @@ func (client *Client) DeleteQualityFollowerWithOptions(request *DeleteQualityFol
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FollowerId)) {
 		body["FollowerId"] = request.FollowerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -54147,6 +54183,10 @@ func (client *Client) DeleteQualityRuleWithOptions(request *DeleteQualityRuleReq
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -58096,6 +58136,10 @@ func (client *Client) GetQualityEntityWithOptions(request *GetQualityEntityReque
 		body["MatchExpression"] = request.MatchExpression
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -58148,6 +58192,10 @@ func (client *Client) GetQualityFollowerWithOptions(request *GetQualityFollowerR
 		body["EntityId"] = request.EntityId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -58192,6 +58240,10 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -61369,6 +61421,10 @@ func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQuality
 		body["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -61435,6 +61491,10 @@ func (client *Client) ListQualityResultsByRuleWithOptions(request *ListQualityRe
 		body["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -61497,6 +61557,10 @@ func (client *Client) ListQualityRulesWithOptions(request *ListQualityRulesReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
@@ -64196,13 +64260,6 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 	return _result, _err
 }
 
-/**
- * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
- *
- * @param request UpdateDIProjectConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateDIProjectConfigResponse
- */
 func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateDIProjectConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64248,12 +64305,6 @@ func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectC
 	return _result, _err
 }
 
-/**
- * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
- *
- * @param request UpdateDIProjectConfigRequest
- * @return UpdateDIProjectConfigResponse
- */
 func (client *Client) UpdateDIProjectConfig(request *UpdateDIProjectConfigRequest) (_result *UpdateDIProjectConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDIProjectConfigResponse{}
@@ -65137,6 +65188,10 @@ func (client *Client) UpdateQualityFollowerWithOptions(request *UpdateQualityFol
 		body["FollowerId"] = request.FollowerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		body["ProjectName"] = request.ProjectName
 	}
@@ -65223,6 +65278,10 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.PredictType)) {
 		body["PredictType"] = request.PredictType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
