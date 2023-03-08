@@ -748,10 +748,11 @@ func (s *GetVideoTaskInfoResponseBodyData) SetType(v string) *GetVideoTaskInfoRe
 }
 
 type GetVideoTaskInfoResponseBodyDataTaskResult struct {
-	FailCode     *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	FailReason   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	SubtitlesUrl *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	FailCode         *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailReason       *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	SubtitlesUrl     *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
+	VideoUrl         *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	WordSubtitlesUrl *string `json:"WordSubtitlesUrl,omitempty" xml:"WordSubtitlesUrl,omitempty"`
 }
 
 func (s GetVideoTaskInfoResponseBodyDataTaskResult) String() string {
@@ -779,6 +780,11 @@ func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetSubtitlesUrl(v string) *
 
 func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetVideoUrl(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
 	s.VideoUrl = &v
+	return s
+}
+
+func (s *GetVideoTaskInfoResponseBodyDataTaskResult) SetWordSubtitlesUrl(v string) *GetVideoTaskInfoResponseBodyDataTaskResult {
+	s.WordSubtitlesUrl = &v
 	return s
 }
 
