@@ -1055,11 +1055,10 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*ListResourceTypesR
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
-	CodeMapping      *ListResourceTypesResponseBodyResourceTypesCodeMapping `json:"CodeMapping,omitempty" xml:"CodeMapping,omitempty" type:"Struct"`
-	FilterKeys       []*string                                              `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
-	ProductName      *string                                                `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ResourceType     *string                                                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ResourceTypeName *string                                                `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
+	FilterKeys       []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
+	ProductName      *string   `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceTypeName *string   `json:"ResourceTypeName,omitempty" xml:"ResourceTypeName,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypes) String() string {
@@ -1068,11 +1067,6 @@ func (s ListResourceTypesResponseBodyResourceTypes) String() string {
 
 func (s ListResourceTypesResponseBodyResourceTypes) GoString() string {
 	return s.String()
-}
-
-func (s *ListResourceTypesResponseBodyResourceTypes) SetCodeMapping(v *ListResourceTypesResponseBodyResourceTypesCodeMapping) *ListResourceTypesResponseBodyResourceTypes {
-	s.CodeMapping = v
-	return s
 }
 
 func (s *ListResourceTypesResponseBodyResourceTypes) SetFilterKeys(v []*string) *ListResourceTypesResponseBodyResourceTypes {
@@ -1092,29 +1086,6 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceType(v string) *
 
 func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceTypeName(v string) *ListResourceTypesResponseBodyResourceTypes {
 	s.ResourceTypeName = &v
-	return s
-}
-
-type ListResourceTypesResponseBodyResourceTypesCodeMapping struct {
-	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-}
-
-func (s ListResourceTypesResponseBodyResourceTypesCodeMapping) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListResourceTypesResponseBodyResourceTypesCodeMapping) GoString() string {
-	return s.String()
-}
-
-func (s *ListResourceTypesResponseBodyResourceTypesCodeMapping) SetResourceGroup(v string) *ListResourceTypesResponseBodyResourceTypesCodeMapping {
-	s.ResourceGroup = &v
-	return s
-}
-
-func (s *ListResourceTypesResponseBodyResourceTypesCodeMapping) SetTag(v string) *ListResourceTypesResponseBodyResourceTypesCodeMapping {
-	s.Tag = &v
 	return s
 }
 
