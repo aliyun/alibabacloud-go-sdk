@@ -1870,6 +1870,122 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type DescribeUserPermissionsRequest struct {
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionsRequest) SetUserId(v string) *DescribeUserPermissionsRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeUserPermissionsResponseBody struct {
+	Permissions []*DescribeUserPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionsResponseBody) SetPermissions(v []*DescribeUserPermissionsResponseBodyPermissions) *DescribeUserPermissionsResponseBody {
+	s.Permissions = v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBody) SetRequestId(v string) *DescribeUserPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserPermissionsResponseBodyPermissions struct {
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParentId     *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleType     *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s DescribeUserPermissionsResponseBodyPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionsResponseBodyPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetOwnerId(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetParentId(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetResourceId(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetResourceType(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetRoleName(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponseBodyPermissions) SetRoleType(v string) *DescribeUserPermissionsResponseBodyPermissions {
+	s.RoleType = &v
+	return s
+}
+
+type DescribeUserPermissionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserPermissionsResponse) SetHeaders(v map[string]*string) *DescribeUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponse) SetStatusCode(v int32) *DescribeUserPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserPermissionsResponse) SetBody(v *DescribeUserPermissionsResponseBody) *DescribeUserPermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type DetachClusterFromHubRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -1966,6 +2082,110 @@ func (s *DetachClusterFromHubResponse) SetStatusCode(v int32) *DetachClusterFrom
 }
 
 func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBody) *DetachClusterFromHubResponse {
+	s.Body = v
+	return s
+}
+
+type GrantUserPermissionsRequest struct {
+	Permissions []*GrantUserPermissionsRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	UserId      *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GrantUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsRequest) SetPermissions(v []*GrantUserPermissionsRequestPermissions) *GrantUserPermissionsRequest {
+	s.Permissions = v
+	return s
+}
+
+func (s *GrantUserPermissionsRequest) SetUserId(v string) *GrantUserPermissionsRequest {
+	s.UserId = &v
+	return s
+}
+
+type GrantUserPermissionsRequestPermissions struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s GrantUserPermissionsRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsRequestPermissions) SetClusterId(v string) *GrantUserPermissionsRequestPermissions {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GrantUserPermissionsRequestPermissions) SetNamespace(v string) *GrantUserPermissionsRequestPermissions {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GrantUserPermissionsRequestPermissions) SetRoleName(v string) *GrantUserPermissionsRequestPermissions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GrantUserPermissionsRequestPermissions) SetRoleType(v string) *GrantUserPermissionsRequestPermissions {
+	s.RoleType = &v
+	return s
+}
+
+type GrantUserPermissionsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantUserPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsResponseBody) SetRequestId(v string) *GrantUserPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantUserPermissionsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsResponse) SetHeaders(v map[string]*string) *GrantUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantUserPermissionsResponse) SetStatusCode(v int32) *GrantUserPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantUserPermissionsResponse) SetBody(v *GrantUserPermissionsResponseBody) *GrantUserPermissionsResponse {
 	s.Body = v
 	return s
 }
@@ -2730,6 +2950,50 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeUserPermissionsWithOptions(request *DescribeUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *DescribeUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserPermissions"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserPermissions(request *DescribeUserPermissionsRequest) (_result *DescribeUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserPermissionsResponse{}
+	_body, _err := client.DescribeUserPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetachClusterFromHubWithOptions(request *DetachClusterFromHubRequest, runtime *util.RuntimeOptions) (_result *DetachClusterFromHubResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2777,6 +3041,54 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachClusterFromHubResponse{}
 	_body, _err := client.DetachClusterFromHubWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantUserPermissionsWithOptions(request *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantUserPermissions"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest) (_result *GrantUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantUserPermissionsResponse{}
+	_body, _err := client.GrantUserPermissionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
