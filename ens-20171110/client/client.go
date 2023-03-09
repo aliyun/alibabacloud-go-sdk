@@ -2611,7 +2611,7 @@ type CreateImageRequest struct {
 	DeleteAfterImageUpload *string `json:"DeleteAfterImageUpload,omitempty" xml:"DeleteAfterImageUpload,omitempty"`
 	ImageName              *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Product                *string `json:"product,omitempty" xml:"product,omitempty"`
+	SnapshotId             *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s CreateImageRequest) String() string {
@@ -2637,8 +2637,8 @@ func (s *CreateImageRequest) SetInstanceId(v string) *CreateImageRequest {
 	return s
 }
 
-func (s *CreateImageRequest) SetProduct(v string) *CreateImageRequest {
-	s.Product = &v
+func (s *CreateImageRequest) SetSnapshotId(v string) *CreateImageRequest {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -4786,6 +4786,75 @@ func (s *DeleteDeviceInternetPortResponse) SetStatusCode(v int32) *DeleteDeviceI
 }
 
 func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortResponseBody) *DeleteDeviceInternetPortResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDiskRequest struct {
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+}
+
+func (s DeleteDiskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskRequest) SetDiskId(v string) *DeleteDiskRequest {
+	s.DiskId = &v
+	return s
+}
+
+type DeleteDiskResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDiskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskResponseBody) SetCode(v int32) *DeleteDiskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDiskResponseBody) SetRequestId(v string) *DeleteDiskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDiskResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDiskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDiskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDiskResponse) SetHeaders(v map[string]*string) *DeleteDiskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiskResponse) SetStatusCode(v int32) *DeleteDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDiskResponse) SetBody(v *DeleteDiskResponseBody) *DeleteDiskResponse {
 	s.Body = v
 	return s
 }
@@ -22243,6 +22312,147 @@ func (s *GetOssStorageAndAccByBucketsResponse) SetBody(v *GetOssStorageAndAccByB
 	return s
 }
 
+type GetOssUsageDataRequest struct {
+	Bucket    *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetOssUsageDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssUsageDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssUsageDataRequest) SetBucket(v string) *GetOssUsageDataRequest {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetOssUsageDataRequest) SetEndTime(v string) *GetOssUsageDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetOssUsageDataRequest) SetPeriod(v string) *GetOssUsageDataRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *GetOssUsageDataRequest) SetStartTime(v string) *GetOssUsageDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetOssUsageDataResponseBody struct {
+	// Id of the request
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UsageList []*GetOssUsageDataResponseBodyUsageList `json:"UsageList,omitempty" xml:"UsageList,omitempty" type:"Repeated"`
+}
+
+func (s GetOssUsageDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssUsageDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssUsageDataResponseBody) SetRequestId(v string) *GetOssUsageDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBody) SetUsageList(v []*GetOssUsageDataResponseBodyUsageList) *GetOssUsageDataResponseBody {
+	s.UsageList = v
+	return s
+}
+
+type GetOssUsageDataResponseBodyUsageList struct {
+	LanRxBw          *int64  `json:"LanRxBw,omitempty" xml:"LanRxBw,omitempty"`
+	LanTxBw          *int64  `json:"LanTxBw,omitempty" xml:"LanTxBw,omitempty"`
+	Point            *int64  `json:"Point,omitempty" xml:"Point,omitempty"`
+	PointTs          *string `json:"PointTs,omitempty" xml:"PointTs,omitempty"`
+	StorageUsageByte *int64  `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
+	WanRxBw          *int64  `json:"WanRxBw,omitempty" xml:"WanRxBw,omitempty"`
+	WanTxBw          *int64  `json:"WanTxBw,omitempty" xml:"WanTxBw,omitempty"`
+}
+
+func (s GetOssUsageDataResponseBodyUsageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssUsageDataResponseBodyUsageList) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetLanRxBw(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.LanRxBw = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetLanTxBw(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.LanTxBw = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetPoint(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.Point = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetPointTs(v string) *GetOssUsageDataResponseBodyUsageList {
+	s.PointTs = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetStorageUsageByte(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.StorageUsageByte = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetWanRxBw(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.WanRxBw = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponseBodyUsageList) SetWanTxBw(v int64) *GetOssUsageDataResponseBodyUsageList {
+	s.WanTxBw = &v
+	return s
+}
+
+type GetOssUsageDataResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOssUsageDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOssUsageDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOssUsageDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOssUsageDataResponse) SetHeaders(v map[string]*string) *GetOssUsageDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOssUsageDataResponse) SetStatusCode(v int32) *GetOssUsageDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOssUsageDataResponse) SetBody(v *GetOssUsageDataResponseBody) *GetOssUsageDataResponse {
+	s.Body = v
+	return s
+}
+
 type ImportKeyPairRequest struct {
 	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	PublicKeyBody *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
@@ -30124,8 +30334,8 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Product)) {
-		query["product"] = request.Product
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31453,6 +31663,50 @@ func (client *Client) DeleteDeviceInternetPort(request *DeleteDeviceInternetPort
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDeviceInternetPortResponse{}
 	_body, _err := client.DeleteDeviceInternetPortWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDisk"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDiskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDiskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDiskResponse{}
+	_body, _err := client.DeleteDiskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36403,6 +36657,46 @@ func (client *Client) GetOssStorageAndAccByBuckets(request *GetOssStorageAndAccB
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOssStorageAndAccByBucketsResponse{}
 	_body, _err := client.GetOssStorageAndAccByBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOssUsageDataWithOptions(request *GetOssUsageDataRequest, runtime *util.RuntimeOptions) (_result *GetOssUsageDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOssUsageData"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOssUsageDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOssUsageData(request *GetOssUsageDataRequest) (_result *GetOssUsageDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOssUsageDataResponse{}
+	_body, _err := client.GetOssUsageDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
