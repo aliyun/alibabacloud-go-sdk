@@ -2169,6 +2169,52 @@ func (s *LocationDateCluster) SetUpdateTime(v string) *LocationDateCluster {
 	return s
 }
 
+type MNS struct {
+	Endpoint  *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+}
+
+func (s MNS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MNS) GoString() string {
+	return s.String()
+}
+
+func (s *MNS) SetEndpoint(v string) *MNS {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *MNS) SetTopicName(v string) *MNS {
+	s.TopicName = &v
+	return s
+}
+
+type Notification struct {
+	MNS      *MNS      `json:"MNS,omitempty" xml:"MNS,omitempty"`
+	RocketMQ *RocketMQ `json:"RocketMQ,omitempty" xml:"RocketMQ,omitempty"`
+}
+
+func (s Notification) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Notification) GoString() string {
+	return s.String()
+}
+
+func (s *Notification) SetMNS(v *MNS) *Notification {
+	s.MNS = v
+	return s
+}
+
+func (s *Notification) SetRocketMQ(v *RocketMQ) *Notification {
+	s.RocketMQ = v
+	return s
+}
+
 type OCRContents struct {
 	Boundary   *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
 	Confidence *float32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
@@ -2395,6 +2441,35 @@ func (s *RegionType) SetLocalName(v string) *RegionType {
 
 func (s *RegionType) SetRegionId(v string) *RegionType {
 	s.RegionId = &v
+	return s
+}
+
+type RocketMQ struct {
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TopicName  *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+}
+
+func (s RocketMQ) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RocketMQ) GoString() string {
+	return s.String()
+}
+
+func (s *RocketMQ) SetEndpoint(v string) *RocketMQ {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *RocketMQ) SetInstanceId(v string) *RocketMQ {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RocketMQ) SetTopicName(v string) *RocketMQ {
+	s.TopicName = &v
 	return s
 }
 
@@ -2719,6 +2794,730 @@ func (s *SubtitleStream) SetStartTime(v float64) *SubtitleStream {
 
 func (s *SubtitleStream) SetWidth(v int64) *SubtitleStream {
 	s.Width = &v
+	return s
+}
+
+type TargetAudio struct {
+	DisableAudio   *bool                      `json:"DisableAudio,omitempty" xml:"DisableAudio,omitempty"`
+	FilterAudio    *TargetAudioFilterAudio    `json:"FilterAudio,omitempty" xml:"FilterAudio,omitempty" type:"Struct"`
+	Stream         []*int64                   `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+	TranscodeAudio *TargetAudioTranscodeAudio `json:"TranscodeAudio,omitempty" xml:"TranscodeAudio,omitempty" type:"Struct"`
+}
+
+func (s TargetAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetAudio) GoString() string {
+	return s.String()
+}
+
+func (s *TargetAudio) SetDisableAudio(v bool) *TargetAudio {
+	s.DisableAudio = &v
+	return s
+}
+
+func (s *TargetAudio) SetFilterAudio(v *TargetAudioFilterAudio) *TargetAudio {
+	s.FilterAudio = v
+	return s
+}
+
+func (s *TargetAudio) SetStream(v []*int64) *TargetAudio {
+	s.Stream = v
+	return s
+}
+
+func (s *TargetAudio) SetTranscodeAudio(v *TargetAudioTranscodeAudio) *TargetAudio {
+	s.TranscodeAudio = v
+	return s
+}
+
+type TargetAudioFilterAudio struct {
+	Mixing *bool `json:"Mixing,omitempty" xml:"Mixing,omitempty"`
+}
+
+func (s TargetAudioFilterAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetAudioFilterAudio) GoString() string {
+	return s.String()
+}
+
+func (s *TargetAudioFilterAudio) SetMixing(v bool) *TargetAudioFilterAudio {
+	s.Mixing = &v
+	return s
+}
+
+type TargetAudioTranscodeAudio struct {
+	Bitrate          *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateOption    *string `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
+	Channel          *int32  `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Codec            *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Quality          *int32  `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	SampleRate       *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	SampleRateOption *string `json:"SampleRateOption,omitempty" xml:"SampleRateOption,omitempty"`
+}
+
+func (s TargetAudioTranscodeAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetAudioTranscodeAudio) GoString() string {
+	return s.String()
+}
+
+func (s *TargetAudioTranscodeAudio) SetBitrate(v int32) *TargetAudioTranscodeAudio {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetBitrateOption(v string) *TargetAudioTranscodeAudio {
+	s.BitrateOption = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetChannel(v int32) *TargetAudioTranscodeAudio {
+	s.Channel = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetCodec(v string) *TargetAudioTranscodeAudio {
+	s.Codec = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetQuality(v int32) *TargetAudioTranscodeAudio {
+	s.Quality = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetSampleRate(v int32) *TargetAudioTranscodeAudio {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetSampleRateOption(v string) *TargetAudioTranscodeAudio {
+	s.SampleRateOption = &v
+	return s
+}
+
+type TargetImage struct {
+	Animations []*TargetImageAnimations `json:"Animations,omitempty" xml:"Animations,omitempty" type:"Repeated"`
+	Snapshots  []*TargetImageSnapshots  `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	Sprites    []*TargetImageSprites    `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
+}
+
+func (s TargetImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetImage) GoString() string {
+	return s.String()
+}
+
+func (s *TargetImage) SetAnimations(v []*TargetImageAnimations) *TargetImage {
+	s.Animations = v
+	return s
+}
+
+func (s *TargetImage) SetSnapshots(v []*TargetImageSnapshots) *TargetImage {
+	s.Snapshots = v
+	return s
+}
+
+func (s *TargetImage) SetSprites(v []*TargetImageSprites) *TargetImage {
+	s.Sprites = v
+	return s
+}
+
+type TargetImageAnimations struct {
+	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	FrameRate *float64 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
+	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s TargetImageAnimations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetImageAnimations) GoString() string {
+	return s.String()
+}
+
+func (s *TargetImageAnimations) SetFormat(v string) *TargetImageAnimations {
+	s.Format = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetFrameRate(v float64) *TargetImageAnimations {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetHeight(v int32) *TargetImageAnimations {
+	s.Height = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetInterval(v float64) *TargetImageAnimations {
+	s.Interval = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetNumber(v int32) *TargetImageAnimations {
+	s.Number = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetScaleType(v string) *TargetImageAnimations {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetStartTime(v float64) *TargetImageAnimations {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetURI(v string) *TargetImageAnimations {
+	s.URI = &v
+	return s
+}
+
+func (s *TargetImageAnimations) SetWidth(v int32) *TargetImageAnimations {
+	s.Width = &v
+	return s
+}
+
+type TargetImageSnapshots struct {
+	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
+	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s TargetImageSnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetImageSnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *TargetImageSnapshots) SetFormat(v string) *TargetImageSnapshots {
+	s.Format = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetHeight(v int32) *TargetImageSnapshots {
+	s.Height = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetInterval(v float64) *TargetImageSnapshots {
+	s.Interval = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetNumber(v int32) *TargetImageSnapshots {
+	s.Number = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetScaleType(v string) *TargetImageSnapshots {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetStartTime(v float64) *TargetImageSnapshots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetURI(v string) *TargetImageSnapshots {
+	s.URI = &v
+	return s
+}
+
+func (s *TargetImageSnapshots) SetWidth(v int32) *TargetImageSnapshots {
+	s.Width = &v
+	return s
+}
+
+type TargetImageSprites struct {
+	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	Interval    *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Margin      *int32   `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Number      *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
+	Pad         *int32   `json:"Pad,omitempty" xml:"Pad,omitempty"`
+	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
+	ScaleType   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	ScaleWidth  *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
+	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TileHeight  *int32   `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
+	TileWidth   *int32   `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
+	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s TargetImageSprites) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetImageSprites) GoString() string {
+	return s.String()
+}
+
+func (s *TargetImageSprites) SetFormat(v string) *TargetImageSprites {
+	s.Format = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetInterval(v float64) *TargetImageSprites {
+	s.Interval = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetMargin(v int32) *TargetImageSprites {
+	s.Margin = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetNumber(v int32) *TargetImageSprites {
+	s.Number = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetPad(v int32) *TargetImageSprites {
+	s.Pad = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetScaleHeight(v float32) *TargetImageSprites {
+	s.ScaleHeight = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetScaleType(v string) *TargetImageSprites {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetScaleWidth(v float32) *TargetImageSprites {
+	s.ScaleWidth = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetStartTime(v float64) *TargetImageSprites {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetTileHeight(v int32) *TargetImageSprites {
+	s.TileHeight = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetTileWidth(v int32) *TargetImageSprites {
+	s.TileWidth = &v
+	return s
+}
+
+func (s *TargetImageSprites) SetURI(v string) *TargetImageSprites {
+	s.URI = &v
+	return s
+}
+
+type TargetSubtitle struct {
+	DisableSubtitle *bool                          `json:"DisableSubtitle,omitempty" xml:"DisableSubtitle,omitempty"`
+	ExtractSubtitle *TargetSubtitleExtractSubtitle `json:"ExtractSubtitle,omitempty" xml:"ExtractSubtitle,omitempty" type:"Struct"`
+	Stream          []*int32                       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+}
+
+func (s TargetSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *TargetSubtitle) SetDisableSubtitle(v bool) *TargetSubtitle {
+	s.DisableSubtitle = &v
+	return s
+}
+
+func (s *TargetSubtitle) SetExtractSubtitle(v *TargetSubtitleExtractSubtitle) *TargetSubtitle {
+	s.ExtractSubtitle = v
+	return s
+}
+
+func (s *TargetSubtitle) SetStream(v []*int32) *TargetSubtitle {
+	s.Stream = v
+	return s
+}
+
+type TargetSubtitleExtractSubtitle struct {
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s TargetSubtitleExtractSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetSubtitleExtractSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *TargetSubtitleExtractSubtitle) SetFormat(v string) *TargetSubtitleExtractSubtitle {
+	s.Format = &v
+	return s
+}
+
+func (s *TargetSubtitleExtractSubtitle) SetURI(v string) *TargetSubtitleExtractSubtitle {
+	s.URI = &v
+	return s
+}
+
+type TargetVideo struct {
+	DisableVideo   *bool                      `json:"DisableVideo,omitempty" xml:"DisableVideo,omitempty"`
+	FilterVideo    *TargetVideoFilterVideo    `json:"FilterVideo,omitempty" xml:"FilterVideo,omitempty" type:"Struct"`
+	Stream         []*int32                   `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+	TranscodeVideo *TargetVideoTranscodeVideo `json:"TranscodeVideo,omitempty" xml:"TranscodeVideo,omitempty" type:"Struct"`
+}
+
+func (s TargetVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideo) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideo) SetDisableVideo(v bool) *TargetVideo {
+	s.DisableVideo = &v
+	return s
+}
+
+func (s *TargetVideo) SetFilterVideo(v *TargetVideoFilterVideo) *TargetVideo {
+	s.FilterVideo = v
+	return s
+}
+
+func (s *TargetVideo) SetStream(v []*int32) *TargetVideo {
+	s.Stream = v
+	return s
+}
+
+func (s *TargetVideo) SetTranscodeVideo(v *TargetVideoTranscodeVideo) *TargetVideo {
+	s.TranscodeVideo = v
+	return s
+}
+
+type TargetVideoFilterVideo struct {
+	Delogos    []*TargetVideoFilterVideoDelogos    `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
+	Watermarks []*TargetVideoFilterVideoWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+}
+
+func (s TargetVideoFilterVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideo) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideo) SetDelogos(v []*TargetVideoFilterVideoDelogos) *TargetVideoFilterVideo {
+	s.Delogos = v
+	return s
+}
+
+func (s *TargetVideoFilterVideo) SetWatermarks(v []*TargetVideoFilterVideoWatermarks) *TargetVideoFilterVideo {
+	s.Watermarks = v
+	return s
+}
+
+type TargetVideoFilterVideoDelogos struct {
+	Duration  *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Dx        *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy        *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos  *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s TargetVideoFilterVideoDelogos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideoDelogos) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetDuration(v float64) *TargetVideoFilterVideoDelogos {
+	s.Duration = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetDx(v float32) *TargetVideoFilterVideoDelogos {
+	s.Dx = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetDy(v float32) *TargetVideoFilterVideoDelogos {
+	s.Dy = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetHeight(v float32) *TargetVideoFilterVideoDelogos {
+	s.Height = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetReferPos(v string) *TargetVideoFilterVideoDelogos {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetStartTime(v float64) *TargetVideoFilterVideoDelogos {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDelogos) SetWidth(v float32) *TargetVideoFilterVideoDelogos {
+	s.Width = &v
+	return s
+}
+
+type TargetVideoFilterVideoWatermarks struct {
+	BorderColor *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	BorderWidth *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Content     *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Dx          *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy          *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	FontApha    *float32 `json:"FontApha,omitempty" xml:"FontApha,omitempty"`
+	FontColor   *string  `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Height      *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos    *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type        *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width       *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s TargetVideoFilterVideoWatermarks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideoWatermarks) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetBorderColor(v string) *TargetVideoFilterVideoWatermarks {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetBorderWidth(v int32) *TargetVideoFilterVideoWatermarks {
+	s.BorderWidth = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetContent(v string) *TargetVideoFilterVideoWatermarks {
+	s.Content = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetDuration(v float64) *TargetVideoFilterVideoWatermarks {
+	s.Duration = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetDx(v float32) *TargetVideoFilterVideoWatermarks {
+	s.Dx = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetDy(v float32) *TargetVideoFilterVideoWatermarks {
+	s.Dy = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetFontApha(v float32) *TargetVideoFilterVideoWatermarks {
+	s.FontApha = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetFontColor(v string) *TargetVideoFilterVideoWatermarks {
+	s.FontColor = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetFontName(v string) *TargetVideoFilterVideoWatermarks {
+	s.FontName = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetFontSize(v int32) *TargetVideoFilterVideoWatermarks {
+	s.FontSize = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetHeight(v float32) *TargetVideoFilterVideoWatermarks {
+	s.Height = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetReferPos(v string) *TargetVideoFilterVideoWatermarks {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetStartTime(v float64) *TargetVideoFilterVideoWatermarks {
+	s.StartTime = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetType(v string) *TargetVideoFilterVideoWatermarks {
+	s.Type = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetURI(v string) *TargetVideoFilterVideoWatermarks {
+	s.URI = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoWatermarks) SetWidth(v float32) *TargetVideoFilterVideoWatermarks {
+	s.Width = &v
+	return s
+}
+
+type TargetVideoTranscodeVideo struct {
+	AdaptiveResolutionDirection *bool    `json:"AdaptiveResolutionDirection,omitempty" xml:"AdaptiveResolutionDirection,omitempty"`
+	BFrames                     *int32   `json:"BFrames,omitempty" xml:"BFrames,omitempty"`
+	Bitrate                     *int32   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateOption               *string  `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
+	BufferSize                  *int32   `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	CRF                         *float32 `json:"CRF,omitempty" xml:"CRF,omitempty"`
+	Codec                       *string  `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	FrameRate                   *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	FrameRateOption             *string  `json:"FrameRateOption,omitempty" xml:"FrameRateOption,omitempty"`
+	GOPSize                     *int32   `json:"GOPSize,omitempty" xml:"GOPSize,omitempty"`
+	MaxBitrate                  *int32   `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	PixelFormat                 *string  `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
+	Refs                        *int32   `json:"Refs,omitempty" xml:"Refs,omitempty"`
+	Resolution                  *string  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ResolutionOption            *string  `json:"ResolutionOption,omitempty" xml:"ResolutionOption,omitempty"`
+	Rotation                    *int32   `json:"Rotation,omitempty" xml:"Rotation,omitempty"`
+	ScaleType                   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+}
+
+func (s TargetVideoTranscodeVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoTranscodeVideo) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoTranscodeVideo) SetAdaptiveResolutionDirection(v bool) *TargetVideoTranscodeVideo {
+	s.AdaptiveResolutionDirection = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetBFrames(v int32) *TargetVideoTranscodeVideo {
+	s.BFrames = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetBitrate(v int32) *TargetVideoTranscodeVideo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetBitrateOption(v string) *TargetVideoTranscodeVideo {
+	s.BitrateOption = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetBufferSize(v int32) *TargetVideoTranscodeVideo {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetCRF(v float32) *TargetVideoTranscodeVideo {
+	s.CRF = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetCodec(v string) *TargetVideoTranscodeVideo {
+	s.Codec = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetFrameRate(v float32) *TargetVideoTranscodeVideo {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetFrameRateOption(v string) *TargetVideoTranscodeVideo {
+	s.FrameRateOption = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetGOPSize(v int32) *TargetVideoTranscodeVideo {
+	s.GOPSize = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetMaxBitrate(v int32) *TargetVideoTranscodeVideo {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetPixelFormat(v string) *TargetVideoTranscodeVideo {
+	s.PixelFormat = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetRefs(v int32) *TargetVideoTranscodeVideo {
+	s.Refs = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetResolution(v string) *TargetVideoTranscodeVideo {
+	s.Resolution = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetResolutionOption(v string) *TargetVideoTranscodeVideo {
+	s.ResolutionOption = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetRotation(v int32) *TargetVideoTranscodeVideo {
+	s.Rotation = &v
+	return s
+}
+
+func (s *TargetVideoTranscodeVideo) SetScaleType(v string) *TargetVideoTranscodeVideo {
+	s.ScaleType = &v
 	return s
 }
 
@@ -3846,7 +4645,8 @@ func (s *BatchGetFileMetaResponse) SetBody(v *BatchGetFileMetaResponseBody) *Bat
 
 type BatchIndexFileMetaRequest struct {
 	DatasetName     *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files           []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Files           []*InputFile  `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	Notification    *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string       `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -3864,8 +4664,13 @@ func (s *BatchIndexFileMetaRequest) SetDatasetName(v string) *BatchIndexFileMeta
 	return s
 }
 
-func (s *BatchIndexFileMetaRequest) SetFiles(v []*FileForReq) *BatchIndexFileMetaRequest {
+func (s *BatchIndexFileMetaRequest) SetFiles(v []*InputFile) *BatchIndexFileMetaRequest {
 	s.Files = v
+	return s
+}
+
+func (s *BatchIndexFileMetaRequest) SetNotification(v *Notification) *BatchIndexFileMetaRequest {
+	s.Notification = v
 	return s
 }
 
@@ -3880,10 +4685,11 @@ func (s *BatchIndexFileMetaRequest) SetProjectName(v string) *BatchIndexFileMeta
 }
 
 type BatchIndexFileMetaShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FilesShrink     *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FilesShrink        *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchIndexFileMetaShrinkRequest) String() string {
@@ -3901,6 +4707,11 @@ func (s *BatchIndexFileMetaShrinkRequest) SetDatasetName(v string) *BatchIndexFi
 
 func (s *BatchIndexFileMetaShrinkRequest) SetFilesShrink(v string) *BatchIndexFileMetaShrinkRequest {
 	s.FilesShrink = &v
+	return s
+}
+
+func (s *BatchIndexFileMetaShrinkRequest) SetNotificationShrink(v string) *BatchIndexFileMetaShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -4240,6 +5051,7 @@ func (s *CompareImageFacesResponse) SetBody(v *CompareImageFacesResponseBody) *C
 
 type CreateArchiveFileInspectionTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification     `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password         *string           `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -4258,6 +5070,11 @@ func (s CreateArchiveFileInspectionTaskRequest) GoString() string {
 
 func (s *CreateArchiveFileInspectionTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateArchiveFileInspectionTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskRequest) SetNotification(v *Notification) *CreateArchiveFileInspectionTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -4293,6 +5110,7 @@ func (s *CreateArchiveFileInspectionTaskRequest) SetUserData(v string) *CreateAr
 
 type CreateArchiveFileInspectionTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -4311,6 +5129,11 @@ func (s CreateArchiveFileInspectionTaskShrinkRequest) GoString() string {
 
 func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateArchiveFileInspectionTaskShrinkRequest) SetNotificationShrink(v string) *CreateArchiveFileInspectionTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -4679,6 +5502,7 @@ type CreateCompressPointCloudTaskRequest struct {
 	CompressMethod       *string                `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
 	CredentialConfig     *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	KdtreeOption         *KdtreeOption          `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
+	Notification         *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName      *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	OctreeOption         *OctreeOption          `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
 	PointCloudFields     []*string              `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty" type:"Repeated"`
@@ -4710,6 +5534,11 @@ func (s *CreateCompressPointCloudTaskRequest) SetCredentialConfig(v *CredentialC
 
 func (s *CreateCompressPointCloudTaskRequest) SetKdtreeOption(v *KdtreeOption) *CreateCompressPointCloudTaskRequest {
 	s.KdtreeOption = v
+	return s
+}
+
+func (s *CreateCompressPointCloudTaskRequest) SetNotification(v *Notification) *CreateCompressPointCloudTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -4762,6 +5591,7 @@ type CreateCompressPointCloudTaskShrinkRequest struct {
 	CompressMethod         *string `json:"CompressMethod,omitempty" xml:"CompressMethod,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	KdtreeOptionShrink     *string `json:"KdtreeOption,omitempty" xml:"KdtreeOption,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	OctreeOptionShrink     *string `json:"OctreeOption,omitempty" xml:"OctreeOption,omitempty"`
 	PointCloudFieldsShrink *string `json:"PointCloudFields,omitempty" xml:"PointCloudFields,omitempty"`
@@ -4793,6 +5623,11 @@ func (s *CreateCompressPointCloudTaskShrinkRequest) SetCredentialConfigShrink(v 
 
 func (s *CreateCompressPointCloudTaskShrinkRequest) SetKdtreeOptionShrink(v string) *CreateCompressPointCloudTaskShrinkRequest {
 	s.KdtreeOptionShrink = &v
+	return s
+}
+
+func (s *CreateCompressPointCloudTaskShrinkRequest) SetNotificationShrink(v string) *CreateCompressPointCloudTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -5223,6 +6058,7 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 type CreateFacesSearchingTaskRequest struct {
 	DatasetName     *string                                   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxResult       *string                                   `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	Notification    *Notification                             `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                                   `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sources         []*CreateFacesSearchingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -5245,6 +6081,11 @@ func (s *CreateFacesSearchingTaskRequest) SetDatasetName(v string) *CreateFacesS
 
 func (s *CreateFacesSearchingTaskRequest) SetMaxResult(v string) *CreateFacesSearchingTaskRequest {
 	s.MaxResult = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskRequest) SetNotification(v *Notification) *CreateFacesSearchingTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -5291,13 +6132,14 @@ func (s *CreateFacesSearchingTaskRequestSources) SetURI(v string) *CreateFacesSe
 }
 
 type CreateFacesSearchingTaskShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResult       *string `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink   *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TopK            *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResult          *string `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TopK               *int64  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFacesSearchingTaskShrinkRequest) String() string {
@@ -5315,6 +6157,11 @@ func (s *CreateFacesSearchingTaskShrinkRequest) SetDatasetName(v string) *Create
 
 func (s *CreateFacesSearchingTaskShrinkRequest) SetMaxResult(v string) *CreateFacesSearchingTaskShrinkRequest {
 	s.MaxResult = &v
+	return s
+}
+
+func (s *CreateFacesSearchingTaskShrinkRequest) SetNotificationShrink(v string) *CreateFacesSearchingTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -5403,6 +6250,7 @@ func (s *CreateFacesSearchingTaskResponse) SetBody(v *CreateFacesSearchingTaskRe
 
 type CreateFigureClusteringTaskRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -5419,6 +6267,11 @@ func (s CreateFigureClusteringTaskRequest) GoString() string {
 
 func (s *CreateFigureClusteringTaskRequest) SetDatasetName(v string) *CreateFigureClusteringTaskRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskRequest) SetNotification(v *Notification) *CreateFigureClusteringTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -5443,11 +6296,12 @@ func (s *CreateFigureClusteringTaskRequest) SetUserData(v string) *CreateFigureC
 }
 
 type CreateFigureClusteringTaskShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClusteringTaskShrinkRequest) String() string {
@@ -5460,6 +6314,11 @@ func (s CreateFigureClusteringTaskShrinkRequest) GoString() string {
 
 func (s *CreateFigureClusteringTaskShrinkRequest) SetDatasetName(v string) *CreateFigureClusteringTaskShrinkRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateFigureClusteringTaskShrinkRequest) SetNotificationShrink(v string) *CreateFigureClusteringTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -5544,6 +6403,8 @@ func (s *CreateFigureClusteringTaskResponse) SetBody(v *CreateFigureClusteringTa
 type CreateFigureClustersMergingTaskRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	From            *string                `json:"From,omitempty" xml:"From,omitempty"`
+	Froms           []*string              `json:"Froms,omitempty" xml:"Froms,omitempty" type:"Repeated"`
+	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -5566,6 +6427,16 @@ func (s *CreateFigureClustersMergingTaskRequest) SetDatasetName(v string) *Creat
 
 func (s *CreateFigureClustersMergingTaskRequest) SetFrom(v string) *CreateFigureClustersMergingTaskRequest {
 	s.From = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetFroms(v []*string) *CreateFigureClustersMergingTaskRequest {
+	s.Froms = v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskRequest) SetNotification(v *Notification) *CreateFigureClustersMergingTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -5595,13 +6466,15 @@ func (s *CreateFigureClustersMergingTaskRequest) SetUserData(v string) *CreateFi
 }
 
 type CreateFigureClustersMergingTaskShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	From            *string `json:"From,omitempty" xml:"From,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	To              *string `json:"To,omitempty" xml:"To,omitempty"`
-	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	From               *string `json:"From,omitempty" xml:"From,omitempty"`
+	FromsShrink        *string `json:"Froms,omitempty" xml:"Froms,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	To                 *string `json:"To,omitempty" xml:"To,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateFigureClustersMergingTaskShrinkRequest) String() string {
@@ -5619,6 +6492,16 @@ func (s *CreateFigureClustersMergingTaskShrinkRequest) SetDatasetName(v string) 
 
 func (s *CreateFigureClustersMergingTaskShrinkRequest) SetFrom(v string) *CreateFigureClustersMergingTaskShrinkRequest {
 	s.From = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskShrinkRequest) SetFromsShrink(v string) *CreateFigureClustersMergingTaskShrinkRequest {
+	s.FromsShrink = &v
+	return s
+}
+
+func (s *CreateFigureClustersMergingTaskShrinkRequest) SetNotificationShrink(v string) *CreateFigureClustersMergingTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -5708,6 +6591,7 @@ func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureCluster
 type CreateFileCompressionTaskRequest struct {
 	CompressedFormat  *string                                    `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfig  *CredentialConfig                          `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification      *Notification                              `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName   *string                                    `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password          *string                                    `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName       *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -5732,6 +6616,11 @@ func (s *CreateFileCompressionTaskRequest) SetCompressedFormat(v string) *Create
 
 func (s *CreateFileCompressionTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateFileCompressionTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateFileCompressionTaskRequest) SetNotification(v *Notification) *CreateFileCompressionTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -5796,6 +6685,7 @@ func (s *CreateFileCompressionTaskRequestSources) SetURI(v string) *CreateFileCo
 type CreateFileCompressionTaskShrinkRequest struct {
 	CompressedFormat       *string `json:"CompressedFormat,omitempty" xml:"CompressedFormat,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -5820,6 +6710,11 @@ func (s *CreateFileCompressionTaskShrinkRequest) SetCompressedFormat(v string) *
 
 func (s *CreateFileCompressionTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateFileCompressionTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateFileCompressionTaskShrinkRequest) SetNotificationShrink(v string) *CreateFileCompressionTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -5918,6 +6813,7 @@ func (s *CreateFileCompressionTaskResponse) SetBody(v *CreateFileCompressionTask
 
 type CreateFileUncompressionTaskRequest struct {
 	CredentialConfig *CredentialConfig                         `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification                             `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                                   `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password         *string                                   `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName      *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -5937,6 +6833,11 @@ func (s CreateFileUncompressionTaskRequest) GoString() string {
 
 func (s *CreateFileUncompressionTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateFileUncompressionTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskRequest) SetNotification(v *Notification) *CreateFileUncompressionTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -6000,6 +6901,7 @@ func (s *CreateFileUncompressionTaskRequestTarget) SetURI(v string) *CreateFileU
 
 type CreateFileUncompressionTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -6019,6 +6921,11 @@ func (s CreateFileUncompressionTaskShrinkRequest) GoString() string {
 
 func (s *CreateFileUncompressionTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateFileUncompressionTaskShrinkRequest) SetNotificationShrink(v string) *CreateFileUncompressionTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -6119,6 +7026,7 @@ type CreateImageModerationTaskRequest struct {
 	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval         *int64                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames        *int64                 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Reviewer         *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
@@ -6148,6 +7056,11 @@ func (s *CreateImageModerationTaskRequest) SetInterval(v int64) *CreateImageMode
 
 func (s *CreateImageModerationTaskRequest) SetMaxFrames(v int64) *CreateImageModerationTaskRequest {
 	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetNotification(v *Notification) *CreateImageModerationTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -6190,6 +7103,7 @@ type CreateImageModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Reviewer               *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
@@ -6219,6 +7133,11 @@ func (s *CreateImageModerationTaskShrinkRequest) SetInterval(v int64) *CreateIma
 
 func (s *CreateImageModerationTaskShrinkRequest) SetMaxFrames(v int64) *CreateImageModerationTaskShrinkRequest {
 	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetNotificationShrink(v string) *CreateImageModerationTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -6322,6 +7241,7 @@ type CreateImageSplicingTaskRequest struct {
 	Direction        *string                                  `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat      *string                                  `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	Margin           *int64                                   `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	Notification     *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                                  `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Padding          *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
 	ProjectName      *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -6368,6 +7288,11 @@ func (s *CreateImageSplicingTaskRequest) SetImageFormat(v string) *CreateImageSp
 
 func (s *CreateImageSplicingTaskRequest) SetMargin(v int64) *CreateImageSplicingTaskRequest {
 	s.Margin = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetNotification(v *Notification) *CreateImageSplicingTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -6446,6 +7371,7 @@ type CreateImageSplicingTaskShrinkRequest struct {
 	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	Margin                 *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -6492,6 +7418,11 @@ func (s *CreateImageSplicingTaskShrinkRequest) SetImageFormat(v string) *CreateI
 
 func (s *CreateImageSplicingTaskShrinkRequest) SetMargin(v int64) *CreateImageSplicingTaskShrinkRequest {
 	s.Margin = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetNotificationShrink(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -6600,6 +7531,7 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 
 type CreateImageToPDFTaskRequest struct {
 	CredentialConfig *CredentialConfig                     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                               `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sources          []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -6618,6 +7550,11 @@ func (s CreateImageToPDFTaskRequest) GoString() string {
 
 func (s *CreateImageToPDFTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateImageToPDFTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateImageToPDFTaskRequest) SetNotification(v *Notification) *CreateImageToPDFTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -6676,6 +7613,7 @@ func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFT
 
 type CreateImageToPDFTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -6694,6 +7632,11 @@ func (s CreateImageToPDFTaskShrinkRequest) GoString() string {
 
 func (s *CreateImageToPDFTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateImageToPDFTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateImageToPDFTaskShrinkRequest) SetNotificationShrink(v string) *CreateImageToPDFTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -6789,6 +7732,7 @@ type CreateLocationDateClusteringTaskRequest struct {
 	DatasetName     *string                                                 `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	DateOptions     *CreateLocationDateClusteringTaskRequestDateOptions     `json:"DateOptions,omitempty" xml:"DateOptions,omitempty" type:"Struct"`
 	LocationOptions *CreateLocationDateClusteringTaskRequestLocationOptions `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty" type:"Struct"`
+	Notification    *Notification                                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                                                 `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName     *string                                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Tags            map[string]interface{}                                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -6815,6 +7759,11 @@ func (s *CreateLocationDateClusteringTaskRequest) SetDateOptions(v *CreateLocati
 
 func (s *CreateLocationDateClusteringTaskRequest) SetLocationOptions(v *CreateLocationDateClusteringTaskRequestLocationOptions) *CreateLocationDateClusteringTaskRequest {
 	s.LocationOptions = v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskRequest) SetNotification(v *Notification) *CreateLocationDateClusteringTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -6888,6 +7837,7 @@ type CreateLocationDateClusteringTaskShrinkRequest struct {
 	DatasetName           *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	DateOptionsShrink     *string `json:"DateOptions,omitempty" xml:"DateOptions,omitempty"`
 	LocationOptionsShrink *string `json:"LocationOptions,omitempty" xml:"LocationOptions,omitempty"`
+	NotificationShrink    *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName       *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -6914,6 +7864,11 @@ func (s *CreateLocationDateClusteringTaskShrinkRequest) SetDateOptionsShrink(v s
 
 func (s *CreateLocationDateClusteringTaskShrinkRequest) SetLocationOptionsShrink(v string) *CreateLocationDateClusteringTaskShrinkRequest {
 	s.LocationOptionsShrink = &v
+	return s
+}
+
+func (s *CreateLocationDateClusteringTaskShrinkRequest) SetNotificationShrink(v string) *CreateLocationDateClusteringTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -6997,6 +7952,7 @@ func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDate
 
 type CreateMediaConvertTaskRequest struct {
 	CredentialConfig *CredentialConfig                       `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                                 `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sources          []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
@@ -7015,6 +7971,11 @@ func (s CreateMediaConvertTaskRequest) GoString() string {
 
 func (s *CreateMediaConvertTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateMediaConvertTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequest) SetNotification(v *Notification) *CreateMediaConvertTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -7113,15 +8074,16 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetURI(v string) *Create
 }
 
 type CreateMediaConvertTaskRequestTargets struct {
-	Audio     *CreateMediaConvertTaskRequestTargetsAudio    `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *string                                       `json:"Container,omitempty" xml:"Container,omitempty"`
-	Image     *CreateMediaConvertTaskRequestTargetsImage    `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	Preset    *PresetReference                              `json:"Preset,omitempty" xml:"Preset,omitempty"`
-	Segment   *CreateMediaConvertTaskRequestTargetsSegment  `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
-	Speed     *float32                                      `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Subtitle  *CreateMediaConvertTaskRequestTargetsSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Struct"`
-	URI       *string                                       `json:"URI,omitempty" xml:"URI,omitempty"`
-	Video     *CreateMediaConvertTaskRequestTargetsVideo    `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio         *TargetAudio                                 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Container     *string                                      `json:"Container,omitempty" xml:"Container,omitempty"`
+	Image         *TargetImage                                 `json:"Image,omitempty" xml:"Image,omitempty"`
+	Preset        *PresetReference                             `json:"Preset,omitempty" xml:"Preset,omitempty"`
+	Segment       *CreateMediaConvertTaskRequestTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	Speed         *float32                                     `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StripMetadata *bool                                        `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
+	Subtitle      *TargetSubtitle                              `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	URI           *string                                      `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video         *TargetVideo                                 `json:"Video,omitempty" xml:"Video,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequestTargets) String() string {
@@ -7132,7 +8094,7 @@ func (s CreateMediaConvertTaskRequestTargets) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMediaConvertTaskRequestTargets) SetAudio(v *CreateMediaConvertTaskRequestTargetsAudio) *CreateMediaConvertTaskRequestTargets {
+func (s *CreateMediaConvertTaskRequestTargets) SetAudio(v *TargetAudio) *CreateMediaConvertTaskRequestTargets {
 	s.Audio = v
 	return s
 }
@@ -7142,7 +8104,7 @@ func (s *CreateMediaConvertTaskRequestTargets) SetContainer(v string) *CreateMed
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargets) SetImage(v *CreateMediaConvertTaskRequestTargetsImage) *CreateMediaConvertTaskRequestTargets {
+func (s *CreateMediaConvertTaskRequestTargets) SetImage(v *TargetImage) *CreateMediaConvertTaskRequestTargets {
 	s.Image = v
 	return s
 }
@@ -7162,7 +8124,12 @@ func (s *CreateMediaConvertTaskRequestTargets) SetSpeed(v float32) *CreateMediaC
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargets) SetSubtitle(v *CreateMediaConvertTaskRequestTargetsSubtitle) *CreateMediaConvertTaskRequestTargets {
+func (s *CreateMediaConvertTaskRequestTargets) SetStripMetadata(v bool) *CreateMediaConvertTaskRequestTargets {
+	s.StripMetadata = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargets) SetSubtitle(v *TargetSubtitle) *CreateMediaConvertTaskRequestTargets {
 	s.Subtitle = v
 	return s
 }
@@ -7172,272 +8139,8 @@ func (s *CreateMediaConvertTaskRequestTargets) SetURI(v string) *CreateMediaConv
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargets) SetVideo(v *CreateMediaConvertTaskRequestTargetsVideo) *CreateMediaConvertTaskRequestTargets {
+func (s *CreateMediaConvertTaskRequestTargets) SetVideo(v *TargetVideo) *CreateMediaConvertTaskRequestTargets {
 	s.Video = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsAudio struct {
-	DisableAudio   *bool                                                    `json:"DisableAudio,omitempty" xml:"DisableAudio,omitempty"`
-	FilterAudio    *CreateMediaConvertTaskRequestTargetsAudioFilterAudio    `json:"FilterAudio,omitempty" xml:"FilterAudio,omitempty" type:"Struct"`
-	TranscodeAudio *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio `json:"TranscodeAudio,omitempty" xml:"TranscodeAudio,omitempty" type:"Struct"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudio) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudio) SetDisableAudio(v bool) *CreateMediaConvertTaskRequestTargetsAudio {
-	s.DisableAudio = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudio) SetFilterAudio(v *CreateMediaConvertTaskRequestTargetsAudioFilterAudio) *CreateMediaConvertTaskRequestTargetsAudio {
-	s.FilterAudio = v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudio) SetTranscodeAudio(v *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) *CreateMediaConvertTaskRequestTargetsAudio {
-	s.TranscodeAudio = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsAudioFilterAudio struct {
-	Mixing *bool `json:"Mixing,omitempty" xml:"Mixing,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudioFilterAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudioFilterAudio) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioFilterAudio) SetMixing(v bool) *CreateMediaConvertTaskRequestTargetsAudioFilterAudio {
-	s.Mixing = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio struct {
-	Bitrate          *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	BitrateOption    *string `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
-	Channel          *int32  `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	Codec            *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	Quality          *int32  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	SampleRate       *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SampleRateOption *string `json:"SampleRateOption,omitempty" xml:"SampleRateOption,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetBitrate(v int32) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetBitrateOption(v string) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.BitrateOption = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetChannel(v int32) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.Channel = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetCodec(v string) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.Codec = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetQuality(v int32) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.Quality = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetSampleRate(v int32) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.SampleRate = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio) SetSampleRateOption(v string) *CreateMediaConvertTaskRequestTargetsAudioTranscodeAudio {
-	s.SampleRateOption = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsImage struct {
-	Snapshots []*CreateMediaConvertTaskRequestTargetsImageSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	Sprites   []*CreateMediaConvertTaskRequestTargetsImageSprites   `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Repeated"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImage) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImage) SetSnapshots(v []*CreateMediaConvertTaskRequestTargetsImageSnapshots) *CreateMediaConvertTaskRequestTargetsImage {
-	s.Snapshots = v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImage) SetSprites(v []*CreateMediaConvertTaskRequestTargetsImageSprites) *CreateMediaConvertTaskRequestTargetsImage {
-	s.Sprites = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsImageSnapshots struct {
-	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
-	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImageSnapshots) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImageSnapshots) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetFormat(v string) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.Format = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetHeight(v int32) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.Height = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetInterval(v float64) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.Interval = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetNumber(v int32) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.Number = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetScaleType(v string) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.ScaleType = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetURI(v string) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.URI = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetWidth(v int32) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
-	s.Width = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsImageSprites struct {
-	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Interval    *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Margin      *int32   `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	Number      *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
-	Pad         *int32   `json:"Pad,omitempty" xml:"Pad,omitempty"`
-	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
-	ScaleType   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	ScaleWidth  *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
-	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TileHeight  *int32   `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
-	TileWidth   *int32   `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
-	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImageSprites) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsImageSprites) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetFormat(v string) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.Format = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetInterval(v float64) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.Interval = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetMargin(v int32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.Margin = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetNumber(v int32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.Number = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetPad(v int32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.Pad = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetScaleHeight(v float32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.ScaleHeight = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetScaleType(v string) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.ScaleType = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetScaleWidth(v float32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.ScaleWidth = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetTileHeight(v int32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.TileHeight = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetTileWidth(v int32) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.TileWidth = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetURI(v string) *CreateMediaConvertTaskRequestTargetsImageSprites {
-	s.URI = &v
 	return s
 }
 
@@ -7470,379 +8173,9 @@ func (s *CreateMediaConvertTaskRequestTargetsSegment) SetStartNumber(v int32) *C
 	return s
 }
 
-type CreateMediaConvertTaskRequestTargetsSubtitle struct {
-	DisableSubtitle *bool                                                        `json:"DisableSubtitle,omitempty" xml:"DisableSubtitle,omitempty"`
-	ExtractSubtitle *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle `json:"ExtractSubtitle,omitempty" xml:"ExtractSubtitle,omitempty" type:"Struct"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsSubtitle) SetDisableSubtitle(v bool) *CreateMediaConvertTaskRequestTargetsSubtitle {
-	s.DisableSubtitle = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsSubtitle) SetExtractSubtitle(v *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle) *CreateMediaConvertTaskRequestTargetsSubtitle {
-	s.ExtractSubtitle = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle struct {
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle) SetFormat(v string) *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle {
-	s.Format = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle) SetURI(v string) *CreateMediaConvertTaskRequestTargetsSubtitleExtractSubtitle {
-	s.URI = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsVideo struct {
-	DisableVideo   *bool                                                    `json:"DisableVideo,omitempty" xml:"DisableVideo,omitempty"`
-	FilterVideo    *CreateMediaConvertTaskRequestTargetsVideoFilterVideo    `json:"FilterVideo,omitempty" xml:"FilterVideo,omitempty" type:"Struct"`
-	TranscodeVideo *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo `json:"TranscodeVideo,omitempty" xml:"TranscodeVideo,omitempty" type:"Struct"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideo) SetDisableVideo(v bool) *CreateMediaConvertTaskRequestTargetsVideo {
-	s.DisableVideo = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideo) SetFilterVideo(v *CreateMediaConvertTaskRequestTargetsVideoFilterVideo) *CreateMediaConvertTaskRequestTargetsVideo {
-	s.FilterVideo = v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideo) SetTranscodeVideo(v *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) *CreateMediaConvertTaskRequestTargetsVideo {
-	s.TranscodeVideo = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsVideoFilterVideo struct {
-	Delogos    []*CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos    `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
-	Watermarks []*CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideo) SetDelogos(v []*CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) *CreateMediaConvertTaskRequestTargetsVideoFilterVideo {
-	s.Delogos = v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideo) SetWatermarks(v []*CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) *CreateMediaConvertTaskRequestTargetsVideoFilterVideo {
-	s.Watermarks = v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos struct {
-	Duration  *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Dx        *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	Dy        *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	ReferPos  *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetDx(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Dx = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetDy(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Dy = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetHeight(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Height = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetReferPos(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.ReferPos = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetWidth(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Width = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks struct {
-	BorderColor *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
-	BorderWidth *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
-	Content     *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Dx          *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
-	Dy          *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
-	FontApha    *float32 `json:"FontApha,omitempty" xml:"FontApha,omitempty"`
-	FontColor   *string  `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontName    *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	FontSize    *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	Height      *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	ReferPos    *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type        *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width       *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetBorderColor(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.BorderColor = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetBorderWidth(v int32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.BorderWidth = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetContent(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Duration = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetDx(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Dx = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetDy(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Dy = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetFontApha(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.FontApha = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetFontColor(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.FontColor = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetFontName(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.FontName = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetFontSize(v int32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.FontSize = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetHeight(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Height = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetReferPos(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.ReferPos = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.StartTime = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetType(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetURI(v string) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.URI = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetWidth(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
-	s.Width = &v
-	return s
-}
-
-type CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo struct {
-	AdaptiveResolutionDirection *bool    `json:"AdaptiveResolutionDirection,omitempty" xml:"AdaptiveResolutionDirection,omitempty"`
-	BFrames                     *int32   `json:"BFrames,omitempty" xml:"BFrames,omitempty"`
-	Bitrate                     *int32   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	BitrateOption               *string  `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
-	BufferSize                  *int32   `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
-	CRF                         *float32 `json:"CRF,omitempty" xml:"CRF,omitempty"`
-	Codec                       *string  `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	FrameRate                   *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	FrameRateOption             *string  `json:"FrameRateOption,omitempty" xml:"FrameRateOption,omitempty"`
-	GOPSize                     *int32   `json:"GOPSize,omitempty" xml:"GOPSize,omitempty"`
-	MaxBitrate                  *int32   `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
-	PixelFormat                 *string  `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
-	Refs                        *int32   `json:"Refs,omitempty" xml:"Refs,omitempty"`
-	Resolution                  *string  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	ResolutionOption            *string  `json:"ResolutionOption,omitempty" xml:"ResolutionOption,omitempty"`
-	Rotation                    *int32   `json:"Rotation,omitempty" xml:"Rotation,omitempty"`
-	ScaleType                   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetAdaptiveResolutionDirection(v bool) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.AdaptiveResolutionDirection = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetBFrames(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.BFrames = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetBitrate(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.Bitrate = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetBitrateOption(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.BitrateOption = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetBufferSize(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.BufferSize = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetCRF(v float32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.CRF = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetCodec(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.Codec = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetFrameRate(v float32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.FrameRate = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetFrameRateOption(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.FrameRateOption = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetGOPSize(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.GOPSize = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetMaxBitrate(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.MaxBitrate = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetPixelFormat(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.PixelFormat = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetRefs(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.Refs = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetResolution(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.Resolution = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetResolutionOption(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.ResolutionOption = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetRotation(v int32) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.Rotation = &v
-	return s
-}
-
-func (s *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo) SetScaleType(v string) *CreateMediaConvertTaskRequestTargetsVideoTranscodeVideo {
-	s.ScaleType = &v
-	return s
-}
-
 type CreateMediaConvertTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
@@ -7861,6 +8194,11 @@ func (s CreateMediaConvertTaskShrinkRequest) GoString() string {
 
 func (s *CreateMediaConvertTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateMediaConvertTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskShrinkRequest) SetNotificationShrink(v string) *CreateMediaConvertTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -7964,6 +8302,7 @@ type CreateOfficeConversionTaskRequest struct {
 	LongText         *bool                  `json:"LongText,omitempty" xml:"LongText,omitempty"`
 	MaxSheetColumn   *int64                 `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
 	MaxSheetRow      *int64                 `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Pages            *string                `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	PaperHorizontal  *bool                  `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
@@ -8046,6 +8385,11 @@ func (s *CreateOfficeConversionTaskRequest) SetMaxSheetColumn(v int64) *CreateOf
 
 func (s *CreateOfficeConversionTaskRequest) SetMaxSheetRow(v int64) *CreateOfficeConversionTaskRequest {
 	s.MaxSheetRow = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskRequest) SetNotification(v *Notification) *CreateOfficeConversionTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -8161,6 +8505,7 @@ type CreateOfficeConversionTaskShrinkRequest struct {
 	LongText               *bool   `json:"LongText,omitempty" xml:"LongText,omitempty"`
 	MaxSheetColumn         *int64  `json:"MaxSheetColumn,omitempty" xml:"MaxSheetColumn,omitempty"`
 	MaxSheetRow            *int64  `json:"MaxSheetRow,omitempty" xml:"MaxSheetRow,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Pages                  *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	PaperHorizontal        *bool   `json:"PaperHorizontal,omitempty" xml:"PaperHorizontal,omitempty"`
@@ -8243,6 +8588,11 @@ func (s *CreateOfficeConversionTaskShrinkRequest) SetMaxSheetColumn(v int64) *Cr
 
 func (s *CreateOfficeConversionTaskShrinkRequest) SetMaxSheetRow(v int64) *CreateOfficeConversionTaskShrinkRequest {
 	s.MaxSheetRow = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskShrinkRequest) SetNotificationShrink(v string) *CreateOfficeConversionTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -8534,6 +8884,7 @@ type CreateStoryRequest struct {
 	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxFileCount    *int64                 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
 	MinFileCount    *int64                 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ObjectId        *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -8581,6 +8932,11 @@ func (s *CreateStoryRequest) SetMaxFileCount(v int64) *CreateStoryRequest {
 
 func (s *CreateStoryRequest) SetMinFileCount(v int64) *CreateStoryRequest {
 	s.MinFileCount = &v
+	return s
+}
+
+func (s *CreateStoryRequest) SetNotification(v *Notification) *CreateStoryRequest {
+	s.Notification = v
 	return s
 }
 
@@ -8641,6 +8997,7 @@ type CreateStoryShrinkRequest struct {
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxFileCount       *int64  `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
 	MinFileCount       *int64  `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -8688,6 +9045,11 @@ func (s *CreateStoryShrinkRequest) SetMaxFileCount(v int64) *CreateStoryShrinkRe
 
 func (s *CreateStoryShrinkRequest) SetMinFileCount(v int64) *CreateStoryShrinkRequest {
 	s.MinFileCount = &v
+	return s
+}
+
+func (s *CreateStoryShrinkRequest) SetNotificationShrink(v string) *CreateStoryShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -8993,6 +9355,7 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 
 type CreateVideoLabelClassificationTaskRequest struct {
 	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
@@ -9010,6 +9373,11 @@ func (s CreateVideoLabelClassificationTaskRequest) GoString() string {
 
 func (s *CreateVideoLabelClassificationTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateVideoLabelClassificationTaskRequest {
 	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskRequest) SetNotification(v *Notification) *CreateVideoLabelClassificationTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -9040,6 +9408,7 @@ func (s *CreateVideoLabelClassificationTaskRequest) SetUserData(v string) *Creat
 
 type CreateVideoLabelClassificationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
@@ -9057,6 +9426,11 @@ func (s CreateVideoLabelClassificationTaskShrinkRequest) GoString() string {
 
 func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
 	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateVideoLabelClassificationTaskShrinkRequest) SetNotificationShrink(v string) *CreateVideoLabelClassificationTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -9147,6 +9521,7 @@ type CreateVideoModerationTaskRequest struct {
 	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval         *int64                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames        *int64                 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Reviewer         *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
@@ -9176,6 +9551,11 @@ func (s *CreateVideoModerationTaskRequest) SetInterval(v int64) *CreateVideoMode
 
 func (s *CreateVideoModerationTaskRequest) SetMaxFrames(v int64) *CreateVideoModerationTaskRequest {
 	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetNotification(v *Notification) *CreateVideoModerationTaskRequest {
+	s.Notification = v
 	return s
 }
 
@@ -9218,6 +9598,7 @@ type CreateVideoModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Reviewer               *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
@@ -9247,6 +9628,11 @@ func (s *CreateVideoModerationTaskShrinkRequest) SetInterval(v int64) *CreateVid
 
 func (s *CreateVideoModerationTaskShrinkRequest) SetMaxFrames(v int64) *CreateVideoModerationTaskShrinkRequest {
 	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetNotificationShrink(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -11129,6 +11515,7 @@ type GenerateWebofficeTokenRequest struct {
 	ExternalUploaded *bool                `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
 	Filename         *string              `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	Hidecmb          *bool                `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	Notification     *Notification        `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName  *string              `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password         *string              `json:"Password,omitempty" xml:"Password,omitempty"`
 	Permission       *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
@@ -11171,6 +11558,11 @@ func (s *GenerateWebofficeTokenRequest) SetFilename(v string) *GenerateWeboffice
 
 func (s *GenerateWebofficeTokenRequest) SetHidecmb(v bool) *GenerateWebofficeTokenRequest {
 	s.Hidecmb = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenRequest) SetNotification(v *Notification) *GenerateWebofficeTokenRequest {
+	s.Notification = v
 	return s
 }
 
@@ -11230,6 +11622,7 @@ type GenerateWebofficeTokenShrinkRequest struct {
 	ExternalUploaded       *bool   `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
 	Filename               *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	Hidecmb                *bool   `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	PermissionShrink       *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
@@ -11272,6 +11665,11 @@ func (s *GenerateWebofficeTokenShrinkRequest) SetFilename(v string) *GenerateWeb
 
 func (s *GenerateWebofficeTokenShrinkRequest) SetHidecmb(v bool) *GenerateWebofficeTokenShrinkRequest {
 	s.Hidecmb = &v
+	return s
+}
+
+func (s *GenerateWebofficeTokenShrinkRequest) SetNotificationShrink(v string) *GenerateWebofficeTokenShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -12383,10 +12781,11 @@ func (s *GetVideoLabelClassificationResultResponse) SetBody(v *GetVideoLabelClas
 }
 
 type IndexFileMetaRequest struct {
-	DatasetName     *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	File            *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
-	NotifyTopicName *string     `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName     *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	File            *InputFile    `json:"File,omitempty" xml:"File,omitempty"`
+	Notification    *Notification `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName *string       `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s IndexFileMetaRequest) String() string {
@@ -12402,8 +12801,13 @@ func (s *IndexFileMetaRequest) SetDatasetName(v string) *IndexFileMetaRequest {
 	return s
 }
 
-func (s *IndexFileMetaRequest) SetFile(v *FileForReq) *IndexFileMetaRequest {
+func (s *IndexFileMetaRequest) SetFile(v *InputFile) *IndexFileMetaRequest {
 	s.File = v
+	return s
+}
+
+func (s *IndexFileMetaRequest) SetNotification(v *Notification) *IndexFileMetaRequest {
+	s.Notification = v
 	return s
 }
 
@@ -12418,10 +12822,11 @@ func (s *IndexFileMetaRequest) SetProjectName(v string) *IndexFileMetaRequest {
 }
 
 type IndexFileMetaShrinkRequest struct {
-	DatasetName     *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	FileShrink      *string `json:"File,omitempty" xml:"File,omitempty"`
-	NotifyTopicName *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FileShrink         *string `json:"File,omitempty" xml:"File,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s IndexFileMetaShrinkRequest) String() string {
@@ -12439,6 +12844,11 @@ func (s *IndexFileMetaShrinkRequest) SetDatasetName(v string) *IndexFileMetaShri
 
 func (s *IndexFileMetaShrinkRequest) SetFileShrink(v string) *IndexFileMetaShrinkRequest {
 	s.FileShrink = &v
+	return s
+}
+
+func (s *IndexFileMetaShrinkRequest) SetNotificationShrink(v string) *IndexFileMetaShrinkRequest {
+	s.NotificationShrink = &v
 	return s
 }
 
@@ -16568,6 +16978,10 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -16575,6 +16989,10 @@ func (client *Client) BatchIndexFileMetaWithOptions(tmpReq *BatchIndexFileMetaRe
 
 	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
 		query["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -16750,9 +17168,17 @@ func (client *Client) CreateArchiveFileInspectionTaskWithOptions(tmpReq *CreateA
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -16962,6 +17388,10 @@ func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateComp
 		request.KdtreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KdtreeOption, tea.String("KdtreeOption"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.OctreeOption)) {
 		request.OctreeOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OctreeOption, tea.String("OctreeOption"), tea.String("json"))
 	}
@@ -16985,6 +17415,10 @@ func (client *Client) CreateCompressPointCloudTaskWithOptions(tmpReq *CreateComp
 
 	if !tea.BoolValue(util.IsUnset(request.KdtreeOptionShrink)) {
 		query["KdtreeOption"] = request.KdtreeOptionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17226,6 +17660,10 @@ func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSea
 	}
 	request := &CreateFacesSearchingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
 		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
@@ -17237,6 +17675,10 @@ func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSea
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResult)) {
 		query["MaxResult"] = request.MaxResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17300,6 +17742,10 @@ func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigure
 	}
 	request := &CreateFigureClusteringTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -17307,6 +17753,10 @@ func (client *Client) CreateFigureClusteringTaskWithOptions(tmpReq *CreateFigure
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17366,6 +17816,14 @@ func (client *Client) CreateFigureClustersMergingTaskWithOptions(tmpReq *CreateF
 	}
 	request := &CreateFigureClustersMergingTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Froms)) {
+		request.FromsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Froms, tea.String("Froms"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -17377,6 +17835,14 @@ func (client *Client) CreateFigureClustersMergingTaskWithOptions(tmpReq *CreateF
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromsShrink)) {
+		query["Froms"] = request.FromsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17444,6 +17910,10 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
 		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
@@ -17455,6 +17925,10 @@ func (client *Client) CreateFileCompressionTaskWithOptions(tmpReq *CreateFileCom
 
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17530,6 +18004,10 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SelectedFiles)) {
 		request.SelectedFilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SelectedFiles, tea.String("SelectedFiles"), tea.String("json"))
 	}
@@ -17541,6 +18019,10 @@ func (client *Client) CreateFileUncompressionTaskWithOptions(tmpReq *CreateFileU
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17616,6 +18098,10 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
 		request.ScenesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scenes, tea.String("Scenes"), tea.String("json"))
 	}
@@ -17635,6 +18121,10 @@ func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageMo
 
 	if !tea.BoolValue(util.IsUnset(request.MaxFrames)) {
 		query["MaxFrames"] = request.MaxFrames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17710,6 +18200,10 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
 		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
@@ -17741,6 +18235,10 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 
 	if !tea.BoolValue(util.IsUnset(request.Margin)) {
 		query["Margin"] = request.Margin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17824,6 +18322,10 @@ func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTa
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
 		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
@@ -17835,6 +18337,10 @@ func (client *Client) CreateImageToPDFTaskWithOptions(tmpReq *CreateImageToPDFTa
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17910,6 +18416,10 @@ func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *Create
 		request.LocationOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LocationOptions, tea.String("LocationOptions"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -17925,6 +18435,10 @@ func (client *Client) CreateLocationDateClusteringTaskWithOptions(tmpReq *Create
 
 	if !tea.BoolValue(util.IsUnset(request.LocationOptionsShrink)) {
 		query["LocationOptions"] = request.LocationOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -17988,6 +18502,10 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
 		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
 	}
@@ -18003,6 +18521,10 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -18074,6 +18596,10 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -18125,6 +18651,10 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 
 	if !tea.BoolValue(util.IsUnset(request.MaxSheetRow)) {
 		query["MaxSheetRow"] = request.MaxSheetRow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -18336,11 +18866,19 @@ func (client *Client) CreateStoryWithOptions(tmpReq *CreateStoryRequest, runtime
 		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
 		query["Tags"] = request.TagsShrink
 	}
@@ -18534,6 +19072,10 @@ func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *Crea
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
 	}
@@ -18541,6 +19083,10 @@ func (client *Client) CreateVideoLabelClassificationTaskWithOptions(tmpReq *Crea
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -18608,6 +19154,10 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
 		request.ScenesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scenes, tea.String("Scenes"), tea.String("json"))
 	}
@@ -18627,6 +19177,10 @@ func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoMo
 
 	if !tea.BoolValue(util.IsUnset(request.MaxFrames)) {
 		query["MaxFrames"] = request.MaxFrames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -19682,6 +20236,10 @@ func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWeboffic
 		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Permission)) {
 		request.PermissionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permission, tea.String("Permission"), tea.String("json"))
 	}
@@ -19713,6 +20271,10 @@ func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWeboffic
 
 	if !tea.BoolValue(util.IsUnset(request.Hidecmb)) {
 		query["Hidecmb"] = request.Hidecmb
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
@@ -20352,6 +20914,10 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 		request.FileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.File, tea.String("File"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -20359,6 +20925,10 @@ func (client *Client) IndexFileMetaWithOptions(tmpReq *IndexFileMetaRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.FileShrink)) {
 		query["File"] = request.FileShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
