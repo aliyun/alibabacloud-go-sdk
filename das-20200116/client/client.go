@@ -6785,7 +6785,6 @@ func (s *GetDasProServiceUsageResponseBody) SetSuccess(v bool) *GetDasProService
 
 type GetDasProServiceUsageResponseBodyData struct {
 	CommodityInstanceId  *string  `json:"commodityInstanceId,omitempty" xml:"commodityInstanceId,omitempty"`
-	CustinsId            *int64   `json:"custinsId,omitempty" xml:"custinsId,omitempty"`
 	Engine               *string  `json:"engine,omitempty" xml:"engine,omitempty"`
 	ExpireTime           *int64   `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	InstanceAlias        *string  `json:"instanceAlias,omitempty" xml:"instanceAlias,omitempty"`
@@ -6800,7 +6799,6 @@ type GetDasProServiceUsageResponseBodyData struct {
 	StorageFreeQuotaInMB *float64 `json:"storageFreeQuotaInMB,omitempty" xml:"storageFreeQuotaInMB,omitempty"`
 	StorageUsed          *int64   `json:"storageUsed,omitempty" xml:"storageUsed,omitempty"`
 	UserId               *string  `json:"userId,omitempty" xml:"userId,omitempty"`
-	Uuid                 *string  `json:"uuid,omitempty" xml:"uuid,omitempty"`
 	VpcId                *string  `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -6814,11 +6812,6 @@ func (s GetDasProServiceUsageResponseBodyData) GoString() string {
 
 func (s *GetDasProServiceUsageResponseBodyData) SetCommodityInstanceId(v string) *GetDasProServiceUsageResponseBodyData {
 	s.CommodityInstanceId = &v
-	return s
-}
-
-func (s *GetDasProServiceUsageResponseBodyData) SetCustinsId(v int64) *GetDasProServiceUsageResponseBodyData {
-	s.CustinsId = &v
 	return s
 }
 
@@ -6889,11 +6882,6 @@ func (s *GetDasProServiceUsageResponseBodyData) SetStorageUsed(v int64) *GetDasP
 
 func (s *GetDasProServiceUsageResponseBodyData) SetUserId(v string) *GetDasProServiceUsageResponseBodyData {
 	s.UserId = &v
-	return s
-}
-
-func (s *GetDasProServiceUsageResponseBodyData) SetUuid(v string) *GetDasProServiceUsageResponseBodyData {
-	s.Uuid = &v
 	return s
 }
 
@@ -9696,6 +9684,7 @@ type GetKillInstanceSessionTaskResultResponseBodyData struct {
 	InstanceId              *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	KillFailCount           *int64                                                    `json:"KillFailCount,omitempty" xml:"KillFailCount,omitempty"`
 	KillSuccessCount        *int64                                                    `json:"KillSuccessCount,omitempty" xml:"KillSuccessCount,omitempty"`
+	NodeId                  *string                                                   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	Result                  []*GetKillInstanceSessionTaskResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	Sessions                []*int64                                                  `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	TaskId                  *string                                                   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -9728,6 +9717,11 @@ func (s *GetKillInstanceSessionTaskResultResponseBodyData) SetKillFailCount(v in
 
 func (s *GetKillInstanceSessionTaskResultResponseBodyData) SetKillSuccessCount(v int64) *GetKillInstanceSessionTaskResultResponseBodyData {
 	s.KillSuccessCount = &v
+	return s
+}
+
+func (s *GetKillInstanceSessionTaskResultResponseBodyData) SetNodeId(v string) *GetKillInstanceSessionTaskResultResponseBodyData {
+	s.NodeId = &v
 	return s
 }
 
@@ -9858,6 +9852,417 @@ func (s *GetKillInstanceSessionTaskResultResponse) SetStatusCode(v int32) *GetKi
 }
 
 func (s *GetKillInstanceSessionTaskResultResponse) SetBody(v *GetKillInstanceSessionTaskResultResponseBody) *GetKillInstanceSessionTaskResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetMySQLAllSessionAsyncRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ResultId   *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+}
+
+func (s GetMySQLAllSessionAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncRequest) SetInstanceId(v string) *GetMySQLAllSessionAsyncRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncRequest) SetNodeId(v string) *GetMySQLAllSessionAsyncRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncRequest) SetResultId(v string) *GetMySQLAllSessionAsyncRequest {
+	s.ResultId = &v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBody struct {
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetMySQLAllSessionAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBody) SetCode(v int64) *GetMySQLAllSessionAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBody) SetData(v *GetMySQLAllSessionAsyncResponseBodyData) *GetMySQLAllSessionAsyncResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBody) SetMessage(v string) *GetMySQLAllSessionAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBody) SetRequestId(v string) *GetMySQLAllSessionAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBody) SetSuccess(v bool) *GetMySQLAllSessionAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyData struct {
+	Complete    *bool                                               `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	Fail        *bool                                               `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	IsFinish    *bool                                               `json:"IsFinish,omitempty" xml:"IsFinish,omitempty"`
+	ResultId    *string                                             `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	SessionData *GetMySQLAllSessionAsyncResponseBodyDataSessionData `json:"SessionData,omitempty" xml:"SessionData,omitempty" type:"Struct"`
+	State       *string                                             `json:"State,omitempty" xml:"State,omitempty"`
+	Timestamp   *int64                                              `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetComplete(v bool) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetFail(v bool) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetIsFinish(v bool) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetResultId(v string) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetSessionData(v *GetMySQLAllSessionAsyncResponseBodyDataSessionData) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.SessionData = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetState(v string) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyData) SetTimestamp(v int64) *GetMySQLAllSessionAsyncResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyDataSessionData struct {
+	ActiveSessionCount *int64                                                           `json:"ActiveSessionCount,omitempty" xml:"ActiveSessionCount,omitempty"`
+	ClientStats        []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats `json:"ClientStats,omitempty" xml:"ClientStats,omitempty" type:"Repeated"`
+	DbStats            []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats     `json:"DbStats,omitempty" xml:"DbStats,omitempty" type:"Repeated"`
+	MaxActiveTime      *int64                                                           `json:"MaxActiveTime,omitempty" xml:"MaxActiveTime,omitempty"`
+	SessionList        []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList `json:"SessionList,omitempty" xml:"SessionList,omitempty" type:"Repeated"`
+	TimeStamp          *int64                                                           `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalSessionCount  *int64                                                           `json:"TotalSessionCount,omitempty" xml:"TotalSessionCount,omitempty"`
+	UserStats          []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats   `json:"UserStats,omitempty" xml:"UserStats,omitempty" type:"Repeated"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetActiveSessionCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.ActiveSessionCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetClientStats(v []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.ClientStats = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetDbStats(v []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.DbStats = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetMaxActiveTime(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.MaxActiveTime = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetSessionList(v []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.SessionList = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetTimeStamp(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetTotalSessionCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.TotalSessionCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetUserStats(v []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) *GetMySQLAllSessionAsyncResponseBodyDataSessionData {
+	s.UserStats = v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats struct {
+	ActiveCount  *int64    `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	Key          *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	ThreadIdList []*int64  `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
+	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserList     []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetActiveCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetKey(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats {
+	s.Key = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetThreadIdList(v []*int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats {
+	s.ThreadIdList = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetTotalCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetUserList(v []*string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats {
+	s.UserList = v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats struct {
+	ActiveCount  *int64    `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	Key          *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	ThreadIdList []*int64  `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
+	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserList     []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetActiveCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetKey(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats {
+	s.Key = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetThreadIdList(v []*int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats {
+	s.ThreadIdList = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetTotalCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats) SetUserList(v []*string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats {
+	s.UserList = v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
+	Client          *string `json:"Client,omitempty" xml:"Client,omitempty"`
+	Command         *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	SessionId       *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SqlText         *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
+	Time            *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	TrxDuration     *int64  `json:"TrxDuration,omitempty" xml:"TrxDuration,omitempty"`
+	TrxId           *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
+	User            *string `json:"User,omitempty" xml:"User,omitempty"`
+	UserClientAlias *string `json:"UserClientAlias,omitempty" xml:"UserClientAlias,omitempty"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetClient(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.Client = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetCommand(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.Command = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetDbName(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetSessionId(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetSqlText(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.SqlText = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetState(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.State = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetTime(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.Time = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetTrxDuration(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.TrxDuration = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetTrxId(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.TrxId = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetUser(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.User = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetUserClientAlias(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList {
+	s.UserClientAlias = &v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats struct {
+	ActiveCount  *int64    `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	Key          *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	ThreadIdList []*int64  `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
+	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserList     []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetActiveCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats {
+	s.ActiveCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetKey(v string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats {
+	s.Key = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetThreadIdList(v []*int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats {
+	s.ThreadIdList = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetTotalCount(v int64) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats) SetUserList(v []*string) *GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats {
+	s.UserList = v
+	return s
+}
+
+type GetMySQLAllSessionAsyncResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMySQLAllSessionAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMySQLAllSessionAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMySQLAllSessionAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMySQLAllSessionAsyncResponse) SetHeaders(v map[string]*string) *GetMySQLAllSessionAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponse) SetStatusCode(v int32) *GetMySQLAllSessionAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMySQLAllSessionAsyncResponse) SetBody(v *GetMySQLAllSessionAsyncResponseBody) *GetMySQLAllSessionAsyncResponse {
 	s.Body = v
 	return s
 }
@@ -17542,6 +17947,58 @@ func (client *Client) GetKillInstanceSessionTaskResult(request *GetKillInstanceS
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKillInstanceSessionTaskResultResponse{}
 	_body, _err := client.GetKillInstanceSessionTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMySQLAllSessionAsyncWithOptions(request *GetMySQLAllSessionAsyncRequest, runtime *util.RuntimeOptions) (_result *GetMySQLAllSessionAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultId)) {
+		query["ResultId"] = request.ResultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMySQLAllSessionAsync"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMySQLAllSessionAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMySQLAllSessionAsync(request *GetMySQLAllSessionAsyncRequest) (_result *GetMySQLAllSessionAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMySQLAllSessionAsyncResponse{}
+	_body, _err := client.GetMySQLAllSessionAsyncWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
