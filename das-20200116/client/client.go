@@ -13,9 +13,10 @@ import (
 )
 
 type DataResultValue struct {
-	SqlId     *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	Count     *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	// SQL ID。
+	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s DataResultValue) String() string {
@@ -31,12 +32,12 @@ func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
 	return s
 }
 
-func (s *DataResultValue) SetErrorCode(v string) *DataResultValue {
-	s.ErrorCode = &v
+func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *DataResultValue) SetCount(v int64) *DataResultValue {
+func (s *DataResultValue) SetCount(v int32) *DataResultValue {
 	s.Count = &v
 	return s
 }
@@ -1144,6 +1145,117 @@ func (s *CreateKillInstanceSessionTaskResponse) SetStatusCode(v int32) *CreateKi
 }
 
 func (s *CreateKillInstanceSessionTaskResponse) SetBody(v *CreateKillInstanceSessionTaskResponseBody) *CreateKillInstanceSessionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateKillInstanceSessionTaskWithMaintainUserRequest struct {
+	IgnoredUsers    *string `json:"IgnoredUsers,omitempty" xml:"IgnoredUsers,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KillAllSessions *bool   `json:"KillAllSessions,omitempty" xml:"KillAllSessions,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	SessionIds      *string `json:"SessionIds,omitempty" xml:"SessionIds,omitempty"`
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserRequest) SetIgnoredUsers(v string) *CreateKillInstanceSessionTaskWithMaintainUserRequest {
+	s.IgnoredUsers = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserRequest) SetInstanceId(v string) *CreateKillInstanceSessionTaskWithMaintainUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserRequest) SetKillAllSessions(v bool) *CreateKillInstanceSessionTaskWithMaintainUserRequest {
+	s.KillAllSessions = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserRequest) SetNodeId(v string) *CreateKillInstanceSessionTaskWithMaintainUserRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserRequest) SetSessionIds(v string) *CreateKillInstanceSessionTaskWithMaintainUserRequest {
+	s.SessionIds = &v
+	return s
+}
+
+type CreateKillInstanceSessionTaskWithMaintainUserResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetCode(v int64) *CreateKillInstanceSessionTaskWithMaintainUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetData(v string) *CreateKillInstanceSessionTaskWithMaintainUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetMessage(v string) *CreateKillInstanceSessionTaskWithMaintainUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetRequestId(v string) *CreateKillInstanceSessionTaskWithMaintainUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) SetSuccess(v bool) *CreateKillInstanceSessionTaskWithMaintainUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateKillInstanceSessionTaskWithMaintainUserResponse struct {
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateKillInstanceSessionTaskWithMaintainUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateKillInstanceSessionTaskWithMaintainUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponse) SetHeaders(v map[string]*string) *CreateKillInstanceSessionTaskWithMaintainUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponse) SetStatusCode(v int32) *CreateKillInstanceSessionTaskWithMaintainUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateKillInstanceSessionTaskWithMaintainUserResponse) SetBody(v *CreateKillInstanceSessionTaskWithMaintainUserResponseBody) *CreateKillInstanceSessionTaskWithMaintainUserResponse {
 	s.Body = v
 	return s
 }
@@ -5741,13 +5853,13 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	Complete  *bool                       `json:"complete,omitempty" xml:"complete,omitempty"`
-	Fail      *bool                       `json:"fail,omitempty" xml:"fail,omitempty"`
-	IsFinish  *bool                       `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	Result    map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
-	ResultId  *string                     `json:"resultId,omitempty" xml:"resultId,omitempty"`
-	State     *string                     `json:"state,omitempty" xml:"state,omitempty"`
-	Timestamp *int64                      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
@@ -5773,7 +5885,7 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *Ge
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
 	s.Result = v
 	return s
 }
@@ -13879,13 +13991,11 @@ type SetEventSubscriptionRequest struct {
 	ChannelType      *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
 	ContactName      *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	DispatchRule     *string `json:"DispatchRule,omitempty" xml:"DispatchRule,omitempty"`
 	EventContext     *string `json:"EventContext,omitempty" xml:"EventContext,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	MinInterval      *string `json:"MinInterval,omitempty" xml:"MinInterval,omitempty"`
-	Severity         *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 }
 
 func (s SetEventSubscriptionRequest) String() string {
@@ -13916,11 +14026,6 @@ func (s *SetEventSubscriptionRequest) SetContactName(v string) *SetEventSubscrip
 	return s
 }
 
-func (s *SetEventSubscriptionRequest) SetDispatchRule(v string) *SetEventSubscriptionRequest {
-	s.DispatchRule = &v
-	return s
-}
-
 func (s *SetEventSubscriptionRequest) SetEventContext(v string) *SetEventSubscriptionRequest {
 	s.EventContext = &v
 	return s
@@ -13943,11 +14048,6 @@ func (s *SetEventSubscriptionRequest) SetLevel(v string) *SetEventSubscriptionRe
 
 func (s *SetEventSubscriptionRequest) SetMinInterval(v string) *SetEventSubscriptionRequest {
 	s.MinInterval = &v
-	return s
-}
-
-func (s *SetEventSubscriptionRequest) SetSeverity(v string) *SetEventSubscriptionRequest {
-	s.Severity = &v
 	return s
 }
 
@@ -15541,6 +15641,66 @@ func (client *Client) CreateKillInstanceSessionTask(request *CreateKillInstanceS
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKillInstanceSessionTaskResponse{}
 	_body, _err := client.CreateKillInstanceSessionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithOptions(request *CreateKillInstanceSessionTaskWithMaintainUserRequest, runtime *util.RuntimeOptions) (_result *CreateKillInstanceSessionTaskWithMaintainUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IgnoredUsers)) {
+		query["IgnoredUsers"] = request.IgnoredUsers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KillAllSessions)) {
+		query["KillAllSessions"] = request.KillAllSessions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionIds)) {
+		query["SessionIds"] = request.SessionIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateKillInstanceSessionTaskWithMaintainUser"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateKillInstanceSessionTaskWithMaintainUser(request *CreateKillInstanceSessionTaskWithMaintainUserRequest) (_result *CreateKillInstanceSessionTaskWithMaintainUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateKillInstanceSessionTaskWithMaintainUserResponse{}
+	_body, _err := client.CreateKillInstanceSessionTaskWithMaintainUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18916,10 +19076,6 @@ func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscript
 		query["ContactName"] = request.ContactName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.DispatchRule)) {
-		query["DispatchRule"] = request.DispatchRule
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EventContext)) {
 		query["EventContext"] = request.EventContext
 	}
@@ -18938,10 +19094,6 @@ func (client *Client) SetEventSubscriptionWithOptions(request *SetEventSubscript
 
 	if !tea.BoolValue(util.IsUnset(request.MinInterval)) {
 		query["MinInterval"] = request.MinInterval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Severity)) {
-		query["Severity"] = request.Severity
 	}
 
 	req := &openapi.OpenApiRequest{
