@@ -5025,6 +5025,246 @@ func (s *CreateCustomerGatewayResponse) SetBody(v *CreateCustomerGatewayResponse
 	return s
 }
 
+type CreateDefaultVSwitchRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Ipv6CidrBlock        *int32  `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDefaultVSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVSwitchRequest) SetClientToken(v string) *CreateDefaultVSwitchRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetIpv6CidrBlock(v int32) *CreateDefaultVSwitchRequest {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetOwnerAccount(v string) *CreateDefaultVSwitchRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetOwnerId(v int64) *CreateDefaultVSwitchRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetRegionId(v string) *CreateDefaultVSwitchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetResourceOwnerAccount(v string) *CreateDefaultVSwitchRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetResourceOwnerId(v int64) *CreateDefaultVSwitchRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchRequest) SetZoneId(v string) *CreateDefaultVSwitchRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CreateDefaultVSwitchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateDefaultVSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVSwitchResponseBody) SetRequestId(v string) *CreateDefaultVSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchResponseBody) SetVSwitchId(v string) *CreateDefaultVSwitchResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateDefaultVSwitchResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDefaultVSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDefaultVSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVSwitchResponse) SetHeaders(v map[string]*string) *CreateDefaultVSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDefaultVSwitchResponse) SetStatusCode(v int32) *CreateDefaultVSwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDefaultVSwitchResponse) SetBody(v *CreateDefaultVSwitchResponseBody) *CreateDefaultVSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDefaultVpcRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EnableIpv6           *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	Ipv6CidrBlock        *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreateDefaultVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVpcRequest) SetClientToken(v string) *CreateDefaultVpcRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetEnableIpv6(v bool) *CreateDefaultVpcRequest {
+	s.EnableIpv6 = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetIpv6CidrBlock(v string) *CreateDefaultVpcRequest {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetOwnerAccount(v string) *CreateDefaultVpcRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetOwnerId(v int64) *CreateDefaultVpcRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetRegionId(v string) *CreateDefaultVpcRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetResourceGroupId(v string) *CreateDefaultVpcRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetResourceOwnerAccount(v string) *CreateDefaultVpcRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDefaultVpcRequest) SetResourceOwnerId(v int64) *CreateDefaultVpcRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreateDefaultVpcResponseBody struct {
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	VRouterId    *string `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateDefaultVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVpcResponseBody) SetRequestId(v string) *CreateDefaultVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcResponseBody) SetRouteTableId(v string) *CreateDefaultVpcResponseBody {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcResponseBody) SetVRouterId(v string) *CreateDefaultVpcResponseBody {
+	s.VRouterId = &v
+	return s
+}
+
+func (s *CreateDefaultVpcResponseBody) SetVpcId(v string) *CreateDefaultVpcResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+type CreateDefaultVpcResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDefaultVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDefaultVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDefaultVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDefaultVpcResponse) SetHeaders(v map[string]*string) *CreateDefaultVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDefaultVpcResponse) SetStatusCode(v int32) *CreateDefaultVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDefaultVpcResponse) SetBody(v *CreateDefaultVpcResponseBody) *CreateDefaultVpcResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDhcpOptionsSetRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DhcpOptionsSetDescription *string `json:"DhcpOptionsSetDescription,omitempty" xml:"DhcpOptionsSetDescription,omitempty"`
@@ -61373,6 +61613,154 @@ func (client *Client) CreateCustomerGateway(request *CreateCustomerGatewayReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomerGatewayResponse{}
 	_body, _err := client.CreateCustomerGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDefaultVSwitchWithOptions(request *CreateDefaultVSwitchRequest, runtime *util.RuntimeOptions) (_result *CreateDefaultVSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6CidrBlock)) {
+		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDefaultVSwitch"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDefaultVSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDefaultVSwitch(request *CreateDefaultVSwitchRequest) (_result *CreateDefaultVSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDefaultVSwitchResponse{}
+	_body, _err := client.CreateDefaultVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDefaultVpcWithOptions(request *CreateDefaultVpcRequest, runtime *util.RuntimeOptions) (_result *CreateDefaultVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIpv6)) {
+		query["EnableIpv6"] = request.EnableIpv6
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6CidrBlock)) {
+		query["Ipv6CidrBlock"] = request.Ipv6CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDefaultVpc"),
+		Version:     tea.String("2016-04-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDefaultVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDefaultVpc(request *CreateDefaultVpcRequest) (_result *CreateDefaultVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDefaultVpcResponse{}
+	_body, _err := client.CreateDefaultVpcWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
