@@ -3758,6 +3758,87 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 	return s
 }
 
+type UnbindRequest struct {
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	EndUserId          *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s UnbindRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindRequest) SetAppInstanceGroupId(v string) *UnbindRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *UnbindRequest) SetAppInstanceId(v string) *UnbindRequest {
+	s.AppInstanceId = &v
+	return s
+}
+
+func (s *UnbindRequest) SetEndUserId(v string) *UnbindRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *UnbindRequest) SetProductType(v string) *UnbindRequest {
+	s.ProductType = &v
+	return s
+}
+
+type UnbindResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindResponseBody) SetRequestId(v string) *UnbindResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnbindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindResponse) SetHeaders(v map[string]*string) *UnbindResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindResponse) SetStatusCode(v int32) *UnbindResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindResponse) SetBody(v *UnbindResponseBody) *UnbindResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAppInstanceGroupImageRequest struct {
 	AppCenterImageId   *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
@@ -5177,6 +5258,62 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewAppInstanceGroupResponse{}
 	_body, _err := client.RenewAppInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.RuntimeOptions) (_result *UnbindResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceId)) {
+		body["AppInstanceId"] = request.AppInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Unbind"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindResponse{}
+	_body, _err := client.UnbindWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
