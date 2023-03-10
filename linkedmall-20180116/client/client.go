@@ -27318,6 +27318,123 @@ func (s *QueryRefundApplyWithDesignatedTbUidResponse) SetBody(v *QueryRefundAppl
 	return s
 }
 
+type QuerySellerLicenseRequest struct {
+	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	SellerId *string `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s QuerySellerLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySellerLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySellerLicenseRequest) SetBizId(v string) *QuerySellerLicenseRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QuerySellerLicenseRequest) SetSellerId(v string) *QuerySellerLicenseRequest {
+	s.SellerId = &v
+	return s
+}
+
+func (s *QuerySellerLicenseRequest) SetTenantId(v string) *QuerySellerLicenseRequest {
+	s.TenantId = &v
+	return s
+}
+
+type QuerySellerLicenseResponseBody struct {
+	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *QuerySellerLicenseResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QuerySellerLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySellerLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySellerLicenseResponseBody) SetCode(v string) *QuerySellerLicenseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySellerLicenseResponseBody) SetMessage(v string) *QuerySellerLicenseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySellerLicenseResponseBody) SetModel(v *QuerySellerLicenseResponseBodyModel) *QuerySellerLicenseResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *QuerySellerLicenseResponseBody) SetRequestId(v string) *QuerySellerLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QuerySellerLicenseResponseBodyModel struct {
+	LicenseUrl *string `json:"LicenseUrl,omitempty" xml:"LicenseUrl,omitempty"`
+	SellerId   *string `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
+}
+
+func (s QuerySellerLicenseResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySellerLicenseResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySellerLicenseResponseBodyModel) SetLicenseUrl(v string) *QuerySellerLicenseResponseBodyModel {
+	s.LicenseUrl = &v
+	return s
+}
+
+func (s *QuerySellerLicenseResponseBodyModel) SetSellerId(v string) *QuerySellerLicenseResponseBodyModel {
+	s.SellerId = &v
+	return s
+}
+
+type QuerySellerLicenseResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySellerLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySellerLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySellerLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySellerLicenseResponse) SetHeaders(v map[string]*string) *QuerySellerLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySellerLicenseResponse) SetStatusCode(v int32) *QuerySellerLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySellerLicenseResponse) SetBody(v *QuerySellerLicenseResponseBody) *QuerySellerLicenseResponse {
+	s.Body = v
+	return s
+}
+
 type QueryStatementsRequest struct {
 	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Currency     *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
@@ -43752,6 +43869,58 @@ func (client *Client) QueryRefundApplyWithDesignatedTbUid(request *QueryRefundAp
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRefundApplyWithDesignatedTbUidResponse{}
 	_body, _err := client.QueryRefundApplyWithDesignatedTbUidWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySellerLicenseWithOptions(request *QuerySellerLicenseRequest, runtime *util.RuntimeOptions) (_result *QuerySellerLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SellerId)) {
+		body["SellerId"] = request.SellerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySellerLicense"),
+		Version:     tea.String("2018-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySellerLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySellerLicense(request *QuerySellerLicenseRequest) (_result *QuerySellerLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySellerLicenseResponse{}
+	_body, _err := client.QuerySellerLicenseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
