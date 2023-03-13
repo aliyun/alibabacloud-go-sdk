@@ -947,9 +947,10 @@ func (s *SubmitConvertImageToWordJobResponse) SetBody(v *SubmitConvertImageToWor
 }
 
 type SubmitConvertPdfToExcelJobRequest struct {
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl         *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceMergeExcel *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	FileName              *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	ForceMergeExcel       *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobRequest) String() string {
@@ -970,15 +971,21 @@ func (s *SubmitConvertPdfToExcelJobRequest) SetFileUrl(v string) *SubmitConvertP
 	return s
 }
 
+func (s *SubmitConvertPdfToExcelJobRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToExcelJobRequest {
+	s.ForceExportInnerImage = &v
+	return s
+}
+
 func (s *SubmitConvertPdfToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobRequest {
 	s.ForceMergeExcel = &v
 	return s
 }
 
 type SubmitConvertPdfToExcelJobAdvanceRequest struct {
-	FileName        *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject   io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceMergeExcel *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
+	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
+	ForceMergeExcel       *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
 }
 
 func (s SubmitConvertPdfToExcelJobAdvanceRequest) String() string {
@@ -996,6 +1003,11 @@ func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileName(v string) *Submit
 
 func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToExcelJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
+	s.ForceExportInnerImage = &v
 	return s
 }
 
@@ -1213,8 +1225,9 @@ func (s *SubmitConvertPdfToImageJobResponse) SetBody(v *SubmitConvertPdfToImageJ
 }
 
 type SubmitConvertPdfToWordJobRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName              *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobRequest) String() string {
@@ -1235,9 +1248,15 @@ func (s *SubmitConvertPdfToWordJobRequest) SetFileUrl(v string) *SubmitConvertPd
 	return s
 }
 
+func (s *SubmitConvertPdfToWordJobRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobRequest {
+	s.ForceExportInnerImage = &v
+	return s
+}
+
 type SubmitConvertPdfToWordJobAdvanceRequest struct {
-	FileName      *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
 }
 
 func (s SubmitConvertPdfToWordJobAdvanceRequest) String() string {
@@ -1255,6 +1274,11 @@ func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileName(v string) *SubmitC
 
 func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToWordJobAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
+	s.ForceExportInnerImage = &v
 	return s
 }
 
@@ -2401,6 +2425,10 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 		query["FileUrl"] = request.FileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ForceExportInnerImage)) {
+		query["ForceExportInnerImage"] = request.ForceExportInnerImage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ForceMergeExcel)) {
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
@@ -2711,6 +2739,10 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 
 	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
 		query["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceExportInnerImage)) {
+		query["ForceExportInnerImage"] = request.ForceExportInnerImage
 	}
 
 	req := &openapi.OpenApiRequest{
