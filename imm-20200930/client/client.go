@@ -6055,6 +6055,158 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 	return s
 }
 
+type CreateDetectVideoLabelsTaskRequest struct {
+	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName  *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateDetectVideoLabelsTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetTags(v map[string]interface{}) *CreateDetectVideoLabelsTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetNotifyTopicName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetProjectName(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetSourceURI(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetTagsShrink(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskShrinkRequest) SetUserData(v string) *CreateDetectVideoLabelsTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateDetectVideoLabelsTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetEventId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetRequestId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponseBody) SetTaskId(v string) *CreateDetectVideoLabelsTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateDetectVideoLabelsTaskResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDetectVideoLabelsTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDetectVideoLabelsTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDetectVideoLabelsTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetHeaders(v map[string]*string) *CreateDetectVideoLabelsTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetStatusCode(v int32) *CreateDetectVideoLabelsTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDetectVideoLabelsTaskResponse) SetBody(v *CreateDetectVideoLabelsTaskResponseBody) *CreateDetectVideoLabelsTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFacesSearchingTaskRequest struct {
 	DatasetName     *string                                   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxResult       *string                                   `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
@@ -8877,6 +9029,158 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
+type CreateSimilarImageClusteringTaskRequest struct {
+	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName     *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Tags            map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData        *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetDatasetName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetNotification(v *Notification) *CreateSimilarImageClusteringTaskRequest {
+	s.Notification = v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetNotifyTopicName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetProjectName(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetTags(v map[string]interface{}) *CreateSimilarImageClusteringTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskRequest) SetUserData(v string) *CreateSimilarImageClusteringTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskShrinkRequest struct {
+	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetDatasetName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetNotificationShrink(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.NotificationShrink = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetNotifyTopicName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetProjectName(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetTagsShrink(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskShrinkRequest) SetUserData(v string) *CreateSimilarImageClusteringTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateSimilarImageClusteringTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetEventId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetRequestId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponseBody) SetTaskId(v string) *CreateSimilarImageClusteringTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateSimilarImageClusteringTaskResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSimilarImageClusteringTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSimilarImageClusteringTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSimilarImageClusteringTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetHeaders(v map[string]*string) *CreateSimilarImageClusteringTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetStatusCode(v int32) *CreateSimilarImageClusteringTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSimilarImageClusteringTaskResponse) SetBody(v *CreateSimilarImageClusteringTaskResponseBody) *CreateSimilarImageClusteringTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStoryRequest struct {
 	Address         *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
 	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
@@ -11509,6 +11813,492 @@ func (s *FuzzyQueryResponse) SetBody(v *FuzzyQueryResponseBody) *FuzzyQueryRespo
 	return s
 }
 
+type GenerateDRMLicenseRequest struct {
+	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	NotifyEndpoint   *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
+}
+
+func (s GenerateDRMLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDRMLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDRMLicenseRequest) SetKeyId(v string) *GenerateDRMLicenseRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseRequest) SetNotifyEndpoint(v string) *GenerateDRMLicenseRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseRequest) SetNotifyTopicName(v string) *GenerateDRMLicenseRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseRequest) SetProjectName(v string) *GenerateDRMLicenseRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseRequest) SetProtectionSystem(v string) *GenerateDRMLicenseRequest {
+	s.ProtectionSystem = &v
+	return s
+}
+
+type GenerateDRMLicenseResponseBody struct {
+	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	License    *string `json:"License,omitempty" xml:"License,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	States     *int64  `json:"States,omitempty" xml:"States,omitempty"`
+}
+
+func (s GenerateDRMLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDRMLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDRMLicenseResponseBody) SetDeviceInfo(v string) *GenerateDRMLicenseResponseBody {
+	s.DeviceInfo = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseResponseBody) SetLicense(v string) *GenerateDRMLicenseResponseBody {
+	s.License = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseResponseBody) SetRequestId(v string) *GenerateDRMLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseResponseBody) SetStates(v int64) *GenerateDRMLicenseResponseBody {
+	s.States = &v
+	return s
+}
+
+type GenerateDRMLicenseResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateDRMLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateDRMLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateDRMLicenseResponse) SetHeaders(v map[string]*string) *GenerateDRMLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateDRMLicenseResponse) SetStatusCode(v int32) *GenerateDRMLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateDRMLicenseResponse) SetBody(v *GenerateDRMLicenseResponseBody) *GenerateDRMLicenseResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateVideoPlaylistRequest struct {
+	CredentialConfig *CredentialConfig                              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI        *string                                        `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	ProjectName      *string                                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration   *float32                                       `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime  *float32                                       `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitles  []*GenerateVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
+	SourceURI        *string                                        `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]interface{}                         `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Targets          []*GenerateVideoPlaylistRequestTargets         `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+}
+
+func (s GenerateVideoPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequest) SetCredentialConfig(v *CredentialConfig) *GenerateVideoPlaylistRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetMasterURI(v string) *GenerateVideoPlaylistRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetProjectName(v string) *GenerateVideoPlaylistRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceSubtitles(v []*GenerateVideoPlaylistRequestSourceSubtitles) *GenerateVideoPlaylistRequest {
+	s.SourceSubtitles = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetSourceURI(v string) *GenerateVideoPlaylistRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetTags(v map[string]interface{}) *GenerateVideoPlaylistRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequest) SetTargets(v []*GenerateVideoPlaylistRequestTargets) *GenerateVideoPlaylistRequest {
+	s.Targets = v
+	return s
+}
+
+type GenerateVideoPlaylistRequestSourceSubtitles struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistRequestSourceSubtitles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequestSourceSubtitles) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetLanguage(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
+	s.Language = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestSourceSubtitles) SetURI(v string) *GenerateVideoPlaylistRequestSourceSubtitles {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistRequestTargets struct {
+	Audio            *TargetAudio     `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Duration         *float32         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InitialSegments  []*float32       `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	InitialTranscode *float32         `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
+	PresetId         *PresetReference `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	Speed            *float32         `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Subtitle         *TargetSubtitle  `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	TranscodeAhead   *int32           `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
+	URI              *string          `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video            *TargetVideo     `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s GenerateVideoPlaylistRequestTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistRequestTargets) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetAudio(v *TargetAudio) *GenerateVideoPlaylistRequestTargets {
+	s.Audio = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetDuration(v float32) *GenerateVideoPlaylistRequestTargets {
+	s.Duration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetInitialSegments(v []*float32) *GenerateVideoPlaylistRequestTargets {
+	s.InitialSegments = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetInitialTranscode(v float32) *GenerateVideoPlaylistRequestTargets {
+	s.InitialTranscode = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetPresetId(v *PresetReference) *GenerateVideoPlaylistRequestTargets {
+	s.PresetId = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetSpeed(v float32) *GenerateVideoPlaylistRequestTargets {
+	s.Speed = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetSubtitle(v *TargetSubtitle) *GenerateVideoPlaylistRequestTargets {
+	s.Subtitle = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetTranscodeAhead(v int32) *GenerateVideoPlaylistRequestTargets {
+	s.TranscodeAhead = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetURI(v string) *GenerateVideoPlaylistRequestTargets {
+	s.URI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistRequestTargets) SetVideo(v *TargetVideo) *GenerateVideoPlaylistRequestTargets {
+	s.Video = v
+	return s
+}
+
+type GenerateVideoPlaylistShrinkRequest struct {
+	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI              *string  `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration         *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime        *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitlesShrink  *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetsShrink          *string  `json:"Targets,omitempty" xml:"Targets,omitempty"`
+}
+
+func (s GenerateVideoPlaylistShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetCredentialConfigShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetMasterURI(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetProjectName(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceDuration(v float32) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceStartTime(v float32) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceSubtitlesShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceSubtitlesShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetSourceURI(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetTagsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistShrinkRequest) SetTargetsShrink(v string) *GenerateVideoPlaylistShrinkRequest {
+	s.TargetsShrink = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBody struct {
+	AudioPlaylist    []*GenerateVideoPlaylistResponseBodyAudioPlaylist    `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
+	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
+	Token            *string                                              `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI              *string                                              `json:"URI,omitempty" xml:"URI,omitempty"`
+	VideoPlaylist    []*GenerateVideoPlaylistResponseBodyVideoPlaylist    `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
+}
+
+func (s GenerateVideoPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetAudioPlaylist(v []*GenerateVideoPlaylistResponseBodyAudioPlaylist) *GenerateVideoPlaylistResponseBody {
+	s.AudioPlaylist = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetRequestId(v string) *GenerateVideoPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetSubtitlePlaylist(v []*GenerateVideoPlaylistResponseBodySubtitlePlaylist) *GenerateVideoPlaylistResponseBody {
+	s.SubtitlePlaylist = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetToken(v string) *GenerateVideoPlaylistResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetURI(v string) *GenerateVideoPlaylistResponseBody {
+	s.URI = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoPlaylistResponseBodyVideoPlaylist) *GenerateVideoPlaylistResponseBody {
+	s.VideoPlaylist = v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyAudioPlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
+	Index    *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetIndex(v int32) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Index = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetLanguage(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Language = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodySubtitlePlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetToken(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.Token = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponseBodyVideoPlaylist) SetURI(v string) *GenerateVideoPlaylistResponseBodyVideoPlaylist {
+	s.URI = &v
+	return s
+}
+
+type GenerateVideoPlaylistResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateVideoPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateVideoPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateVideoPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateVideoPlaylistResponse) SetHeaders(v map[string]*string) *GenerateVideoPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponse) SetStatusCode(v int32) *GenerateVideoPlaylistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponseBody) *GenerateVideoPlaylistResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateWebofficeTokenRequest struct {
 	CachePreview     *bool                `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
 	CredentialConfig *CredentialConfig    `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -11951,6 +12741,111 @@ func (s *GetBindingResponse) SetStatusCode(v int32) *GetBindingResponse {
 }
 
 func (s *GetBindingResponse) SetBody(v *GetBindingResponseBody) *GetBindingResponse {
+	s.Body = v
+	return s
+}
+
+type GetDRMLicenseRequest struct {
+	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	NotifyEndpoint   *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProtectionSystem *string `json:"ProtectionSystem,omitempty" xml:"ProtectionSystem,omitempty"`
+}
+
+func (s GetDRMLicenseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseRequest) SetKeyId(v string) *GetDRMLicenseRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetNotifyEndpoint(v string) *GetDRMLicenseRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetNotifyTopicName(v string) *GetDRMLicenseRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetProjectName(v string) *GetDRMLicenseRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetDRMLicenseRequest) SetProtectionSystem(v string) *GetDRMLicenseRequest {
+	s.ProtectionSystem = &v
+	return s
+}
+
+type GetDRMLicenseResponseBody struct {
+	DeviceInfo *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	License    *string `json:"License,omitempty" xml:"License,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	States     *int64  `json:"States,omitempty" xml:"States,omitempty"`
+}
+
+func (s GetDRMLicenseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseResponseBody) SetDeviceInfo(v string) *GetDRMLicenseResponseBody {
+	s.DeviceInfo = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetLicense(v string) *GetDRMLicenseResponseBody {
+	s.License = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetRequestId(v string) *GetDRMLicenseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponseBody) SetStates(v int64) *GetDRMLicenseResponseBody {
+	s.States = &v
+	return s
+}
+
+type GetDRMLicenseResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDRMLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDRMLicenseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDRMLicenseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDRMLicenseResponse) SetHeaders(v map[string]*string) *GetDRMLicenseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDRMLicenseResponse) SetStatusCode(v int32) *GetDRMLicenseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDRMLicenseResponse) SetBody(v *GetDRMLicenseResponseBody) *GetDRMLicenseResponse {
 	s.Body = v
 	return s
 }
@@ -12776,6 +13671,764 @@ func (s *GetVideoLabelClassificationResultResponse) SetStatusCode(v int32) *GetV
 }
 
 func (s *GetVideoLabelClassificationResultResponse) SetBody(v *GetVideoLabelClassificationResultResponseBody) *GetVideoLabelClassificationResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetVideoPlaylistRequest struct {
+	CredentialConfig *CredentialConfig                         `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI        *string                                   `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	ProjectName      *string                                   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration   *float32                                  `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime  *float32                                  `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitles  []*GetVideoPlaylistRequestSourceSubtitles `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty" type:"Repeated"`
+	SourceURI        *string                                   `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags             map[string]interface{}                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Targets          []*GetVideoPlaylistRequestTargets         `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoPlaylistRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequest) SetCredentialConfig(v *CredentialConfig) *GetVideoPlaylistRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetMasterURI(v string) *GetVideoPlaylistRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetProjectName(v string) *GetVideoPlaylistRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetSourceDuration(v float32) *GetVideoPlaylistRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetSourceStartTime(v float32) *GetVideoPlaylistRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetSourceSubtitles(v []*GetVideoPlaylistRequestSourceSubtitles) *GetVideoPlaylistRequest {
+	s.SourceSubtitles = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetSourceURI(v string) *GetVideoPlaylistRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetTags(v map[string]interface{}) *GetVideoPlaylistRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequest) SetTargets(v []*GetVideoPlaylistRequestTargets) *GetVideoPlaylistRequest {
+	s.Targets = v
+	return s
+}
+
+type GetVideoPlaylistRequestSourceSubtitles struct {
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestSourceSubtitles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestSourceSubtitles) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestSourceSubtitles) SetLanguage(v string) *GetVideoPlaylistRequestSourceSubtitles {
+	s.Language = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestSourceSubtitles) SetURI(v string) *GetVideoPlaylistRequestSourceSubtitles {
+	s.URI = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargets struct {
+	Audio            *GetVideoPlaylistRequestTargetsAudio    `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Duration         *float32                                `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InitialSegments  []*float32                              `json:"InitialSegments,omitempty" xml:"InitialSegments,omitempty" type:"Repeated"`
+	InitialTranscode *float32                                `json:"InitialTranscode,omitempty" xml:"InitialTranscode,omitempty"`
+	PresetId         *PresetReference                        `json:"PresetId,omitempty" xml:"PresetId,omitempty"`
+	Speed            *float32                                `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Subtitle         *GetVideoPlaylistRequestTargetsSubtitle `json:"Subtitle,omitempty" xml:"Subtitle,omitempty" type:"Struct"`
+	TranscodeAhead   *int32                                  `json:"TranscodeAhead,omitempty" xml:"TranscodeAhead,omitempty"`
+	URI              *string                                 `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video            *GetVideoPlaylistRequestTargetsVideo    `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+}
+
+func (s GetVideoPlaylistRequestTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargets) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetAudio(v *GetVideoPlaylistRequestTargetsAudio) *GetVideoPlaylistRequestTargets {
+	s.Audio = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetDuration(v float32) *GetVideoPlaylistRequestTargets {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetInitialSegments(v []*float32) *GetVideoPlaylistRequestTargets {
+	s.InitialSegments = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetInitialTranscode(v float32) *GetVideoPlaylistRequestTargets {
+	s.InitialTranscode = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetPresetId(v *PresetReference) *GetVideoPlaylistRequestTargets {
+	s.PresetId = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetSpeed(v float32) *GetVideoPlaylistRequestTargets {
+	s.Speed = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetSubtitle(v *GetVideoPlaylistRequestTargetsSubtitle) *GetVideoPlaylistRequestTargets {
+	s.Subtitle = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetTranscodeAhead(v int32) *GetVideoPlaylistRequestTargets {
+	s.TranscodeAhead = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetURI(v string) *GetVideoPlaylistRequestTargets {
+	s.URI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargets) SetVideo(v *GetVideoPlaylistRequestTargetsVideo) *GetVideoPlaylistRequestTargets {
+	s.Video = v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsAudio struct {
+	DisableAudio   *bool                                              `json:"DisableAudio,omitempty" xml:"DisableAudio,omitempty"`
+	FilterAudio    *GetVideoPlaylistRequestTargetsAudioFilterAudio    `json:"FilterAudio,omitempty" xml:"FilterAudio,omitempty" type:"Struct"`
+	TranscodeAudio *GetVideoPlaylistRequestTargetsAudioTranscodeAudio `json:"TranscodeAudio,omitempty" xml:"TranscodeAudio,omitempty" type:"Struct"`
+}
+
+func (s GetVideoPlaylistRequestTargetsAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsAudio) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudio) SetDisableAudio(v bool) *GetVideoPlaylistRequestTargetsAudio {
+	s.DisableAudio = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudio) SetFilterAudio(v *GetVideoPlaylistRequestTargetsAudioFilterAudio) *GetVideoPlaylistRequestTargetsAudio {
+	s.FilterAudio = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudio) SetTranscodeAudio(v *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) *GetVideoPlaylistRequestTargetsAudio {
+	s.TranscodeAudio = v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsAudioFilterAudio struct {
+	Mixing *bool `json:"Mixing,omitempty" xml:"Mixing,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsAudioFilterAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsAudioFilterAudio) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioFilterAudio) SetMixing(v bool) *GetVideoPlaylistRequestTargetsAudioFilterAudio {
+	s.Mixing = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsAudioTranscodeAudio struct {
+	Bitrate          *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateOption    *string `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
+	Channel          *int32  `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	Codec            *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	Quality          *int32  `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	SampleRate       *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	SampleRateOption *string `json:"SampleRateOption,omitempty" xml:"SampleRateOption,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsAudioTranscodeAudio) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsAudioTranscodeAudio) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetBitrate(v int32) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetBitrateOption(v string) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.BitrateOption = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetChannel(v int32) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.Channel = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetCodec(v string) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.Codec = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetQuality(v int32) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.Quality = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetSampleRate(v int32) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsAudioTranscodeAudio) SetSampleRateOption(v string) *GetVideoPlaylistRequestTargetsAudioTranscodeAudio {
+	s.SampleRateOption = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsSubtitle struct {
+	DisableSubtitle *bool                                                  `json:"DisableSubtitle,omitempty" xml:"DisableSubtitle,omitempty"`
+	ExtractSubtitle *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle `json:"ExtractSubtitle,omitempty" xml:"ExtractSubtitle,omitempty" type:"Struct"`
+}
+
+func (s GetVideoPlaylistRequestTargetsSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsSubtitle) SetDisableSubtitle(v bool) *GetVideoPlaylistRequestTargetsSubtitle {
+	s.DisableSubtitle = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsSubtitle) SetExtractSubtitle(v *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle) *GetVideoPlaylistRequestTargetsSubtitle {
+	s.ExtractSubtitle = v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle struct {
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle) SetFormat(v string) *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle {
+	s.Format = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle) SetURI(v string) *GetVideoPlaylistRequestTargetsSubtitleExtractSubtitle {
+	s.URI = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsVideo struct {
+	DisableVideo   *bool                                              `json:"DisableVideo,omitempty" xml:"DisableVideo,omitempty"`
+	FilterVideo    *GetVideoPlaylistRequestTargetsVideoFilterVideo    `json:"FilterVideo,omitempty" xml:"FilterVideo,omitempty" type:"Struct"`
+	TranscodeVideo *GetVideoPlaylistRequestTargetsVideoTranscodeVideo `json:"TranscodeVideo,omitempty" xml:"TranscodeVideo,omitempty" type:"Struct"`
+}
+
+func (s GetVideoPlaylistRequestTargetsVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsVideo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideo) SetDisableVideo(v bool) *GetVideoPlaylistRequestTargetsVideo {
+	s.DisableVideo = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideo) SetFilterVideo(v *GetVideoPlaylistRequestTargetsVideoFilterVideo) *GetVideoPlaylistRequestTargetsVideo {
+	s.FilterVideo = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideo) SetTranscodeVideo(v *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) *GetVideoPlaylistRequestTargetsVideo {
+	s.TranscodeVideo = v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsVideoFilterVideo struct {
+	Delogos    []*GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos    `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
+	Watermarks []*GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideo) SetDelogos(v []*GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) *GetVideoPlaylistRequestTargetsVideoFilterVideo {
+	s.Delogos = v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideo) SetWatermarks(v []*GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) *GetVideoPlaylistRequestTargetsVideoFilterVideo {
+	s.Watermarks = v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos struct {
+	Duration  *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Dx        *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy        *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos  *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetDuration(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetDx(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.Dx = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetDy(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.Dy = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetHeight(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.Height = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetReferPos(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetStartTime(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos) SetWidth(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoDelogos {
+	s.Width = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks struct {
+	BoardWidth  *int32   `json:"BoardWidth,omitempty" xml:"BoardWidth,omitempty"`
+	BorderColor *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	Content     *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Dx          *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
+	Dy          *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
+	FontApha    *float32 `json:"FontApha,omitempty" xml:"FontApha,omitempty"`
+	FontColor   *string  `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontName    *string  `json:"FontName,omitempty" xml:"FontName,omitempty"`
+	FontSize    *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Height      *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	ReferPos    *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
+	StartTime   *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type        *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Width       *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetBoardWidth(v int32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.BoardWidth = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetBorderColor(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetContent(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Content = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetDuration(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetDx(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Dx = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetDy(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Dy = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetFontApha(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.FontApha = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetFontColor(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.FontColor = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetFontName(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.FontName = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetFontSize(v int32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.FontSize = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetHeight(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Height = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetReferPos(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.ReferPos = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetStartTime(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetType(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Type = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetURI(v string) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.URI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks) SetWidth(v float32) *GetVideoPlaylistRequestTargetsVideoFilterVideoWatermarks {
+	s.Width = &v
+	return s
+}
+
+type GetVideoPlaylistRequestTargetsVideoTranscodeVideo struct {
+	AdaptiveResolutionDirection *bool    `json:"AdaptiveResolutionDirection,omitempty" xml:"AdaptiveResolutionDirection,omitempty"`
+	BFrames                     *int32   `json:"BFrames,omitempty" xml:"BFrames,omitempty"`
+	Bitrate                     *int32   `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	BitrateOption               *string  `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
+	BufferSize                  *int32   `json:"BufferSize,omitempty" xml:"BufferSize,omitempty"`
+	CRF                         *float32 `json:"CRF,omitempty" xml:"CRF,omitempty"`
+	Codec                       *string  `json:"Codec,omitempty" xml:"Codec,omitempty"`
+	FrameRate                   *float32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	FrameRateOption             *string  `json:"FrameRateOption,omitempty" xml:"FrameRateOption,omitempty"`
+	GOPSize                     *int32   `json:"GOPSize,omitempty" xml:"GOPSize,omitempty"`
+	MaxBitrate                  *int32   `json:"MaxBitrate,omitempty" xml:"MaxBitrate,omitempty"`
+	PixelFormat                 *string  `json:"PixelFormat,omitempty" xml:"PixelFormat,omitempty"`
+	Refs                        *int32   `json:"Refs,omitempty" xml:"Refs,omitempty"`
+	Resolution                  *string  `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	ResolutionOption            *string  `json:"ResolutionOption,omitempty" xml:"ResolutionOption,omitempty"`
+	Rotation                    *int32   `json:"Rotation,omitempty" xml:"Rotation,omitempty"`
+	ScaleType                   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoTranscodeVideo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistRequestTargetsVideoTranscodeVideo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetAdaptiveResolutionDirection(v bool) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.AdaptiveResolutionDirection = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetBFrames(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.BFrames = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetBitrate(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetBitrateOption(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.BitrateOption = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetBufferSize(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.BufferSize = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetCRF(v float32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.CRF = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetCodec(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.Codec = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetFrameRate(v float32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetFrameRateOption(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.FrameRateOption = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetGOPSize(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.GOPSize = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetMaxBitrate(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.MaxBitrate = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetPixelFormat(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.PixelFormat = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetRefs(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.Refs = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetResolution(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.Resolution = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetResolutionOption(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.ResolutionOption = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetRotation(v int32) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.Rotation = &v
+	return s
+}
+
+func (s *GetVideoPlaylistRequestTargetsVideoTranscodeVideo) SetScaleType(v string) *GetVideoPlaylistRequestTargetsVideoTranscodeVideo {
+	s.ScaleType = &v
+	return s
+}
+
+type GetVideoPlaylistShrinkRequest struct {
+	CredentialConfigShrink *string  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	MasterURI              *string  `json:"MasterURI,omitempty" xml:"MasterURI,omitempty"`
+	ProjectName            *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceDuration         *float32 `json:"SourceDuration,omitempty" xml:"SourceDuration,omitempty"`
+	SourceStartTime        *float32 `json:"SourceStartTime,omitempty" xml:"SourceStartTime,omitempty"`
+	SourceSubtitlesShrink  *string  `json:"SourceSubtitles,omitempty" xml:"SourceSubtitles,omitempty"`
+	SourceURI              *string  `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink             *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetsShrink          *string  `json:"Targets,omitempty" xml:"Targets,omitempty"`
+}
+
+func (s GetVideoPlaylistShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetCredentialConfigShrink(v string) *GetVideoPlaylistShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetMasterURI(v string) *GetVideoPlaylistShrinkRequest {
+	s.MasterURI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetProjectName(v string) *GetVideoPlaylistShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetSourceDuration(v float32) *GetVideoPlaylistShrinkRequest {
+	s.SourceDuration = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetSourceStartTime(v float32) *GetVideoPlaylistShrinkRequest {
+	s.SourceStartTime = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetSourceSubtitlesShrink(v string) *GetVideoPlaylistShrinkRequest {
+	s.SourceSubtitlesShrink = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetSourceURI(v string) *GetVideoPlaylistShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetTagsShrink(v string) *GetVideoPlaylistShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *GetVideoPlaylistShrinkRequest) SetTargetsShrink(v string) *GetVideoPlaylistShrinkRequest {
+	s.TargetsShrink = &v
+	return s
+}
+
+type GetVideoPlaylistResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignedURL *string `json:"SignedURL,omitempty" xml:"SignedURL,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	URI       *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s GetVideoPlaylistResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistResponseBody) SetRequestId(v string) *GetVideoPlaylistResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoPlaylistResponseBody) SetSignedURL(v string) *GetVideoPlaylistResponseBody {
+	s.SignedURL = &v
+	return s
+}
+
+func (s *GetVideoPlaylistResponseBody) SetToken(v string) *GetVideoPlaylistResponseBody {
+	s.Token = &v
+	return s
+}
+
+func (s *GetVideoPlaylistResponseBody) SetURI(v string) *GetVideoPlaylistResponseBody {
+	s.URI = &v
+	return s
+}
+
+type GetVideoPlaylistResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoPlaylistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoPlaylistResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoPlaylistResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoPlaylistResponse) SetHeaders(v map[string]*string) *GetVideoPlaylistResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoPlaylistResponse) SetStatusCode(v int32) *GetVideoPlaylistResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoPlaylistResponse) SetBody(v *GetVideoPlaylistResponseBody) *GetVideoPlaylistResponse {
 	s.Body = v
 	return s
 }
@@ -13690,6 +15343,128 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 	return s
 }
 
+type LiveTranscodingRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Token            *string           `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s LiveTranscodingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveTranscodingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LiveTranscodingRequest) SetCredentialConfig(v *CredentialConfig) *LiveTranscodingRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *LiveTranscodingRequest) SetProjectName(v string) *LiveTranscodingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *LiveTranscodingRequest) SetSourceURI(v string) *LiveTranscodingRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *LiveTranscodingRequest) SetToken(v string) *LiveTranscodingRequest {
+	s.Token = &v
+	return s
+}
+
+type LiveTranscodingShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Token                  *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s LiveTranscodingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveTranscodingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LiveTranscodingShrinkRequest) SetCredentialConfigShrink(v string) *LiveTranscodingShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *LiveTranscodingShrinkRequest) SetProjectName(v string) *LiveTranscodingShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *LiveTranscodingShrinkRequest) SetSourceURI(v string) *LiveTranscodingShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *LiveTranscodingShrinkRequest) SetToken(v string) *LiveTranscodingShrinkRequest {
+	s.Token = &v
+	return s
+}
+
+type LiveTranscodingResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	URI       *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s LiveTranscodingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveTranscodingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LiveTranscodingResponseBody) SetRequestId(v string) *LiveTranscodingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LiveTranscodingResponseBody) SetURI(v string) *LiveTranscodingResponseBody {
+	s.URI = &v
+	return s
+}
+
+type LiveTranscodingResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LiveTranscodingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LiveTranscodingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LiveTranscodingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LiveTranscodingResponse) SetHeaders(v map[string]*string) *LiveTranscodingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LiveTranscodingResponse) SetStatusCode(v int32) *LiveTranscodingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LiveTranscodingResponse) SetBody(v *LiveTranscodingResponseBody) *LiveTranscodingResponse {
+	s.Body = v
+	return s
+}
+
 type QueryFigureClustersRequest struct {
 	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels    *string    `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
@@ -14134,6 +15909,117 @@ func (s *QueryLocationDateClustersResponse) SetStatusCode(v int32) *QueryLocatio
 }
 
 func (s *QueryLocationDateClustersResponse) SetBody(v *QueryLocationDateClustersResponseBody) *QueryLocationDateClustersResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySimilarImageClustersRequest struct {
+	CustomLabels *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+}
+
+func (s QuerySimilarImageClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersRequest) SetCustomLabels(v string) *QuerySimilarImageClustersRequest {
+	s.CustomLabels = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetDatasetName(v string) *QuerySimilarImageClustersRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetMaxResults(v int32) *QuerySimilarImageClustersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetNextToken(v string) *QuerySimilarImageClustersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetOrder(v string) *QuerySimilarImageClustersRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetProjectName(v string) *QuerySimilarImageClustersRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersRequest) SetSort(v string) *QuerySimilarImageClustersRequest {
+	s.Sort = &v
+	return s
+}
+
+type QuerySimilarImageClustersResponseBody struct {
+	NextToken            *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId            *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SimilarImageClusters []*SimilarImageCluster `json:"SimilarImageClusters,omitempty" xml:"SimilarImageClusters,omitempty" type:"Repeated"`
+}
+
+func (s QuerySimilarImageClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetNextToken(v string) *QuerySimilarImageClustersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetRequestId(v string) *QuerySimilarImageClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponseBody) SetSimilarImageClusters(v []*SimilarImageCluster) *QuerySimilarImageClustersResponseBody {
+	s.SimilarImageClusters = v
+	return s
+}
+
+type QuerySimilarImageClustersResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySimilarImageClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySimilarImageClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySimilarImageClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySimilarImageClustersResponse) SetHeaders(v map[string]*string) *QuerySimilarImageClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponse) SetStatusCode(v int32) *QuerySimilarImageClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySimilarImageClustersResponse) SetBody(v *QuerySimilarImageClustersResponseBody) *QuerySimilarImageClustersResponse {
 	s.Body = v
 	return s
 }
@@ -14752,6 +16638,81 @@ func (s *ResumeBatchResponse) SetBody(v *ResumeBatchResponseBody) *ResumeBatchRe
 	return s
 }
 
+type ResumeBindingRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s ResumeBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBindingRequest) SetDatasetName(v string) *ResumeBindingRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ResumeBindingRequest) SetProjectName(v string) *ResumeBindingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ResumeBindingRequest) SetURI(v string) *ResumeBindingRequest {
+	s.URI = &v
+	return s
+}
+
+type ResumeBindingResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResumeBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBindingResponseBody) SetRequestId(v string) *ResumeBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResumeBindingResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeBindingResponse) SetHeaders(v map[string]*string) *ResumeBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeBindingResponse) SetStatusCode(v int32) *ResumeBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeBindingResponse) SetBody(v *ResumeBindingResponseBody) *ResumeBindingResponse {
+	s.Body = v
+	return s
+}
+
 type ResumeTriggerRequest struct {
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -15342,6 +17303,87 @@ func (s *SimpleQueryResponse) SetStatusCode(v int32) *SimpleQueryResponse {
 }
 
 func (s *SimpleQueryResponse) SetBody(v *SimpleQueryResponseBody) *SimpleQueryResponse {
+	s.Body = v
+	return s
+}
+
+type StopBindingRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	URI         *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s StopBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopBindingRequest) SetDatasetName(v string) *StopBindingRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *StopBindingRequest) SetProjectName(v string) *StopBindingRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *StopBindingRequest) SetReason(v string) *StopBindingRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *StopBindingRequest) SetURI(v string) *StopBindingRequest {
+	s.URI = &v
+	return s
+}
+
+type StopBindingResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopBindingResponseBody) SetRequestId(v string) *StopBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopBindingResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopBindingResponse) SetHeaders(v map[string]*string) *StopBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopBindingResponse) SetStatusCode(v int32) *StopBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopBindingResponse) SetBody(v *StopBindingResponseBody) *StopBindingResponse {
 	s.Body = v
 	return s
 }
@@ -17653,6 +19695,95 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+/**
+ * @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
+ *
+ * @param tmpReq CreateDetectVideoLabelsTaskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDetectVideoLabelsTaskResponse
+ */
+// Deprecated
+func (client *Client) CreateDetectVideoLabelsTaskWithOptions(tmpReq *CreateDetectVideoLabelsTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDetectVideoLabelsTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDetectVideoLabelsTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDetectVideoLabelsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated : CreateDetectVideoLabelsTask is deprecated, please use imm::2020-09-30::CreateVideoLabelClassificationTask instead.
+ *
+ * @param request CreateDetectVideoLabelsTaskRequest
+ * @return CreateDetectVideoLabelsTaskResponse
+ */
+// Deprecated
+func (client *Client) CreateDetectVideoLabelsTask(request *CreateDetectVideoLabelsTaskRequest) (_result *CreateDetectVideoLabelsTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDetectVideoLabelsTaskResponse{}
+	_body, _err := client.CreateDetectVideoLabelsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFacesSearchingTaskWithOptions(tmpReq *CreateFacesSearchingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateFacesSearchingTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18844,6 +20975,80 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
 	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSimilarImageClusteringTaskWithOptions(tmpReq *CreateSimilarImageClusteringTaskRequest, runtime *util.RuntimeOptions) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSimilarImageClusteringTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Notification)) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, tea.String("Notification"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationShrink)) {
+		query["Notification"] = request.NotificationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSimilarImageClusteringTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSimilarImageClusteringTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSimilarImageClusteringTask(request *CreateSimilarImageClusteringTaskRequest) (_result *CreateSimilarImageClusteringTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSimilarImageClusteringTaskResponse{}
+	_body, _err := client.CreateSimilarImageClusteringTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20225,6 +22430,160 @@ func (client *Client) FuzzyQuery(request *FuzzyQueryRequest) (_result *FuzzyQuer
 	return _result, _err
 }
 
+func (client *Client) GenerateDRMLicenseWithOptions(request *GenerateDRMLicenseRequest, runtime *util.RuntimeOptions) (_result *GenerateDRMLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionSystem)) {
+		query["ProtectionSystem"] = request.ProtectionSystem
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateDRMLicense"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateDRMLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateDRMLicense(request *GenerateDRMLicenseRequest) (_result *GenerateDRMLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateDRMLicenseResponse{}
+	_body, _err := client.GenerateDRMLicenseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoPlaylistWithOptions(tmpReq *GenerateVideoPlaylistRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoPlaylistResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GenerateVideoPlaylistShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSubtitles)) {
+		request.SourceSubtitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSubtitles, tea.String("SourceSubtitles"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
+		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterURI)) {
+		query["MasterURI"] = request.MasterURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDuration)) {
+		query["SourceDuration"] = request.SourceDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceStartTime)) {
+		query["SourceStartTime"] = request.SourceStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceSubtitlesShrink)) {
+		query["SourceSubtitles"] = request.SourceSubtitlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
+		query["Targets"] = request.TargetsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateVideoPlaylist"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateVideoPlaylistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateVideoPlaylist(request *GenerateVideoPlaylistRequest) (_result *GenerateVideoPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateVideoPlaylistResponse{}
+	_body, _err := client.GenerateVideoPlaylistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateWebofficeTokenWithOptions(tmpReq *GenerateWebofficeTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateWebofficeTokenResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20444,6 +22803,81 @@ func (client *Client) GetBinding(request *GetBindingRequest) (_result *GetBindin
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBindingResponse{}
 	_body, _err := client.GetBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request GetDRMLicenseRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDRMLicenseResponse
+ */
+// Deprecated
+func (client *Client) GetDRMLicenseWithOptions(request *GetDRMLicenseRequest, runtime *util.RuntimeOptions) (_result *GetDRMLicenseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionSystem)) {
+		query["ProtectionSystem"] = request.ProtectionSystem
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDRMLicense"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDRMLicenseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request GetDRMLicenseRequest
+ * @return GetDRMLicenseResponse
+ */
+// Deprecated
+func (client *Client) GetDRMLicense(request *GetDRMLicenseRequest) (_result *GetDRMLicenseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDRMLicenseResponse{}
+	_body, _err := client.GetDRMLicenseWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20896,6 +23330,115 @@ func (client *Client) GetVideoLabelClassificationResult(request *GetVideoLabelCl
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoLabelClassificationResultResponse{}
 	_body, _err := client.GetVideoLabelClassificationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param tmpReq GetVideoPlaylistRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetVideoPlaylistResponse
+ */
+// Deprecated
+func (client *Client) GetVideoPlaylistWithOptions(tmpReq *GetVideoPlaylistRequest, runtime *util.RuntimeOptions) (_result *GetVideoPlaylistResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetVideoPlaylistShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSubtitles)) {
+		request.SourceSubtitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSubtitles, tea.String("SourceSubtitles"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
+		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterURI)) {
+		query["MasterURI"] = request.MasterURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDuration)) {
+		query["SourceDuration"] = request.SourceDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceStartTime)) {
+		query["SourceStartTime"] = request.SourceStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceSubtitlesShrink)) {
+		query["SourceSubtitles"] = request.SourceSubtitlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
+		query["Targets"] = request.TargetsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoPlaylist"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoPlaylistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request GetVideoPlaylistRequest
+ * @return GetVideoPlaylistResponse
+ */
+// Deprecated
+func (client *Client) GetVideoPlaylist(request *GetVideoPlaylistRequest) (_result *GetVideoPlaylistResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoPlaylistResponse{}
+	_body, _err := client.GetVideoPlaylistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21411,6 +23954,68 @@ func (client *Client) ListTriggers(request *ListTriggersRequest) (_result *ListT
 	return _result, _err
 }
 
+func (client *Client) LiveTranscodingWithOptions(tmpReq *LiveTranscodingRequest, runtime *util.RuntimeOptions) (_result *LiveTranscodingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &LiveTranscodingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CredentialConfig)) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LiveTranscoding"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LiveTranscodingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LiveTranscoding(request *LiveTranscodingRequest) (_result *LiveTranscodingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LiveTranscodingResponse{}
+	_body, _err := client.LiveTranscodingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClustersRequest, runtime *util.RuntimeOptions) (_result *QueryFigureClustersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21616,6 +24221,74 @@ func (client *Client) QueryLocationDateClusters(request *QueryLocationDateCluste
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLocationDateClustersResponse{}
 	_body, _err := client.QueryLocationDateClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySimilarImageClustersWithOptions(request *QuerySimilarImageClustersRequest, runtime *util.RuntimeOptions) (_result *QuerySimilarImageClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomLabels)) {
+		query["CustomLabels"] = request.CustomLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySimilarImageClusters"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySimilarImageClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySimilarImageClusters(request *QuerySimilarImageClustersRequest) (_result *QuerySimilarImageClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySimilarImageClustersResponse{}
+	_body, _err := client.QuerySimilarImageClustersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21917,6 +24590,73 @@ func (client *Client) ResumeBatch(request *ResumeBatchRequest) (_result *ResumeB
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ResumeBindingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResumeBindingResponse
+ */
+// Deprecated
+func (client *Client) ResumeBindingWithOptions(request *ResumeBindingRequest, runtime *util.RuntimeOptions) (_result *ResumeBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeBinding"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request ResumeBindingRequest
+ * @return ResumeBindingResponse
+ */
+// Deprecated
+func (client *Client) ResumeBinding(request *ResumeBindingRequest) (_result *ResumeBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeBindingResponse{}
+	_body, _err := client.ResumeBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResumeTriggerWithOptions(request *ResumeTriggerRequest, runtime *util.RuntimeOptions) (_result *ResumeTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22170,6 +24910,77 @@ func (client *Client) SimpleQuery(request *SimpleQueryRequest) (_result *SimpleQ
 	runtime := &util.RuntimeOptions{}
 	_result = &SimpleQueryResponse{}
 	_body, _err := client.SimpleQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request StopBindingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopBindingResponse
+ */
+// Deprecated
+func (client *Client) StopBindingWithOptions(request *StopBindingRequest, runtime *util.RuntimeOptions) (_result *StopBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URI)) {
+		query["URI"] = request.URI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopBinding"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * @deprecated
+ *
+ * @param request StopBindingRequest
+ * @return StopBindingResponse
+ */
+// Deprecated
+func (client *Client) StopBinding(request *StopBindingRequest) (_result *StopBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopBindingResponse{}
+	_body, _err := client.StopBindingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
