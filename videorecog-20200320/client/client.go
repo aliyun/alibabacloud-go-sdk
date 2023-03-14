@@ -1068,6 +1068,8 @@ func (s *RecognizeVideoCastCrewListResponse) SetBody(v *RecognizeVideoCastCrewLi
 }
 
 type SplitVideoPartsRequest struct {
+	MaxTime  *int32  `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
+	MinTime  *int32  `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
@@ -1078,6 +1080,16 @@ func (s SplitVideoPartsRequest) String() string {
 
 func (s SplitVideoPartsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SplitVideoPartsRequest) SetMaxTime(v int32) *SplitVideoPartsRequest {
+	s.MaxTime = &v
+	return s
+}
+
+func (s *SplitVideoPartsRequest) SetMinTime(v int32) *SplitVideoPartsRequest {
+	s.MinTime = &v
+	return s
 }
 
 func (s *SplitVideoPartsRequest) SetTemplate(v string) *SplitVideoPartsRequest {
@@ -1091,6 +1103,8 @@ func (s *SplitVideoPartsRequest) SetVideoUrl(v string) *SplitVideoPartsRequest {
 }
 
 type SplitVideoPartsAdvanceRequest struct {
+	MaxTime        *int32    `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
+	MinTime        *int32    `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
 	Template       *string   `json:"Template,omitempty" xml:"Template,omitempty"`
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
@@ -1101,6 +1115,16 @@ func (s SplitVideoPartsAdvanceRequest) String() string {
 
 func (s SplitVideoPartsAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SplitVideoPartsAdvanceRequest) SetMaxTime(v int32) *SplitVideoPartsAdvanceRequest {
+	s.MaxTime = &v
+	return s
+}
+
+func (s *SplitVideoPartsAdvanceRequest) SetMinTime(v int32) *SplitVideoPartsAdvanceRequest {
+	s.MinTime = &v
+	return s
 }
 
 func (s *SplitVideoPartsAdvanceRequest) SetTemplate(v string) *SplitVideoPartsAdvanceRequest {
@@ -2129,6 +2153,14 @@ func (client *Client) SplitVideoPartsWithOptions(request *SplitVideoPartsRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxTime)) {
+		body["MaxTime"] = request.MaxTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinTime)) {
+		body["MinTime"] = request.MinTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Template)) {
 		body["Template"] = request.Template
 	}
