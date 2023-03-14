@@ -13,9 +13,12 @@ import (
 )
 
 type ChangeResourceGroupRequest struct {
+	// rg-aek2ajbjoloa23q
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// P7RMVSVM9LOVYQOM
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// APPLICATION
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -42,9 +45,10 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1019,7 +1023,8 @@ func (s *GetExecuteOperationResultRequest) SetResourceGroupId(v string) *GetExec
 }
 
 type GetExecuteOperationResultResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Status
 	Data      *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1491,7 +1496,7 @@ type ListApplicationResponseBodyData struct {
 	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TopoURL         *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
@@ -1528,7 +1533,7 @@ func (s *ListApplicationResponseBodyData) SetResourceGroupId(v string) *ListAppl
 	return s
 }
 
-func (s *ListApplicationResponseBodyData) SetStatus(v int32) *ListApplicationResponseBodyData {
+func (s *ListApplicationResponseBodyData) SetStatus(v string) *ListApplicationResponseBodyData {
 	s.Status = &v
 	return s
 }
