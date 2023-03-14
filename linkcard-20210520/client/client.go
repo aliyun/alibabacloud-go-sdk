@@ -605,6 +605,145 @@ func (s *AddDirectionalGroupResponse) SetBody(v *AddDirectionalGroupResponseBody
 	return s
 }
 
+type AddTagsToCardRequest struct {
+	Iccid       *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	TagNameList []*string `json:"TagNameList,omitempty" xml:"TagNameList,omitempty" type:"Repeated"`
+}
+
+func (s AddTagsToCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagsToCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagsToCardRequest) SetIccid(v string) *AddTagsToCardRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *AddTagsToCardRequest) SetTagNameList(v []*string) *AddTagsToCardRequest {
+	s.TagNameList = v
+	return s
+}
+
+type AddTagsToCardShrinkRequest struct {
+	Iccid             *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	TagNameListShrink *string `json:"TagNameList,omitempty" xml:"TagNameList,omitempty"`
+}
+
+func (s AddTagsToCardShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagsToCardShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagsToCardShrinkRequest) SetIccid(v string) *AddTagsToCardShrinkRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *AddTagsToCardShrinkRequest) SetTagNameListShrink(v string) *AddTagsToCardShrinkRequest {
+	s.TagNameListShrink = &v
+	return s
+}
+
+type AddTagsToCardResponseBody struct {
+	Code         *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         []*AddTagsToCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorMessage *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddTagsToCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagsToCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagsToCardResponseBody) SetCode(v string) *AddTagsToCardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddTagsToCardResponseBody) SetData(v []*AddTagsToCardResponseBodyData) *AddTagsToCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddTagsToCardResponseBody) SetErrorMessage(v string) *AddTagsToCardResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddTagsToCardResponseBody) SetRequestId(v string) *AddTagsToCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddTagsToCardResponseBody) SetSuccess(v bool) *AddTagsToCardResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddTagsToCardResponseBodyData struct {
+	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s AddTagsToCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagsToCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagsToCardResponseBodyData) SetTagId(v string) *AddTagsToCardResponseBodyData {
+	s.TagId = &v
+	return s
+}
+
+func (s *AddTagsToCardResponseBodyData) SetTagName(v string) *AddTagsToCardResponseBodyData {
+	s.TagName = &v
+	return s
+}
+
+type AddTagsToCardResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTagsToCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddTagsToCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTagsToCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTagsToCardResponse) SetHeaders(v map[string]*string) *AddTagsToCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTagsToCardResponse) SetStatusCode(v int32) *AddTagsToCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTagsToCardResponse) SetBody(v *AddTagsToCardResponseBody) *AddTagsToCardResponse {
+	s.Body = v
+	return s
+}
+
 type BatchAddDirectionalAddressRequest struct {
 	AddressType *string   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	GroupId     *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -1873,6 +2012,181 @@ func (s *GetCardLatestFlowResponse) SetStatusCode(v int32) *GetCardLatestFlowRes
 }
 
 func (s *GetCardLatestFlowResponse) SetBody(v *GetCardLatestFlowResponseBody) *GetCardLatestFlowResponse {
+	s.Body = v
+	return s
+}
+
+type GetCardRealStatusRequest struct {
+	Iccid    *string   `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Msisdn   *string   `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	SerialNo []*string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty" type:"Repeated"`
+}
+
+func (s GetCardRealStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardRealStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardRealStatusRequest) SetIccid(v string) *GetCardRealStatusRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetCardRealStatusRequest) SetMsisdn(v string) *GetCardRealStatusRequest {
+	s.Msisdn = &v
+	return s
+}
+
+func (s *GetCardRealStatusRequest) SetSerialNo(v []*string) *GetCardRealStatusRequest {
+	s.SerialNo = v
+	return s
+}
+
+type GetCardRealStatusShrinkRequest struct {
+	Iccid          *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Msisdn         *string `json:"Msisdn,omitempty" xml:"Msisdn,omitempty"`
+	SerialNoShrink *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+}
+
+func (s GetCardRealStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardRealStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardRealStatusShrinkRequest) SetIccid(v string) *GetCardRealStatusShrinkRequest {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetCardRealStatusShrinkRequest) SetMsisdn(v string) *GetCardRealStatusShrinkRequest {
+	s.Msisdn = &v
+	return s
+}
+
+func (s *GetCardRealStatusShrinkRequest) SetSerialNoShrink(v string) *GetCardRealStatusShrinkRequest {
+	s.SerialNoShrink = &v
+	return s
+}
+
+type GetCardRealStatusResponseBody struct {
+	Code             *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data             []*GetCardRealStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorMessage     *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LocalizedMessage *string                              `json:"LocalizedMessage,omitempty" xml:"LocalizedMessage,omitempty"`
+	RequestId        *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCardRealStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardRealStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardRealStatusResponseBody) SetCode(v string) *GetCardRealStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBody) SetData(v []*GetCardRealStatusResponseBodyData) *GetCardRealStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBody) SetErrorMessage(v string) *GetCardRealStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBody) SetLocalizedMessage(v string) *GetCardRealStatusResponseBody {
+	s.LocalizedMessage = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBody) SetRequestId(v string) *GetCardRealStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBody) SetSuccess(v bool) *GetCardRealStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCardRealStatusResponseBodyData struct {
+	Gprs     *bool   `json:"Gprs,omitempty" xml:"Gprs,omitempty"`
+	Iccid    *string `json:"Iccid,omitempty" xml:"Iccid,omitempty"`
+	Online   *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCardRealStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardRealStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardRealStatusResponseBodyData) SetGprs(v bool) *GetCardRealStatusResponseBodyData {
+	s.Gprs = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBodyData) SetIccid(v string) *GetCardRealStatusResponseBodyData {
+	s.Iccid = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBodyData) SetOnline(v bool) *GetCardRealStatusResponseBodyData {
+	s.Online = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBodyData) SetSerialNo(v string) *GetCardRealStatusResponseBodyData {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponseBodyData) SetStatus(v string) *GetCardRealStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCardRealStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCardRealStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCardRealStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardRealStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardRealStatusResponse) SetHeaders(v map[string]*string) *GetCardRealStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCardRealStatusResponse) SetStatusCode(v int32) *GetCardRealStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCardRealStatusResponse) SetBody(v *GetCardRealStatusResponseBody) *GetCardRealStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5405,6 +5719,60 @@ func (client *Client) AddDirectionalGroup(request *AddDirectionalGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) AddTagsToCardWithOptions(tmpReq *AddTagsToCardRequest, runtime *util.RuntimeOptions) (_result *AddTagsToCardResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddTagsToCardShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagNameList)) {
+		request.TagNameListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagNameList, tea.String("TagNameList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagNameListShrink)) {
+		query["TagNameList"] = request.TagNameListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTagsToCard"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTagsToCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddTagsToCard(request *AddTagsToCardRequest) (_result *AddTagsToCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTagsToCardResponse{}
+	_body, _err := client.AddTagsToCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchAddDirectionalAddressWithOptions(request *BatchAddDirectionalAddressRequest, runtime *util.RuntimeOptions) (_result *BatchAddDirectionalAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5750,6 +6118,64 @@ func (client *Client) GetCardLatestFlow(request *GetCardLatestFlowRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCardLatestFlowResponse{}
 	_body, _err := client.GetCardLatestFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCardRealStatusWithOptions(tmpReq *GetCardRealStatusRequest, runtime *util.RuntimeOptions) (_result *GetCardRealStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetCardRealStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SerialNo)) {
+		request.SerialNoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SerialNo, tea.String("SerialNo"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Iccid)) {
+		query["Iccid"] = request.Iccid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Msisdn)) {
+		query["Msisdn"] = request.Msisdn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNoShrink)) {
+		query["SerialNo"] = request.SerialNoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCardRealStatus"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCardRealStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCardRealStatus(request *GetCardRealStatusRequest) (_result *GetCardRealStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCardRealStatusResponse{}
+	_body, _err := client.GetCardRealStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
