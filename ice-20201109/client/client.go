@@ -1694,6 +1694,7 @@ type CreateEditingProjectRequest struct {
 	MaterialMaps   *string `json:"MaterialMaps,omitempty" xml:"MaterialMaps,omitempty"`
 	ProjectType    *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
 	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	Timeline       *string `json:"Timeline,omitempty" xml:"Timeline,omitempty"`
 	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -1738,6 +1739,11 @@ func (s *CreateEditingProjectRequest) SetProjectType(v string) *CreateEditingPro
 
 func (s *CreateEditingProjectRequest) SetTemplateId(v string) *CreateEditingProjectRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateEditingProjectRequest) SetTemplateType(v string) *CreateEditingProjectRequest {
+	s.TemplateType = &v
 	return s
 }
 
@@ -37513,6 +37519,10 @@ func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProj
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
