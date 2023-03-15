@@ -1016,67 +1016,74 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 }
 
 type MassPushRequestPushTask struct {
-	AndroidActivity                  *string  `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody                   *string  `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	AndroidBigPictureUrl             *string  `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidBigTitle                  *string  `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidExtParameters             *string  `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidImageUrl                  *string  `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	AndroidInboxBody                 *string  `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidMessageHuaweiCategory     *string  `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	AndroidMessageHuaweiUrgency      *string  `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMusic                     *string  `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	AndroidNotificationBarPriority   *int32   `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	AndroidNotificationBarType       *int32   `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationChannel       *string  `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	AndroidNotificationGroup         *string  `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
-	AndroidNotificationHonorChannel  *string  `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
-	AndroidNotificationHuaweiChannel *string  `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationNotifyId      *int32   `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	AndroidNotificationVivoChannel   *string  `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	AndroidNotificationXiaomiChannel *string  `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	AndroidNotifyType                *string  `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenType                  *string  `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidOpenUrl                   *string  `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidPopupActivity             *string  `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidPopupBody                 *string  `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	AndroidPopupTitle                *string  `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	AndroidRemind                    *bool    `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidRenderStyle               *string  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidVivoPushMode              *int32   `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
-	AndroidXiaoMiActivity            *string  `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
-	AndroidXiaoMiNotifyBody          *string  `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
-	AndroidXiaoMiNotifyTitle         *string  `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
-	AndroidXiaomiBigPictureUrl       *string  `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	AndroidXiaomiImageUrl            *string  `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	Body                             *string  `json:"Body,omitempty" xml:"Body,omitempty"`
-	DeviceType                       *string  `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ExpireTime                       *string  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	JobKey                           *string  `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	PushTime                         *string  `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	PushType                         *string  `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendChannels                     *string  `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
-	SendSpeed                        *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	StoreOffline                     *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target                           *string  `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue                      *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title                            *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Trim                             *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	IOSApnsEnv                       *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSBadge                         *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	IOSBadgeAutoIncrement            *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	IOSExtParameters                 *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	IOSInterruptionLevel             *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
-	IOSMusic                         *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSMutableContent                *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	IOSNotificationCategory          *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSNotificationCollapseId        *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	IOSNotificationThreadId          *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	IOSRelevanceScore                *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
-	IOSRemind                        *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSRemindBody                    *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	IOSSilentNotification            *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSSubtitle                      *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
+	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
+	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageVivoCategory       *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
+	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationGroup         *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	AndroidNotificationHonorChannel  *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
+	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
+	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	// Deprecated
+	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
+	// Deprecated
+	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
+	// Deprecated
+	AndroidXiaoMiNotifyTitle   *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiImageUrl      *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	Body                       *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	DeviceType                 *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ExpireTime                 *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	JobKey                     *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	PushTime                   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType                   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	SendChannels               *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	// Deprecated
+	SendSpeed                 *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	StoreOffline              *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	Target                    *string  `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetValue               *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	Title                     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Trim                      *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	IOSApnsEnv                *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
+	IOSBadge                  *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
+	IOSBadgeAutoIncrement     *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
+	IOSExtParameters          *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	IOSInterruptionLevel      *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSMusic                  *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	IOSMutableContent         *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	IOSNotificationCategory   *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	IOSNotificationCollapseId *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	IOSNotificationThreadId   *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	IOSRelevanceScore         *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
+	IOSRemind                 *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody             *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	IOSSilentNotification     *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	IOSSubtitle               *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s MassPushRequestPushTask) String() string {
@@ -1112,6 +1119,16 @@ func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushReq
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetAndroidHuaweiReceiptId(v string) *MassPushRequestPushTask {
+	s.AndroidHuaweiReceiptId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidHuaweiTargetUserType(v int32) *MassPushRequestPushTask {
+	s.AndroidHuaweiTargetUserType = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetAndroidImageUrl(v string) *MassPushRequestPushTask {
 	s.AndroidImageUrl = &v
 	return s
@@ -1129,6 +1146,11 @@ func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiCategory(v string) *Mas
 
 func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiUrgency(v string) *MassPushRequestPushTask {
 	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidMessageVivoCategory(v string) *MassPushRequestPushTask {
+	s.AndroidMessageVivoCategory = &v
 	return s
 }
 
@@ -1462,73 +1484,80 @@ func (s *MassPushResponse) SetBody(v *MassPushResponseBody) *MassPushResponse {
 }
 
 type PushRequest struct {
-	AndroidActivity                  *string  `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody                   *string  `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	AndroidBigPictureUrl             *string  `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidBigTitle                  *string  `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidExtParameters             *string  `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidImageUrl                  *string  `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	AndroidInboxBody                 *string  `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidMessageHuaweiCategory     *string  `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	AndroidMessageHuaweiUrgency      *string  `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMusic                     *string  `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	AndroidNotificationBarPriority   *int32   `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	AndroidNotificationBarType       *int32   `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationChannel       *string  `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	AndroidNotificationGroup         *string  `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
-	AndroidNotificationHonorChannel  *string  `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
-	AndroidNotificationHuaweiChannel *string  `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationNotifyId      *int32   `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	AndroidNotificationVivoChannel   *string  `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	AndroidNotificationXiaomiChannel *string  `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	AndroidNotifyType                *string  `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenType                  *string  `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidOpenUrl                   *string  `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidPopupActivity             *string  `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidPopupBody                 *string  `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	AndroidPopupTitle                *string  `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	AndroidRemind                    *bool    `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidRenderStyle               *int32   `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidVivoPushMode              *int32   `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
-	AndroidXiaoMiActivity            *string  `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
-	AndroidXiaoMiNotifyBody          *string  `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
-	AndroidXiaoMiNotifyTitle         *string  `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
-	AndroidXiaomiBigPictureUrl       *string  `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	AndroidXiaomiImageUrl            *string  `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	AppKey                           *int64   `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body                             *string  `json:"Body,omitempty" xml:"Body,omitempty"`
-	DeviceType                       *string  `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ExpireTime                       *string  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	JobKey                           *string  `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	PushTime                         *string  `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	PushType                         *string  `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendChannels                     *string  `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
-	SendSpeed                        *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	SmsDelaySecs                     *int32   `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
-	SmsParams                        *string  `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
-	SmsSendPolicy                    *int32   `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
-	SmsSignName                      *string  `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsTemplateName                  *string  `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
-	StoreOffline                     *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target                           *string  `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue                      *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title                            *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Trim                             *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	IOSApnsEnv                       *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSBadge                         *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	IOSBadgeAutoIncrement            *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	IOSExtParameters                 *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	IOSInterruptionLevel             *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
-	IOSMusic                         *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSMutableContent                *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	IOSNotificationCategory          *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSNotificationCollapseId        *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	IOSNotificationThreadId          *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	IOSRelevanceScore                *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
-	IOSRemind                        *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSRemindBody                    *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	IOSSilentNotification            *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSSubtitle                      *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
+	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
+	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMessageVivoCategory       *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
+	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationGroup         *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	AndroidNotificationHonorChannel  *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
+	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
+	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	// Deprecated
+	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
+	// Deprecated
+	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
+	// Deprecated
+	AndroidXiaoMiNotifyTitle   *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiImageUrl      *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	AppKey                     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body                       *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	DeviceType                 *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ExpireTime                 *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	JobKey                     *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	PushTime                   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType                   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	SendChannels               *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	// Deprecated
+	SendSpeed                 *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	SmsDelaySecs              *int32   `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
+	SmsParams                 *string  `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
+	SmsSendPolicy             *int32   `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
+	SmsSignName               *string  `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsTemplateName           *string  `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
+	StoreOffline              *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	Target                    *string  `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetValue               *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	Title                     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	Trim                      *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	IOSApnsEnv                *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
+	IOSBadge                  *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
+	IOSBadgeAutoIncrement     *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
+	IOSExtParameters          *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	IOSInterruptionLevel      *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	IOSMusic                  *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	IOSMutableContent         *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	IOSNotificationCategory   *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	IOSNotificationCollapseId *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	IOSNotificationThreadId   *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	IOSRelevanceScore         *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
+	IOSRemind                 *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody             *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	IOSSilentNotification     *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	IOSSubtitle               *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s PushRequest) String() string {
@@ -1564,6 +1593,16 @@ func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
 	return s
 }
 
+func (s *PushRequest) SetAndroidHuaweiReceiptId(v string) *PushRequest {
+	s.AndroidHuaweiReceiptId = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidHuaweiTargetUserType(v int32) *PushRequest {
+	s.AndroidHuaweiTargetUserType = &v
+	return s
+}
+
 func (s *PushRequest) SetAndroidImageUrl(v string) *PushRequest {
 	s.AndroidImageUrl = &v
 	return s
@@ -1581,6 +1620,11 @@ func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
 	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageVivoCategory(v string) *PushRequest {
+	s.AndroidMessageVivoCategory = &v
 	return s
 }
 
@@ -4400,6 +4444,14 @@ func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CheckDeviceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CheckDeviceResponse
+ */
+// Deprecated
 func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtime *util.RuntimeOptions) (_result *CheckDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4437,6 +4489,13 @@ func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtim
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request CheckDeviceRequest
+ * @return CheckDeviceResponse
+ */
+// Deprecated
 func (client *Client) CheckDevice(request *CheckDeviceRequest) (_result *CheckDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDeviceResponse{}
@@ -4600,6 +4659,14 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request ListSummaryAppsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSummaryAppsResponse
+ */
+// Deprecated
 func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (_result *ListSummaryAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4622,6 +4689,12 @@ func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @return ListSummaryAppsResponse
+ */
+// Deprecated
 func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSummaryAppsResponse{}
@@ -4753,6 +4826,14 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 		query["AndroidExtParameters"] = request.AndroidExtParameters
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AndroidHuaweiReceiptId)) {
+		query["AndroidHuaweiReceiptId"] = request.AndroidHuaweiReceiptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidHuaweiTargetUserType)) {
+		query["AndroidHuaweiTargetUserType"] = request.AndroidHuaweiTargetUserType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AndroidImageUrl)) {
 		query["AndroidImageUrl"] = request.AndroidImageUrl
 	}
@@ -4767,6 +4848,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidMessageHuaweiUrgency)) {
 		query["AndroidMessageHuaweiUrgency"] = request.AndroidMessageHuaweiUrgency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMessageVivoCategory)) {
+		query["AndroidMessageVivoCategory"] = request.AndroidMessageVivoCategory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidMusic)) {
