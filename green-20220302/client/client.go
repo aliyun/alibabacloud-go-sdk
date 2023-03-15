@@ -550,6 +550,7 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	EndTime          *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimestamp     *int64                 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	Extend           *string                `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	Labels           *string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
@@ -557,6 +558,7 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	RiskWords        *string                `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 	Score            *float32               `json:"Score,omitempty" xml:"Score,omitempty"`
 	StartTime        *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimestamp   *int64                 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	Text             *string                `json:"Text,omitempty" xml:"Text,omitempty"`
 	Url              *string                `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -571,6 +573,11 @@ func (s VoiceModerationResultResponseBodyDataSliceDetails) GoString() string {
 
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetEndTime(v int64) *VoiceModerationResultResponseBodyDataSliceDetails {
 	s.EndTime = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetEndTimestamp(v int64) *VoiceModerationResultResponseBodyDataSliceDetails {
+	s.EndTimestamp = &v
 	return s
 }
 
@@ -606,6 +613,11 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetScore(v float32) 
 
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetStartTime(v int64) *VoiceModerationResultResponseBodyDataSliceDetails {
 	s.StartTime = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetStartTimestamp(v int64) *VoiceModerationResultResponseBodyDataSliceDetails {
+	s.StartTimestamp = &v
 	return s
 }
 
