@@ -428,8 +428,10 @@ func (s *AddProjectMemberToRoleResponse) SetBody(v *AddProjectMemberToRoleRespon
 }
 
 type AddToMetaCategoryRequest struct {
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	TableGuid  *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The ID of the category.
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The GUID of the metatable.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 }
 
 func (s AddToMetaCategoryRequest) String() string {
@@ -451,12 +453,18 @@ func (s *AddToMetaCategoryRequest) SetTableGuid(v string) *AddToMetaCategoryRequ
 }
 
 type AddToMetaCategoryResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the metatable was added to the specified category.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddToMetaCategoryResponseBody) String() string {
@@ -2110,11 +2118,16 @@ func (s *CreateDataServiceApiResponse) SetBody(v *CreateDataServiceApiResponseBo
 }
 
 type CreateDataServiceApiAuthorityRequest struct {
-	ApiId               *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the workspace to which the access permissions on the API are granted.
 	AuthorizedProjectId *int64 `json:"AuthorizedProjectId,omitempty" xml:"AuthorizedProjectId,omitempty"`
-	EndTime             *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ProjectId           *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId            *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The end time of the validity period of the access permissions. The time must be a UNIX timestamp. Unit: seconds. Example: 1600531564, which indicates 2020-09-20 00:06:04 (UTC+8).
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s CreateDataServiceApiAuthorityRequest) String() string {
@@ -2151,8 +2164,10 @@ func (s *CreateDataServiceApiAuthorityRequest) SetTenantId(v int64) *CreateDataS
 }
 
 type CreateDataServiceApiAuthorityResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the authorization was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDataServiceApiAuthorityResponseBody) String() string {
@@ -2203,11 +2218,16 @@ func (s *CreateDataServiceApiAuthorityResponse) SetBody(v *CreateDataServiceApiA
 }
 
 type CreateDataServiceFolderRequest struct {
+	// The name of the folder.
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ParentId   *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the desired workflow to which the folder belongs.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the desired parent folder of the folder. The ID of the root folder in a workflow is 0. The ID of the folder created by users in a workflow is greater than 0.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s CreateDataServiceFolderRequest) String() string {
@@ -2244,7 +2264,9 @@ func (s *CreateDataServiceFolderRequest) SetTenantId(v int64) *CreateDataService
 }
 
 type CreateDataServiceFolderResponseBody struct {
-	FolderId  *int64  `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the created folder.
+	FolderId *int64 `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3759,9 +3781,12 @@ func (s *CreateManualDagResponse) SetBody(v *CreateManualDagResponseBody) *Creat
 }
 
 type CreateMetaCategoryRequest struct {
-	Comment  *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentId *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The remarks of the category.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the category.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent category.
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 }
 
 func (s CreateMetaCategoryRequest) String() string {
@@ -3788,12 +3813,18 @@ func (s *CreateMetaCategoryRequest) SetParentId(v int64) *CreateMetaCategoryRequ
 }
 
 type CreateMetaCategoryResponseBody struct {
-	Data           *CreateMetaCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the category.
+	Data *CreateMetaCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateMetaCategoryResponseBody) String() string {
@@ -3835,6 +3866,7 @@ func (s *CreateMetaCategoryResponseBody) SetSuccess(v bool) *CreateMetaCategoryR
 }
 
 type CreateMetaCategoryResponseBodyData struct {
+	// The ID of the category.
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
@@ -6862,8 +6894,10 @@ func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolde
 }
 
 type DeleteFromMetaCategoryRequest struct {
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	TableGuid  *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The ID of the category.
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The GUID of the metatable.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 }
 
 func (s DeleteFromMetaCategoryRequest) String() string {
@@ -6885,12 +6919,18 @@ func (s *DeleteFromMetaCategoryRequest) SetTableGuid(v string) *DeleteFromMetaCa
 }
 
 type DeleteFromMetaCategoryResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the metatable was removed from the specified category.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFromMetaCategoryResponseBody) String() string {
@@ -6961,6 +7001,7 @@ func (s *DeleteFromMetaCategoryResponse) SetBody(v *DeleteFromMetaCategoryRespon
 }
 
 type DeleteMetaCategoryRequest struct {
+	// The ID of the category.
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 }
 
@@ -6978,12 +7019,18 @@ func (s *DeleteMetaCategoryRequest) SetCategoryId(v int64) *DeleteMetaCategoryRe
 }
 
 type DeleteMetaCategoryResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The business data returned.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMetaCategoryResponseBody) String() string {
@@ -10139,9 +10186,12 @@ func (s *GetBaselineConfigResponse) SetBody(v *GetBaselineConfigResponseBody) *G
 }
 
 type GetBaselineKeyPathRequest struct {
-	BaselineId *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	Bizdate    *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	InGroupId  *int32  `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	// The ID of the baseline.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp of the baseline instance. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\"T\"HH:mm:ssZ format. The time must be in UTC.
+	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
 }
 
 func (s GetBaselineKeyPathRequest) String() string {
@@ -10168,12 +10218,18 @@ func (s *GetBaselineKeyPathRequest) SetInGroupId(v int32) *GetBaselineKeyPathReq
 }
 
 type GetBaselineKeyPathResponseBody struct {
-	Data           []*GetBaselineKeyPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode      *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the key path.
+	Data []*GetBaselineKeyPathResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBody) String() string {
@@ -10215,16 +10271,26 @@ func (s *GetBaselineKeyPathResponseBody) SetSuccess(v bool) *GetBaselineKeyPathR
 }
 
 type GetBaselineKeyPathResponseBodyData struct {
-	Bizdate    *int64                                      `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	InGroupId  *int32                                      `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	InstanceId *int64                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64                                      `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName   *string                                     `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Owner      *string                                     `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PrgType    *int32                                      `json:"PrgType,omitempty" xml:"PrgType,omitempty"`
-	ProjectId  *int64                                      `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Runs       []*GetBaselineKeyPathResponseBodyDataRuns   `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
-	Topics     []*GetBaselineKeyPathResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
+	// The data timestamp of the baseline instance.
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the scheduling cycle of the instance. Valid values: 1 to 288.
+	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the Alibaba Cloud account used by the node owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The type of the node. Valid values: 23, 10, 6, and 99. The value 23 indicates that the node is a Data Integration node. The value 10 indicates that the node is a MaxCompute SQL node. The value 6 indicates that the node is a Shell node. The value 99 indicates that the node is a zero load node.
+	PrgType *int32 `json:"PrgType,omitempty" xml:"PrgType,omitempty"`
+	// The ID of the workspace to which the node belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The running records of the instance.
+	Runs []*GetBaselineKeyPathResponseBodyDataRuns `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	// The information about the events that are associated with the instance.
+	Topics []*GetBaselineKeyPathResponseBodyDataTopics `json:"Topics,omitempty" xml:"Topics,omitempty" type:"Repeated"`
 }
 
 func (s GetBaselineKeyPathResponseBodyData) String() string {
@@ -10286,22 +10352,22 @@ func (s *GetBaselineKeyPathResponseBodyData) SetTopics(v []*GetBaselineKeyPathRe
 }
 
 type GetBaselineKeyPathResponseBodyDataRuns struct {
-	AbsTime           *int64  `json:"AbsTime,omitempty" xml:"AbsTime,omitempty"`
-	BeginCast         *int64  `json:"BeginCast,omitempty" xml:"BeginCast,omitempty"`
-	BeginRunningTime  *int64  `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
-	BeginWaitResTime  *int64  `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
-	BeginWaitTimeTime *int64  `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
-	Bizdate           *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	CycTime           *int64  `json:"CycTime,omitempty" xml:"CycTime,omitempty"`
-	EndCast           *int64  `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	FinishTime        *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InGroupId         *int32  `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	InstanceId        *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp obtained by adding the predicted time when the instance started to run to the historical average running duration of the instance.
+	AbsTime *int64 `json:"AbsTime,omitempty" xml:"AbsTime,omitempty"`
+	// The timestamp of the predicted time when the instance started to run.
+	BeginCast *int64 `json:"BeginCast,omitempty" xml:"BeginCast,omitempty"`
+	// The timestamp of the actual time when the instance started to run.
+	BeginRunningTime *int64 `json:"BeginRunningTime,omitempty" xml:"BeginRunningTime,omitempty"`
+	// The timestamp when the instance started to wait for resources.
+	BeginWaitResTime *int64 `json:"BeginWaitResTime,omitempty" xml:"BeginWaitResTime,omitempty"`
+	// The timestamp when the instance started to wait for the scheduling time.
+	BeginWaitTimeTime *int64 `json:"BeginWaitTimeTime,omitempty" xml:"BeginWaitTimeTime,omitempty"`
+	// The timestamp of the predicted time when the instance finished running.
+	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	// The timestamp of the actual time when the instance finished running.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBodyDataRuns) String() string {
@@ -10337,16 +10403,6 @@ func (s *GetBaselineKeyPathResponseBodyDataRuns) SetBeginWaitTimeTime(v int64) *
 	return s
 }
 
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetBizdate(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.Bizdate = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetCycTime(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.CycTime = &v
-	return s
-}
-
 func (s *GetBaselineKeyPathResponseBodyDataRuns) SetEndCast(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
 	s.EndCast = &v
 	return s
@@ -10357,46 +10413,20 @@ func (s *GetBaselineKeyPathResponseBodyDataRuns) SetFinishTime(v int64) *GetBase
 	return s
 }
 
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetInGroupId(v int32) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.InGroupId = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetInstanceId(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetNodeId(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.NodeId = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetNodeName(v string) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.NodeName = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetOwner(v string) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.Owner = &v
-	return s
-}
-
-func (s *GetBaselineKeyPathResponseBodyDataRuns) SetProjectId(v int64) *GetBaselineKeyPathResponseBodyDataRuns {
-	s.ProjectId = &v
-	return s
-}
-
 func (s *GetBaselineKeyPathResponseBodyDataRuns) SetStatus(v string) *GetBaselineKeyPathResponseBodyDataRuns {
 	s.Status = &v
 	return s
 }
 
 type GetBaselineKeyPathResponseBodyDataTopics struct {
-	AddTime    *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	// The timestamp when the event was found.
+	AddTime *int64 `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	// The ID of the instance.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TopicId    *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	TopicName  *int64 `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The ID of the event.
+	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// The name of the event.
+	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
 func (s GetBaselineKeyPathResponseBodyDataTopics) String() string {
@@ -10422,7 +10452,7 @@ func (s *GetBaselineKeyPathResponseBodyDataTopics) SetTopicId(v int64) *GetBasel
 	return s
 }
 
-func (s *GetBaselineKeyPathResponseBodyDataTopics) SetTopicName(v int64) *GetBaselineKeyPathResponseBodyDataTopics {
+func (s *GetBaselineKeyPathResponseBodyDataTopics) SetTopicName(v string) *GetBaselineKeyPathResponseBodyDataTopics {
 	s.TopicName = &v
 	return s
 }
@@ -10457,9 +10487,12 @@ func (s *GetBaselineKeyPathResponse) SetBody(v *GetBaselineKeyPathResponseBody) 
 }
 
 type GetBaselineStatusRequest struct {
-	BaselineId *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	Bizdate    *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	InGroupId  *int32  `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	// The ID of the baseline.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The data timestamp of the baseline instance. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\"T\"HH:mm:ssZ format. The time must be in UTC.
+	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
 }
 
 func (s GetBaselineStatusRequest) String() string {
@@ -10486,12 +10519,18 @@ func (s *GetBaselineStatusRequest) SetInGroupId(v int32) *GetBaselineStatusReque
 }
 
 type GetBaselineStatusResponseBody struct {
-	Data           *GetBaselineStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the baseline instance.
+	Data *GetBaselineStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetBaselineStatusResponseBody) String() string {
@@ -10533,22 +10572,38 @@ func (s *GetBaselineStatusResponseBody) SetSuccess(v bool) *GetBaselineStatusRes
 }
 
 type GetBaselineStatusResponseBodyData struct {
-	BaselineId    *int64                                          `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	BaselineName  *string                                         `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	Bizdate       *int64                                          `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The ID of the baseline.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The name of the baseline.
+	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	// The data timestamp of the baseline instance.
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The information about the key instance.
 	BlockInstance *GetBaselineStatusResponseBodyDataBlockInstance `json:"BlockInstance,omitempty" xml:"BlockInstance,omitempty" type:"Struct"`
-	Buffer        *float32                                        `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	EndCast       *int64                                          `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	ExpTime       *int64                                          `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
-	FinishStatus  *string                                         `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
-	FinishTime    *int64                                          `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InGroupId     *int32                                          `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	LastInstance  *GetBaselineStatusResponseBodyDataLastInstance  `json:"LastInstance,omitempty" xml:"LastInstance,omitempty" type:"Struct"`
-	Owner         *string                                         `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority      *int32                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ProjectId     *int64                                          `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SlaTime       *int64                                          `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
-	Status        *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The margin of the baseline instance. Unit: seconds.
+	Buffer *float32 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
+	// The timestamp of the predicted time when the baseline instance finished running.
+	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	// The timestamp of the alerting time of the baseline instance.
+	ExpTime *int64 `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
+	// The status of the baseline instance. Valid values: UNFINISH and FINISH. The value UNFINISH indicates that the baseline instance is still running. The value FINISH indicates that the baseline instance finishes running.
+	FinishStatus *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
+	// The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	// The information about the last generated instance.
+	LastInstance *GetBaselineStatusResponseBodyDataLastInstance `json:"LastInstance,omitempty" xml:"LastInstance,omitempty" type:"Struct"`
+	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the baseline. Valid values: 1, 2, 5, 7, and 8.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the workspace to which the baseline belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The timestamp of the committed completion time of the baseline instance.
+	SlaTime *int64 `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetBaselineStatusResponseBodyData) String() string {
@@ -10640,14 +10695,22 @@ func (s *GetBaselineStatusResponseBodyData) SetStatus(v string) *GetBaselineStat
 }
 
 type GetBaselineStatusResponseBodyDataBlockInstance struct {
-	EndCast    *int64  `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName   *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp of the predicted time when the instance finished running.
+	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	// The timestamp of the actual time when the instance finished running.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the Alibaba Cloud account used by the node owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the workspace to which the node belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetBaselineStatusResponseBodyDataBlockInstance) String() string {
@@ -10699,14 +10762,22 @@ func (s *GetBaselineStatusResponseBodyDataBlockInstance) SetStatus(v string) *Ge
 }
 
 type GetBaselineStatusResponseBodyDataLastInstance struct {
-	EndCast    *int64  `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName   *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp of the predicted time when the instance finished running.
+	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	// The timestamp of the actual time when the instance finished running.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The ID of the Alibaba Cloud account used by the node owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the workspace to which the node belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The status of the instance. Valid values: NOT_RUN, WAIT_TIME, WAIT_RESOURCE, RUNNING, CHECKING, CHECKING_CONDITION, FAILURE, and SUCCESS. The value NOT_RUN indicates that the instance is not run. The value WAIT_TIME indicates that the instance is waiting to be run. The value WAIT_RESOURCE indicates that the instance is waiting for resources. The value RUNNING indicates that the instance is running. The value CHECKING indicates that data quality is being checked for the instance. The value CHECKING_CONDITION indicates that branch conditions are being checked for the instance. The value FAILURE indicates that the instance fails to run. The value SUCCESS indicates that the instance is run.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetBaselineStatusResponseBodyDataLastInstance) String() string {
@@ -11747,9 +11818,12 @@ func (s *GetDagResponse) SetBody(v *GetDagResponseBody) *GetDagResponse {
 }
 
 type GetDataServiceApiRequest struct {
-	ApiId     *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the DataService Studio API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the workspace.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId  *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetDataServiceApiRequest) String() string {
@@ -11776,12 +11850,18 @@ func (s *GetDataServiceApiRequest) SetTenantId(v int64) *GetDataServiceApiReques
 }
 
 type GetDataServiceApiResponseBody struct {
-	Data           *GetDataServiceApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The data returned.
+	Data *GetDataServiceApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBody) String() string {
@@ -11823,28 +11903,50 @@ func (s *GetDataServiceApiResponseBody) SetSuccess(v bool) *GetDataServiceApiRes
 }
 
 type GetDataServiceApiResponseBodyData struct {
-	ApiId               *int64                                                `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiMode             *int32                                                `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
-	ApiName             *string                                               `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ApiPath             *string                                               `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	CreatedTime         *string                                               `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatorId           *string                                               `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Description         *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	FolderId            *int64                                                `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	GroupId             *string                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ModifiedTime        *string                                               `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	OperatorId          *string                                               `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	ProjectId           *int64                                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Protocols           []*int32                                              `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The ID of the DataService Studio API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The type of the API. Valid values: 0, 1, and 2. The value 0 indicates that the API is generated in wizard mode. The value 1 indicates that the API is generated in script mode. The value 2 indicates that the API is generated by registration.
+	ApiMode *int32 `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
+	// The name of the API.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The path of the API.
+	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	// The creation time.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the Alibaba Cloud account used by the creator of the API.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the folder.
+	FolderId *int64 `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the API was last modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the Alibaba Cloud account used by the user who last modified the API.
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of fields.
+	Protocols []*int32 `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The details of the API generated by registration. This parameter is returned only if the API is generated by registration.
 	RegistrationDetails *GetDataServiceApiResponseBodyDataRegistrationDetails `json:"RegistrationDetails,omitempty" xml:"RegistrationDetails,omitempty" type:"Struct"`
-	RequestMethod       *int32                                                `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	ResponseContentType *int32                                                `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
-	ScriptDetails       *GetDataServiceApiResponseBodyDataScriptDetails       `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
-	Status              *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId            *int64                                                `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Timeout             *int32                                                `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	VisibleRange        *int32                                                `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
-	WizardDetails       *GetDataServiceApiResponseBodyDataWizardDetails       `json:"WizardDetails,omitempty" xml:"WizardDetails,omitempty" type:"Struct"`
+	// The request method of the API. Valid values: 0, 1, 2, and 3. The value 0 indicates the GET method, the value 1 indicates the POST method, the value 2 indicates the PUT method, and the value 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
+	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
+	// The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
+	ScriptDetails *GetDataServiceApiResponseBodyDataScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
+	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of the API request. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The scope in which the API is visible. Valid values: 0 and 1. The value 0 indicates that the API is visible to the members in a specific workspace. The value 1 indicates that the API is visible only to the API creator.
+	VisibleRange *int32 `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
+	// The details of the API generated in wizard mode. This parameter is returned only if the API is generated in wizard mode.
+	WizardDetails *GetDataServiceApiResponseBodyDataWizardDetails `json:"WizardDetails,omitempty" xml:"WizardDetails,omitempty" type:"Struct"`
 }
 
 func (s GetDataServiceApiResponseBodyData) String() string {
@@ -11966,14 +12068,27 @@ func (s *GetDataServiceApiResponseBodyData) SetWizardDetails(v *GetDataServiceAp
 }
 
 type GetDataServiceApiResponseBodyDataRegistrationDetails struct {
-	FailedResultSample            *string                                                                              `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
-	RegistrationErrorCodes        []*GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes        `json:"RegistrationErrorCodes,omitempty" xml:"RegistrationErrorCodes,omitempty" type:"Repeated"`
+	// The sample error response of the API.
+	FailedResultSample *string `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
+	// The error codes returned for the API generated by registration.
+	RegistrationErrorCodes []*GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes `json:"RegistrationErrorCodes,omitempty" xml:"RegistrationErrorCodes,omitempty" type:"Repeated"`
+	// The request parameters of the API generated by registration.
 	RegistrationRequestParameters []*GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters `json:"RegistrationRequestParameters,omitempty" xml:"RegistrationRequestParameters,omitempty" type:"Repeated"`
-	ServiceContentType            *int32                                                                               `json:"ServiceContentType,omitempty" xml:"ServiceContentType,omitempty"`
-	ServiceHost                   *string                                                                              `json:"ServiceHost,omitempty" xml:"ServiceHost,omitempty"`
-	ServicePath                   *string                                                                              `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	ServiceRequestBodyDescription *string                                                                              `json:"ServiceRequestBodyDescription,omitempty" xml:"ServiceRequestBodyDescription,omitempty"`
-	SuccessfulResultSample        *string                                                                              `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
+	// The format in which the response of the API request is returned. Valid values:
+	//
+	// *   0: indicates the JSON format.
+	// *   1: indicates the XML format.
+	//
+	// APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	ServiceContentType *int32 `json:"ServiceContentType,omitempty" xml:"ServiceContentType,omitempty"`
+	// The address of the backend service.
+	ServiceHost *string `json:"ServiceHost,omitempty" xml:"ServiceHost,omitempty"`
+	// The path of the backend service.
+	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
+	// The description of the request body initiated to call the backend service.
+	ServiceRequestBodyDescription *string `json:"ServiceRequestBodyDescription,omitempty" xml:"ServiceRequestBodyDescription,omitempty"`
+	// Sample success responses
+	SuccessfulResultSample *string `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataRegistrationDetails) String() string {
@@ -12025,8 +12140,11 @@ func (s *GetDataServiceApiResponseBodyDataRegistrationDetails) SetSuccessfulResu
 }
 
 type GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The solution used to fix the error.
 	ErrorSolution *string `json:"ErrorSolution,omitempty" xml:"ErrorSolution,omitempty"`
 }
 
@@ -12054,15 +12172,38 @@ func (s *GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationErrorCo
 }
 
 type GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters struct {
-	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values:
+	//
+	// *   0: indicates that the operator is Equal.
+	// *   1: indicates that the operator is Like.
+	// *   2: indicates that the operator is Const.
+	// *   3: indicates that the operator is In.
+	//
+	// APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values:
+	//
+	// *   0: indicates that the parameter is in the URL path of the request.
+	// *   1: indicates that the parameter is in the Query parameter of the request URL.
+	// *   2: indicates that the parameter is in the request header.
+	// *   3: indicates that the parameter is in the request body.
+	//
+	// APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters) String() string {
@@ -12119,10 +12260,15 @@ func (s *GetDataServiceApiResponseBodyDataRegistrationDetailsRegistrationRequest
 }
 
 type GetDataServiceApiResponseBodyDataScriptDetails struct {
-	IsPagedResponse          *bool                                                                     `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
-	Script                   *string                                                                   `json:"Script,omitempty" xml:"Script,omitempty"`
-	ScriptConnection         *GetDataServiceApiResponseBodyDataScriptDetailsScriptConnection           `json:"ScriptConnection,omitempty" xml:"ScriptConnection,omitempty" type:"Struct"`
-	ScriptRequestParameters  []*GetDataServiceApiResponseBodyDataScriptDetailsScriptRequestParameters  `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
+	// Indicates whether the entries were returned by page.
+	IsPagedResponse *bool `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
+	// The SQL script.
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// The data source information of the API generated in script mode.
+	ScriptConnection *GetDataServiceApiResponseBodyDataScriptDetailsScriptConnection `json:"ScriptConnection,omitempty" xml:"ScriptConnection,omitempty" type:"Struct"`
+	// The request parameters of the API generated in script mode.
+	ScriptRequestParameters []*GetDataServiceApiResponseBodyDataScriptDetailsScriptRequestParameters `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
+	// The response parameters of the API generated in script mode.
 	ScriptResponseParameters []*GetDataServiceApiResponseBodyDataScriptDetailsScriptResponseParameters `json:"ScriptResponseParameters,omitempty" xml:"ScriptResponseParameters,omitempty" type:"Repeated"`
 }
 
@@ -12160,8 +12306,10 @@ func (s *GetDataServiceApiResponseBodyDataScriptDetails) SetScriptResponseParame
 }
 
 type GetDataServiceApiResponseBodyDataScriptDetailsScriptConnection struct {
-	ConnectionId *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the data source.
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The name of the table in the data source.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataScriptDetailsScriptConnection) String() string {
@@ -12183,15 +12331,24 @@ func (s *GetDataServiceApiResponseBodyDataScriptDetailsScriptConnection) SetTabl
 }
 
 type GetDataServiceApiResponseBodyDataScriptDetailsScriptRequestParameters struct {
-	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the operator is Equal, the value 1 indicates that the operator is Like, the value 2 indicates that the operator is Const, and the value 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request, the value 1 indicates that the parameter is in the Query parameter of the request URL, the value 2 indicates that the parameter is in the request header, and the value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataScriptDetailsScriptRequestParameters) String() string {
@@ -12248,11 +12405,16 @@ func (s *GetDataServiceApiResponseBodyDataScriptDetailsScriptRequestParameters) 
 }
 
 type GetDataServiceApiResponseBodyDataScriptDetailsScriptResponseParameters struct {
-	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataScriptDetailsScriptResponseParameters) String() string {
@@ -12289,9 +12451,13 @@ func (s *GetDataServiceApiResponseBodyDataScriptDetailsScriptResponseParameters)
 }
 
 type GetDataServiceApiResponseBodyDataWizardDetails struct {
-	IsPagedResponse          *bool                                                                     `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
-	WizardConnection         *GetDataServiceApiResponseBodyDataWizardDetailsWizardConnection           `json:"WizardConnection,omitempty" xml:"WizardConnection,omitempty" type:"Struct"`
-	WizardRequestParameters  []*GetDataServiceApiResponseBodyDataWizardDetailsWizardRequestParameters  `json:"WizardRequestParameters,omitempty" xml:"WizardRequestParameters,omitempty" type:"Repeated"`
+	// Indicates whether the entries were returned by page.
+	IsPagedResponse *bool `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
+	// The data source information of the API generated in wizard mode.
+	WizardConnection *GetDataServiceApiResponseBodyDataWizardDetailsWizardConnection `json:"WizardConnection,omitempty" xml:"WizardConnection,omitempty" type:"Struct"`
+	// The request parameters of the API generated in wizard mode.
+	WizardRequestParameters []*GetDataServiceApiResponseBodyDataWizardDetailsWizardRequestParameters `json:"WizardRequestParameters,omitempty" xml:"WizardRequestParameters,omitempty" type:"Repeated"`
+	// The response parameters of the API generated in wizard mode.
 	WizardResponseParameters []*GetDataServiceApiResponseBodyDataWizardDetailsWizardResponseParameters `json:"WizardResponseParameters,omitempty" xml:"WizardResponseParameters,omitempty" type:"Repeated"`
 }
 
@@ -12324,8 +12490,10 @@ func (s *GetDataServiceApiResponseBodyDataWizardDetails) SetWizardResponseParame
 }
 
 type GetDataServiceApiResponseBodyDataWizardDetailsWizardConnection struct {
-	ConnectionId *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the data source.
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The name of the table in the data source.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataWizardDetailsWizardConnection) String() string {
@@ -12347,15 +12515,24 @@ func (s *GetDataServiceApiResponseBodyDataWizardDetailsWizardConnection) SetTabl
 }
 
 type GetDataServiceApiResponseBodyDataWizardDetailsWizardRequestParameters struct {
-	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the operator is Equal, the value 1 indicates that the operator is Like, the value 2 indicates that the operator is Const, and the value 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request, the value 1 indicates that the parameter is in the Query parameter of the request URL, the value 2 indicates that the parameter is in the request header, and the value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataWizardDetailsWizardRequestParameters) String() string {
@@ -12412,11 +12589,16 @@ func (s *GetDataServiceApiResponseBodyDataWizardDetailsWizardRequestParameters) 
 }
 
 type GetDataServiceApiResponseBodyDataWizardDetailsWizardResponseParameters struct {
-	ColumnName           *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 }
 
 func (s GetDataServiceApiResponseBodyDataWizardDetailsWizardResponseParameters) String() string {
@@ -13075,9 +13257,12 @@ func (s *GetDataServiceGroupResponse) SetBody(v *GetDataServiceGroupResponseBody
 }
 
 type GetDataServicePublishedApiRequest struct {
-	ApiId     *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the workspace.
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId  *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s GetDataServicePublishedApiRequest) String() string {
@@ -13104,12 +13289,18 @@ func (s *GetDataServicePublishedApiRequest) SetTenantId(v int64) *GetDataService
 }
 
 type GetDataServicePublishedApiResponseBody struct {
-	Data           *GetDataServicePublishedApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The latest information of the API in the published state.
+	Data *GetDataServicePublishedApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBody) String() string {
@@ -13151,27 +13342,48 @@ func (s *GetDataServicePublishedApiResponseBody) SetSuccess(v bool) *GetDataServ
 }
 
 type GetDataServicePublishedApiResponseBodyData struct {
-	ApiId               *int64                                                         `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiMode             *int32                                                         `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
-	ApiName             *string                                                        `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ApiPath             *string                                                        `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	CreatedTime         *string                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatorId           *string                                                        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Description         *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId             *string                                                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ModifiedTime        *string                                                        `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	OperatorId          *string                                                        `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	ProjectId           *int64                                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Protocols           []*int32                                                       `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The ID of the DataService Studio API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The type of the API. Valid values: 0, 1, and 2. The value 0 indicates that the API is generated in wizard mode. The value 1 indicates that the API is generated in script mode. The value 2 indicates that the API is generated by registration.
+	ApiMode *int32 `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
+	// The name of the API.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The path of the API.
+	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	// The creation time.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the Alibaba Cloud account used by the creator of the API.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the API was last modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the Alibaba Cloud account used by the user who last modified the API.
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of fields.
+	Protocols []*int32 `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
+	// The details of the API generated by registration. This parameter is returned only if the API is generated by registration.
 	RegistrationDetails *GetDataServicePublishedApiResponseBodyDataRegistrationDetails `json:"RegistrationDetails,omitempty" xml:"RegistrationDetails,omitempty" type:"Struct"`
-	RequestMethod       *int32                                                         `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	ResponseContentType *int32                                                         `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
-	ScriptDetails       *GetDataServicePublishedApiResponseBodyDataScriptDetails       `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
-	Status              *int32                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId            *int64                                                         `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Timeout             *int32                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	VisibleRange        *int32                                                         `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
-	WizardDetails       *GetDataServicePublishedApiResponseBodyDataWizardDetails       `json:"WizardDetails,omitempty" xml:"WizardDetails,omitempty" type:"Struct"`
+	// The request method of the API. Valid values: 0, 1, 2, and 3. The value 0 indicates the GET method, the value 1 indicates the POST method, the value 2 indicates the PUT method, and the value 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
+	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
+	// The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
+	ScriptDetails *GetDataServicePublishedApiResponseBodyDataScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
+	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The timeout period of the API request. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The scope in which the API is visible. Valid values: 0 and 1. The value 0 indicates that the API is visible to the members in a specific workspace. The value 1 indicates that the API is visible only to the API creator.
+	VisibleRange *int32 `json:"VisibleRange,omitempty" xml:"VisibleRange,omitempty"`
+	// The details of the API generated in wizard mode. This parameter is returned only if the API is generated in wizard mode.
+	WizardDetails *GetDataServicePublishedApiResponseBodyDataWizardDetails `json:"WizardDetails,omitempty" xml:"WizardDetails,omitempty" type:"Struct"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyData) String() string {
@@ -13288,14 +13500,22 @@ func (s *GetDataServicePublishedApiResponseBodyData) SetWizardDetails(v *GetData
 }
 
 type GetDataServicePublishedApiResponseBodyDataRegistrationDetails struct {
-	FailedResultSample            *string                                                                                       `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
-	RegistrationErrorCodes        []*GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes        `json:"RegistrationErrorCodes,omitempty" xml:"RegistrationErrorCodes,omitempty" type:"Repeated"`
+	// The sample error response of the API.
+	FailedResultSample *string `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
+	// The error codes returned for the API generated by registration.
+	RegistrationErrorCodes []*GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes `json:"RegistrationErrorCodes,omitempty" xml:"RegistrationErrorCodes,omitempty" type:"Repeated"`
+	// The request parameters of the API generated by registration.
 	RegistrationRequestParameters []*GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters `json:"RegistrationRequestParameters,omitempty" xml:"RegistrationRequestParameters,omitempty" type:"Repeated"`
-	ServiceContentType            *int32                                                                                        `json:"ServiceContentType,omitempty" xml:"ServiceContentType,omitempty"`
-	ServiceHost                   *string                                                                                       `json:"ServiceHost,omitempty" xml:"ServiceHost,omitempty"`
-	ServicePath                   *string                                                                                       `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	ServiceRequestBodyDescription *string                                                                                       `json:"ServiceRequestBodyDescription,omitempty" xml:"ServiceRequestBodyDescription,omitempty"`
-	SuccessfulResultSample        *string                                                                                       `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	ServiceContentType *int32 `json:"ServiceContentType,omitempty" xml:"ServiceContentType,omitempty"`
+	// The address of the backend service.
+	ServiceHost *string `json:"ServiceHost,omitempty" xml:"ServiceHost,omitempty"`
+	// The path of the backend service.
+	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
+	// The description of the request body initiated to call the backend service.
+	ServiceRequestBodyDescription *string `json:"ServiceRequestBodyDescription,omitempty" xml:"ServiceRequestBodyDescription,omitempty"`
+	// The sample success response of the API.
+	SuccessfulResultSample *string `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataRegistrationDetails) String() string {
@@ -13347,8 +13567,11 @@ func (s *GetDataServicePublishedApiResponseBodyDataRegistrationDetails) SetSucce
 }
 
 type GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationErrorCodes struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The solution used to fix the error.
 	ErrorSolution *string `json:"ErrorSolution,omitempty" xml:"ErrorSolution,omitempty"`
 }
 
@@ -13376,14 +13599,22 @@ func (s *GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrati
 }
 
 type GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters struct {
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the operator is Equal, the value 1 indicates that the operator is Like, the value 2 indicates that the operator is Const, and the value 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request, the value 1 indicates that the parameter is in the Query parameter of the request URL, the value 2 indicates that the parameter is in the request header, and the value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrationRequestParameters) String() string {
@@ -13435,14 +13666,22 @@ func (s *GetDataServicePublishedApiResponseBodyDataRegistrationDetailsRegistrati
 }
 
 type GetDataServicePublishedApiResponseBodyDataScriptDetails struct {
-	FailedResultSample       *string                                                                            `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
-	IsPagedResponse          *bool                                                                              `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
-	Script                   *string                                                                            `json:"Script,omitempty" xml:"Script,omitempty"`
-	ScriptConnection         *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptConnection           `json:"ScriptConnection,omitempty" xml:"ScriptConnection,omitempty" type:"Struct"`
-	ScriptErrorCodes         []*GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptErrorCodes         `json:"ScriptErrorCodes,omitempty" xml:"ScriptErrorCodes,omitempty" type:"Repeated"`
-	ScriptRequestParameters  []*GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptRequestParameters  `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
+	// The sample error response of the API.
+	FailedResultSample *string `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
+	// Indicates whether the entries were returned by page.
+	IsPagedResponse *bool `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
+	// The SQL script.
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// The data source information of the API generated in script mode.
+	ScriptConnection *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptConnection `json:"ScriptConnection,omitempty" xml:"ScriptConnection,omitempty" type:"Struct"`
+	// The error codes returned for the API generated in script mode.
+	ScriptErrorCodes []*GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptErrorCodes `json:"ScriptErrorCodes,omitempty" xml:"ScriptErrorCodes,omitempty" type:"Repeated"`
+	// The request parameters of the API generated in script mode.
+	ScriptRequestParameters []*GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptRequestParameters `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
+	// The response parameters of the API generated in script mode.
 	ScriptResponseParameters []*GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptResponseParameters `json:"ScriptResponseParameters,omitempty" xml:"ScriptResponseParameters,omitempty" type:"Repeated"`
-	SuccessfulResultSample   *string                                                                            `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
+	// The sample success response of the API.
+	SuccessfulResultSample *string `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataScriptDetails) String() string {
@@ -13494,8 +13733,10 @@ func (s *GetDataServicePublishedApiResponseBodyDataScriptDetails) SetSuccessfulR
 }
 
 type GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptConnection struct {
-	ConnectionId *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the data source.
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The name of the table in the data source.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptConnection) String() string {
@@ -13517,8 +13758,11 @@ func (s *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptConnection
 }
 
 type GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptErrorCodes struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The solution used to fix the error.
 	ErrorSolution *string `json:"ErrorSolution,omitempty" xml:"ErrorSolution,omitempty"`
 }
 
@@ -13546,14 +13790,43 @@ func (s *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptErrorCodes
 }
 
 type GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptRequestParameters struct {
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values:
+	//
+	// *   0: indicates the STRING data type.
+	// *   1: indicates the INT data type.
+	// *   2: indicates the LONG data type.
+	// *   3: indicates the FLOAT data type.
+	// *   4: indicates the DOUBLE data type.
+	// *   5: indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values:
+	//
+	// *   0: indicates that the operator is Equal.
+	// *   1: indicates that the operator is Like.
+	// *   2: indicates that the operator is Const.
+	// *   3: indicates that the operator is In.
+	//
+	// APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values:
+	//
+	// *   0: indicates that the parameter is in the URL path of the request.
+	// *   1: indicates that the parameter is in the Query parameter of the request URL.
+	// *   2: indicates that the parameter is in the request header.
+	// *   3: indicates that the parameter is in the request body.
+	//
+	// APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptRequestParameters) String() string {
@@ -13605,10 +13878,14 @@ func (s *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptRequestPar
 }
 
 type GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptResponseParameters struct {
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptResponseParameters) String() string {
@@ -13640,12 +13917,19 @@ func (s *GetDataServicePublishedApiResponseBodyDataScriptDetailsScriptResponsePa
 }
 
 type GetDataServicePublishedApiResponseBodyDataWizardDetails struct {
-	FailedResultSample       *string                                                                            `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
-	IsPagedResponse          *bool                                                                              `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
-	SuccessfulResultSample   *string                                                                            `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
-	WizardConnection         *GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardConnection           `json:"WizardConnection,omitempty" xml:"WizardConnection,omitempty" type:"Struct"`
-	WizardErrorCodes         []*GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardErrorCodes         `json:"WizardErrorCodes,omitempty" xml:"WizardErrorCodes,omitempty" type:"Repeated"`
-	WizardRequestParameters  []*GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardRequestParameters  `json:"WizardRequestParameters,omitempty" xml:"WizardRequestParameters,omitempty" type:"Repeated"`
+	// The sample error response of the API.
+	FailedResultSample *string `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
+	// Indicates whether the entries were returned by page.
+	IsPagedResponse *bool `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
+	// The sample success response of the API.
+	SuccessfulResultSample *string `json:"SuccessfulResultSample,omitempty" xml:"SuccessfulResultSample,omitempty"`
+	// The data source information of the API generated in wizard mode.
+	WizardConnection *GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardConnection `json:"WizardConnection,omitempty" xml:"WizardConnection,omitempty" type:"Struct"`
+	// The error codes returned for the API generated in wizard mode.
+	WizardErrorCodes []*GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardErrorCodes `json:"WizardErrorCodes,omitempty" xml:"WizardErrorCodes,omitempty" type:"Repeated"`
+	// The request parameters of the API generated in wizard mode.
+	WizardRequestParameters []*GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardRequestParameters `json:"WizardRequestParameters,omitempty" xml:"WizardRequestParameters,omitempty" type:"Repeated"`
+	// The response parameters of the API generated in wizard mode.
 	WizardResponseParameters []*GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardResponseParameters `json:"WizardResponseParameters,omitempty" xml:"WizardResponseParameters,omitempty" type:"Repeated"`
 }
 
@@ -13693,8 +13977,10 @@ func (s *GetDataServicePublishedApiResponseBodyDataWizardDetails) SetWizardRespo
 }
 
 type GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardConnection struct {
-	ConnectionId *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the data source.
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The name of the table in the data source.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardConnection) String() string {
@@ -13716,8 +14002,11 @@ func (s *GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardConnection
 }
 
 type GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardErrorCodes struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The solution used to fix the error.
 	ErrorSolution *string `json:"ErrorSolution,omitempty" xml:"ErrorSolution,omitempty"`
 }
 
@@ -13745,14 +14034,22 @@ func (s *GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardErrorCodes
 }
 
 type GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardRequestParameters struct {
-	DefaultValue         *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	IsRequiredParameter  *bool   `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The default value.
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// Indicates whether the parameter is required.
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterOperator    *int32  `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	ParameterPosition    *int32  `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the operator is Equal, the value 1 indicates that the operator is Like, the value 2 indicates that the operator is Const, and the value 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request, the value 1 indicates that the parameter is in the Query parameter of the request URL, the value 2 indicates that the parameter is in the request header, and the value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	ParameterPosition *int32 `json:"ParameterPosition,omitempty" xml:"ParameterPosition,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardRequestParameters) String() string {
@@ -13804,10 +14101,14 @@ func (s *GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardRequestPar
 }
 
 type GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardResponseParameters struct {
-	ExampleValue         *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	ParameterDataType    *int32  `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The sample value.
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. The value 0 indicates the STRING data type, the value 1 indicates the INT data type, the value 2 indicates the LONG data type, the value 3 indicates the FLOAT data type, the value 4 indicates the DOUBLE data type, and the value 5 indicates the BOOLEAN data type.
+	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	// The description.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 }
 
 func (s GetDataServicePublishedApiResponseBodyDataWizardDetailsWizardResponseParameters) String() string {
@@ -18009,15 +18310,24 @@ func (s *GetMetaCollectionDetailResponse) SetBody(v *GetMetaCollectionDetailResp
 }
 
 type GetMetaColumnLineageRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ColumnGuid     *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
-	ColumnName     *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster. Configure this parameter only when you query data in an EMR compute engine instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The GUID of the field.
+	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
+	// The name of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The type of the data source. Valid values: odps and emr.
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseName   *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	Direction      *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// Specifies whether to query the ancestor or descendant lineage of the field. The value up indicates the ancestor lineage. The value down indicates the descendant lineage.
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The number of the page to return.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the metatable.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetMetaColumnLineageRequest) String() string {
@@ -18074,12 +18384,18 @@ func (s *GetMetaColumnLineageRequest) SetTableName(v string) *GetMetaColumnLinea
 }
 
 type GetMetaColumnLineageResponseBody struct {
-	Data           *GetMetaColumnLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The business data returned.
+	Data *GetMetaColumnLineageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMetaColumnLineageResponseBody) String() string {
@@ -18121,10 +18437,14 @@ func (s *GetMetaColumnLineageResponseBody) SetSuccess(v bool) *GetMetaColumnLine
 }
 
 type GetMetaColumnLineageResponseBodyData struct {
+	// The list of metatables in the compute engine instance.
 	DataEntityList []*GetMetaColumnLineageResponseBodyDataDataEntityList `json:"DataEntityList,omitempty" xml:"DataEntityList,omitempty" type:"Repeated"`
-	PageNum        *int32                                                `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of fields.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetMetaColumnLineageResponseBodyData) String() string {
@@ -18156,11 +18476,16 @@ func (s *GetMetaColumnLineageResponseBodyData) SetTotalCount(v int64) *GetMetaCo
 }
 
 type GetMetaColumnLineageResponseBodyDataDataEntityList struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ColumnGuid   *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
-	ColumnName   *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the EMR cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The GUID of the field.
+	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
+	// The name of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The name of the database.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the metatable.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetMetaColumnLineageResponseBodyDataDataEntityList) String() string {
@@ -19496,13 +19821,20 @@ func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) 
 }
 
 type GetMetaTableFullInfoRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster. You can log on to the EMR console to obtain the ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The type of the data source. Only emr is supported.
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseName   *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the metadatabase of the EMR cluster. You can call the [ListMetaDB](~~185662~~) operation to query the name of the metadatabase.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The number of the page to return.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The GUID of the metatable. You can call the [GetMetaDBTableList](~~173916~~) operation to query the GUID of the metatable.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the metatable in the EMR cluster. You can call the [GetMetaDBTableList](~~173916~~) operation to query the name of the metatable.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetMetaTableFullInfoRequest) String() string {
@@ -19549,12 +19881,18 @@ func (s *GetMetaTableFullInfoRequest) SetTableName(v string) *GetMetaTableFullIn
 }
 
 type GetMetaTableFullInfoResponseBody struct {
-	Data           *GetMetaTableFullInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The business data returned.
+	Data *GetMetaTableFullInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMetaTableFullInfoResponseBody) String() string {
@@ -19596,28 +19934,57 @@ func (s *GetMetaTableFullInfoResponseBody) SetSuccess(v bool) *GetMetaTableFullI
 }
 
 type GetMetaTableFullInfoResponseBodyData struct {
-	ClusterId        *string                                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ColumnList       []*GetMetaTableFullInfoResponseBodyDataColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	Comment          *string                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime       *int64                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataSize         *int64                                            `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	DatabaseName     *string                                           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	EnvType          *int32                                            `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	IsVisible        *int32                                            `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
-	LastAccessTime   *int64                                            `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	LastDdlTime      *int64                                            `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	LastModifyTime   *int64                                            `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LifeCycle        *int32                                            `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	Location         *string                                           `json:"Location,omitempty" xml:"Location,omitempty"`
-	OwnerId          *string                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PartitionKeys    *string                                           `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
-	ProjectId        *int64                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName      *string                                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Schema           *string                                           `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	TableGuid        *string                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableName        *string                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TenantId         *int64                                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	TotalColumnCount *int64                                            `json:"TotalColumnCount,omitempty" xml:"TotalColumnCount,omitempty"`
+	// The ID of the EMR cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The fields in the metatable.
+	ColumnList []*GetMetaTableFullInfoResponseBodyDataColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// The remarks of the metatable.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the metatable was created. You can convert the timestamp to the related date based on the time zone that you use.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The amount of storage resources that are consumed by the metatable. Unit: bytes.
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The type of the environment in which the metatable resides. Valid values:
+	//
+	// *   0: indicates that the metatable resides in the development environment.
+	// *   1: indicates that the metatable resides in the production environment.
+	EnvType *int32 `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The scope in which the metatable is visible. Valid values:
+	//
+	// *   0: indicates that the metatable is visible to workspace members.
+	// *   1: indicates that the metatable is visible to users within a tenant.
+	// *   2: indicates that the metatable is visible to all tenants.
+	// *   3: indicates that the metatable is visible only to the metatable owner.
+	IsVisible *int32 `json:"IsVisible,omitempty" xml:"IsVisible,omitempty"`
+	// The time when the metatable was last accessed. You can convert the timestamp to the related date based on the time zone that you use.
+	LastAccessTime *int64 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The time when the schema of the metatable was last changed. You can convert the timestamp to the related date based on the time zone that you use.
+	LastDdlTime *int64 `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// The time when the metatable was last updated. You can convert the timestamp to the related date based on the time zone that you use.
+	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The lifecycle of the metatable. Unit: days.
+	LifeCycle *int32 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// The storage path of the Hive metatable.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The ID of the metatable owner.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The partition key.
+	PartitionKeys *string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
+	// The ID of the workspace to which the metatable belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the workspace to which the metatable belongs.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Schema      *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The GUID of the metatable.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the metatable.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The total number of fields.
+	TotalColumnCount *int64 `json:"TotalColumnCount,omitempty" xml:"TotalColumnCount,omitempty"`
 }
 
 func (s GetMetaTableFullInfoResponseBodyData) String() string {
@@ -19739,15 +20106,33 @@ func (s *GetMetaTableFullInfoResponseBodyData) SetTotalColumnCount(v int64) *Get
 }
 
 type GetMetaTableFullInfoResponseBodyDataColumnList struct {
-	Caption           *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	ColumnGuid        *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
-	ColumnName        *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnType        *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	IsForeignKey      *bool   `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
-	IsPartitionColumn *bool   `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
-	IsPrimaryKey      *bool   `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	Position          *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The description of the field.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The GUID of the field.
+	ColumnGuid *string `json:"ColumnGuid,omitempty" xml:"ColumnGuid,omitempty"`
+	// The name of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type of the field.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The remarks of the field.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Indicates whether the field is a foreign key. Valid values:
+	//
+	// *   true: The field is a foreign key.
+	// *   false: The field is not a foreign key.
+	IsForeignKey *bool `json:"IsForeignKey,omitempty" xml:"IsForeignKey,omitempty"`
+	// Indicates whether the field is a partition field. Valid values:
+	//
+	// *   true: The field is a partition field.
+	// *   false: The field is not a partition field.
+	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
+	// Indicates whether the field is the primary key. Valid values:
+	//
+	// *   true: The field is the primary key.
+	// *   false: The field is not the primary key.
+	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
+	// The ordinal number of the field.
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s GetMetaTableFullInfoResponseBodyDataColumnList) String() string {
@@ -19833,8 +20218,10 @@ func (s *GetMetaTableFullInfoResponse) SetBody(v *GetMetaTableFullInfoResponseBo
 }
 
 type GetMetaTableIntroWikiRequest struct {
-	TableGuid   *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	WikiVersion *int64  `json:"WikiVersion,omitempty" xml:"WikiVersion,omitempty"`
+	// The GUID of the metatable.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The version of the instructions.
+	WikiVersion *int64 `json:"WikiVersion,omitempty" xml:"WikiVersion,omitempty"`
 }
 
 func (s GetMetaTableIntroWikiRequest) String() string {
@@ -19856,12 +20243,18 @@ func (s *GetMetaTableIntroWikiRequest) SetWikiVersion(v int64) *GetMetaTableIntr
 }
 
 type GetMetaTableIntroWikiResponseBody struct {
-	Data           *GetMetaTableIntroWikiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The business data returned.
+	Data *GetMetaTableIntroWikiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMetaTableIntroWikiResponseBody) String() string {
@@ -19903,12 +20296,18 @@ func (s *GetMetaTableIntroWikiResponseBody) SetSuccess(v bool) *GetMetaTableIntr
 }
 
 type GetMetaTableIntroWikiResponseBodyData struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorName  *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Version      *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The description of the metatable.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the metatable was created.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the metatable.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The name of the user who created the metatable.
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The time when the metatable was modified.
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The version number.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetMetaTableIntroWikiResponseBodyData) String() string {
@@ -26802,16 +27201,26 @@ func (s *ListBaselineConfigsResponse) SetBody(v *ListBaselineConfigsResponseBody
 }
 
 type ListBaselineStatusesRequest struct {
+	// The type of the baseline. Valid values: DAILY and HOURLY. The value DAILY indicates that the baseline is scheduled by day. The value HOURLY indicates that the baseline is scheduled by hour. Multiple types are separated by commas (,).
 	BaselineTypes *string `json:"BaselineTypes,omitempty" xml:"BaselineTypes,omitempty"`
-	Bizdate       *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	FinishStatus  *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Priority      *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SearchText    *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TopicId       *int64  `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
+	// The data timestamp of the baseline instance. Specify the time in the ISO 8601 standard in the yyyy-MM-dd\"T\"HH:mm:ssZ format. The time must be in UTC.
+	Bizdate *string `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The status of the baseline instance. Valid values: UNFINISH and FINISH. The value UNFINISH indicates that the baseline instance is still running. The value FINISH indicates that the baseline instance finishes running. Multiple states are separated by commas (,).
+	FinishStatus *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
+	// The ID of the Alibaba Cloud account used by the baseline owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The number of the page to return. Valid values: 1 to 30. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The priority of the baseline. Valid values: 1, 3, 5, 7, and 8. Multiple priorities are separated by commas (,).
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The keyword of the baseline name used to search for the baseline.
+	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time. Multiple states are separated by commas (,).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the event.
+	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
 }
 
 func (s ListBaselineStatusesRequest) String() string {
@@ -26873,12 +27282,18 @@ func (s *ListBaselineStatusesRequest) SetTopicId(v int64) *ListBaselineStatusesR
 }
 
 type ListBaselineStatusesResponseBody struct {
-	Data           *ListBaselineStatusesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of baseline instances returned.
+	Data *ListBaselineStatusesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBaselineStatusesResponseBody) String() string {
@@ -26920,10 +27335,14 @@ func (s *ListBaselineStatusesResponseBody) SetSuccess(v bool) *ListBaselineStatu
 }
 
 type ListBaselineStatusesResponseBodyData struct {
+	// The list of baseline instances.
 	BaselineStatuses []*ListBaselineStatusesResponseBodyDataBaselineStatuses `json:"BaselineStatuses,omitempty" xml:"BaselineStatuses,omitempty" type:"Repeated"`
-	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of baseline instances.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListBaselineStatusesResponseBodyData) String() string {
@@ -26955,20 +27374,34 @@ func (s *ListBaselineStatusesResponseBodyData) SetTotalCount(v int32) *ListBasel
 }
 
 type ListBaselineStatusesResponseBodyDataBaselineStatuses struct {
-	BaselineId   *int64  `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The ID of the baseline.
+	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The name of the baseline.
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
-	Bizdate      *int64  `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
-	Buffer       *int64  `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
-	EndCast      *int64  `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
-	ExpTime      *int64  `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
+	// The data timestamp of the baseline instance.
+	Bizdate *int64 `json:"Bizdate,omitempty" xml:"Bizdate,omitempty"`
+	// The margin of the baseline instance. Unit: seconds.
+	Buffer *int64 `json:"Buffer,omitempty" xml:"Buffer,omitempty"`
+	// The predicted time when the baseline instance finished running.
+	EndCast *int64 `json:"EndCast,omitempty" xml:"EndCast,omitempty"`
+	// The alerting time of the baseline instance.
+	ExpTime *int64 `json:"ExpTime,omitempty" xml:"ExpTime,omitempty"`
+	// The status of the baseline instance. Valid values: UNFINISH and FINISH. The value UNFINISH indicates that the baseline instance is still running. The value FINISH indicates that the baseline instance finishes running.
 	FinishStatus *string `json:"FinishStatus,omitempty" xml:"FinishStatus,omitempty"`
-	FinishTime   *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	InGroupId    *int32  `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
-	Owner        *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SlaTime      *int64  `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp of the actual time when the baseline instance finished running. This parameter is returned if the value of the FinishStatus parameter is FINISH.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the scheduling cycle of the baseline instance. For a baseline instance that is scheduled by day, the value of this parameter is 1. For a baseline instance that is scheduled by hour, the value of this parameter ranges from 1 to 24.
+	InGroupId *int32 `json:"InGroupId,omitempty" xml:"InGroupId,omitempty"`
+	// The ID of the Alibaba Cloud account used by the baseline owner. Multiple IDs are separated by commas (,).
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the baseline. Valid values: 1, 3, 5, 7, and 8.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the workspace to which the baseline belongs.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The actual time when the baseline instance finished running.
+	SlaTime *int64 `json:"SlaTime,omitempty" xml:"SlaTime,omitempty"`
+	// The status of the baseline. Valid values: ERROR, SAFE, DANGEROUS, and OVER. The value ERROR indicates that no nodes are associated with the baseline, or all nodes associated with the baseline are suspended. The value SAFE indicates that nodes finish running before the alerting time. The value DANGEROUS indicates that nodes are still running after the alerting time but before the committed completion time. The value OVER indicates that nodes are still running after the committed completion time.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListBaselineStatusesResponseBodyDataBaselineStatuses) String() string {
@@ -28454,11 +28887,16 @@ func (s *ListDagsResponse) SetBody(v *ListDagsResponseBody) *ListDagsResponse {
 }
 
 type ListDataServiceApiAuthoritiesRequest struct {
+	// The keyword in the name of the API. The keyword can be used to search for the API whose name contains the keyword.
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId       *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataServiceApiAuthoritiesRequest) String() string {
@@ -28495,12 +28933,18 @@ func (s *ListDataServiceApiAuthoritiesRequest) SetTenantId(v int64) *ListDataSer
 }
 
 type ListDataServiceApiAuthoritiesResponseBody struct {
-	Data           *ListDataServiceApiAuthoritiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The APIs on which other users are granted the access permissions.
+	Data *ListDataServiceApiAuthoritiesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDataServiceApiAuthoritiesResponseBody) String() string {
@@ -28542,10 +28986,14 @@ func (s *ListDataServiceApiAuthoritiesResponseBody) SetSuccess(v bool) *ListData
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyData struct {
+	// The APIs on which other users are granted the access permissions and the authorization records.
 	ApiAuthorizationList []*ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList `json:"ApiAuthorizationList,omitempty" xml:"ApiAuthorizationList,omitempty" type:"Repeated"`
-	PageNumber           *int32                                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount           *int32                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDataServiceApiAuthoritiesResponseBodyData) String() string {
@@ -28577,17 +29025,28 @@ func (s *ListDataServiceApiAuthoritiesResponseBodyData) SetTotalCount(v int32) *
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList struct {
-	ApiId                *int64                                                                                   `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiName              *string                                                                                  `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ApiPath              *string                                                                                  `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	ApiStatus            *int32                                                                                   `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
+	// The ID of the API.
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The name of the API.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The path of the API.
+	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
+	ApiStatus *int32 `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
+	// The authorization records.
 	AuthorizationRecords []*ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationListAuthorizationRecords `json:"AuthorizationRecords,omitempty" xml:"AuthorizationRecords,omitempty" type:"Repeated"`
-	CreatedTime          *string                                                                                  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatorId            *string                                                                                  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	GroupId              *string                                                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ModifiedTime         *string                                                                                  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ProjectId            *int64                                                                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId             *int64                                                                                   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The time when the API was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the Alibaba Cloud account used by the API owner.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The ID of the group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The time when the API was last updated.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList) String() string {
@@ -28654,10 +29113,14 @@ func (s *ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList) SetT
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationListAuthorizationRecords struct {
+	// The time when the access permissions on the API were granted to other users.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the Alibaba Cloud account used by the user who granted other users the access permissions on the API.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The end time of the validity period of the authorization.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the workspace to which the access permissions on the API are granted.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationListAuthorizationRecords) String() string {
@@ -30400,11 +30863,16 @@ func (s *ListDataServiceFoldersResponse) SetBody(v *ListDataServiceFoldersRespon
 }
 
 type ListDataServiceGroupsRequest struct {
+	// The keyword of a business process name. The keyword is used to search for business processes whose names contain this keyword.
 	GroupNameKeyword *string `json:"GroupNameKeyword,omitempty" xml:"GroupNameKeyword,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId        *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataServiceGroupsRequest) String() string {
@@ -30441,8 +30909,10 @@ func (s *ListDataServiceGroupsRequest) SetTenantId(v int64) *ListDataServiceGrou
 }
 
 type ListDataServiceGroupsResponseBody struct {
+	// The paging result for the business processes.
 	GroupPagingResult *ListDataServiceGroupsResponseBodyGroupPagingResult `json:"GroupPagingResult,omitempty" xml:"GroupPagingResult,omitempty" type:"Struct"`
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDataServiceGroupsResponseBody) String() string {
@@ -30464,10 +30934,14 @@ func (s *ListDataServiceGroupsResponseBody) SetRequestId(v string) *ListDataServ
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResult struct {
-	Groups     []*ListDataServiceGroupsResponseBodyGroupPagingResultGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	PageNumber *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The business processes.
+	Groups []*ListDataServiceGroupsResponseBodyGroupPagingResultGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The page number of the returned page. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 10. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDataServiceGroupsResponseBodyGroupPagingResult) String() string {
@@ -30499,15 +30973,24 @@ func (s *ListDataServiceGroupsResponseBodyGroupPagingResult) SetTotalCount(v int
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {
+	// The ID of the API group that is associated with the business process in the API Gateway console.
 	ApiGatewayGroupId *string `json:"ApiGatewayGroupId,omitempty" xml:"ApiGatewayGroupId,omitempty"`
-	CreatedTime       *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatorId         *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName         *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	ModifiedTime      *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TenantId          *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The time when the business process was created.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The user identifier (UID) of the creator of the business process. The value of this parameter may be empty for creators of some existing business processes.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the business process.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the business process.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the business process.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the business process was modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The ID of the tenant.
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ListDataServiceGroupsResponseBodyGroupPagingResultGroups) String() string {
@@ -45402,10 +45885,17 @@ func (s *TestDataServiceApiResponse) SetBody(v *TestDataServiceApiResponseBody) 
 }
 
 type TestNetworkConnectionRequest struct {
+	// The name of the data source.
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ResourceGroup  *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The environment to which the data source belongs. Valid values:
+	//
+	// *   0: development environment
+	// *   1: production environment
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the DataWorks workspace to which the data source belongs. You can call the [ListProjects](~~178393~~) operation to query the ID of the workspace.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The identifier of the resource group. You can call the [ListResourceGroups](~~173913~~) operation to query the identifier of the resource group.
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 }
 
 func (s TestNetworkConnectionRequest) String() string {
@@ -45437,9 +45927,15 @@ func (s *TestNetworkConnectionRequest) SetResourceGroup(v string) *TestNetworkCo
 }
 
 type TestNetworkConnectionResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskList  *TestNetworkConnectionResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the connectivity test.
+	TaskList *TestNetworkConnectionResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
 }
 
 func (s TestNetworkConnectionResponseBody) String() string {
@@ -45466,8 +45962,13 @@ func (s *TestNetworkConnectionResponseBody) SetTaskList(v *TestNetworkConnection
 }
 
 type TestNetworkConnectionResponseBodyTaskList struct {
+	// The reason why the data source and resource group failed the connectivity test. If data source and the resource group passed the connectivity test, this parameter is left empty.
 	ConnectMessage *string `json:"ConnectMessage,omitempty" xml:"ConnectMessage,omitempty"`
-	ConnectStatus  *bool   `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
+	// The result of the connectivity test. Valid values:
+	//
+	// *   true: The data source and the resource group passed the connectivity test.
+	// *   false: The data source and the resource group failed the connectivity test. You can troubleshoot issues based on the ConnectMessage parameter.
+	ConnectStatus *bool `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
 }
 
 func (s TestNetworkConnectionResponseBodyTaskList) String() string {
@@ -46591,10 +47092,40 @@ func (s *UpdateConnectionResponse) SetBody(v *UpdateConnectionResponseBody) *Upd
 }
 
 type UpdateDIProjectConfigRequest struct {
+	// The type of the destinations of the synchronization solutions. This parameter cannot be left empty.
+	//
+	// Valid values: analyticdb_for_mysql, odps, elasticsearch, holo, mysql, and polardb.
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	ProjectConfig   *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
-	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The new default global configuration of synchronization solutions. The value indicates the processing rules of different types of DDL messages. The value must be in the JSON format. Example:
+	//
+	// {"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}
+	//
+	// Field description:
+	//
+	// *   RENAMECOLUMN: renames a column.
+	// *   DROPTABLE: deletes a table.
+	// *   CREATETABLE: creates a table.
+	// *   MODIFYCOLUMN: changes the data type of a column.
+	// *   TRUNCATETABLE: clears a table.
+	// *   DROPCOLUMN: deletes a column.
+	// *   ADDCOLUMN: creates a column.
+	// *   RENAMETABLE: renames a table.
+	//
+	// DataWorks processes a DDL message of a specific type based on the following rules:
+	//
+	// *   WARNING: ignores the message and records an alert in real-time synchronization logs. The alert contains information about the situation that the message is ignored because of an execution error.
+	// *   IGNORE: discards the message and does not send it to the destination.
+	// *   CRITICAL: terminates the real-time synchronization node and sets the node status to Failed.
+	// *   NORMAL: sends the message to the destination to process the message. Each destination processes DDL messages based on its own business logic. If DataWorks adopts the NORMAL policy, DataWorks only forwards DDL messages.
+	ProjectConfig *string `json:"ProjectConfig,omitempty" xml:"ProjectConfig,omitempty"`
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The type of the sources of the synchronization solutions.
+	//
+	// Valid values: oracle, mysql, polardb, datahub, drds, and analyticdb_for_mysql.
+	//
+	// If you do not configure this parameter, DataWorks applies the default global configuration to all sources.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s UpdateDIProjectConfigRequest) String() string {
@@ -46626,9 +47157,15 @@ func (s *UpdateDIProjectConfigRequest) SetSourceType(v string) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBody struct {
-	Data      *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the modification.
+	Data *UpdateDIProjectConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDIProjectConfigResponseBody) String() string {
@@ -46655,6 +47192,10 @@ func (s *UpdateDIProjectConfigResponseBody) SetSuccess(v bool) *UpdateDIProjectC
 }
 
 type UpdateDIProjectConfigResponseBodyData struct {
+	// Indicates whether the default global configuration of synchronization solutions was modified. Valid values:
+	//
+	// *   success: The default global configuration of synchronization solutions was modified.
+	// *   fail: The default global configuration of synchronization solutions failed to be modified.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -47918,9 +48459,12 @@ func (s *UpdateIDEEventResultResponse) SetBody(v *UpdateIDEEventResultResponseBo
 }
 
 type UpdateMetaCategoryRequest struct {
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the category.
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The remarks of the category.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the category.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateMetaCategoryRequest) String() string {
@@ -47947,12 +48491,18 @@ func (s *UpdateMetaCategoryRequest) SetName(v string) *UpdateMetaCategoryRequest
 }
 
 type UpdateMetaCategoryResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the category was updated.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateMetaCategoryResponseBody) String() string {
@@ -48288,7 +48838,9 @@ func (s *UpdateMetaTableResponse) SetBody(v *UpdateMetaTableResponseBody) *Updat
 }
 
 type UpdateMetaTableIntroWikiRequest struct {
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The details of the instructions on how to use the metatable.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The GUID of the metatable. Specify the GUID in the format of odps.{projectName}.{tableName}.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 }
 
@@ -48311,8 +48863,10 @@ func (s *UpdateMetaTableIntroWikiRequest) SetTableGuid(v string) *UpdateMetaTabl
 }
 
 type UpdateMetaTableIntroWikiResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpdateResult *bool   `json:"UpdateResult,omitempty" xml:"UpdateResult,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The updated instructions.
+	UpdateResult *bool `json:"UpdateResult,omitempty" xml:"UpdateResult,omitempty"`
 }
 
 func (s UpdateMetaTableIntroWikiResponseBody) String() string {
@@ -48544,10 +49098,14 @@ func (s *UpdateNodeRunModeResponse) SetBody(v *UpdateNodeRunModeResponseBody) *U
 }
 
 type UpdateQualityFollowerRequest struct {
-	AlarmMode   *int32  `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
-	Follower    *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
-	FollowerId  *int64  `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The notification method. Valid values: 1, 2, 4, and 5. 1 indicates that the notification is sent by email. 2 indicates that the notification is sent by email and text message. 4 indicates that the notification is sent by a DingTalk chatbot. 5 indicates that the notification is sent by a DingTalk chatbot to all members in a DingTalk group.
+	AlarmMode *int32 `json:"AlarmMode,omitempty" xml:"AlarmMode,omitempty"`
+	// The name of the subscriber.
+	Follower *string `json:"Follower,omitempty" xml:"Follower,omitempty"`
+	// The ID of the subscription relationship.
+	FollowerId *int64 `json:"FollowerId,omitempty" xml:"FollowerId,omitempty"`
+	ProjectId  *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The name of the computing engine instance or data source.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -48585,12 +49143,18 @@ func (s *UpdateQualityFollowerRequest) SetProjectName(v string) *UpdateQualityFo
 }
 
 type UpdateQualityFollowerResponseBody struct {
-	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the subscription relationship is updated.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateQualityFollowerResponseBody) String() string {
@@ -64260,6 +64824,13 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+ *
+ * @param request UpdateDIProjectConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDIProjectConfigResponse
+ */
 func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateDIProjectConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64305,6 +64876,12 @@ func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectC
 	return _result, _err
 }
 
+/**
+ * DataWorks allows you to specify a default global configuration only for the processing rules of DDL messages in synchronization solutions. After you configure the **processing rules of DDL messages** in synchronization solutions, the configuration is used as the default global configuration and applies to all real-time synchronization nodes in the solutions. You can modify the **processing rules of DDL messages** based on your business requirements. For more information about how to configure a synchronization solution, see [Synchronization solutions](~~199008~~).
+ *
+ * @param request UpdateDIProjectConfigRequest
+ * @return UpdateDIProjectConfigResponse
+ */
 func (client *Client) UpdateDIProjectConfig(request *UpdateDIProjectConfigRequest) (_result *UpdateDIProjectConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDIProjectConfigResponse{}
