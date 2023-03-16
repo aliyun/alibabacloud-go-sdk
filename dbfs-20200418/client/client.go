@@ -3150,6 +3150,7 @@ func (s *ListDbfsAttachableEcsInstancesResponseBody) SetTotalCount(v int32) *Lis
 }
 
 type ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo struct {
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
 	OSName             *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
 	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -3164,6 +3165,11 @@ func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) String() string 
 
 func (s ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) GoString() string {
 	return s.String()
+}
+
+func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetImageId(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
+	s.ImageId = &v
+	return s
 }
 
 func (s *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo) SetInstanceTypeFamily(v string) *ListDbfsAttachableEcsInstancesResponseBodyEcsLabelInfo {
@@ -3598,6 +3604,8 @@ func (s *ListSnapshotResponse) SetBody(v *ListSnapshotResponseBody) *ListSnapsho
 type ListSnapshotLinksRequest struct {
 	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	FsIds       *string `json:"FsIds,omitempty" xml:"FsIds,omitempty"`
+	LinkIds     *string `json:"LinkIds,omitempty" xml:"LinkIds,omitempty"`
 	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -3618,6 +3626,16 @@ func (s *ListSnapshotLinksRequest) SetFilterKey(v string) *ListSnapshotLinksRequ
 
 func (s *ListSnapshotLinksRequest) SetFilterValue(v string) *ListSnapshotLinksRequest {
 	s.FilterValue = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetFsIds(v string) *ListSnapshotLinksRequest {
+	s.FsIds = &v
+	return s
+}
+
+func (s *ListSnapshotLinksRequest) SetLinkIds(v string) *ListSnapshotLinksRequest {
+	s.LinkIds = &v
 	return s
 }
 
@@ -6063,6 +6081,14 @@ func (client *Client) ListSnapshotLinksWithOptions(request *ListSnapshotLinksReq
 
 	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
 		query["FilterValue"] = request.FilterValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FsIds)) {
+		query["FsIds"] = request.FsIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LinkIds)) {
+		query["LinkIds"] = request.LinkIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
