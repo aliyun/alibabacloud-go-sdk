@@ -2193,9 +2193,9 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterRequestEcsOrder struct {
-	Compute *CreateClusterRequestEcsOrderCompute `json:"Compute,omitempty" xml:"Compute,omitempty" require:"true" type:"Struct"`
-	Login   *CreateClusterRequestEcsOrderLogin   `json:"Login,omitempty" xml:"Login,omitempty" require:"true" type:"Struct"`
-	Manager *CreateClusterRequestEcsOrderManager `json:"Manager,omitempty" xml:"Manager,omitempty" require:"true" type:"Struct"`
+	Compute *CreateClusterRequestEcsOrderCompute `json:"Compute,omitempty" xml:"Compute,omitempty" type:"Struct"`
+	Login   *CreateClusterRequestEcsOrderLogin   `json:"Login,omitempty" xml:"Login,omitempty" type:"Struct"`
+	Manager *CreateClusterRequestEcsOrderManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
 }
 
 func (s CreateClusterRequestEcsOrder) String() string {
@@ -2655,8 +2655,10 @@ func (s *CreateGWSClusterResponse) SetBody(v *CreateGWSClusterResponseBody) *Cre
 }
 
 type CreateGWSImageRequest struct {
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The image name of the visualization instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateGWSImageRequest) String() string {
@@ -2678,7 +2680,9 @@ func (s *CreateGWSImageRequest) SetName(v string) *CreateGWSImageRequest {
 }
 
 type CreateGWSImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image ID of the visualization instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3208,8 +3212,8 @@ func (s *CreateHybridClusterRequest) SetZoneId(v string) *CreateHybridClusterReq
 }
 
 type CreateHybridClusterRequestEcsOrder struct {
-	Compute *CreateHybridClusterRequestEcsOrderCompute `json:"Compute,omitempty" xml:"Compute,omitempty" require:"true" type:"Struct"`
-	Manager *CreateHybridClusterRequestEcsOrderManager `json:"Manager,omitempty" xml:"Manager,omitempty" require:"true" type:"Struct"`
+	Compute *CreateHybridClusterRequestEcsOrderCompute `json:"Compute,omitempty" xml:"Compute,omitempty" type:"Struct"`
+	Manager *CreateHybridClusterRequestEcsOrderManager `json:"Manager,omitempty" xml:"Manager,omitempty" type:"Struct"`
 }
 
 func (s CreateHybridClusterRequestEcsOrder) String() string {
@@ -4001,6 +4005,7 @@ func (s *DeleteContainerAppsResponse) SetBody(v *DeleteContainerAppsResponseBody
 }
 
 type DeleteGWSClusterRequest struct {
+	// The ID of the visualization service.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -4018,6 +4023,7 @@ func (s *DeleteGWSClusterRequest) SetClusterId(v string) *DeleteGWSClusterReques
 }
 
 type DeleteGWSClusterResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4064,6 +4070,7 @@ func (s *DeleteGWSClusterResponse) SetBody(v *DeleteGWSClusterResponseBody) *Del
 }
 
 type DeleteGWSInstanceRequest struct {
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4081,6 +4088,7 @@ func (s *DeleteGWSInstanceRequest) SetInstanceId(v string) *DeleteGWSInstanceReq
 }
 
 type DeleteGWSInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6040,9 +6048,18 @@ func (s *DescribeGWSClusterPolicyResponse) SetBody(v *DescribeGWSClusterPolicyRe
 }
 
 type DescribeGWSClustersRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the visualization services.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The page number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeGWSClustersRequest) String() string {
@@ -6069,12 +6086,21 @@ func (s *DescribeGWSClustersRequest) SetPageSize(v int32) *DescribeGWSClustersRe
 }
 
 type DescribeGWSClustersResponseBody struct {
-	CallerType *string                                  `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
-	Clusters   *DescribeGWSClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
-	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the account. Valid values:
+	//
+	// *   sub: a RAM user.
+	// *   parent: an Alibaba Cloud account.
+	CallerType *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
+	// The information of the visualization services.
+	Clusters *DescribeGWSClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeGWSClustersResponseBody) String() string {
@@ -6133,11 +6159,20 @@ func (s *DescribeGWSClustersResponseBodyClusters) SetClusterInfo(v []*DescribeGW
 }
 
 type DescribeGWSClustersResponseBodyClustersClusterInfo struct {
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// VPC ID。
+	// The ID of the visualization service.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the visualization service was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of visualization instances.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The status of the visualization services. Valid values:
+	//
+	// *   creating: The service is being created.
+	// *   starting: The service is being started.
+	// *   running: The service is running.
+	// *   deleted: The service is deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -6367,12 +6402,28 @@ func (s *DescribeGWSImagesResponse) SetBody(v *DescribeGWSImagesResponseBody) *D
 }
 
 type DescribeGWSInstancesRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the visualization service.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserUid    *int64  `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	// The page number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The username of the entity whose instances you want to query.
+	//
+	// >  If this parameter is not specified, instances of all users are queried.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The user ID of the entity whose instances you want to query.
+	//
+	// >  If this parameter is not specified, instances of all users are queried.
+	UserUid *int64 `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 }
 
 func (s DescribeGWSInstancesRequest) String() string {
@@ -6414,11 +6465,16 @@ func (s *DescribeGWSInstancesRequest) SetUserUid(v int64) *DescribeGWSInstancesR
 }
 
 type DescribeGWSInstancesResponseBody struct {
-	Instances  *DescribeGWSInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of visualization instances.
+	Instances *DescribeGWSInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number of the current page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeGWSInstancesResponseBody) String() string {
@@ -6472,16 +6528,44 @@ func (s *DescribeGWSInstancesResponseBodyInstances) SetInstanceInfo(v []*Describ
 }
 
 type DescribeGWSInstancesResponseBodyInstancesInstanceInfo struct {
-	AppList      *DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
-	ClusterId    *string                                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime   *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime   *string                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId   *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType *string                                                       `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status       *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserName     *string                                                       `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WorkMode     *string                                                       `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+	// The list of application information.
+	//
+	// >  If the WorkMode parameter is set to Desktop, an empty value is returned in this parameter.
+	AppList *DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
+	// The ID of the visualizatio service.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the visualization instance was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the visualization instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the visualization instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the visualization instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The name of the visualization instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of the visualization instance. Valid values:
+	//
+	// *   Creating: The instance is being created.
+	// *   Starting: The instance is being started.
+	// *   Stopping: The instance is being stopped.
+	// *   Stopped: The instance is stopped.
+	// *   Initializing: The instance is being initialized.
+	// *   Unregistered: The instance is not registered.
+	// *   Registered: The instance is registered.
+	// *   InUse: The instance is in use.
+	// *   Missing: The instance cannot be found.
+	// *   Cloning: An image is being generated based on the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username of the entity to which the visualization instance is assigned.
+	//
+	// >  If the instance is not assigned to a specified user, this parameter is empty.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The working mode of the visualization instance. Valid values:
+	//
+	// *   Desktop
+	// *   Application
+	WorkMode *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s DescribeGWSInstancesResponseBodyInstancesInstanceInfo) String() string {
@@ -6561,7 +6645,9 @@ func (s *DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppList) SetAppInf
 
 type DescribeGWSInstancesResponseBodyInstancesInstanceInfoAppListAppInfo struct {
 	AppArgs *string `json:"AppArgs,omitempty" xml:"AppArgs,omitempty"`
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The execution directory of the application.
 	AppPath *string `json:"AppPath,omitempty" xml:"AppPath,omitempty"`
 }
 
@@ -6774,6 +6860,7 @@ func (s *DescribeImageResponse) SetBody(v *DescribeImageResponseBody) *DescribeI
 }
 
 type DescribeImageGatewayConfigRequest struct {
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -6791,8 +6878,10 @@ func (s *DescribeImageGatewayConfigRequest) SetClusterId(v string) *DescribeImag
 }
 
 type DescribeImageGatewayConfigResponseBody struct {
-	Imagegw   *DescribeImageGatewayConfigResponseBodyImagegw `json:"Imagegw,omitempty" xml:"Imagegw,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the image gateway configuration file.
+	Imagegw *DescribeImageGatewayConfigResponseBodyImagegw `json:"Imagegw,omitempty" xml:"Imagegw,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageGatewayConfigResponseBody) String() string {
@@ -6814,12 +6903,18 @@ func (s *DescribeImageGatewayConfigResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeImageGatewayConfigResponseBodyImagegw struct {
-	DefaultImageLocation   *string                                                 `json:"DefaultImageLocation,omitempty" xml:"DefaultImageLocation,omitempty"`
-	ImageExpirationTimeout *string                                                 `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
-	Locations              *DescribeImageGatewayConfigResponseBodyImagegwLocations `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Struct"`
-	MongoDBURI             *string                                                 `json:"MongoDBURI,omitempty" xml:"MongoDBURI,omitempty"`
-	PullUpdateTimeout      *int64                                                  `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
-	UpdateDateTime         *string                                                 `json:"UpdateDateTime,omitempty" xml:"UpdateDateTime,omitempty"`
+	// The default address of the image repository.
+	DefaultImageLocation *string `json:"DefaultImageLocation,omitempty" xml:"DefaultImageLocation,omitempty"`
+	// The time when the image expires.
+	ImageExpirationTimeout *string `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
+	// An array of the image repository addresses.
+	Locations *DescribeImageGatewayConfigResponseBodyImagegwLocations `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Struct"`
+	// The information about the image gateway database.
+	MongoDBURI *string `json:"MongoDBURI,omitempty" xml:"MongoDBURI,omitempty"`
+	// The timeout period for pulling images.
+	PullUpdateTimeout *int64 `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
+	// The time when the file was updated.
+	UpdateDateTime *string `json:"UpdateDateTime,omitempty" xml:"UpdateDateTime,omitempty"`
 }
 
 func (s DescribeImageGatewayConfigResponseBodyImagegw) String() string {
@@ -6878,10 +6973,17 @@ func (s *DescribeImageGatewayConfigResponseBodyImagegwLocations) SetLocationInfo
 }
 
 type DescribeImageGatewayConfigResponseBodyImagegwLocationsLocationInfo struct {
+	// The authentication method of the image repository. Valid values:
+	//
+	// *   http
+	// *   https
 	Authentication *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	RemoteType     *string `json:"RemoteType,omitempty" xml:"RemoteType,omitempty"`
-	URL            *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	// The source address of the image repository.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The type of the image repository.
+	RemoteType *string `json:"RemoteType,omitempty" xml:"RemoteType,omitempty"`
+	// The URL of the image repository.
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s DescribeImageGatewayConfigResponseBodyImagegwLocationsLocationInfo) String() string {
@@ -7198,6 +7300,7 @@ func (s *DescribeJobResponse) SetBody(v *DescribeJobResponseBody) *DescribeJobRe
 }
 
 type DescribeNFSClientStatusRequest struct {
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -7215,9 +7318,16 @@ func (s *DescribeNFSClientStatusRequest) SetInstanceId(v string) *DescribeNFSCli
 }
 
 type DescribeNFSClientStatusResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeNFSClientStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Status    *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of results.
+	Result *DescribeNFSClientStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The deployment status of the NFS client. Valid values:
+	//
+	// *   NotInstalled: The client is not installed.
+	// *   Running: The client is being installed.
+	// *   Finished: The client is installed on the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeNFSClientStatusResponseBody) String() string {
@@ -7244,9 +7354,12 @@ func (s *DescribeNFSClientStatusResponseBody) SetStatus(v string) *DescribeNFSCl
 }
 
 type DescribeNFSClientStatusResponseBodyResult struct {
-	ExitCode           *int32  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The Base64-decoded Output parameter value. A True in the last line indicates successful installation. Otherwise, the installation fails.
+	ExitCode *int32 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	// The status of the invocation record, which is the same as the value of the Status parameter.
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	Output             *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The execution result of the command.
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
 }
 
 func (s DescribeNFSClientStatusResponseBodyResult) String() string {
@@ -8174,7 +8287,8 @@ type GetAutoScaleConfigResponseBody struct {
 	// *   pbs
 	// *   opengridscheduler
 	// *   deadline
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType     *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ComputeEnableHt *bool   `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
 	// Indicates whether the cluster enabled auto scale-out. Valid values:
 	//
 	// *   true
@@ -8246,6 +8360,11 @@ func (s *GetAutoScaleConfigResponseBody) SetClusterId(v string) *GetAutoScaleCon
 
 func (s *GetAutoScaleConfigResponseBody) SetClusterType(v string) *GetAutoScaleConfigResponseBody {
 	s.ClusterType = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBody) SetComputeEnableHt(v bool) *GetAutoScaleConfigResponseBody {
+	s.ComputeEnableHt = &v
 	return s
 }
 
@@ -13018,9 +13137,20 @@ func (s *ListContainerImagesResponse) SetBody(v *ListContainerImagesResponseBody
 }
 
 type ListCpfsFileSystemsRequest struct {
+	// The ID of the file system.
+	//
+	// By default, the information about all CPFSs and their mount targets within your account are queried.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the page to return.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 50.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListCpfsFileSystemsRequest) String() string {
@@ -13047,11 +13177,16 @@ func (s *ListCpfsFileSystemsRequest) SetPageSize(v int32) *ListCpfsFileSystemsRe
 }
 
 type ListCpfsFileSystemsResponseBody struct {
+	// The list of file systems.
 	FileSystemList *ListCpfsFileSystemsResponseBodyFileSystemList `json:"FileSystemList,omitempty" xml:"FileSystemList,omitempty" type:"Struct"`
-	PageNumber     *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on the current page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCpfsFileSystemsResponseBody) String() string {
@@ -13105,14 +13240,25 @@ func (s *ListCpfsFileSystemsResponseBodyFileSystemList) SetFileSystems(v []*List
 }
 
 type ListCpfsFileSystemsResponseBodyFileSystemListFileSystems struct {
-	Capacity        *string                                                                  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	CreateTime      *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Destription     *string                                                                  `json:"Destription,omitempty" xml:"Destription,omitempty"`
-	FileSystemId    *string                                                                  `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The capacity of the file system. Unit: GiB.
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The time when the file system was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the file system.
+	Destription *string `json:"Destription,omitempty" xml:"Destription,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The mount targets.
 	MountTargetList *ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetList `json:"MountTargetList,omitempty" xml:"MountTargetList,omitempty" type:"Struct"`
-	ProtocolType    *string                                                                  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RegionId        *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId          *string                                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The protocol type that is applied to the mounted file system. Valid values:
+	//
+	// *   NFS
+	// *   SMB
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListCpfsFileSystemsResponseBodyFileSystemListFileSystems) String() string {
@@ -13181,11 +13327,21 @@ func (s *ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetList
 }
 
 type ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetListMountTargets struct {
+	// The domain where the mount target resides.
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	NetworkType       *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswId             *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
+	// The network type.
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The status of the mount target. Valid values:
+	//
+	// *   Active: The mount target is available.
+	// *   Inactive: The mount target is unavailable.
+	// *   Pending: The mount target is being mounted.
+	// *   Deleting: The mount target is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID of the instance.
+	VswId *string `json:"VswId,omitempty" xml:"VswId,omitempty"`
 }
 
 func (s ListCpfsFileSystemsResponseBodyFileSystemListFileSystemsMountTargetListMountTargets) String() string {
@@ -19123,15 +19279,24 @@ func (s *ModifyContainerAppAttributesResponse) SetBody(v *ModifyContainerAppAttr
 }
 
 type ModifyImageGatewayConfigRequest struct {
-	ClusterId              *string                                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DBPassword             *string                                `json:"DBPassword,omitempty" xml:"DBPassword,omitempty"`
-	DBServerInfo           *string                                `json:"DBServerInfo,omitempty" xml:"DBServerInfo,omitempty"`
-	DBType                 *string                                `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBUsername             *string                                `json:"DBUsername,omitempty" xml:"DBUsername,omitempty"`
-	DefaultRepoLocation    *string                                `json:"DefaultRepoLocation,omitempty" xml:"DefaultRepoLocation,omitempty"`
-	ImageExpirationTimeout *string                                `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
-	PullUpdateTimeout      *int32                                 `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
-	Repo                   []*ModifyImageGatewayConfigRequestRepo `json:"Repo,omitempty" xml:"Repo,omitempty" type:"Repeated"`
+	// The ID of the cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The password that is used to log on to the database instance.
+	DBPassword *string `json:"DBPassword,omitempty" xml:"DBPassword,omitempty"`
+	// The URI of the database.
+	DBServerInfo *string `json:"DBServerInfo,omitempty" xml:"DBServerInfo,omitempty"`
+	// The type of the database. Set the value to mongodb.
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The username of the account that is used to log on to the database.
+	DBUsername *string `json:"DBUsername,omitempty" xml:"DBUsername,omitempty"`
+	// The default repository service. Set the value to registry-1.docker.io.
+	DefaultRepoLocation *string `json:"DefaultRepoLocation,omitempty" xml:"DefaultRepoLocation,omitempty"`
+	// The timeout period for deleting images.
+	ImageExpirationTimeout *string `json:"ImageExpirationTimeout,omitempty" xml:"ImageExpirationTimeout,omitempty"`
+	// The timeout period for pulling images.
+	PullUpdateTimeout *int32 `json:"PullUpdateTimeout,omitempty" xml:"PullUpdateTimeout,omitempty"`
+	// The information about the repository.
+	Repo []*ModifyImageGatewayConfigRequestRepo `json:"Repo,omitempty" xml:"Repo,omitempty" type:"Repeated"`
 }
 
 func (s ModifyImageGatewayConfigRequest) String() string {
@@ -19188,9 +19353,17 @@ func (s *ModifyImageGatewayConfigRequest) SetRepo(v []*ModifyImageGatewayConfigR
 }
 
 type ModifyImageGatewayConfigRequestRepo struct {
-	Auth     *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The authentication method of the repository. Valid values:
+	//
+	// *   http
+	// *   https
+	//
+	// Default value: http.
+	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// The address of the repository N.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	URL      *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	// The URL of the repository. The URL is required to add a repository address.
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s ModifyImageGatewayConfigRequestRepo) String() string {
@@ -19217,6 +19390,7 @@ func (s *ModifyImageGatewayConfigRequestRepo) SetURL(v string) *ModifyImageGatew
 }
 
 type ModifyImageGatewayConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19587,11 +19761,19 @@ func (s *ModifyVisualServicePasswdResponse) SetBody(v *ModifyVisualServicePasswd
 }
 
 type MountNFSRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MountDir     *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
-	NfsDir       *string `json:"NfsDir,omitempty" xml:"NfsDir,omitempty"`
+	// The ID of the visualization instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The local mount directory.
+	MountDir *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
+	// The address of the mount target.
+	NfsDir *string `json:"NfsDir,omitempty" xml:"NfsDir,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// *   nfs
+	// *   smb
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RemoteDir    *string `json:"RemoteDir,omitempty" xml:"RemoteDir,omitempty"`
+	// The remote mount address.
+	RemoteDir *string `json:"RemoteDir,omitempty" xml:"RemoteDir,omitempty"`
 }
 
 func (s MountNFSRequest) String() string {
@@ -19628,7 +19810,9 @@ func (s *MountNFSRequest) SetRemoteDir(v string) *MountNFSRequest {
 }
 
 type MountNFSResponseBody struct {
-	InvokeId  *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The ID of the execution.
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20350,7 +20534,8 @@ func (s *RunCloudMetricProfilingResponse) SetBody(v *RunCloudMetricProfilingResp
 
 type SetAutoScaleConfigRequest struct {
 	// The ID of the cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ComputeEnableHt *bool   `json:"ComputeEnableHt,omitempty" xml:"ComputeEnableHt,omitempty"`
 	// Specifies whether to enable auto scale-out. Valid values:
 	//
 	// *   true: enables auto scale-out.
@@ -20445,6 +20630,11 @@ func (s SetAutoScaleConfigRequest) GoString() string {
 
 func (s *SetAutoScaleConfigRequest) SetClusterId(v string) *SetAutoScaleConfigRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequest) SetComputeEnableHt(v bool) *SetAutoScaleConfigRequest {
+	s.ComputeEnableHt = &v
 	return s
 }
 
@@ -20951,13 +21141,52 @@ func (s *SetAutoScaleConfigResponse) SetBody(v *SetAutoScaleConfigResponseBody) 
 }
 
 type SetGWSClusterPolicyRequest struct {
-	AsyncMode   *bool   `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
-	Clipboard   *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	LocalDrive  *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	UdpPort     *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
+	// Specifies whether to support the asynchronous calls.
+	//
+	// *   false: not supported. The result is returned after the request is completed.
+	// *   true: supported. The result is immediately returned while the request is being processed.
+	//
+	// Default value: false.
+	AsyncMode *bool `json:"AsyncMode,omitempty" xml:"AsyncMode,omitempty"`
+	// The permissions on the clipboard. Valid values:
+	//
+	// *   read: read-only. You can copy data from your local computer to the cloud desktop, but cannot copy data from the cloud desktop to your local computer.
+	// *   readwrite: read and write. You can copy data between your local computer and the cloud desktop.
+	// *   off: disabled. You cannot copy data between your local computer and the cloud desktop.
+	//
+	// Default value: off.
+	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// The ID of the visualization service.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The permissions on local disk mapping. Valid values:
+	//
+	// *   read: read-only. The disks on your local computer are mapped to the cloud desktop. You can only read (copy) files on the local computer, but cannot modify the files.
+	// *   readwrite: read and write. The disks on your local computer are mapped to the cloud desktop. You can read (copy) and modify files on your local computer.
+	// *   off: disabled. The disks on your local computer are not mapped to the cloud desktop.
+	//
+	// Default value: off.
+	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
+	// The UDP port. Valid values:
+	//
+	// *   on
+	// *   off
+	//
+	// Default value: on.
+	UdpPort *string `json:"UdpPort,omitempty" xml:"UdpPort,omitempty"`
+	// The USB redirection feature. Valid values:
+	//
+	// *   on
+	// *   off
+	//
+	// Default value: off.
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
-	Watermark   *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// The watermarking feature. Valid values:
+	//
+	// *   on
+	// *   off
+	//
+	// Default value: off.
+	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s SetGWSClusterPolicyRequest) String() string {
@@ -21004,6 +21233,7 @@ func (s *SetGWSClusterPolicyRequest) SetWatermark(v string) *SetGWSClusterPolicy
 }
 
 type SetGWSClusterPolicyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21119,9 +21349,12 @@ func (s *SetGWSInstanceNameResponse) SetBody(v *SetGWSInstanceNameResponseBody) 
 }
 
 type SetGWSInstanceUserRequest struct {
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserUid    *string `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	// The name of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the user.
+	UserUid *string `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 }
 
 func (s SetGWSInstanceUserRequest) String() string {
@@ -21148,6 +21381,7 @@ func (s *SetGWSInstanceUserRequest) SetUserUid(v string) *SetGWSInstanceUserRequ
 }
 
 type SetGWSInstanceUserResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21784,6 +22018,7 @@ func (s *StartClusterResponse) SetBody(v *StartClusterResponseBody) *StartCluste
 }
 
 type StartGWSInstanceRequest struct {
+	// The ID of the visualization instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -21801,6 +22036,7 @@ func (s *StartGWSInstanceRequest) SetInstanceId(v string) *StartGWSInstanceReque
 }
 
 type StartGWSInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22484,7 +22720,7 @@ type SubmitJobRequest struct {
 	ArrayRequest *string `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
 	// Specifies whether to use an asynchronous link to submit the job.
 	//
-	// Default value: false
+	// Default value: false.
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
 	// The maximum running time of the job. Valid formats:
 	//
@@ -22494,7 +22730,7 @@ type SubmitJobRequest struct {
 	//
 	// We recommend that you use the hh:mm:ss format. If the maximum running time is 12 hours, set the value to 12:00:00.
 	ClockTime *string `json:"ClockTime,omitempty" xml:"ClockTime,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// You can call the [ListClusters](~~87116~~) operation to query the cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -22510,7 +22746,7 @@ type SubmitJobRequest struct {
 	//
 	// The parameter takes effect only when the cluster uses PBS and a compute node is a GPU-accelerated instance.
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
+	// The URL of the job file that is uploaded to an Object Storage Service (OSS) bucket.
 	InputFileUrl *string `json:"InputFileUrl,omitempty" xml:"InputFileUrl,omitempty"`
 	// The name of the queue in which the job is run.
 	//
@@ -22522,15 +22758,15 @@ type SubmitJobRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of compute nodes required to run the job.
 	//
-	// >  If the parameter is not specified, the Task, Thread, Mem, and Gpu parameters become invalid.
+	// > If the parameter is not specified, the Cpu, Task, Thread, Mem, and Gpu parameters become invalid.
 	Node *int32 `json:"Node,omitempty" xml:"Node,omitempty"`
 	// The path that is used to run the job.
 	PackagePath *string `json:"PackagePath,omitempty" xml:"PackagePath,omitempty"`
 	// The command to perform on the job after the job is submitted.
 	PostCmdLine *string `json:"PostCmdLine,omitempty" xml:"PostCmdLine,omitempty"`
-	// The priority of the job. Valid values: 0 to 9. A large value indicates a high priority.
+	// The priority of the job. Valid values: 0 to 9. A larger value indicates a higher priority.
 	//
-	// Default value: 0
+	// Default value: 0.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Specifies whether the job can be rerun. Valid values:
 	//
@@ -22541,7 +22777,7 @@ type SubmitJobRequest struct {
 	//
 	// You can call the [ListUsers](~~188572~~) operation to query the users of the cluster.
 	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
-	// The user password.
+	// The password that corresponds to the username.
 	RunasUserPassword *string `json:"RunasUserPassword,omitempty" xml:"RunasUserPassword,omitempty"`
 	// The output file path of stderr.
 	StderrRedirectPath *string `json:"StderrRedirectPath,omitempty" xml:"StderrRedirectPath,omitempty"`
@@ -23346,7 +23582,8 @@ type UpdateClusterVolumesRequestAdditionalVolumes struct {
 	RemoteDirectory *string                                              `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
 	Roles           []*UpdateClusterVolumesRequestAdditionalVolumesRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// The ID of the nth additional mounted file system.
-	VolumeId *string `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+	VolumeId          *string `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+	VolumeMountOption *string `json:"VolumeMountOption,omitempty" xml:"VolumeMountOption,omitempty"`
 	// The domain name of the mount target for the nth additional mounted file system.
 	VolumeMountpoint *string `json:"VolumeMountpoint,omitempty" xml:"VolumeMountpoint,omitempty"`
 	// The protocol type of the nth additional mounted file system. Valid values:
@@ -23395,6 +23632,11 @@ func (s *UpdateClusterVolumesRequestAdditionalVolumes) SetRoles(v []*UpdateClust
 
 func (s *UpdateClusterVolumesRequestAdditionalVolumes) SetVolumeId(v string) *UpdateClusterVolumesRequestAdditionalVolumes {
 	s.VolumeId = &v
+	return s
+}
+
+func (s *UpdateClusterVolumesRequestAdditionalVolumes) SetVolumeMountOption(v string) *UpdateClusterVolumesRequestAdditionalVolumes {
+	s.VolumeMountOption = &v
 	return s
 }
 
@@ -28847,6 +29089,7 @@ func (client *Client) StopVisualService(request *StopVisualServiceRequest) (_res
 }
 
 /**
+ * ## Description
  * Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
  *
  * @param request SubmitJobRequest
@@ -28883,6 +29126,7 @@ func (client *Client) SubmitJobWithOptions(request *SubmitJobRequest, runtime *u
 }
 
 /**
+ * ## Description
  * Before you submit a job in a cluster, you must upload a job file to the cluster, for example, job.sh. For more information, see [CreateJobFile](~~159049~~).
  *
  * @param request SubmitJobRequest
