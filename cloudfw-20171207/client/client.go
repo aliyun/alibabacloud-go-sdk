@@ -4866,7 +4866,8 @@ type DescribeRiskEventGroupRequest struct {
 	// > If the FirewallType parameter is set to VpcFirewall, you must specify this parameter.
 	DstNetworkInstanceId *string `json:"DstNetworkInstanceId,omitempty" xml:"DstNetworkInstanceId,omitempty"`
 	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The type of the firewall. Valid values:
 	//
 	// *   **VpcFirewall**: virtual private cloud (VPC) firewall
@@ -4979,6 +4980,11 @@ func (s *DescribeRiskEventGroupRequest) SetDstNetworkInstanceId(v string) *Descr
 
 func (s *DescribeRiskEventGroupRequest) SetEndTime(v string) *DescribeRiskEventGroupRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRiskEventGroupRequest) SetEventName(v string) *DescribeRiskEventGroupRequest {
+	s.EventName = &v
 	return s
 }
 
@@ -12692,6 +12698,10 @@ func (client *Client) DescribeRiskEventGroupWithOptions(request *DescribeRiskEve
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		query["EventName"] = request.EventName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FirewallType)) {
