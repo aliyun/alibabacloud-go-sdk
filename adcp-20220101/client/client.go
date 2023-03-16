@@ -1911,8 +1911,6 @@ func (s *DescribeUserPermissionsResponseBody) SetRequestId(v string) *DescribeUs
 }
 
 type DescribeUserPermissionsResponseBodyPermissions struct {
-	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ParentId     *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
@@ -1925,16 +1923,6 @@ func (s DescribeUserPermissionsResponseBodyPermissions) String() string {
 
 func (s DescribeUserPermissionsResponseBodyPermissions) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeUserPermissionsResponseBodyPermissions) SetOwnerId(v string) *DescribeUserPermissionsResponseBodyPermissions {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeUserPermissionsResponseBodyPermissions) SetParentId(v string) *DescribeUserPermissionsResponseBodyPermissions {
-	s.ParentId = &v
-	return s
 }
 
 func (s *DescribeUserPermissionsResponseBodyPermissions) SetResourceId(v string) *DescribeUserPermissionsResponseBodyPermissions {
@@ -2141,6 +2129,29 @@ func (s *GrantUserPermissionsRequestPermissions) SetRoleName(v string) *GrantUse
 
 func (s *GrantUserPermissionsRequestPermissions) SetRoleType(v string) *GrantUserPermissionsRequestPermissions {
 	s.RoleType = &v
+	return s
+}
+
+type GrantUserPermissionsShrinkRequest struct {
+	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GrantUserPermissionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionsShrinkRequest) SetPermissionsShrink(v string) *GrantUserPermissionsShrinkRequest {
+	s.PermissionsShrink = &v
+	return s
+}
+
+func (s *GrantUserPermissionsShrinkRequest) SetUserId(v string) *GrantUserPermissionsShrinkRequest {
+	s.UserId = &v
 	return s
 }
 
@@ -3048,14 +3059,20 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	return _result, _err
 }
 
-func (client *Client) GrantUserPermissionsWithOptions(request *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GrantUserPermissionsWithOptions(tmpReq *GrantUserPermissionsRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GrantUserPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permissions)) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, tea.String("Permissions"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
-		query["Permissions"] = request.Permissions
+	if !tea.BoolValue(util.IsUnset(request.PermissionsShrink)) {
+		query["Permissions"] = request.PermissionsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
