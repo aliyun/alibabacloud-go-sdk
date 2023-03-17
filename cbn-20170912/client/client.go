@@ -687,7 +687,7 @@ type AssociateTransitRouterAttachmentWithRouteTableRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
@@ -3132,14 +3132,14 @@ func (s *CreateTrafficMarkingPolicyResponse) SetBody(v *CreateTrafficMarkingPoli
 type CreateTransitRouteTableAggregationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may different for each request.
+	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to precheck the request. Check items include permissions and the status of the specified cloud resources. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **false** (default): sends the request. If the request passes the precheck, the aggregate route is added.
-	// *   **true**: prechecks the request but does not create the aggregate route. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3158,12 +3158,9 @@ type CreateTransitRouteTableAggregationRequest struct {
 	TransitRouteTableAggregationDescription *string `json:"TransitRouteTableAggregationDescription,omitempty" xml:"TransitRouteTableAggregationDescription,omitempty"`
 	// The name of the aggregate route.
 	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
-	TransitRouteTableAggregationName *string `json:"TransitRouteTableAggregationName,omitempty" xml:"TransitRouteTableAggregationName,omitempty"`
-	// The scope of networks that you want to advertise the aggregate route.
-	//
-	// Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
-	TransitRouteTableAggregationScop *string `json:"TransitRouteTableAggregationScop,omitempty" xml:"TransitRouteTableAggregationScop,omitempty"`
+	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
+	TransitRouteTableAggregationName  *string `json:"TransitRouteTableAggregationName,omitempty" xml:"TransitRouteTableAggregationName,omitempty"`
+	TransitRouteTableAggregationScope *string `json:"TransitRouteTableAggregationScope,omitempty" xml:"TransitRouteTableAggregationScope,omitempty"`
 	// The ID of the route table of the Enterprise Edition transit router.
 	TransitRouteTableId *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
 }
@@ -3221,8 +3218,8 @@ func (s *CreateTransitRouteTableAggregationRequest) SetTransitRouteTableAggregat
 	return s
 }
 
-func (s *CreateTransitRouteTableAggregationRequest) SetTransitRouteTableAggregationScop(v string) *CreateTransitRouteTableAggregationRequest {
-	s.TransitRouteTableAggregationScop = &v
+func (s *CreateTransitRouteTableAggregationRequest) SetTransitRouteTableAggregationScope(v string) *CreateTransitRouteTableAggregationRequest {
+	s.TransitRouteTableAggregationScope = &v
 	return s
 }
 
@@ -4828,20 +4825,20 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
 	//
 	// *   **false** (default): performs a dry run and sends the request.
 	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The ID of the region where the VBR is deployed.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4863,7 +4860,7 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the VBR belongs. The default value is the ID of the current Alibaba Cloud account.
 	//
-	// > If the network instance and the CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+	// > If the network instance and CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
 	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
 }
 
@@ -5040,15 +5037,15 @@ func (s *CreateTransitRouterVbrAttachmentResponse) SetBody(v *CreateTransitRoute
 type CreateTransitRouterVpcAttachmentRequest struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method. The default value is **POSTPAY**, which specifies the pay-as-you-go billing method.
+	// The billing method. Valid values: The default value is **POSTPAY**, which specifies the pay-as-you-go billing method.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
 	//
 	// *   **false** (default): performs a dry run and sends the request.
 	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -5071,7 +5068,7 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the VPC connection.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -5081,9 +5078,9 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// > If the network instance and CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
 	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// A zone that supports Enterprise Edition transit routers.
+	// A vSwitch in a zone of the Enterprise Edition transit router.
 	//
-	// You can specify at most 10 zones.
+	// You can specify at most 10 vSwitches in each call.
 	ZoneMappings []*CreateTransitRouterVpcAttachmentRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -5209,11 +5206,11 @@ func (s *CreateTransitRouterVpcAttachmentRequestTag) SetValue(v string) *CreateT
 }
 
 type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
-	// A vSwitch that is deployed in the zone that supports Enterprise Edition transit routers.
+	// A vSwitch in a zone of the Enterprise Edition transit router.
 	//
 	// You can specify vSwitches for at most 10 zones in each call.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone that supports Enterprise Edition transit routers.
+	// The ID of the zone supported by Enterprise Edition transit routers.
 	//
 	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
 	//
@@ -5296,10 +5293,10 @@ func (s *CreateTransitRouterVpcAttachmentResponse) SetBody(v *CreateTransitRoute
 type CreateTransitRouterVpnAttachmentRequest struct {
 	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN connection. Valid values:
 	//
-	// *   **true** (default): yes
-	// *   **false**: no
+	// *   **true** (default): yes.
+	// *   **false**: no.
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The billing method.
 	//
@@ -5307,7 +5304,7 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The ClientToken value contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -5324,7 +5321,7 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags.
+	// A list of tags.
 	//
 	// You can specify at most 20 tags in each call.
 	Tag []*CreateTransitRouterVpnAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -5345,7 +5342,7 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	// *   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
 	// *   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId *int64 `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
-	// The ID of the zone in the current region.
+	// The ID of a zone in the current region.
 	//
 	// Resources are deployed in the specified zone.
 	Zone []*CreateTransitRouterVpnAttachmentRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
@@ -5447,7 +5444,7 @@ func (s *CreateTransitRouterVpnAttachmentRequest) SetZone(v []*CreateTransitRout
 type CreateTransitRouterVpnAttachmentRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -5478,7 +5475,7 @@ func (s *CreateTransitRouterVpnAttachmentRequestTag) SetValue(v string) *CreateT
 }
 
 type CreateTransitRouterVpnAttachmentRequestZone struct {
-	// The ID of the zone.
+	// The ID of the zone in which you want to create the instance.
 	//
 	// You can call the [ListTransitRouterAvailableResource](~~261356~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -9379,13 +9376,14 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	// The ID of the region where the network instance is deployed.
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	ChildInstanceRegionId     *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The ID of the route table of the network instance.
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// *   **VPC**
-	// *   **VBR**
-	// *   **CCN**
+	// *   **VPC**: virtual private cloud (VPC)
+	// *   **VBR**: virtual border router (VBR)
+	// *   **CCN**: Cloud Connect Network (CCN) instance
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9395,13 +9393,13 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the routes that you want to query. Valid values:
+	// The status of the route. Valid values:
 	//
-	// *   **Active**: active routes
-	// *   **Candidate**: standby routes
-	// *   **Rejected**: rejected routes
-	// *   **Prohibited**: prohibited routes
-	// *   **All** (default value): all routes
+	// *   **Active**: available
+	// *   **Candidate**: standby
+	// *   **Rejected**: rejected
+	// *   **Prohibited**: prohibited
+	// *   **All** (default): all routes
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9474,7 +9472,7 @@ func (s *DescribeCenChildInstanceRouteEntriesRequest) SetStatus(v string) *Descr
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBody struct {
-	// The array of routes.
+	// The information about the routes.
 	CenRouteEntries *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -9537,13 +9535,13 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) SetCen
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
-	// The AS paths of the routes.
+	// The autonomous system (AS) paths of the routes.
 	AsPaths *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
-	// The route maps that the routes match.
+	// The routing policy that the routes match.
 	CenRouteMapRecords *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
-	// The community attributes of the routes.
+	// The community attributes of the route entry.
 	Communities *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
-	// The array of conflicting routes.
+	// A list of overlapping routes.
 	Conflicts *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
 	// The destination CIDR block of the route.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
@@ -9551,54 +9549,54 @@ type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntr
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
 	// The ID of the region where the instance specified as the next hop in the route belongs.
 	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	// The type of the instance specified as the next hop in the route.
+	// The type of the instance specified as the next hop in the route. Valid values:
 	//
-	// - **Instance**: ECS instance
-	// - **HaVip**: HAVIP
-	// - **RouterInterface**: router interface
-	// - **NetworkInterface**: ENI
-	// - **VpnGateway**: VPN gateway
-	// - **IPv6Gateway**: IPv6 gateway
-	// - **NatGateway**: NAT gateway
-	// - **Attachment**: network instance connection
-	// - **service**: cloud service
-	// - **VBR**: virtual border router
-	// - **CCN**: CCN instance
-	// - **VPC**: virtual private cloud
-	// - **local**: system route. No next hop is specified.
-	// - **TR**: transit router
-	// - **BlackHole**: blackhole route. No next hop is specified.
-	// - **EcRouterInterface**: router interface for Express Connect
-	// - **HealthCheck**: health check
-	// - **AS**: access gateway for CCN
-	// - **classic**: classic network-type instance
-	// - **GatewayEndpoint**: gateway endpoint
-	// - **CPE**: data center connected by VBRs
+	// *   **Instance**: Elastic Compute Service (ECS) instance.
+	// *   **HaVip**: high-availability virtual IP address (HAVIP).
+	// *   **RouterInterface**: router interface.
+	// *   **NetworkInterface**: elastic network interface (ENI).
+	// *   **VpnGateway**: VPN gateway.
+	// *   **IPv6Gateway**: IPv6 gateway.
+	// *   **NatGateway**: NAT gateway.
+	// *   **Attachment**: network instance connection.
+	// *   **service**: cloud service.
+	// *   **VBR**: VBR.
+	// *   **CCN**: CCN instance.
+	// *   **VPC**: VPC.
+	// *   **local**: system route. No next hop is specified.
+	// *   **TR**: transit router.
+	// *   \*\*BlackHole\*\*: blackhole route. No next hop is specified.
+	// *   \*\*EcRouterInterface\*\*: router interface for Express Connect
+	// *   **HealthCheck**: health check.
+	// *   **AS**: access gateway for CCN.
+	// *   **classicLink**: classic network-type instance.
+	// *   **GatewayEndpoint**: gateway endpoint.
+	// *   **CPE**: data center connected to the VBR.
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	// Indicates whether the route is allowed to be advertised to or withdrawn from the CEN instance. Valid values:
 	//
-	// - **true**: The route is allowed to be advertised to or withdrawn from the CEN instance.
-	// - **false**: The route is not allowed to be advertised to or withdrawn from the CEN instance.
+	// *   **true**: The route is allowed to be advertised to or withdrawn from the CEN instance.
+	// *   **false**: The route is not allowed to be advertised to or withdrawn from the CEN instance.
 	OperationalMode *bool `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	// Indicates whether the route is advertised to the CEN instance. Valid values:
+	// Indicates whether the route is advertised to the CEN instance. Valid values: Valid values:
 	//
-	// - **Published**: The route is advertised to the CEN instance.
-	// - **NonPublished**: The route is not advertised to the CEN instance.
+	// *   **Published**: The route is advertised to the CEN instance.
+	// *   **NonPublished**: The route is not advertised to the CEN instance.
 	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
 	// The ID of the route table.
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The status of the route. Valid values:
 	//
-	// - **Active**: The route is active.
-	// - **Candidate**: The route is a standby route.
-	// - **Rejected**: The route is rejected.
-	// - **Prohibited**: The route is prohibited.
+	// *   **Active**: available
+	// *   **Candidate**: standby
+	// *   **Rejected**: rejected
+	// *   **Prohibited**: prohibited
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the route. Valid values:
+	// The type of the route. Valid values: Valid values:
 	//
-	// - **CEN**: route that is advertised through CEN
-	// - **System**: system route
-	// - **Custom**: custom route
+	// *   **CEN**: advertised by CEN
+	// *   **System**: system route
+	// *   **Custom**: custom route
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9710,9 +9708,9 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
-	// The ID of the region where the route map is applied.
+	// The ID of the region in which the routing policy is applied.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the route map.
+	// The ID of the routing policy.
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -9769,22 +9767,22 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict struct {
-	// The destination CIDR block of the conflicting route.
+	// The destination CIDR block of the overlapping route.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the peer network instance on which conflicting routes are found.
+	// The ID of the peer network instance on which the overlapping routes are found.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the peer network instance on which conflicting routes are found.
+	// The type of the peer network instance on which the overlapping routes are found. Valid values: Valid values:
 	//
-	// - **VPC**
-	// - **VBR**
-	// - **CCN**
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the region where the peer network instance on which conflicting routes are found is deployed.
+	// The ID of the region where the peer network instance on which the overlapping routes are found is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The cause of the route error. Valid values:
 	//
-	// - **conflict**: Two routes have the same destination CIDR block.
-	// - **overflow**: The number of routes in the route table configured on another network instance reached the upper limit.
+	// *   **conflict**: The routes have the same destination CIDR block.
+	// *   **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14451,7 +14449,7 @@ type DescribeTransitRouteTableAggregationResponseBodyData struct {
 	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RouteType                        *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	Scop                             *string `json:"Scop,omitempty" xml:"Scop,omitempty"`
+	Scope                            *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Status                           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TrRouteTableId                   *string `json:"TrRouteTableId,omitempty" xml:"TrRouteTableId,omitempty"`
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
@@ -14480,8 +14478,8 @@ func (s *DescribeTransitRouteTableAggregationResponseBodyData) SetRouteType(v st
 	return s
 }
 
-func (s *DescribeTransitRouteTableAggregationResponseBodyData) SetScop(v string) *DescribeTransitRouteTableAggregationResponseBodyData {
-	s.Scop = &v
+func (s *DescribeTransitRouteTableAggregationResponseBodyData) SetScope(v string) *DescribeTransitRouteTableAggregationResponseBodyData {
+	s.Scope = &v
 	return s
 }
 
@@ -19438,7 +19436,7 @@ func (s *ListTransitRouterPeerAttachmentsResponse) SetBody(v *ListTransitRouterP
 type ListTransitRouterPrefixListAssociationRequest struct {
 	// The ID of the next hop.
 	//
-	// >  Enter **BlackHole** if you want to query the prefix list that generates blackhole routes.
+	// > Set the value to **BlackHole** if you want to query the prefix list that generates blackhole routes.
 	NextHop           *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
 	// The type of the next hop. Valid values:
@@ -19559,11 +19557,11 @@ type ListTransitRouterPrefixListAssociationResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The information about the prefix list.
+	// A list of prefix lists.
 	PrefixLists []*ListTransitRouterPrefixListAssociationResponseBodyPrefixLists `json:"PrefixLists,omitempty" xml:"PrefixLists,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19603,11 +19601,11 @@ func (s *ListTransitRouterPrefixListAssociationResponseBody) SetTotalCount(v int
 type ListTransitRouterPrefixListAssociationResponseBodyPrefixLists struct {
 	// The ID of the next hop.
 	//
-	// >  If the value is **BlackHole**, all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// > A value of **BlackHole** indicates that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	// The ID of the network instance associated with the next hop connection.
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The type of the next hop.
+	// The type of the next hop. Valid values:
 	//
 	// *   **BlackHole**: All the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
 	// *   **VPC**: The next hop of the CIDR blocks in the prefix list is a VPC connection.
@@ -20565,10 +20563,10 @@ func (s *ListTransitRouterRouteTablePropagationsResponse) SetBody(v *ListTransit
 type ListTransitRouterRouteTablesRequest struct {
 	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The token that determines the start point of the query. Valid values:
 	//
 	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+	// *   If a subsequent query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
 	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20594,14 +20592,14 @@ type ListTransitRouterRouteTablesRequest struct {
 	TransitRouterRouteTableNames []*string `json:"TransitRouterRouteTableNames,omitempty" xml:"TransitRouterRouteTableNames,omitempty" type:"Repeated"`
 	// The status of the route table. Valid values:
 	//
-	// *   **Creating**: being created
-	// *   **Deleting**: being deleted
-	// *   **Active**: available
+	// *   **Creating**: The route table is being created.
+	// *   **Deleting**: The route table is being deleted.
+	// *   **Active**: The route table is available.
 	TransitRouterRouteTableStatus *string `json:"TransitRouterRouteTableStatus,omitempty" xml:"TransitRouterRouteTableStatus,omitempty"`
 	// The type of the route table. Valid values:
 	//
 	// *   **Custom**: a custom route table
-	// *   **System**: the default system route table
+	// *   **System**: the default route table
 	TransitRouterRouteTableType *string `json:"TransitRouterRouteTableType,omitempty" xml:"TransitRouterRouteTableType,omitempty"`
 }
 
@@ -20681,8 +20679,8 @@ func (s *ListTransitRouterRouteTablesRequest) SetTransitRouterRouteTableType(v s
 type ListTransitRouterRouteTablesRequestRouteTableOptions struct {
 	// Specifies whether to enable equal-cost multi-path (ECMP) routing. Valid values:
 	//
-	// *   **disable**: no If you disable ECMP routing, routes that are learned from different regions but have the same prefix and attributes select the transit route with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
-	// *   **enable**: yes If you enable ECMP routing, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **disable**: disables ECMP routing If you disable ECMP routing, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **enable**: enables ECMP routing. If you enable ECMP routing, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
 	MultiRegionECMP *string `json:"MultiRegionECMP,omitempty" xml:"MultiRegionECMP,omitempty"`
 }
 
@@ -20702,7 +20700,7 @@ func (s *ListTransitRouterRouteTablesRequestRouteTableOptions) SetMultiRegionECM
 type ListTransitRouterRouteTablesRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -20733,12 +20731,12 @@ func (s *ListTransitRouterRouteTablesRequestTag) SetValue(v string) *ListTransit
 }
 
 type ListTransitRouterRouteTablesResponseBody struct {
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that determines the start point of the next query. Valid values:
 	//
-	// *   If **NextToken** was not returned, it indicates that no additional results exist.
 	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	// *   If a value of **NextToken** is not returned, it indicates that no additional results exist.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -20790,7 +20788,7 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The features of the route table.
 	RouteTableOptions *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	// The tags.
+	// A list of tags.
 	Tags            []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TransitRouterId *string                                                                 `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The description of the route table.
@@ -20801,14 +20799,14 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 	// The status of the route table. Valid values:
 	//
-	// *   **Creating**: being created
-	// *   **Deleting**: being deleted
-	// *   **Active**: available
+	// *   **Creating**: The route table is being created.
+	// *   **Deleting**: The route table is being deleted.
+	// *   **Active**: The route table is available.
 	TransitRouterRouteTableStatus *string `json:"TransitRouterRouteTableStatus,omitempty" xml:"TransitRouterRouteTableStatus,omitempty"`
 	// The type of the route table. Valid value:
 	//
 	// *   **Custom**: a custom route table
-	// *   **System**: the default system route table
+	// *   **System**: the default route table
 	TransitRouterRouteTableType *string `json:"TransitRouterRouteTableType,omitempty" xml:"TransitRouterRouteTableType,omitempty"`
 }
 
@@ -20873,8 +20871,8 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables) SetTr
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions struct {
 	// Indicates whether ECMP routing is enabled. Valid values:
 	//
-	// *   **disable**: disabled If you disable ECMP routing, routes that are learned from different regions but have the same prefix and attributes select the transit route with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
-	// *   **enable**: enables ECMP routing. If you enable ECMP routing, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **disable**: ECMP routing is disabled. If ECMP routing is disabled, routes that are learned from different regions but have the same prefix and attributes select the transit router with the smallest region ID as the next hop. Region IDs are sorted in alphabetic order. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
+	// *   **enable**: ECMP routing is enabled. If ECMP routing is enabled, routes that are learned from different regions but have the same prefix and attributes form an ECMP route. The network latency and bandwidth consumption also vary based on the region. Proceed with caution.
 	MultiRegionECMP *string `json:"MultiRegionECMP,omitempty" xml:"MultiRegionECMP,omitempty"`
 }
 
@@ -29545,7 +29543,7 @@ func (client *Client) CreateTrafficMarkingPolicy(request *CreateTrafficMarkingPo
  * After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
  * Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
  * *   Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](~~261242~~).
- * *   The VPCs have route synchronization enabled. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ * *   Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
  *
  * @param request CreateTransitRouteTableAggregationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29593,8 +29591,8 @@ func (client *Client) CreateTransitRouteTableAggregationWithOptions(request *Cre
 		query["TransitRouteTableAggregationName"] = request.TransitRouteTableAggregationName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TransitRouteTableAggregationScop)) {
-		query["TransitRouteTableAggregationScop"] = request.TransitRouteTableAggregationScop
+	if !tea.BoolValue(util.IsUnset(request.TransitRouteTableAggregationScope)) {
+		query["TransitRouteTableAggregationScope"] = request.TransitRouteTableAggregationScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TransitRouteTableId)) {
@@ -29629,7 +29627,7 @@ func (client *Client) CreateTransitRouteTableAggregationWithOptions(request *Cre
  * After you add an aggregate route to a route table of an Enterprise Edition transit router, the Enterprise Edition transit router advertises its routes only to route tables of virtual private clouds (VPCs) that are associated with a route table of the Enterprise Edition transit router and have route synchronization enabled.
  * Perform the following operations before you create an aggregate route. Otherwise, the Enterprise Edition transit router does not advertise routes to VPC route tables:
  * *   Associated forwarding is enabled between the VPCs and the Enterprise Edition transit router. For more information, see [AssociateTransitRouterAttachmentWithRouteTable](~~261242~~).
- * *   The VPCs have route synchronization enabled. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ * *   Route synchronization is enabled for the VPCs. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
  *
  * @param request CreateTransitRouteTableAggregationRequest
  * @return CreateTransitRouteTableAggregationResponse
@@ -29885,7 +29883,7 @@ func (client *Client) CreateTransitRouterCidr(request *CreateTransitRouterCidrRe
 
 /**
  * Before you call this operation, read the following rules:
- * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cbn/today) to apply for multicast resources.
+ * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for multicast resources.
  * *   Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](~~261169~~).
  *     If an Enterprise Edition transit router was created before you apply for multicast resources, the transit router does not support multicast. You can delete the transit router and create a new one. For more information about how to delete an Enterprise Edition transit router, see [DeleteTransitRouter](~~261218~~).
  * *   When you call **CreateTransitRouterMulticastDomain**, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
@@ -29973,7 +29971,7 @@ func (client *Client) CreateTransitRouterMulticastDomainWithOptions(request *Cre
 
 /**
  * Before you call this operation, read the following rules:
- * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cbn/today) to apply for multicast resources.
+ * *   Only Enterprise Edition transit routers in the Australia (Sydney) and UK (London) regions support the multicast feature. Multicast is unavailable by default. If you want to enable multicast, contact your sales manager or [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to apply for multicast resources.
  * *   Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](~~261169~~).
  *     If an Enterprise Edition transit router was created before you apply for multicast resources, the transit router does not support multicast. You can delete the transit router and create a new one. For more information about how to delete an Enterprise Edition transit router, see [DeleteTransitRouter](~~261218~~).
  * *   When you call **CreateTransitRouterMulticastDomain**, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
@@ -30464,7 +30462,7 @@ func (client *Client) CreateTransitRouterRouteTable(request *CreateTransitRouter
  *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
  *     *   If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
  * *   **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
- *     *   If a VBR is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
+ *     *   If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
  *     *   If a VBR connection is in the **Attached** state, the VBR connection is created.
  *
  * @param request CreateTransitRouterVbrAttachmentRequest
@@ -30566,7 +30564,7 @@ func (client *Client) CreateTransitRouterVbrAttachmentWithOptions(request *Creat
  *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
  *     *   If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
  * *   **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
- *     *   If a VBR is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
+ *     *   If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
  *     *   If a VBR connection is in the **Attached** state, the VBR connection is created.
  *
  * @param request CreateTransitRouterVbrAttachmentRequest
@@ -30588,7 +30586,7 @@ func (client *Client) CreateTransitRouterVbrAttachment(request *CreateTransitRou
  *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
  *     *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
  * *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a VPC connection ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
- *     *   If a VPC is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+ *     *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
  *     *   If a VPC connection is in the **Attached** state, the VPC connection is created.
  * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
  * ## Prerequisites
@@ -30699,7 +30697,7 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *Creat
  *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
  *     *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
  * *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a VPC connection ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
- *     *   If a VPC is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
+ *     *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
  *     *   If a VPC connection is in the **Attached** state, the VPC connection is created.
  * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
  * ## Prerequisites
@@ -30723,7 +30721,7 @@ func (client *Client) CreateTransitRouterVpcAttachment(request *CreateTransitRou
 }
 
 /**
- * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPN attachments.
+ * *   By default, route learning and associated forwarding are disabled between transit router route tables and IPsec-VPN attachments.
  * *   When you call `CreateTransitRouterVpnAttachment`, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId** and **RegionId**, you do not need to set **CenId**.
  * ## Prerequisites
  * *   Before you attach an IPsec-VPN connection to a transit router, make sure that at least one IPsec-VPN connection is created in the region where the transit router is deployed. Make sure the IPsec-VPN connection is not associated with a resource. For more information, see [CreateVpnAttachment](~~442455~~).
@@ -30831,7 +30829,7 @@ func (client *Client) CreateTransitRouterVpnAttachmentWithOptions(request *Creat
 }
 
 /**
- * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPN attachments.
+ * *   By default, route learning and associated forwarding are disabled between transit router route tables and IPsec-VPN attachments.
  * *   When you call `CreateTransitRouterVpnAttachment`, if you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId** and **RegionId**, you do not need to set **CenId**.
  * ## Prerequisites
  * *   Before you attach an IPsec-VPN connection to a transit router, make sure that at least one IPsec-VPN connection is created in the region where the transit router is deployed. Make sure the IPsec-VPN connection is not associated with a resource. For more information, see [CreateVpnAttachment](~~442455~~).
