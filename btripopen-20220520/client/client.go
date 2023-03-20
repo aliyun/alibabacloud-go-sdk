@@ -41,6 +41,7 @@ type AccessTokenResponseBody struct {
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -75,6 +76,11 @@ func (s *AccessTokenResponseBody) SetModule(v *AccessTokenResponseBodyModule) *A
 
 func (s *AccessTokenResponseBody) SetRequestId(v string) *AccessTokenResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AccessTokenResponseBody) SetSuccess(v bool) *AccessTokenResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -160,6 +166,204 @@ func (s *AccessTokenResponse) SetStatusCode(v int32) *AccessTokenResponse {
 }
 
 func (s *AccessTokenResponse) SetBody(v *AccessTokenResponseBody) *AccessTokenResponse {
+	s.Body = v
+	return s
+}
+
+type AddInvoiceEntityHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s AddInvoiceEntityHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityHeaders) SetCommonHeaders(v map[string]*string) *AddInvoiceEntityHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddInvoiceEntityHeaders) SetXAcsBtripCorpToken(v string) *AddInvoiceEntityHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type AddInvoiceEntityRequest struct {
+	Entities    []*AddInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	ThirdPartId *string                            `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s AddInvoiceEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityRequest) SetEntities(v []*AddInvoiceEntityRequestEntities) *AddInvoiceEntityRequest {
+	s.Entities = v
+	return s
+}
+
+func (s *AddInvoiceEntityRequest) SetThirdPartId(v string) *AddInvoiceEntityRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type AddInvoiceEntityRequestEntities struct {
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+}
+
+func (s AddInvoiceEntityRequestEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityRequestEntities) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityRequestEntities) SetEntityId(v string) *AddInvoiceEntityRequestEntities {
+	s.EntityId = &v
+	return s
+}
+
+func (s *AddInvoiceEntityRequestEntities) SetEntityName(v string) *AddInvoiceEntityRequestEntities {
+	s.EntityName = &v
+	return s
+}
+
+func (s *AddInvoiceEntityRequestEntities) SetEntityType(v string) *AddInvoiceEntityRequestEntities {
+	s.EntityType = &v
+	return s
+}
+
+type AddInvoiceEntityShrinkRequest struct {
+	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s AddInvoiceEntityShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityShrinkRequest) SetEntitiesShrink(v string) *AddInvoiceEntityShrinkRequest {
+	s.EntitiesShrink = &v
+	return s
+}
+
+func (s *AddInvoiceEntityShrinkRequest) SetThirdPartId(v string) *AddInvoiceEntityShrinkRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type AddInvoiceEntityResponseBody struct {
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *AddInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AddInvoiceEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityResponseBody) SetCode(v string) *AddInvoiceEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBody) SetMessage(v string) *AddInvoiceEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBody) SetModule(v *AddInvoiceEntityResponseBodyModule) *AddInvoiceEntityResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBody) SetRequestId(v string) *AddInvoiceEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBody) SetSuccess(v bool) *AddInvoiceEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBody) SetTraceId(v string) *AddInvoiceEntityResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AddInvoiceEntityResponseBodyModule struct {
+	AddNum          *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
+}
+
+func (s AddInvoiceEntityResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityResponseBodyModule) SetAddNum(v int32) *AddInvoiceEntityResponseBodyModule {
+	s.AddNum = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponseBodyModule) SetSelectedUserNum(v int32) *AddInvoiceEntityResponseBodyModule {
+	s.SelectedUserNum = &v
+	return s
+}
+
+type AddInvoiceEntityResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddInvoiceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddInvoiceEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddInvoiceEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddInvoiceEntityResponse) SetHeaders(v map[string]*string) *AddInvoiceEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddInvoiceEntityResponse) SetStatusCode(v int32) *AddInvoiceEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddInvoiceEntityResponse) SetBody(v *AddInvoiceEntityResponseBody) *AddInvoiceEntityResponse {
 	s.Body = v
 	return s
 }
@@ -7701,6 +7905,7 @@ type CorpTokenResponseBody struct {
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -7735,6 +7940,11 @@ func (s *CorpTokenResponseBody) SetModule(v *CorpTokenResponseBodyModule) *CorpT
 
 func (s *CorpTokenResponseBody) SetRequestId(v string) *CorpTokenResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CorpTokenResponseBody) SetSuccess(v bool) *CorpTokenResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8471,6 +8681,210 @@ func (s *CostCenterSaveResponse) SetStatusCode(v int32) *CostCenterSaveResponse 
 }
 
 func (s *CostCenterSaveResponse) SetBody(v *CostCenterSaveResponseBody) *CostCenterSaveResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInvoiceEntityHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s DeleteInvoiceEntityHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityHeaders) SetCommonHeaders(v map[string]*string) *DeleteInvoiceEntityHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteInvoiceEntityHeaders) SetXAcsBtripCorpToken(v string) *DeleteInvoiceEntityHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type DeleteInvoiceEntityRequest struct {
+	DelAll      *bool                                 `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	Entities    []*DeleteInvoiceEntityRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	ThirdPartId *string                               `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s DeleteInvoiceEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityRequest) SetDelAll(v bool) *DeleteInvoiceEntityRequest {
+	s.DelAll = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityRequest) SetEntities(v []*DeleteInvoiceEntityRequestEntities) *DeleteInvoiceEntityRequest {
+	s.Entities = v
+	return s
+}
+
+func (s *DeleteInvoiceEntityRequest) SetThirdPartId(v string) *DeleteInvoiceEntityRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type DeleteInvoiceEntityRequestEntities struct {
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+}
+
+func (s DeleteInvoiceEntityRequestEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityRequestEntities) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityRequestEntities) SetEntityId(v string) *DeleteInvoiceEntityRequestEntities {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityRequestEntities) SetEntityType(v string) *DeleteInvoiceEntityRequestEntities {
+	s.EntityType = &v
+	return s
+}
+
+type DeleteInvoiceEntityShrinkRequest struct {
+	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s DeleteInvoiceEntityShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityShrinkRequest) SetDelAll(v bool) *DeleteInvoiceEntityShrinkRequest {
+	s.DelAll = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityShrinkRequest) SetEntitiesShrink(v string) *DeleteInvoiceEntityShrinkRequest {
+	s.EntitiesShrink = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityShrinkRequest) SetThirdPartId(v string) *DeleteInvoiceEntityShrinkRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type DeleteInvoiceEntityResponseBody struct {
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *DeleteInvoiceEntityResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s DeleteInvoiceEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetCode(v string) *DeleteInvoiceEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetMessage(v string) *DeleteInvoiceEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetModule(v *DeleteInvoiceEntityResponseBodyModule) *DeleteInvoiceEntityResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetRequestId(v string) *DeleteInvoiceEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetSuccess(v bool) *DeleteInvoiceEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBody) SetTraceId(v string) *DeleteInvoiceEntityResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteInvoiceEntityResponseBodyModule struct {
+	RemoveNum       *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
+	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
+}
+
+func (s DeleteInvoiceEntityResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityResponseBodyModule) SetRemoveNum(v int32) *DeleteInvoiceEntityResponseBodyModule {
+	s.RemoveNum = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponseBodyModule) SetSelectedUserNum(v int32) *DeleteInvoiceEntityResponseBodyModule {
+	s.SelectedUserNum = &v
+	return s
+}
+
+type DeleteInvoiceEntityResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInvoiceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInvoiceEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInvoiceEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInvoiceEntityResponse) SetHeaders(v map[string]*string) *DeleteInvoiceEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponse) SetStatusCode(v int32) *DeleteInvoiceEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInvoiceEntityResponse) SetBody(v *DeleteInvoiceEntityResponseBody) *DeleteInvoiceEntityResponse {
 	s.Body = v
 	return s
 }
@@ -24654,6 +25068,332 @@ func (s *IeFlightBillSettlementQueryResponse) SetBody(v *IeFlightBillSettlementQ
 	return s
 }
 
+type InsInvoiceScanQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s InsInvoiceScanQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryHeaders) SetCommonHeaders(v map[string]*string) *InsInvoiceScanQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsInvoiceScanQueryHeaders) SetXAcsBtripSoCorpToken(v string) *InsInvoiceScanQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type InsInvoiceScanQueryRequest struct {
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	BillId           *int64  `json:"bill_id,omitempty" xml:"bill_id,omitempty"`
+	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	PageNo           *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s InsInvoiceScanQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryRequest) SetBillDate(v string) *InsInvoiceScanQueryRequest {
+	s.BillDate = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryRequest) SetBillId(v int64) *InsInvoiceScanQueryRequest {
+	s.BillId = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryRequest) SetInvoiceSubTaskId(v int64) *InsInvoiceScanQueryRequest {
+	s.InvoiceSubTaskId = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryRequest) SetPageNo(v int32) *InsInvoiceScanQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryRequest) SetPageSize(v int32) *InsInvoiceScanQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+type InsInvoiceScanQueryResponseBody struct {
+	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *InsInvoiceScanQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InsInvoiceScanQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetCode(v string) *InsInvoiceScanQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetMessage(v string) *InsInvoiceScanQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetModule(v *InsInvoiceScanQueryResponseBodyModule) *InsInvoiceScanQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetRequestId(v string) *InsInvoiceScanQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetSuccess(v bool) *InsInvoiceScanQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBody) SetTraceId(v string) *InsInvoiceScanQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InsInvoiceScanQueryResponseBodyModule struct {
+	Items     []*InsInvoiceScanQueryResponseBodyModuleItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	PageNo    *int32                                        `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize  *int32                                        `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	TotalPage *int32                                        `json:"total_page,omitempty" xml:"total_page,omitempty"`
+	TotalSize *int32                                        `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s InsInvoiceScanQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModule) SetItems(v []*InsInvoiceScanQueryResponseBodyModuleItems) *InsInvoiceScanQueryResponseBodyModule {
+	s.Items = v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModule) SetPageNo(v int32) *InsInvoiceScanQueryResponseBodyModule {
+	s.PageNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModule) SetPageSize(v int32) *InsInvoiceScanQueryResponseBodyModule {
+	s.PageSize = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModule) SetTotalPage(v int32) *InsInvoiceScanQueryResponseBodyModule {
+	s.TotalPage = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *InsInvoiceScanQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type InsInvoiceScanQueryResponseBodyModuleItems struct {
+	AmountWithTax    *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	CostCenter       *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department       *string `json:"department,omitempty" xml:"department,omitempty"`
+	InsuranceCompany *string `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
+	InsuranceOrderId *string `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
+	InsuranceType    *string `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
+	InvoiceCode      *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay       *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceNo        *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	OrderId          *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl           *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	Passenger        *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	Project          *string `json:"project,omitempty" xml:"project,omitempty"`
+	PurchaserName    *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo   *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	RealInvoiceTitle *string `json:"real_invoice_title,omitempty" xml:"real_invoice_title,omitempty"`
+	SellerName       *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo      *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	TaxAmount        *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+}
+
+func (s InsInvoiceScanQueryResponseBodyModuleItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryResponseBodyModuleItems) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetAmountWithTax(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.AmountWithTax = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetAmountWithoutTax(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.AmountWithoutTax = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.BillDate = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetCostCenter(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetDepartment(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Department = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInsuranceCompany(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InsuranceCompany = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInsuranceOrderId(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InsuranceOrderId = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInsuranceType(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InsuranceType = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceCode(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceCode = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDay(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceDay = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceNo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetOrderId(v int64) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.OrderId = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetOssUrl(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.OssUrl = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPassenger(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Passenger = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetProject(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Project = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPurchaserName(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserName = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPurchaserTaxNo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserTaxNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetRealInvoiceTitle(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.RealInvoiceTitle = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSellerName(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerName = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSellerTaxNo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerTaxNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.TaxAmount = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxRate(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.TaxRate = &v
+	return s
+}
+
+type InsInvoiceScanQueryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsInvoiceScanQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsInvoiceScanQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryResponse) SetHeaders(v map[string]*string) *InsInvoiceScanQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponse) SetStatusCode(v int32) *InsInvoiceScanQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponse) SetBody(v *InsInvoiceScanQueryResponseBody) *InsInvoiceScanQueryResponse {
+	s.Body = v
+	return s
+}
+
 type InvoiceAddHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -34678,6 +35418,71 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 	return _result, _err
 }
 
+func (client *Client) AddInvoiceEntityWithOptions(tmpReq *AddInvoiceEntityRequest, headers *AddInvoiceEntityHeaders, runtime *util.RuntimeOptions) (_result *AddInvoiceEntityResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddInvoiceEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Entities)) {
+		request.EntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entities, tea.String("entities"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
+		body["entities"] = request.EntitiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
+		body["third_part_id"] = request.ThirdPartId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddInvoiceEntity"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/entities"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddInvoiceEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddInvoiceEntity(request *AddInvoiceEntityRequest) (_result *AddInvoiceEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddInvoiceEntityHeaders{}
+	_result = &AddInvoiceEntityResponse{}
+	_body, _err := client.AddInvoiceEntityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers *AddressGetHeaders, runtime *util.RuntimeOptions) (_result *AddressGetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36680,6 +37485,75 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntityRequest, headers *DeleteInvoiceEntityHeaders, runtime *util.RuntimeOptions) (_result *DeleteInvoiceEntityResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteInvoiceEntityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Entities)) {
+		request.EntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entities, tea.String("entities"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DelAll)) {
+		query["del_all"] = request.DelAll
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
+		query["entities"] = request.EntitiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
+		query["third_part_id"] = request.ThirdPartId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInvoiceEntity"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/entities"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInvoiceEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInvoiceEntity(request *DeleteInvoiceEntityRequest) (_result *DeleteInvoiceEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteInvoiceEntityHeaders{}
+	_result = &DeleteInvoiceEntityResponse{}
+	_body, _err := client.DeleteInvoiceEntityWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DepartmentSaveWithOptions(tmpReq *DepartmentSaveRequest, headers *DepartmentSaveHeaders, runtime *util.RuntimeOptions) (_result *DepartmentSaveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -38613,6 +39487,77 @@ func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlemen
 	headers := &IeFlightBillSettlementQueryHeaders{}
 	_result = &IeFlightBillSettlementQueryResponse{}
 	_body, _err := client.IeFlightBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsInvoiceScanQueryWithOptions(request *InsInvoiceScanQueryRequest, headers *InsInvoiceScanQueryHeaders, runtime *util.RuntimeOptions) (_result *InsInvoiceScanQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillDate)) {
+		query["bill_date"] = request.BillDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillId)) {
+		query["bill_id"] = request.BillId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceSubTaskId)) {
+		query["invoice_sub_task_id"] = request.InvoiceSubTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsInvoiceScanQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/scan/v1/ins-invoice"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsInvoiceScanQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsInvoiceScanQuery(request *InsInvoiceScanQueryRequest) (_result *InsInvoiceScanQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsInvoiceScanQueryHeaders{}
+	_result = &InsInvoiceScanQueryResponse{}
+	_body, _err := client.InsInvoiceScanQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
