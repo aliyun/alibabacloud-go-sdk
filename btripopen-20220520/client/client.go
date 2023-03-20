@@ -25811,6 +25811,408 @@ func (s *InvoiceModifyResponse) SetBody(v *InvoiceModifyResponseBody) *InvoiceMo
 	return s
 }
 
+type InvoiceRuleAddHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InvoiceRuleAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddHeaders) SetCommonHeaders(v map[string]*string) *InvoiceRuleAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceRuleAddHeaders) SetXAcsBtripCorpToken(v string) *InvoiceRuleAddHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InvoiceRuleAddRequest struct {
+	Entities    []*InvoiceRuleAddRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	ThirdPartId *string                          `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s InvoiceRuleAddRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddRequest) SetEntities(v []*InvoiceRuleAddRequestEntities) *InvoiceRuleAddRequest {
+	s.Entities = v
+	return s
+}
+
+func (s *InvoiceRuleAddRequest) SetThirdPartId(v string) *InvoiceRuleAddRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type InvoiceRuleAddRequestEntities struct {
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityName *string `json:"entity_name,omitempty" xml:"entity_name,omitempty"`
+	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+}
+
+func (s InvoiceRuleAddRequestEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddRequestEntities) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddRequestEntities) SetEntityId(v string) *InvoiceRuleAddRequestEntities {
+	s.EntityId = &v
+	return s
+}
+
+func (s *InvoiceRuleAddRequestEntities) SetEntityName(v string) *InvoiceRuleAddRequestEntities {
+	s.EntityName = &v
+	return s
+}
+
+func (s *InvoiceRuleAddRequestEntities) SetEntityType(v string) *InvoiceRuleAddRequestEntities {
+	s.EntityType = &v
+	return s
+}
+
+type InvoiceRuleAddShrinkRequest struct {
+	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s InvoiceRuleAddShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddShrinkRequest) SetEntitiesShrink(v string) *InvoiceRuleAddShrinkRequest {
+	s.EntitiesShrink = &v
+	return s
+}
+
+func (s *InvoiceRuleAddShrinkRequest) SetThirdPartId(v string) *InvoiceRuleAddShrinkRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type InvoiceRuleAddResponseBody struct {
+	Code      *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InvoiceRuleAddResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                             `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InvoiceRuleAddResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddResponseBody) SetCode(v string) *InvoiceRuleAddResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBody) SetMessage(v string) *InvoiceRuleAddResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBody) SetModule(v *InvoiceRuleAddResponseBodyModule) *InvoiceRuleAddResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBody) SetRequestId(v string) *InvoiceRuleAddResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBody) SetSuccess(v bool) *InvoiceRuleAddResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBody) SetTraceId(v string) *InvoiceRuleAddResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InvoiceRuleAddResponseBodyModule struct {
+	AddNum          *int32 `json:"add_num,omitempty" xml:"add_num,omitempty"`
+	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
+}
+
+func (s InvoiceRuleAddResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddResponseBodyModule) SetAddNum(v int32) *InvoiceRuleAddResponseBodyModule {
+	s.AddNum = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponseBodyModule) SetSelectedUserNum(v int32) *InvoiceRuleAddResponseBodyModule {
+	s.SelectedUserNum = &v
+	return s
+}
+
+type InvoiceRuleAddResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InvoiceRuleAddResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InvoiceRuleAddResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleAddResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleAddResponse) SetHeaders(v map[string]*string) *InvoiceRuleAddResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InvoiceRuleAddResponse) SetStatusCode(v int32) *InvoiceRuleAddResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InvoiceRuleAddResponse) SetBody(v *InvoiceRuleAddResponseBody) *InvoiceRuleAddResponse {
+	s.Body = v
+	return s
+}
+
+type InvoiceRuleDeleteHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s InvoiceRuleDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteHeaders) SetCommonHeaders(v map[string]*string) *InvoiceRuleDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InvoiceRuleDeleteHeaders) SetXAcsBtripCorpToken(v string) *InvoiceRuleDeleteHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type InvoiceRuleDeleteRequest struct {
+	DelAll      *bool                               `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	Entities    []*InvoiceRuleDeleteRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	ThirdPartId *string                             `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s InvoiceRuleDeleteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteRequest) SetDelAll(v bool) *InvoiceRuleDeleteRequest {
+	s.DelAll = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteRequest) SetEntities(v []*InvoiceRuleDeleteRequestEntities) *InvoiceRuleDeleteRequest {
+	s.Entities = v
+	return s
+}
+
+func (s *InvoiceRuleDeleteRequest) SetThirdPartId(v string) *InvoiceRuleDeleteRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type InvoiceRuleDeleteRequestEntities struct {
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityType *string `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+}
+
+func (s InvoiceRuleDeleteRequestEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteRequestEntities) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteRequestEntities) SetEntityId(v string) *InvoiceRuleDeleteRequestEntities {
+	s.EntityId = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteRequestEntities) SetEntityType(v string) *InvoiceRuleDeleteRequestEntities {
+	s.EntityType = &v
+	return s
+}
+
+type InvoiceRuleDeleteShrinkRequest struct {
+	DelAll         *bool   `json:"del_all,omitempty" xml:"del_all,omitempty"`
+	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
+}
+
+func (s InvoiceRuleDeleteShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteShrinkRequest) SetDelAll(v bool) *InvoiceRuleDeleteShrinkRequest {
+	s.DelAll = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteShrinkRequest) SetEntitiesShrink(v string) *InvoiceRuleDeleteShrinkRequest {
+	s.EntitiesShrink = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteShrinkRequest) SetThirdPartId(v string) *InvoiceRuleDeleteShrinkRequest {
+	s.ThirdPartId = &v
+	return s
+}
+
+type InvoiceRuleDeleteResponseBody struct {
+	Code      *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *InvoiceRuleDeleteResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s InvoiceRuleDeleteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetCode(v string) *InvoiceRuleDeleteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetMessage(v string) *InvoiceRuleDeleteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetModule(v *InvoiceRuleDeleteResponseBodyModule) *InvoiceRuleDeleteResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetRequestId(v string) *InvoiceRuleDeleteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetSuccess(v bool) *InvoiceRuleDeleteResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBody) SetTraceId(v string) *InvoiceRuleDeleteResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type InvoiceRuleDeleteResponseBodyModule struct {
+	RemoveNum       *int32 `json:"remove_num,omitempty" xml:"remove_num,omitempty"`
+	SelectedUserNum *int32 `json:"selected_user_num,omitempty" xml:"selected_user_num,omitempty"`
+}
+
+func (s InvoiceRuleDeleteResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteResponseBodyModule) SetRemoveNum(v int32) *InvoiceRuleDeleteResponseBodyModule {
+	s.RemoveNum = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponseBodyModule) SetSelectedUserNum(v int32) *InvoiceRuleDeleteResponseBodyModule {
+	s.SelectedUserNum = &v
+	return s
+}
+
+type InvoiceRuleDeleteResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InvoiceRuleDeleteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InvoiceRuleDeleteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvoiceRuleDeleteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InvoiceRuleDeleteResponse) SetHeaders(v map[string]*string) *InvoiceRuleDeleteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponse) SetStatusCode(v int32) *InvoiceRuleDeleteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InvoiceRuleDeleteResponse) SetBody(v *InvoiceRuleDeleteResponseBody) *InvoiceRuleDeleteResponse {
+	s.Body = v
+	return s
+}
+
 type InvoiceRuleSaveHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -39779,6 +40181,140 @@ func (client *Client) InvoiceModify(request *InvoiceModifyRequest) (_result *Inv
 	headers := &InvoiceModifyHeaders{}
 	_result = &InvoiceModifyResponse{}
 	_body, _err := client.InvoiceModifyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InvoiceRuleAddWithOptions(tmpReq *InvoiceRuleAddRequest, headers *InvoiceRuleAddHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleAddResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InvoiceRuleAddShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Entities)) {
+		request.EntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entities, tea.String("entities"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
+		body["entities"] = request.EntitiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
+		body["third_part_id"] = request.ThirdPartId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InvoiceRuleAdd"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/invoice-rule"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InvoiceRuleAddResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InvoiceRuleAdd(request *InvoiceRuleAddRequest) (_result *InvoiceRuleAddResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InvoiceRuleAddHeaders{}
+	_result = &InvoiceRuleAddResponse{}
+	_body, _err := client.InvoiceRuleAddWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InvoiceRuleDeleteWithOptions(tmpReq *InvoiceRuleDeleteRequest, headers *InvoiceRuleDeleteHeaders, runtime *util.RuntimeOptions) (_result *InvoiceRuleDeleteResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InvoiceRuleDeleteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Entities)) {
+		request.EntitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Entities, tea.String("entities"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DelAll)) {
+		query["del_all"] = request.DelAll
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
+		query["entities"] = request.EntitiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
+		query["third_part_id"] = request.ThirdPartId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InvoiceRuleDelete"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/invoice/v1/invoice-rule"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InvoiceRuleDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InvoiceRuleDelete(request *InvoiceRuleDeleteRequest) (_result *InvoiceRuleDeleteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InvoiceRuleDeleteHeaders{}
+	_result = &InvoiceRuleDeleteResponse{}
+	_body, _err := client.InvoiceRuleDeleteWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
