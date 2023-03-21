@@ -274,23 +274,24 @@ func (s *CancelOtaTaskResponse) SetBody(v *CancelOtaTaskResponseBody) *CancelOta
 }
 
 type CreateAppInstanceGroupRequest struct {
-	AppCenterImageId     *string                                `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupName *string                                `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AutoPay              *bool                                  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew            *bool                                  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BizRegionId          *string                                `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeResourceMode   *string                                `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType           *string                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Network              *CreateAppInstanceGroupRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool             *CreateAppInstanceGroupRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	Period               *int32                                 `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string                                `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PreOpenAppId         *string                                `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	ProductType          *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PromotionId          *string                                `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	SessionTimeout       *int32                                 `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	UserInfo             *CreateAppInstanceGroupRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	Users                []*string                              `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	AppCenterImageId     *string                                     `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	AppInstanceGroupName *string                                     `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AutoPay              *bool                                       `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew            *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BizRegionId          *string                                     `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChargeResourceMode   *string                                     `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	ChargeType           *string                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Network              *CreateAppInstanceGroupRequestNetwork       `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	NodePool             *CreateAppInstanceGroupRequestNodePool      `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	Period               *int32                                      `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string                                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PreOpenAppId         *string                                     `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	ProductType          *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	PromotionId          *string                                     `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RuntimePolicy        *CreateAppInstanceGroupRequestRuntimePolicy `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
+	SessionTimeout       *int32                                      `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	UserInfo             *CreateAppInstanceGroupRequestUserInfo      `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	Users                []*string                                   `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppInstanceGroupRequest) String() string {
@@ -368,6 +369,11 @@ func (s *CreateAppInstanceGroupRequest) SetProductType(v string) *CreateAppInsta
 
 func (s *CreateAppInstanceGroupRequest) SetPromotionId(v string) *CreateAppInstanceGroupRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetRuntimePolicy(v *CreateAppInstanceGroupRequestRuntimePolicy) *CreateAppInstanceGroupRequest {
+	s.RuntimePolicy = v
 	return s
 }
 
@@ -573,6 +579,23 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) S
 	return s
 }
 
+type CreateAppInstanceGroupRequestRuntimePolicy struct {
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestRuntimePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestRuntimePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionType(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
+	s.SessionType = &v
+	return s
+}
+
 type CreateAppInstanceGroupRequestUserInfo struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -605,6 +628,7 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	PreOpenAppId         *string   `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
 	ProductType          *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	PromotionId          *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RuntimePolicyShrink  *string   `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
 	SessionTimeout       *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
 	UserInfoShrink       *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 	Users                []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -685,6 +709,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetProductType(v string) *CreateAp
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetPromotionId(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetRuntimePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.RuntimePolicyShrink = &v
 	return s
 }
 
@@ -4158,6 +4187,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		request.NodePoolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodePool, tea.String("NodePool"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.RuntimePolicy)) {
+		request.RuntimePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimePolicy, tea.String("RuntimePolicy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
 		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
@@ -4217,6 +4250,10 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.PromotionId)) {
 		body["PromotionId"] = request.PromotionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimePolicyShrink)) {
+		body["RuntimePolicy"] = request.RuntimePolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionTimeout)) {
