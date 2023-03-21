@@ -30,9 +30,12 @@ func (s *QueryIncidentTracingSubNodesCountRequest) SetVertexIdAndTypeList(v [][]
 }
 
 type AddCheckInstanceResultWhiteListRequest struct {
-	CheckGroupId *string   `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
-	CheckId      *int64    `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The ID of the group to which the check item belongs.
+	CheckGroupId *string `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
+	// The ID of the check item.
+	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// The instance IDs of assets.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 
 func (s AddCheckInstanceResultWhiteListRequest) String() string {
@@ -59,8 +62,10 @@ func (s *AddCheckInstanceResultWhiteListRequest) SetInstanceIds(v []*string) *Ad
 }
 
 type AddCheckInstanceResultWhiteListResponseBody struct {
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The adding result.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddCheckInstanceResultWhiteListResponseBody) String() string {
@@ -111,6 +116,7 @@ func (s *AddCheckInstanceResultWhiteListResponse) SetBody(v *AddCheckInstanceRes
 }
 
 type AddCheckResultWhiteListRequest struct {
+	// The IDs of the check items.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
 }
 
@@ -128,8 +134,10 @@ func (s *AddCheckResultWhiteListRequest) SetCheckIds(v []*int64) *AddCheckResult
 }
 
 type AddCheckResultWhiteListResponseBody struct {
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddCheckResultWhiteListResponseBody) String() string {
@@ -744,7 +752,11 @@ func (s *AddPrivateRegistryResponse) SetBody(v *AddPrivateRegistryResponseBody) 
 }
 
 type AddTagWithUuidRequest struct {
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The name of the tag.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+	//
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
 	UuidList *string `json:"UuidList,omitempty" xml:"UuidList,omitempty"`
 }
 
@@ -767,6 +779,7 @@ func (s *AddTagWithUuidRequest) SetUuidList(v string) *AddTagWithUuidRequest {
 }
 
 type AddTagWithUuidResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1493,9 +1506,6 @@ func (s *BindAuthToMachineResponse) SetBody(v *BindAuthToMachineResponseBody) *B
 }
 
 type CancelOnceTaskRequest struct {
-	// The ID of the task.
-	//
-	// >  You can call the [GenerateOnceTask](~~GenerateOnceTask~~) operation to query the IDs of tasks.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1513,7 +1523,6 @@ func (s *CancelOnceTaskRequest) SetTaskId(v string) *CancelOnceTaskRequest {
 }
 
 type CancelOnceTaskResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1560,10 +1569,21 @@ func (s *CancelOnceTaskResponse) SetBody(v *CancelOnceTaskResponseBody) *CancelO
 }
 
 type ChangeCheckConfigRequest struct {
-	EndTime     *int32   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId    *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The end time of the check. The value specifies a point in time in a day. The time period that is specified by the start time and end time must be one of the following time periods:
+	//
+	// *   **00:00 to 06:00:** If you set the StartTime parameter to 0, you must set the EndTime parameter to 6.
+	// *   **06:00 to 12:00**: If you set the StartTime parameter to 6, you must set the EndTime parameter to 12.
+	// *   **12:00 to 18:00**: If you set the StartTime parameter to 12, you must set the EndTime parameter to 18.
+	// *  **18:00 to 24:00:** If you set the StartTime parameter to 18, you must set the EndTime parameter to 24.
+	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID of the bastion host to query.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// An array that consists of the information about the check item.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
-	StartTime   *int32   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start time of the check. The value specifies a point in time in a day.
+	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ChangeCheckConfigRequest) String() string {
@@ -1595,6 +1615,7 @@ func (s *ChangeCheckConfigRequest) SetStartTime(v int32) *ChangeCheckConfigReque
 }
 
 type ChangeCheckConfigResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1636,6 +1657,133 @@ func (s *ChangeCheckConfigResponse) SetStatusCode(v int32) *ChangeCheckConfigRes
 }
 
 func (s *ChangeCheckConfigResponse) SetBody(v *ChangeCheckConfigResponseBody) *ChangeCheckConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ChangeCheckCustomConfigRequest struct {
+	CheckId       *int64                                         `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CustomConfigs []*ChangeCheckCustomConfigRequestCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
+	RegionId      *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ChangeCheckCustomConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckCustomConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckCustomConfigRequest) SetCheckId(v int64) *ChangeCheckCustomConfigRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigRequest) SetCustomConfigs(v []*ChangeCheckCustomConfigRequestCustomConfigs) *ChangeCheckCustomConfigRequest {
+	s.CustomConfigs = v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigRequest) SetRegionId(v string) *ChangeCheckCustomConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ChangeCheckCustomConfigRequestCustomConfigs struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ChangeCheckCustomConfigRequestCustomConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckCustomConfigRequestCustomConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckCustomConfigRequestCustomConfigs) SetName(v string) *ChangeCheckCustomConfigRequestCustomConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigRequestCustomConfigs) SetOperation(v string) *ChangeCheckCustomConfigRequestCustomConfigs {
+	s.Operation = &v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigRequestCustomConfigs) SetValue(v string) *ChangeCheckCustomConfigRequestCustomConfigs {
+	s.Value = &v
+	return s
+}
+
+type ChangeCheckCustomConfigResponseBody struct {
+	IllegalCustomConfigs []*ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs `json:"IllegalCustomConfigs,omitempty" xml:"IllegalCustomConfigs,omitempty" type:"Repeated"`
+	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeCheckCustomConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckCustomConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckCustomConfigResponseBody) SetIllegalCustomConfigs(v []*ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs) *ChangeCheckCustomConfigResponseBody {
+	s.IllegalCustomConfigs = v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigResponseBody) SetRequestId(v string) *ChangeCheckCustomConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs) SetName(v string) *ChangeCheckCustomConfigResponseBodyIllegalCustomConfigs {
+	s.Name = &v
+	return s
+}
+
+type ChangeCheckCustomConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeCheckCustomConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeCheckCustomConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCheckCustomConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCheckCustomConfigResponse) SetHeaders(v map[string]*string) *ChangeCheckCustomConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigResponse) SetStatusCode(v int32) *ChangeCheckCustomConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeCheckCustomConfigResponse) SetBody(v *ChangeCheckCustomConfigResponseBody) *ChangeCheckCustomConfigResponse {
 	s.Body = v
 	return s
 }
@@ -1729,11 +1877,11 @@ func (s *CheckQuaraFileIdResponse) SetBody(v *CheckQuaraFileIdResponseBody) *Che
 type CheckSecurityEventIdRequest struct {
 	// The IDs of alert events. You can specify up to 100 IDs. If you do not specify this parameter, the value of the response parameter **Data** is **false**. The value false indicates that no alert events are generated on the server.
 	//
-	// >  You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the IDs of alert events.
+	// > You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the IDs of alert events.
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 	// The UUID of the server.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -1758,7 +1906,7 @@ func (s *CheckSecurityEventIdRequest) SetUuid(v string) *CheckSecurityEventIdReq
 type CheckSecurityEventIdResponseBody struct {
 	// Indicates whether the alert events are generated on the server. Valid values:
 	//
-	// *   **true**: yes
+	// *   **true**
 	// *   **false**: no
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
@@ -1813,10 +1961,6 @@ func (s *CheckSecurityEventIdResponse) SetBody(v *CheckSecurityEventIdResponseBo
 }
 
 type CheckUserHasEcsRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -1834,22 +1978,11 @@ func (s *CheckUserHasEcsRequest) SetLang(v string) *CheckUserHasEcsRequest {
 }
 
 type CheckUserHasEcsResponseBody struct {
-	// The status code returned. The status code **200** indicates that the request is successful. Other status codes indicate that the request fails. You can identify the cause of the failure based on the status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether ECS instances exist. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request. Valid values:
-	//
-	// *   **true**: The request is successful.
-	// *   **false**: The request fails.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckUserHasEcsResponseBody) String() string {
@@ -2012,45 +2145,14 @@ func (s *ConfirmVirusEventsResponse) SetBody(v *ConfirmVirusEventsResponseBody) 
 }
 
 type CreateAntiBruteForceRuleRequest struct {
-	// Specifies whether to set the defense rule as the default rule. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	//
-	// >  If no defense rule is created for a server, the default rule is applied to the server.
-	DefaultRule *bool `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
-	// The maximum number of failed logon attempts from an account. Valid values: 2, 3, 4, 5, 10, 50, 80, and 100.
-	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
-	//
-	// *   **5**: 5 minutes
-	// *   **15**: 15 minutes
-	// *   **30**: 30 minutes
-	// *   **60**: 1 hour
-	// *   **120**: 2 hours
-	// *   **360**: 6 hours
-	// *   **720**: 12 hours
-	// *   **1440**: 24 hours
-	// *   **10080**: 7 days
-	// *   **52560000**: permanent
-	ForbiddenTime *int32 `json:"ForbiddenTime,omitempty" xml:"ForbiddenTime,omitempty"`
-	// The name of the defense rule.
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
-	//
-	// *   **1**
-	// *   **2**
-	// *   **5**
-	// *   **10**
-	// *   **15**
-	//
-	// >  To configure a defense rule, you must specify the Span, FailCount, and ForbiddenTime parameters. If the number of failed logon attempts from an account within the minutes specified by Span exceeds the value specified by FailCount, the account cannot be used for logons within the minutes specified by ForbiddenTime.
-	Span *int32 `json:"Span,omitempty" xml:"Span,omitempty"`
-	// The UUIDs of the servers to which you want to apply the defense rule.
-	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
+	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	ForbiddenTime   *int32    `json:"ForbiddenTime,omitempty" xml:"ForbiddenTime,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceOwnerId *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SourceIp        *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Span            *int32    `json:"Span,omitempty" xml:"Span,omitempty"`
+	UuidList        []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s CreateAntiBruteForceRuleRequest) String() string {
@@ -2102,10 +2204,8 @@ func (s *CreateAntiBruteForceRuleRequest) SetUuidList(v []*string) *CreateAntiBr
 }
 
 type CreateAntiBruteForceRuleResponseBody struct {
-	// The information about the defense rule.
 	CreateAntiBruteForceRule *CreateAntiBruteForceRuleResponseBodyCreateAntiBruteForceRule `json:"CreateAntiBruteForceRule,omitempty" xml:"CreateAntiBruteForceRule,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAntiBruteForceRuleResponseBody) String() string {
@@ -2127,7 +2227,6 @@ func (s *CreateAntiBruteForceRuleResponseBody) SetRequestId(v string) *CreateAnt
 }
 
 type CreateAntiBruteForceRuleResponseBodyCreateAntiBruteForceRule struct {
-	// The ID of the defense rule.
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -2174,11 +2273,45 @@ func (s *CreateAntiBruteForceRuleResponse) SetBody(v *CreateAntiBruteForceRuleRe
 }
 
 type CreateBackupPolicyRequest struct {
-	Name           *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policy         map[string]interface{} `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PolicyRegionId *string                `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
-	PolicyVersion  *string                `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	UuidList       []*string              `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The name of the anti-ransomware policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+	//
+	//     *   **1**: recommended policy
+	//     *   **0**: custom policy
+	//
+	// *   **Include**: the format of the files that you want to protect. If you want to protect the files in all formats, set this field to \[].
+	//
+	// *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to \[].
+	//
+	// *   **ExcludeSystemPath**: specifies whether to exclude a specific directory from the anti-ransomware policy. If you want to exclude a directory, set this field to **true**. If you do not want to exclude a directory, leave this field empty.
+	//
+	// *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. If you do not want to exclude a directory, set this field to \[].
+	//
+	// *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour. Examples:
+	//
+	//     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+	//     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+	//
+	// *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+	//
+	// *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+	//
+	// *   **UseVss**: specifies whether to enable the VSS feature. The feature is available only for Windows servers. Valid values:
+	//
+	//     *   **true**: yes
+	//     *   **false**: no
+	//
+	// >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
+	Policy map[string]interface{} `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The region ID of the server that is not deployed on Alibaba Cloud.
+	//
+	// >  We recommend that you specify the ID of the supported region that is the nearest to the location of the server. You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the supported regions of the anti-ransomware feature.
+	PolicyRegionId *string `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
+	// The version of the anti-ransomware policy. Set the value to **2.0.0**.
+	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	// The UUIDs of the servers that you want to protect.
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s CreateBackupPolicyRequest) String() string {
@@ -2215,11 +2348,45 @@ func (s *CreateBackupPolicyRequest) SetUuidList(v []*string) *CreateBackupPolicy
 }
 
 type CreateBackupPolicyShrinkRequest struct {
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PolicyShrink   *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PolicyRegionId *string   `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
-	PolicyVersion  *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	UuidList       []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The name of the anti-ransomware policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+	//
+	//     *   **1**: recommended policy
+	//     *   **0**: custom policy
+	//
+	// *   **Include**: the format of the files that you want to protect. If you want to protect the files in all formats, set this field to \[].
+	//
+	// *   **Source**: the directory that you want to protect. If you want to protect all directories, set this field to \[].
+	//
+	// *   **ExcludeSystemPath**: specifies whether to exclude a specific directory from the anti-ransomware policy. If you want to exclude a directory, set this field to **true**. If you do not want to exclude a directory, leave this field empty.
+	//
+	// *   **Exclude**: the directory that you want to exclude from the anti-ransomware policy. If you do not want to exclude a directory, set this field to \[].
+	//
+	// *   **Schedule**: the start time and interval of a data backup task. We recommend that you specify a start time that begins during off-peak hours but does not start on the hour. Examples:
+	//
+	//     *   If you set this field to I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+	//     *   If you set this field to I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+	//
+	// *   **Retention**: the period during which backup data is retained. Unit: days. If you set this field to 7, backup data is retained for a week. If you set this field to 365, backup data is retained for a year. If you set this field to -1, backup data is permanently retained.
+	//
+	// *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If you set this field to 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+	//
+	// *   **UseVss**: specifies whether to enable the VSS feature. The feature is available only for Windows servers. Valid values:
+	//
+	//     *   **true**: yes
+	//     *   **false**: no
+	//
+	// >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
+	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The region ID of the server that is not deployed on Alibaba Cloud.
+	//
+	// >  We recommend that you specify the ID of the supported region that is the nearest to the location of the server. You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the supported regions of the anti-ransomware feature.
+	PolicyRegionId *string `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
+	// The version of the anti-ransomware policy. Set the value to **2.0.0**.
+	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	// The UUIDs of the servers that you want to protect.
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s CreateBackupPolicyShrinkRequest) String() string {
@@ -2256,8 +2423,10 @@ func (s *CreateBackupPolicyShrinkRequest) SetUuidList(v []*string) *CreateBackup
 }
 
 type CreateBackupPolicyResponseBody struct {
+	// The information about the anti-ransomware policy.
 	BackupPolicy *CreateBackupPolicyResponseBodyBackupPolicy `json:"BackupPolicy,omitempty" xml:"BackupPolicy,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBackupPolicyResponseBody) String() string {
@@ -2279,7 +2448,14 @@ func (s *CreateBackupPolicyResponseBody) SetRequestId(v string) *CreateBackupPol
 }
 
 type CreateBackupPolicyResponseBodyBackupPolicy struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the anti-ransomware policy.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the anti-ransomware policy. Valid values:
+	//
+	// *   **enabled**
+	// *   **disabled**
+	//
+	// >  After you create an anti-ransomware policy, the policy is enabled by default.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2570,40 +2746,16 @@ func (s *CreateCustomBlockRecordResponse) SetBody(v *CreateCustomBlockRecordResp
 }
 
 type CreateCycleTaskRequest struct {
-	// Specifies whether to enable the task. Valid values:
-	//
-	// *   **1**: yes
-	// *   **0**: no
-	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The first time when the task is performed.
-	FirstDateStr *int64 `json:"FirstDateStr,omitempty" xml:"FirstDateStr,omitempty"`
-	// The interval of the task.
-	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
-	// The additional information.
-	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The unit of the scan interval. Valid values:
-	//
-	// *   **day**: days
-	// *   **hour**: hours
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The additional source for the task.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The time when the task ends. Unit: hours.
-	TargetEndTime *int32 `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
-	// The time when the task is started. Unit: hours.
-	TargetStartTime *int32 `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
-	// The name of the task. Valid values:
-	//
-	// *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-	// *   **IMAGE_SCAN**: image scan task
-	// *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task. Valid values:
-	//
-	// *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-	// *   **IMAGE_SCAN**: image scan task
-	// *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Enable          *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	FirstDateStr    *int64  `json:"FirstDateStr,omitempty" xml:"FirstDateStr,omitempty"`
+	IntervalPeriod  *int32  `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
+	Param           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	PeriodUnit      *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	TargetEndTime   *int32  `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
+	TargetStartTime *int32  `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
+	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType        *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s CreateCycleTaskRequest) String() string {
@@ -2665,7 +2817,6 @@ func (s *CreateCycleTaskRequest) SetTaskType(v string) *CreateCycleTaskRequest {
 }
 
 type CreateCycleTaskResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2814,20 +2965,20 @@ func (s *CreateFileDetectResponse) SetBody(v *CreateFileDetectResponseBody) *Cre
 type CreateFileDetectUploadUrlRequest struct {
 	// The hash values of files.
 	//
-	// >  You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
+	// > You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
 	HashKeyContextList []*CreateFileDetectUploadUrlRequestHashKeyContextList `json:"HashKeyContextList,omitempty" xml:"HashKeyContextList,omitempty" type:"Repeated"`
-	// The identifier of the file. Only MD5 hash values are supported.
+	// The identifiers of files. Only MD5 hash values are supported.
 	//
-	// >  You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
+	// > You must specify at least one of the **HashKeyList** and **HashKeyContextList** parameters.
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
 	// The type of the file. Valid values:
 	//
-	// *   **0**: unknown files
-	// *   **1**: binary files
-	// *   **2**: webshell files
-	// *   **4**: script files
+	// *   **0**: unknown file
+	// *   **1**: binary file
+	// *   **2**: webshell file
+	// *   **4**: script file
 	//
-	// >  If you do not know the type of the file, set this parameter to **0**.
+	// > If you do not know the type of the file, set this parameter to **0**.
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2979,7 +3130,7 @@ type CreateFileDetectUploadUrlResponseBodyUploadUrlListContext struct {
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// The key of the file that is used after the file is uploaded to the OSS bucket.
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The policy that poses limits on file upload. For example, the policy limits the size of the file.
+	// The policy that poses limits on file upload. For example, the policy can limit the size of the file.
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The signature that is used to upload the file.
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
@@ -3412,6 +3563,7 @@ func (s *CreateHoneypotNodeResponse) SetBody(v *CreateHoneypotNodeResponseBody) 
 type CreateHoneypotPresetRequest struct {
 	// The name of the honeypot image.
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The custom configurations of the honeypot template. The value is a JSON string that contains the following fields:
 	//
 	// *   **portrait_option**: Social Source Tracing
@@ -3436,6 +3588,11 @@ func (s CreateHoneypotPresetRequest) GoString() string {
 
 func (s *CreateHoneypotPresetRequest) SetHoneypotImageName(v string) *CreateHoneypotPresetRequest {
 	s.HoneypotImageName = &v
+	return s
+}
+
+func (s *CreateHoneypotPresetRequest) SetLang(v string) *CreateHoneypotPresetRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -4130,22 +4287,53 @@ func (s *CreateInterceptionTargetResponse) SetBody(v *CreateInterceptionTargetRe
 }
 
 type CreateJenkinsImageRegistryRequest struct {
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	ExtraParam      *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
-	NetType         *int32  `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PersistenceDay  *int32  `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
-	ProtocolType    *int32  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegistryHostIp  *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
-	RegistryName    *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
-	RegistryType    *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The domain name of the image repository.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The additional parameters of the image repository. The value of this parameter contains the following fields:
+	//
+	// *   **namespace**: the namespace
+	// *   **authToken**: the authorization token
+	ExtraParam *string `json:"ExtraParam,omitempty" xml:"ExtraParam,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **1**: Internet
+	// *   **2**: Virtual Private Cloud (VPC)
+	NetType *int32 `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The password.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The number of days during which assets can be retained.
+	PersistenceDay *int32 `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// *   **1**: HTTP
+	// *   **2**: HTTPS
+	ProtocolType *int32 `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The region ID of the image repository.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP address of the image repository.
+	RegistryHostIp *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
+	// The alias of the image repository.
+	RegistryName *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
+	// The type of the image repository. Valid values:
+	//
+	// *   **CI/CD**: Jenkins
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The version of the image repository. Default value: -. Valid values:
+	//
+	// *   **-**: the default version
+	// *   **V1**: V1.0
+	// *   **V2**: V2.0
 	RegistryVersion *string `json:"RegistryVersion,omitempty" xml:"RegistryVersion,omitempty"`
-	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TransPerHour    *int32  `json:"TransPerHour,omitempty" xml:"TransPerHour,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WhiteList       *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The number of images that can be scanned per hour.
+	TransPerHour *int32 `json:"TransPerHour,omitempty" xml:"TransPerHour,omitempty"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The whitelist of IP addresses.
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s CreateJenkinsImageRegistryRequest) String() string {
@@ -4237,10 +4425,14 @@ func (s *CreateJenkinsImageRegistryRequest) SetWhiteList(v string) *CreateJenkin
 }
 
 type CreateJenkinsImageRegistryResponseBody struct {
-	Data           *CreateJenkinsImageRegistryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TimeCost       *int64                                      `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+	// The result of creating the image repository.
+	Data *CreateJenkinsImageRegistryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time consumed. Unit: seconds.
+	TimeCost *int64 `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
 }
 
 func (s CreateJenkinsImageRegistryResponseBody) String() string {
@@ -4272,24 +4464,50 @@ func (s *CreateJenkinsImageRegistryResponseBody) SetTimeCost(v int64) *CreateJen
 }
 
 type CreateJenkinsImageRegistryResponseBodyData struct {
-	BlackList      *string `json:"BlackList,omitempty" xml:"BlackList,omitempty"`
-	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GmtCreate      *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	NetType        *int32  `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PersistenceDay *int32  `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
-	ProtocolType   *int32  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The blacklist.
+	BlackList *string `json:"BlackList,omitempty" xml:"BlackList,omitempty"`
+	// The domain name of the image repository.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The creation time. The time is in the yyyy-MM-dd HH:mm:ss format.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time. The time is in the yyyy-MM-dd HH:mm:ss format.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the image repository.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **1**: Internet
+	// *   **2**: VPC
+	NetType *int32 `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The password.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The number of days during which assets can be retained.
+	PersistenceDay *int32 `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// *   **1**: HTTP
+	// *   **2**: HTTPS
+	ProtocolType *int32 `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The region ID of the image repository.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP address of the image repository.
 	RegistryHostIp *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
-	RegistryName   *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
-	RegistryType   *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	TransPerHour   *int32  `json:"TransPerHour,omitempty" xml:"TransPerHour,omitempty"`
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WhiteList      *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// The alias of the image repository.
+	RegistryName *string `json:"RegistryName,omitempty" xml:"RegistryName,omitempty"`
+	// The type of the image repository. Valid values:
+	//
+	// *   **CI/CD**: Jenkins
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The authentication token of the user.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The number of images that can be scanned per hour.
+	TransPerHour *int32 `json:"TransPerHour,omitempty" xml:"TransPerHour,omitempty"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The whitelist.
+	WhiteList *string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s CreateJenkinsImageRegistryResponseBodyData) String() string {
@@ -5186,35 +5404,13 @@ func (s *CreateUniBackupPolicyResponse) SetBody(v *CreateUniBackupPolicyResponse
 }
 
 type CreateUniRestorePlanRequest struct {
-	// The name of the database.
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The UUID of the Hybrid Backup Recovery (HBR) agent that is used to restore the data of the database on your server.
-	//
-	// >  You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to query the UUID.
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	// The ID of the anti-ransomware policy.
-	//
-	// >  You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the ID.
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The identifier of the point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
-	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
-	ResetScn *string `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
-	// The point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
-	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
-	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The information about the database. This parameter is available when the database is a Microsoft SQL Server (MSSQL) database. The value is a JSON string. Valid values:
-	//
-	// *   **name**: the name of the database
-	// *   **files**: the path to the database files
-	//
-	// >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the information.
-	RestoreInfo *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
-	// The point in time to which you want to restore data.
-	//
-	// >  You can call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to query the point in time.
-	TimePoint *int64 `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	ResetScn     *string `json:"ResetScn,omitempty" xml:"ResetScn,omitempty"`
+	ResetTime    *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
+	RestoreInfo  *string `json:"RestoreInfo,omitempty" xml:"RestoreInfo,omitempty"`
+	TimePoint    *int64  `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
 }
 
 func (s CreateUniRestorePlanRequest) String() string {
@@ -5261,7 +5457,6 @@ func (s *CreateUniRestorePlanRequest) SetTimePoint(v int64) *CreateUniRestorePla
 }
 
 type CreateUniRestorePlanResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5587,10 +5782,24 @@ func (s *DeleteBackupPolicyResponse) SetBody(v *DeleteBackupPolicyResponseBody) 
 }
 
 type DeleteBackupPolicyMachineRequest struct {
-	PolicyId      *int64    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	PolicyVersion *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	Uuid          *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	UuidList      []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The ID of the anti-ransomware policy.
+	// >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the **Id** of anti-ransomware policies.
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The version of the anti-ransomware policy. Valid values:
+	//
+	// *   **1.0.0**
+	// *   **2.0.0**
+	//
+	// >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies.
+	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	// The UUID of the server to which the anti-ransomware policy is applied.
+	//
+	// >  You must specify at least one of the `UuidList` and `Uuid` parameters.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The UUIDs of the servers to which the anti-ransomware policy is applied.
+	//
+	// >  You must specify at least one of the `UuidList` and `Uuid` parameters.
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s DeleteBackupPolicyMachineRequest) String() string {
@@ -5622,6 +5831,7 @@ func (s *DeleteBackupPolicyMachineRequest) SetUuidList(v []*string) *DeleteBacku
 }
 
 type DeleteBackupPolicyMachineResponseBody struct {
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5733,9 +5943,6 @@ func (s *DeleteClientUserDefineRuleResponse) SetBody(v *DeleteClientUserDefineRu
 }
 
 type DeleteCustomBlockRecordRequest struct {
-	// The ID of the record that you want to delete.
-	//
-	// > You can call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to query the ID.
 	Id              *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -5759,7 +5966,6 @@ func (s *DeleteCustomBlockRecordRequest) SetResourceOwnerId(v int64) *DeleteCust
 }
 
 type DeleteCustomBlockRecordResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5873,7 +6079,11 @@ func (s *DeleteCycleTaskResponse) SetBody(v *DeleteCycleTaskResponseBody) *Delet
 }
 
 type DeleteGroupRequest struct {
-	GroupId  *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the server group that you want to delete.
+	//
+	// >  To delete a server group, you must provide the ID of the server group. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the ID.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -5896,7 +6106,9 @@ func (s *DeleteGroupRequest) SetSourceIp(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5952,6 +6164,7 @@ type DeleteHoneypotRequest struct {
 	//
 	// >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to query the IDs of honeypots.
 	HoneypotId *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteHoneypotRequest) String() string {
@@ -5964,6 +6177,11 @@ func (s DeleteHoneypotRequest) GoString() string {
 
 func (s *DeleteHoneypotRequest) SetHoneypotId(v string) *DeleteHoneypotRequest {
 	s.HoneypotId = &v
+	return s
+}
+
+func (s *DeleteHoneypotRequest) SetLang(v string) *DeleteHoneypotRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -6046,9 +6264,7 @@ func (s *DeleteHoneypotResponse) SetBody(v *DeleteHoneypotResponseBody) *DeleteH
 }
 
 type DeleteHoneypotNodeRequest struct {
-	// The ID of the management node.
-	//
-	// >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the IDs of management nodes.
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -6060,25 +6276,22 @@ func (s DeleteHoneypotNodeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteHoneypotNodeRequest) SetLang(v string) *DeleteHoneypotNodeRequest {
+	s.Lang = &v
+	return s
+}
+
 func (s *DeleteHoneypotNodeRequest) SetNodeId(v string) *DeleteHoneypotNodeRequest {
 	s.NodeId = &v
 	return s
 }
 
 type DeleteHoneypotNodeResponseBody struct {
-	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHoneypotNodeResponseBody) String() string {
@@ -6144,10 +6357,8 @@ func (s *DeleteHoneypotNodeResponse) SetBody(v *DeleteHoneypotNodeResponseBody) 
 }
 
 type DeleteHoneypotPresetRequest struct {
-	// The ID of the honeypot template.
-	//
-	// >  You can call the [ListHoneypotPreset](~~ListHoneypotPreset~~) operation to query the IDs of honeypot templates.
 	HoneypotPresetId *string `json:"HoneypotPresetId,omitempty" xml:"HoneypotPresetId,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteHoneypotPresetRequest) String() string {
@@ -6163,20 +6374,17 @@ func (s *DeleteHoneypotPresetRequest) SetHoneypotPresetId(v string) *DeleteHoney
 	return s
 }
 
+func (s *DeleteHoneypotPresetRequest) SetLang(v string) *DeleteHoneypotPresetRequest {
+	s.Lang = &v
+	return s
+}
+
 type DeleteHoneypotPresetResponseBody struct {
-	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHoneypotPresetResponseBody) String() string {
@@ -6242,9 +6450,7 @@ func (s *DeleteHoneypotPresetResponse) SetBody(v *DeleteHoneypotPresetResponseBo
 }
 
 type DeleteHoneypotProbeRequest struct {
-	// The ID of the probe.
-	//
-	// >  You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
 }
 
@@ -6256,25 +6462,22 @@ func (s DeleteHoneypotProbeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteHoneypotProbeRequest) SetLang(v string) *DeleteHoneypotProbeRequest {
+	s.Lang = &v
+	return s
+}
+
 func (s *DeleteHoneypotProbeRequest) SetProbeId(v string) *DeleteHoneypotProbeRequest {
 	s.ProbeId = &v
 	return s
 }
 
 type DeleteHoneypotProbeResponseBody struct {
-	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteHoneypotProbeResponseBody) String() string {
@@ -6340,9 +6543,6 @@ func (s *DeleteHoneypotProbeResponse) SetBody(v *DeleteHoneypotProbeResponseBody
 }
 
 type DeleteInstallCodeRequest struct {
-	// The installation command.
-	//
-	// >  You can call the [DescribeInstallCodes](~~DescribeInstallCodes~~) operation to query installation commands.
 	CaptchaCode *string `json:"CaptchaCode,omitempty" xml:"CaptchaCode,omitempty"`
 }
 
@@ -6360,7 +6560,6 @@ func (s *DeleteInstallCodeRequest) SetCaptchaCode(v string) *DeleteInstallCodeRe
 }
 
 type DeleteInstallCodeResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6545,35 +6744,9 @@ func (s *DeleteInterceptionTargetResponse) SetBody(v *DeleteInterceptionTargetRe
 }
 
 type DeleteLoginBaseConfigRequest struct {
-	// The configuration item that you want to delete. The items vary based on the type of logon configurations. Valid values:
-	//
-	// *   **login\_common_ip**: approved logon IP addresses
-	//
-	// Example: {"ip":"10.23.23.23"}.
-	//
-	// *   **login\_common_time**: approved logon time ranges
-	//
-	// Example: {"startTime":"06:00:00","endTime":"16:00:00"}.
-	//
-	// *   **login\_common_account**: approved logon accounts
-	//
-	// Example: {"account":"test_account\_001"}.
-	//
-	// *   **login\_common_location**: approved logon locations
-	//
-	// Example: {"location":"Shanghai"}.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The UUID of the server whose logon configurations you want to delete.
-	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// The type of logon configurations to delete. Valid values:
-	//
-	// *   **login\_common_ip**: approved logon IP addresses
-	// *   **login\_common_time**: approved logon time ranges
-	// *   **login\_common_account**: approved logon accounts
-	// *   **login\_common_location**: approved logon locations
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeleteLoginBaseConfigRequest) String() string {
@@ -6600,7 +6773,6 @@ func (s *DeleteLoginBaseConfigRequest) SetType(v string) *DeleteLoginBaseConfigR
 }
 
 type DeleteLoginBaseConfigResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6647,6 +6819,9 @@ func (s *DeleteLoginBaseConfigResponse) SetBody(v *DeleteLoginBaseConfigResponse
 }
 
 type DeletePrivateRegistryRequest struct {
+	// The ID of the image repository.
+	//
+	// > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
 	RegistryId *int64 `json:"RegistryId,omitempty" xml:"RegistryId,omitempty"`
 }
 
@@ -6664,7 +6839,12 @@ func (s *DeletePrivateRegistryRequest) SetRegistryId(v int64) *DeletePrivateRegi
 }
 
 type DeletePrivateRegistryResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7010,13 +7190,7 @@ func (s *DeleteTagWithUuidResponse) SetBody(v *DeleteTagWithUuidResponseBody) *D
 }
 
 type DeleteUniBackupPolicyRequest struct {
-	// The ID of the anti-ransomware policy.
-	//
-	// >  You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies. You must specify at least one of the PolicyId parameter and the **PolicyIds** parameter.
-	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The IDs of anti-ransomware policies.
-	//
-	// >  You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies. You must specify at least one of the **PolicyId** parameter and the PolicyIds parameter.
+	PolicyId  *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	PolicyIds *string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty"`
 }
 
@@ -7039,7 +7213,6 @@ func (s *DeleteUniBackupPolicyRequest) SetPolicyIds(v string) *DeleteUniBackupPo
 }
 
 type DeleteUniBackupPolicyResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7822,75 +7995,26 @@ func (s *DescribeAffectedAssetsResponse) SetBody(v *DescribeAffectedAssetsRespon
 }
 
 type DescribeAffectedMaliciousFileImagesRequest struct {
-	// The ID of the container cluster.
-	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the container.
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the container image.
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The image digest.
-	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	// The image layer.
-	ImageLayer *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
-	// The tag that is added to the image.
-	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The language of the content within the request and the response. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The severity of the malicious image sample. Separate multiple severities with commas (,). Valid values: serious suspicious remind
-	Levels *string `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	// The MD5 hash value of the malicious image sample.
-	//
-	// >  You can call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to query the MD5 hash values of malicious image samples.
-	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The namespace.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The pod.
-	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// The ID of the image repository.
-	//
-	// >  You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of image repositories from the value of the **RepoId** response parameter.
-	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the container image.
-	//
-	// >  You can call the [ListRepository](~~ListRepository~~) operation to query the IDs of container images from the value of the **InstanceId** response parameter.
-	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	// The name of the image repository.
-	//
-	// >  Fuzzy match is supported.
-	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace to which the image repository belongs.
-	//
-	// >  Fuzzy match is supported.
-	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The region ID of the image repository. Valid values:
-	//
-	// *   **cn-beijing**: China (Beijing)
-	// *   **cn-zhangjiakou**: China (Zhangjiakou)
-	// *   **cn-hangzhou**: China (Hangzhou)
-	// *   **cn-shanghai**: China (Shanghai)
-	// *   **cn-shenzhen**: China (Shenzhen)
-	// *   **cn-hongkong**: China (Hong Kong)
-	// *   **ap-southeast-1**: Singapore
-	// *   **ap-southeast-5**: Indonesia (Jakarta)
-	// *   **us-east-1**: US (Virginia)
-	// *   **us-west-1**: US (Silicon Valley)
-	// *   **eu-central-1**: Germany (Frankfurt)
-	// *   **eu-west-1**: UK (London)
-	// *   **ap-south-1**: India (Mumbai)
-	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The types of the assets that you want to scan.
-	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	ClusterId      *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string   `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId    *string   `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Image          *string   `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageDigest    *string   `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageLayer     *string   `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
+	ImageTag       *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Levels         *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
+	MaliciousMd5   *string   `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	Namespace      *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageSize       *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pod            *string   `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RepoId         *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId *string   `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName       *string   `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string   `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId   *string   `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ScanRange      []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesRequest) String() string {
@@ -8002,12 +8126,9 @@ func (s *DescribeAffectedMaliciousFileImagesRequest) SetScanRange(v []*string) *
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBody struct {
-	// An array consisting of the images that have malicious image samples.
 	AffectedMaliciousFileImagesResponse []*DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse `json:"AffectedMaliciousFileImagesResponse,omitempty" xml:"AffectedMaliciousFileImagesResponse,omitempty" type:"Repeated"`
-	// The pagination information.
-	PageInfo *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageInfo                            *DescribeAffectedMaliciousFileImagesResponseBodyPageInfo                              `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId                           *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesResponseBody) String() string {
@@ -8034,68 +8155,36 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetRequestId(v string)
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse struct {
-	// The ID of the cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the container.
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The image digest.
-	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The URL to download the malicious image sample.
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The path to the image file.
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The timestamp of the first scan.
-	FirstScanTimestamp *int64 `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
-	// The text that is highlighted.
-	HighLight *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
-	// The name of the image.
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The UUID of the image.
-	ImageUuid    *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp of the last scan.
-	LatestScanTimestamp *int64 `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
-	// The timestamp of the last verification.
-	LatestVerifyTimestamp *int64 `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
-	// The image layer.
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The severity of the malicious image sample. Valid values:
-	//
-	// *   **serious**
-	// *   **suspicious**
-	// *   **remind**
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The MD5 hash value of the malicious image sample.
-	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The namespace to which the image repository belongs.
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The pod.
-	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	// The ID of the image repository.
-	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the container image.
-	RepoInstanceId *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
-	// The name of the image repository.
-	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The region ID of the image repository.
-	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	// The handling status of the malicious image sample. Valid values:
-	//
-	// *   **0**: unhandled
-	// *   **1**: handled
-	// *   **2**: verifying
-	// *   **3**: added to the whitelist
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the image.
-	Tag        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName           *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ContainerId           *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	Digest                *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	DownloadUrl           *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	FilePath              *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FirstScanTimestamp    *int64  `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
+	HighLight             *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
+	Image                 *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageUuid             *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp            *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp            *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	LatestScanTimestamp   *int64  `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
+	LatestVerifyTimestamp *int64  `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
+	Layer                 *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	Level                 *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	MaliciousMd5          *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
+	Namespace             *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Pod                   *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RepoId                *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoInstanceId        *string `json:"RepoInstanceId,omitempty" xml:"RepoInstanceId,omitempty"`
+	RepoName              *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoRegionId          *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	Status                *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TargetId              *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName            *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetType            *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Uuid                  *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) String() string {
@@ -8257,14 +8346,10 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 }
 
 type DescribeAffectedMaliciousFileImagesResponseBodyPageInfo struct {
-	// The number of images that have malicious image samples returned on the current page.
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page. Pages start from page **1**. Default value: **1**.
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page. Default value: **20**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of images that have malicious image samples.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAffectedMaliciousFileImagesResponseBodyPageInfo) String() string {
@@ -8480,19 +8565,10 @@ func (s *DescribeAgentInstallStatusResponse) SetBody(v *DescribeAgentInstallStat
 }
 
 type DescribeAlarmEventDetailRequest struct {
-	// The unique ID of the alert event.
-	//
-	// >  To query the details of an alert event, you must specify the unique ID of the alert event. You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the unique IDs of alert events.
 	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The ID of the request source. Set the value to **sas**.
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	From            *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeAlarmEventDetailRequest) String() string {
@@ -8524,10 +8600,8 @@ func (s *DescribeAlarmEventDetailRequest) SetSourceIp(v string) *DescribeAlarmEv
 }
 
 type DescribeAlarmEventDetailResponseBody struct {
-	// The details about the alert event.
-	Data *DescribeAlarmEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeAlarmEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAlarmEventDetailResponseBody) String() string {
@@ -8549,96 +8623,33 @@ func (s *DescribeAlarmEventDetailResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeAlarmEventDetailResponseBodyData struct {
-	// The name of the alert event.
-	AlarmEventAliasName *string `json:"AlarmEventAliasName,omitempty" xml:"AlarmEventAliasName,omitempty"`
-	// The description of the alert event.
-	AlarmEventDesc *string `json:"AlarmEventDesc,omitempty" xml:"AlarmEventDesc,omitempty"`
-	// The unique ID of the alert event.
-	//
-	// >  To query the details about an alert event, you must specify the unique ID of the alert event. You can call the [DescribeAlarmEventList](~~DescribeAlarmEventList~~) operation to query the unique IDs of alert events.
-	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	// The name of the container application.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether the online handling of the alert event is supported. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	CanBeDealOnLine *bool `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	// Indicates whether you can cancel marking the alert event as a false positive. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	CanCancelFault *bool `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	// An array consisting of the cause of the alert event, which can be used to trace the alert event.
-	CauseDetails []*DescribeAlarmEventDetailResponseBodyDataCauseDetails `json:"CauseDetails,omitempty" xml:"CauseDetails,omitempty" type:"Repeated"`
-	// Indicates whether the Safeguard Mode For Major Activities mode is enabled.
-	ContainHwMode *bool `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
-	// The ID of the container application.
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The ID of the image to which the container belongs.
-	ContainerImageId *string `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
-	// The name of the image to which the container belongs.
-	ContainerImageName *string `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
-	// The data source of the alert event.
-	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	// The timestamp when the alert event ends. Unit: milliseconds.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the associated instance.
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the associated instance.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the Kubernetes cluster.
-	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	// The name of the Kubernetes cluster.
-	K8sClusterName *string `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
-	// The namespace of the Kubernetes cluster.
-	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The ID of the Kubernetes cluster node.
-	K8sNodeId *string `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
-	// The name of the Kubernetes cluster node.
-	K8sNodeName *string `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
-	// The name of the Kubernetes pod.
-	K8sPodName *string `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
-	// The severity of the alert event. Valid values:
-	//
-	// *   **serious**
-	// *   **suspicious**
-	// *   **remind**
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The solution to the alert event.
-	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	// The timestamp when the alert event starts. Unit: milliseconds.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The alert type of the alert event. Valid values:
-	//
-	// *   Suspicious process
-	// *   Webshell
-	// *   Unusual logon
-	// *   Exception
-	// *   Sensitive file tampering
-	// *   Malicious process (cloud threat detection)
-	// *   Suspicious network connection
-	// *   Other
-	// *   Abnormal account
-	// *   Application intrusion event
-	// *   Cloud threat detection
-	// *   Precise defense
-	// *   Application whitelist
-	// *   Persistent webshell
-	// *   Web application threat detection
-	// *   Malicious script
-	// *   Threat intelligence
-	// *   Malicious network activity
-	// *   Cluster exception
-	// *   Webshell (on-premises threat detection)
-	// *   Vulnerability exploitation
-	// *   Malicious process (on-premises threat detection)
-	// *   Trusted exception
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The instance UUID of the asset.
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	AlarmEventAliasName *string                                                 `json:"AlarmEventAliasName,omitempty" xml:"AlarmEventAliasName,omitempty"`
+	AlarmEventDesc      *string                                                 `json:"AlarmEventDesc,omitempty" xml:"AlarmEventDesc,omitempty"`
+	AlarmUniqueInfo     *string                                                 `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
+	AppName             *string                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CanBeDealOnLine     *bool                                                   `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
+	CanCancelFault      *bool                                                   `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
+	CauseDetails        []*DescribeAlarmEventDetailResponseBodyDataCauseDetails `json:"CauseDetails,omitempty" xml:"CauseDetails,omitempty" type:"Repeated"`
+	ContainHwMode       *bool                                                   `json:"ContainHwMode,omitempty" xml:"ContainHwMode,omitempty"`
+	ContainerId         *string                                                 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerImageId    *string                                                 `json:"ContainerImageId,omitempty" xml:"ContainerImageId,omitempty"`
+	ContainerImageName  *string                                                 `json:"ContainerImageName,omitempty" xml:"ContainerImageName,omitempty"`
+	DataSource          *string                                                 `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	EndTime             *int64                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceName        *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp          *string                                                 `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp          *string                                                 `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	K8sClusterId        *string                                                 `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	K8sClusterName      *string                                                 `json:"K8sClusterName,omitempty" xml:"K8sClusterName,omitempty"`
+	K8sNamespace        *string                                                 `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	K8sNodeId           *string                                                 `json:"K8sNodeId,omitempty" xml:"K8sNodeId,omitempty"`
+	K8sNodeName         *string                                                 `json:"K8sNodeName,omitempty" xml:"K8sNodeName,omitempty"`
+	K8sPodName          *string                                                 `json:"K8sPodName,omitempty" xml:"K8sPodName,omitempty"`
+	Level               *string                                                 `json:"Level,omitempty" xml:"Level,omitempty"`
+	Solution            *string                                                 `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	StartTime           *int64                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type                *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid                *string                                                 `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAlarmEventDetailResponseBodyData) String() string {
@@ -8785,9 +8796,7 @@ func (s *DescribeAlarmEventDetailResponseBodyData) SetUuid(v string) *DescribeAl
 }
 
 type DescribeAlarmEventDetailResponseBodyDataCauseDetails struct {
-	// The key that is used to trace the alert event.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// An array consisting of the value that is used to trace the alert event.
+	Key   *string                                                      `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*DescribeAlarmEventDetailResponseBodyDataCauseDetailsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -8810,14 +8819,8 @@ func (s *DescribeAlarmEventDetailResponseBodyDataCauseDetails) SetValue(v []*Des
 }
 
 type DescribeAlarmEventDetailResponseBodyDataCauseDetailsValue struct {
-	// The name of the field that displays tracing information.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the field that displays tracing information. Valid values:
-	//
-	// *   **text**
-	// *   **html**
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the field that displays tracing information.
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8873,456 +8876,12 @@ func (s *DescribeAlarmEventDetailResponse) SetBody(v *DescribeAlarmEventDetailRe
 	return s
 }
 
-type DescribeAlarmEventListRequest struct {
-	AlarmEventName       *string   `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	AlarmEventType       *string   `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	CurrentPage          *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed               *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	From                 *string   `json:"From,omitempty" xml:"From,omitempty"`
-	GroupId              *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Id                   *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Lang                 *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Levels               *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
-	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
-	OperateTimeEnd       *string   `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
-	OperateTimeStart     *string   `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
-	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SortColumn           *string   `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	SortType             *string   `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-	TimeEnd              *string   `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	TimeStart            *string   `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
-	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
-}
-
-func (s DescribeAlarmEventListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListRequest) SetAlarmEventName(v string) *DescribeAlarmEventListRequest {
-	s.AlarmEventName = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetAlarmEventType(v string) *DescribeAlarmEventListRequest {
-	s.AlarmEventType = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetCurrentPage(v int32) *DescribeAlarmEventListRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetDealed(v string) *DescribeAlarmEventListRequest {
-	s.Dealed = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetFrom(v string) *DescribeAlarmEventListRequest {
-	s.From = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetGroupId(v string) *DescribeAlarmEventListRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetId(v int64) *DescribeAlarmEventListRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetLang(v string) *DescribeAlarmEventListRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetLevels(v string) *DescribeAlarmEventListRequest {
-	s.Levels = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetOperateErrorCodeList(v []*string) *DescribeAlarmEventListRequest {
-	s.OperateErrorCodeList = v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetOperateTimeEnd(v string) *DescribeAlarmEventListRequest {
-	s.OperateTimeEnd = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetOperateTimeStart(v string) *DescribeAlarmEventListRequest {
-	s.OperateTimeStart = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetPageSize(v string) *DescribeAlarmEventListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetRemark(v string) *DescribeAlarmEventListRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetSortColumn(v string) *DescribeAlarmEventListRequest {
-	s.SortColumn = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetSortType(v string) *DescribeAlarmEventListRequest {
-	s.SortType = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetSourceIp(v string) *DescribeAlarmEventListRequest {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetTacticId(v string) *DescribeAlarmEventListRequest {
-	s.TacticId = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetTimeEnd(v string) *DescribeAlarmEventListRequest {
-	s.TimeEnd = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetTimeStart(v string) *DescribeAlarmEventListRequest {
-	s.TimeStart = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetUniqueInfo(v string) *DescribeAlarmEventListRequest {
-	s.UniqueInfo = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListRequest) SetUuids(v string) *DescribeAlarmEventListRequest {
-	s.Uuids = &v
-	return s
-}
-
-type DescribeAlarmEventListResponseBody struct {
-	PageInfo   *DescribeAlarmEventListResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuspEvents []*DescribeAlarmEventListResponseBodySuspEvents `json:"SuspEvents,omitempty" xml:"SuspEvents,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAlarmEventListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListResponseBody) SetPageInfo(v *DescribeAlarmEventListResponseBodyPageInfo) *DescribeAlarmEventListResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBody) SetRequestId(v string) *DescribeAlarmEventListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBody) SetSuspEvents(v []*DescribeAlarmEventListResponseBodySuspEvents) *DescribeAlarmEventListResponseBody {
-	s.SuspEvents = v
-	return s
-}
-
-type DescribeAlarmEventListResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeAlarmEventListResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListResponseBodyPageInfo) SetCount(v int32) *DescribeAlarmEventListResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeAlarmEventListResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodyPageInfo) SetPageSize(v int32) *DescribeAlarmEventListResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodyPageInfo) SetTotalCount(v int32) *DescribeAlarmEventListResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeAlarmEventListResponseBodySuspEvents struct {
-	AlarmEventName         *string                                                    `json:"AlarmEventName,omitempty" xml:"AlarmEventName,omitempty"`
-	AlarmEventNameOriginal *string                                                    `json:"AlarmEventNameOriginal,omitempty" xml:"AlarmEventNameOriginal,omitempty"`
-	AlarmEventType         *string                                                    `json:"AlarmEventType,omitempty" xml:"AlarmEventType,omitempty"`
-	AlarmUniqueInfo        *string                                                    `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
-	CanBeDealOnLine        *bool                                                      `json:"CanBeDealOnLine,omitempty" xml:"CanBeDealOnLine,omitempty"`
-	CanCancelFault         *bool                                                      `json:"CanCancelFault,omitempty" xml:"CanCancelFault,omitempty"`
-	DataSource             *string                                                    `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
-	Dealed                 *bool                                                      `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	Description            *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime                *int64                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtModified            *int64                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HasTraceInfo           *bool                                                      `json:"HasTraceInfo,omitempty" xml:"HasTraceInfo,omitempty"`
-	InstanceId             *string                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName           *string                                                    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp             *string                                                    `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp             *string                                                    `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Level                  *string                                                    `json:"Level,omitempty" xml:"Level,omitempty"`
-	OperateErrorCode       *string                                                    `json:"OperateErrorCode,omitempty" xml:"OperateErrorCode,omitempty"`
-	OperateTime            *int64                                                     `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	SaleVersion            *string                                                    `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
-	SecurityEventIds       *string                                                    `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
-	Solution               *string                                                    `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	Stages                 *string                                                    `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	StartTime              *int64                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SuspiciousEventCount   *int32                                                     `json:"SuspiciousEventCount,omitempty" xml:"SuspiciousEventCount,omitempty"`
-	TacticItems            []*DescribeAlarmEventListResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
-	Uuid                   *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DescribeAlarmEventListResponseBodySuspEvents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListResponseBodySuspEvents) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetAlarmEventName(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.AlarmEventName = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetAlarmEventNameOriginal(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.AlarmEventNameOriginal = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetAlarmEventType(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.AlarmEventType = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetAlarmUniqueInfo(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.AlarmUniqueInfo = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetCanBeDealOnLine(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.CanBeDealOnLine = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetCanCancelFault(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.CanCancelFault = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetDataSource(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.DataSource = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetDealed(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Dealed = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetDescription(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetEndTime(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetGmtModified(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetHasTraceInfo(v bool) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.HasTraceInfo = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetInstanceId(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetInstanceName(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetInternetIp(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.InternetIp = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetIntranetIp(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.IntranetIp = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetLevel(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Level = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetOperateErrorCode(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.OperateErrorCode = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetOperateTime(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.OperateTime = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSaleVersion(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.SaleVersion = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSecurityEventIds(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.SecurityEventIds = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSolution(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Solution = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetStages(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Stages = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetStartTime(v int64) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSuspiciousEventCount(v int32) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.SuspiciousEventCount = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetTacticItems(v []*DescribeAlarmEventListResponseBodySuspEventsTacticItems) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.TacticItems = v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEvents) SetUuid(v string) *DescribeAlarmEventListResponseBodySuspEvents {
-	s.Uuid = &v
-	return s
-}
-
-type DescribeAlarmEventListResponseBodySuspEventsTacticItems struct {
-	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
-	TacticId          *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-}
-
-func (s DescribeAlarmEventListResponseBodySuspEventsTacticItems) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListResponseBodySuspEventsTacticItems) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEventsTacticItems) SetTacticDisplayName(v string) *DescribeAlarmEventListResponseBodySuspEventsTacticItems {
-	s.TacticDisplayName = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponseBodySuspEventsTacticItems) SetTacticId(v string) *DescribeAlarmEventListResponseBodySuspEventsTacticItems {
-	s.TacticId = &v
-	return s
-}
-
-type DescribeAlarmEventListResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAlarmEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeAlarmEventListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAlarmEventListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAlarmEventListResponse) SetHeaders(v map[string]*string) *DescribeAlarmEventListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponse) SetStatusCode(v int32) *DescribeAlarmEventListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeAlarmEventListResponse) SetBody(v *DescribeAlarmEventListResponseBody) *DescribeAlarmEventListResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeAlarmEventStackInfoRequest struct {
-	// The name of the event.
-	//
-	// >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the names of events.
-	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ID of the alert event.
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	// The UUID of the server to query.
-	//
-	// >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the UUIDs of servers.
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAlarmEventStackInfoRequest) String() string {
@@ -9359,9 +8918,7 @@ func (s *DescribeAlarmEventStackInfoRequest) SetUuid(v string) *DescribeAlarmEve
 }
 
 type DescribeAlarmEventStackInfoResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The stack information of the alert details.
 	StackInfo *string `json:"StackInfo,omitempty" xml:"StackInfo,omitempty"`
 }
 
@@ -10037,7 +9594,13 @@ func (s *DescribeAntiBruteForceRulesResponse) SetBody(v *DescribeAntiBruteForceR
 }
 
 type DescribeAppVulScanCycleResponseBody struct {
-	Cycle     *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// The scan cycle for application vulnerabilities.
+	//
+	// *   1week
+	// *   2weeks
+	// *   3days
+	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10379,12 +9942,7 @@ func (s *DescribeAssetDetailByUuidResponse) SetBody(v *DescribeAssetDetailByUuid
 }
 
 type DescribeAssetDetailByUuidsRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UUIDs of the ECS instances. Separate multiple UUIDs with commas (,).
+	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -10407,10 +9965,8 @@ func (s *DescribeAssetDetailByUuidsRequest) SetUuids(v string) *DescribeAssetDet
 }
 
 type DescribeAssetDetailByUuidsResponseBody struct {
-	// An array that consists of the details of the ECS instances.
 	AssetList []*DescribeAssetDetailByUuidsResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAssetDetailByUuidsResponseBody) String() string {
@@ -10432,50 +9988,20 @@ func (s *DescribeAssetDetailByUuidsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeAssetDetailByUuidsResponseBodyAssetList struct {
-	// The type of the asset.
-	//
-	// The value is fixed as **0**, which indicates ECS instances.
-	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The status of the Security Center agent. Valid values:
-	//
-	// *   **online**
-	// *   **offline**
-	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	// The type of the asset by source. Valid values:
-	//
-	// *   **0**: The asset is provided by Alibaba Cloud.
-	// *   **1**: The asset is not provided by Alibaba Cloud.
-	// *   **2**: The asset resides in a data center.
-	// *   **3**, **4**, **5**, and **7**: other cloud asset.
-	// *   **8**: light-weight assets.
-	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The ID of the ECS instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ECS instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the ECS instance.
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the ECS instance.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The IP address of the ECS instance.
-	//
-	// >  If the ECS instance has a public IP address, the value of this parameter is the public IP address of the ECS instance. If the ECS instance does not have a public IP address, the value of this parameter is the private IP address of the ECS instance.
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The operating system of the ECS instance.
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The name of the operating system run by the ECS instance.
-	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	// The region in which the ECS instance resides.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The region in which the ECS instance resides.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region in which the ECS instance resides.
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The UUID of the ECS instance.
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	AssetType     *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	ClientStatus  *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	Flag          *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp    *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp    *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Os            *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsName        *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName    *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -10592,8 +10118,10 @@ func (s *DescribeAssetDetailByUuidsResponse) SetBody(v *DescribeAssetDetailByUui
 }
 
 type DescribeAssetSummaryResponseBody struct {
+	// The statistical information about the assets.
 	AssetsSummary *DescribeAssetSummaryResponseBodyAssetsSummary `json:"AssetsSummary,omitempty" xml:"AssetsSummary,omitempty" type:"Struct"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAssetSummaryResponseBody) String() string {
@@ -10615,9 +10143,12 @@ func (s *DescribeAssetSummaryResponseBody) SetRequestId(v string) *DescribeAsset
 }
 
 type DescribeAssetSummaryResponseBodyAssetsSummary struct {
+	// The total number of protected assets in all regions.
 	TotalAssetAllRegion *int32 `json:"TotalAssetAllRegion,omitempty" xml:"TotalAssetAllRegion,omitempty"`
-	TotalCoreAllRegion  *int32 `json:"TotalCoreAllRegion,omitempty" xml:"TotalCoreAllRegion,omitempty"`
-	TotalCoreNum        *int32 `json:"TotalCoreNum,omitempty" xml:"TotalCoreNum,omitempty"`
+	// The total number of cores of protected assets in all regions.
+	TotalCoreAllRegion *int32 `json:"TotalCoreAllRegion,omitempty" xml:"TotalCoreAllRegion,omitempty"`
+	// The total number of cores of protected assets in the current region.
+	TotalCoreNum *int32 `json:"TotalCoreNum,omitempty" xml:"TotalCoreNum,omitempty"`
 }
 
 func (s DescribeAssetSummaryResponseBodyAssetsSummary) String() string {
@@ -10673,11 +10204,37 @@ func (s *DescribeAssetSummaryResponse) SetBody(v *DescribeAssetSummaryResponseBo
 }
 
 type DescribeAssetsSecurityEventSummaryRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	// The ID of the cluster to which the container belongs.
+	//
+	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The key of the condition that is used to query on containers. Valid values:
+	//
+	// *   **instanceId**: the ID of the container instance
+	// *   **clusterId**: the ID of the cluster
+	// *   **regionId**: the region ID of the container
+	// *   **clusterName**: the name of the cluster
+	// *   **image**: the name of the image
+	// *   **imageRepoName**: the name of the image repository
+	// *   **imageRepoNamespace**: the namespace to which the image repository belongs
+	// *   **imageRepoTag**: the tag that is added to the image repository
+	// *   **imageDigest**: the digest of the image
+	// *   **ClusterType**: the type of the cluster
+	// *   **hostIp**: the public IP address
+	// *   **pod**: the pod
+	// *   **podIp**: the IP address of the pod
+	// *   **containerId**: the ID of the container
+	// *   **vulStatus**: whether vulnerabilities are detected on the container
+	// *   **alarmStatus**: whether alerts are generated for the container
+	// *   **riskStatus**: whether risks are detected on the container
+	// *   **riskLevel**: the risk level of the container
+	// *   **containerScope**: the type of the container
+	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	// The value of the condition that is used to query on containers.
 	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
 	ResourceOwnerId     *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The source IP address of the request.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeAssetsSecurityEventSummaryRequest) String() string {
@@ -10714,8 +10271,10 @@ func (s *DescribeAssetsSecurityEventSummaryRequest) SetSourceIp(v string) *Descr
 }
 
 type DescribeAssetsSecurityEventSummaryResponseBody struct {
-	Assets    []*DescribeAssetsSecurityEventSummaryResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of risk information about containers.
+	Assets []*DescribeAssetsSecurityEventSummaryResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAssetsSecurityEventSummaryResponseBody) String() string {
@@ -10737,9 +10296,20 @@ func (s *DescribeAssetsSecurityEventSummaryResponseBody) SetRequestId(v string) 
 }
 
 type DescribeAssetsSecurityEventSummaryResponseBodyAssets struct {
-	AssetType  *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	RiskCount  *int64  `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   **namespace**: namespace
+	// *   **clusters**: cluster
+	// *   **applications**: application
+	// *   **pods**: container group
+	// *   **containers**: container
+	// *   **images**: image
+	// *   **hosts**: node
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The number of assets that are at risk.
+	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// The total number of assets.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAssetsSecurityEventSummaryResponseBodyAssets) String() string {
@@ -10924,9 +10494,7 @@ func (s *DescribeAttackAnalysisDataResponse) SetBody(v *DescribeAttackAnalysisDa
 }
 
 type DescribeAutoDelConfigResponseBody struct {
-	// The number of days during which a detected vulnerability is retained before the vulnerability is automatically deleted.
-	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
-	// The ID of the request.
+	Days      *int32  `json:"Days,omitempty" xml:"Days,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10978,10 +10546,19 @@ func (s *DescribeAutoDelConfigResponse) SetBody(v *DescribeAutoDelConfigResponse
 }
 
 type DescribeBackUpExportInfoRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ExportType  *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of archived information. Valid values:
+	//
+	// *   **suspiciousExport**: alert event
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// The language of the content within the request and response. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeBackUpExportInfoRequest) String() string {
@@ -11013,9 +10590,12 @@ func (s *DescribeBackUpExportInfoRequest) SetPageSize(v int32) *DescribeBackUpEx
 }
 
 type DescribeBackUpExportInfoResponseBody struct {
-	Data      []*DescribeBackUpExportInfoResponseBodyData   `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageInfo  *DescribeBackUpExportInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data []*DescribeBackUpExportInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The pagination information.
+	PageInfo *DescribeBackUpExportInfoResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackUpExportInfoResponseBody) String() string {
@@ -11042,15 +10622,28 @@ func (s *DescribeBackUpExportInfoResponseBody) SetRequestId(v string) *DescribeB
 }
 
 type DescribeBackUpExportInfoResponseBodyData struct {
-	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of exported entries.
+	CurrentCount *int32 `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	// The name of the file.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The time when the export task was created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of the export task.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The URL at which you can download the archived information.
+	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	// The error message that is returned when the export task fails.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The progress percentage of the export task.
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the export task. Valid values:
+	//
+	// *   **init**: The task is being initialized.
+	// *   **exporting**: The task is in progress.
+	// *   **success**: The task is complete.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of entries in the file.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackUpExportInfoResponseBodyData) String() string {
@@ -11107,10 +10700,14 @@ func (s *DescribeBackUpExportInfoResponseBodyData) SetTotalCount(v int32) *Descr
 }
 
 type DescribeBackUpExportInfoResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackUpExportInfoResponseBodyPageInfo) String() string {
@@ -11171,6 +10768,8 @@ func (s *DescribeBackUpExportInfoResponse) SetBody(v *DescribeBackUpExportInfoRe
 }
 
 type DescribeBackupClientsRequest struct {
+	// The region in which the anti-ransomware feature is supported.
+	// > You can call the [DescribeSupportRegion](~~DescribeSupportRegion~~) operation to query the regions in which the anti-ransomware feature is supported.
 	SupportRegionId *string `json:"SupportRegionId,omitempty" xml:"SupportRegionId,omitempty"`
 }
 
@@ -11188,8 +10787,10 @@ func (s *DescribeBackupClientsRequest) SetSupportRegionId(v string) *DescribeBac
 }
 
 type DescribeBackupClientsResponseBody struct {
-	Clients   []*DescribeBackupClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of the information about the anti-ransomware agent.
+	Clients []*DescribeBackupClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupClientsResponseBody) String() string {
@@ -11211,11 +10812,25 @@ func (s *DescribeBackupClientsResponseBody) SetRequestId(v string) *DescribeBack
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientStatus  *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// The ID of the anti-ransomware agent.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The status of the anti-ransomware agent.
+	//
+	// Valid values:
+	//
+	// *   **INSTALLING**: The agent is being installed.
+	// *   **ONLINE**: The agent is online.
+	// *   **UNINSTALLING**: The agent is being uninstalled.
+	// *   **NOT_INSTALLED**: The agent is not installed.
+	// *   **ACTIVATED**: The agent is enabled.
+	// *   **CLIENT\_CONNECTION_ERROR**: A connection error occurs on the agent.
+	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// The version of the anti-ransomware agent.
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The ID of the ECS instance on which the anti-ransomware agent is installed.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The UUID of the Elastic Compute Service (ECS) instance on which the anti-ransomware agent is installed.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeBackupClientsResponseBodyClients) String() string {
@@ -11667,11 +11282,20 @@ func (s *DescribeBackupMachineStatusResponse) SetBody(v *DescribeBackupMachineSt
 }
 
 type DescribeBackupPoliciesRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of the page to return. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the anti-ransomware policy that you want to query.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the anti-ransomware policy. Valid values:
+	//
+	// *   **enabled**: The anti-ransomware policy is manually enabled.
+	// *   **disabled**: The anti-ransomware policy is manually disabled. After an anti-ransomware policy is disabled, the data backup task that is running based on the policy stops.
+	// *   **closed**: The anti-ransomware policy automatically stops because the anti-ransomware capacity is insufficient.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupPoliciesRequest) String() string {
@@ -11708,9 +11332,12 @@ func (s *DescribeBackupPoliciesRequest) SetStatus(v string) *DescribeBackupPolic
 }
 
 type DescribeBackupPoliciesResponseBody struct {
-	PageInfo  *DescribeBackupPoliciesResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	Policies  []*DescribeBackupPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeBackupPoliciesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// An array that consists of the anti-ransomware policies returned.
+	Policies []*DescribeBackupPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupPoliciesResponseBody) String() string {
@@ -11737,10 +11364,14 @@ func (s *DescribeBackupPoliciesResponseBody) SetRequestId(v string) *DescribeBac
 }
 
 type DescribeBackupPoliciesResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of anti-ransomware policies returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackupPoliciesResponseBodyPageInfo) String() string {
@@ -11772,23 +11403,88 @@ func (s *DescribeBackupPoliciesResponseBodyPageInfo) SetTotalCount(v int32) *Des
 }
 
 type DescribeBackupPoliciesResponseBodyPolicies struct {
-	ClientErrorCount     *int32    `json:"ClientErrorCount,omitempty" xml:"ClientErrorCount,omitempty"`
-	ClientErrorUuidList  []*string `json:"ClientErrorUuidList,omitempty" xml:"ClientErrorUuidList,omitempty" type:"Repeated"`
-	ClientStatus         *string   `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
-	HealthClientCount    *int32    `json:"HealthClientCount,omitempty" xml:"HealthClientCount,omitempty"`
+	// The number of the servers on which the anti-ransomware agent is in an abnormal state.
+	ClientErrorCount *int32 `json:"ClientErrorCount,omitempty" xml:"ClientErrorCount,omitempty"`
+	// The UUIDs of the servers on which the anti-ransomware agent is in an **abnormal** state.
+	ClientErrorUuidList []*string `json:"ClientErrorUuidList,omitempty" xml:"ClientErrorUuidList,omitempty" type:"Repeated"`
+	// The status of the anti-ransomware agent. Valid values:
+	//
+	// *   **running**: normal
+	// *   **exception**: abnormal
+	ClientStatus *string `json:"ClientStatus,omitempty" xml:"ClientStatus,omitempty"`
+	// The number of the servers on which the anti-ransomware agent is in a normal state.
+	HealthClientCount *int32 `json:"HealthClientCount,omitempty" xml:"HealthClientCount,omitempty"`
+	// The UUIDs of the servers on which the anti-ransomware agent is in a **normal** state.
 	HealthClientUuidList []*string `json:"HealthClientUuidList,omitempty" xml:"HealthClientUuidList,omitempty" type:"Repeated"`
-	Id                   *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Policy               *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PolicyRegionId       *string   `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
-	PolicyVersion        *string   `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	RemarkedUuidList     []*string `json:"RemarkedUuidList,omitempty" xml:"RemarkedUuidList,omitempty" type:"Repeated"`
-	ServerType           *string   `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	ServiceErrorCount    *int32    `json:"ServiceErrorCount,omitempty" xml:"ServiceErrorCount,omitempty"`
+	// The ID of the anti-ransomware policy.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the anti-ransomware policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations of the anti-ransomware policy. The value of this parameter is in the JSON format and contains the following fields:
+	//
+	// *   **IsDefault**: the type of the anti-ransomware policy. Valid values:
+	//
+	//     *   **1**: recommended policy
+	//     *   **0**: custom policy
+	//
+	// *   **Include**: the format of the files that are protected. If the value of this field is \[], all formats of files are protected.
+	//
+	// *   **Source**: the directory that is protected. If the value of this field is \[], all directories are protected.
+	//
+	// *   **ExcludeSystemPath**: indicates whether a specified directory is excluded from the anti-ransomware policy. If the value of this field is **true**, the directory is excluded. If this field is left empty, no directories are excluded.
+	//
+	// *   **Exclude**: the directory that is excluded from the anti-ransomware policy. If no directory is specified, the value of this field is \[].
+	//
+	// *   **Schedule**: the start time and interval of a data backup task. A start time that begins during off-peak hours but does not start on the hour is recommended. Examples:
+	//
+	//     *   If the value of this field is I|1583216092|P21D, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of three weeks.
+	//     *   If the value of this field is I|1583216092|PT24H, the data backup task starts from 2020-03-03 14:14:52, and the task is run at an interval of 24 hours.
+	//
+	// *   **Retention**: the period during which backup data is retained. Unit: days. If the value of this field is 7, backup data is retained for a week. If the value of this field is 365, backup data is retained for a year. If the value of this field is -1, backup data is permanently retained.
+	//
+	// *   **SpeedLimiter**: the limit on the network bandwidth for data backup tasks. If the value of this field is 0:24:30720, the maximum bandwidth for a data backup task is 30 MB/s from 00:00 to 24:00.
+	//
+	// *   **UseVss**: indicates whether the VSS feature is enabled. The feature is available only for Windows servers. Valid values:
+	//
+	//     *   **true**: yes
+	//     *   **false**: no
+	//
+	// >  The VSS feature is available only if you create the anti-ransomware policy for Windows servers. After you enable the feature, the number of backup failures due to running processes is significantly reduced. We recommend that you enable the VSS feature. After you enable the feature, the data of disks that are in the exFAT and FAT32 formats cannot be backed up.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The ID of the region that you specified for data backup when you installed the anti-ransomware agent for the server not deployed on Alibaba Cloud.
+	PolicyRegionId *string `json:"PolicyRegionId,omitempty" xml:"PolicyRegionId,omitempty"`
+	// The version of the anti-ransomware policy. Valid values:
+	//
+	// *   1.0.0
+	// *   2.0.0
+	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+	// The UUIDs that are returned based on the value of the MachineRemark request parameter.
+	RemarkedUuidList []*string `json:"RemarkedUuidList,omitempty" xml:"RemarkedUuidList,omitempty" type:"Repeated"`
+	// The type of the server. Valid values:
+	//
+	// *   **OUT_CLOUD**: server not deployed on Alibaba Cloud
+	// *   **ALIYUN**: Elastic Compute Service (ECS) instance
+	// *   **TRIPARTITE**: simple application server
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The number of servers on which data backup is exceptional.
+	ServiceErrorCount *int32 `json:"ServiceErrorCount,omitempty" xml:"ServiceErrorCount,omitempty"`
+	// The UUIDs of the servers on which data backup is exceptional.
 	ServiceErrorUuidList []*string `json:"ServiceErrorUuidList,omitempty" xml:"ServiceErrorUuidList,omitempty" type:"Repeated"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpgradeStatus        *string   `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
-	UuidList             []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+	// The status of the anti-ransomware policy. Valid values:
+	//
+	// *   **enabled**: The anti-ransomware policy is manually enabled.
+	// *   **disabled**: The anti-ransomware policy is manually disabled. After an anti-ransomware policy is disabled, the data backup task that is running based on the policy stops.
+	// *   **closed**: The anti-ransomware policy automatically stops because the anti-ransomware capacity is insufficient.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The upgrade status of the anti-ransomware policy. Valid values:
+	//
+	// *   **NotUpgraded**
+	// *   **Upgrading**
+	// *   **UpgradeFailed**
+	// *   **UpgradeSuccess**
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
+	// The UUIDs of the servers to which the anti-ransomware policy is applied.
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackupPoliciesResponseBodyPolicies) String() string {
@@ -12117,7 +11813,7 @@ func (s *DescribeBackupRestoreCountResponse) SetBody(v *DescribeBackupRestoreCou
 }
 
 type DescribeBruteForceRecordsRequest struct {
-	// The IP address that is blocked by the defense rule.
+	// The IP address that is blocked.
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
 	// The number of the page to return.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -12200,11 +11896,11 @@ func (s *DescribeBruteForceRecordsResponseBody) SetRequestId(v string) *Describe
 type DescribeBruteForceRecordsResponseBodyMachineList struct {
 	// The timestamp when the block action on the IP address becomes invalid.
 	BlockExpireDate *int64 `json:"BlockExpireDate,omitempty" xml:"BlockExpireDate,omitempty"`
-	// The IP address that is blocked.
+	// The blocked IP address.
 	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	// The error code returned when the defense rule fails to block an IP address.
+	// The error code returned when the defense rule fails to block the IP address.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The primary key ID of the database.
+	// The ID of the primary key in the table of records on the blocked IP address.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the server.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -12466,7 +12162,6 @@ func (s *DescribeBruteForceSummaryResponse) SetBody(v *DescribeBruteForceSummary
 }
 
 type DescribeCheckEcsWarningsRequest struct {
-	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -12484,23 +12179,9 @@ func (s *DescribeCheckEcsWarningsRequest) SetSourceIp(v string) *DescribeCheckEc
 }
 
 type DescribeCheckEcsWarningsResponseBody struct {
-	// Indicates whether you use the free trial of Security Center. Valid values:
-	//
-	// *   **0**: no
-	// *   **1**: yes
-	CanTry *string `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The edition of Security Center that you use. Valid values:
-	//
-	// *   **1**: Basic edition
-	// *   **2** or **3**: Enterprise edition
-	// *   **5**: Advanced edition
-	// *   **6**: Anti-virus edition
-	//
-	// >  Both the value 2 and the value 3 indicate the Enterprise edition.
-	SasVersion *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
-	// The number of weak passwords that can cause high risks to your assets.
+	CanTry            *string `json:"CanTry,omitempty" xml:"CanTry,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SasVersion        *string `json:"SasVersion,omitempty" xml:"SasVersion,omitempty"`
 	WeakPasswordCount *string `json:"WeakPasswordCount,omitempty" xml:"WeakPasswordCount,omitempty"`
 }
 
@@ -12848,17 +12529,9 @@ func (s *DescribeCheckFixDetailsResponse) SetBody(v *DescribeCheckFixDetailsResp
 }
 
 type DescribeCheckWarningDetailRequest struct {
-	// The ID of the alert that is triggered by the check item.
-	//
-	// >  To query the details about a specified check item, you must provide the ID of the alert that is triggered by the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of alerts.
-	CheckWarningId *int64 `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
-	// The language of the content within the request and the response. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	CheckWarningId *int64  `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeCheckWarningDetailRequest) String() string {
@@ -12885,26 +12558,14 @@ func (s *DescribeCheckWarningDetailRequest) SetSourceIp(v string) *DescribeCheck
 }
 
 type DescribeCheckWarningDetailResponseBody struct {
-	// The suggestion for the management of the risk item.
-	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
-	// The ID of the check item.
-	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The additional information about the risk item.
+	Advice      *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	CheckId     *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the check item.
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The risk level of the check item. Valid values:
-	//
-	// *   **high**: The item is a high-risk item and is highlighted in red.
-	// *   **medium**: The item is a medium-risk item and is highlighted in orange.
-	// *   **low**: The item is a low-risk item and is highlighted in gray.
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The prompt for the risk item.
-	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the check item. Valid values:
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Item        *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Prompt      *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCheckWarningDetailResponseBody) String() string {
@@ -12985,27 +12646,10 @@ func (s *DescribeCheckWarningDetailResponse) SetBody(v *DescribeCheckWarningDeta
 }
 
 type DescribeCheckWarningMachinesRequest struct {
-	// The ID of the check item.
-	//
-	// > You can call the [DescribeCheckWarningSummary](~~116179~~) operation to query the IDs of check items.
-	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the baseline.
-	//
-	// > You can call the [DescribeCheckWarningSummary](~~116179~~) operation to query the IDs of baselines.
-	RiskId *int64 `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
-	// The status of the check item.
-	//
-	// > This parameter indicates the status of the check item. Valid values:
-	//
-	// *   1: failed
-	//
-	// *   3: passed
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CheckId *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RiskId  *int64  `json:"RiskId,omitempty" xml:"RiskId,omitempty"`
+	Status  *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCheckWarningMachinesRequest) String() string {
@@ -13037,12 +12681,9 @@ func (s *DescribeCheckWarningMachinesRequest) SetStatus(v int32) *DescribeCheckW
 }
 
 type DescribeCheckWarningMachinesResponseBody struct {
-	// The number of the servers.
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// An array consisting of the servers on which the same risk item is detected.
-	Machines []*DescribeCheckWarningMachinesResponseBodyMachines `json:"Machines,omitempty" xml:"Machines,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Count     *int32                                              `json:"Count,omitempty" xml:"Count,omitempty"`
+	Machines  []*DescribeCheckWarningMachinesResponseBodyMachines `json:"Machines,omitempty" xml:"Machines,omitempty" type:"Repeated"`
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCheckWarningMachinesResponseBody) String() string {
@@ -13069,23 +12710,13 @@ func (s *DescribeCheckWarningMachinesResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeCheckWarningMachinesResponseBodyMachines struct {
-	// Indicates whether Security Center is authorized to protect the asset. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
-	// The ID of the server.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the server.
+	Bind         *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the server.
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the server.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the region in which the server resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The UUID of the server.
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeCheckWarningMachinesResponseBodyMachines) String() string {
@@ -14298,10 +13929,8 @@ func (s *DescribeCloudCenterInstancesResponse) SetBody(v *DescribeCloudCenterIns
 }
 
 type DescribeCloudProductFieldStatisticsResponseBody struct {
-	// The statistics of cloud services.
 	GroupedFields *DescribeCloudProductFieldStatisticsResponseBodyGroupedFields `json:"GroupedFields,omitempty" xml:"GroupedFields,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCloudProductFieldStatisticsResponseBody) String() string {
@@ -14323,18 +13952,9 @@ func (s *DescribeCloudProductFieldStatisticsResponseBody) SetRequestId(v string)
 }
 
 type DescribeCloudProductFieldStatisticsResponseBodyGroupedFields struct {
-	// The statistics of the numbers of assets of different types. **MachineType** indicates the type of the assets. **Count** indicates the number of assets that belong to the type.
-	// Valid values of **MachineType**:
-	//
-	// *   **1**: a Server Load Balancer (SLB) instance
-	// *   **2**: a Network Address Translation (NAT) gateway
-	// *   **3**: an ApsaraDB RDS instance
-	// *   **4**: an ApsaraDB for MongoDB instance
-	CategoryCount *string `json:"CategoryCount,omitempty" xml:"CategoryCount,omitempty"`
-	// The total number of cloud services that are protected by Security Center.
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The number of cloud services that are at risk.
-	RiskInstanceCount *int32 `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
+	CategoryCount     *string `json:"CategoryCount,omitempty" xml:"CategoryCount,omitempty"`
+	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	RiskInstanceCount *int32  `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
 }
 
 func (s DescribeCloudProductFieldStatisticsResponseBodyGroupedFields) String() string {
@@ -14390,19 +14010,9 @@ func (s *DescribeCloudProductFieldStatisticsResponse) SetBody(v *DescribeCloudPr
 }
 
 type DescribeClusterBasicInfoRequest struct {
-	// The ID of the cluster that you want to query.
-	//
-	// > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The dimension from which you want to configure the feature. Valid values:
-	//
-	// *   **Cluster**: the ID of the cluster
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of the feature. Valid values:
-	//
-	// *   **containerNetwork**: container network topology
-	// *   **interceptionSwitch**: cluster microsegmentation
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeClusterBasicInfoRequest) String() string {
@@ -14429,10 +14039,8 @@ func (s *DescribeClusterBasicInfoRequest) SetType(v string) *DescribeClusterBasi
 }
 
 type DescribeClusterBasicInfoResponseBody struct {
-	// The detailed information about the cluster.
 	ClusterInfo *DescribeClusterBasicInfoResponseBodyClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClusterBasicInfoResponseBody) String() string {
@@ -14454,38 +14062,15 @@ func (s *DescribeClusterBasicInfoResponseBody) SetRequestId(v string) *DescribeC
 }
 
 type DescribeClusterBasicInfoResponseBodyClusterInfo struct {
-	// The ID of cluster.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the cluster.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values:
-	//
-	// *   **ManagedKubernetes**: managed Kubernetes cluster
-	// *   **NotManagedKubernetes**: non-managed Kubernetes cluster
-	// *   **PrivateKubernetes**: private cluster
-	// *   **kubernetes**: dedicated Kubernetes cluster
-	// *   **ask**: dedicated ASK cluster
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The timestamp when the cluster was created. Unit: milliseconds.
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The version of the cluster.
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType    *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The number of instances in the cluster.
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the region in which the cluster is deployed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the cluster. Valid values:
-	//
-	// *   **unavailable**
-	// *   **Available**
-	// *   **Creating**
-	// *   **CreateFailed**
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Indicates whether the cluster is enabled. Valid values:
-	//
-	// *   **true**: The cluster is enabled.
-	// *   **false**: The cluster is disabled.
-	TargetResult *bool `json:"TargetResult,omitempty" xml:"TargetResult,omitempty"`
+	InstanceCount  *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+	TargetResult   *bool   `json:"TargetResult,omitempty" xml:"TargetResult,omitempty"`
 }
 
 func (s DescribeClusterBasicInfoResponseBodyClusterInfo) String() string {
@@ -15280,80 +14865,7 @@ func (s *DescribeCommonOverallConfigResponse) SetBody(v *DescribeCommonOverallCo
 }
 
 type DescribeCommonOverallConfigListRequest struct {
-	// The source IP address of the request.
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the feature in proactive defense. Valid values:
-	//
-	// *   **kdump_switch**: Active defense experience optimization
-	// *   **threat_detect**: Dynamic adaptive threat detection capability
-	// *   **suspicious_aggregation**: Alert Association
-	// *   **alidetect**: File Test
-	// *   **USER-ENABLE-SWITCH-TYPE\_38857**: Entrance service execution high-risk operation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50858**: Web service performs high-risk operations (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50859**: Entrance service execution suspicious operation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50862**: Cloud Assistant Advanced Protection (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50867**: Create malicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50868**: Create suspicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_64025**: Ingress service execute command \[enhanced mode] (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51229**: Browser service execution a high-risk operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51230**: Entrance service execution suspicious operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51232**: System processes execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51233**: Java service execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51234**: Office components execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51235**: Web service performs high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52820**: Create malicious files (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52826**: Entrance service execution high-risk operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_55251**: Database services execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_63725**: Ingress service implants suspicious script/binary file (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_3277**: Suspicious process startup (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50983**: obfuscated command (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51200**: Command line download and run malicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_71131**: Ingress service executes sequence of suspicious behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51225**: Powershell executes high-risk commands (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51226**: Powershell execute suspicious command (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52821**: Suspicious process startup (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57242**: Malicious command execution (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57340**: Command line download and run malicious files (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_39659**: Sensitive Registry Key Protection (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52816**: high-risk account manipulation behavior (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54365**: Create service autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54366**: Create high-risk autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54367**: Create scheduled task autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54368**: Create registry autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54369**: Create WMI autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50869**: Unauthorized execution of high-risk orders (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_53272**: Exploiting Kernel Vulnerabilities to Elevate Privileges (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54395**: Unauthorized reading and writing of sensitive files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57897**: suspected privilege escalation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52825**: Unauthorized execution of high-risk orders (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_5507**: malicious drivers (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50876**: Against security software (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_53168**: process debugging (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54699**: Hijack dynamic link library (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_62981**: Bypassing security monitoring (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52815**: Load high-risk drivers (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52823**: Running high-risk ARK tools (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54373**: Against security software (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54374**: Intrusion trace cleanup (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54265**: Hijacking the PAM Module (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54953**: Hashdump Attack (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54383**: MimiKatz Credential Stealing (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54384**: Hashdump Attack (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50861**: Information detection (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52818**: Information detection (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54034**: Intranet scan (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51228**: High-risk lateral penetration tools (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50870**: Rebound Shell (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50873**: WebShell execute command
-	// *   **USER-ENABLE-SWITCH-TYPE\_51236**: Rebound Shell (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50877**: Malicious soft communication (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50884**: Suspicious worm script behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50885**: malicious script behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51201**: ransomware (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51202**: Suspected Extortion (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52827**: ransomware (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52828**: Suspected Extortion (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52829**: delete system backup behavior (Windows)
+	SourceIp *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 
@@ -15376,10 +14888,8 @@ func (s *DescribeCommonOverallConfigListRequest) SetTypeList(v []*string) *Descr
 }
 
 type DescribeCommonOverallConfigListResponseBody struct {
-	// An array that consists of the configurations of features.
 	OverallList []*DescribeCommonOverallConfigListResponseBodyOverallList `json:"OverallList,omitempty" xml:"OverallList,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCommonOverallConfigListResponseBody) String() string {
@@ -15401,86 +14911,9 @@ func (s *DescribeCommonOverallConfigListResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeCommonOverallConfigListResponseBodyOverallList struct {
-	// The status of the feature. Valid values:
-	//
-	// *   **off**: disabled
-	// *   **on**: enabled
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The type of the feature in proactive defense. Valid values:
-	//
-	// *   **kdump_switch**: Active defense experience optimization
-	// *   **threat_detect**: Dynamic adaptive threat detection capability
-	// *   **suspicious_aggregation**: Alert Association
-	// *   **alidetect**: File Test
-	// *   **USER-ENABLE-SWITCH-TYPE\_38857**: Entrance service execution high-risk operation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50858**: Web service performs high-risk operations (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50859**: Entrance service execution suspicious operation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50862**: Cloud Assistant Advanced Protection (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50867**: Create malicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50868**: Create suspicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_64025**: Ingress service execute command \[enhanced mode] (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51229**: Browser service execution a high-risk operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51230**: Entrance service execution suspicious operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51232**: System processes execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51233**: Java service execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51234**: Office components execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51235**: Web service performs high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52820**: Create malicious files (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52826**: Entrance service execution high-risk operation (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_55251**: Database services execution high-risk operations (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_63725**: Ingress service implants suspicious script/binary file (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_3277**: Suspicious process startup (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50983**: obfuscated command (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51200**: Command line download and run malicious files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_71131**: Ingress service executes sequence of suspicious behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51225**: Powershell executes high-risk commands (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51226**: Powershell execute suspicious command (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52821**: Suspicious process startup (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57242**: Malicious command execution (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57340**: Command line download and run malicious files (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_39659**: Sensitive Registry Key Protection (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52816**: high-risk account manipulation behavior (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54365**: Create service autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54366**: Create high-risk autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54367**: Create scheduled task autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54368**: Create registry autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54369**: Create WMI autorun item (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50869**: Unauthorized execution of high-risk orders (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_53272**: Exploiting Kernel Vulnerabilities to Elevate Privileges (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54395**: Unauthorized reading and writing of sensitive files (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_57897**: suspected privilege escalation (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52825**: Unauthorized execution of high-risk orders (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_5507**: malicious drivers (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50876**: Against security software (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_53168**: process debugging (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54699**: Hijack dynamic link library (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_62981**: Bypassing security monitoring (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52815**: Load high-risk drivers (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52823**: Running high-risk ARK tools (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54373**: Against security software (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54374**: Intrusion trace cleanup (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54265**: Hijacking the PAM Module (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54953**: Hashdump Attack (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54383**: MimiKatz Credential Stealing (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54384**: Hashdump Attack (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50861**: Information detection (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52818**: Information detection (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_54034**: Intranet scan (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51228**: High-risk lateral penetration tools (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50870**: Rebound Shell (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50873**: WebShell execute command
-	// *   **USER-ENABLE-SWITCH-TYPE\_51236**: Rebound Shell (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50877**: Malicious soft communication (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50884**: Suspicious worm script behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_50885**: malicious script behavior (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51201**: ransomware (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_51202**: Suspected Extortion (Linux)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52827**: ransomware (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52828**: Suspected Extortion (Windows)
-	// *   **USER-ENABLE-SWITCH-TYPE\_52829**: delete system backup behavior (Windows)
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCommonOverallConfigListResponseBodyOverallList) String() string {
@@ -15929,10 +15362,30 @@ func (s *DescribeContainerCriteriaResponse) SetBody(v *DescribeContainerCriteria
 }
 
 type DescribeContainerInstancesRequest struct {
-	Criteria    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LogicalExp  *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search conditions that are used to filter containers. The value of this parameter is in the JSON format and is case-sensitive. The value contains the following fields:
+	//
+	// *   **name**: the search condition.
+	//
+	// *   **name**: the value of the search condition.
+	//
+	// *   **logicalExp**: the logical relationship among multiple search conditions. Valid values:
+	//
+	//     *   **OR**: Search conditions are evaluated by using a logical **OR**.
+	//     *   **AND**: Search conditions are evaluated by using a logical **AND**.
+	//
+	// > You can use search conditions such as the container ID, cluster ID, cluster name, cluster type, risk level, and region. You can call the [DescribeContainerCriteria](~~DescribeContainerCriteria~~) operation to query the supported search conditions.
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The logical operator that you want to use to evaluate multiple search conditions. Valid values:
+	//
+	// *   **OR**: Search conditions are evaluated by using a logical **OR**.
+	// *   **AND**: Search conditions are evaluated by using a logical **AND**.
+	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	//
+	// > We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeContainerInstancesRequest) String() string {
@@ -15964,9 +15417,12 @@ func (s *DescribeContainerInstancesRequest) SetPageSize(v int32) *DescribeContai
 }
 
 type DescribeContainerInstancesResponseBody struct {
+	// An array that consists of the information about containers.
 	ContainerInstanceList []*DescribeContainerInstancesResponseBodyContainerInstanceList `json:"ContainerInstanceList,omitempty" xml:"ContainerInstanceList,omitempty" type:"Repeated"`
-	PageInfo              *DescribeContainerInstancesResponseBodyPageInfo                `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeContainerInstancesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContainerInstancesResponseBody) String() string {
@@ -15993,35 +15449,76 @@ func (s *DescribeContainerInstancesResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeContainerInstancesResponseBodyContainerInstanceList struct {
-	AlarmCount         *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	AlarmStatus        *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ContainerId        *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	CreateTimestamp    *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	HcCount            *int32  `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
-	HcStatus           *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	HostIp             *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	Image              *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageDigest        *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
-	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageRepoName      *string `json:"ImageRepoName,omitempty" xml:"ImageRepoName,omitempty"`
+	// The number of alerts.
+	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
+	// Indicates whether alerts are generated for the container. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The ID of the container.
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The timestamp when the cluster was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The number of baseline risks.
+	HcCount *int32 `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
+	// Indicates whether baseline risks are detected. Valid values:
+	//
+	// *   **NO**
+	// *   **YES**
+	HcStatus *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	// The IP address of the server.
+	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	// The image of the container.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The digest value of the image.
+	ImageDigest *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image repository.
+	ImageRepoName *string `json:"ImageRepoName,omitempty" xml:"ImageRepoName,omitempty"`
+	// The namespace to which the image repository belongs.
 	ImageRepoNamespace *string `json:"ImageRepoNamespace,omitempty" xml:"ImageRepoNamespace,omitempty"`
-	ImageRepoTag       *string `json:"ImageRepoTag,omitempty" xml:"ImageRepoTag,omitempty"`
-	ImageUuid          *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NodeInfo           *string `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty"`
-	NodeName           *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Pod                *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	PodIp              *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RiskCount          *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	RiskStatus         *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	UpdateMark         *string `json:"UpdateMark,omitempty" xml:"UpdateMark,omitempty"`
-	VulCount           *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	VulStatus          *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	// The tag that is added to the image.
+	ImageRepoTag *string `json:"ImageRepoTag,omitempty" xml:"ImageRepoTag,omitempty"`
+	// The UUID of the image.
+	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	// The instance ID of the asset.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The node information.
+	NodeInfo *string `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty"`
+	// The name of the node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The pod.
+	Pod *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	// The IP address of the pod.
+	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	// The region ID of the container.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of risks.
+	RiskCount *string `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
+	// Indicates whether risks exist. Valid values:
+	//
+	// *   **NO**
+	// *   **YES**
+	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	// The update identifier of the container.
+	UpdateMark *string `json:"UpdateMark,omitempty" xml:"UpdateMark,omitempty"`
+	// The number of vulnerabilities that are detected in the container cluster.
+	VulCount *int32 `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	// Indicates whether vulnerabilities are detected in the container. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	VulStatus *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
 }
 
 func (s DescribeContainerInstancesResponseBodyContainerInstanceList) String() string {
@@ -16178,10 +15675,14 @@ func (s *DescribeContainerInstancesResponseBodyContainerInstanceList) SetVulStat
 }
 
 type DescribeContainerInstancesResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeContainerInstancesResponseBodyPageInfo) String() string {
@@ -16242,6 +15743,9 @@ func (s *DescribeContainerInstancesResponse) SetBody(v *DescribeContainerInstanc
 }
 
 type DescribeContainerStatisticsRequest struct {
+	// The ID of the container cluster.
+	//
+	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -16259,8 +15763,10 @@ func (s *DescribeContainerStatisticsRequest) SetClusterId(v string) *DescribeCon
 }
 
 type DescribeContainerStatisticsResponseBody struct {
-	Data      *DescribeContainerStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The alert statistics of container assets.
+	Data *DescribeContainerStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeContainerStatisticsResponseBody) String() string {
@@ -16282,12 +15788,18 @@ func (s *DescribeContainerStatisticsResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeContainerStatisticsResponseBodyData struct {
-	RemindAlarmCount     *int32 `json:"RemindAlarmCount,omitempty" xml:"RemindAlarmCount,omitempty"`
-	SeriousAlarmCount    *int32 `json:"SeriousAlarmCount,omitempty" xml:"SeriousAlarmCount,omitempty"`
+	// The number of alerts whose risk level is **Reminder**.
+	RemindAlarmCount *int32 `json:"RemindAlarmCount,omitempty" xml:"RemindAlarmCount,omitempty"`
+	// The number of alerts whose risk level is **Urgent**.
+	SeriousAlarmCount *int32 `json:"SeriousAlarmCount,omitempty" xml:"SeriousAlarmCount,omitempty"`
+	// The number of alerts whose risk level is **Suspicious**.
 	SuspiciousAlarmCount *int32 `json:"SuspiciousAlarmCount,omitempty" xml:"SuspiciousAlarmCount,omitempty"`
-	TotalAlarmCount      *int32 `json:"TotalAlarmCount,omitempty" xml:"TotalAlarmCount,omitempty"`
-	TotalNode            *int32 `json:"TotalNode,omitempty" xml:"TotalNode,omitempty"`
-	HasRiskNode          *int32 `json:"hasRiskNode,omitempty" xml:"hasRiskNode,omitempty"`
+	// The total number of alerts that are generated in the current container cluster.
+	TotalAlarmCount *int32 `json:"TotalAlarmCount,omitempty" xml:"TotalAlarmCount,omitempty"`
+	// The total number of nodes in the current container cluster.
+	TotalNode *int32 `json:"TotalNode,omitempty" xml:"TotalNode,omitempty"`
+	// The number of nodes on which alerts are generated in the current container cluster.
+	HasRiskNode *int32 `json:"hasRiskNode,omitempty" xml:"hasRiskNode,omitempty"`
 }
 
 func (s DescribeContainerStatisticsResponseBodyData) String() string {
@@ -16515,8 +16027,10 @@ func (s *DescribeCountNotScannedImageResponse) SetBody(v *DescribeCountNotScanne
 }
 
 type DescribeCountScannedImageResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScannedCount *int32  `json:"ScannedCount,omitempty" xml:"ScannedCount,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of images that are scanned.
+	ScannedCount *int32 `json:"ScannedCount,omitempty" xml:"ScannedCount,omitempty"`
 }
 
 func (s DescribeCountScannedImageResponseBody) String() string {
@@ -16683,11 +16197,19 @@ func (s *DescribeCriteriaResponse) SetBody(v *DescribeCriteriaResponseBody) *Des
 }
 
 type DescribeCustomBlockRecordsRequest struct {
-	BlockIp         *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status          *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IP address that you want to block by using the defense rule.
+	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page. Default value: **20**.
+	PageSize        *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The status of the defense rule. Valid values:
+	//
+	// *   **0**: invalid
+	// *   **1**: enabled
+	// *   **2**: failed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCustomBlockRecordsRequest) String() string {
@@ -16724,9 +16246,12 @@ func (s *DescribeCustomBlockRecordsRequest) SetStatus(v int32) *DescribeCustomBl
 }
 
 type DescribeCustomBlockRecordsResponseBody struct {
-	PageInfo   *DescribeCustomBlockRecordsResponseBodyPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeCustomBlockRecordsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// An array that consists of the defense rules.
 	RecordList []*DescribeCustomBlockRecordsResponseBodyRecordList `json:"RecordList,omitempty" xml:"RecordList,omitempty" type:"Repeated"`
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCustomBlockRecordsResponseBody) String() string {
@@ -16753,10 +16278,14 @@ func (s *DescribeCustomBlockRecordsResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeCustomBlockRecordsResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCustomBlockRecordsResponseBodyPageInfo) String() string {
@@ -16788,15 +16317,31 @@ func (s *DescribeCustomBlockRecordsResponseBodyPageInfo) SetTotalCount(v int32) 
 }
 
 type DescribeCustomBlockRecordsResponseBodyRecordList struct {
-	BlockExpireDate *int64                                                        `json:"BlockExpireDate,omitempty" xml:"BlockExpireDate,omitempty"`
-	BlockIp         *string                                                       `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
-	Bound           *string                                                       `json:"Bound,omitempty" xml:"Bound,omitempty"`
-	EnableCount     *int32                                                        `json:"EnableCount,omitempty" xml:"EnableCount,omitempty"`
-	Id              *int64                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	ServerCount     *int32                                                        `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	Source          *string                                                       `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status          *int32                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetList      []*DescribeCustomBlockRecordsResponseBodyRecordListTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	// The timestamp when the defense rule expires.
+	BlockExpireDate *int64 `json:"BlockExpireDate,omitempty" xml:"BlockExpireDate,omitempty"`
+	// The blocked IP address.
+	BlockIp *string `json:"BlockIp,omitempty" xml:"BlockIp,omitempty"`
+	// The direction of the traffic that is sent by the blocked IP address. Valid values:
+	//
+	// *   **in**: inbound
+	// *   **out**: outbound
+	Bound *string `json:"Bound,omitempty" xml:"Bound,omitempty"`
+	// The number of servers to which the defense rule is applied.
+	EnableCount *int32 `json:"EnableCount,omitempty" xml:"EnableCount,omitempty"`
+	// The ID of the defense rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The total number of servers on which the IP address is blocked.
+	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	// The source of the defense rule. Valid values:
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the defense rule. Valid values:
+	//
+	// *   **0**: invalid
+	// *   **1**: enabled
+	// *   **2**: failed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// An array consisting of the servers to which the defense rule is applied.
+	TargetList []*DescribeCustomBlockRecordsResponseBodyRecordListTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCustomBlockRecordsResponseBodyRecordList) String() string {
@@ -16853,7 +16398,11 @@ func (s *DescribeCustomBlockRecordsResponseBodyRecordList) SetTargetList(v []*De
 }
 
 type DescribeCustomBlockRecordsResponseBodyRecordListTargetList struct {
-	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The ID of the server.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The type of the query condition. Valid values:
+	//
+	// *   **uuid**: the ID of an asset
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -16907,19 +16456,19 @@ func (s *DescribeCustomBlockRecordsResponse) SetBody(v *DescribeCustomBlockRecor
 type DescribeCycleTaskListRequest struct {
 	// The number of the page to return.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
+	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the task. Valid values:
 	//
-	// *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// *   **VIRUS\_VUL\_SCHEDULE_SCAN**: virus scan task
 	// *   **IMAGE_SCAN**: image scan task
-	// *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// *   **EMG\_VUL\_SCHEDULE_SCAN**: urgent vulnerability scan task
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the task. Valid values:
 	//
-	// *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// *   **VIRUS\_VUL\_SCHEDULE_SCAN**: virus scan task
 	// *   **IMAGE_SCAN**: image scan task
-	// *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// *   **EMG\_VUL\_SCHEDULE_SCAN**: urgent vulnerability scan task
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -16991,11 +16540,11 @@ type DescribeCycleTaskListResponseBodyCycleScheduleResponseList struct {
 	// *   **1**: yes
 	// *   **0**: no
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The time when the task first run.
+	// The first time when the task starts.
 	FirstDateStr *int64 `json:"FirstDateStr,omitempty" xml:"FirstDateStr,omitempty"`
 	// The interval of the task.
 	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
-	// The ID of the task when the task last run.
+	// The ID of the task when the task last runs.
 	LastTaskId *string `json:"LastTaskId,omitempty" xml:"LastTaskId,omitempty"`
 	// The next time when the task starts. The value is a UNIX timestamp. Unit: milliseconds.
 	NextStartTimeStr *int64 `json:"NextStartTimeStr,omitempty" xml:"NextStartTimeStr,omitempty"`
@@ -17008,7 +16557,7 @@ type DescribeCycleTaskListResponseBodyCycleScheduleResponseList struct {
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The period of time before the task ends. Unit: hours.
 	TargetEndTime *int32 `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
-	// The period of time before the next task starts. Unit: hours.
+	// The period of time before the task starts for the next time. Unit: hours.
 	TargetStartTime *int32 `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
 	// The name of the task.
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
@@ -17998,7 +17547,7 @@ type DescribeEventLevelCountRequest struct {
 	// The type of the query condition. Valid values:
 	//
 	// *   **containerId**: the ID of the container
-	// *   **uuid**: the ID of the asset
+	// *   **uuid**: the UUID of the asset
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -18043,7 +17592,7 @@ func (s *DescribeEventLevelCountRequest) SetTargetType(v string) *DescribeEventL
 type DescribeEventLevelCountResponseBody struct {
 	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The statistics of alerts events by risk level.
+	// The statistics of alerts by risk level.
 	EventLevels *DescribeEventLevelCountResponseBodyEventLevels `json:"EventLevels,omitempty" xml:"EventLevels,omitempty" type:"Struct"`
 	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -18237,8 +17786,10 @@ func (s *DescribeEventOnStageResponse) SetBody(v *DescribeEventOnStageResponseBo
 }
 
 type DescribeExcludeSystemPathRequest struct {
+	// The number of the page to return. Default value: 1.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeExcludeSystemPathRequest) String() string {
@@ -18260,9 +17811,12 @@ func (s *DescribeExcludeSystemPathRequest) SetPageSize(v int32) *DescribeExclude
 }
 
 type DescribeExcludeSystemPathResponseBody struct {
+	// An array consisting of the directories that are excluded.
 	ExcludePaths []*DescribeExcludeSystemPathResponseBodyExcludePaths `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
-	PageInfo     *DescribeExcludeSystemPathResponseBodyPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeExcludeSystemPathResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeExcludeSystemPathResponseBody) String() string {
@@ -18289,7 +17843,12 @@ func (s *DescribeExcludeSystemPathResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeExcludeSystemPathResponseBodyExcludePaths struct {
-	Os   *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The operating system of the server. Valid values:
+	//
+	// *   **linux**: Linux
+	// *   **windows**: Windows
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The absolute path to the directory.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
@@ -18312,10 +17871,14 @@ func (s *DescribeExcludeSystemPathResponseBodyExcludePaths) SetPath(v string) *D
 }
 
 type DescribeExcludeSystemPathResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExcludeSystemPathResponseBodyPageInfo) String() string {
@@ -19242,26 +18805,16 @@ func (s *DescribeExposedInstanceListResponse) SetBody(v *DescribeExposedInstance
 }
 
 type DescribeExposedStatisticsResponseBody struct {
-	// The total number of high-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
-	ExposedAsapVulCount *int32 `json:"ExposedAsapVulCount,omitempty" xml:"ExposedAsapVulCount,omitempty"`
-	// The total number of system components that are exposed on the Internet. The components include OpenSSL and OpenSSH.
-	ExposedComponentCount *int32 `json:"ExposedComponentCount,omitempty" xml:"ExposedComponentCount,omitempty"`
-	// The total number of servers that are exposed on the Internet.
-	ExposedInstanceCount *int32 `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
-	// The total number of IP addresses that are exposed on the Internet.
-	ExposedIpCount *int32 `json:"ExposedIpCount,omitempty" xml:"ExposedIpCount,omitempty"`
-	// The total number of medium-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
-	ExposedLaterVulCount *int32 `json:"ExposedLaterVulCount,omitempty" xml:"ExposedLaterVulCount,omitempty"`
-	// The total number of low-risk vulnerabilities that are exposed on the Internet and can be exploited by attackers.
-	ExposedNntfVulCount *int32 `json:"ExposedNntfVulCount,omitempty" xml:"ExposedNntfVulCount,omitempty"`
-	// The total number of ports that are exposed on the Internet.
-	ExposedPortCount *int32 `json:"ExposedPortCount,omitempty" xml:"ExposedPortCount,omitempty"`
-	// The total number of system keys that are detected on your servers and are exposed on the Internet.
-	ExposedWeekPasswordMachineCount *int32 `json:"ExposedWeekPasswordMachineCount,omitempty" xml:"ExposedWeekPasswordMachineCount,omitempty"`
-	// The total number of gateway assets that are exposed on the Internet. The gateway assets include NAT gateways and Server Load Balancer (SLB) instances.
-	GatewayAssetCount *int32 `json:"GatewayAssetCount,omitempty" xml:"GatewayAssetCount,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ExposedAsapVulCount             *int32  `json:"ExposedAsapVulCount,omitempty" xml:"ExposedAsapVulCount,omitempty"`
+	ExposedComponentCount           *int32  `json:"ExposedComponentCount,omitempty" xml:"ExposedComponentCount,omitempty"`
+	ExposedInstanceCount            *int32  `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
+	ExposedIpCount                  *int32  `json:"ExposedIpCount,omitempty" xml:"ExposedIpCount,omitempty"`
+	ExposedLaterVulCount            *int32  `json:"ExposedLaterVulCount,omitempty" xml:"ExposedLaterVulCount,omitempty"`
+	ExposedNntfVulCount             *int32  `json:"ExposedNntfVulCount,omitempty" xml:"ExposedNntfVulCount,omitempty"`
+	ExposedPortCount                *int32  `json:"ExposedPortCount,omitempty" xml:"ExposedPortCount,omitempty"`
+	ExposedWeekPasswordMachineCount *int32  `json:"ExposedWeekPasswordMachineCount,omitempty" xml:"ExposedWeekPasswordMachineCount,omitempty"`
+	GatewayAssetCount               *int32  `json:"GatewayAssetCount,omitempty" xml:"GatewayAssetCount,omitempty"`
+	RequestId                       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeExposedStatisticsResponseBody) String() string {
@@ -19908,10 +19461,6 @@ func (s *DescribeFrontVulPatchListResponse) SetBody(v *DescribeFrontVulPatchList
 }
 
 type DescribeGroupStructRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -19929,27 +19478,15 @@ func (s *DescribeGroupStructRequest) SetLang(v string) *DescribeGroupStructReque
 }
 
 type DescribeGroupStructResponseBody struct {
-	// The parent node of the group.
-	GroupFather *int32 `json:"GroupFather,omitempty" xml:"GroupFather,omitempty"`
-	// The type of the server group. Valid values:
-	//
-	// *   **0**: the default group
-	// *   **1**: other groups
-	GroupFlag *int32 `json:"GroupFlag,omitempty" xml:"GroupFlag,omitempty"`
-	// The ID of the server group.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The sequence number.
-	GroupIndex *int32 `json:"GroupIndex,omitempty" xml:"GroupIndex,omitempty"`
-	// The level of the application group.
-	GroupLevel *int32 `json:"GroupLevel,omitempty" xml:"GroupLevel,omitempty"`
-	// The name of the server group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// An array that consists of child groups.
-	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The number of servers in the group.
-	MachineNum *int32 `json:"MachineNum,omitempty" xml:"MachineNum,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	GroupFather *int32    `json:"GroupFather,omitempty" xml:"GroupFather,omitempty"`
+	GroupFlag   *int32    `json:"GroupFlag,omitempty" xml:"GroupFlag,omitempty"`
+	GroupId     *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupIndex  *int32    `json:"GroupIndex,omitempty" xml:"GroupIndex,omitempty"`
+	GroupLevel  *int32    `json:"GroupLevel,omitempty" xml:"GroupLevel,omitempty"`
+	GroupName   *string   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Groups      []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	MachineNum  *int32    `json:"MachineNum,omitempty" xml:"MachineNum,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGroupStructResponseBody) String() string {
@@ -21053,6 +20590,7 @@ type DescribeGroupedVulResponseBodyGroupedVulItems struct {
 	LaterCount    *int32  `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NntfCount     *int32  `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	RaspDefend    *int32  `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
 	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TotalFixCount *int64  `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
 	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -21098,6 +20636,11 @@ func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetName(v string) *Descr
 
 func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetNntfCount(v int32) *DescribeGroupedVulResponseBodyGroupedVulItems {
 	s.NntfCount = &v
+	return s
+}
+
+func (s *DescribeGroupedVulResponseBodyGroupedVulItems) SetRaspDefend(v int32) *DescribeGroupedVulResponseBodyGroupedVulItems {
+	s.RaspDefend = &v
 	return s
 }
 
@@ -21256,6 +20799,23 @@ func (s *DescribeHcExportInfoResponse) SetBody(v *DescribeHcExportInfoResponseBo
 	return s
 }
 
+type DescribeHoneyPotAuthRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeHoneyPotAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHoneyPotAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHoneyPotAuthRequest) SetLang(v string) *DescribeHoneyPotAuthRequest {
+	s.Lang = &v
+	return s
+}
+
 type DescribeHoneyPotAuthResponseBody struct {
 	HoneyPotAuthCount *int64  `json:"HoneyPotAuthCount,omitempty" xml:"HoneyPotAuthCount,omitempty"`
 	HoneyPotCount     *int32  `json:"HoneyPotCount,omitempty" xml:"HoneyPotCount,omitempty"`
@@ -21316,6 +20876,7 @@ func (s *DescribeHoneyPotAuthResponse) SetBody(v *DescribeHoneyPotAuthResponseBo
 
 type DescribeHoneyPotSuspStatisticsRequest struct {
 	From              *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	StatisticsDays    *int32  `json:"StatisticsDays,omitempty" xml:"StatisticsDays,omitempty"`
 	StatisticsKeyType *string `json:"StatisticsKeyType,omitempty" xml:"StatisticsKeyType,omitempty"`
 }
@@ -21330,6 +20891,11 @@ func (s DescribeHoneyPotSuspStatisticsRequest) GoString() string {
 
 func (s *DescribeHoneyPotSuspStatisticsRequest) SetFrom(v string) *DescribeHoneyPotSuspStatisticsRequest {
 	s.From = &v
+	return s
+}
+
+func (s *DescribeHoneyPotSuspStatisticsRequest) SetLang(v string) *DescribeHoneyPotSuspStatisticsRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -21443,22 +21009,10 @@ func (s *DescribeHoneyPotSuspStatisticsResponse) SetBody(v *DescribeHoneyPotSusp
 }
 
 type DescribeImageRequest struct {
-	// The instance ID of the image.
-	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of instances.
 	ImageInstanceId *string `json:"ImageInstanceId,omitempty" xml:"ImageInstanceId,omitempty"`
-	// The region ID of the image.
-	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of regions.
-	ImageRegionId *string `json:"ImageRegionId,omitempty" xml:"ImageRegionId,omitempty"`
-	// The ID of the image repository.
-	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of image repositories.
-	ImageRepoId *string `json:"ImageRepoId,omitempty" xml:"ImageRepoId,omitempty"`
-	// The tag that is added to the image.
-	//
-	// >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query tags.
-	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	ImageRegionId   *string `json:"ImageRegionId,omitempty" xml:"ImageRegionId,omitempty"`
+	ImageRepoId     *string `json:"ImageRepoId,omitempty" xml:"ImageRepoId,omitempty"`
+	ImageTag        *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
 }
 
 func (s DescribeImageRequest) String() string {
@@ -21490,10 +21044,8 @@ func (s *DescribeImageRequest) SetImageTag(v string) *DescribeImageRequest {
 }
 
 type DescribeImageResponseBody struct {
-	// The information about the image digest.
-	Data *DescribeImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageResponseBody) String() string {
@@ -21515,7 +21067,6 @@ func (s *DescribeImageResponseBody) SetRequestId(v string) *DescribeImageRespons
 }
 
 type DescribeImageResponseBodyData struct {
-	// The digest value of the image.
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 }
 
@@ -22020,15 +21571,9 @@ func (s *DescribeImageBaselineCheckSummaryResponse) SetBody(v *DescribeImageBase
 }
 
 type DescribeImageBaselineDetailRequest struct {
-	// The information about the baseline.
 	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
-	// The UUID of the image.
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ImageUuid       *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeImageBaselineDetailRequest) String() string {
@@ -22055,10 +21600,8 @@ func (s *DescribeImageBaselineDetailRequest) SetLang(v string) *DescribeImageBas
 }
 
 type DescribeImageBaselineDetailResponseBody struct {
-	// The details about the image baseline.
 	BaselineDetail *DescribeImageBaselineDetailResponseBodyBaselineDetail `json:"BaselineDetail,omitempty" xml:"BaselineDetail,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageBaselineDetailResponseBody) String() string {
@@ -22080,28 +21623,15 @@ func (s *DescribeImageBaselineDetailResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeImageBaselineDetailResponseBodyBaselineDetail struct {
-	// The suggestion for the management of the risk item.
-	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
-	// The alias of the baseline type.
+	Advice             *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	// The alias of the baseline check item.
-	BaselineItemAlias *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
-	// The key of the baseline check item.
-	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
-	// The alias of the baseline.
-	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	// The description of the risk item.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The risk level of the baseline check item. Valid values:
-	//
-	// *   **high**
-	// *   **medium**
-	// *   **low**
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The issue that is detected by using the baseline.
-	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The ID of the asynchronous request.
-	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
+	BaselineItemAlias  *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
+	BaselineItemKey    *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
+	BaselineNameAlias  *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Level              *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Prompt             *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	ResultId           *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 }
 
 func (s DescribeImageBaselineDetailResponseBodyBaselineDetail) String() string {
@@ -22187,15 +21717,32 @@ func (s *DescribeImageBaselineDetailResponse) SetBody(v *DescribeImageBaselineDe
 }
 
 type DescribeImageBaselineItemListRequest struct {
-	BaselineClassKey *string   `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
-	BaselineNameKey  *string   `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	ImageUuid        *string   `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ScanRange        []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Uuids            []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+	// The key of the baseline type.
+	BaselineClassKey *string `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
+	// The key of the baseline name.
+	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the image.
+	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The types of the assets that are scanned.
+	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	// The status of the baseline risk item. Valid values:
+	//
+	// *   **0**: unfixed
+	// *   **1**: fixed
+	// *   **2**: pending verification
+	// *   **3**: fixing failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The UUIDs of images.
+	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageBaselineItemListRequest) String() string {
@@ -22252,9 +21799,12 @@ func (s *DescribeImageBaselineItemListRequest) SetUuids(v []*string) *DescribeIm
 }
 
 type DescribeImageBaselineItemListResponseBody struct {
+	// An array that consists of baseline check items.
 	BaselineItemInfos []*DescribeImageBaselineItemListResponseBodyBaselineItemInfos `json:"BaselineItemInfos,omitempty" xml:"BaselineItemInfos,omitempty" type:"Repeated"`
-	PageInfo          *DescribeImageBaselineItemListResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId         *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeImageBaselineItemListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageBaselineItemListResponseBody) String() string {
@@ -22281,14 +21831,30 @@ func (s *DescribeImageBaselineItemListResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeImageBaselineItemListResponseBodyBaselineItemInfos struct {
+	// The alias of the baseline type.
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	BaselineClassKey   *string `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
-	BaselineItemAlias  *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
-	BaselineItemKey    *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
-	BaselineNameAlias  *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	BaselineNameKey    *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WhiteList          *int32  `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+	// The key of the baseline type.
+	BaselineClassKey *string `json:"BaselineClassKey,omitempty" xml:"BaselineClassKey,omitempty"`
+	// The alias of the baseline check item.
+	BaselineItemAlias *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
+	// The key of the baseline check item.
+	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
+	// The alias of the baseline.
+	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
+	// The key of the baseline name.
+	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	// The status of the baseline risk item. Valid values:
+	//
+	// *   **0**: unfixed
+	// *   **1**: fixed
+	// *   **2**: pending verification
+	// *   **3**: fixing failed
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the baseline check item is added to the whitelist. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	WhiteList *int32 `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
 }
 
 func (s DescribeImageBaselineItemListResponseBodyBaselineItemInfos) String() string {
@@ -22340,10 +21906,14 @@ func (s *DescribeImageBaselineItemListResponseBodyBaselineItemInfos) SetWhiteLis
 }
 
 type DescribeImageBaselineItemListResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageBaselineItemListResponseBodyPageInfo) String() string {
@@ -22735,6 +22305,7 @@ type DescribeImageFixTaskResponseBodyBuildTasks struct {
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
 	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskType      *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	VulAlias      *string `json:"VulAlias,omitempty" xml:"VulAlias,omitempty"`
 }
 
 func (s DescribeImageFixTaskResponseBodyBuildTasks) String() string {
@@ -22802,6 +22373,11 @@ func (s *DescribeImageFixTaskResponseBodyBuildTasks) SetStatus(v int32) *Describ
 
 func (s *DescribeImageFixTaskResponseBodyBuildTasks) SetTaskType(v string) *DescribeImageFixTaskResponseBodyBuildTasks {
 	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeImageFixTaskResponseBodyBuildTasks) SetVulAlias(v string) *DescribeImageFixTaskResponseBodyBuildTasks {
+	s.VulAlias = &v
 	return s
 }
 
@@ -23056,6 +22632,7 @@ func (s *DescribeImageGroupedVulListResponseBody) SetTotalCount(v int32) *Descri
 type DescribeImageGroupedVulListResponseBodyGroupedVulItems struct {
 	AliasName    *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	AsapCount    *int32  `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
+	CanFix       *string `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
 	GmtLast      *int64  `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
 	LastScanTime *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
 	LaterCount   *int32  `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
@@ -23081,6 +22658,11 @@ func (s *DescribeImageGroupedVulListResponseBodyGroupedVulItems) SetAliasName(v 
 
 func (s *DescribeImageGroupedVulListResponseBodyGroupedVulItems) SetAsapCount(v int32) *DescribeImageGroupedVulListResponseBodyGroupedVulItems {
 	s.AsapCount = &v
+	return s
+}
+
+func (s *DescribeImageGroupedVulListResponseBodyGroupedVulItems) SetCanFix(v string) *DescribeImageGroupedVulListResponseBodyGroupedVulItems {
+	s.CanFix = &v
 	return s
 }
 
@@ -23366,11 +22948,35 @@ func (s *DescribeImageInfoListResponse) SetBody(v *DescribeImageInfoListResponse
 }
 
 type DescribeImageInstancesRequest struct {
-	Criteria    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LogicalExp  *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Scanned     *bool   `json:"Scanned,omitempty" xml:"Scanned,omitempty"`
+	// The search condition that is used to filter the server. The value of this parameter is in the JSON format and contains the following fields:
+	//
+	// *   **name**: the search condition
+	//
+	// *   **name**: the value of the search condition
+	//
+	// *   **logicalExp**: the logical relation for multiple search conditions Valid values:
+	//
+	//     *   **OR**: The search conditions use a logical **OR**.
+	//     *   **AND**: The search conditions use a logical **AND**.
+	//
+	// > You can call the [DescribeImageCriteria](~~DescribeImageCriteria~~) operation to query the supported search conditions.
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The logical relationship that you want to use to evaluate multiple search conditions. Valid values:
+	//
+	// *   **OR**: The search conditions are evaluated by using a logical **OR**.
+	// *   **AND**: The search conditions are evaluated by using a logical **AND**.
+	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	//
+	// > : We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the image is scanned. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Scanned *bool `json:"Scanned,omitempty" xml:"Scanned,omitempty"`
 }
 
 func (s DescribeImageInstancesRequest) String() string {
@@ -23407,9 +23013,12 @@ func (s *DescribeImageInstancesRequest) SetScanned(v bool) *DescribeImageInstanc
 }
 
 type DescribeImageInstancesResponseBody struct {
+	// An array that consists of the information about the image.
 	ImageInstanceList []*DescribeImageInstancesResponseBodyImageInstanceList `json:"ImageInstanceList,omitempty" xml:"ImageInstanceList,omitempty" type:"Repeated"`
-	PageInfo          *DescribeImageInstancesResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeImageInstancesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageInstancesResponseBody) String() string {
@@ -23436,33 +23045,104 @@ func (s *DescribeImageInstancesResponseBody) SetRequestId(v string) *DescribeIma
 }
 
 type DescribeImageInstancesResponseBodyImageInstanceList struct {
-	AlarmCount    *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	AlarmStatus   *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	Deployed      *int32  `json:"Deployed,omitempty" xml:"Deployed,omitempty"`
-	Digest        *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Endpoints     *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	HcCount       *int32  `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
-	HcStatus      *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	ImageCreate   *string `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageSize     *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	ImageUpdate   *string `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The number of alerts that are generated on the image.
+	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
+	// Indicates whether alerts are generated for the image. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// Indicates whether the image was deployed. Valid values:
+	//
+	// *   **0**: The image was not deployed.
+	// *   **1**: The image was deployed.
+	Deployed *int32 `json:"Deployed,omitempty" xml:"Deployed,omitempty"`
+	// The digest value of the image.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The address of the image.
+	Endpoints *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	// The number of baseline risks.
+	HcCount *int32 `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
+	// Indicates whether the image baseline risks exist. Valid values:
+	//
+	// *   **NO**
+	// *   **YES**
+	HcStatus *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	// The timestamp when the image was created. Unit: milliseconds.
+	ImageCreate *string `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The size of the image. Unit: MB.
+	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The timestamp when the image was updated. Unit: milliseconds.
+	ImageUpdate *string `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
+	// The ID of the image instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the image.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   **acr**
+	// *   **harbor**
+	// *   **quay**
+	// *   **CI/CD**
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the image repository belongs.
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoType      *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	RiskStatus    *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	ScaProgress   *int32  `json:"ScaProgress,omitempty" xml:"ScaProgress,omitempty"`
-	ScaResult     *string `json:"ScaResult,omitempty" xml:"ScaResult,omitempty"`
-	ScaStatus     *string `json:"ScaStatus,omitempty" xml:"ScaStatus,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VulCount      *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	VulStatus     *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	// The type of the repository. Valid values:
+	//
+	// *   **private**
+	// *   **public**
+	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// Indicates whether risks exist. Valid values:
+	//
+	// *   **NO**: No risks exist.
+	// *   **YES**: Risks exist.
+	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	// The scan progress of the image. Valid values: 0 to 100.
+	ScaProgress *int32 `json:"ScaProgress,omitempty" xml:"ScaProgress,omitempty"`
+	// The error code of the image scan result. Valid values:
+	//
+	// *   **TASK_NOT_EXISTS**: The image scan task does not exist.
+	// *   **TASK_NOT_SUPPORT_REGION**: The image scan task cannot be performed in the current region.
+	// *   **forbid_create_repeat_task**: The image scan task already exists.
+	ScaResult *string `json:"ScaResult,omitempty" xml:"ScaResult,omitempty"`
+	// The scan status of the image. Valid values:
+	//
+	// *   **INIT**: The image scan task is to be started.
+	// *   **START**: The image scan task is started.
+	// *   **MESSAGE_SEND**: The message about the image scan task is sent.
+	// *   **START_RUN**: The image scan task is started.
+	// *   **DOWNLOAD**: The image scan result is downloaded.
+	// *   **PRE_ANALYZER**: The image scan task is being processed.
+	// *   **WEB_SHELL_ANALYZER**: The WebShell analysis is complete.
+	// *   **CVE_ANALYZER**: The CVE analysis is complete.
+	// *   **BIN_ANALYZER**: The binary analysis of the image is complete.
+	// *   **OTHER_ANALYZER**: The extended analysis of the image is complete.
+	// *   **SUCCESS**: The image scan task is complete.
+	// *   **PRE_ANALYZER_SUCCESS**: The image scan task is processed.
+	// *   **FAIL**: The image scan task fails.
+	// *   **TIMEOUT**: The image scan task times out.
+	ScaStatus *string `json:"ScaStatus,omitempty" xml:"ScaStatus,omitempty"`
+	// The status of the image. Valid values:
+	//
+	// *   **NORMAL**: The image is normal.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag of the image.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The UUID of the server.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The number of vulnerabilities in the image.
+	VulCount *int32 `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	// Indicates whether vulnerabilities exist in the image. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	VulStatus *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
 }
 
 func (s DescribeImageInstancesResponseBodyImageInstanceList) String() string {
@@ -23609,10 +23289,14 @@ func (s *DescribeImageInstancesResponseBodyImageInstanceList) SetVulStatus(v str
 }
 
 type DescribeImageInstancesResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of images returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageInstancesResponseBodyPageInfo) String() string {
@@ -24674,10 +24358,30 @@ func (s *DescribeImageRepoCriteriaResponse) SetBody(v *DescribeImageRepoCriteria
 }
 
 type DescribeImageRepoDetailListRequest struct {
-	Criteria    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LogicalExp  *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search conditions for assets. The value of this parameter is in the JSON format and contains the following fields:
+	//
+	// *   **name**: the search condition.
+	//
+	// *   **name**: the value of the search condition.
+	//
+	// *   **logicalExp**: the logical relation for multiple search conditions. Valid values:
+	//
+	//     *   **OR**: The search conditions use a logical **OR**.
+	//     *   **AND**: The search conditions use a logical **AND**.
+	//
+	// > You can call the [DescribeImageRepoCriteria](~~DescribeImageRepoCriteria~~) operation to query the supported search conditions.
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The logical relationship that you want to use to evaluate multiple search conditions. Valid values:
+	//
+	// *   **OR**: Search conditions are evaluated by using a logical **OR**.
+	// *   **AND**: Search conditions are evaluated by using a logical **AND**.
+	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+	//
+	// > We recommend that you do not leave this parameter empty.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeImageRepoDetailListRequest) String() string {
@@ -24709,9 +24413,12 @@ func (s *DescribeImageRepoDetailListRequest) SetPageSize(v int32) *DescribeImage
 }
 
 type DescribeImageRepoDetailListResponseBody struct {
+	// An array that consists of the information about image repositories.
 	ImageRepoResponses []*DescribeImageRepoDetailListResponseBodyImageRepoResponses `json:"ImageRepoResponses,omitempty" xml:"ImageRepoResponses,omitempty" type:"Repeated"`
-	PageInfo           *DescribeImageRepoDetailListResponseBodyPageInfo             `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination information.
+	PageInfo *DescribeImageRepoDetailListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageRepoDetailListResponseBody) String() string {
@@ -24738,21 +24445,53 @@ func (s *DescribeImageRepoDetailListResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeImageRepoDetailListResponseBodyImageRepoResponses struct {
-	AlarmCount    *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	AlarmStatus   *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
-	Endpoints     *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	HcCount       *int32  `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
-	HcStatus      *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
-	ImageCount    *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegistryType  *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The number of alerts that are generated for the image repository.
+	AlarmCount *int32 `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
+	// Indicates whether alerts are generated for the image repository. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// The address of the image repository.
+	Endpoints *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	// The number of baseline risk items on the image repository.
+	HcCount *int32 `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
+	// Indicates whether baseline risk items are detected on the image repository. Valid values:
+	//
+	// *   **NO**
+	// *   **YES**
+	HcStatus *string `json:"HcStatus,omitempty" xml:"HcStatus,omitempty"`
+	// The number of images.
+	ImageCount *int32 `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	// The ID of the image.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the image.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the image repository. Valid values:
+	//
+	// *   **acr**
+	// *   **harbor**
+	// *   **quay**
+	// *   **CI/CD**
+	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The ID of the image repository.
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The namespace to which the image repository belongs.
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RiskStatus    *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	VulCount      *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
-	VulStatus     *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
+	// Indicates whether the image repository is at risk. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	RiskStatus *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	// The number of vulnerabilities detected on the image repository.
+	VulCount *int32 `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	// Indicates whether vulnerabilities are detected on the image repository. Valid values:
+	//
+	// *   **YES**
+	// *   **NO**
+	VulStatus *string `json:"VulStatus,omitempty" xml:"VulStatus,omitempty"`
 }
 
 func (s DescribeImageRepoDetailListResponseBodyImageRepoResponses) String() string {
@@ -24839,10 +24578,14 @@ func (s *DescribeImageRepoDetailListResponseBodyImageRepoResponses) SetVulStatus
 }
 
 type DescribeImageRepoDetailListResponseBodyPageInfo struct {
-	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of image repositories.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageRepoDetailListResponseBodyPageInfo) String() string {
@@ -25540,151 +25283,14 @@ func (s *DescribeImageSensitiveFileByKeyResponse) SetBody(v *DescribeImageSensit
 }
 
 type DescribeImageSensitiveFileListRequest struct {
-	// The value of the sensitive file type.
-	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The query type of sensitive files. Valid values:
-	//
-	// *   **SensitiveFileKey**: the alert type for sensitive files. Valid values:
-	//
-	//     *   **npm_token**: npm access token
-	//     *   **ftp_cfg**: FTP configuration
-	//     *   **google\_oauth_key**: Google OAuth key
-	//     *   **planetscale_passwd**: PlanetScale password
-	//     *   **github\_ssh_key**: GitHub SSH key
-	//     *   **msbuild\_publish_profile**: MSBuild publish profile
-	//     *   **fastly\_cdn_token**: Fastly CDN token
-	//     *   **ssh\_private_key**: SSH private key
-	//     *   **aws_cli**: AWS CLI credential
-	//     *   **cpanel_proftpd**: cPanel ProFTPD credential
-	//     *   **postgresql_passwd**: PostgreSQL password file
-	//     *   **discord\_client_cred**: Discord client credential
-	//     *   **rails_database**: Rails database configuration
-	//     *   **aws\_access_key**: AWS access key
-	//     *   **esmtp_cfg** :configuration of Extended Simple Mail Transfer Protocol (ESMTP)
-	//     *   **docker\_registry_cfg**: configuration of a Docker image repository
-	//     *   **pem**: Privacy-Enhanced Mail (PEM)
-	//     *   **common_cred**: common credential
-	//     *   **sftp_cfg**: SFTP connection configuration
-	//     *   **grafana_token**: Grafana token
-	//     *   **slack_token**: Slack token
-	//     *   **ec\_private_key**: EC private key
-	//     *   **pypi_token**: upload token for the Python Package Index (PyPI)
-	//     *   **finicity_token**: Finicity token
-	//     *   **k8s\_client_key**: Kubernetes private key
-	//     *   **git_cfg**: Git configuration
-	//     *   **django_key**: Django key
-	//     *   **jenkins_ssh**: Jenkins SSH configuration file
-	//     *   **openssh\_private_key**: OpenSSL private key
-	//     *   **square_oauth**: OAuth credential for Square
-	//     *   **typeform_token**: Typeform token
-	//     *   **common\_database_cfg**: general database connection configuration
-	//     *   **wordpress\_database_cfg**: WordPress database configuration
-	//     *   **googlecloud\_api_key**: API key for Google Cloud
-	//     *   **vscode_sftp**: VSCode SFTP configuration
-	//     *   **apache_htpasswd**: Apache htpasswd
-	//     *   **planetscale_token**: PlanetScale token
-	//     *   **contentful\_preview_token**: preview token for Contentful
-	//     *   **php\_database_cfg**: database password for a PHP application
-	//     *   **atom\_remote_sync**: Atom remote synchronization configuration
-	//     *   **aws\_session_token**: AWS session token
-	//     *   **atom\_sftp_cfg**: Atom SFTP configuration
-	//     *   **tencentcloud_ak**: Asana client key
-	//     *   **tencentcloud_ak**: secret ID of a third-party cloud
-	//     *   **rsa\_private_key**: RSA private key
-	//     *   **github\_personal_token**: personal access token for GitHub
-	//     *   **pgp**: Pretty Good Privacy (PGP) encrypted file
-	//     *   **stripe_skpk**: Stripe secret key
-	//     *   **square_token**: Square access token
-	//     *   **rails_carrierwave**: file upload credential for Rails Carrierwave
-	//     *   **dbeaver\_database_cfg**: DBeaver database configuration
-	//     *   **robomongo_cred**: credential for RoboMongo
-	//     *   **github\_oauth_token**: OAuth access token for GitHub
-	//     *   **pulumi_token**: Pulumi token
-	//     *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
-	//     *   **macos_keychain**: macOS keychain
-	//     *   **amazon\_mws_token**: Amazon MWS token
-	//     *   **dynatrace_token**: Dynatrace token
-	//     *   **java_keystore**: Java KeyStore (JKS)
-	//     *   **microsoft_sdf**: Microsoft SQL Server Compact Edition (CE) database
-	//     *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
-	//     *   **atlassian_token**: Atlassian token
-	//     *   **rdp**: remote desktop protocol (RDP)
-	//     *   **mailgun_key**: Mailgun webhook signing key
-	//     *   **mailchimp\_api_key**: API key for Mailchimp
-	//     *   **netrc_cfg**: .netrc configuration file
-	//     *   **openvpn_cfg**: OpenVPN configuration
-	//     *   **github\_refresh_token**: GitHub refresh token
-	//     *   **salesforce**: Salesforce credential
-	//     *   **salesforce**: Sendinblue credential
-	//     *   **pkcs\_private_key**: PKCS#12 key
-	//     *   **rubyonrails_passwd**: Ruby on Rails password file
-	//     *   **filezilla_ftp**: FileZilla FTP configuration
-	//     *   **databricks_token**: Databricks token
-	//     *   **gitLab\_personal_toke**: personal access token for GitLab
-	//     *   **rails\_master_key**: Rails master key
-	//     *   **sqlite**: SQLite3 or SQLite database
-	//     *   **firefox_logins**: Firefox logon configuration
-	//     *   **mailgun\_private_token**: Mailgun private token
-	//     *   **joomla_cfg**: Joomla configuration
-	//     *   **hashicorp\_terraform_token**: HashiCorp Terraform token
-	//     *   **jetbrains_ides**: JetBrains IDEs configuration
-	//     *   **heroku\_api_key**: Heroku API key
-	//     *   **messagebird_token**: MessageBird token
-	//     *   **messagebird_token**: MessageBird token
-	//     *   **hashicorp\_vault_token**: HashiCorp Vault token
-	//     *   **pgp\_private_key**: PGP private key
-	//     *   **sshpasswd**: SSH password
-	//     *   **huaweicloud_ak**: secret access key of a third-party cloud
-	//     *   **aws_s3cmd**: AWS S3cmd configuration
-	//     *   **php_config**: PHP configuration
-	//     *   **common\_private_key**: private key of a common type
-	//     *   **microsoft_mdf**: Microsoft SQL Server database
-	//     *   **mediawiki_cfg**: MediaWiki configuration
-	//     *   **jenkins_cred**: Jenkins credential
-	//     *   **rubygems_cred**: RubyGems credential
-	//     *   **clojars_token**: Clojars token
-	//     *   **phoenix\_web_passwd**: Phoenix web credential
-	//     *   **puttygen\_private_key**: PuTTYgen private key
-	//     *   **google\_oauth_token**: Google OAuth access token
-	//     *   **rubyonrails_cfg**: Ruby On Rails database configuration
-	//     *   **lob\_api_key**: Lob API key
-	//     *   **pkcs_cred**: PKCS#12 certificate
-	//     *   **otr\_private_key**: Off-the-Record Messaging (OTR) private key
-	//     *   **contentful\_delivery_token**: delivery token for Contentful
-	//     *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
-	//     *   **dsa\_private_key**: Digital Signature Algorithm (DSA) private key
-	//     *   **rails\_app_token**: Rails app token
-	//     *   **git_cred**: Git user credential
-	//     *   **newrelic\_api_key**: User API key for New Relic
-	//     *   **github_hub**: hub configuration for storing GitHub tokens
-	//     *   **rubygem**: RubyGem token
-	//
-	// *   **SensitiveFileName**: the name of the alert type for sensitive files.
-	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The UUID of the image.
-	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the UUIDs of images from the value of the **ImageUuid** response parameter.
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk level. Valid values:
-	//
-	// *   **high**
-	// *   **medium**
-	// *   **low**
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// An array that consists of the types of the assets that you want to scan. Valid values:
-	//
-	// *   **image**
-	// *   **container**
-	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	Criteria     *string   `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType *string   `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid    *string   `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel    *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRange    []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageSensitiveFileListRequest) String() string {
@@ -25736,150 +25342,13 @@ func (s *DescribeImageSensitiveFileListRequest) SetScanRange(v []*string) *Descr
 }
 
 type DescribeImageSensitiveFileListShrinkRequest struct {
-	// The value of the sensitive file type.
-	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The query type of sensitive files. Valid values:
-	//
-	// *   **SensitiveFileKey**: the alert type for sensitive files. Valid values:
-	//
-	//     *   **npm_token**: npm access token
-	//     *   **ftp_cfg**: FTP configuration
-	//     *   **google\_oauth_key**: Google OAuth key
-	//     *   **planetscale_passwd**: PlanetScale password
-	//     *   **github\_ssh_key**: GitHub SSH key
-	//     *   **msbuild\_publish_profile**: MSBuild publish profile
-	//     *   **fastly\_cdn_token**: Fastly CDN token
-	//     *   **ssh\_private_key**: SSH private key
-	//     *   **aws_cli**: AWS CLI credential
-	//     *   **cpanel_proftpd**: cPanel ProFTPD credential
-	//     *   **postgresql_passwd**: PostgreSQL password file
-	//     *   **discord\_client_cred**: Discord client credential
-	//     *   **rails_database**: Rails database configuration
-	//     *   **aws\_access_key**: AWS access key
-	//     *   **esmtp_cfg** :configuration of Extended Simple Mail Transfer Protocol (ESMTP)
-	//     *   **docker\_registry_cfg**: configuration of a Docker image repository
-	//     *   **pem**: Privacy-Enhanced Mail (PEM)
-	//     *   **common_cred**: common credential
-	//     *   **sftp_cfg**: SFTP connection configuration
-	//     *   **grafana_token**: Grafana token
-	//     *   **slack_token**: Slack token
-	//     *   **ec\_private_key**: EC private key
-	//     *   **pypi_token**: upload token for the Python Package Index (PyPI)
-	//     *   **finicity_token**: Finicity token
-	//     *   **k8s\_client_key**: Kubernetes private key
-	//     *   **git_cfg**: Git configuration
-	//     *   **django_key**: Django key
-	//     *   **jenkins_ssh**: Jenkins SSH configuration file
-	//     *   **openssh\_private_key**: OpenSSL private key
-	//     *   **square_oauth**: OAuth credential for Square
-	//     *   **typeform_token**: Typeform token
-	//     *   **common\_database_cfg**: general database connection configuration
-	//     *   **wordpress\_database_cfg**: WordPress database configuration
-	//     *   **googlecloud\_api_key**: API key for Google Cloud
-	//     *   **vscode_sftp**: VSCode SFTP configuration
-	//     *   **apache_htpasswd**: Apache htpasswd
-	//     *   **planetscale_token**: PlanetScale token
-	//     *   **contentful\_preview_token**: preview token for Contentful
-	//     *   **php\_database_cfg**: database password for a PHP application
-	//     *   **atom\_remote_sync**: Atom remote synchronization configuration
-	//     *   **aws\_session_token**: AWS session token
-	//     *   **atom\_sftp_cfg**: Atom SFTP configuration
-	//     *   **tencentcloud_ak**: Asana client key
-	//     *   **tencentcloud_ak**: secret ID of a third-party cloud
-	//     *   **rsa\_private_key**: RSA private key
-	//     *   **github\_personal_token**: personal access token for GitHub
-	//     *   **pgp**: Pretty Good Privacy (PGP) encrypted file
-	//     *   **stripe_skpk**: Stripe secret key
-	//     *   **square_token**: Square access token
-	//     *   **rails_carrierwave**: file upload credential for Rails Carrierwave
-	//     *   **dbeaver\_database_cfg**: DBeaver database configuration
-	//     *   **robomongo_cred**: credential for RoboMongo
-	//     *   **github\_oauth_token**: OAuth access token for GitHub
-	//     *   **pulumi_token**: Pulumi token
-	//     *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
-	//     *   **macos_keychain**: macOS keychain
-	//     *   **amazon\_mws_token**: Amazon MWS token
-	//     *   **dynatrace_token**: Dynatrace token
-	//     *   **java_keystore**: Java KeyStore (JKS)
-	//     *   **microsoft_sdf**: Microsoft SQL Server Compact Edition (CE) database
-	//     *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
-	//     *   **atlassian_token**: Atlassian token
-	//     *   **rdp**: remote desktop protocol (RDP)
-	//     *   **mailgun_key**: Mailgun webhook signing key
-	//     *   **mailchimp\_api_key**: API key for Mailchimp
-	//     *   **netrc_cfg**: .netrc configuration file
-	//     *   **openvpn_cfg**: OpenVPN configuration
-	//     *   **github\_refresh_token**: GitHub refresh token
-	//     *   **salesforce**: Salesforce credential
-	//     *   **salesforce**: Sendinblue credential
-	//     *   **pkcs\_private_key**: PKCS#12 key
-	//     *   **rubyonrails_passwd**: Ruby on Rails password file
-	//     *   **filezilla_ftp**: FileZilla FTP configuration
-	//     *   **databricks_token**: Databricks token
-	//     *   **gitLab\_personal_toke**: personal access token for GitLab
-	//     *   **rails\_master_key**: Rails master key
-	//     *   **sqlite**: SQLite3 or SQLite database
-	//     *   **firefox_logins**: Firefox logon configuration
-	//     *   **mailgun\_private_token**: Mailgun private token
-	//     *   **joomla_cfg**: Joomla configuration
-	//     *   **hashicorp\_terraform_token**: HashiCorp Terraform token
-	//     *   **jetbrains_ides**: JetBrains IDEs configuration
-	//     *   **heroku\_api_key**: Heroku API key
-	//     *   **messagebird_token**: MessageBird token
-	//     *   **messagebird_token**: MessageBird token
-	//     *   **hashicorp\_vault_token**: HashiCorp Vault token
-	//     *   **pgp\_private_key**: PGP private key
-	//     *   **sshpasswd**: SSH password
-	//     *   **huaweicloud_ak**: secret access key of a third-party cloud
-	//     *   **aws_s3cmd**: AWS S3cmd configuration
-	//     *   **php_config**: PHP configuration
-	//     *   **common\_private_key**: private key of a common type
-	//     *   **microsoft_mdf**: Microsoft SQL Server database
-	//     *   **mediawiki_cfg**: MediaWiki configuration
-	//     *   **jenkins_cred**: Jenkins credential
-	//     *   **rubygems_cred**: RubyGems credential
-	//     *   **clojars_token**: Clojars token
-	//     *   **phoenix\_web_passwd**: Phoenix web credential
-	//     *   **puttygen\_private_key**: PuTTYgen private key
-	//     *   **google\_oauth_token**: Google OAuth access token
-	//     *   **rubyonrails_cfg**: Ruby On Rails database configuration
-	//     *   **lob\_api_key**: Lob API key
-	//     *   **pkcs_cred**: PKCS#12 certificate
-	//     *   **otr\_private_key**: Off-the-Record Messaging (OTR) private key
-	//     *   **contentful\_delivery_token**: delivery token for Contentful
-	//     *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
-	//     *   **dsa\_private_key**: Digital Signature Algorithm (DSA) private key
-	//     *   **rails\_app_token**: Rails app token
-	//     *   **git_cred**: Git user credential
-	//     *   **newrelic\_api_key**: User API key for New Relic
-	//     *   **github_hub**: hub configuration for storing GitHub tokens
-	//     *   **rubygem**: RubyGem token
-	//
-	// *   **SensitiveFileName**: the name of the alert type for sensitive files.
-	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The number of the page to return. Pages start from page **1**. Default value: **1**.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The UUID of the image.
-	//
-	// >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the UUIDs of images from the value of the **ImageUuid** response parameter.
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 20.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk level. Valid values:
-	//
-	// *   **high**
-	// *   **medium**
-	// *   **low**
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// An array that consists of the types of the assets that you want to scan. Valid values:
-	//
-	// *   **image**
-	// *   **container**
+	Criteria        *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	CriteriaType    *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
+	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	ImageUuid       *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskLevel       *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
 }
 
@@ -25932,23 +25401,13 @@ func (s *DescribeImageSensitiveFileListShrinkRequest) SetScanRangeShrink(v strin
 }
 
 type DescribeImageSensitiveFileListResponseBody struct {
-	// The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination information.
-	PageInfo *DescribeImageSensitiveFileListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the sensitive files.
+	Code              *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode    *int32                                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message           *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo          *DescribeImageSensitiveFileListResponseBodyPageInfo            `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SensitiveFileList []*DescribeImageSensitiveFileListResponseBodySensitiveFileList `json:"SensitiveFileList,omitempty" xml:"SensitiveFileList,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success           *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeImageSensitiveFileListResponseBody) String() string {
@@ -25995,16 +25454,11 @@ func (s *DescribeImageSensitiveFileListResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeImageSensitiveFileListResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the returned page.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The key of the last data entry.
-	LastRowKey *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	// The number of entries returned per page. Default value: 20.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageSensitiveFileListResponseBodyPageInfo) String() string {
@@ -26041,134 +25495,11 @@ func (s *DescribeImageSensitiveFileListResponseBodyPageInfo) SetTotalCount(v int
 }
 
 type DescribeImageSensitiveFileListResponseBodySensitiveFileList struct {
-	// The number of scans that are performed on the sensitive file.
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The timestamp when the first scan was performed. Unit: milliseconds.
-	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
-	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
-	// The risk level. Valid values:
-	//
-	// *   **high**
-	// *   **medium**
-	// *   **low**
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The alert type for the sensitive file. Valid values:
-	//
-	// *   **npm_token**: npm access token
-	// *   **ftp_cfg**: FTP configuration
-	// *   **google\_oauth_key**: Google OAuth key
-	// *   **planetscale_passwd**: PlanetScale password
-	// *   **github\_ssh_key**: GitHub SSH key
-	// *   **msbuild\_publish_profile**: MSBuild publish profile
-	// *   **fastly\_cdn_token**: Fastly CDN token
-	// *   **ssh\_private_key**: SSH private key
-	// *   **aws_cli**: AWS CLI credential
-	// *   **cpanel_proftpd**: cPanel ProFTPD credential
-	// *   **postgresql_passwd**: PostgreSQL password file
-	// *   **discord\_client_cred**: Discord client credential
-	// *   **rails_database**: Rails database configuration
-	// *   **aws\_access_key**: AWS access key
-	// *   **esmtp_cfg** :configuration of ESMTP
-	// *   **docker\_registry_cfg**: configuration of a Docker image repository
-	// *   **pem**: PEM
-	// *   **common_cred**: common credential
-	// *   **sftp_cfg**: SFTP connection configuration
-	// *   **grafana_token**: Grafana token
-	// *   **slack_token**: Slack token
-	// *   **ec\_private_key**: EC private key
-	// *   **pypi_token**: upload token for the PyPI
-	// *   **finicity_token**: Finicity token
-	// *   **k8s\_client_key**: Kubernetes private key
-	// *   **git_cfg**: Git configuration
-	// *   **django_key**: Django key
-	// *   **jenkins_ssh**: Jenkins SSH configuration file
-	// *   **openssh\_private_key**: OpenSSL private key
-	// *   **square_oauth**: OAuth credential for Square
-	// *   **typeform_token**: Typeform token
-	// *   **common\_database_cfg**: general database connection configuration
-	// *   **wordpress\_database_cfg**: WordPress database configuration
-	// *   **googlecloud\_api_key**: API key for Google Cloud
-	// *   **vscode_sftp**: VSCode SFTP configuration
-	// *   **apache_htpasswd**: Apache htpasswd
-	// *   **planetscale_token**: PlanetScale token
-	// *   **contentful\_preview_token**: preview token for Contentful
-	// *   **php\_database_cfg**: database password for a PHP application
-	// *   **atom\_remote_sync**: Atom remote synchronization configuration
-	// *   **aws\_session_token**: AWS session token
-	// *   **atom\_sftp_cfg**: Atom SFTP configuration
-	// *   **tencentcloud_ak**: Asana client key
-	// *   **tencentcloud_ak**: secret ID of a third-party cloud
-	// *   **rsa\_private_key**: RSA private key
-	// *   **github\_personal_token**: personal access token for GitHub
-	// *   **pgp**: PGP encrypted file
-	// *   **stripe_skpk**: Stripe secret key
-	// *   **square_token**: Square access token
-	// *   **rails_carrierwave**: file upload credential for Rails Carrierwave
-	// *   **dbeaver\_database_cfg**: DBeaver database configuration
-	// *   **robomongo_cred**: credential for RoboMongo
-	// *   **github\_oauth_token**: OAuth access token for GitHub
-	// *   **pulumi_token**: Pulumi token
-	// *   **ventrilo_voip**: configuration of a Ventrilo VoIP server
-	// *   **macos_keychain**: macOS keychain
-	// *   **amazon\_mws_token**: Amazon MWS token
-	// *   **dynatrace_token**: Dynatrace token
-	// *   **java_keystore**: JKS
-	// *   **microsoft_sdf**: Microsoft SQL Server CE database
-	// *   **kubernetes\_dashboard_cred**: user credential for Kubernetes Dashboard
-	// *   **atlassian_token**: Atlassian token
-	// *   **rdp**: RDP
-	// *   **mailgun_key**: Mailgun webhook signing key
-	// *   **mailchimp\_api_key**: API key for Mailchimp
-	// *   **netrc_cfg**: .netrc configuration file
-	// *   **openvpn_cfg**: OpenVPN configuration
-	// *   **github\_refresh_token**: GitHub refresh token
-	// *   **salesforce**: Salesforce credential
-	// *   **salesforce**: Sendinblue credential
-	// *   **pkcs\_private_key**: PKCS#12 key
-	// *   **rubyonrails_passwd**: Ruby on Rails password file
-	// *   **filezilla_ftp**: FileZilla FTP configuration
-	// *   **databricks_token**: Databricks token
-	// *   **gitLab\_personal_toke**: personal access token for GitLab
-	// *   **rails\_master_key**: Rails master key
-	// *   **sqlite**: SQLite3 or SQLite database
-	// *   **firefox_logins**: Firefox logon configuration
-	// *   **mailgun\_private_token**: Mailgun private token
-	// *   **joomla_cfg**: Joomla configuration
-	// *   **hashicorp\_terraform_token**: HashiCorp Terraform token
-	// *   **jetbrains_ides**: JetBrains IDEs configuration
-	// *   **heroku\_api_key**: Heroku API key
-	// *   **messagebird_token**: MessageBird token
-	// *   **messagebird_token**: MessageBird token
-	// *   **hashicorp\_vault_token**: HashiCorp Vault token
-	// *   **pgp\_private_key**: PGP private key
-	// *   **sshpasswd**: SSH password
-	// *   **huaweicloud_ak**: secret access key of a third-party cloud
-	// *   **aws_s3cmd**: AWS S3cmd configuration
-	// *   **php_config**: PHP configuration
-	// *   **common\_private_key**: private key of a common type
-	// *   **microsoft_mdf**: Microsoft SQL Server database
-	// *   **mediawiki_cfg**: MediaWiki configuration
-	// *   **jenkins_cred**: Jenkins credential
-	// *   **rubygems_cred**: RubyGems credential
-	// *   **clojars_token**: Clojars token
-	// *   **phoenix\_web_passwd**: Phoenix web credential
-	// *   **puttygen\_private_key**: PuTTYgen private key
-	// *   **google\_oauth_token**: Google OAuth access token
-	// *   **rubyonrails_cfg**: Ruby On Rails database configuration
-	// *   **lob\_api_key**: Lob API key
-	// *   **pkcs_cred**: PKCS#12 certificate
-	// *   **otr\_private_key**: OTR private key
-	// *   **contentful\_delivery_token**: delivery token for Contentful
-	// *   **digital\_ocean_tugboat**: DigitalOcean Tugboat configuration
-	// *   **dsa\_private_key**: Digital DSA private key
-	// *   **rails\_app_token**: Rails app token
-	// *   **git_cred**: Git user credential
-	// *   **newrelic\_api_key**: User API key for New Relic
-	// *   **github_hub**: hub configuration for storing GitHub tokens
-	// *   **rubygem**: RubyGem token
-	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
-	// The name of the alert type for the sensitive file.
+	Count             *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	FirstScanTime     *int64  `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	LastScanTime      *int64  `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	RiskLevel         *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SensitiveFileKey  *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
 	SensitiveFileName *string `json:"SensitiveFileName,omitempty" xml:"SensitiveFileName,omitempty"`
 }
 
@@ -27706,19 +27037,8 @@ func (s *DescribeLatestScanTaskResponse) SetBody(v *DescribeLatestScanTaskRespon
 }
 
 type DescribeLogMetaRequest struct {
-	// The ID of the request source. Default value: **aegis**. Valid values:
-	//
-	// *   **aegis**: Server Guard
-	// *   **sas**: Security Center
-	//
-	// >  If you use Server Guard, set the value to **aegis**. If you use Security Center, set the value to **sas**.
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	From     *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -27746,12 +27066,9 @@ func (s *DescribeLogMetaRequest) SetSourceIp(v string) *DescribeLogMetaRequest {
 }
 
 type DescribeLogMetaResponseBody struct {
-	// An array that consists of the configurations of the log analysis feature.
 	LogMetaList []*DescribeLogMetaResponseBodyLogMetaList `json:"LogMetaList,omitempty" xml:"LogMetaList,omitempty" type:"Repeated"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLogMetaResponseBody) String() string {
@@ -27778,37 +27095,17 @@ func (s *DescribeLogMetaResponseBody) SetTotalCount(v int32) *DescribeLogMetaRes
 }
 
 type DescribeLogMetaResponseBodyLogMetaList struct {
-	// The category of logs. Valid values:
-	//
-	// *   **host**: host logs
-	// *   **network**: network logs
-	// *   **security**: security logs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time period after which logs in hot storage are moved to cold storage. Unit: days.
-	//
-	// >  If the value is **-1**, logs that are stored in hot storage are not moved to cold storage.
-	HotTtl *int32 `json:"HotTtl,omitempty" xml:"HotTtl,omitempty"`
-	// The name of the log type.
-	LogDesc *string `json:"LogDesc,omitempty" xml:"LogDesc,omitempty"`
-	// The name of the dedicated Logstore in which logs are stored.
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The name of the project.
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The status of the log analysis feature. Valid values:
-	//
-	// *   **disabled**
-	// *   **enabled**
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The topic of logs that are delivered.
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The number of days during which logs can be retained.
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The name of the dedicated Logstore in which user logs are stored.
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	HotTtl       *int32  `json:"HotTtl,omitempty" xml:"HotTtl,omitempty"`
+	LogDesc      *string `json:"LogDesc,omitempty" xml:"LogDesc,omitempty"`
+	LogStore     *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	Project      *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Topic        *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	UserLogStore *string `json:"UserLogStore,omitempty" xml:"UserLogStore,omitempty"`
-	// The name of the dedicated project in which logs are stored.
-	UserProject *string `json:"UserProject,omitempty" xml:"UserProject,omitempty"`
-	// The ID of the region.
-	UserRegion *string `json:"UserRegion,omitempty" xml:"UserRegion,omitempty"`
+	UserProject  *string `json:"UserProject,omitempty" xml:"UserProject,omitempty"`
+	UserRegion   *string `json:"UserRegion,omitempty" xml:"UserRegion,omitempty"`
 }
 
 func (s DescribeLogMetaResponseBodyLogMetaList) String() string {
@@ -29494,15 +28791,21 @@ func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasks) SetTotalCount(v st
 }
 
 type DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo struct {
-	Digest        *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	Image         *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	Pod           *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoId        *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	RepoName      *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	RepoRegionId  *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Digest         *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	Image          *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	NodeIp         *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	NodeName       *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Pod            *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RepoId         *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	RepoName       *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespace  *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
+	RepoRegionId   *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) String() string {
@@ -29513,6 +28816,21 @@ func (s DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) GoStri
 	return s.String()
 }
 
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetAppName(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetClusterId(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetClusterName(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.ClusterName = &v
+	return s
+}
+
 func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetDigest(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
 	s.Digest = &v
 	return s
@@ -29520,6 +28838,21 @@ func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetDi
 
 func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetImage(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
 	s.Image = &v
+	return s
+}
+
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetNodeInstanceId(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.NodeInstanceId = &v
+	return s
+}
+
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetNodeIp(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo) SetNodeName(v string) *DescribeOnceTaskLeafRecordPageResponseBodyOnceTasksTaskImageInfo {
+	s.NodeName = &v
 	return s
 }
 
@@ -38225,6 +37558,7 @@ type DescribeSuspEventQuaraFilesResponseBodyQuaraFiles struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
 	Md5          *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
@@ -38270,6 +37604,11 @@ func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetInstanceName(v st
 
 func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetInternetIp(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
 	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles) SetIntranetIp(v string) *DescribeSuspEventQuaraFilesResponseBodyQuaraFiles {
+	s.IntranetIp = &v
 	return s
 }
 
@@ -41661,6 +41000,7 @@ type DescribeVersionConfigResponseBody struct {
 	ImageScanCapacity      *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IsNewContainerVersion  *bool   `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
+	IsNewMultiVersion      *bool   `json:"IsNewMultiVersion,omitempty" xml:"IsNewMultiVersion,omitempty"`
 	IsOverBalance          *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
 	IsTrialVersion         *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
 	LastTrailEndTime       *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
@@ -41730,6 +41070,11 @@ func (s *DescribeVersionConfigResponseBody) SetInstanceId(v string) *DescribeVer
 
 func (s *DescribeVersionConfigResponseBody) SetIsNewContainerVersion(v bool) *DescribeVersionConfigResponseBody {
 	s.IsNewContainerVersion = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetIsNewMultiVersion(v bool) *DescribeVersionConfigResponseBody {
+	s.IsNewMultiVersion = &v
 	return s
 }
 
@@ -41844,6 +41189,23 @@ func (s *DescribeVersionConfigResponse) SetStatusCode(v int32) *DescribeVersionC
 
 func (s *DescribeVersionConfigResponse) SetBody(v *DescribeVersionConfigResponseBody) *DescribeVersionConfigResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeVpcHoneyPotCriteriaRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeVpcHoneyPotCriteriaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcHoneyPotCriteriaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcHoneyPotCriteriaRequest) SetLang(v string) *DescribeVpcHoneyPotCriteriaRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -43193,6 +42555,8 @@ type DescribeVulListResponseBodyVulRecords struct {
 	OsName            *string                                                 `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	OsVersion         *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	PrimaryId         *int64                                                  `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	RaspDefend        *int32                                                  `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+	RaspStatus        *int32                                                  `json:"RaspStatus,omitempty" xml:"RaspStatus,omitempty"`
 	RegionId          *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Related           *string                                                 `json:"Related,omitempty" xml:"Related,omitempty"`
 	RepairTs          *int64                                                  `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
@@ -43299,6 +42663,16 @@ func (s *DescribeVulListResponseBodyVulRecords) SetOsVersion(v string) *Describe
 
 func (s *DescribeVulListResponseBodyVulRecords) SetPrimaryId(v int64) *DescribeVulListResponseBodyVulRecords {
 	s.PrimaryId = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetRaspDefend(v int32) *DescribeVulListResponseBodyVulRecords {
+	s.RaspDefend = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetRaspStatus(v int32) *DescribeVulListResponseBodyVulRecords {
+	s.RaspStatus = &v
 	return s
 }
 
@@ -48767,8 +48141,9 @@ func (s *GetCheckConfigResponse) SetBody(v *GetCheckConfigResponseBody) *GetChec
 }
 
 type GetCheckDetailRequest struct {
-	CheckId *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CheckId  *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetCheckDetailRequest) String() string {
@@ -48789,11 +48164,17 @@ func (s *GetCheckDetailRequest) SetLang(v string) *GetCheckDetailRequest {
 	return s
 }
 
+func (s *GetCheckDetailRequest) SetRegionId(v string) *GetCheckDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
 type GetCheckDetailResponseBody struct {
-	AssistInfo  *GetCheckDetailResponseBodyAssistInfo  `json:"AssistInfo,omitempty" xml:"AssistInfo,omitempty" type:"Struct"`
-	Description *GetCheckDetailResponseBodyDescription `json:"Description,omitempty" xml:"Description,omitempty" type:"Struct"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Solution    *GetCheckDetailResponseBodySolution    `json:"Solution,omitempty" xml:"Solution,omitempty" type:"Struct"`
+	AssistInfo    *GetCheckDetailResponseBodyAssistInfo      `json:"AssistInfo,omitempty" xml:"AssistInfo,omitempty" type:"Struct"`
+	CustomConfigs []*GetCheckDetailResponseBodyCustomConfigs `json:"CustomConfigs,omitempty" xml:"CustomConfigs,omitempty" type:"Repeated"`
+	Description   *GetCheckDetailResponseBodyDescription     `json:"Description,omitempty" xml:"Description,omitempty" type:"Struct"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Solution      *GetCheckDetailResponseBodySolution        `json:"Solution,omitempty" xml:"Solution,omitempty" type:"Struct"`
 }
 
 func (s GetCheckDetailResponseBody) String() string {
@@ -48806,6 +48187,11 @@ func (s GetCheckDetailResponseBody) GoString() string {
 
 func (s *GetCheckDetailResponseBody) SetAssistInfo(v *GetCheckDetailResponseBodyAssistInfo) *GetCheckDetailResponseBody {
 	s.AssistInfo = v
+	return s
+}
+
+func (s *GetCheckDetailResponseBody) SetCustomConfigs(v []*GetCheckDetailResponseBodyCustomConfigs) *GetCheckDetailResponseBody {
+	s.CustomConfigs = v
 	return s
 }
 
@@ -48849,6 +48235,47 @@ func (s *GetCheckDetailResponseBodyAssistInfo) SetType(v string) *GetCheckDetail
 }
 
 func (s *GetCheckDetailResponseBodyAssistInfo) SetValue(v string) *GetCheckDetailResponseBodyAssistInfo {
+	s.Value = &v
+	return s
+}
+
+type GetCheckDetailResponseBodyCustomConfigs struct {
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShowName     *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	TypeDefine   *string `json:"TypeDefine,omitempty" xml:"TypeDefine,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetCheckDetailResponseBodyCustomConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckDetailResponseBodyCustomConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckDetailResponseBodyCustomConfigs) SetDefaultValue(v string) *GetCheckDetailResponseBodyCustomConfigs {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyCustomConfigs) SetName(v string) *GetCheckDetailResponseBodyCustomConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyCustomConfigs) SetShowName(v string) *GetCheckDetailResponseBodyCustomConfigs {
+	s.ShowName = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyCustomConfigs) SetTypeDefine(v string) *GetCheckDetailResponseBodyCustomConfigs {
+	s.TypeDefine = &v
+	return s
+}
+
+func (s *GetCheckDetailResponseBodyCustomConfigs) SetValue(v string) *GetCheckDetailResponseBodyCustomConfigs {
 	s.Value = &v
 	return s
 }
@@ -50583,6 +50010,7 @@ func (s *GetFileDetectResultResponse) SetBody(v *GetFileDetectResultResponseBody
 }
 
 type GetHoneypotNodeRequest struct {
+	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
@@ -50592,6 +50020,11 @@ func (s GetHoneypotNodeRequest) String() string {
 
 func (s GetHoneypotNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHoneypotNodeRequest) SetLang(v string) *GetHoneypotNodeRequest {
+	s.Lang = &v
+	return s
 }
 
 func (s *GetHoneypotNodeRequest) SetNodeId(v string) *GetHoneypotNodeRequest {
@@ -50958,6 +50391,7 @@ func (s *GetHoneypotPresetResponse) SetBody(v *GetHoneypotPresetResponseBody) *G
 }
 
 type GetHoneypotProbeRequest struct {
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	ProbeId *string `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
 }
 
@@ -50967,6 +50401,11 @@ func (s GetHoneypotProbeRequest) String() string {
 
 func (s GetHoneypotProbeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetHoneypotProbeRequest) SetLang(v string) *GetHoneypotProbeRequest {
+	s.Lang = &v
+	return s
 }
 
 func (s *GetHoneypotProbeRequest) SetProbeId(v string) *GetHoneypotProbeRequest {
@@ -51713,6 +51152,23 @@ func (s *GetInterceptionRuleDetailResponse) SetBody(v *GetInterceptionRuleDetail
 	return s
 }
 
+type GetInterceptionSummaryRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s GetInterceptionSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInterceptionSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInterceptionSummaryRequest) SetClusterId(v string) *GetInterceptionSummaryRequest {
+	s.ClusterId = &v
+	return s
+}
+
 type GetInterceptionSummaryResponseBody struct {
 	InterceptionSummary *GetInterceptionSummaryResponseBodyInterceptionSummary `json:"InterceptionSummary,omitempty" xml:"InterceptionSummary,omitempty" type:"Struct"`
 	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -51737,15 +51193,16 @@ func (s *GetInterceptionSummaryResponseBody) SetRequestId(v string) *GetIntercep
 }
 
 type GetInterceptionSummaryResponseBodyInterceptionSummary struct {
-	CloseClusterCount *int32 `json:"CloseClusterCount,omitempty" xml:"CloseClusterCount,omitempty"`
-	CloseRuleCount    *int32 `json:"CloseRuleCount,omitempty" xml:"CloseRuleCount,omitempty"`
-	ClusterCount      *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
-	OpenClusterCount  *int32 `json:"OpenClusterCount,omitempty" xml:"OpenClusterCount,omitempty"`
-	OpenRuleCount     *int32 `json:"OpenRuleCount,omitempty" xml:"OpenRuleCount,omitempty"`
-	RiskCount180Day   *int64 `json:"RiskCount180Day,omitempty" xml:"RiskCount180Day,omitempty"`
-	RiskCount30Day    *int64 `json:"RiskCount30Day,omitempty" xml:"RiskCount30Day,omitempty"`
-	RiskCountToday    *int64 `json:"RiskCountToday,omitempty" xml:"RiskCountToday,omitempty"`
-	RuleCount         *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+	CloseClusterCount       *int32 `json:"CloseClusterCount,omitempty" xml:"CloseClusterCount,omitempty"`
+	CloseRuleCount          *int32 `json:"CloseRuleCount,omitempty" xml:"CloseRuleCount,omitempty"`
+	ClusterCount            *int32 `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	InterceptionCountInDays *int32 `json:"InterceptionCountInDays,omitempty" xml:"InterceptionCountInDays,omitempty"`
+	OpenClusterCount        *int32 `json:"OpenClusterCount,omitempty" xml:"OpenClusterCount,omitempty"`
+	OpenRuleCount           *int32 `json:"OpenRuleCount,omitempty" xml:"OpenRuleCount,omitempty"`
+	RiskCount180Day         *int64 `json:"RiskCount180Day,omitempty" xml:"RiskCount180Day,omitempty"`
+	RiskCount30Day          *int64 `json:"RiskCount30Day,omitempty" xml:"RiskCount30Day,omitempty"`
+	RiskCountToday          *int64 `json:"RiskCountToday,omitempty" xml:"RiskCountToday,omitempty"`
+	RuleCount               *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 }
 
 func (s GetInterceptionSummaryResponseBodyInterceptionSummary) String() string {
@@ -51768,6 +51225,11 @@ func (s *GetInterceptionSummaryResponseBodyInterceptionSummary) SetCloseRuleCoun
 
 func (s *GetInterceptionSummaryResponseBodyInterceptionSummary) SetClusterCount(v int32) *GetInterceptionSummaryResponseBodyInterceptionSummary {
 	s.ClusterCount = &v
+	return s
+}
+
+func (s *GetInterceptionSummaryResponseBodyInterceptionSummary) SetInterceptionCountInDays(v int32) *GetInterceptionSummaryResponseBodyInterceptionSummary {
+	s.InterceptionCountInDays = &v
 	return s
 }
 
@@ -54709,11 +54171,13 @@ type ListCheckResultRequest struct {
 	InstanceTypes  []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequirementIds []*int64  `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
 	RiskLevels     []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
 	SortTypes      []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
 	StandardIds    []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
 	Statuses       []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Types          []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 	Vendors        []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
@@ -54755,6 +54219,11 @@ func (s *ListCheckResultRequest) SetPageSize(v int32) *ListCheckResultRequest {
 	return s
 }
 
+func (s *ListCheckResultRequest) SetRegionId(v string) *ListCheckResultRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListCheckResultRequest) SetRequirementIds(v []*int64) *ListCheckResultRequest {
 	s.RequirementIds = v
 	return s
@@ -54777,6 +54246,11 @@ func (s *ListCheckResultRequest) SetStandardIds(v []*int64) *ListCheckResultRequ
 
 func (s *ListCheckResultRequest) SetStatuses(v []*string) *ListCheckResultRequest {
 	s.Statuses = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetTypes(v []*string) *ListCheckResultRequest {
+	s.Types = v
 	return s
 }
 
@@ -56223,7 +55697,6 @@ type ListHoneypotAlarmEventsRequest struct {
 	Dealed        *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	DstIp         *string   `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
 	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RiskLevelList []*string `json:"RiskLevelList,omitempty" xml:"RiskLevelList,omitempty" type:"Repeated"`
 	SrcIp         *string   `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
@@ -56253,11 +55726,6 @@ func (s *ListHoneypotAlarmEventsRequest) SetDstIp(v string) *ListHoneypotAlarmEv
 
 func (s *ListHoneypotAlarmEventsRequest) SetPageSize(v int32) *ListHoneypotAlarmEventsRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *ListHoneypotAlarmEventsRequest) SetRequestId(v string) *ListHoneypotAlarmEventsRequest {
-	s.RequestId = &v
 	return s
 }
 
@@ -57568,7 +57036,11 @@ func (s *ListImageRiskResponse) SetBody(v *ListImageRiskResponseBody) *ListImage
 }
 
 type ListInstanceCatalogRequest struct {
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequirementIds []*int64  `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
+	StandardIds    []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	Types          []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s ListInstanceCatalogRequest) String() string {
@@ -57581,6 +57053,26 @@ func (s ListInstanceCatalogRequest) GoString() string {
 
 func (s *ListInstanceCatalogRequest) SetLang(v string) *ListInstanceCatalogRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListInstanceCatalogRequest) SetRegionId(v string) *ListInstanceCatalogRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceCatalogRequest) SetRequirementIds(v []*int64) *ListInstanceCatalogRequest {
+	s.RequirementIds = v
+	return s
+}
+
+func (s *ListInstanceCatalogRequest) SetStandardIds(v []*int64) *ListInstanceCatalogRequest {
+	s.StandardIds = v
+	return s
+}
+
+func (s *ListInstanceCatalogRequest) SetTypes(v []*string) *ListInstanceCatalogRequest {
+	s.Types = v
 	return s
 }
 
@@ -57705,6 +57197,7 @@ type ListInterceptionHistoryRequest struct {
 	EndTime           *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HistoryName       *string  `json:"HistoryName,omitempty" xml:"HistoryName,omitempty"`
 	InterceptionTypes []*int32 `json:"InterceptionTypes,omitempty" xml:"InterceptionTypes,omitempty" type:"Repeated"`
+	Lang              *string  `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize          *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime         *int64   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -57739,6 +57232,11 @@ func (s *ListInterceptionHistoryRequest) SetHistoryName(v string) *ListIntercept
 
 func (s *ListInterceptionHistoryRequest) SetInterceptionTypes(v []*int32) *ListInterceptionHistoryRequest {
 	s.InterceptionTypes = v
+	return s
+}
+
+func (s *ListInterceptionHistoryRequest) SetLang(v string) *ListInterceptionHistoryRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -58020,81 +57518,6 @@ func (s *ListInterceptionHistoryResponse) SetStatusCode(v int32) *ListIntercepti
 }
 
 func (s *ListInterceptionHistoryResponse) SetBody(v *ListInterceptionHistoryResponseBody) *ListInterceptionHistoryResponse {
-	s.Body = v
-	return s
-}
-
-type ListInterceptionImageResponseBody struct {
-	ImageList []*ListInterceptionImageResponseBodyImageList `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListInterceptionImageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInterceptionImageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListInterceptionImageResponseBody) SetImageList(v []*ListInterceptionImageResponseBodyImageList) *ListInterceptionImageResponseBody {
-	s.ImageList = v
-	return s
-}
-
-func (s *ListInterceptionImageResponseBody) SetRequestId(v string) *ListInterceptionImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListInterceptionImageResponseBodyImageList struct {
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-}
-
-func (s ListInterceptionImageResponseBodyImageList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInterceptionImageResponseBodyImageList) GoString() string {
-	return s.String()
-}
-
-func (s *ListInterceptionImageResponseBodyImageList) SetImageName(v string) *ListInterceptionImageResponseBodyImageList {
-	s.ImageName = &v
-	return s
-}
-
-func (s *ListInterceptionImageResponseBodyImageList) SetImageUuid(v string) *ListInterceptionImageResponseBodyImageList {
-	s.ImageUuid = &v
-	return s
-}
-
-type ListInterceptionImageResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInterceptionImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListInterceptionImageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInterceptionImageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListInterceptionImageResponse) SetHeaders(v map[string]*string) *ListInterceptionImageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListInterceptionImageResponse) SetStatusCode(v int32) *ListInterceptionImageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListInterceptionImageResponse) SetBody(v *ListInterceptionImageResponseBody) *ListInterceptionImageResponse {
 	s.Body = v
 	return s
 }
@@ -59227,6 +58650,23 @@ func (s *ListPrivateRegistryListResponse) SetStatusCode(v int32) *ListPrivateReg
 
 func (s *ListPrivateRegistryListResponse) SetBody(v *ListPrivateRegistryListResponseBody) *ListPrivateRegistryListResponse {
 	s.Body = v
+	return s
+}
+
+type ListPrivateRegistryTypeRequest struct {
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s ListPrivateRegistryTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPrivateRegistryTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateRegistryTypeRequest) SetLang(v string) *ListPrivateRegistryTypeRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -69347,6 +68787,7 @@ func (s *UninstallUniBackupAgentResponse) SetBody(v *UninstallUniBackupAgentResp
 type UpdateHoneypotRequest struct {
 	HoneypotId   *string `json:"HoneypotId,omitempty" xml:"HoneypotId,omitempty"`
 	HoneypotName *string `json:"HoneypotName,omitempty" xml:"HoneypotName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Meta         *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
 }
 
@@ -69365,6 +68806,11 @@ func (s *UpdateHoneypotRequest) SetHoneypotId(v string) *UpdateHoneypotRequest {
 
 func (s *UpdateHoneypotRequest) SetHoneypotName(v string) *UpdateHoneypotRequest {
 	s.HoneypotName = &v
+	return s
+}
+
+func (s *UpdateHoneypotRequest) SetLang(v string) *UpdateHoneypotRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -69610,6 +69056,7 @@ func (s *UpdateHoneypotNodeResponse) SetBody(v *UpdateHoneypotNodeResponseBody) 
 type UpdateHoneypotPresetRequest struct {
 	HoneypotImageName *string `json:"HoneypotImageName,omitempty" xml:"HoneypotImageName,omitempty"`
 	HoneypotPresetId  *string `json:"HoneypotPresetId,omitempty" xml:"HoneypotPresetId,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Meta              *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
 	PresetName        *string `json:"PresetName,omitempty" xml:"PresetName,omitempty"`
 }
@@ -69629,6 +69076,11 @@ func (s *UpdateHoneypotPresetRequest) SetHoneypotImageName(v string) *UpdateHone
 
 func (s *UpdateHoneypotPresetRequest) SetHoneypotPresetId(v string) *UpdateHoneypotPresetRequest {
 	s.HoneypotPresetId = &v
+	return s
+}
+
+func (s *UpdateHoneypotPresetRequest) SetLang(v string) *UpdateHoneypotPresetRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -69715,6 +69167,7 @@ func (s *UpdateHoneypotPresetResponse) SetBody(v *UpdateHoneypotPresetResponseBo
 type UpdateHoneypotProbeRequest struct {
 	Arp           *bool     `json:"Arp,omitempty" xml:"Arp,omitempty"`
 	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Lang          *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Ping          *bool     `json:"Ping,omitempty" xml:"Ping,omitempty"`
 	ProbeId       *string   `json:"ProbeId,omitempty" xml:"ProbeId,omitempty"`
 	ServiceIpList []*string `json:"ServiceIpList,omitempty" xml:"ServiceIpList,omitempty" type:"Repeated"`
@@ -69735,6 +69188,11 @@ func (s *UpdateHoneypotProbeRequest) SetArp(v bool) *UpdateHoneypotProbeRequest 
 
 func (s *UpdateHoneypotProbeRequest) SetDisplayName(v string) *UpdateHoneypotProbeRequest {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateHoneypotProbeRequest) SetLang(v string) *UpdateHoneypotProbeRequest {
+	s.Lang = &v
 	return s
 }
 
@@ -70785,6 +70243,13 @@ func (client *Client) AddPrivateRegistry(request *AddPrivateRegistryRequest) (_r
 	return _result, _err
 }
 
+/**
+ * Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+ *
+ * @param request AddTagWithUuidRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddTagWithUuidResponse
+ */
 func (client *Client) AddTagWithUuidWithOptions(request *AddTagWithUuidRequest, runtime *util.RuntimeOptions) (_result *AddTagWithUuidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70822,6 +70287,12 @@ func (client *Client) AddTagWithUuidWithOptions(request *AddTagWithUuidRequest, 
 	return _result, _err
 }
 
+/**
+ * Security Center provides asset importance tags and custom tags. You can call the AddTagWithUuid operation to add only a custom tag to assets.
+ *
+ * @param request AddTagWithUuidRequest
+ * @return AddTagWithUuidResponse
+ */
 func (client *Client) AddTagWithUuid(request *AddTagWithUuidRequest) (_result *AddTagWithUuidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTagWithUuidResponse{}
@@ -71202,6 +70673,58 @@ func (client *Client) ChangeCheckConfig(request *ChangeCheckConfigRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeCheckConfigResponse{}
 	_body, _err := client.ChangeCheckConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ChangeCheckCustomConfigWithOptions(request *ChangeCheckCustomConfigRequest, runtime *util.RuntimeOptions) (_result *ChangeCheckCustomConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomConfigs)) {
+		query["CustomConfigs"] = request.CustomConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeCheckCustomConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeCheckCustomConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeCheckCustomConfig(request *ChangeCheckCustomConfigRequest) (_result *ChangeCheckCustomConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeCheckCustomConfigResponse{}
+	_body, _err := client.ChangeCheckCustomConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71803,8 +71326,8 @@ func (client *Client) CreateFileDetect(request *CreateFileDetectRequest) (_resul
 }
 
 /**
- * You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
- * The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+ * You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+ * The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
  * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
  *
  * @param request CreateFileDetectUploadUrlRequest
@@ -71853,8 +71376,8 @@ func (client *Client) CreateFileDetectUploadUrlWithOptions(request *CreateFileDe
 }
 
 /**
- * You can call the this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
- * The form upload method is provided by OSS. For more information, see [Form upload](https://www.alibabacloud.com/help/en/object-storage-service/latest/upload-objects-form-upload).
+ * You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+ * The form upload method is provided by OSS. For more information, see [Form upload](~~84788~~).
  * The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
  *
  * @param request CreateFileDetectUploadUrlRequest
@@ -71995,6 +71518,10 @@ func (client *Client) CreateHoneypotPresetWithOptions(request *CreateHoneypotPre
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.HoneypotImageName)) {
 		query["HoneypotImageName"] = request.HoneypotImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Meta)) {
@@ -73178,6 +72705,13 @@ func (client *Client) DeleteCycleTask(request *DeleteCycleTaskRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * The **Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+ *
+ * @param request DeleteGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -73215,6 +72749,12 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+/**
+ * The **Default** server group that is provided by Security Center cannot be deleted. After you delete a group, the assets in this group are moved to the **Default** group.
+ *
+ * @param request DeleteGroupRequest
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -73234,6 +72774,10 @@ func (client *Client) DeleteHoneypotWithOptions(request *DeleteHoneypotRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.HoneypotId)) {
 		query["HoneypotId"] = request.HoneypotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -73276,6 +72820,10 @@ func (client *Client) DeleteHoneypotNodeWithOptions(request *DeleteHoneypotNodeR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -73324,6 +72872,10 @@ func (client *Client) DeleteHoneypotPresetWithOptions(request *DeleteHoneypotPre
 		query["HoneypotPresetId"] = request.HoneypotPresetId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -73364,6 +72916,10 @@ func (client *Client) DeleteHoneypotProbeWithOptions(request *DeleteHoneypotProb
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProbeId)) {
 		query["ProbeId"] = request.ProbeId
 	}
@@ -74350,134 +73906,6 @@ func (client *Client) DescribeAlarmEventDetail(request *DescribeAlarmEventDetail
 	return _result, _err
 }
 
-func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AlarmEventName)) {
-		query["AlarmEventName"] = request.AlarmEventName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AlarmEventType)) {
-		query["AlarmEventType"] = request.AlarmEventType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
-		query["CurrentPage"] = request.CurrentPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
-		query["Dealed"] = request.Dealed
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		query["From"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Levels)) {
-		query["Levels"] = request.Levels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperateErrorCodeList)) {
-		query["OperateErrorCodeList"] = request.OperateErrorCodeList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperateTimeEnd)) {
-		query["OperateTimeEnd"] = request.OperateTimeEnd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OperateTimeStart)) {
-		query["OperateTimeStart"] = request.OperateTimeStart
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Remark)) {
-		query["Remark"] = request.Remark
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortColumn)) {
-		query["SortColumn"] = request.SortColumn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SortType)) {
-		query["SortType"] = request.SortType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TacticId)) {
-		query["TacticId"] = request.TacticId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeEnd)) {
-		query["TimeEnd"] = request.TimeEnd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeStart)) {
-		query["TimeStart"] = request.TimeStart
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
-		query["UniqueInfo"] = request.UniqueInfo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
-		query["Uuids"] = request.Uuids
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeAlarmEventList"),
-		Version:     tea.String("2018-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeAlarmEventListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeAlarmEventList(request *DescribeAlarmEventListRequest) (_result *DescribeAlarmEventListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeAlarmEventListResponse{}
-	_body, _err := client.DescribeAlarmEventListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75106,6 +74534,13 @@ func (client *Client) DescribeBackUpExportInfo(request *DescribeBackUpExportInfo
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+ *
+ * @param request DescribeBackupClientsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeBackupClientsResponse
+ */
 func (client *Client) DescribeBackupClientsWithOptions(request *DescribeBackupClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -75139,6 +74574,12 @@ func (client *Client) DescribeBackupClientsWithOptions(request *DescribeBackupCl
 	return _result, _err
 }
 
+/**
+ * You can call the DescribeBackupClients operation to query the servers on which the anti-ransomware agent is installed in a specified region.
+ *
+ * @param request DescribeBackupClientsRequest
+ * @return DescribeBackupClientsResponse
+ */
 func (client *Client) DescribeBackupClients(request *DescribeBackupClientsRequest) (_result *DescribeBackupClientsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupClientsResponse{}
@@ -76628,6 +76069,13 @@ func (client *Client) DescribeContainerInstances(request *DescribeContainerInsta
 	return _result, _err
 }
 
+/**
+ * Only users who created a Container Registry Enterprise Edition instance can call this operation.
+ *
+ * @param request DescribeContainerStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeContainerStatisticsResponse
+ */
 func (client *Client) DescribeContainerStatisticsWithOptions(request *DescribeContainerStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -76661,6 +76109,12 @@ func (client *Client) DescribeContainerStatisticsWithOptions(request *DescribeCo
 	return _result, _err
 }
 
+/**
+ * Only users who created a Container Registry Enterprise Edition instance can call this operation.
+ *
+ * @param request DescribeContainerStatisticsRequest
+ * @return DescribeContainerStatisticsResponse
+ */
 func (client *Client) DescribeContainerStatistics(request *DescribeContainerStatisticsRequest) (_result *DescribeContainerStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeContainerStatisticsResponse{}
@@ -78368,8 +77822,19 @@ func (client *Client) DescribeHcExportInfo(request *DescribeHcExportInfoRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeHoneyPotAuthWithOptions(runtime *util.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeHoneyPotAuthWithOptions(request *DescribeHoneyPotAuthRequest, runtime *util.RuntimeOptions) (_result *DescribeHoneyPotAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeHoneyPotAuth"),
 		Version:     tea.String("2018-12-03"),
@@ -78390,10 +77855,10 @@ func (client *Client) DescribeHoneyPotAuthWithOptions(runtime *util.RuntimeOptio
 	return _result, _err
 }
 
-func (client *Client) DescribeHoneyPotAuth() (_result *DescribeHoneyPotAuthResponse, _err error) {
+func (client *Client) DescribeHoneyPotAuth(request *DescribeHoneyPotAuthRequest) (_result *DescribeHoneyPotAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHoneyPotAuthResponse{}
-	_body, _err := client.DescribeHoneyPotAuthWithOptions(runtime)
+	_body, _err := client.DescribeHoneyPotAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -78409,6 +77874,10 @@ func (client *Client) DescribeHoneyPotSuspStatisticsWithOptions(request *Describ
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StatisticsDays)) {
@@ -85011,8 +84480,19 @@ func (client *Client) DescribeVersionConfig(request *DescribeVersionConfigReques
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(request *DescribeVpcHoneyPotCriteriaRequest, runtime *util.RuntimeOptions) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVpcHoneyPotCriteria"),
 		Version:     tea.String("2018-12-03"),
@@ -85033,10 +84513,10 @@ func (client *Client) DescribeVpcHoneyPotCriteriaWithOptions(runtime *util.Runti
 	return _result, _err
 }
 
-func (client *Client) DescribeVpcHoneyPotCriteria() (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
+func (client *Client) DescribeVpcHoneyPotCriteria(request *DescribeVpcHoneyPotCriteriaRequest) (_result *DescribeVpcHoneyPotCriteriaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVpcHoneyPotCriteriaResponse{}
-	_body, _err := client.DescribeVpcHoneyPotCriteriaWithOptions(runtime)
+	_body, _err := client.DescribeVpcHoneyPotCriteriaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -87540,6 +87020,10 @@ func (client *Client) GetCheckDetailWithOptions(request *GetCheckDetailRequest, 
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -88126,6 +87610,10 @@ func (client *Client) GetHoneypotNodeWithOptions(request *GetHoneypotNodeRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
 	}
@@ -88218,6 +87706,10 @@ func (client *Client) GetHoneypotProbeWithOptions(request *GetHoneypotProbeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProbeId)) {
 		query["ProbeId"] = request.ProbeId
 	}
@@ -88348,8 +87840,19 @@ func (client *Client) GetInterceptionRuleDetail(request *GetInterceptionRuleDeta
 	return _result, _err
 }
 
-func (client *Client) GetInterceptionSummaryWithOptions(runtime *util.RuntimeOptions) (_result *GetInterceptionSummaryResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) GetInterceptionSummaryWithOptions(request *GetInterceptionSummaryRequest, runtime *util.RuntimeOptions) (_result *GetInterceptionSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInterceptionSummary"),
 		Version:     tea.String("2018-12-03"),
@@ -88370,10 +87873,10 @@ func (client *Client) GetInterceptionSummaryWithOptions(runtime *util.RuntimeOpt
 	return _result, _err
 }
 
-func (client *Client) GetInterceptionSummary() (_result *GetInterceptionSummaryResponse, _err error) {
+func (client *Client) GetInterceptionSummary(request *GetInterceptionSummaryRequest) (_result *GetInterceptionSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInterceptionSummaryResponse{}
-	_body, _err := client.GetInterceptionSummaryWithOptions(runtime)
+	_body, _err := client.GetInterceptionSummaryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -89632,6 +89135,10 @@ func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RequirementIds)) {
 		query["RequirementIds"] = request.RequirementIds
 	}
@@ -89650,6 +89157,10 @@ func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
 		query["Statuses"] = request.Statuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["Types"] = request.Types
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Vendors)) {
@@ -90406,6 +89917,22 @@ func (client *Client) ListInstanceCatalogWithOptions(request *ListInstanceCatalo
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequirementIds)) {
+		query["RequirementIds"] = request.RequirementIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandardIds)) {
+		query["StandardIds"] = request.StandardIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["Types"] = request.Types
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -90466,6 +89993,10 @@ func (client *Client) ListInterceptionHistoryWithOptions(request *ListIntercepti
 		query["InterceptionTypes"] = request.InterceptionTypes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -90501,39 +90032,6 @@ func (client *Client) ListInterceptionHistory(request *ListInterceptionHistoryRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInterceptionHistoryResponse{}
 	_body, _err := client.ListInterceptionHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListInterceptionImageWithOptions(runtime *util.RuntimeOptions) (_result *ListInterceptionImageResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("ListInterceptionImage"),
-		Version:     tea.String("2018-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListInterceptionImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListInterceptionImage() (_result *ListInterceptionImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInterceptionImageResponse{}
-	_body, _err := client.ListInterceptionImageWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -90835,8 +90333,19 @@ func (client *Client) ListPrivateRegistryList(request *ListPrivateRegistryListRe
 	return _result, _err
 }
 
-func (client *Client) ListPrivateRegistryTypeWithOptions(runtime *util.RuntimeOptions) (_result *ListPrivateRegistryTypeResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ListPrivateRegistryTypeWithOptions(request *ListPrivateRegistryTypeRequest, runtime *util.RuntimeOptions) (_result *ListPrivateRegistryTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPrivateRegistryType"),
 		Version:     tea.String("2018-12-03"),
@@ -90857,10 +90366,10 @@ func (client *Client) ListPrivateRegistryTypeWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
-func (client *Client) ListPrivateRegistryType() (_result *ListPrivateRegistryTypeResponse, _err error) {
+func (client *Client) ListPrivateRegistryType(request *ListPrivateRegistryTypeRequest) (_result *ListPrivateRegistryTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrivateRegistryTypeResponse{}
-	_body, _err := client.ListPrivateRegistryTypeWithOptions(runtime)
+	_body, _err := client.ListPrivateRegistryTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -96673,6 +96182,10 @@ func (client *Client) UpdateHoneypotWithOptions(request *UpdateHoneypotRequest, 
 		query["HoneypotName"] = request.HoneypotName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Meta)) {
 		query["Meta"] = request.Meta
 	}
@@ -96781,6 +96294,10 @@ func (client *Client) UpdateHoneypotPresetWithOptions(request *UpdateHoneypotPre
 		query["HoneypotPresetId"] = request.HoneypotPresetId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Meta)) {
 		query["Meta"] = request.Meta
 	}
@@ -96835,6 +96352,10 @@ func (client *Client) UpdateHoneypotProbeWithOptions(request *UpdateHoneypotProb
 
 	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
 		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ping)) {
