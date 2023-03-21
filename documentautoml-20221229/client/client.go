@@ -142,9 +142,9 @@ func (s *PredictModelRequest) SetModelVersion(v string) *PredictModelRequest {
 }
 
 type PredictModelResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -162,8 +162,8 @@ func (s *PredictModelResponseBody) SetCode(v int32) *PredictModelResponseBody {
 	return s
 }
 
-func (s *PredictModelResponseBody) SetData(v string) *PredictModelResponseBody {
-	s.Data = &v
+func (s *PredictModelResponseBody) SetData(v map[string]interface{}) *PredictModelResponseBody {
+	s.Data = v
 	return s
 }
 
