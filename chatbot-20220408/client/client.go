@@ -5316,9 +5316,10 @@ func (s *InitIMConnectRequest) SetUserAccessToken(v string) *InitIMConnectReques
 }
 
 type InitIMConnectResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -5461,8 +5462,10 @@ func (s *LinkInstanceCategoryResponse) SetBody(v *LinkInstanceCategoryResponseBo
 }
 
 type ListAgentRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	AgentName  *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	GoodsCodes *string `json:"GoodsCodes,omitempty" xml:"GoodsCodes,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListAgentRequest) String() string {
@@ -5471,6 +5474,16 @@ func (s ListAgentRequest) String() string {
 
 func (s ListAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAgentRequest) SetAgentName(v string) *ListAgentRequest {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ListAgentRequest) SetGoodsCodes(v string) *ListAgentRequest {
+	s.GoodsCodes = &v
+	return s
 }
 
 func (s *ListAgentRequest) SetPageNumber(v int32) *ListAgentRequest {
@@ -5526,9 +5539,10 @@ func (s *ListAgentResponseBody) SetTotalCount(v int32) *ListAgentResponseBody {
 }
 
 type ListAgentResponseBodyData struct {
-	AgentId   *int64  `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentKey  *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	AgentId       *int64                 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentKey      *string                `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentName     *string                `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	InstanceInfos map[string]interface{} `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty"`
 }
 
 func (s ListAgentResponseBodyData) String() string {
@@ -5551,6 +5565,11 @@ func (s *ListAgentResponseBodyData) SetAgentKey(v string) *ListAgentResponseBody
 
 func (s *ListAgentResponseBodyData) SetAgentName(v string) *ListAgentResponseBodyData {
 	s.AgentName = &v
+	return s
+}
+
+func (s *ListAgentResponseBodyData) SetInstanceInfos(v map[string]interface{}) *ListAgentResponseBodyData {
+	s.InstanceInfos = v
 	return s
 }
 
@@ -11824,6 +11843,14 @@ func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentName)) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GoodsCodes)) {
+		query["GoodsCodes"] = request.GoodsCodes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
