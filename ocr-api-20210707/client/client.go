@@ -5461,6 +5461,7 @@ func (s *RecognizeSocialSecurityCardVersionIIResponse) SetBody(v *RecognizeSocia
 }
 
 type RecognizeTableOcrRequest struct {
+	IsHandWriting *string   `json:"IsHandWriting,omitempty" xml:"IsHandWriting,omitempty"`
 	LineLess      *bool     `json:"LineLess,omitempty" xml:"LineLess,omitempty"`
 	NeedRotate    *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
 	SkipDetection *bool     `json:"SkipDetection,omitempty" xml:"SkipDetection,omitempty"`
@@ -5474,6 +5475,11 @@ func (s RecognizeTableOcrRequest) String() string {
 
 func (s RecognizeTableOcrRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeTableOcrRequest) SetIsHandWriting(v string) *RecognizeTableOcrRequest {
+	s.IsHandWriting = &v
+	return s
 }
 
 func (s *RecognizeTableOcrRequest) SetLineLess(v bool) *RecognizeTableOcrRequest {
@@ -6101,93 +6107,6 @@ func (s *RecognizeTrainInvoiceResponse) SetStatusCode(v int32) *RecognizeTrainIn
 }
 
 func (s *RecognizeTrainInvoiceResponse) SetBody(v *RecognizeTrainInvoiceResponseBody) *RecognizeTrainInvoiceResponse {
-	s.Body = v
-	return s
-}
-
-type RecognizeTravelCardRequest struct {
-	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s RecognizeTravelCardRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeTravelCardRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeTravelCardRequest) SetUrl(v string) *RecognizeTravelCardRequest {
-	s.Url = &v
-	return s
-}
-
-func (s *RecognizeTravelCardRequest) SetBody(v io.Reader) *RecognizeTravelCardRequest {
-	s.Body = v
-	return s
-}
-
-type RecognizeTravelCardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RecognizeTravelCardResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeTravelCardResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeTravelCardResponseBody) SetCode(v string) *RecognizeTravelCardResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RecognizeTravelCardResponseBody) SetData(v string) *RecognizeTravelCardResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RecognizeTravelCardResponseBody) SetMessage(v string) *RecognizeTravelCardResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RecognizeTravelCardResponseBody) SetRequestId(v string) *RecognizeTravelCardResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RecognizeTravelCardResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeTravelCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeTravelCardResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeTravelCardResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeTravelCardResponse) SetHeaders(v map[string]*string) *RecognizeTravelCardResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeTravelCardResponse) SetStatusCode(v int32) *RecognizeTravelCardResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RecognizeTravelCardResponse) SetBody(v *RecognizeTravelCardResponseBody) *RecognizeTravelCardResponse {
 	s.Body = v
 	return s
 }
@@ -9760,6 +9679,10 @@ func (client *Client) RecognizeTableOcrWithOptions(request *RecognizeTableOcrReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsHandWriting)) {
+		query["IsHandWriting"] = request.IsHandWriting
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LineLess)) {
 		query["LineLess"] = request.LineLess
 	}
@@ -10093,52 +10016,6 @@ func (client *Client) RecognizeTrainInvoice(request *RecognizeTrainInvoiceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTrainInvoiceResponse{}
 	_body, _err := client.RecognizeTrainInvoiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeTravelCardWithOptions(request *RecognizeTravelCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeTravelCardResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Url)) {
-		query["Url"] = request.Url
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query:  openapiutil.Query(query),
-		Body:   request.Body,
-		Stream: request.Body,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RecognizeTravelCard"),
-		Version:     tea.String("2021-07-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RecognizeTravelCardResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeTravelCard(request *RecognizeTravelCardRequest) (_result *RecognizeTravelCardResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeTravelCardResponse{}
-	_body, _err := client.RecognizeTravelCardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
