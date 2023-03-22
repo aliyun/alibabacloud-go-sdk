@@ -207,8 +207,9 @@ func (s *PredictModelResponse) SetBody(v *PredictModelResponseBody) *PredictMode
 }
 
 type PredictTemplateModelRequest struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	TaskId  *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	BinaryToText *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s PredictTemplateModelRequest) String() string {
@@ -217,6 +218,11 @@ func (s PredictTemplateModelRequest) String() string {
 
 func (s PredictTemplateModelRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PredictTemplateModelRequest) SetBinaryToText(v bool) *PredictTemplateModelRequest {
+	s.BinaryToText = &v
+	return s
 }
 
 func (s *PredictTemplateModelRequest) SetContent(v string) *PredictTemplateModelRequest {
@@ -455,6 +461,10 @@ func (client *Client) PredictTemplateModelWithOptions(request *PredictTemplateMo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BinaryToText)) {
+		query["BinaryToText"] = request.BinaryToText
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		query["Content"] = request.Content
 	}
