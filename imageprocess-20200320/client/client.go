@@ -1128,6 +1128,7 @@ func (s *DetectHipKeypointXRayResponseBodyData) SetOrgName(v string) *DetectHipK
 }
 
 type DetectHipKeypointXRayResponseBodyDataKeyPoints struct {
+	// 1
 	Coordinates []*int32                                           `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	Tag         *DetectHipKeypointXRayResponseBodyDataKeyPointsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	Value       *float32                                           `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2023,6 +2024,7 @@ func (s *DetectLymphAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectLymp
 
 type DetectLymphResponseBody struct {
 	Data      *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2036,6 +2038,11 @@ func (s DetectLymphResponseBody) GoString() string {
 
 func (s *DetectLymphResponseBody) SetData(v *DetectLymphResponseBodyData) *DetectLymphResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectLymphResponseBody) SetMessage(v string) *DetectLymphResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -2213,6 +2220,7 @@ func (s *DetectPancAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectPancA
 
 type DetectPancResponseBody struct {
 	Data      *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2226,6 +2234,11 @@ func (s DetectPancResponseBody) GoString() string {
 
 func (s *DetectPancResponseBody) SetData(v *DetectPancResponseBodyData) *DetectPancResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *DetectPancResponseBody) SetMessage(v string) *DetectPancResponseBody {
+	s.Message = &v
 	return s
 }
 
@@ -3984,6 +3997,7 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVessel) SetResultURL(v string)
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo struct {
+	// 1
 	Area         []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates  [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue   *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -4031,6 +4045,7 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselAortaInfo) SetMaxDiamete
 }
 
 type ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo struct {
+	// 1
 	Area             []*float32   `json:"Area,omitempty" xml:"Area,omitempty" type:"Repeated"`
 	Coordinates      [][]*float32 `json:"Coordinates,omitempty" xml:"Coordinates,omitempty" type:"Repeated"`
 	LabelValue       *int64       `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -4868,6 +4883,197 @@ func (s *ScreenECResponse) SetStatusCode(v int32) *ScreenECResponse {
 }
 
 func (s *ScreenECResponse) SetBody(v *ScreenECResponseBody) *ScreenECResponse {
+	s.Body = v
+	return s
+}
+
+type SegmentLymphNodeRequest struct {
+	BodyPart   *string                           `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
+	DataFormat *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*SegmentLymphNodeRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s SegmentLymphNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeRequest) SetBodyPart(v string) *SegmentLymphNodeRequest {
+	s.BodyPart = &v
+	return s
+}
+
+func (s *SegmentLymphNodeRequest) SetDataFormat(v string) *SegmentLymphNodeRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *SegmentLymphNodeRequest) SetOrgId(v string) *SegmentLymphNodeRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *SegmentLymphNodeRequest) SetOrgName(v string) *SegmentLymphNodeRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *SegmentLymphNodeRequest) SetURLList(v []*SegmentLymphNodeRequestURLList) *SegmentLymphNodeRequest {
+	s.URLList = v
+	return s
+}
+
+type SegmentLymphNodeRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s SegmentLymphNodeRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeRequestURLList) SetURL(v string) *SegmentLymphNodeRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type SegmentLymphNodeAdvanceRequest struct {
+	BodyPart   *string                                  `json:"BodyPart,omitempty" xml:"BodyPart,omitempty"`
+	DataFormat *string                                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                                  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                                  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList    []*SegmentLymphNodeAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s SegmentLymphNodeAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeAdvanceRequest) SetBodyPart(v string) *SegmentLymphNodeAdvanceRequest {
+	s.BodyPart = &v
+	return s
+}
+
+func (s *SegmentLymphNodeAdvanceRequest) SetDataFormat(v string) *SegmentLymphNodeAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *SegmentLymphNodeAdvanceRequest) SetOrgId(v string) *SegmentLymphNodeAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *SegmentLymphNodeAdvanceRequest) SetOrgName(v string) *SegmentLymphNodeAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *SegmentLymphNodeAdvanceRequest) SetURLList(v []*SegmentLymphNodeAdvanceRequestURLList) *SegmentLymphNodeAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type SegmentLymphNodeAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s SegmentLymphNodeAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeAdvanceRequestURLList) SetURLObject(v io.Reader) *SegmentLymphNodeAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type SegmentLymphNodeResponseBody struct {
+	Data      *SegmentLymphNodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SegmentLymphNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeResponseBody) SetData(v *SegmentLymphNodeResponseBodyData) *SegmentLymphNodeResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SegmentLymphNodeResponseBody) SetMessage(v string) *SegmentLymphNodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SegmentLymphNodeResponseBody) SetRequestId(v string) *SegmentLymphNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SegmentLymphNodeResponseBodyData struct {
+	ResultURL *string `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+}
+
+func (s SegmentLymphNodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeResponseBodyData) SetResultURL(v string) *SegmentLymphNodeResponseBodyData {
+	s.ResultURL = &v
+	return s
+}
+
+type SegmentLymphNodeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SegmentLymphNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SegmentLymphNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SegmentLymphNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SegmentLymphNodeResponse) SetHeaders(v map[string]*string) *SegmentLymphNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SegmentLymphNodeResponse) SetStatusCode(v int32) *SegmentLymphNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SegmentLymphNodeResponse) SetBody(v *SegmentLymphNodeResponseBody) *SegmentLymphNodeResponse {
 	s.Body = v
 	return s
 }
@@ -8343,6 +8549,180 @@ func (client *Client) ScreenEC(request *ScreenECRequest) (_result *ScreenECRespo
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentLymphNodeWithOptions(request *SegmentLymphNodeRequest, runtime *util.RuntimeOptions) (_result *SegmentLymphNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyPart)) {
+		body["BodyPart"] = request.BodyPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SegmentLymphNode"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SegmentLymphNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SegmentLymphNode(request *SegmentLymphNodeRequest) (_result *SegmentLymphNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SegmentLymphNodeResponse{}
+	_body, _err := client.SegmentLymphNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SegmentLymphNodeAdvance(request *SegmentLymphNodeAdvanceRequest, runtime *util.RuntimeOptions) (_result *SegmentLymphNodeResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	segmentLymphNodeReq := &SegmentLymphNodeRequest{}
+	openapiutil.Convert(request, segmentLymphNodeReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := segmentLymphNodeReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	segmentLymphNodeResp, _err := client.SegmentLymphNodeWithOptions(segmentLymphNodeReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = segmentLymphNodeResp
 	return _result, _err
 }
 
