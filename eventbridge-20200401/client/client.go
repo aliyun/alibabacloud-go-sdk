@@ -3818,6 +3818,7 @@ func (s *CreateRuleRequest) SetStatus(v string) *CreateRuleRequest {
 type CreateRuleRequestEventTargets struct {
 	DeadLetterQueue   *CreateRuleRequestEventTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	Endpoint          *string                                       `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ErrorsTolerance   *string                                       `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
 	Id                *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
 	ParamList         []*CreateRuleRequestEventTargetsParamList     `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 	PushRetryStrategy *string                                       `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
@@ -3839,6 +3840,11 @@ func (s *CreateRuleRequestEventTargets) SetDeadLetterQueue(v *CreateRuleRequestE
 
 func (s *CreateRuleRequestEventTargets) SetEndpoint(v string) *CreateRuleRequestEventTargets {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateRuleRequestEventTargets) SetErrorsTolerance(v string) *CreateRuleRequestEventTargets {
+	s.ErrorsTolerance = &v
 	return s
 }
 
@@ -4159,11 +4165,13 @@ func (s *CreateTargetsRequest) SetTargets(v []*CreateTargetsRequestTargets) *Cre
 }
 
 type CreateTargetsRequestTargets struct {
-	Endpoint          *string                                 `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Id                *string                                 `json:"Id,omitempty" xml:"Id,omitempty"`
-	ParamList         []*CreateTargetsRequestTargetsParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	PushRetryStrategy *string                                 `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
-	Type              *string                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	DeadLetterQueue   *CreateTargetsRequestTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
+	Endpoint          *string                                     `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ErrorsTolerance   *string                                     `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	Id                *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	ParamList         []*CreateTargetsRequestTargetsParamList     `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	PushRetryStrategy *string                                     `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
+	Type              *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateTargetsRequestTargets) String() string {
@@ -4174,8 +4182,18 @@ func (s CreateTargetsRequestTargets) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTargetsRequestTargets) SetDeadLetterQueue(v *CreateTargetsRequestTargetsDeadLetterQueue) *CreateTargetsRequestTargets {
+	s.DeadLetterQueue = v
+	return s
+}
+
 func (s *CreateTargetsRequestTargets) SetEndpoint(v string) *CreateTargetsRequestTargets {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateTargetsRequestTargets) SetErrorsTolerance(v string) *CreateTargetsRequestTargets {
+	s.ErrorsTolerance = &v
 	return s
 }
 
@@ -4196,6 +4214,23 @@ func (s *CreateTargetsRequestTargets) SetPushRetryStrategy(v string) *CreateTarg
 
 func (s *CreateTargetsRequestTargets) SetType(v string) *CreateTargetsRequestTargets {
 	s.Type = &v
+	return s
+}
+
+type CreateTargetsRequestTargetsDeadLetterQueue struct {
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s CreateTargetsRequestTargetsDeadLetterQueue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTargetsRequestTargetsDeadLetterQueue) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTargetsRequestTargetsDeadLetterQueue) SetArn(v string) *CreateTargetsRequestTargetsDeadLetterQueue {
+	s.Arn = &v
 	return s
 }
 
@@ -11898,6 +11933,291 @@ func (s *PauseEventStreamingResponse) SetBody(v *PauseEventStreamingResponseBody
 	return s
 }
 
+type PutTargetsRequest struct {
+	EventBusName *string                     `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	RuleName     *string                     `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Targets      []*PutTargetsRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+}
+
+func (s PutTargetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsRequest) SetEventBusName(v string) *PutTargetsRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *PutTargetsRequest) SetRuleName(v string) *PutTargetsRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *PutTargetsRequest) SetTargets(v []*PutTargetsRequestTargets) *PutTargetsRequest {
+	s.Targets = v
+	return s
+}
+
+type PutTargetsRequestTargets struct {
+	DeadLetterQueue   *PutTargetsRequestTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
+	Endpoint          *string                                  `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	ErrorsTolerance   *string                                  `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	Id                *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ParamList         []*PutTargetsRequestTargetsParamList     `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	PushRetryStrategy *string                                  `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
+	Type              *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s PutTargetsRequestTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsRequestTargets) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsRequestTargets) SetDeadLetterQueue(v *PutTargetsRequestTargetsDeadLetterQueue) *PutTargetsRequestTargets {
+	s.DeadLetterQueue = v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetEndpoint(v string) *PutTargetsRequestTargets {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetErrorsTolerance(v string) *PutTargetsRequestTargets {
+	s.ErrorsTolerance = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetId(v string) *PutTargetsRequestTargets {
+	s.Id = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetParamList(v []*PutTargetsRequestTargetsParamList) *PutTargetsRequestTargets {
+	s.ParamList = v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetPushRetryStrategy(v string) *PutTargetsRequestTargets {
+	s.PushRetryStrategy = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargets) SetType(v string) *PutTargetsRequestTargets {
+	s.Type = &v
+	return s
+}
+
+type PutTargetsRequestTargetsDeadLetterQueue struct {
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s PutTargetsRequestTargetsDeadLetterQueue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsRequestTargetsDeadLetterQueue) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsRequestTargetsDeadLetterQueue) SetArn(v string) *PutTargetsRequestTargetsDeadLetterQueue {
+	s.Arn = &v
+	return s
+}
+
+type PutTargetsRequestTargetsParamList struct {
+	Form        *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	ResourceKey *string `json:"ResourceKey,omitempty" xml:"ResourceKey,omitempty"`
+	Template    *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutTargetsRequestTargetsParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsRequestTargetsParamList) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsRequestTargetsParamList) SetForm(v string) *PutTargetsRequestTargetsParamList {
+	s.Form = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsParamList) SetResourceKey(v string) *PutTargetsRequestTargetsParamList {
+	s.ResourceKey = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsParamList) SetTemplate(v string) *PutTargetsRequestTargetsParamList {
+	s.Template = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsParamList) SetValue(v string) *PutTargetsRequestTargetsParamList {
+	s.Value = &v
+	return s
+}
+
+type PutTargetsShrinkRequest struct {
+	EventBusName  *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+}
+
+func (s PutTargetsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsShrinkRequest) SetEventBusName(v string) *PutTargetsShrinkRequest {
+	s.EventBusName = &v
+	return s
+}
+
+func (s *PutTargetsShrinkRequest) SetRuleName(v string) *PutTargetsShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *PutTargetsShrinkRequest) SetTargetsShrink(v string) *PutTargetsShrinkRequest {
+	s.TargetsShrink = &v
+	return s
+}
+
+type PutTargetsResponseBody struct {
+	Code      *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *PutTargetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PutTargetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsResponseBody) SetCode(v string) *PutTargetsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PutTargetsResponseBody) SetData(v *PutTargetsResponseBodyData) *PutTargetsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PutTargetsResponseBody) SetMessage(v string) *PutTargetsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PutTargetsResponseBody) SetRequestId(v string) *PutTargetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PutTargetsResponseBody) SetSuccess(v bool) *PutTargetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PutTargetsResponseBodyData struct {
+	ErrorEntries      []*PutTargetsResponseBodyDataErrorEntries `json:"ErrorEntries,omitempty" xml:"ErrorEntries,omitempty" type:"Repeated"`
+	ErrorEntriesCount *int32                                    `json:"ErrorEntriesCount,omitempty" xml:"ErrorEntriesCount,omitempty"`
+}
+
+func (s PutTargetsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsResponseBodyData) SetErrorEntries(v []*PutTargetsResponseBodyDataErrorEntries) *PutTargetsResponseBodyData {
+	s.ErrorEntries = v
+	return s
+}
+
+func (s *PutTargetsResponseBodyData) SetErrorEntriesCount(v int32) *PutTargetsResponseBodyData {
+	s.ErrorEntriesCount = &v
+	return s
+}
+
+type PutTargetsResponseBodyDataErrorEntries struct {
+	EntryId      *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s PutTargetsResponseBodyDataErrorEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsResponseBodyDataErrorEntries) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsResponseBodyDataErrorEntries) SetEntryId(v string) *PutTargetsResponseBodyDataErrorEntries {
+	s.EntryId = &v
+	return s
+}
+
+func (s *PutTargetsResponseBodyDataErrorEntries) SetErrorCode(v string) *PutTargetsResponseBodyDataErrorEntries {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PutTargetsResponseBodyDataErrorEntries) SetErrorMessage(v string) *PutTargetsResponseBodyDataErrorEntries {
+	s.ErrorMessage = &v
+	return s
+}
+
+type PutTargetsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutTargetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutTargetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutTargetsResponse) SetHeaders(v map[string]*string) *PutTargetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutTargetsResponse) SetStatusCode(v int32) *PutTargetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutTargetsResponse) SetBody(v *PutTargetsResponseBody) *PutTargetsResponse {
+	s.Body = v
+	return s
+}
+
 type QueryEventRequest struct {
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
@@ -17365,6 +17685,64 @@ func (client *Client) PauseEventStreaming(request *PauseEventStreamingRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseEventStreamingResponse{}
 	_body, _err := client.PauseEventStreamingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutTargetsWithOptions(tmpReq *PutTargetsRequest, runtime *util.RuntimeOptions) (_result *PutTargetsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PutTargetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Targets)) {
+		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, tea.String("Targets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventBusName)) {
+		query["EventBusName"] = request.EventBusName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetsShrink)) {
+		query["Targets"] = request.TargetsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutTargets"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutTargets(request *PutTargetsRequest) (_result *PutTargetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutTargetsResponse{}
+	_body, _err := client.PutTargetsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
