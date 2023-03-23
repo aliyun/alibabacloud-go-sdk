@@ -264,59 +264,6 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 	return s
 }
 
-type Alert struct {
-	Configuration *Configuration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string        `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName   *string        `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Name          *string        `json:"name,omitempty" xml:"name,omitempty"`
-	Schedule      *Schedule      `json:"schedule,omitempty" xml:"schedule,omitempty"`
-	State         *string        `json:"state,omitempty" xml:"state,omitempty"`
-	Type          *string        `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s Alert) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Alert) GoString() string {
-	return s.String()
-}
-
-func (s *Alert) SetConfiguration(v *Configuration) *Alert {
-	s.Configuration = v
-	return s
-}
-
-func (s *Alert) SetDescription(v string) *Alert {
-	s.Description = &v
-	return s
-}
-
-func (s *Alert) SetDisplayName(v string) *Alert {
-	s.DisplayName = &v
-	return s
-}
-
-func (s *Alert) SetName(v string) *Alert {
-	s.Name = &v
-	return s
-}
-
-func (s *Alert) SetSchedule(v *Schedule) *Alert {
-	s.Schedule = v
-	return s
-}
-
-func (s *Alert) SetState(v string) *Alert {
-	s.State = &v
-	return s
-}
-
-func (s *Alert) SetType(v string) *Alert {
-	s.Type = &v
-	return s
-}
-
 type Chart struct {
 	Action  map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
 	Display map[string]interface{} `json:"display,omitempty" xml:"display,omitempty"`
@@ -358,351 +305,6 @@ func (s *Chart) SetType(v string) *Chart {
 	return s
 }
 
-type Configuration struct {
-	Annotations            []*ConfigurationAnnotations            `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
-	AutoAnnotation         *bool                                  `json:"autoAnnotation,omitempty" xml:"autoAnnotation,omitempty"`
-	Dashboard              *string                                `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
-	GroupConfiguration     *ConfigurationGroupConfiguration       `json:"groupConfiguration,omitempty" xml:"groupConfiguration,omitempty" type:"Struct"`
-	JoinConfigurations     []*ConfigurationJoinConfigurations     `json:"joinConfigurations,omitempty" xml:"joinConfigurations,omitempty" type:"Repeated"`
-	Labels                 []*ConfigurationLabels                 `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
-	NoDataFire             *bool                                  `json:"noDataFire,omitempty" xml:"noDataFire,omitempty"`
-	NoDataSeverity         *int64                                 `json:"noDataSeverity,omitempty" xml:"noDataSeverity,omitempty"`
-	PolicyConfiguration    *ConfigurationPolicyConfiguration      `json:"policyConfiguration,omitempty" xml:"policyConfiguration,omitempty" type:"Struct"`
-	QueryList              *ConfigurationQueryList                `json:"queryList,omitempty" xml:"queryList,omitempty" type:"Struct"`
-	SendResolved           *bool                                  `json:"sendResolved,omitempty" xml:"sendResolved,omitempty"`
-	SeverityConfigurations []*ConfigurationSeverityConfigurations `json:"severityConfigurations,omitempty" xml:"severityConfigurations,omitempty" type:"Repeated"`
-	Tags                   []*string                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	Threshold              *int64                                 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	Type                   *string                                `json:"type,omitempty" xml:"type,omitempty"`
-	Version                *string                                `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s Configuration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Configuration) GoString() string {
-	return s.String()
-}
-
-func (s *Configuration) SetAnnotations(v []*ConfigurationAnnotations) *Configuration {
-	s.Annotations = v
-	return s
-}
-
-func (s *Configuration) SetAutoAnnotation(v bool) *Configuration {
-	s.AutoAnnotation = &v
-	return s
-}
-
-func (s *Configuration) SetDashboard(v string) *Configuration {
-	s.Dashboard = &v
-	return s
-}
-
-func (s *Configuration) SetGroupConfiguration(v *ConfigurationGroupConfiguration) *Configuration {
-	s.GroupConfiguration = v
-	return s
-}
-
-func (s *Configuration) SetJoinConfigurations(v []*ConfigurationJoinConfigurations) *Configuration {
-	s.JoinConfigurations = v
-	return s
-}
-
-func (s *Configuration) SetLabels(v []*ConfigurationLabels) *Configuration {
-	s.Labels = v
-	return s
-}
-
-func (s *Configuration) SetNoDataFire(v bool) *Configuration {
-	s.NoDataFire = &v
-	return s
-}
-
-func (s *Configuration) SetNoDataSeverity(v int64) *Configuration {
-	s.NoDataSeverity = &v
-	return s
-}
-
-func (s *Configuration) SetPolicyConfiguration(v *ConfigurationPolicyConfiguration) *Configuration {
-	s.PolicyConfiguration = v
-	return s
-}
-
-func (s *Configuration) SetQueryList(v *ConfigurationQueryList) *Configuration {
-	s.QueryList = v
-	return s
-}
-
-func (s *Configuration) SetSendResolved(v bool) *Configuration {
-	s.SendResolved = &v
-	return s
-}
-
-func (s *Configuration) SetSeverityConfigurations(v []*ConfigurationSeverityConfigurations) *Configuration {
-	s.SeverityConfigurations = v
-	return s
-}
-
-func (s *Configuration) SetTags(v []*string) *Configuration {
-	s.Tags = v
-	return s
-}
-
-func (s *Configuration) SetThreshold(v int64) *Configuration {
-	s.Threshold = &v
-	return s
-}
-
-func (s *Configuration) SetType(v string) *Configuration {
-	s.Type = &v
-	return s
-}
-
-func (s *Configuration) SetVersion(v string) *Configuration {
-	s.Version = &v
-	return s
-}
-
-type ConfigurationAnnotations struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ConfigurationAnnotations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationAnnotations) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationAnnotations) SetKey(v string) *ConfigurationAnnotations {
-	s.Key = &v
-	return s
-}
-
-func (s *ConfigurationAnnotations) SetValue(v string) *ConfigurationAnnotations {
-	s.Value = &v
-	return s
-}
-
-type ConfigurationGroupConfiguration struct {
-	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	Type   *string   `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s ConfigurationGroupConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationGroupConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationGroupConfiguration) SetFields(v []*string) *ConfigurationGroupConfiguration {
-	s.Fields = v
-	return s
-}
-
-func (s *ConfigurationGroupConfiguration) SetType(v string) *ConfigurationGroupConfiguration {
-	s.Type = &v
-	return s
-}
-
-type ConfigurationJoinConfigurations struct {
-	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s ConfigurationJoinConfigurations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationJoinConfigurations) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationJoinConfigurations) SetCondition(v string) *ConfigurationJoinConfigurations {
-	s.Condition = &v
-	return s
-}
-
-func (s *ConfigurationJoinConfigurations) SetType(v string) *ConfigurationJoinConfigurations {
-	s.Type = &v
-	return s
-}
-
-type ConfigurationLabels struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-}
-
-func (s ConfigurationLabels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationLabels) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationLabels) SetKey(v string) *ConfigurationLabels {
-	s.Key = &v
-	return s
-}
-
-func (s *ConfigurationLabels) SetValue(v string) *ConfigurationLabels {
-	s.Value = &v
-	return s
-}
-
-type ConfigurationPolicyConfiguration struct {
-	ActionPolicyId *string `json:"actionPolicyId,omitempty" xml:"actionPolicyId,omitempty"`
-	AlertPolicyId  *string `json:"alertPolicyId,omitempty" xml:"alertPolicyId,omitempty"`
-	RepeatInterval *string `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
-	UseDefault     *bool   `json:"useDefault,omitempty" xml:"useDefault,omitempty"`
-}
-
-func (s ConfigurationPolicyConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationPolicyConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationPolicyConfiguration) SetActionPolicyId(v string) *ConfigurationPolicyConfiguration {
-	s.ActionPolicyId = &v
-	return s
-}
-
-func (s *ConfigurationPolicyConfiguration) SetAlertPolicyId(v string) *ConfigurationPolicyConfiguration {
-	s.AlertPolicyId = &v
-	return s
-}
-
-func (s *ConfigurationPolicyConfiguration) SetRepeatInterval(v string) *ConfigurationPolicyConfiguration {
-	s.RepeatInterval = &v
-	return s
-}
-
-func (s *ConfigurationPolicyConfiguration) SetUseDefault(v bool) *ConfigurationPolicyConfiguration {
-	s.UseDefault = &v
-	return s
-}
-
-type ConfigurationQueryList struct {
-	PowerSqlMode *string `json:"powerSqlMode,omitempty" xml:"powerSqlMode,omitempty"`
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
-	Query        *string `json:"query,omitempty" xml:"query,omitempty"`
-	Region       *string `json:"region,omitempty" xml:"region,omitempty"`
-	RoleArn      *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Start        *string `json:"start,omitempty" xml:"start,omitempty"`
-	Store        *string `json:"store,omitempty" xml:"store,omitempty"`
-	StoreType    *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	TimeSpanType *string `json:"timeSpanType,omitempty" xml:"timeSpanType,omitempty"`
-}
-
-func (s ConfigurationQueryList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationQueryList) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationQueryList) SetPowerSqlMode(v string) *ConfigurationQueryList {
-	s.PowerSqlMode = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetProject(v string) *ConfigurationQueryList {
-	s.Project = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetQuery(v string) *ConfigurationQueryList {
-	s.Query = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetRegion(v string) *ConfigurationQueryList {
-	s.Region = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetRoleArn(v string) *ConfigurationQueryList {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetStart(v string) *ConfigurationQueryList {
-	s.Start = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetStore(v string) *ConfigurationQueryList {
-	s.Store = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetStoreType(v string) *ConfigurationQueryList {
-	s.StoreType = &v
-	return s
-}
-
-func (s *ConfigurationQueryList) SetTimeSpanType(v string) *ConfigurationQueryList {
-	s.TimeSpanType = &v
-	return s
-}
-
-type ConfigurationSeverityConfigurations struct {
-	EvalCondition *ConfigurationSeverityConfigurationsEvalCondition `json:"evalCondition,omitempty" xml:"evalCondition,omitempty" type:"Struct"`
-	Severity      *int64                                            `json:"severity,omitempty" xml:"severity,omitempty"`
-}
-
-func (s ConfigurationSeverityConfigurations) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationSeverityConfigurations) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationSeverityConfigurations) SetEvalCondition(v *ConfigurationSeverityConfigurationsEvalCondition) *ConfigurationSeverityConfigurations {
-	s.EvalCondition = v
-	return s
-}
-
-func (s *ConfigurationSeverityConfigurations) SetSeverity(v int64) *ConfigurationSeverityConfigurations {
-	s.Severity = &v
-	return s
-}
-
-type ConfigurationSeverityConfigurationsEvalCondition struct {
-	Condition      *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
-}
-
-func (s ConfigurationSeverityConfigurationsEvalCondition) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigurationSeverityConfigurationsEvalCondition) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigurationSeverityConfigurationsEvalCondition) SetCondition(v string) *ConfigurationSeverityConfigurationsEvalCondition {
-	s.Condition = &v
-	return s
-}
-
-func (s *ConfigurationSeverityConfigurationsEvalCondition) SetCountCondition(v string) *ConfigurationSeverityConfigurationsEvalCondition {
-	s.CountCondition = &v
-	return s
-}
-
 type Dashboard struct {
 	Attribute     map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	Charts        []*Chart           `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
@@ -741,23 +343,6 @@ func (s *Dashboard) SetDescription(v string) *Dashboard {
 
 func (s *Dashboard) SetDisplayName(v string) *Dashboard {
 	s.DisplayName = &v
-	return s
-}
-
-type EtlFunctionConfig struct {
-	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
-}
-
-func (s EtlFunctionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlFunctionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlFunctionConfig) SetFunctionProvider(v string) *EtlFunctionConfig {
-	s.FunctionProvider = &v
 	return s
 }
 
@@ -954,35 +539,6 @@ func (s *EtlJobTriggerConfig) SetTriggerInterval(v int32) *EtlJobTriggerConfig {
 	return s
 }
 
-type EtlLogConfig struct {
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	ProjectName  *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-}
-
-func (s EtlLogConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlLogConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlLogConfig) SetEndpoint(v string) *EtlLogConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *EtlLogConfig) SetLogstoreName(v string) *EtlLogConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-func (s *EtlLogConfig) SetProjectName(v string) *EtlLogConfig {
-	s.ProjectName = &v
-	return s
-}
-
 type EtlMeta struct {
 	Enable       *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
 	EtlMetaKey   *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
@@ -1021,64 +577,6 @@ func (s *EtlMeta) SetEtlMetaTag(v string) *EtlMeta {
 
 func (s *EtlMeta) SetEtlMetaValue(v string) *EtlMeta {
 	s.EtlMetaValue = &v
-	return s
-}
-
-type EtlSourceConfig struct {
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-}
-
-func (s EtlSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlSourceConfig) SetLogstoreName(v string) *EtlSourceConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-type EtlTriggerConfig struct {
-	MaxRetryTime     *int32  `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	RoleArn          *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
-	StartingUnixtime *int64  `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	TriggerInterval  *int32  `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
-}
-
-func (s EtlTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlTriggerConfig) SetMaxRetryTime(v int32) *EtlTriggerConfig {
-	s.MaxRetryTime = &v
-	return s
-}
-
-func (s *EtlTriggerConfig) SetRoleArn(v string) *EtlTriggerConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *EtlTriggerConfig) SetStartingPosition(v string) *EtlTriggerConfig {
-	s.StartingPosition = &v
-	return s
-}
-
-func (s *EtlTriggerConfig) SetStartingUnixtime(v int64) *EtlTriggerConfig {
-	s.StartingUnixtime = &v
-	return s
-}
-
-func (s *EtlTriggerConfig) SetTriggerInterval(v int32) *EtlTriggerConfig {
-	s.TriggerInterval = &v
 	return s
 }
 
@@ -1452,13 +950,14 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 }
 
 type Project struct {
-	CreateTime     *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	ProjectDesc    *string `json:"projectDesc,omitempty" xml:"projectDesc,omitempty"`
-	ProjectName    *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	ProjectOwner   *string `json:"projectOwner,omitempty" xml:"projectOwner,omitempty"`
-	ProjectStatus  *string `json:"projectStatus,omitempty" xml:"projectStatus,omitempty"`
-	Region         *string `json:"region,omitempty" xml:"region,omitempty"`
+	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	LastModifyTime  *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	ProjectDesc     *string `json:"projectDesc,omitempty" xml:"projectDesc,omitempty"`
+	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ProjectOwner    *string `json:"projectOwner,omitempty" xml:"projectOwner,omitempty"`
+	ProjectStatus   *string `json:"projectStatus,omitempty" xml:"projectStatus,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s Project) String() string {
@@ -1504,50 +1003,8 @@ func (s *Project) SetRegion(v string) *Project {
 	return s
 }
 
-type Schedule struct {
-	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	DayOfWeek      *int64  `json:"dayOfWeek,omitempty" xml:"dayOfWeek,omitempty"`
-	Hour           *int64  `json:"hour,omitempty" xml:"hour,omitempty"`
-	Interval       *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	RunImmediately *bool   `json:"runImmediately,omitempty" xml:"runImmediately,omitempty"`
-	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s Schedule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Schedule) GoString() string {
-	return s.String()
-}
-
-func (s *Schedule) SetCronExpression(v string) *Schedule {
-	s.CronExpression = &v
-	return s
-}
-
-func (s *Schedule) SetDayOfWeek(v int64) *Schedule {
-	s.DayOfWeek = &v
-	return s
-}
-
-func (s *Schedule) SetHour(v int64) *Schedule {
-	s.Hour = &v
-	return s
-}
-
-func (s *Schedule) SetInterval(v string) *Schedule {
-	s.Interval = &v
-	return s
-}
-
-func (s *Schedule) SetRunImmediately(v bool) *Schedule {
-	s.RunImmediately = &v
-	return s
-}
-
-func (s *Schedule) SetType(v string) *Schedule {
-	s.Type = &v
+func (s *Project) SetResourceGroupId(v string) *Project {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2999,23 +2456,6 @@ func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupR
 	return s
 }
 
-type DeleteProjectRequest struct {
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-}
-
-func (s DeleteProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectRequest) SetProject(v string) *DeleteProjectRequest {
-	s.Project = &v
-	return s
-}
-
 type DeleteProjectResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -3859,13 +3299,13 @@ func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
 }
 
 type GetLogsRequest struct {
-	From     *int64  `json:"from,omitempty" xml:"from,omitempty"`
+	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
 	Line     *int64  `json:"line,omitempty" xml:"line,omitempty"`
 	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
 	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
 	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
 	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	To       *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
 	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -3877,7 +3317,7 @@ func (s GetLogsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetLogsRequest) SetFrom(v int64) *GetLogsRequest {
+func (s *GetLogsRequest) SetFrom(v int32) *GetLogsRequest {
 	s.From = &v
 	return s
 }
@@ -3907,7 +3347,7 @@ func (s *GetLogsRequest) SetReverse(v bool) *GetLogsRequest {
 	return s
 }
 
-func (s *GetLogsRequest) SetTo(v int64) *GetLogsRequest {
+func (s *GetLogsRequest) SetTo(v int32) *GetLogsRequest {
 	s.To = &v
 	return s
 }
@@ -3972,6 +3412,23 @@ func (s *GetMachineGroupResponse) SetStatusCode(v int32) *GetMachineGroupRespons
 
 func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupResponse {
 	s.Body = v
+	return s
+}
+
+type GetProjectRequest struct {
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s GetProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectRequest) SetProject(v string) *GetProjectRequest {
+	s.Project = &v
 	return s
 }
 
@@ -6398,7 +5855,6 @@ func (s *UpdateOssShipperResponse) SetStatusCode(v int32) *UpdateOssShipperRespo
 
 type UpdateProjectRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Project     *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -6411,11 +5867,6 @@ func (s UpdateProjectRequest) GoString() string {
 
 func (s *UpdateProjectRequest) SetDescription(v string) *UpdateProjectRequest {
 	s.Description = &v
-	return s
-}
-
-func (s *UpdateProjectRequest) SetProject(v string) *UpdateProjectRequest {
-	s.Project = &v
 	return s
 }
 
@@ -7747,19 +7198,12 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 	return _result, _err
 }
 
-func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["project"] = request.Project
-	}
-
+func (client *Client) DeleteProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProject"),
@@ -7781,11 +7225,11 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, he
 	return _result, _err
 }
 
-func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(request, headers, runtime)
+	_body, _err := client.DeleteProjectWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8533,12 +7977,19 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 	return _result, _err
 }
 
-func (client *Client) GetProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
+func (client *Client) GetProjectWithOptions(request *GetProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		query["project"] = request.Project
+	}
+
 	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -8560,11 +8011,11 @@ func (client *Client) GetProjectWithOptions(project *string, headers map[string]
 	return _result, _err
 }
 
-func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(project, headers, runtime)
+	_body, _err := client.GetProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10265,24 +9716,21 @@ func (client *Client) UpdateOssShipper(project *string, logstore *string, shippe
 	return _result, _err
 }
 
-func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["project"] = request.Project
-	}
-
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
 
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -10305,11 +9753,11 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, he
 	return _result, _err
 }
 
-func (client *Client) UpdateProject(request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) UpdateProject(project *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateProjectResponse{}
-	_body, _err := client.UpdateProjectWithOptions(request, headers, runtime)
+	_body, _err := client.UpdateProjectWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
