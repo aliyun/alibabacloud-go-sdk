@@ -182,7 +182,8 @@ type CreateClientCertificateResponseBody struct {
 	// The unique identifier of the client certificate.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the server certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The content of the client certificate.
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
@@ -429,7 +430,8 @@ type CreateClientCertificateWithCsrResponseBody struct {
 	// The unique identifier of the client certificate.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the server certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The content of the client certificate.
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
@@ -493,6 +495,298 @@ func (s *CreateClientCertificateWithCsrResponse) SetStatusCode(v int32) *CreateC
 }
 
 func (s *CreateClientCertificateWithCsrResponse) SetBody(v *CreateClientCertificateWithCsrResponseBody) *CreateClientCertificateWithCsrResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCustomCertificateRequest struct {
+	ApiPassthrough   *CreateCustomCertificateRequestApiPassthrough `json:"ApiPassthrough,omitempty" xml:"ApiPassthrough,omitempty" type:"Struct"`
+	Csr              *string                                       `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	Immediately      *int32                                        `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
+	ParentIdentifier *string                                       `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	Validity         *string                                       `json:"Validity,omitempty" xml:"Validity,omitempty"`
+}
+
+func (s CreateCustomCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequest) SetApiPassthrough(v *CreateCustomCertificateRequestApiPassthrough) *CreateCustomCertificateRequest {
+	s.ApiPassthrough = v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetCsr(v string) *CreateCustomCertificateRequest {
+	s.Csr = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetImmediately(v int32) *CreateCustomCertificateRequest {
+	s.Immediately = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetParentIdentifier(v string) *CreateCustomCertificateRequest {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequest) SetValidity(v string) *CreateCustomCertificateRequest {
+	s.Validity = &v
+	return s
+}
+
+type CreateCustomCertificateRequestApiPassthrough struct {
+	Extensions *CreateCustomCertificateRequestApiPassthroughExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Struct"`
+	Subject    *CreateCustomCertificateRequestApiPassthroughSubject    `json:"Subject,omitempty" xml:"Subject,omitempty" type:"Struct"`
+}
+
+func (s CreateCustomCertificateRequestApiPassthrough) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestApiPassthrough) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestApiPassthrough) SetExtensions(v *CreateCustomCertificateRequestApiPassthroughExtensions) *CreateCustomCertificateRequestApiPassthrough {
+	s.Extensions = v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthrough) SetSubject(v *CreateCustomCertificateRequestApiPassthroughSubject) *CreateCustomCertificateRequestApiPassthrough {
+	s.Subject = v
+	return s
+}
+
+type CreateCustomCertificateRequestApiPassthroughExtensions struct {
+	ExtendedKeyUsages       []*string                                                                        `json:"ExtendedKeyUsages,omitempty" xml:"ExtendedKeyUsages,omitempty" type:"Repeated"`
+	KeyUsage                *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage                  `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty" type:"Struct"`
+	SubjectAlternativeNames []*CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensions) SetExtendedKeyUsages(v []*string) *CreateCustomCertificateRequestApiPassthroughExtensions {
+	s.ExtendedKeyUsages = v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensions) SetKeyUsage(v *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) *CreateCustomCertificateRequestApiPassthroughExtensions {
+	s.KeyUsage = v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensions) SetSubjectAlternativeNames(v []*CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames) *CreateCustomCertificateRequestApiPassthroughExtensions {
+	s.SubjectAlternativeNames = v
+	return s
+}
+
+type CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage struct {
+	ContentCommitment *bool `json:"ContentCommitment,omitempty" xml:"ContentCommitment,omitempty"`
+	DataEncipherment  *bool `json:"DataEncipherment,omitempty" xml:"DataEncipherment,omitempty"`
+	DecipherOnly      *bool `json:"DecipherOnly,omitempty" xml:"DecipherOnly,omitempty"`
+	DigitalSignature  *bool `json:"DigitalSignature,omitempty" xml:"DigitalSignature,omitempty"`
+	EncipherOnly      *bool `json:"EncipherOnly,omitempty" xml:"EncipherOnly,omitempty"`
+	KeyAgreement      *bool `json:"KeyAgreement,omitempty" xml:"KeyAgreement,omitempty"`
+	KeyEncipherment   *bool `json:"KeyEncipherment,omitempty" xml:"KeyEncipherment,omitempty"`
+	NonRepudiation    *bool `json:"NonRepudiation,omitempty" xml:"NonRepudiation,omitempty"`
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetContentCommitment(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.ContentCommitment = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetDataEncipherment(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.DataEncipherment = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetDecipherOnly(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.DecipherOnly = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetDigitalSignature(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.DigitalSignature = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetEncipherOnly(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.EncipherOnly = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetKeyAgreement(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.KeyAgreement = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetKeyEncipherment(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.KeyEncipherment = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage) SetNonRepudiation(v bool) *CreateCustomCertificateRequestApiPassthroughExtensionsKeyUsage {
+	s.NonRepudiation = &v
+	return s
+}
+
+type CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames) SetType(v string) *CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames) SetValue(v string) *CreateCustomCertificateRequestApiPassthroughExtensionsSubjectAlternativeNames {
+	s.Value = &v
+	return s
+}
+
+type CreateCustomCertificateRequestApiPassthroughSubject struct {
+	CommonName       *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Country          *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	Locality         *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
+	Organization     *string `json:"Organization,omitempty" xml:"Organization,omitempty"`
+	OrganizationUnit *string `json:"OrganizationUnit,omitempty" xml:"OrganizationUnit,omitempty"`
+	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughSubject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateRequestApiPassthroughSubject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetCommonName(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.CommonName = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetCountry(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.Country = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetLocality(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.Locality = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetOrganization(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.Organization = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetOrganizationUnit(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.OrganizationUnit = &v
+	return s
+}
+
+func (s *CreateCustomCertificateRequestApiPassthroughSubject) SetState(v string) *CreateCustomCertificateRequestApiPassthroughSubject {
+	s.State = &v
+	return s
+}
+
+type CreateCustomCertificateResponseBody struct {
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	Identifier       *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+}
+
+func (s CreateCustomCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateResponseBody) SetCertificate(v string) *CreateCustomCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *CreateCustomCertificateResponseBody) SetCertificateChain(v string) *CreateCustomCertificateResponseBody {
+	s.CertificateChain = &v
+	return s
+}
+
+func (s *CreateCustomCertificateResponseBody) SetIdentifier(v string) *CreateCustomCertificateResponseBody {
+	s.Identifier = &v
+	return s
+}
+
+func (s *CreateCustomCertificateResponseBody) SetRequestId(v string) *CreateCustomCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCustomCertificateResponseBody) SetSerialNumber(v string) *CreateCustomCertificateResponseBody {
+	s.SerialNumber = &v
+	return s
+}
+
+type CreateCustomCertificateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCustomCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCustomCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCustomCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCustomCertificateResponse) SetHeaders(v map[string]*string) *CreateCustomCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCustomCertificateResponse) SetStatusCode(v int32) *CreateCustomCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCustomCertificateResponse) SetBody(v *CreateCustomCertificateResponseBody) *CreateCustomCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -875,7 +1169,8 @@ type CreateServerCertificateResponseBody struct {
 	// The unique identifier of the server certificate.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the server certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The content of the server certificate.
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
@@ -1116,7 +1411,8 @@ type CreateServerCertificateWithCsrResponseBody struct {
 	// The unique identifier of the server certificate.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The serial number of the server certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The content of the server certificate.
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
@@ -1202,7 +1498,8 @@ type CreateSubCACertificateRequest struct {
 	// The code of the country or region in which the organization is located. You can enter an alpha-2 or alpha-3 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
 	//
 	// For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](~~198289~~) topic.
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryCode       *string   `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	ExtendedKeyUsages []*string `json:"ExtendedKeyUsages,omitempty" xml:"ExtendedKeyUsages,omitempty" type:"Repeated"`
 	// The name of the city in which the organization is located. The value can contain letters.
 	Locality *string `json:"Locality,omitempty" xml:"Locality,omitempty"`
 	// The name of the organization that is associated with the intermediate CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
@@ -1212,7 +1509,8 @@ type CreateSubCACertificateRequest struct {
 	// The unique identifier of the root CA certificate.
 	//
 	// >  You can call the [DescribeCACertificateList](~~328095~~) operation to query the unique identifiers of all CA certificates.
-	ParentIdentifier *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	ParentIdentifier  *string `json:"ParentIdentifier,omitempty" xml:"ParentIdentifier,omitempty"`
+	PathLenConstraint *int32  `json:"PathLenConstraint,omitempty" xml:"PathLenConstraint,omitempty"`
 	// The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The validity period of the intermediate CA certificate. Unit: years.
@@ -1246,6 +1544,11 @@ func (s *CreateSubCACertificateRequest) SetCountryCode(v string) *CreateSubCACer
 	return s
 }
 
+func (s *CreateSubCACertificateRequest) SetExtendedKeyUsages(v []*string) *CreateSubCACertificateRequest {
+	s.ExtendedKeyUsages = v
+	return s
+}
+
 func (s *CreateSubCACertificateRequest) SetLocality(v string) *CreateSubCACertificateRequest {
 	s.Locality = &v
 	return s
@@ -1263,6 +1566,11 @@ func (s *CreateSubCACertificateRequest) SetOrganizationUnit(v string) *CreateSub
 
 func (s *CreateSubCACertificateRequest) SetParentIdentifier(v string) *CreateSubCACertificateRequest {
 	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *CreateSubCACertificateRequest) SetPathLenConstraint(v int32) *CreateSubCACertificateRequest {
+	s.PathLenConstraint = &v
 	return s
 }
 
@@ -1877,7 +2185,7 @@ type DescribeCACertificateListResponseBodyCertificateList struct {
 	// *   **OU**: the name of the department or branch in the organization
 	// *   **L**: the name of the city in which the organization is located
 	//
-	// \<props="china">- **ST**: the name of the province, municipality, or autonomous region in which the organization is located \<props="intl">- **ST**: the name of the province or state in which the organization is located
+	// <props="china">- **ST**: the name of the province, municipality, or autonomous region in which the organization is located</props> <props="intl">- **ST**: the name of the province or state in which the organization is located</props>
 	//
 	// *   **CN**: the common name or abbreviation of the organization
 	SubjectDN *string `json:"SubjectDN,omitempty" xml:"SubjectDN,omitempty"`
@@ -3685,6 +3993,66 @@ func (client *Client) CreateClientCertificateWithCsr(request *CreateClientCertif
 	return _result, _err
 }
 
+func (client *Client) CreateCustomCertificateWithOptions(request *CreateCustomCertificateRequest, runtime *util.RuntimeOptions) (_result *CreateCustomCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiPassthrough)) {
+		query["ApiPassthrough"] = request.ApiPassthrough
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Immediately)) {
+		query["Immediately"] = request.Immediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
+		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Validity)) {
+		query["Validity"] = request.Validity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCustomCertificate"),
+		Version:     tea.String("2020-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCustomCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCustomCertificate(request *CreateCustomCertificateRequest) (_result *CreateCustomCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCustomCertificateResponse{}
+	_body, _err := client.CreateCustomCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
  * After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](~~330880~~) operation to permanently delete the certificate.
@@ -4113,6 +4481,10 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 		query["CountryCode"] = request.CountryCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtendedKeyUsages)) {
+		query["ExtendedKeyUsages"] = request.ExtendedKeyUsages
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Locality)) {
 		query["Locality"] = request.Locality
 	}
@@ -4127,6 +4499,10 @@ func (client *Client) CreateSubCACertificateWithOptions(request *CreateSubCACert
 
 	if !tea.BoolValue(util.IsUnset(request.ParentIdentifier)) {
 		query["ParentIdentifier"] = request.ParentIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathLenConstraint)) {
+		query["PathLenConstraint"] = request.PathLenConstraint
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.State)) {
