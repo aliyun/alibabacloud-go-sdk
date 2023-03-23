@@ -881,8 +881,6 @@ type CreateApiRequest struct {
 	// *   **REGISTER**: registered APIs
 	// *   **UNREGISTER**: unregistered APIs
 	// *   **NOTIFY**: downstream notification APIs
-	//
-	// For more information, see [Two-way communication](~~66031~~).
 	WebSocketApiType *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
 }
 
@@ -1384,8 +1382,6 @@ type CreateAppRequest struct {
 	// The description of the app. The description can contain a maximum of 180 characters in length.
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The creation mode. An app can be created by using the console or calling the API operation.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The tag of objects that match the rule. You can specify multiple tags.
 	Tag []*CreateAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -1425,11 +1421,6 @@ func (s *CreateAppRequest) SetDescription(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetSecurityToken(v string) *CreateAppRequest {
 	s.SecurityToken = &v
-	return s
-}
-
-func (s *CreateAppRequest) SetSource(v string) *CreateAppRequest {
-	s.Source = &v
 	return s
 }
 
@@ -1936,17 +1927,21 @@ type CreateInstanceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The HTTPS policy.
-	HttpsPolicy *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	HttpsPolicy  *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	InstanceCidr *string `json:"InstanceCidr,omitempty" xml:"InstanceCidr,omitempty"`
 	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The specifications of the instance.
 	InstanceSpec *string                     `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceType *string                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	PricingCycle *string                     `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	Tag          []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The password.
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
 	// The zone.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId                   *string                                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneVSwitchSecurityGroup []*CreateInstanceRequestZoneVSwitchSecurityGroup `json:"ZoneVSwitchSecurityGroup,omitempty" xml:"ZoneVSwitchSecurityGroup,omitempty" type:"Repeated"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -1977,6 +1972,11 @@ func (s *CreateInstanceRequest) SetHttpsPolicy(v string) *CreateInstanceRequest 
 	return s
 }
 
+func (s *CreateInstanceRequest) SetInstanceCidr(v string) *CreateInstanceRequest {
+	s.InstanceCidr = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
 	s.InstanceName = &v
 	return s
@@ -1984,6 +1984,11 @@ func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest
 
 func (s *CreateInstanceRequest) SetInstanceSpec(v string) *CreateInstanceRequest {
 	s.InstanceSpec = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -2002,8 +2007,18 @@ func (s *CreateInstanceRequest) SetToken(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetUserVpcId(v string) *CreateInstanceRequest {
+	s.UserVpcId = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetZoneId(v string) *CreateInstanceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetZoneVSwitchSecurityGroup(v []*CreateInstanceRequestZoneVSwitchSecurityGroup) *CreateInstanceRequest {
+	s.ZoneVSwitchSecurityGroup = v
 	return s
 }
 
@@ -2027,6 +2042,41 @@ func (s *CreateInstanceRequestTag) SetKey(v string) *CreateInstanceRequestTag {
 
 func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag {
 	s.Value = &v
+	return s
+}
+
+type CreateInstanceRequestZoneVSwitchSecurityGroup struct {
+	CidrBlock       *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateInstanceRequestZoneVSwitchSecurityGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestZoneVSwitchSecurityGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestZoneVSwitchSecurityGroup) SetCidrBlock(v string) *CreateInstanceRequestZoneVSwitchSecurityGroup {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *CreateInstanceRequestZoneVSwitchSecurityGroup) SetSecurityGroupId(v string) *CreateInstanceRequestZoneVSwitchSecurityGroup {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestZoneVSwitchSecurityGroup) SetVSwitchId(v string) *CreateInstanceRequestZoneVSwitchSecurityGroup {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestZoneVSwitchSecurityGroup) SetZoneId(v string) *CreateInstanceRequestZoneVSwitchSecurityGroup {
+	s.ZoneId = &v
 	return s
 }
 
@@ -5408,8 +5458,6 @@ type DescribeApiResponseBody struct {
 	// *   **REGISTER**: registered APIs
 	// *   **UNREGISTER**: unregistered APIs
 	// *   **NOTIFY**: downstream notification
-	//
-	// For more information, see [Two-way communication](~~66031~~).
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	// The application name in AONE.
 	ServiceConfig *DescribeApiResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
@@ -6204,7 +6252,7 @@ func (s *DescribeApiResponseBodyResultDescriptionsResultDescription) SetType(v s
 type DescribeApiResponseBodyServiceConfig struct {
 	// The status code returned for service mocking.
 	AoneAppName *string `json:"AoneAppName,omitempty" xml:"AoneAppName,omitempty"`
-	// The URL used to call the back-end service. If the complete back-end service URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of ServiceAddress is **http://api.a.com:8080**.``
+	// The URL used to call the back-end service. If the complete back-end service URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of **ServiceAddress** is `http://api.a.com:8080`.
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
 	// The protocol used by the backend service. Valid values: HTTP and HTTPS.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
@@ -6238,7 +6286,7 @@ type DescribeApiResponseBodyServiceConfig struct {
 	// *   **CUSTOM**: a custom header type
 	// *   **CLIENT**: the ContentType header type of the client
 	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	// The path used to call the back-end service. If the complete back-end service path is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, ServicePath is **/object/add**.``
+	// The path used to call the back-end service. If the complete back-end service path is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, **ServicePath** is `/object/add`.
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
 	// The simulated headers.
 	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
@@ -7427,7 +7475,8 @@ type DescribeApiGroupResponseBody struct {
 	// The custom trace configuration.
 	CustomTraceConfig *string `json:"CustomTraceConfig,omitempty" xml:"CustomTraceConfig,omitempty"`
 	// The list of custom configuration items.
-	CustomerConfigs *string `json:"CustomerConfigs,omitempty" xml:"CustomerConfigs,omitempty"`
+	CustomerConfigs       *string `json:"CustomerConfigs,omitempty" xml:"CustomerConfigs,omitempty"`
+	DedicatedInstanceType *string `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
 	// The default domain name.
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
 	// The description of the API group.
@@ -7539,6 +7588,11 @@ func (s *DescribeApiGroupResponseBody) SetCustomTraceConfig(v string) *DescribeA
 
 func (s *DescribeApiGroupResponseBody) SetCustomerConfigs(v string) *DescribeApiGroupResponseBody {
 	s.CustomerConfigs = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBody) SetDedicatedInstanceType(v string) *DescribeApiGroupResponseBody {
+	s.DedicatedInstanceType = &v
 	return s
 }
 
@@ -8533,16 +8587,16 @@ func (s *DescribeApiHistoriesResponse) SetBody(v *DescribeApiHistoriesResponseBo
 type DescribeApiHistoryRequest struct {
 	// The ID of the API.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
+	// The ID of the API group. The ID is generated by the system and globally unique.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The version you want to query.
+	// The historical version number of the API.
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
+	// The environment to which the API is published. Valid values:
 	//
-	// *   **RELEASE**
-	// *   **TEST**
-	// *   PRE: the pre-release environment
+	// *   **RELEASE**: production environment
+	// *   **TEST**: test environment
+	// *   **PRE**: pre-release environment
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -8580,7 +8634,7 @@ func (s *DescribeApiHistoryRequest) SetStageName(v string) *DescribeApiHistoryRe
 }
 
 type DescribeApiHistoryResponseBody struct {
-	// If **AuthType** is set to **APP**, this parameter is required and it is used to specify the signature algorithm. If you did not specify a value, HmacSHA256 is used by default. Valid values:
+	// The signature algorithm that is used if the **AuthType** parameter is set to **APP**. If no value is specified for the AllowSignatureMethod parameter, the default value HmacSHA256 is used. Valid values:
 	//
 	// *   HmacSHA256
 	// *   HmacSHA1,HmacSHA256
@@ -8589,20 +8643,20 @@ type DescribeApiHistoryResponseBody struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The name of the API.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The way in which AppCode authentication is supported. Default value: DEFAULT. Valid values:
+	// The type of AppCode authentication. Default value: DEFAULT. Valid values:
 	//
-	// *   DEFAULT: supported after being made available in Alibaba Cloud Marketplace.
-	// *   DISABLE: not supported.
-	// *   HEADER : supported only in the Header requests.
-	// *   HEADER_QUERY: supported in the Header or Query requests.
+	// *   DEFAULT: AppCode authentication is supported after the API is published in Alibaba Cloud Marketplace.
+	// *   DISABLE: AppCode authentication is not supported.
+	// *   HEADER: AppCode authentication is supported only in Header parameters.
+	// *   HEADER_QUERY: AppCode authentication is supported in Header or Query parameters.
 	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
-	// The authentication method of the API. Valid values:
+	// The type of the security authentication that is used for the API. Valid values:
 	//
-	// *   **APP: Only authorized applications can call the API.**
+	// *   **APP**: The API can be called only by authorized applications.
 	//
-	// *   **ANONYMOUS: Anonymous users can call the API. Take note of the following rules:**
+	// *   **ANONYMOUS**: The API can be anonymously called. Take note of the following information:
 	//
-	//     *   All users who have obtained the API service information can call this API. API Gateway neither authenticates callers nor sets user-specific throttling policies. If this API is a public one, set throttling policies for it.
+	//     *   All users who have the permissions to obtain the API information can call this API. API Gateway neither authenticates callers nor configures user-specific throttling policies. You must configure throttling policies for public APIs.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The backend configurations.
 	BackendConfig *DescribeApiHistoryResponseBodyBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
@@ -8612,83 +8666,80 @@ type DescribeApiHistoryResponseBody struct {
 	ConstantParameters *DescribeApiHistoryResponseBodyConstantParameters `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
 	// The custom system parameters.
 	CustomSystemParameters *DescribeApiHistoryResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
-	// The publishing time (UTC) of the API.
+	// The time when the API was published. The time is displayed in UTC.
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
 	// The description of the API.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// *   If the value of **DisableInternet** is set to **true**, API calls are limited within the VPC.
-	// *   If the value of **DisableInternet** is set to **false**, the limit is lifted. The default value is false when you create an API.
+	// *   If the **DisableInternet** parameter is set to **true**, you call the API only over internal networks.
+	// *   If the **DisableInternet** parameter is set to **false**, no limit is imposed on networks. When you create an API, the default value of this parameter is false.
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The sample error codes returned by the backend service.
+	// The sample error codes that are returned from the backend service.
 	//
 	// For more information, see [ErrorCodeSample](~~44392~~).
 	ErrorCodeSamples *DescribeApiHistoryResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
-	// The sample error response from the backend service.
+	// The sample error response that is returned from the backend service.
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// *   If the value of **ForceNonceCheck** is set to **true**, X-Ca-Nonce must be checked during the request. This is the unique identifier of the request and is identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
-	// *   If the value of **ForceNonceCheck** is set to **false**, the X-Ca-Nonce is not checked. The default value is false when you create an API.
+	// *   Indicates whether to forcefully check X-Ca-Nonce. X-Ca-Nonce is the unique identifier of a request and is generally identified by UUID. If the **ForceNonceCheck** parameter is set to **true**, X-Ca-Nonce is forcefully checked. After API Gateway receives this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
+	// *   If the **ForceNonceCheck** parameter is set to **false**, X-Ca-Nonce is not checked. When you create an API, the default value of this parameter is false.
 	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
 	// The ID of the API group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the API group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The historical version number.
+	// The historical version number of the API.
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
-	// The configuration items of the third-party OpenID Connect authentication method.
+	// The configuration items of third-party OpenID Connect authentication.
 	OpenIdConnectConfig *DescribeApiHistoryResponseBodyOpenIdConnectConfig `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty" type:"Struct"`
-	// The region where the API is located.
+	// The ID of the region where the API is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The configuration items of API requests sent by the consumer to API Gateway.
+	// The configuration items of API requests that are sent from the consumer to API Gateway.
 	//
 	// For more information, see [RequestConfig](~~43985~~).
 	RequestConfig *DescribeApiHistoryResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters of API requests sent by the consumer to API Gateway.
+	// The parameters of API requests that are sent from the consumer to API Gateway.
 	//
 	// For more information, see [RequestParameter](~~43986~~).
 	RequestParameters *DescribeApiHistoryResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
-	// The return description of the API.
+	// The response of the API.
 	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
-	// The return description of the API.
+	// The descriptions that are returned for the API.
 	ResultDescriptions *DescribeApiHistoryResponseBodyResultDescriptions `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty" type:"Struct"`
-	// The sample response.
+	// The sample response that is returned.
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
-	// The format of the return data.
+	// The type of data that is returned.
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	// The information about a backend service call.
+	// The information about backend service calls.
 	ServiceConfig *DescribeApiHistoryResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	// The parameters of API requests sent by API Gateway to the backend service.
+	// The parameters of API requests that are sent from API Gateway to the backend service.
 	//
 	// For more information, see [ServiceParameter](~~43988~~).
 	ServiceParameters *DescribeApiHistoryResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
-	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
+	// The mappings between the parameters of requests sent from the consumer to API Gateway and the parameters of requests sent from API Gateway to the backend service.
 	//
 	// For more information, see [ServiceParameterMap](~~43989~~).
 	ServiceParametersMap *DescribeApiHistoryResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
-	// The environment to which the API is published.
+	// The environment to which the API is published. Valid values:
 	//
-	// *   **RELEASE**
-	// *   **PRE**: the pre-release environment
-	// *   **TEST**
+	// *   **RELEASE**: production environment
+	// *   **PRE**: pre-release environment
+	// *   **TEST**: test environment
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The status of the API you called.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The common parameters of APIs in JSON format.
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The system parameters of the API in the JSON format.
 	SystemParameters *DescribeApiHistoryResponseBodySystemParameters `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty" type:"Struct"`
 	// Indicates whether the API is public. Valid values:
 	//
-	// *   **PUBLIC: The API is public. Public APIs are displayed on the APIs page for all users after the APIs are published to the production environment.**
-	// *   **PRIVATE: The API is private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	// *   **PUBLIC**: The API is public. If you publish the definition of a public API to the production environment, the definition is displayed on the APIs page for all users.
+	// *   **PRIVATE**: The API is private. If you publish an API group that contains a private API in Alibaba Cloud Marketplace, the API is not displayed in Alibaba Cloud Marketplace.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The type of the WebSocket API. Valid values:
+	// The type of the API that is used in bidirectional communication. Valid values:
 	//
-	// *   **COMMON**: general APIs
-	// *   **REGISTER**: APIs for registration
-	// *   **UNREGISTER**: APIs for deregistration
-	// *   **NOTIFY**: APIs for downstream notification
-	//
-	// For more information, see [Two-way communication](~~66031~~).
+	// *   **COMMON**: common API
+	// *   **REGISTER**: registered API
+	// *   **UNREGISTER**: unregistered API
+	// *   **NOTIFY**: downstream notification API
 	WebSocketApiType *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
 }
 
@@ -8925,13 +8976,13 @@ func (s *DescribeApiHistoryResponseBodyConstantParameters) SetConstantParameter(
 }
 
 type DescribeApiHistoryResponseBodyConstantParametersConstantParameter struct {
-	// The constant value.
+	// The value of the constant parameter.
 	ConstantValue *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The location of the parameter. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the backend service parameter.
+	// The name of the backend parameter that corresponds to the constant parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -8981,15 +9032,15 @@ func (s *DescribeApiHistoryResponseBodyCustomSystemParameters) SetCustomSystemPa
 }
 
 type DescribeApiHistoryResponseBodyCustomSystemParametersCustomSystemParameter struct {
-	// The example value.
+	// The sample value of the parameter.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description of the custom system parameter.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The location of the parameter. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the custom system parameter.
+	// The name of the parameter.
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The name of the corresponding backend parameter.
+	// The name of the backend parameter that corresponds to the custom system parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -9078,10 +9129,8 @@ func (s *DescribeApiHistoryResponseBodyErrorCodeSamplesErrorCodeSample) SetMessa
 type DescribeApiHistoryResponseBodyOpenIdConnectConfig struct {
 	// The name of the parameter that corresponds to the token.
 	IdTokenParamName *string `json:"IdTokenParamName,omitempty" xml:"IdTokenParamName,omitempty"`
-	// The OpenID Connect mode. Valid values:
-	//
-	// *   **IDTOKEN: OpenID Connect calls the authentication API to issue tokens. If this value is specified, the PublicKeyId parameter and the PublicKey parameter are required.**
-	// *   **BUSINESS: OpenID Connect calls the business API to verify identities by using existing tokens. If this value is specified, the IdTokenParamName parameter is required.
+	// *   ****
+	// *   ****
 	OpenIdApiType *string `json:"OpenIdApiType,omitempty" xml:"OpenIdApiType,omitempty"`
 	// The public key of the API.
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
@@ -9118,23 +9167,23 @@ func (s *DescribeApiHistoryResponseBodyOpenIdConnectConfig) SetPublicKeyId(v str
 }
 
 type DescribeApiHistoryResponseBodyRequestConfig struct {
-	// The format in which data is transmitted to the server for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data is transmitted in the key-value pair format. STREAM indicates that data is transmitted as byte streams. This parameter takes effect only when the RequestMode parameter is set to MAPPING.
+	// The format in which data was transmitted to the server for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data was transmitted as forms that consist of key-value pairs. STREAM indicates that data was transmitted as byte streams. This parameter takes effect when the RequestMode parameter is set to MAPPING.
 	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
 	// The body model.
 	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
 	// The description of the request body.
 	PostBodyDescription *string `json:"PostBodyDescription,omitempty" xml:"PostBodyDescription,omitempty"`
-	// The HTTP method that was used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
+	// The HTTP request method. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
 	RequestHttpMethod *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
-	// The request mode. Valid values:
+	// The request mode of the parameters. Valid values:
 	//
 	// *   MAPPING: Parameters are mapped. Unknown parameters are filtered out.
 	// *   PASSTHROUGH: Parameters are passed through.
 	// *   MAPPING_PASSTHROUGH: Parameters are mapped. Unknown parameters are passed through.
 	RequestMode *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
-	// API path
+	// The request path of the API.
 	RequestPath *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
-	// The protocol type supported by the API. Valid values: HTTP, HTTPS, and WebSocket. Separate multiple values with commas (,), such as "HTTP,HTTPS".
+	// The type of the protocol that is supported by the API. Valid values: HTTP, HTTPS, and WebSocket. Separate values with commas (,). Example: "HTTP,HTTPS".
 	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
 }
 
@@ -9199,39 +9248,39 @@ func (s *DescribeApiHistoryResponseBodyRequestParameters) SetRequestParameter(v 
 }
 
 type DescribeApiHistoryResponseBodyRequestParametersRequestParameter struct {
-	// The name of the API parameter.
+	// The name of the parameter in the API request.
 	ApiParameterName *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
 	// The type of the array element.
 	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
 	// The default value.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The example value.
+	// The sample value of the parameter.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The order in the document.
+	// The order in which the parameter is sorted in the document.
 	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Indicates whether the document is public. Valid values: PUBLIC and PRIVATE.
+	// Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
 	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that can be entered when ParameterType is set to Int, Long, Float, Double, or String. Different values are separated with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
+	// The hash values that are specified if the **ParameterType** parameter is set to Int, Long, Float, Double, or String. Separate hash values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
 	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
-	// JSON scheme
+	// The JSON scheme.
 	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The location of the parameter. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum parameter length when ParameterType is set to String.
+	// The maximum length of the parameter value if the **ParameterType** parameter is set to String.
 	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The maximum value of the parameter if the **ParameterType** parameter is set to Int, Long, Float, or Double.
 	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum parameter length when ParameterType is set to String.
+	// The minimum length of the parameter value if the **ParameterType** parameter is set to String.
 	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The minimum value of the parameter if the **ParameterType** parameter is set to Int, Long, Float, or Double.
 	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
 	// The data type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression used for parameter validation when ParameterType is set to String.
+	// The regular expression that is used to validate the parameter if the **ParameterType** parameter is set to String.
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required. Valid values: REQUIRED and OPTIONAL.
+	// Indicates whether the parameter is required. Valid values: **REQUIRED** and **OPTIONAL**.
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -9413,51 +9462,51 @@ func (s *DescribeApiHistoryResponseBodyResultDescriptionsResultDescription) SetT
 }
 
 type DescribeApiHistoryResponseBodyServiceConfig struct {
-	// The ContentType header used when you called the backend service over HTTP. Valid values:
+	// The ContentType header that is used if the ServiceProtocol parameter is set to HTTP. Valid values:
 	//
-	// *   DEFAULT: the default header type in API Gateway
+	// *   DEFAULT: the default header in API Gateway
 	// *   CUSTOM: a custom header
-	// *   CLIENT: the ContentType header specified by the client
+	// *   CLIENT: the ContentType header of the client
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
-	// The value of the ContentType header when the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
+	// The value of the ContentType header if the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
 	// The configuration items of EventBridge.
 	EventBridgeConfig *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
-	// The backend configuration items when the backend service is Function Compute.
+	// The configuration items of the backend service whose type is Function Compute.
 	FunctionComputeConfig *DescribeApiHistoryResponseBodyServiceConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
-	// Indicates whether the Mock mode is enabled. Valid values:
+	// Indicates whether the mock mode is enabled. Valid values:
 	//
-	// *   TRUE: The Mock mode is enabled.
-	// *   FALSE: The Mock mode is not enabled.
+	// *   TRUE
+	// *   FALSE
 	Mock *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
 	// The mock headers.
 	MockHeaders *DescribeApiHistoryResponseBodyServiceConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
-	// The result returned when the Mock mode is enabled.
+	// The result that is returned if the Mock parameter is set to TRUE.
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
-	// The status code returned for service mocking.
+	// The status code that is returned for service mocking.
 	MockStatusCode *int32 `json:"MockStatusCode,omitempty" xml:"MockStatusCode,omitempty"`
-	// The information returned when the backend service is OSS.
+	// The configuration items of the backend service whose type is Object Storage Service (OSS).
 	OssConfig *DescribeApiHistoryResponseBodyServiceConfigOssConfig `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
-	// The URL used to call the backend service.
+	// The URL that is used to call the backend service.
 	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
-	// The HTTP request method used when you called the backend service. Valid values: PUT, GET, POST, DELETE, PATCH, HEAD, OPTIONS, and ANY.
+	// The HTTP request method that is used if the ServiceProtocol parameter is set to HTTP. Valid values: PUT, GET, POST, DELETE, PATCH, HEAD, OPTIONS, and ANY.
 	ServiceHttpMethod *string `json:"ServiceHttpMethod,omitempty" xml:"ServiceHttpMethod,omitempty"`
-	// The path used when you called the backend service.
+	// The path that is used when the backend service is called.
 	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	// The backend service protocol. Currently, only HTTP, HTTPS, and FunctionCompute are supported.
+	// The protocol of the backend service. Only HTTP, HTTPS, and Function Compute are supported.
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
 	// The timeout period of the backend service. Unit: milliseconds.
 	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
 	// Indicates whether the VPC channel is enabled. Valid values:
 	//
-	// *   TRUE: The VPC channel is enabled.
-	// *   FALSE: The VPC channel is not enabled.
+	// *   TRUE
+	// *   FALSE
 	//
-	// You must create the corresponding VPC access authorization before you can enable a VPC channel.
+	// Before you can enable the VPC channel, make sure that a VPC authorization is added.
 	ServiceVpcEnable *string `json:"ServiceVpcEnable,omitempty" xml:"ServiceVpcEnable,omitempty"`
 	// The configuration items of the VPC channel.
 	VpcConfig *DescribeApiHistoryResponseBodyServiceConfigVpcConfig `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
-	// The ID of the VPC.
+	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -9555,13 +9604,13 @@ func (s *DescribeApiHistoryResponseBodyServiceConfig) SetVpcId(v string) *Descri
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig struct {
-	// The ID of the region where the EventBridge instance is located.
+	// The ID of the region where EventBridge is deployed.
 	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
 	// The event bus.
 	EventBus *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
 	// The event source.
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// The ARN of the RAM role assigned to EventBridge.
+	// The ARN of the RAM role that is assigned to EventBridge.
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
@@ -9594,33 +9643,33 @@ func (s *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) SetRoleAr
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigFunctionComputeConfig struct {
-	// The ContentType header used when you called the backend service over HTTP. Valid values:
+	// The ContentType header that is used if the ServiceProtocol parameter is set to HTTP. Valid values:
 	//
-	// *   **DEFAULT: the default header in API Gateway**
-	// *   **CUSTOM: a custom header**
-	// *   **CLIENT: the ContentType header specified by the client**
+	// *   **DEFAULT**: the default header in API Gateway
+	// *   **CUSTOM**: a custom header
+	// *   **CLIENT**: the ContentType header of the client
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
-	// The value of the ContentType header when the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
+	// The value of the ContentType header if the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
-	// The root path of Function Compute.
+	// The root path of the service in Function Compute.
 	FcBaseUrl *string `json:"FcBaseUrl,omitempty" xml:"FcBaseUrl,omitempty"`
-	// The type of the Function Compute instance.
+	// The type of the service in Function Compute.
 	FcType *string `json:"FcType,omitempty" xml:"FcType,omitempty"`
-	// The function name defined in Function Compute.
+	// The function name that is defined in Function Compute.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The request method.
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// Indicates whether the backend only receives the service path.
+	// Indicates whether the backend receives only the service path.
 	OnlyBusinessPath *bool `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
-	// The API request path.
+	// The path of the API request.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The alias of the function.
 	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role assumed by API Gateway to access Function Compute.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is assumed by API Gateway to access Function Compute.
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The service name defined in Function Compute.
+	// The service name that is defined in Function Compute.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -9710,9 +9759,9 @@ func (s *DescribeApiHistoryResponseBodyServiceConfigMockHeaders) SetMockHeader(v
 }
 
 type DescribeApiHistoryResponseBodyServiceConfigMockHeadersMockHeader struct {
-	// The name of the HTTP header parameter.
+	// The name of the HTTP header
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The value of the HTTP header parameter.
+	// The value of the HTTP header.
 	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
@@ -9736,10 +9785,10 @@ func (s *DescribeApiHistoryResponseBodyServiceConfigMockHeadersMockHeader) SetHe
 
 type DescribeApiHistoryResponseBodyServiceConfigOssConfig struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The OSS bucket.
+	// The name of the OSS bucket.
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the region where the OSS instance is located.
+	// The ID of the region where OSS is deployed.
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
 }
 
@@ -9780,7 +9829,7 @@ type DescribeApiHistoryResponseBodyServiceConfigVpcConfig struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC protocol.
+	// The protocol of the VPC.
 	VpcScheme *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
 }
 
@@ -9835,11 +9884,11 @@ func (s *DescribeApiHistoryResponseBodyServiceParameters) SetServiceParameter(v 
 }
 
 type DescribeApiHistoryResponseBodyServiceParametersServiceParameter struct {
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The location of the parameter. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The data type of the back-end service parameter. Valid values: STRING, NUMBER, BOOLEAN.
+	// The data type of the parameter. Valid values: STRING, NUMBER, and BOOLEAN.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The name of the backend service parameter.
+	// The name of the backend parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -9884,9 +9933,9 @@ func (s *DescribeApiHistoryResponseBodyServiceParametersMap) SetServiceParameter
 }
 
 type DescribeApiHistoryResponseBodyServiceParametersMapServiceParameterMap struct {
-	// The corresponding frontend parameter. It must be included in RequestParametersObject and matches ApiParameterName in RequestParameter data.
+	// The name of the frontend parameter. The name must be included in RequestParametersObject and matches ApiParameterName in RequestParameters.
 	RequestParameterName *string `json:"RequestParameterName,omitempty" xml:"RequestParameterName,omitempty"`
-	// The name of the backend service parameter.
+	// The name of the backend parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -9928,13 +9977,13 @@ func (s *DescribeApiHistoryResponseBodySystemParameters) SetSystemParameter(v []
 type DescribeApiHistoryResponseBodySystemParametersSystemParameter struct {
 	// The sample value of the parameter.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The location of the parameter. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, CaProxy.
+	// The name of the parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The name of the corresponding backend parameter.
+	// The name of the backend parameter that corresponds to the system parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -11442,7 +11491,8 @@ type DescribeApisResponseBodyApiSummarysApiSummary struct {
 	// The modification time (UTC) of the API.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The ID of the region in which the API resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TagList  *DescribeApisResponseBodyApiSummarysApiSummaryTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
 	// Indicates whether the API is public. Valid values:
 	//
 	// *   **PUBLIC**
@@ -11513,6 +11563,11 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetRegionId(v string) *D
 	return s
 }
 
+func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetTagList(v *DescribeApisResponseBodyApiSummarysApiSummaryTagList) *DescribeApisResponseBodyApiSummarysApiSummary {
+	s.TagList = v
+	return s
+}
+
 func (s *DescribeApisResponseBodyApiSummarysApiSummary) SetVisibility(v string) *DescribeApisResponseBodyApiSummarysApiSummary {
 	s.Visibility = &v
 	return s
@@ -11561,6 +11616,46 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo)
 
 func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo) SetStageName(v string) *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo {
 	s.StageName = &v
+	return s
+}
+
+type DescribeApisResponseBodyApiSummarysApiSummaryTagList struct {
+	Tag []*DescribeApisResponseBodyApiSummarysApiSummaryTagListTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeApisResponseBodyApiSummarysApiSummaryTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisResponseBodyApiSummarysApiSummaryTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagList) SetTag(v []*DescribeApisResponseBodyApiSummarysApiSummaryTagListTag) *DescribeApisResponseBodyApiSummarysApiSummaryTagList {
+	s.Tag = v
+	return s
+}
+
+type DescribeApisResponseBodyApiSummarysApiSummaryTagListTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeApisResponseBodyApiSummarysApiSummaryTagListTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisResponseBodyApiSummarysApiSummaryTagListTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagListTag) SetTagKey(v string) *DescribeApisResponseBodyApiSummarysApiSummaryTagListTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagListTag) SetTagValue(v string) *DescribeApisResponseBodyApiSummarysApiSummaryTagListTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -15317,14 +15412,14 @@ func (s *DescribeDeployApiTaskResponse) SetBody(v *DescribeDeployApiTaskResponse
 type DescribeDeployedApiRequest struct {
 	// The ID of the API.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
+	// The ID of the API group. An API group ID is generated by the system and is globally unique.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
+	// The environment in which the API runs. Valid values:
 	//
-	// *   **RELEASE**
+	// *   **RELEASE**: the production environment
 	// *   **PRE**: the pre-release environment
-	// *   **TEST**
+	// *   **TEST**: the test environment
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -15364,15 +15459,15 @@ type DescribeDeployedApiResponseBody struct {
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
 	// The ID of the API.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API operation.
+	// The name of the API.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The authentication method of the API. Valid values:
 	//
-	// *   **APP: Only authorized applications can call the API.**
+	// *   **APP:** Only authorized apps are allowed to call the API.
 	//
-	// *   **ANONYMOUS: Anonymous users can call the API. Take note of the following rules:**
+	// *   **ANONYMOUS**: The API can be anonymously called. In this mode, you must take note of the following rules:
 	//
-	//     *   All users who have obtained the API service information can call this API. API Gateway neither authenticates callers nor sets user-specific throttling policies. If this API is a public one, set throttling policies for it.
+	//     *   All users who have obtained the API service information can call this API. API Gateway does not authenticate callers and cannot set user-specific throttling policies. If the API is made public, set API-specific throttling policies.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The constant parameters.
 	ConstantParameters *DescribeDeployedApiResponseBodyConstantParameters `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
@@ -15380,12 +15475,12 @@ type DescribeDeployedApiResponseBody struct {
 	CustomSystemParameters *DescribeDeployedApiResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
 	// The deployment time. Format: yyyy-mm-ddhh:mm:ss.
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// Description
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// *   If the value of DisableInternet is set to **true**, API calls are limited within the VPC.
-	// *   If the value of DisableInternet is set to **false**, the limit is lifted.
+	// *   Indicates whether to call the API only in an internal network. If this parameter is set to **true**, the API can be called only in an internal network.
+	// *   If this parameter is set to **false**, the API can be called over the Internet and in an internal network.
 	//
-	// >  If you do not configure this parameter when you modify the API, the original value is used.
+	// > If you do not configure this parameter when you modify the API, the original value is used.
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	// The sample error codes returned by the backend service.
 	//
@@ -15393,8 +15488,8 @@ type DescribeDeployedApiResponseBody struct {
 	ErrorCodeSamples *DescribeDeployedApiResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
 	// The sample error response from the backend service.
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// *   If the value of **ForceNonceCheck** is set to **true**, X-Ca-Nonce must be checked during the request. This is the unique identifier of the request and is identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
-	// *   If the value of **ForceNonceCheck** is set to **false**, the X-Ca-Nonce is not checked. The default value is false when you create an API.
+	// *   Indicates whether to forcibly check X-Ca-Nonce. If the **ForceNonceCheck** parameter is set to **true**, X-Ca-Nonce is forcibly checked. X-Ca-Nonce is the unique identifier of a request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
+	// *   If the **ForceNonceCheck** parameter is set to **false**, the X-Ca-Nonce is not checked. Default value: false.
 	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
 	// The ID of the API group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -15402,7 +15497,7 @@ type DescribeDeployedApiResponseBody struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The configuration items of the third-party OpenID Connect authentication method.
 	OpenIdConnectConfig *DescribeDeployedApiResponseBodyOpenIdConnectConfig `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty" type:"Struct"`
-	// The region to which the API group belongs.
+	// The region in which the API group resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The configuration items of API requests sent by the consumer to API Gateway.
 	//
@@ -15416,7 +15511,7 @@ type DescribeDeployedApiResponseBody struct {
 	RequestParameters *DescribeDeployedApiResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	// The return description of the API.
 	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
-	// The return descriptions of the API.
+	// The returned description of the API.
 	ResultDescriptions *DescribeDeployedApiResponseBodyResultDescriptions `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty" type:"Struct"`
 	// The sample response from the backend service.
 	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
@@ -15434,18 +15529,18 @@ type DescribeDeployedApiResponseBody struct {
 	//
 	// For more information, see [ServiceParameterMap](~~43989~~).
 	ServiceParametersMap *DescribeDeployedApiResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
-	// The name of the runtime environment. Valid values:
+	// The environment in which the API runs. Valid values:
 	//
-	// *   **RELEASE**
+	// *   **RELEASE**: the production environment
 	// *   **PRE**: the pre-release environment
-	// *   **TEST**
+	// *   **TEST**: the test environment
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The system parameters.
 	SystemParameters *DescribeDeployedApiResponseBodySystemParameters `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty" type:"Struct"`
 	// Indicates whether the API is public. Valid values:
 	//
-	// *   **PUBLIC: The API is public. Public APIs are displayed on the APIs page for all users after the APIs are published to the production environment.**
-	// *   **PRIVATE: The API is private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	// *   **PUBLIC:** The API is public. If this parameter is set to PUBLIC, the API is displayed on the APIs page for all users after the API is published to the production environment.
+	// *   **PRIVATE:** The API is private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -15622,7 +15717,7 @@ func (s *DescribeDeployedApiResponseBodyConstantParameters) SetConstantParameter
 type DescribeDeployedApiResponseBodyConstantParametersConstantParameter struct {
 	// The constant value.
 	ConstantValue *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -15676,9 +15771,9 @@ func (s *DescribeDeployedApiResponseBodyCustomSystemParameters) SetCustomSystemP
 }
 
 type DescribeDeployedApiResponseBodyCustomSystemParametersCustomSystemParameter struct {
-	// The example value.
+	// The sample value.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -15739,11 +15834,11 @@ func (s *DescribeDeployedApiResponseBodyErrorCodeSamples) SetErrorCodeSample(v [
 }
 
 type DescribeDeployedApiResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// The error code.
+	// The error code returned if the request failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description.
+	// The description of the error.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -15775,8 +15870,8 @@ type DescribeDeployedApiResponseBodyOpenIdConnectConfig struct {
 	IdTokenParamName *string `json:"IdTokenParamName,omitempty" xml:"IdTokenParamName,omitempty"`
 	// The OpenID Connect mode. Valid values:
 	//
-	// *   **IDTOKEN: OpenID Connect calls the authentication API to issue tokens. If this value is specified, the PublicKeyId parameter and the PublicKey parameter are required.**
-	// *   **BUSINESS: OpenID Connect calls the business API to verify identities by using existing tokens. If this value is specified, the IdTokenParamName parameter is required.
+	// *   **IDTOKEN:** OpenID Connect calls the authentication API to issue tokens. If the value is specified, the PublicKeyId parameter and the PublicKey parameter are required.
+	// *   **BUSINESS:** OpenID Connect calls the business API to verify identities by using existing tokens. If this value is specified, the IdTokenParamName parameter is required.
 	OpenIdApiType *string `json:"OpenIdApiType,omitempty" xml:"OpenIdApiType,omitempty"`
 	// The public key of the API.
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
@@ -15813,15 +15908,15 @@ func (s *DescribeDeployedApiResponseBodyOpenIdConnectConfig) SetPublicKeyId(v st
 }
 
 type DescribeDeployedApiResponseBodyRequestConfig struct {
-	// This parameter takes effect only when the RequestMode parameter is set to MAPPING.********
+	// This parameter takes effect only when the **RequestMode** parameter is set to **MAPPING**.
 	//
-	// The format in which data is transmitted to the server for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data is transmitted in the key-value pair format. STREAM indicates that data is transmitted as byte streams.
+	// The format in which data is transmitted to the server for POST and PUT requests. Valid values: **FORM** and **STREAM**. FORM indicates that data is transmitted in the key-value pair format. STREAM indicates that data is transmitted as byte streams.
 	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
 	// The body model.
 	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
 	// The description of the request body.
 	PostBodyDescription *string `json:"PostBodyDescription,omitempty" xml:"PostBodyDescription,omitempty"`
-	// The HTTP method that was used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
+	// The HTTP method that is used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
 	RequestHttpMethod *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
 	// The request mode. Valid values:
 	//
@@ -15829,9 +15924,9 @@ type DescribeDeployedApiResponseBodyRequestConfig struct {
 	// *   PASSTHROUGH: Parameters are passed through.
 	// *   MAPPING_PASSTHROUGH: Parameters are mapped. Unknown parameters are passed through.
 	RequestMode *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
-	// The API request path. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the API request path is ` /object/add  `.
+	// The path of the API request. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, The path of the API request is ` /object/add  `.
 	RequestPath *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
-	// The protocol type supported by the API. Valid values: HTTP, HTTPS, and WebSocket. Separate multiple values with commas (,), such as "HTTP,HTTPS".
+	// The protocol type supported by the API. Valid values: HTTP, HTTPS, and WebSocket. Separate multiple values with commas (,). Example: "HTTP,HTTPS".
 	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
 }
 
@@ -15902,33 +15997,33 @@ type DescribeDeployedApiResponseBodyRequestParametersRequestParameter struct {
 	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
 	// The default value.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The example value.
+	// The sample value.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
 	// The parameter description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The order in the document.
 	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Indicates whether the document is public. Valid values: PUBLIC and PRIVATE.
+	// Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
 	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that can be entered when ParameterType is set to Int, Long, Float, Double, or String. Different values are separated with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
+	// The hash values that can be entered when **ParameterType** is set to Int, Long, Float, Double, or String. Separate different values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
 	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
 	// JSON scheme
 	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
 	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum parameter length when ParameterType is set to String.
+	// The maximum length of the **ParameterType** parameter when the parameter is set to String.
 	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The maximum value of the **ParameterType** parameter when the parameter is set to Int, Long, Float, or Double.
 	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum parameter length when ParameterType is set to String.
+	// The minimum length of the **ParameterType** parameter when the parameter is set to String.
 	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum parameter value when ParameterType is set to Int, Long, Float, or Double.
+	// The minimum value of the **ParameterType** parameter when the parameter is set to Int, Long, Float, or Double.
 	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The data type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
+	// The type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression used for parameter validation when ParameterType is set to String.
+	// The regular expression used for parameter validation when **ParameterType** is set to String.
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required. Valid values: REQUIRED and OPTIONAL.
+	// Indicates whether the parameter is required. Valid values: **REQUIRED** and **OPTIONAL**.
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -16043,7 +16138,7 @@ func (s *DescribeDeployedApiResponseBodyResultDescriptions) SetResultDescription
 }
 
 type DescribeDeployedApiResponseBodyResultDescriptionsResultDescription struct {
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	HasChild    *bool   `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -16108,28 +16203,28 @@ type DescribeDeployedApiResponseBodyServiceConfig struct {
 	FunctionComputeConfig *DescribeDeployedApiResponseBodyServiceConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
 	// Indicates whether the Mock mode is enabled. Valid values:
 	//
-	// *   **TRUE: The Mock mode is enabled.**
-	// *   **FALSE: The Mock mode is not enabled.
+	// *   **TRUE:** The Mock mode is enabled.
+	// *   **FALSE:** The Mock mode is not enabled.
 	Mock *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
 	// The mock headers.
 	MockHeaders *DescribeDeployedApiResponseBodyServiceConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
 	// The result returned when the Mock mode is enabled.
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
-	// The status code returned for service mocking.
+	// The status code returned for service mock.
 	MockStatusCode *int32 `json:"MockStatusCode,omitempty" xml:"MockStatusCode,omitempty"`
-	// The URL used to call the back-end service. If the complete back-end service URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of ServiceAddress is **http://api.a.com:8080**.``
+	// The URL that is used to call the backend service. If the complete URL of a backend service is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of ServiceAddress is **http://api.a.com:8080**.``
 	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
-	// The HTTP method used to call a backend service. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
+	// The HTTP method that is used to call a backend service. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
 	ServiceHttpMethod *string `json:"ServiceHttpMethod,omitempty" xml:"ServiceHttpMethod,omitempty"`
-	// The path used to call the back-end service. If the complete back-end service path is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, ServicePath is **/object/add**.``
+	// The path that is used to call the backend service. If the complete URL of a backend service is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of the **ServicePath** parameter is `/object/add`.
 	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	// The backend service protocol. Currently, only HTTP, HTTPS, and FunctionCompute are supported.
+	// The backend service protocol. Only HTTP, HTTPS, and Function Compute are supported.
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
 	// The timeout period of the backend service. Unit: milliseconds.
 	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
-	// Indicates whether the VPC channel is enabled. Valid values:
+	// Indicates whether to enable the VPC channel. Valid values:
 	//
-	// *   **TRUE**: The VPC channel is enabled. You must create the corresponding VPC access authorization before you can enable a VPC channel.
+	// *   **TRUE**: The VPC channel is enabled. You can enable a VPC channel only after you create the corresponding access authorization for the VPC.
 	// *   **FALSE**: The VPC channel is not enabled.
 	ServiceVpcEnable *string `json:"ServiceVpcEnable,omitempty" xml:"ServiceVpcEnable,omitempty"`
 	// The configuration items of the VPC channel.
@@ -16212,11 +16307,11 @@ func (s *DescribeDeployedApiResponseBodyServiceConfig) SetVpcId(v string) *Descr
 }
 
 type DescribeDeployedApiResponseBodyServiceConfigFunctionComputeConfig struct {
-	// The ContentType header type used when you call the backend service over HTTP. Valid values:
+	// The ContentType header used when a backend HTTP service is called. Valid values:
 	//
-	// *   **DEFAULT: the default header in API Gateway**
-	// *   **CUSTOM: a custom header**
-	// *   **CLIENT: the ContentType header specified by the client**
+	// *   **DEFAULT:** the default header in API Gateway
+	// *   **CUSTOM:** a custom header
+	// *   **CLIENT:** the ContentType header specified by the client
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
 	// The value of the ContentType header when the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
@@ -16228,13 +16323,13 @@ type DescribeDeployedApiResponseBodyServiceConfigFunctionComputeConfig struct {
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	// The request method.
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// Indicates whether the backend only receives the service path.
+	// Indicates whether the backend receives only the service path.
 	OnlyBusinessPath *bool `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
 	// The API request path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The alias of the function.
 	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
-	// The region where the API is located.
+	// The region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ARN of the RAM role assumed by API Gateway to access Function Compute.
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
@@ -16353,7 +16448,7 @@ func (s *DescribeDeployedApiResponseBodyServiceConfigMockHeadersMockHeader) SetH
 }
 
 type DescribeDeployedApiResponseBodyServiceConfigVpcConfig struct {
-	// The ID of the ECS or SLB instance in the VPC.
+	// The ID of the Elastic Compute Service (ECS) or Server Load Balancer (SLB) instance in the VPC.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the VPC access authorization.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -16411,7 +16506,7 @@ func (s *DescribeDeployedApiResponseBodyServiceParameters) SetServiceParameter(v
 type DescribeDeployedApiResponseBodyServiceParametersServiceParameter struct {
 	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The data type of the back-end service parameter. Valid values: STRING, NUMBER, BOOLEAN.
+	// The data type of the backend service parameter. Valid values: STRING, NUMBER, and BOOLEAN.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	// The name of the backend service parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
@@ -16458,7 +16553,7 @@ func (s *DescribeDeployedApiResponseBodyServiceParametersMap) SetServiceParamete
 }
 
 type DescribeDeployedApiResponseBodyServiceParametersMapServiceParameterMap struct {
-	// The name of the front-end input parameter.
+	// The name of the frontend input parameter.
 	RequestParameterName *string `json:"RequestParameterName,omitempty" xml:"RequestParameterName,omitempty"`
 	// The name of the backend service parameter.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
@@ -16500,9 +16595,9 @@ func (s *DescribeDeployedApiResponseBodySystemParameters) SetSystemParameter(v [
 }
 
 type DescribeDeployedApiResponseBodySystemParametersSystemParameter struct {
-	// The example value.
+	// The example.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description.
+	// The description of the parameter.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
@@ -16914,6 +17009,8 @@ type DescribeDomainResponseBody struct {
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
 	// The custom domain name.
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
+	CertificateValidEnd   *int64  `json:"CertificateValidEnd,omitempty" xml:"CertificateValidEnd,omitempty"`
+	CertificateValidStart *int64  `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
 	// Remarks about the domain name, such as the cause of an exception.
 	DomainBindingStatus *string `json:"DomainBindingStatus,omitempty" xml:"DomainBindingStatus,omitempty"`
 	// *   This operation is intended for API providers.
@@ -16965,6 +17062,16 @@ func (s *DescribeDomainResponseBody) SetCertificateName(v string) *DescribeDomai
 
 func (s *DescribeDomainResponseBody) SetCertificatePrivateKey(v string) *DescribeDomainResponseBody {
 	s.CertificatePrivateKey = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBody) SetCertificateValidEnd(v int64) *DescribeDomainResponseBody {
+	s.CertificateValidEnd = &v
+	return s
+}
+
+func (s *DescribeDomainResponseBody) SetCertificateValidStart(v int64) *DescribeDomainResponseBody {
+	s.CertificateValidStart = &v
 	return s
 }
 
@@ -17501,6 +17608,1362 @@ func (s *DescribeImportOASTaskResponse) SetBody(v *DescribeImportOASTaskResponse
 	return s
 }
 
+type DescribeInstanceDropConnectionsRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the dedicated instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The statistical metric. Valid values:
+	//
+	// *   Maximum
+	// *   Minimum
+	// *   Average
+	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceDropConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropConnectionsRequest) SetEndTime(v string) *DescribeInstanceDropConnectionsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsRequest) SetInstanceId(v string) *DescribeInstanceDropConnectionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsRequest) SetSbcName(v string) *DescribeInstanceDropConnectionsRequest {
+	s.SbcName = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsRequest) SetSecurityToken(v string) *DescribeInstanceDropConnectionsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsRequest) SetStartTime(v string) *DescribeInstanceDropConnectionsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceDropConnectionsResponseBody struct {
+	// The list of dropped connections in the instance.
+	InstanceDropConnections *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections `json:"InstanceDropConnections,omitempty" xml:"InstanceDropConnections,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceDropConnectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropConnectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropConnectionsResponseBody) SetInstanceDropConnections(v *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) *DescribeInstanceDropConnectionsResponseBody {
+	s.InstanceDropConnections = v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsResponseBody) SetRequestId(v string) *DescribeInstanceDropConnectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections struct {
+	MonitorItem []*DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) SetMonitorItem(v []*DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem) *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem struct {
+	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of dropped packets in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem) SetItemTime(v string) *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem) SetItemValue(v string) *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceDropConnectionsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceDropConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceDropConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropConnectionsResponse) SetHeaders(v map[string]*string) *DescribeInstanceDropConnectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsResponse) SetStatusCode(v int32) *DescribeInstanceDropConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDropConnectionsResponse) SetBody(v *DescribeInstanceDropConnectionsResponseBody) *DescribeInstanceDropConnectionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceDropPacketRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The statistical metric. Valid values:
+	//
+	// *   Maximum
+	// *   Minimum
+	// *   Average
+	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceDropPacketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropPacketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropPacketRequest) SetEndTime(v string) *DescribeInstanceDropPacketRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketRequest) SetInstanceId(v string) *DescribeInstanceDropPacketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketRequest) SetSbcName(v string) *DescribeInstanceDropPacketRequest {
+	s.SbcName = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketRequest) SetSecurityToken(v string) *DescribeInstanceDropPacketRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketRequest) SetStartTime(v string) *DescribeInstanceDropPacketRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceDropPacketResponseBody struct {
+	// The list of dropped packets in the instance.
+	InstanceDropPacket *DescribeInstanceDropPacketResponseBodyInstanceDropPacket `json:"InstanceDropPacket,omitempty" xml:"InstanceDropPacket,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceDropPacketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropPacketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropPacketResponseBody) SetInstanceDropPacket(v *DescribeInstanceDropPacketResponseBodyInstanceDropPacket) *DescribeInstanceDropPacketResponseBody {
+	s.InstanceDropPacket = v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketResponseBody) SetRequestId(v string) *DescribeInstanceDropPacketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceDropPacketResponseBodyInstanceDropPacket struct {
+	MonitorItem []*DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceDropPacketResponseBodyInstanceDropPacket) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropPacketResponseBodyInstanceDropPacket) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacket) SetMonitorItem(v []*DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) *DescribeInstanceDropPacketResponseBodyInstanceDropPacket {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem struct {
+	// The metric. Valid values:
+	//
+	// *   InstanceDropPacketRX: the number of inbound packets dropped in the instance per second.
+	// *   InstanceDropPacketTX: the number of outbound packets dropped in the instance per second.
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of dropped packets in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) SetItem(v string) *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) SetItemTime(v string) *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem) SetItemValue(v string) *DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceDropPacketResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceDropPacketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceDropPacketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceDropPacketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceDropPacketResponse) SetHeaders(v map[string]*string) *DescribeInstanceDropPacketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketResponse) SetStatusCode(v int32) *DescribeInstanceDropPacketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceDropPacketResponse) SetBody(v *DescribeInstanceDropPacketResponseBody) *DescribeInstanceDropPacketResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceHttpCodeRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment in which the API is requested. Valid values:
+	//
+	// *   **RELEASE**: the production environment
+	// *   **PRE**: the pre-release environment
+	// *   **TEST**: the test environment
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceHttpCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceHttpCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceHttpCodeRequest) SetEndTime(v string) *DescribeInstanceHttpCodeRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeRequest) SetInstanceId(v string) *DescribeInstanceHttpCodeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeRequest) SetSecurityToken(v string) *DescribeInstanceHttpCodeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeRequest) SetStageName(v string) *DescribeInstanceHttpCodeRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeRequest) SetStartTime(v string) *DescribeInstanceHttpCodeRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceHttpCodeResponseBody struct {
+	// The list of HTTP status codes returned.
+	InstanceHttpCode *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode `json:"InstanceHttpCode,omitempty" xml:"InstanceHttpCode,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceHttpCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceHttpCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceHttpCodeResponseBody) SetInstanceHttpCode(v *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) *DescribeInstanceHttpCodeResponseBody {
+	s.InstanceHttpCode = v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeResponseBody) SetRequestId(v string) *DescribeInstanceHttpCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceHttpCodeResponseBodyInstanceHttpCode struct {
+	MonitorItem []*DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) SetMonitorItem(v []*DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem) *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem struct {
+	// The HTTP status code.
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of HTTP status codes returned.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem) SetItemTime(v string) *DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem) SetItemValue(v string) *DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceHttpCodeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceHttpCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceHttpCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceHttpCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceHttpCodeResponse) SetHeaders(v map[string]*string) *DescribeInstanceHttpCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeResponse) SetStatusCode(v int32) *DescribeInstanceHttpCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceHttpCodeResponse) SetBody(v *DescribeInstanceHttpCodeResponseBody) *DescribeInstanceHttpCodeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceLatencyRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment in which the API is requested. Valid values:
+	//
+	// *   **RELEASE**: the production environment
+	// *   **PRE**: the pre-release environment
+	// *   **TEST**: the test environment
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceLatencyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLatencyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLatencyRequest) SetEndTime(v string) *DescribeInstanceLatencyRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyRequest) SetInstanceId(v string) *DescribeInstanceLatencyRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyRequest) SetSecurityToken(v string) *DescribeInstanceLatencyRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyRequest) SetStageName(v string) *DescribeInstanceLatencyRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyRequest) SetStartTime(v string) *DescribeInstanceLatencyRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceLatencyResponseBody struct {
+	// The list of average latencies in the instance.
+	InstanceLatency *DescribeInstanceLatencyResponseBodyInstanceLatency `json:"InstanceLatency,omitempty" xml:"InstanceLatency,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceLatencyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLatencyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLatencyResponseBody) SetInstanceLatency(v *DescribeInstanceLatencyResponseBodyInstanceLatency) *DescribeInstanceLatencyResponseBody {
+	s.InstanceLatency = v
+	return s
+}
+
+func (s *DescribeInstanceLatencyResponseBody) SetRequestId(v string) *DescribeInstanceLatencyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceLatencyResponseBodyInstanceLatency struct {
+	MonitorItem []*DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceLatencyResponseBodyInstanceLatency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLatencyResponseBodyInstanceLatency) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLatencyResponseBodyInstanceLatency) SetMonitorItem(v []*DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) *DescribeInstanceLatencyResponseBodyInstanceLatency {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem struct {
+	// The metric. Valid values:
+	//
+	// *   gatewayLatency API: the processing latency of API Gateway
+	// *   latency: the processing latency of the backend service.
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The value of the average latency.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) SetItem(v string) *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) SetItemTime(v string) *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem) SetItemValue(v string) *DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceLatencyResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceLatencyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceLatencyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLatencyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLatencyResponse) SetHeaders(v map[string]*string) *DescribeInstanceLatencyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceLatencyResponse) SetStatusCode(v int32) *DescribeInstanceLatencyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceLatencyResponse) SetBody(v *DescribeInstanceLatencyResponseBody) *DescribeInstanceLatencyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceNewConnectionsRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The statistical metric. Valid values:
+	//
+	// *   Maximum
+	// *   Minimum
+	// *   Average
+	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceNewConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceNewConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceNewConnectionsRequest) SetEndTime(v string) *DescribeInstanceNewConnectionsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsRequest) SetInstanceId(v string) *DescribeInstanceNewConnectionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsRequest) SetSbcName(v string) *DescribeInstanceNewConnectionsRequest {
+	s.SbcName = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsRequest) SetSecurityToken(v string) *DescribeInstanceNewConnectionsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsRequest) SetStartTime(v string) *DescribeInstanceNewConnectionsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceNewConnectionsResponseBody struct {
+	// The list of new connections in the instance.
+	InstanceNewConnections *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections `json:"InstanceNewConnections,omitempty" xml:"InstanceNewConnections,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceNewConnectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceNewConnectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceNewConnectionsResponseBody) SetInstanceNewConnections(v *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) *DescribeInstanceNewConnectionsResponseBody {
+	s.InstanceNewConnections = v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsResponseBody) SetRequestId(v string) *DescribeInstanceNewConnectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections struct {
+	MonitorItem []*DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) SetMonitorItem(v []*DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem) *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem struct {
+	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of new connections in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem) SetItemTime(v string) *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem) SetItemValue(v string) *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceNewConnectionsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceNewConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceNewConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceNewConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceNewConnectionsResponse) SetHeaders(v map[string]*string) *DescribeInstanceNewConnectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsResponse) SetStatusCode(v int32) *DescribeInstanceNewConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceNewConnectionsResponse) SetBody(v *DescribeInstanceNewConnectionsResponseBody) *DescribeInstanceNewConnectionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstancePacketsRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The statistical metric. Valid values:
+	//
+	// *   Maximum
+	// *   Minimum
+	// *   Average
+	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstancePacketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePacketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePacketsRequest) SetEndTime(v string) *DescribeInstancePacketsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsRequest) SetInstanceId(v string) *DescribeInstancePacketsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsRequest) SetSbcName(v string) *DescribeInstancePacketsRequest {
+	s.SbcName = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsRequest) SetSecurityToken(v string) *DescribeInstancePacketsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsRequest) SetStartTime(v string) *DescribeInstancePacketsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstancePacketsResponseBody struct {
+	// The list of inbound and outbound data packets in the instance.
+	InstancePackets *DescribeInstancePacketsResponseBodyInstancePackets `json:"InstancePackets,omitempty" xml:"InstancePackets,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstancePacketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePacketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePacketsResponseBody) SetInstancePackets(v *DescribeInstancePacketsResponseBodyInstancePackets) *DescribeInstancePacketsResponseBody {
+	s.InstancePackets = v
+	return s
+}
+
+func (s *DescribeInstancePacketsResponseBody) SetRequestId(v string) *DescribeInstancePacketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstancePacketsResponseBodyInstancePackets struct {
+	MonitorItem []*DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancePacketsResponseBodyInstancePackets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePacketsResponseBodyInstancePackets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePacketsResponseBodyInstancePackets) SetMonitorItem(v []*DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) *DescribeInstancePacketsResponseBodyInstancePackets {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem struct {
+	// The metric. Valid values:
+	//
+	// *   InstancePacketRX: inbound data packets
+	// *   InstancePacketTX: outbound data packets
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of inbound and outbound data packets in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) SetItem(v string) *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) SetItemTime(v string) *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem) SetItemValue(v string) *DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstancePacketsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancePacketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstancePacketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancePacketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancePacketsResponse) SetHeaders(v map[string]*string) *DescribeInstancePacketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstancePacketsResponse) SetStatusCode(v int32) *DescribeInstancePacketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstancePacketsResponse) SetBody(v *DescribeInstancePacketsResponseBody) *DescribeInstancePacketsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceQpsRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment in which the API is requested. Valid values:
+	//
+	// *   **RELEASE**: the production environment
+	// *   **PRE**: the pre-release environment
+	// *   **TEST**: the test environment
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceQpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceQpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceQpsRequest) SetEndTime(v string) *DescribeInstanceQpsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsRequest) SetInstanceId(v string) *DescribeInstanceQpsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsRequest) SetSecurityToken(v string) *DescribeInstanceQpsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsRequest) SetStageName(v string) *DescribeInstanceQpsRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsRequest) SetStartTime(v string) *DescribeInstanceQpsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceQpsResponseBody struct {
+	// The list of requests sent to the APIs in the instance.
+	InstanceQps *DescribeInstanceQpsResponseBodyInstanceQps `json:"InstanceQps,omitempty" xml:"InstanceQps,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceQpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceQpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceQpsResponseBody) SetInstanceQps(v *DescribeInstanceQpsResponseBodyInstanceQps) *DescribeInstanceQpsResponseBody {
+	s.InstanceQps = v
+	return s
+}
+
+func (s *DescribeInstanceQpsResponseBody) SetRequestId(v string) *DescribeInstanceQpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceQpsResponseBodyInstanceQps struct {
+	MonitorItem []*DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceQpsResponseBodyInstanceQps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceQpsResponseBodyInstanceQps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceQpsResponseBodyInstanceQps) SetMonitorItem(v []*DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem) *DescribeInstanceQpsResponseBodyInstanceQps {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem struct {
+	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of requests sent to the APIs in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem) SetItemTime(v string) *DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem) SetItemValue(v string) *DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceQpsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceQpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceQpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceQpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceQpsResponse) SetHeaders(v map[string]*string) *DescribeInstanceQpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceQpsResponse) SetStatusCode(v int32) *DescribeInstanceQpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceQpsResponse) SetBody(v *DescribeInstanceQpsResponseBody) *DescribeInstanceQpsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceSlbConnectRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The statistical metric. Valid values:
+	//
+	// *   Maximum
+	// *   Minimum
+	// *   Average
+	SbcName       *string `json:"SbcName,omitempty" xml:"SbcName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceSlbConnectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSlbConnectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSlbConnectRequest) SetEndTime(v string) *DescribeInstanceSlbConnectRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectRequest) SetInstanceId(v string) *DescribeInstanceSlbConnectRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectRequest) SetSbcName(v string) *DescribeInstanceSlbConnectRequest {
+	s.SbcName = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectRequest) SetSecurityToken(v string) *DescribeInstanceSlbConnectRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectRequest) SetStartTime(v string) *DescribeInstanceSlbConnectRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceSlbConnectResponseBody struct {
+	// The list of concurrent connections in the instance.
+	InstanceSlbConnect *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect `json:"InstanceSlbConnect,omitempty" xml:"InstanceSlbConnect,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceSlbConnectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSlbConnectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSlbConnectResponseBody) SetInstanceSlbConnect(v *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) *DescribeInstanceSlbConnectResponseBody {
+	s.InstanceSlbConnect = v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectResponseBody) SetRequestId(v string) *DescribeInstanceSlbConnectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect struct {
+	MonitorItem []*DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) SetMonitorItem(v []*DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem struct {
+	// The metric. Valid values:
+	//
+	// *   InstanceMaxConnection: the maximum number of connections
+	// *   InstanceInactiveConnection: the number of inactive connections
+	// *   InstanceActiveConnection: the number of active connections
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The number of concurrent connections in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) SetItem(v string) *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) SetItemTime(v string) *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem) SetItemValue(v string) *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceSlbConnectResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceSlbConnectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceSlbConnectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSlbConnectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSlbConnectResponse) SetHeaders(v map[string]*string) *DescribeInstanceSlbConnectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectResponse) SetStatusCode(v int32) *DescribeInstanceSlbConnectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceSlbConnectResponse) SetBody(v *DescribeInstanceSlbConnectResponseBody) *DescribeInstanceSlbConnectResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceTrafficRequest struct {
+	// The end time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The environment in which the API runs. Valid values:
+	//
+	// *   **RELEASE**: the production environment
+	// *   **PRE**: the pre-release environment
+	// *   **TEST: the test environment**
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// The start time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInstanceTrafficRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTrafficRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTrafficRequest) SetEndTime(v string) *DescribeInstanceTrafficRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficRequest) SetInstanceId(v string) *DescribeInstanceTrafficRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficRequest) SetSecurityToken(v string) *DescribeInstanceTrafficRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficRequest) SetStageName(v string) *DescribeInstanceTrafficRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficRequest) SetStartTime(v string) *DescribeInstanceTrafficRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInstanceTrafficResponseBody struct {
+	// The traffic consumed by the requests and responses in the instance.
+	InstanceTraffic *DescribeInstanceTrafficResponseBodyInstanceTraffic `json:"InstanceTraffic,omitempty" xml:"InstanceTraffic,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceTrafficResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTrafficResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTrafficResponseBody) SetInstanceTraffic(v *DescribeInstanceTrafficResponseBodyInstanceTraffic) *DescribeInstanceTrafficResponseBody {
+	s.InstanceTraffic = v
+	return s
+}
+
+func (s *DescribeInstanceTrafficResponseBody) SetRequestId(v string) *DescribeInstanceTrafficResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceTrafficResponseBodyInstanceTraffic struct {
+	MonitorItem []*DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceTrafficResponseBodyInstanceTraffic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTrafficResponseBodyInstanceTraffic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTrafficResponseBodyInstanceTraffic) SetMonitorItem(v []*DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) *DescribeInstanceTrafficResponseBodyInstanceTraffic {
+	s.MonitorItem = v
+	return s
+}
+
+type DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem struct {
+	// The metric. Valid values:
+	//
+	// *   inbound: traffic consumed by requests
+	// *   outbound: traffic consumed by responses
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
+	// The amount of traffic consumed by the requests and responses in the instance.
+	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
+}
+
+func (s DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) SetItem(v string) *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem {
+	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) SetItemTime(v string) *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem {
+	s.ItemTime = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem) SetItemValue(v string) *DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem {
+	s.ItemValue = &v
+	return s
+}
+
+type DescribeInstanceTrafficResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceTrafficResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTrafficResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTrafficResponse) SetHeaders(v map[string]*string) *DescribeInstanceTrafficResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceTrafficResponse) SetStatusCode(v int32) *DescribeInstanceTrafficResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceTrafficResponse) SetBody(v *DescribeInstanceTrafficResponseBody) *DescribeInstanceTrafficResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstancesRequest struct {
 	// Specifies whether tag authorization is enabled.
 	EnableTagAuthorization *bool `json:"EnableTagAuthorization,omitempty" xml:"EnableTagAuthorization,omitempty"`
@@ -17655,8 +19118,10 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The outbound IP address.
 	ClassicEgressAddress *string `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
+	ConnectVpcId         *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
 	// The time when the instance was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime           *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DedicatedInstanceType *string `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
 	// Indicates whether outbound IPv6 is supported.
 	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
 	// The time when the instance expires.
@@ -17672,6 +19137,7 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	// *   PrePaid: subscription
 	// *   PayAsYouGo: pay-as-you-go
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceCidrBlock  *string `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
@@ -17688,8 +19154,9 @@ type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
 	// *   VPC_DEDICATED: dedicated instance (VPC)
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The outbound public IP address.
-	InternetEgressAddress *string `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
-	IntranetSegments      *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	InternetEgressAddress      *string                                                                            `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	IntranetSegments           *string                                                                            `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
 	// The region where the instance is located.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The instance status.
@@ -17748,8 +19215,18 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetClassicEgre
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetConnectVpcId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ConnectVpcId = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetCreatedTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetDedicatedInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.DedicatedInstanceType = &v
 	return s
 }
 
@@ -17793,6 +19270,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceCha
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceCidrBlock(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceCidrBlock = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.InstanceId = &v
 	return s
@@ -17830,6 +19312,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInternetEgr
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetIntranetSegments(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.IntranetSegments = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetNetworkInterfaceAttributes(v *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.NetworkInterfaceAttributes = v
 	return s
 }
 
@@ -17932,6 +19419,64 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) SetValue(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute {
 	s.Value = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes struct {
+	NetworkInterfaceAttribute []*DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute `json:"NetworkInterfaceAttribute,omitempty" xml:"NetworkInterfaceAttribute,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes) SetNetworkInterfaceAttribute(v []*DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes {
+	s.NetworkInterfaceAttribute = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute struct {
+	CidrBlock          *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	SecurityGroupId    *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) SetCidrBlock(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) SetNetworkInterfaceId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) SetSecurityGroupId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) SetVswitchId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute {
+	s.ZoneId = &v
 	return s
 }
 
@@ -18154,8 +19699,8 @@ type DescribeIpControlsRequest struct {
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
 	// The type of the ACL. Valid values:
 	//
-	// *   **ALLOW**: an IP address whitelist
-	// *   **REFUSE**: an IP address blacklist
+	// *   **ALLOW**: a whitelist
+	// *   **REFUSE**: a blacklist
 	IpControlType *string `json:"IpControlType,omitempty" xml:"IpControlType,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18203,7 +19748,7 @@ func (s *DescribeIpControlsRequest) SetSecurityToken(v string) *DescribeIpContro
 }
 
 type DescribeIpControlsResponseBody struct {
-	// The information about the ACL. The information is an array of IpControlInfo data. The information does not include specific policies.
+	// The information about the ACL. The information is an array that consists of IpControlInfo data. The information does not include specific policies.
 	IpControlInfos *DescribeIpControlsResponseBodyIpControlInfos `json:"IpControlInfos,omitempty" xml:"IpControlInfos,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18268,7 +19813,7 @@ func (s *DescribeIpControlsResponseBodyIpControlInfos) SetIpControlInfo(v []*Des
 type DescribeIpControlsResponseBodyIpControlInfosIpControlInfo struct {
 	// The time when the ACL was created. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description
+	// The description of the ACL.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the ACL.
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
@@ -18278,7 +19823,7 @@ type DescribeIpControlsResponseBodyIpControlInfosIpControlInfo struct {
 	IpControlType *string `json:"IpControlType,omitempty" xml:"IpControlType,omitempty"`
 	// The time when the ACL was modified. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region in which the API is located.
+	// The ID of the region in which the ACL is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19590,14 +21135,16 @@ func (s *DescribePluginsResponse) SetBody(v *DescribePluginsResponseBody) *Descr
 type DescribePluginsByApiRequest struct {
 	// The ID of the API.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the group to which the API to be queried belongs.
+	// The ID of the group to which the API belongs.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The runtime environment of the API. Valid values:
+	// The environment in which the API is running. Valid values:
 	//
-	// *   **RELEASE**
-	// *   **PRE: the pre-release environment**
-	// *   **TEST**
+	// *   **RELEASE**: production
+	// *   **PRE**: staging
+	// *   **TEST**: test
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -19619,6 +21166,16 @@ func (s *DescribePluginsByApiRequest) SetGroupId(v string) *DescribePluginsByApi
 	return s
 }
 
+func (s *DescribePluginsByApiRequest) SetPageNumber(v int32) *DescribePluginsByApiRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribePluginsByApiRequest) SetPageSize(v int32) *DescribePluginsByApiRequest {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribePluginsByApiRequest) SetSecurityToken(v string) *DescribePluginsByApiRequest {
 	s.SecurityToken = &v
 	return s
@@ -19634,7 +21191,7 @@ type DescribePluginsByApiResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned plug-in information. It is an array consisting of PluginAttribute data.
+	// The plug-in information. The information is an array that consists of PluginAttribute data.
 	Plugins *DescribePluginsByApiResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -19693,11 +21250,11 @@ func (s *DescribePluginsByApiResponseBodyPlugins) SetPluginAttribute(v []*Descri
 }
 
 type DescribePluginsByApiResponseBodyPluginsPluginAttribute struct {
-	// The creation time (UTC) of the plug-in.
+	// The time when the plug-in was created. The time is displayed in UTC.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The plug-in description.
+	// The description of the plug-in.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time (UTC) of the plug-in.
+	// The time when the plug-in was last modified. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The definition statement of the plug-in.
 	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
@@ -19707,7 +21264,7 @@ type DescribePluginsByApiResponseBodyPluginsPluginAttribute struct {
 	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
 	// The type of the plug-in.
 	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The region where the plug-in is located.
+	// The region where the plug-in resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -22266,7 +23823,8 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 
 type DisableInstanceAccessControlRequest struct {
 	// The ID of the access control policy.
-	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The IP version. Valid values: **ipv4** and **ipv6**.
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	// The ID of the instance.
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -24166,7 +25724,7 @@ func (s *ModifyApiResponse) SetBody(v *ModifyApiResponseBody) *ModifyApiResponse
 }
 
 type ModifyApiConfigurationRequest struct {
-	// If **AuthType** is set to **APP**, this value must be passed to specify the signature algorithm. If you do not specify a value, HmacSHA256 is used by default. Valid values:
+	// If the **AuthType** parameter is set to **APP**, you must include this parameter to specify the signature algorithm. If you do not specify a value, HmacSHA256 is used by default. Valid values:
 	//
 	// *   HmacSHA256
 	// *   HmacSHA1,HmacSHA256
@@ -24175,12 +25733,12 @@ type ModifyApiConfigurationRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The name of the API.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// If **AuthType** is set to **APP**, the valid values are:
+	// If the **AuthType** parameter is set to **APP**, the valid values are:
 	//
-	// *   **DEFAULT**: The default value that is used if no other values are passed. This value means that the setting of the group is used.
+	// *   **DEFAULT**: The default value that is used if no other values are passed. This value indicates that the settings of the group are used.
 	// *   **DISABLE**: The authentication is disabled.
-	// *   **HEADER: AppCode can be placed in the Header parameter for authentication.**
-	// *   **HEADER_QUERY: AppCode can be placed in the Header or Query parameter for authentication.
+	// *   **HEADER**: AppCode can be placed in the Header parameter for authentication.
+	// *   **HEADER_QUERY**: AppCode can be placed in the Header or Query parameter for authentication.
 	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
 	// API安全认证类型，目前可以取值：
 	//
@@ -24189,11 +25747,11 @@ type ModifyApiConfigurationRequest struct {
 	//      - 任何能够获取该API服务信息的人，都将能够调用该API。网关不会对调用者做身份认证，也无法设置按用户的流量控制，若开放该API请设置好按API的流量控制；
 	//      - AppCodeAuthType的值不会生效。
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The name of the backend service. This parameter takes effect only when UseBackendService is set to TRUE.
+	// The name of the backend service. This parameter takes effect only when the UseBackendService parameter is set to TRUE.
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// This parameter takes effect only when the RequestMode parameter is set to MAPPING.********
+	// This parameter takes effect only when the **RequestMode** parameter is set to **MAPPING**.
 	//
-	// The server data transmission method used for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data in key-value pairs is transmitted as forms. STREAM indicates that data is transmitted as byte streams.
+	// The format in which data is transmitted to the server for POST and PUT requests. Valid values: **FORM** and **STREAM**. FORM indicates that data is transmitted in the key-value pair format. STREAM indicates that data is transmitted as byte streams.
 	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
 	// The body model.
 	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
@@ -24206,8 +25764,8 @@ type ModifyApiConfigurationRequest struct {
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
 	// The description of the API.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// *   Specifies whether to set **DisableInternet** to **true** to limit API calls to within the VPC.
-	// *   If you set **DisableInternet** to **false**, the limit if lifted.
+	// *   Specifies whether to call the API only in an internal network. If the **DisableInternet** parameter is set to **true**, the API can be called only in an internal network.
+	// *   If the **DisableInternet** parameter is set to **false**, the API can be called over the Internet and in an internal network.
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	// The sample error codes returned by the backend service.
 	//
@@ -24215,8 +25773,8 @@ type ModifyApiConfigurationRequest struct {
 	ErrorCodeSamples *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
 	// The sample error response from the backend service. This value is used only to generate documents. It does not affect the returned result.
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// *   Specifies whether to set **ForceNonceCheck** to **true** to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
-	// *   If you set **ForceNonceCheck** to **false**, the check is not performed. If you do not set this parameter, the original value is used.
+	// *   Specifies whether to forcibly check X-Ca-Nonce. If the **ForceNonceCheck** parameter is set to **true**, X-Ca-Nonce is forcibly checked. X-Ca-Nonce is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
+	// *   If the **ForceNonceCheck** parameter is set to **false**, X-Ca-Nonce is not checked. If you do not modify this parameter when you modify an API, the original value is used.
 	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
 	// The Function Compute configuration.
 	FunctionComputeConfig *string `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty"`
@@ -24242,7 +25800,7 @@ type ModifyApiConfigurationRequest struct {
 	//
 	// For more information, see [RequestParameter](~~43986~~).
 	RequestParameters *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
-	// The API request path. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the API request path is ` /object/add  `.
+	// The path of the API request. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the path of the API request is `/object/add`.
 	RequestPath *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
 	// The protocol type supported by the API. Valid values: HTTP and HTTPS. Separate multiple values with commas (,), such as "HTTP,HTTPS".
 	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
@@ -24259,10 +25817,10 @@ type ModifyApiConfigurationRequest struct {
 	//
 	// For more information, see [ServiceParameterMap](~~43989~~).
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
-	// The protocols that are used to access backend services. Valid values:
+	// The protocol that is used to access backend services. Valid values:
 	//
-	// *   HTTP: for backend services that use HTTP or HTTPS
-	// *   VPC: for backend services that use VPC
+	// *   Http: for backend services that use HTTP or HTTPS
+	// *   Vpc: for backend services that use VPC
 	// *   FC: for Function Compute
 	// *   OSS: for Object Storage Service
 	// *   Mock: for backend services that use the Mock mode
@@ -24270,17 +25828,17 @@ type ModifyApiConfigurationRequest struct {
 	//
 	// You must specify the config value for the corresponding backend service.
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The timeout period of the backend service, in millisecond.
+	// The timeout period of the backend service. Unit: milliseconds.
 	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
-	// Specifies whether to use the created backend service. Valid values:
+	// Specifies whether to use the information about the created backend service. Valid values:
 	//
-	// *   TRUE: The created backend service is used.
-	// *   FALSE: The custom backend service information is used.
+	// *   TRUE: uses the information about the created backend service.
+	// *   FALSE: uses the information about the custom backend service.
 	UseBackendService *bool `json:"UseBackendService,omitempty" xml:"UseBackendService,omitempty"`
 	// Specifies whether to make the API public. Valid values:
 	//
-	// *   **PUBLIC: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.**
-	// *   **PRIVATE: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	// *   **PUBLIC:** The API is public. If this parameter is set to PUBLIC, the API is displayed on the APIs page for all users after the API is published to the production environment.
+	// *   **PRIVATE:** The API is private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 	// The VPC configuration.
 	VpcConfig *string `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty"`
@@ -26137,20 +27695,34 @@ func (s *ModifyTrafficControlResponse) SetBody(v *ModifyTrafficControlResponseBo
 type ModifyVpcAccessAndUpdateApisRequest struct {
 	// The ID of the new instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique custom name for the authorization.
+	// The name of the VPC authorization.
+	//
+	// >
+	//
+	// *   The name of a VPC authorization cannot be changed. You cannot use this parameter to change the name of a VPC authorization.
+	//
+	// *   You must set this parameter to the name of the current VPC authorization.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Specifies whether to update the associated API.
+	//
+	// **
+	//
+	// **Warning:** If you want to update the VPC authorization of a published API, you must set this parameter to true. Otherwise, the update will not be synchronized to the backend service of the API.
 	NeedBatchWork *bool `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
-	// The port number to be modified.
+	// The new port number.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Specifies whether to refresh the VPC authorization.
+	// Specifies whether to update the VPC authorization.
+	//
+	// >
+	//
+	// *   If the ID of the instance in your VPC is changed but the IP address of the instance remains unchanged, you can set this parameter to true to update the VPC authorization.
 	Refresh       *bool   `json:"Refresh,omitempty" xml:"Refresh,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The password.
+	// The token of the request.
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	// The ID of the new VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The authorized backend host.
+	// The hostname of the backend service.
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
@@ -26208,7 +27780,11 @@ func (s *ModifyVpcAccessAndUpdateApisRequest) SetVpcTargetHostName(v string) *Mo
 }
 
 type ModifyVpcAccessAndUpdateApisResponseBody struct {
-	// The task ID.
+	// The ID of the asynchronous task.
+	//
+	// >
+	//
+	// *   If the associated API is updated, you can use the task ID in the **DescribeUpdateVpcInfoTask** operation to query the update result.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -26342,7 +27918,7 @@ func (s *QueryRequestLogsRequest) SetSecurityToken(v string) *QueryRequestLogsRe
 type QueryRequestLogsResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about request logs returned.
+	// The list of request logs.
 	RequestLogs *QueryRequestLogsResponseBodyRequestLogs `json:"RequestLogs,omitempty" xml:"RequestLogs,omitempty" type:"Struct"`
 }
 
@@ -26384,9 +27960,14 @@ func (s *QueryRequestLogsResponseBodyRequestLogs) SetRequestLog(v []*QueryReques
 type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	// The ID of the API.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The IP address of the client that sent the request.
+	// The name of the API
+	ApiName              *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendRequestEnd    *int64  `json:"BackendRequestEnd,omitempty" xml:"BackendRequestEnd,omitempty"`
+	BackendRequestStart  *int64  `json:"BackendRequestStart,omitempty" xml:"BackendRequestStart,omitempty"`
+	BackendResponseEnd   *int64  `json:"BackendResponseEnd,omitempty" xml:"BackendResponseEnd,omitempty"`
+	BackendResponseStart *int64  `json:"BackendResponseStart,omitempty" xml:"BackendResponseStart,omitempty"`
+	// The IP address of the client that sends the request.
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// The X-Ca-Nonce header included in the request from the client.
 	ClientNonce *string `json:"ClientNonce,omitempty" xml:"ClientNonce,omitempty"`
@@ -26396,31 +27977,35 @@ type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	ConsumerAppKey *string `json:"ConsumerAppKey,omitempty" xml:"ConsumerAppKey,omitempty"`
 	// The ID of the custom trace.
 	CustomTraceId *string `json:"CustomTraceId,omitempty" xml:"CustomTraceId,omitempty"`
-	// The requested domain name.
+	// The domain name of the request.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The error code.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The specific error message that was returned by the backend service.
-	Exception *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
-	// The ID of the group to which the API belongs.
+	// The specific error message returned by the backend service.
+	Exception          *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	FrontRequestEnd    *int64  `json:"FrontRequestEnd,omitempty" xml:"FrontRequestEnd,omitempty"`
+	FrontRequestStart  *int64  `json:"FrontRequestStart,omitempty" xml:"FrontRequestStart,omitempty"`
+	FrontResponseEnd   *int64  `json:"FrontResponseEnd,omitempty" xml:"FrontResponseEnd,omitempty"`
+	FrontResponseStart *int64  `json:"FrontResponseStart,omitempty" xml:"FrontResponseStart,omitempty"`
+	// The ID of the API group to which the API belongs.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
+	// The name of the API group to which the API belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The HTTP method used to send the request.
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
 	// The path of the request.
 	HttpPath *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
-	// The initial request ID when API Gateway calls an API. For example, if API-1 calls API-2, initialRequestId in the log of API-2 represents the ID of the request from API-1.
+	// The initial request ID when API Gateway calls an API. For example, if API-1 calls API-2, the initialRequestId parameter in the log of API-2 indicates the ID of the request from API-1.
 	InitialRequestId *string `json:"InitialRequestId,omitempty" xml:"InitialRequestId,omitempty"`
-	// The ID of the gateway instance to which the API belongs.
+	// The ID of the API Gateway instance to which the API belongs.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The JSON web token (JWT) claims. The claims can be configured at the group level.
 	JwtClaims *string `json:"JwtClaims,omitempty" xml:"JwtClaims,omitempty"`
 	// The ID of the region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The request body. The maximum size of the request body is 1,024 bytes.
+	// The request body. A request body cannot exceed 1,024 bytes in size.
 	RequestBody *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
 	// The request headers.
 	RequestHeaders *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
@@ -26432,15 +28017,15 @@ type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	RequestQueryString *string `json:"RequestQueryString,omitempty" xml:"RequestQueryString,omitempty"`
 	// The size of the request. Unit: bytes.
 	RequestSize *string `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
-	// The request time. The time is displayed in UTC.
+	// The request time, in UTC.
 	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// The response body. The maximum size of the response body is 1,024 bytes.
+	// The response body. A response body cannot exceed 1,024 bytes in size.
 	ResponseBody *string `json:"ResponseBody,omitempty" xml:"ResponseBody,omitempty"`
-	// The response headers.
+	// The headers in the API response.
 	ResponseHeaders *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
 	// The size of returned data. Unit: bytes.
 	ResponseSize *string `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
-	// The total time that was consumed to access backend resources. The total time includes the time consumed to request a connection to the resources, the time consumed to establish the connection, and the time consumed to call the backend service. Unit: milliseconds.
+	// The total time consumed to access backend resources. The total time includes the time consumed to request a connection to the resources, the time consumed to establish the connection, and the time consumed to call the backend service. Unit: milliseconds.
 	ServiceLatency *string `json:"ServiceLatency,omitempty" xml:"ServiceLatency,omitempty"`
 	// The ID of the API environment.
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
@@ -26448,7 +28033,7 @@ type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	// The HTTP status code.
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The total period of time that the request consumed. Unit: milliseconds.
+	// The total time consumed by the request. Unit: milliseconds.
 	TotalLatency *string `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
 	// The list of plug-ins hit by the request and the relevant context.
 	Plugin *string `json:"plugin,omitempty" xml:"plugin,omitempty"`
@@ -26469,6 +28054,31 @@ func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetApiId(v string) *
 
 func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetApiName(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
 	s.ApiName = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetAppName(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetBackendRequestEnd(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.BackendRequestEnd = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetBackendRequestStart(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.BackendRequestStart = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetBackendResponseEnd(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.BackendResponseEnd = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetBackendResponseStart(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.BackendResponseStart = &v
 	return s
 }
 
@@ -26514,6 +28124,26 @@ func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetErrorMessage(v st
 
 func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetException(v string) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
 	s.Exception = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetFrontRequestEnd(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.FrontRequestEnd = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetFrontRequestStart(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.FrontRequestStart = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetFrontResponseEnd(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.FrontResponseEnd = &v
+	return s
+}
+
+func (s *QueryRequestLogsResponseBodyRequestLogsRequestLog) SetFrontResponseStart(v int64) *QueryRequestLogsResponseBodyRequestLogsRequestLog {
+	s.FrontResponseStart = &v
 	return s
 }
 
@@ -27648,9 +29278,9 @@ func (s *RemoveVpcAccessAndAbolishApisResponse) SetBody(v *RemoveVpcAccessAndAbo
 }
 
 type ResetAppCodeRequest struct {
-	// The new AppCode of the app.
+	// The current AppCode of the application.
 	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// The ID of the request.
+	// The new AppCode of the application.
 	NewAppCode    *string `json:"NewAppCode,omitempty" xml:"NewAppCode,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -27679,7 +29309,7 @@ func (s *ResetAppCodeRequest) SetSecurityToken(v string) *ResetAppCodeRequest {
 }
 
 type ResetAppCodeResponseBody struct {
-	// auditing
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28720,6 +30350,81 @@ func (s *SetDomainWebSocketStatusResponse) SetStatusCode(v int32) *SetDomainWebS
 }
 
 func (s *SetDomainWebSocketStatusResponse) SetBody(v *SetDomainWebSocketStatusResponseBody) *SetDomainWebSocketStatusResponse {
+	s.Body = v
+	return s
+}
+
+type SetGroupAuthAppCodeRequest struct {
+	AuthAppCode   *string `json:"AuthAppCode,omitempty" xml:"AuthAppCode,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetGroupAuthAppCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupAuthAppCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupAuthAppCodeRequest) SetAuthAppCode(v string) *SetGroupAuthAppCodeRequest {
+	s.AuthAppCode = &v
+	return s
+}
+
+func (s *SetGroupAuthAppCodeRequest) SetGroupId(v string) *SetGroupAuthAppCodeRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *SetGroupAuthAppCodeRequest) SetSecurityToken(v string) *SetGroupAuthAppCodeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetGroupAuthAppCodeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetGroupAuthAppCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupAuthAppCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupAuthAppCodeResponseBody) SetRequestId(v string) *SetGroupAuthAppCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetGroupAuthAppCodeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetGroupAuthAppCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGroupAuthAppCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGroupAuthAppCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGroupAuthAppCodeResponse) SetHeaders(v map[string]*string) *SetGroupAuthAppCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGroupAuthAppCodeResponse) SetStatusCode(v int32) *SetGroupAuthAppCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetGroupAuthAppCodeResponse) SetBody(v *SetGroupAuthAppCodeResponseBody) *SetGroupAuthAppCodeResponse {
 	s.Body = v
 	return s
 }
@@ -30482,10 +32187,6 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		query["SecurityToken"] = request.SecurityToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
 	}
@@ -30793,12 +32494,20 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["HttpsPolicy"] = request.HttpsPolicy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceCidr)) {
+		query["InstanceCidr"] = request.InstanceCidr
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
 		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
@@ -30813,8 +32522,16 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["Token"] = request.Token
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserVpcId)) {
+		query["UserVpcId"] = request.UserVpcId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneVSwitchSecurityGroup)) {
+		query["ZoneVSwitchSecurityGroup"] = request.ZoneVSwitchSecurityGroup
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -33299,8 +35016,9 @@ func (client *Client) DescribeApiHistories(request *DescribeApiHistoriesRequest)
 }
 
 /**
- * *   This API is intended for API providers.
- * *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+ * You can call this operation to query the definition of a specified published version of an API.
+ * *   This operation is intended for API providers.
+ * *   Each time an API is published, API Gateway records the publishing details, such as the time and the API definition. You can use the version number obtained from other API operations to query the details of an API definition that is published on a specific occasion.
  *
  * @param request DescribeApiHistoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33356,8 +35074,9 @@ func (client *Client) DescribeApiHistoryWithOptions(request *DescribeApiHistoryR
 }
 
 /**
- * *   This API is intended for API providers.
- * *   API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+ * You can call this operation to query the definition of a specified published version of an API.
+ * *   This operation is intended for API providers.
+ * *   Each time an API is published, API Gateway records the publishing details, such as the time and the API definition. You can use the version number obtained from other API operations to query the details of an API definition that is published on a specific occasion.
  *
  * @param request DescribeApiHistoryRequest
  * @return DescribeApiHistoryResponse
@@ -35512,6 +37231,546 @@ func (client *Client) DescribeImportOASTask(request *DescribeImportOASTaskReques
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceDropConnectionsWithOptions(request *DescribeInstanceDropConnectionsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDropConnectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SbcName)) {
+		query["SbcName"] = request.SbcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceDropConnections"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceDropConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceDropConnections(request *DescribeInstanceDropConnectionsRequest) (_result *DescribeInstanceDropConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceDropConnectionsResponse{}
+	_body, _err := client.DescribeInstanceDropConnectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceDropPacketWithOptions(request *DescribeInstanceDropPacketRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDropPacketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SbcName)) {
+		query["SbcName"] = request.SbcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceDropPacket"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceDropPacketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceDropPacket(request *DescribeInstanceDropPacketRequest) (_result *DescribeInstanceDropPacketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceDropPacketResponse{}
+	_body, _err := client.DescribeInstanceDropPacketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceHttpCodeWithOptions(request *DescribeInstanceHttpCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceHttpCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceHttpCode"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceHttpCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceHttpCode(request *DescribeInstanceHttpCodeRequest) (_result *DescribeInstanceHttpCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceHttpCodeResponse{}
+	_body, _err := client.DescribeInstanceHttpCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceLatencyWithOptions(request *DescribeInstanceLatencyRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceLatencyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceLatency"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceLatencyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceLatency(request *DescribeInstanceLatencyRequest) (_result *DescribeInstanceLatencyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceLatencyResponse{}
+	_body, _err := client.DescribeInstanceLatencyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceNewConnectionsWithOptions(request *DescribeInstanceNewConnectionsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceNewConnectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SbcName)) {
+		query["SbcName"] = request.SbcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceNewConnections"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceNewConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceNewConnections(request *DescribeInstanceNewConnectionsRequest) (_result *DescribeInstanceNewConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceNewConnectionsResponse{}
+	_body, _err := client.DescribeInstanceNewConnectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstancePacketsWithOptions(request *DescribeInstancePacketsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancePacketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SbcName)) {
+		query["SbcName"] = request.SbcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstancePackets"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstancePacketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstancePackets(request *DescribeInstancePacketsRequest) (_result *DescribeInstancePacketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstancePacketsResponse{}
+	_body, _err := client.DescribeInstancePacketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceQpsWithOptions(request *DescribeInstanceQpsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceQpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceQps"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceQpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceQps(request *DescribeInstanceQpsRequest) (_result *DescribeInstanceQpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceQpsResponse{}
+	_body, _err := client.DescribeInstanceQpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceSlbConnectWithOptions(request *DescribeInstanceSlbConnectRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSlbConnectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SbcName)) {
+		query["SbcName"] = request.SbcName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSlbConnect"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceSlbConnectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceSlbConnect(request *DescribeInstanceSlbConnectRequest) (_result *DescribeInstanceSlbConnectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceSlbConnectResponse{}
+	_body, _err := client.DescribeInstanceSlbConnectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceTrafficWithOptions(request *DescribeInstanceTrafficRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTrafficResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceTraffic"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceTrafficResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceTraffic(request *DescribeInstanceTrafficRequest) (_result *DescribeInstanceTrafficResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceTrafficResponse{}
+	_body, _err := client.DescribeInstanceTrafficWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35649,9 +37908,9 @@ func (client *Client) DescribeIpControlPolicyItems(request *DescribeIpControlPol
 
 /**
  * *   This operation is intended for API providers.
- * *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+ * *   This operation is used to query the ACLs in a region. Region is a system parameter.
  * *   You can filter the query results by ACL ID, name, or type.
- * *   This operation cannot be used to query specific policies. If you want to query specific policies, use the [DescribeIpControlPolicyItems](https://help.aliyun.com/document_detail/65532.html?spm=a2c4g.11186623.2.14.615b13acrFZFaH) operation.
+ * *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~65532~~) operation.
  *
  * @param request DescribeIpControlsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35712,9 +37971,9 @@ func (client *Client) DescribeIpControlsWithOptions(request *DescribeIpControlsR
 
 /**
  * *   This operation is intended for API providers.
- * *   This operation is used to query the ACLs in a Region. Region is a system parameter.
+ * *   This operation is used to query the ACLs in a region. Region is a system parameter.
  * *   You can filter the query results by ACL ID, name, or type.
- * *   This operation cannot be used to query specific policies. If you want to query specific policies, use the [DescribeIpControlPolicyItems](https://help.aliyun.com/document_detail/65532.html?spm=a2c4g.11186623.2.14.615b13acrFZFaH) operation.
+ * *   This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~65532~~) operation.
  *
  * @param request DescribeIpControlsRequest
  * @return DescribeIpControlsResponse
@@ -36167,7 +38426,7 @@ func (client *Client) DescribePlugins(request *DescribePluginsRequest) (_result 
 }
 
 /**
- * *   This API is intended for API providers.
+ * *   This operation is intended for API callers.
  * *   This operation supports pagination.
  *
  * @param request DescribePluginsByApiRequest
@@ -36186,6 +38445,14 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
@@ -36220,7 +38487,7 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 }
 
 /**
- * *   This API is intended for API providers.
+ * *   This operation is intended for API callers.
  * *   This operation supports pagination.
  *
  * @param request DescribePluginsByApiRequest
@@ -39806,6 +42073,13 @@ func (client *Client) RemoveVpcAccessAndAbolishApis(request *RemoveVpcAccessAndA
 	return _result, _err
 }
 
+/**
+ * The new AppCode takes effect about 2 seconds after you call this operation.
+ *
+ * @param request ResetAppCodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetAppCodeResponse
+ */
 func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runtime *util.RuntimeOptions) (_result *ResetAppCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39847,6 +42121,12 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 	return _result, _err
 }
 
+/**
+ * The new AppCode takes effect about 2 seconds after you call this operation.
+ *
+ * @param request ResetAppCodeRequest
+ * @return ResetAppCodeResponse
+ */
 func (client *Client) ResetAppCode(request *ResetAppCodeRequest) (_result *ResetAppCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAppCodeResponse{}
@@ -40511,6 +42791,58 @@ func (client *Client) SetDomainWebSocketStatus(request *SetDomainWebSocketStatus
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDomainWebSocketStatusResponse{}
 	_body, _err := client.SetDomainWebSocketStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetGroupAuthAppCodeWithOptions(request *SetGroupAuthAppCodeRequest, runtime *util.RuntimeOptions) (_result *SetGroupAuthAppCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthAppCode)) {
+		query["AuthAppCode"] = request.AuthAppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetGroupAuthAppCode"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetGroupAuthAppCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGroupAuthAppCode(request *SetGroupAuthAppCodeRequest) (_result *SetGroupAuthAppCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGroupAuthAppCodeResponse{}
+	_body, _err := client.SetGroupAuthAppCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
