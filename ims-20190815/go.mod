@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ims-20190815/v3
+module github.com/alibabacloud-go/ims-20190815/v4
 
 go 1.15
 

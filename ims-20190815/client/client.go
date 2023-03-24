@@ -13,7 +13,13 @@ import (
 )
 
 type AddClientIdToOIDCProviderRequest struct {
-	ClientId         *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID that you want to add.
+	//
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.
+	//
+	// The client ID can be up to 64 characters in length.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -36,8 +42,10 @@ func (s *AddClientIdToOIDCProviderRequest) SetOIDCProviderName(v string) *AddCli
 }
 
 type AddClientIdToOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *AddClientIdToOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddClientIdToOIDCProviderResponseBody) String() string {
@@ -59,16 +67,26 @@ func (s *AddClientIdToOIDCProviderResponseBody) SetRequestId(v string) *AddClien
 }
 
 type AddClientIdToOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s AddClientIdToOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -159,7 +177,13 @@ func (s *AddClientIdToOIDCProviderResponse) SetBody(v *AddClientIdToOIDCProvider
 }
 
 type AddFingerprintToOIDCProviderRequest struct {
-	Fingerprint      *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The fingerprint of the HTTPS certificate.
+	//
+	// The fingerprint can contain letters and digits.
+	//
+	// The fingerprint can be up to 40 characters in length.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -182,8 +206,10 @@ func (s *AddFingerprintToOIDCProviderRequest) SetOIDCProviderName(v string) *Add
 }
 
 type AddFingerprintToOIDCProviderResponseBody struct {
+	// The name of the OIDC IdP.
 	OIDCProvider *AddFingerprintToOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddFingerprintToOIDCProviderResponseBody) String() string {
@@ -205,16 +231,26 @@ func (s *AddFingerprintToOIDCProviderResponseBody) SetRequestId(v string) *AddFi
 }
 
 type AddFingerprintToOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s AddFingerprintToOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -305,7 +341,9 @@ func (s *AddFingerprintToOIDCProviderResponse) SetBody(v *AddFingerprintToOIDCPr
 }
 
 type AddUserToGroupRequest struct {
-	GroupName         *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -328,6 +366,7 @@ func (s *AddUserToGroupRequest) SetUserPrincipalName(v string) *AddUserToGroupRe
 }
 
 type AddUserToGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -374,10 +413,20 @@ func (s *AddUserToGroupResponse) SetBody(v *AddUserToGroupResponseBody) *AddUser
 }
 
 type BindMFADeviceRequest struct {
+	// The first verification code.
+	//
+	// >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
 	AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" xml:"AuthenticationCode1,omitempty"`
+	// The second verification code.
+	//
+	// >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to create an MFA device and generate a key (value of `Base32StringSeed`). Then, use the key on the Alibaba Cloud app to manually add an MFA device, and obtain the two consecutive verification codes.
 	AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" xml:"AuthenticationCode2,omitempty"`
-	SerialNumber        *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	UserPrincipalName   *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The serial number of the MFA device.
+	//
+	// >  You can call the [CreateVirtualMFADevice](~~186179~~) operation to obtain the serial number of the MFA device.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s BindMFADeviceRequest) String() string {
@@ -409,6 +458,7 @@ func (s *BindMFADeviceRequest) SetUserPrincipalName(v string) *BindMFADeviceRequ
 }
 
 type BindMFADeviceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -455,7 +505,11 @@ func (s *BindMFADeviceResponse) SetBody(v *BindMFADeviceResponseBody) *BindMFADe
 }
 
 type ChangePasswordRequest struct {
+	// The new password that is used to log on to the console.
+	//
+	// The password must meet the complexity requirements. For more information, see [GetPasswordPolicy](~~186691~~).
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// The old password that is used to log on to the console.
 	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 }
 
@@ -478,6 +532,7 @@ func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest 
 }
 
 type ChangePasswordResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -524,6 +579,9 @@ func (s *ChangePasswordResponse) SetBody(v *ChangePasswordResponseBody) *ChangeP
 }
 
 type CreateAccessKeyRequest struct {
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, an AccessKey pair is created for the current user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -541,8 +599,10 @@ func (s *CreateAccessKeyRequest) SetUserPrincipalName(v string) *CreateAccessKey
 }
 
 type CreateAccessKeyResponseBody struct {
+	// The information of the AccessKey pair.
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBody) String() string {
@@ -564,10 +624,17 @@ func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyRes
 }
 
 type CreateAccessKeyResponseBodyAccessKey struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey ID provided to you by Alibaba Cloud.
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret provided to you by Alibaba Cloud.
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AccessKey pair was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The status of the AccessKey pair. Valid values:
+	//
+	// *   Active
+	// *   Inactive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBodyAccessKey) String() string {
@@ -1012,9 +1079,18 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateGroupRequest struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description.
+	//
+	// The value can be up to 128 characters in length.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The display name of the RAM user group.
+	//
+	// The name can be up to 24 characters in length.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group. You must specify this parameter.
+	//
+	// The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupRequest) String() string {
@@ -1041,8 +1117,10 @@ func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
-	Group     *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user group.
+	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -1064,12 +1142,18 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 }
 
 type CreateGroupResponseBodyGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateGroupResponseBodyGroup) String() string {
@@ -1140,11 +1224,27 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateLoginProfileRequest struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserPrincipalName     *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+	//
+	// *   true: MFA must be enabled. The RAM user must bind an MFA device at the next logon.
+	// *   false: MFA is not enabled. This is the default value.
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// The password that is used to log on to the console.
+	//
+	// The password must meet the complexity requirements.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether the RAM user must reset the password at the next logon. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of password-based logon. Valid values:
+	//
+	// *   Active: Password-based logon is enabled. This is the default value.
+	// *   Inactive: Password-based logon is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateLoginProfileRequest) String() string {
@@ -1181,8 +1281,10 @@ func (s *CreateLoginProfileRequest) SetUserPrincipalName(v string) *CreateLoginP
 }
 
 type CreateLoginProfileResponseBody struct {
+	// The logon information.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBody) String() string {
@@ -1204,11 +1306,16 @@ func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProf
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateDate            *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserPrincipalName     *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// Indicates whether MFA must be enabled.
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// Indicates whether the RAM user must reset the password at the next logon.
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of password-based logon.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBodyLoginProfile) String() string {
@@ -1274,10 +1381,33 @@ func (s *CreateLoginProfileResponse) SetBody(v *CreateLoginProfileResponseBody) 
 }
 
 type CreateOIDCProviderRequest struct {
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The ID of the client, which is provided by the external IdP Okta. If you want to specify multiple client IDs, separate the client IDs with commas (,).
+	//
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+	//
+	// The client ID can be up to 64 characters in length.
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The description of the OIDC IdP.
+	//
+	// The description can be up to 256 characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate, which is provided by the external IdP Okta. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
+	//
+	// The fingerprint can contain letters and digits.
+	//
+	// The fingerprint can be up to 40 characters in length.
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The URL of the issuer, which is provided by the external IdP Okta. The URL of the issuer must be unique within an Alibaba Cloud account.
+	//
+	// The URL of the issuer must start with `https` and be in the valid URL format. The URL cannot contain query parameters that follow a question mark (`?`) or logon information that is identified by at signs (`@`). The URL cannot be a fragment URL that contains number signs (`#`).
+	//
+	// The URL can be up to 255 characters in length.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
+	//
+	// The name can contain letters, digits, and special characters and cannot start or end with the special characters. The special characters are `periods, (.), hyphens (-), and underscores (_)`.
+	//
+	// The name can be up to 128 characters in length.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -1315,8 +1445,10 @@ func (s *CreateOIDCProviderRequest) SetOIDCProviderName(v string) *CreateOIDCPro
 }
 
 type CreateOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *CreateOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOIDCProviderResponseBody) String() string {
@@ -1338,16 +1470,26 @@ func (s *CreateOIDCProviderResponseBody) SetRequestId(v string) *CreateOIDCProvi
 }
 
 type CreateOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client.
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate.
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -1438,9 +1580,16 @@ func (s *CreateOIDCProviderResponse) SetBody(v *CreateOIDCProviderResponseBody) 
 }
 
 type CreateSAMLProviderRequest struct {
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metadata file, which is Base64 encoded.
+	//
+	// The file is provided by an IdP that supports SAML 2.0.
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	SAMLProviderName            *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
+	// The name of the IdP.
+	//
+	// The value can be up to 128 characters in length. The name can contain letters, digits,`  periods (.), hyphens (-), and underscores (_) `. The name cannot start or end with`  periods (.), hyphens (-), or underscores (_) `.
+	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 
 func (s CreateSAMLProviderRequest) String() string {
@@ -1467,7 +1616,9 @@ func (s *CreateSAMLProviderRequest) SetSAMLProviderName(v string) *CreateSAMLPro
 }
 
 type CreateSAMLProviderResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the IdP.
 	SAMLProvider *CreateSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -1490,11 +1641,16 @@ func (s *CreateSAMLProviderResponseBody) SetSAMLProvider(v *CreateSAMLProviderRe
 }
 
 type CreateSAMLProviderResponseBodySAMLProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the IdP.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateSAMLProviderResponseBodySAMLProvider) String() string {
@@ -1560,12 +1716,31 @@ func (s *CreateSAMLProviderResponse) SetBody(v *CreateSAMLProviderResponseBody) 
 }
 
 type CreateUserRequest struct {
-	Comments          *string                 `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	DisplayName       *string                 `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string                 `json:"Email,omitempty" xml:"Email,omitempty"`
-	MobilePhone       *string                 `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	Tag               []*CreateUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserPrincipalName *string                 `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The description.
+	//
+	// The description must be 1 to 128 characters in length.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The display name of the RAM user.
+	//
+	// The name must be 1 to 24 characters in length.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// Format: Country code-Mobile phone number.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	MobilePhone *string                 `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	Tag         []*CreateUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The logon name of the RAM user.
+	//
+	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name. For more information about how to obtain the default domain name, see [GetDefaultDomain](~~186720~~).
+	//
+	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<AccountAlias>.onaliyun.com` must be 1 to 64 characters in length.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -1607,7 +1782,13 @@ func (s *CreateUserRequest) SetUserPrincipalName(v string) *CreateUserRequest {
 }
 
 type CreateUserRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be a up to128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1630,8 +1811,10 @@ func (s *CreateUserRequestTag) SetValue(v string) *CreateUserRequestTag {
 }
 
 type CreateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -1653,17 +1836,36 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 }
 
 type CreateUserResponseBodyUser struct {
-	Comments          *string                         `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string                         `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string                         `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string                         `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string                         `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string                         `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string                         `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Tags              *CreateUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UpdateDate        *string                         `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string                         `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The source of the RAM user. Valid values:
+	//
+	// *   Manual: The RAM user is manually created in the RAM console.
+	// *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// *   CloudSSO: The RAM user is mapped from a CloudSSO user.
+	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	// An array that consists of the details of the returned tags.
+	Tags *CreateUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The time when the information about the RAM user was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s CreateUserResponseBodyUser) String() string {
@@ -1747,7 +1949,9 @@ func (s *CreateUserResponseBodyUserTags) SetTag(v []*CreateUserResponseBodyUserT
 }
 
 type CreateUserResponseBodyUserTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1799,6 +2003,9 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CreateVirtualMFADeviceRequest struct {
+	// The name of the MFA device.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, and hyphens (-).
 	VirtualMFADeviceName *string `json:"VirtualMFADeviceName,omitempty" xml:"VirtualMFADeviceName,omitempty"`
 }
 
@@ -1816,7 +2023,9 @@ func (s *CreateVirtualMFADeviceRequest) SetVirtualMFADeviceName(v string) *Creat
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the MFA device.
 	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
@@ -1839,9 +2048,12 @@ func (s *CreateVirtualMFADeviceResponseBody) SetVirtualMFADevice(v *CreateVirtua
 }
 
 type CreateVirtualMFADeviceResponseBodyVirtualMFADevice struct {
+	// The key of the MFA device.
 	Base32StringSeed *string `json:"Base32StringSeed,omitempty" xml:"Base32StringSeed,omitempty"`
-	QRCodePNG        *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The Base64-encoded QR code of the key.
+	QRCodePNG *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
+	// The serial number of the MFA device.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
 func (s CreateVirtualMFADeviceResponseBodyVirtualMFADevice) String() string {
@@ -1897,7 +2109,11 @@ func (s *CreateVirtualMFADeviceResponse) SetBody(v *CreateVirtualMFADeviceRespon
 }
 
 type DeleteAccessKeyRequest struct {
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the AccessKey pair that you want to delete.
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the AccessKey pair of the current user is deleted.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -1920,6 +2136,7 @@ func (s *DeleteAccessKeyRequest) SetUserPrincipalName(v string) *DeleteAccessKey
 }
 
 type DeleteAccessKeyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2098,6 +2315,7 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 }
 
 type DeleteGroupRequest struct {
+	// The name of the RAM user group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -2115,6 +2333,7 @@ func (s *DeleteGroupRequest) SetGroupName(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2161,6 +2380,7 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 }
 
 type DeleteLoginProfileRequest struct {
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -2178,6 +2398,7 @@ func (s *DeleteLoginProfileRequest) SetUserPrincipalName(v string) *DeleteLoginP
 }
 
 type DeleteLoginProfileResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2224,6 +2445,7 @@ func (s *DeleteLoginProfileResponse) SetBody(v *DeleteLoginProfileResponseBody) 
 }
 
 type DeleteOIDCProviderRequest struct {
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -2241,6 +2463,7 @@ func (s *DeleteOIDCProviderRequest) SetOIDCProviderName(v string) *DeleteOIDCPro
 }
 
 type DeleteOIDCProviderResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2287,6 +2510,7 @@ func (s *DeleteOIDCProviderResponse) SetBody(v *DeleteOIDCProviderResponseBody) 
 }
 
 type DeleteSAMLProviderRequest struct {
+	// The name of the IdP that you want to delete.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 
@@ -2304,6 +2528,7 @@ func (s *DeleteSAMLProviderRequest) SetSAMLProviderName(v string) *DeleteSAMLPro
 }
 
 type DeleteSAMLProviderResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2350,7 +2575,13 @@ func (s *DeleteSAMLProviderResponse) SetBody(v *DeleteSAMLProviderResponseBody) 
 }
 
 type DeleteUserRequest struct {
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -2373,6 +2604,7 @@ func (s *DeleteUserRequest) SetUserPrincipalName(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2419,6 +2651,7 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteVirtualMFADeviceRequest struct {
+	// The serial number of the MFA device.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -2436,6 +2669,7 @@ func (s *DeleteVirtualMFADeviceRequest) SetSerialNumber(v string) *DeleteVirtual
 }
 
 type DeleteVirtualMFADeviceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2482,6 +2716,7 @@ func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceRespon
 }
 
 type DisableVirtualMFARequest struct {
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -2499,6 +2734,7 @@ func (s *DisableVirtualMFARequest) SetUserPrincipalName(v string) *DisableVirtua
 }
 
 type DisableVirtualMFAResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2545,8 +2781,14 @@ func (s *DisableVirtualMFAResponse) SetBody(v *DisableVirtualMFAResponseBody) *D
 }
 
 type GenerateCredentialReportResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The generation status of the user credential report. Valid values:
+	//
+	// *   STARTED: The user credential report starts to generate.
+	// *   INPROGRESS: The user credential report is being generated.
+	// *   COMPLETED: The user credential report is generated.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GenerateCredentialReportResponseBody) String() string {
@@ -2597,7 +2839,11 @@ func (s *GenerateCredentialReportResponse) SetBody(v *GenerateCredentialReportRe
 }
 
 type GetAccessKeyLastUsedRequest struct {
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the AccessKey pair that you want to query.
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the AccessKey pair of the current user is queried.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -2620,8 +2866,10 @@ func (s *GetAccessKeyLastUsedRequest) SetUserPrincipalName(v string) *GetAccessK
 }
 
 type GetAccessKeyLastUsedResponseBody struct {
+	// The details of the time when the AccessKey pair was used for the last time.
 	AccessKeyLastUsed *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed `json:"AccessKeyLastUsed,omitempty" xml:"AccessKeyLastUsed,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponseBody) String() string {
@@ -2643,6 +2891,7 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
+	// The time when the AccessKey pair was used for the last time.
 	LastUsedDate *string `json:"LastUsedDate,omitempty" xml:"LastUsedDate,omitempty"`
 	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
@@ -2695,8 +2944,13 @@ func (s *GetAccessKeyLastUsedResponse) SetBody(v *GetAccessKeyLastUsedResponseBo
 }
 
 type GetAccountMFAInfoResponseBody struct {
-	IsMFAEnable *bool   `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether MFA is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountMFAInfoResponseBody) String() string {
@@ -2747,8 +3001,10 @@ func (s *GetAccountMFAInfoResponse) SetBody(v *GetAccountMFAInfoResponseBody) *G
 }
 
 type GetAccountSecurityPracticeReportResponseBody struct {
+	// The information of the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo `json:"AccountSecurityPracticeInfo,omitempty" xml:"AccountSecurityPracticeInfo,omitempty" type:"Struct"`
-	RequestId                   *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBody) String() string {
@@ -2770,8 +3026,10 @@ func (s *GetAccountSecurityPracticeReportResponseBody) SetRequestId(v string) *G
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo struct {
+	// The information of the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeUserInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo `json:"AccountSecurityPracticeUserInfo,omitempty" xml:"AccountSecurityPracticeUserInfo,omitempty" type:"Struct"`
-	Score                           *int32                                                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The security score of the Alibaba Cloud account.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo) String() string {
@@ -2793,15 +3051,31 @@ func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo struct {
-	BindMfa                    *bool   `json:"BindMfa,omitempty" xml:"BindMfa,omitempty"`
-	OldAkNum                   *int32  `json:"OldAkNum,omitempty" xml:"OldAkNum,omitempty"`
-	RootWithAccessKey          *int32  `json:"RootWithAccessKey,omitempty" xml:"RootWithAccessKey,omitempty"`
-	SubUser                    *int32  `json:"SubUser,omitempty" xml:"SubUser,omitempty"`
-	SubUserBindMfa             *int32  `json:"SubUserBindMfa,omitempty" xml:"SubUserBindMfa,omitempty"`
-	SubUserPwdLevel            *string `json:"SubUserPwdLevel,omitempty" xml:"SubUserPwdLevel,omitempty"`
-	SubUserWithOldAccessKey    *int32  `json:"SubUserWithOldAccessKey,omitempty" xml:"SubUserWithOldAccessKey,omitempty"`
-	SubUserWithUnusedAccessKey *int32  `json:"SubUserWithUnusedAccessKey,omitempty" xml:"SubUserWithUnusedAccessKey,omitempty"`
-	UnusedAkNum                *int32  `json:"UnusedAkNum,omitempty" xml:"UnusedAkNum,omitempty"`
+	// Indicates whether MFA is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	BindMfa *bool `json:"BindMfa,omitempty" xml:"BindMfa,omitempty"`
+	// The number of old AccessKey pairs for the Alibaba Cloud account.
+	OldAkNum *int32 `json:"OldAkNum,omitempty" xml:"OldAkNum,omitempty"`
+	// The number of AccessKey pairs for the Alibaba Cloud account.
+	RootWithAccessKey *int32 `json:"RootWithAccessKey,omitempty" xml:"RootWithAccessKey,omitempty"`
+	// The number of RAM users within the Alibaba Cloud account.
+	SubUser *int32 `json:"SubUser,omitempty" xml:"SubUser,omitempty"`
+	// The number of RAM users that have MFA devices bound.
+	SubUserBindMfa *int32 `json:"SubUserBindMfa,omitempty" xml:"SubUserBindMfa,omitempty"`
+	// The complexity level of the password for the RAM user. Valid values:
+	//
+	// *   low
+	// *   mid
+	// *   high
+	SubUserPwdLevel *string `json:"SubUserPwdLevel,omitempty" xml:"SubUserPwdLevel,omitempty"`
+	// The number of RAM users that use the old AccessKey pairs.
+	SubUserWithOldAccessKey *int32 `json:"SubUserWithOldAccessKey,omitempty" xml:"SubUserWithOldAccessKey,omitempty"`
+	// The number of RAM users that have no AccessKey pairs.
+	SubUserWithUnusedAccessKey *int32 `json:"SubUserWithUnusedAccessKey,omitempty" xml:"SubUserWithUnusedAccessKey,omitempty"`
+	// The number of AccessKey pairs that are not used for the Alibaba Cloud account.
+	UnusedAkNum *int32 `json:"UnusedAkNum,omitempty" xml:"UnusedAkNum,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo) String() string {
@@ -2887,7 +3161,9 @@ func (s *GetAccountSecurityPracticeReportResponse) SetBody(v *GetAccountSecurity
 }
 
 type GetAccountSummaryResponseBody struct {
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The overview information of the Alibaba Cloud account.
 	SummaryMap *GetAccountSummaryResponseBodySummaryMap `json:"SummaryMap,omitempty" xml:"SummaryMap,omitempty" type:"Struct"`
 }
 
@@ -2910,27 +3186,48 @@ func (s *GetAccountSummaryResponseBody) SetSummaryMap(v *GetAccountSummaryRespon
 }
 
 type GetAccountSummaryResponseBodySummaryMap struct {
-	AccessKeysPerUserQuota              *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
-	AttachedPoliciesPerGroupQuota       *int32 `json:"AttachedPoliciesPerGroupQuota,omitempty" xml:"AttachedPoliciesPerGroupQuota,omitempty"`
-	AttachedPoliciesPerRoleQuota        *int32 `json:"AttachedPoliciesPerRoleQuota,omitempty" xml:"AttachedPoliciesPerRoleQuota,omitempty"`
-	AttachedPoliciesPerUserQuota        *int32 `json:"AttachedPoliciesPerUserQuota,omitempty" xml:"AttachedPoliciesPerUserQuota,omitempty"`
+	// The maximum number of AccessKey pairs that a RAM user can have.
+	AccessKeysPerUserQuota *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
+	// The maximum number of custom policies that can be added to a RAM user group.
+	AttachedPoliciesPerGroupQuota *int32 `json:"AttachedPoliciesPerGroupQuota,omitempty" xml:"AttachedPoliciesPerGroupQuota,omitempty"`
+	// The maximum number of custom policies that can be added to a RAM role.
+	AttachedPoliciesPerRoleQuota *int32 `json:"AttachedPoliciesPerRoleQuota,omitempty" xml:"AttachedPoliciesPerRoleQuota,omitempty"`
+	// The maximum number of custom policies that can be added to a RAM user.
+	AttachedPoliciesPerUserQuota *int32 `json:"AttachedPoliciesPerUserQuota,omitempty" xml:"AttachedPoliciesPerUserQuota,omitempty"`
+	// The maximum number of system policies that can be added to a RAM user group.
 	AttachedSystemPoliciesPerGroupQuota *int32 `json:"AttachedSystemPoliciesPerGroupQuota,omitempty" xml:"AttachedSystemPoliciesPerGroupQuota,omitempty"`
-	AttachedSystemPoliciesPerRoleQuota  *int32 `json:"AttachedSystemPoliciesPerRoleQuota,omitempty" xml:"AttachedSystemPoliciesPerRoleQuota,omitempty"`
-	AttachedSystemPoliciesPerUserQuota  *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
-	Groups                              *int32 `json:"Groups,omitempty" xml:"Groups,omitempty"`
-	GroupsPerUserQuota                  *int32 `json:"GroupsPerUserQuota,omitempty" xml:"GroupsPerUserQuota,omitempty"`
-	GroupsQuota                         *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
-	MFADevices                          *int32 `json:"MFADevices,omitempty" xml:"MFADevices,omitempty"`
-	MFADevicesInUse                     *int32 `json:"MFADevicesInUse,omitempty" xml:"MFADevicesInUse,omitempty"`
-	Policies                            *int32 `json:"Policies,omitempty" xml:"Policies,omitempty"`
-	PoliciesQuota                       *int32 `json:"PoliciesQuota,omitempty" xml:"PoliciesQuota,omitempty"`
-	PolicySizeQuota                     *int32 `json:"PolicySizeQuota,omitempty" xml:"PolicySizeQuota,omitempty"`
-	Roles                               *int32 `json:"Roles,omitempty" xml:"Roles,omitempty"`
-	RolesQuota                          *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
-	Users                               *int32 `json:"Users,omitempty" xml:"Users,omitempty"`
-	UsersQuota                          *int32 `json:"UsersQuota,omitempty" xml:"UsersQuota,omitempty"`
-	VersionsPerPolicyQuota              *int32 `json:"VersionsPerPolicyQuota,omitempty" xml:"VersionsPerPolicyQuota,omitempty"`
-	VirtualMFADevicesQuota              *int32 `json:"VirtualMFADevicesQuota,omitempty" xml:"VirtualMFADevicesQuota,omitempty"`
+	// The maximum number of system policies that can be added to a RAM role.
+	AttachedSystemPoliciesPerRoleQuota *int32 `json:"AttachedSystemPoliciesPerRoleQuota,omitempty" xml:"AttachedSystemPoliciesPerRoleQuota,omitempty"`
+	// The maximum number of system policies that can be added to a RAM user.
+	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
+	// The number of RAM user groups.
+	Groups *int32 `json:"Groups,omitempty" xml:"Groups,omitempty"`
+	// The maximum number of RAM user groups to which a RAM user can be added.
+	GroupsPerUserQuota *int32 `json:"GroupsPerUserQuota,omitempty" xml:"GroupsPerUserQuota,omitempty"`
+	// The maximum number of RAM user groups that can be created.
+	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	// The number of virtual multi-factor authentication (MFA) devices.
+	MFADevices *int32 `json:"MFADevices,omitempty" xml:"MFADevices,omitempty"`
+	// The number of virtual MFA devices in use.
+	MFADevicesInUse *int32 `json:"MFADevicesInUse,omitempty" xml:"MFADevicesInUse,omitempty"`
+	// The number of custom policies.
+	Policies *int32 `json:"Policies,omitempty" xml:"Policies,omitempty"`
+	// The maximum number of custom policies that can be created.
+	PoliciesQuota *int32 `json:"PoliciesQuota,omitempty" xml:"PoliciesQuota,omitempty"`
+	// The maximum length of the policy content.
+	PolicySizeQuota *int32 `json:"PolicySizeQuota,omitempty" xml:"PolicySizeQuota,omitempty"`
+	// The number of RAM roles.
+	Roles *int32 `json:"Roles,omitempty" xml:"Roles,omitempty"`
+	// The maximum number of RAM roles that can be created.
+	RolesQuota *int32 `json:"RolesQuota,omitempty" xml:"RolesQuota,omitempty"`
+	// The number of RAM users.
+	Users *int32 `json:"Users,omitempty" xml:"Users,omitempty"`
+	// The maximum number of RAM users that can be created.
+	UsersQuota *int32 `json:"UsersQuota,omitempty" xml:"UsersQuota,omitempty"`
+	// The maximum number of policy versions.
+	VersionsPerPolicyQuota *int32 `json:"VersionsPerPolicyQuota,omitempty" xml:"VersionsPerPolicyQuota,omitempty"`
+	// The maximum number of virtual MFA devices that can be created.
+	VirtualMFADevicesQuota *int32 `json:"VirtualMFADevicesQuota,omitempty" xml:"VirtualMFADevicesQuota,omitempty"`
 }
 
 func (s GetAccountSummaryResponseBodySummaryMap) String() string {
@@ -3418,9 +3715,14 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetCredentialReportResponseBody struct {
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The content of the user 
+	//
+	// The report is Base64-encoded. After you decode the report, the credential report is in the CSV format.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the user credential report was generated.
 	GeneratedTime *string `json:"GeneratedTime,omitempty" xml:"GeneratedTime,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCredentialReportResponseBody) String() string {
@@ -3476,8 +3778,10 @@ func (s *GetCredentialReportResponse) SetBody(v *GetCredentialReportResponseBody
 }
 
 type GetDefaultDomainResponseBody struct {
+	// The default domain name.
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDefaultDomainResponseBody) String() string {
@@ -3528,6 +3832,7 @@ func (s *GetDefaultDomainResponse) SetBody(v *GetDefaultDomainResponseBody) *Get
 }
 
 type GetGroupRequest struct {
+	// The name of the RAM user group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -3545,8 +3850,10 @@ func (s *GetGroupRequest) SetGroupName(v string) *GetGroupRequest {
 }
 
 type GetGroupResponseBody struct {
-	Group     *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user group.
+	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetGroupResponseBody) String() string {
@@ -3568,12 +3875,18 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 type GetGroupResponseBodyGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetGroupResponseBodyGroup) String() string {
@@ -3644,6 +3957,7 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 }
 
 type GetLoginProfileRequest struct {
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -3661,8 +3975,10 @@ func (s *GetLoginProfileRequest) SetUserPrincipalName(v string) *GetLoginProfile
 }
 
 type GetLoginProfileResponseBody struct {
+	// The logon information.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLoginProfileResponseBody) String() string {
@@ -3684,12 +4000,18 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
-	LastLoginTime         *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateDate            *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserPrincipalName     *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The last time when the RAM user logged on to the console.
+	LastLoginTime *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
+	// Indicates whether multi-factor authentication (MFA) must be enabled.
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// Indicates whether the RAM user must reset the password at the next logon.
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of password-based logon.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s GetLoginProfileResponseBodyLoginProfile) String() string {
@@ -3760,6 +4082,7 @@ func (s *GetLoginProfileResponse) SetBody(v *GetLoginProfileResponseBody) *GetLo
 }
 
 type GetOIDCProviderRequest struct {
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -3777,8 +4100,10 @@ func (s *GetOIDCProviderRequest) SetOIDCProviderName(v string) *GetOIDCProviderR
 }
 
 type GetOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *GetOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOIDCProviderResponseBody) String() string {
@@ -3800,16 +4125,26 @@ func (s *GetOIDCProviderResponseBody) SetRequestId(v string) *GetOIDCProviderRes
 }
 
 type GetOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -3900,8 +4235,10 @@ func (s *GetOIDCProviderResponse) SetBody(v *GetOIDCProviderResponseBody) *GetOI
 }
 
 type GetPasswordPolicyResponseBody struct {
+	// The details of the password policy.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBody) String() string {
@@ -3923,17 +4260,28 @@ func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolic
 }
 
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	HardExpire                        *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	MaxLoginAttemps                   *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge                    *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// Indicates whether to disable logon after the password expires.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The maximum number of password retries.
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The validity period of the password.
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum number of unique characters in the password.
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	MinimumPasswordLength             *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordNotContainUserName        *bool  `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	PasswordReusePrevention           *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters        *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers                    *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols                    *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters        *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// The minimum number of characters in the password.
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// Indicates whether to exclude the username from the password.
+	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
+	// The policy for password history check.
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Indicates whether the password must contain lowercase letters.
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Indicates whether the password must contain digits.
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether the password must contain special characters.
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether the password must contain uppercase letters.
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -4029,6 +4377,7 @@ func (s *GetPasswordPolicyResponse) SetBody(v *GetPasswordPolicyResponseBody) *G
 }
 
 type GetSAMLProviderRequest struct {
+	// The name of the IdP.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 
@@ -4046,7 +4395,9 @@ func (s *GetSAMLProviderRequest) SetSAMLProviderName(v string) *GetSAMLProviderR
 }
 
 type GetSAMLProviderResponseBody struct {
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the IdP.
 	SAMLProvider *GetSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -4069,12 +4420,18 @@ func (s *GetSAMLProviderResponseBody) SetSAMLProvider(v *GetSAMLProviderResponse
 }
 
 type GetSAMLProviderResponseBodySAMLProvider struct {
-	Arn                         *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	CreateDate                  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metadata file, which is Base64 encoded.
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	SAMLProviderName            *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	UpdateDate                  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The name of the IdP.
+	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetSAMLProviderResponseBodySAMLProvider) String() string {
@@ -4145,7 +4502,9 @@ func (s *GetSAMLProviderResponse) SetBody(v *GetSAMLProviderResponseBody) *GetSA
 }
 
 type GetSecurityPreferenceResponseBody struct {
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of security preferences.
 	SecurityPreference *GetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
@@ -4168,10 +4527,15 @@ func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurity
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreference struct {
-	AccessKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The AccessKey pair preference.
+	AccessKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The logon preference.
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	MFAPreference          *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The MFA preference.
+	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The personal information preference.
 	PersonalInfoPreference *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
+	VerificationPreference *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference `json:"VerificationPreference,omitempty" xml:"VerificationPreference,omitempty" type:"Struct"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -4202,7 +4566,16 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetPersonalInfoPre
 	return s
 }
 
+func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
+	s.VerificationPreference = v
+	return s
+}
+
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
+	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 }
 
@@ -4220,12 +4593,31 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	MFAOperationForLogin      *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
-	OperationForRiskLogin     *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	// Specifies whether RAM users can change their passwords. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether to remember the multi-factor authentication (MFA) devices for seven days. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask.
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users. Unit: hours.
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console. This parameter is used to replace the EnforceMFAForLogin parameter. The EnforceMFAForLogin parameter is still valid. However, we recommend that you use the MFAOperationForLogin parameter. Valid values:
+	//
+	// *   mandatory: MFA is required for all RAM users. If you use the EnforceMFAForLogin parameter, set the value to true.
+	// *   independent: User-specific settings are applied. This is the default value. If you use the EnforceMFAForLogin parameter, set the value to false.
+	// *   adaptive: MFA is required only for RAM users who initiated unusual logons.
+	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
+	//
+	// *   autonomous: yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA. This is the default value.
+	// *   enforceVerify: no.
+	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
@@ -4267,6 +4659,10 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
+	// Indicates whether RAM users can manage their MFA devices. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
 
@@ -4284,6 +4680,10 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
+	// Specifies whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts. Valid values:
+	//
+	// *   true: yes
+	// *   false: no
 	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
 }
 
@@ -4297,6 +4697,23 @@ func (s GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreferenc
 
 func (s *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) SetAllowUserToManagePersonalDingTalk(v bool) *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference {
 	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
+type GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
+	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
+	s.VerificationTypes = v
 	return s
 }
 
@@ -4330,8 +4747,21 @@ func (s *GetSecurityPreferenceResponse) SetBody(v *GetSecurityPreferenceResponse
 }
 
 type GetUserRequest struct {
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The AccessKey ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` indicates the name of the RAM user. `<AccountAlias>.onaliyun.com` indicates the default domain name.
+	//
+	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<AccountAlias>.onaliyun.com` must be 1 to 64 characters in length.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName`, `UserId`, and `UserAccessKeyId`.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -4359,8 +4789,10 @@ func (s *GetUserRequest) SetUserPrincipalName(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -4382,17 +4814,36 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 type GetUserResponseBodyUser struct {
-	Comments          *string                      `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string                      `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string                      `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string                      `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string                      `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string                      `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Tags              *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UpdateDate        *string                      `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string                      `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The source of the RAM user. Valid values:
+	//
+	// *   Manual: The RAM user is manually created in the RAM console.
+	// *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// *   CloudSSO: The RAM user is mapped from a CloudSSO user.
+	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	// An array that consists of tags.
+	Tags *GetUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The time when the information about the RAM user was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -4476,7 +4927,9 @@ func (s *GetUserResponseBodyUserTags) SetTag(v []*GetUserResponseBodyUserTagsTag
 }
 
 type GetUserResponseBodyUserTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -4528,6 +4981,10 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserMFAInfoRequest struct {
+	// The logon name of the RAM user. This parameter is differently set in the following scenarios:
+	//
+	// *   If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, the information of the MFA device that is bound to the RAM user is queried.
+	// *   If you use an Alibaba Cloud account to call this operation, you must set this parameter to the logon name of the RAM user that you want to query.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -4545,9 +5002,15 @@ func (s *GetUserMFAInfoRequest) SetUserPrincipalName(v string) *GetUserMFAInfoRe
 }
 
 type GetUserMFAInfoResponseBody struct {
-	IsMFAEnable *bool                                `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
-	MFADevice   *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the MFA device is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
+	// The information about the MFA device.
+	MFADevice *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBody) String() string {
@@ -4574,8 +5037,13 @@ func (s *GetUserMFAInfoResponseBody) SetRequestId(v string) *GetUserMFAInfoRespo
 }
 
 type GetUserMFAInfoResponseBodyMFADevice struct {
+	// The serial number of the MFA device.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the MFA device. Valid values:
+	//
+	// *   VMFA: virtual MFA device
+	// *   U2F: Universal 2nd Factor (U2F) security key
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBodyMFADevice) String() string {
@@ -4626,7 +5094,9 @@ func (s *GetUserMFAInfoResponse) SetBody(v *GetUserMFAInfoResponseBody) *GetUser
 }
 
 type GetUserSsoSettingsResponseBody struct {
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of user-based SSO.
 	UserSsoSettings *GetUserSsoSettingsResponseBodyUserSsoSettings `json:"UserSsoSettings,omitempty" xml:"UserSsoSettings,omitempty" type:"Struct"`
 }
 
@@ -4649,9 +5119,12 @@ func (s *GetUserSsoSettingsResponseBody) SetUserSsoSettings(v *GetUserSsoSetting
 }
 
 type GetUserSsoSettingsResponseBodyUserSsoSettings struct {
-	AuxiliaryDomain  *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The auxiliary domain name.
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The metadata file, which is Base64-encoded.
 	MetadataDocument *string `json:"MetadataDocument,omitempty" xml:"MetadataDocument,omitempty"`
-	SsoEnabled       *bool   `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Indicates whether user-based SSO is enabled.
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
 }
 
 func (s GetUserSsoSettingsResponseBodyUserSsoSettings) String() string {
@@ -4707,6 +5180,9 @@ func (s *GetUserSsoSettingsResponse) SetBody(v *GetUserSsoSettingsResponseBody) 
 }
 
 type ListAccessKeysRequest struct {
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the AccessKey pairs of the current user are queried.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -4724,8 +5200,10 @@ func (s *ListAccessKeysRequest) SetUserPrincipalName(v string) *ListAccessKeysRe
 }
 
 type ListAccessKeysResponseBody struct {
+	// The list of AccessKey pairs.
 	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysResponseBody) String() string {
@@ -4764,10 +5242,17 @@ func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysR
 }
 
 type ListAccessKeysResponseBodyAccessKeysAccessKey struct {
+	// The AccessKey ID.
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the AccessKey pair was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The status of the AccessKey pair. Valid values:
+	//
+	// *   Active
+	// *   Inactive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AccessKey pair was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListAccessKeysResponseBodyAccessKeysAccessKey) String() string {
@@ -5175,8 +5660,12 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 }
 
 type ListGroupsRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListGroupsRequest) String() string {
@@ -5198,10 +5687,17 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	Groups      *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user groups.
+	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// - true
+	// - false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -5250,12 +5746,18 @@ func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroup
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListGroupsResponseBodyGroupsGroup) String() string {
@@ -5326,6 +5828,7 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListGroupsForUserRequest struct {
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -5343,8 +5846,10 @@ func (s *ListGroupsForUserRequest) SetUserPrincipalName(v string) *ListGroupsFor
 }
 
 type ListGroupsForUserResponseBody struct {
-	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user groups.
+	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {
@@ -5383,11 +5888,16 @@ func (s *ListGroupsForUserResponseBodyGroups) SetGroup(v []*ListGroupsForUserRes
 }
 
 type ListGroupsForUserResponseBodyGroupsGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The display name of the RAM user group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	JoinDate    *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	// The ID of the RAM user group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the RAM user was added.
+	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBodyGroupsGroup) String() string {
@@ -5453,8 +5963,12 @@ func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *L
 }
 
 type ListOIDCProvidersRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListOIDCProvidersRequest) String() string {
@@ -5476,10 +5990,17 @@ func (s *ListOIDCProvidersRequest) SetMaxItems(v int32) *ListOIDCProvidersReques
 }
 
 type ListOIDCProvidersResponseBody struct {
-	IsTruncated   *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker        *string                                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// - true
+	// - false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The information about the OIDC IdP.
 	OIDCProviders *ListOIDCProvidersResponseBodyOIDCProviders `json:"OIDCProviders,omitempty" xml:"OIDCProviders,omitempty" type:"Struct"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBody) String() string {
@@ -5528,16 +6049,26 @@ func (s *ListOIDCProvidersResponseBodyOIDCProviders) SetOIDCProvider(v []*ListOI
 }
 
 type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) String() string {
@@ -5737,8 +6268,12 @@ func (s *ListPredefinedScopesResponse) SetBody(v *ListPredefinedScopesResponseBo
 }
 
 type ListSAMLProvidersRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListSAMLProvidersRequest) String() string {
@@ -5760,9 +6295,16 @@ func (s *ListSAMLProvidersRequest) SetMaxItems(v int32) *ListSAMLProvidersReques
 }
 
 type ListSAMLProvidersResponseBody struct {
-	IsTruncated   *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker        *string                                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the IdP.
 	SAMLProviders *ListSAMLProvidersResponseBodySAMLProviders `json:"SAMLProviders,omitempty" xml:"SAMLProviders,omitempty" type:"Struct"`
 }
 
@@ -5812,11 +6354,16 @@ func (s *ListSAMLProvidersResponseBodySAMLProviders) SetSAMLProvider(v []*ListSA
 }
 
 type ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the IdP.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider) String() string {
@@ -5882,12 +6429,19 @@ func (s *ListSAMLProvidersResponse) SetBody(v *ListSAMLProvidersResponseBody) *L
 }
 
 type ListTagResourcesRequest struct {
-	NextToken             *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize              *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceId            []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourcePrincipalName []*string                     `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
-	ResourceType          *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                   []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of PageSize, the value of IsTruncated will be true.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	PageSize              *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceId            []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   user: a RAM user
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -5929,7 +6483,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5952,9 +6512,16 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	IsTruncated  *bool                                     `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of IsTruncated is true. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array consisting of tags that are added to resources.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -6004,10 +6571,16 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   user: a RAM user
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -6068,7 +6641,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserBasicInfosRequest struct {
-	Marker   *string                         `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
 	MaxItems *int32                          `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 	Tag      []*ListUserBasicInfosRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -6097,7 +6674,13 @@ func (s *ListUserBasicInfosRequest) SetTag(v []*ListUserBasicInfosRequestTag) *L
 }
 
 type ListUserBasicInfosRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6120,9 +6703,16 @@ func (s *ListUserBasicInfosRequestTag) SetValue(v string) *ListUserBasicInfosReq
 }
 
 type ListUserBasicInfosResponseBody struct {
-	IsTruncated    *bool                                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker         *string                                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of the information about the RAM user.
 	UserBasicInfos *ListUserBasicInfosResponseBodyUserBasicInfos `json:"UserBasicInfos,omitempty" xml:"UserBasicInfos,omitempty" type:"Struct"`
 }
 
@@ -6172,10 +6762,12 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfos) SetUserBasicInfo(v []*Lis
 }
 
 type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo struct {
-	DisplayName       *string                                                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Tags              *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UserId            *string                                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string                                                        `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) String() string {
@@ -6191,11 +6783,6 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetDisplayNa
 	return s
 }
 
-func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetTags(v *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
-	s.Tags = v
-	return s
-}
-
 func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserId(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
 	s.UserId = &v
 	return s
@@ -6203,46 +6790,6 @@ func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserId(v 
 
 func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo) SetUserPrincipalName(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo {
 	s.UserPrincipalName = &v
-	return s
-}
-
-type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags struct {
-	Tag []*ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags) SetTag(v []*ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTags {
-	s.Tag = v
-	return s
-}
-
-type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) SetTagKey(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag) SetTagValue(v string) *ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfoTagsTag {
-	s.TagValue = &v
 	return s
 }
 
@@ -6276,7 +6823,11 @@ func (s *ListUserBasicInfosResponse) SetBody(v *ListUserBasicInfosResponseBody) 
 }
 
 type ListUsersRequest struct {
-	Marker   *string                `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+	//
+	// Valid values: 1 to 1000. Default value: 1000.
 	MaxItems *int32                 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 	Tag      []*ListUsersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -6305,7 +6856,13 @@ func (s *ListUsersRequest) SetTag(v []*ListUsersRequestTag) *ListUsersRequest {
 }
 
 type ListUsersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6328,10 +6885,17 @@ func (s *ListUsersRequestTag) SetValue(v string) *ListUsersRequestTag {
 }
 
 type ListUsersResponseBody struct {
-	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of the information about the RAM user.
+	Users *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -6380,17 +6944,36 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 }
 
 type ListUsersResponseBodyUsersUser struct {
-	Comments          *string                             `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string                             `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string                             `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string                             `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string                             `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string                             `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string                             `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Tags              *ListUsersResponseBodyUsersUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UpdateDate        *string                             `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName *string                             `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter is valid only on the China site (aliyun.com).
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The source of the RAM user. Valid values:
+	//
+	// *   Manual: The RAM user is manually created in the RAM console.
+	// *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+	// *   CloudSSO: The RAM user is mapped from a CloudSSO user.
+	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	// An array that consists of tags.
+	Tags *ListUsersResponseBodyUsersUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The time when the information about the RAM user was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsersUser) String() string {
@@ -6474,7 +7057,9 @@ func (s *ListUsersResponseBodyUsersUserTags) SetTag(v []*ListUsersResponseBodyUs
 }
 
 type ListUsersResponseBodyUsersUserTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6526,9 +7111,14 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type ListUsersForGroupRequest struct {
+	// The name of the RAM user group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Marker    *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems  *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListUsersForGroupRequest) String() string {
@@ -6555,10 +7145,17 @@ func (s *ListUsersForGroupRequest) SetMaxItems(v int32) *ListUsersForGroupReques
 }
 
 type ListUsersForGroupResponseBody struct {
-	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of RAM users.
+	Users *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersForGroupResponseBody) String() string {
@@ -6607,9 +7204,13 @@ func (s *ListUsersForGroupResponseBodyUsers) SetUser(v []*ListUsersForGroupRespo
 }
 
 type ListUsersForGroupResponseBodyUsersUser struct {
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	JoinDate          *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the RAM user was added.
+	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -6671,8 +7272,12 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 }
 
 type ListVirtualMFADevicesRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListVirtualMFADevicesRequest) String() string {
@@ -6694,9 +7299,16 @@ func (s *ListVirtualMFADevicesRequest) SetMaxItems(v int32) *ListVirtualMFADevic
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	IsTruncated       *bool                                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker            *string                                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the MFA device.
 	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 }
 
@@ -6746,9 +7358,12 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetVirtualMFADevice
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
-	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
-	SerialNumber *string                                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The time when the MFA device was activated.
+	ActivateDate *string `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+	// The serial number of the MFA device.
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The information of the RAM user that has an MFA device bound.
+	User *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) String() string {
@@ -6775,8 +7390,11 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Set
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser struct {
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -6833,7 +7451,13 @@ func (s *ListVirtualMFADevicesResponse) SetBody(v *ListVirtualMFADevicesResponse
 }
 
 type RemoveClientIdFromOIDCProviderRequest struct {
-	ClientId         *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID that you want to remove.
+	//
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.
+	//
+	// The client ID can be up to 64 characters in length.
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -6856,8 +7480,10 @@ func (s *RemoveClientIdFromOIDCProviderRequest) SetOIDCProviderName(v string) *R
 }
 
 type RemoveClientIdFromOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveClientIdFromOIDCProviderResponseBody) String() string {
@@ -6879,16 +7505,26 @@ func (s *RemoveClientIdFromOIDCProviderResponseBody) SetRequestId(v string) *Rem
 }
 
 type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -6979,7 +7615,9 @@ func (s *RemoveClientIdFromOIDCProviderResponse) SetBody(v *RemoveClientIdFromOI
 }
 
 type RemoveFingerprintFromOIDCProviderRequest struct {
-	Fingerprint      *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The fingerprint that you want to remove.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -7002,8 +7640,10 @@ func (s *RemoveFingerprintFromOIDCProviderRequest) SetOIDCProviderName(v string)
 }
 
 type RemoveFingerprintFromOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveFingerprintFromOIDCProviderResponseBody) String() string {
@@ -7025,16 +7665,26 @@ func (s *RemoveFingerprintFromOIDCProviderResponseBody) SetRequestId(v string) *
 }
 
 type RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -7125,7 +7775,9 @@ func (s *RemoveFingerprintFromOIDCProviderResponse) SetBody(v *RemoveFingerprint
 }
 
 type RemoveUserFromGroupRequest struct {
-	GroupName         *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -7148,6 +7800,7 @@ func (s *RemoveUserFromGroupRequest) SetUserPrincipalName(v string) *RemoveUserF
 }
 
 type RemoveUserFromGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7194,6 +7847,13 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 }
 
 type SetDefaultDomainRequest struct {
+	// The default domain name.
+	//
+	// The name is in the format of `<AccountAlias>.onaliyun.com`. `<AccountAlias>` indicates the account alias. By default, the value of AccountAlias is the ID of the Alibaba Cloud account. The default domain name must end with `.onaliyun.com`.
+	//
+	// The default domain name can contain up to 64 characters in length. The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	//
+	// >  The default domain name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-).
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
 }
 
@@ -7211,8 +7871,10 @@ func (s *SetDefaultDomainRequest) SetDefaultDomainName(v string) *SetDefaultDoma
 }
 
 type SetDefaultDomainResponseBody struct {
+	// The default domain name.
 	DefaultDomainName *string `json:"DefaultDomainName,omitempty" xml:"DefaultDomainName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetDefaultDomainResponseBody) String() string {
@@ -7263,17 +7925,64 @@ func (s *SetDefaultDomainResponse) SetBody(v *SetDefaultDomainResponseBody) *Set
 }
 
 type SetPasswordPolicyRequest struct {
-	HardExpire                        *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	MaxLoginAttemps                   *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge                    *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// Specifies whether to disable logon after the password expires. Valid values:
+	//
+	// *   true: After the password expires, you cannot use the password to log on to the console. You can log on to the console only after you reset the password by using your Alibaba Cloud account or as a RAM user that has administrative rights.
+	// *   false: After the password expires, you can change the password to log on to the console. This is the default value.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The maximum number of password retries. If you enter the wrong passwords for the specified consecutive times, the account is locked for one hour.
+	//
+	// Valid values: 0 to 32.
+	//
+	// The default value is 0, which indicates that the password retries are not limited.
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The validity period of the password.
+	//
+	// Valid values: 0 to 1095. Unit: days.
+	//
+	// The default value is 0, which indicates that the password never expires.
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum number of unique characters in the password.
+	//
+	// Valid values: 0 to 8.
+	//
+	// The default value is 0, which indicates that no limits are imposed on the number of unique characters in a password.
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	MinimumPasswordLength             *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordNotContainUserName        *bool  `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	PasswordReusePrevention           *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters        *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers                    *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols                    *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters        *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// The minimum number of characters in the password.
+	//
+	// Valid values: 8 to 32. Default value: 8.
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// Specifies whether to exclude the username from the password. Valid values:
+	//
+	// *   true: A password cannot contain the username.
+	// *   false: A password can contain the username. This is the default value.
+	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
+	// The policy for password history check.
+	//
+	// The previous N passwords cannot be reused. Valid values of N: 0 to 24.
+	//
+	// The default value is 0, which indicates that RAM users can reuse previous passwords.
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Specifies whether the password must contain lowercase letters. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Specifies whether the password must contain digits. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Specifies whether the password must contain special characters. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Specifies whether the password must contain uppercase letters. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s SetPasswordPolicyRequest) String() string {
@@ -7340,8 +8049,10 @@ func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPas
 }
 
 type SetPasswordPolicyResponseBody struct {
+	// The details of the password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBody) String() string {
@@ -7363,17 +8074,28 @@ func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolic
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	HardExpire                        *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	MaxLoginAttemps                   *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge                    *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// Indicates whether to disable logon after the password expires.
+	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
+	// The maximum number of password retries.
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The validity period of the password.
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum number of unique characters in the password.
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	MinimumPasswordLength             *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordNotContainUserName        *bool  `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	PasswordReusePrevention           *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters        *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers                    *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols                    *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters        *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// The minimum number of characters in the password.
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// Indicates whether to exclude the username from the password.
+	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
+	// The policy for password history check.
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Indicates whether the password must contain lowercase letters.
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Indicates whether the password must contain digits.
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether the password must contain special characters.
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether the password must contain uppercase letters.
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -7469,15 +8191,58 @@ func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *S
 }
 
 type SetSecurityPreferenceRequest struct {
-	AllowUserToChangePassword         *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	AllowUserToManageAccessKeys       *bool   `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
-	AllowUserToManageMFADevices       *bool   `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
-	AllowUserToManagePersonalDingTalk *bool   `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
-	EnableSaveMFATicket               *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks                 *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration              *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	MFAOperationForLogin              *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
-	OperationForRiskLogin             *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	// Specifies whether RAM users can change their passwords. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+	//
+	// *   true: yes.
+	// *   false: no. This is the default value.
+	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	// Specifies whether RAM users can manage their MFA devices. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
+	// Specifies whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	// Specifies whether to remember the MFA devices for seven days. Valid values:
+	//
+	// *   true: yes.
+	// *   false: no. This is the default value.
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+	//
+	// *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+	// *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+	//
+	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users.
+	//
+	// Valid values: 1 to 24. Unit: hours.
+	//
+	// Default value: 6.
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console. This parameter is used to replace the EnforceMFAForLogin parameter. The EnforceMFAForLogin parameter is still valid. However, we recommend that you use the MFAOperationForLogin parameter. Valid values:
+	//
+	// *   mandatory: MFA is required for all RAM users. If you use the EnforceMFAForLogin parameter, set the value to true.
+	// *   independent: User-specific settings are applied. This is the default value. If you use the EnforceMFAForLogin parameter, set the value to false.
+	// *   adaptive: MFA is required only for RAM users who initiated unusual logons.
+	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
+	//
+	// *   autonomous: yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA. This is the default value.
+	// *   enforceVerify: no.
+	OperationForRiskLogin *string   `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	VerificationTypes     []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
 }
 
 func (s SetSecurityPreferenceRequest) String() string {
@@ -7533,8 +8298,128 @@ func (s *SetSecurityPreferenceRequest) SetOperationForRiskLogin(v string) *SetSe
 	return s
 }
 
+func (s *SetSecurityPreferenceRequest) SetVerificationTypes(v []*string) *SetSecurityPreferenceRequest {
+	s.VerificationTypes = v
+	return s
+}
+
+type SetSecurityPreferenceShrinkRequest struct {
+	// Specifies whether RAM users can change their passwords. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+	//
+	// *   true: yes.
+	// *   false: no. This is the default value.
+	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	// Specifies whether RAM users can manage their MFA devices. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
+	// Specifies whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts. Valid values:
+	//
+	// *   true: yes. This is the default value.
+	// *   false: no.
+	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	// Specifies whether to remember the MFA devices for seven days. Valid values:
+	//
+	// *   true: yes.
+	// *   false: no. This is the default value.
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+	//
+	// *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+	// *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+	//
+	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users.
+	//
+	// Valid values: 1 to 24. Unit: hours.
+	//
+	// Default value: 6.
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console. This parameter is used to replace the EnforceMFAForLogin parameter. The EnforceMFAForLogin parameter is still valid. However, we recommend that you use the MFAOperationForLogin parameter. Valid values:
+	//
+	// *   mandatory: MFA is required for all RAM users. If you use the EnforceMFAForLogin parameter, set the value to true.
+	// *   independent: User-specific settings are applied. This is the default value. If you use the EnforceMFAForLogin parameter, set the value to false.
+	// *   adaptive: MFA is required only for RAM users who initiated unusual logons.
+	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
+	//
+	// *   autonomous: yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA. This is the default value.
+	// *   enforceVerify: no.
+	OperationForRiskLogin   *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	VerificationTypesShrink *string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty"`
+}
+
+func (s SetSecurityPreferenceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSecurityPreferenceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToChangePassword = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageAccessKeys(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToManageAccessKeys = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageMFADevices(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToManageMFADevices = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceShrinkRequest {
+	s.EnableSaveMFATicket = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetLoginNetworkMasks(v string) *SetSecurityPreferenceShrinkRequest {
+	s.LoginNetworkMasks = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetLoginSessionDuration(v int32) *SetSecurityPreferenceShrinkRequest {
+	s.LoginSessionDuration = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetMFAOperationForLogin(v string) *SetSecurityPreferenceShrinkRequest {
+	s.MFAOperationForLogin = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetOperationForRiskLogin(v string) *SetSecurityPreferenceShrinkRequest {
+	s.OperationForRiskLogin = &v
+	return s
+}
+
+func (s *SetSecurityPreferenceShrinkRequest) SetVerificationTypesShrink(v string) *SetSecurityPreferenceShrinkRequest {
+	s.VerificationTypesShrink = &v
+	return s
+}
+
 type SetSecurityPreferenceResponseBody struct {
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of security preferences.
 	SecurityPreference *SetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
@@ -7557,10 +8442,15 @@ func (s *SetSecurityPreferenceResponseBody) SetSecurityPreference(v *SetSecurity
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreference struct {
-	AccessKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The AccessKey pair preference.
+	AccessKeyPreference *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The logon preference.
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	MFAPreference          *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The MFA preference.
+	MFAPreference *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The personal information preference.
 	PersonalInfoPreference *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
+	VerificationPreference *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference `json:"VerificationPreference,omitempty" xml:"VerificationPreference,omitempty" type:"Struct"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -7591,7 +8481,13 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetPersonalInfoPre
 	return s
 }
 
+func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
+	s.VerificationPreference = v
+	return s
+}
+
 type SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
+	// Indicates whether RAM users can manage their AccessKey pairs.
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 }
 
@@ -7609,12 +8505,18 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	MFAOperationForLogin      *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
-	OperationForRiskLogin     *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
+	// Indicates whether RAM users can change their passwords.
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Indicates whether RAM users can remember the MFA devices for seven days.
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask.
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users.
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Indicates whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console.
+	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Indicates whether to enable MFA for RAM users who initiated unusual logons.
+	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
@@ -7656,6 +8558,7 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
+	// Indicates whether RAM users can manage their MFA devices.
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
 
@@ -7673,6 +8576,7 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
+	// Indicates whether RAM users can manage their personal DingTalk accounts, such as binding and unbinding of the accounts.
 	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
 }
 
@@ -7686,6 +8590,23 @@ func (s SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreferenc
 
 func (s *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference {
 	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
+type SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
+	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) GoString() string {
+	return s.String()
+}
+
+func (s *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
+	s.VerificationTypes = v
 	return s
 }
 
@@ -7719,9 +8640,17 @@ func (s *SetSecurityPreferenceResponse) SetBody(v *SetSecurityPreferenceResponse
 }
 
 type SetUserSsoSettingsRequest struct {
-	AuxiliaryDomain  *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The auxiliary domain name.
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The metadata file, which is Base64-encoded.
+	//
+	// The file is provided by an IdP that supports SAML 2.0.
 	MetadataDocument *string `json:"MetadataDocument,omitempty" xml:"MetadataDocument,omitempty"`
-	SsoEnabled       *bool   `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Specifies whether to enable SSO for the RAM user. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
 }
 
 func (s SetUserSsoSettingsRequest) String() string {
@@ -7748,7 +8677,9 @@ func (s *SetUserSsoSettingsRequest) SetSsoEnabled(v bool) *SetUserSsoSettingsReq
 }
 
 type SetUserSsoSettingsResponseBody struct {
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of user-based SSO.
 	UserSsoSettings *SetUserSsoSettingsResponseBodyUserSsoSettings `json:"UserSsoSettings,omitempty" xml:"UserSsoSettings,omitempty" type:"Struct"`
 }
 
@@ -7771,9 +8702,12 @@ func (s *SetUserSsoSettingsResponseBody) SetUserSsoSettings(v *SetUserSsoSetting
 }
 
 type SetUserSsoSettingsResponseBodyUserSsoSettings struct {
-	AuxiliaryDomain  *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The auxiliary domain name.
+	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
+	// The metadata file, which is Base64-encoded.
 	MetadataDocument *string `json:"MetadataDocument,omitempty" xml:"MetadataDocument,omitempty"`
-	SsoEnabled       *bool   `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
+	// Indicates whether user-based SSO is enabled.
+	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
 }
 
 func (s SetUserSsoSettingsResponseBodyUserSsoSettings) String() string {
@@ -7829,10 +8763,13 @@ func (s *SetUserSsoSettingsResponse) SetBody(v *SetUserSsoSettingsResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	ResourceId            []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourcePrincipalName []*string                 `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
-	ResourceType          *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                   []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId            []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
+	// The type of the resource. Valid value:
+	//
+	// *   user: a RAM user
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -7864,7 +8801,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20. You cannot specify empty strings as tag keys. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be a up to128 characters in length and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7887,6 +8830,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7933,6 +8877,7 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnbindMFADeviceRequest struct {
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -7950,8 +8895,10 @@ func (s *UnbindMFADeviceRequest) SetUserPrincipalName(v string) *UnbindMFADevice
 }
 
 type UnbindMFADeviceResponseBody struct {
+	// The information of the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindMFADeviceResponseBody) String() string {
@@ -7973,6 +8920,7 @@ func (s *UnbindMFADeviceResponseBody) SetRequestId(v string) *UnbindMFADeviceRes
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {
+	// The serial number of the MFA device.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -8019,11 +8967,20 @@ func (s *UnbindMFADeviceResponse) SetBody(v *UnbindMFADeviceResponseBody) *Unbin
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags from the resources. Valid values:
+	//
+	// *   true: remove all tags from the resources.
+	// *   false: does not remove all tags from the resources. This is the default value.
+	//
+	// >  This parameter takes effect only when the TagKey.N parameter is not specified in the request.
 	All                   *bool     `json:"All,omitempty" xml:"All,omitempty"`
 	ResourceId            []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
-	ResourceType          *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey                []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   user: a RAM user
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -8060,6 +9017,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8106,8 +9064,16 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAccessKeyRequest struct {
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The status of the AccessKey pair. Valid values:
+	//
+	// *   Active
+	// *   Inactive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The AccessKey ID of the AccessKey pair for which you want to modify the status.
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the status of the AccessKey pair for the current user is modified.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -8135,6 +9101,7 @@ func (s *UpdateAccessKeyRequest) SetUserPrincipalName(v string) *UpdateAccessKey
 }
 
 type UpdateAccessKeyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8455,10 +9422,20 @@ func (s *UpdateApplicationResponse) SetBody(v *UpdateApplicationResponseBody) *U
 }
 
 type UpdateGroupRequest struct {
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	NewComments    *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The new description.
+	//
+	// The value can be up to 128 characters in length.
+	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The new display name of the RAM user group.
+	//
+	// The name can be up to 24 characters in length.
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewGroupName   *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
+	// The new name of the RAM user group.
+	//
+	// The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 
 func (s UpdateGroupRequest) String() string {
@@ -8490,8 +9467,10 @@ func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponseBody struct {
-	Group     *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user group.
+	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGroupResponseBody) String() string {
@@ -8513,12 +9492,18 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user group.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateGroupResponseBodyGroup) String() string {
@@ -8589,11 +9574,27 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateLoginProfileRequest struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserPrincipalName     *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// Specifies whether multi-factor authentication (MFA) must be enabled. Valid values:
+	//
+	// *   true. The value true indicates that the RAM user must bind an MFA device at the next logon.
+	// *   false.
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// The new password that is used to log on to the console.
+	//
+	// The password must meet the complexity requirements.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether the RAM user must reset the password at the next logon. Valid values:
+	//
+	// *   true
+	// *   false
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of password-based logon. Valid values:
+	//
+	// *   Active
+	// *   Inactive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s UpdateLoginProfileRequest) String() string {
@@ -8630,8 +9631,10 @@ func (s *UpdateLoginProfileRequest) SetUserPrincipalName(v string) *UpdateLoginP
 }
 
 type UpdateLoginProfileResponseBody struct {
+	// The logon information.
 	LoginProfile *UpdateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateLoginProfileResponseBody) String() string {
@@ -8653,11 +9656,16 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponseBodyLoginProfile struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateDate            *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserPrincipalName     *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// Indicates whether MFA must be enabled.
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// Indicates whether the RAM user must reset the password at the next logon.
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The status of password-based logon.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The logon name of the RAM user.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s UpdateLoginProfileResponseBodyLoginProfile) String() string {
@@ -8723,8 +9731,19 @@ func (s *UpdateLoginProfileResponse) SetBody(v *UpdateLoginProfileResponseBody) 
 }
 
 type UpdateOIDCProviderRequest struct {
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	NewDescription   *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The ID of the client. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
+	//
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.
+	//
+	// The client ID can be up to 64 characters in length.
+	//
+	// >  If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](~~332057~~) or [RemoveClientIdFromOIDCProvider](~~332058~~).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The description of the OIDC IdP.
+	//
+	// The description can be up to 256 characters in length.
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 
@@ -8752,8 +9771,10 @@ func (s *UpdateOIDCProviderRequest) SetOIDCProviderName(v string) *UpdateOIDCPro
 }
 
 type UpdateOIDCProviderResponseBody struct {
+	// The information about the OIDC IdP.
 	OIDCProvider *UpdateOIDCProviderResponseBodyOIDCProvider `json:"OIDCProvider,omitempty" xml:"OIDCProvider,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateOIDCProviderResponseBody) String() string {
@@ -8775,16 +9796,26 @@ func (s *UpdateOIDCProviderResponseBody) SetRequestId(v string) *UpdateOIDCProvi
 }
 
 type UpdateOIDCProviderResponseBodyOIDCProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
-	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	// The time when the OIDC IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the OIDC IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+	Fingerprints *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
+	// The timestamp when the OIDC IdP was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp when the OIDC IdP was modified.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The URL of the issuer.
+	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
+	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the OIDC IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -8875,9 +9906,16 @@ func (s *UpdateOIDCProviderResponse) SetBody(v *UpdateOIDCProviderResponseBody) 
 }
 
 type UpdateSAMLProviderRequest struct {
-	NewDescription                 *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The new description.
+	//
+	// >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The new metadata file.
+	//
+	// >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
 	NewEncodedSAMLMetadataDocument *string `json:"NewEncodedSAMLMetadataDocument,omitempty" xml:"NewEncodedSAMLMetadataDocument,omitempty"`
-	SAMLProviderName               *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
+	// The name of the IdP whose information you want to modify.
+	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 
 func (s UpdateSAMLProviderRequest) String() string {
@@ -8904,7 +9942,9 @@ func (s *UpdateSAMLProviderRequest) SetSAMLProviderName(v string) *UpdateSAMLPro
 }
 
 type UpdateSAMLProviderResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the IdP.
 	SAMLProvider *UpdateSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -8927,11 +9967,16 @@ func (s *UpdateSAMLProviderResponseBody) SetSAMLProvider(v *UpdateSAMLProviderRe
 }
 
 type UpdateSAMLProviderResponseBodySAMLProvider struct {
-	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The point in time at which the IdP was created. The time is displayed in UTC.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the IdP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the IdP.
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The point in time at which the information about the IdP was modified. The time is displayed in UTC.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateSAMLProviderResponseBodySAMLProvider) String() string {
@@ -8997,13 +10042,38 @@ func (s *UpdateSAMLProviderResponse) SetBody(v *UpdateSAMLProviderResponseBody) 
 }
 
 type UpdateUserRequest struct {
-	NewComments          *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
-	NewDisplayName       *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewEmail             *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
-	NewMobilePhone       *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
+	// The new description of the RAM user.
+	//
+	// The description must be 1 to 128 characters in length.
+	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The new display name of the RAM user.
+	//
+	// The name must be 1 to 24 characters in length.
+	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
+	// The new email address of the RAM user.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	// The new mobile phone number of the RAM user.
+	//
+	// Format: Country calling code-Mobile phone number.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	NewMobilePhone *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
+	// The new logon name of the RAM user.
+	//
+	// The name is in the format of `<username>@<AccountAlias>.onaliyun.com`. `<username>` is the name of the RAM user. `<AccountAlias>.onaliyun.com` is the default domain name.
+	//
+	// The value of `UserPrincipalName` must be 1 to 128 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (\_). The value of `<username>` must be 1 to 64 characters in length.
 	NewUserPrincipalName *string `json:"NewUserPrincipalName,omitempty" xml:"NewUserPrincipalName,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserPrincipalName    *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -9050,8 +10120,10 @@ func (s *UpdateUserRequest) SetUserPrincipalName(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user.
+	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -9073,15 +10145,28 @@ func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateU
 }
 
 type UpdateUserResponseBodyUser struct {
-	Comments          *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	LastLoginDate     *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	ProvisionType     *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	UpdateDate        *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description of the RAM user.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The last time when the RAM user logged on to the console.
+	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	MobilePhone   *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
+	// The time when the information of the RAM user was updated.
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
@@ -9219,6 +10304,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request AddClientIdToOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddClientIdToOIDCProviderResponse
+ */
 func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdToOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *AddClientIdToOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9256,6 +10348,12 @@ func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdT
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the client ID `598469743454717****` to the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request AddClientIdToOIDCProviderRequest
+ * @return AddClientIdToOIDCProviderResponse
+ */
 func (client *Client) AddClientIdToOIDCProvider(request *AddClientIdToOIDCProviderRequest) (_result *AddClientIdToOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddClientIdToOIDCProviderResponse{}
@@ -9267,6 +10365,13 @@ func (client *Client) AddClientIdToOIDCProvider(request *AddClientIdToOIDCProvid
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request AddFingerprintToOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddFingerprintToOIDCProviderResponse
+ */
 func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFingerprintToOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *AddFingerprintToOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9304,6 +10409,12 @@ func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFinger
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request AddFingerprintToOIDCProviderRequest
+ * @return AddFingerprintToOIDCProviderResponse
+ */
 func (client *Client) AddFingerprintToOIDCProvider(request *AddFingerprintToOIDCProviderRequest) (_result *AddFingerprintToOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddFingerprintToOIDCProviderResponse{}
@@ -9419,6 +10530,13 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 	return _result, _err
 }
 
+/**
+ * >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+ *
+ * @param request ChangePasswordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ChangePasswordResponse
+ */
 func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, runtime *util.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9456,6 +10574,12 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	return _result, _err
 }
 
+/**
+ * >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](~~43765~~) is set to `True`. The value True indicates that RAM users can change their passwords.
+ *
+ * @param request ChangePasswordRequest
+ * @return ChangePasswordResponse
+ */
 func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *ChangePasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangePasswordResponse{}
@@ -9743,6 +10867,19 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+ * ## Prerequisites
+ * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
+ * ## Limits
+ * - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+ * - You can add a maximum of 20 client IDs to an OIDC IdP.
+ * - You can add a maximum of five fingerprints to an OIDC IdP.
+ *
+ * @param request CreateOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateOIDCProviderResponse
+ */
 func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *CreateOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9792,6 +10929,18 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+ * ## Prerequisites
+ * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
+ * ## Limits
+ * - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+ * - You can add a maximum of 20 client IDs to an OIDC IdP.
+ * - You can add a maximum of five fingerprints to an OIDC IdP.
+ *
+ * @param request CreateOIDCProviderRequest
+ * @return CreateOIDCProviderResponse
+ */
 func (client *Client) CreateOIDCProvider(request *CreateOIDCProviderRequest) (_result *CreateOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOIDCProviderResponse{}
@@ -9855,6 +11004,13 @@ func (client *Client) CreateSAMLProvider(request *CreateSAMLProviderRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a RAM user named `test`.
+ *
+ * @param request CreateUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateUserResponse
+ */
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9908,6 +11064,12 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a RAM user named `test`.
+ *
+ * @param request CreateUserRequest
+ * @return CreateUserResponse
+ */
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserResponse{}
@@ -10103,6 +11265,13 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	return _result, _err
 }
 
+/**
+ * Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+ *
+ * @param request DeleteGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10136,6 +11305,12 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+/**
+ * Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+ *
+ * @param request DeleteGroupRequest
+ * @return DeleteGroupResponse
+ */
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -10191,6 +11366,13 @@ func (client *Client) DeleteLoginProfile(request *DeleteLoginProfileRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request DeleteOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteOIDCProviderResponse
+ */
 func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *DeleteOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10224,6 +11406,12 @@ func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderR
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request DeleteOIDCProviderRequest
+ * @return DeleteOIDCProviderResponse
+ */
 func (client *Client) DeleteOIDCProvider(request *DeleteOIDCProviderRequest) (_result *DeleteOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOIDCProviderResponse{}
@@ -10841,6 +12029,13 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request GetOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetOIDCProviderResponse
+ */
 func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *GetOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10874,6 +12069,12 @@ func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the information about an OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request GetOIDCProviderRequest
+ * @return GetOIDCProviderResponse
+ */
 func (client *Client) GetOIDCProvider(request *GetOIDCProviderRequest) (_result *GetOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOIDCProviderResponse{}
@@ -10995,6 +12196,13 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+ *
+ * @param request GetUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetUserResponse
+ */
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11036,6 +12244,12 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
+ *
+ * @param request GetUserRequest
+ * @return GetUserResponse
+ */
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
@@ -11337,6 +12551,13 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request ListOIDCProvidersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListOIDCProvidersResponse
+ */
 func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersRequest, runtime *util.RuntimeOptions) (_result *ListOIDCProvidersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11374,6 +12595,12 @@ func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersReq
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query all OIDC IdPs within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request ListOIDCProvidersRequest
+ * @return ListOIDCProvidersResponse
+ */
 func (client *Client) ListOIDCProviders(request *ListOIDCProvidersRequest) (_result *ListOIDCProvidersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOIDCProvidersResponse{}
@@ -11477,6 +12704,16 @@ func (client *Client) ListSAMLProviders(request *ListSAMLProvidersRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+ * *   `ResourceId.N`
+ * *   `Tag.N.Key`
+ * *   `Tag.N.Key` and `Tag.N.Value`
+ *
+ * @param request ListTagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11530,6 +12767,15 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+/**
+ * You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+ * *   `ResourceId.N`
+ * *   `Tag.N.Key`
+ * *   `Tag.N.Key` and `Tag.N.Value`
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -11541,6 +12787,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call the following API operations to query the information about all RAM users:
+ * *   ListUsers: queries the details of all RAM users.
+ * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+ *
+ * @param request ListUserBasicInfosRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListUserBasicInfosResponse
+ */
 func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosRequest, runtime *util.RuntimeOptions) (_result *ListUserBasicInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11582,6 +12837,14 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 	return _result, _err
 }
 
+/**
+ * You can call the following API operations to query the information about all RAM users:
+ * *   ListUsers: queries the details of all RAM users.
+ * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+ *
+ * @param request ListUserBasicInfosRequest
+ * @return ListUserBasicInfosResponse
+ */
 func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_result *ListUserBasicInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserBasicInfosResponse{}
@@ -11593,6 +12856,15 @@ func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call the following API operations to query the information about all RAM users:
+ * *   ListUsers: queries the details of all RAM users.
+ * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+ *
+ * @param request ListUsersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListUsersResponse
+ */
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11634,6 +12906,14 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * You can call the following API operations to query the information about all RAM users:
+ * *   ListUsers: queries the details of all RAM users.
+ * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+ *
+ * @param request ListUsersRequest
+ * @return ListUsersResponse
+ */
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -11745,6 +13025,13 @@ func (client *Client) ListVirtualMFADevices(request *ListVirtualMFADevicesReques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request RemoveClientIdFromOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveClientIdFromOIDCProviderResponse
+ */
 func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveClientIdFromOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *RemoveClientIdFromOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11782,6 +13069,12 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request RemoveClientIdFromOIDCProviderRequest
+ * @return RemoveClientIdFromOIDCProviderResponse
+ */
 func (client *Client) RemoveClientIdFromOIDCProvider(request *RemoveClientIdFromOIDCProviderRequest) (_result *RemoveClientIdFromOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveClientIdFromOIDCProviderResponse{}
@@ -11793,6 +13086,13 @@ func (client *Client) RemoveClientIdFromOIDCProvider(request *RemoveClientIdFrom
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request RemoveFingerprintFromOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveFingerprintFromOIDCProviderResponse
+ */
 func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *RemoveFingerprintFromOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *RemoveFingerprintFromOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11830,6 +13130,12 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *Remo
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
+ *
+ * @param request RemoveFingerprintFromOIDCProviderRequest
+ * @return RemoveFingerprintFromOIDCProviderResponse
+ */
 func (client *Client) RemoveFingerprintFromOIDCProvider(request *RemoveFingerprintFromOIDCProviderRequest) (_result *RemoveFingerprintFromOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveFingerprintFromOIDCProviderResponse{}
@@ -12017,11 +13323,24 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetSecurityPreferenceResponse, _err error) {
-	_err = util.ValidateModel(request)
+/**
+ * This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
+ *
+ * @param tmpReq SetSecurityPreferenceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetSecurityPreferenceResponse
+ */
+func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetSecurityPreferenceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SetSecurityPreferenceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.VerificationTypes)) {
+		request.VerificationTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VerificationTypes, tea.String("VerificationTypes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AllowUserToChangePassword)) {
 		query["AllowUserToChangePassword"] = request.AllowUserToChangePassword
@@ -12059,6 +13378,10 @@ func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPrefe
 		query["OperationForRiskLogin"] = request.OperationForRiskLogin
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VerificationTypesShrink)) {
+		query["VerificationTypes"] = request.VerificationTypesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12082,6 +13405,12 @@ func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPrefe
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
+ *
+ * @param request SetSecurityPreferenceRequest
+ * @return SetSecurityPreferenceResponse
+ */
 func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceRequest) (_result *SetSecurityPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSecurityPreferenceResponse{}
@@ -12545,6 +13874,13 @@ func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
+ *
+ * @param request UpdateOIDCProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateOIDCProviderResponse
+ */
 func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderRequest, runtime *util.RuntimeOptions) (_result *UpdateOIDCProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12586,6 +13922,12 @@ func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderR
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
+ *
+ * @param request UpdateOIDCProviderRequest
+ * @return UpdateOIDCProviderResponse
+ */
 func (client *Client) UpdateOIDCProvider(request *UpdateOIDCProviderRequest) (_result *UpdateOIDCProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOIDCProviderResponse{}
@@ -12597,6 +13939,13 @@ func (client *Client) UpdateOIDCProvider(request *UpdateOIDCProviderRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+ *
+ * @param request UpdateSAMLProviderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateSAMLProviderResponse
+ */
 func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderRequest, runtime *util.RuntimeOptions) (_result *UpdateSAMLProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12638,6 +13987,12 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
+ *
+ * @param request UpdateSAMLProviderRequest
+ * @return UpdateSAMLProviderResponse
+ */
 func (client *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (_result *UpdateSAMLProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSAMLProviderResponse{}
@@ -12649,6 +14004,13 @@ func (client *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+ *
+ * @param request UpdateUserRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateUserResponse
+ */
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12706,6 +14068,12 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
+ *
+ * @param request UpdateUserRequest
+ * @return UpdateUserResponse
+ */
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
