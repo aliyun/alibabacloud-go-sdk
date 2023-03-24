@@ -5,32 +5,26 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AlgorithmSpec struct {
-	// The command used for submit the job.
-	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	// The hype parameter used by the algorithm.
-	HyperParameters []*HyperParameterDefinition `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
-	// The docker image used by the job of this algorithm.
-	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The input for the algorithm.
-	InputChannels []*Channel `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
-	// Job type of the training job while running the algorithm.
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The output metrics of the algorithm.
-	MetricDefinitions []*MetricDefinition `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
-	// The outputs of the algorithm.
-	OutputChannels []*Channel `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
-	// A list of ECS instances that the algorithm can use to submit training job.
-	SupportedInstanceTypes []*string `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
-	// Indicates whether the algorithm support distributed training.
-	SupportsDistributedTraining *bool `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
+	CodeDir                     *AlgorithmSpecCodeDir         `json:"CodeDir,omitempty" xml:"CodeDir,omitempty" type:"Struct"`
+	Command                     []*string                     `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	ComputeResource             *AlgorithmSpecComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	Customization               *AlgorithmSpecCustomization   `json:"Customization,omitempty" xml:"Customization,omitempty" type:"Struct"`
+	HyperParameters             []*HyperParameterDefinition   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	Image                       *string                       `json:"Image,omitempty" xml:"Image,omitempty"`
+	InputChannels               []*Channel                    `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	JobType                     *string                       `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MetricDefinitions           []*MetricDefinition           `json:"MetricDefinitions,omitempty" xml:"MetricDefinitions,omitempty" type:"Repeated"`
+	OutputChannels              []*Channel                    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	SupportedInstanceTypes      []*string                     `json:"SupportedInstanceTypes,omitempty" xml:"SupportedInstanceTypes,omitempty" type:"Repeated"`
+	SupportsDistributedTraining *bool                         `json:"SupportsDistributedTraining,omitempty" xml:"SupportsDistributedTraining,omitempty"`
 }
 
 func (s AlgorithmSpec) String() string {
@@ -41,8 +35,23 @@ func (s AlgorithmSpec) GoString() string {
 	return s.String()
 }
 
+func (s *AlgorithmSpec) SetCodeDir(v *AlgorithmSpecCodeDir) *AlgorithmSpec {
+	s.CodeDir = v
+	return s
+}
+
 func (s *AlgorithmSpec) SetCommand(v []*string) *AlgorithmSpec {
 	s.Command = v
+	return s
+}
+
+func (s *AlgorithmSpec) SetComputeResource(v *AlgorithmSpecComputeResource) *AlgorithmSpec {
+	s.ComputeResource = v
+	return s
+}
+
+func (s *AlgorithmSpec) SetCustomization(v *AlgorithmSpecCustomization) *AlgorithmSpec {
+	s.Customization = v
 	return s
 }
 
@@ -86,15 +95,92 @@ func (s *AlgorithmSpec) SetSupportsDistributedTraining(v bool) *AlgorithmSpec {
 	return s
 }
 
+type AlgorithmSpecCodeDir struct {
+	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
+}
+
+func (s AlgorithmSpecCodeDir) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecCodeDir) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecCodeDir) SetLocationType(v string) *AlgorithmSpecCodeDir {
+	s.LocationType = &v
+	return s
+}
+
+func (s *AlgorithmSpecCodeDir) SetLocationValue(v map[string]interface{}) *AlgorithmSpecCodeDir {
+	s.LocationValue = v
+	return s
+}
+
+type AlgorithmSpecComputeResource struct {
+	Policy *AlgorithmSpecComputeResourcePolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+}
+
+func (s AlgorithmSpecComputeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecComputeResource) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecComputeResource) SetPolicy(v *AlgorithmSpecComputeResourcePolicy) *AlgorithmSpecComputeResource {
+	s.Policy = v
+	return s
+}
+
+type AlgorithmSpecComputeResourcePolicy struct {
+	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s AlgorithmSpecComputeResourcePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecComputeResourcePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecComputeResourcePolicy) SetValue(v string) *AlgorithmSpecComputeResourcePolicy {
+	s.Value = &v
+	return s
+}
+
+func (s *AlgorithmSpecComputeResourcePolicy) SetVersion(v string) *AlgorithmSpecComputeResourcePolicy {
+	s.Version = &v
+	return s
+}
+
+type AlgorithmSpecCustomization struct {
+	CodeDir *bool `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
+}
+
+func (s AlgorithmSpecCustomization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlgorithmSpecCustomization) GoString() string {
+	return s.String()
+}
+
+func (s *AlgorithmSpecCustomization) SetCodeDir(v bool) *AlgorithmSpecCustomization {
+	s.CodeDir = &v
+	return s
+}
+
 type Channel struct {
-	// A brief description for the channel.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of channel.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The properties of channel.
-	Properties []*ChannelProperty `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	// Indicates whethe the channels is required.
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	Description           *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                  *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties            []*ChannelProperty `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	Required              *bool              `json:"Required,omitempty" xml:"Required,omitempty"`
+	SupportedChannelTypes []*string          `json:"SupportedChannelTypes,omitempty" xml:"SupportedChannelTypes,omitempty" type:"Repeated"`
 }
 
 func (s Channel) String() string {
@@ -125,10 +211,13 @@ func (s *Channel) SetRequired(v bool) *Channel {
 	return s
 }
 
+func (s *Channel) SetSupportedChannelTypes(v []*string) *Channel {
+	s.SupportedChannelTypes = v
+	return s
+}
+
 type ChannelProperty struct {
-	// The key of the property.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the property.
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -150,17 +239,35 @@ func (s *ChannelProperty) SetValue(v string) *ChannelProperty {
 	return s
 }
 
+type GPUInfo struct {
+	Count *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	Type  *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GPUInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GPUInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GPUInfo) SetCount(v int64) *GPUInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *GPUInfo) SetType(v string) *GPUInfo {
+	s.Type = &v
+	return s
+}
+
 type HyperParameterDefinition struct {
-	// Default value for the parameter.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Description for the parameter.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Name of the parameter.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the parameter is required
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// Type of the parameter.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required     *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s HyperParameterDefinition) String() string {
@@ -196,37 +303,141 @@ func (s *HyperParameterDefinition) SetType(v string) *HyperParameterDefinition {
 	return s
 }
 
+type JobViewMetric struct {
+	CPUUsageRate      *string   `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	DiskReadRate      *string   `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string   `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUUsageRate      *string   `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
+	JobId             *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType           *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MemoryUsageRate   *string   `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	RequestCPU        *int32    `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int32    `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64    `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	ResourceGroupID   *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	TotalCPU          *int32    `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int32    `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64    `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s JobViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *JobViewMetric) SetCPUUsageRate(v string) *JobViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetDiskReadRate(v string) *JobViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetDiskWriteRate(v string) *JobViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetGPUUsageRate(v string) *JobViewMetric {
+	s.GPUUsageRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetJobId(v string) *JobViewMetric {
+	s.JobId = &v
+	return s
+}
+
+func (s *JobViewMetric) SetJobType(v string) *JobViewMetric {
+	s.JobType = &v
+	return s
+}
+
+func (s *JobViewMetric) SetMemoryUsageRate(v string) *JobViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetNetworkInputRate(v string) *JobViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetNetworkOutputRate(v string) *JobViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *JobViewMetric) SetNodeNames(v []*string) *JobViewMetric {
+	s.NodeNames = v
+	return s
+}
+
+func (s *JobViewMetric) SetRequestCPU(v int32) *JobViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *JobViewMetric) SetRequestGPU(v int32) *JobViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *JobViewMetric) SetRequestMemory(v int64) *JobViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *JobViewMetric) SetResourceGroupID(v string) *JobViewMetric {
+	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *JobViewMetric) SetTotalCPU(v int32) *JobViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *JobViewMetric) SetTotalGPU(v int32) *JobViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *JobViewMetric) SetTotalMemory(v int64) *JobViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *JobViewMetric) SetUserId(v string) *JobViewMetric {
+	s.UserId = &v
+	return s
+}
+
 type MachineGroup struct {
-	// 机器组创建者ID
-	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	// 资源数量
-	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	// ecs规格
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	// 创建时间
-	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// 过期时间
-	GmtExpiredTime *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	// 更新时间
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 启动时间
-	GmtStartedTime *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
-	// 机器组ID
-	MachineGroupID *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	// 持续时长
-	PaymentDuration *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// region ID
+	CreatorID           *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	EcsCount            *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec             *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	GmtCreatedTime      *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtExpiredTime      *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime     *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStartedTime      *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	MachineGroupID      *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	PaymentDuration     *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// 付费类型
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// 机器组错误码
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 机器组错误消息
-	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 资源组ID
-	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	// 机器组状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ReasonCode          *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage       *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceGroupID     *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s MachineGroup) String() string {
@@ -312,13 +523,33 @@ func (s *MachineGroup) SetStatus(v string) *MachineGroup {
 	return s
 }
 
+type Metric struct {
+	Time  *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s Metric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Metric) GoString() string {
+	return s.String()
+}
+
+func (s *Metric) SetTime(v int64) *Metric {
+	s.Time = &v
+	return s
+}
+
+func (s *Metric) SetValue(v string) *Metric {
+	s.Value = &v
+	return s
+}
+
 type MetricDefinition struct {
-	// A brief description for the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the metric.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Regex use to match the metrics from job log.
-	Regex *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Regex       *string `json:"Regex,omitempty" xml:"Regex,omitempty"`
 }
 
 func (s MetricDefinition) String() string {
@@ -344,21 +575,186 @@ func (s *MetricDefinition) SetRegex(v string) *MetricDefinition {
 	return s
 }
 
+type NodeMetric struct {
+	GPUType *string   `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	NodeID  *string   `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+}
+
+func (s NodeMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeMetric) GoString() string {
+	return s.String()
+}
+
+func (s *NodeMetric) SetGPUType(v string) *NodeMetric {
+	s.GPUType = &v
+	return s
+}
+
+func (s *NodeMetric) SetMetrics(v []*Metric) *NodeMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *NodeMetric) SetNodeID(v string) *NodeMetric {
+	s.NodeID = &v
+	return s
+}
+
+type NodeViewMetric struct {
+	CPUUsageRate      *string                `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	CreatedTime       *string                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DiskReadRate      *string                `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string                `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUType           *string                `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	MachineGroupID    *string                `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	MemoryUsageRate   *string                `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string                `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string                `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeID            *string                `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+	NodeStatus        *string                `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeType          *string                `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	RequestCPU        *int64                 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int64                 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64                 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	TaskIdMap         map[string]interface{} `json:"TaskIdMap,omitempty" xml:"TaskIdMap,omitempty"`
+	TotalCPU          *int64                 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int64                 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64                 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	TotalTasks        *int64                 `json:"TotalTasks,omitempty" xml:"TotalTasks,omitempty"`
+	UserIDs           []*string              `json:"UserIDs,omitempty" xml:"UserIDs,omitempty" type:"Repeated"`
+	UserNumber        *string                `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
+}
+
+func (s NodeViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *NodeViewMetric) SetCPUUsageRate(v string) *NodeViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetCreatedTime(v string) *NodeViewMetric {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetDiskReadRate(v string) *NodeViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetDiskWriteRate(v string) *NodeViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetGPUType(v string) *NodeViewMetric {
+	s.GPUType = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetMachineGroupID(v string) *NodeViewMetric {
+	s.MachineGroupID = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetMemoryUsageRate(v string) *NodeViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetNetworkInputRate(v string) *NodeViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetNetworkOutputRate(v string) *NodeViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetNodeID(v string) *NodeViewMetric {
+	s.NodeID = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetNodeStatus(v string) *NodeViewMetric {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetNodeType(v string) *NodeViewMetric {
+	s.NodeType = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetRequestCPU(v int64) *NodeViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetRequestGPU(v int64) *NodeViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetRequestMemory(v int64) *NodeViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetTaskIdMap(v map[string]interface{}) *NodeViewMetric {
+	s.TaskIdMap = v
+	return s
+}
+
+func (s *NodeViewMetric) SetTotalCPU(v int64) *NodeViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetTotalGPU(v int64) *NodeViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetTotalMemory(v int64) *NodeViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetTotalTasks(v int64) *NodeViewMetric {
+	s.TotalTasks = &v
+	return s
+}
+
+func (s *NodeViewMetric) SetUserIDs(v []*string) *NodeViewMetric {
+	s.UserIDs = v
+	return s
+}
+
+func (s *NodeViewMetric) SetUserNumber(v string) *NodeViewMetric {
+	s.UserNumber = &v
+	return s
+}
+
 type ResourceGroup struct {
-	// CreatorID
-	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	// pai resource created time
-	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// GmtModified
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// pai resource group name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// pai resource group id
-	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	// UserVpc
-	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	// pworkspace id
-	WorkspaceID *string `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
+	CreatorID       *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	GmtCreatedTime  *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceGroupID *string  `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	WorkspaceID     *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
 }
 
 func (s ResourceGroup) String() string {
@@ -404,15 +800,190 @@ func (s *ResourceGroup) SetWorkspaceID(v string) *ResourceGroup {
 	return s
 }
 
+type ResourceGroupMetric struct {
+	GpuType         *string   `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	Metrics         []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	ResourceGroupID *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+}
+
+func (s ResourceGroupMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceGroupMetric) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceGroupMetric) SetGpuType(v string) *ResourceGroupMetric {
+	s.GpuType = &v
+	return s
+}
+
+func (s *ResourceGroupMetric) SetMetrics(v []*Metric) *ResourceGroupMetric {
+	s.Metrics = v
+	return s
+}
+
+func (s *ResourceGroupMetric) SetResourceGroupID(v string) *ResourceGroupMetric {
+	s.ResourceGroupID = &v
+	return s
+}
+
+type UserViewMetric struct {
+	CPUNodeNumber     *int32    `json:"CPUNodeNumber,omitempty" xml:"CPUNodeNumber,omitempty"`
+	CPUUsageRate      *string   `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	CpuJobNames       []*string `json:"CpuJobNames,omitempty" xml:"CpuJobNames,omitempty" type:"Repeated"`
+	CpuNodeNames      []*string `json:"CpuNodeNames,omitempty" xml:"CpuNodeNames,omitempty" type:"Repeated"`
+	DiskReadRate      *string   `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string   `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUNodeNumber     *int32    `json:"GPUNodeNumber,omitempty" xml:"GPUNodeNumber,omitempty"`
+	GPUUsageRate      *string   `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
+	GpuJobNames       []*string `json:"GpuJobNames,omitempty" xml:"GpuJobNames,omitempty" type:"Repeated"`
+	GpuNodeNames      []*string `json:"GpuNodeNames,omitempty" xml:"GpuNodeNames,omitempty" type:"Repeated"`
+	JobType           *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MemoryUsageRate   *string   `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	RequestCPU        *int32    `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int32    `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64    `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	ResourceGroupId   *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TotalCPU          *int32    `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int32    `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64    `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s UserViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UserViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *UserViewMetric) SetCPUNodeNumber(v int32) *UserViewMetric {
+	s.CPUNodeNumber = &v
+	return s
+}
+
+func (s *UserViewMetric) SetCPUUsageRate(v string) *UserViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetCpuJobNames(v []*string) *UserViewMetric {
+	s.CpuJobNames = v
+	return s
+}
+
+func (s *UserViewMetric) SetCpuNodeNames(v []*string) *UserViewMetric {
+	s.CpuNodeNames = v
+	return s
+}
+
+func (s *UserViewMetric) SetDiskReadRate(v string) *UserViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetDiskWriteRate(v string) *UserViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetGPUNodeNumber(v int32) *UserViewMetric {
+	s.GPUNodeNumber = &v
+	return s
+}
+
+func (s *UserViewMetric) SetGPUUsageRate(v string) *UserViewMetric {
+	s.GPUUsageRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetGpuJobNames(v []*string) *UserViewMetric {
+	s.GpuJobNames = v
+	return s
+}
+
+func (s *UserViewMetric) SetGpuNodeNames(v []*string) *UserViewMetric {
+	s.GpuNodeNames = v
+	return s
+}
+
+func (s *UserViewMetric) SetJobType(v string) *UserViewMetric {
+	s.JobType = &v
+	return s
+}
+
+func (s *UserViewMetric) SetMemoryUsageRate(v string) *UserViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetNetworkInputRate(v string) *UserViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetNetworkOutputRate(v string) *UserViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *UserViewMetric) SetNodeNames(v []*string) *UserViewMetric {
+	s.NodeNames = v
+	return s
+}
+
+func (s *UserViewMetric) SetRequestCPU(v int32) *UserViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *UserViewMetric) SetRequestGPU(v int32) *UserViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *UserViewMetric) SetRequestMemory(v int64) *UserViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *UserViewMetric) SetResourceGroupId(v string) *UserViewMetric {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UserViewMetric) SetTotalCPU(v int32) *UserViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *UserViewMetric) SetTotalGPU(v int32) *UserViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *UserViewMetric) SetTotalMemory(v int64) *UserViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *UserViewMetric) SetUserId(v string) *UserViewMetric {
+	s.UserId = &v
+	return s
+}
+
 type UserVpc struct {
-	// ExtendedCIDRs
-	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	// SecurityGroupID
-	SecurityGroupID *string `json:"SecurityGroupID,omitempty" xml:"SecurityGroupID,omitempty"`
-	// VSW ID
-	SwitchID *string `json:"SwitchID,omitempty" xml:"SwitchID,omitempty"`
-	// VPC ID
-	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	RoleArn         *string   `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UserVpc) String() string {
@@ -428,18 +999,23 @@ func (s *UserVpc) SetExtendedCIDRs(v []*string) *UserVpc {
 	return s
 }
 
-func (s *UserVpc) SetSecurityGroupID(v string) *UserVpc {
-	s.SecurityGroupID = &v
+func (s *UserVpc) SetRoleArn(v string) *UserVpc {
+	s.RoleArn = &v
 	return s
 }
 
-func (s *UserVpc) SetSwitchID(v string) *UserVpc {
-	s.SwitchID = &v
+func (s *UserVpc) SetSecurityGroupId(v string) *UserVpc {
+	s.SecurityGroupId = &v
 	return s
 }
 
-func (s *UserVpc) SetVpcID(v string) *UserVpc {
-	s.VpcID = &v
+func (s *UserVpc) SetSwitchId(v string) *UserVpc {
+	s.SwitchId = &v
+	return s
+}
+
+func (s *UserVpc) SetVpcId(v string) *UserVpc {
+	s.VpcId = &v
 	return s
 }
 
@@ -474,8 +1050,7 @@ func (s *CreateAlgorithmRequest) SetWorkspaceId(v string) *CreateAlgorithmReques
 
 type CreateAlgorithmResponseBody struct {
 	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAlgorithmResponseBody) String() string {
@@ -612,8 +1187,9 @@ func (s *CreateAlgorithmVersionResponse) SetBody(v *CreateAlgorithmVersionRespon
 }
 
 type CreateResourceGroupRequest struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
 func (s CreateResourceGroupRequest) String() string {
@@ -634,8 +1210,12 @@ func (s *CreateResourceGroupRequest) SetName(v string) *CreateResourceGroupReque
 	return s
 }
 
+func (s *CreateResourceGroupRequest) SetUserVpc(v *UserVpc) *CreateResourceGroupRequest {
+	s.UserVpc = v
+	return s
+}
+
 type CreateResourceGroupResponseBody struct {
-	// Id of the request
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 }
@@ -690,7 +1270,9 @@ func (s *CreateResourceGroupResponse) SetBody(v *CreateResourceGroupResponseBody
 type CreateTrainingJobRequest struct {
 	AlgorithmName          *string                                    `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
 	AlgorithmProvider      *string                                    `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	AlgorithmSpec          *AlgorithmSpec                             `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
 	AlgorithmVersion       *string                                    `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	CodeDir                *CreateTrainingJobRequestCodeDir           `json:"CodeDir,omitempty" xml:"CodeDir,omitempty" type:"Struct"`
 	ComputeResource        *CreateTrainingJobRequestComputeResource   `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
 	HyperParameters        []*CreateTrainingJobRequestHyperParameters `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*CreateTrainingJobRequestInputChannels   `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
@@ -720,8 +1302,18 @@ func (s *CreateTrainingJobRequest) SetAlgorithmProvider(v string) *CreateTrainin
 	return s
 }
 
+func (s *CreateTrainingJobRequest) SetAlgorithmSpec(v *AlgorithmSpec) *CreateTrainingJobRequest {
+	s.AlgorithmSpec = v
+	return s
+}
+
 func (s *CreateTrainingJobRequest) SetAlgorithmVersion(v string) *CreateTrainingJobRequest {
 	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequest) SetCodeDir(v *CreateTrainingJobRequestCodeDir) *CreateTrainingJobRequest {
+	s.CodeDir = v
 	return s
 }
 
@@ -767,6 +1359,29 @@ func (s *CreateTrainingJobRequest) SetTrainingJobName(v string) *CreateTrainingJ
 
 func (s *CreateTrainingJobRequest) SetWorkspaceId(v string) *CreateTrainingJobRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+type CreateTrainingJobRequestCodeDir struct {
+	LocationType  *string                `json:"LocationType,omitempty" xml:"LocationType,omitempty"`
+	LocationValue map[string]interface{} `json:"LocationValue,omitempty" xml:"LocationValue,omitempty"`
+}
+
+func (s CreateTrainingJobRequestCodeDir) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrainingJobRequestCodeDir) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrainingJobRequestCodeDir) SetLocationType(v string) *CreateTrainingJobRequestCodeDir {
+	s.LocationType = &v
+	return s
+}
+
+func (s *CreateTrainingJobRequestCodeDir) SetLocationValue(v map[string]interface{}) *CreateTrainingJobRequestCodeDir {
+	s.LocationValue = v
 	return s
 }
 
@@ -1019,7 +1634,6 @@ func (s *DeleteMachineGroupResponse) SetBody(v *DeleteMachineGroupResponseBody) 
 }
 
 type DeleteResourceGroupResponseBody struct {
-	// Id of the request
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 }
@@ -1130,11 +1744,10 @@ type GetAlgorithmResponseBody struct {
 	AlgorithmProvider    *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
 	GmtCreateTime        *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime      *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetAlgorithmResponseBody) String() string {
@@ -1448,19 +2061,114 @@ func (s *GetMachineGroupResponse) SetBody(v *GetMachineGroupResponseBody) *GetMa
 	return s
 }
 
+type GetNodeMetricsRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GPUType   *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TimeStep  *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	Verbose   *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetNodeMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeMetricsRequest) SetEndTime(v string) *GetNodeMetricsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetNodeMetricsRequest) SetGPUType(v string) *GetNodeMetricsRequest {
+	s.GPUType = &v
+	return s
+}
+
+func (s *GetNodeMetricsRequest) SetStartTime(v string) *GetNodeMetricsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetNodeMetricsRequest) SetTimeStep(v string) *GetNodeMetricsRequest {
+	s.TimeStep = &v
+	return s
+}
+
+func (s *GetNodeMetricsRequest) SetVerbose(v bool) *GetNodeMetricsRequest {
+	s.Verbose = &v
+	return s
+}
+
+type GetNodeMetricsResponseBody struct {
+	MetricType      *string       `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	NodesMetrics    []*NodeMetric `json:"NodesMetrics,omitempty" xml:"NodesMetrics,omitempty" type:"Repeated"`
+	ResourceGroupID *string       `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+}
+
+func (s GetNodeMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeMetricsResponseBody) SetMetricType(v string) *GetNodeMetricsResponseBody {
+	s.MetricType = &v
+	return s
+}
+
+func (s *GetNodeMetricsResponseBody) SetNodesMetrics(v []*NodeMetric) *GetNodeMetricsResponseBody {
+	s.NodesMetrics = v
+	return s
+}
+
+func (s *GetNodeMetricsResponseBody) SetResourceGroupID(v string) *GetNodeMetricsResponseBody {
+	s.ResourceGroupID = &v
+	return s
+}
+
+type GetNodeMetricsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetNodeMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetNodeMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNodeMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetNodeMetricsResponse) SetHeaders(v map[string]*string) *GetNodeMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetNodeMetricsResponse) SetStatusCode(v int32) *GetNodeMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetNodeMetricsResponse) SetBody(v *GetNodeMetricsResponseBody) *GetNodeMetricsResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceGroupResponseBody struct {
-	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
-	// pai resource created time
-	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// pai resource group modified time
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// request id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// UserVpc
-	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
-	WorkspaceID *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
+	CreatorID       *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	GmtCreatedTime  *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	WorkspaceID     *string  `json:"WorkspaceID,omitempty" xml:"WorkspaceID,omitempty"`
 }
 
 func (s GetResourceGroupResponseBody) String() string {
@@ -1541,13 +2249,17 @@ func (s *GetResourceGroupResponse) SetBody(v *GetResourceGroupResponseBody) *Get
 }
 
 type GetResourceGroupMachineGroupResponseBody struct {
+	Cpu                 *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	EcsCount            *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
 	EcsSpec             *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
 	GmtCreatedTime      *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	GmtExpiredTime      *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
 	GmtModifiedTime     *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	GmtStartedTime      *string `json:"GmtStartedTime,omitempty" xml:"GmtStartedTime,omitempty"`
+	Gpu                 *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	GpuType             *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
 	MachineGroupID      *string `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory              *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	PaymentDuration     *string `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
 	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
@@ -1562,6 +2274,11 @@ func (s GetResourceGroupMachineGroupResponseBody) String() string {
 
 func (s GetResourceGroupMachineGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetCpu(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.Cpu = &v
+	return s
 }
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetEcsCount(v int64) *GetResourceGroupMachineGroupResponseBody {
@@ -1594,8 +2311,23 @@ func (s *GetResourceGroupMachineGroupResponseBody) SetGmtStartedTime(v string) *
 	return s
 }
 
+func (s *GetResourceGroupMachineGroupResponseBody) SetGpu(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.Gpu = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetGpuType(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.GpuType = &v
+	return s
+}
+
 func (s *GetResourceGroupMachineGroupResponseBody) SetMachineGroupID(v string) *GetResourceGroupMachineGroupResponseBody {
 	s.MachineGroupID = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetMemory(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.Memory = &v
 	return s
 }
 
@@ -1658,7 +2390,176 @@ func (s *GetResourceGroupMachineGroupResponse) SetBody(v *GetResourceGroupMachin
 	return s
 }
 
+type GetResourceGroupRequestRequest struct {
+	PodStatus       *string `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+}
+
+func (s GetResourceGroupRequestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupRequestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupRequestRequest) SetPodStatus(v string) *GetResourceGroupRequestRequest {
+	s.PodStatus = &v
+	return s
+}
+
+func (s *GetResourceGroupRequestRequest) SetResourceGroupID(v string) *GetResourceGroupRequestRequest {
+	s.ResourceGroupID = &v
+	return s
+}
+
+type GetResourceGroupRequestResponseBody struct {
+	RequestCPU      *int32     `json:"requestCPU,omitempty" xml:"requestCPU,omitempty"`
+	RequestGPU      *int32     `json:"requestGPU,omitempty" xml:"requestGPU,omitempty"`
+	RequestGPUInfos []*GPUInfo `json:"requestGPUInfos,omitempty" xml:"requestGPUInfos,omitempty" type:"Repeated"`
+	RequestMemory   *int32     `json:"requestMemory,omitempty" xml:"requestMemory,omitempty"`
+}
+
+func (s GetResourceGroupRequestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupRequestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupRequestResponseBody) SetRequestCPU(v int32) *GetResourceGroupRequestResponseBody {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *GetResourceGroupRequestResponseBody) SetRequestGPU(v int32) *GetResourceGroupRequestResponseBody {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *GetResourceGroupRequestResponseBody) SetRequestGPUInfos(v []*GPUInfo) *GetResourceGroupRequestResponseBody {
+	s.RequestGPUInfos = v
+	return s
+}
+
+func (s *GetResourceGroupRequestResponseBody) SetRequestMemory(v int32) *GetResourceGroupRequestResponseBody {
+	s.RequestMemory = &v
+	return s
+}
+
+type GetResourceGroupRequestResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceGroupRequestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceGroupRequestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupRequestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupRequestResponse) SetHeaders(v map[string]*string) *GetResourceGroupRequestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceGroupRequestResponse) SetStatusCode(v int32) *GetResourceGroupRequestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceGroupRequestResponse) SetBody(v *GetResourceGroupRequestResponseBody) *GetResourceGroupRequestResponse {
+	s.Body = v
+	return s
+}
+
+type GetResourceGroupTotalRequest struct {
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+}
+
+func (s GetResourceGroupTotalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupTotalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupTotalRequest) SetResourceGroupID(v string) *GetResourceGroupTotalRequest {
+	s.ResourceGroupID = &v
+	return s
+}
+
+type GetResourceGroupTotalResponseBody struct {
+	TotalCPU      *int32     `json:"totalCPU,omitempty" xml:"totalCPU,omitempty"`
+	TotalGPU      *int32     `json:"totalGPU,omitempty" xml:"totalGPU,omitempty"`
+	TotalGPUInfos []*GPUInfo `json:"totalGPUInfos,omitempty" xml:"totalGPUInfos,omitempty" type:"Repeated"`
+	TotalMemory   *int32     `json:"totalMemory,omitempty" xml:"totalMemory,omitempty"`
+}
+
+func (s GetResourceGroupTotalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupTotalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupTotalResponseBody) SetTotalCPU(v int32) *GetResourceGroupTotalResponseBody {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *GetResourceGroupTotalResponseBody) SetTotalGPU(v int32) *GetResourceGroupTotalResponseBody {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *GetResourceGroupTotalResponseBody) SetTotalGPUInfos(v []*GPUInfo) *GetResourceGroupTotalResponseBody {
+	s.TotalGPUInfos = v
+	return s
+}
+
+func (s *GetResourceGroupTotalResponseBody) SetTotalMemory(v int32) *GetResourceGroupTotalResponseBody {
+	s.TotalMemory = &v
+	return s
+}
+
+type GetResourceGroupTotalResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetResourceGroupTotalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetResourceGroupTotalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceGroupTotalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceGroupTotalResponse) SetHeaders(v map[string]*string) *GetResourceGroupTotalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceGroupTotalResponse) SetStatusCode(v int32) *GetResourceGroupTotalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceGroupTotalResponse) SetBody(v *GetResourceGroupTotalResponseBody) *GetResourceGroupTotalResponse {
+	s.Body = v
+	return s
+}
+
 type GetTrainingJobResponseBody struct {
+	AlgorithmId            *string                                        `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
 	AlgorithmName          *string                                        `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
 	AlgorithmProvider      *string                                        `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
 	AlgorithmVersion       *string                                        `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
@@ -1667,6 +2568,7 @@ type GetTrainingJobResponseBody struct {
 	GmtModifiedTime        *string                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	HyperParameters        []*GetTrainingJobResponseBodyHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
 	InputChannels          []*GetTrainingJobResponseBodyInputChannels     `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	Instances              []*GetTrainingJobResponseBodyInstances         `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	Labels                 []*GetTrainingJobResponseBodyLabels            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestMetrics          []*GetTrainingJobResponseBodyLatestMetrics     `json:"LatestMetrics,omitempty" xml:"LatestMetrics,omitempty" type:"Repeated"`
 	OutputChannels         []*GetTrainingJobResponseBodyOutputChannels    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
@@ -1679,6 +2581,7 @@ type GetTrainingJobResponseBody struct {
 	TrainingJobDescription *string                                        `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
 	TrainingJobId          *string                                        `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
 	TrainingJobName        *string                                        `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	TrainingJobUrl         *string                                        `json:"TrainingJobUrl,omitempty" xml:"TrainingJobUrl,omitempty"`
 	UserId                 *string                                        `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId            *string                                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -1689,6 +2592,11 @@ func (s GetTrainingJobResponseBody) String() string {
 
 func (s GetTrainingJobResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetTrainingJobResponseBody) SetAlgorithmId(v string) *GetTrainingJobResponseBody {
+	s.AlgorithmId = &v
+	return s
 }
 
 func (s *GetTrainingJobResponseBody) SetAlgorithmName(v string) *GetTrainingJobResponseBody {
@@ -1728,6 +2636,11 @@ func (s *GetTrainingJobResponseBody) SetHyperParameters(v []*GetTrainingJobRespo
 
 func (s *GetTrainingJobResponseBody) SetInputChannels(v []*GetTrainingJobResponseBodyInputChannels) *GetTrainingJobResponseBody {
 	s.InputChannels = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetInstances(v []*GetTrainingJobResponseBodyInstances) *GetTrainingJobResponseBody {
+	s.Instances = v
 	return s
 }
 
@@ -1788,6 +2701,11 @@ func (s *GetTrainingJobResponseBody) SetTrainingJobId(v string) *GetTrainingJobR
 
 func (s *GetTrainingJobResponseBody) SetTrainingJobName(v string) *GetTrainingJobResponseBody {
 	s.TrainingJobName = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBody) SetTrainingJobUrl(v string) *GetTrainingJobResponseBody {
+	s.TrainingJobUrl = &v
 	return s
 }
 
@@ -1873,6 +2791,35 @@ func (s *GetTrainingJobResponseBodyInputChannels) SetInputUri(v string) *GetTrai
 
 func (s *GetTrainingJobResponseBodyInputChannels) SetName(v string) *GetTrainingJobResponseBodyInputChannels {
 	s.Name = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyInstances struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Role   *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyInstances) SetName(v string) *GetTrainingJobResponseBodyInstances {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyInstances) SetRole(v string) *GetTrainingJobResponseBodyInstances {
+	s.Role = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyInstances) SetStatus(v string) *GetTrainingJobResponseBodyInstances {
+	s.Status = &v
 	return s
 }
 
@@ -2040,6 +2987,123 @@ func (s *GetTrainingJobResponse) SetStatusCode(v int32) *GetTrainingJobResponse 
 }
 
 func (s *GetTrainingJobResponse) SetBody(v *GetTrainingJobResponseBody) *GetTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserViewMetricsRequest struct {
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TimeStep    *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetUserViewMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserViewMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserViewMetricsRequest) SetOrder(v string) *GetUserViewMetricsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetPageNumber(v string) *GetUserViewMetricsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetPageSize(v string) *GetUserViewMetricsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetSortBy(v string) *GetUserViewMetricsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetTimeStep(v string) *GetUserViewMetricsRequest {
+	s.TimeStep = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetUserId(v string) *GetUserViewMetricsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetUserViewMetricsRequest) SetWorkspaceId(v string) *GetUserViewMetricsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetUserViewMetricsResponseBody struct {
+	ResourceGroupId *string           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Summary         *UserViewMetric   `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Total           *int32            `json:"Total,omitempty" xml:"Total,omitempty"`
+	UserMetrics     []*UserViewMetric `json:"UserMetrics,omitempty" xml:"UserMetrics,omitempty" type:"Repeated"`
+}
+
+func (s GetUserViewMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserViewMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserViewMetricsResponseBody) SetResourceGroupId(v string) *GetUserViewMetricsResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetUserViewMetricsResponseBody) SetSummary(v *UserViewMetric) *GetUserViewMetricsResponseBody {
+	s.Summary = v
+	return s
+}
+
+func (s *GetUserViewMetricsResponseBody) SetTotal(v int32) *GetUserViewMetricsResponseBody {
+	s.Total = &v
+	return s
+}
+
+func (s *GetUserViewMetricsResponseBody) SetUserMetrics(v []*UserViewMetric) *GetUserViewMetricsResponseBody {
+	s.UserMetrics = v
+	return s
+}
+
+type GetUserViewMetricsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserViewMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserViewMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserViewMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserViewMetricsResponse) SetHeaders(v map[string]*string) *GetUserViewMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserViewMetricsResponse) SetStatusCode(v int32) *GetUserViewMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserViewMetricsResponse) SetBody(v *GetUserViewMetricsResponseBody) *GetUserViewMetricsResponse {
 	s.Body = v
 	return s
 }
@@ -2232,9 +3296,9 @@ func (s *ListAlgorithmsRequest) SetWorkspaceId(v string) *ListAlgorithmsRequest 
 }
 
 type ListAlgorithmsResponseBody struct {
-	Algorithms  []*ListAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotoalCount *int64                                  `json:"TotoalCount,omitempty" xml:"TotoalCount,omitempty"`
+	Algorithms []*ListAlgorithmsResponseBodyAlgorithms `json:"Algorithms,omitempty" xml:"Algorithms,omitempty" type:"Repeated"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAlgorithmsResponseBody) String() string {
@@ -2255,8 +3319,8 @@ func (s *ListAlgorithmsResponseBody) SetRequestId(v string) *ListAlgorithmsRespo
 	return s
 }
 
-func (s *ListAlgorithmsResponseBody) SetTotoalCount(v int64) *ListAlgorithmsResponseBody {
-	s.TotoalCount = &v
+func (s *ListAlgorithmsResponseBody) SetTotalCount(v int64) *ListAlgorithmsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2484,18 +3548,13 @@ func (s *ListResourceGroupMachineGroupsResponse) SetBody(v *ListResourceGroupMac
 }
 
 type ListResourceGroupsRequest struct {
-	// pai resource group display name
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 排序顺序, 枚举值 desc 或者 asc
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 分页数
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 页面容量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 用于排序的字段名，可选字段名：DisplayName, GmtCreated, GmtModified,RegionID Duration PricingCycle PayType
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// resource group的状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ShowAll    *bool   `json:"ShowAll,omitempty" xml:"ShowAll,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -2526,6 +3585,11 @@ func (s *ListResourceGroupsRequest) SetPageSize(v int64) *ListResourceGroupsRequ
 	return s
 }
 
+func (s *ListResourceGroupsRequest) SetShowAll(v bool) *ListResourceGroupsRequest {
+	s.ShowAll = &v
+	return s
+}
+
 func (s *ListResourceGroupsRequest) SetSortBy(v string) *ListResourceGroupsRequest {
 	s.SortBy = &v
 	return s
@@ -2537,12 +3601,9 @@ func (s *ListResourceGroupsRequest) SetStatus(v string) *ListResourceGroupsReque
 }
 
 type ListResourceGroupsResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// pai resource groups
+	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroups []*ResourceGroup `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// list到的资源组的数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount     *int64           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceGroupsResponseBody) String() string {
@@ -2598,13 +3659,11 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 }
 
 type ListTrainingJobLogsRequest struct {
-	// 截止UTC时间，格式 iso8601，假如为空是当前时间
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 起始UTC时间，格式 iso8601，假如为空是任务开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	WorkerId  *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	WorkerId   *string `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
 }
 
 func (s ListTrainingJobLogsRequest) String() string {
@@ -2641,12 +3700,9 @@ func (s *ListTrainingJobLogsRequest) SetWorkerId(v string) *ListTrainingJobLogsR
 }
 
 type ListTrainingJobLogsResponseBody struct {
-	// 日志列表
-	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的日志数量
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Logs       []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTrainingJobLogsResponseBody) String() string {
@@ -2702,18 +3758,12 @@ func (s *ListTrainingJobLogsResponse) SetBody(v *ListTrainingJobLogsResponseBody
 }
 
 type ListTrainingJobMetricsRequest struct {
-	// 截止UTC时间，格式 iso8601，假如为空是当前时间
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 分页，从1开始，默认1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Metrics的时间顺序，有ASC和DESC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 每页返回的日志数量
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页返回的日志数量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 起始UTC时间，格式 iso8601，假如为空是任务开始时间
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListTrainingJobMetricsRequest) String() string {
@@ -2755,10 +3805,8 @@ func (s *ListTrainingJobMetricsRequest) SetStartTime(v string) *ListTrainingJobM
 }
 
 type ListTrainingJobMetricsResponseBody struct {
-	// 符合过滤条件的Metrics数量
-	Metrics []*ListTrainingJobMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Metrics   []*ListTrainingJobMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListTrainingJobMetricsResponseBody) String() string {
@@ -2780,7 +3828,6 @@ func (s *ListTrainingJobMetricsResponseBody) SetRequestId(v string) *ListTrainin
 }
 
 type ListTrainingJobMetricsResponseBodyMetrics struct {
-	// Metrics名称
 	Name      *string  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Timestamp *string  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	Value     *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2834,6 +3881,932 @@ func (s *ListTrainingJobMetricsResponse) SetStatusCode(v int32) *ListTrainingJob
 }
 
 func (s *ListTrainingJobMetricsResponse) SetBody(v *ListTrainingJobMetricsResponseBody) *ListTrainingJobMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTrainingJobsRequest struct {
+	AlgorithmName     *string                `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	AlgorithmProvider *string                `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	EndTime           *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsTempAlgo        *bool                  `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
+	Labels            map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Order             *string                `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber        *int64                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy            *string                `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime         *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status            *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrainingJobId     *string                `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	TrainingJobName   *string                `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	WorkspaceId       *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTrainingJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsRequest) SetAlgorithmName(v string) *ListTrainingJobsRequest {
+	s.AlgorithmName = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetAlgorithmProvider(v string) *ListTrainingJobsRequest {
+	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetEndTime(v string) *ListTrainingJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetIsTempAlgo(v bool) *ListTrainingJobsRequest {
+	s.IsTempAlgo = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetLabels(v map[string]interface{}) *ListTrainingJobsRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetOrder(v string) *ListTrainingJobsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetPageNumber(v int64) *ListTrainingJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetPageSize(v int64) *ListTrainingJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetSortBy(v string) *ListTrainingJobsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetStartTime(v string) *ListTrainingJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetStatus(v string) *ListTrainingJobsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetTrainingJobId(v string) *ListTrainingJobsRequest {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetTrainingJobName(v string) *ListTrainingJobsRequest {
+	s.TrainingJobName = &v
+	return s
+}
+
+func (s *ListTrainingJobsRequest) SetWorkspaceId(v string) *ListTrainingJobsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTrainingJobsShrinkRequest struct {
+	AlgorithmName     *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsTempAlgo        *bool   `json:"IsTempAlgo,omitempty" xml:"IsTempAlgo,omitempty"`
+	LabelsShrink      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber        *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrainingJobId     *string `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	TrainingJobName   *string `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTrainingJobsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetAlgorithmName(v string) *ListTrainingJobsShrinkRequest {
+	s.AlgorithmName = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetAlgorithmProvider(v string) *ListTrainingJobsShrinkRequest {
+	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetEndTime(v string) *ListTrainingJobsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetIsTempAlgo(v bool) *ListTrainingJobsShrinkRequest {
+	s.IsTempAlgo = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetLabelsShrink(v string) *ListTrainingJobsShrinkRequest {
+	s.LabelsShrink = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetOrder(v string) *ListTrainingJobsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetPageNumber(v int64) *ListTrainingJobsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetPageSize(v int64) *ListTrainingJobsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetSortBy(v string) *ListTrainingJobsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetStartTime(v string) *ListTrainingJobsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetStatus(v string) *ListTrainingJobsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetTrainingJobId(v string) *ListTrainingJobsShrinkRequest {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetTrainingJobName(v string) *ListTrainingJobsShrinkRequest {
+	s.TrainingJobName = &v
+	return s
+}
+
+func (s *ListTrainingJobsShrinkRequest) SetWorkspaceId(v string) *ListTrainingJobsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTrainingJobsResponseBody struct {
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TrainingJobs []*ListTrainingJobsResponseBodyTrainingJobs `json:"TrainingJobs,omitempty" xml:"TrainingJobs,omitempty" type:"Repeated"`
+}
+
+func (s ListTrainingJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBody) SetRequestId(v string) *ListTrainingJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBody) SetTotalCount(v int64) *ListTrainingJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBody) SetTrainingJobs(v []*ListTrainingJobsResponseBodyTrainingJobs) *ListTrainingJobsResponseBody {
+	s.TrainingJobs = v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobs struct {
+	AlgorithmName          *string                                                      `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
+	AlgorithmProvider      *string                                                      `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
+	AlgorithmVersion       *string                                                      `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	ComputeResource        *ListTrainingJobsResponseBodyTrainingJobsComputeResource     `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	GmtCreateTime          *string                                                      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime        *string                                                      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HyperParameters        []*ListTrainingJobsResponseBodyTrainingJobsHyperParameters   `json:"HyperParameters,omitempty" xml:"HyperParameters,omitempty" type:"Repeated"`
+	InputChannels          []*ListTrainingJobsResponseBodyTrainingJobsInputChannels     `json:"InputChannels,omitempty" xml:"InputChannels,omitempty" type:"Repeated"`
+	Labels                 []*ListTrainingJobsResponseBodyTrainingJobsLabels            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	OutputChannels         []*ListTrainingJobsResponseBodyTrainingJobsOutputChannels    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	ReasonCode             *string                                                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage          *string                                                      `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	Scheduler              *ListTrainingJobsResponseBodyTrainingJobsScheduler           `json:"Scheduler,omitempty" xml:"Scheduler,omitempty" type:"Struct"`
+	Status                 *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusTransitions      []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions `json:"StatusTransitions,omitempty" xml:"StatusTransitions,omitempty" type:"Repeated"`
+	TrainingJobDescription *string                                                      `json:"TrainingJobDescription,omitempty" xml:"TrainingJobDescription,omitempty"`
+	TrainingJobId          *string                                                      `json:"TrainingJobId,omitempty" xml:"TrainingJobId,omitempty"`
+	TrainingJobName        *string                                                      `json:"TrainingJobName,omitempty" xml:"TrainingJobName,omitempty"`
+	UserId                 *string                                                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId            *string                                                      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmName(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.AlgorithmName = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmProvider(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.AlgorithmProvider = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetAlgorithmVersion(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.AlgorithmVersion = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetComputeResource(v *ListTrainingJobsResponseBodyTrainingJobsComputeResource) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.ComputeResource = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetGmtCreateTime(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetGmtModifiedTime(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetHyperParameters(v []*ListTrainingJobsResponseBodyTrainingJobsHyperParameters) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.HyperParameters = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetInputChannels(v []*ListTrainingJobsResponseBodyTrainingJobsInputChannels) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.InputChannels = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetLabels(v []*ListTrainingJobsResponseBodyTrainingJobsLabels) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.Labels = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetOutputChannels(v []*ListTrainingJobsResponseBodyTrainingJobsOutputChannels) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.OutputChannels = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetReasonCode(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetReasonMessage(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetScheduler(v *ListTrainingJobsResponseBodyTrainingJobsScheduler) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.Scheduler = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetStatus(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetStatusTransitions(v []*ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.StatusTransitions = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetTrainingJobDescription(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.TrainingJobDescription = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetTrainingJobId(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.TrainingJobId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetTrainingJobName(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.TrainingJobName = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetUserId(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobs) SetWorkspaceId(v string) *ListTrainingJobsResponseBodyTrainingJobs {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsComputeResource struct {
+	EcsCount *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec  *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsComputeResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsComputeResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetEcsCount(v int64) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
+	s.EcsCount = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetEcsSpec(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
+	s.EcsSpec = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsHyperParameters struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsHyperParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsHyperParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsHyperParameters) SetName(v string) *ListTrainingJobsResponseBodyTrainingJobsHyperParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsHyperParameters) SetValue(v string) *ListTrainingJobsResponseBodyTrainingJobsHyperParameters {
+	s.Value = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsInputChannels struct {
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	InputUri  *string `json:"InputUri,omitempty" xml:"InputUri,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsInputChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsInputChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetDatasetId(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetInputUri(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
+	s.InputUri = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsInputChannels) SetName(v string) *ListTrainingJobsResponseBodyTrainingJobsInputChannels {
+	s.Name = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsLabels) SetKey(v string) *ListTrainingJobsResponseBodyTrainingJobsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsLabels) SetValue(v string) *ListTrainingJobsResponseBodyTrainingJobsLabels {
+	s.Value = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsOutputChannels struct {
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OutputUri *string `json:"OutputUri,omitempty" xml:"OutputUri,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsOutputChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsOutputChannels) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetDatasetId(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetName(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsOutputChannels) SetOutputUri(v string) *ListTrainingJobsResponseBodyTrainingJobsOutputChannels {
+	s.OutputUri = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsScheduler struct {
+	MaxRunningTimeInSeconds *int64 `json:"MaxRunningTimeInSeconds,omitempty" xml:"MaxRunningTimeInSeconds,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsScheduler) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsScheduler) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsScheduler) SetMaxRunningTimeInSeconds(v int64) *ListTrainingJobsResponseBodyTrainingJobsScheduler {
+	s.MaxRunningTimeInSeconds = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsStatusTransitions struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ReasonCode    *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetEndTime(v string) *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetReasonCode(v string) *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetReasonMessage(v string) *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetStartTime(v string) *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions) SetStatus(v string) *ListTrainingJobsResponseBodyTrainingJobsStatusTransitions {
+	s.Status = &v
+	return s
+}
+
+type ListTrainingJobsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTrainingJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTrainingJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponse) SetHeaders(v map[string]*string) *ListTrainingJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTrainingJobsResponse) SetStatusCode(v int32) *ListTrainingJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponse) SetBody(v *ListTrainingJobsResponseBody) *ListTrainingJobsResponse {
+	s.Body = v
+	return s
+}
+
+type StopTrainingJobResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopTrainingJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrainingJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrainingJobResponseBody) SetRequestId(v string) *StopTrainingJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopTrainingJobResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopTrainingJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopTrainingJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrainingJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrainingJobResponse) SetHeaders(v map[string]*string) *StopTrainingJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTrainingJobResponse) SetStatusCode(v int32) *StopTrainingJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTrainingJobResponse) SetBody(v *StopTrainingJobResponseBody) *StopTrainingJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAlgorithmRequest struct {
+	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
+}
+
+func (s UpdateAlgorithmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmRequest) SetAlgorithmDescription(v string) *UpdateAlgorithmRequest {
+	s.AlgorithmDescription = &v
+	return s
+}
+
+type UpdateAlgorithmResponseBody struct {
+	AlgorithmId *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAlgorithmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmResponseBody) SetAlgorithmId(v string) *UpdateAlgorithmResponseBody {
+	s.AlgorithmId = &v
+	return s
+}
+
+func (s *UpdateAlgorithmResponseBody) SetRequestId(v string) *UpdateAlgorithmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAlgorithmResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAlgorithmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAlgorithmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmResponse) SetHeaders(v map[string]*string) *UpdateAlgorithmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlgorithmResponse) SetStatusCode(v int32) *UpdateAlgorithmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlgorithmResponse) SetBody(v *UpdateAlgorithmResponseBody) *UpdateAlgorithmResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAlgorithmVersionRequest struct {
+	AlgorithmSpec *AlgorithmSpec `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
+}
+
+func (s UpdateAlgorithmVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmVersionRequest) SetAlgorithmSpec(v *AlgorithmSpec) *UpdateAlgorithmVersionRequest {
+	s.AlgorithmSpec = v
+	return s
+}
+
+type UpdateAlgorithmVersionShrinkRequest struct {
+	AlgorithmSpecShrink *string `json:"AlgorithmSpec,omitempty" xml:"AlgorithmSpec,omitempty"`
+}
+
+func (s UpdateAlgorithmVersionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmVersionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmVersionShrinkRequest) SetAlgorithmSpecShrink(v string) *UpdateAlgorithmVersionShrinkRequest {
+	s.AlgorithmSpecShrink = &v
+	return s
+}
+
+type UpdateAlgorithmVersionResponseBody struct {
+	AlgorithmId      *string `json:"AlgorithmId,omitempty" xml:"AlgorithmId,omitempty"`
+	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+}
+
+func (s UpdateAlgorithmVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmVersionResponseBody) SetAlgorithmId(v string) *UpdateAlgorithmVersionResponseBody {
+	s.AlgorithmId = &v
+	return s
+}
+
+func (s *UpdateAlgorithmVersionResponseBody) SetAlgorithmVersion(v string) *UpdateAlgorithmVersionResponseBody {
+	s.AlgorithmVersion = &v
+	return s
+}
+
+type UpdateAlgorithmVersionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAlgorithmVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAlgorithmVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAlgorithmVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAlgorithmVersionResponse) SetHeaders(v map[string]*string) *UpdateAlgorithmVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAlgorithmVersionResponse) SetStatusCode(v int32) *UpdateAlgorithmVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAlgorithmVersionResponse) SetBody(v *UpdateAlgorithmVersionResponseBody) *UpdateAlgorithmVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateResourceGroupRequest struct {
+	Unbind  *bool    `json:"Unbind,omitempty" xml:"Unbind,omitempty"`
+	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+}
+
+func (s UpdateResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupRequest) SetUnbind(v bool) *UpdateResourceGroupRequest {
+	s.Unbind = &v
+	return s
+}
+
+func (s *UpdateResourceGroupRequest) SetUserVpc(v *UserVpc) *UpdateResourceGroupRequest {
+	s.UserVpc = v
+	return s
+}
+
+type UpdateResourceGroupResponseBody struct {
+	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdateResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupResponseBody) SetResourceGroupID(v string) *UpdateResourceGroupResponseBody {
+	s.ResourceGroupID = &v
+	return s
+}
+
+func (s *UpdateResourceGroupResponseBody) SetRequestId(v string) *UpdateResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceGroupResponse) SetHeaders(v map[string]*string) *UpdateResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceGroupResponse) SetStatusCode(v int32) *UpdateResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourceGroupResponse) SetBody(v *UpdateResourceGroupResponseBody) *UpdateResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTrainingJobLabelsRequest struct {
+	Labels []*UpdateTrainingJobLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateTrainingJobLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrainingJobLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrainingJobLabelsRequest) SetLabels(v []*UpdateTrainingJobLabelsRequestLabels) *UpdateTrainingJobLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateTrainingJobLabelsRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTrainingJobLabelsRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrainingJobLabelsRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrainingJobLabelsRequestLabels) SetKey(v string) *UpdateTrainingJobLabelsRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateTrainingJobLabelsRequestLabels) SetValue(v string) *UpdateTrainingJobLabelsRequestLabels {
+	s.Value = &v
+	return s
+}
+
+type UpdateTrainingJobLabelsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTrainingJobLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrainingJobLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrainingJobLabelsResponseBody) SetRequestId(v string) *UpdateTrainingJobLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTrainingJobLabelsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTrainingJobLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTrainingJobLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrainingJobLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrainingJobLabelsResponse) SetHeaders(v map[string]*string) *UpdateTrainingJobLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrainingJobLabelsResponse) SetStatusCode(v int32) *UpdateTrainingJobLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTrainingJobLabelsResponse) SetBody(v *UpdateTrainingJobLabelsResponseBody) *UpdateTrainingJobLabelsResponse {
 	s.Body = v
 	return s
 }
@@ -2903,18 +4876,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateAlgorithm(request *CreateAlgorithmRequest) (_result *CreateAlgorithmResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateAlgorithmResponse{}
-	_body, _err := client.CreateAlgorithmWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateAlgorithmWithOptions(request *CreateAlgorithmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAlgorithmResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2957,11 +4918,11 @@ func (client *Client) CreateAlgorithmWithOptions(request *CreateAlgorithmRequest
 	return _result, _err
 }
 
-func (client *Client) CreateAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string, request *CreateAlgorithmVersionRequest) (_result *CreateAlgorithmVersionResponse, _err error) {
+func (client *Client) CreateAlgorithm(request *CreateAlgorithmRequest) (_result *CreateAlgorithmResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateAlgorithmVersionResponse{}
-	_body, _err := client.CreateAlgorithmVersionWithOptions(AlgorithmId, AlgorithmVersion, request, headers, runtime)
+	_result = &CreateAlgorithmResponse{}
+	_body, _err := client.CreateAlgorithmWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2974,12 +4935,10 @@ func (client *Client) CreateAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 	if _err != nil {
 		return _result, _err
 	}
-	AlgorithmId = openapiutil.GetEncodeParam(AlgorithmId)
-	AlgorithmVersion = openapiutil.GetEncodeParam(AlgorithmVersion)
 	request := &CreateAlgorithmVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AlgorithmSpec))) {
-		request.AlgorithmSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AlgorithmSpec), tea.String("AlgorithmSpec"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlgorithmSpec)) {
+		request.AlgorithmSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlgorithmSpec, tea.String("AlgorithmSpec"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -2995,7 +4954,7 @@ func (client *Client) CreateAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 		Action:      tea.String("CreateAlgorithmVersion"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(AlgorithmId) + "/versions/" + tea.StringValue(AlgorithmVersion)),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmVersion))),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3011,11 +4970,11 @@ func (client *Client) CreateAlgorithmVersionWithOptions(AlgorithmId *string, Alg
 	return _result, _err
 }
 
-func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (_result *CreateResourceGroupResponse, _err error) {
+func (client *Client) CreateAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string, request *CreateAlgorithmVersionRequest) (_result *CreateAlgorithmVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateResourceGroupResponse{}
-	_body, _err := client.CreateResourceGroupWithOptions(request, headers, runtime)
+	_result = &CreateAlgorithmVersionResponse{}
+	_body, _err := client.CreateAlgorithmVersionWithOptions(AlgorithmId, AlgorithmVersion, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3035,6 +4994,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
+		body["UserVpc"] = request.UserVpc
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3061,11 +5024,11 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 	return _result, _err
 }
 
-func (client *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (_result *CreateTrainingJobResponse, _err error) {
+func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (_result *CreateResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateTrainingJobResponse{}
-	_body, _err := client.CreateTrainingJobWithOptions(request, headers, runtime)
+	_result = &CreateResourceGroupResponse{}
+	_body, _err := client.CreateResourceGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3087,11 +5050,19 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 		body["AlgorithmProvider"] = request.AlgorithmProvider
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmSpec)) {
+		body["AlgorithmSpec"] = request.AlgorithmSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AlgorithmVersion)) {
 		body["AlgorithmVersion"] = request.AlgorithmVersion
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ComputeResource))) {
+	if !tea.BoolValue(util.IsUnset(request.CodeDir)) {
+		body["CodeDir"] = request.CodeDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComputeResource)) {
 		body["ComputeResource"] = request.ComputeResource
 	}
 
@@ -3111,7 +5082,7 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 		body["OutputChannels"] = request.OutputChannels
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.Scheduler))) {
+	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
 		body["Scheduler"] = request.Scheduler
 	}
 
@@ -3151,6 +5122,42 @@ func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobReq
 	return _result, _err
 }
 
+func (client *Client) CreateTrainingJob(request *CreateTrainingJobRequest) (_result *CreateTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrainingJobResponse{}
+	_body, _err := client.CreateTrainingJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMachineGroupWithOptions(MachineGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMachineGroupResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMachineGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resources/machinegroups/" + tea.StringValue(openapiutil.GetEncodeParam(MachineGroupID))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMachineGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteMachineGroup(MachineGroupID *string) (_result *DeleteMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3163,23 +5170,22 @@ func (client *Client) DeleteMachineGroup(MachineGroupID *string) (_result *Delet
 	return _result, _err
 }
 
-func (client *Client) DeleteMachineGroupWithOptions(MachineGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMachineGroupResponse, _err error) {
-	MachineGroupID = openapiutil.GetEncodeParam(MachineGroupID)
+func (client *Client) DeleteResourceGroupWithOptions(ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteMachineGroup"),
+		Action:      tea.String("DeleteResourceGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/machinegroups/" + tea.StringValue(MachineGroupID)),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteMachineGroupResponse{}
+	_result = &DeleteResourceGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3200,23 +5206,22 @@ func (client *Client) DeleteResourceGroup(ResourceGroupID *string) (_result *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceGroupWithOptions(ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceGroupResponse, _err error) {
-	ResourceGroupID = openapiutil.GetEncodeParam(ResourceGroupID)
+func (client *Client) DeleteResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceGroupMachineGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteResourceGroup"),
+		Action:      tea.String("DeleteResourceGroupMachineGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(ResourceGroupID)),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID)) + "/machinegroups/" + tea.StringValue(openapiutil.GetEncodeParam(MachineGroupID))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceGroupResponse{}
+	_result = &DeleteResourceGroupMachineGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3237,24 +5242,22 @@ func (client *Client) DeleteResourceGroupMachineGroup(MachineGroupID *string, Re
 	return _result, _err
 }
 
-func (client *Client) DeleteResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceGroupMachineGroupResponse, _err error) {
-	MachineGroupID = openapiutil.GetEncodeParam(MachineGroupID)
-	ResourceGroupID = openapiutil.GetEncodeParam(ResourceGroupID)
+func (client *Client) GetAlgorithmWithOptions(AlgorithmId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlgorithmResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeleteResourceGroupMachineGroup"),
+		Action:      tea.String("GetAlgorithm"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(ResourceGroupID) + "/machinegroups/" + tea.StringValue(MachineGroupID)),
-		Method:      tea.String("DELETE"),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId))),
+		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteResourceGroupMachineGroupResponse{}
+	_result = &GetAlgorithmResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3275,23 +5278,22 @@ func (client *Client) GetAlgorithm(AlgorithmId *string) (_result *GetAlgorithmRe
 	return _result, _err
 }
 
-func (client *Client) GetAlgorithmWithOptions(AlgorithmId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlgorithmResponse, _err error) {
-	AlgorithmId = openapiutil.GetEncodeParam(AlgorithmId)
+func (client *Client) GetAlgorithmVersionWithOptions(AlgorithmId *string, AlgorithmVersion *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlgorithmVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetAlgorithm"),
+		Action:      tea.String("GetAlgorithmVersion"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(AlgorithmId)),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmVersion))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAlgorithmResponse{}
+	_result = &GetAlgorithmVersionResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3312,24 +5314,22 @@ func (client *Client) GetAlgorithmVersion(AlgorithmId *string, AlgorithmVersion 
 	return _result, _err
 }
 
-func (client *Client) GetAlgorithmVersionWithOptions(AlgorithmId *string, AlgorithmVersion *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAlgorithmVersionResponse, _err error) {
-	AlgorithmId = openapiutil.GetEncodeParam(AlgorithmId)
-	AlgorithmVersion = openapiutil.GetEncodeParam(AlgorithmVersion)
+func (client *Client) GetMachineGroupWithOptions(MachineGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetAlgorithmVersion"),
+		Action:      tea.String("GetMachineGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(AlgorithmId) + "/versions/" + tea.StringValue(AlgorithmVersion)),
+		Pathname:    tea.String("/api/v1/resources/machinegroups/" + tea.StringValue(openapiutil.GetEncodeParam(MachineGroupID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAlgorithmVersionResponse{}
+	_result = &GetMachineGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3350,23 +5350,84 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 	return _result, _err
 }
 
-func (client *Client) GetMachineGroupWithOptions(MachineGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
-	MachineGroupID = openapiutil.GetEncodeParam(MachineGroupID)
+func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricType *string, request *GetNodeMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GPUType)) {
+		query["GPUType"] = request.GPUType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStep)) {
+		query["TimeStep"] = request.TimeStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetMachineGroup"),
+		Action:      tea.String("GetNodeMetrics"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/machinegroups/" + tea.StringValue(MachineGroupID)),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID)) + "/nodemetrics/" + tea.StringValue(openapiutil.GetEncodeParam(MetricType))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMachineGroupResponse{}
+	_result = &GetNodeMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string, request *GetNodeMetricsRequest) (_result *GetNodeMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetNodeMetricsResponse{}
+	_body, _err := client.GetNodeMetricsWithOptions(ResourceGroupID, MetricType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3387,23 +5448,22 @@ func (client *Client) GetResourceGroup(ResourceGroupID *string) (_result *GetRes
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
-	ResourceGroupID = openapiutil.GetEncodeParam(ResourceGroupID)
+func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupMachineGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetResourceGroup"),
+		Action:      tea.String("GetResourceGroupMachineGroup"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(ResourceGroupID)),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID)) + "/machinegroups/" + tea.StringValue(openapiutil.GetEncodeParam(MachineGroupID))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceGroupResponse{}
+	_result = &GetResourceGroupMachineGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3424,24 +5484,118 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 	return _result, _err
 }
 
-func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupMachineGroupResponse, _err error) {
-	MachineGroupID = openapiutil.GetEncodeParam(MachineGroupID)
-	ResourceGroupID = openapiutil.GetEncodeParam(ResourceGroupID)
+func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGroupRequestRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupRequestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PodStatus)) {
+		query["PodStatus"] = request.PodStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupID)) {
+		query["ResourceGroupID"] = request.ResourceGroupID
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetResourceGroupMachineGroup"),
+		Action:      tea.String("GetResourceGroupRequest"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(ResourceGroupID) + "/machinegroups/" + tea.StringValue(MachineGroupID)),
+		Pathname:    tea.String("/api/v1/resources/data/request"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceGroupMachineGroupResponse{}
+	_result = &GetResourceGroupRequestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupRequest(request *GetResourceGroupRequestRequest) (_result *GetResourceGroupRequestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceGroupRequestResponse{}
+	_body, _err := client.GetResourceGroupRequestWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupTotalWithOptions(request *GetResourceGroupTotalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupTotalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupID)) {
+		query["ResourceGroupID"] = request.ResourceGroupID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceGroupTotal"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resources/data/total"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceGroupTotalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetResourceGroupTotal(request *GetResourceGroupTotalRequest) (_result *GetResourceGroupTotalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceGroupTotalResponse{}
+	_body, _err := client.GetResourceGroupTotalWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTrainingJobWithOptions(TrainingJobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrainingJobResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrainingJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(openapiutil.GetEncodeParam(TrainingJobId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrainingJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3462,23 +5616,56 @@ func (client *Client) GetTrainingJob(TrainingJobId *string) (_result *GetTrainin
 	return _result, _err
 }
 
-func (client *Client) GetTrainingJobWithOptions(TrainingJobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrainingJobResponse, _err error) {
-	TrainingJobId = openapiutil.GetEncodeParam(TrainingJobId)
+func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, request *GetUserViewMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserViewMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStep)) {
+		query["TimeStep"] = request.TimeStep
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetTrainingJob"),
+		Action:      tea.String("GetUserViewMetrics"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(TrainingJobId)),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID)) + "/usermetrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTrainingJobResponse{}
+	_result = &GetUserViewMetricsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3487,11 +5674,11 @@ func (client *Client) GetTrainingJobWithOptions(TrainingJobId *string, headers m
 	return _result, _err
 }
 
-func (client *Client) ListAlgorithmVersions(AlgorithmId *string, request *ListAlgorithmVersionsRequest) (_result *ListAlgorithmVersionsResponse, _err error) {
+func (client *Client) GetUserViewMetrics(ResourceGroupID *string, request *GetUserViewMetricsRequest) (_result *GetUserViewMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAlgorithmVersionsResponse{}
-	_body, _err := client.ListAlgorithmVersionsWithOptions(AlgorithmId, request, headers, runtime)
+	_result = &GetUserViewMetricsResponse{}
+	_body, _err := client.GetUserViewMetricsWithOptions(ResourceGroupID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3504,7 +5691,6 @@ func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	AlgorithmId = openapiutil.GetEncodeParam(AlgorithmId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
@@ -3522,7 +5708,7 @@ func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, requ
 		Action:      tea.String("ListAlgorithmVersions"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(AlgorithmId) + "/versions"),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId)) + "/versions"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3538,11 +5724,11 @@ func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, requ
 	return _result, _err
 }
 
-func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *ListAlgorithmsResponse, _err error) {
+func (client *Client) ListAlgorithmVersions(AlgorithmId *string, request *ListAlgorithmVersionsRequest) (_result *ListAlgorithmVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAlgorithmsResponse{}
-	_body, _err := client.ListAlgorithmsWithOptions(request, headers, runtime)
+	_result = &ListAlgorithmVersionsResponse{}
+	_body, _err := client.ListAlgorithmVersionsWithOptions(AlgorithmId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3604,11 +5790,11 @@ func (client *Client) ListAlgorithmsWithOptions(request *ListAlgorithmsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListResourceGroupMachineGroups(ResourceGroupID *string, request *ListResourceGroupMachineGroupsRequest) (_result *ListResourceGroupMachineGroupsResponse, _err error) {
+func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *ListAlgorithmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceGroupMachineGroupsResponse{}
-	_body, _err := client.ListResourceGroupMachineGroupsWithOptions(ResourceGroupID, request, headers, runtime)
+	_result = &ListAlgorithmsResponse{}
+	_body, _err := client.ListAlgorithmsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3621,7 +5807,6 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 	if _err != nil {
 		return _result, _err
 	}
-	ResourceGroupID = openapiutil.GetEncodeParam(ResourceGroupID)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreatorID)) {
 		query["CreatorID"] = request.CreatorID
@@ -3675,7 +5860,7 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 		Action:      tea.String("ListResourceGroupMachineGroups"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(ResourceGroupID) + "/machinegroups"),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID)) + "/machinegroups"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3691,11 +5876,11 @@ func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID 
 	return _result, _err
 }
 
-func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_result *ListResourceGroupsResponse, _err error) {
+func (client *Client) ListResourceGroupMachineGroups(ResourceGroupID *string, request *ListResourceGroupMachineGroupsRequest) (_result *ListResourceGroupMachineGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourceGroupsResponse{}
-	_body, _err := client.ListResourceGroupsWithOptions(request, headers, runtime)
+	_result = &ListResourceGroupMachineGroupsResponse{}
+	_body, _err := client.ListResourceGroupMachineGroupsWithOptions(ResourceGroupID, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3723,6 +5908,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowAll)) {
+		query["ShowAll"] = request.ShowAll
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -3757,11 +5946,11 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 	return _result, _err
 }
 
-func (client *Client) ListTrainingJobLogs(TrainingJobId *string, request *ListTrainingJobLogsRequest) (_result *ListTrainingJobLogsResponse, _err error) {
+func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_result *ListResourceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTrainingJobLogsResponse{}
-	_body, _err := client.ListTrainingJobLogsWithOptions(TrainingJobId, request, headers, runtime)
+	_result = &ListResourceGroupsResponse{}
+	_body, _err := client.ListResourceGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3774,7 +5963,6 @@ func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, requ
 	if _err != nil {
 		return _result, _err
 	}
-	TrainingJobId = openapiutil.GetEncodeParam(TrainingJobId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -3804,7 +5992,7 @@ func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, requ
 		Action:      tea.String("ListTrainingJobLogs"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(TrainingJobId) + "/logs"),
+		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(openapiutil.GetEncodeParam(TrainingJobId)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3820,11 +6008,11 @@ func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, requ
 	return _result, _err
 }
 
-func (client *Client) ListTrainingJobMetrics(TrainingJobId *string, request *ListTrainingJobMetricsRequest) (_result *ListTrainingJobMetricsResponse, _err error) {
+func (client *Client) ListTrainingJobLogs(TrainingJobId *string, request *ListTrainingJobLogsRequest) (_result *ListTrainingJobLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTrainingJobMetricsResponse{}
-	_body, _err := client.ListTrainingJobMetricsWithOptions(TrainingJobId, request, headers, runtime)
+	_result = &ListTrainingJobLogsResponse{}
+	_body, _err := client.ListTrainingJobLogsWithOptions(TrainingJobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3837,7 +6025,6 @@ func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	TrainingJobId = openapiutil.GetEncodeParam(TrainingJobId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
@@ -3871,7 +6058,7 @@ func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, r
 		Action:      tea.String("ListTrainingJobMetrics"),
 		Version:     tea.String("2022-01-12"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(TrainingJobId) + "/metrics"),
+		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(openapiutil.GetEncodeParam(TrainingJobId)) + "/metrics"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3884,5 +6071,351 @@ func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, r
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTrainingJobMetrics(TrainingJobId *string, request *ListTrainingJobMetricsRequest) (_result *ListTrainingJobMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrainingJobMetricsResponse{}
+	_body, _err := client.ListTrainingJobMetricsWithOptions(TrainingJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTrainingJobsWithOptions(tmpReq *ListTrainingJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrainingJobsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTrainingJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Labels)) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmName)) {
+		query["AlgorithmName"] = request.AlgorithmName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmProvider)) {
+		query["AlgorithmProvider"] = request.AlgorithmProvider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsTempAlgo)) {
+		query["IsTempAlgo"] = request.IsTempAlgo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
+		query["Labels"] = request.LabelsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingJobId)) {
+		query["TrainingJobId"] = request.TrainingJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingJobName)) {
+		query["TrainingJobName"] = request.TrainingJobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrainingJobs"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trainingjobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTrainingJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_result *ListTrainingJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrainingJobsResponse{}
+	_body, _err := client.ListTrainingJobsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopTrainingJobWithOptions(TrainingJobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTrainingJobResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTrainingJob"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(openapiutil.GetEncodeParam(TrainingJobId)) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTrainingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopTrainingJob(TrainingJobId *string) (_result *StopTrainingJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopTrainingJobResponse{}
+	_body, _err := client.StopTrainingJobWithOptions(TrainingJobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAlgorithmWithOptions(AlgorithmId *string, request *UpdateAlgorithmRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlgorithmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmDescription)) {
+		body["AlgorithmDescription"] = request.AlgorithmDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlgorithm"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlgorithmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlgorithm(AlgorithmId *string, request *UpdateAlgorithmRequest) (_result *UpdateAlgorithmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlgorithmResponse{}
+	_body, _err := client.UpdateAlgorithmWithOptions(AlgorithmId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAlgorithmVersionWithOptions(AlgorithmId *string, AlgorithmVersion *string, tmpReq *UpdateAlgorithmVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAlgorithmVersionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAlgorithmVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlgorithmSpec)) {
+		request.AlgorithmSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlgorithmSpec, tea.String("AlgorithmSpec"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlgorithmSpecShrink)) {
+		body["AlgorithmSpec"] = request.AlgorithmSpecShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlgorithmVersion"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/algorithms/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmId)) + "/versions/" + tea.StringValue(openapiutil.GetEncodeParam(AlgorithmVersion))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAlgorithmVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAlgorithmVersion(AlgorithmId *string, AlgorithmVersion *string, request *UpdateAlgorithmVersionRequest) (_result *UpdateAlgorithmVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAlgorithmVersionResponse{}
+	_body, _err := client.UpdateAlgorithmVersionWithOptions(AlgorithmId, AlgorithmVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceGroupWithOptions(ResourceGroupID *string, request *UpdateResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Unbind)) {
+		body["Unbind"] = request.Unbind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserVpc)) {
+		body["UserVpc"] = request.UserVpc
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceGroup"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceGroupID))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateResourceGroup(ResourceGroupID *string, request *UpdateResourceGroupRequest) (_result *UpdateResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceGroupResponse{}
+	_body, _err := client.UpdateResourceGroupWithOptions(ResourceGroupID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTrainingJobLabelsWithOptions(TrainingJobId *string, request *UpdateTrainingJobLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTrainingJobLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrainingJobLabels"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trainingjobs/" + tea.StringValue(openapiutil.GetEncodeParam(TrainingJobId)) + "/labels"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTrainingJobLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTrainingJobLabels(TrainingJobId *string, request *UpdateTrainingJobLabelsRequest) (_result *UpdateTrainingJobLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTrainingJobLabelsResponse{}
+	_body, _err := client.UpdateTrainingJobLabelsWithOptions(TrainingJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
