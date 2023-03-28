@@ -200,8 +200,9 @@ func (s *CreateClusterRequestComponentsComponentConfig) SetNodeUnits(v []interfa
 }
 
 type CreateClusterRequestNetworks struct {
-	NewVpdInfo *CreateClusterRequestNetworksNewVpdInfo `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
-	VpdInfo    *CreateClusterRequestNetworksVpdInfo    `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
+	IpAllocationPolicy []*CreateClusterRequestNetworksIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
+	NewVpdInfo         *CreateClusterRequestNetworksNewVpdInfo           `json:"NewVpdInfo,omitempty" xml:"NewVpdInfo,omitempty" type:"Struct"`
+	VpdInfo            *CreateClusterRequestNetworksVpdInfo              `json:"VpdInfo,omitempty" xml:"VpdInfo,omitempty" type:"Struct"`
 }
 
 func (s CreateClusterRequestNetworks) String() string {
@@ -212,6 +213,11 @@ func (s CreateClusterRequestNetworks) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterRequestNetworks) SetIpAllocationPolicy(v []*CreateClusterRequestNetworksIpAllocationPolicy) *CreateClusterRequestNetworks {
+	s.IpAllocationPolicy = v
+	return s
+}
+
 func (s *CreateClusterRequestNetworks) SetNewVpdInfo(v *CreateClusterRequestNetworksNewVpdInfo) *CreateClusterRequestNetworks {
 	s.NewVpdInfo = v
 	return s
@@ -219,6 +225,173 @@ func (s *CreateClusterRequestNetworks) SetNewVpdInfo(v *CreateClusterRequestNetw
 
 func (s *CreateClusterRequestNetworks) SetVpdInfo(v *CreateClusterRequestNetworksVpdInfo) *CreateClusterRequestNetworks {
 	s.VpdInfo = v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicy struct {
+	BondPolicy        *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy          `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	MachineTypePolicy []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy `json:"MachineTypePolicy,omitempty" xml:"MachineTypePolicy,omitempty" type:"Repeated"`
+	NodePolicy        []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicy        `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicy) SetBondPolicy(v *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) *CreateClusterRequestNetworksIpAllocationPolicy {
+	s.BondPolicy = v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicy) SetMachineTypePolicy(v []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) *CreateClusterRequestNetworksIpAllocationPolicy {
+	s.MachineTypePolicy = v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicy) SetNodePolicy(v []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) *CreateClusterRequestNetworksIpAllocationPolicy {
+	s.NodePolicy = v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyBondPolicy struct {
+	BondDefaultSubnet *string                                                          `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
+	Bonds             []*CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) SetBondDefaultSubnet(v string) *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy {
+	s.BondDefaultSubnet = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy) SetBonds(v []*CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) *CreateClusterRequestNetworksIpAllocationPolicyBondPolicy {
+	s.Bonds = v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) SetName(v string) *CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds) SetSubnet(v string) *CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds {
+	s.Subnet = &v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy struct {
+	Bonds       []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	MachineType *string                                                                 `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) SetBonds(v []*CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy {
+	s.Bonds = v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy) SetMachineType(v string) *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy {
+	s.MachineType = &v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) SetName(v string) *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds) SetSubnet(v string) *CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds {
+	s.Subnet = &v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyNodePolicy struct {
+	Bonds  []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	NodeId *string                                                          `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) SetBonds(v []*CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy {
+	s.Bonds = v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy) SetNodeId(v string) *CreateClusterRequestNetworksIpAllocationPolicyNodePolicy {
+	s.NodeId = &v
+	return s
+}
+
+type CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) SetName(v string) *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds) SetSubnet(v string) *CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds {
+	s.Subnet = &v
 	return s
 }
 
@@ -1400,10 +1573,11 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type ExtendClusterRequest struct {
-	ClusterId             *string                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	IgnoreFailedNodeTasks *bool                             `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodeGroups            []*ExtendClusterRequestNodeGroups `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	VpdSubnets            []*string                         `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
+	ClusterId             *string                                   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	IgnoreFailedNodeTasks *bool                                     `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	IpAllocationPolicy    []*ExtendClusterRequestIpAllocationPolicy `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty" type:"Repeated"`
+	NodeGroups            []*ExtendClusterRequestNodeGroups         `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
+	VpdSubnets            []*string                                 `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty" type:"Repeated"`
 }
 
 func (s ExtendClusterRequest) String() string {
@@ -1424,6 +1598,11 @@ func (s *ExtendClusterRequest) SetIgnoreFailedNodeTasks(v bool) *ExtendClusterRe
 	return s
 }
 
+func (s *ExtendClusterRequest) SetIpAllocationPolicy(v []*ExtendClusterRequestIpAllocationPolicy) *ExtendClusterRequest {
+	s.IpAllocationPolicy = v
+	return s
+}
+
 func (s *ExtendClusterRequest) SetNodeGroups(v []*ExtendClusterRequestNodeGroups) *ExtendClusterRequest {
 	s.NodeGroups = v
 	return s
@@ -1431,6 +1610,173 @@ func (s *ExtendClusterRequest) SetNodeGroups(v []*ExtendClusterRequestNodeGroups
 
 func (s *ExtendClusterRequest) SetVpdSubnets(v []*string) *ExtendClusterRequest {
 	s.VpdSubnets = v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicy struct {
+	BondPolicy        *ExtendClusterRequestIpAllocationPolicyBondPolicy          `json:"BondPolicy,omitempty" xml:"BondPolicy,omitempty" type:"Struct"`
+	MachineTypePolicy []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicy `json:"MachineTypePolicy,omitempty" xml:"MachineTypePolicy,omitempty" type:"Repeated"`
+	NodePolicy        []*ExtendClusterRequestIpAllocationPolicyNodePolicy        `json:"NodePolicy,omitempty" xml:"NodePolicy,omitempty" type:"Repeated"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicy) SetBondPolicy(v *ExtendClusterRequestIpAllocationPolicyBondPolicy) *ExtendClusterRequestIpAllocationPolicy {
+	s.BondPolicy = v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicy) SetMachineTypePolicy(v []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) *ExtendClusterRequestIpAllocationPolicy {
+	s.MachineTypePolicy = v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicy) SetNodePolicy(v []*ExtendClusterRequestIpAllocationPolicyNodePolicy) *ExtendClusterRequestIpAllocationPolicy {
+	s.NodePolicy = v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyBondPolicy struct {
+	BondDefaultSubnet *string                                                  `json:"BondDefaultSubnet,omitempty" xml:"BondDefaultSubnet,omitempty"`
+	Bonds             []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyBondPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyBondPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) SetBondDefaultSubnet(v string) *ExtendClusterRequestIpAllocationPolicyBondPolicy {
+	s.BondDefaultSubnet = &v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyBondPolicy) SetBonds(v []*ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) *ExtendClusterRequestIpAllocationPolicyBondPolicy {
+	s.Bonds = v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyBondPolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) SetName(v string) *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds) SetSubnet(v string) *ExtendClusterRequestIpAllocationPolicyBondPolicyBonds {
+	s.Subnet = &v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyMachineTypePolicy struct {
+	Bonds       []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	MachineType *string                                                         `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) SetBonds(v []*ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy {
+	s.Bonds = v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy) SetMachineType(v string) *ExtendClusterRequestIpAllocationPolicyMachineTypePolicy {
+	s.MachineType = &v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetName(v string) *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetSubnet(v string) *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds {
+	s.Subnet = &v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
+	Bonds  []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	NodeId *string                                                  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyNodePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyNodePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetBonds(v []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) *ExtendClusterRequestIpAllocationPolicyNodePolicy {
+	s.Bonds = v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetNodeId(v string) *ExtendClusterRequestIpAllocationPolicyNodePolicy {
+	s.NodeId = &v
+	return s
+}
+
+type ExtendClusterRequestIpAllocationPolicyNodePolicyBonds struct {
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Subnet *string `json:"Subnet,omitempty" xml:"Subnet,omitempty"`
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetName(v string) *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds {
+	s.Name = &v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v string) *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds {
+	s.Subnet = &v
 	return s
 }
 
@@ -1487,10 +1833,11 @@ func (s *ExtendClusterRequestNodeGroupsNodes) SetNodeId(v string) *ExtendCluster
 }
 
 type ExtendClusterShrinkRequest struct {
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	IgnoreFailedNodeTasks *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
-	NodeGroupsShrink      *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
-	VpdSubnetsShrink      *string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty"`
+	ClusterId                *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	IgnoreFailedNodeTasks    *bool   `json:"IgnoreFailedNodeTasks,omitempty" xml:"IgnoreFailedNodeTasks,omitempty"`
+	IpAllocationPolicyShrink *string `json:"IpAllocationPolicy,omitempty" xml:"IpAllocationPolicy,omitempty"`
+	NodeGroupsShrink         *string `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty"`
+	VpdSubnetsShrink         *string `json:"VpdSubnets,omitempty" xml:"VpdSubnets,omitempty"`
 }
 
 func (s ExtendClusterShrinkRequest) String() string {
@@ -1508,6 +1855,11 @@ func (s *ExtendClusterShrinkRequest) SetClusterId(v string) *ExtendClusterShrink
 
 func (s *ExtendClusterShrinkRequest) SetIgnoreFailedNodeTasks(v bool) *ExtendClusterShrinkRequest {
 	s.IgnoreFailedNodeTasks = &v
+	return s
+}
+
+func (s *ExtendClusterShrinkRequest) SetIpAllocationPolicyShrink(v string) *ExtendClusterShrinkRequest {
+	s.IpAllocationPolicyShrink = &v
 	return s
 }
 
@@ -3321,6 +3673,10 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 	}
 	request := &ExtendClusterShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpAllocationPolicy)) {
+		request.IpAllocationPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpAllocationPolicy, tea.String("IpAllocationPolicy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.NodeGroups)) {
 		request.NodeGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeGroups, tea.String("NodeGroups"), tea.String("json"))
 	}
@@ -3336,6 +3692,10 @@ func (client *Client) ExtendClusterWithOptions(tmpReq *ExtendClusterRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.IgnoreFailedNodeTasks)) {
 		body["IgnoreFailedNodeTasks"] = request.IgnoreFailedNodeTasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpAllocationPolicyShrink)) {
+		body["IpAllocationPolicy"] = request.IpAllocationPolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeGroupsShrink)) {
