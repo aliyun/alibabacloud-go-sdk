@@ -1569,6 +1569,7 @@ type CreateARMServerInstancesRequest struct {
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NameSpace    *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
 	PayType      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Period       *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodUnit   *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
@@ -1616,6 +1617,11 @@ func (s *CreateARMServerInstancesRequest) SetInstanceType(v string) *CreateARMSe
 
 func (s *CreateARMServerInstancesRequest) SetKeyPairName(v string) *CreateARMServerInstancesRequest {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetNameSpace(v string) *CreateARMServerInstancesRequest {
+	s.NameSpace = &v
 	return s
 }
 
@@ -6103,6 +6109,7 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	CreationTime *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	EnsRegionId  *string                                                      `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	ExpiredTime  *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	Namespace    *string                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ServerId     *string                                                      `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	SpecName     *string                                                      `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 	State        *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
@@ -6134,6 +6141,11 @@ func (s *DescribeARMServerInstancesResponseBodyServers) SetEnsRegionId(v string)
 
 func (s *DescribeARMServerInstancesResponseBodyServers) SetExpiredTime(v string) *DescribeARMServerInstancesResponseBodyServers {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetNamespace(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.Namespace = &v
 	return s
 }
 
@@ -29738,6 +29750,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
 		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameSpace)) {
+		query["NameSpace"] = request.NameSpace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
