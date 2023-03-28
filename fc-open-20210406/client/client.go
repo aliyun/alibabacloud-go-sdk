@@ -567,7 +567,8 @@ func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQPar
 }
 
 type HTTPTriggerConfig struct {
-	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AuthType   *string `json:"authType,omitempty" xml:"authType,omitempty"`
 	// 禁用默认公网域名访问的开关，设置为true 时，访问函数默认提供的公网URL地址会返回403错误。设置为 false 则不会有任何影响。
 	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
 	Methods            []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
@@ -579,6 +580,11 @@ func (s HTTPTriggerConfig) String() string {
 
 func (s HTTPTriggerConfig) GoString() string {
 	return s.String()
+}
+
+func (s *HTTPTriggerConfig) SetAuthConfig(v string) *HTTPTriggerConfig {
+	s.AuthConfig = &v
+	return s
 }
 
 func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
@@ -616,6 +622,47 @@ func (s *InstanceLifecycleConfig) SetPreFreeze(v *LifecycleHook) *InstanceLifecy
 
 func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycleConfig {
 	s.PreStop = v
+	return s
+}
+
+type JWTAuthConfig struct {
+	BlackList   *string   `json:"blackList,omitempty" xml:"blackList,omitempty"`
+	ClaimPassBy []*string `json:"claimPassBy,omitempty" xml:"claimPassBy,omitempty" type:"Repeated"`
+	Jwks        *string   `json:"jwks,omitempty" xml:"jwks,omitempty"`
+	TokenLookup []*string `json:"tokenLookup,omitempty" xml:"tokenLookup,omitempty" type:"Repeated"`
+	WhiteList   []*string `json:"whiteList,omitempty" xml:"whiteList,omitempty" type:"Repeated"`
+}
+
+func (s JWTAuthConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JWTAuthConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JWTAuthConfig) SetBlackList(v string) *JWTAuthConfig {
+	s.BlackList = &v
+	return s
+}
+
+func (s *JWTAuthConfig) SetClaimPassBy(v []*string) *JWTAuthConfig {
+	s.ClaimPassBy = v
+	return s
+}
+
+func (s *JWTAuthConfig) SetJwks(v string) *JWTAuthConfig {
+	s.Jwks = &v
+	return s
+}
+
+func (s *JWTAuthConfig) SetTokenLookup(v []*string) *JWTAuthConfig {
+	s.TokenLookup = v
+	return s
+}
+
+func (s *JWTAuthConfig) SetWhiteList(v []*string) *JWTAuthConfig {
+	s.WhiteList = v
 	return s
 }
 
@@ -1525,8 +1572,8 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 }
 
 type RoutePolicy struct {
-	Condition   []byte      `json:"condition,omitempty" xml:"condition,omitempty"`
-	PolicyItems *PolicyItem `json:"policyItems,omitempty" xml:"policyItems,omitempty"`
+	Condition   []byte        `json:"condition,omitempty" xml:"condition,omitempty"`
+	PolicyItems []*PolicyItem `json:"policyItems,omitempty" xml:"policyItems,omitempty" type:"Repeated"`
 }
 
 func (s RoutePolicy) String() string {
@@ -1542,7 +1589,7 @@ func (s *RoutePolicy) SetCondition(v []byte) *RoutePolicy {
 	return s
 }
 
-func (s *RoutePolicy) SetPolicyItems(v *PolicyItem) *RoutePolicy {
+func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
 	s.PolicyItems = v
 	return s
 }
@@ -2574,8 +2621,7 @@ func (s *CreateCustomDomainHeaders) SetXFcTraceId(v string) *CreateCustomDomainH
 type CreateCustomDomainRequest struct {
 	// The configurations of the HTTPS certificate.
 	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	// The domain name.
-	// Enter a custom domain name that has obtained an ICP filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+	// The domain name. Enter a custom domain name that has obtained an ICP filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
@@ -2799,7 +2845,7 @@ type CreateFunctionRequest struct {
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	// The custom Domain Name System (DNS) configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	// The configurations of the custom runtime.
 	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
@@ -2811,36 +2857,39 @@ type CreateFunctionRequest struct {
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	// The name of the function. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 64 characters in length.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. For more information, see [Initializer functions](~~157704~~).
+	// The handler of the Initializer hook. For more information, see [Initializer hook](~~157704~~).
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The number of requests that can be concurrently processed by a single instance.
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+	// *   **g1**: same as **fc.gpu.tesla.1**
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// An array that consists of the information of layers.
+	// The information about layers.
 	//
-	// >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the function is terminated.
+	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
@@ -2972,9 +3021,9 @@ type CreateFunctionResponseBody struct {
 	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	// The CRC-64 value of the function code package.
 	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package that is returned by the system. Unit: byte.
+	// The size of the function code package that is returned by the system. Unit: bytes.
 	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// The number of vCPUs of the function. The value must be a multiple of 0.05.
+	// The number of vCPUs of the function. The value is a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	// The time when the function was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
@@ -2990,42 +3039,45 @@ type CreateFunctionResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The unique ID generated by the system for the function.
+	// The unique ID that is generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+	// The GPU memory capacity for the function. Unit: MB. The value is a multiple of 1,024.
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When this period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. The format is determined by the programming language.
+	// The handler of the Initializer hook. The format is determined by the programming language.
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The number of requests that can be concurrently processed by a single instance.
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+	// *   **g1**: same as **fc.gpu.tesla.1**
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// An array that consists of the information of layers.
 	//
-	// >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB.
+	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -3387,7 +3439,7 @@ type CreateServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -3426,8 +3478,8 @@ type CreateServiceRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to allow functions to access the Internet. Valid values:
 	//
-	// - **true**: allows functions in the specified service to access the Internet. Default value: true.
-	// - **false**: does not allow functions in the specified service to access the Internet.
+	// *   **true**: allows functions to access the Internet. This is the default value.
+	// *   **false**: does not allow functions to access the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The log configuration. Function Compute writes function execution logs to the specified Logstore.
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
@@ -3440,9 +3492,9 @@ type CreateServiceRequest struct {
 	// *   Sends function execution logs to your Logstore.
 	// *   Generates a token for a function to access other cloud resources during function execution.
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The name of the service. The name contains only letters, digits, hyphens (-), and underscores (_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
+	// The name of the service. The name can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with a digit or hyphen (-). It must be 1 to 128 characters in length.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The configurations of Tracing Analysis. After Function Compute is integrated with Tracing Analysis, you can record the duration of a request in Function Compute, view the cold start time of a function, and record the execution duration of a function. For more information, see [Tracing Analysis](~~189804~~).
+	// The configuration of Tracing Analysis. After Function Compute is integrated with Tracing Analysis, you can record the duration of a request in Function Compute, view the cold start time of a function, and record the execution duration of a function. For more information, see [Tracing Analysis](~~189804~~).
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
 	// The VPC configurations. The configurations allow functions in the specified service to access the specified VPC.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
@@ -3680,13 +3732,13 @@ type CreateTriggerRequest struct {
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
-	// *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-	// *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-	// *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-	// *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
-	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-	// *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+	// * OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+	// * Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+	// * Time trigger: [TimeTriggerConfig](~~struct:LogTriggerConfig~~).
+	// * HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
+	// * Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
+	// * Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+	// * MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
@@ -5170,7 +5222,7 @@ type GetFunctionResponseBody struct {
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
 	CustomContainerConfig *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom Domain Name System (DNS) configurations of the function.
+	// The custom DNS configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
@@ -5180,13 +5232,14 @@ type GetFunctionResponseBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	// The ID that is generated by the system for the function. Each function ID is unique in Function Compute.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
+	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. For more information, see [Function handler](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
@@ -5197,25 +5250,35 @@ type GetFunctionResponseBody struct {
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
+	// *   **g1**: same fc.gpu.tesla.1
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// An array that consists of the information of layers.
+	// The list of layers (ARN V1 version).
 	//
-	// >  Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
-	Layers      []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript. >
+	//
+	// **
+	//
+	// **Warning:** This parameter is to be deprecated. Use layersArnV2.
+	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	// The list of layers (ARN V2 version).
+	//
+	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
 	LayersArnV2 []*string `json:"layersArnV2,omitempty" xml:"layersArnV2,omitempty" type:"Repeated"`
 	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom** and **custom-container**.
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom**, and **custom-container**.
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -5674,9 +5737,9 @@ type GetFunctionOnDemandConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API, which is also the unique ID of the request.
+	// The unique ID of the trace.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -5709,7 +5772,7 @@ func (s *GetFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *GetFunctionO
 }
 
 type GetFunctionOnDemandConfigRequest struct {
-	// The alias of the service or LATEST.
+	// Service alias or LATEST. Other versions are not supported.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6459,13 +6522,13 @@ type GetTriggerResponseBody struct {
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
-	// *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-	// *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-	// *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-	// *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+	// *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+	// *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+	// *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-	// *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// The unique ID of the trigger.
 	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
@@ -7469,7 +7532,7 @@ type ListFunctionsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
+	// The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -7506,7 +7569,7 @@ func (s *ListFunctionsHeaders) SetXFcTraceId(v string) *ListFunctionsHeaders {
 type ListFunctionsRequest struct {
 	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The prefix that the names of returned resources must contain.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
@@ -7583,7 +7646,7 @@ type ListFunctionsResponseBodyFunctions struct {
 	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function was created.
+	// The time when the function is created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The configurations of the custom container runtime.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
@@ -7593,13 +7656,13 @@ type ListFunctionsResponseBodyFunctions struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
+	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
 	// The unique ID that is generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// GPU instance memory specifications of the function. Unit: MB. The value is a multiple of 1024.
+	// The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
@@ -7611,21 +7674,23 @@ type ListFunctionsResponseBodyFunctions struct {
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long term to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
-	// The value must be less than or equal to that of **instanceConcurrency**.
+	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
 	// The instance type of the function. Valid values:
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
+	// *   **g1**: same fc.gpu.tesla.1
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// An array that consists of the information of layers.
 	//
-	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript.
+	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
@@ -8813,7 +8878,7 @@ type ListServicesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -8848,7 +8913,7 @@ func (s *ListServicesHeaders) SetXFcTraceId(v string) *ListServicesHeaders {
 }
 
 type ListServicesRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned configurations is less than or equal to the specified number.
+	// The maximum number of resources to return. Default value: 20. The value cannot exceed 100. The number of returned configurations is less than or equal to the specified number.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The starting position of the query. If this parameter is left empty, the query starts from the beginning. You do not need to specify this parameter in the first query. If the number of asynchronous tasks exceeds the limit, the nextToken parameter is returned, the value of which can be used in subsequent calls to obtain more results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -8919,7 +8984,7 @@ type ListServicesResponseBodyServices struct {
 	// Specifies whether to allow functions to access the Internet. Valid values:
 	//
 	// *   **true**: allows functions in the specified service to access the Internet.
-	// *   **false**: does not allow functions in the specified service to access the Internet.
+	// *   **false**: does not allow functions to access the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The time when the service was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -8938,7 +9003,7 @@ type ListServicesResponseBodyServices struct {
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	// The name of the service.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+	// The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
 	// The VPC configuration. The configuration allows a function to access the specified VPC.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
@@ -9603,19 +9668,19 @@ type ListTriggersResponseBodyTriggers struct {
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
-	// *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-	// *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-	// *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-	// *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+	// *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+	// *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+	// *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-	// *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// The unique ID of the trigger.
 	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
 	// The name of the trigger.
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn\_events**, and **mns\_topic**.
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
 	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
@@ -11336,7 +11401,7 @@ func (s *UpdateCustomDomainResponse) SetBody(v *UpdateCustomDomainResponseBody) 
 
 type UpdateFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ETag value of the resource. The value is used to ensure that the modified resource is consistent with the resource to be modified. The ETag value is returned in the responses of the [CreateFunction](~~415747~~), [GetFunction](~~415750~~), and [UpdateFunction](~~415749~~) operations.
+	// The parameter that is used to ensure that the modified resource is consistent with the resource to be modified. The value of this parameter is returned in the responses of the [CreateFunction](~~415747~~), [GetFunction](~~415750~~), and [UpdateFunction](~~415749~~) operations.
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -11391,14 +11456,14 @@ type UpdateFunctionRequest struct {
 	InstanceConcurrency *int32 `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
 	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
 	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
+	// The packaged code of the function. **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
 	//
-	// *   Specify the name of the **Object Storage Service (OSS) bucket** and **object** where the code package is stored.
-	// *   Specify that the **zipFile** parameter is used as the Base64-encoded content of the ZIP file.
+	// *   Specify the name of the Object Storage Service (OSS) bucket and object where the code package is stored. The names are specified in the **ossBucketName** and **ossObjectName** parameters.
+	// *   Specify the Base64-encoded content of the ZIP file by using the **zipFile** parameter.
 	Code *Code `json:"code,omitempty" xml:"code,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configuration of the custom container. After you configure the custom container, Function Compute can execute functions in a container created from a custom image.
+	// The configuration of the custom container. After you configure the custom container, Function Compute can execute the function in a container created from a custom image.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	// The custom DNS configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
@@ -11412,16 +11477,17 @@ type UpdateFunctionRequest struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	GpuMemorySize        *int32             `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
+	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
+	// The handler of the Initializer hook. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
 	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
@@ -11429,12 +11495,15 @@ type UpdateFunctionRequest struct {
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+	// *   **g1**: same as **fc.gpu.tesla.1**
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The information about layers.
 	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
+	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
@@ -11565,17 +11634,17 @@ type UpdateFunctionResponseBody struct {
 	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	// The CRC-64 value of the function code package.
 	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package that is returned by the system. Unit: byte.
+	// The size of the function code package that is returned by the system. Unit: bytes.
 	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function is created.
+	// The time when the function was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
 	// The custom DNS configurations of the function.
 	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
+	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	// The configurations of the custom runtime.
 	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
@@ -11588,19 +11657,20 @@ type UpdateFunctionResponseBody struct {
 	// The unique ID that is generated by the system for the function.
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
-	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
+	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. The format is determined by the programming language.
+	// The handler of the Initializer hook. The format is determined by the programming language.
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The number of requests that can be concurrently processed by a single instance.
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
 	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
@@ -11608,12 +11678,15 @@ type UpdateFunctionResponseBody struct {
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+	// *   **g1**: same as **fc.gpu.tesla.1**
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The information about layers.
+	// An array that consists of the information of layers.
 	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
@@ -12097,13 +12170,13 @@ type UpdateTriggerRequest struct {
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
-	// *   OSS trigger: [OSSTriggerConfig](javascript:void\(0\)).
-	// *   Log Service trigger: [LogTriggerConfig](javascript:void\(0\)).
-	// *   Time trigger: [TimeTriggerConfig](javascript:void\(0\)).
-	// *   HTTP trigger: [HTTPTriggerConfig](javascript:void\(0\)).
+	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
+	// *   Log Service trigger: [LogTriggerConfig](~~struct:LogTriggerConfig~~).
+	// *   Time trigger: [TimeTriggerConfig](~~struct:TimeTriggerConfig~~).
+	// *   HTTP trigger: [HTTPTriggerConfig](~~struct:HTTPTriggerConfig~~).
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
-	// *   MNS topic trigger: [MnsTopicTriggerConfig](javascript:void\(0\)).
+	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
+	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
