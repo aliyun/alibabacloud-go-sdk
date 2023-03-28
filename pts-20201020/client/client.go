@@ -2781,6 +2781,7 @@ type GetPtsSceneResponseBodyScene struct {
 	CreateTime          *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	FileParameterList   []*GetPtsSceneResponseBodySceneFileParameterList   `json:"FileParameterList,omitempty" xml:"FileParameterList,omitempty" type:"Repeated"`
 	GlobalParameterList []*GetPtsSceneResponseBodySceneGlobalParameterList `json:"GlobalParameterList,omitempty" xml:"GlobalParameterList,omitempty" type:"Repeated"`
+	Headers             []*GetPtsSceneResponseBodySceneHeaders             `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
 	LoadConfig          *GetPtsSceneResponseBodySceneLoadConfig            `json:"LoadConfig,omitempty" xml:"LoadConfig,omitempty" type:"Struct"`
 	ModifiedTime        *string                                            `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	RelationList        []*GetPtsSceneResponseBodySceneRelationList        `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
@@ -2814,6 +2815,11 @@ func (s *GetPtsSceneResponseBodyScene) SetFileParameterList(v []*GetPtsSceneResp
 
 func (s *GetPtsSceneResponseBodyScene) SetGlobalParameterList(v []*GetPtsSceneResponseBodySceneGlobalParameterList) *GetPtsSceneResponseBodyScene {
 	s.GlobalParameterList = v
+	return s
+}
+
+func (s *GetPtsSceneResponseBodyScene) SetHeaders(v []*GetPtsSceneResponseBodySceneHeaders) *GetPtsSceneResponseBodyScene {
+	s.Headers = v
 	return s
 }
 
@@ -2948,6 +2954,29 @@ func (s *GetPtsSceneResponseBodySceneGlobalParameterList) SetParamName(v string)
 
 func (s *GetPtsSceneResponseBodySceneGlobalParameterList) SetParamValue(v string) *GetPtsSceneResponseBodySceneGlobalParameterList {
 	s.ParamValue = &v
+	return s
+}
+
+type GetPtsSceneResponseBodySceneHeaders struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetPtsSceneResponseBodySceneHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPtsSceneResponseBodySceneHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetPtsSceneResponseBodySceneHeaders) SetName(v string) *GetPtsSceneResponseBodySceneHeaders {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPtsSceneResponseBodySceneHeaders) SetValue(v string) *GetPtsSceneResponseBodySceneHeaders {
+	s.Value = &v
 	return s
 }
 
