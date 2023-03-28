@@ -78,6 +78,29 @@ func (s *AvailableAZ) SetAvailableAZs(v string) *AvailableAZ {
 	return s
 }
 
+type BatchWindow struct {
+	CountBasedWindow *int64 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
+	TimeBasedWindow  *int64 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
+}
+
+func (s BatchWindow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchWindow) GoString() string {
+	return s.String()
+}
+
+func (s *BatchWindow) SetCountBasedWindow(v int64) *BatchWindow {
+	s.CountBasedWindow = &v
+	return s
+}
+
+func (s *BatchWindow) SetTimeBasedWindow(v int64) *BatchWindow {
+	s.TimeBasedWindow = &v
+	return s
+}
+
 type CDNEventsTriggerConfig struct {
 	EventName    *string              `json:"eventName,omitempty" xml:"eventName,omitempty"`
 	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
@@ -393,6 +416,46 @@ func (s *DNSOption) SetValue(v string) *DNSOption {
 	return s
 }
 
+type DeadLetterQueue struct {
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+}
+
+func (s DeadLetterQueue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeadLetterQueue) GoString() string {
+	return s.String()
+}
+
+func (s *DeadLetterQueue) SetArn(v string) *DeadLetterQueue {
+	s.Arn = &v
+	return s
+}
+
+type DeliveryOption struct {
+	EventSchema *string `json:"eventSchema,omitempty" xml:"eventSchema,omitempty"`
+	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
+}
+
+func (s DeliveryOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeliveryOption) GoString() string {
+	return s.String()
+}
+
+func (s *DeliveryOption) SetEventSchema(v string) *DeliveryOption {
+	s.EventSchema = &v
+	return s
+}
+
+func (s *DeliveryOption) SetMode(v string) *DeliveryOption {
+	s.Mode = &v
+	return s
+}
+
 type Destination struct {
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
 }
@@ -482,7 +545,9 @@ func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
 type EventBridgeTriggerConfig struct {
 	AsyncInvocationType    *bool              `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
 	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
+	EventSinkConfig        *EventSinkConfig   `json:"eventSinkConfig,omitempty" xml:"eventSinkConfig,omitempty"`
 	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
+	RunOptions             *RunOptions        `json:"runOptions,omitempty" xml:"runOptions,omitempty"`
 	TriggerEnable          *bool              `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
 }
 
@@ -504,13 +569,40 @@ func (s *EventBridgeTriggerConfig) SetEventRuleFilterPattern(v string) *EventBri
 	return s
 }
 
+func (s *EventBridgeTriggerConfig) SetEventSinkConfig(v *EventSinkConfig) *EventBridgeTriggerConfig {
+	s.EventSinkConfig = v
+	return s
+}
+
 func (s *EventBridgeTriggerConfig) SetEventSourceConfig(v *EventSourceConfig) *EventBridgeTriggerConfig {
 	s.EventSourceConfig = v
 	return s
 }
 
+func (s *EventBridgeTriggerConfig) SetRunOptions(v *RunOptions) *EventBridgeTriggerConfig {
+	s.RunOptions = v
+	return s
+}
+
 func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerConfig {
 	s.TriggerEnable = &v
+	return s
+}
+
+type EventSinkConfig struct {
+	DeliveryOption *DeliveryOption `json:"deliveryOption,omitempty" xml:"deliveryOption,omitempty"`
+}
+
+func (s EventSinkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSinkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventSinkConfig) SetDeliveryOption(v *DeliveryOption) *EventSinkConfig {
+	s.DeliveryOption = v
 	return s
 }
 
@@ -538,6 +630,7 @@ func (s *EventSourceConfig) SetEventSourceType(v string) *EventSourceConfig {
 }
 
 type EventSourceParameters struct {
+	SourceKafkaParameters    *SourceKafkaParameters    `json:"sourceKafkaParameters,omitempty" xml:"sourceKafkaParameters,omitempty"`
 	SourceMNSParameters      *SourceMNSParameters      `json:"sourceMNSParameters,omitempty" xml:"sourceMNSParameters,omitempty"`
 	SourceRabbitMQParameters *SourceRabbitMQParameters `json:"sourceRabbitMQParameters,omitempty" xml:"sourceRabbitMQParameters,omitempty"`
 	SourceRocketMQParameters *SourceRocketMQParameters `json:"sourceRocketMQParameters,omitempty" xml:"sourceRocketMQParameters,omitempty"`
@@ -549,6 +642,11 @@ func (s EventSourceParameters) String() string {
 
 func (s EventSourceParameters) GoString() string {
 	return s.String()
+}
+
+func (s *EventSourceParameters) SetSourceKafkaParameters(v *SourceKafkaParameters) *EventSourceParameters {
+	s.SourceKafkaParameters = v
+	return s
 }
 
 func (s *EventSourceParameters) SetSourceMNSParameters(v *SourceMNSParameters) *EventSourceParameters {
@@ -1318,10 +1416,10 @@ func (s *PathConfig) SetServiceName(v string) *PathConfig {
 }
 
 type PolicyItem struct {
-	Key      []byte `json:"key,omitempty" xml:"key,omitempty"`
-	Operator []byte `json:"operator,omitempty" xml:"operator,omitempty"`
-	Type     []byte `json:"type,omitempty" xml:"type,omitempty"`
-	Value    []byte `json:"value,omitempty" xml:"value,omitempty"`
+	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s PolicyItem) String() string {
@@ -1332,23 +1430,23 @@ func (s PolicyItem) GoString() string {
 	return s.String()
 }
 
-func (s *PolicyItem) SetKey(v []byte) *PolicyItem {
-	s.Key = v
+func (s *PolicyItem) SetKey(v string) *PolicyItem {
+	s.Key = &v
 	return s
 }
 
-func (s *PolicyItem) SetOperator(v []byte) *PolicyItem {
-	s.Operator = v
+func (s *PolicyItem) SetOperator(v string) *PolicyItem {
+	s.Operator = &v
 	return s
 }
 
-func (s *PolicyItem) SetType(v []byte) *PolicyItem {
-	s.Type = v
+func (s *PolicyItem) SetType(v string) *PolicyItem {
+	s.Type = &v
 	return s
 }
 
-func (s *PolicyItem) SetValue(v []byte) *PolicyItem {
-	s.Value = v
+func (s *PolicyItem) SetValue(v string) *PolicyItem {
+	s.Value = &v
 	return s
 }
 
@@ -1453,6 +1551,35 @@ func (s *Resource) SetResourceArn(v string) *Resource {
 
 func (s *Resource) SetTags(v map[string]*string) *Resource {
 	s.Tags = v
+	return s
+}
+
+type RetryStrategy struct {
+	MaximumEventAgeInSeconds *int64  `json:"MaximumEventAgeInSeconds,omitempty" xml:"MaximumEventAgeInSeconds,omitempty"`
+	MaximumRetryAttempts     *int64  `json:"MaximumRetryAttempts,omitempty" xml:"MaximumRetryAttempts,omitempty"`
+	PushRetryStrategy        *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
+}
+
+func (s RetryStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *RetryStrategy) SetMaximumEventAgeInSeconds(v int64) *RetryStrategy {
+	s.MaximumEventAgeInSeconds = &v
+	return s
+}
+
+func (s *RetryStrategy) SetMaximumRetryAttempts(v int64) *RetryStrategy {
+	s.MaximumRetryAttempts = &v
+	return s
+}
+
+func (s *RetryStrategy) SetPushRetryStrategy(v string) *RetryStrategy {
+	s.PushRetryStrategy = &v
 	return s
 }
 
@@ -1572,7 +1699,7 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 }
 
 type RoutePolicy struct {
-	Condition   []byte        `json:"condition,omitempty" xml:"condition,omitempty"`
+	Condition   *string       `json:"condition,omitempty" xml:"condition,omitempty"`
 	PolicyItems []*PolicyItem `json:"policyItems,omitempty" xml:"policyItems,omitempty" type:"Repeated"`
 }
 
@@ -1584,13 +1711,60 @@ func (s RoutePolicy) GoString() string {
 	return s.String()
 }
 
-func (s *RoutePolicy) SetCondition(v []byte) *RoutePolicy {
-	s.Condition = v
+func (s *RoutePolicy) SetCondition(v string) *RoutePolicy {
+	s.Condition = &v
 	return s
 }
 
 func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
 	s.PolicyItems = v
+	return s
+}
+
+type RunOptions struct {
+	BatchWindow     *BatchWindow     `json:"batchWindow,omitempty" xml:"batchWindow,omitempty"`
+	DeadLetterQueue *DeadLetterQueue `json:"deadLetterQueue,omitempty" xml:"deadLetterQueue,omitempty"`
+	ErrorsTolerance *string          `json:"errorsTolerance,omitempty" xml:"errorsTolerance,omitempty"`
+	MaximumTasks    *int64           `json:"maximumTasks,omitempty" xml:"maximumTasks,omitempty"`
+	Mode            *string          `json:"mode,omitempty" xml:"mode,omitempty"`
+	RetryStrategy   *RetryStrategy   `json:"retryStrategy,omitempty" xml:"retryStrategy,omitempty"`
+}
+
+func (s RunOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunOptions) GoString() string {
+	return s.String()
+}
+
+func (s *RunOptions) SetBatchWindow(v *BatchWindow) *RunOptions {
+	s.BatchWindow = v
+	return s
+}
+
+func (s *RunOptions) SetDeadLetterQueue(v *DeadLetterQueue) *RunOptions {
+	s.DeadLetterQueue = v
+	return s
+}
+
+func (s *RunOptions) SetErrorsTolerance(v string) *RunOptions {
+	s.ErrorsTolerance = &v
+	return s
+}
+
+func (s *RunOptions) SetMaximumTasks(v int64) *RunOptions {
+	s.MaximumTasks = &v
+	return s
+}
+
+func (s *RunOptions) SetMode(v string) *RunOptions {
+	s.Mode = &v
+	return s
+}
+
+func (s *RunOptions) SetRetryStrategy(v *RetryStrategy) *RunOptions {
+	s.RetryStrategy = v
 	return s
 }
 
@@ -1649,6 +1823,71 @@ func (s SourceConfig) GoString() string {
 
 func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
 	s.Logstore = &v
+	return s
+}
+
+type SourceKafkaParameters struct {
+	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s SourceKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceKafkaParameters) SetConsumerGroup(v string) *SourceKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetInstanceId(v string) *SourceKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetNetwork(v string) *SourceKafkaParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetOffsetReset(v string) *SourceKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetRegionId(v string) *SourceKafkaParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetSecurityGroupId(v string) *SourceKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetTopic(v string) *SourceKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetVSwitchIds(v string) *SourceKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *SourceKafkaParameters) SetVpcId(v string) *SourceKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -2508,7 +2747,9 @@ type CreateAliasResponseBody struct {
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the alias was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	ResolvePolicy    *string      `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	RoutePolicy      *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
 	// The ID of the version to which the alias points.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
@@ -2543,6 +2784,16 @@ func (s *CreateAliasResponseBody) SetDescription(v string) *CreateAliasResponseB
 
 func (s *CreateAliasResponseBody) SetLastModifiedTime(v string) *CreateAliasResponseBody {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *CreateAliasResponseBody) SetResolvePolicy(v string) *CreateAliasResponseBody {
+	s.ResolvePolicy = &v
+	return s
+}
+
+func (s *CreateAliasResponseBody) SetRoutePolicy(v *RoutePolicy) *CreateAliasResponseBody {
+	s.RoutePolicy = v
 	return s
 }
 
@@ -4428,6 +4679,81 @@ func (s *DeleteLayerVersionResponse) SetHeaders(v map[string]*string) *DeleteLay
 }
 
 func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteProvisionConfigHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s DeleteProvisionConfigHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProvisionConfigHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProvisionConfigHeaders) SetCommonHeaders(v map[string]*string) *DeleteProvisionConfigHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteProvisionConfigHeaders) SetXFcAccountId(v string) *DeleteProvisionConfigHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *DeleteProvisionConfigHeaders) SetXFcDate(v string) *DeleteProvisionConfigHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *DeleteProvisionConfigHeaders) SetXFcTraceId(v string) *DeleteProvisionConfigHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
+type DeleteProvisionConfigRequest struct {
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+}
+
+func (s DeleteProvisionConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProvisionConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProvisionConfigRequest) SetQualifier(v string) *DeleteProvisionConfigRequest {
+	s.Qualifier = &v
+	return s
+}
+
+type DeleteProvisionConfigResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteProvisionConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProvisionConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProvisionConfigResponse) SetHeaders(v map[string]*string) *DeleteProvisionConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProvisionConfigResponse) SetStatusCode(v int32) *DeleteProvisionConfigResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -7866,6 +8192,8 @@ type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -7883,6 +8211,16 @@ func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInsta
 
 func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -13507,6 +13845,69 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteProvisionConfigWithOptions(serviceName *string, functionName *string, request *DeleteProvisionConfigRequest, headers *DeleteProvisionConfigHeaders, runtime *util.RuntimeOptions) (_result *DeleteProvisionConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProvisionConfig"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/provision-config"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteProvisionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProvisionConfig(serviceName *string, functionName *string, request *DeleteProvisionConfigRequest) (_result *DeleteProvisionConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteProvisionConfigHeaders{}
+	_result = &DeleteProvisionConfigResponse{}
+	_body, _err := client.DeleteProvisionConfigWithOptions(serviceName, functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *DeleteServiceHeaders, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -15099,6 +15500,14 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
