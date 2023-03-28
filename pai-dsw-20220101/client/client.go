@@ -323,8 +323,9 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 type CreateInstanceRequestUserVpc struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Vpc Id。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -335,6 +336,11 @@ func (s CreateInstanceRequestUserVpc) String() string {
 
 func (s CreateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *CreateInstanceRequestUserVpc {
+	s.ExtendedCIDRs = v
+	return s
 }
 
 func (s *CreateInstanceRequestUserVpc) SetSecurityGroupId(v string) *CreateInstanceRequestUserVpc {
@@ -4219,8 +4225,9 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 type UpdateInstanceRequestUserVpc struct {
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchId       *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Vpc Id。
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -4231,6 +4238,11 @@ func (s UpdateInstanceRequestUserVpc) String() string {
 
 func (s UpdateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetExtendedCIDRs(v []*string) *UpdateInstanceRequestUserVpc {
+	s.ExtendedCIDRs = v
+	return s
 }
 
 func (s *UpdateInstanceRequestUserVpc) SetSecurityGroupId(v string) *UpdateInstanceRequestUserVpc {
