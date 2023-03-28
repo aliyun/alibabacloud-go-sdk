@@ -975,6 +975,115 @@ func (s *DeleteFaceVideoTemplateResponse) SetBody(v *DeleteFaceVideoTemplateResp
 	return s
 }
 
+type EnhancePortraitVideoRequest struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s EnhancePortraitVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnhancePortraitVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnhancePortraitVideoRequest) SetVideoUrl(v string) *EnhancePortraitVideoRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type EnhancePortraitVideoAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s EnhancePortraitVideoAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnhancePortraitVideoAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnhancePortraitVideoAdvanceRequest) SetVideoUrlObject(v io.Reader) *EnhancePortraitVideoAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+type EnhancePortraitVideoResponseBody struct {
+	Data      *EnhancePortraitVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnhancePortraitVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnhancePortraitVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnhancePortraitVideoResponseBody) SetData(v *EnhancePortraitVideoResponseBodyData) *EnhancePortraitVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EnhancePortraitVideoResponseBody) SetMessage(v string) *EnhancePortraitVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnhancePortraitVideoResponseBody) SetRequestId(v string) *EnhancePortraitVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnhancePortraitVideoResponseBodyData struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s EnhancePortraitVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnhancePortraitVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *EnhancePortraitVideoResponseBodyData) SetVideoUrl(v string) *EnhancePortraitVideoResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type EnhancePortraitVideoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnhancePortraitVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnhancePortraitVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnhancePortraitVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnhancePortraitVideoResponse) SetHeaders(v map[string]*string) *EnhancePortraitVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnhancePortraitVideoResponse) SetStatusCode(v int32) *EnhancePortraitVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnhancePortraitVideoResponse) SetBody(v *EnhancePortraitVideoResponseBody) *EnhancePortraitVideoResponse {
+	s.Body = v
+	return s
+}
+
 type EnhanceVideoQualityRequest struct {
 	Bitrate        *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	FrameRate      *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
@@ -2532,6 +2641,115 @@ func (s *QueryFaceVideoTemplateResponse) SetBody(v *QueryFaceVideoTemplateRespon
 	return s
 }
 
+type ReduceVideoNoiseRequest struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ReduceVideoNoiseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReduceVideoNoiseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReduceVideoNoiseRequest) SetVideoUrl(v string) *ReduceVideoNoiseRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type ReduceVideoNoiseAdvanceRequest struct {
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ReduceVideoNoiseAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReduceVideoNoiseAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReduceVideoNoiseAdvanceRequest) SetVideoUrlObject(v io.Reader) *ReduceVideoNoiseAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+type ReduceVideoNoiseResponseBody struct {
+	Data      *ReduceVideoNoiseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReduceVideoNoiseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReduceVideoNoiseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReduceVideoNoiseResponseBody) SetData(v *ReduceVideoNoiseResponseBodyData) *ReduceVideoNoiseResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReduceVideoNoiseResponseBody) SetMessage(v string) *ReduceVideoNoiseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReduceVideoNoiseResponseBody) SetRequestId(v string) *ReduceVideoNoiseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReduceVideoNoiseResponseBodyData struct {
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ReduceVideoNoiseResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReduceVideoNoiseResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ReduceVideoNoiseResponseBodyData) SetVideoUrl(v string) *ReduceVideoNoiseResponseBodyData {
+	s.VideoUrl = &v
+	return s
+}
+
+type ReduceVideoNoiseResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReduceVideoNoiseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReduceVideoNoiseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReduceVideoNoiseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReduceVideoNoiseResponse) SetHeaders(v map[string]*string) *ReduceVideoNoiseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReduceVideoNoiseResponse) SetStatusCode(v int32) *ReduceVideoNoiseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReduceVideoNoiseResponse) SetBody(v *ReduceVideoNoiseResponseBody) *ReduceVideoNoiseResponse {
+	s.Body = v
+	return s
+}
+
 type SuperResolveVideoRequest struct {
 	BitRate  *int32  `json:"BitRate,omitempty" xml:"BitRate,omitempty"`
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
@@ -3850,6 +4068,156 @@ func (client *Client) DeleteFaceVideoTemplate(request *DeleteFaceVideoTemplateRe
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnhancePortraitVideoWithOptions(request *EnhancePortraitVideoRequest, runtime *util.RuntimeOptions) (_result *EnhancePortraitVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnhancePortraitVideo"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnhancePortraitVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnhancePortraitVideo(request *EnhancePortraitVideoRequest) (_result *EnhancePortraitVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnhancePortraitVideoResponse{}
+	_body, _err := client.EnhancePortraitVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnhancePortraitVideoAdvance(request *EnhancePortraitVideoAdvanceRequest, runtime *util.RuntimeOptions) (_result *EnhancePortraitVideoResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	enhancePortraitVideoReq := &EnhancePortraitVideoRequest{}
+	openapiutil.Convert(request, enhancePortraitVideoReq)
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		enhancePortraitVideoReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	enhancePortraitVideoResp, _err := client.EnhancePortraitVideoWithOptions(enhancePortraitVideoReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = enhancePortraitVideoResp
 	return _result, _err
 }
 
@@ -5287,6 +5655,156 @@ func (client *Client) QueryFaceVideoTemplate(request *QueryFaceVideoTemplateRequ
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReduceVideoNoiseWithOptions(request *ReduceVideoNoiseRequest, runtime *util.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReduceVideoNoise"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReduceVideoNoiseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReduceVideoNoise(request *ReduceVideoNoiseRequest) (_result *ReduceVideoNoiseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReduceVideoNoiseResponse{}
+	_body, _err := client.ReduceVideoNoiseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReduceVideoNoiseAdvance(request *ReduceVideoNoiseAdvanceRequest, runtime *util.RuntimeOptions) (_result *ReduceVideoNoiseResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("videoenhan"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	reduceVideoNoiseReq := &ReduceVideoNoiseRequest{}
+	openapiutil.Convert(request, reduceVideoNoiseReq)
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		reduceVideoNoiseReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	reduceVideoNoiseResp, _err := client.ReduceVideoNoiseWithOptions(reduceVideoNoiseReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = reduceVideoNoiseResp
 	return _result, _err
 }
 
