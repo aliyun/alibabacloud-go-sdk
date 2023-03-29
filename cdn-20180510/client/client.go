@@ -20934,9 +20934,6 @@ func (s *PushObjectCacheResponse) SetBody(v *PushObjectCacheResponseBody) *PushO
 }
 
 type RefreshObjectCachesRequest struct {
-	// The URLs from which content is refreshed. Format: **Accelerated domain name**/**Paths or directories of files that you want to refresh**.
-	//
-	// Separate multiple URLs with line feed characters (\n) or a pair of carriage return and line feed characters (\r\n).
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The type of the object that you want to refresh. Valid values:
 	//
