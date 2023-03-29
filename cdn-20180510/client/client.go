@@ -6425,7 +6425,9 @@ type DescribeCdnUserQuotaResponseBody struct {
 	// The remaining number of URLs and directories that can be blocked.
 	BlockRemain *int32 `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
 	// The maximum number of accelerated domain names that can be added to Alibaba Cloud CDN.
-	DomainQuota *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	DomainQuota        *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	IgnoreParamsQuota  *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	IgnoreParamsRemain *int32 `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched.
 	PreloadQuota *int32 `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
 	// The remaining number of URLs that can be prefetched.
@@ -6462,6 +6464,16 @@ func (s *DescribeCdnUserQuotaResponseBody) SetBlockRemain(v int32) *DescribeCdnU
 
 func (s *DescribeCdnUserQuotaResponseBody) SetDomainQuota(v int32) *DescribeCdnUserQuotaResponseBody {
 	s.DomainQuota = &v
+	return s
+}
+
+func (s *DescribeCdnUserQuotaResponseBody) SetIgnoreParamsQuota(v int32) *DescribeCdnUserQuotaResponseBody {
+	s.IgnoreParamsQuota = &v
+	return s
+}
+
+func (s *DescribeCdnUserQuotaResponseBody) SetIgnoreParamsRemain(v int32) *DescribeCdnUserQuotaResponseBody {
+	s.IgnoreParamsRemain = &v
 	return s
 }
 
@@ -17400,7 +17412,9 @@ type DescribeRefreshQuotaResponseBody struct {
 	// The maximum number of directories that can be refreshed on the current day.
 	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
 	// The remaining number of directories that can be refreshed on the current day.
-	DirRemain *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	DirRemain          *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	IgnoreParamsQuota  *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	IgnoreParamsRemain *string `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of times that you can prefetch content to L1 nodes on the current day.
 	PreloadEdgeQuota *string `json:"PreloadEdgeQuota,omitempty" xml:"PreloadEdgeQuota,omitempty"`
 	// The remaining number of times that you can prefetch content to L1 nodes on the current day.
@@ -17446,6 +17460,16 @@ func (s *DescribeRefreshQuotaResponseBody) SetDirQuota(v string) *DescribeRefres
 
 func (s *DescribeRefreshQuotaResponseBody) SetDirRemain(v string) *DescribeRefreshQuotaResponseBody {
 	s.DirRemain = &v
+	return s
+}
+
+func (s *DescribeRefreshQuotaResponseBody) SetIgnoreParamsQuota(v string) *DescribeRefreshQuotaResponseBody {
+	s.IgnoreParamsQuota = &v
+	return s
+}
+
+func (s *DescribeRefreshQuotaResponseBody) SetIgnoreParamsRemain(v string) *DescribeRefreshQuotaResponseBody {
+	s.IgnoreParamsRemain = &v
 	return s
 }
 
