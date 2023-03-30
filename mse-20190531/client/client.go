@@ -863,9 +863,9 @@ type AddGatewayRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the secondary vSwitch.
 	VSwitchId2 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the instances reside.
+	// The ID of the virtual private cloud (VPC).
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	// The sample rate of Tracing Analysis. Valid values: \[1,100].
+	// The sampling rate of Tracing Analysis. Valid values: \[1,100].
 	XtraceRatio *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
 }
 
@@ -988,9 +988,9 @@ func (s *AddGatewayRequestTag) SetValue(v string) *AddGatewayRequestTag {
 }
 
 type AddGatewayResponseBody struct {
-	// The status code returned.
+	// The return value.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *AddGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -1089,6 +1089,189 @@ func (s *AddGatewayResponse) SetStatusCode(v int32) *AddGatewayResponse {
 }
 
 func (s *AddGatewayResponse) SetBody(v *AddGatewayResponseBody) *AddGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type AddGatewayAuthConsumerRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncodeType      *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Jwks            *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	KeyName         *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyValue        *string `json:"KeyValue,omitempty" xml:"KeyValue,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TokenName       *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	TokenPass       *bool   `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	TokenPosition   *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	TokenPrefix     *string `json:"TokenPrefix,omitempty" xml:"TokenPrefix,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddGatewayAuthConsumerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthConsumerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetAcceptLanguage(v string) *AddGatewayAuthConsumerRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetDescription(v string) *AddGatewayAuthConsumerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetEncodeType(v string) *AddGatewayAuthConsumerRequest {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetGatewayUniqueId(v string) *AddGatewayAuthConsumerRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetJwks(v string) *AddGatewayAuthConsumerRequest {
+	s.Jwks = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetKeyName(v string) *AddGatewayAuthConsumerRequest {
+	s.KeyName = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetKeyValue(v string) *AddGatewayAuthConsumerRequest {
+	s.KeyValue = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetName(v string) *AddGatewayAuthConsumerRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetTokenName(v string) *AddGatewayAuthConsumerRequest {
+	s.TokenName = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetTokenPass(v bool) *AddGatewayAuthConsumerRequest {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetTokenPosition(v string) *AddGatewayAuthConsumerRequest {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetTokenPrefix(v string) *AddGatewayAuthConsumerRequest {
+	s.TokenPrefix = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerRequest) SetType(v string) *AddGatewayAuthConsumerRequest {
+	s.Type = &v
+	return s
+}
+
+type AddGatewayAuthConsumerResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddGatewayAuthConsumerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthConsumerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetCode(v int32) *AddGatewayAuthConsumerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetData(v int64) *AddGatewayAuthConsumerResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetDynamicCode(v string) *AddGatewayAuthConsumerResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetDynamicMessage(v string) *AddGatewayAuthConsumerResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetErrorCode(v string) *AddGatewayAuthConsumerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetHttpStatusCode(v int32) *AddGatewayAuthConsumerResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetMessage(v string) *AddGatewayAuthConsumerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetRequestId(v string) *AddGatewayAuthConsumerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponseBody) SetSuccess(v bool) *AddGatewayAuthConsumerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddGatewayAuthConsumerResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddGatewayAuthConsumerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddGatewayAuthConsumerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGatewayAuthConsumerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGatewayAuthConsumerResponse) SetHeaders(v map[string]*string) *AddGatewayAuthConsumerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponse) SetStatusCode(v int32) *AddGatewayAuthConsumerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddGatewayAuthConsumerResponse) SetBody(v *AddGatewayAuthConsumerResponseBody) *AddGatewayAuthConsumerResponse {
 	s.Body = v
 	return s
 }
@@ -1274,7 +1457,7 @@ type AddGatewayRouteRequest struct {
 	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The IDs of domains.
+	// The list of domain IDs.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
@@ -1287,16 +1470,20 @@ type AddGatewayRouteRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Routing policy Json string.
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	Predicates *AddGatewayRouteRequestPredicates `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
 	// The configuration of the redirection.
 	RedirectJSON *AddGatewayRouteRequestRedirectJSON `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
-	// The sequence number of the route. (A small value indicates a high priority.)
-	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The information about services.
+	// The sequence number of the route. A small value indicates a high priority.
+	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	// RouteType:
+	//
+	// Op: Control routing.
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The services.
 	Services []*AddGatewayRouteRequestServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -1419,7 +1606,7 @@ func (s *AddGatewayRouteRequestDirectResponseJSON) SetCode(v int64) *AddGatewayR
 }
 
 type AddGatewayRouteRequestFallbackServices struct {
-	// The type of the protocol.
+	// The type of the protocol. Valid values:
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1664,7 +1851,7 @@ func (s *AddGatewayRouteRequestRedirectJSON) SetPath(v string) *AddGatewayRouteR
 }
 
 type AddGatewayRouteRequestServices struct {
-	// The type of the protocol.
+	// The type of the protocol. Valid values:
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1745,7 +1932,7 @@ func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRe
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoder struct {
-	// The name of the service group.
+	// The service group.
 	DubboServiceGroup *string `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	// The name of the Dubbo service.
 	DubboServiceName *string `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
@@ -1908,7 +2095,7 @@ type AddGatewayRouteShrinkRequest struct {
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
 	// The domain ID.
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The IDs of domains.
+	// The list of domain IDs.
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Specifies whether to activate Web Application Firewall (WAF).
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
@@ -1921,16 +2108,20 @@ type AddGatewayRouteShrinkRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Routing policy Json string.
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	PredicatesShrink *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	// The configuration of the redirection.
 	RedirectJSONShrink *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
-	// The sequence number of the route. (A small value indicates a high priority.)
-	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The information about services.
+	// The sequence number of the route. A small value indicates a high priority.
+	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	// RouteType:
+	//
+	// Op: Control routing.
+	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The services.
 	ServicesShrink *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
 
@@ -2030,7 +2221,7 @@ func (s *AddGatewayRouteShrinkRequest) SetServicesShrink(v string) *AddGatewayRo
 type AddGatewayRouteResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
@@ -2265,8 +2456,8 @@ type AddGatewaySlbRequest struct {
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
 	// The type of the service source. Valid values:
 	//
-	// *   PUB_NET: public network
-	// *   PRIVATE_NET: private network
+	// *   PUB_NET: Internet
+	// *   PRIVATE_NET: VPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the HTTP virtual service group.
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
@@ -3687,10 +3878,13 @@ type ApplyTagPoliciesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
 	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Specifies whether to enable the routing rule.
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable    *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Optional. The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The region ID.
@@ -3719,8 +3913,18 @@ func (s *ApplyTagPoliciesRequest) SetAppId(v string) *ApplyTagPoliciesRequest {
 	return s
 }
 
+func (s *ApplyTagPoliciesRequest) SetAppName(v string) *ApplyTagPoliciesRequest {
+	s.AppName = &v
+	return s
+}
+
 func (s *ApplyTagPoliciesRequest) SetEnable(v bool) *ApplyTagPoliciesRequest {
 	s.Enable = &v
+	return s
+}
+
+func (s *ApplyTagPoliciesRequest) SetNamespace(v string) *ApplyTagPoliciesRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -4427,16 +4631,16 @@ type CreateClusterRequest struct {
 	//
 	// \[Professional Edition]
 	//
-	// *   `MSE_SC_2_4_60_c`: 2 CPU cores and 4 GB of memory
-	// *   `MSE_SC_1_2_60_c`: 1 CPU core and 2 GB of memory
-	// *   `MSE_SC_4_8_60_c`: 4 CPU cores and 8 GB of memory
-	// *   `MSE_SC_8_16_60_c`: 8 CPU cores and 16 GB of memory
-	// *   `MSE_SC_16_32_60_c`: 16 CPU cores and 32 GB of memory
+	// *   `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
+	// *   `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
+	// *   `MSE_SC_4_8_60_c`: 4 vCPUs and 8 GB of memory
+	// *   `MSE_SC_8_16_60_c`: 8 vCPUs and 16 GB of memory
+	// *   `MSE_SC_16_32_60_c`: 16 vCPUs and 32 GB of memory
 	//
 	// \[Developer Edition]
 	//
-	// *   `MSE_SC_1_2_60_c`: 1 CPU core and 2 GB of memory
-	// *   `MSE_SC_2_4_60_c`: 2 CPU cores and 4 GB of memory
+	// *   `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
+	// *   `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
 	// The type of the instance. Valid values: ZooKeeper and Nacos-Ans.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
@@ -4457,7 +4661,7 @@ type CreateClusterRequest struct {
 	// *   slb
 	// *   eni
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The disk type of the MSE instance. Valid values:
+	// The disk type. Valid values:
 	//
 	// *   alicloud-disk-ssd
 	// *   alicloud-disk-essd-pl1
@@ -4472,9 +4676,9 @@ type CreateClusterRequest struct {
 	//
 	// *   Only one node can be deployed for an instance.
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The name of the MSE instance.
+	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Configure this parameter unless otherwise specified. Valid values:
+	// Set this parameter unless otherwise specified. Valid values:
 	//
 	// *   `mse_pro`: Professional Edition
 	// *   `mse_dev`: Developer Edition
@@ -4507,7 +4711,7 @@ type CreateClusterRequest struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The ID of the resource group. For more information, see [View basic information of a resource group](~~457230~~).
+	// The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](~~457230~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The list of the tags that you want to add.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -5754,7 +5958,8 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	// The license key in use.
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
 	// The name of the lane.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service source. Valid value: edasmsc.
@@ -5832,6 +6037,11 @@ func (s *CreateOrUpdateSwimmingLaneRequest) SetLicenseKey(v string) *CreateOrUpd
 
 func (s *CreateOrUpdateSwimmingLaneRequest) SetName(v string) *CreateOrUpdateSwimmingLaneRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetNamespace(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -6095,7 +6305,8 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	// The license key in use.
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
 	// The name of the lane.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service source. Valid value: edasmsc.
@@ -6173,6 +6384,11 @@ func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetLicenseKey(v string) *Creat
 
 func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetName(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetNamespace(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -7589,6 +7805,258 @@ func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGat
 	return s
 }
 
+type DeleteGatewayAuthConsumerRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteGatewayAuthConsumerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerRequest) SetAcceptLanguage(v string) *DeleteGatewayAuthConsumerRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerRequest) SetGatewayUniqueId(v string) *DeleteGatewayAuthConsumerRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerRequest) SetId(v int64) *DeleteGatewayAuthConsumerRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteGatewayAuthConsumerResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteGatewayAuthConsumerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetCode(v int32) *DeleteGatewayAuthConsumerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetData(v bool) *DeleteGatewayAuthConsumerResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetDynamicCode(v string) *DeleteGatewayAuthConsumerResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetDynamicMessage(v string) *DeleteGatewayAuthConsumerResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetErrorCode(v string) *DeleteGatewayAuthConsumerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetHttpStatusCode(v int32) *DeleteGatewayAuthConsumerResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetMessage(v string) *DeleteGatewayAuthConsumerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetRequestId(v string) *DeleteGatewayAuthConsumerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponseBody) SetSuccess(v bool) *DeleteGatewayAuthConsumerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteGatewayAuthConsumerResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayAuthConsumerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayAuthConsumerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerResponse) SetHeaders(v map[string]*string) *DeleteGatewayAuthConsumerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponse) SetStatusCode(v int32) *DeleteGatewayAuthConsumerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResponse) SetBody(v *DeleteGatewayAuthConsumerResponseBody) *DeleteGatewayAuthConsumerResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayAuthConsumerResourceRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerId      *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IdList          *string `json:"IdList,omitempty" xml:"IdList,omitempty"`
+}
+
+func (s DeleteGatewayAuthConsumerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerResourceRequest) SetAcceptLanguage(v string) *DeleteGatewayAuthConsumerResourceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceRequest) SetConsumerId(v int64) *DeleteGatewayAuthConsumerResourceRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceRequest) SetGatewayUniqueId(v string) *DeleteGatewayAuthConsumerResourceRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceRequest) SetIdList(v string) *DeleteGatewayAuthConsumerResourceRequest {
+	s.IdList = &v
+	return s
+}
+
+type DeleteGatewayAuthConsumerResourceResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteGatewayAuthConsumerResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetCode(v int32) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetData(v bool) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetDynamicCode(v string) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetDynamicMessage(v string) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetErrorCode(v string) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetHttpStatusCode(v int32) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetMessage(v string) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetRequestId(v string) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponseBody) SetSuccess(v bool) *DeleteGatewayAuthConsumerResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteGatewayAuthConsumerResourceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayAuthConsumerResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayAuthConsumerResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayAuthConsumerResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponse) SetHeaders(v map[string]*string) *DeleteGatewayAuthConsumerResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponse) SetStatusCode(v int32) *DeleteGatewayAuthConsumerResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayAuthConsumerResourceResponse) SetBody(v *DeleteGatewayAuthConsumerResourceResponseBody) *DeleteGatewayAuthConsumerResourceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGatewayDomainRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -7819,9 +8287,9 @@ func (s *DeleteGatewayRouteRequest) SetRouteId(v string) *DeleteGatewayRouteRequ
 }
 
 type DeleteGatewayRouteResponseBody struct {
-	// The status code returned.
+	// The HTTP status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *DeleteGatewayRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -7883,7 +8351,7 @@ type DeleteGatewayRouteResponseBodyData struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The creation time.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The modification time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -8520,7 +8988,7 @@ type DeleteMigrationTaskResponseBody struct {
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code
+	// The HTTP status code returned.
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -9106,7 +9574,7 @@ type DeleteNacosServiceResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -9180,6 +9648,99 @@ func (s *DeleteNacosServiceResponse) SetStatusCode(v int32) *DeleteNacosServiceR
 }
 
 func (s *DeleteNacosServiceResponse) SetBody(v *DeleteNacosServiceResponseBody) *DeleteNacosServiceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteNamespaceRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s DeleteNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceRequest) SetAcceptLanguage(v string) *DeleteNamespaceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetName(v string) *DeleteNamespaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetRegion(v string) *DeleteNamespaceRequest {
+	s.Region = &v
+	return s
+}
+
+type DeleteNamespaceResponseBody struct {
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceResponseBody) SetHttpStatusCode(v int32) *DeleteNamespaceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetMessage(v string) *DeleteNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetSuccess(v bool) *DeleteNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceResponse) SetHeaders(v map[string]*string) *DeleteNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -9509,7 +10070,8 @@ type DeleteSwimmingLaneRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane.
-	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	LaneId    *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s DeleteSwimmingLaneRequest) String() string {
@@ -9527,6 +10089,11 @@ func (s *DeleteSwimmingLaneRequest) SetAcceptLanguage(v string) *DeleteSwimmingL
 
 func (s *DeleteSwimmingLaneRequest) SetLaneId(v int64) *DeleteSwimmingLaneRequest {
 	s.LaneId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneRequest) SetNamespace(v string) *DeleteSwimmingLaneRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -10664,7 +11231,9 @@ type GetAppMessageQueueRouteRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region where the instance resides. Examples:
 	//
 	// *   `cn-hangzhou`: China (Hangzhou)
@@ -10690,6 +11259,16 @@ func (s *GetAppMessageQueueRouteRequest) SetAcceptLanguage(v string) *GetAppMess
 
 func (s *GetAppMessageQueueRouteRequest) SetAppId(v string) *GetAppMessageQueueRouteRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteRequest) SetAppName(v string) *GetAppMessageQueueRouteRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteRequest) SetNamespace(v string) *GetAppMessageQueueRouteRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -11147,9 +11726,9 @@ type GetApplicationListWithMetircsRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the instance resides. Examples:
+	// The ID of the region where the Microservices Engine (MSE) instance resides. Examples:
 	//
 	// *   cn-hangzhou: China (Hangzhou)
 	// *   cn-beijing: China (Beijing)
@@ -11266,7 +11845,7 @@ func (s *GetApplicationListWithMetircsResponseBody) SetSuccess(v bool) *GetAppli
 }
 
 type GetApplicationListWithMetircsResponseBodyData struct {
-	// The page number of the returned page.
+	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -11309,7 +11888,7 @@ type GetApplicationListWithMetircsResponseBodyDataResult struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The metric about the application.
+	// The current metrics.
 	CurMetrics []*GetApplicationListWithMetircsResponseBodyDataResultCurMetrics `json:"CurMetrics,omitempty" xml:"CurMetrics,omitempty" type:"Repeated"`
 	// The sum of metrics about the application.
 	CurMetricsFm *GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm `json:"CurMetricsFm,omitempty" xml:"CurMetricsFm,omitempty" type:"Struct"`
@@ -11322,9 +11901,9 @@ type GetApplicationListWithMetircsResponseBodyDataResult struct {
 	// The license key in use.
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
 	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the region where the instance resides.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service source.
+	// The source.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status.
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -11415,11 +11994,11 @@ func (s *GetApplicationListWithMetircsResponseBodyDataResult) SetUserId(v string
 type GetApplicationListWithMetircsResponseBodyDataResultCurMetrics struct {
 	// The number of blocked QPS.
 	BlockQps *float64 `json:"BlockQps,omitempty" xml:"BlockQps,omitempty"`
-	// The number of abnormal QPS.
+	// The abnormal QPS.
 	ExpQps *float64 `json:"ExpQps,omitempty" xml:"ExpQps,omitempty"`
 	// The number of passed QPS.
 	PassQps *float64 `json:"PassQps,omitempty" xml:"PassQps,omitempty"`
-	// The number of queries per second (QPS).
+	// The queries per second (QPS).
 	Qps *float64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	// The response time (RT).
 	Rt *float64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
@@ -11475,7 +12054,7 @@ func (s *GetApplicationListWithMetircsResponseBodyDataResultCurMetrics) SetTimes
 type GetApplicationListWithMetircsResponseBodyDataResultCurMetricsFm struct {
 	// The number of blocked QPS.
 	BlockQps *float64 `json:"BlockQps,omitempty" xml:"BlockQps,omitempty"`
-	// The number of abnormal QPS.
+	// The abnormal QPS.
 	ExpQps *float64 `json:"ExpQps,omitempty" xml:"ExpQps,omitempty"`
 	// The number of passed QPS.
 	PassQps *float64 `json:"PassQps,omitempty" xml:"PassQps,omitempty"`
@@ -12280,6 +12859,307 @@ func (s *GetGatewayResponse) SetStatusCode(v int32) *GetGatewayResponse {
 }
 
 func (s *GetGatewayResponse) SetBody(v *GetGatewayResponseBody) *GetGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type GetGatewayAuthConsumerDetailRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetGatewayAuthConsumerDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthConsumerDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthConsumerDetailRequest) SetAcceptLanguage(v string) *GetGatewayAuthConsumerDetailRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailRequest) SetGatewayUniqueId(v string) *GetGatewayAuthConsumerDetailRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailRequest) SetId(v int64) *GetGatewayAuthConsumerDetailRequest {
+	s.Id = &v
+	return s
+}
+
+type GetGatewayAuthConsumerDetailResponseBody struct {
+	Code           *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetGatewayAuthConsumerDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode    *string                                       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetCode(v int32) *GetGatewayAuthConsumerDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetData(v *GetGatewayAuthConsumerDetailResponseBodyData) *GetGatewayAuthConsumerDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetDynamicCode(v string) *GetGatewayAuthConsumerDetailResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetDynamicMessage(v string) *GetGatewayAuthConsumerDetailResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetErrorCode(v string) *GetGatewayAuthConsumerDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetHttpStatusCode(v int32) *GetGatewayAuthConsumerDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetMessage(v string) *GetGatewayAuthConsumerDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetRequestId(v string) *GetGatewayAuthConsumerDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBody) SetSuccess(v bool) *GetGatewayAuthConsumerDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetGatewayAuthConsumerDetailResponseBodyData struct {
+	ConsumerStatus  *bool                                                       `json:"ConsumerStatus,omitempty" xml:"ConsumerStatus,omitempty"`
+	Description     *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncodeType      *string                                                     `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	GatewayUniqueId *string                                                     `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Jwks            *string                                                     `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	KeyName         *string                                                     `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyValue        *string                                                     `json:"KeyValue,omitempty" xml:"KeyValue,omitempty"`
+	Name            *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrimaryUser     *string                                                     `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
+	ResourceList    []*GetGatewayAuthConsumerDetailResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	TokenName       *string                                                     `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	TokenPass       *bool                                                       `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	TokenPosition   *string                                                     `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	TokenPrefix     *string                                                     `json:"TokenPrefix,omitempty" xml:"TokenPrefix,omitempty"`
+	Type            *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetConsumerStatus(v bool) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.ConsumerStatus = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetDescription(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetEncodeType(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetGatewayUniqueId(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetGmtCreate(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetGmtModified(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetId(v int64) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetJwks(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.Jwks = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetKeyName(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.KeyName = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetKeyValue(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.KeyValue = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetName(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetPrimaryUser(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.PrimaryUser = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetResourceList(v []*GetGatewayAuthConsumerDetailResponseBodyDataResourceList) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.ResourceList = v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetTokenName(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.TokenName = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetTokenPass(v bool) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetTokenPosition(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetTokenPrefix(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.TokenPrefix = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyData) SetType(v string) *GetGatewayAuthConsumerDetailResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetGatewayAuthConsumerDetailResponseBodyDataResourceList struct {
+	ConsumerId      *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResourceStatus  *bool   `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName       *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBodyDataResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthConsumerDetailResponseBodyDataResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetConsumerId(v int64) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetGatewayUniqueId(v string) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetGmtCreate(v string) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetGmtModified(v string) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetId(v int64) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetResourceStatus(v bool) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetRouteId(v int64) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.RouteId = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponseBodyDataResourceList) SetRouteName(v string) *GetGatewayAuthConsumerDetailResponseBodyDataResourceList {
+	s.RouteName = &v
+	return s
+}
+
+type GetGatewayAuthConsumerDetailResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetGatewayAuthConsumerDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetGatewayAuthConsumerDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGatewayAuthConsumerDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayAuthConsumerDetailResponse) SetHeaders(v map[string]*string) *GetGatewayAuthConsumerDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponse) SetStatusCode(v int32) *GetGatewayAuthConsumerDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGatewayAuthConsumerDetailResponse) SetBody(v *GetGatewayAuthConsumerDetailResponseBody) *GetGatewayAuthConsumerDetailResponse {
 	s.Body = v
 	return s
 }
@@ -15206,7 +16086,7 @@ type GetNacosConfigResponseBodyConfiguration struct {
 	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
 	// The name of the configuration group.
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The MD5 value of the configuration.
+	// The message digest of the configuration.
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
 	// The tags of the configuration.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -16869,7 +17749,8 @@ type GetTagsBySwimmingLaneGroupIdRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s GetTagsBySwimmingLaneGroupIdRequest) String() string {
@@ -16887,6 +17768,11 @@ func (s *GetTagsBySwimmingLaneGroupIdRequest) SetAcceptLanguage(v string) *GetTa
 
 func (s *GetTagsBySwimmingLaneGroupIdRequest) SetGroupId(v int64) *GetTagsBySwimmingLaneGroupIdRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *GetTagsBySwimmingLaneGroupIdRequest) SetNamespace(v string) *GetTagsBySwimmingLaneGroupIdRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -17827,17 +18713,17 @@ type ListAnsInstancesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the cluster.
+	// The ID of the Nacos instance.
 	//
 	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The alias of the cluster.
+	// The alias of the Nacos instance.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The name of the contact group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the instance.
 	//
-	// >  This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -17918,7 +18804,7 @@ type ListAnsInstancesResponseBody struct {
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -18000,12 +18886,12 @@ type ListAnsInstancesResponseBodyData struct {
 	// *   `true`: The instance takes effect.
 	// *   `false`: The instance does not take effect.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Indicates whether the information about the temporary node is obtained. Valid values:
+	// Indicates whether the information about the ephemeral node is obtained. Valid values:
 	//
 	// *   `true`: yes
 	// *   `false`: no
 	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
-	// The number of failed checks.
+	// The number of counted failures.
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// The health status of the instance. Valid values:
 	//
@@ -18031,7 +18917,7 @@ type ListAnsInstancesResponseBodyData struct {
 	Marked *bool `json:"Marked,omitempty" xml:"Marked,omitempty"`
 	// The metadata.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The number of successful checks.
+	// The number of counted successes.
 	OkCount *int32 `json:"OkCount,omitempty" xml:"OkCount,omitempty"`
 	// The port number.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -18318,8 +19204,8 @@ type ListAnsServiceClustersResponseBodyData struct {
 	Clusters []*ListAnsServiceClustersResponseBodyDataClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// Indicates whether the service is a temporary service. Valid values:
 	//
-	// *   `true`: The service is a temporary service.
-	// *   `false`: The service is not a temporary service.
+	// *   `true`: yes
+	// *   `false`: no
 	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
 	// The name of the contact group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -18381,15 +19267,15 @@ type ListAnsServiceClustersResponseBodyDataClusters struct {
 	DefaultCheckPort *int32 `json:"DefaultCheckPort,omitempty" xml:"DefaultCheckPort,omitempty"`
 	// The default port.
 	DefaultPort *int32 `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
-	// The type of health checks.
+	// The type of health check.
 	HealthCheckerType *string `json:"HealthCheckerType,omitempty" xml:"HealthCheckerType,omitempty"`
 	// The metadata of the cluster.
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The name of the cluster.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The complete name of the service.
+	// The full name of the service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// Indicates whether the health check is initiated by the server. This parameter is valid only when the service is a temporary service.
+	// Indicates whether an end-to-end health check is initiated by the server. This parameter is valid only if the service is a temporary service.
 	UseIPPort4Check *bool `json:"UseIPPort4Check,omitempty" xml:"UseIPPort4Check,omitempty"`
 }
 
@@ -18712,7 +19598,8 @@ type ListAppBySwimmingLaneGroupTagRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
@@ -18732,6 +19619,11 @@ func (s *ListAppBySwimmingLaneGroupTagRequest) SetAcceptLanguage(v string) *List
 
 func (s *ListAppBySwimmingLaneGroupTagRequest) SetGroupId(v int64) *ListAppBySwimmingLaneGroupTagRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ListAppBySwimmingLaneGroupTagRequest) SetNamespace(v string) *ListAppBySwimmingLaneGroupTagRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -18845,10 +19737,12 @@ type ListApplicationsWithTagRulesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
@@ -18879,6 +19773,11 @@ func (s *ListApplicationsWithTagRulesRequest) SetAppId(v string) *ListApplicatio
 
 func (s *ListApplicationsWithTagRulesRequest) SetAppName(v string) *ListApplicationsWithTagRulesRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesRequest) SetNamespace(v string) *ListApplicationsWithTagRulesRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -19004,7 +19903,8 @@ type ListApplicationsWithTagRulesResponseBodyDataResult struct {
 	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The information about the rules.
 	RouteRules []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules `json:"RouteRules,omitempty" xml:"RouteRules,omitempty" type:"Repeated"`
 	// The status of the route. Valid values: -0: disabled. -1: enabled.
@@ -19026,6 +19926,11 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetAppId(v string) 
 
 func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetAppName(v string) *ListApplicationsWithTagRulesResponseBodyDataResult {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetNamespace(v string) *ListApplicationsWithTagRulesResponseBodyDataResult {
+	s.Namespace = &v
 	return s
 }
 
@@ -22334,6 +23239,494 @@ func (s *ListGatewayResponse) SetBody(v *ListGatewayResponseBody) *ListGatewayRe
 	return s
 }
 
+type ListGatewayAuthConsumerRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerStatus  *bool   `json:"ConsumerStatus,omitempty" xml:"ConsumerStatus,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNum         *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetAcceptLanguage(v string) *ListGatewayAuthConsumerRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetConsumerStatus(v bool) *ListGatewayAuthConsumerRequest {
+	s.ConsumerStatus = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetGatewayUniqueId(v string) *ListGatewayAuthConsumerRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetName(v string) *ListGatewayAuthConsumerRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetPageNum(v string) *ListGatewayAuthConsumerRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetPageSize(v string) *ListGatewayAuthConsumerRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerRequest) SetType(v string) *ListGatewayAuthConsumerRequest {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResponseBody struct {
+	Code           *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListGatewayAuthConsumerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode    *string                                  `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                  `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetCode(v int32) *ListGatewayAuthConsumerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetData(v *ListGatewayAuthConsumerResponseBodyData) *ListGatewayAuthConsumerResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetDynamicCode(v string) *ListGatewayAuthConsumerResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetDynamicMessage(v string) *ListGatewayAuthConsumerResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetErrorCode(v string) *ListGatewayAuthConsumerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetHttpStatusCode(v int32) *ListGatewayAuthConsumerResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetMessage(v string) *ListGatewayAuthConsumerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetRequestId(v string) *ListGatewayAuthConsumerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBody) SetSuccess(v bool) *ListGatewayAuthConsumerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResponseBodyData struct {
+	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayAuthConsumerResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int64                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyData) SetPageNumber(v int32) *ListGatewayAuthConsumerResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyData) SetPageSize(v int32) *ListGatewayAuthConsumerResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyData) SetResult(v []*ListGatewayAuthConsumerResponseBodyDataResult) *ListGatewayAuthConsumerResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyData) SetTotalSize(v int64) *ListGatewayAuthConsumerResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResponseBodyDataResult struct {
+	ConsumerStatus  *bool   `json:"ConsumerStatus,omitempty" xml:"ConsumerStatus,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrimaryUser     *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetConsumerStatus(v bool) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.ConsumerStatus = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetDescription(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetGmtCreate(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetGmtModified(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetId(v int64) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetName(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetPrimaryUser(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.PrimaryUser = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponseBodyDataResult) SetType(v string) *ListGatewayAuthConsumerResponseBodyDataResult {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayAuthConsumerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewayAuthConsumerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResponse) SetHeaders(v map[string]*string) *ListGatewayAuthConsumerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponse) SetStatusCode(v int32) *ListGatewayAuthConsumerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResponse) SetBody(v *ListGatewayAuthConsumerResponseBody) *ListGatewayAuthConsumerResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayAuthConsumerResourceRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerId      *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	PageNum         *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize        *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceStatus  *bool   `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	RouteName       *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetAcceptLanguage(v string) *ListGatewayAuthConsumerResourceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetConsumerId(v int64) *ListGatewayAuthConsumerResourceRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetGatewayUniqueId(v string) *ListGatewayAuthConsumerResourceRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetPageNum(v string) *ListGatewayAuthConsumerResourceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetPageSize(v string) *ListGatewayAuthConsumerResourceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetResourceStatus(v bool) *ListGatewayAuthConsumerResourceRequest {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceRequest) SetRouteName(v string) *ListGatewayAuthConsumerResourceRequest {
+	s.RouteName = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResourceResponseBody struct {
+	Code           *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListGatewayAuthConsumerResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DynamicCode    *string                                          `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                          `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetCode(v int32) *ListGatewayAuthConsumerResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetData(v *ListGatewayAuthConsumerResourceResponseBodyData) *ListGatewayAuthConsumerResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetDynamicCode(v string) *ListGatewayAuthConsumerResourceResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetDynamicMessage(v string) *ListGatewayAuthConsumerResourceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetErrorCode(v string) *ListGatewayAuthConsumerResourceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetHttpStatusCode(v int32) *ListGatewayAuthConsumerResourceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetMessage(v string) *ListGatewayAuthConsumerResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetRequestId(v string) *ListGatewayAuthConsumerResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBody) SetSuccess(v bool) *ListGatewayAuthConsumerResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResourceResponseBodyData struct {
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*ListGatewayAuthConsumerResourceResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int64                                                   `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyData) SetPageNumber(v int32) *ListGatewayAuthConsumerResourceResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyData) SetPageSize(v int32) *ListGatewayAuthConsumerResourceResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyData) SetResult(v []*ListGatewayAuthConsumerResourceResponseBodyDataResult) *ListGatewayAuthConsumerResourceResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyData) SetTotalSize(v int64) *ListGatewayAuthConsumerResourceResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResourceResponseBodyDataResult struct {
+	ConsumerId      *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ResourceStatus  *bool   `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName       *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResourceResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetConsumerId(v int64) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetGmtCreate(v string) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetGmtModified(v string) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetId(v int64) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetResourceStatus(v bool) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetRouteId(v int64) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponseBodyDataResult) SetRouteName(v string) *ListGatewayAuthConsumerResourceResponseBodyDataResult {
+	s.RouteName = &v
+	return s
+}
+
+type ListGatewayAuthConsumerResourceResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayAuthConsumerResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewayAuthConsumerResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayAuthConsumerResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayAuthConsumerResourceResponse) SetHeaders(v map[string]*string) *ListGatewayAuthConsumerResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponse) SetStatusCode(v int32) *ListGatewayAuthConsumerResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayAuthConsumerResourceResponse) SetBody(v *ListGatewayAuthConsumerResourceResponseBody) *ListGatewayAuthConsumerResourceResponse {
+	s.Body = v
+	return s
+}
+
 type ListGatewayDomainRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -23628,6 +25021,216 @@ func (s *ListGatewayRouteResponse) SetBody(v *ListGatewayRouteResponseBody) *Lis
 	return s
 }
 
+type ListGatewayRouteOnAuthRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayRouteOnAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthRequest) SetAcceptLanguage(v string) *ListGatewayRouteOnAuthRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthRequest) SetGatewayUniqueId(v string) *ListGatewayRouteOnAuthRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthRequest) SetType(v string) *ListGatewayRouteOnAuthRequest {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayRouteOnAuthResponseBody struct {
+	Code           *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListGatewayRouteOnAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewayRouteOnAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetCode(v int32) *ListGatewayRouteOnAuthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetData(v []*ListGatewayRouteOnAuthResponseBodyData) *ListGatewayRouteOnAuthResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetHttpStatusCode(v int32) *ListGatewayRouteOnAuthResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetMessage(v string) *ListGatewayRouteOnAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetRequestId(v string) *ListGatewayRouteOnAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBody) SetSuccess(v bool) *ListGatewayRouteOnAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewayRouteOnAuthResponseBodyData struct {
+	DomainId        *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdList    []*int64                                               `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	DomainName      *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameList  []*string                                              `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	GatewayId       *string                                                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int32                                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name            *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	RoutePredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetDomainId(v int64) *ListGatewayRouteOnAuthResponseBodyData {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetDomainIdList(v []*int64) *ListGatewayRouteOnAuthResponseBodyData {
+	s.DomainIdList = v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetDomainName(v string) *ListGatewayRouteOnAuthResponseBodyData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetDomainNameList(v []*string) *ListGatewayRouteOnAuthResponseBodyData {
+	s.DomainNameList = v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetGatewayId(v string) *ListGatewayRouteOnAuthResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetGatewayUniqueId(v string) *ListGatewayRouteOnAuthResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetId(v int32) *ListGatewayRouteOnAuthResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetName(v string) *ListGatewayRouteOnAuthResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyData) SetRoutePredicates(v *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) *ListGatewayRouteOnAuthResponseBodyData {
+	s.RoutePredicates = v
+	return s
+}
+
+type ListGatewayRouteOnAuthResponseBodyDataRoutePredicates struct {
+	PathPredicates *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates) SetPathPredicates(v *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates) *ListGatewayRouteOnAuthResponseBodyDataRoutePredicates {
+	s.PathPredicates = v
+	return s
+}
+
+type ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates struct {
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates) SetPath(v string) *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates) SetType(v string) *ListGatewayRouteOnAuthResponseBodyDataRoutePredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type ListGatewayRouteOnAuthResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayRouteOnAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewayRouteOnAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayRouteOnAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayRouteOnAuthResponse) SetHeaders(v map[string]*string) *ListGatewayRouteOnAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponse) SetStatusCode(v int32) *ListGatewayRouteOnAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayRouteOnAuthResponse) SetBody(v *ListGatewayRouteOnAuthResponseBody) *ListGatewayRouteOnAuthResponse {
+	s.Body = v
+	return s
+}
+
 type ListGatewayServiceRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -23701,7 +25304,7 @@ type ListGatewayServiceRequestFilterParams struct {
 	// *   GRPC
 	// *   DUBBO
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The type of the service source.
+	// The source type.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -23802,11 +25405,11 @@ func (s *ListGatewayServiceShrinkRequest) SetPageSize(v int32) *ListGatewayServi
 type ListGatewayServiceResponseBody struct {
 	// The return value.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response parameters.
 	Data *ListGatewayServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -23856,7 +25459,7 @@ func (s *ListGatewayServiceResponseBody) SetSuccess(v bool) *ListGatewayServiceR
 }
 
 type ListGatewayServiceResponseBodyData struct {
-	// The page number of the returned page.
+	// The number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -23901,11 +25504,11 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	GatewayTrafficPolicy *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty" type:"Struct"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The time when the service was created.
+	// The creation time.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the service was last modified.
+	// The modification time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The group.
+	// The name of the group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The health status.
 	//
@@ -23925,7 +25528,7 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	// The ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP addresses of the service.
+	// The IP addresses.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	// The metadata or IP addresses of the service.
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
@@ -23935,7 +25538,7 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The port array.
 	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The name of the service registered with the service registry.
+	// The name of the service that is registered with the service registry.
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
 	// The service port.
 	ServicePort *int64 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
@@ -25039,7 +26642,7 @@ func (s *ListListenersByIpRequest) SetRequestPars(v string) *ListListenersByIpRe
 type ListListenersByIpResponseBody struct {
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The information about listeners.
 	Listeners []*ListListenersByIpResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
@@ -25056,7 +26659,7 @@ type ListListenersByIpResponseBody struct {
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of instances.
+	// The total number of returned instances.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -25243,7 +26846,7 @@ type ListMigrationTaskResponseBody struct {
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -25311,7 +26914,7 @@ type ListMigrationTaskResponseBodyData struct {
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The update time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the task.
+	// The ID of the job.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The address of the source instance node.
 	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
@@ -25689,7 +27292,7 @@ type ListNacosHistoryConfigsRequest struct {
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+	// The ID of the region in which the instance resides. The region is supported by MSE.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -25826,7 +27429,7 @@ func (s *ListNacosHistoryConfigsResponseBody) SetTotalCount(v int32) *ListNacosH
 }
 
 type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
-	// The tags of the application.
+	// The application tag.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The ID of the data.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
@@ -25836,7 +27439,7 @@ type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The timestamp when the configuration was last modified.
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// The type of the configuration file.
+	// The format of the configuration file.
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 }
 
@@ -28143,7 +29746,7 @@ type OrderClusterHealthCheckRiskNoticeRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to disable the risk item notification feature.
+	// Specifies whether to disable the notification feature if the risk item occurs.
 	//
 	// *   true: disabled
 	// *   false: enabled
@@ -28154,7 +29757,7 @@ type OrderClusterHealthCheckRiskNoticeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The code of the risk.
+	// The ID of the risk item.
 	RiskCode *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
 }
 
@@ -28563,7 +30166,7 @@ type PutClusterHealthCheckTaskResponseBody struct {
 	//
 	// > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -28670,7 +30273,8 @@ type QueryAllSwimmingLaneRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane group.
-	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s QueryAllSwimmingLaneRequest) String() string {
@@ -28688,6 +30292,11 @@ func (s *QueryAllSwimmingLaneRequest) SetAcceptLanguage(v string) *QueryAllSwimm
 
 func (s *QueryAllSwimmingLaneRequest) SetGroupId(v int64) *QueryAllSwimmingLaneRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *QueryAllSwimmingLaneRequest) SetNamespace(v string) *QueryAllSwimmingLaneRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -28892,8 +30501,6 @@ func (s *QueryAllSwimmingLaneGroupResponseBody) SetSuccess(v bool) *QueryAllSwim
 
 type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	AppIds                 *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	DbGrayEnable           *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
-	Enable                 *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	EntryApp               *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
 	Id                     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
@@ -28902,8 +30509,6 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RecordCanaryDetail     *bool   `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
 	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Source                 *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status                 *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	UserId                 *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -28917,16 +30522,6 @@ func (s QueryAllSwimmingLaneGroupResponseBodyData) GoString() string {
 
 func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetAppIds(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
 	s.AppIds = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetDbGrayEnable(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
-	s.DbGrayEnable = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetEnable(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
-	s.Enable = &v
 	return s
 }
 
@@ -28967,16 +30562,6 @@ func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRecordCanaryDetail(v bool
 
 func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetRegion(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
 	s.Region = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetSource(v string) *QueryAllSwimmingLaneGroupResponseBodyData {
-	s.Source = &v
-	return s
-}
-
-func (s *QueryAllSwimmingLaneGroupResponseBodyData) SetStatus(v int32) *QueryAllSwimmingLaneGroupResponseBodyData {
-	s.Status = &v
 	return s
 }
 
@@ -31729,6 +33314,129 @@ func (s *QueryMonitorResponse) SetBody(v *QueryMonitorResponseBody) *QueryMonito
 	return s
 }
 
+type QueryNamespaceRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s QueryNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryNamespaceRequest) SetAcceptLanguage(v string) *QueryNamespaceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *QueryNamespaceRequest) SetName(v string) *QueryNamespaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryNamespaceRequest) SetRegion(v string) *QueryNamespaceRequest {
+	s.Region = &v
+	return s
+}
+
+type QueryNamespaceResponseBody struct {
+	Data []*QueryNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HttpStatusCode
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryNamespaceResponseBody) SetData(v []*QueryNamespaceResponseBodyData) *QueryNamespaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryNamespaceResponseBody) SetHttpStatusCode(v int32) *QueryNamespaceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryNamespaceResponseBody) SetMessage(v string) *QueryNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryNamespaceResponseBody) SetRequestId(v string) *QueryNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryNamespaceResponseBody) SetSuccess(v bool) *QueryNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryNamespaceResponseBodyData struct {
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s QueryNamespaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryNamespaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryNamespaceResponseBodyData) SetNamespace(v string) *QueryNamespaceResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryNamespaceResponseBodyData) SetRegion(v string) *QueryNamespaceResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+type QueryNamespaceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryNamespaceResponse) SetHeaders(v map[string]*string) *QueryNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryNamespaceResponse) SetStatusCode(v int32) *QueryNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryNamespaceResponse) SetBody(v *QueryNamespaceResponseBody) *QueryNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySlbSpecRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -31895,7 +33603,8 @@ type QuerySwimmingLaneByIdRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the lane.
-	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	LaneId    *int64  `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s QuerySwimmingLaneByIdRequest) String() string {
@@ -31913,6 +33622,11 @@ func (s *QuerySwimmingLaneByIdRequest) SetAcceptLanguage(v string) *QuerySwimmin
 
 func (s *QuerySwimmingLaneByIdRequest) SetLaneId(v int64) *QuerySwimmingLaneByIdRequest {
 	s.LaneId = &v
+	return s
+}
+
+func (s *QuerySwimmingLaneByIdRequest) SetNamespace(v string) *QuerySwimmingLaneByIdRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -32970,7 +34684,7 @@ type UpdateBlackWhiteListRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The ID of the blacklist.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to modify the whitelist.
+	// Specifies whether to enable the whitelist feature.
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -33050,13 +34764,13 @@ func (s *UpdateBlackWhiteListRequest) SetType(v string) *UpdateBlackWhiteListReq
 }
 
 type UpdateBlackWhiteListResponseBody struct {
-	// The return value.
+	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the record.
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Request
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -33886,6 +35600,636 @@ func (s *UpdateEngineNamespaceResponse) SetStatusCode(v int32) *UpdateEngineName
 }
 
 func (s *UpdateEngineNamespaceResponse) SetBody(v *UpdateEngineNamespaceResponseBody) *UpdateEngineNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayAuthConsumerRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncodeType      *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Jwks            *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	KeyName         *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	KeyValue        *string `json:"KeyValue,omitempty" xml:"KeyValue,omitempty"`
+	TokenName       *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	TokenPass       *bool   `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	TokenPosition   *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	TokenPrefix     *string `json:"TokenPrefix,omitempty" xml:"TokenPrefix,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetAcceptLanguage(v string) *UpdateGatewayAuthConsumerRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetDescription(v string) *UpdateGatewayAuthConsumerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetEncodeType(v string) *UpdateGatewayAuthConsumerRequest {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetGatewayUniqueId(v string) *UpdateGatewayAuthConsumerRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetId(v int64) *UpdateGatewayAuthConsumerRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetJwks(v string) *UpdateGatewayAuthConsumerRequest {
+	s.Jwks = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetKeyName(v string) *UpdateGatewayAuthConsumerRequest {
+	s.KeyName = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetKeyValue(v string) *UpdateGatewayAuthConsumerRequest {
+	s.KeyValue = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetTokenName(v string) *UpdateGatewayAuthConsumerRequest {
+	s.TokenName = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetTokenPass(v bool) *UpdateGatewayAuthConsumerRequest {
+	s.TokenPass = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetTokenPosition(v string) *UpdateGatewayAuthConsumerRequest {
+	s.TokenPosition = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerRequest) SetTokenPrefix(v string) *UpdateGatewayAuthConsumerRequest {
+	s.TokenPrefix = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetCode(v int32) *UpdateGatewayAuthConsumerResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetData(v int64) *UpdateGatewayAuthConsumerResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetDynamicCode(v string) *UpdateGatewayAuthConsumerResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetDynamicMessage(v string) *UpdateGatewayAuthConsumerResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetErrorCode(v string) *UpdateGatewayAuthConsumerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayAuthConsumerResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetMessage(v string) *UpdateGatewayAuthConsumerResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetRequestId(v string) *UpdateGatewayAuthConsumerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponseBody) SetSuccess(v bool) *UpdateGatewayAuthConsumerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayAuthConsumerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayAuthConsumerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResponse) SetHeaders(v map[string]*string) *UpdateGatewayAuthConsumerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponse) SetStatusCode(v int32) *UpdateGatewayAuthConsumerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResponse) SetBody(v *UpdateGatewayAuthConsumerResponseBody) *UpdateGatewayAuthConsumerResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerId     *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// UpdateGatewayAuthConsumerResource
+	GatewayUniqueId *string                                                 `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	ResourceList    []*UpdateGatewayAuthConsumerResourceRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequest) SetAcceptLanguage(v string) *UpdateGatewayAuthConsumerResourceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequest) SetConsumerId(v int64) *UpdateGatewayAuthConsumerResourceRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequest) SetGatewayUniqueId(v string) *UpdateGatewayAuthConsumerResourceRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequest) SetResourceList(v []*UpdateGatewayAuthConsumerResourceRequestResourceList) *UpdateGatewayAuthConsumerResourceRequest {
+	s.ResourceList = v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceRequestResourceList struct {
+	RouteId   *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceRequestResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceRequestResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequestResourceList) SetRouteId(v int64) *UpdateGatewayAuthConsumerResourceRequestResourceList {
+	s.RouteId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceRequestResourceList) SetRouteName(v string) *UpdateGatewayAuthConsumerResourceRequestResourceList {
+	s.RouteName = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceShrinkRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerId     *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// UpdateGatewayAuthConsumerResource
+	GatewayUniqueId    *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	ResourceListShrink *string `json:"ResourceList,omitempty" xml:"ResourceList,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayAuthConsumerResourceShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceShrinkRequest) SetConsumerId(v int64) *UpdateGatewayAuthConsumerResourceShrinkRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayAuthConsumerResourceShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceShrinkRequest) SetResourceListShrink(v string) *UpdateGatewayAuthConsumerResourceShrinkRequest {
+	s.ResourceListShrink = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetCode(v int32) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetData(v bool) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetDynamicCode(v string) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetDynamicMessage(v string) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetErrorCode(v string) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetMessage(v string) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetRequestId(v string) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponseBody) SetSuccess(v bool) *UpdateGatewayAuthConsumerResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayAuthConsumerResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponse) SetHeaders(v map[string]*string) *UpdateGatewayAuthConsumerResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponse) SetStatusCode(v int32) *UpdateGatewayAuthConsumerResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceResponse) SetBody(v *UpdateGatewayAuthConsumerResourceResponseBody) *UpdateGatewayAuthConsumerResourceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceStatusRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerId      *int64  `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	IdList          *string `json:"IdList,omitempty" xml:"IdList,omitempty"`
+	ResourceStatus  *bool   `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusRequest) SetAcceptLanguage(v string) *UpdateGatewayAuthConsumerResourceStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusRequest) SetConsumerId(v int64) *UpdateGatewayAuthConsumerResourceStatusRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusRequest) SetGatewayUniqueId(v string) *UpdateGatewayAuthConsumerResourceStatusRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusRequest) SetIdList(v string) *UpdateGatewayAuthConsumerResourceStatusRequest {
+	s.IdList = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusRequest) SetResourceStatus(v bool) *UpdateGatewayAuthConsumerResourceStatusRequest {
+	s.ResourceStatus = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceStatusResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetCode(v int32) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetData(v bool) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetDynamicCode(v string) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetDynamicMessage(v string) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetErrorCode(v string) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetMessage(v string) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetRequestId(v string) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponseBody) SetSuccess(v bool) *UpdateGatewayAuthConsumerResourceStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerResourceStatusResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayAuthConsumerResourceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerResourceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponse) SetHeaders(v map[string]*string) *UpdateGatewayAuthConsumerResourceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponse) SetStatusCode(v int32) *UpdateGatewayAuthConsumerResourceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerResourceStatusResponse) SetBody(v *UpdateGatewayAuthConsumerResourceStatusResponseBody) *UpdateGatewayAuthConsumerResourceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayAuthConsumerStatusRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ConsumerStatus  *bool   `json:"ConsumerStatus,omitempty" xml:"ConsumerStatus,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerStatusRequest) SetAcceptLanguage(v string) *UpdateGatewayAuthConsumerStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusRequest) SetConsumerStatus(v bool) *UpdateGatewayAuthConsumerStatusRequest {
+	s.ConsumerStatus = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusRequest) SetGatewayUniqueId(v string) *UpdateGatewayAuthConsumerStatusRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusRequest) SetId(v int64) *UpdateGatewayAuthConsumerStatusRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerStatusResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayAuthConsumerStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetCode(v int32) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetData(v bool) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetDynamicCode(v string) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetDynamicMessage(v string) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetErrorCode(v string) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetMessage(v string) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetRequestId(v string) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponseBody) SetSuccess(v bool) *UpdateGatewayAuthConsumerStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayAuthConsumerStatusResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayAuthConsumerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayAuthConsumerStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayAuthConsumerStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponse) SetHeaders(v map[string]*string) *UpdateGatewayAuthConsumerStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponse) SetStatusCode(v int32) *UpdateGatewayAuthConsumerStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayAuthConsumerStatusResponse) SetBody(v *UpdateGatewayAuthConsumerStatusResponseBody) *UpdateGatewayAuthConsumerStatusResponse {
 	s.Body = v
 	return s
 }
@@ -35193,6 +37537,199 @@ func (s *UpdateGatewayRouteResponse) SetStatusCode(v int32) *UpdateGatewayRouteR
 }
 
 func (s *UpdateGatewayRouteResponse) SetBody(v *UpdateGatewayRouteResponseBody) *UpdateGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateGatewayRouteAuthRequest struct {
+	AcceptLanguage  *string                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AuthJSON        *UpdateGatewayRouteAuthRequestAuthJSON `json:"AuthJSON,omitempty" xml:"AuthJSON,omitempty" type:"Struct"`
+	GatewayId       *int64                                 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64                                 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayRouteAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteAuthRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteAuthRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthRequest) SetAuthJSON(v *UpdateGatewayRouteAuthRequestAuthJSON) *UpdateGatewayRouteAuthRequest {
+	s.AuthJSON = v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthRequest) SetGatewayId(v int64) *UpdateGatewayRouteAuthRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteAuthRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthRequest) SetId(v int64) *UpdateGatewayRouteAuthRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayRouteAuthRequestAuthJSON struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateGatewayRouteAuthRequestAuthJSON) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteAuthRequestAuthJSON) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteAuthRequestAuthJSON) SetType(v string) *UpdateGatewayRouteAuthRequestAuthJSON {
+	s.Type = &v
+	return s
+}
+
+type UpdateGatewayRouteAuthShrinkRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AuthJSONShrink  *string `json:"AuthJSON,omitempty" xml:"AuthJSON,omitempty"`
+	GatewayId       *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateGatewayRouteAuthShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteAuthShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteAuthShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteAuthShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthShrinkRequest) SetAuthJSONShrink(v string) *UpdateGatewayRouteAuthShrinkRequest {
+	s.AuthJSONShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthShrinkRequest) SetGatewayId(v int64) *UpdateGatewayRouteAuthShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteAuthShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthShrinkRequest) SetId(v int64) *UpdateGatewayRouteAuthShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateGatewayRouteAuthResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetCode(v int32) *UpdateGatewayRouteAuthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetData(v int64) *UpdateGatewayRouteAuthResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetDynamicCode(v string) *UpdateGatewayRouteAuthResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetDynamicMessage(v string) *UpdateGatewayRouteAuthResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetErrorCode(v string) *UpdateGatewayRouteAuthResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteAuthResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetMessage(v string) *UpdateGatewayRouteAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetRequestId(v string) *UpdateGatewayRouteAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponseBody) SetSuccess(v bool) *UpdateGatewayRouteAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteAuthResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayRouteAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteAuthResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponse) SetStatusCode(v int32) *UpdateGatewayRouteAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteAuthResponse) SetBody(v *UpdateGatewayRouteAuthResponseBody) *UpdateGatewayRouteAuthResponse {
 	s.Body = v
 	return s
 }
@@ -37922,9 +40459,9 @@ type UpdateMigrationTaskResponseBodyData struct {
 	// *   ZooKeeper
 	// *   Eureka
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The time when the migration task was created.
+	// The creation time.
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the migration task was updated.
+	// The modification time.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the task.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -38214,7 +40751,7 @@ type UpdateNacosConfigRequest struct {
 	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
 	// The content of the configuration.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the configuration file.
+	// The ID of the configuration.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The description of the configuration.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
@@ -38588,7 +41125,7 @@ type UpdateNacosServiceRequest struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the instance.
 	//
-	// >  This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
@@ -38642,13 +41179,13 @@ func (s *UpdateNacosServiceRequest) SetServiceName(v string) *UpdateNacosService
 }
 
 type UpdateNacosServiceResponseBody struct {
-	// The status code returned.
+	// The response code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the data.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -39897,6 +42434,98 @@ func (client *Client) AddGateway(request *AddGatewayRequest) (_result *AddGatewa
 	return _result, _err
 }
 
+func (client *Client) AddGatewayAuthConsumerWithOptions(request *AddGatewayAuthConsumerRequest, runtime *util.RuntimeOptions) (_result *AddGatewayAuthConsumerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodeType)) {
+		query["EncodeType"] = request.EncodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Jwks)) {
+		query["Jwks"] = request.Jwks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyName)) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyValue)) {
+		query["KeyValue"] = request.KeyValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenName)) {
+		query["TokenName"] = request.TokenName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPass)) {
+		query["TokenPass"] = request.TokenPass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPosition)) {
+		query["TokenPosition"] = request.TokenPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPrefix)) {
+		query["TokenPrefix"] = request.TokenPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGatewayAuthConsumer"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGatewayAuthConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGatewayAuthConsumer(request *AddGatewayAuthConsumerRequest) (_result *AddGatewayAuthConsumerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddGatewayAuthConsumerResponse{}
+	_body, _err := client.AddGatewayAuthConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddGatewayDomainWithOptions(request *AddGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *AddGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40679,8 +43308,16 @@ func (client *Client) ApplyTagPoliciesWithOptions(request *ApplyTagPoliciesReque
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Enable)) {
 		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
@@ -40883,7 +43520,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 }
 
 /**
- * Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+ * Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
  *
  * @param request CreateClusterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40995,7 +43632,7 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 }
 
 /**
- * Before you call this API operation, you must make sure that you fully understand the billing method and pricing of MSE.
+ * Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
  *
  * @param request CreateClusterRequest
  * @return CreateClusterResponse
@@ -41515,6 +44152,10 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpda
 		query["Name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -41938,6 +44579,114 @@ func (client *Client) DeleteGateway(request *DeleteGatewayRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGatewayResponse{}
 	_body, _err := client.DeleteGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayAuthConsumerWithOptions(request *DeleteGatewayAuthConsumerRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayAuthConsumerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayAuthConsumer"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayAuthConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayAuthConsumer(request *DeleteGatewayAuthConsumerRequest) (_result *DeleteGatewayAuthConsumerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayAuthConsumerResponse{}
+	_body, _err := client.DeleteGatewayAuthConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayAuthConsumerResourceWithOptions(request *DeleteGatewayAuthConsumerResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayAuthConsumerResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdList)) {
+		query["IdList"] = request.IdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayAuthConsumerResource"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayAuthConsumerResource(request *DeleteGatewayAuthConsumerResourceRequest) (_result *DeleteGatewayAuthConsumerResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.DeleteGatewayAuthConsumerResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42577,6 +45326,58 @@ func (client *Client) DeleteNacosService(request *DeleteNacosServiceRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNamespace"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteSecurityGroupRuleWithOptions(request *DeleteSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteSecurityGroupRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42693,6 +45494,10 @@ func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneR
 
 	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
 		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -43066,6 +45871,14 @@ func (client *Client) GetAppMessageQueueRouteWithOptions(request *GetAppMessageQ
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
 	}
@@ -43417,6 +46230,58 @@ func (client *Client) GetGateway(request *GetGatewayRequest) (_result *GetGatewa
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGatewayResponse{}
 	_body, _err := client.GetGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetGatewayAuthConsumerDetailWithOptions(request *GetGatewayAuthConsumerDetailRequest, runtime *util.RuntimeOptions) (_result *GetGatewayAuthConsumerDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGatewayAuthConsumerDetail"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGatewayAuthConsumerDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetGatewayAuthConsumerDetail(request *GetGatewayAuthConsumerDetailRequest) (_result *GetGatewayAuthConsumerDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGatewayAuthConsumerDetailResponse{}
+	_body, _err := client.GetGatewayAuthConsumerDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44446,6 +47311,10 @@ func (client *Client) GetTagsBySwimmingLaneGroupIdWithOptions(request *GetTagsBy
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -44929,6 +47798,10 @@ func (client *Client) ListAppBySwimmingLaneGroupTagWithOptions(request *ListAppB
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
@@ -45551,6 +48424,142 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 	return _result, _err
 }
 
+func (client *Client) ListGatewayAuthConsumerWithOptions(request *ListGatewayAuthConsumerRequest, runtime *util.RuntimeOptions) (_result *ListGatewayAuthConsumerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerStatus)) {
+		query["ConsumerStatus"] = request.ConsumerStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayAuthConsumer"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayAuthConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayAuthConsumer(request *ListGatewayAuthConsumerRequest) (_result *ListGatewayAuthConsumerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayAuthConsumerResponse{}
+	_body, _err := client.ListGatewayAuthConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGatewayAuthConsumerResourceWithOptions(request *ListGatewayAuthConsumerResourceRequest, runtime *util.RuntimeOptions) (_result *ListGatewayAuthConsumerResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceStatus)) {
+		query["ResourceStatus"] = request.ResourceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayAuthConsumerResource"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayAuthConsumerResource(request *ListGatewayAuthConsumerResourceRequest) (_result *ListGatewayAuthConsumerResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.ListGatewayAuthConsumerResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGatewayDomainWithOptions(request *ListGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *ListGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45666,6 +48675,58 @@ func (client *Client) ListGatewayRoute(request *ListGatewayRouteRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGatewayRouteResponse{}
 	_body, _err := client.ListGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGatewayRouteOnAuthWithOptions(request *ListGatewayRouteOnAuthRequest, runtime *util.RuntimeOptions) (_result *ListGatewayRouteOnAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayRouteOnAuth"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayRouteOnAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayRouteOnAuth(request *ListGatewayRouteOnAuthRequest) (_result *ListGatewayRouteOnAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayRouteOnAuthResponse{}
+	_body, _err := client.ListGatewayRouteOnAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46997,6 +50058,10 @@ func (client *Client) QueryAllSwimmingLaneWithOptions(request *QueryAllSwimmingL
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -47615,6 +50680,58 @@ func (client *Client) QueryMonitor(request *QueryMonitorRequest) (_result *Query
 	return _result, _err
 }
 
+func (client *Client) QueryNamespaceWithOptions(request *QueryNamespaceRequest, runtime *util.RuntimeOptions) (_result *QueryNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryNamespace"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryNamespace(request *QueryNamespaceRequest) (_result *QueryNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryNamespaceResponse{}
+	_body, _err := client.QueryNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySlbSpecWithOptions(request *QuerySlbSpecRequest, runtime *util.RuntimeOptions) (_result *QuerySlbSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47667,6 +50784,10 @@ func (client *Client) QuerySwimmingLaneByIdWithOptions(request *QuerySwimmingLan
 
 	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
 		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -48510,6 +51631,272 @@ func (client *Client) UpdateEngineNamespace(request *UpdateEngineNamespaceReques
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewayAuthConsumerWithOptions(request *UpdateGatewayAuthConsumerRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayAuthConsumerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodeType)) {
+		query["EncodeType"] = request.EncodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Jwks)) {
+		query["Jwks"] = request.Jwks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyName)) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyValue)) {
+		query["KeyValue"] = request.KeyValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenName)) {
+		query["TokenName"] = request.TokenName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPass)) {
+		query["TokenPass"] = request.TokenPass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPosition)) {
+		query["TokenPosition"] = request.TokenPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenPrefix)) {
+		query["TokenPrefix"] = request.TokenPrefix
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayAuthConsumer"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayAuthConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumer(request *UpdateGatewayAuthConsumerRequest) (_result *UpdateGatewayAuthConsumerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayAuthConsumerResponse{}
+	_body, _err := client.UpdateGatewayAuthConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerResourceWithOptions(tmpReq *UpdateGatewayAuthConsumerResourceRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayAuthConsumerResourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayAuthConsumerResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceList)) {
+		request.ResourceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceList, tea.String("ResourceList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceListShrink)) {
+		query["ResourceList"] = request.ResourceListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayAuthConsumerResource"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerResource(request *UpdateGatewayAuthConsumerResourceRequest) (_result *UpdateGatewayAuthConsumerResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayAuthConsumerResourceResponse{}
+	_body, _err := client.UpdateGatewayAuthConsumerResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerResourceStatusWithOptions(request *UpdateGatewayAuthConsumerResourceStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayAuthConsumerResourceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdList)) {
+		query["IdList"] = request.IdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceStatus)) {
+		query["ResourceStatus"] = request.ResourceStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayAuthConsumerResourceStatus"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayAuthConsumerResourceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerResourceStatus(request *UpdateGatewayAuthConsumerResourceStatusRequest) (_result *UpdateGatewayAuthConsumerResourceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayAuthConsumerResourceStatusResponse{}
+	_body, _err := client.UpdateGatewayAuthConsumerResourceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerStatusWithOptions(request *UpdateGatewayAuthConsumerStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayAuthConsumerStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConsumerStatus)) {
+		query["ConsumerStatus"] = request.ConsumerStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayAuthConsumerStatus"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayAuthConsumerStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayAuthConsumerStatus(request *UpdateGatewayAuthConsumerStatusRequest) (_result *UpdateGatewayAuthConsumerStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayAuthConsumerStatusResponse{}
+	_body, _err := client.UpdateGatewayAuthConsumerStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGatewayDomainWithOptions(request *UpdateGatewayDomainRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48815,6 +52202,72 @@ func (client *Client) UpdateGatewayRoute(request *UpdateGatewayRouteRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayRouteResponse{}
 	_body, _err := client.UpdateGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteAuthWithOptions(tmpReq *UpdateGatewayRouteAuthRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteAuthResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayRouteAuthShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AuthJSON)) {
+		request.AuthJSONShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthJSON, tea.String("AuthJSON"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthJSONShrink)) {
+		query["AuthJSON"] = request.AuthJSONShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteAuth"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteAuth(request *UpdateGatewayRouteAuthRequest) (_result *UpdateGatewayRouteAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteAuthResponse{}
+	_body, _err := client.UpdateGatewayRouteAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
