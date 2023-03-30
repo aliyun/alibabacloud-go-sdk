@@ -2896,6 +2896,7 @@ func (s *DeleteChangeSetResponse) SetBody(v *DeleteChangeSetResponseBody) *Delet
 }
 
 type DeleteStackRequest struct {
+	DeleteOptions []*string `json:"DeleteOptions,omitempty" xml:"DeleteOptions,omitempty" type:"Repeated"`
 	// The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses credentials of the role to call the APIs of Alibaba Cloud services.
 	//
 	// ROS assumes the RAM role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the role.
@@ -2925,6 +2926,11 @@ func (s DeleteStackRequest) String() string {
 
 func (s DeleteStackRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteStackRequest) SetDeleteOptions(v []*string) *DeleteStackRequest {
+	s.DeleteOptions = v
+	return s
 }
 
 func (s *DeleteStackRequest) SetRamRoleName(v string) *DeleteStackRequest {
@@ -4897,10 +4903,12 @@ func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsReque
 }
 
 type GetFeatureDetailsResponseBody struct {
+	DriftDetection *GetFeatureDetailsResponseBodyDriftDetection `json:"DriftDetection,omitempty" xml:"DriftDetection,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Details of the resource cleaner feature.
 	ResourceCleaner *GetFeatureDetailsResponseBodyResourceCleaner `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
+	ResourceImport  *GetFeatureDetailsResponseBodyResourceImport  `json:"ResourceImport,omitempty" xml:"ResourceImport,omitempty" type:"Struct"`
 	// Details of the template parameter constraint feature.
 	TemplateParameterConstraints *GetFeatureDetailsResponseBodyTemplateParameterConstraints `json:"TemplateParameterConstraints,omitempty" xml:"TemplateParameterConstraints,omitempty" type:"Struct"`
 	// Details of the scenario feature.
@@ -4917,6 +4925,11 @@ func (s GetFeatureDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetFeatureDetailsResponseBody) SetDriftDetection(v *GetFeatureDetailsResponseBodyDriftDetection) *GetFeatureDetailsResponseBody {
+	s.DriftDetection = v
+	return s
+}
+
 func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetailsResponseBody {
 	s.RequestId = &v
 	return s
@@ -4924,6 +4937,11 @@ func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetail
 
 func (s *GetFeatureDetailsResponseBody) SetResourceCleaner(v *GetFeatureDetailsResponseBodyResourceCleaner) *GetFeatureDetailsResponseBody {
 	s.ResourceCleaner = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBody) SetResourceImport(v *GetFeatureDetailsResponseBodyResourceImport) *GetFeatureDetailsResponseBody {
+	s.ResourceImport = v
 	return s
 }
 
@@ -4939,6 +4957,23 @@ func (s *GetFeatureDetailsResponseBody) SetTemplateScratch(v *GetFeatureDetailsR
 
 func (s *GetFeatureDetailsResponseBody) SetTerraform(v *GetFeatureDetailsResponseBodyTerraform) *GetFeatureDetailsResponseBody {
 	s.Terraform = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyDriftDetection struct {
+	SupportedResourceTypes []*string `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyDriftDetection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyDriftDetection) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyDriftDetection) SetSupportedResourceTypes(v []*string) *GetFeatureDetailsResponseBodyDriftDetection {
+	s.SupportedResourceTypes = v
 	return s
 }
 
@@ -4996,6 +5031,46 @@ func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) Set
 
 func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) SetSupportedFilters(v []*string) *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes {
 	s.SupportedFilters = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyResourceImport struct {
+	SupportedResourceTypes []*GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyResourceImport) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyResourceImport) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceImport) SetSupportedResourceTypes(v []*GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) *GetFeatureDetailsResponseBodyResourceImport {
+	s.SupportedResourceTypes = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes struct {
+	ResourceIdentifiers []*string `json:"ResourceIdentifiers,omitempty" xml:"ResourceIdentifiers,omitempty" type:"Repeated"`
+	ResourceType        *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) SetResourceIdentifiers(v []*string) *GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes {
+	s.ResourceIdentifiers = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes) SetResourceType(v string) *GetFeatureDetailsResponseBodyResourceImportSupportedResourceTypes {
+	s.ResourceType = &v
 	return s
 }
 
@@ -18670,6 +18745,10 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteOptions)) {
+		query["DeleteOptions"] = request.DeleteOptions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
 		query["RamRoleName"] = request.RamRoleName
 	}
