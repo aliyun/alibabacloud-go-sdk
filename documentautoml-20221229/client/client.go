@@ -12,6 +12,200 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateModelAsyncPredictRequest struct {
+	BinaryToText   *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ModelId        *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelVersion   *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s CreateModelAsyncPredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelAsyncPredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelAsyncPredictRequest) SetBinaryToText(v bool) *CreateModelAsyncPredictRequest {
+	s.BinaryToText = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetContent(v string) *CreateModelAsyncPredictRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetModelId(v int64) *CreateModelAsyncPredictRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetModelVersion(v string) *CreateModelAsyncPredictRequest {
+	s.ModelVersion = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetServiceName(v string) *CreateModelAsyncPredictRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetServiceVersion(v string) *CreateModelAsyncPredictRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type CreateModelAsyncPredictResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateModelAsyncPredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelAsyncPredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelAsyncPredictResponseBody) SetCode(v int32) *CreateModelAsyncPredictResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictResponseBody) SetData(v string) *CreateModelAsyncPredictResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictResponseBody) SetMessage(v string) *CreateModelAsyncPredictResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictResponseBody) SetRequestId(v string) *CreateModelAsyncPredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateModelAsyncPredictResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateModelAsyncPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateModelAsyncPredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateModelAsyncPredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateModelAsyncPredictResponse) SetHeaders(v map[string]*string) *CreateModelAsyncPredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateModelAsyncPredictResponse) SetStatusCode(v int32) *CreateModelAsyncPredictResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictResponse) SetBody(v *CreateModelAsyncPredictResponseBody) *CreateModelAsyncPredictResponse {
+	s.Body = v
+	return s
+}
+
+type GetModelAsyncPredictRequest struct {
+	AsyncPredictId *int64 `json:"AsyncPredictId,omitempty" xml:"AsyncPredictId,omitempty"`
+}
+
+func (s GetModelAsyncPredictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelAsyncPredictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelAsyncPredictRequest) SetAsyncPredictId(v int64) *GetModelAsyncPredictRequest {
+	s.AsyncPredictId = &v
+	return s
+}
+
+type GetModelAsyncPredictResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetModelAsyncPredictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelAsyncPredictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelAsyncPredictResponseBody) SetCode(v int32) *GetModelAsyncPredictResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetModelAsyncPredictResponseBody) SetData(v string) *GetModelAsyncPredictResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetModelAsyncPredictResponseBody) SetMessage(v string) *GetModelAsyncPredictResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetModelAsyncPredictResponseBody) SetRequestId(v string) *GetModelAsyncPredictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetModelAsyncPredictResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetModelAsyncPredictResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetModelAsyncPredictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetModelAsyncPredictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetModelAsyncPredictResponse) SetHeaders(v map[string]*string) *GetModelAsyncPredictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetModelAsyncPredictResponse) SetStatusCode(v int32) *GetModelAsyncPredictResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetModelAsyncPredictResponse) SetBody(v *GetModelAsyncPredictResponseBody) *GetModelAsyncPredictResponse {
+	s.Body = v
+	return s
+}
+
 type PredictClassifierModelRequest struct {
 	AutoPrediction *bool   `json:"AutoPrediction,omitempty" xml:"AutoPrediction,omitempty"`
 	ClassifierId   *int64  `json:"ClassifierId,omitempty" xml:"ClassifierId,omitempty"`
@@ -42,9 +236,9 @@ func (s *PredictClassifierModelRequest) SetContent(v string) *PredictClassifierM
 }
 
 type PredictClassifierModelResponseBody struct {
-	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -62,8 +256,8 @@ func (s *PredictClassifierModelResponseBody) SetCode(v int32) *PredictClassifier
 	return s
 }
 
-func (s *PredictClassifierModelResponseBody) SetData(v string) *PredictClassifierModelResponseBody {
-	s.Data = &v
+func (s *PredictClassifierModelResponseBody) SetData(v map[string]interface{}) *PredictClassifierModelResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -236,9 +430,9 @@ func (s *PredictTemplateModelRequest) SetTaskId(v int64) *PredictTemplateModelRe
 }
 
 type PredictTemplateModelResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -256,8 +450,8 @@ func (s *PredictTemplateModelResponseBody) SetCode(v string) *PredictTemplateMod
 	return s
 }
 
-func (s *PredictTemplateModelResponseBody) SetData(v string) *PredictTemplateModelResponseBody {
-	s.Data = &v
+func (s *PredictTemplateModelResponseBody) SetData(v map[string]interface{}) *PredictTemplateModelResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -340,6 +534,114 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateModelAsyncPredictWithOptions(request *CreateModelAsyncPredictRequest, runtime *util.RuntimeOptions) (_result *CreateModelAsyncPredictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BinaryToText)) {
+		query["BinaryToText"] = request.BinaryToText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelVersion)) {
+		query["ModelVersion"] = request.ModelVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateModelAsyncPredict"),
+		Version:     tea.String("2022-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateModelAsyncPredictResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateModelAsyncPredict(request *CreateModelAsyncPredictRequest) (_result *CreateModelAsyncPredictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateModelAsyncPredictResponse{}
+	_body, _err := client.CreateModelAsyncPredictWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetModelAsyncPredictWithOptions(request *GetModelAsyncPredictRequest, runtime *util.RuntimeOptions) (_result *GetModelAsyncPredictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncPredictId)) {
+		query["AsyncPredictId"] = request.AsyncPredictId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetModelAsyncPredict"),
+		Version:     tea.String("2022-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetModelAsyncPredictResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetModelAsyncPredict(request *GetModelAsyncPredictRequest) (_result *GetModelAsyncPredictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetModelAsyncPredictResponse{}
+	_body, _err := client.GetModelAsyncPredictWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
