@@ -19,6 +19,7 @@ type CreateModelAsyncPredictRequest struct {
 	ModelVersion   *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
 	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	Body           *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateModelAsyncPredictRequest) String() string {
@@ -56,6 +57,11 @@ func (s *CreateModelAsyncPredictRequest) SetServiceName(v string) *CreateModelAs
 
 func (s *CreateModelAsyncPredictRequest) SetServiceVersion(v string) *CreateModelAsyncPredictRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CreateModelAsyncPredictRequest) SetBody(v string) *CreateModelAsyncPredictRequest {
+	s.Body = &v
 	return s
 }
 
@@ -210,6 +216,7 @@ type PredictClassifierModelRequest struct {
 	AutoPrediction *bool   `json:"AutoPrediction,omitempty" xml:"AutoPrediction,omitempty"`
 	ClassifierId   *int64  `json:"ClassifierId,omitempty" xml:"ClassifierId,omitempty"`
 	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Body           *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PredictClassifierModelRequest) String() string {
@@ -232,6 +239,11 @@ func (s *PredictClassifierModelRequest) SetClassifierId(v int64) *PredictClassif
 
 func (s *PredictClassifierModelRequest) SetContent(v string) *PredictClassifierModelRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *PredictClassifierModelRequest) SetBody(v string) *PredictClassifierModelRequest {
+	s.Body = &v
 	return s
 }
 
@@ -305,6 +317,7 @@ type PredictModelRequest struct {
 	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	ModelId      *int64  `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	ModelVersion *string `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PredictModelRequest) String() string {
@@ -332,6 +345,11 @@ func (s *PredictModelRequest) SetModelId(v int64) *PredictModelRequest {
 
 func (s *PredictModelRequest) SetModelVersion(v string) *PredictModelRequest {
 	s.ModelVersion = &v
+	return s
+}
+
+func (s *PredictModelRequest) SetBody(v string) *PredictModelRequest {
+	s.Body = &v
 	return s
 }
 
@@ -404,6 +422,7 @@ type PredictTemplateModelRequest struct {
 	BinaryToText *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
 	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PredictTemplateModelRequest) String() string {
@@ -426,6 +445,11 @@ func (s *PredictTemplateModelRequest) SetContent(v string) *PredictTemplateModel
 
 func (s *PredictTemplateModelRequest) SetTaskId(v int64) *PredictTemplateModelRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *PredictTemplateModelRequest) SetBody(v string) *PredictTemplateModelRequest {
+	s.Body = &v
 	return s
 }
 
@@ -573,6 +597,7 @@ func (client *Client) CreateModelAsyncPredictWithOptions(request *CreateModelAsy
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateModelAsyncPredict"),
@@ -669,6 +694,7 @@ func (client *Client) PredictClassifierModelWithOptions(request *PredictClassifi
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PredictClassifierModel"),
@@ -725,6 +751,7 @@ func (client *Client) PredictModelWithOptions(request *PredictModelRequest, runt
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PredictModel"),
@@ -777,6 +804,7 @@ func (client *Client) PredictTemplateModelWithOptions(request *PredictTemplateMo
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  request.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PredictTemplateModel"),
