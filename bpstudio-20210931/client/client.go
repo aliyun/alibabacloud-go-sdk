@@ -110,14 +110,22 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateApplicationRequest struct {
-	AreaId          *string                              `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	ClientToken     *string                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Configuration   map[string]*string                   `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	Instances       []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Name            *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TemplateId      *string                              `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Variables       map[string]*string                   `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	// The ID of the region.
+	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
+	Configuration map[string]*string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
+	Instances []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The name of the application that you want to create.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the application you want to create belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
+	Variables map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -169,8 +177,11 @@ func (s *CreateApplicationRequest) SetVariables(v map[string]*string) *CreateApp
 }
 
 type CreateApplicationRequestInstances struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the instance.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The type of the instance.
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -198,14 +209,22 @@ func (s *CreateApplicationRequestInstances) SetNodeType(v string) *CreateApplica
 }
 
 type CreateApplicationShrinkRequest struct {
-	AreaId              *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the region.
+	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	InstancesShrink     *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TemplateId          *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	VariablesShrink     *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
+	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The name of the application that you want to create.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the application you want to create belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
+	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationShrinkRequest) String() string {
@@ -257,9 +276,13 @@ func (s *CreateApplicationShrinkRequest) SetVariablesShrink(v string) *CreateApp
 }
 
 type CreateApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the application.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -321,7 +344,9 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type DeleteApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -344,8 +369,11 @@ func (s *DeleteApplicationRequest) SetResourceGroupId(v string) *DeleteApplicati
 }
 
 type DeleteApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -402,7 +430,9 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 }
 
 type DeployApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -425,9 +455,13 @@ func (s *DeployApplicationRequest) SetResourceGroupId(v string) *DeployApplicati
 }
 
 type DeployApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the application.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -489,10 +523,59 @@ func (s *DeployApplicationResponse) SetBody(v *DeployApplicationResponseBody) *D
 }
 
 type ExecuteOperationASyncRequest struct {
-	Attributes      map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Operation       *string            `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ResourceGroupId *string            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType     *string            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
+	//
+	// *   The following common parameters need to be specified for operations on an ECS instance:
+	//
+	// change_type, regionId, instanceId, and appId.
+	//
+	// *   To change the instance type of an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To stop an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To start an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To restart an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// Enumeration values
+	//
+	// <!-- -->
+	//
+	// :
+	//
+	// *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
+	//
+	// *   rename: modifies the name of an ECS instance.
+	// *   modifyInstanceType: changes the instance type of an ECS instance.
+	// *   modifyInstanceType: starts an ECS instance.
+	// *   modifyInstanceType: stops an ECS instance.
+	// *   modifyInstanceType: restarts an ECS instance.
+	// *   addTags: adds tags to an ECS instance.
+	// *   ecsDelete: deletes an ECS instance.
+	// *   modifyPayType: changes the billing method of an ECS instance.
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ExecuteOperationASyncRequest) String() string {
@@ -524,10 +607,59 @@ func (s *ExecuteOperationASyncRequest) SetServiceType(v string) *ExecuteOperatio
 }
 
 type ExecuteOperationASyncShrinkRequest struct {
+	// The parameters that you need to specify when you perform an operation. The parameters vary based on the operation and are specified in the map format. The following examples show how to specify the parameters if you perform an operation on an ECS instance:
+	//
+	// *   The following common parameters need to be specified for operations on an ECS instance:
+	//
+	// change_type, regionId, instanceId, and appId.
+	//
+	// *   To change the instance type of an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To stop an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To start an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// *   To restart an ECS instance, specify the following parameters:
+	//
+	// { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// Enumeration values
+	//
+	// <!-- -->
+	//
+	// :
+	//
+	// *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	Operation        *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The type of the operation to be performed to modify the parameters of an instance of the specified service. Some operations are common to different services, and other operations are specific to each service. For example, set this parameter to one of the following values to perform the corresponding operation on an ECS instance:
+	//
+	// *   rename: modifies the name of an ECS instance.
+	// *   modifyInstanceType: changes the instance type of an ECS instance.
+	// *   modifyInstanceType: starts an ECS instance.
+	// *   modifyInstanceType: stops an ECS instance.
+	// *   modifyInstanceType: restarts an ECS instance.
+	// *   addTags: adds tags to an ECS instance.
+	// *   ecsDelete: deletes an ECS instance.
+	// *   modifyPayType: changes the billing method of an ECS instance.
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The type of the service. If you want to modify the parameters of an Elastic Compute Service (ECS) instance, set this parameter to ecs.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ExecuteOperationASyncShrinkRequest) String() string {
@@ -559,10 +691,14 @@ func (s *ExecuteOperationASyncShrinkRequest) SetServiceType(v string) *ExecuteOp
 }
 
 type ExecuteOperationASyncResponseBody struct {
-	Code      *int32             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. A value of 200 indicates that the request is successful, and other values indicate that the request fails.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the operation.
+	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExecuteOperationASyncResponseBody) String() string {
@@ -623,7 +759,9 @@ func (s *ExecuteOperationASyncResponse) SetBody(v *ExecuteOperationASyncResponse
 }
 
 type GetApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -646,10 +784,14 @@ func (s *GetApplicationRequest) SetResourceGroupId(v string) *GetApplicationRequ
 }
 
 type GetApplicationResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the application.
+	Data *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetApplicationResponseBody) String() string {
@@ -681,19 +823,32 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 type GetApplicationResponseBodyData struct {
-	ApplicationId   *string                                       `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Checklist       []*GetApplicationResponseBodyDataChecklist    `json:"Checklist,omitempty" xml:"Checklist,omitempty" type:"Repeated"`
-	CreateTime      *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Error           *string                                       `json:"Error,omitempty" xml:"Error,omitempty"`
-	ImageURL        *string                                       `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	PriceList       []*GetApplicationResponseBodyDataPriceList    `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
-	ResourceGroupId *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceList    []*GetApplicationResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
-	Status          *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId      *string                                       `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TopoURL         *string                                       `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The verification results returned.
+	Checklist []*GetApplicationResponseBodyDataChecklist `json:"Checklist,omitempty" xml:"Checklist,omitempty" type:"Repeated"`
+	// The time when the application was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The message returned for deployment.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The URL of the image in the database.
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The billing results.
+	PriceList []*GetApplicationResponseBodyDataPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
+	// The ID of the resource group to which the application belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resources.
+	ResourceList []*GetApplicationResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+	// The status of the application.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the template associated with the application.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the application topology image.
+	TopoURL *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s GetApplicationResponseBodyData) String() string {
@@ -770,12 +925,19 @@ func (s *GetApplicationResponseBodyData) SetTopoURL(v string) *GetApplicationRes
 }
 
 type GetApplicationResponseBodyDataChecklist struct {
-	Lifecycle     *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceCode  *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	ResourceName  *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The resource tag.
+	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	// The ID of the region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The message returned for verification.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The service code.
+	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// The name of the instance.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The verification result.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The resource specification.
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -823,19 +985,32 @@ func (s *GetApplicationResponseBodyDataChecklist) SetSpecification(v string) *Ge
 }
 
 type GetApplicationResponseBodyDataPriceList struct {
-	ChargeType    *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Count         *int64   `json:"Count,omitempty" xml:"Count,omitempty"`
-	InstanceName  *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lifecycle     *string  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	OnePrice      *float32 `json:"OnePrice,omitempty" xml:"OnePrice,omitempty"`
+	// The billing method.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The quantity.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The resource tag.
+	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	// The unit price.
+	OnePrice *float32 `json:"OnePrice,omitempty" xml:"OnePrice,omitempty"`
+	// The original price.
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	Period        *float32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	Price         *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	PriceUnit     *string  `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	Region        *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	Remark        *string  `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceCode  *string  `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	Specification *string  `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The service duration.
+	Period *float32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The total price.
+	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// The price unit.
+	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	// The ID of the region.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The error message that is returned when a price query fails.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The service code.
+	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
+	// The instance type.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
 func (s GetApplicationResponseBodyDataPriceList) String() string {
@@ -912,14 +1087,22 @@ func (s *GetApplicationResponseBodyDataPriceList) SetSpecification(v string) *Ge
 }
 
 type GetApplicationResponseBodyDataResourceList struct {
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Lifecycle    *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The billing method.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The resource tag.
+	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	// The deployment result.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The service code.
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the instance.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resource deployment result.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetApplicationResponseBodyDataResourceList) String() string {
@@ -1000,7 +1183,9 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetExecuteOperationResultRequest struct {
-	OperationId     *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The ID of the operation.
+	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1023,11 +1208,14 @@ func (s *GetExecuteOperationResultRequest) SetResourceGroupId(v string) *GetExec
 }
 
 type GetExecuteOperationResultResponseBody struct {
+	// The HTTP status code. A value of 200 indicates that the request is successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Status
-	Data      *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the operation.
+	Data *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExecuteOperationResultResponseBody) String() string {
@@ -1059,10 +1247,14 @@ func (s *GetExecuteOperationResultResponseBody) SetRequestId(v string) *GetExecu
 }
 
 type GetExecuteOperationResultResponseBodyData struct {
-	Arguments   *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The output of the operation.
+	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the operation.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetExecuteOperationResultResponseBodyData) String() string {
@@ -1123,9 +1315,12 @@ func (s *GetExecuteOperationResultResponse) SetBody(v *GetExecuteOperationResult
 }
 
 type GetTemplateRequest struct {
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region in which the template resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetTemplateRequest) String() string {
@@ -1152,10 +1347,14 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 }
 
 type GetTemplateResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the template.
+	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTemplateResponseBody) String() string {
@@ -1187,13 +1386,21 @@ func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBod
 }
 
 type GetTemplateResponseBodyData struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the architecture image.
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TopoURL         *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the architecture image file.
+	TopoURL   *string                                 `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
+	Variables []*GetTemplateResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
 func (s GetTemplateResponseBodyData) String() string {
@@ -1239,6 +1446,46 @@ func (s *GetTemplateResponseBodyData) SetTopoURL(v string) *GetTemplateResponseB
 	return s
 }
 
+func (s *GetTemplateResponseBodyData) SetVariables(v []*GetTemplateResponseBodyDataVariables) *GetTemplateResponseBodyData {
+	s.Variables = v
+	return s
+}
+
+type GetTemplateResponseBodyDataVariables struct {
+	Attribute    *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	DataType     *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Variable     *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+}
+
+func (s GetTemplateResponseBodyDataVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponseBodyDataVariables) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponseBodyDataVariables) SetAttribute(v string) *GetTemplateResponseBodyDataVariables {
+	s.Attribute = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyDataVariables) SetDataType(v string) *GetTemplateResponseBodyDataVariables {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyDataVariables) SetDefaultValue(v string) *GetTemplateResponseBodyDataVariables {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyDataVariables) SetVariable(v string) *GetTemplateResponseBodyDataVariables {
+	s.Variable = &v
+	return s
+}
+
 type GetTemplateResponse struct {
 	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1269,6 +1516,7 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 }
 
 type GetTokenRequest struct {
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1286,10 +1534,14 @@ func (s *GetTokenRequest) SetResourceGroupId(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
-	Code      *int32                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the token.
+	Data *GetTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTokenResponseBody) String() string {
@@ -1321,12 +1573,18 @@ func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
 }
 
 type GetTokenResponseBodyData struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey ID that is used to access OSS.
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret that is used to access OSS.
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Bucket          *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SnapshotBucket  *string `json:"SnapshotBucket,omitempty" xml:"SnapshotBucket,omitempty"`
+	// The OSS bucket that is used to store the architecture image.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The OSS endpoint.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The token that is used to access the Object Storage Service (OSS) bucket that stores the architecture image.
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The OSS bucket that is used to save data snapshots.
+	SnapshotBucket *string `json:"SnapshotBucket,omitempty" xml:"SnapshotBucket,omitempty"`
 }
 
 func (s GetTokenResponseBodyData) String() string {
@@ -1397,12 +1655,18 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type ListApplicationRequest struct {
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *int32  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderType       *int64  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The keyword in the application name.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries to return on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The number of the page to return.
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The field by which the list is sorted. Valid values: 1 and 2. The value 1 specifies that the list is sorted in descending order of application update time, and the value 2 specifies that the list is sorted in descending order of application creation time.
+	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the application.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListApplicationRequest) String() string {
@@ -1444,12 +1708,18 @@ func (s *ListApplicationRequest) SetStatus(v string) *ListApplicationRequest {
 }
 
 type ListApplicationResponseBody struct {
-	Code       *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *int32                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the applications.
+	Data []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the next page.
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned applications.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListApplicationResponseBody) String() string {
@@ -1491,13 +1761,20 @@ func (s *ListApplicationResponseBody) SetTotalCount(v int32) *ListApplicationRes
 }
 
 type ListApplicationResponseBodyData struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The time when the application was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The URL of the application architecture image.
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The name of the application.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the application belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TopoURL         *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
+	// The status of the application.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The URL of the application topology image.
+	TopoURL *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s ListApplicationResponseBodyData) String() string {
@@ -1572,14 +1849,200 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	ClientToken  *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetClientToken(v string) *ListTagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TagResource
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetCode(v string) *ListTagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetMessage(v string) *ListTagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTemplateRequest struct {
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *int32  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderType       *int64  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The keyword that is used to search for templates.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of entries to return on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The number of the page to return.
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The criterion by which the templates are sorted. Valid values:
+	//
+	// *   1: modification time
+	// *   2: creation time
+	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagList         *int32  `json:"TagList,omitempty" xml:"TagList,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The tag of the template.
+	TagList *int32 `json:"TagList,omitempty" xml:"TagList,omitempty"`
+	// The type of the template.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTemplateRequest) String() string {
@@ -1626,12 +2089,18 @@ func (s *ListTemplateRequest) SetType(v string) *ListTemplateRequest {
 }
 
 type ListTemplateResponseBody struct {
-	Code       *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *int32                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details about templates.
+	Data []*ListTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTemplateResponseBody) String() string {
@@ -1673,14 +2142,22 @@ func (s *ListTemplateResponseBody) SetTotalCount(v int32) *ListTemplateResponseB
 }
 
 type ListTemplateResponseBodyData struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The URL of the architecture image.
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagId           *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName         *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TopoURL         *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
+	// The ID of the tag that is added to the template.
+	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The name of the tag that is added to the template.
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// The ID of the template.
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The URL of the template topology image.
+	TopoURL *string `json:"TopoURL,omitempty" xml:"TopoURL,omitempty"`
 }
 
 func (s ListTemplateResponseBodyData) String() string {
@@ -1761,7 +2238,9 @@ func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplat
 }
 
 type ReleaseApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1784,9 +2263,13 @@ func (s *ReleaseApplicationRequest) SetResourceGroupId(v string) *ReleaseApplica
 }
 
 type ReleaseApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return value.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1848,7 +2331,9 @@ func (s *ReleaseApplicationResponse) SetBody(v *ReleaseApplicationResponseBody) 
 }
 
 type ValidateApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1871,9 +2356,13 @@ func (s *ValidateApplicationRequest) SetResourceGroupId(v string) *ValidateAppli
 }
 
 type ValidateApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the application.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1935,7 +2424,9 @@ func (s *ValidateApplicationResponse) SetBody(v *ValidateApplicationResponseBody
 }
 
 type ValuateApplicationRequest struct {
-	ApplicationId   *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the application.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1958,9 +2449,13 @@ func (s *ValuateApplicationRequest) SetResourceGroupId(v string) *ValuateApplica
 }
 
 type ValuateApplicationResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data of the application.
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2615,6 +3110,73 @@ func (client *Client) ListApplication(request *ListApplicationRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationResponse{}
 	_body, _err := client.ListApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		bodyFlat["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		bodyFlat["Tag"] = request.Tag
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2021-09-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
