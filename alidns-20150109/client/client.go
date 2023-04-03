@@ -13,10 +13,13 @@ import (
 )
 
 type AddCustomLineRequest struct {
+	// The domain name for which you configure the custom line.
 	DomainName *string                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	IpSegment  []*AddCustomLineRequestIpSegment `json:"IpSegment,omitempty" xml:"IpSegment,omitempty" type:"Repeated"`
-	Lang       *string                          `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LineName   *string                          `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the custom line.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s AddCustomLineRequest) String() string {
@@ -48,7 +51,9 @@ func (s *AddCustomLineRequest) SetLineName(v string) *AddCustomLineRequest {
 }
 
 type AddCustomLineRequestIpSegment struct {
-	EndIp   *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The end IP address of the CIDR block.
+	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The start IP address of the CIDR block.
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 
@@ -71,8 +76,11 @@ func (s *AddCustomLineRequestIpSegment) SetStartIp(v string) *AddCustomLineReque
 }
 
 type AddCustomLineResponseBody struct {
-	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineId    *int64  `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// The code of the custom line.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The unique ID of the custom line.
+	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -263,23 +271,61 @@ func (s *AddDnsCacheDomainResponse) SetBody(v *AddDnsCacheDomainResponseBody) *A
 }
 
 type AddDnsGtmAccessStrategyRequest struct {
-	DefaultAddrPool             []*AddDnsGtmAccessStrategyRequestDefaultAddrPool  `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
-	DefaultAddrPoolType         *string                                           `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	DefaultLatencyOptimization  *string                                           `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	DefaultLbaStrategy          *string                                           `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	DefaultMaxReturnAddrNum     *int32                                            `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	DefaultMinAvailableAddrNum  *int32                                            `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	FailoverAddrPool            []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
-	FailoverAddrPoolType        *string                                           `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	FailoverLatencyOptimization *string                                           `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	FailoverLbaStrategy         *string                                           `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	FailoverMaxReturnAddrNum    *int32                                            `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	FailoverMinAvailableAddrNum *int32                                            `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	InstanceId                  *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                        *string                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Lines                       *string                                           `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	StrategyMode                *string                                           `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	StrategyName                *string                                           `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	DefaultAddrPool []*AddDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
+	// The type of the primary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
+	// The load balancing policy of the primary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the primary address pool group.
+	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the primary address pool group.
+	DefaultMinAvailableAddrNum *int32                                            `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	FailoverAddrPool           []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
+	// The type of the secondary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
+	// The load balancing policy of the secondary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the secondary address pool group.
+	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the secondary address pool group.
+	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The line codes of source regions. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Telecom & Media Group.
+	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s AddDnsGtmAccessStrategyRequest) String() string {
@@ -376,8 +422,10 @@ func (s *AddDnsGtmAccessStrategyRequest) SetStrategyName(v string) *AddDnsGtmAcc
 }
 
 type AddDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The ID of the address pool in the primary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
 func (s AddDnsGtmAccessStrategyRequestDefaultAddrPool) String() string {
@@ -399,8 +447,10 @@ func (s *AddDnsGtmAccessStrategyRequestDefaultAddrPool) SetLbaWeight(v int32) *A
 }
 
 type AddDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The ID of the address pool in the secondary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the secondary address pool group.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
 func (s AddDnsGtmAccessStrategyRequestFailoverAddrPool) String() string {
@@ -422,7 +472,9 @@ func (s *AddDnsGtmAccessStrategyRequestFailoverAddrPool) SetLbaWeight(v int32) *
 }
 
 type AddDnsGtmAccessStrategyResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -474,19 +526,93 @@ func (s *AddDnsGtmAccessStrategyResponse) SetBody(v *AddDnsGtmAccessStrategyResp
 }
 
 type AddDnsGtmAddressPoolRequest struct {
-	Addr              []*AddDnsGtmAddressPoolRequestAddr        `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	EvaluationCount   *int32                                    `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	InstanceId        *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval          *int32                                    `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode       []*AddDnsGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang              *string                                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LbaStrategy       *string                                   `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	MonitorExtendInfo *string                                   `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	MonitorStatus     *string                                   `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name              *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProtocolType      *string                                   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout           *int32                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type              *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The addresses in the address pool.
+	Addr []*AddDnsGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The ID of the GTM instance for which you want to create an address pool.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The health check interval. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*AddDnsGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The load balancing policy for the address pool. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// *   HTTP or HTTPS:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   host: the host configuration.
+	//
+	//     *   path: the health check URL.
+	//
+	//     *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   sni: specifies whether to enable Server Name Indication (SNI). This parameter is only required for the HTTPS protocol. Valid values:
+	//
+	//         *   true: enables SNI.
+	//         *   Other value: disables SNI.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   PING:
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   packetNum: the number of ping packets.
+	//
+	//     *   packetLossRate: the loss rate of ping packets.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   TCP:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// Specifies whether to enable the health check. If this parameter is set to OPEN, the system validates the health check configuration. If this parameter is set to CLOSE, the health check configuration is discarded. Default value: CLOSE. Valid values:
+	//
+	// *   OPEN: enables the health check.
+	// *   CLOSE: disables the health check.
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool that you want to create.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protocol used for the health check. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   IPV4: IPv4 address
+	// *   IPV6: IPv6 address
+	// *   DOMAIN: domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddDnsGtmAddressPoolRequest) String() string {
@@ -563,11 +689,28 @@ func (s *AddDnsGtmAddressPoolRequest) SetType(v string) *AddDnsGtmAddressPoolReq
 }
 
 type AddDnsGtmAddressPoolRequestAddr struct {
-	Addr          *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The address.
+	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The source region of the address. The value is a JSON string.
+	//
+	// *   lineCode: the line code of the source region of the address.
+	//
+	// *   lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
+	//
+	//     *   NO_NEED: no need for rectification
+	//     *   RECTIFIED: rectified
+	//     *   AUTO: automatic rectification
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	LbaWeight     *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The weight of the address.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address. Valid values:
+	//
+	// *   SMART: smart return
+	// *   ONLINE: always online
+	// *   OFFLINE: always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The description of the address.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s AddDnsGtmAddressPoolRequestAddr) String() string {
@@ -604,8 +747,10 @@ func (s *AddDnsGtmAddressPoolRequestAddr) SetRemark(v string) *AddDnsGtmAddressP
 }
 
 type AddDnsGtmAddressPoolRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s AddDnsGtmAddressPoolRequestIspCityNode) String() string {
@@ -627,9 +772,12 @@ func (s *AddDnsGtmAddressPoolRequestIspCityNode) SetIspCode(v string) *AddDnsGtm
 }
 
 type AddDnsGtmAddressPoolResponseBody struct {
-	AddrPoolId      *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The ID of the address pool created.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The ID of the health check configuration.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDnsGtmAddressPoolResponseBody) String() string {
@@ -685,14 +833,73 @@ func (s *AddDnsGtmAddressPoolResponse) SetBody(v *AddDnsGtmAddressPoolResponseBo
 }
 
 type AddDnsGtmMonitorRequest struct {
-	AddrPoolId        *string                               `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	EvaluationCount   *int32                                `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode       []*AddDnsGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang              *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MonitorExtendInfo *string                               `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                               `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout           *int32                                `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The health check interval. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*AddDnsGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// *   HTTP or HTTPS:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   host: the host configuration.
+	//
+	//     *   path: the health check URL.
+	//
+	//     *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   sni: specifies whether to enable Server Name Indication (SNI). This parameter is only required for the HTTPS protocol. Valid values:
+	//
+	//         *   true: enables SNI.
+	//         *   false: disables SNI.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   PING:
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   packetNum: the number of ping packets.
+	//
+	//     *   packetLossRate: the loss rate of ping packets.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   TCP:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The protocol used for the health check. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s AddDnsGtmMonitorRequest) String() string {
@@ -744,8 +951,10 @@ func (s *AddDnsGtmMonitorRequest) SetTimeout(v int32) *AddDnsGtmMonitorRequest {
 }
 
 type AddDnsGtmMonitorRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s AddDnsGtmMonitorRequestIspCityNode) String() string {
@@ -767,8 +976,10 @@ func (s *AddDnsGtmMonitorRequestIspCityNode) SetIspCode(v string) *AddDnsGtmMoni
 }
 
 type AddDnsGtmMonitorResponseBody struct {
+	// The ID of the health check configuration.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDnsGtmMonitorResponseBody) String() string {
@@ -819,9 +1030,13 @@ func (s *AddDnsGtmMonitorResponse) SetBody(v *AddDnsGtmMonitorResponseBody) *Add
 }
 
 type AddDomainRequest struct {
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name to be added.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name group. The default value is the ID of the default domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The language of the domain name.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -854,13 +1069,20 @@ func (s *AddDomainRequest) SetResourceGroupId(v string) *AddDomainRequest {
 }
 
 type AddDomainResponseBody struct {
+	// The Domain Name System (DNS) servers that resolve the domain name.
 	DnsServers *AddDomainResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	DomainId   *string                          `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainName *string                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	PunyCode   *string                          `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDomainResponseBody) String() string {
@@ -953,8 +1175,14 @@ func (s *AddDomainResponse) SetBody(v *AddDomainResponseBody) *AddDomainResponse
 }
 
 type AddDomainBackupRequest struct {
+	// The domain name for which you want to create a backup task.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The backup cycle. Valid values:
+	//
+	// *   **DAY**: Backs up data once every day.
+	// *   **HOUR**: Backs up data once every hour.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 }
 
@@ -982,9 +1210,12 @@ func (s *AddDomainBackupRequest) SetPeriodType(v string) *AddDomainBackupRequest
 }
 
 type AddDomainBackupResponseBody struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The backup cycle.
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddDomainBackupResponseBody) String() string {
@@ -1040,8 +1271,10 @@ func (s *AddDomainBackupResponse) SetBody(v *AddDomainBackupResponseBody) *AddDo
 }
 
 type AddDomainGroupRequest struct {
+	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s AddDomainGroupRequest) String() string {
@@ -1063,8 +1296,11 @@ func (s *AddDomainGroupRequest) SetLang(v string) *AddDomainGroupRequest {
 }
 
 type AddDomainGroupResponseBody struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1121,15 +1357,30 @@ func (s *AddDomainGroupResponse) SetBody(v *AddDomainGroupResponseBody) *AddDoma
 }
 
 type AddDomainRecordRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority     *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RR           *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	TTL          *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resolution line. Default value: **default**.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The priority of an MX-type DNS record. Valid values: `[1,50]`.
+	//
+	// This parameter must be specified if the type of the DNS record is MX. A smaller value indicates a higher priority.
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The host record.
+	//
+	// For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The TTL of the resolution. Default value: 600. Unit: seconds.
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record. DNS record types
+	//
+	// [dns records types](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-record-types)
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the DNS record.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AddDomainRecordRequest) String() string {
@@ -1186,7 +1437,9 @@ func (s *AddDomainRecordRequest) SetValue(v string) *AddDomainRecordRequest {
 }
 
 type AddDomainRecordResponseBody struct {
-	RecordId  *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1238,12 +1491,20 @@ func (s *AddDomainRecordResponse) SetBody(v *AddDomainRecordResponseBody) *AddDo
 }
 
 type AddGtmAccessStrategyRequest struct {
-	AccessLines        *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
-	DefaultAddrPoolId  *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	// The line codes of access regions.
+	AccessLines *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
+	// The ID of the default address pool.
+	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	// The ID of the failover address pool.
+	//
+	// If the failover address pool is not set, pass the **Empty** value.
 	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StrategyName       *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The ID of the GTM instance for which you want to create an access policy.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s AddGtmAccessStrategyRequest) String() string {
@@ -1285,7 +1546,9 @@ func (s *AddGtmAccessStrategyRequest) SetStrategyName(v string) *AddGtmAccessStr
 }
 
 type AddGtmAccessStrategyResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy created.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -1337,19 +1600,62 @@ func (s *AddGtmAccessStrategyResponse) SetBody(v *AddGtmAccessStrategyResponseBo
 }
 
 type AddGtmAddressPoolRequest struct {
-	Addr                []*AddGtmAddressPoolRequestAddr        `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	EvaluationCount     *int32                                 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	InstanceId          *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval            *int32                                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode         []*AddGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang                *string                                `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MinAvailableAddrNum *int32                                 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	MonitorExtendInfo   *string                                `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	MonitorStatus       *string                                `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name                *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProtocolType        *string                                `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout             *int32                                 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	Type                *string                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The addresses in the address pool.
+	Addr []*AddGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The ID of the GTM instance for which you want to create an address pool.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The health check interval. Unit: seconds. Set the value to 60.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*AddGtmAddressPoolRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The minimum number of available addresses in the address pool.
+	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// HTTP or HTTPS:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	// *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// *   host: the host configuration.
+	// *   path: the health check URL.
+	//
+	// PING:
+	//
+	// *   packetNum: the number of ping packets.
+	// *   packetLossRate: the loss rate of ping packets.
+	// *   failureRate: the failure rate.
+	//
+	// TCP:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// Specifies whether to enable the health check. Valid values:
+	//
+	// *   **OPEN**: enables the health check.
+	// *   **CLOSE**: disables the health check. This is the default value.
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool that you want to create.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protocol used for the health check. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   **IP**: IPv4 address
+	// *   **DOMAIN**: domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AddGtmAddressPoolRequest) String() string {
@@ -1426,9 +1732,16 @@ func (s *AddGtmAddressPoolRequest) SetType(v string) *AddGtmAddressPoolRequest {
 }
 
 type AddGtmAddressPoolRequestAddr struct {
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode      *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address. Valid values:
+	//
+	// *   **SMART**: smart return
+	// *   **ONLINE**: always online
+	// *   **OFFLINE**: always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The address.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AddGtmAddressPoolRequestAddr) String() string {
@@ -1455,8 +1768,12 @@ func (s *AddGtmAddressPoolRequestAddr) SetValue(v string) *AddGtmAddressPoolRequ
 }
 
 type AddGtmAddressPoolRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// *   The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	// *   If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
+	// *   If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s AddGtmAddressPoolRequestIspCityNode) String() string {
@@ -1478,9 +1795,12 @@ func (s *AddGtmAddressPoolRequestIspCityNode) SetIspCode(v string) *AddGtmAddres
 }
 
 type AddGtmAddressPoolResponseBody struct {
-	AddrPoolId      *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The ID of the address pool created.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The ID of the health check configuration.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddGtmAddressPoolResponseBody) String() string {
@@ -1536,14 +1856,46 @@ func (s *AddGtmAddressPoolResponse) SetBody(v *AddGtmAddressPoolResponseBody) *A
 }
 
 type AddGtmMonitorRequest struct {
-	AddrPoolId        *string                            `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	EvaluationCount   *int32                             `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                             `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode       []*AddGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang              *string                            `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MonitorExtendInfo *string                            `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                            `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout           *int32                             `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The health check interval. Unit: seconds. Set the value to 60.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*AddGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// HTTP or HTTPS:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	// *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// *   host: the host configuration.
+	// *   path: the health check URL.
+	//
+	// PING:
+	//
+	// *   packetNum: the number of ping packets.
+	// *   packetLossRate: the loss rate of ping packets.
+	// *   failureRate: the failure rate.
+	//
+	// TCP:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The protocol used for the health check. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s AddGtmMonitorRequest) String() string {
@@ -1595,8 +1947,15 @@ func (s *AddGtmMonitorRequest) SetTimeout(v int32) *AddGtmMonitorRequest {
 }
 
 type AddGtmMonitorRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed.
+	//
+	// For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	//
+	// *   If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
+	// *   If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s AddGtmMonitorRequestIspCityNode) String() string {
@@ -1618,8 +1977,10 @@ func (s *AddGtmMonitorRequestIspCityNode) SetIspCode(v string) *AddGtmMonitorReq
 }
 
 type AddGtmMonitorResponseBody struct {
+	// The ID of the health check configuration.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddGtmMonitorResponseBody) String() string {
@@ -1670,10 +2031,14 @@ func (s *AddGtmMonitorResponse) SetBody(v *AddGtmMonitorResponseBody) *AddGtmMon
 }
 
 type AddGtmRecoveryPlanRequest struct {
+	// The list of IDs of faulty address pools.
 	FaultAddrPool *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the disaster recovery plan that you want to create.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remarks on the disaster recovery plan.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s AddGtmRecoveryPlanRequest) String() string {
@@ -1705,8 +2070,10 @@ func (s *AddGtmRecoveryPlanRequest) SetRemark(v string) *AddGtmRecoveryPlanReque
 }
 
 type AddGtmRecoveryPlanResponseBody struct {
+	// The ID of the disaster recovery plan created.
 	RecoveryPlanId *string `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddGtmRecoveryPlanResponseBody) String() string {
@@ -1757,9 +2124,14 @@ func (s *AddGtmRecoveryPlanResponse) SetBody(v *AddGtmRecoveryPlanResponseBody) 
 }
 
 type BindInstanceDomainsRequest struct {
+	// The list of domain names.
+	//
+	// >  Separate multiple domain names with commas (,). A maximum of 100 domain names can be entered.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s BindInstanceDomainsRequest) String() string {
@@ -1786,9 +2158,12 @@ func (s *BindInstanceDomainsRequest) SetLang(v string) *BindInstanceDomainsReque
 }
 
 type BindInstanceDomainsResponseBody struct {
-	FailedCount  *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessCount *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The number of domain names that failed to be bound.
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of domain names that have been bound.
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
 func (s BindInstanceDomainsResponseBody) String() string {
@@ -1844,9 +2219,12 @@ func (s *BindInstanceDomainsResponse) SetBody(v *BindInstanceDomainsResponseBody
 }
 
 type ChangeDomainGroupRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the target domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s ChangeDomainGroupRequest) String() string {
@@ -1873,8 +2251,11 @@ func (s *ChangeDomainGroupRequest) SetLang(v string) *ChangeDomainGroupRequest {
 }
 
 type ChangeDomainGroupResponseBody struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the target domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the target domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1931,10 +2312,15 @@ func (s *ChangeDomainGroupResponse) SetBody(v *ChangeDomainGroupResponseBody) *C
 }
 
 type ChangeDomainOfDnsProductRequest struct {
-	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NewDomain    *string `json:"NewDomain,omitempty" xml:"NewDomain,omitempty"`
+	// Specifies whether to force bind a domain name to the instance.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The ID of the Alibaba Cloud DNS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name that you want to bind to the instance. If you do not specify this parameter, this operation unbinds the original domain name from the instance.
+	NewDomain *string `json:"NewDomain,omitempty" xml:"NewDomain,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1972,8 +2358,10 @@ func (s *ChangeDomainOfDnsProductRequest) SetUserClientIp(v string) *ChangeDomai
 }
 
 type ChangeDomainOfDnsProductResponseBody struct {
+	// The original domain name that was bound to the instance. If the value of this parameter is empty, the instance is bound with a domain name for the first time.
 	OriginalDomain *string `json:"OriginalDomain,omitempty" xml:"OriginalDomain,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeDomainOfDnsProductResponseBody) String() string {
@@ -2024,9 +2412,13 @@ func (s *ChangeDomainOfDnsProductResponse) SetBody(v *ChangeDomainOfDnsProductRe
 }
 
 type CopyGtmConfigRequest struct {
+	// The type of the object that you want to copy. Only the INSTANCE type is supported.
 	CopyType *string `json:"CopyType,omitempty" xml:"CopyType,omitempty"`
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language that specific response parameters will use.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the source object. Only instance IDs are supported.
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The ID of the target object. Only instance IDs are supported.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
@@ -2059,6 +2451,7 @@ func (s *CopyGtmConfigRequest) SetTargetId(v string) *CopyGtmConfigRequest {
 }
 
 type CopyGtmConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2249,7 +2642,9 @@ func (s *CreatePdnsUdpIpSegmentResponse) SetBody(v *CreatePdnsUdpIpSegmentRespon
 }
 
 type DeleteCustomLinesRequest struct {
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,).
 	LineIds *string `json:"LineIds,omitempty" xml:"LineIds,omitempty"`
 }
 
@@ -2272,6 +2667,7 @@ func (s *DeleteCustomLinesRequest) SetLineIds(v string) *DeleteCustomLinesReques
 }
 
 type DeleteCustomLinesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2387,7 +2783,9 @@ func (s *DeleteDnsCacheDomainResponse) SetBody(v *DeleteDnsCacheDomainResponseBo
 }
 
 type DeleteDnsGtmAccessStrategyRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -2410,6 +2808,7 @@ func (s *DeleteDnsGtmAccessStrategyRequest) SetStrategyId(v string) *DeleteDnsGt
 }
 
 type DeleteDnsGtmAccessStrategyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2456,8 +2855,10 @@ func (s *DeleteDnsGtmAccessStrategyResponse) SetBody(v *DeleteDnsGtmAccessStrate
 }
 
 type DeleteDnsGtmAddressPoolRequest struct {
+	// The ID of the address pool.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteDnsGtmAddressPoolRequest) String() string {
@@ -2479,6 +2880,7 @@ func (s *DeleteDnsGtmAddressPoolRequest) SetLang(v string) *DeleteDnsGtmAddressP
 }
 
 type DeleteDnsGtmAddressPoolResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2525,8 +2927,10 @@ func (s *DeleteDnsGtmAddressPoolResponse) SetBody(v *DeleteDnsGtmAddressPoolResp
 }
 
 type DeleteDomainRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteDomainRequest) String() string {
@@ -2548,8 +2952,10 @@ func (s *DeleteDomainRequest) SetLang(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponseBody struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDomainResponseBody) String() string {
@@ -2600,8 +3006,10 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteDomainGroupRequest struct {
+	// The ID of the domain name group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteDomainGroupRequest) String() string {
@@ -2623,7 +3031,9 @@ func (s *DeleteDomainGroupRequest) SetLang(v string) *DeleteDomainGroupRequest {
 }
 
 type DeleteDomainGroupResponseBody struct {
+	// The name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2675,8 +3085,13 @@ func (s *DeleteDomainGroupResponse) SetBody(v *DeleteDomainGroupResponseBody) *D
 }
 
 type DeleteDomainRecordRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is returned when you add a DNS record or when you query the list of DNS records.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -2704,7 +3119,9 @@ func (s *DeleteDomainRecordRequest) SetUserClientIp(v string) *DeleteDomainRecor
 }
 
 type DeleteDomainRecordResponseBody struct {
-	RecordId  *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2756,7 +3173,9 @@ func (s *DeleteDomainRecordResponse) SetBody(v *DeleteDomainRecordResponseBody) 
 }
 
 type DeleteGtmAccessStrategyRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy that you want to delete.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -2779,6 +3198,7 @@ func (s *DeleteGtmAccessStrategyRequest) SetStrategyId(v string) *DeleteGtmAcces
 }
 
 type DeleteGtmAccessStrategyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2825,8 +3245,10 @@ func (s *DeleteGtmAccessStrategyResponse) SetBody(v *DeleteGtmAccessStrategyResp
 }
 
 type DeleteGtmAddressPoolRequest struct {
+	// The ID of the address pool that you want to delete.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteGtmAddressPoolRequest) String() string {
@@ -2848,6 +3270,7 @@ func (s *DeleteGtmAddressPoolRequest) SetLang(v string) *DeleteGtmAddressPoolReq
 }
 
 type DeleteGtmAddressPoolResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2894,8 +3317,10 @@ func (s *DeleteGtmAddressPoolResponse) SetBody(v *DeleteGtmAddressPoolResponseBo
 }
 
 type DeleteGtmRecoveryPlanRequest struct {
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the disaster recovery plan that you want to delete.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 
 func (s DeleteGtmRecoveryPlanRequest) String() string {
@@ -2917,6 +3342,7 @@ func (s *DeleteGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *DeleteGtmReco
 }
 
 type DeleteGtmRecoveryPlanResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2963,10 +3389,19 @@ func (s *DeleteGtmRecoveryPlanResponse) SetBody(v *DeleteGtmRecoveryPlanResponse
 }
 
 type DeleteSubDomainRecordsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RR           *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The host record.
+	//
+	// For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The type of the DNS record. If you do not specify this parameter, all DNS record types corresponding to the subdomain name are returned.
+	//
+	// DNS record types include **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -3004,8 +3439,11 @@ func (s *DeleteSubDomainRecordsRequest) SetUserClientIp(v string) *DeleteSubDoma
 }
 
 type DeleteSubDomainRecordsResponseBody struct {
-	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The host record.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of deleted DNS records.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3062,9 +3500,19 @@ func (s *DeleteSubDomainRecordsResponse) SetBody(v *DeleteSubDomainRecordsRespon
 }
 
 type DescribeBatchResultCountRequest struct {
+	// The type of the batch operation. Valid values:
+	//
+	// *   **DOMAIN_ADD**: adds domain names in batches.
+	// *   **DOMAIN_DEL**: deletes domain names in batches.
+	// *   **RR_ADD**: adds DNS records in batches.
+	// *   **RR_DEL**: deletes DNS records in batches.
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the task.
+	//
+	// If you specify TaskId, the execution result of the specified task is returned. If you do not specify TaskId, the execution result of the last task is returned.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeBatchResultCountRequest) String() string {
@@ -3091,14 +3539,27 @@ func (s *DescribeBatchResultCountRequest) SetTaskId(v int64) *DescribeBatchResul
 }
 
 type DescribeBatchResultCountResponseBody struct {
-	BatchType    *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	FailedCount  *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuccessCount *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The type of the batch operation.
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The total number of domain names or DNS records that failed to be processed.
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The cause of the execution failure.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **-1**: No task for importing domain names or DNS records is submitted.
+	// *   **0**: The task is being processed.
+	// *   **1**: The task is completed.
+	// *   **2**: The task failed.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of successfully processed domain names or DNS records.
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The ID of the last task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The total number of DNS records that were processed in batches.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBatchResultCountResponseBody) String() string {
@@ -3179,12 +3640,22 @@ func (s *DescribeBatchResultCountResponse) SetBody(v *DescribeBatchResultCountRe
 }
 
 type DescribeBatchResultDetailRequest struct {
-	BatchType  *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the batch operation. Valid values:
+	//
+	// *   **DOMAIN_ADD**: adds domain names in batches.
+	// *   **DOMAIN_DEL**: deletes domain names in batches.
+	// *   **RR_ADD**: adds DNS records in batches.
+	// *   **RR_DEL**: deletes DNS records in batches.
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeBatchResultDetailRequest) String() string {
@@ -3226,11 +3697,16 @@ func (s *DescribeBatchResultDetailRequest) SetTaskId(v int64) *DescribeBatchResu
 }
 
 type DescribeBatchResultDetailResponseBody struct {
+	// Detailed information about the batch operation result.
 	BatchResultDetails *DescribeBatchResultDetailResponseBodyBatchResultDetails `json:"BatchResultDetails,omitempty" xml:"BatchResultDetails,omitempty" type:"Struct"`
-	PageNumber         *int64                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount         *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBatchResultDetailResponseBody) String() string {
@@ -3284,22 +3760,38 @@ func (s *DescribeBatchResultDetailResponseBodyBatchResultDetails) SetBatchResult
 }
 
 type DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail struct {
-	BatchType      *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Line           *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	NewRr          *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
-	NewValue       *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The type of the batch operation.
+	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	// The domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The line code.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The new host record.
+	NewRr *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
+	// The new record value.
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The time when the operation was performed.
 	OperateDateStr *string `json:"OperateDateStr,omitempty" xml:"OperateDateStr,omitempty"`
-	Priority       *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RecordId       *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Rr             *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	RrStatus       *string `json:"RrStatus,omitempty" xml:"RrStatus,omitempty"`
-	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Ttl            *string `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The priority of an MX-type DNS record.
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The cause of the execution failure.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of the DNS record.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The host record.
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The status of the DNS record.
+	RrStatus *string `json:"RrStatus,omitempty" xml:"RrStatus,omitempty"`
+	// The execution result. Valid values:**true**: The execution succeeded.**false**: The execution failed.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The TTL of the DNS record.
+	Ttl *string `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the DNS record.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail) String() string {
@@ -3420,8 +3912,10 @@ func (s *DescribeBatchResultDetailResponse) SetBody(v *DescribeBatchResultDetail
 }
 
 type DescribeCustomLineRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LineId *int64  `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The unique ID of the custom line.
+	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
 }
 
 func (s DescribeCustomLineRequest) String() string {
@@ -3443,12 +3937,18 @@ func (s *DescribeCustomLineRequest) SetLineId(v int64) *DescribeCustomLineReques
 }
 
 type DescribeCustomLineResponseBody struct {
-	Code          *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	DomainName    *string                                        `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Id            *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The code of the custom line. The code is used when you configure a resolution record.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The domain name for which the custom line is configured.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The unique ID of the custom line.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The list of CIDR blocks.
 	IpSegmentList []*DescribeCustomLineResponseBodyIpSegmentList `json:"IpSegmentList,omitempty" xml:"IpSegmentList,omitempty" type:"Repeated"`
-	Name          *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the custom line.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCustomLineResponseBody) String() string {
@@ -3490,7 +3990,9 @@ func (s *DescribeCustomLineResponseBody) SetRequestId(v string) *DescribeCustomL
 }
 
 type DescribeCustomLineResponseBodyIpSegmentList struct {
-	EndIp   *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The end IP address.
+	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The start IP address.
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 
@@ -3542,10 +4044,14 @@ func (s *DescribeCustomLineResponse) SetBody(v *DescribeCustomLineResponseBody) 
 }
 
 type DescribeCustomLinesRequest struct {
+	// The domain name for which the custom lines to be queried are configured.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeCustomLinesRequest) String() string {
@@ -3577,12 +4083,18 @@ func (s *DescribeCustomLinesRequest) SetPageSize(v int64) *DescribeCustomLinesRe
 }
 
 type DescribeCustomLinesResponseBody struct {
+	// The list of custom lines.
 	CustomLines []*DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems  *int32                                        `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages  *int32                                        `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries that were returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of custom lines.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The number of pages that were returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeCustomLinesResponseBody) String() string {
@@ -3624,8 +4136,11 @@ func (s *DescribeCustomLinesResponseBody) SetTotalPages(v int32) *DescribeCustom
 }
 
 type DescribeCustomLinesResponseBodyCustomLines struct {
+	// The code of the custom line.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the custom line.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the custom line.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -3682,11 +4197,16 @@ func (s *DescribeCustomLinesResponse) SetBody(v *DescribeCustomLinesResponseBody
 }
 
 type DescribeDNSSLBSubDomainsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The domain name whose subdomains you want to query.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the domain name.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Rr       *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The IP address of the client that you use to query subdomains.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -3729,11 +4249,16 @@ func (s *DescribeDNSSLBSubDomainsRequest) SetUserClientIp(v string) *DescribeDNS
 }
 
 type DescribeDNSSLBSubDomainsResponseBody struct {
-	PageNumber    *int64                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of subdomains returned.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the subdomains.
 	SlbSubDomains *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains `json:"SlbSubDomains,omitempty" xml:"SlbSubDomains,omitempty" type:"Struct"`
-	TotalCount    *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of domain name groups.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBody) String() string {
@@ -3788,10 +4313,14 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) SetSlbSubDomain(v []
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain struct {
 	LineAlgorithms *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms `json:"LineAlgorithms,omitempty" xml:"LineAlgorithms,omitempty" type:"Struct"`
-	Open           *bool                                                                        `json:"Open,omitempty" xml:"Open,omitempty"`
-	RecordCount    *int64                                                                       `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	SubDomain      *string                                                                      `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	Type           *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Indicates whether weighted round-robin is enabled for the subdomain.
+	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	// The number of DNS records added for the subdomain.
+	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The subdomain.
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// The type of the DNS record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) String() string {
@@ -4132,10 +4661,18 @@ func (s *DescribeDnsCacheDomainsResponse) SetBody(v *DescribeDnsCacheDomainsResp
 }
 
 type DescribeDnsGtmAccessStrategiesRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
 }
 
@@ -4173,12 +4710,18 @@ func (s *DescribeDnsGtmAccessStrategiesRequest) SetStrategyMode(v string) *Descr
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBody struct {
-	PageNumber *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The access policies.
 	Strategies *DescribeDnsGtmAccessStrategiesResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
-	TotalItems *int32                                                `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBody) String() string {
@@ -4237,15 +4780,34 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategies) SetStrategy(v []*
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
-	CreateTime                 *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp            *int64                                                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EffectiveAddrPoolGroupType *string                                                                         `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
-	EffectiveAddrPoolType      *string                                                                         `json:"EffectiveAddrPoolType,omitempty" xml:"EffectiveAddrPoolType,omitempty"`
-	EffectiveAddrPools         *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools `json:"EffectiveAddrPools,omitempty" xml:"EffectiveAddrPools,omitempty" type:"Struct"`
-	EffectiveLbaStrategy       *string                                                                         `json:"EffectiveLbaStrategy,omitempty" xml:"EffectiveLbaStrategy,omitempty"`
-	Lines                      *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines              `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	StrategyId                 *string                                                                         `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName               *string                                                                         `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The time when the access policy was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the access policy was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The type of the active address pool group. Valid values:
+	//
+	// *   DEFAULT: the primary address pool group
+	// *   FAILOVER: the secondary address pool group
+	EffectiveAddrPoolGroupType *string `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
+	// The type of the active address pools. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	EffectiveAddrPoolType *string `json:"EffectiveAddrPoolType,omitempty" xml:"EffectiveAddrPoolType,omitempty"`
+	// The active address pool groups.
+	EffectiveAddrPools *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools `json:"EffectiveAddrPools,omitempty" xml:"EffectiveAddrPools,omitempty" type:"Struct"`
+	// The load balancing policy of the active address pool group. Data is returned when StrategyMode is set to GEO. Valid values:
+	//
+	// - ALL_RR: returns all addresses.
+	// - RATIO: returns addresses by weight.
+	EffectiveLbaStrategy *string `json:"EffectiveLbaStrategy,omitempty" xml:"EffectiveLbaStrategy,omitempty"`
+	// The source regions. Data is returned when StrategyMode is set to GEO. Valid values:
+	Lines *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the access policy.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy) String() string {
@@ -4319,10 +4881,14 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAd
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPoolsEffectiveAddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPoolsEffectiveAddrPool) String() string {
@@ -4371,10 +4937,14 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines) SetL
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {
+	// The code of the source region group.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the source region group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The line code of the source region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The line name of the source region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine) String() string {
@@ -4435,7 +5005,9 @@ func (s *DescribeDnsGtmAccessStrategiesResponse) SetBody(v *DescribeDnsGtmAccess
 }
 
 type DescribeDnsGtmAccessStrategyRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -4458,32 +5030,94 @@ func (s *DescribeDnsGtmAccessStrategyRequest) SetStrategyId(v string) *DescribeD
 }
 
 type DescribeDnsGtmAccessStrategyResponseBody struct {
-	AccessMode                  *string                                                    `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	CreateTime                  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp             *int64                                                     `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DefaultAddrPoolGroupStatus  *string                                                    `json:"DefaultAddrPoolGroupStatus,omitempty" xml:"DefaultAddrPoolGroupStatus,omitempty"`
-	DefaultAddrPoolType         *string                                                    `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	DefaultAddrPools            *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools  `json:"DefaultAddrPools,omitempty" xml:"DefaultAddrPools,omitempty" type:"Struct"`
-	DefaultAvailableAddrNum     *int32                                                     `json:"DefaultAvailableAddrNum,omitempty" xml:"DefaultAvailableAddrNum,omitempty"`
-	DefaultLatencyOptimization  *string                                                    `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	DefaultLbaStrategy          *string                                                    `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	DefaultMaxReturnAddrNum     *int32                                                     `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	DefaultMinAvailableAddrNum  *int32                                                     `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	EffectiveAddrPoolGroupType  *string                                                    `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
-	FailoverAddrPoolGroupStatus *string                                                    `json:"FailoverAddrPoolGroupStatus,omitempty" xml:"FailoverAddrPoolGroupStatus,omitempty"`
-	FailoverAddrPoolType        *string                                                    `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	FailoverAddrPools           *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools `json:"FailoverAddrPools,omitempty" xml:"FailoverAddrPools,omitempty" type:"Struct"`
-	FailoverAvailableAddrNum    *int32                                                     `json:"FailoverAvailableAddrNum,omitempty" xml:"FailoverAvailableAddrNum,omitempty"`
-	FailoverLatencyOptimization *string                                                    `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	FailoverLbaStrategy         *string                                                    `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	FailoverMaxReturnAddrNum    *int32                                                     `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	FailoverMinAvailableAddrNum *int32                                                     `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	InstanceId                  *string                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lines                       *DescribeDnsGtmAccessStrategyResponseBodyLines             `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	RequestId                   *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StrategyId                  *string                                                    `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyMode                *string                                                    `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	StrategyName                *string                                                    `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The primary/secondary switchover policy for address pool groups. Valid values:
+	//
+	// *   AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
+	// *   DEFAULT: uses the primary address pool group.
+	// *   FAILOVER: uses the secondary address pool group.
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The time when the access policy was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the access policy was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The status of the primary address pool group. Valid values:
+	//
+	// *   AVAILABLE: available
+	// *   NOT_AVAILABLE: unavailable
+	DefaultAddrPoolGroupStatus *string `json:"DefaultAddrPoolGroupStatus,omitempty" xml:"DefaultAddrPoolGroupStatus,omitempty"`
+	// The type of the primary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
+	// The address pools in the primary address pool group.
+	DefaultAddrPools *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools `json:"DefaultAddrPools,omitempty" xml:"DefaultAddrPools,omitempty" type:"Struct"`
+	// The number of available addresses in the primary address pool.
+	DefaultAvailableAddrNum *int32 `json:"DefaultAvailableAddrNum,omitempty" xml:"DefaultAvailableAddrNum,omitempty"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group. Valid values:
+	//
+	// *   OPEN: enabled
+	// *   CLOSE: disabled
+	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
+	// The load balancing policy of the primary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the primary address pool group.
+	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the primary address pool group.
+	DefaultMinAvailableAddrNum *int32 `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	// The type of the active address pool group. Valid values:
+	//
+	// *   DEFAULT: the primary address pool group
+	// *   FAILOVER: the secondary address pool group
+	EffectiveAddrPoolGroupType *string `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
+	// The status of the secondary address pool group. Valid values:
+	//
+	// *   AVAILABLE: available
+	// *   NOT_AVAILABLE: unavailable
+	FailoverAddrPoolGroupStatus *string `json:"FailoverAddrPoolGroupStatus,omitempty" xml:"FailoverAddrPoolGroupStatus,omitempty"`
+	// The type of the secondary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
+	// The address pools in the secondary address pool group.
+	FailoverAddrPools *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools `json:"FailoverAddrPools,omitempty" xml:"FailoverAddrPools,omitempty" type:"Struct"`
+	// The number of available addresses in the secondary address pool.
+	FailoverAvailableAddrNum *int32 `json:"FailoverAvailableAddrNum,omitempty" xml:"FailoverAvailableAddrNum,omitempty"`
+	// Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group. Valid values:
+	//
+	// *   OPEN: enabled
+	// *   CLOSE: disabled
+	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
+	// The load balancing policy of the secondary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the secondary address pool group.
+	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the secondary address pool group.
+	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
+	// The ID of the associated instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The source regions.
+	Lines *DescribeDnsGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBody) String() string {
@@ -4642,10 +5276,14 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools) SetDefaultAdd
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool) String() string {
@@ -4694,10 +5332,14 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools) SetFailoverA
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool) String() string {
@@ -4746,10 +5388,14 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyLines) SetLine(v []*DescribeDns
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyLinesLine struct {
+	// The code of the source region group.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the source region group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The line code of the source region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The line name of the source region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyLinesLine) String() string {
@@ -4810,8 +5456,14 @@ func (s *DescribeDnsGtmAccessStrategyResponse) SetBody(v *DescribeDnsGtmAccessSt
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
 }
 
@@ -4839,15 +5491,21 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigRequest) SetStrategyMode(v s
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBody struct {
-	DomainAddrPools       *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools     `json:"DomainAddrPools,omitempty" xml:"DomainAddrPools,omitempty" type:"Struct"`
-	Ipv4AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools       `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
-	Ipv6AddrPools         *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools       `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
-	Lines                 *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines               `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	RequestId             *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SelectedDomainLines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines `json:"SelectedDomainLines,omitempty" xml:"SelectedDomainLines,omitempty" type:"Struct"`
-	SelectedIpv4Lines     *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines   `json:"SelectedIpv4Lines,omitempty" xml:"SelectedIpv4Lines,omitempty" type:"Struct"`
-	SelectedIpv6Lines     *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines   `json:"SelectedIpv6Lines,omitempty" xml:"SelectedIpv6Lines,omitempty" type:"Struct"`
-	SuggestSetDefaultLine *bool                                                                       `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
+	// The available address pools of the domain name type.
+	DomainAddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools `json:"DomainAddrPools,omitempty" xml:"DomainAddrPools,omitempty" type:"Struct"`
+	// The available address pools of the IPv4 type.
+	Ipv4AddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
+	// The available address pools of the IPv6 type.
+	Ipv6AddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
+	// The source regions.
+	Lines *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId           *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SelectedDomainLines *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedDomainLines `json:"SelectedDomainLines,omitempty" xml:"SelectedDomainLines,omitempty" type:"Struct"`
+	SelectedIpv4Lines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv4Lines   `json:"SelectedIpv4Lines,omitempty" xml:"SelectedIpv4Lines,omitempty" type:"Struct"`
+	SelectedIpv6Lines   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodySelectedIpv6Lines   `json:"SelectedIpv6Lines,omitempty" xml:"SelectedIpv6Lines,omitempty" type:"Struct"`
+	// Indicates whether we recommend that you set the source region to global.
+	SuggestSetDefaultLine *bool `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) String() string {
@@ -4921,9 +5579,12 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools)
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool) String() string {
@@ -4967,9 +5628,12 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools) S
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4AddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4AddrPool) String() string {
@@ -5013,9 +5677,12 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools) S
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool struct {
-	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool) String() string {
@@ -5059,11 +5726,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines) SetLine(v
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {
+	// The parent line code of the source region. Leave it blank if no parent line exists.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The line name of the source region.
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the source region group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The line code of the source region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The code of the source region group.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine) String() string {
@@ -5180,9 +5852,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponse) SetBody(v *Describ
 }
 
 type DescribeDnsGtmAddrAttributeInfoRequest struct {
+	// The addresses whose source regions you want to query.
 	Addrs *string `json:"Addrs,omitempty" xml:"Addrs,omitempty"`
-	Lang  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the addresses. Valid values:
+	//
+	// *   IPV4: IPv4 address
+	// *   IPV6: IPv6 address
+	// *   DOMAIN: domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDnsGtmAddrAttributeInfoRequest) String() string {
@@ -5209,8 +5888,10 @@ func (s *DescribeDnsGtmAddrAttributeInfoRequest) SetType(v string) *DescribeDnsG
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBody struct {
-	Addr      *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The addresses that were queried.
+	Addr *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDnsGtmAddrAttributeInfoResponseBody) String() string {
@@ -5249,7 +5930,9 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr) SetAddr(v []*DescribeD
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr struct {
-	Addr          *string                                                           `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The address that was queried.
+	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The source region of the address.
 	AttributeInfo *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
 }
 
@@ -5272,11 +5955,16 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr) SetAttributeInfo(v
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo struct {
+	// The parent line code of the source region.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The code of the source region group.
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the source region group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The line code of the source region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The line name of the source region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo) String() string {
@@ -5342,8 +6030,10 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponse) SetBody(v *DescribeDnsGtmAddrA
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDnsGtmAddressPoolAvailableConfigRequest) String() string {
@@ -5365,8 +6055,10 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigRequest) SetLang(v string) *Des
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBody struct {
+	// The supported source regions.
 	AttributeInfos *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos `json:"AttributeInfos,omitempty" xml:"AttributeInfos,omitempty" type:"Struct"`
-	RequestId      *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDnsGtmAddressPoolAvailableConfigResponseBody) String() string {
@@ -5405,11 +6097,16 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos) Set
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttributeInfo struct {
+	// The parent line code of the source region.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The code of the source region group.
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the request source group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The line code of the source region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The line name of the source region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttributeInfo) String() string {
@@ -5475,6 +6172,7 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigResponse) SetBody(v *DescribeDn
 }
 
 type DescribeDnsGtmAvailableAlertGroupRequest struct {
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -5492,8 +6190,10 @@ func (s *DescribeDnsGtmAvailableAlertGroupRequest) SetLang(v string) *DescribeDn
 }
 
 type DescribeDnsGtmAvailableAlertGroupResponseBody struct {
+	// The returned available alert groups.
 	AvailableAlertGroup *string `json:"AvailableAlertGroup,omitempty" xml:"AvailableAlertGroup,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDnsGtmAvailableAlertGroupResponseBody) String() string {
@@ -5544,8 +6244,10 @@ func (s *DescribeDnsGtmAvailableAlertGroupResponse) SetBody(v *DescribeDnsGtmAva
 }
 
 type DescribeDnsGtmInstanceRequest struct {
+	// The ID of the instance about which you want to query the information.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceRequest) String() string {
@@ -5567,19 +6269,34 @@ func (s *DescribeDnsGtmInstanceRequest) SetLang(v string) *DescribeDnsGtmInstanc
 }
 
 type DescribeDnsGtmInstanceResponseBody struct {
-	Config          *DescribeDnsGtmInstanceResponseBodyConfig    `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CreateTime      *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                       `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ExpireTime      *string                                      `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimestamp *int64                                       `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	InstanceId      *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PaymentType     *string                                      `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SmsQuota        *int32                                       `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
-	TaskQuota       *int32                                       `json:"TaskQuota,omitempty" xml:"TaskQuota,omitempty"`
-	UsedQuota       *DescribeDnsGtmInstanceResponseBodyUsedQuota `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty" type:"Struct"`
-	VersionCode     *string                                      `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The configurations of the instance.
+	Config *DescribeDnsGtmInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The time when the instance was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp that indicates when the instance was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The time when the instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The UNIX timestamp that indicates when the instance expires.
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The billing method. Valid value:
+	//
+	// *   Subscription: You can pay in advance for the use of resources.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The total number of SMS notifications.
+	SmsQuota *int32 `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
+	// The total number of detection tasks.
+	TaskQuota *int32 `json:"TaskQuota,omitempty" xml:"TaskQuota,omitempty"`
+	// The used quota.
+	UsedQuota *DescribeDnsGtmInstanceResponseBodyUsedQuota `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty" type:"Struct"`
+	// The version of the instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceResponseBody) String() string {
@@ -5656,16 +6373,34 @@ func (s *DescribeDnsGtmInstanceResponseBody) SetVersionCode(v string) *DescribeD
 }
 
 type DescribeDnsGtmInstanceResponseBodyConfig struct {
-	AlertConfig          *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	AlertGroup           *string                                              `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	CnameType            *string                                              `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
-	InstanceName         *string                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PubicZoneName        *string                                              `json:"PubicZoneName,omitempty" xml:"PubicZoneName,omitempty"`
-	PublicCnameMode      *string                                              `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	PublicRr             *string                                              `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	PublicUserDomainName *string                                              `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	StrategyMode         *string                                              `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	Ttl                  *int32                                               `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The alert notification method.
+	AlertConfig *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
+	// The name of the alert group.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The type of the CNAME domain name that is used to access the instance. Valid value:
+	//
+	// *   PUBLIC: The CNAME domain name is used to access the instance over the Internet.
+	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The domain name that is used to access the instance over the Internet.
+	PubicZoneName *string `json:"PubicZoneName,omitempty" xml:"PubicZoneName,omitempty"`
+	// Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access the instance over the Internet. Valid values:
+	//
+	// *   CUSTOM: A custom CNAME domain name is used.
+	// *   SYSTEM_ASSIGN: A CNAME domain name assigned by the system is used.
+	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
+	// The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
+	// The service domain name that is used over the Internet.
+	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   LATENCY: Latency-based
+	// *   GEO: Geographical location-based
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The global time to live (TTL).
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceResponseBodyConfig) String() string {
@@ -5744,10 +6479,26 @@ func (s *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig) SetAlertConfig(v [
 }
 
 type DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig struct {
-	DingtalkNotice *bool   `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
-	EmailNotice    *bool   `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
-	NoticeType     *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	SmsNotice      *bool   `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Indicates whether email notification is configured. Valid values:
+	//
+	// *   true: Email notification is configured.
+	// *   false: Email notification is not configured. null: Email notification is not configured.
+	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// *   ADDR_ALERT: The address is unavailable.
+	// *   ADDR_RESUME: The address is restored and becomes available.
+	// *   ADDR_POOL_GROUP_UNAVAILABLE: The address pool group is unavailable.
+	// *   ADDR_POOL_GROUP_AVAILABLE: The address pool group is restored and becomes available.
+	// *   ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
+	// *   MONITOR_NODE_IP_CHANGE: The IP address of the monitoring node has changed.
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Indicates whether SMS notification is configured. Valid values:
+	//
+	// *   true: SMS notification is configured.
+	// *   false: SMS notification is not configured. null: SMS notification is not configured.
+	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig) String() string {
@@ -5780,9 +6531,12 @@ func (s *DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig) SetSmsN
 
 type DescribeDnsGtmInstanceResponseBodyUsedQuota struct {
 	DingtalkUsedCount *int32 `json:"DingtalkUsedCount,omitempty" xml:"DingtalkUsedCount,omitempty"`
-	EmailUsedCount    *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
-	SmsUsedCount      *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
-	TaskUsedCount     *int32 `json:"TaskUsedCount,omitempty" xml:"TaskUsedCount,omitempty"`
+	// The total number of emails that were sent.
+	EmailUsedCount *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
+	// The total number of short messages that were sent.
+	SmsUsedCount *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
+	// The number of detection tasks that were created.
+	TaskUsedCount *int32 `json:"TaskUsedCount,omitempty" xml:"TaskUsedCount,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceResponseBodyUsedQuota) String() string {
@@ -5843,8 +6597,10 @@ func (s *DescribeDnsGtmInstanceResponse) SetBody(v *DescribeDnsGtmInstanceRespon
 }
 
 type DescribeDnsGtmInstanceAddressPoolRequest struct {
+	// The ID of the address pool.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolRequest) String() string {
@@ -5866,19 +6622,43 @@ func (s *DescribeDnsGtmInstanceAddressPoolRequest) SetLang(v string) *DescribeDn
 }
 
 type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
-	AddrCount       *int32                                              `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	AddrPoolId      *string                                             `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Addrs           *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
-	CreateTime      *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                              `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	LbaStrategy     *string                                             `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	MonitorConfigId *string                                             `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorStatus   *string                                             `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name            *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Type            *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime      *string                                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                              `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The addresses in the address pool.
+	Addrs *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	// The time when the address pool was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates the time when the address pool was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The load balancing policy for the address pool. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The ID of the health check configuration.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// Indicates the status of the health check. Valid values:
+	//
+	// *   OPEN: The health check is enabled.
+	// *   CLOSE: The health check is disabled.
+	// *   UNCONFIGURED: The health check is not configured.
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   IPV4: IPv4 address
+	// *   IPV6: IPv6 address
+	// *   DOMAIN: domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the address pool was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates the time when the address pool was last updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolResponseBody) String() string {
@@ -5972,16 +6752,37 @@ func (s *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs) SetAddr(v []*Descri
 }
 
 type DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr struct {
-	Addr            *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	AlertStatus     *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	AttributeInfo   *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	LbaWeight       *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The address.
+	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The status of the last health check on the address. Valid values:
+	//
+	// *   OK: No active alerts are triggered.
+	// *   ALERT: Alerts are triggered based on the alert rules.
+	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	// The source region of the address.
+	//
+	// *   lineCode: the line code of the source region of the address. This parameter is deprecated, and lineCodes prevails.
+	// *   lineName: the line name of the source region of the address. This parameter is deprecated.
+	// *   lineCodes: the line codes of the source regions of the address.
+	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	// The time when the address was added into the address pool.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates the time when the address was added into the address pool.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The weight of the address.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address. Valid values:
+	//
+	// *   SMART: smart return
+	// *   ONLINE: always online
+	// *   OFFLINE: always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The description of the address.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The time when the address was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates the time when the address was last updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr) String() string {
@@ -6072,10 +6873,14 @@ func (s *DescribeDnsGtmInstanceAddressPoolResponse) SetBody(v *DescribeDnsGtmIns
 }
 
 type DescribeDnsGtmInstanceAddressPoolsRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolsRequest) String() string {
@@ -6107,12 +6912,18 @@ func (s *DescribeDnsGtmInstanceAddressPoolsRequest) SetPageSize(v int32) *Descri
 }
 
 type DescribeDnsGtmInstanceAddressPoolsResponseBody struct {
-	AddrPools  *DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                                   `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                   `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The returned address pools.
+	AddrPools *DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolsResponseBody) String() string {
@@ -6171,17 +6982,39 @@ func (s *DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools) SetAddrPool(v 
 }
 
 type DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool struct {
-	AddrCount       *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	AddrPoolId      *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	LbaStrategy     *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The time when the address pool was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the address pool was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The load balancing policy of the address pool. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The ID of the health check task.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorStatus   *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// Indicates whether health checks are configured. Valid values:
+	//
+	// *   OPEN: enabled
+	// *   CLOSE: disabled
+	// *   UNCONFIGURED: not configured
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   IPV4: IPv4 address
+	// *   IPV6: IPv6 address
+	// *   DOMAIN: domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the address pool was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates when the address pool was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool) String() string {
@@ -6277,8 +7110,10 @@ func (s *DescribeDnsGtmInstanceAddressPoolsResponse) SetBody(v *DescribeDnsGtmIn
 }
 
 type DescribeDnsGtmInstanceStatusRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceStatusRequest) String() string {
@@ -6300,12 +7135,18 @@ func (s *DescribeDnsGtmInstanceStatusRequest) SetLang(v string) *DescribeDnsGtmI
 }
 
 type DescribeDnsGtmInstanceStatusResponseBody struct {
-	AddrAvailableNum             *int32  `json:"AddrAvailableNum,omitempty" xml:"AddrAvailableNum,omitempty"`
-	AddrNotAvailableNum          *int32  `json:"AddrNotAvailableNum,omitempty" xml:"AddrNotAvailableNum,omitempty"`
-	AddrPoolGroupNotAvailableNum *int32  `json:"AddrPoolGroupNotAvailableNum,omitempty" xml:"AddrPoolGroupNotAvailableNum,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StrategyNotAvailableNum      *int32  `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
-	SwitchToFailoverStrategyNum  *int32  `json:"SwitchToFailoverStrategyNum,omitempty" xml:"SwitchToFailoverStrategyNum,omitempty"`
+	// The number of available addresses.
+	AddrAvailableNum *int32 `json:"AddrAvailableNum,omitempty" xml:"AddrAvailableNum,omitempty"`
+	// The number of unavailable addresses.
+	AddrNotAvailableNum *int32 `json:"AddrNotAvailableNum,omitempty" xml:"AddrNotAvailableNum,omitempty"`
+	// The number of unavailable address pool groups.
+	AddrPoolGroupNotAvailableNum *int32 `json:"AddrPoolGroupNotAvailableNum,omitempty" xml:"AddrPoolGroupNotAvailableNum,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of access policies that are unavailable in the current active address pool group.
+	StrategyNotAvailableNum *int32 `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
+	// The number of access policies switched to the secondary address pool group.
+	SwitchToFailoverStrategyNum *int32 `json:"SwitchToFailoverStrategyNum,omitempty" xml:"SwitchToFailoverStrategyNum,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceStatusResponseBody) String() string {
@@ -6376,8 +7217,10 @@ func (s *DescribeDnsGtmInstanceStatusResponse) SetBody(v *DescribeDnsGtmInstance
 }
 
 type DescribeDnsGtmInstanceSystemCnameRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceSystemCnameRequest) String() string {
@@ -6399,7 +7242,8 @@ func (s *DescribeDnsGtmInstanceSystemCnameRequest) SetLang(v string) *DescribeDn
 }
 
 type DescribeDnsGtmInstanceSystemCnameResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The CNAME domain name assigned by the system.
 	SystemCname *string `json:"SystemCname,omitempty" xml:"SystemCname,omitempty"`
 }
 
@@ -6451,10 +7295,15 @@ func (s *DescribeDnsGtmInstanceSystemCnameResponse) SetBody(v *DescribeDnsGtmIns
 }
 
 type DescribeDnsGtmInstancesRequest struct {
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that you use for query. Fuzzy search by instance ID or instance name is supported.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group where you want to query instances.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -6492,12 +7341,18 @@ func (s *DescribeDnsGtmInstancesRequest) SetResourceGroupId(v string) *DescribeD
 }
 
 type DescribeDnsGtmInstancesResponseBody struct {
+	// The returned instances.
 	GtmInstances []*DescribeDnsGtmInstancesResponseBodyGtmInstances `json:"GtmInstances,omitempty" xml:"GtmInstances,omitempty" type:"Repeated"`
-	PageNumber   *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems   *int32                                             `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages   *int32                                             `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDnsGtmInstancesResponseBody) String() string {
@@ -6539,18 +7394,32 @@ func (s *DescribeDnsGtmInstancesResponseBody) SetTotalPages(v int32) *DescribeDn
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
-	Config          *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig    `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CreateTime      *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                                    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ExpireTime      *string                                                   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimestamp *int64                                                    `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	InstanceId      *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PaymentType     *string                                                   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ResourceGroupId *string                                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SmsQuota        *int32                                                    `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
-	TaskQuota       *int32                                                    `json:"TaskQuota,omitempty" xml:"TaskQuota,omitempty"`
-	UsedQuota       *DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty" type:"Struct"`
-	VersionCode     *string                                                   `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The configurations of the instance.
+	Config *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The time when the instance was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the instance was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The time when the instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The timestamp that indicates when the instance expires.
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The billing method of the instance.
+	//
+	// *   The value is set to Subscription.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The total number of SMS notifications.
+	SmsQuota *int32 `json:"SmsQuota,omitempty" xml:"SmsQuota,omitempty"`
+	// The total number of detection tasks.
+	TaskQuota *int32 `json:"TaskQuota,omitempty" xml:"TaskQuota,omitempty"`
+	// The used quota.
+	UsedQuota *DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty" type:"Struct"`
+	// The version of the instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeDnsGtmInstancesResponseBodyGtmInstances) String() string {
@@ -6622,16 +7491,33 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstances) SetVersionCode(v strin
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
-	AlertConfig          []*DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	AlertGroup           *string                                                             `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	CnameType            *string                                                             `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
-	InstanceName         *string                                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PublicCnameMode      *string                                                             `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	PublicRr             *string                                                             `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	PublicUserDomainName *string                                                             `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	PublicZoneName       *string                                                             `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
-	StrategyMode         *string                                                             `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	Ttl                  *int32                                                              `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The alert notification methods.
+	AlertConfig []*DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	// The alert group.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The access type of the CNAME domain name.
+	//
+	// *   The value was set to PUBLIC, which indicates Internet access.
+	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access GTM over the Internet. Valid values:
+	//
+	// *   CUSTOM: a custom CNAME domain name
+	// *   SYSTEM_ASSIGN: a CNAME domain name assigned by the system
+	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
+	PublicRr        *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
+	// The website domain name that the user uses on the Internet.
+	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
+	// The domain name that is used to access GTM over the Internet.
+	PublicZoneName *string `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   LATENCY: latency-based
+	// *   GEO: geographical location-based
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The global time to live (TTL).
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) String() string {
@@ -6694,9 +7580,24 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) SetTtl(v int32) 
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {
 	DingtalkNotice *string `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
-	EmailNotice    *string `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
-	NoticeType     *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	SmsNotice      *string `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	// Indicates whether email notifications were configured. Valid values:
+	//
+	// *   true: configured
+	// *   false | null: not configured
+	EmailNotice *string `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// *   ADDR_ALERT: The address is unavailable.
+	// *   ADDR_RESUME: The address is restored and becomes available.
+	// *   ADDR_POOL_GROUP_UNAVAILABLE: The address pool group is unavailable.
+	// *   ADDR_POOL_GROUP_AVAILABLE: The address pool group is restored and becomes available.
+	// *   ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
+	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Indicates whether SMS notifications were configured. Valid values:
+	//
+	// *   true: configured
+	// *   false | null: not configured
+	SmsNotice *string `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
 }
 
 func (s DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig) String() string {
@@ -6729,9 +7630,12 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig) SetSm
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota struct {
 	DingtalkUsedCount *int32 `json:"DingtalkUsedCount,omitempty" xml:"DingtalkUsedCount,omitempty"`
-	EmailUsedCount    *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
-	SmsUsedCount      *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
-	TaskUsedCount     *int32 `json:"TaskUsedCount,omitempty" xml:"TaskUsedCount,omitempty"`
+	// The total number of email notifications that were sent.
+	EmailUsedCount *int32 `json:"EmailUsedCount,omitempty" xml:"EmailUsedCount,omitempty"`
+	// The total number of SMS notifications that were sent.
+	SmsUsedCount *int32 `json:"SmsUsedCount,omitempty" xml:"SmsUsedCount,omitempty"`
+	// The number of detection tasks that were created.
+	TaskUsedCount *int32 `json:"TaskUsedCount,omitempty" xml:"TaskUsedCount,omitempty"`
 }
 
 func (s DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota) String() string {
@@ -6792,13 +7696,20 @@ func (s *DescribeDnsGtmInstancesResponse) SetBody(v *DescribeDnsGtmInstancesResp
 }
 
 type DescribeDnsGtmLogsRequest struct {
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The timestamp that specifies the end of the time range to query.
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query.
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmLogsRequest) String() string {
@@ -6845,12 +7756,18 @@ func (s *DescribeDnsGtmLogsRequest) SetStartTimestamp(v int64) *DescribeDnsGtmLo
 }
 
 type DescribeDnsGtmLogsResponseBody struct {
-	Logs       *DescribeDnsGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
-	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                              `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                              `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The returned logs.
+	Logs *DescribeDnsGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	// The number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDnsGtmLogsResponseBody) String() string {
@@ -6909,14 +7826,22 @@ func (s *DescribeDnsGtmLogsResponseBodyLogs) SetLog(v []*DescribeDnsGtmLogsRespo
 }
 
 type DescribeDnsGtmLogsResponseBodyLogsLog struct {
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OperAction    *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
-	OperTime      *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
-	OperTimestamp *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
+	// The formatted message content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the object on which the operation was performed.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the object on which the operation was performed.
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The type of the object on which the operation was performed.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The ID of the record.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The operation performed.
+	OperAction *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
+	// The time when the operation was performed.
+	OperTime *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
+	// The timestamp of the operation.
+	OperTimestamp *int64 `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmLogsResponseBodyLogsLog) String() string {
@@ -6997,6 +7922,7 @@ func (s *DescribeDnsGtmLogsResponse) SetBody(v *DescribeDnsGtmLogsResponseBody) 
 }
 
 type DescribeDnsGtmMonitorAvailableConfigRequest struct {
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -7014,11 +7940,16 @@ func (s *DescribeDnsGtmMonitorAvailableConfigRequest) SetLang(v string) *Describ
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBody struct {
+	// The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv4 addresses.
 	DomainIpv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes `json:"DomainIpv4IspCityNodes,omitempty" xml:"DomainIpv4IspCityNodes,omitempty" type:"Struct"`
+	// The monitored nodes that can be used to perform health checks on address pools that contain public domain names that are resolved to IPv6 addresses.
 	DomainIpv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes `json:"DomainIpv6IspCityNodes,omitempty" xml:"DomainIpv6IspCityNodes,omitempty" type:"Struct"`
-	Ipv4IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes       `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
-	Ipv6IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes       `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
-	RequestId              *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The monitored nodes that can be used to perform health checks on address pools that contain public IPv4 addresses.
+	Ipv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
+	// The monitored nodes that can be used to perform health checks on address pools that contain public IPv6 addresses.
+	Ipv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBody) String() string {
@@ -7072,14 +8003,25 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode struct {
-	CityCode        *string                                                                                         `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName        *string                                                                                         `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	DefaultSelected *bool                                                                                           `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string                                                                                         `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType       *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	IspCode         *string                                                                                         `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName         *string                                                                                         `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Indicates whether the monitored node is selected for the health check by default.
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// The name of the group to which the monitored node belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group to which the monitored node belongs. Valid values:
+	//
+	// *   BGP: BGP nodes
+	// *   OVERSEAS: nodes outside the Chinese mainland
+	// *   ISP: ISP nodes
+	GroupType *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The code of the ISP to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode) String() string {
@@ -7165,14 +8107,25 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode struct {
-	CityCode        *string                                                                                         `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName        *string                                                                                         `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	DefaultSelected *bool                                                                                           `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string                                                                                         `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType       *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	IspCode         *string                                                                                         `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName         *string                                                                                         `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Indicates whether the monitored node is selected for the health check by default.
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// The name of the group to which the monitored node belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group to which the monitored node belongs. Valid values:
+	//
+	// *   BGP: BGP nodes
+	// *   OVERSEAS: nodes outside the Chinese mainland
+	// *   ISP: ISP nodes
+	GroupType *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The code of the ISP to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode) String() string {
@@ -7258,14 +8211,25 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes) SetIp
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
-	CityCode        *string                                                                             `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName        *string                                                                             `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	DefaultSelected *bool                                                                               `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string                                                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType       *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	IspCode         *string                                                                             `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName         *string                                                                             `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Indicates whether the monitored node is selected for the health check by default.
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// The name of the group to which the monitored node belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group to which the monitored node belongs. Valid values:
+	//
+	// *   BGP: Border Gateway Protocol (BGP) nodes
+	// *   OVERSEAS: nodes outside the Chinese mainland
+	// *   ISP: ISP nodes
+	GroupType *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode) String() string {
@@ -7351,14 +8315,25 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes) SetIp
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
-	CityCode        *string                                                                             `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName        *string                                                                             `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	DefaultSelected *bool                                                                               `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string                                                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType       *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	IspCode         *string                                                                             `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName         *string                                                                             `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Indicates whether the monitored node is selected for the health check by default.
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// The name of the group to which the monitored node belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group to which the monitored node belongs. Valid values:
+	//
+	// *   BGP: BGP nodes
+	// *   OVERSEAS: nodes outside the Chinese mainland
+	// *   ISP: ISP nodes
+	GroupType *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	// The code of the ISP to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode) String() string {
@@ -7456,7 +8431,9 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponse) SetBody(v *DescribeDnsGtm
 }
 
 type DescribeDnsGtmMonitorConfigRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the health check task.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
 }
 
@@ -7479,18 +8456,81 @@ func (s *DescribeDnsGtmMonitorConfigRequest) SetMonitorConfigId(v string) *Descr
 }
 
 type DescribeDnsGtmMonitorConfigResponseBody struct {
-	CreateTime        *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp   *int64                                               `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EvaluationCount   *int32                                               `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                                               `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNodes      *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	MonitorConfigId   *string                                              `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorExtendInfo *string                                              `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                                              `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timeout           *int32                                               `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UpdateTime        *string                                              `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp   *int64                                               `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The time when the health check task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates when the health check task was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The number of consecutive times of failed health check attempts.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The interval at which the health check task is executed. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored node.
+	IspCityNodes *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// The ID of the health check task.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// The extended information. The following parameters are required for different health check protocols:
+	//
+	// *   HTTP or HTTPS:
+	//
+	//     *   port: the check port.
+	//
+	//     *   host: the host settings.
+	//
+	//     *   path: the URL path.
+	//
+	//     *   code: the return code greater than the specified value.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   sni: specifies whether to enable server name indication (SNI). This parameter is used only for the HTTPS protocol. Valid values:
+	//
+	//         *   true: enable SNI.
+	//         *   false: disable SNI.
+	//
+	//     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   PING:
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   packetNum: the number of ping packets.
+	//
+	//     *   packetLossRate: the loss rate of ping packets.
+	//
+	//     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   TCP:
+	//
+	//     *   port: the check port.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   nodeType: the type of the node to monitor when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The health check protocol. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timeout period. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The time when the information about the health check task was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates when the information about the health check task was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorConfigResponseBody) String() string {
@@ -7579,12 +8619,18 @@ func (s *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes) SetIspCityNode(v [
 }
 
 type DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
-	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The code of the monitored city node.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the monitored city node.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The code of the country or region.
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The display name of the country or region.
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the monitored Internet service provider (ISP) node.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The name of the ISP.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode) String() string {
@@ -7655,8 +8701,11 @@ func (s *DescribeDnsGtmMonitorConfigResponse) SetBody(v *DescribeDnsGtmMonitorCo
 }
 
 type DescribeDnsProductInstanceRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the instance. You can call the **DescribeDomainInfo** operation to obtain the instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -7684,41 +8733,80 @@ func (s *DescribeDnsProductInstanceRequest) SetUserClientIp(v string) *DescribeD
 }
 
 type DescribeDnsProductInstanceResponseBody struct {
-	BindCount             *int64                                            `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	BindDomainCount       *int64                                            `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
-	BindDomainUsedCount   *int64                                            `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
-	BindUsedCount         *int64                                            `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
-	DDosDefendFlow        *int64                                            `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
-	DDosDefendQuery       *int64                                            `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
-	DnsSLBCount           *int64                                            `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	DnsSecurity           *string                                           `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
-	DnsServers            *DescribeDnsProductInstanceResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	Domain                *string                                           `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	DomainType            *string                                           `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	EndTime               *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp          *int64                                            `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Gslb                  *bool                                             `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	ISPLines              *string                                           `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	ISPRegionLines        *string                                           `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	InBlackHole           *bool                                             `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	InClean               *bool                                             `json:"InClean,omitempty" xml:"InClean,omitempty"`
-	InstanceId            *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MonitorFrequency      *int64                                            `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
-	MonitorNodeCount      *int64                                            `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
-	MonitorTaskCount      *int64                                            `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
-	OverseaDDosDefendFlow *int64                                            `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
-	OverseaLine           *string                                           `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
-	PaymentType           *string                                           `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RegionLines           *bool                                             `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	RequestId             *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SearchEngineLines     *string                                           `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
-	StartTime             *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp        *int64                                            `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	SubDomainLevel        *int64                                            `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
-	TTLMinValue           *int64                                            `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
-	URLForwardCount       *int64                                            `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
-	VersionCode           *string                                           `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	VersionName           *string                                           `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// The number of domain names that you can bind to the DNS instance.
+	BindDomainCount *int64 `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
+	// The number of domain names that have been bound to the DNS instance.
+	BindDomainUsedCount *int64 `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
+	// The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+	BindUsedCount *int64 `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
+	// The DDoS protection traffic. Unit: GB.
+	DDosDefendFlow *int64 `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
+	// The DDoS protection frequency. Unit: 10,000 QPS.
+	DDosDefendQuery *int64 `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
+	// The number of IP addresses supported by a domain name or line.
+	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
+	// The DNS security policy. Valid values:
+	//
+	// *   **no**: not required.
+	// *   **basic**: anti-DDoS basic.
+	// *   **advanced**: anti-DDoS advanced.
+	DnsSecurity *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
+	// The list of DNS servers.
+	DnsServers *DescribeDnsProductInstanceResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	// The bound domain name.
+	//
+	// If this parameter is not specified, no domain name is bound.
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The time at which the instance expired.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The UNIX timestamp representing the expiration time of the instance.
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// Indicates whether GSLB was allowed.
+	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
+	// The list of ISP lines.
+	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
+	// The list of ISP line subdivisions.
+	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
+	// Indicates whether the request for domain name resolution was in the black hole.
+	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
+	// Indicates whether the request for domain name resolution was being cleared.
+	InClean *bool `json:"InClean,omitempty" xml:"InClean,omitempty"`
+	// The ID of the Alibaba Cloud DNS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The monitoring frequency. Unit: minutes.
+	MonitorFrequency *int64 `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
+	// The number of monitored nodes.
+	MonitorNodeCount *int64 `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
+	// The number of monitoring tasks.
+	MonitorTaskCount *int64 `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
+	// DDoS protection traffic outside China. Unit: GB.
+	OverseaDDosDefendFlow *int64 `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
+	// The type of the overseas line.
+	OverseaLine *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Indicates whether regional lines were allowed.
+	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of search engine lines.
+	SearchEngineLines *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
+	// The time when the DNS instance was purchased.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The UNIX timestamp representing when the DNS instance was purchased.
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The number of subdomain name levels.
+	SubDomainLevel *int64 `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
+	// The minimum TTL. Unit: seconds.
+	TTLMinValue *int64 `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
+	// The URL forwarding quantity.
+	URLForwardCount *int64 `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
+	// The version code of the Alibaba Cloud DNS instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version name of the Alibaba Cloud DNS instance.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDnsProductInstanceResponseBody) String() string {
@@ -7951,12 +9039,17 @@ func (s *DescribeDnsProductInstanceResponse) SetBody(v *DescribeDnsProductInstan
 }
 
 type DescribeDnsProductInstancesRequest struct {
-	DomainType   *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	VersionCode  *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version code of the Alibaba Cloud DNS instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeDnsProductInstancesRequest) String() string {
@@ -7998,12 +9091,17 @@ func (s *DescribeDnsProductInstancesRequest) SetVersionCode(v string) *DescribeD
 }
 
 type DescribeDnsProductInstancesResponseBody struct {
+	// The list of Alibaba Cloud DNS instances obtained by this operation.
 	DnsProducts *DescribeDnsProductInstancesResponseBodyDnsProducts `json:"DnsProducts,omitempty" xml:"DnsProducts,omitempty" type:"Struct"`
 	DomainType  *string                                             `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	PageNumber  *int64                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDnsProductInstancesResponseBody) String() string {
@@ -8062,38 +9160,73 @@ func (s *DescribeDnsProductInstancesResponseBodyDnsProducts) SetDnsProduct(v []*
 }
 
 type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
-	BindCount             *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	BindDomainCount       *int64  `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
-	BindDomainUsedCount   *int64  `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
-	BindUsedCount         *int64  `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
-	DDosDefendFlow        *int64  `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
-	DDosDefendQuery       *int64  `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
-	DnsSLBCount           *int64  `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	DnsSecurity           *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
-	Domain                *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp          *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Gslb                  *bool   `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	ISPLines              *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	ISPRegionLines        *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	InBlackHole           *bool   `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	InClean               *bool   `json:"InClean,omitempty" xml:"InClean,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MonitorFrequency      *int64  `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
-	MonitorNodeCount      *int64  `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
-	MonitorTaskCount      *int64  `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
-	OverseaDDosDefendFlow *int64  `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
-	OverseaLine           *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
-	PaymentType           *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	RegionLines           *bool   `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	SearchEngineLines     *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
-	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp        *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	SubDomainLevel        *int64  `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
-	TTLMinValue           *int64  `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
-	URLForwardCount       *int64  `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
-	VersionCode           *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	VersionName           *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	// The number of domain names that can be bound to the DNS instance.
+	BindDomainCount *int64 `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
+	// The number of domain names that have been bound to the DNS instance.
+	BindDomainUsedCount *int64 `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
+	// The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
+	BindUsedCount *int64 `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
+	// The DDoS protection traffic. Unit: GB.
+	DDosDefendFlow *int64 `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
+	// The DDoS protection frequency. Unit: 10,000 QPS.
+	DDosDefendQuery *int64 `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
+	// The number of IP addresses supported by a domain name or line.
+	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
+	// The DNS security policy. Valid values:
+	//
+	// *   **no**: not required.
+	// *   **basic**: anti-DDoS basic.
+	// *   **advanced**: anti-DDoS advanced.
+	DnsSecurity *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
+	// The bound domain name.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The time at which the instance expired.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The UNIX timestamp representing the expiration time of the instance.
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// Indicates whether global server load balancing (GSLB) was allowed.
+	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
+	// The list of ISP lines.
+	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
+	// The list of ISP line subdivisions.
+	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
+	// Indicates whether the request for domain name resolution was in the black hole.
+	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
+	// Indicates whether the request for domain name resolution was being cleared.
+	InClean *bool `json:"InClean,omitempty" xml:"InClean,omitempty"`
+	// The ID of the Alibaba Cloud DNS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The monitoring frequency. Unit: minutes.
+	MonitorFrequency *int64 `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
+	// The number of monitored nodes.
+	MonitorNodeCount *int64 `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
+	// The number of monitoring tasks.
+	MonitorTaskCount *int64 `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
+	// DDoS protection traffic outside China. Unit: GB.
+	OverseaDDosDefendFlow *int64 `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
+	// The type of the overseas line.
+	OverseaLine *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Indicates whether regional lines were allowed.
+	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
+	// The list of search engine lines.
+	SearchEngineLines *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
+	// The time when the DNS instance was purchased.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The UNIX timestamp representing when the DNS instance was purchased.
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The number of subdomain name levels.
+	SubDomainLevel *int64 `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
+	// The minimum TTL. Unit: seconds.
+	TTLMinValue *int64 `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
+	// The URL forwarding quantity.
+	URLForwardCount *int64 `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
+	// The version code of the Alibaba Cloud DNS instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version name of the Alibaba Cloud DNS instance.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct) String() string {
@@ -8294,8 +9427,15 @@ func (s *DescribeDnsProductInstancesResponse) SetBody(v *DescribeDnsProductInsta
 }
 
 type DescribeDohAccountStatisticsRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query only the DNS records of the latest 90 days.`The value of StartDate must be greater than or equal to the difference between the current date and 90`.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -8323,7 +9463,9 @@ func (s *DescribeDohAccountStatisticsRequest) SetStartDate(v string) *DescribeDo
 }
 
 type DescribeDohAccountStatisticsResponseBody struct {
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics list.
 	Statistics []*DescribeDohAccountStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 
@@ -8346,11 +9488,17 @@ func (s *DescribeDohAccountStatisticsResponseBody) SetStatistics(v []*DescribeDo
 }
 
 type DescribeDohAccountStatisticsResponseBodyStatistics struct {
-	Timestamp    *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TotalCount   *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	V4HttpCount  *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The timestamp.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total number of requests.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of IPv4-based HTTP requests.
+	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The number of IPv4-based HTTPS requests.
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	V6HttpCount  *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTP requests.
+	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTPS requests.
 	V6HttpsCount *int64 `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
 }
 
@@ -8422,10 +9570,18 @@ func (s *DescribeDohAccountStatisticsResponse) SetBody(v *DescribeDohAccountStat
 }
 
 type DescribeDohDomainStatisticsRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query only the DNS records of the latest 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeDohDomainStatisticsRequest) String() string {
@@ -8457,7 +9613,9 @@ func (s *DescribeDohDomainStatisticsRequest) SetStartDate(v string) *DescribeDoh
 }
 
 type DescribeDohDomainStatisticsResponseBody struct {
-	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics list.
 	Statistics []*DescribeDohDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 
@@ -8480,11 +9638,17 @@ func (s *DescribeDohDomainStatisticsResponseBody) SetStatistics(v []*DescribeDoh
 }
 
 type DescribeDohDomainStatisticsResponseBodyStatistics struct {
-	Timestamp    *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TotalCount   *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	V4HttpCount  *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The timestamp.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total number of requests.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of IPv4-based HTTP requests.
+	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The number of IPv4-based HTTPS requests.
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	V6HttpCount  *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTP requests.
+	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTPS requests.
 	V6HttpsCount *int64 `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
 }
 
@@ -8556,12 +9720,22 @@ func (s *DescribeDohDomainStatisticsResponse) SetBody(v *DescribeDohDomainStatis
 }
 
 type DescribeDohDomainStatisticsSummaryRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query only the DNS records of the last 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeDohDomainStatisticsSummaryRequest) String() string {
@@ -8603,12 +9777,18 @@ func (s *DescribeDohDomainStatisticsSummaryRequest) SetStartDate(v string) *Desc
 }
 
 type DescribeDohDomainStatisticsSummaryResponseBody struct {
-	PageNumber *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics list.
 	Statistics []*DescribeDohDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	TotalItems *int32                                                      `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                      `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of entries returned.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDohDomainStatisticsSummaryResponseBody) String() string {
@@ -8650,15 +9830,24 @@ func (s *DescribeDohDomainStatisticsSummaryResponseBody) SetTotalPages(v int32) 
 }
 
 type DescribeDohDomainStatisticsSummaryResponseBodyStatistics struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	HttpCount    *int64  `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
-	HttpsCount   *int64  `json:"HttpsCount,omitempty" xml:"HttpsCount,omitempty"`
-	IpCount      *int64  `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	V4HttpCount  *int64  `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	V4HttpsCount *int64  `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	V6HttpCount  *int64  `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	V6HttpsCount *int64  `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The number of HTTP requests.
+	HttpCount *int64 `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
+	// The number of HTTPS requests.
+	HttpsCount *int64 `json:"HttpsCount,omitempty" xml:"HttpsCount,omitempty"`
+	// The number of IP addresses.
+	IpCount *int64 `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
+	// The total number of requests.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of IPv4-based HTTP requests.
+	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The number of IPv4-based HTTPS requests.
+	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
+	// The number of IPv6-based HTTP requests.
+	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTPS requests.
+	V6HttpsCount *int64 `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
 }
 
 func (s DescribeDohDomainStatisticsSummaryResponseBodyStatistics) String() string {
@@ -8744,9 +9933,17 @@ func (s *DescribeDohDomainStatisticsSummaryResponse) SetBody(v *DescribeDohDomai
 }
 
 type DescribeDohSubDomainStatisticsRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query only the DNS records of the latest 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The subdomain whose statistics you want to query.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
@@ -8779,7 +9976,9 @@ func (s *DescribeDohSubDomainStatisticsRequest) SetSubDomain(v string) *Describe
 }
 
 type DescribeDohSubDomainStatisticsResponseBody struct {
-	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics list.
 	Statistics []*DescribeDohSubDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
 }
 
@@ -8802,11 +10001,17 @@ func (s *DescribeDohSubDomainStatisticsResponseBody) SetStatistics(v []*Describe
 }
 
 type DescribeDohSubDomainStatisticsResponseBodyStatistics struct {
-	Timestamp    *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	TotalCount   *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	V4HttpCount  *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The timestamp.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total number of requests.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of IPv4-based HTTP requests.
+	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The number of IPv4-based HTTPS requests.
 	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	V6HttpCount  *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTP requests.
+	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTPS requests.
 	V6HttpsCount *int64 `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
 }
 
@@ -8878,13 +10083,24 @@ func (s *DescribeDohSubDomainStatisticsResponse) SetBody(v *DescribeDohSubDomain
 }
 
 type DescribeDohSubDomainStatisticsSummaryRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	SubDomain  *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// The default value is the day when you query the required data.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+	//
+	// You can query only the DNS records of the last 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The subdomain.
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s DescribeDohSubDomainStatisticsSummaryRequest) String() string {
@@ -8931,12 +10147,18 @@ func (s *DescribeDohSubDomainStatisticsSummaryRequest) SetSubDomain(v string) *D
 }
 
 type DescribeDohSubDomainStatisticsSummaryResponseBody struct {
-	PageNumber *int32                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The statistics list.
 	Statistics []*DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
-	TotalItems *int32                                                         `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                         `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// Total number of entries returned.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// Total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDohSubDomainStatisticsSummaryResponseBody) String() string {
@@ -8978,15 +10200,24 @@ func (s *DescribeDohSubDomainStatisticsSummaryResponseBody) SetTotalPages(v int3
 }
 
 type DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics struct {
-	HttpCount    *int64  `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
-	HttpsCount   *int64  `json:"HttpsCount,omitempty" xml:"HttpsCount,omitempty"`
-	IpCount      *int64  `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
-	SubDomain    *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	V4HttpCount  *int64  `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
-	V4HttpsCount *int64  `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
-	V6HttpCount  *int64  `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
-	V6HttpsCount *int64  `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
+	// The number of HTTP requests.
+	HttpCount *int64 `json:"HttpCount,omitempty" xml:"HttpCount,omitempty"`
+	// The number of HTTPS requests.
+	HttpsCount *int64 `json:"HttpsCount,omitempty" xml:"HttpsCount,omitempty"`
+	// The number of IP addresses.
+	IpCount *int64 `json:"IpCount,omitempty" xml:"IpCount,omitempty"`
+	// The subdomain.
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// Total number of requests.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of IPv4-based HTTP requests.
+	V4HttpCount *int64 `json:"V4HttpCount,omitempty" xml:"V4HttpCount,omitempty"`
+	// The number of IPv4-based HTTPS requests.
+	V4HttpsCount *int64 `json:"V4HttpsCount,omitempty" xml:"V4HttpsCount,omitempty"`
+	// The number of IPv6-based HTTP requests.
+	V6HttpCount *int64 `json:"V6HttpCount,omitempty" xml:"V6HttpCount,omitempty"`
+	// The number of IPv6-based HTTPS requests.
+	V6HttpsCount *int64 `json:"V6HttpsCount,omitempty" xml:"V6HttpsCount,omitempty"`
 }
 
 func (s DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics) String() string {
@@ -9072,8 +10303,15 @@ func (s *DescribeDohSubDomainStatisticsSummaryResponse) SetBody(v *DescribeDohSu
 }
 
 type DescribeDohUserInfoRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The end time for the query. Format: YYYY-MM-DD
+	//
+	// If you do not specify this parameter, the default value is the time when you perform the query.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The start time for the query. Format: YYYY-MM-DD
+	//
+	// You can query the user information of the last 90 days only. `Set the parameter to a value no earlier than 90 days from the current time`.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -9101,10 +10339,14 @@ func (s *DescribeDohUserInfoRequest) SetStartDate(v string) *DescribeDohUserInfo
 }
 
 type DescribeDohUserInfoResponseBody struct {
-	DomainCount    *int32  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	PdnsId         *int64  `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubDomainCount *int32  `json:"SubDomainCount,omitempty" xml:"SubDomainCount,omitempty"`
+	// The number of accessed domains.
+	DomainCount *int32 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// The ID of the Alibaba Cloud public DNS user.
+	PdnsId *int64 `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of accessed subdomains.
+	SubDomainCount *int32 `json:"SubDomainCount,omitempty" xml:"SubDomainCount,omitempty"`
 }
 
 func (s DescribeDohUserInfoResponseBody) String() string {
@@ -9165,8 +10407,10 @@ func (s *DescribeDohUserInfoResponse) SetBody(v *DescribeDohUserInfoResponseBody
 }
 
 type DescribeDomainDnssecInfoRequest struct {
+	// The domain name for which DNSSEC configurations to query.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages, such as the region parameter. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDomainDnssecInfoRequest) String() string {
@@ -9188,16 +10432,29 @@ func (s *DescribeDomainDnssecInfoRequest) SetLang(v string) *DescribeDomainDnsse
 }
 
 type DescribeDomainDnssecInfoResponseBody struct {
-	Algorithm  *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest     *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The algorithm configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The digest configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The digest type configured in a DNSSEC record. This parameter is returned if DNSSEC is enabled.
 	DigestType *string `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// The domain name that is queried.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DsRecord   *string `json:"DsRecord,omitempty" xml:"DsRecord,omitempty"`
-	Flags      *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
-	KeyTag     *string `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	PublicKey  *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The DS record. This parameter is returned if DNSSEC is enabled.
+	DsRecord *string `json:"DsRecord,omitempty" xml:"DsRecord,omitempty"`
+	// The flag of a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
+	// The key tag of a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	KeyTag *string `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
+	// The public key for a DNSSEC record. This parameter is returned if DNSSEC is enabled.
+	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether DNSSEC is enabled for the specified domain name.
+	//
+	// *   ON: DNSSEC is enabled.
+	// *   OFF: DNSSEC is disabled.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainDnssecInfoResponseBody) String() string {
@@ -9288,10 +10545,14 @@ func (s *DescribeDomainDnssecInfoResponse) SetBody(v *DescribeDomainDnssecInfoRe
 }
 
 type DescribeDomainGroupsRequest struct {
-	KeyWord    *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword of the domain name group for searches in %KeyWord% mode. The value is not case-sensitive.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDomainGroupsRequest) String() string {
@@ -9323,11 +10584,16 @@ func (s *DescribeDomainGroupsRequest) SetPageSize(v int64) *DescribeDomainGroups
 }
 
 type DescribeDomainGroupsResponseBody struct {
+	// The list of domain name groups.
 	DomainGroups *DescribeDomainGroupsResponseBodyDomainGroups `json:"DomainGroups,omitempty" xml:"DomainGroups,omitempty" type:"Struct"`
-	PageNumber   *int64                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain name groups.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainGroupsResponseBody) String() string {
@@ -9381,9 +10647,12 @@ func (s *DescribeDomainGroupsResponseBodyDomainGroups) SetDomainGroup(v []*Descr
 }
 
 type DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup struct {
-	DomainCount *int64  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The number of domain name groups.
+	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup) String() string {
@@ -9439,9 +10708,14 @@ func (s *DescribeDomainGroupsResponse) SetBody(v *DescribeDomainGroupsResponseBo
 }
 
 type DescribeDomainInfoRequest struct {
-	DomainName           *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NeedDetailAttributes *bool   `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether detailed attributes are required. Default value: **false**, which indicates that detailed attributes are not required.
+	//
+	// If you set this parameter to **true**, the values of the following parameters are returned: LineType, MinTtl, RecordLineTreeJson, RecordLines, LineCode, LineDisplayName, LineName, RegionLines, and SlaveDns.
+	NeedDetailAttributes *bool `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
 }
 
 func (s DescribeDomainInfoRequest) String() string {
@@ -9468,29 +10742,52 @@ func (s *DescribeDomainInfoRequest) SetNeedDetailAttributes(v bool) *DescribeDom
 }
 
 type DescribeDomainInfoResponseBody struct {
-	AliDomain          *bool                                        `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	AvailableTtls      *DescribeDomainInfoResponseBodyAvailableTtls `json:"AvailableTtls,omitempty" xml:"AvailableTtls,omitempty" type:"Struct"`
-	CreateTime         *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DnsServers         *DescribeDomainInfoResponseBodyDnsServers    `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	DomainId           *string                                      `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainName         *string                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId            *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName          *string                                      `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	InBlackHole        *bool                                        `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	InClean            *bool                                        `json:"InClean,omitempty" xml:"InClean,omitempty"`
-	InstanceId         *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LineType           *string                                      `json:"LineType,omitempty" xml:"LineType,omitempty"`
-	MinTtl             *int64                                       `json:"MinTtl,omitempty" xml:"MinTtl,omitempty"`
-	PunyCode           *string                                      `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	RecordLineTreeJson *string                                      `json:"RecordLineTreeJson,omitempty" xml:"RecordLineTreeJson,omitempty"`
-	RecordLines        *DescribeDomainInfoResponseBodyRecordLines   `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
-	RegionLines        *bool                                        `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	Remark             *string                                      `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId          *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId    *string                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveDns           *bool                                        `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	VersionCode        *string                                      `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	VersionName        *string                                      `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Indicates whether the domain name is an Alibaba Cloud HiChina domain name.
+	AliDomain *bool `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
+	// The available time to live (TTL) values.
+	AvailableTtls *DescribeDomainInfoResponseBodyAvailableTtls `json:"AvailableTtls,omitempty" xml:"AvailableTtls,omitempty" type:"Struct"`
+	// The time when the domain name was added to Alibaba Cloud CDN.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about DNS servers.
+	DnsServers *DescribeDomainInfoResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Indicates whether blackhole filtering was triggered.
+	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
+	// Indicates whether traffic scrubbing was started.
+	InClean *bool `json:"InClean,omitempty" xml:"InClean,omitempty"`
+	// The ID of the Alibaba Cloud DNS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of line.
+	LineType *string `json:"LineType,omitempty" xml:"LineType,omitempty"`
+	// The minimum TTL.
+	MinTtl *int64 `json:"MinTtl,omitempty" xml:"MinTtl,omitempty"`
+	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
+	// The tree-based lines.
+	RecordLineTreeJson *string `json:"RecordLineTreeJson,omitempty" xml:"RecordLineTreeJson,omitempty"`
+	// The information about lines.
+	RecordLines *DescribeDomainInfoResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
+	// Indicates whether the lines are regional lines.
+	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
+	// The description of the domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether secondary DNS is allowed.
+	SlaveDns *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	// The version of the Alibaba Cloud DNS instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The edition of the Alibaba Cloud DNS instance.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDomainInfoResponseBody) String() string {
@@ -9668,10 +10965,14 @@ func (s *DescribeDomainInfoResponseBodyRecordLines) SetRecordLine(v []*DescribeD
 }
 
 type DescribeDomainInfoResponseBodyRecordLinesRecordLine struct {
-	FatherCode      *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	LineCode        *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The code of the parent line. This parameter is left empty if the line has no parent line.
+	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
+	// The code of the line.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The name of the parent line.
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	LineName        *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The name of the line.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDomainInfoResponseBodyRecordLinesRecordLine) String() string {
@@ -9732,14 +11033,25 @@ func (s *DescribeDomainInfoResponse) SetBody(v *DescribeDomainInfoResponseBody) 
 }
 
 type DescribeDomainLogsRequest struct {
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	KeyWord    *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	EndDate    *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The keyword for the query in "%KeyWord%" mode. The keyword is not case-sensitive.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number to return. The page number starts from **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time for the query. Format: **YYYY-MM-DD**
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The type of object of which you want to query operation logs. Valid values:
+	//
+	// *   domain: domain name
+	// *   slavedns: secondary Domain Name System (DNS)
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The end time for the query. Format: **YYYY-MM-DD**
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
 }
 
 func (s DescribeDomainLogsRequest) String() string {
@@ -9791,11 +11103,16 @@ func (s *DescribeDomainLogsRequest) SetEndDate(v string) *DescribeDomainLogsRequ
 }
 
 type DescribeDomainLogsResponseBody struct {
+	// The details about the operation logs that are queried.
 	DomainLogs *DescribeDomainLogsResponseBodyDomainLogs `json:"DomainLogs,omitempty" xml:"DomainLogs,omitempty" type:"Struct"`
-	PageNumber *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of operation logs returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of operation logs returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainLogsResponseBody) String() string {
@@ -9849,13 +11166,20 @@ func (s *DescribeDomainLogsResponseBodyDomainLogs) SetDomainLog(v []*DescribeDom
 }
 
 type DescribeDomainLogsResponseBodyDomainLogsDomainLog struct {
-	Action          *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionTime      *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
-	ActionTimestamp *int64  `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
-	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The operation performed.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The time when the operation was performed.
+	ActionTime *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
+	// The UNIX timestamp that indicates when the operation was performed.
+	ActionTimestamp *int64 `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
+	// The IP address from which the operation was performed.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The message for the operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDomainLogsResponseBodyDomainLogsDomainLog) String() string {
@@ -9931,8 +11255,10 @@ func (s *DescribeDomainLogsResponse) SetBody(v *DescribeDomainLogsResponseBody) 
 }
 
 type DescribeDomainNsRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeDomainNsRequest) String() string {
@@ -9954,11 +11280,17 @@ func (s *DescribeDomainNsRequest) SetLang(v string) *DescribeDomainNsRequest {
 }
 
 type DescribeDomainNsResponseBody struct {
-	AllAliDns        *bool                                         `json:"AllAliDns,omitempty" xml:"AllAliDns,omitempty"`
-	DnsServers       *DescribeDomainNsResponseBodyDnsServers       `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	// Indicates whether all the name servers were Alibaba Cloud DNS servers.
+	AllAliDns              *bool   `json:"AllAliDns,omitempty" xml:"AllAliDns,omitempty"`
+	DetectFailedReasonCode *string `json:"DetectFailedReasonCode,omitempty" xml:"DetectFailedReasonCode,omitempty"`
+	// The list of DNS servers for the domain name.
+	DnsServers *DescribeDomainNsResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	// The list of DNS servers assigned by Alibaba Cloud.
 	ExpectDnsServers *DescribeDomainNsResponseBodyExpectDnsServers `json:"ExpectDnsServers,omitempty" xml:"ExpectDnsServers,omitempty" type:"Struct"`
-	IncludeAliDns    *bool                                         `json:"IncludeAliDns,omitempty" xml:"IncludeAliDns,omitempty"`
-	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the name servers included Alibaba Cloud DNS servers.
+	IncludeAliDns *bool `json:"IncludeAliDns,omitempty" xml:"IncludeAliDns,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainNsResponseBody) String() string {
@@ -9971,6 +11303,11 @@ func (s DescribeDomainNsResponseBody) GoString() string {
 
 func (s *DescribeDomainNsResponseBody) SetAllAliDns(v bool) *DescribeDomainNsResponseBody {
 	s.AllAliDns = &v
+	return s
+}
+
+func (s *DescribeDomainNsResponseBody) SetDetectFailedReasonCode(v string) *DescribeDomainNsResponseBody {
+	s.DetectFailedReasonCode = &v
 	return s
 }
 
@@ -10058,8 +11395,13 @@ func (s *DescribeDomainNsResponse) SetBody(v *DescribeDomainNsResponseBody) *Des
 }
 
 type DescribeDomainRecordInfoRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is returned when you add a DNS record or when you query the list of DNS records.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -10087,21 +11429,37 @@ func (s *DescribeDomainRecordInfoRequest) SetUserClientIp(v string) *DescribeDom
 }
 
 type DescribeDomainRecordInfoResponseBody struct {
-	DomainId   *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Line       *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Locked     *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	PunyCode   *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TTL        *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The resolution line.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The lock status of the DNS record. Valid values: true and false.
+	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	// The priority of the MX-type DNS record.
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The punycode is only returned for Chinese domain names.
+	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
+	// The host record.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the DNS record. Valid values: Enable and Disable.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The TTL of the resolution.
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the DNS record.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainRecordInfoResponseBody) String() string {
@@ -10162,6 +11520,11 @@ func (s *DescribeDomainRecordInfoResponseBody) SetRecordId(v string) *DescribeDo
 	return s
 }
 
+func (s *DescribeDomainRecordInfoResponseBody) SetRemark(v string) *DescribeDomainRecordInfoResponseBody {
+	s.Remark = &v
+	return s
+}
+
 func (s *DescribeDomainRecordInfoResponseBody) SetRequestId(v string) *DescribeDomainRecordInfoResponseBody {
 	s.RequestId = &v
 	return s
@@ -10217,20 +11580,50 @@ func (s *DescribeDomainRecordInfoResponse) SetBody(v *DescribeDomainRecordInfoRe
 }
 
 type DescribeDomainRecordsRequest struct {
-	Direction    *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	KeyWord      *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	OrderBy      *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RRKeyWord    *string `json:"RRKeyWord,omitempty" xml:"RRKeyWord,omitempty"`
-	SearchMode   *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeKeyWord  *string `json:"TypeKeyWord,omitempty" xml:"TypeKeyWord,omitempty"`
+	// The order in which the returned DNS records are sorted. Valid values: DESC and ASC. Default value: DESC.
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The domain name for which you want to query DNS records.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name group.
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The keyword based on which the system queries DNS records.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The language of the domain name.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The line based on which the system queries DNS records. Default value: **default**.
+	//
+	// For more information, see the following topic:
+	//
+	// [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm)
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The method that is used to sort the returned DNS records. By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **500**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource record (RR) keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
+	RRKeyWord *string `json:"RRKeyWord,omitempty" xml:"RRKeyWord,omitempty"`
+	// The search mode. Valid values: **LIKE, EXACT, and ADVANCED**.
+	//
+	// *   If you set this parameter to LIKE or EXACT, specify the KeyWord parameter.In this case, the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters are ignored.
+	//
+	// *   If you set this parameter to ADVANCED, specify the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters.
+	//
+	// *   If you do not specify this parameter, the system determines the search mode based on the following rules:
+	//
+	//     *   If the KeyWord parameter is specified, the system uses the LIKE mode.
+	//     *   If the KeyWord parameter is not specified, the system queries DNS records based on values of the RRKeyWord and ValueKeyWord parameters in fuzzy match mode, and based on the values of the TypeKeyWord, Type, Line, and Status parameters in exact match mode.
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// The status of the DNS records to query. Valid values: **Enable and Disable**.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the DNS records to query. For more information, see the following topic:
+	//
+	// [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm)
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in exact match mode. The value is not case-sensitive.
+	TypeKeyWord *string `json:"TypeKeyWord,omitempty" xml:"TypeKeyWord,omitempty"`
+	// The record value keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
 	ValueKeyWord *string `json:"ValueKeyWord,omitempty" xml:"ValueKeyWord,omitempty"`
 }
 
@@ -10318,11 +11711,16 @@ func (s *DescribeDomainRecordsRequest) SetValueKeyWord(v string) *DescribeDomain
 }
 
 type DescribeDomainRecordsResponseBody struct {
+	// The DNS records returned.
 	DomainRecords *DescribeDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
-	PageNumber    *int64                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of DNS records.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainRecordsResponseBody) String() string {
@@ -10376,18 +11774,30 @@ func (s *DescribeDomainRecordsResponseBodyDomainRecords) SetRecord(v []*Describe
 }
 
 type DescribeDomainRecordsResponseBodyDomainRecordsRecord struct {
+	// The domain name to which the DNS record belongs.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Line       *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Locked     *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TTL        *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The line that is used by the DNS record.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// Indicates whether the DNS record is locked.
+	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	// The priority of the MX record.
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The RR value.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of the DNS record.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the DNS record.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time-to-live (TTL) of the DNS record.
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The record value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the DNS record.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeDomainRecordsResponseBodyDomainRecordsRecord) String() string {
@@ -10487,12 +11897,191 @@ func (s *DescribeDomainRecordsResponse) SetBody(v *DescribeDomainRecordsResponse
 	return s
 }
 
-type DescribeDomainStatisticsRequest struct {
+type DescribeDomainResolveStatisticsSummaryRequest struct {
+	Direction  *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Threshold  *int64  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeDomainResolveStatisticsSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainResolveStatisticsSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetDirection(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetEndDate(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetKeyword(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetLang(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetPageNumber(v int32) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetPageSize(v int32) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetSearchMode(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetStartDate(v string) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryRequest) SetThreshold(v int64) *DescribeDomainResolveStatisticsSummaryRequest {
+	s.Threshold = &v
+	return s
+}
+
+type DescribeDomainResolveStatisticsSummaryResponseBody struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// RequestId
+	RequestId  *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics []*DescribeDomainResolveStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+	TotalItems *int32                                                          `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	TotalPages *int32                                                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetPageNumber(v int32) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetPageSize(v int32) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetRequestId(v string) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetStatistics(v []*DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.Statistics = v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetTotalItems(v int32) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBody) SetTotalPages(v int32) *DescribeDomainResolveStatisticsSummaryResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type DescribeDomainResolveStatisticsSummaryResponseBodyStatistics struct {
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) SetCount(v string) *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) SetDomainName(v string) *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics) SetDomainType(v string) *DescribeDomainResolveStatisticsSummaryResponseBodyStatistics {
+	s.DomainType = &v
+	return s
+}
+
+type DescribeDomainResolveStatisticsSummaryResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDomainResolveStatisticsSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainResolveStatisticsSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponse) SetHeaders(v map[string]*string) *DescribeDomainResolveStatisticsSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponse) SetStatusCode(v int32) *DescribeDomainResolveStatisticsSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDomainResolveStatisticsSummaryResponse) SetBody(v *DescribeDomainResolveStatisticsSummaryResponseBody) *DescribeDomainResolveStatisticsSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDomainStatisticsRequest struct {
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// You can only query the DNS records of the last 90 days.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeDomainStatisticsRequest) String() string {
@@ -10529,7 +12118,9 @@ func (s *DescribeDomainStatisticsRequest) SetStartDate(v string) *DescribeDomain
 }
 
 type DescribeDomainStatisticsResponseBody struct {
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of query volume records.
 	Statistics *DescribeDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -10569,7 +12160,9 @@ func (s *DescribeDomainStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 }
 
 type DescribeDomainStatisticsResponseBodyStatisticsStatistic struct {
-	Count     *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of queries.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The UNIX timestamp representing the collection time.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -10621,14 +12214,29 @@ func (s *DescribeDomainStatisticsResponse) SetBody(v *DescribeDomainStatisticsRe
 }
 
 type DescribeDomainStatisticsSummaryRequest struct {
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Minimum value: **1**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search mode of the keyword. Valid values:
+	//
+	// *   **LIKE**: fuzzy match (default).
+	// *   **EXACT**: exact match.
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Threshold  *int64  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// You can only query DNS records of the last 90 days.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The threshold of query volume that can be obtained. You can also obtain data about a domain name with the query volume less than or equal to the threshold. For example, if you set this parameter to 100, you can query domain names with less than 100 queries.
+	Threshold *int64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeDomainStatisticsSummaryRequest) String() string {
@@ -10680,12 +12288,18 @@ func (s *DescribeDomainStatisticsSummaryRequest) SetThreshold(v int64) *Describe
 }
 
 type DescribeDomainStatisticsSummaryResponseBody struct {
-	PageNumber *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of query volume records.
 	Statistics *DescribeDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	TotalItems *int32                                                 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of data records.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeDomainStatisticsSummaryResponseBody) String() string {
@@ -10744,7 +12358,9 @@ func (s *DescribeDomainStatisticsSummaryResponseBodyStatistics) SetStatistic(v [
 }
 
 type DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic struct {
-	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of queries.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 }
@@ -10802,14 +12418,25 @@ func (s *DescribeDomainStatisticsSummaryResponse) SetBody(v *DescribeDomainStati
 }
 
 type DescribeDomainsRequest struct {
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	KeyWord         *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the domain name group. If you do not specify this parameter, all domain names are queried by default.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SearchMode      *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	Starmark        *bool   `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
+	// The search mode. Valid values:
+	//
+	// *   **LIKE**: fuzzy match.
+	// *   **EXACT**: exact match.
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// Specifies whether to query the starmark of the domain name.
+	Starmark *bool `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
 }
 
 func (s DescribeDomainsRequest) String() string {
@@ -10861,11 +12488,16 @@ func (s *DescribeDomainsRequest) SetStarmark(v bool) *DescribeDomainsRequest {
 }
 
 type DescribeDomainsResponseBody struct {
-	Domains    *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	PageNumber *int64                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of domain names queried by this operation.
+	Domains *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainsResponseBody) String() string {
@@ -10919,26 +12551,42 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v []*DescribeDomainsRespo
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
-	AliDomain       *bool                                               `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	CreateTime      *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                              `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DnsServers      *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	DomainId        *string                                             `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	DomainName      *string                                             `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId         *string                                             `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName       *string                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	InstanceEndTime *string                                             `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
-	InstanceExpired *bool                                               `json:"InstanceExpired,omitempty" xml:"InstanceExpired,omitempty"`
-	InstanceId      *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PunyCode        *string                                             `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	RecordCount     *int64                                              `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	RegistrantEmail *string                                             `json:"RegistrantEmail,omitempty" xml:"RegistrantEmail,omitempty"`
-	Remark          *string                                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Starmark        *bool                                               `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
-	Tags            *DescribeDomainsResponseBodyDomainsDomainTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VersionCode     *string                                             `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	VersionName     *string                                             `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Indicates whether the domain name is an Alibaba Cloud HiChina domain name.
+	AliDomain       *bool   `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The list of DNS servers of the domain name in the DNS system.
+	DnsServers *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the domain name group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The expiration time of the instance.
+	InstanceEndTime *string `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
+	// Indicates whether the instance expired.
+	InstanceExpired *bool `json:"InstanceExpired,omitempty" xml:"InstanceExpired,omitempty"`
+	// The ID of the Alibaba Cloud DNS instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The punycode is returned for Chinese domain names and is left blank for English domain names.
+	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
+	// The number of DNS records of the domain name.
+	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The email address of the registrant.
+	RegistrantEmail *string `json:"RegistrantEmail,omitempty" xml:"RegistrantEmail,omitempty"`
+	// The description.
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether to query the starmark of the domain name.
+	Starmark *bool                                         `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
+	Tags     *DescribeDomainsResponseBodyDomainsDomainTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The version code of the Alibaba Cloud DNS instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version name of the Alibaba Cloud DNS instance.
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDomainsResponseBodyDomainsDomain) String() string {
@@ -11136,10 +12784,14 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 }
 
 type DescribeGtmAccessStrategiesRequest struct {
+	// The ID of the GTM instance whose access policies you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesRequest) String() string {
@@ -11171,12 +12823,18 @@ func (s *DescribeGtmAccessStrategiesRequest) SetPageSize(v int32) *DescribeGtmAc
 }
 
 type DescribeGtmAccessStrategiesResponseBody struct {
-	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of the page returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned list of access policies of the GTM instance.
 	Strategies *DescribeGtmAccessStrategiesResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
-	TotalItems *int32                                             `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                             `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesResponseBody) String() string {
@@ -11235,23 +12893,53 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategies) SetStrategy(v []*Des
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
-	AccessMode                    *string                                                         `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	AccessStatus                  *string                                                         `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
-	CreateTime                    *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp               *int64                                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DefaultAddrPoolId             *string                                                         `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
-	DefaultAddrPoolMonitorStatus  *string                                                         `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
-	DefaultAddrPoolName           *string                                                         `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
-	DefaultAddrPoolStatus         *string                                                         `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
-	FailoverAddrPoolId            *string                                                         `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	FailoverAddrPoolMonitorStatus *string                                                         `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
-	FailoverAddrPoolName          *string                                                         `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
-	FailoverAddrPoolStatus        *string                                                         `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
-	InstanceId                    *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lines                         *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	StrategyId                    *string                                                         `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyMode                  *string                                                         `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	StrategyName                  *string                                                         `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The access policy. Valid values:
+	//
+	// *   **AUTO**: Automatic switch
+	// *   **DEFAULT**: Default address pool
+	// *   **FAILOVER**: Failover address pool
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The access status. Valid values:
+	//
+	// *   **DEFAULT**: The default address pool is currently accessed.
+	// *   **FAILOVER**: The failover address pool is currently accessed.
+	AccessStatus *string `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
+	// The time when the access policy was created.
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The ID of the default address pool.
+	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	// Indicates whether health check was enabled for the default address pool. Valid values:
+	//
+	// *   **OPEN**: Enabled
+	// *   **CLOSE**: Disabled
+	// *   **UNCONFIGURED**: Not configured
+	DefaultAddrPoolMonitorStatus *string `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
+	// The name of the default address pool.
+	DefaultAddrPoolName *string `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
+	// The availability status of the default address pool. Valid values:
+	//
+	// *   **AVAILABLE**: Available
+	// *   **NOT_AVAILABLE**: Unavailable
+	DefaultAddrPoolStatus *string `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
+	// The ID of the failover address pool.
+	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
+	// Indicates whether health check was enabled for the failover address pool.
+	FailoverAddrPoolMonitorStatus *string `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
+	// The name of the failover address pool.
+	FailoverAddrPoolName *string `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
+	// The availability status of the failover address pool.
+	FailoverAddrPoolStatus *string `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
+	// The ID of the GTM instance whose access policies you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The returned lines of access regions.
+	Lines *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the access policy.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The mode of the access policy. **SELF_DEFINED** indicates that the access policy is user-defined.
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy) String() string {
@@ -11365,10 +13053,14 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines) SetLine
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {
+	// The code of the access region group.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the access region group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The code for the line of the access region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The name for the line of the access region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine) String() string {
@@ -11429,7 +13121,9 @@ func (s *DescribeGtmAccessStrategiesResponse) SetBody(v *DescribeGtmAccessStrate
 }
 
 type DescribeGtmAccessStrategyRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy that you want to query.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -11452,22 +13146,41 @@ func (s *DescribeGtmAccessStrategyRequest) SetStrategyId(v string) *DescribeGtmA
 }
 
 type DescribeGtmAccessStrategyResponseBody struct {
-	AccessMode                    *string                                     `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	AccessStatus                  *string                                     `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
-	DefaultAddrPoolMonitorStatus  *string                                     `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
-	DefaultAddrPoolName           *string                                     `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
-	DefaultAddrPoolStatus         *string                                     `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
-	DefultAddrPoolId              *string                                     `json:"DefultAddrPoolId,omitempty" xml:"DefultAddrPoolId,omitempty"`
-	FailoverAddrPoolId            *string                                     `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	FailoverAddrPoolMonitorStatus *string                                     `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
-	FailoverAddrPoolName          *string                                     `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
-	FailoverAddrPoolStatus        *string                                     `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
-	InstanceId                    *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lines                         *DescribeGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	RequestId                     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StrategyId                    *string                                     `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyMode                  *string                                     `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	StrategyName                  *string                                     `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The access policy.
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// The access status. Valid values:
+	//
+	// *   **DEFAULT**: Indicates normal when the default address pool is accessed.
+	// *   **FAILOVER**: Indicates an exception when a failover address pool is accessed.
+	AccessStatus *string `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
+	// Indicates whether health check is enabled for the default address pool.
+	DefaultAddrPoolMonitorStatus *string `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
+	// The name of the default address pool.
+	DefaultAddrPoolName *string `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
+	// The availability status of the default address pool.
+	DefaultAddrPoolStatus *string `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
+	// The ID of the default address pool.
+	DefultAddrPoolId *string `json:"DefultAddrPoolId,omitempty" xml:"DefultAddrPoolId,omitempty"`
+	// The ID of the failover address pool.
+	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
+	// Indicates whether health check is enabled for the failover address pool.
+	FailoverAddrPoolMonitorStatus *string `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
+	// The name of the failover address pool.
+	FailoverAddrPoolName *string `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
+	// The availability status of the failover address pool.
+	FailoverAddrPoolStatus *string `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
+	// The ID of the GTM instance whose access policy details you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The returned lines of access regions.
+	Lines *DescribeGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy queried.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The mode of traffic scheduling.
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The name of the access policy queried.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyResponseBody) String() string {
@@ -11576,10 +13289,14 @@ func (s *DescribeGtmAccessStrategyResponseBodyLines) SetLine(v []*DescribeGtmAcc
 }
 
 type DescribeGtmAccessStrategyResponseBodyLinesLine struct {
+	// The code of the access region group.
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the access region group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The code for the line of the access region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The name for the line of the access region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyResponseBodyLinesLine) String() string {
@@ -11640,8 +13357,10 @@ func (s *DescribeGtmAccessStrategyResponse) SetBody(v *DescribeGtmAccessStrategy
 }
 
 type DescribeGtmAccessStrategyAvailableConfigRequest struct {
+	// The ID of the GTM instance for which you want to query the available configurations of the current access policy.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyAvailableConfigRequest) String() string {
@@ -11663,9 +13382,13 @@ func (s *DescribeGtmAccessStrategyAvailableConfigRequest) SetLang(v string) *Des
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBody struct {
+	// The returned list of address pools.
 	AddrPools *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	Lines     *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines     `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	RequestId *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned lines of access regions.
+	Lines *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuggestSetDefaultLine *bool   `json:"SuggestSetDefaultLine,omitempty" xml:"SuggestSetDefaultLine,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyAvailableConfigResponseBody) String() string {
@@ -11691,6 +13414,11 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBody) SetRequestId(v st
 	return s
 }
 
+func (s *DescribeGtmAccessStrategyAvailableConfigResponseBody) SetSuggestSetDefaultLine(v bool) *DescribeGtmAccessStrategyAvailableConfigResponseBody {
+	s.SuggestSetDefaultLine = &v
+	return s
+}
+
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools struct {
 	AddrPool []*DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool `json:"AddrPool,omitempty" xml:"AddrPool,omitempty" type:"Repeated"`
 }
@@ -11709,7 +13437,9 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools) SetAddrP
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool struct {
-	AddrPoolId   *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The name of the address pool.
 	AddrPoolName *string `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
 }
 
@@ -11749,12 +13479,21 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines) SetLine(v []
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {
+	// The code of the parent line for the access region. If no parent line exists, leave this parameter blank.
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The code of the access region group.
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// The name of the access region group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The code for the line of the access region.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The name for the line of the access region.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The current status of the line. Valid values:
+	//
+	// - **FORBIDDEN**: Unavailable
+	// - **OPTIONAL**: Availabe
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine) String() string {
@@ -11825,6 +13564,7 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponse) SetBody(v *DescribeGt
 }
 
 type DescribeGtmAvailableAlertGroupRequest struct {
+	// The language used by the user.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -11842,8 +13582,10 @@ func (s *DescribeGtmAvailableAlertGroupRequest) SetLang(v string) *DescribeGtmAv
 }
 
 type DescribeGtmAvailableAlertGroupResponseBody struct {
+	// The available alert groups of the GTM instance.
 	AvailableAlertGroup *string `json:"AvailableAlertGroup,omitempty" xml:"AvailableAlertGroup,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGtmAvailableAlertGroupResponseBody) String() string {
@@ -11894,9 +13636,12 @@ func (s *DescribeGtmAvailableAlertGroupResponse) SetBody(v *DescribeGtmAvailable
 }
 
 type DescribeGtmInstanceRequest struct {
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NeedDetailAttributes *bool   `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
+	// The ID of the GTM instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the values of specific response parameters.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether additional information is required. Default value: **false**. If the value is **true**, the AccessStrategyNum and AddressPoolNum parameters are returned.
+	NeedDetailAttributes *bool `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
 }
 
 func (s DescribeGtmInstanceRequest) String() string {
@@ -11923,23 +13668,46 @@ func (s *DescribeGtmInstanceRequest) SetNeedDetailAttributes(v bool) *DescribeGt
 }
 
 type DescribeGtmInstanceResponseBody struct {
-	AccessStrategyNum *int32  `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
-	AddressPoolNum    *int32  `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
-	AlertGroup        *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	Cname             *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	CnameMode         *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp   *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimestamp   *int64  `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LbaStrategy       *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl               *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	UserDomainName    *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
-	VersionCode       *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The number of access policies of the GTM instance.
+	AccessStrategyNum *int32 `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
+	// The number of address pools of the GTM instance.
+	AddressPoolNum *int32 `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
+	// The alert group of the GTM instance.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The domain name of the GTM instance to which the service domain name is mapped by using a CNAME record.
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// Indicates whether the CNAME is a custom domain name or is assigned by the system. Valid values:
+	//
+	// *   **SYSTEM_ASSIGN**
+	// *   **CUSTOM**
+	CnameMode *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
+	// The time when the GTM instance was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates the time when the GTM instance was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The time when the GTM instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The timestamp that indicates the time when the GTM instance expires.
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the GTM instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the GTM instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The load balancing policy. Valid values:
+	//
+	// *   **ALL_RR**: round robin
+	// *   **RATIO**: weighted round-robin
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The global time to live (TTL).
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The domain name of the application.
+	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	// The version code.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeGtmInstanceResponseBody) String() string {
@@ -12065,8 +13833,10 @@ func (s *DescribeGtmInstanceResponse) SetBody(v *DescribeGtmInstanceResponseBody
 }
 
 type DescribeGtmInstanceAddressPoolRequest struct {
+	// The ID of the address pool that you want to query.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolRequest) String() string {
@@ -12088,20 +13858,43 @@ func (s *DescribeGtmInstanceAddressPoolRequest) SetLang(v string) *DescribeGtmIn
 }
 
 type DescribeGtmInstanceAddressPoolResponseBody struct {
-	AddrCount           *int32                                           `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	AddrPoolId          *string                                          `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Addrs               *DescribeGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
-	CreateTime          *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp     *int64                                           `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	MinAvailableAddrNum *int32                                           `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	MonitorConfigId     *string                                          `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorStatus       *string                                          `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name                *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status              *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime          *string                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp     *int64                                           `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The number of addresses in the address pool queried.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The addresses in the address pool.
+	Addrs *DescribeGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	// The time when the address pool was created.
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The minimum number of available addresses in the address pool.
+	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
+	// The health check ID of the address pool.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// Indicates whether health check was enabled for the address pool. Valid values:
+	//
+	// *   **OPEN**: Enabled
+	// *   **CLOSE**: Disabled
+	// *   **UNCONFIGURED**: Not configured
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The availability status of the address pool. Valid values:
+	//
+	// *   **AVAILABLE**: Available
+	// *   **NOT_AVAILABLE**: Unavailable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   **IP**: IP address
+	// *   **DOMAIN**: Domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time when the address pool was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// A timestamp that indicates the last time the address pool was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolResponseBody) String() string {
@@ -12200,15 +13993,30 @@ func (s *DescribeGtmInstanceAddressPoolResponseBodyAddrs) SetAddr(v []*DescribeG
 }
 
 type DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr struct {
-	AddrId          *int64  `json:"AddrId,omitempty" xml:"AddrId,omitempty"`
-	AlertStatus     *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	// The ID of the address.
+	AddrId *int64 `json:"AddrId,omitempty" xml:"AddrId,omitempty"`
+	// Indicates whether health check was enabled for the address. Valid values:
+	//
+	// *   **OK**: Normal
+	// *   **ALERT**: Alert
+	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	// The time when the address pool was created.
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	LbaWeight       *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address. Valid values:
+	//
+	// *   **SMART**: Intelligent return
+	// *   **ONLINE**: Always online
+	// *   **OFFLINE**: Always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The last time when the address was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// A timestamp that indicates the last time when the address was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The address.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr) String() string {
@@ -12294,10 +14102,14 @@ func (s *DescribeGtmInstanceAddressPoolResponse) SetBody(v *DescribeGtmInstanceA
 }
 
 type DescribeGtmInstanceAddressPoolsRequest struct {
+	// The ID of the GTM instance that you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolsRequest) String() string {
@@ -12329,12 +14141,18 @@ func (s *DescribeGtmInstanceAddressPoolsRequest) SetPageSize(v int32) *DescribeG
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBody struct {
-	AddrPools  *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	PageNumber *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                                `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The returned list of address pools of the GTM instance.
+	AddrPools *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
+	// The number of the page returned.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolsResponseBody) String() string {
@@ -12393,18 +14211,39 @@ func (s *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools) SetAddrPool(v []*
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool struct {
-	AddrCount           *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	AddrPoolId          *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp     *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	MinAvailableAddrNum *int32  `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	MonitorConfigId     *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorStatus       *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp     *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The number of addresses in the address pool.
+	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The time when this address pool was created.
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The minimum number of available addresses in the address pool.
+	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
+	// The health check ID of the address pool.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// Indicates whether health check was enabled for the address pool. Valid values:
+	//
+	// *   **OPEN**: Enabled
+	// *   **CLOSE**: Disabled
+	// *   **UNCONFIGURED**: Not configured
+	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The availability status of the address pool. Valid values:
+	//
+	// *   **AVAILABLE**: Available
+	// *   **NOT_AVAILABLE**: Unavailable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the address pool. Valid values:
+	//
+	// *   **IP**: IP address
+	// *   **DOMAIN**: Domain name
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time when the address pool was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// A timestamp that indicates the last time the address pool was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool) String() string {
@@ -12505,8 +14344,10 @@ func (s *DescribeGtmInstanceAddressPoolsResponse) SetBody(v *DescribeGtmInstance
 }
 
 type DescribeGtmInstanceStatusRequest struct {
+	// The ID of the instance to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeGtmInstanceStatusRequest) String() string {
@@ -12528,13 +14369,26 @@ func (s *DescribeGtmInstanceStatusRequest) SetLang(v string) *DescribeGtmInstanc
 }
 
 type DescribeGtmInstanceStatusResponseBody struct {
-	AddrNotAvailableNum         *int32  `json:"AddrNotAvailableNum,omitempty" xml:"AddrNotAvailableNum,omitempty"`
-	AddrPoolNotAvailableNum     *int32  `json:"AddrPoolNotAvailableNum,omitempty" xml:"AddrPoolNotAvailableNum,omitempty"`
-	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason                *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
-	StrategyNotAvailableNum     *int32  `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
-	SwitchToFailoverStrategyNum *int32  `json:"SwitchToFailoverStrategyNum,omitempty" xml:"SwitchToFailoverStrategyNum,omitempty"`
+	// The number of unavailable addresses.
+	AddrNotAvailableNum *int32 `json:"AddrNotAvailableNum,omitempty" xml:"AddrNotAvailableNum,omitempty"`
+	// The number of unavailable address pools.
+	AddrPoolNotAvailableNum *int32 `json:"AddrPoolNotAvailableNum,omitempty" xml:"AddrPoolNotAvailableNum,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   ALLOW: Operations on the instance are allowed.
+	// *   DENY: Operations on the instance are not allowed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// List of reasons for an instance status. Valid values:
+	//
+	// *   INSTANCE_OPERATE_BLACK_LIST: The instance is in the blacklist.
+	// *   BETA_INSTANCE: The instance is in public preview.
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// The number of access policies that are unavailable in the active address pool.
+	StrategyNotAvailableNum *int32 `json:"StrategyNotAvailableNum,omitempty" xml:"StrategyNotAvailableNum,omitempty"`
+	// The number of access policies that fail over to the secondary address pool.
+	SwitchToFailoverStrategyNum *int32 `json:"SwitchToFailoverStrategyNum,omitempty" xml:"SwitchToFailoverStrategyNum,omitempty"`
 }
 
 func (s DescribeGtmInstanceStatusResponseBody) String() string {
@@ -12610,8 +14464,10 @@ func (s *DescribeGtmInstanceStatusResponse) SetBody(v *DescribeGtmInstanceStatus
 }
 
 type DescribeGtmInstanceSystemCnameRequest struct {
+	// The ID of the Global Traffic Manager (GTM) instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeGtmInstanceSystemCnameRequest) String() string {
@@ -12633,7 +14489,9 @@ func (s *DescribeGtmInstanceSystemCnameRequest) SetLang(v string) *DescribeGtmIn
 }
 
 type DescribeGtmInstanceSystemCnameResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The CNAME record assigned by the system.
 	SystemCname *string `json:"SystemCname,omitempty" xml:"SystemCname,omitempty"`
 }
 
@@ -12685,12 +14543,18 @@ func (s *DescribeGtmInstanceSystemCnameResponse) SetBody(v *DescribeGtmInstanceS
 }
 
 type DescribeGtmInstancesRequest struct {
-	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NeedDetailAttributes *bool   `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The keyword that you use for query. Exact match is supported by instance ID or instance name.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether additional information is required. Default value: **false**.
+	NeedDetailAttributes *bool `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
+	// The page number to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DescribeGtmInstancesRequest) String() string {
@@ -12732,12 +14596,18 @@ func (s *DescribeGtmInstancesRequest) SetResourceGroupId(v string) *DescribeGtmI
 }
 
 type DescribeGtmInstancesResponseBody struct {
+	// The list of queried instances.
 	GtmInstances *DescribeGtmInstancesResponseBodyGtmInstances `json:"GtmInstances,omitempty" xml:"GtmInstances,omitempty" type:"Struct"`
-	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems   *int32                                        `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages   *int32                                        `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The returned page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeGtmInstancesResponseBody) String() string {
@@ -12796,22 +14666,44 @@ func (s *DescribeGtmInstancesResponseBodyGtmInstances) SetGtmInstance(v []*Descr
 }
 
 type DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance struct {
-	AccessStrategyNum *int32  `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
-	AddressPoolNum    *int32  `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
-	AlertGroup        *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	Cname             *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	CnameMode         *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp   *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimestamp   *int64  `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	LbaStrategy       *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Ttl               *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	UserDomainName    *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
-	VersionCode       *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The number of access policies.
+	AccessStrategyNum *int32 `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
+	// The number of address pools.
+	AddressPoolNum *int32 `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
+	// The name of the alert group.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The CNAME domain name that is used to access the instance.
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The CNAME domain name used to access the instance. Valid values:
+	//
+	// *   **SYSTEM_ASSIGN**: A CNAME domain name assigned by the system is used.
+	// *   **CUSTOM**: A custom CNAME domain name is used.
+	CnameMode *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
+	// The time when the instance was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp that indicates when the instance was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The time when the instance expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The UNIX timestamp that indicates when the instance expires.
+	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The load balancing policy that is used. Valid values:
+	//
+	// *   **ALL_RR**: Load balancing
+	// *   **RATIO**: Weighted round-robin
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The global time to live (TTL).
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The domain name of the user.
+	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	// The version code of the instance.
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance) String() string {
@@ -12932,13 +14824,19 @@ func (s *DescribeGtmInstancesResponse) SetBody(v *DescribeGtmInstancesResponseBo
 }
 
 type DescribeGtmLogsRequest struct {
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the GTM instance whose logs you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The keyword for searching logs, in case-insensitive "%Keyword%" format.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on per page. Maximum value: **100**. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query.
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
 func (s DescribeGtmLogsRequest) String() string {
@@ -12985,12 +14883,18 @@ func (s *DescribeGtmLogsRequest) SetStartTimestamp(v int64) *DescribeGtmLogsRequ
 }
 
 type DescribeGtmLogsResponseBody struct {
-	Logs       *DescribeGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                           `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                           `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The list of logs returned.
+	Logs *DescribeGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeGtmLogsResponseBody) String() string {
@@ -13049,15 +14953,24 @@ func (s *DescribeGtmLogsResponseBodyLogs) SetLog(v []*DescribeGtmLogsResponseBod
 }
 
 type DescribeGtmLogsResponseBodyLogsLog struct {
-	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OperAction    *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
-	OperIp        *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
-	OperTime      *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
-	OperTimestamp *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
+	// The formatted message content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the object that was operated on.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the object that was operated on.
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The type of the object that was operated on.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The ID of the log record.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The operation performed.
+	OperAction *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
+	// The IP address subject to the operation.
+	OperIp *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
+	// The time when the operation was performed.
+	OperTime *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
+	// A timestamp that indicates the time when the operation was performed.
+	OperTimestamp *int64 `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
 }
 
 func (s DescribeGtmLogsResponseBodyLogsLog) String() string {
@@ -13143,6 +15056,7 @@ func (s *DescribeGtmLogsResponse) SetBody(v *DescribeGtmLogsResponseBody) *Descr
 }
 
 type DescribeGtmMonitorAvailableConfigRequest struct {
+	// The language of the values of specific response parameters.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -13160,8 +15074,10 @@ func (s *DescribeGtmMonitorAvailableConfigRequest) SetLang(v string) *DescribeGt
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBody struct {
+	// The monitored nodes.
 	IspCityNodes *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	RequestId    *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGtmMonitorAvailableConfigResponseBody) String() string {
@@ -13200,14 +15116,29 @@ func (s *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes) SetIspCityNo
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode struct {
-	CityCode        *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName        *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType       *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	IspCode         *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName         *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	Mainland        *bool   `json:"Mainland,omitempty" xml:"Mainland,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// Indicates whether the monitored node is selected for the health check by default.
+	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	// The name of the group to which the monitored node belongs.
+	//
+	// Valid values: Overseas Nodes, BGP Nodes, and ISP Nodes.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the group to which the monitored node belongs.
+	//
+	// Valid values: BGP, OVERSEAS, and ISP.
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	//
+	// *   If the value of the GroupType parameter is BGP or OVERSEAS, the value of IspCode is 465 by default.
+	// *   If the value of the GroupType parameter is not BGP or OVERSEAS, valid values of IspCode are 232, 132, and 5. and is used together with CityCode.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// Indicates whether the monitored node is deployed in the Chinese mainland.
+	Mainland *bool `json:"Mainland,omitempty" xml:"Mainland,omitempty"`
 }
 
 func (s DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode) String() string {
@@ -13288,7 +15219,9 @@ func (s *DescribeGtmMonitorAvailableConfigResponse) SetBody(v *DescribeGtmMonito
 }
 
 type DescribeGtmMonitorConfigRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the values of specific response parameters.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the health check configuration.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
 }
 
@@ -13311,18 +15244,49 @@ func (s *DescribeGtmMonitorConfigRequest) SetMonitorConfigId(v string) *Describe
 }
 
 type DescribeGtmMonitorConfigResponseBody struct {
-	CreateTime        *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp   *int64                                            `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EvaluationCount   *int32                                            `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                                            `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNodes      *DescribeGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	MonitorConfigId   *string                                           `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorExtendInfo *string                                           `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                                           `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timeout           *int32                                            `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UpdateTime        *string                                           `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp   *int64                                            `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The time when the health check configuration was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The timestamp that indicates the time when the health check configuration was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The health check interval. Unit: seconds. The value is 60.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNodes *DescribeGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	// The ID of the health check configuration.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// HTTP or HTTPS:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	// *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// *   host: the host configuration.
+	// *   path: the health check URL.
+	//
+	// PING:
+	//
+	// *   packetNum: the number of ping packets.
+	// *   packetLossRate: the loss rate of ping packets.
+	// *   failureRate: the failure rate.
+	//
+	// TCP:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The protocol used for the health check.
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The time when the health check configuration was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp that indicates the time when the health check configuration was last updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmMonitorConfigResponseBody) String() string {
@@ -13411,12 +15375,18 @@ func (s *DescribeGtmMonitorConfigResponseBodyIspCityNodes) SetIspCityNode(v []*D
 }
 
 type DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
-	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The code of the city where the monitored node is deployed.
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// The display name of the city where the monitored node is deployed.
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The code of the country where the monitored node is deployed.
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// The display name of the country where the monitored node is deployed.
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The display name of the ISP to which the monitored node belongs.
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode) String() string {
@@ -13487,8 +15457,10 @@ func (s *DescribeGtmMonitorConfigResponse) SetBody(v *DescribeGtmMonitorConfigRe
 }
 
 type DescribeGtmRecoveryPlanRequest struct {
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the disaster recovery plan that you want to query.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanRequest) String() string {
@@ -13510,21 +15482,35 @@ func (s *DescribeGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *DescribeGtm
 }
 
 type DescribeGtmRecoveryPlanResponseBody struct {
-	CreateTime            *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp       *int64                                             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	FaultAddrPoolNum      *int32                                             `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
-	FaultAddrPools        *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
-	LastExecuteTime       *string                                            `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
-	LastExecuteTimestamp  *int64                                             `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
-	LastRollbackTime      *string                                            `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
-	LastRollbackTimestamp *int64                                             `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
-	Name                  *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecoveryPlanId        *int64                                             `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	Remark                *string                                            `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId             *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime            *string                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp       *int64                                             `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The time when the disaster recovery plan was created.
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The number of faulty address pools.
+	FaultAddrPoolNum *int32 `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
+	// The list of faulty address pools.
+	FaultAddrPools *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
+	// The last time when the recovery plan was executed.
+	LastExecuteTime *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
+	// A timestamp that indicates the last time when the recovery plan was executed.
+	LastExecuteTimestamp *int64 `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
+	// The last time when the disaster recovery plan was rolled back.
+	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
+	// A timestamp that indicates the last time when the disaster recovery plan was rolled back.
+	LastRollbackTimestamp *int64 `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
+	// The name of the disaster recovery plan queried.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the disaster recovery plan queried.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The remarks on the disaster recovery plan.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the disaster recovery plan queried.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last time when the disaster recovery plan was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// A timestamp that indicates the last time when the disaster recovery plan was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanResponseBody) String() string {
@@ -13628,10 +15614,14 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools) SetFaultAddrPool(v [
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool struct {
-	AddrPoolId   *string                                                              `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	AddrPoolName *string                                                              `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
-	Addrs        *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
-	InstanceId   *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The name of the address pool.
+	AddrPoolName *string `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
+	// The list of addresses in the address pool.
+	Addrs *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	// The ID of the GTM instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool) String() string {
@@ -13680,8 +15670,11 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs) Se
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr struct {
-	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mode  *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the address.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The address work mode. It is the mode that was set for the IP address to work.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The address value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13738,6 +15731,7 @@ func (s *DescribeGtmRecoveryPlanResponse) SetBody(v *DescribeGtmRecoveryPlanResp
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigRequest struct {
+	// The language used by the user.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
@@ -13755,8 +15749,10 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigRequest) SetLang(v string) *Descr
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBody struct {
+	// The list of GTM instances involved in the disaster recovery plan.
 	Instances *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanAvailableConfigResponseBody) String() string {
@@ -13795,9 +15791,12 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances) SetInstanc
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance struct {
-	AddrPools    *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	InstanceId   *string                                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string                                                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The list of address pools for the GTM instance.
+	AddrPools *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
+	// The ID of the GTM instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the GTM instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance) String() string {
@@ -13841,8 +15840,10 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddr
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool struct {
+	// The ID of the address pool.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool) String() string {
@@ -13893,10 +15894,14 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponse) SetBody(v *DescribeGtmR
 }
 
 type DescribeGtmRecoveryPlansRequest struct {
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword for the query. Fuzzy match is supported by disaster recovery plan name.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number to return. The page number starts from **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Maximum value: **100**. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlansRequest) String() string {
@@ -13928,12 +15933,18 @@ func (s *DescribeGtmRecoveryPlansRequest) SetPageSize(v int32) *DescribeGtmRecov
 }
 
 type DescribeGtmRecoveryPlansResponseBody struct {
-	PageNumber    *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The details about the queried disaster recovery plans.
 	RecoveryPlans *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans `json:"RecoveryPlans,omitempty" xml:"RecoveryPlans,omitempty" type:"Struct"`
-	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems    *int32                                             `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages    *int32                                             `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlansResponseBody) String() string {
@@ -13992,19 +16003,36 @@ func (s *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans) SetRecoveryPlan(v []
 }
 
 type DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan struct {
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp       *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	FaultAddrPoolNum      *int32  `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
-	LastExecuteTime       *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
-	LastExecuteTimestamp  *int64  `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
-	LastRollbackTime      *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
-	LastRollbackTimestamp *int64  `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecoveryPlanId        *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	Remark                *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp       *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The time when the disaster recovery plan was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp that indicates when the disaster recovery plan was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The number of faulty address pools.
+	FaultAddrPoolNum *int32 `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
+	// The last time when the disaster recovery plan was executed.
+	LastExecuteTime *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
+	// The UNIX timestamp that indicates the last time when the disaster recovery plan was executed.
+	LastExecuteTimestamp *int64 `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
+	// The last time when the disaster recovery plan was rolled back.
+	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
+	// The UNIX timestamp that indicates the last time when the disaster recovery plan was rolled back.
+	LastRollbackTimestamp *int64 `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
+	// The name of the disaster recovery plan.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the disaster recovery plan.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The remarks about the disaster recovery plan.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the disaster recovery plan. Valid values:
+	//
+	// *   **UNEXECUTED**: The plan is not executed.
+	// *   **EXECUTED**: The plan is executed.
+	// *   **ROLLED_BACK**: The plan is rolled back.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The last time when the disaster recovery plan was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The UNIX timestamp that indicates the last time when the disaster recovery plan was updated.
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan) String() string {
@@ -14110,10 +16138,14 @@ func (s *DescribeGtmRecoveryPlansResponse) SetBody(v *DescribeGtmRecoveryPlansRe
 }
 
 type DescribeInstanceDomainsRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number to return. The page number starts from 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Maximum value: 100. Default value: 20.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeInstanceDomainsRequest) String() string {
@@ -14145,12 +16177,18 @@ func (s *DescribeInstanceDomainsRequest) SetPageSize(v int64) *DescribeInstanceD
 }
 
 type DescribeInstanceDomainsResponseBody struct {
+	// The domain names that are bound to the instance.
 	InstanceDomains []*DescribeInstanceDomainsResponseBodyInstanceDomains `json:"InstanceDomains,omitempty" xml:"InstanceDomains,omitempty" type:"Repeated"`
-	PageNumber      *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems      *int32                                                `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages      *int32                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeInstanceDomainsResponseBody) String() string {
@@ -14192,9 +16230,12 @@ func (s *DescribeInstanceDomainsResponseBody) SetTotalPages(v int32) *DescribeIn
 }
 
 type DescribeInstanceDomainsResponseBodyInstanceDomains struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The time when the domain name was bound with the instance.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp that indicates when the domain name was bound with the instance.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s DescribeInstanceDomainsResponseBodyInstanceDomains) String() string {
@@ -16695,14 +18736,22 @@ func (s *DescribePdnsUserInfoResponse) SetBody(v *DescribePdnsUserInfoResponseBo
 }
 
 type DescribeRecordLogsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	KeyWord      *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	EndDate      *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format.
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
 }
 
 func (s DescribeRecordLogsRequest) String() string {
@@ -16754,11 +18803,16 @@ func (s *DescribeRecordLogsRequest) SetEndDate(v string) *DescribeRecordLogsRequ
 }
 
 type DescribeRecordLogsResponseBody struct {
-	PageNumber *int64                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of the operation logs of the domain name.
 	RecordLogs *DescribeRecordLogsResponseBodyRecordLogs `json:"RecordLogs,omitempty" xml:"RecordLogs,omitempty" type:"Struct"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of operation logs.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRecordLogsResponseBody) String() string {
@@ -16812,11 +18866,16 @@ func (s *DescribeRecordLogsResponseBodyRecordLogs) SetRecordLog(v []*DescribeRec
 }
 
 type DescribeRecordLogsResponseBodyRecordLogsRecordLog struct {
-	Action          *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionTime      *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
-	ActionTimestamp *int64  `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
-	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation that you performed.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The time when the operation was performed.
+	ActionTime *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
+	// The UNIX timestamp representing the time of the operation.
+	ActionTimestamp *int64 `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
+	// The IP address of the operator.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The returned operation message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DescribeRecordLogsResponseBodyRecordLogsRecordLog) String() string {
@@ -16881,13 +18940,207 @@ func (s *DescribeRecordLogsResponse) SetBody(v *DescribeRecordLogsResponseBody) 
 	return s
 }
 
-type DescribeRecordStatisticsRequest struct {
+type DescribeRecordResolveStatisticsSummaryRequest struct {
+	Direction  *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Rr         *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
 	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Threshold  *int64  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeRecordResolveStatisticsSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRecordResolveStatisticsSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetDirection(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetDomainName(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetDomainType(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.DomainType = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetEndDate(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetKeyword(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetLang(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetPageNumber(v int32) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetPageSize(v int32) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetSearchMode(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.SearchMode = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetStartDate(v string) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryRequest) SetThreshold(v int64) *DescribeRecordResolveStatisticsSummaryRequest {
+	s.Threshold = &v
+	return s
+}
+
+type DescribeRecordResolveStatisticsSummaryResponseBody struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// RequestId
+	RequestId  *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics []*DescribeRecordResolveStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+	TotalItems *int32                                                          `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	TotalPages *int32                                                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetPageNumber(v int32) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetPageSize(v int32) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetRequestId(v string) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetStatistics(v []*DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.Statistics = v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetTotalItems(v int32) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBody) SetTotalPages(v int32) *DescribeRecordResolveStatisticsSummaryResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type DescribeRecordResolveStatisticsSummaryResponseBodyStatistics struct {
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetCount(v string) *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetDomainName(v string) *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetDomainType(v string) *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics {
+	s.DomainType = &v
+	return s
+}
+
+type DescribeRecordResolveStatisticsSummaryResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRecordResolveStatisticsSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRecordResolveStatisticsSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponse) SetHeaders(v map[string]*string) *DescribeRecordResolveStatisticsSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponse) SetStatusCode(v int32) *DescribeRecordResolveStatisticsSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponse) SetBody(v *DescribeRecordResolveStatisticsSummaryResponseBody) *DescribeRecordResolveStatisticsSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRecordStatisticsRequest struct {
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The DNS record.
+	//
+	// The host record. For example, to resolve `www.dns-exmaple.com`, you must set Rr to www.
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// You can only query DNS records of the last 90 days.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s DescribeRecordStatisticsRequest) String() string {
@@ -16929,7 +19182,9 @@ func (s *DescribeRecordStatisticsRequest) SetStartDate(v string) *DescribeRecord
 }
 
 type DescribeRecordStatisticsResponseBody struct {
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of query volume records.
 	Statistics *DescribeRecordStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -16969,7 +19224,9 @@ func (s *DescribeRecordStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 }
 
 type DescribeRecordStatisticsResponseBodyStatisticsStatistic struct {
-	Count     *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of queries.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The UNIX timestamp representing the collection time.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
@@ -17021,16 +19278,32 @@ func (s *DescribeRecordStatisticsResponse) SetBody(v *DescribeRecordStatisticsRe
 }
 
 type DescribeRecordStatisticsSummaryRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// The default value is the day when you perform the operation.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **100**. Minimum value: **1**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search mode of the keyword. Valid values:
+	//
+	// *   **LIKE**: fuzzy match (default).
+	// *   **EXACT**: exact match.
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	StartDate  *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Threshold  *int64  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+	//
+	// You can only query DNS records of the last 90 days.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The threshold of query volume that can be obtained. You can also obtain data about a domain name with the query volume less than or equal to the threshold. For example, if you set this parameter to 100, you can query domain names with less than 100 queries.
+	Threshold *int64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeRecordStatisticsSummaryRequest) String() string {
@@ -17092,12 +19365,18 @@ func (s *DescribeRecordStatisticsSummaryRequest) SetThreshold(v int64) *Describe
 }
 
 type DescribeRecordStatisticsSummaryResponseBody struct {
-	PageNumber *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of query volume records.
 	Statistics *DescribeRecordStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	TotalItems *int32                                                 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                                 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of data records.The total number of data records.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of returned pages.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeRecordStatisticsSummaryResponseBody) String() string {
@@ -17156,7 +19435,9 @@ func (s *DescribeRecordStatisticsSummaryResponseBodyStatistics) SetStatistic(v [
 }
 
 type DescribeRecordStatisticsSummaryResponseBodyStatisticsStatistic struct {
-	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of queries.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The subdomain name.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
@@ -17208,13 +19489,29 @@ func (s *DescribeRecordStatisticsSummaryResponse) SetBody(v *DescribeRecordStati
 }
 
 type DescribeSubDomainRecordsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SubDomain    *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resolution line.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **500**. Default value: **20**.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The subdomain. For example, assume that the SubDomain parameter is set to a.www.example.com.
+	//
+	// If the DomainName parameter is empty, the DNS records of the subdomain whose domain name is example.com and hostname is "a.www" are queried.
+	//
+	// If the DomainName parameter is set to www.example.com, the DNS records of the subdomain whose domain name is www.example.com and hostname is "a" are queried.
+	//
+	// If the DomainName parameter is set to a.www.example.com, the DNS records of the subdomain whose domain name is a.www.example.com and hostname is "@" are queried.
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// The type of DNS records to query. If you do not specify this parameter, all types of DNS records corresponding to the subdomain are returned.
+	//
+	// DNS record types include **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17267,11 +19564,16 @@ func (s *DescribeSubDomainRecordsRequest) SetUserClientIp(v string) *DescribeSub
 }
 
 type DescribeSubDomainRecordsResponseBody struct {
+	// The list of DNS records returned.
 	DomainRecords *DescribeSubDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
-	PageNumber    *int64                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of DNS records returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSubDomainRecordsResponseBody) String() string {
@@ -17325,18 +19627,30 @@ func (s *DescribeSubDomainRecordsResponseBodyDomainRecords) SetRecord(v []*Descr
 }
 
 type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Line       *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Locked     *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TTL        *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The resolution line.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// Indicates whether the DNS record is locked.
+	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	// The priority of the MX record.
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The hostname.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of the DNS record.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the DNS record.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Time-to-Live (TTL) of the DNS record.
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The record value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the DNS record.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeSubDomainRecordsResponseBodyDomainRecordsRecord) String() string {
@@ -17437,8 +19751,11 @@ func (s *DescribeSubDomainRecordsResponse) SetBody(v *DescribeSubDomainRecordsRe
 }
 
 type DescribeSupportLinesRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -17466,8 +19783,10 @@ func (s *DescribeSupportLinesRequest) SetUserClientIp(v string) *DescribeSupport
 }
 
 type DescribeSupportLinesResponseBody struct {
+	// The list of Alibaba Cloud DNS lines.
 	RecordLines *DescribeSupportLinesResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSupportLinesResponseBody) String() string {
@@ -17506,10 +19825,14 @@ func (s *DescribeSupportLinesResponseBodyRecordLines) SetRecordLine(v []*Describ
 }
 
 type DescribeSupportLinesResponseBodyRecordLinesRecordLine struct {
-	FatherCode      *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	LineCode        *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The code of the parent line. Leave it blank if there is no parent line.
+	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
+	// The code of the child line.
+	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	// The name of the parent line.
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	LineName        *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The name of the child line.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeSupportLinesResponseBodyRecordLinesRecordLine) String() string {
@@ -17570,9 +19893,13 @@ func (s *DescribeSupportLinesResponse) SetBody(v *DescribeSupportLinesResponseBo
 }
 
 type DescribeTagsRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number to return. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page. Default value: 200.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resources from which you want to query tags. Set the value to DOMAIN.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -17605,11 +19932,16 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	PageNumber *int64                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags       []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned page number. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Default value: 200.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tags.
+	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total number of tags returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTagsResponseBody) String() string {
@@ -17646,6 +19978,7 @@ func (s *DescribeTagsResponseBody) SetTotalCount(v int64) *DescribeTagsResponseB
 }
 
 type DescribeTagsResponseBodyTags struct {
+	// The key of the tag.
 	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
@@ -17698,12 +20031,19 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeTransferDomainsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FromUserId   *int64  `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TargetUserId *int64  `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FromUserId *int64  `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 20.
+	PageSize     *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// The transfer type. Valid values:
+	//
+	// *   IN: transferred to this account.
+	// *   OUT: transferred from this account.
 	TransferType *string `json:"TransferType,omitempty" xml:"TransferType,omitempty"`
 }
 
@@ -17751,11 +20091,16 @@ func (s *DescribeTransferDomainsRequest) SetTransferType(v string) *DescribeTran
 }
 
 type DescribeTransferDomainsResponseBody struct {
+	// The list of domain names that were transferred between accounts.
 	DomainTransfers *DescribeTransferDomainsResponseBodyDomainTransfers `json:"DomainTransfers,omitempty" xml:"DomainTransfers,omitempty" type:"Struct"`
-	PageNumber      *int64                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTransferDomainsResponseBody) String() string {
@@ -17809,12 +20154,18 @@ func (s *DescribeTransferDomainsResponseBodyDomainTransfers) SetDomainTransfer(v
 }
 
 type DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FromUserId      *int64  `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	TargetUserId    *int64  `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// The time when the task for transferring domain names was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UNIX timestamp representing when the task for transferring domain names was created.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the user from which the domain name was transferred.
+	FromUserId *int64 `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	// The ID of the domain name that was transferred.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the user to which the domain name was transferred.
+	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer) String() string {
@@ -17885,8 +20236,10 @@ func (s *DescribeTransferDomainsResponse) SetBody(v *DescribeTransferDomainsResp
 }
 
 type ExecuteGtmRecoveryPlanRequest struct {
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the disaster recovery plan that you want to executed.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 
 func (s ExecuteGtmRecoveryPlanRequest) String() string {
@@ -17908,6 +20261,7 @@ func (s *ExecuteGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *ExecuteGtmRe
 }
 
 type ExecuteGtmRecoveryPlanResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17954,8 +20308,10 @@ func (s *ExecuteGtmRecoveryPlanResponse) SetBody(v *ExecuteGtmRecoveryPlanRespon
 }
 
 type GetMainDomainNameRequest struct {
+	// The input string. The string can be up to 128 characters in length.
 	InputString *string `json:"InputString,omitempty" xml:"InputString,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s GetMainDomainNameRequest) String() string {
@@ -17977,10 +20333,14 @@ func (s *GetMainDomainNameRequest) SetLang(v string) *GetMainDomainNameRequest {
 }
 
 type GetMainDomainNameResponseBody struct {
-	DomainLevel *int64  `json:"DomainLevel,omitempty" xml:"DomainLevel,omitempty"`
-	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RR          *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The level of the entered domain name.
+	DomainLevel *int64 `json:"DomainLevel,omitempty" xml:"DomainLevel,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The host record.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMainDomainNameResponseBody) String() string {
@@ -18041,9 +20401,15 @@ func (s *GetMainDomainNameResponse) SetBody(v *GetMainDomainNameResponseBody) *G
 }
 
 type GetTxtRecordForVerifyRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The function verified by using the TXT record. Valid values:
+	//
+	// *   ADD_SUBDOMAIN
+	// *   RETRIEVAL
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTxtRecordForVerifyRequest) String() string {
@@ -18070,10 +20436,18 @@ func (s *GetTxtRecordForVerifyRequest) SetType(v string) *GetTxtRecordForVerifyR
 }
 
 type GetTxtRecordForVerifyResponseBody struct {
+	// The domain name.
+	//
+	// >  If you do not specify this parameter, it is not returned.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The host record.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The value of the DNS record.
+	//
+	// >  The validity period is three days.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetTxtRecordForVerifyResponseBody) String() string {
@@ -18134,11 +20508,16 @@ func (s *GetTxtRecordForVerifyResponse) SetBody(v *GetTxtRecordForVerifyResponse
 }
 
 type ListTagResourcesRequest struct {
-	Lang         *string                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The language.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key-value pairs of tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -18175,7 +20554,9 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18198,8 +20579,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The unique ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of the resource and tags, such as the resource ID, the resource type, tag keys, and tag values.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -18227,10 +20611,14 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. The returned parameter value is fixed to DOMAIN.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -18291,8 +20679,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyHichinaDomainDNSRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -18320,9 +20711,12 @@ func (s *ModifyHichinaDomainDNSRequest) SetUserClientIp(v string) *ModifyHichina
 }
 
 type ModifyHichinaDomainDNSResponseBody struct {
-	NewDnsServers      *ModifyHichinaDomainDNSResponseBodyNewDnsServers      `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
+	// The list of DNS servers after the domain name is changed.
+	NewDnsServers *ModifyHichinaDomainDNSResponseBodyNewDnsServers `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
+	// The list of DNS servers before the domain name is changed.
 	OriginalDnsServers *ModifyHichinaDomainDNSResponseBodyOriginalDnsServers `json:"OriginalDnsServers,omitempty" xml:"OriginalDnsServers,omitempty" type:"Struct"`
-	RequestId          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyHichinaDomainDNSResponseBody) String() string {
@@ -18412,9 +20806,12 @@ func (s *ModifyHichinaDomainDNSResponse) SetBody(v *ModifyHichinaDomainDNSRespon
 }
 
 type MoveDomainResourceGroupRequest struct {
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the resource group.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The domain name.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s MoveDomainResourceGroupRequest) String() string {
@@ -18441,6 +20838,7 @@ func (s *MoveDomainResourceGroupRequest) SetResourceId(v string) *MoveDomainReso
 }
 
 type MoveDomainResourceGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18563,8 +20961,15 @@ func (s *MoveGtmResourceGroupResponse) SetBody(v *MoveGtmResourceGroupResponseBo
 
 type OperateBatchDomainRequest struct {
 	DomainRecordInfo []*OperateBatchDomainRequestDomainRecordInfo `json:"DomainRecordInfo,omitempty" xml:"DomainRecordInfo,omitempty" type:"Repeated"`
-	Lang             *string                                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Type             *string                                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The type of the batch operation. Valid values:
+	//
+	// *   **DOMAIN_ADD**: adds domain names in batches.
+	// *   **DOMAIN_DEL**: deletes domain names in batches.
+	// *   **RR_ADD**: adds DNS records in batches.
+	// *   **RR_DEL**: deletes DNS records in batches. (If RR or VALUE exists, DNS records corresponding to the specified RR or VALUE are deleted. If both of them exist, DNS records corresponding to the specified RR and VALUE are deleted. If no RR or VALUE is specified, the DNS records corresponding to the DomainName parameter are deleted.)
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OperateBatchDomainRequest) String() string {
@@ -18591,16 +20996,35 @@ func (s *OperateBatchDomainRequest) SetType(v string) *OperateBatchDomainRequest
 }
 
 type OperateBatchDomainRequestDomainRecordInfo struct {
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name corresponding to DNS record N.
+	//
+	// >  N is specified by users. **N** starts from **1**. The maximum value of N is **1000**. Extra data entries are ignored.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The resolution line of DNS record N. Default value: default.
+	//
+	// For more information, see [Resolution line enumeration](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
 	Line     *string `json:"Line,omitempty" xml:"Line,omitempty"`
 	NewRr    *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
 	NewType  *string `json:"NewType,omitempty" xml:"NewType,omitempty"`
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	Priority *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Rr       *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	Ttl      *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The priority of MX-type DNS record N.
+	//
+	// This parameter must be specified if the type of the DNS record is MX. Default value: 10.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The host record corresponding to DNS record N.
+	//
+	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The TTL of DNS record N. Unit: seconds. Default value: **600**.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of DNS record N. For the DNS record types supported by Alibaba Cloud DNS, see [Resolution record type formats](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+	//
+	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of DNS record N.
+	//
+	// >  If you set the Type parameter to **RR_ADD**, you must also specify this parameter.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s OperateBatchDomainRequestDomainRecordInfo) String() string {
@@ -18662,8 +21086,10 @@ func (s *OperateBatchDomainRequestDomainRecordInfo) SetValue(v string) *OperateB
 }
 
 type OperateBatchDomainResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s OperateBatchDomainResponseBody) String() string {
@@ -18783,10 +21209,14 @@ func (s *PausePdnsServiceResponse) SetBody(v *PausePdnsServiceResponseBody) *Pau
 }
 
 type PreviewGtmRecoveryPlanRequest struct {
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on per page. Maximum value: **20**. Default value: **5**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the disaster recovery plan that you want to preview.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 
 func (s PreviewGtmRecoveryPlanRequest) String() string {
@@ -18818,12 +21248,18 @@ func (s *PreviewGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *PreviewGtmRe
 }
 
 type PreviewGtmRecoveryPlanResponseBody struct {
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Previews   *PreviewGtmRecoveryPlanResponseBodyPreviews `json:"Previews,omitempty" xml:"Previews,omitempty" type:"Struct"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                      `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                      `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned preview information of the disaster recovery plan.
+	Previews *PreviewGtmRecoveryPlanResponseBodyPreviews `json:"Previews,omitempty" xml:"Previews,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned on all pages.
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s PreviewGtmRecoveryPlanResponseBody) String() string {
@@ -18882,10 +21318,14 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviews) SetPreview(v []*PreviewGtmR
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreview struct {
-	InstanceId     *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name           *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	SwitchInfos    *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos `json:"SwitchInfos,omitempty" xml:"SwitchInfos,omitempty" type:"Struct"`
-	UserDomainName *string                                                       `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	// The ID of the GTM instance to which the previewed disaster recovery plan belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the GTM instance to which the previewed disaster recovery plan belongs.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The returned information of the switching policies for address pools.
+	SwitchInfos *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos `json:"SwitchInfos,omitempty" xml:"SwitchInfos,omitempty" type:"Struct"`
+	// The user\"s domain name or domain name list.
+	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
 }
 
 func (s PreviewGtmRecoveryPlanResponseBodyPreviewsPreview) String() string {
@@ -18934,7 +21374,9 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos) SetSwitch
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfosSwitchInfo struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The formatted message content.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the switching policy for address pools.
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
@@ -19193,8 +21635,10 @@ func (s *ResumePdnsServiceResponse) SetBody(v *ResumePdnsServiceResponseBody) *R
 }
 
 type RetrieveDomainRequest struct {
+	// The domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s RetrieveDomainRequest) String() string {
@@ -19216,6 +21660,7 @@ func (s *RetrieveDomainRequest) SetLang(v string) *RetrieveDomainRequest {
 }
 
 type RetrieveDomainResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19262,8 +21707,10 @@ func (s *RetrieveDomainResponse) SetBody(v *RetrieveDomainResponseBody) *Retriev
 }
 
 type RollbackGtmRecoveryPlanRequest struct {
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the disaster recovery plan that you want to roll back.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
 }
 
 func (s RollbackGtmRecoveryPlanRequest) String() string {
@@ -19285,6 +21732,7 @@ func (s *RollbackGtmRecoveryPlanRequest) SetRecoveryPlanId(v int64) *RollbackGtm
 }
 
 type RollbackGtmRecoveryPlanResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19331,12 +21779,21 @@ func (s *RollbackGtmRecoveryPlanResponse) SetBody(v *RollbackGtmRecoveryPlanResp
 }
 
 type SetDNSSLBStatusRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Open         *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
-	SubDomain    *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The language of the subdomain.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// Specifies whether to enable or disable weighted round-robin. Valid values:
+	//
+	// *   **true**: enables weighted round-robin. This is the default value.
+	// *   **false**: disables weighted round-robin.
+	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	// The subdomain for which you want to configure weighted round-robin. Do not set the value to a string such as aliyun.com. Instead, set the value to @.aliyun.com.
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// The type of the DNS record. Valid values: A and AAAA. Default value: A.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client that you use to configure weighted round-robin.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -19384,9 +21841,12 @@ func (s *SetDNSSLBStatusRequest) SetUserClientIp(v string) *SetDNSSLBStatusReque
 }
 
 type SetDNSSLBStatusResponseBody struct {
-	Open        *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
-	RecordCount *int64  `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether weighted round-robin is enabled for the subdomain.
+	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	// The number of A records that are matched.
+	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetDNSSLBStatusResponseBody) String() string {
@@ -19442,8 +21902,15 @@ func (s *SetDNSSLBStatusResponse) SetBody(v *SetDNSSLBStatusResponseBody) *SetDN
 }
 
 type SetDnsGtmAccessModeRequest struct {
+	// The primary/secondary switchover policy for address pool groups. Valid values:
+	//
+	// *   AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
+	// *   DEFAULT: uses the primary address pool group.
+	// *   FAILOVER: uses the secondary address pool group.
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -19471,6 +21938,7 @@ func (s *SetDnsGtmAccessModeRequest) SetStrategyId(v string) *SetDnsGtmAccessMod
 }
 
 type SetDnsGtmAccessModeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19517,9 +21985,15 @@ func (s *SetDnsGtmAccessModeResponse) SetBody(v *SetDnsGtmAccessModeResponseBody
 }
 
 type SetDnsGtmMonitorStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the health check task.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetDnsGtmMonitorStatusRequest) String() string {
@@ -19546,6 +22020,7 @@ func (s *SetDnsGtmMonitorStatusRequest) SetStatus(v string) *SetDnsGtmMonitorSta
 }
 
 type SetDnsGtmMonitorStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19592,9 +22067,15 @@ func (s *SetDnsGtmMonitorStatusResponse) SetBody(v *SetDnsGtmMonitorStatusRespon
 }
 
 type SetDomainDnssecStatusRequest struct {
+	// The domain name for which you want to set the DNSSEC status.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The DNSSEC status. Valid values:
+	//
+	// *   ON: enables DNSSEC for the domain name.
+	// *   OFF: disables DNSSEC for the domain name.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetDomainDnssecStatusRequest) String() string {
@@ -19621,6 +22102,7 @@ func (s *SetDomainDnssecStatusRequest) SetStatus(v string) *SetDomainDnssecStatu
 }
 
 type SetDomainDnssecStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19667,9 +22149,16 @@ func (s *SetDomainDnssecStatusResponse) SetBody(v *SetDomainDnssecStatusResponse
 }
 
 type SetDomainRecordStatusRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The status of the DNS record. Valid values:
+	//
+	// *   **Enable**: enables resolution.
+	// *   **Disable**: suspends resolution.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -19702,9 +22191,12 @@ func (s *SetDomainRecordStatusRequest) SetUserClientIp(v string) *SetDomainRecor
 }
 
 type SetDomainRecordStatusResponseBody struct {
-	RecordId  *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the DNS record.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetDomainRecordStatusResponseBody) String() string {
@@ -19760,8 +22252,15 @@ func (s *SetDomainRecordStatusResponse) SetBody(v *SetDomainRecordStatusResponse
 }
 
 type SetGtmAccessModeRequest struct {
+	// The target access policy of the GTM instance. Valid values:
+	//
+	// *   **AUTO**: Automatic switch
+	// *   **DEFAULT**: Default address pool
+	// *   **FAILOVER**: Failover address pool
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -19789,6 +22288,7 @@ func (s *SetGtmAccessModeRequest) SetStrategyId(v string) *SetGtmAccessModeReque
 }
 
 type SetGtmAccessModeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19835,9 +22335,15 @@ func (s *SetGtmAccessModeResponse) SetBody(v *SetGtmAccessModeResponseBody) *Set
 }
 
 type SetGtmMonitorStatusRequest struct {
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The health check ID.
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether health check is enabled for the address pool. Valid values:
+	//
+	// *   **OPEN**: Enabled
+	// *   **CLOSE**: Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetGtmMonitorStatusRequest) String() string {
@@ -19864,6 +22370,7 @@ func (s *SetGtmMonitorStatusRequest) SetStatus(v string) *SetGtmMonitorStatusReq
 }
 
 type SetGtmMonitorStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19991,8 +22498,14 @@ func (s *SubmitIspFlushCacheTaskResponse) SetBody(v *SubmitIspFlushCacheTaskResp
 }
 
 type SwitchDnsGtmInstanceStrategyModeRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the GTM instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The access policy type. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
 	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
 }
 
@@ -20020,6 +22533,7 @@ func (s *SwitchDnsGtmInstanceStrategyModeRequest) SetStrategyMode(v string) *Swi
 }
 
 type SwitchDnsGtmInstanceStrategyModeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20066,8 +22580,11 @@ func (s *SwitchDnsGtmInstanceStrategyModeResponse) SetBody(v *SwitchDnsGtmInstan
 }
 
 type TagResourcesRequest struct {
-	Lang         *string                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The domain name.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource.
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -20101,7 +22618,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20124,6 +22643,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20170,10 +22690,14 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TransferDomainRequest struct {
-	DomainNames  *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	TargetUserId *int64  `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	// The list of domain names. Separate multiple domain names with commas (,). Only domain names registered with Alibaba Cloud are supported.
+	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The detailed information.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the user to which domain names were transferred.
+	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s TransferDomainRequest) String() string {
@@ -20257,9 +22781,14 @@ func (s *TransferDomainResponse) SetBody(v *TransferDomainResponseBody) *Transfe
 }
 
 type UnbindInstanceDomainsRequest struct {
+	// The list of domain names.
+	//
+	// Separate multiple domain names with commas (,). A maximum of 100 domain names can be entered.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s UnbindInstanceDomainsRequest) String() string {
@@ -20286,9 +22815,12 @@ func (s *UnbindInstanceDomainsRequest) SetLang(v string) *UnbindInstanceDomainsR
 }
 
 type UnbindInstanceDomainsResponseBody struct {
-	FailedCount  *int32  `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessCount *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The number of domain names that failed to be unbound.
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of domain names that have been unbound.
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 
 func (s UnbindInstanceDomainsResponseBody) String() string {
@@ -20344,11 +22876,17 @@ func (s *UnbindInstanceDomainsResponse) SetBody(v *UnbindInstanceDomainsResponse
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	All  *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource Type
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Specifies whether to remove all tags from the specified resource. Default value: false. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
+	//
+	// *   true
+	// *   false
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -20385,6 +22923,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// "dns-example.com","dns-test.com"
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20507,9 +23046,12 @@ func (s *UpdateAppKeyStateResponse) SetBody(v *UpdateAppKeyStateResponseBody) *U
 
 type UpdateCustomLineRequest struct {
 	IpSegment []*UpdateCustomLineRequestIpSegment `json:"IpSegment,omitempty" xml:"IpSegment,omitempty" type:"Repeated"`
-	Lang      *string                             `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LineId    *int64                              `json:"LineId,omitempty" xml:"LineId,omitempty"`
-	LineName  *string                             `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The unique ID of the custom line.
+	LineId *int64 `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// The new name of the custom line.
+	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s UpdateCustomLineRequest) String() string {
@@ -20541,7 +23083,9 @@ func (s *UpdateCustomLineRequest) SetLineName(v string) *UpdateCustomLineRequest
 }
 
 type UpdateCustomLineRequestIpSegment struct {
-	EndIp   *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The end IP address of the CIDR block.
+	EndIp *string `json:"EndIp,omitempty" xml:"EndIp,omitempty"`
+	// The start IP address of the CIDR block.
 	StartIp *string `json:"StartIp,omitempty" xml:"StartIp,omitempty"`
 }
 
@@ -20564,6 +23108,7 @@ func (s *UpdateCustomLineRequestIpSegment) SetStartIp(v string) *UpdateCustomLin
 }
 
 type UpdateCustomLineResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20610,10 +23155,14 @@ func (s *UpdateCustomLineResponse) SetBody(v *UpdateCustomLineResponseBody) *Upd
 }
 
 type UpdateDNSSLBWeightRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The language of the domain name.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The IP address of the client that you use to change the weight.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The updated weight of the DNS record. Valid values: `1 to 100`.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateDNSSLBWeightRequest) String() string {
@@ -20645,9 +23194,12 @@ func (s *UpdateDNSSLBWeightRequest) SetWeight(v int32) *UpdateDNSSLBWeightReques
 }
 
 type UpdateDNSSLBWeightResponseBody struct {
-	RecordId  *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Weight    *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The updated weight.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateDNSSLBWeightResponseBody) String() string {
@@ -20906,23 +23458,57 @@ func (s *UpdateDnsCacheDomainRemarkResponse) SetBody(v *UpdateDnsCacheDomainRema
 }
 
 type UpdateDnsGtmAccessStrategyRequest struct {
-	AccessMode                  *string                                              `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	DefaultAddrPool             []*UpdateDnsGtmAccessStrategyRequestDefaultAddrPool  `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
-	DefaultAddrPoolType         *string                                              `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	DefaultLatencyOptimization  *string                                              `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	DefaultLbaStrategy          *string                                              `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	DefaultMaxReturnAddrNum     *int32                                               `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	DefaultMinAvailableAddrNum  *int32                                               `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	FailoverAddrPool            []*UpdateDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
-	FailoverAddrPoolType        *string                                              `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	FailoverLatencyOptimization *string                                              `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	FailoverLbaStrategy         *string                                              `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	FailoverMaxReturnAddrNum    *int32                                               `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	FailoverMinAvailableAddrNum *int32                                               `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	Lang                        *string                                              `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Lines                       *string                                              `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	StrategyId                  *string                                              `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName                *string                                              `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	AccessMode      *string                                             `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	DefaultAddrPool []*UpdateDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
+	// The type of the primary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
+	// The load balancing policy of the primary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the primary address pool group.
+	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the primary address pool group.
+	DefaultMinAvailableAddrNum *int32                                               `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	FailoverAddrPool           []*UpdateDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
+	// The type of the secondary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
+	// The load balancing policy of the secondary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the secondary address pool group.
+	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the secondary address pool group.
+	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The line codes of source regions. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Telecom & Media Group.
+	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// The ID of the access policy.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s UpdateDnsGtmAccessStrategyRequest) String() string {
@@ -21019,8 +23605,10 @@ func (s *UpdateDnsGtmAccessStrategyRequest) SetStrategyName(v string) *UpdateDns
 }
 
 type UpdateDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The ID of the address pool in the primary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the primary address pool group.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
 func (s UpdateDnsGtmAccessStrategyRequestDefaultAddrPool) String() string {
@@ -21042,8 +23630,10 @@ func (s *UpdateDnsGtmAccessStrategyRequestDefaultAddrPool) SetLbaWeight(v int32)
 }
 
 type UpdateDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The ID of the address pool in the secondary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the secondary address pool group.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
 func (s UpdateDnsGtmAccessStrategyRequestFailoverAddrPool) String() string {
@@ -21065,7 +23655,9 @@ func (s *UpdateDnsGtmAccessStrategyRequestFailoverAddrPool) SetLbaWeight(v int32
 }
 
 type UpdateDnsGtmAccessStrategyResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -21117,11 +23709,19 @@ func (s *UpdateDnsGtmAccessStrategyResponse) SetBody(v *UpdateDnsGtmAccessStrate
 }
 
 type UpdateDnsGtmAddressPoolRequest struct {
-	Addr        []*UpdateDnsGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	AddrPoolId  *string                               `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang        *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LbaStrategy *string                               `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	Name        *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The addresses in the address pool.
+	Addr []*UpdateDnsGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
+	// The ID of the address pool.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The load balancing policy for the address pool. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The name of the address pool.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateDnsGtmAddressPoolRequest) String() string {
@@ -21158,11 +23758,30 @@ func (s *UpdateDnsGtmAddressPoolRequest) SetName(v string) *UpdateDnsGtmAddressP
 }
 
 type UpdateDnsGtmAddressPoolRequestAddr struct {
-	Addr          *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The address.
+	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	// The source region of the address. The value is a JSON string.
+	//
+	// *   lineCode: the line code of the source region of the address. This parameter is deprecated, and lineCodes prevails.
+	//
+	// *   lineCodes: the line codes of the source regions of the address.
+	//
+	// *   lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
+	//
+	//     *   NO_NEED: no need for rectification
+	//     *   RECTIFIED: rectified
+	//     *   AUTO: automatic rectification
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	LbaWeight     *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode          *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Remark        *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The weight of the address.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address. Valid values:
+	//
+	// *   SMART: smart return
+	// *   ONLINE: always online
+	// *   OFFLINE: always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The description of the address.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateDnsGtmAddressPoolRequestAddr) String() string {
@@ -21199,6 +23818,7 @@ func (s *UpdateDnsGtmAddressPoolRequestAddr) SetRemark(v string) *UpdateDnsGtmAd
 }
 
 type UpdateDnsGtmAddressPoolResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21245,18 +23865,39 @@ func (s *UpdateDnsGtmAddressPoolResponse) SetBody(v *UpdateDnsGtmAddressPoolResp
 }
 
 type UpdateDnsGtmInstanceGlobalConfigRequest struct {
-	AlertConfig          []*UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	AlertGroup           *string                                               `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	CnameType            *string                                               `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
-	ForceUpdate          *bool                                                 `json:"ForceUpdate,omitempty" xml:"ForceUpdate,omitempty"`
-	InstanceId           *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lang                 *string                                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PublicCnameMode      *string                                               `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
-	PublicRr             *string                                               `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
-	PublicUserDomainName *string                                               `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
-	PublicZoneName       *string                                               `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
-	Ttl                  *int32                                                `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	AlertConfig []*UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	// The name of the alert group in the JSON format.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The type of the CNAME domain name that is used to access the instance. Valid value:
+	//
+	// *   PUBLIC: The CNAME domain name is used to access the instance over the Internet.
+	CnameType *string `json:"CnameType,omitempty" xml:"CnameType,omitempty"`
+	// Specifies whether to enable force updates. Valid values:
+	//
+	// *   true: enables force update without a conflict alert.
+	// *   false: disables force update. If a conflict occurs, the system displays an alert. null: This valid value of ForceUpdate provides the same information as the false value.
+	ForceUpdate *bool `json:"ForceUpdate,omitempty" xml:"ForceUpdate,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance. This parameter is required only for the first update.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to use a custom CNAME domain name or a CNAME domain name assigned by the system to access the instance over the Internet. Valid values:
+	//
+	// *   SYSTEM_ASSIGN: a CNAME domain name assigned by the system
+	// *   CUSTOM: a custom CNAME domain name
+	PublicCnameMode *string `json:"PublicCnameMode,omitempty" xml:"PublicCnameMode,omitempty"`
+	// The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+	PublicRr *string `json:"PublicRr,omitempty" xml:"PublicRr,omitempty"`
+	// The service domain name that is used over the Internet.
+	PublicUserDomainName *string `json:"PublicUserDomainName,omitempty" xml:"PublicUserDomainName,omitempty"`
+	// The CNAME domain name that is used to access the instance over the Internet, which is the primary domain name. This parameter is required when the PublicCnameMode parameter is set to CUSTOM.
+	//
+	// >  You must use the primary domain name. Do not include the hostname specified by the PublicRr parameter.
+	PublicZoneName *string `json:"PublicZoneName,omitempty" xml:"PublicZoneName,omitempty"`
+	// The global time to live (TTL).
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s UpdateDnsGtmInstanceGlobalConfigRequest) String() string {
@@ -21363,6 +24004,7 @@ func (s *UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig) SetSmsNotice(v bool
 }
 
 type UpdateDnsGtmInstanceGlobalConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21409,14 +24051,73 @@ func (s *UpdateDnsGtmInstanceGlobalConfigResponse) SetBody(v *UpdateDnsGtmInstan
 }
 
 type UpdateDnsGtmMonitorRequest struct {
-	EvaluationCount   *int32                                   `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                                   `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode       []*UpdateDnsGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang              *string                                  `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MonitorConfigId   *string                                  `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorExtendInfo *string                                  `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                                  `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout           *int32                                   `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The health check interval. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*UpdateDnsGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the health check configuration.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// *   HTTP or HTTPS:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   host: the host configuration.
+	//
+	//     *   path: the health check URL.
+	//
+	//     *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   sni: specifies whether to enable Server Name Indication (SNI). This parameter is only required for the HTTPS protocol. Valid values:
+	//
+	//         *   true: enables SNI.
+	//         *   false: disables SNI.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   PING:
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   packetNum: the number of ping packets.
+	//
+	//     *   packetLossRate: the loss rate of ping packets.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	//
+	// *   TCP:
+	//
+	//     *   port: the port to check.
+	//
+	//     *   failureRate: the failure rate.
+	//
+	//     *   nodeType: the type of the monitored node when the address pool type is DOMAIN. Valid values:
+	//
+	//         *   IPV4
+	//         *   IPV6
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The protocol used for the health check. Valid values:
+	//
+	// *   HTTP
+	// *   HTTPS
+	// *   PING
+	// *   TCP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateDnsGtmMonitorRequest) String() string {
@@ -21468,8 +24169,10 @@ func (s *UpdateDnsGtmMonitorRequest) SetTimeout(v int32) *UpdateDnsGtmMonitorReq
 }
 
 type UpdateDnsGtmMonitorRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// The code of the Internet service provider (ISP) to which the monitored node belongs.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s UpdateDnsGtmMonitorRequestIspCityNode) String() string {
@@ -21491,6 +24194,7 @@ func (s *UpdateDnsGtmMonitorRequestIspCityNode) SetIspCode(v string) *UpdateDnsG
 }
 
 type UpdateDnsGtmMonitorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21537,9 +24241,12 @@ func (s *UpdateDnsGtmMonitorResponse) SetBody(v *UpdateDnsGtmMonitorResponseBody
 }
 
 type UpdateDomainGroupRequest struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The new name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s UpdateDomainGroupRequest) String() string {
@@ -21566,8 +24273,11 @@ func (s *UpdateDomainGroupRequest) SetLang(v string) *UpdateDomainGroupRequest {
 }
 
 type UpdateDomainGroupResponseBody struct {
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the domain name group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The new name of the domain name group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21624,15 +24334,28 @@ func (s *UpdateDomainGroupResponse) SetBody(v *UpdateDomainGroupResponseBody) *U
 }
 
 type UpdateDomainRecordRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority     *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RR           *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	TTL          *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resolution line. Default value: **default**.
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The priority of an MX-type DNS record. Valid values: `[1,50]`.
+	//
+	// This parameter must be specified if the type of the DNS record is MX.
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The host record.
+	//
+	// For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The TTL of the resolution. Default value: 600. Unit: seconds.
+	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The type of the DNS record.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The value of the DNS record.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateDomainRecordRequest) String() string {
@@ -21689,7 +24412,9 @@ func (s *UpdateDomainRecordRequest) SetValue(v string) *UpdateDomainRecordReques
 }
 
 type UpdateDomainRecordResponseBody struct {
-	RecordId  *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21741,9 +24466,13 @@ func (s *UpdateDomainRecordResponse) SetBody(v *UpdateDomainRecordResponseBody) 
 }
 
 type UpdateDomainRecordRemarkRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of your DNS record.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The IP address of the client.
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -21776,6 +24505,7 @@ func (s *UpdateDomainRecordRemarkRequest) SetUserClientIp(v string) *UpdateDomai
 }
 
 type UpdateDomainRecordRemarkResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21822,9 +24552,12 @@ func (s *UpdateDomainRecordRemarkResponse) SetBody(v *UpdateDomainRecordRemarkRe
 }
 
 type UpdateDomainRemarkRequest struct {
+	// The domain name in Alibaba Cloud DNS.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The language type.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The description of your domain name.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateDomainRemarkRequest) String() string {
@@ -21851,6 +24584,7 @@ func (s *UpdateDomainRemarkRequest) SetRemark(v string) *UpdateDomainRemarkReque
 }
 
 type UpdateDomainRemarkResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21897,12 +24631,18 @@ func (s *UpdateDomainRemarkResponse) SetBody(v *UpdateDomainRemarkResponseBody) 
 }
 
 type UpdateGtmAccessStrategyRequest struct {
-	AccessLines        *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
-	DefaultAddrPoolId  *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	// The line codes of access regions.
+	AccessLines *string `json:"AccessLines,omitempty" xml:"AccessLines,omitempty"`
+	// The ID of the default address pool.
+	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	// The ID of the failover address pool.
 	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StrategyId         *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	StrategyName       *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the access policy that you want to query for the GTM instance.
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The name of the access policy.
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s UpdateGtmAccessStrategyRequest) String() string {
@@ -21944,6 +24684,7 @@ func (s *UpdateGtmAccessStrategyRequest) SetStrategyName(v string) *UpdateGtmAcc
 }
 
 type UpdateGtmAccessStrategyResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21990,12 +24731,17 @@ func (s *UpdateGtmAccessStrategyResponse) SetBody(v *UpdateGtmAccessStrategyResp
 }
 
 type UpdateGtmAddressPoolRequest struct {
-	Addr                []*UpdateGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
-	AddrPoolId          *string                            `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	Lang                *string                            `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MinAvailableAddrNum *int32                             `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	Name                *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type                *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	Addr []*UpdateGtmAddressPoolRequestAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Repeated"`
+	// The ID of the address pool that you want to modify.
+	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The minimum number of available addresses in the address pool.
+	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
+	// The name of the address pool that you want to modify.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the address pool that you want to modify.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateGtmAddressPoolRequest) String() string {
@@ -22037,9 +24783,16 @@ func (s *UpdateGtmAddressPoolRequest) SetType(v string) *UpdateGtmAddressPoolReq
 }
 
 type UpdateGtmAddressPoolRequestAddr struct {
-	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	Mode      *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address pool that you want to modify.
+	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	// The mode of the address pool that you want to modify.
+	//
+	// *   **SMART**: Intelligent return
+	// *   **ONLINE**: Always online
+	// *   **OFFLINE**: Always offline
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The addresses in the address pool.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateGtmAddressPoolRequestAddr) String() string {
@@ -22066,6 +24819,7 @@ func (s *UpdateGtmAddressPoolRequestAddr) SetValue(v string) *UpdateGtmAddressPo
 }
 
 type UpdateGtmAddressPoolResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22112,15 +24866,39 @@ func (s *UpdateGtmAddressPoolResponse) SetBody(v *UpdateGtmAddressPoolResponseBo
 }
 
 type UpdateGtmInstanceGlobalConfigRequest struct {
-	AlertGroup            *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The alert group of the GTM instance. Currently, only one alert group is supported.
+	//
+	// >  This parameter is required for the first update, but is optional for later updates.
+	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The CNAME record of a domain name, which must be the primary domain name. When **CnameMode** is **CUSTOM**, this parameter is required for access.
 	CnameCustomDomainName *string `json:"CnameCustomDomainName,omitempty" xml:"CnameCustomDomainName,omitempty"`
-	CnameMode             *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	LbaStrategy           *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	Ttl                   *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	UserDomainName        *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	// Specifies whether the CNAME record is user-defined or automatically assigned by the system. Valid values:
+	//
+	// *   **SYSTEM_ASSIGN**: Assigned by the system
+	// *   **CUSTOM**: User-defined
+	CnameMode *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
+	// The ID of the GTM instance whose configuration you want to modify.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the GTM instance.
+	//
+	// >  This parameter is required for the first update, but is not required for later updates.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language used by the user.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The load balancing policy. Valid values:
+	//
+	// *   **ALL_RR**: Load balancing
+	//
+	// *   **RATIO**: Weighted round robin
+	//
+	// > This parameter is required for the first update, but is optional for later updates.
+	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	// The time when the modification takes effect.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The primary domain name.
+	//
+	// >  This parameter is required for the first update, but is optional for later updates.
+	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
 }
 
 func (s UpdateGtmInstanceGlobalConfigRequest) String() string {
@@ -22177,6 +24955,7 @@ func (s *UpdateGtmInstanceGlobalConfigRequest) SetUserDomainName(v string) *Upda
 }
 
 type UpdateGtmInstanceGlobalConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22223,14 +25002,41 @@ func (s *UpdateGtmInstanceGlobalConfigResponse) SetBody(v *UpdateGtmInstanceGlob
 }
 
 type UpdateGtmMonitorRequest struct {
-	EvaluationCount   *int32                                `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Interval          *int32                                `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IspCityNode       []*UpdateGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
-	Lang              *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MonitorConfigId   *string                               `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	MonitorExtendInfo *string                               `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
-	ProtocolType      *string                               `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Timeout           *int32                                `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	// The health check interval. Unit: seconds. Set the value to 60.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The monitored nodes.
+	IspCityNode []*UpdateGtmMonitorRequestIspCityNode `json:"IspCityNode,omitempty" xml:"IspCityNode,omitempty" type:"Repeated"`
+	// The language of the values of specific response parameters.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the health check configuration.
+	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	// The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+	//
+	// HTTP or HTTPS:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	// *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
+	// *   host: the host configuration.
+	// *   path: the health check URL.
+	//
+	// PING:
+	//
+	// *   packetNum: the number of ping packets.
+	// *   packetLossRate: the loss rate of ping packets.
+	// *   failureRate: the failure rate.
+	//
+	// TCP:
+	//
+	// *   port: the port to check.
+	// *   failureRate: the failure rate.
+	MonitorExtendInfo *string `json:"MonitorExtendInfo,omitempty" xml:"MonitorExtendInfo,omitempty"`
+	// The protocol used for the health check.
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateGtmMonitorRequest) String() string {
@@ -22282,8 +25088,12 @@ func (s *UpdateGtmMonitorRequest) SetTimeout(v int32) *UpdateGtmMonitorRequest {
 }
 
 type UpdateGtmMonitorRequestIspCityNode struct {
+	// The code of the city where the monitored node is deployed.
 	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	IspCode  *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// *   The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+	// *   If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
+	// *   If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
 }
 
 func (s UpdateGtmMonitorRequestIspCityNode) String() string {
@@ -22305,6 +25115,7 @@ func (s *UpdateGtmMonitorRequestIspCityNode) SetIspCode(v string) *UpdateGtmMoni
 }
 
 type UpdateGtmMonitorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22351,11 +25162,16 @@ func (s *UpdateGtmMonitorResponse) SetBody(v *UpdateGtmMonitorResponseBody) *Upd
 }
 
 type UpdateGtmRecoveryPlanRequest struct {
-	FaultAddrPool  *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecoveryPlanId *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The list of faulty address pools.
+	FaultAddrPool *string `json:"FaultAddrPool,omitempty" xml:"FaultAddrPool,omitempty"`
+	// The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the disaster recovery plan.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the disaster recovery plan.
+	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	// The remarks about the disaster recovery plan.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateGtmRecoveryPlanRequest) String() string {
@@ -22392,6 +25208,7 @@ func (s *UpdateGtmRecoveryPlanRequest) SetRemark(v string) *UpdateGtmRecoveryPla
 }
 
 type UpdateGtmRecoveryPlanResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22721,6 +25538,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ *
+ * @param request AddCustomLineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddCustomLineResponse
+ */
 func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, runtime *util.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22766,6 +25591,13 @@ func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, ru
 	return _result, _err
 }
 
+/**
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ *
+ * @param request AddCustomLineRequest
+ * @return AddCustomLineResponse
+ */
 func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *AddCustomLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddCustomLineResponse{}
@@ -23053,6 +25885,13 @@ func (client *Client) AddDnsGtmAddressPool(request *AddDnsGtmAddressPoolRequest)
 	return _result, _err
 }
 
+/**
+ * ***
+ *
+ * @param request AddDnsGtmMonitorRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddDnsGtmMonitorResponse
+ */
 func (client *Client) AddDnsGtmMonitorWithOptions(request *AddDnsGtmMonitorRequest, runtime *util.RuntimeOptions) (_result *AddDnsGtmMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23114,6 +25953,12 @@ func (client *Client) AddDnsGtmMonitorWithOptions(request *AddDnsGtmMonitorReque
 	return _result, _err
 }
 
+/**
+ * ***
+ *
+ * @param request AddDnsGtmMonitorRequest
+ * @return AddDnsGtmMonitorResponse
+ */
 func (client *Client) AddDnsGtmMonitor(request *AddDnsGtmMonitorRequest) (_result *AddDnsGtmMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDnsGtmMonitorResponse{}
@@ -23125,6 +25970,14 @@ func (client *Client) AddDnsGtmMonitor(request *AddDnsGtmMonitorRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can check whether a domain name is valid based on the following topic:
+ * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm)
+ *
+ * @param request AddDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddDomainResponse
+ */
 func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *util.RuntimeOptions) (_result *AddDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23170,6 +26023,13 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * You can check whether a domain name is valid based on the following topic:
+ * [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm)
+ *
+ * @param request AddDomainRequest
+ * @return AddDomainResponse
+ */
 func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDomainResponse{}
@@ -23745,6 +26605,13 @@ func (client *Client) ChangeDomainGroup(request *ChangeDomainGroupRequest) (_res
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+ *
+ * @param request ChangeDomainOfDnsProductRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ChangeDomainOfDnsProductResponse
+ */
 func (client *Client) ChangeDomainOfDnsProductWithOptions(request *ChangeDomainOfDnsProductRequest, runtime *util.RuntimeOptions) (_result *ChangeDomainOfDnsProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23794,6 +26661,12 @@ func (client *Client) ChangeDomainOfDnsProductWithOptions(request *ChangeDomainO
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+ *
+ * @param request ChangeDomainOfDnsProductRequest
+ * @return ChangeDomainOfDnsProductResponse
+ */
 func (client *Client) ChangeDomainOfDnsProduct(request *ChangeDomainOfDnsProductRequest) (_result *ChangeDomainOfDnsProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeDomainOfDnsProductResponse{}
@@ -24149,6 +27022,14 @@ func (client *Client) DeleteDnsGtmAddressPool(request *DeleteDnsGtmAddressPoolRe
 	return _result, _err
 }
 
+/**
+ * *   Given the unique nature of a HiChina domain name, you are not allowed to delete the HiChina domain name by calling the Alibaba Cloud DNS API.
+ * *   If the system prompts that a domain name does not exist, it is an unregistered domain name, it does not exist under the account, or its format in the request parameters is incorrect.
+ *
+ * @param request DeleteDomainRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDomainResponse
+ */
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24186,6 +27067,13 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+/**
+ * *   Given the unique nature of a HiChina domain name, you are not allowed to delete the HiChina domain name by calling the Alibaba Cloud DNS API.
+ * *   If the system prompts that a domain name does not exist, it is an unregistered domain name, it does not exist under the account, or its format in the request parameters is incorrect.
+ *
+ * @param request DeleteDomainRequest
+ * @return DeleteDomainResponse
+ */
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -24197,6 +27085,13 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+/**
+ * >  A domain name group can be deleted only when it contains no domain names. The default group cannot be deleted.
+ *
+ * @param request DeleteDomainGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDomainGroupResponse
+ */
 func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24234,6 +27129,12 @@ func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupReq
 	return _result, _err
 }
 
+/**
+ * >  A domain name group can be deleted only when it contains no domain names. The default group cannot be deleted.
+ *
+ * @param request DeleteDomainGroupRequest
+ * @return DeleteDomainGroupResponse
+ */
 func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_result *DeleteDomainGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainGroupResponse{}
@@ -24441,6 +27342,13 @@ func (client *Client) DeleteGtmRecoveryPlan(request *DeleteGtmRecoveryPlanReques
 	return _result, _err
 }
 
+/**
+ * If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+ *
+ * @param request DeleteSubDomainRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteSubDomainRecordsResponse
+ */
 func (client *Client) DeleteSubDomainRecordsWithOptions(request *DeleteSubDomainRecordsRequest, runtime *util.RuntimeOptions) (_result *DeleteSubDomainRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24490,6 +27398,12 @@ func (client *Client) DeleteSubDomainRecordsWithOptions(request *DeleteSubDomain
 	return _result, _err
 }
 
+/**
+ * If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+ *
+ * @param request DeleteSubDomainRecordsRequest
+ * @return DeleteSubDomainRecordsResponse
+ */
 func (client *Client) DeleteSubDomainRecords(request *DeleteSubDomainRecordsRequest) (_result *DeleteSubDomainRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSubDomainRecordsResponse{}
@@ -24553,6 +27467,13 @@ func (client *Client) DescribeBatchResultCount(request *DescribeBatchResultCount
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that the batch tasks have been executed.
+ *
+ * @param request DescribeBatchResultDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeBatchResultDetailResponse
+ */
 func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatchResultDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeBatchResultDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24606,6 +27527,12 @@ func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatc
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that the batch tasks have been executed.
+ *
+ * @param request DescribeBatchResultDetailRequest
+ * @return DescribeBatchResultDetailResponse
+ */
 func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDetailRequest) (_result *DescribeBatchResultDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBatchResultDetailResponse{}
@@ -25665,6 +28592,13 @@ func (client *Client) DescribeDnsProductInstance(request *DescribeDnsProductInst
 	return _result, _err
 }
 
+/**
+ * >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+ *
+ * @param request DescribeDnsProductInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDnsProductInstancesResponse
+ */
 func (client *Client) DescribeDnsProductInstancesWithOptions(request *DescribeDnsProductInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDnsProductInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25718,6 +28652,12 @@ func (client *Client) DescribeDnsProductInstancesWithOptions(request *DescribeDn
 	return _result, _err
 }
 
+/**
+ * >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+ *
+ * @param request DescribeDnsProductInstancesRequest
+ * @return DescribeDnsProductInstancesResponse
+ */
 func (client *Client) DescribeDnsProductInstances(request *DescribeDnsProductInstancesRequest) (_result *DescribeDnsProductInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDnsProductInstancesResponse{}
@@ -26181,6 +29121,13 @@ func (client *Client) DescribeDomainGroups(request *DescribeDomainGroupsRequest)
 	return _result, _err
 }
 
+/**
+ * In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+ *
+ * @param request DescribeDomainInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainInfoResponse
+ */
 func (client *Client) DescribeDomainInfoWithOptions(request *DescribeDomainInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26222,6 +29169,12 @@ func (client *Client) DescribeDomainInfoWithOptions(request *DescribeDomainInfoR
 	return _result, _err
 }
 
+/**
+ * In this example, the domain name is bound to an Alibaba Cloud DNS instance of Enterprise Ultimate Edition. For more information about valid lines, see the return values of the RecordLines parameter.
+ *
+ * @param request DescribeDomainInfoRequest
+ * @return DescribeDomainInfoResponse
+ */
 func (client *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (_result *DescribeDomainInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainInfoResponse{}
@@ -26305,6 +29258,13 @@ func (client *Client) DescribeDomainLogs(request *DescribeDomainLogsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
+ *
+ * @param request DescribeDomainNsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainNsResponse
+ */
 func (client *Client) DescribeDomainNsWithOptions(request *DescribeDomainNsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainNsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26342,6 +29302,12 @@ func (client *Client) DescribeDomainNsWithOptions(request *DescribeDomainNsReque
 	return _result, _err
 }
 
+/**
+ * >  This operation queries the authoritative server of the registry to obtain the name servers of a domain name. If the domain name is in the serverHold or clientHold state, an exception may occur.
+ *
+ * @param request DescribeDomainNsRequest
+ * @return DescribeDomainNsResponse
+ */
 func (client *Client) DescribeDomainNs(request *DescribeDomainNsRequest) (_result *DescribeDomainNsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainNsResponse{}
@@ -26405,6 +29371,15 @@ func (client *Client) DescribeDomainRecordInfo(request *DescribeDomainRecordInfo
 	return _result, _err
 }
 
+/**
+ * *   You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
+ * *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+ * *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+ *
+ * @param request DescribeDomainRecordsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainRecordsResponse
+ */
 func (client *Client) DescribeDomainRecordsWithOptions(request *DescribeDomainRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26494,6 +29469,14 @@ func (client *Client) DescribeDomainRecordsWithOptions(request *DescribeDomainRe
 	return _result, _err
 }
 
+/**
+ * *   You can specify the DomainName, PageNumber, and PageSize parameters to query the DNS records of a domain name.
+ * *   You can also specify the RRKeyWord, TypeKeyWord, or ValueKeyWord parameter to query the DNS records that contain the specified keyword.
+ * *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+ *
+ * @param request DescribeDomainRecordsRequest
+ * @return DescribeDomainRecordsResponse
+ */
 func (client *Client) DescribeDomainRecords(request *DescribeDomainRecordsRequest) (_result *DescribeDomainRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainRecordsResponse{}
@@ -26505,6 +29488,89 @@ func (client *Client) DescribeDomainRecords(request *DescribeDomainRecordsReques
 	return _result, _err
 }
 
+func (client *Client) DescribeDomainResolveStatisticsSummaryWithOptions(request *DescribeDomainResolveStatisticsSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainResolveStatisticsSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchMode)) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDomainResolveStatisticsSummary"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDomainResolveStatisticsSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDomainResolveStatisticsSummary(request *DescribeDomainResolveStatisticsSummaryRequest) (_result *DescribeDomainResolveStatisticsSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDomainResolveStatisticsSummaryResponse{}
+	_body, _err := client.DescribeDomainResolveStatisticsSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Real-time data is collected per hour.
+ *
+ * @param request DescribeDomainStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainStatisticsResponse
+ */
 func (client *Client) DescribeDomainStatisticsWithOptions(request *DescribeDomainStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26554,6 +29620,12 @@ func (client *Client) DescribeDomainStatisticsWithOptions(request *DescribeDomai
 	return _result, _err
 }
 
+/**
+ * Real-time data is collected per hour.
+ *
+ * @param request DescribeDomainStatisticsRequest
+ * @return DescribeDomainStatisticsResponse
+ */
 func (client *Client) DescribeDomainStatistics(request *DescribeDomainStatisticsRequest) (_result *DescribeDomainStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainStatisticsResponse{}
@@ -26637,6 +29709,16 @@ func (client *Client) DescribeDomainStatisticsSummary(request *DescribeDomainSta
 	return _result, _err
 }
 
+/**
+ * *   You can specify the PageNumber and PageSize parameters to query domain names.
+ * *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+ * *   By default, the domain names in a list are sorted in descending order of the time they were added.
+ * *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+ *
+ * @param request DescribeDomainsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainsResponse
+ */
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26698,6 +29780,15 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 	return _result, _err
 }
 
+/**
+ * *   You can specify the PageNumber and PageSize parameters to query domain names.
+ * *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+ * *   By default, the domain names in a list are sorted in descending order of the time they were added.
+ * *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+ *
+ * @param request DescribeDomainsRequest
+ * @return DescribeDomainsResponse
+ */
 func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result *DescribeDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainsResponse{}
@@ -28557,6 +31648,97 @@ func (client *Client) DescribeRecordLogs(request *DescribeRecordLogsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeRecordResolveStatisticsSummaryWithOptions(request *DescribeRecordResolveStatisticsSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordResolveStatisticsSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainType)) {
+		query["DomainType"] = request.DomainType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchMode)) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecordResolveStatisticsSummary"),
+		Version:     tea.String("2015-01-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRecordResolveStatisticsSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRecordResolveStatisticsSummary(request *DescribeRecordResolveStatisticsSummaryRequest) (_result *DescribeRecordResolveStatisticsSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRecordResolveStatisticsSummaryResponse{}
+	_body, _err := client.DescribeRecordResolveStatisticsSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Real-time data is collected per hour.
+ *
+ * @param request DescribeRecordStatisticsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRecordStatisticsResponse
+ */
 func (client *Client) DescribeRecordStatisticsWithOptions(request *DescribeRecordStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28610,6 +31792,12 @@ func (client *Client) DescribeRecordStatisticsWithOptions(request *DescribeRecor
 	return _result, _err
 }
 
+/**
+ * Real-time data is collected per hour.
+ *
+ * @param request DescribeRecordStatisticsRequest
+ * @return DescribeRecordStatisticsResponse
+ */
 func (client *Client) DescribeRecordStatistics(request *DescribeRecordStatisticsRequest) (_result *DescribeRecordStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordStatisticsResponse{}
@@ -29097,6 +32285,16 @@ func (client *Client) GetTxtRecordForVerify(request *GetTxtRecordForVerifyReques
 	return _result, _err
 }
 
+/**
+ * *   You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+ * *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
+ * *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+ * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+ *
+ * @param request ListTagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29146,6 +32344,15 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+/**
+ * *   You can specify ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+ * *   Tag.N is a resource tag that consists of a key-value pair. If you specify only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you specify only Tag.N.Value, an error message is returned.
+ * *   If you specify Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+ * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -29157,6 +32364,14 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+ * >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+ *
+ * @param request ModifyHichinaDomainDNSRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyHichinaDomainDNSResponse
+ */
 func (client *Client) ModifyHichinaDomainDNSWithOptions(request *ModifyHichinaDomainDNSRequest, runtime *util.RuntimeOptions) (_result *ModifyHichinaDomainDNSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29198,6 +32413,13 @@ func (client *Client) ModifyHichinaDomainDNSWithOptions(request *ModifyHichinaDo
 	return _result, _err
 }
 
+/**
+ * If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+ * >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
+ *
+ * @param request ModifyHichinaDomainDNSRequest
+ * @return ModifyHichinaDomainDNSResponse
+ */
 func (client *Client) ModifyHichinaDomainDNS(request *ModifyHichinaDomainDNSRequest) (_result *ModifyHichinaDomainDNSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHichinaDomainDNSResponse{}
@@ -29777,6 +32999,13 @@ func (client *Client) SetDNSSLBStatus(request *SetDNSSLBStatusRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request SetDnsGtmAccessModeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDnsGtmAccessModeResponse
+ */
 func (client *Client) SetDnsGtmAccessModeWithOptions(request *SetDnsGtmAccessModeRequest, runtime *util.RuntimeOptions) (_result *SetDnsGtmAccessModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29818,6 +33047,12 @@ func (client *Client) SetDnsGtmAccessModeWithOptions(request *SetDnsGtmAccessMod
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request SetDnsGtmAccessModeRequest
+ * @return SetDnsGtmAccessModeResponse
+ */
 func (client *Client) SetDnsGtmAccessMode(request *SetDnsGtmAccessModeRequest) (_result *SetDnsGtmAccessModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDnsGtmAccessModeResponse{}
@@ -30477,6 +33712,14 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 	return _result, _err
 }
 
+/**
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ *
+ * @param request UpdateCustomLineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateCustomLineResponse
+ */
 func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30522,6 +33765,13 @@ func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineReque
 	return _result, _err
 }
 
+/**
+ * In each CIDR block, the end IP address must be greater than or equal to the start IP address.
+ * The CIDR blocks that are specified for all custom lines of a domain name cannot intersect.
+ *
+ * @param request UpdateCustomLineRequest
+ * @return UpdateCustomLineResponse
+ */
 func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_result *UpdateCustomLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCustomLineResponse{}
