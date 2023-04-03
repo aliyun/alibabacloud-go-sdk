@@ -1052,6 +1052,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	AppInstanceGroupId   *string                                                          `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string                                                          `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	AppInstanceType      *string                                                          `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	AppPolicyId          *string                                                          `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	Apps                 []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps     `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	ChargeType           *string                                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ExpiredTime          *string                                                          `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
@@ -1102,6 +1103,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppInstanceGr
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppInstanceType(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.AppInstanceType = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetAppPolicyId(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.AppPolicyId = &v
 	return s
 }
 
@@ -2812,12 +2818,13 @@ func (s *ListAppInstancesResponse) SetBody(v *ListAppInstancesResponseBody) *Lis
 }
 
 type ListNodeInstanceTypeRequest struct {
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OsType      *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	BizRegionId      *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	OsType           *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s ListNodeInstanceTypeRequest) String() string {
@@ -2835,6 +2842,11 @@ func (s *ListNodeInstanceTypeRequest) SetBizRegionId(v string) *ListNodeInstance
 
 func (s *ListNodeInstanceTypeRequest) SetLanguage(v string) *ListNodeInstanceTypeRequest {
 	s.Language = &v
+	return s
+}
+
+func (s *ListNodeInstanceTypeRequest) SetNodeInstanceType(v string) *ListNodeInstanceTypeRequest {
+	s.NodeInstanceType = &v
 	return s
 }
 
@@ -3551,11 +3563,16 @@ func (s *ModifyNodePoolAttributeRequest) SetProductType(v string) *ModifyNodePoo
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategy struct {
-	MaxScalingAmount            *int32  `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
-	ScalingDownAfterIdleMinutes *int32  `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingStep                 *int32  `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	StrategyType                *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	MaxScalingAmount            *int32                                                               `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	NodeAmount                  *int32                                                               `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	RecurrenceSchedules         []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	ScalingDownAfterIdleMinutes *int32                                                               `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	ScalingStep                 *int32                                                               `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	ScalingUsageThreshold       *string                                                              `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	StrategyDisableDate         *string                                                              `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	StrategyEnableDate          *string                                                              `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	StrategyType                *string                                                              `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	WarmUp                      *bool                                                                `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
 func (s ModifyNodePoolAttributeRequestNodePoolStrategy) String() string {
@@ -3568,6 +3585,16 @@ func (s ModifyNodePoolAttributeRequestNodePoolStrategy) GoString() string {
 
 func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetMaxScalingAmount(v int32) *ModifyNodePoolAttributeRequestNodePoolStrategy {
 	s.MaxScalingAmount = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetNodeAmount(v int32) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.NodeAmount = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetRecurrenceSchedules(v []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.RecurrenceSchedules = v
 	return s
 }
 
@@ -3586,8 +3613,81 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetScalingUsageThreshol
 	return s
 }
 
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetStrategyDisableDate(v string) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.StrategyDisableDate = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetStrategyEnableDate(v string) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.StrategyEnableDate = &v
+	return s
+}
+
 func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetStrategyType(v string) *ModifyNodePoolAttributeRequestNodePoolStrategy {
 	s.StrategyType = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetWarmUp(v bool) *ModifyNodePoolAttributeRequestNodePoolStrategy {
+	s.WarmUp = &v
+	return s
+}
+
+type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules struct {
+	RecurrenceType   *string                                                                          `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValues []*int32                                                                         `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	TimerPeriods     []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
+}
+
+func (s ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetRecurrenceType(v string) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules {
+	s.RecurrenceType = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetRecurrenceValues(v []*int32) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules {
+	s.RecurrenceValues = v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetTimerPeriods(v []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules {
+	s.TimerPeriods = v
+	return s
+}
+
+type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods struct {
+	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) SetAmount(v int32) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods {
+	s.Amount = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) SetEndTime(v string) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods) SetStartTime(v string) *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods {
+	s.StartTime = &v
 	return s
 }
 
@@ -5010,6 +5110,10 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeInstanceType)) {
+		query["NodeInstanceType"] = request.NodeInstanceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OsType)) {
