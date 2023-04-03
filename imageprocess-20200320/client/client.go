@@ -325,6 +325,256 @@ func (s *AnalyzeChestVesselResponse) SetBody(v *AnalyzeChestVesselResponseBody) 
 	return s
 }
 
+type CalcBMDRequest struct {
+	DataFormat *string                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                  `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SourceType *string                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	URLList    []*CalcBMDRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s CalcBMDRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDRequest) SetDataFormat(v string) *CalcBMDRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *CalcBMDRequest) SetOrgId(v string) *CalcBMDRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CalcBMDRequest) SetOrgName(v string) *CalcBMDRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *CalcBMDRequest) SetSourceType(v string) *CalcBMDRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CalcBMDRequest) SetURLList(v []*CalcBMDRequestURLList) *CalcBMDRequest {
+	s.URLList = v
+	return s
+}
+
+type CalcBMDRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s CalcBMDRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDRequestURLList) SetURL(v string) *CalcBMDRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type CalcBMDAdvanceRequest struct {
+	DataFormat *string                         `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                         `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                         `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SourceType *string                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	URLList    []*CalcBMDAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s CalcBMDAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDAdvanceRequest) SetDataFormat(v string) *CalcBMDAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *CalcBMDAdvanceRequest) SetOrgId(v string) *CalcBMDAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CalcBMDAdvanceRequest) SetOrgName(v string) *CalcBMDAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *CalcBMDAdvanceRequest) SetSourceType(v string) *CalcBMDAdvanceRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CalcBMDAdvanceRequest) SetURLList(v []*CalcBMDAdvanceRequestURLList) *CalcBMDAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type CalcBMDAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s CalcBMDAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDAdvanceRequestURLList) SetURLObject(v io.Reader) *CalcBMDAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type CalcBMDResponseBody struct {
+	Data      *CalcBMDResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CalcBMDResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDResponseBody) SetData(v *CalcBMDResponseBodyData) *CalcBMDResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CalcBMDResponseBody) SetMessage(v string) *CalcBMDResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CalcBMDResponseBody) SetRequestId(v string) *CalcBMDResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CalcBMDResponseBodyData struct {
+	Detections []*CalcBMDResponseBodyDataDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin     []*float32                           `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	ResultURL  *string                              `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+	Spacing    []*float32                           `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+}
+
+func (s CalcBMDResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDResponseBodyData) SetDetections(v []*CalcBMDResponseBodyDataDetections) *CalcBMDResponseBodyData {
+	s.Detections = v
+	return s
+}
+
+func (s *CalcBMDResponseBodyData) SetOrigin(v []*float32) *CalcBMDResponseBodyData {
+	s.Origin = v
+	return s
+}
+
+func (s *CalcBMDResponseBodyData) SetResultURL(v string) *CalcBMDResponseBodyData {
+	s.ResultURL = &v
+	return s
+}
+
+func (s *CalcBMDResponseBodyData) SetSpacing(v []*float32) *CalcBMDResponseBodyData {
+	s.Spacing = v
+	return s
+}
+
+type CalcBMDResponseBodyDataDetections struct {
+	VertBMD      *float32 `json:"VertBMD,omitempty" xml:"VertBMD,omitempty"`
+	VertCategory *float32 `json:"VertCategory,omitempty" xml:"VertCategory,omitempty"`
+	VertId       *string  `json:"VertId,omitempty" xml:"VertId,omitempty"`
+	VertTScore   *float32 `json:"VertTScore,omitempty" xml:"VertTScore,omitempty"`
+	VertZScore   *float32 `json:"VertZScore,omitempty" xml:"VertZScore,omitempty"`
+}
+
+func (s CalcBMDResponseBodyDataDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDResponseBodyDataDetections) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDResponseBodyDataDetections) SetVertBMD(v float32) *CalcBMDResponseBodyDataDetections {
+	s.VertBMD = &v
+	return s
+}
+
+func (s *CalcBMDResponseBodyDataDetections) SetVertCategory(v float32) *CalcBMDResponseBodyDataDetections {
+	s.VertCategory = &v
+	return s
+}
+
+func (s *CalcBMDResponseBodyDataDetections) SetVertId(v string) *CalcBMDResponseBodyDataDetections {
+	s.VertId = &v
+	return s
+}
+
+func (s *CalcBMDResponseBodyDataDetections) SetVertTScore(v float32) *CalcBMDResponseBodyDataDetections {
+	s.VertTScore = &v
+	return s
+}
+
+func (s *CalcBMDResponseBodyDataDetections) SetVertZScore(v float32) *CalcBMDResponseBodyDataDetections {
+	s.VertZScore = &v
+	return s
+}
+
+type CalcBMDResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CalcBMDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CalcBMDResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcBMDResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CalcBMDResponse) SetHeaders(v map[string]*string) *CalcBMDResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CalcBMDResponse) SetStatusCode(v int32) *CalcBMDResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CalcBMDResponse) SetBody(v *CalcBMDResponseBody) *CalcBMDResponse {
+	s.Body = v
+	return s
+}
+
 type CalcCACSRequest struct {
 	DataFormat     *string                   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	DataSourceType *string                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
@@ -5818,6 +6068,180 @@ func (client *Client) AnalyzeChestVesselAdvance(request *AnalyzeChestVesselAdvan
 	}
 
 	_result = analyzeChestVesselResp
+	return _result, _err
+}
+
+func (client *Client) CalcBMDWithOptions(request *CalcBMDRequest, runtime *util.RuntimeOptions) (_result *CalcBMDResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CalcBMD"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CalcBMDResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CalcBMD(request *CalcBMDRequest) (_result *CalcBMDResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CalcBMDResponse{}
+	_body, _err := client.CalcBMDWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CalcBMDAdvance(request *CalcBMDAdvanceRequest, runtime *util.RuntimeOptions) (_result *CalcBMDResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	calcBMDReq := &CalcBMDRequest{}
+	openapiutil.Convert(request, calcBMDReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := calcBMDReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	calcBMDResp, _err := client.CalcBMDWithOptions(calcBMDReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = calcBMDResp
 	return _result, _err
 }
 
