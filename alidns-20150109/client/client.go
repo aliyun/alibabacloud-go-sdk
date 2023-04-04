@@ -19069,6 +19069,7 @@ type DescribeRecordResolveStatisticsSummaryResponseBodyStatistics struct {
 	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	SubDomain  *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) String() string {
@@ -19091,6 +19092,11 @@ func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetDomain
 
 func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetDomainType(v string) *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics {
 	s.DomainType = &v
+	return s
+}
+
+func (s *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics) SetSubDomain(v string) *DescribeRecordResolveStatisticsSummaryResponseBodyStatistics {
+	s.SubDomain = &v
 	return s
 }
 
