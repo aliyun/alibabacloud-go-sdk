@@ -817,6 +817,122 @@ func (s *GetVideoTaskInfoResponse) SetBody(v *GetVideoTaskInfoResponseBody) *Get
 	return s
 }
 
+type LicenseAuthRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	License  *string `json:"License,omitempty" xml:"License,omitempty"`
+	TenantId *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s LicenseAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseAuthRequest) SetAppId(v string) *LicenseAuthRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *LicenseAuthRequest) SetLicense(v string) *LicenseAuthRequest {
+	s.License = &v
+	return s
+}
+
+func (s *LicenseAuthRequest) SetTenantId(v int64) *LicenseAuthRequest {
+	s.TenantId = &v
+	return s
+}
+
+type LicenseAuthResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *LicenseAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s LicenseAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseAuthResponseBody) SetCode(v string) *LicenseAuthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *LicenseAuthResponseBody) SetData(v *LicenseAuthResponseBodyData) *LicenseAuthResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *LicenseAuthResponseBody) SetMessage(v string) *LicenseAuthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *LicenseAuthResponseBody) SetRequestId(v string) *LicenseAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *LicenseAuthResponseBody) SetSuccess(v bool) *LicenseAuthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type LicenseAuthResponseBodyData struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s LicenseAuthResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseAuthResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseAuthResponseBodyData) SetToken(v string) *LicenseAuthResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+type LicenseAuthResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LicenseAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s LicenseAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LicenseAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LicenseAuthResponse) SetHeaders(v map[string]*string) *LicenseAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LicenseAuthResponse) SetStatusCode(v int32) *LicenseAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LicenseAuthResponse) SetBody(v *LicenseAuthResponseBody) *LicenseAuthResponse {
+	s.Body = v
+	return s
+}
+
 type QueryRunningInstanceRequest struct {
 	App       *QueryRunningInstanceRequestApp `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
 	SessionId *string                         `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -3034,6 +3150,58 @@ func (client *Client) GetVideoTaskInfo(request *GetVideoTaskInfoRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoTaskInfoResponse{}
 	_body, _err := client.GetVideoTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) LicenseAuthWithOptions(request *LicenseAuthRequest, runtime *util.RuntimeOptions) (_result *LicenseAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.License)) {
+		query["License"] = request.License
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LicenseAuth"),
+		Version:     tea.String("2022-01-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LicenseAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) LicenseAuth(request *LicenseAuthRequest) (_result *LicenseAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LicenseAuthResponse{}
+	_body, _err := client.LicenseAuthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
