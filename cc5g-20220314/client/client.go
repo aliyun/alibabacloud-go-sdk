@@ -5581,6 +5581,87 @@ func (s *OpenCc5gServiceResponse) SetBody(v *OpenCc5gServiceResponseBody) *OpenC
 	return s
 }
 
+type RebindCardsRequest struct {
+	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Iccids      []*string `json:"Iccids,omitempty" xml:"Iccids,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RebindCardsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindCardsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebindCardsRequest) SetClientToken(v string) *RebindCardsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RebindCardsRequest) SetDryRun(v bool) *RebindCardsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RebindCardsRequest) SetIccids(v []*string) *RebindCardsRequest {
+	s.Iccids = v
+	return s
+}
+
+func (s *RebindCardsRequest) SetRegionId(v string) *RebindCardsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RebindCardsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebindCardsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindCardsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebindCardsResponseBody) SetRequestId(v string) *RebindCardsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebindCardsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebindCardsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebindCardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebindCardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebindCardsResponse) SetHeaders(v map[string]*string) *RebindCardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebindCardsResponse) SetStatusCode(v int32) *RebindCardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebindCardsResponse) SetBody(v *RebindCardsResponseBody) *RebindCardsResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveWirelessCloudConnectorFromGroupRequest struct {
 	ClientToken                   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                        *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -9229,6 +9310,62 @@ func (client *Client) OpenCc5gService(request *OpenCc5gServiceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenCc5gServiceResponse{}
 	_body, _err := client.OpenCc5gServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RebindCardsWithOptions(request *RebindCardsRequest, runtime *util.RuntimeOptions) (_result *RebindCardsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Iccids)) {
+		query["Iccids"] = request.Iccids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebindCards"),
+		Version:     tea.String("2022-03-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebindCardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebindCards(request *RebindCardsRequest) (_result *RebindCardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebindCardsResponse{}
+	_body, _err := client.RebindCardsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
