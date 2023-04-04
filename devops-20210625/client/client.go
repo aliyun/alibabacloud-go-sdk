@@ -24731,6 +24731,218 @@ func (s *UpdateFlowTagGroupResponse) SetBody(v *UpdateFlowTagGroupResponseBody) 
 	return s
 }
 
+type UpdateGroupRequest struct {
+	AccessToken       *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	OrganizationId    *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s UpdateGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupRequest) SetAccessToken(v string) *UpdateGroupRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetAvatarUrl(v string) *UpdateGroupRequest {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetDescription(v string) *UpdateGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetName(v string) *UpdateGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetPath(v string) *UpdateGroupRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetPathWithNamespace(v string) *UpdateGroupRequest {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetVisibilityLevel(v int32) *UpdateGroupRequest {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *UpdateGroupRequest) SetOrganizationId(v string) *UpdateGroupRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type UpdateGroupResponseBody struct {
+	ErrorCode    *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *UpdateGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupResponseBody) SetErrorCode(v string) *UpdateGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBody) SetErrorMessage(v string) *UpdateGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBody) SetResult(v *UpdateGroupResponseBodyResult) *UpdateGroupResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *UpdateGroupResponseBody) SetSuccess(v bool) *UpdateGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGroupResponseBodyResult struct {
+	AvatarUrl         *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	OwnerId           *int64  `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	ParentId          *int64  `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	VisibilityLevel   *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	WebUrl            *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s UpdateGroupResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupResponseBodyResult) SetAvatarUrl(v string) *UpdateGroupResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetDescription(v string) *UpdateGroupResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetId(v int64) *UpdateGroupResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetName(v string) *UpdateGroupResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetNameWithNamespace(v string) *UpdateGroupResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetOwnerId(v int64) *UpdateGroupResponseBodyResult {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetParentId(v int64) *UpdateGroupResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetPath(v string) *UpdateGroupResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetPathWithNamespace(v string) *UpdateGroupResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetType(v string) *UpdateGroupResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetVisibilityLevel(v int32) *UpdateGroupResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *UpdateGroupResponseBodyResult) SetWebUrl(v string) *UpdateGroupResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type UpdateGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupResponse) SetHeaders(v map[string]*string) *UpdateGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupResponse) SetStatusCode(v int32) *UpdateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGroupMemberRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	AliyunPk       *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
@@ -35284,6 +35496,82 @@ func (client *Client) UpdateFlowTagGroup(organizationId *string, id *string, req
 	headers := make(map[string]*string)
 	_result = &UpdateFlowTagGroupResponse{}
 	_body, _err := client.UpdateFlowTagGroupWithOptions(organizationId, id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		body["avatarUrl"] = request.AvatarUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		body["path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathWithNamespace)) {
+		body["pathWithNamespace"] = request.PathWithNamespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibilityLevel)) {
+		body["visibilityLevel"] = request.VisibilityLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroup"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/groups/modify"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.UpdateGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
