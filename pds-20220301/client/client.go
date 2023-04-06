@@ -219,6 +219,95 @@ func (s *AddressGroup) SetName(v string) *AddressGroup {
 	return s
 }
 
+type Domain struct {
+	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId        *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DomainName      *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable *bool   `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize   *int64  `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	ParentDomainId  *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+	SizeQuota       *int64  `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	SizeQuotaUsed   *int64  `json:"size_quota_used,omitempty" xml:"size_quota_used,omitempty"`
+	Status          *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt       *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UsedSize        *int64  `json:"used_size,omitempty" xml:"used_size,omitempty"`
+	UserCountQuota  *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+}
+
+func (s Domain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Domain) GoString() string {
+	return s.String()
+}
+
+func (s *Domain) SetCreatedAt(v string) *Domain {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *Domain) SetDescription(v string) *Domain {
+	s.Description = &v
+	return s
+}
+
+func (s *Domain) SetDomainId(v string) *Domain {
+	s.DomainId = &v
+	return s
+}
+
+func (s *Domain) SetDomainName(v string) *Domain {
+	s.DomainName = &v
+	return s
+}
+
+func (s *Domain) SetInitDriveEnable(v bool) *Domain {
+	s.InitDriveEnable = &v
+	return s
+}
+
+func (s *Domain) SetInitDriveSize(v int64) *Domain {
+	s.InitDriveSize = &v
+	return s
+}
+
+func (s *Domain) SetParentDomainId(v string) *Domain {
+	s.ParentDomainId = &v
+	return s
+}
+
+func (s *Domain) SetSizeQuota(v int64) *Domain {
+	s.SizeQuota = &v
+	return s
+}
+
+func (s *Domain) SetSizeQuotaUsed(v int64) *Domain {
+	s.SizeQuotaUsed = &v
+	return s
+}
+
+func (s *Domain) SetStatus(v int64) *Domain {
+	s.Status = &v
+	return s
+}
+
+func (s *Domain) SetUpdatedAt(v string) *Domain {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Domain) SetUsedSize(v int64) *Domain {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *Domain) SetUserCountQuota(v int64) *Domain {
+	s.UserCountQuota = &v
+	return s
+}
+
 type Drive struct {
 	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	Creator     *string `json:"creator,omitempty" xml:"creator,omitempty"`
@@ -1735,6 +1824,58 @@ func (s *VideoPreviewPlayMetaMeta) SetWidth(v int64) *VideoPreviewPlayMetaMeta {
 	return s
 }
 
+type AddGroupMemberRequest struct {
+	GroupId    *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	MemberId   *string `json:"member_id,omitempty" xml:"member_id,omitempty"`
+	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+}
+
+func (s AddGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberRequest) SetGroupId(v string) *AddGroupMemberRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *AddGroupMemberRequest) SetMemberId(v string) *AddGroupMemberRequest {
+	s.MemberId = &v
+	return s
+}
+
+func (s *AddGroupMemberRequest) SetMemberType(v string) *AddGroupMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+type AddGroupMemberResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s AddGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddGroupMemberResponse) SetHeaders(v map[string]*string) *AddGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddGroupMemberResponse) SetStatusCode(v int32) *AddGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type AuthorizeRequest struct {
 	ClientId     *string   `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	HideConsent  *bool     `json:"hide_consent,omitempty" xml:"hide_consent,omitempty"`
@@ -2271,6 +2412,88 @@ func (s *CopyFileResponse) SetStatusCode(v int32) *CopyFileResponse {
 }
 
 func (s *CopyFileResponse) SetBody(v *CopyFileResponseBody) *CopyFileResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDomainRequest struct {
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
+	DomainName      *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable *bool   `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize   *int64  `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	ParentDomainId  *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+	SizeQuota       *int64  `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	UserCountQuota  *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+}
+
+func (s CreateDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequest) SetDescription(v string) *CreateDomainRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetDomainName(v string) *CreateDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetInitDriveEnable(v bool) *CreateDomainRequest {
+	s.InitDriveEnable = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetInitDriveSize(v int64) *CreateDomainRequest {
+	s.InitDriveSize = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetParentDomainId(v string) *CreateDomainRequest {
+	s.ParentDomainId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetSizeQuota(v int64) *CreateDomainRequest {
+	s.SizeQuota = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetUserCountQuota(v int64) *CreateDomainRequest {
+	s.UserCountQuota = &v
+	return s
+}
+
+type CreateDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDomainResponse) SetBody(v *Domain) *CreateDomainResponse {
 	s.Body = v
 	return s
 }
@@ -3052,6 +3275,47 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 	return s
 }
 
+type DeleteDomainRequest struct {
+	// domain id
+	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+}
+
+func (s DeleteDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainRequest) SetDomainId(v string) *DeleteDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+type DeleteDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteDriveRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 }
@@ -3653,6 +3917,7 @@ func (s *FilePutUserTagsRequestUserTags) SetValue(v string) *FilePutUserTagsRequ
 }
 
 type FilePutUserTagsResponseBody struct {
+	// file id
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -3914,6 +4179,59 @@ func (s *GetDefaultDriveResponse) SetStatusCode(v int32) *GetDefaultDriveRespons
 }
 
 func (s *GetDefaultDriveResponse) SetBody(v *Drive) *GetDefaultDriveResponse {
+	s.Body = v
+	return s
+}
+
+type GetDomainRequest struct {
+	// domain id
+	DomainId     *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	GetQuotaUsed *bool   `json:"get_quota_used,omitempty" xml:"get_quota_used,omitempty"`
+}
+
+func (s GetDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainRequest) SetDomainId(v string) *GetDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *GetDomainRequest) SetGetQuotaUsed(v bool) *GetDomainRequest {
+	s.GetQuotaUsed = &v
+	return s
+}
+
+type GetDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDomainResponse) SetHeaders(v map[string]*string) *GetDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDomainResponse) SetStatusCode(v int32) *GetDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDomainResponse) SetBody(v *Domain) *GetDomainResponse {
 	s.Body = v
 	return s
 }
@@ -4908,6 +5226,7 @@ type GetVideoPreviewPlayInfoRequest struct {
 	GetWithoutUrl *bool   `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
 	ShareId       *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	TemplateId    *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
+	UrlExpireSec  *int64  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
 func (s GetVideoPreviewPlayInfoRequest) String() string {
@@ -4945,6 +5264,11 @@ func (s *GetVideoPreviewPlayInfoRequest) SetShareId(v string) *GetVideoPreviewPl
 
 func (s *GetVideoPreviewPlayInfoRequest) SetTemplateId(v string) *GetVideoPreviewPlayInfoRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *GetVideoPreviewPlayInfoRequest) SetUrlExpireSec(v int64) *GetVideoPreviewPlayInfoRequest {
+	s.UrlExpireSec = &v
 	return s
 }
 
@@ -5490,6 +5814,87 @@ func (s *ListDeltaResponse) SetBody(v *ListDeltaResponseBody) *ListDeltaResponse
 	return s
 }
 
+type ListDomainsRequest struct {
+	Limit          *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker         *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	ParentDomainId *string `json:"parent_domain_id,omitempty" xml:"parent_domain_id,omitempty"`
+}
+
+func (s ListDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsRequest) SetLimit(v int64) *ListDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetMarker(v string) *ListDomainsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetParentDomainId(v string) *ListDomainsRequest {
+	s.ParentDomainId = &v
+	return s
+}
+
+type ListDomainsResponseBody struct {
+	Items      []*Domain `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string   `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponseBody) SetItems(v []*Domain) *ListDomainsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListDomainsResponseBody) SetNextMarker(v string) *ListDomainsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type ListDomainsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponse) SetHeaders(v map[string]*string) *ListDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDriveRequest struct {
 	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	Marker    *string `json:"marker,omitempty" xml:"marker,omitempty"`
@@ -5788,7 +6193,7 @@ func (s *ListFileResponse) SetBody(v *ListFileResponseBody) *ListFileResponse {
 }
 
 type ListGroupRequest struct {
-	Limit  *string `json:"limit,omitempty" xml:"limit,omitempty"`
+	Limit  *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 }
 
@@ -5800,7 +6205,7 @@ func (s ListGroupRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListGroupRequest) SetLimit(v string) *ListGroupRequest {
+func (s *ListGroupRequest) SetLimit(v int32) *ListGroupRequest {
 	s.Limit = &v
 	return s
 }
@@ -5858,6 +6263,99 @@ func (s *ListGroupResponse) SetStatusCode(v int32) *ListGroupResponse {
 }
 
 func (s *ListGroupResponse) SetBody(v *ListGroupResponseBody) *ListGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListGroupMemberRequest struct {
+	GroupId    *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	Limit      *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker     *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+}
+
+func (s ListGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberRequest) SetGroupId(v string) *ListGroupMemberRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupMemberRequest) SetLimit(v int32) *ListGroupMemberRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListGroupMemberRequest) SetMarker(v string) *ListGroupMemberRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListGroupMemberRequest) SetMemberType(v string) *ListGroupMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+type ListGroupMemberResponseBody struct {
+	GroupItems []*Group `json:"group_items,omitempty" xml:"group_items,omitempty" type:"Repeated"`
+	NextMarker *string  `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+	UserItems  []*User  `json:"user_items,omitempty" xml:"user_items,omitempty" type:"Repeated"`
+}
+
+func (s ListGroupMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberResponseBody) SetGroupItems(v []*Group) *ListGroupMemberResponseBody {
+	s.GroupItems = v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetNextMarker(v string) *ListGroupMemberResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+func (s *ListGroupMemberResponseBody) SetUserItems(v []*User) *ListGroupMemberResponseBody {
+	s.UserItems = v
+	return s
+}
+
+type ListGroupMemberResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupMemberResponse) SetHeaders(v map[string]*string) *ListGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupMemberResponse) SetStatusCode(v int32) *ListGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupMemberResponse) SetBody(v *ListGroupMemberResponseBody) *ListGroupMemberResponse {
 	s.Body = v
 	return s
 }
@@ -5933,6 +6431,156 @@ func (s *ListMyDrivesResponse) SetStatusCode(v int32) *ListMyDrivesResponse {
 }
 
 func (s *ListMyDrivesResponse) SetBody(v *ListMyDrivesResponseBody) *ListMyDrivesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMyGroupDriveRequest struct {
+	Limit  *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListMyGroupDriveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyGroupDriveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyGroupDriveRequest) SetLimit(v int32) *ListMyGroupDriveRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListMyGroupDriveRequest) SetMarker(v string) *ListMyGroupDriveRequest {
+	s.Marker = &v
+	return s
+}
+
+type ListMyGroupDriveResponseBody struct {
+	Items      []*Drive `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string  `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListMyGroupDriveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyGroupDriveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyGroupDriveResponseBody) SetItems(v []*Drive) *ListMyGroupDriveResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListMyGroupDriveResponseBody) SetNextMarker(v string) *ListMyGroupDriveResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type ListMyGroupDriveResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMyGroupDriveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMyGroupDriveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMyGroupDriveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMyGroupDriveResponse) SetHeaders(v map[string]*string) *ListMyGroupDriveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMyGroupDriveResponse) SetStatusCode(v int32) *ListMyGroupDriveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMyGroupDriveResponse) SetBody(v *ListMyGroupDriveResponseBody) *ListMyGroupDriveResponse {
+	s.Body = v
+	return s
+}
+
+type ListReceivedFileRequest struct {
+	Limit  *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListReceivedFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReceivedFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListReceivedFileRequest) SetLimit(v int32) *ListReceivedFileRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListReceivedFileRequest) SetMarker(v string) *ListReceivedFileRequest {
+	s.Marker = &v
+	return s
+}
+
+type ListReceivedFileResponseBody struct {
+	Items      []*File `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListReceivedFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReceivedFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListReceivedFileResponseBody) SetItems(v []*File) *ListReceivedFileResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListReceivedFileResponseBody) SetNextMarker(v string) *ListReceivedFileResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type ListReceivedFileResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListReceivedFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListReceivedFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListReceivedFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListReceivedFileResponse) SetHeaders(v map[string]*string) *ListReceivedFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListReceivedFileResponse) SetStatusCode(v int32) *ListReceivedFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListReceivedFileResponse) SetBody(v *ListReceivedFileResponseBody) *ListReceivedFileResponse {
 	s.Body = v
 	return s
 }
@@ -6738,6 +7386,58 @@ func (s *RemoveFaceGroupFileResponse) SetStatusCode(v int32) *RemoveFaceGroupFil
 	return s
 }
 
+type RemoveGroupMemberRequest struct {
+	GroupId    *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
+	MemberId   *string `json:"member_id,omitempty" xml:"member_id,omitempty"`
+	MemberType *string `json:"member_type,omitempty" xml:"member_type,omitempty"`
+}
+
+func (s RemoveGroupMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberRequest) SetGroupId(v string) *RemoveGroupMemberRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *RemoveGroupMemberRequest) SetMemberId(v string) *RemoveGroupMemberRequest {
+	s.MemberId = &v
+	return s
+}
+
+func (s *RemoveGroupMemberRequest) SetMemberType(v string) *RemoveGroupMemberRequest {
+	s.MemberType = &v
+	return s
+}
+
+type RemoveGroupMemberResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s RemoveGroupMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveGroupMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveGroupMemberResponse) SetHeaders(v map[string]*string) *RemoveGroupMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveGroupMemberResponse) SetStatusCode(v int32) *RemoveGroupMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type RestoreFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
@@ -7065,6 +7765,93 @@ func (s *SearchAddressGroupsResponse) SetStatusCode(v int32) *SearchAddressGroup
 }
 
 func (s *SearchAddressGroupsResponse) SetBody(v *SearchAddressGroupsResponseBody) *SearchAddressGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type SearchDomainsRequest struct {
+	Limit   *int64  `json:"limit,omitempty" xml:"limit,omitempty"`
+	Marker  *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+}
+
+func (s SearchDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDomainsRequest) SetLimit(v int64) *SearchDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *SearchDomainsRequest) SetMarker(v string) *SearchDomainsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *SearchDomainsRequest) SetName(v string) *SearchDomainsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchDomainsRequest) SetOrderBy(v string) *SearchDomainsRequest {
+	s.OrderBy = &v
+	return s
+}
+
+type SearchDomainsResponseBody struct {
+	Items      []*Domain `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	NextMarker *string   `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s SearchDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDomainsResponseBody) SetItems(v []*Domain) *SearchDomainsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *SearchDomainsResponseBody) SetNextMarker(v string) *SearchDomainsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type SearchDomainsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDomainsResponse) SetHeaders(v map[string]*string) *SearchDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchDomainsResponse) SetStatusCode(v int32) *SearchDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchDomainsResponse) SetBody(v *SearchDomainsResponseBody) *SearchDomainsResponse {
 	s.Body = v
 	return s
 }
@@ -7660,6 +8447,89 @@ func (s *TrashFileResponse) SetStatusCode(v int32) *TrashFileResponse {
 }
 
 func (s *TrashFileResponse) SetBody(v *TrashFileResponseBody) *TrashFileResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateDomainRequest struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// domain id
+	DomainId        *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DomainName      *string `json:"domain_name,omitempty" xml:"domain_name,omitempty"`
+	InitDriveEnable *bool   `json:"init_drive_enable,omitempty" xml:"init_drive_enable,omitempty"`
+	InitDriveSize   *int64  `json:"init_drive_size,omitempty" xml:"init_drive_size,omitempty"`
+	SizeQuota       *int64  `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
+	UserCountQuota  *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+}
+
+func (s UpdateDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDomainRequest) SetDescription(v string) *UpdateDomainRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetDomainId(v string) *UpdateDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetDomainName(v string) *UpdateDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetInitDriveEnable(v bool) *UpdateDomainRequest {
+	s.InitDriveEnable = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetInitDriveSize(v int64) *UpdateDomainRequest {
+	s.InitDriveSize = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetSizeQuota(v int64) *UpdateDomainRequest {
+	s.SizeQuota = &v
+	return s
+}
+
+func (s *UpdateDomainRequest) SetUserCountQuota(v int64) *UpdateDomainRequest {
+	s.UserCountQuota = &v
+	return s
+}
+
+type UpdateDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Domain            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDomainResponse) SetHeaders(v map[string]*string) *UpdateDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDomainResponse) SetStatusCode(v int32) *UpdateDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDomainResponse) SetBody(v *Domain) *UpdateDomainResponse {
 	s.Body = v
 	return s
 }
@@ -8334,11 +9204,56 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
-func (client *Client) Authorize(request *AuthorizeRequest) (_result *AuthorizeResponse, _err error) {
+func (client *Client) AddGroupMemberWithOptions(domainId *string, request *AddGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["domain_id"] = domainId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["group_id"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		body["member_id"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["member_type"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddGroupMember"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/group/add_member"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddGroupMemberResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddGroupMember(domainId *string, request *AddGroupMemberRequest) (_result *AddGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AuthorizeResponse{}
-	_body, _err := client.AuthorizeWithOptions(request, headers, runtime)
+	_result = &AddGroupMemberResponse{}
+	_body, _err := client.AddGroupMemberWithOptions(domainId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8410,11 +9325,11 @@ func (client *Client) AuthorizeWithOptions(tmpReq *AuthorizeRequest, headers map
 	return _result, _err
 }
 
-func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err error) {
+func (client *Client) Authorize(request *AuthorizeRequest) (_result *AuthorizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchResponse{}
-	_body, _err := client.BatchWithOptions(request, headers, runtime)
+	_result = &AuthorizeResponse{}
+	_body, _err := client.AuthorizeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8460,11 +9375,11 @@ func (client *Client) BatchWithOptions(request *BatchRequest, headers map[string
 	return _result, _err
 }
 
-func (client *Client) CancelShareLink(request *CancelShareLinkRequest) (_result *CancelShareLinkResponse, _err error) {
+func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CancelShareLinkResponse{}
-	_body, _err := client.CancelShareLinkWithOptions(request, headers, runtime)
+	_result = &BatchResponse{}
+	_body, _err := client.BatchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8506,11 +9421,11 @@ func (client *Client) CancelShareLinkWithOptions(request *CancelShareLinkRequest
 	return _result, _err
 }
 
-func (client *Client) ClearRecyclebin(request *ClearRecyclebinRequest) (_result *ClearRecyclebinResponse, _err error) {
+func (client *Client) CancelShareLink(request *CancelShareLinkRequest) (_result *CancelShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ClearRecyclebinResponse{}
-	_body, _err := client.ClearRecyclebinWithOptions(request, headers, runtime)
+	_result = &CancelShareLinkResponse{}
+	_body, _err := client.CancelShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8552,11 +9467,11 @@ func (client *Client) ClearRecyclebinWithOptions(request *ClearRecyclebinRequest
 	return _result, _err
 }
 
-func (client *Client) CompleteFile(request *CompleteFileRequest) (_result *CompleteFileResponse, _err error) {
+func (client *Client) ClearRecyclebin(request *ClearRecyclebinRequest) (_result *ClearRecyclebinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CompleteFileResponse{}
-	_body, _err := client.CompleteFileWithOptions(request, headers, runtime)
+	_result = &ClearRecyclebinResponse{}
+	_body, _err := client.ClearRecyclebinWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8606,11 +9521,11 @@ func (client *Client) CompleteFileWithOptions(request *CompleteFileRequest, head
 	return _result, _err
 }
 
-func (client *Client) CopyFile(request *CopyFileRequest) (_result *CopyFileResponse, _err error) {
+func (client *Client) CompleteFile(request *CompleteFileRequest) (_result *CompleteFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CopyFileResponse{}
-	_body, _err := client.CopyFileWithOptions(request, headers, runtime)
+	_result = &CompleteFileResponse{}
+	_body, _err := client.CompleteFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8664,11 +9579,81 @@ func (client *Client) CopyFileWithOptions(request *CopyFileRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateDriveResponse, _err error) {
+func (client *Client) CopyFile(request *CopyFileRequest) (_result *CopyFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDriveResponse{}
-	_body, _err := client.CreateDriveWithOptions(request, headers, runtime)
+	_result = &CopyFileResponse{}
+	_body, _err := client.CopyFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["domain_name"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitDriveEnable)) {
+		body["init_drive_enable"] = request.InitDriveEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitDriveSize)) {
+		body["init_drive_size"] = request.InitDriveSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDomainId)) {
+		body["parent_domain_id"] = request.ParentDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeQuota)) {
+		body["size_quota"] = request.SizeQuota
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCountQuota)) {
+		body["user_count_quota"] = request.UserCountQuota
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDomain"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CreateDomainWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8738,11 +9723,11 @@ func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, header
 	return _result, _err
 }
 
-func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
+func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateFileResponse{}
-	_body, _err := client.CreateFileWithOptions(request, headers, runtime)
+	_result = &CreateDriveResponse{}
+	_body, _err := client.CreateDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8788,7 +9773,7 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 		body["hidden"] = request.Hidden
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ImageMediaMetadata))) {
+	if !tea.BoolValue(util.IsUnset(request.ImageMediaMetadata)) {
 		body["image_media_metadata"] = request.ImageMediaMetadata
 	}
 
@@ -8836,7 +9821,7 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 		body["user_tags"] = request.UserTags
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.VideoMediaMetadata))) {
+	if !tea.BoolValue(util.IsUnset(request.VideoMediaMetadata)) {
 		body["video_media_metadata"] = request.VideoMediaMetadata
 	}
 
@@ -8864,11 +9849,11 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
+func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateGroupResponse{}
-	_body, _err := client.CreateGroupWithOptions(request, headers, runtime)
+	_result = &CreateFileResponse{}
+	_body, _err := client.CreateFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8922,11 +9907,11 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, header
 	return _result, _err
 }
 
-func (client *Client) CreateShareLink(request *CreateShareLinkRequest) (_result *CreateShareLinkResponse, _err error) {
+func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateShareLinkResponse{}
-	_body, _err := client.CreateShareLinkWithOptions(request, headers, runtime)
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CreateGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9016,11 +10001,11 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 	return _result, _err
 }
 
-func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
+func (client *Client) CreateShareLink(request *CreateShareLinkRequest) (_result *CreateShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateUserResponse{}
-	_body, _err := client.CreateUserWithOptions(request, headers, runtime)
+	_result = &CreateShareLinkResponse{}
+	_body, _err := client.CreateShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9102,11 +10087,57 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteDriveResponse, _err error) {
+func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDriveResponse{}
-	_body, _err := client.DeleteDriveWithOptions(request, headers, runtime)
+	_result = &CreateUserResponse{}
+	_body, _err := client.CreateUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		body["domain_id"] = request.DomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDomain"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.DeleteDomainWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9148,11 +10179,11 @@ func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, header
 	return _result, _err
 }
 
-func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteFileResponse{}
-	_body, _err := client.DeleteFileWithOptions(request, headers, runtime)
+	_result = &DeleteDriveResponse{}
+	_body, _err := client.DeleteDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9198,11 +10229,11 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
+func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteGroupResponse{}
-	_body, _err := client.DeleteGroupWithOptions(request, headers, runtime)
+	_result = &DeleteFileResponse{}
+	_body, _err := client.DeleteFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9244,11 +10275,11 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, header
 	return _result, _err
 }
 
-func (client *Client) DeleteRevision(request *DeleteRevisionRequest) (_result *DeleteRevisionResponse, _err error) {
+func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteRevisionResponse{}
-	_body, _err := client.DeleteRevisionWithOptions(request, headers, runtime)
+	_result = &DeleteGroupResponse{}
+	_body, _err := client.DeleteGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9298,11 +10329,11 @@ func (client *Client) DeleteRevisionWithOptions(request *DeleteRevisionRequest, 
 	return _result, _err
 }
 
-func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteRevision(request *DeleteRevisionRequest) (_result *DeleteRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(request, headers, runtime)
+	_result = &DeleteRevisionResponse{}
+	_body, _err := client.DeleteRevisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9344,11 +10375,11 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) DeltaGetLastCursor(request *DeltaGetLastCursorRequest) (_result *DeltaGetLastCursorResponse, _err error) {
+func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeltaGetLastCursorResponse{}
-	_body, _err := client.DeltaGetLastCursorWithOptions(request, headers, runtime)
+	_result = &DeleteUserResponse{}
+	_body, _err := client.DeleteUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9394,11 +10425,11 @@ func (client *Client) DeltaGetLastCursorWithOptions(request *DeltaGetLastCursorR
 	return _result, _err
 }
 
-func (client *Client) DownloadFile(request *DownloadFileRequest) (_result *DownloadFileResponse, _err error) {
+func (client *Client) DeltaGetLastCursor(request *DeltaGetLastCursorRequest) (_result *DeltaGetLastCursorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DownloadFileResponse{}
-	_body, _err := client.DownloadFileWithOptions(request, headers, runtime)
+	_result = &DeltaGetLastCursorResponse{}
+	_body, _err := client.DeltaGetLastCursorWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9456,11 +10487,11 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 	return _result, _err
 }
 
-func (client *Client) FileAddPermission(request *FileAddPermissionRequest) (_result *FileAddPermissionResponse, _err error) {
+func (client *Client) DownloadFile(request *DownloadFileRequest) (_result *DownloadFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileAddPermissionResponse{}
-	_body, _err := client.FileAddPermissionWithOptions(request, headers, runtime)
+	_result = &DownloadFileResponse{}
+	_body, _err := client.DownloadFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9510,11 +10541,11 @@ func (client *Client) FileAddPermissionWithOptions(request *FileAddPermissionReq
 	return _result, _err
 }
 
-func (client *Client) FileDeleteUserTags(request *FileDeleteUserTagsRequest) (_result *FileDeleteUserTagsResponse, _err error) {
+func (client *Client) FileAddPermission(request *FileAddPermissionRequest) (_result *FileAddPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileDeleteUserTagsResponse{}
-	_body, _err := client.FileDeleteUserTagsWithOptions(request, headers, runtime)
+	_result = &FileAddPermissionResponse{}
+	_body, _err := client.FileAddPermissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9564,11 +10595,11 @@ func (client *Client) FileDeleteUserTagsWithOptions(request *FileDeleteUserTagsR
 	return _result, _err
 }
 
-func (client *Client) FileListPermission(request *FileListPermissionRequest) (_result *FileListPermissionResponse, _err error) {
+func (client *Client) FileDeleteUserTags(request *FileDeleteUserTagsRequest) (_result *FileDeleteUserTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileListPermissionResponse{}
-	_body, _err := client.FileListPermissionWithOptions(request, headers, runtime)
+	_result = &FileDeleteUserTagsResponse{}
+	_body, _err := client.FileDeleteUserTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9614,11 +10645,11 @@ func (client *Client) FileListPermissionWithOptions(request *FileListPermissionR
 	return _result, _err
 }
 
-func (client *Client) FilePutUserTags(request *FilePutUserTagsRequest) (_result *FilePutUserTagsResponse, _err error) {
+func (client *Client) FileListPermission(request *FileListPermissionRequest) (_result *FileListPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FilePutUserTagsResponse{}
-	_body, _err := client.FilePutUserTagsWithOptions(request, headers, runtime)
+	_result = &FileListPermissionResponse{}
+	_body, _err := client.FileListPermissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9668,11 +10699,11 @@ func (client *Client) FilePutUserTagsWithOptions(request *FilePutUserTagsRequest
 	return _result, _err
 }
 
-func (client *Client) FileRemovePermission(request *FileRemovePermissionRequest) (_result *FileRemovePermissionResponse, _err error) {
+func (client *Client) FilePutUserTags(request *FilePutUserTagsRequest) (_result *FilePutUserTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &FileRemovePermissionResponse{}
-	_body, _err := client.FileRemovePermissionWithOptions(request, headers, runtime)
+	_result = &FilePutUserTagsResponse{}
+	_body, _err := client.FilePutUserTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9722,11 +10753,11 @@ func (client *Client) FileRemovePermissionWithOptions(request *FileRemovePermiss
 	return _result, _err
 }
 
-func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
+func (client *Client) FileRemovePermission(request *FileRemovePermissionRequest) (_result *FileRemovePermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetAsyncTaskResponse{}
-	_body, _err := client.GetAsyncTaskWithOptions(request, headers, runtime)
+	_result = &FileRemovePermissionResponse{}
+	_body, _err := client.FileRemovePermissionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9768,11 +10799,11 @@ func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, head
 	return _result, _err
 }
 
-func (client *Client) GetDefaultDrive(request *GetDefaultDriveRequest) (_result *GetDefaultDriveResponse, _err error) {
+func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDefaultDriveResponse{}
-	_body, _err := client.GetDefaultDriveWithOptions(request, headers, runtime)
+	_result = &GetAsyncTaskResponse{}
+	_body, _err := client.GetAsyncTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9814,11 +10845,61 @@ func (client *Client) GetDefaultDriveWithOptions(request *GetDefaultDriveRequest
 	return _result, _err
 }
 
-func (client *Client) GetDownloadUrl(request *GetDownloadUrlRequest) (_result *GetDownloadUrlResponse, _err error) {
+func (client *Client) GetDefaultDrive(request *GetDefaultDriveRequest) (_result *GetDefaultDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDownloadUrlResponse{}
-	_body, _err := client.GetDownloadUrlWithOptions(request, headers, runtime)
+	_result = &GetDefaultDriveResponse{}
+	_body, _err := client.GetDefaultDriveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDomainWithOptions(request *GetDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		body["domain_id"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GetQuotaUsed)) {
+		body["get_quota_used"] = request.GetQuotaUsed
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDomain"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/get"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDomainResponse{}
+	_body, _err := client.GetDomainWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9872,11 +10953,11 @@ func (client *Client) GetDownloadUrlWithOptions(request *GetDownloadUrlRequest, 
 	return _result, _err
 }
 
-func (client *Client) GetDrive(request *GetDriveRequest) (_result *GetDriveResponse, _err error) {
+func (client *Client) GetDownloadUrl(request *GetDownloadUrlRequest) (_result *GetDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDriveResponse{}
-	_body, _err := client.GetDriveWithOptions(request, headers, runtime)
+	_result = &GetDownloadUrlResponse{}
+	_body, _err := client.GetDownloadUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9918,11 +10999,11 @@ func (client *Client) GetDriveWithOptions(request *GetDriveRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse, _err error) {
+func (client *Client) GetDrive(request *GetDriveRequest) (_result *GetDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetFileResponse{}
-	_body, _err := client.GetFileWithOptions(request, headers, runtime)
+	_result = &GetDriveResponse{}
+	_body, _err := client.GetDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9976,11 +11057,11 @@ func (client *Client) GetFileWithOptions(request *GetFileRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
+func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetGroupResponse{}
-	_body, _err := client.GetGroupWithOptions(request, headers, runtime)
+	_result = &GetFileResponse{}
+	_body, _err := client.GetFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10022,11 +11103,11 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) GetLinkInfo(request *GetLinkInfoRequest) (_result *GetLinkInfoResponse, _err error) {
+func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLinkInfoResponse{}
-	_body, _err := client.GetLinkInfoWithOptions(request, headers, runtime)
+	_result = &GetGroupResponse{}
+	_body, _err := client.GetGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10076,11 +11157,11 @@ func (client *Client) GetLinkInfoWithOptions(request *GetLinkInfoRequest, header
 	return _result, _err
 }
 
-func (client *Client) GetLinkInfoByUserId(request *GetLinkInfoByUserIdRequest) (_result *GetLinkInfoByUserIdResponse, _err error) {
+func (client *Client) GetLinkInfo(request *GetLinkInfoRequest) (_result *GetLinkInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetLinkInfoByUserIdResponse{}
-	_body, _err := client.GetLinkInfoByUserIdWithOptions(request, headers, runtime)
+	_result = &GetLinkInfoResponse{}
+	_body, _err := client.GetLinkInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10122,11 +11203,11 @@ func (client *Client) GetLinkInfoByUserIdWithOptions(request *GetLinkInfoByUserI
 	return _result, _err
 }
 
-func (client *Client) GetRevision(request *GetRevisionRequest) (_result *GetRevisionResponse, _err error) {
+func (client *Client) GetLinkInfoByUserId(request *GetLinkInfoByUserIdRequest) (_result *GetLinkInfoByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetRevisionResponse{}
-	_body, _err := client.GetRevisionWithOptions(request, headers, runtime)
+	_result = &GetLinkInfoByUserIdResponse{}
+	_body, _err := client.GetLinkInfoByUserIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10184,11 +11265,11 @@ func (client *Client) GetRevisionWithOptions(request *GetRevisionRequest, header
 	return _result, _err
 }
 
-func (client *Client) GetShareLink(request *GetShareLinkRequest) (_result *GetShareLinkResponse, _err error) {
+func (client *Client) GetRevision(request *GetRevisionRequest) (_result *GetRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetShareLinkResponse{}
-	_body, _err := client.GetShareLinkWithOptions(request, headers, runtime)
+	_result = &GetRevisionResponse{}
+	_body, _err := client.GetRevisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10230,11 +11311,11 @@ func (client *Client) GetShareLinkWithOptions(request *GetShareLinkRequest, head
 	return _result, _err
 }
 
-func (client *Client) GetShareLinkByAnonymous(request *GetShareLinkByAnonymousRequest) (_result *GetShareLinkByAnonymousResponse, _err error) {
+func (client *Client) GetShareLink(request *GetShareLinkRequest) (_result *GetShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetShareLinkByAnonymousResponse{}
-	_body, _err := client.GetShareLinkByAnonymousWithOptions(request, headers, runtime)
+	_result = &GetShareLinkResponse{}
+	_body, _err := client.GetShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10276,11 +11357,11 @@ func (client *Client) GetShareLinkByAnonymousWithOptions(request *GetShareLinkBy
 	return _result, _err
 }
 
-func (client *Client) GetShareLinkToken(request *GetShareLinkTokenRequest) (_result *GetShareLinkTokenResponse, _err error) {
+func (client *Client) GetShareLinkByAnonymous(request *GetShareLinkByAnonymousRequest) (_result *GetShareLinkByAnonymousResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetShareLinkTokenResponse{}
-	_body, _err := client.GetShareLinkTokenWithOptions(request, headers, runtime)
+	_result = &GetShareLinkByAnonymousResponse{}
+	_body, _err := client.GetShareLinkByAnonymousWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10330,11 +11411,11 @@ func (client *Client) GetShareLinkTokenWithOptions(request *GetShareLinkTokenReq
 	return _result, _err
 }
 
-func (client *Client) GetUploadUrl(request *GetUploadUrlRequest) (_result *GetUploadUrlResponse, _err error) {
+func (client *Client) GetShareLinkToken(request *GetShareLinkTokenRequest) (_result *GetShareLinkTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUploadUrlResponse{}
-	_body, _err := client.GetUploadUrlWithOptions(request, headers, runtime)
+	_result = &GetShareLinkTokenResponse{}
+	_body, _err := client.GetShareLinkTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10392,11 +11473,11 @@ func (client *Client) GetUploadUrlWithOptions(request *GetUploadUrlRequest, head
 	return _result, _err
 }
 
-func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
+func (client *Client) GetUploadUrl(request *GetUploadUrlRequest) (_result *GetUploadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(request, headers, runtime)
+	_result = &GetUploadUrlResponse{}
+	_body, _err := client.GetUploadUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10438,11 +11519,11 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 	return _result, _err
 }
 
-func (client *Client) GetVideoPreviewPlayInfo(request *GetVideoPreviewPlayInfoRequest) (_result *GetVideoPreviewPlayInfoResponse, _err error) {
+func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetVideoPreviewPlayInfoResponse{}
-	_body, _err := client.GetVideoPreviewPlayInfoWithOptions(request, headers, runtime)
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10480,6 +11561,10 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 		body["template_id"] = request.TemplateId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
+		body["url_expire_sec"] = request.UrlExpireSec
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -10504,11 +11589,11 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
-func (client *Client) GetVideoPreviewPlayMeta(request *GetVideoPreviewPlayMetaRequest) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
+func (client *Client) GetVideoPreviewPlayInfo(request *GetVideoPreviewPlayInfoRequest) (_result *GetVideoPreviewPlayInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetVideoPreviewPlayMetaResponse{}
-	_body, _err := client.GetVideoPreviewPlayMetaWithOptions(request, headers, runtime)
+	_result = &GetVideoPreviewPlayInfoResponse{}
+	_body, _err := client.GetVideoPreviewPlayInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10562,11 +11647,11 @@ func (client *Client) GetVideoPreviewPlayMetaWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
-func (client *Client) ImportUser(request *ImportUserRequest) (_result *ImportUserResponse, _err error) {
+func (client *Client) GetVideoPreviewPlayMeta(request *GetVideoPreviewPlayMetaRequest) (_result *GetVideoPreviewPlayMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ImportUserResponse{}
-	_body, _err := client.ImportUserWithOptions(request, headers, runtime)
+	_result = &GetVideoPreviewPlayMetaResponse{}
+	_body, _err := client.GetVideoPreviewPlayMetaWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10636,11 +11721,11 @@ func (client *Client) ImportUserWithOptions(request *ImportUserRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) LinkAccount(request *LinkAccountRequest) (_result *LinkAccountResponse, _err error) {
+func (client *Client) ImportUser(request *ImportUserRequest) (_result *ImportUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &LinkAccountResponse{}
-	_body, _err := client.LinkAccountWithOptions(request, headers, runtime)
+	_result = &ImportUserResponse{}
+	_body, _err := client.ImportUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10694,11 +11779,11 @@ func (client *Client) LinkAccountWithOptions(request *LinkAccountRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_result *ListAddressGroupsResponse, _err error) {
+func (client *Client) LinkAccount(request *LinkAccountRequest) (_result *LinkAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListAddressGroupsResponse{}
-	_body, _err := client.ListAddressGroupsWithOptions(request, headers, runtime)
+	_result = &LinkAccountResponse{}
+	_body, _err := client.LinkAccountWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10756,11 +11841,11 @@ func (client *Client) ListAddressGroupsWithOptions(request *ListAddressGroupsReq
 	return _result, _err
 }
 
-func (client *Client) ListDelta(request *ListDeltaRequest) (_result *ListDeltaResponse, _err error) {
+func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_result *ListAddressGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDeltaResponse{}
-	_body, _err := client.ListDeltaWithOptions(request, headers, runtime)
+	_result = &ListAddressGroupsResponse{}
+	_body, _err := client.ListAddressGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10814,11 +11899,65 @@ func (client *Client) ListDeltaWithOptions(request *ListDeltaRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListDrive(request *ListDriveRequest) (_result *ListDriveResponse, _err error) {
+func (client *Client) ListDelta(request *ListDeltaRequest) (_result *ListDeltaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDriveResponse{}
-	_body, _err := client.ListDriveWithOptions(request, headers, runtime)
+	_result = &ListDeltaResponse{}
+	_body, _err := client.ListDeltaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentDomainId)) {
+		body["parent_domain_id"] = request.ParentDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDomains"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDomainsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDomainsResponse{}
+	_body, _err := client.ListDomainsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10872,11 +12011,11 @@ func (client *Client) ListDriveWithOptions(request *ListDriveRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListFacegroups(request *ListFacegroupsRequest) (_result *ListFacegroupsResponse, _err error) {
+func (client *Client) ListDrive(request *ListDriveRequest) (_result *ListDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFacegroupsResponse{}
-	_body, _err := client.ListFacegroupsWithOptions(request, headers, runtime)
+	_result = &ListDriveResponse{}
+	_body, _err := client.ListDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10930,11 +12069,11 @@ func (client *Client) ListFacegroupsWithOptions(request *ListFacegroupsRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListFile(request *ListFileRequest) (_result *ListFileResponse, _err error) {
+func (client *Client) ListFacegroups(request *ListFacegroupsRequest) (_result *ListFacegroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListFileResponse{}
-	_body, _err := client.ListFileWithOptions(request, headers, runtime)
+	_result = &ListFacegroupsResponse{}
+	_body, _err := client.ListFacegroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11012,11 +12151,11 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupResponse, _err error) {
+func (client *Client) ListFile(request *ListFileRequest) (_result *ListFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListGroupResponse{}
-	_body, _err := client.ListGroupWithOptions(request, headers, runtime)
+	_result = &ListFileResponse{}
+	_body, _err := client.ListFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11062,11 +12201,72 @@ func (client *Client) ListGroupWithOptions(request *ListGroupRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListMyDrives(request *ListMyDrivesRequest) (_result *ListMyDrivesResponse, _err error) {
+func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMyDrivesResponse{}
-	_body, _err := client.ListMyDrivesWithOptions(request, headers, runtime)
+	_result = &ListGroupResponse{}
+	_body, _err := client.ListGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGroupMemberWithOptions(domainId *string, request *ListGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["domain_id"] = domainId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["group_id"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["member_type"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupMember"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/group/list_member"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupMemberResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGroupMember(domainId *string, request *ListGroupMemberRequest) (_result *ListGroupMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGroupMemberResponse{}
+	_body, _err := client.ListGroupMemberWithOptions(domainId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11112,11 +12312,114 @@ func (client *Client) ListMyDrivesWithOptions(request *ListMyDrivesRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListRecyclebin(request *ListRecyclebinRequest) (_result *ListRecyclebinResponse, _err error) {
+func (client *Client) ListMyDrives(request *ListMyDrivesRequest) (_result *ListMyDrivesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRecyclebinResponse{}
-	_body, _err := client.ListRecyclebinWithOptions(request, headers, runtime)
+	_result = &ListMyDrivesResponse{}
+	_body, _err := client.ListMyDrivesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMyGroupDriveWithOptions(domainId *string, request *ListMyGroupDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMyGroupDriveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["domain_id"] = domainId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMyGroupDrive"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/drive/list_my_group_drive"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMyGroupDriveResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMyGroupDrive(domainId *string, request *ListMyGroupDriveRequest) (_result *ListMyGroupDriveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMyGroupDriveResponse{}
+	_body, _err := client.ListMyGroupDriveWithOptions(domainId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListReceivedFileWithOptions(request *ListReceivedFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListReceivedFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListReceivedFile"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/file/list_received_file"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListReceivedFileResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListReceivedFile(request *ListReceivedFileRequest) (_result *ListReceivedFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListReceivedFileResponse{}
+	_body, _err := client.ListReceivedFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11170,11 +12473,11 @@ func (client *Client) ListRecyclebinWithOptions(request *ListRecyclebinRequest, 
 	return _result, _err
 }
 
-func (client *Client) ListRevision(request *ListRevisionRequest) (_result *ListRevisionResponse, _err error) {
+func (client *Client) ListRecyclebin(request *ListRecyclebinRequest) (_result *ListRecyclebinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListRevisionResponse{}
-	_body, _err := client.ListRevisionWithOptions(request, headers, runtime)
+	_result = &ListRecyclebinResponse{}
+	_body, _err := client.ListRecyclebinWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11232,11 +12535,11 @@ func (client *Client) ListRevisionWithOptions(request *ListRevisionRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListShareLink(request *ListShareLinkRequest) (_result *ListShareLinkResponse, _err error) {
+func (client *Client) ListRevision(request *ListRevisionRequest) (_result *ListRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListShareLinkResponse{}
-	_body, _err := client.ListShareLinkWithOptions(request, headers, runtime)
+	_result = &ListRevisionResponse{}
+	_body, _err := client.ListRevisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11298,11 +12601,11 @@ func (client *Client) ListShareLinkWithOptions(request *ListShareLinkRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
+func (client *Client) ListShareLink(request *ListShareLinkRequest) (_result *ListShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListTagsResponse{}
-	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
+	_result = &ListShareLinkResponse{}
+	_body, _err := client.ListShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11352,11 +12655,11 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ListUploadedParts(request *ListUploadedPartsRequest) (_result *ListUploadedPartsResponse, _err error) {
+func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListUploadedPartsResponse{}
-	_body, _err := client.ListUploadedPartsWithOptions(request, headers, runtime)
+	_result = &ListTagsResponse{}
+	_body, _err := client.ListTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11418,11 +12721,11 @@ func (client *Client) ListUploadedPartsWithOptions(request *ListUploadedPartsReq
 	return _result, _err
 }
 
-func (client *Client) ListUser(request *ListUserRequest) (_result *ListUserResponse, _err error) {
+func (client *Client) ListUploadedParts(request *ListUploadedPartsRequest) (_result *ListUploadedPartsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListUserResponse{}
-	_body, _err := client.ListUserWithOptions(request, headers, runtime)
+	_result = &ListUploadedPartsResponse{}
+	_body, _err := client.ListUploadedPartsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11468,11 +12771,11 @@ func (client *Client) ListUserWithOptions(request *ListUserRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileResponse, _err error) {
+func (client *Client) ListUser(request *ListUserRequest) (_result *ListUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &MoveFileResponse{}
-	_body, _err := client.MoveFileWithOptions(request, headers, runtime)
+	_result = &ListUserResponse{}
+	_body, _err := client.ListUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11526,11 +12829,11 @@ func (client *Client) MoveFileWithOptions(request *MoveFileRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) ParseKeywords(request *ParseKeywordsRequest) (_result *ParseKeywordsResponse, _err error) {
+func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ParseKeywordsResponse{}
-	_body, _err := client.ParseKeywordsWithOptions(request, headers, runtime)
+	_result = &MoveFileResponse{}
+	_body, _err := client.MoveFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11572,11 +12875,11 @@ func (client *Client) ParseKeywordsWithOptions(request *ParseKeywordsRequest, he
 	return _result, _err
 }
 
-func (client *Client) RemoveFaceGroupFile(request *RemoveFaceGroupFileRequest) (_result *RemoveFaceGroupFileResponse, _err error) {
+func (client *Client) ParseKeywords(request *ParseKeywordsRequest) (_result *ParseKeywordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveFaceGroupFileResponse{}
-	_body, _err := client.RemoveFaceGroupFileWithOptions(request, headers, runtime)
+	_result = &ParseKeywordsResponse{}
+	_body, _err := client.ParseKeywordsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11626,11 +12929,68 @@ func (client *Client) RemoveFaceGroupFileWithOptions(request *RemoveFaceGroupFil
 	return _result, _err
 }
 
-func (client *Client) RestoreFile(request *RestoreFileRequest) (_result *RestoreFileResponse, _err error) {
+func (client *Client) RemoveFaceGroupFile(request *RemoveFaceGroupFileRequest) (_result *RemoveFaceGroupFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestoreFileResponse{}
-	_body, _err := client.RestoreFileWithOptions(request, headers, runtime)
+	_result = &RemoveFaceGroupFileResponse{}
+	_body, _err := client.RemoveFaceGroupFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveGroupMemberWithOptions(domainId *string, request *RemoveGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveGroupMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["domain_id"] = domainId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["group_id"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberId)) {
+		body["member_id"] = request.MemberId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberType)) {
+		body["member_type"] = request.MemberType
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveGroupMember"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/group/remove_member"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveGroupMemberResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveGroupMember(domainId *string, request *RemoveGroupMemberRequest) (_result *RemoveGroupMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveGroupMemberResponse{}
+	_body, _err := client.RemoveGroupMemberWithOptions(domainId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11676,11 +13036,11 @@ func (client *Client) RestoreFileWithOptions(request *RestoreFileRequest, header
 	return _result, _err
 }
 
-func (client *Client) RestoreRevision(request *RestoreRevisionRequest) (_result *RestoreRevisionResponse, _err error) {
+func (client *Client) RestoreFile(request *RestoreFileRequest) (_result *RestoreFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RestoreRevisionResponse{}
-	_body, _err := client.RestoreRevisionWithOptions(request, headers, runtime)
+	_result = &RestoreFileResponse{}
+	_body, _err := client.RestoreFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11730,11 +13090,11 @@ func (client *Client) RestoreRevisionWithOptions(request *RestoreRevisionRequest
 	return _result, _err
 }
 
-func (client *Client) ScanFile(request *ScanFileRequest) (_result *ScanFileResponse, _err error) {
+func (client *Client) RestoreRevision(request *RestoreRevisionRequest) (_result *RestoreRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ScanFileResponse{}
-	_body, _err := client.ScanFileWithOptions(request, headers, runtime)
+	_result = &RestoreRevisionResponse{}
+	_body, _err := client.RestoreRevisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11788,11 +13148,11 @@ func (client *Client) ScanFileWithOptions(request *ScanFileRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) SearchAddressGroups(request *SearchAddressGroupsRequest) (_result *SearchAddressGroupsResponse, _err error) {
+func (client *Client) ScanFile(request *ScanFileRequest) (_result *ScanFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchAddressGroupsResponse{}
-	_body, _err := client.SearchAddressGroupsWithOptions(request, headers, runtime)
+	_result = &ScanFileResponse{}
+	_body, _err := client.ScanFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11858,11 +13218,69 @@ func (client *Client) SearchAddressGroupsWithOptions(request *SearchAddressGroup
 	return _result, _err
 }
 
-func (client *Client) SearchDrive(request *SearchDriveRequest) (_result *SearchDriveResponse, _err error) {
+func (client *Client) SearchAddressGroups(request *SearchAddressGroupsRequest) (_result *SearchAddressGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchDriveResponse{}
-	_body, _err := client.SearchDriveWithOptions(request, headers, runtime)
+	_result = &SearchAddressGroupsResponse{}
+	_body, _err := client.SearchAddressGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["order_by"] = request.OrderBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchDomains"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/search"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchDomainsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchDomains(request *SearchDomainsRequest) (_result *SearchDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SearchDomainsResponse{}
+	_body, _err := client.SearchDomainsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11920,11 +13338,11 @@ func (client *Client) SearchDriveWithOptions(request *SearchDriveRequest, header
 	return _result, _err
 }
 
-func (client *Client) SearchFile(request *SearchFileRequest) (_result *SearchFileResponse, _err error) {
+func (client *Client) SearchDrive(request *SearchDriveRequest) (_result *SearchDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchFileResponse{}
-	_body, _err := client.SearchFileWithOptions(request, headers, runtime)
+	_result = &SearchDriveResponse{}
+	_body, _err := client.SearchDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11986,11 +13404,11 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) SearchShareLink(request *SearchShareLinkRequest) (_result *SearchShareLinkResponse, _err error) {
+func (client *Client) SearchFile(request *SearchFileRequest) (_result *SearchFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchShareLinkResponse{}
-	_body, _err := client.SearchShareLinkWithOptions(request, headers, runtime)
+	_result = &SearchFileResponse{}
+	_body, _err := client.SearchFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12056,11 +13474,11 @@ func (client *Client) SearchShareLinkWithOptions(request *SearchShareLinkRequest
 	return _result, _err
 }
 
-func (client *Client) SearchUser(request *SearchUserRequest) (_result *SearchUserResponse, _err error) {
+func (client *Client) SearchShareLink(request *SearchShareLinkRequest) (_result *SearchShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SearchUserResponse{}
-	_body, _err := client.SearchUserWithOptions(request, headers, runtime)
+	_result = &SearchShareLinkResponse{}
+	_body, _err := client.SearchShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12134,11 +13552,11 @@ func (client *Client) SearchUserWithOptions(request *SearchUserRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) Token(request *TokenRequest) (_result *TokenResponse, _err error) {
+func (client *Client) SearchUser(request *SearchUserRequest) (_result *SearchUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TokenResponse{}
-	_body, _err := client.TokenWithOptions(request, headers, runtime)
+	_result = &SearchUserResponse{}
+	_body, _err := client.SearchUserWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12204,11 +13622,11 @@ func (client *Client) TokenWithOptions(request *TokenRequest, headers map[string
 	return _result, _err
 }
 
-func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileResponse, _err error) {
+func (client *Client) Token(request *TokenRequest) (_result *TokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &TrashFileResponse{}
-	_body, _err := client.TrashFileWithOptions(request, headers, runtime)
+	_result = &TokenResponse{}
+	_body, _err := client.TokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12254,11 +13672,81 @@ func (client *Client) TrashFileWithOptions(request *TrashFileRequest, headers ma
 	return _result, _err
 }
 
-func (client *Client) UpdateDrive(request *UpdateDriveRequest) (_result *UpdateDriveResponse, _err error) {
+func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDriveResponse{}
-	_body, _err := client.UpdateDriveWithOptions(request, headers, runtime)
+	_result = &TrashFileResponse{}
+	_body, _err := client.TrashFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		body["domain_id"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["domain_name"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitDriveEnable)) {
+		body["init_drive_enable"] = request.InitDriveEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitDriveSize)) {
+		body["init_drive_size"] = request.InitDriveSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeQuota)) {
+		body["size_quota"] = request.SizeQuota
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserCountQuota)) {
+		body["user_count_quota"] = request.UserCountQuota
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDomain"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/domain/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDomain(request *UpdateDomainRequest) (_result *UpdateDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDomainResponse{}
+	_body, _err := client.UpdateDomainWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12316,11 +13804,11 @@ func (client *Client) UpdateDriveWithOptions(request *UpdateDriveRequest, header
 	return _result, _err
 }
 
-func (client *Client) UpdateFacegroup(request *UpdateFacegroupRequest) (_result *UpdateFacegroupResponse, _err error) {
+func (client *Client) UpdateDrive(request *UpdateDriveRequest) (_result *UpdateDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFacegroupResponse{}
-	_body, _err := client.UpdateFacegroupWithOptions(request, headers, runtime)
+	_result = &UpdateDriveResponse{}
+	_body, _err := client.UpdateDriveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12378,11 +13866,11 @@ func (client *Client) UpdateFacegroupWithOptions(request *UpdateFacegroupRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateFile(request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
+func (client *Client) UpdateFacegroup(request *UpdateFacegroupRequest) (_result *UpdateFacegroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateFileResponse{}
-	_body, _err := client.UpdateFileWithOptions(request, headers, runtime)
+	_result = &UpdateFacegroupResponse{}
+	_body, _err := client.UpdateFacegroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12456,11 +13944,11 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
+func (client *Client) UpdateFile(request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateGroupResponse{}
-	_body, _err := client.UpdateGroupWithOptions(request, headers, runtime)
+	_result = &UpdateFileResponse{}
+	_body, _err := client.UpdateFileWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12510,11 +13998,11 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, header
 	return _result, _err
 }
 
-func (client *Client) UpdateRevision(request *UpdateRevisionRequest) (_result *UpdateRevisionResponse, _err error) {
+func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateRevisionResponse{}
-	_body, _err := client.UpdateRevisionWithOptions(request, headers, runtime)
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.UpdateGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12572,11 +14060,11 @@ func (client *Client) UpdateRevisionWithOptions(request *UpdateRevisionRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateShareLink(request *UpdateShareLinkRequest) (_result *UpdateShareLinkResponse, _err error) {
+func (client *Client) UpdateRevision(request *UpdateRevisionRequest) (_result *UpdateRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateShareLinkResponse{}
-	_body, _err := client.UpdateShareLinkWithOptions(request, headers, runtime)
+	_result = &UpdateRevisionResponse{}
+	_body, _err := client.UpdateRevisionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12682,11 +14170,11 @@ func (client *Client) UpdateShareLinkWithOptions(request *UpdateShareLinkRequest
 	return _result, _err
 }
 
-func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+func (client *Client) UpdateShareLink(request *UpdateShareLinkRequest) (_result *UpdateShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateUserResponse{}
-	_body, _err := client.UpdateUserWithOptions(request, headers, runtime)
+	_result = &UpdateShareLinkResponse{}
+	_body, _err := client.UpdateShareLinkWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12761,5 +14249,17 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateUserResponse{}
+	_body, _err := client.UpdateUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
