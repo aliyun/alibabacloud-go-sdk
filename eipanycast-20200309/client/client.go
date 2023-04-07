@@ -296,6 +296,7 @@ type DescribeAnycastEipAddressResponseBody struct {
 	RequestId              *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceLocation        *string                                                        `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
 	Status                 *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   []*DescribeAnycastEipAddressResponseBodyTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAnycastEipAddressResponseBody) String() string {
@@ -381,6 +382,11 @@ func (s *DescribeAnycastEipAddressResponseBody) SetStatus(v string) *DescribeAny
 	return s
 }
 
+func (s *DescribeAnycastEipAddressResponseBody) SetTags(v []*DescribeAnycastEipAddressResponseBodyTags) *DescribeAnycastEipAddressResponseBody {
+	s.Tags = v
+	return s
+}
+
 type DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoList struct {
 	AssociationMode      *string                                                                    `json:"AssociationMode,omitempty" xml:"AssociationMode,omitempty"`
 	BindInstanceId       *string                                                                    `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
@@ -454,6 +460,29 @@ func (s DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations)
 
 func (s *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations) SetPopLocation(v string) *DescribeAnycastEipAddressResponseBodyAnycastEipBindInfoListPopLocations {
 	s.PopLocation = &v
+	return s
+}
+
+type DescribeAnycastEipAddressResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAnycastEipAddressResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAnycastEipAddressResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAnycastEipAddressResponseBodyTags) SetKey(v string) *DescribeAnycastEipAddressResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAnycastEipAddressResponseBodyTags) SetValue(v string) *DescribeAnycastEipAddressResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -683,18 +712,19 @@ func (s *DescribeAnycastServerRegionsResponse) SetBody(v *DescribeAnycastServerR
 }
 
 type ListAnycastEipAddressesRequest struct {
-	AnycastEipAddress  *string   `json:"AnycastEipAddress,omitempty" xml:"AnycastEipAddress,omitempty"`
-	AnycastId          *string   `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
-	AnycastIds         []*string `json:"AnycastIds,omitempty" xml:"AnycastIds,omitempty" type:"Repeated"`
-	BindInstanceIds    []*string `json:"BindInstanceIds,omitempty" xml:"BindInstanceIds,omitempty" type:"Repeated"`
-	BusinessStatus     *string   `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	InstanceChargeType *string   `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InternetChargeType *string   `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ServiceLocation    *string   `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
-	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	AnycastEipAddress  *string                               `json:"AnycastEipAddress,omitempty" xml:"AnycastEipAddress,omitempty"`
+	AnycastId          *string                               `json:"AnycastId,omitempty" xml:"AnycastId,omitempty"`
+	AnycastIds         []*string                             `json:"AnycastIds,omitempty" xml:"AnycastIds,omitempty" type:"Repeated"`
+	BindInstanceIds    []*string                             `json:"BindInstanceIds,omitempty" xml:"BindInstanceIds,omitempty" type:"Repeated"`
+	BusinessStatus     *string                               `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	InstanceChargeType *string                               `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternetChargeType *string                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	MaxResults         *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name               *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken          *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ServiceLocation    *string                               `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
+	Status             *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               []*ListAnycastEipAddressesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAnycastEipAddressesRequest) String() string {
@@ -765,6 +795,34 @@ func (s *ListAnycastEipAddressesRequest) SetStatus(v string) *ListAnycastEipAddr
 	return s
 }
 
+func (s *ListAnycastEipAddressesRequest) SetTags(v []*ListAnycastEipAddressesRequestTags) *ListAnycastEipAddressesRequest {
+	s.Tags = v
+	return s
+}
+
+type ListAnycastEipAddressesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAnycastEipAddressesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnycastEipAddressesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnycastEipAddressesRequestTags) SetKey(v string) *ListAnycastEipAddressesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAnycastEipAddressesRequestTags) SetValue(v string) *ListAnycastEipAddressesRequestTags {
+	s.Value = &v
+	return s
+}
+
 type ListAnycastEipAddressesResponseBody struct {
 	AnycastList []*ListAnycastEipAddressesResponseBodyAnycastList `json:"AnycastList,omitempty" xml:"AnycastList,omitempty" type:"Repeated"`
 	NextToken   *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -815,6 +873,7 @@ type ListAnycastEipAddressesResponseBodyAnycastList struct {
 	ServiceLocation        *string                                                                 `json:"ServiceLocation,omitempty" xml:"ServiceLocation,omitempty"`
 	ServiceManaged         *int32                                                                  `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
 	Status                 *string                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   []*ListAnycastEipAddressesResponseBodyAnycastListTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAnycastEipAddressesResponseBodyAnycastList) String() string {
@@ -895,6 +954,11 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetStatus(v string) *Li
 	return s
 }
 
+func (s *ListAnycastEipAddressesResponseBodyAnycastList) SetTags(v []*ListAnycastEipAddressesResponseBodyAnycastListTags) *ListAnycastEipAddressesResponseBodyAnycastList {
+	s.Tags = v
+	return s
+}
+
 type ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList struct {
 	BindInstanceId       *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
 	BindInstanceRegionId *string `json:"BindInstanceRegionId,omitempty" xml:"BindInstanceRegionId,omitempty"`
@@ -927,6 +991,29 @@ func (s *ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList) S
 
 func (s *ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList) SetBindTime(v string) *ListAnycastEipAddressesResponseBodyAnycastListAnycastEipBindInfoList {
 	s.BindTime = &v
+	return s
+}
+
+type ListAnycastEipAddressesResponseBodyAnycastListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAnycastEipAddressesResponseBodyAnycastListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAnycastEipAddressesResponseBodyAnycastListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListAnycastEipAddressesResponseBodyAnycastListTags) SetKey(v string) *ListAnycastEipAddressesResponseBodyAnycastListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListAnycastEipAddressesResponseBodyAnycastListTags) SetValue(v string) *ListAnycastEipAddressesResponseBodyAnycastListTags {
+	s.Value = &v
 	return s
 }
 
@@ -1787,6 +1874,10 @@ func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEip
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
