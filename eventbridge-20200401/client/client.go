@@ -13,11 +13,10 @@ import (
 )
 
 type CreateApiDestinationRequest struct {
-	ApiDestinationName           *string                                       `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ConnectionName               *string                                       `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	Description                  *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	HttpApiParameters            *CreateApiDestinationRequestHttpApiParameters `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty" type:"Struct"`
-	InvocationRateLimitPerSecond *int64                                        `json:"InvocationRateLimitPerSecond,omitempty" xml:"InvocationRateLimitPerSecond,omitempty"`
+	ApiDestinationName *string                                       `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
+	ConnectionName     *string                                       `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Description        *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	HttpApiParameters  *CreateApiDestinationRequestHttpApiParameters `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty" type:"Struct"`
 }
 
 func (s CreateApiDestinationRequest) String() string {
@@ -48,11 +47,6 @@ func (s *CreateApiDestinationRequest) SetHttpApiParameters(v *CreateApiDestinati
 	return s
 }
 
-func (s *CreateApiDestinationRequest) SetInvocationRateLimitPerSecond(v int64) *CreateApiDestinationRequest {
-	s.InvocationRateLimitPerSecond = &v
-	return s
-}
-
 type CreateApiDestinationRequestHttpApiParameters struct {
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	Method   *string `json:"Method,omitempty" xml:"Method,omitempty"`
@@ -77,11 +71,10 @@ func (s *CreateApiDestinationRequestHttpApiParameters) SetMethod(v string) *Crea
 }
 
 type CreateApiDestinationShrinkRequest struct {
-	ApiDestinationName           *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ConnectionName               *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HttpApiParametersShrink      *string `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty"`
-	InvocationRateLimitPerSecond *int64  `json:"InvocationRateLimitPerSecond,omitempty" xml:"InvocationRateLimitPerSecond,omitempty"`
+	ApiDestinationName      *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
+	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HttpApiParametersShrink *string `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty"`
 }
 
 func (s CreateApiDestinationShrinkRequest) String() string {
@@ -109,11 +102,6 @@ func (s *CreateApiDestinationShrinkRequest) SetDescription(v string) *CreateApiD
 
 func (s *CreateApiDestinationShrinkRequest) SetHttpApiParametersShrink(v string) *CreateApiDestinationShrinkRequest {
 	s.HttpApiParametersShrink = &v
-	return s
-}
-
-func (s *CreateApiDestinationShrinkRequest) SetInvocationRateLimitPerSecond(v int64) *CreateApiDestinationShrinkRequest {
-	s.InvocationRateLimitPerSecond = &v
 	return s
 }
 
@@ -234,11 +222,10 @@ func (s *CreateConnectionRequest) SetNetworkParameters(v *CreateConnectionReques
 }
 
 type CreateConnectionRequestAuthParameters struct {
-	ApiKeyAuthParameters     *CreateConnectionRequestAuthParametersApiKeyAuthParameters     `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	AuthorizationType        *string                                                        `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	BasicAuthParameters      *CreateConnectionRequestAuthParametersBasicAuthParameters      `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	InvocationHttpParameters *CreateConnectionRequestAuthParametersInvocationHttpParameters `json:"InvocationHttpParameters,omitempty" xml:"InvocationHttpParameters,omitempty" type:"Struct"`
-	OAuthParameters          *CreateConnectionRequestAuthParametersOAuthParameters          `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
+	ApiKeyAuthParameters *CreateConnectionRequestAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
+	AuthorizationType    *string                                                    `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	BasicAuthParameters  *CreateConnectionRequestAuthParametersBasicAuthParameters  `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
+	OAuthParameters      *CreateConnectionRequestAuthParametersOAuthParameters      `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
 func (s CreateConnectionRequestAuthParameters) String() string {
@@ -261,11 +248,6 @@ func (s *CreateConnectionRequestAuthParameters) SetAuthorizationType(v string) *
 
 func (s *CreateConnectionRequestAuthParameters) SetBasicAuthParameters(v *CreateConnectionRequestAuthParametersBasicAuthParameters) *CreateConnectionRequestAuthParameters {
 	s.BasicAuthParameters = v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParameters) SetInvocationHttpParameters(v *CreateConnectionRequestAuthParametersInvocationHttpParameters) *CreateConnectionRequestAuthParameters {
-	s.InvocationHttpParameters = v
 	return s
 }
 
@@ -317,104 +299,6 @@ func (s *CreateConnectionRequestAuthParametersBasicAuthParameters) SetPassword(v
 
 func (s *CreateConnectionRequestAuthParametersBasicAuthParameters) SetUsername(v string) *CreateConnectionRequestAuthParametersBasicAuthParameters {
 	s.Username = &v
-	return s
-}
-
-type CreateConnectionRequestAuthParametersInvocationHttpParameters struct {
-	BodyParameters        []*CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters        `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	HeaderParameters      []*CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters      `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	QueryStringParameters []*CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParameters) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParameters) SetBodyParameters(v []*CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) *CreateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.BodyParameters = v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParameters) SetHeaderParameters(v []*CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) *CreateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.HeaderParameters = v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParameters) SetQueryStringParameters(v []*CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) *CreateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.QueryStringParameters = v
-	return s
-}
-
-type CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) SetKey(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) SetValue(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters {
-	s.Value = &v
-	return s
-}
-
-type CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) SetKey(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) SetValue(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters {
-	s.Value = &v
-	return s
-}
-
-type CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) GoString() string {
-	return s.String()
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) SetKey(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) SetValue(v string) *CreateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters {
-	s.Value = &v
 	return s
 }
 
@@ -1021,13 +905,18 @@ func (s *CreateEventSourceRequestSourceRabbitMQParameters) SetVirtualHostName(v 
 }
 
 type CreateEventSourceRequestSourceRocketMQParameters struct {
-	GroupId    *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset     *string  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RegionId   *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag        *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Timestamp  *float32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Topic      *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	GroupID                 *string  `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string  `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstanceSecurityGroupId *string  `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceVSwitchIds      *string  `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string  `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Offset                  *string  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId                *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                     *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Timestamp               *float32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Topic                   *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateEventSourceRequestSourceRocketMQParameters) String() string {
@@ -1038,13 +927,38 @@ func (s CreateEventSourceRequestSourceRocketMQParameters) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEventSourceRequestSourceRocketMQParameters) SetGroupId(v string) *CreateEventSourceRequestSourceRocketMQParameters {
-	s.GroupId = &v
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetGroupID(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.GroupID = &v
 	return s
 }
 
 func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceId(v string) *CreateEventSourceRequestSourceRocketMQParameters {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceNetwork(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceType(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceVSwitchIds(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceRocketMQParameters) SetInstanceVpcId(v string) *CreateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceVpcId = &v
 	return s
 }
 
@@ -4422,7 +4336,6 @@ func (s *CreateTargetsResponse) SetBody(v *CreateTargetsResponseBody) *CreateTar
 
 type DeleteApiDestinationRequest struct {
 	ApiDestinationName *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s DeleteApiDestinationRequest) String() string {
@@ -4435,11 +4348,6 @@ func (s DeleteApiDestinationRequest) GoString() string {
 
 func (s *DeleteApiDestinationRequest) SetApiDestinationName(v string) *DeleteApiDestinationRequest {
 	s.ApiDestinationName = &v
-	return s
-}
-
-func (s *DeleteApiDestinationRequest) SetClientToken(v string) *DeleteApiDestinationRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -5263,7 +5171,6 @@ func (s *EnableRuleResponse) SetBody(v *EnableRuleResponseBody) *EnableRuleRespo
 
 type GetApiDestinationRequest struct {
 	ApiDestinationName *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s GetApiDestinationRequest) String() string {
@@ -5276,11 +5183,6 @@ func (s GetApiDestinationRequest) GoString() string {
 
 func (s *GetApiDestinationRequest) SetApiDestinationName(v string) *GetApiDestinationRequest {
 	s.ApiDestinationName = &v
-	return s
-}
-
-func (s *GetApiDestinationRequest) SetClientToken(v string) *GetApiDestinationRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -5482,13 +5384,12 @@ func (s *GetConnectionResponseBodyData) SetConnections(v []*GetConnectionRespons
 }
 
 type GetConnectionResponseBodyDataConnections struct {
-	ApiDestinationName *string                                                    `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	AuthParameters     *GetConnectionResponseBodyDataConnectionsAuthParameters    `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	ConnectionName     *string                                                    `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	Description        *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate          *int64                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	NetworkParameters  *GetConnectionResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	AuthParameters    *GetConnectionResponseBodyDataConnectionsAuthParameters    `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
+	ConnectionName    *string                                                    `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Description       *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate         *int64                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NetworkParameters *GetConnectionResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
 }
 
 func (s GetConnectionResponseBodyDataConnections) String() string {
@@ -5497,11 +5398,6 @@ func (s GetConnectionResponseBodyDataConnections) String() string {
 
 func (s GetConnectionResponseBodyDataConnections) GoString() string {
 	return s.String()
-}
-
-func (s *GetConnectionResponseBodyDataConnections) SetApiDestinationName(v string) *GetConnectionResponseBodyDataConnections {
-	s.ApiDestinationName = &v
-	return s
 }
 
 func (s *GetConnectionResponseBodyDataConnections) SetAuthParameters(v *GetConnectionResponseBodyDataConnectionsAuthParameters) *GetConnectionResponseBodyDataConnections {
@@ -8290,6 +8186,7 @@ type ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList struct {
 	Description  *string                                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	EventBusName *string                                                                    `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	EventTypes   []*ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	FullName     *string                                                                    `json:"FullName,omitempty" xml:"FullName,omitempty"`
 	Name         *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	Status       *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type         *string                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -8325,6 +8222,11 @@ func (s *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList) SetEvent
 
 func (s *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList) SetEventTypes(v []*ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes) *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList {
 	s.EventTypes = v
+	return s
+}
+
+func (s *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList) SetFullName(v string) *ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList {
+	s.FullName = &v
 	return s
 }
 
@@ -8409,8 +8311,7 @@ func (s *ListAliyunOfficialEventSourcesResponse) SetBody(v *ListAliyunOfficialEv
 
 type ListApiDestinationsRequest struct {
 	ApiDestinationNamePrefix *string `json:"ApiDestinationNamePrefix,omitempty" xml:"ApiDestinationNamePrefix,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ConnectionName           *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	MaxResults               *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
@@ -8428,13 +8329,8 @@ func (s *ListApiDestinationsRequest) SetApiDestinationNamePrefix(v string) *List
 	return s
 }
 
-func (s *ListApiDestinationsRequest) SetClientToken(v string) *ListApiDestinationsRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListApiDestinationsRequest) SetDescription(v string) *ListApiDestinationsRequest {
-	s.Description = &v
+func (s *ListApiDestinationsRequest) SetConnectionName(v string) *ListApiDestinationsRequest {
+	s.ConnectionName = &v
 	return s
 }
 
@@ -8485,6 +8381,9 @@ func (s *ListApiDestinationsResponseBody) SetRequestId(v string) *ListApiDestina
 
 type ListApiDestinationsResponseBodyData struct {
 	ApiDestinations []*ListApiDestinationsResponseBodyDataApiDestinations `json:"ApiDestinations,omitempty" xml:"ApiDestinations,omitempty" type:"Repeated"`
+	MaxResults      *float32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Total           *float32                                              `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListApiDestinationsResponseBodyData) String() string {
@@ -8497,6 +8396,21 @@ func (s ListApiDestinationsResponseBodyData) GoString() string {
 
 func (s *ListApiDestinationsResponseBodyData) SetApiDestinations(v []*ListApiDestinationsResponseBodyDataApiDestinations) *ListApiDestinationsResponseBodyData {
 	s.ApiDestinations = v
+	return s
+}
+
+func (s *ListApiDestinationsResponseBodyData) SetMaxResults(v float32) *ListApiDestinationsResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListApiDestinationsResponseBodyData) SetNextToken(v string) *ListApiDestinationsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListApiDestinationsResponseBodyData) SetTotal(v float32) *ListApiDestinationsResponseBodyData {
+	s.Total = &v
 	return s
 }
 
@@ -8693,13 +8607,12 @@ func (s *ListConnectionsResponseBodyData) SetTotal(v float32) *ListConnectionsRe
 }
 
 type ListConnectionsResponseBodyDataConnections struct {
-	ApiDestinationName *string                                                      `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	AuthParameters     *ListConnectionsResponseBodyDataConnectionsAuthParameters    `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	ConnectionName     *string                                                      `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate          *int64                                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Id                 *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	NetworkParameters  *ListConnectionsResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
+	AuthParameters    *ListConnectionsResponseBodyDataConnectionsAuthParameters    `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
+	ConnectionName    *string                                                      `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Description       *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate         *int64                                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id                *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	NetworkParameters *ListConnectionsResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
 }
 
 func (s ListConnectionsResponseBodyDataConnections) String() string {
@@ -8708,11 +8621,6 @@ func (s ListConnectionsResponseBodyDataConnections) String() string {
 
 func (s ListConnectionsResponseBodyDataConnections) GoString() string {
 	return s.String()
-}
-
-func (s *ListConnectionsResponseBodyDataConnections) SetApiDestinationName(v string) *ListConnectionsResponseBodyDataConnections {
-	s.ApiDestinationName = &v
-	return s
 }
 
 func (s *ListConnectionsResponseBodyDataConnections) SetAuthParameters(v *ListConnectionsResponseBodyDataConnectionsAuthParameters) *ListConnectionsResponseBodyDataConnections {
@@ -12938,7 +12846,6 @@ func (s *StartEventStreamingResponse) SetBody(v *StartEventStreamingResponseBody
 
 type UpdateApiDestinationRequest struct {
 	ApiDestinationName *string                                       `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ClientToken        *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionName     *string                                       `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	Description        *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
 	HttpApiParameters  *UpdateApiDestinationRequestHttpApiParameters `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty" type:"Struct"`
@@ -12954,11 +12861,6 @@ func (s UpdateApiDestinationRequest) GoString() string {
 
 func (s *UpdateApiDestinationRequest) SetApiDestinationName(v string) *UpdateApiDestinationRequest {
 	s.ApiDestinationName = &v
-	return s
-}
-
-func (s *UpdateApiDestinationRequest) SetClientToken(v string) *UpdateApiDestinationRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -13002,7 +12904,6 @@ func (s *UpdateApiDestinationRequestHttpApiParameters) SetMethod(v string) *Upda
 
 type UpdateApiDestinationShrinkRequest struct {
 	ApiDestinationName      *string `json:"ApiDestinationName,omitempty" xml:"ApiDestinationName,omitempty"`
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionName          *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	HttpApiParametersShrink *string `json:"HttpApiParameters,omitempty" xml:"HttpApiParameters,omitempty"`
@@ -13018,11 +12919,6 @@ func (s UpdateApiDestinationShrinkRequest) GoString() string {
 
 func (s *UpdateApiDestinationShrinkRequest) SetApiDestinationName(v string) *UpdateApiDestinationShrinkRequest {
 	s.ApiDestinationName = &v
-	return s
-}
-
-func (s *UpdateApiDestinationShrinkRequest) SetClientToken(v string) *UpdateApiDestinationShrinkRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -13142,11 +13038,10 @@ func (s *UpdateConnectionRequest) SetNetworkParameters(v *UpdateConnectionReques
 }
 
 type UpdateConnectionRequestAuthParameters struct {
-	ApiKeyAuthParameters     *UpdateConnectionRequestAuthParametersApiKeyAuthParameters     `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	AuthorizationType        *string                                                        `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	BasicAuthParameters      *UpdateConnectionRequestAuthParametersBasicAuthParameters      `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	InvocationHttpParameters *UpdateConnectionRequestAuthParametersInvocationHttpParameters `json:"InvocationHttpParameters,omitempty" xml:"InvocationHttpParameters,omitempty" type:"Struct"`
-	OAuthParameters          *UpdateConnectionRequestAuthParametersOAuthParameters          `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
+	ApiKeyAuthParameters *UpdateConnectionRequestAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
+	AuthorizationType    *string                                                    `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	BasicAuthParameters  *UpdateConnectionRequestAuthParametersBasicAuthParameters  `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
+	OAuthParameters      *UpdateConnectionRequestAuthParametersOAuthParameters      `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
 func (s UpdateConnectionRequestAuthParameters) String() string {
@@ -13169,11 +13064,6 @@ func (s *UpdateConnectionRequestAuthParameters) SetAuthorizationType(v string) *
 
 func (s *UpdateConnectionRequestAuthParameters) SetBasicAuthParameters(v *UpdateConnectionRequestAuthParametersBasicAuthParameters) *UpdateConnectionRequestAuthParameters {
 	s.BasicAuthParameters = v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParameters) SetInvocationHttpParameters(v *UpdateConnectionRequestAuthParametersInvocationHttpParameters) *UpdateConnectionRequestAuthParameters {
-	s.InvocationHttpParameters = v
 	return s
 }
 
@@ -13225,104 +13115,6 @@ func (s *UpdateConnectionRequestAuthParametersBasicAuthParameters) SetPassword(v
 
 func (s *UpdateConnectionRequestAuthParametersBasicAuthParameters) SetUsername(v string) *UpdateConnectionRequestAuthParametersBasicAuthParameters {
 	s.Username = &v
-	return s
-}
-
-type UpdateConnectionRequestAuthParametersInvocationHttpParameters struct {
-	BodyParameters        []*UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters        `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	HeaderParameters      []*UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters      `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	QueryStringParameters []*UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParameters) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParameters) SetBodyParameters(v []*UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) *UpdateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.BodyParameters = v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParameters) SetHeaderParameters(v []*UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) *UpdateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.HeaderParameters = v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParameters) SetQueryStringParameters(v []*UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) *UpdateConnectionRequestAuthParametersInvocationHttpParameters {
-	s.QueryStringParameters = v
-	return s
-}
-
-type UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) SetKey(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters) SetValue(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersBodyParameters {
-	s.Value = &v
-	return s
-}
-
-type UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) SetKey(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters) SetValue(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersHeaderParameters {
-	s.Value = &v
-	return s
-}
-
-type UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) SetKey(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters {
-	s.Key = &v
-	return s
-}
-
-func (s *UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters) SetValue(v string) *UpdateConnectionRequestAuthParametersInvocationHttpParametersQueryStringParameters {
-	s.Value = &v
 	return s
 }
 
@@ -13883,13 +13675,18 @@ func (s *UpdateEventSourceRequestSourceRabbitMQParameters) SetVirtualHostName(v 
 }
 
 type UpdateEventSourceRequestSourceRocketMQParameters struct {
-	GroupId    *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Offset     *string  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RegionId   *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag        *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Timestamp  *float32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Topic      *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	GroupID                 *string  `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	InstanceId              *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceNetwork         *string  `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	InstanceSecurityGroupId *string  `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
+	InstanceType            *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceVSwitchIds      *string  `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	InstanceVpcId           *string  `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Offset                  *string  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	RegionId                *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                     *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Timestamp               *float32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Topic                   *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s UpdateEventSourceRequestSourceRocketMQParameters) String() string {
@@ -13900,13 +13697,38 @@ func (s UpdateEventSourceRequestSourceRocketMQParameters) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetGroupId(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
-	s.GroupId = &v
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetGroupID(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.GroupID = &v
 	return s
 }
 
 func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceId(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceNetwork(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceNetwork = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceSecurityGroupId(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceSecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceType(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceVSwitchIds(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceVSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceRocketMQParameters) SetInstanceVpcId(v string) *UpdateEventSourceRequestSourceRocketMQParameters {
+	s.InstanceVpcId = &v
 	return s
 }
 
@@ -16160,10 +15982,6 @@ func (client *Client) CreateApiDestinationWithOptions(tmpReq *CreateApiDestinati
 		query["HttpApiParameters"] = request.HttpApiParametersShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InvocationRateLimitPerSecond)) {
-		query["InvocationRateLimitPerSecond"] = request.InvocationRateLimitPerSecond
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16666,10 +16484,6 @@ func (client *Client) DeleteApiDestinationWithOptions(request *DeleteApiDestinat
 		query["ApiDestinationName"] = request.ApiDestinationName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17092,10 +16906,6 @@ func (client *Client) GetApiDestinationWithOptions(request *GetApiDestinationReq
 		query["ApiDestinationName"] = request.ApiDestinationName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17353,12 +17163,8 @@ func (client *Client) ListApiDestinationsWithOptions(request *ListApiDestination
 		query["ApiDestinationNamePrefix"] = request.ApiDestinationNamePrefix
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		query["ConnectionName"] = request.ConnectionName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -18028,10 +17834,6 @@ func (client *Client) UpdateApiDestinationWithOptions(tmpReq *UpdateApiDestinati
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApiDestinationName)) {
 		query["ApiDestinationName"] = request.ApiDestinationName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
