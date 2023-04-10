@@ -1452,6 +1452,42 @@ type AddGatewayRouteRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The destination service type.
+	//
+	// Valid values
+	//
+	// <!-- -->
+	//
+	// :
+	//
+	// *   VersionOriented
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Multiple
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Single
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Mock\"\"
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Redirect
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The mock response configuration.
 	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
@@ -1470,20 +1506,16 @@ type AddGatewayRouteRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Routing policy Json string.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	Predicates *AddGatewayRouteRequestPredicates `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
 	// The configuration of the redirection.
 	RedirectJSON *AddGatewayRouteRequestRedirectJSON `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
-	// The sequence number of the route. A small value indicates a high priority.
-	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// RouteType:
-	//
-	// Op: Control routing.
-	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The services.
+	// The sequence number of the route. (A small value indicates a high priority.)
+	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The list of services.
 	Services []*AddGatewayRouteRequestServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -1606,13 +1638,13 @@ func (s *AddGatewayRouteRequestDirectResponseJSON) SetCode(v int64) *AddGatewayR
 }
 
 type AddGatewayRouteRequestFallbackServices struct {
-	// The type of the protocol. Valid values:
+	// The type of the protocol.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace to which the service belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The weight in the form of a percentage value.
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
@@ -1851,7 +1883,7 @@ func (s *AddGatewayRouteRequestRedirectJSON) SetPath(v string) *AddGatewayRouteR
 }
 
 type AddGatewayRouteRequestServices struct {
-	// The type of the protocol. Valid values:
+	// The type of the protocol.
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
 	// The name of the group to which the service belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -1859,7 +1891,7 @@ type AddGatewayRouteRequestServices struct {
 	HttpDubboTranscoder *AddGatewayRouteRequestServicesHttpDubboTranscoder `json:"HttpDubboTranscoder,omitempty" xml:"HttpDubboTranscoder,omitempty" type:"Struct"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace to which the service belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The weight in the form of a percentage value.
 	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
@@ -1932,7 +1964,7 @@ func (s *AddGatewayRouteRequestServices) SetVersion(v string) *AddGatewayRouteRe
 }
 
 type AddGatewayRouteRequestServicesHttpDubboTranscoder struct {
-	// The service group.
+	// The name of the service group.
 	DubboServiceGroup *string `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
 	// The name of the Dubbo service.
 	DubboServiceName *string `json:"DubboServiceName,omitempty" xml:"DubboServiceName,omitempty"`
@@ -1987,9 +2019,9 @@ type AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList struct {
 	//
 	// *   ALL_PATCH
 	HttpMothed *string `json:"HttpMothed,omitempty" xml:"HttpMothed,omitempty"`
-	// The path that is used to match a method.
+	// The path used for method matching.
 	Mothedpath *string `json:"Mothedpath,omitempty" xml:"Mothedpath,omitempty"`
-	// The information of parameter mappings.
+	// The information about parameter mappings.
 	ParamMapsList []*AddGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsList `json:"ParamMapsList,omitempty" xml:"ParamMapsList,omitempty" type:"Repeated"`
 	// The pass-through type of the header.
 	//
@@ -2090,6 +2122,42 @@ type AddGatewayRouteShrinkRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The destination service type.
+	//
+	// Valid values
+	//
+	// <!-- -->
+	//
+	// :
+	//
+	// *   VersionOriented
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Multiple
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Single
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Mock\"\"
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Redirect
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The mock response configuration.
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
@@ -2108,20 +2176,16 @@ type AddGatewayRouteShrinkRequest struct {
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the route.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Routing policy Json string.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
 	// The matching rule.
 	PredicatesShrink *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
 	// The configuration of the redirection.
 	RedirectJSONShrink *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
-	// The sequence number of the route. A small value indicates a high priority.
-	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// RouteType:
-	//
-	// Op: Control routing.
-	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The services.
+	// The sequence number of the route. (A small value indicates a high priority.)
+	RouteOrder *int32  `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RouteType  *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	// The list of services.
 	ServicesShrink *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
 
@@ -2221,7 +2285,7 @@ func (s *AddGatewayRouteShrinkRequest) SetServicesShrink(v string) *AddGatewayRo
 type AddGatewayRouteResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
@@ -2616,8 +2680,6 @@ type AddMigrationTaskRequest struct {
 	// *   ZooKeeper
 	// *   Eureka
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the task. You do not need to configure this parameter.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The source instance node address.
 	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
 	// The name of the source instance.
@@ -2651,11 +2713,6 @@ func (s *AddMigrationTaskRequest) SetAcceptLanguage(v string) *AddMigrationTaskR
 
 func (s *AddMigrationTaskRequest) SetClusterType(v string) *AddMigrationTaskRequest {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *AddMigrationTaskRequest) SetId(v string) *AddMigrationTaskRequest {
-	s.Id = &v
 	return s
 }
 
@@ -2704,8 +2761,6 @@ type AddMigrationTaskResponseBody struct {
 	Data *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -2735,11 +2790,6 @@ func (s *AddMigrationTaskResponseBody) SetErrorCode(v string) *AddMigrationTaskR
 	return s
 }
 
-func (s *AddMigrationTaskResponseBody) SetHttpCode(v string) *AddMigrationTaskResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
 func (s *AddMigrationTaskResponseBody) SetMessage(v string) *AddMigrationTaskResponseBody {
 	s.Message = &v
 	return s
@@ -2762,10 +2812,6 @@ type AddMigrationTaskResponseBodyData struct {
 	// *   ZooKeeper
 	// *   Eureka
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The creation time.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the task.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The source instance node address.
@@ -2796,16 +2842,6 @@ func (s AddMigrationTaskResponseBodyData) GoString() string {
 
 func (s *AddMigrationTaskResponseBodyData) SetClusterType(v string) *AddMigrationTaskResponseBodyData {
 	s.ClusterType = &v
-	return s
-}
-
-func (s *AddMigrationTaskResponseBodyData) SetGmtCreate(v string) *AddMigrationTaskResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *AddMigrationTaskResponseBodyData) SetGmtModified(v string) *AddMigrationTaskResponseBodyData {
-	s.GmtModified = &v
 	return s
 }
 
@@ -35129,26 +35165,26 @@ type UpdateConfigRequest struct {
 	AutopurgePurgeInterval *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
 	// A reserved parameter.
 	AutopurgeSnapRetainCount *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
-	// The ID of the instance.
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable RAM authorization for a configuration center. This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether to enable Resource Access Management (RAM) authentication for a configuration center. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`: enabled.
+	// *   `false`: disabled.
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports the RAM authentication feature.
 	ConfigAuthEnabled *bool `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
 	// Specifies whether to enable configuration encryption for a configuration center. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`: enabled.
+	// *   `false`: disabled.
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports configuration encryption.
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
 	// The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
 	ConfigType      *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	EurekaSupported *bool   `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
-	// Specifies whether to enable the time to live (TTL) configuration.
+	// Specifies whether to enable the time to live (TTL) configuration. This parameter is valid for ZooKeeper instances.
 	ExtendedTypesEnable *string `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
 	// The maximum connection duration of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
@@ -35158,10 +35194,10 @@ type UpdateConfigRequest struct {
 	JuteMaxbuffer *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
 	// Specifies whether to enable Mesh Configuration Protocol (MCP). This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`: enabled.
+	// *   `false`: disabled.
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports MCP.
 	MCPEnabled *bool `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
 	// The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\
 	// If this parameter is set to 0, no limits are imposed on the number of connections.
@@ -35170,12 +35206,12 @@ type UpdateConfigRequest struct {
 	MaxSessionTimeout *string `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
 	// The minimum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
 	MinSessionTimeout *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
-	// Specifies whether to enable RAM authorization for a registry. This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether to enable RAM authentication for a registry. This parameter is valid for Nacos instances. Valid values:
 	//
-	// *   `true`: enabled
-	// *   `false`: disabled
+	// *   `true`: enabled.
+	// *   `false`: disabled.
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupporte parameter value to check whether the instance supports this feature.
+	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupporte parameter value to check whether the instance supports the RAM authentication feature.
 	NamingAuthEnabled *bool `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
 	// Specifies whether to enable super permissions. This parameter is valid for ZooKeeper instances. Valid values:
 	//
@@ -42876,10 +42912,6 @@ func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskReque
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
 		query["ClusterType"] = request.ClusterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
-		query["Id"] = request.Id
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OriginInstanceAddress)) {
