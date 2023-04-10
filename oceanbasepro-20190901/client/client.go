@@ -1665,7 +1665,8 @@ func (s *CreateTenantReadOnlyConnectionResponse) SetBody(v *CreateTenantReadOnly
 
 type CreateTenantUserRequest struct {
 	// The description of the database.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The role of the user account.
@@ -1707,6 +1708,11 @@ func (s CreateTenantUserRequest) GoString() string {
 
 func (s *CreateTenantUserRequest) SetDescription(v string) *CreateTenantUserRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateTenantUserRequest) SetEncryptionType(v string) *CreateTenantUserRequest {
+	s.EncryptionType = &v
 	return s
 }
 
@@ -12684,6 +12690,196 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 	return s
 }
 
+type ModifyInstanceNodeNumRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeNum    *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+}
+
+func (s ModifyInstanceNodeNumRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNodeNumRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumRequest) SetInstanceId(v string) *ModifyInstanceNodeNumRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceNodeNumRequest) SetNodeNum(v string) *ModifyInstanceNodeNumRequest {
+	s.NodeNum = &v
+	return s
+}
+
+type ModifyInstanceNodeNumResponseBody struct {
+	Data      *ModifyInstanceNodeNumResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceNodeNumResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNodeNumResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumResponseBody) SetData(v *ModifyInstanceNodeNumResponseBodyData) *ModifyInstanceNodeNumResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyInstanceNodeNumResponseBody) SetRequestId(v string) *ModifyInstanceNodeNumResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceNodeNumResponseBodyData struct {
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s ModifyInstanceNodeNumResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNodeNumResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumResponseBodyData) SetOrderId(v string) *ModifyInstanceNodeNumResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type ModifyInstanceNodeNumResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceNodeNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceNodeNumResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNodeNumResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumResponse) SetHeaders(v map[string]*string) *ModifyInstanceNodeNumResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceNodeNumResponse) SetStatusCode(v int32) *ModifyInstanceNodeNumResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceNodeNumResponse) SetBody(v *ModifyInstanceNodeNumResponseBody) *ModifyInstanceNodeNumResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceSpecRequest struct {
+	DiskSize      *int64  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyInstanceSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSpecRequest) SetDiskSize(v int64) *ModifyInstanceSpecRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetInstanceClass(v string) *ModifyInstanceSpecRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetInstanceId(v string) *ModifyInstanceSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyInstanceSpecResponseBody struct {
+	Data      *ModifyInstanceSpecResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSpecResponseBody) SetData(v *ModifyInstanceSpecResponseBodyData) *ModifyInstanceSpecResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyInstanceSpecResponseBody) SetRequestId(v string) *ModifyInstanceSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceSpecResponseBodyData struct {
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s ModifyInstanceSpecResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSpecResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSpecResponseBodyData) SetOrderId(v string) *ModifyInstanceSpecResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type ModifyInstanceSpecResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSpecResponse) SetHeaders(v map[string]*string) *ModifyInstanceSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceSpecResponse) SetStatusCode(v int32) *ModifyInstanceSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) *ModifyInstanceSpecResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceTagsRequest struct {
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -16883,6 +17079,10 @@ func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserReque
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EncryptionType)) {
+		body["EncryptionType"] = request.EncryptionType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -19495,6 +19695,106 @@ func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceNameResponse{}
 	_body, _err := client.ModifyInstanceNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceNodeNumWithOptions(request *ModifyInstanceNodeNumRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceNodeNumResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNum)) {
+		body["NodeNum"] = request.NodeNum
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceNodeNum"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceNodeNumResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceNodeNum(request *ModifyInstanceNodeNumRequest) (_result *ModifyInstanceNodeNumResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceNodeNumResponse{}
+	_body, _err := client.ModifyInstanceNodeNumWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		body["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		body["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceSpec"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_result *ModifyInstanceSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceSpecResponse{}
+	_body, _err := client.ModifyInstanceSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
