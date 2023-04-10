@@ -1383,7 +1383,8 @@ type CreateIoTCloudConnectorRequest struct {
 	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceUid                  *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
 	Type                         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	WildcardDomainEnabled        *bool   `json:"WildcardDomainEnabled,omitempty" xml:"WildcardDomainEnabled,omitempty"`
+	// Deprecated
+	WildcardDomainEnabled *bool `json:"WildcardDomainEnabled,omitempty" xml:"WildcardDomainEnabled,omitempty"`
 }
 
 func (s CreateIoTCloudConnectorRequest) String() string {
@@ -2092,6 +2093,93 @@ func (s *DeleteAuthorizationRuleResponse) SetStatusCode(v int32) *DeleteAuthoriz
 }
 
 func (s *DeleteAuthorizationRuleResponse) SetBody(v *DeleteAuthorizationRuleResponseBody) *DeleteAuthorizationRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAuthorizationRulesRequest struct {
+	AuthorizationRuleIds []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId  *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAuthorizationRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAuthorizationRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAuthorizationRulesRequest) SetAuthorizationRuleIds(v []*string) *DeleteAuthorizationRulesRequest {
+	s.AuthorizationRuleIds = v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesRequest) SetClientToken(v string) *DeleteAuthorizationRulesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesRequest) SetDryRun(v bool) *DeleteAuthorizationRulesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesRequest) SetIoTCloudConnectorId(v string) *DeleteAuthorizationRulesRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesRequest) SetRegionId(v string) *DeleteAuthorizationRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAuthorizationRulesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAuthorizationRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAuthorizationRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAuthorizationRulesResponseBody) SetRequestId(v string) *DeleteAuthorizationRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAuthorizationRulesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAuthorizationRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAuthorizationRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAuthorizationRulesResponse) SetHeaders(v map[string]*string) *DeleteAuthorizationRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesResponse) SetStatusCode(v int32) *DeleteAuthorizationRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAuthorizationRulesResponse) SetBody(v *DeleteAuthorizationRulesResponseBody) *DeleteAuthorizationRulesResponse {
 	s.Body = v
 	return s
 }
@@ -4119,19 +4207,21 @@ func (s *ListAPNsResponse) SetBody(v *ListAPNsResponseBody) *ListAPNsResponse {
 }
 
 type ListAuthorizationRulesRequest struct {
-	AuthorizationRuleIds    []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
-	AuthorizationRuleName   []*string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty" type:"Repeated"`
-	AuthorizationRuleStatus []*string `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty" type:"Repeated"`
-	AuthorizationRuleType   *string   `json:"AuthorizationRuleType,omitempty" xml:"AuthorizationRuleType,omitempty"`
-	Destination             []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
-	DestinationPort         []*string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty" type:"Repeated"`
-	DestinationType         []*string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" type:"Repeated"`
-	IoTCloudConnectorId     *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
-	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken               *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Policy                  []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
-	Protocol                []*string `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Repeated"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AuthorizationRuleIds       []*string `json:"AuthorizationRuleIds,omitempty" xml:"AuthorizationRuleIds,omitempty" type:"Repeated"`
+	AuthorizationRuleName      []*string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty" type:"Repeated"`
+	AuthorizationRuleStatus    []*string `json:"AuthorizationRuleStatus,omitempty" xml:"AuthorizationRuleStatus,omitempty" type:"Repeated"`
+	AuthorizationRuleType      *string   `json:"AuthorizationRuleType,omitempty" xml:"AuthorizationRuleType,omitempty"`
+	Destination                []*string `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Repeated"`
+	DestinationPort            []*string `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty" type:"Repeated"`
+	DestinationType            []*string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty" type:"Repeated"`
+	FuzzyAuthorizationRuleName *string   `json:"FuzzyAuthorizationRuleName,omitempty" xml:"FuzzyAuthorizationRuleName,omitempty"`
+	FuzzyDestination           *string   `json:"FuzzyDestination,omitempty" xml:"FuzzyDestination,omitempty"`
+	IoTCloudConnectorId        *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	MaxResults                 *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Policy                     []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
+	Protocol                   []*string `json:"Protocol,omitempty" xml:"Protocol,omitempty" type:"Repeated"`
+	RegionId                   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListAuthorizationRulesRequest) String() string {
@@ -4174,6 +4264,16 @@ func (s *ListAuthorizationRulesRequest) SetDestinationPort(v []*string) *ListAut
 
 func (s *ListAuthorizationRulesRequest) SetDestinationType(v []*string) *ListAuthorizationRulesRequest {
 	s.DestinationType = v
+	return s
+}
+
+func (s *ListAuthorizationRulesRequest) SetFuzzyAuthorizationRuleName(v string) *ListAuthorizationRulesRequest {
+	s.FuzzyAuthorizationRuleName = &v
+	return s
+}
+
+func (s *ListAuthorizationRulesRequest) SetFuzzyDestination(v string) *ListAuthorizationRulesRequest {
+	s.FuzzyDestination = &v
 	return s
 }
 
@@ -5866,194 +5966,6 @@ func (s *ListGroupIpMappingRulesResponse) SetStatusCode(v int32) *ListGroupIpMap
 }
 
 func (s *ListGroupIpMappingRulesResponse) SetBody(v *ListGroupIpMappingRulesResponseBody) *ListGroupIpMappingRulesResponse {
-	s.Body = v
-	return s
-}
-
-type ListIoTCloudConnectorAccessSessionLogsRequest struct {
-	Destinations        []*string `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
-	EndTime             *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IoTCloudConnectorId *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
-	MaxResults          *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId            *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SourceIps           []*string `json:"SourceIps,omitempty" xml:"SourceIps,omitempty" type:"Repeated"`
-	StartTime           *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetDestinations(v []*string) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.Destinations = v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetEndTime(v int64) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetIoTCloudConnectorId(v string) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.IoTCloudConnectorId = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetMaxResults(v int32) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetNextToken(v string) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetRegionId(v string) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetSourceIps(v []*string) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.SourceIps = v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsRequest) SetStartTime(v int64) *ListIoTCloudConnectorAccessSessionLogsRequest {
-	s.StartTime = &v
-	return s
-}
-
-type ListIoTCloudConnectorAccessSessionLogsResponseBody struct {
-	AccessSessionLogs []*ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs `json:"AccessSessionLogs,omitempty" xml:"AccessSessionLogs,omitempty" type:"Repeated"`
-	MaxResults        *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId         *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBody) SetAccessSessionLogs(v []*ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) *ListIoTCloudConnectorAccessSessionLogsResponseBody {
-	s.AccessSessionLogs = v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBody) SetMaxResults(v int32) *ListIoTCloudConnectorAccessSessionLogsResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBody) SetNextToken(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBody) SetRequestId(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBody) SetTotalCount(v int32) *ListIoTCloudConnectorAccessSessionLogsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs struct {
-	ClientToServiceFlow *string   `json:"ClientToServiceFlow,omitempty" xml:"ClientToServiceFlow,omitempty"`
-	DestinationIp       *string   `json:"DestinationIp,omitempty" xml:"DestinationIp,omitempty"`
-	DestinationPort     *string   `json:"DestinationPort,omitempty" xml:"DestinationPort,omitempty"`
-	Destinations        []*string `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
-	ServiceToClientFlow *string   `json:"ServiceToClientFlow,omitempty" xml:"ServiceToClientFlow,omitempty"`
-	SourceIp            *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Time                *string   `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type                *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) GoString() string {
-	return s.String()
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetClientToServiceFlow(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.ClientToServiceFlow = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetDestinationIp(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.DestinationIp = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetDestinationPort(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.DestinationPort = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetDestinations(v []*string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.Destinations = v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetServiceToClientFlow(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.ServiceToClientFlow = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetSourceIp(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.SourceIp = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetTime(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.Time = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) SetType(v string) *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs {
-	s.Type = &v
-	return s
-}
-
-type ListIoTCloudConnectorAccessSessionLogsResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListIoTCloudConnectorAccessSessionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListIoTCloudConnectorAccessSessionLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorAccessSessionLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponse) SetStatusCode(v int32) *ListIoTCloudConnectorAccessSessionLogsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListIoTCloudConnectorAccessSessionLogsResponse) SetBody(v *ListIoTCloudConnectorAccessSessionLogsResponseBody) *ListIoTCloudConnectorAccessSessionLogsResponse {
 	s.Body = v
 	return s
 }
@@ -10721,6 +10633,66 @@ func (client *Client) DeleteAuthorizationRule(request *DeleteAuthorizationRuleRe
 	return _result, _err
 }
 
+func (client *Client) DeleteAuthorizationRulesWithOptions(request *DeleteAuthorizationRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteAuthorizationRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationRuleIds)) {
+		query["AuthorizationRuleIds"] = request.AuthorizationRuleIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAuthorizationRules"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAuthorizationRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAuthorizationRules(request *DeleteAuthorizationRulesRequest) (_result *DeleteAuthorizationRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAuthorizationRulesResponse{}
+	_body, _err := client.DeleteAuthorizationRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteConnectionPoolWithOptions(request *DeleteConnectionPoolRequest, runtime *util.RuntimeOptions) (_result *DeleteConnectionPoolResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11987,6 +11959,14 @@ func (client *Client) ListAuthorizationRulesWithOptions(request *ListAuthorizati
 		query["DestinationType"] = request.DestinationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FuzzyAuthorizationRuleName)) {
+		query["FuzzyAuthorizationRuleName"] = request.FuzzyAuthorizationRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyDestination)) {
+		query["FuzzyDestination"] = request.FuzzyDestination
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
 		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
 	}
@@ -12630,78 +12610,6 @@ func (client *Client) ListGroupIpMappingRules(request *ListGroupIpMappingRulesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupIpMappingRulesResponse{}
 	_body, _err := client.ListGroupIpMappingRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListIoTCloudConnectorAccessSessionLogsWithOptions(request *ListIoTCloudConnectorAccessSessionLogsRequest, runtime *util.RuntimeOptions) (_result *ListIoTCloudConnectorAccessSessionLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Destinations)) {
-		query["Destinations"] = request.Destinations
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
-		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIps)) {
-		query["SourceIps"] = request.SourceIps
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListIoTCloudConnectorAccessSessionLogs"),
-		Version:     tea.String("2021-05-13"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListIoTCloudConnectorAccessSessionLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListIoTCloudConnectorAccessSessionLogs(request *ListIoTCloudConnectorAccessSessionLogsRequest) (_result *ListIoTCloudConnectorAccessSessionLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListIoTCloudConnectorAccessSessionLogsResponse{}
-	_body, _err := client.ListIoTCloudConnectorAccessSessionLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
