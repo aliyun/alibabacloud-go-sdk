@@ -10981,13 +10981,11 @@ type FetchLosslessRuleListRequest struct {
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The number of the page to return.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service source that the application accesses.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s FetchLosslessRuleListRequest) String() string {
@@ -11018,12 +11016,12 @@ func (s *FetchLosslessRuleListRequest) SetNamespace(v string) *FetchLosslessRule
 	return s
 }
 
-func (s *FetchLosslessRuleListRequest) SetPageNumber(v int64) *FetchLosslessRuleListRequest {
+func (s *FetchLosslessRuleListRequest) SetPageNumber(v int32) *FetchLosslessRuleListRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *FetchLosslessRuleListRequest) SetPageSize(v int64) *FetchLosslessRuleListRequest {
+func (s *FetchLosslessRuleListRequest) SetPageSize(v int32) *FetchLosslessRuleListRequest {
 	s.PageSize = &v
 	return s
 }
@@ -11033,18 +11031,13 @@ func (s *FetchLosslessRuleListRequest) SetRegionId(v string) *FetchLosslessRuleL
 	return s
 }
 
-func (s *FetchLosslessRuleListRequest) SetSource(v string) *FetchLosslessRuleListRequest {
-	s.Source = &v
-	return s
-}
-
 type FetchLosslessRuleListResponseBody struct {
 	// The response code returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The response.
-	Data *FetchLosslessRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Data           *FetchLosslessRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -11064,7 +11057,7 @@ func (s FetchLosslessRuleListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FetchLosslessRuleListResponseBody) SetCode(v string) *FetchLosslessRuleListResponseBody {
+func (s *FetchLosslessRuleListResponseBody) SetCode(v int32) *FetchLosslessRuleListResponseBody {
 	s.Code = &v
 	return s
 }
@@ -11074,8 +11067,13 @@ func (s *FetchLosslessRuleListResponseBody) SetData(v *FetchLosslessRuleListResp
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBody) SetHttpCode(v string) *FetchLosslessRuleListResponseBody {
-	s.HttpCode = &v
+func (s *FetchLosslessRuleListResponseBody) SetErrorCode(v string) *FetchLosslessRuleListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *FetchLosslessRuleListResponseBody) SetHttpStatusCode(v int32) *FetchLosslessRuleListResponseBody {
+	s.HttpStatusCode = &v
 	return s
 }
 
@@ -11096,13 +11094,13 @@ func (s *FetchLosslessRuleListResponseBody) SetSuccess(v bool) *FetchLosslessRul
 
 type FetchLosslessRuleListResponseBodyData struct {
 	// The number of the returned page.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data returned.
 	Results []*FetchLosslessRuleListResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// The total number of entries returned.
-	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s FetchLosslessRuleListResponseBodyData) String() string {
@@ -11113,12 +11111,12 @@ func (s FetchLosslessRuleListResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *FetchLosslessRuleListResponseBodyData) SetPageNumber(v int64) *FetchLosslessRuleListResponseBodyData {
+func (s *FetchLosslessRuleListResponseBodyData) SetPageNumber(v int32) *FetchLosslessRuleListResponseBodyData {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyData) SetPageSize(v int64) *FetchLosslessRuleListResponseBodyData {
+func (s *FetchLosslessRuleListResponseBodyData) SetPageSize(v int32) *FetchLosslessRuleListResponseBodyData {
 	s.PageSize = &v
 	return s
 }
@@ -11128,7 +11126,7 @@ func (s *FetchLosslessRuleListResponseBodyData) SetResults(v []*FetchLosslessRul
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyData) SetTotalSize(v int64) *FetchLosslessRuleListResponseBodyData {
+func (s *FetchLosslessRuleListResponseBodyData) SetTotalSize(v int32) *FetchLosslessRuleListResponseBodyData {
 	s.TotalSize = &v
 	return s
 }
@@ -11141,26 +11139,24 @@ type FetchLosslessRuleListResponseBodyDataResults struct {
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The number of instances.
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The registration latency.
-	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	// The status. Valid values:
 	//
 	// *   `true`: enabled.
 	// *   `false`: disabled.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The slope of the prefetching curve.
-	FuncType *int64 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
+	FuncType *int32 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
 	// Indicates whether the graceful start and shutdown feature is enabled.
 	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
 	// Indicates whether notification is enabled.
 	Notice *bool `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// Indicates whether service prefetching is associated.
 	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The wait time for application shutdown.
-	ShutdownWaitSeconds *int32 `json:"ShutdownWaitSeconds,omitempty" xml:"ShutdownWaitSeconds,omitempty"`
 	// The prefetching duration.
-	WarmupTime *int64 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
+	WarmupTime *int32 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
 }
 
 func (s FetchLosslessRuleListResponseBodyDataResults) String() string {
@@ -11186,12 +11182,12 @@ func (s *FetchLosslessRuleListResponseBodyDataResults) SetAppName(v string) *Fet
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyDataResults) SetCount(v int64) *FetchLosslessRuleListResponseBodyDataResults {
+func (s *FetchLosslessRuleListResponseBodyDataResults) SetCount(v int32) *FetchLosslessRuleListResponseBodyDataResults {
 	s.Count = &v
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyDataResults) SetDelayTime(v int64) *FetchLosslessRuleListResponseBodyDataResults {
+func (s *FetchLosslessRuleListResponseBodyDataResults) SetDelayTime(v int32) *FetchLosslessRuleListResponseBodyDataResults {
 	s.DelayTime = &v
 	return s
 }
@@ -11201,7 +11197,7 @@ func (s *FetchLosslessRuleListResponseBodyDataResults) SetEnable(v bool) *FetchL
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyDataResults) SetFuncType(v int64) *FetchLosslessRuleListResponseBodyDataResults {
+func (s *FetchLosslessRuleListResponseBodyDataResults) SetFuncType(v int32) *FetchLosslessRuleListResponseBodyDataResults {
 	s.FuncType = &v
 	return s
 }
@@ -11221,12 +11217,7 @@ func (s *FetchLosslessRuleListResponseBodyDataResults) SetRelated(v bool) *Fetch
 	return s
 }
 
-func (s *FetchLosslessRuleListResponseBodyDataResults) SetShutdownWaitSeconds(v int32) *FetchLosslessRuleListResponseBodyDataResults {
-	s.ShutdownWaitSeconds = &v
-	return s
-}
-
-func (s *FetchLosslessRuleListResponseBodyDataResults) SetWarmupTime(v int64) *FetchLosslessRuleListResponseBodyDataResults {
+func (s *FetchLosslessRuleListResponseBodyDataResults) SetWarmupTime(v int32) *FetchLosslessRuleListResponseBodyDataResults {
 	s.WarmupTime = &v
 	return s
 }
@@ -29467,14 +29458,14 @@ type ModifyLosslessRuleRequest struct {
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The registration latency.
-	DelayTime *int64 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
 	// Specifies whether to enable the alert rule. Valid values:
 	//
 	// *   `true`: enables the rule.
 	// *   `false`: disables the rule.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The slope of the prefetching curve.
-	FuncType *int64 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
+	FuncType *int32 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
 	// Specifies whether to display online and offline processing details.
 	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
 	// The microservice namespace to which the rule applies.
@@ -29485,12 +29476,8 @@ type ModifyLosslessRuleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to associate with service prefetching.
 	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The cooldown duration. Unit: seconds.
-	ShutdownWaitSeconds *int32 `json:"ShutdownWaitSeconds,omitempty" xml:"ShutdownWaitSeconds,omitempty"`
-	// The service source.
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The prefetching duration.
-	WarmupTime *int64 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
+	WarmupTime *int32 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
 }
 
 func (s ModifyLosslessRuleRequest) String() string {
@@ -29521,7 +29508,7 @@ func (s *ModifyLosslessRuleRequest) SetAppName(v string) *ModifyLosslessRuleRequ
 	return s
 }
 
-func (s *ModifyLosslessRuleRequest) SetDelayTime(v int64) *ModifyLosslessRuleRequest {
+func (s *ModifyLosslessRuleRequest) SetDelayTime(v int32) *ModifyLosslessRuleRequest {
 	s.DelayTime = &v
 	return s
 }
@@ -29531,7 +29518,7 @@ func (s *ModifyLosslessRuleRequest) SetEnable(v bool) *ModifyLosslessRuleRequest
 	return s
 }
 
-func (s *ModifyLosslessRuleRequest) SetFuncType(v int64) *ModifyLosslessRuleRequest {
+func (s *ModifyLosslessRuleRequest) SetFuncType(v int32) *ModifyLosslessRuleRequest {
 	s.FuncType = &v
 	return s
 }
@@ -29561,26 +29548,17 @@ func (s *ModifyLosslessRuleRequest) SetRelated(v bool) *ModifyLosslessRuleReques
 	return s
 }
 
-func (s *ModifyLosslessRuleRequest) SetShutdownWaitSeconds(v int32) *ModifyLosslessRuleRequest {
-	s.ShutdownWaitSeconds = &v
-	return s
-}
-
-func (s *ModifyLosslessRuleRequest) SetSource(v string) *ModifyLosslessRuleRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *ModifyLosslessRuleRequest) SetWarmupTime(v int64) *ModifyLosslessRuleRequest {
+func (s *ModifyLosslessRuleRequest) SetWarmupTime(v int32) *ModifyLosslessRuleRequest {
 	s.WarmupTime = &v
 	return s
 }
 
 type ModifyLosslessRuleResponseBody struct {
+	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -29600,13 +29578,23 @@ func (s ModifyLosslessRuleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyLosslessRuleResponseBody) SetCode(v int32) *ModifyLosslessRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyLosslessRuleResponseBody) SetData(v interface{}) *ModifyLosslessRuleResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *ModifyLosslessRuleResponseBody) SetErrorCode(v string) *ModifyLosslessRuleResponseBody {
 	s.ErrorCode = &v
 	return s
 }
 
-func (s *ModifyLosslessRuleResponseBody) SetHttpCode(v string) *ModifyLosslessRuleResponseBody {
-	s.HttpCode = &v
+func (s *ModifyLosslessRuleResponseBody) SetHttpStatusCode(v int32) *ModifyLosslessRuleResponseBody {
+	s.HttpStatusCode = &v
 	return s
 }
 
@@ -45848,7 +45836,35 @@ func (client *Client) FetchLosslessRuleListWithOptions(request *FetchLosslessRul
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -45857,7 +45873,7 @@ func (client *Client) FetchLosslessRuleListWithOptions(request *FetchLosslessRul
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -49804,14 +49820,6 @@ func (client *Client) ModifyLosslessRuleWithOptions(request *ModifyLosslessRuleR
 
 	if !tea.BoolValue(util.IsUnset(request.Related)) {
 		query["Related"] = request.Related
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ShutdownWaitSeconds)) {
-		query["ShutdownWaitSeconds"] = request.ShutdownWaitSeconds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WarmupTime)) {
