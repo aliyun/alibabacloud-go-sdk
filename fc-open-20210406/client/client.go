@@ -78,29 +78,6 @@ func (s *AvailableAZ) SetAvailableAZs(v string) *AvailableAZ {
 	return s
 }
 
-type BatchWindow struct {
-	CountBasedWindow *int64 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	TimeBasedWindow  *int64 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
-}
-
-func (s BatchWindow) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchWindow) GoString() string {
-	return s.String()
-}
-
-func (s *BatchWindow) SetCountBasedWindow(v int64) *BatchWindow {
-	s.CountBasedWindow = &v
-	return s
-}
-
-func (s *BatchWindow) SetTimeBasedWindow(v int64) *BatchWindow {
-	s.TimeBasedWindow = &v
-	return s
-}
-
 type CDNEventsTriggerConfig struct {
 	EventName    *string              `json:"eventName,omitempty" xml:"eventName,omitempty"`
 	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
@@ -416,46 +393,6 @@ func (s *DNSOption) SetValue(v string) *DNSOption {
 	return s
 }
 
-type DeadLetterQueue struct {
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-}
-
-func (s DeadLetterQueue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeadLetterQueue) GoString() string {
-	return s.String()
-}
-
-func (s *DeadLetterQueue) SetArn(v string) *DeadLetterQueue {
-	s.Arn = &v
-	return s
-}
-
-type DeliveryOption struct {
-	EventSchema *string `json:"eventSchema,omitempty" xml:"eventSchema,omitempty"`
-	Mode        *string `json:"mode,omitempty" xml:"mode,omitempty"`
-}
-
-func (s DeliveryOption) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeliveryOption) GoString() string {
-	return s.String()
-}
-
-func (s *DeliveryOption) SetEventSchema(v string) *DeliveryOption {
-	s.EventSchema = &v
-	return s
-}
-
-func (s *DeliveryOption) SetMode(v string) *DeliveryOption {
-	s.Mode = &v
-	return s
-}
-
 type Destination struct {
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
 }
@@ -545,9 +482,7 @@ func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
 type EventBridgeTriggerConfig struct {
 	AsyncInvocationType    *bool              `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
 	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
-	EventSinkConfig        *EventSinkConfig   `json:"eventSinkConfig,omitempty" xml:"eventSinkConfig,omitempty"`
 	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
-	RunOptions             *RunOptions        `json:"runOptions,omitempty" xml:"runOptions,omitempty"`
 	TriggerEnable          *bool              `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
 }
 
@@ -569,40 +504,13 @@ func (s *EventBridgeTriggerConfig) SetEventRuleFilterPattern(v string) *EventBri
 	return s
 }
 
-func (s *EventBridgeTriggerConfig) SetEventSinkConfig(v *EventSinkConfig) *EventBridgeTriggerConfig {
-	s.EventSinkConfig = v
-	return s
-}
-
 func (s *EventBridgeTriggerConfig) SetEventSourceConfig(v *EventSourceConfig) *EventBridgeTriggerConfig {
 	s.EventSourceConfig = v
 	return s
 }
 
-func (s *EventBridgeTriggerConfig) SetRunOptions(v *RunOptions) *EventBridgeTriggerConfig {
-	s.RunOptions = v
-	return s
-}
-
 func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerConfig {
 	s.TriggerEnable = &v
-	return s
-}
-
-type EventSinkConfig struct {
-	DeliveryOption *DeliveryOption `json:"deliveryOption,omitempty" xml:"deliveryOption,omitempty"`
-}
-
-func (s EventSinkConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EventSinkConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EventSinkConfig) SetDeliveryOption(v *DeliveryOption) *EventSinkConfig {
-	s.DeliveryOption = v
 	return s
 }
 
@@ -630,7 +538,6 @@ func (s *EventSourceConfig) SetEventSourceType(v string) *EventSourceConfig {
 }
 
 type EventSourceParameters struct {
-	SourceKafkaParameters    *SourceKafkaParameters    `json:"sourceKafkaParameters,omitempty" xml:"sourceKafkaParameters,omitempty"`
 	SourceMNSParameters      *SourceMNSParameters      `json:"sourceMNSParameters,omitempty" xml:"sourceMNSParameters,omitempty"`
 	SourceRabbitMQParameters *SourceRabbitMQParameters `json:"sourceRabbitMQParameters,omitempty" xml:"sourceRabbitMQParameters,omitempty"`
 	SourceRocketMQParameters *SourceRocketMQParameters `json:"sourceRocketMQParameters,omitempty" xml:"sourceRocketMQParameters,omitempty"`
@@ -642,11 +549,6 @@ func (s EventSourceParameters) String() string {
 
 func (s EventSourceParameters) GoString() string {
 	return s.String()
-}
-
-func (s *EventSourceParameters) SetSourceKafkaParameters(v *SourceKafkaParameters) *EventSourceParameters {
-	s.SourceKafkaParameters = v
-	return s
 }
 
 func (s *EventSourceParameters) SetSourceMNSParameters(v *SourceMNSParameters) *EventSourceParameters {
@@ -1554,35 +1456,6 @@ func (s *Resource) SetTags(v map[string]*string) *Resource {
 	return s
 }
 
-type RetryStrategy struct {
-	MaximumEventAgeInSeconds *int64  `json:"MaximumEventAgeInSeconds,omitempty" xml:"MaximumEventAgeInSeconds,omitempty"`
-	MaximumRetryAttempts     *int64  `json:"MaximumRetryAttempts,omitempty" xml:"MaximumRetryAttempts,omitempty"`
-	PushRetryStrategy        *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
-}
-
-func (s RetryStrategy) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RetryStrategy) GoString() string {
-	return s.String()
-}
-
-func (s *RetryStrategy) SetMaximumEventAgeInSeconds(v int64) *RetryStrategy {
-	s.MaximumEventAgeInSeconds = &v
-	return s
-}
-
-func (s *RetryStrategy) SetMaximumRetryAttempts(v int64) *RetryStrategy {
-	s.MaximumRetryAttempts = &v
-	return s
-}
-
-func (s *RetryStrategy) SetPushRetryStrategy(v string) *RetryStrategy {
-	s.PushRetryStrategy = &v
-	return s
-}
-
 type RewriteConfig struct {
 	EqualRules    []*RewriteConfigEqualRules    `json:"equalRules,omitempty" xml:"equalRules,omitempty" type:"Repeated"`
 	RegexRules    []*RewriteConfigRegexRules    `json:"regexRules,omitempty" xml:"regexRules,omitempty" type:"Repeated"`
@@ -1721,53 +1594,6 @@ func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
 	return s
 }
 
-type RunOptions struct {
-	BatchWindow     *BatchWindow     `json:"batchWindow,omitempty" xml:"batchWindow,omitempty"`
-	DeadLetterQueue *DeadLetterQueue `json:"deadLetterQueue,omitempty" xml:"deadLetterQueue,omitempty"`
-	ErrorsTolerance *string          `json:"errorsTolerance,omitempty" xml:"errorsTolerance,omitempty"`
-	MaximumTasks    *int64           `json:"maximumTasks,omitempty" xml:"maximumTasks,omitempty"`
-	Mode            *string          `json:"mode,omitempty" xml:"mode,omitempty"`
-	RetryStrategy   *RetryStrategy   `json:"retryStrategy,omitempty" xml:"retryStrategy,omitempty"`
-}
-
-func (s RunOptions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunOptions) GoString() string {
-	return s.String()
-}
-
-func (s *RunOptions) SetBatchWindow(v *BatchWindow) *RunOptions {
-	s.BatchWindow = v
-	return s
-}
-
-func (s *RunOptions) SetDeadLetterQueue(v *DeadLetterQueue) *RunOptions {
-	s.DeadLetterQueue = v
-	return s
-}
-
-func (s *RunOptions) SetErrorsTolerance(v string) *RunOptions {
-	s.ErrorsTolerance = &v
-	return s
-}
-
-func (s *RunOptions) SetMaximumTasks(v int64) *RunOptions {
-	s.MaximumTasks = &v
-	return s
-}
-
-func (s *RunOptions) SetMode(v string) *RunOptions {
-	s.Mode = &v
-	return s
-}
-
-func (s *RunOptions) SetRetryStrategy(v *RetryStrategy) *RunOptions {
-	s.RetryStrategy = v
-	return s
-}
-
 type ScheduledActions struct {
 	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -1823,71 +1649,6 @@ func (s SourceConfig) GoString() string {
 
 func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
 	s.Logstore = &v
-	return s
-}
-
-type SourceKafkaParameters struct {
-	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-}
-
-func (s SourceKafkaParameters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SourceKafkaParameters) GoString() string {
-	return s.String()
-}
-
-func (s *SourceKafkaParameters) SetConsumerGroup(v string) *SourceKafkaParameters {
-	s.ConsumerGroup = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetInstanceId(v string) *SourceKafkaParameters {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetNetwork(v string) *SourceKafkaParameters {
-	s.Network = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetOffsetReset(v string) *SourceKafkaParameters {
-	s.OffsetReset = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetRegionId(v string) *SourceKafkaParameters {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetSecurityGroupId(v string) *SourceKafkaParameters {
-	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetTopic(v string) *SourceKafkaParameters {
-	s.Topic = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetVSwitchIds(v string) *SourceKafkaParameters {
-	s.VSwitchIds = &v
-	return s
-}
-
-func (s *SourceKafkaParameters) SetVpcId(v string) *SourceKafkaParameters {
-	s.VpcId = &v
 	return s
 }
 
@@ -2747,9 +2508,7 @@ type CreateAliasResponseBody struct {
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the alias was last modified.
-	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	ResolvePolicy    *string      `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
-	RoutePolicy      *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The ID of the version to which the alias points.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
@@ -2784,16 +2543,6 @@ func (s *CreateAliasResponseBody) SetDescription(v string) *CreateAliasResponseB
 
 func (s *CreateAliasResponseBody) SetLastModifiedTime(v string) *CreateAliasResponseBody {
 	s.LastModifiedTime = &v
-	return s
-}
-
-func (s *CreateAliasResponseBody) SetResolvePolicy(v string) *CreateAliasResponseBody {
-	s.ResolvePolicy = &v
-	return s
-}
-
-func (s *CreateAliasResponseBody) SetRoutePolicy(v *RoutePolicy) *CreateAliasResponseBody {
-	s.RoutePolicy = v
 	return s
 }
 
@@ -3114,7 +2863,7 @@ type CreateFunctionRequest struct {
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
 	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the Initializer hook. For more information, see [Initializer hook](~~157704~~).
+	// The handler of the Initializer hook. For more information, see [Initializer hooks](~~157704~~).
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The number of requests that can be concurrently processed by a single instance.
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
@@ -3134,9 +2883,9 @@ type CreateFunctionRequest struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The information about layers.
 	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
+	// The memory size for the function. Unit: MB. The value must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
@@ -3324,7 +3073,7 @@ type CreateFunctionResponseBody struct {
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// An array that consists of the information of layers.
 	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name as a layer with a larger subscript.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
@@ -4679,81 +4428,6 @@ func (s *DeleteLayerVersionResponse) SetHeaders(v map[string]*string) *DeleteLay
 }
 
 func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type DeleteProvisionConfigHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
-}
-
-func (s DeleteProvisionConfigHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProvisionConfigHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProvisionConfigHeaders) SetCommonHeaders(v map[string]*string) *DeleteProvisionConfigHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *DeleteProvisionConfigHeaders) SetXFcAccountId(v string) *DeleteProvisionConfigHeaders {
-	s.XFcAccountId = &v
-	return s
-}
-
-func (s *DeleteProvisionConfigHeaders) SetXFcDate(v string) *DeleteProvisionConfigHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteProvisionConfigHeaders) SetXFcTraceId(v string) *DeleteProvisionConfigHeaders {
-	s.XFcTraceId = &v
-	return s
-}
-
-type DeleteProvisionConfigRequest struct {
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-}
-
-func (s DeleteProvisionConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProvisionConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProvisionConfigRequest) SetQualifier(v string) *DeleteProvisionConfigRequest {
-	s.Qualifier = &v
-	return s
-}
-
-type DeleteProvisionConfigResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s DeleteProvisionConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProvisionConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProvisionConfigResponse) SetHeaders(v map[string]*string) *DeleteProvisionConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProvisionConfigResponse) SetStatusCode(v int32) *DeleteProvisionConfigResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -6499,7 +6173,7 @@ type GetServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -6559,13 +6233,13 @@ type GetServiceResponseBody struct {
 	// Specifies whether to allow functions to access the Internet. Valid values:
 	//
 	// *   **true**: allows functions in the specified service to access the Internet.
-	// *   **false**: does not allow functions in the specified service to access the Internet.
+	// *   **false**: does not allow functions to access the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The time when the service was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The log configuration, which specifies a Logstore to store function execution logs.
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	// The configuration of the NAS file system. The configuration allows functions in the specified service in Function Compute to access the NAS file system.
+	// The configurations of the NAS file system. The configuration allows functions in the specified service in Function Compute to access the NAS file system.
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// The OSS mount configurations.
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
@@ -6578,7 +6252,7 @@ type GetServiceResponseBody struct {
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	// The name of the service.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+	// The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
 	// The VPC configuration. The configuration allows a function to access the specified VPC.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
@@ -7901,7 +7575,7 @@ type ListFunctionsRequest struct {
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// The version or alias of the service.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+	// The starting position of the result list. The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -7941,7 +7615,7 @@ func (s *ListFunctionsRequest) SetStartKey(v string) *ListFunctionsRequest {
 type ListFunctionsResponseBody struct {
 	// The information about functions.
 	Functions []*ListFunctionsResponseBodyFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
-	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
+	// The token used to obtain more results. If this parameter is not returned, all the layers are returned.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -7968,11 +7642,11 @@ type ListFunctionsResponseBodyFunctions struct {
 	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
 	// The CRC-64 value of the function code package.
 	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package that is returned by the system. Unit: byte.
+	// The size of the function code package that is returned by the system. Unit: bytes.
 	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
 	// The number of vCPUs of the function. The value must be a multiple of 0.05.
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function is created.
+	// The time when the function was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The configurations of the custom container runtime.
 	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
@@ -7988,19 +7662,19 @@ type ListFunctionsResponseBodyFunctions struct {
 	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
 	// The name of the function.
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
+	// The GPU memory capacity for the function. Unit: MB. The value is a multiple of 1,024.
 	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The handler of the function.
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
+	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the Initializer hook is terminated.
 	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. The format of the value is determined by the programming language that you use. For more information, see [Initializer function](~~157704~~).
+	// The handler of the Initializer hook. The format of the value is determined by the programming language that you use. For more information, see [Initializer hook](~~157704~~).
 	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	// The number of requests that can be concurrently processed by a single instance.
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	// The lifecycle configurations of the instance.
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
+	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
 	//
 	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
 	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
@@ -8008,15 +7682,15 @@ type ListFunctionsResponseBodyFunctions struct {
 	//
 	// *   **e1**: elastic instance
 	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
-	// *   **g1**: same fc.gpu.tesla.1
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
+	// *   **g1**: same as fc.gpu.tesla.1
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The time when the function was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// An array that consists of the information of layers.
+	// The information about layers.
 	//
-	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
+	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
@@ -8192,8 +7866,6 @@ type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -8211,16 +7883,6 @@ func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInsta
 
 func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	s.XFcAccountId = &v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
-	s.XFcTraceId = &v
 	return s
 }
 
@@ -12257,7 +11919,7 @@ type UpdateServiceRequest struct {
 	// Specifies whether to allow functions to access the Internet. Valid values:
 	//
 	// *   **true**: allows functions in the specified service to access the Internet.
-	// *   **false**: does not allow functions in the specified service to access the Internet.
+	// *   **false**: does not allow functions to access the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The log configuration. Function Compute writes function execution logs to the specified Logstore.
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
@@ -12332,7 +11994,7 @@ type UpdateServiceResponseBody struct {
 	// Specifies whether to allow functions to access the Internet. Valid values:
 	//
 	// *   **true**: allows functions in the specified service to access the Internet.
-	// *   **false**: does not allow functions in the specified service to access the Internet.
+	// *   **false**: does not allow functions to access the Internet.
 	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
 	// The time when the service was last modified.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
@@ -12351,7 +12013,7 @@ type UpdateServiceResponseBody struct {
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	// The name of the service.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The configurations of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
+	// The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
 	// The VPC configuration. The configuration allows a function to access the specified VPC.
 	VpcConfig *VPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
@@ -13838,69 +13500,6 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 	headers := &DeleteLayerVersionHeaders{}
 	_result = &DeleteLayerVersionResponse{}
 	_body, _err := client.DeleteLayerVersionWithOptions(layerName, version, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProvisionConfigWithOptions(serviceName *string, functionName *string, request *DeleteProvisionConfigRequest, headers *DeleteProvisionConfigHeaders, runtime *util.RuntimeOptions) (_result *DeleteProvisionConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
-		query["qualifier"] = request.Qualifier
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
-		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProvisionConfig"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(openapiutil.GetEncodeParam(serviceName)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/provision-config"),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteProvisionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProvisionConfig(serviceName *string, functionName *string, request *DeleteProvisionConfigRequest) (_result *DeleteProvisionConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &DeleteProvisionConfigHeaders{}
-	_result = &DeleteProvisionConfigResponse{}
-	_body, _err := client.DeleteProvisionConfigWithOptions(serviceName, functionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15500,14 +15099,6 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
