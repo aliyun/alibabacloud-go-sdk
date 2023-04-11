@@ -1332,6 +1332,163 @@ func (s *GetTitleIntelligenceResponse) SetBody(v *GetTitleIntelligenceResponseBo
 	return s
 }
 
+type GetTranslateImageBatchResultRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTranslateImageBatchResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranslateImageBatchResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranslateImageBatchResultRequest) SetTaskId(v string) *GetTranslateImageBatchResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTranslateImageBatchResultResponseBody struct {
+	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetTranslateImageBatchResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTranslateImageBatchResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranslateImageBatchResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranslateImageBatchResultResponseBody) SetCode(v int32) *GetTranslateImageBatchResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBody) SetData(v *GetTranslateImageBatchResultResponseBodyData) *GetTranslateImageBatchResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBody) SetMessage(v string) *GetTranslateImageBatchResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBody) SetRequestId(v string) *GetTranslateImageBatchResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTranslateImageBatchResultResponseBodyData struct {
+	Result []*GetTranslateImageBatchResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Status *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetTranslateImageBatchResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranslateImageBatchResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyData) SetResult(v []*GetTranslateImageBatchResultResponseBodyDataResult) *GetTranslateImageBatchResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyData) SetStatus(v string) *GetTranslateImageBatchResultResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetTranslateImageBatchResultResponseBodyDataResult struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	FinalImageUrl  *string `json:"FinalImageUrl,omitempty" xml:"FinalImageUrl,omitempty"`
+	InPaintingUrl  *string `json:"InPaintingUrl,omitempty" xml:"InPaintingUrl,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	SourceImageUrl *string `json:"SourceImageUrl,omitempty" xml:"SourceImageUrl,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TemplateJson   *string `json:"TemplateJson,omitempty" xml:"TemplateJson,omitempty"`
+}
+
+func (s GetTranslateImageBatchResultResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranslateImageBatchResultResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetCode(v int32) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetFinalImageUrl(v string) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.FinalImageUrl = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetInPaintingUrl(v string) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.InPaintingUrl = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetMessage(v string) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetSourceImageUrl(v string) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.SourceImageUrl = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetSuccess(v bool) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetTemplateJson(v string) *GetTranslateImageBatchResultResponseBodyDataResult {
+	s.TemplateJson = &v
+	return s
+}
+
+type GetTranslateImageBatchResultResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTranslateImageBatchResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTranslateImageBatchResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranslateImageBatchResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranslateImageBatchResultResponse) SetHeaders(v map[string]*string) *GetTranslateImageBatchResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponse) SetStatusCode(v int32) *GetTranslateImageBatchResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTranslateImageBatchResultResponse) SetBody(v *GetTranslateImageBatchResultResponseBody) *GetTranslateImageBatchResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetTranslateReportRequest struct {
 	ApiName   *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
@@ -2234,6 +2391,134 @@ func (s *TranslateImageResponse) SetBody(v *TranslateImageResponseBody) *Transla
 	return s
 }
 
+type TranslateImageBatchRequest struct {
+	CustomTaskId   *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	Ext            *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	Field          *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	ImageUrls      *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+}
+
+func (s TranslateImageBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateImageBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateImageBatchRequest) SetCustomTaskId(v string) *TranslateImageBatchRequest {
+	s.CustomTaskId = &v
+	return s
+}
+
+func (s *TranslateImageBatchRequest) SetExt(v string) *TranslateImageBatchRequest {
+	s.Ext = &v
+	return s
+}
+
+func (s *TranslateImageBatchRequest) SetField(v string) *TranslateImageBatchRequest {
+	s.Field = &v
+	return s
+}
+
+func (s *TranslateImageBatchRequest) SetImageUrls(v string) *TranslateImageBatchRequest {
+	s.ImageUrls = &v
+	return s
+}
+
+func (s *TranslateImageBatchRequest) SetSourceLanguage(v string) *TranslateImageBatchRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *TranslateImageBatchRequest) SetTargetLanguage(v string) *TranslateImageBatchRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+type TranslateImageBatchResponseBody struct {
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *TranslateImageBatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TranslateImageBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateImageBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateImageBatchResponseBody) SetCode(v int32) *TranslateImageBatchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TranslateImageBatchResponseBody) SetData(v *TranslateImageBatchResponseBodyData) *TranslateImageBatchResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TranslateImageBatchResponseBody) SetMessage(v string) *TranslateImageBatchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TranslateImageBatchResponseBody) SetRequestId(v string) *TranslateImageBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TranslateImageBatchResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s TranslateImageBatchResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateImageBatchResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateImageBatchResponseBodyData) SetTaskId(v string) *TranslateImageBatchResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type TranslateImageBatchResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateImageBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TranslateImageBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateImageBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateImageBatchResponse) SetHeaders(v map[string]*string) *TranslateImageBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TranslateImageBatchResponse) SetStatusCode(v int32) *TranslateImageBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TranslateImageBatchResponse) SetBody(v *TranslateImageBatchResponseBody) *TranslateImageBatchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3052,6 +3337,50 @@ func (client *Client) GetTitleIntelligence(request *GetTitleIntelligenceRequest)
 	return _result, _err
 }
 
+func (client *Client) GetTranslateImageBatchResultWithOptions(request *GetTranslateImageBatchResultRequest, runtime *util.RuntimeOptions) (_result *GetTranslateImageBatchResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranslateImageBatchResult"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTranslateImageBatchResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTranslateImageBatchResult(request *GetTranslateImageBatchResultRequest) (_result *GetTranslateImageBatchResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTranslateImageBatchResultResponse{}
+	_body, _err := client.GetTranslateImageBatchResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportRequest, runtime *util.RuntimeOptions) (_result *GetTranslateReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3577,6 +3906,70 @@ func (client *Client) TranslateImage(request *TranslateImageRequest) (_result *T
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateImageResponse{}
 	_body, _err := client.TranslateImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TranslateImageBatchWithOptions(request *TranslateImageBatchRequest, runtime *util.RuntimeOptions) (_result *TranslateImageBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomTaskId)) {
+		body["CustomTaskId"] = request.CustomTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ext)) {
+		body["Ext"] = request.Ext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Field)) {
+		body["Field"] = request.Field
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrls)) {
+		body["ImageUrls"] = request.ImageUrls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateImageBatch"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TranslateImageBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TranslateImageBatch(request *TranslateImageBatchRequest) (_result *TranslateImageBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TranslateImageBatchResponse{}
+	_body, _err := client.TranslateImageBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
