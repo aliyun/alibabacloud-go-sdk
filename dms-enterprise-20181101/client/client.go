@@ -1609,13 +1609,13 @@ func (s *BuyPayAsYouGoOrderResponse) SetBody(v *BuyPayAsYouGoOrderResponseBody) 
 }
 
 type ChangeColumnSecLevelRequest struct {
-	// The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to query the name of the field.
+	// The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the field.
 	//
-	// >  You can also call the [ListColumns](~~141870~~) operation to query the name of the field.
+	// > You can also call the [ListColumns](~~141870~~) operation to obtain the name of the field.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to query the ID of the database.
+	// The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID of the database.
 	//
-	// >  You can also call the [ListDatabases](~~141873~~) operation to query the ID of a physical database and the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
+	// > You can also call the [ListDatabases](~~141873~~) operation to obtain the ID of a physical database and the [ListLogicDatabases](~~141874~~) operation to obtain the ID of a logical database.
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// Specifies whether the database is a logical database. Valid values:
 	//
@@ -1628,18 +1628,18 @@ type ChangeColumnSecLevelRequest struct {
 	// *   SENSITIVE: medium sensitivity level
 	// *   CONFIDENTIAL: high sensitivity level
 	NewLevel *string `json:"NewLevel,omitempty" xml:"NewLevel,omitempty"`
-	// The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to query the name of the database.
+	// The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the database.
 	//
-	// *   You can also call the [SearchDatabase](~~141876~~) operation to query the name of the database.
-	// *   You can also call the [ListDatabases](~~141873~~) operation to query the name of a physical database and the [ListLogicDatabases](~~141874~~) operation to query the name of a logical database.
+	// *   You can also call the [SearchDatabase](~~141876~~) operation to obtain the name of the database.
+	// *   You can also call the [ListDatabases](~~141873~~) operation to obtain the name of a physical database and the [ListLogicDatabases](~~141874~~) operation to obtain the name of a logical database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to query the name of the table.
+	// The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the name of the table.
 	//
-	// >  You can also call the [ListTables](~~141878~~) operation to query the name of the table.
+	// > You can also call the [ListTables](~~141878~~) operation to obtain the name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The ID of the tenant.
 	//
-	// >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -1687,16 +1687,16 @@ func (s *ChangeColumnSecLevelRequest) SetTid(v int64) *ChangeColumnSecLevelReque
 }
 
 type ChangeColumnSecLevelResponseBody struct {
-	// The error code.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// *   true: The request is successful.
-	// *   false: The request fails.
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1861,9 +1861,14 @@ func (s *ChangeLhDagOwnerResponse) SetBody(v *ChangeLhDagOwnerResponseBody) *Cha
 }
 
 type CloseOrderRequest struct {
+	// The reason why the ticket is closed.
 	CloseReason *string `json:"CloseReason,omitempty" xml:"CloseReason,omitempty"`
-	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CloseOrderRequest) String() string {
@@ -1890,10 +1895,14 @@ func (s *CloseOrderRequest) SetTid(v int64) *CloseOrderRequest {
 }
 
 type CloseOrderResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CloseOrderResponseBody) String() string {
@@ -1949,6 +1958,162 @@ func (s *CloseOrderResponse) SetStatusCode(v int32) *CloseOrderResponse {
 }
 
 func (s *CloseOrderResponse) SetBody(v *CloseOrderResponseBody) *CloseOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAuthorityTemplateRequest struct {
+	// The description of the permission template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateAuthorityTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorityTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorityTemplateRequest) SetDescription(v string) *CreateAuthorityTemplateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateRequest) SetName(v string) *CreateAuthorityTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateRequest) SetTid(v int64) *CreateAuthorityTemplateRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateAuthorityTemplateResponseBody struct {
+	// The details of the permission template.
+	AuthorityTemplateView *CreateAuthorityTemplateResponseBodyAuthorityTemplateView `json:"AuthorityTemplateView,omitempty" xml:"AuthorityTemplateView,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAuthorityTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorityTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetAuthorityTemplateView(v *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) *CreateAuthorityTemplateResponseBody {
+	s.AuthorityTemplateView = v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetErrorCode(v string) *CreateAuthorityTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetErrorMessage(v string) *CreateAuthorityTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetRequestId(v string) *CreateAuthorityTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBody) SetSuccess(v bool) *CreateAuthorityTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAuthorityTemplateResponseBodyAuthorityTemplateView struct {
+	// The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the permission template.
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the permission template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateAuthorityTemplateResponseBodyAuthorityTemplateView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorityTemplateResponseBodyAuthorityTemplateView) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) SetCreateTime(v string) *CreateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) SetCreatorId(v int64) *CreateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) SetDescription(v string) *CreateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) SetName(v string) *CreateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponseBodyAuthorityTemplateView) SetTemplateId(v int64) *CreateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateAuthorityTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAuthorityTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAuthorityTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAuthorityTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAuthorityTemplateResponse) SetHeaders(v map[string]*string) *CreateAuthorityTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponse) SetStatusCode(v int32) *CreateAuthorityTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAuthorityTemplateResponse) SetBody(v *CreateAuthorityTemplateResponseBody) *CreateAuthorityTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -3927,12 +4092,25 @@ func (s *CreateProxyAccessResponse) SetBody(v *CreateProxyAccessResponseBody) *C
 }
 
 type CreatePublishGroupTaskRequest struct {
-	DbId            *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic           *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PlanTime        *string `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	// The ID of the database for which the schema design is executed.
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Indicates whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The ID of the ticket.
+	//
+	// > : You can create a schema design ticket in the DMS console. For more information, see [Design schemas](~~69711~~). You can also create a schema design ticket by calling the [CreateOrder](~~144649~~) operation and obtain the ticket ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The time to execute the schema design ticket.
+	PlanTime *string `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	// The policy to execute the schema design ticket. Valid values:
+	//
+	// *   IMMEDIATELY: immediately executes the schema design ticket.
+	// *   REGULARLY: executes the schema design ticket at a scheduled time.
 	PublishStrategy *string `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
-	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreatePublishGroupTaskRequest) String() string {
@@ -3974,11 +4152,16 @@ func (s *CreatePublishGroupTaskRequest) SetTid(v int64) *CreatePublishGroupTaskR
 }
 
 type CreatePublishGroupTaskResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the job.
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreatePublishGroupTaskResponseBody) String() string {
@@ -4044,10 +4227,14 @@ func (s *CreatePublishGroupTaskResponse) SetBody(v *CreatePublishGroupTaskRespon
 }
 
 type CreateSQLReviewOrderRequest struct {
-	Comment         *string                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Param           *CreateSQLReviewOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RelatedUserList []*int64                          `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                            `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The purpose or objective of the SQL review. This reduces unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	Param *CreateSQLReviewOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The stakeholders involved in this operation. All the specified stakeholders can view the ticket details and take part in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
+	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateSQLReviewOrderRequest) String() string {
@@ -4079,9 +4266,14 @@ func (s *CreateSQLReviewOrderRequest) SetTid(v int64) *CreateSQLReviewOrderReque
 }
 
 type CreateSQLReviewOrderRequestParam struct {
+	// The files to be reviewed. Multiple files can be reviewed at a time.
 	AttachmentKeyList []*string `json:"AttachmentKeyList,omitempty" xml:"AttachmentKeyList,omitempty" type:"Repeated"`
-	DbId              *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	ProjectName       *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+	//
+	// >  You can call this operation to query only physical databases. This operation is unavailable to query logical databases.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the project.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s CreateSQLReviewOrderRequestParam) String() string {
@@ -4108,10 +4300,14 @@ func (s *CreateSQLReviewOrderRequestParam) SetProjectName(v string) *CreateSQLRe
 }
 
 type CreateSQLReviewOrderShrinkRequest struct {
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The purpose or objective of the SQL review. This reduces unnecessary communication.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The stakeholders involved in this operation. All the specified stakeholders can view the ticket details and take part in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateSQLReviewOrderShrinkRequest) String() string {
@@ -4143,11 +4339,16 @@ func (s *CreateSQLReviewOrderShrinkRequest) SetTid(v int64) *CreateSQLReviewOrde
 }
 
 type CreateSQLReviewOrderResponseBody struct {
+	// The result of the ticket creation task.
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSQLReviewOrderResponseBody) String() string {
@@ -4492,11 +4693,18 @@ func (s *CreateStandardGroupResponse) SetBody(v *CreateStandardGroupResponseBody
 }
 
 type CreateStructSyncOrderRequest struct {
-	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Param           *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The remarks of the ticket.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	Param *CreateStructSyncOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	// The IDs of the stakeholders.
+	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	// The ID of the tenant.
+	//
+	// >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateStructSyncOrderRequest) String() string {
@@ -4533,10 +4741,17 @@ func (s *CreateStructSyncOrderRequest) SetTid(v int64) *CreateStructSyncOrderReq
 }
 
 type CreateStructSyncOrderRequestParam struct {
-	IgnoreError   *bool                                             `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
-	Source        *CreateStructSyncOrderRequestParamSource          `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// Specifies whether to skip an error that occurs in executing an SQL statement. Valid values:
+	//
+	// *   **true**: continues to execute subsequent SQL statements if an error occurs in executing an SQL statement.
+	// *   **false**: stops executing subsequent SQL statements if an error occurs in executing an SQL statement.
+	IgnoreError *bool `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	// The information about the base database.
+	Source *CreateStructSyncOrderRequestParamSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// The information about the table of which you want to synchronize the schema.
 	TableInfoList []*CreateStructSyncOrderRequestParamTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
-	Target        *CreateStructSyncOrderRequestParamTarget          `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The information about the database to which you want to synchronize the schema of a table.
+	Target *CreateStructSyncOrderRequestParamTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 }
 
 func (s CreateStructSyncOrderRequestParam) String() string {
@@ -4568,10 +4783,17 @@ func (s *CreateStructSyncOrderRequestParam) SetTarget(v *CreateStructSyncOrderRe
 }
 
 type CreateStructSyncOrderRequestParamSource struct {
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name that is used to search for the database. You can call the [SearchDatabases](~~141876~~) operation to query the name of the database.
 	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The version number of the schema. The default value is the latest schema version number. For more information, see [Manage schema versions](~~202275~~).
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateStructSyncOrderRequestParamSource) String() string {
@@ -4603,7 +4825,9 @@ func (s *CreateStructSyncOrderRequestParamSource) SetVersionId(v string) *Create
 }
 
 type CreateStructSyncOrderRequestParamTableInfoList struct {
+	// The name of the source table.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the destination table.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -4626,10 +4850,19 @@ func (s *CreateStructSyncOrderRequestParamTableInfoList) SetTargetTableName(v st
 }
 
 type CreateStructSyncOrderRequestParamTarget struct {
-	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The ID of the database. You can call the [SearchDatabases](~~141876~~) operation to query the ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name that is used to search for the database. You can call the [SearchDatabases](~~141876~~) operation to query the name of the database.
 	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	VersionId    *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// Specifies whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The version number. By default, this parameter is left empty.
+	//
+	// >  If you specify the schema version number of the destination database, Data Management (DMS) only compares the schemas of the two databases.
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateStructSyncOrderRequestParamTarget) String() string {
@@ -4661,11 +4894,18 @@ func (s *CreateStructSyncOrderRequestParamTarget) SetVersionId(v string) *Create
 }
 
 type CreateStructSyncOrderShrinkRequest struct {
-	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The key of an attachment that is returned after the attachment is uploaded. You can call the [GetUserUploadFileJob](~~206069~~) operation to query the key of the attachment.
+	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	// The remarks of the ticket.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The parameters of the ticket.
+	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The IDs of the stakeholders.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s CreateStructSyncOrderShrinkRequest) String() string {
@@ -4702,11 +4942,16 @@ func (s *CreateStructSyncOrderShrinkRequest) SetTid(v int64) *CreateStructSyncOr
 }
 
 type CreateStructSyncOrderResponseBody struct {
+	// The result of creating the ticket.
 	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateStructSyncOrderResponseBody) String() string {
@@ -4774,21 +5019,21 @@ func (s *CreateStructSyncOrderResponse) SetBody(v *CreateStructSyncOrderResponse
 type CreateTaskRequest struct {
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The position of the node on the Directed Acyclic Graph (DAG).
+	// The position of the node on the directed acyclic graph (DAG).
 	GraphParam *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
-	// The configuration for the node.
+	// The configuration of the node.
 	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-	// The name of the node you want to create.
+	// The name of the node that you want to create.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The output variables for the task.
 	NodeOutput *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
-	// The type of the node you want to create. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
+	// The type of the node that you want to create. For more information about the valid values for this parameter, see [NodeType parameter](~~424705~~).
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The ID of the tenant.
 	//
-	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The time variables configured for the node.
+	// The time variables for the node.
 	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
 }
 
@@ -4841,11 +5086,11 @@ func (s *CreateTaskRequest) SetTimeVariables(v string) *CreateTaskRequest {
 }
 
 type CreateTaskResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the request fails.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the task node returned when the task was created.
+	// The ID of the task node returned if the node is created.
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5166,9 +5411,22 @@ func (s *CreateUploadFileJobResponse) SetBody(v *CreateUploadFileJobResponseBody
 }
 
 type CreateUploadOSSFileJobRequest struct {
-	FileName     *string                                    `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileSource   *string                                    `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
-	Tid          *int64                                     `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The name of the file.
+	//
+	// > The file name must end with .txt or .sql. For example, the file name can be text.txt.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The purpose of the file upload task. Valid values:
+	//
+	// *   **datacorrect**: The file is uploaded to change data.
+	// *   **order_info_attachment**: The file is uploaded as an attachment in a ticket.
+	// *   **big-file**: The file is uploaded to import multiple data records at a time.
+	// *   **sqlreview**: The file is uploaded for SQL review.
+	FileSource *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The information about the OSS file to be uploaded.
 	UploadTarget *CreateUploadOSSFileJobRequestUploadTarget `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty" type:"Struct"`
 }
 
@@ -5201,8 +5459,11 @@ func (s *CreateUploadOSSFileJobRequest) SetUploadTarget(v *CreateUploadOSSFileJo
 }
 
 type CreateUploadOSSFileJobRequestUploadTarget struct {
+	// The name of the OSS bucket.
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The endpoint of the OSS bucket.
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The name of the OSS object.
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
 }
 
@@ -5230,9 +5491,22 @@ func (s *CreateUploadOSSFileJobRequestUploadTarget) SetObjectName(v string) *Cre
 }
 
 type CreateUploadOSSFileJobShrinkRequest struct {
-	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileSource         *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
-	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The name of the file.
+	//
+	// > The file name must end with .txt or .sql. For example, the file name can be text.txt.
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The purpose of the file upload task. Valid values:
+	//
+	// *   **datacorrect**: The file is uploaded to change data.
+	// *   **order_info_attachment**: The file is uploaded as an attachment in a ticket.
+	// *   **big-file**: The file is uploaded to import multiple data records at a time.
+	// *   **sqlreview**: The file is uploaded for SQL review.
+	FileSource *string `json:"FileSource,omitempty" xml:"FileSource,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The information about the OSS file to be uploaded.
 	UploadTargetShrink *string `json:"UploadTarget,omitempty" xml:"UploadTarget,omitempty"`
 }
 
@@ -5265,11 +5539,16 @@ func (s *CreateUploadOSSFileJobShrinkRequest) SetUploadTargetShrink(v string) *C
 }
 
 type CreateUploadOSSFileJobResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The key of the file upload task. You can query the upload progress and task details. For more information, see [GetUserUploadFileJob](~~206069~~).
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateUploadOSSFileJobResponseBody) String() string {
@@ -6598,6 +6877,7 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DisableUserRequest struct {
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	// The UID of the Alibaba Cloud account.
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -7105,9 +7385,21 @@ func (s *ExecuteDataCorrectResponse) SetBody(v *ExecuteDataCorrectResponseBody) 
 }
 
 type ExecuteDataExportRequest struct {
+	// The parameters that are required to perform the operation:
+	//
+	// ```json
+	// {
+	//    "fileType": "CSV", // The format of the exported file.
+	//    "encoding": "" // The encoding format.
+	//  }
+	// ```
 	ActionDetail map[string]interface{} `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
-	OrderId      *int64                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid          *int64                 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteDataExportRequest) String() string {
@@ -7134,9 +7426,21 @@ func (s *ExecuteDataExportRequest) SetTid(v int64) *ExecuteDataExportRequest {
 }
 
 type ExecuteDataExportShrinkRequest struct {
+	// The parameters that are required to perform the operation:
+	//
+	// ```json
+	// {
+	//    "fileType": "CSV", // The format of the exported file.
+	//    "encoding": "" // The encoding format.
+	//  }
+	// ```
 	ActionDetailShrink *string `json:"ActionDetail,omitempty" xml:"ActionDetail,omitempty"`
-	OrderId            *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid                *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteDataExportShrinkRequest) String() string {
@@ -7163,10 +7467,14 @@ func (s *ExecuteDataExportShrinkRequest) SetTid(v int64) *ExecuteDataExportShrin
 }
 
 type ExecuteDataExportResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteDataExportResponseBody) String() string {
@@ -7391,8 +7699,12 @@ func (s *ExecuteScriptResponse) SetBody(v *ExecuteScriptResponseBody) *ExecuteSc
 }
 
 type ExecuteStructSyncRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteStructSyncRequest) String() string {
@@ -7414,10 +7726,14 @@ func (s *ExecuteStructSyncRequest) SetTid(v int64) *ExecuteStructSyncRequest {
 }
 
 type ExecuteStructSyncResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteStructSyncResponseBody) String() string {
@@ -7478,9 +7794,9 @@ func (s *ExecuteStructSyncResponse) SetBody(v *ExecuteStructSyncResponseBody) *E
 }
 
 type GetApprovalDetailRequest struct {
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to query the ID of the approval process.
+	// The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 }
 
@@ -7505,16 +7821,16 @@ func (s *GetApprovalDetailRequest) SetWorkflowInstanceId(v int64) *GetApprovalDe
 type GetApprovalDetailResponseBody struct {
 	// The approval details of the ticket.
 	ApprovalDetail *GetApprovalDetailResponseBodyApprovalDetail `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request is successful.
+	// *   **false**: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7564,29 +7880,29 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The type of the ticket. Valid values:
 	//
-	// - **NDDL**: The ticket is used to change the schema design.
-	// - **DATA_TRACK**: The ticket is used to track data.
-	// - **TABLE_SYNC**: The ticket is used to synchronize databases and tables.
-	// - **PERM_APPLY**: The ticket is used to apply for permissions.
-	// - **DATA_EXPORT**: The ticket is used to export data.
-	// - **DATA_CORRECT**: The ticket is used to change data.
-	// - **OWNER_APPLY**: The ticket is used to apply for the owner role of a resource.
-	// - **SENSITIVITY**: The ticket is used to change column sensitivity levels.
+	// *   **NDDL**: a schema design ticket
+	// *   **DATA_TRACK**: a data tracking ticket
+	// *   **TABLE_SYNC**: a table synchronization ticket
+	// *   **PERM_APPLY**: a permission application ticket
+	// *   **DATA_EXPORT**: a data export ticket
+	// *   **DATA_CORRECT**: a data change ticket
+	// *   **OWNER_APPLY**: an owner role application ticket
+	// *   **SENSITIVITY**: a column sensitivity level change ticket
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The reason for the approval.
+	// The reasons for the approval.
 	ReasonList *GetApprovalDetailResponseBodyApprovalDetailReasonList `json:"ReasonList,omitempty" xml:"ReasonList,omitempty" type:"Struct"`
-	// The ID of the approval template.
+	// The ID of the workflow template.
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The title of the approval process.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The approval status of the ticket. Valid values:
 	//
-	// - **AUDITING**: The ticket is being processed.
-	// - **REJECT**: The ticket was rejected.
-	// - **CANCEL**: The ticket was revoked.
-	// - **APPROVED**: The ticket was approved.
+	// *   **AUDITING**: The ticket is being reviewed.
+	// *   **REJECT**: The ticket was rejected.
+	// *   **CANCEL**: The ticket was revoked.
+	// *   **APPROVED**: The ticket was approved.
 	//
-	// >  If an approval process contains multiple approval nodes, this parameter is returned for each approval node.
+	// > An approval process contains multiple approval nodes, and this parameter is returned for each approval node.
 	WorkflowInsCode *string `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
 	// The details of approval nodes.
 	WorkflowNodes *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
@@ -7744,7 +8060,9 @@ type GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode struct
 	OperatorId *int64 `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
 	// The approval status of the ticket. Valid values:
 	//
-	// *   **AUDITING**: The ticket is being processed.
+	// *   **START**: The ticket was submitted.
+	// *   **ERROR**: An error occurred.
+	// *   **AUDITING**: The ticket is being reviewed.
 	// *   **REJECT**: The ticket was rejected.
 	// *   **CANCEL**: The ticket was revoked.
 	// *   **APPROVED**: The ticket was approved.
@@ -7831,6 +8149,445 @@ func (s *GetApprovalDetailResponse) SetStatusCode(v int32) *GetApprovalDetailRes
 }
 
 func (s *GetApprovalDetailResponse) SetBody(v *GetApprovalDetailResponseBody) *GetApprovalDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetAuthorityTemplateRequest struct {
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetAuthorityTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateRequest) SetTemplateId(v int64) *GetAuthorityTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateRequest) SetTid(v int64) *GetAuthorityTemplateRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetAuthorityTemplateResponseBody struct {
+	// The details of the permission template.
+	AuthorityTemplateView *GetAuthorityTemplateResponseBodyAuthorityTemplateView `json:"AuthorityTemplateView,omitempty" xml:"AuthorityTemplateView,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAuthorityTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetAuthorityTemplateView(v *GetAuthorityTemplateResponseBodyAuthorityTemplateView) *GetAuthorityTemplateResponseBody {
+	s.AuthorityTemplateView = v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetErrorCode(v string) *GetAuthorityTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetErrorMessage(v string) *GetAuthorityTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetRequestId(v string) *GetAuthorityTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBody) SetSuccess(v bool) *GetAuthorityTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAuthorityTemplateResponseBodyAuthorityTemplateView struct {
+	// The resource information in the permission template.
+	AuthorityTemplateItemList *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList `json:"AuthorityTemplateItemList,omitempty" xml:"AuthorityTemplateItemList,omitempty" type:"Struct"`
+	// The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the permission template.
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the permission template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateView) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetAuthorityTemplateItemList(v *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.AuthorityTemplateItemList = v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetCreateTime(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetCreatorId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetDescription(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetName(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateView) SetTemplateId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.TemplateId = &v
+	return s
+}
+
+type GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList struct {
+	AuthorityTemplateItem []*GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem `json:"AuthorityTemplateItem,omitempty" xml:"AuthorityTemplateItem,omitempty" type:"Repeated"`
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList) SetAuthorityTemplateItem(v []*GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList {
+	s.AuthorityTemplateItem = v
+	return s
+}
+
+type GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem struct {
+	// Other information. For example, you can add the logon permission on an instance to the permission template.
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource.
+	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The ID of the user who modified the resource.
+	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **INSTANCE**: instance
+	// *   **LOGIC_DB**: logical database
+	// *   **META_DB**: physical database
+	// *   **LOGIC_TABLE**: logical table
+	// *   **SINGLE_TABLE**: physical table
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetAttribute(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.Attribute = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetDbId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetInstanceId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetItemId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetModifierId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetResourceType(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetTableName(v string) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) SetTemplateId(v int64) *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem {
+	s.TemplateId = &v
+	return s
+}
+
+type GetAuthorityTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAuthorityTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAuthorityTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateResponse) SetHeaders(v map[string]*string) *GetAuthorityTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponse) SetStatusCode(v int32) *GetAuthorityTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateResponse) SetBody(v *GetAuthorityTemplateResponseBody) *GetAuthorityTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetAuthorityTemplateItemRequest struct {
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetAuthorityTemplateItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateItemRequest) SetTemplateId(v int64) *GetAuthorityTemplateItemRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemRequest) SetTid(v int64) *GetAuthorityTemplateItemRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetAuthorityTemplateItemResponseBody struct {
+	// The permission templates.
+	AuthorityTemplateItemList *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList `json:"AuthorityTemplateItemList,omitempty" xml:"AuthorityTemplateItemList,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAuthorityTemplateItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetAuthorityTemplateItemList(v *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) *GetAuthorityTemplateItemResponseBody {
+	s.AuthorityTemplateItemList = v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetErrorCode(v string) *GetAuthorityTemplateItemResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetErrorMessage(v string) *GetAuthorityTemplateItemResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetRequestId(v string) *GetAuthorityTemplateItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBody) SetSuccess(v bool) *GetAuthorityTemplateItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList struct {
+	AuthorityTemplateItem []*GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem `json:"AuthorityTemplateItem,omitempty" xml:"AuthorityTemplateItem,omitempty" type:"Repeated"`
+}
+
+func (s GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList) SetAuthorityTemplateItem(v []*GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemList {
+	s.AuthorityTemplateItem = v
+	return s
+}
+
+type GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem struct {
+	// The additional information. For example, permissions to log on to an instance are added to the permission template.
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource.
+	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// The ID of the user who modifies the resource.
+	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// *   **INSTANCE**: instance
+	// *   **LOGIC_DB**: logical database
+	// *   **META_DB**: physical database
+	// *   **LOGIC_TABLE**: logical table
+	// *   **LOGIC_TABLE**: physical table
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetAttribute(v string) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.Attribute = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetDbId(v int64) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetInstanceId(v int64) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetItemId(v int64) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetModifierId(v int64) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetResourceType(v string) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetTableName(v string) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem) SetTemplateId(v int64) *GetAuthorityTemplateItemResponseBodyAuthorityTemplateItemListAuthorityTemplateItem {
+	s.TemplateId = &v
+	return s
+}
+
+type GetAuthorityTemplateItemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAuthorityTemplateItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAuthorityTemplateItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAuthorityTemplateItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAuthorityTemplateItemResponse) SetHeaders(v map[string]*string) *GetAuthorityTemplateItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponse) SetStatusCode(v int32) *GetAuthorityTemplateItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAuthorityTemplateItemResponse) SetBody(v *GetAuthorityTemplateItemResponseBody) *GetAuthorityTemplateItemResponse {
 	s.Body = v
 	return s
 }
@@ -7939,8 +8696,14 @@ func (s *GetDBTaskSQLJobLogResponse) SetBody(v *GetDBTaskSQLJobLogResponseBody) 
 }
 
 type GetDBTopologyRequest struct {
+	// The ID of the logical database.
+	//
+	// > You can call the [ListLogicDatabases](~~141874~~) operation to query the ID of the logical database.
 	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDBTopologyRequest) String() string {
@@ -7962,11 +8725,16 @@ func (s *GetDBTopologyRequest) SetTid(v int64) *GetDBTopologyRequest {
 }
 
 type GetDBTopologyResponseBody struct {
-	DBTopology   *GetDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
-	ErrorCode    *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topology of the logical database.
+	DBTopology *GetDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDBTopologyResponseBody) String() string {
@@ -8003,13 +8771,31 @@ func (s *GetDBTopologyResponseBody) SetSuccess(v bool) *GetDBTopologyResponseBod
 }
 
 type GetDBTopologyResponseBodyDBTopology struct {
-	Alias              *string                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The alias of the logical database.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The topologies of the physical database shards.
 	DBTopologyInfoList []*GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList `json:"DBTopologyInfoList,omitempty" xml:"DBTopologyInfoList,omitempty" type:"Repeated"`
-	DbType             *string                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType            *string                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	LogicDbId          *int64                                                   `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
-	LogicDbName        *string                                                  `json:"LogicDbName,omitempty" xml:"LogicDbName,omitempty"`
-	SearchName         *string                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the logical database belongs. Valid values:
+	//
+	// *   **product**: production environment
+	// *   **dev**: development environment
+	// *   **pre**: pre-release environment
+	// *   **test**: test environment
+	// *   **sit**: system integration testing (SIT) environment
+	// *   **uat**: user acceptance testing (UAT) environment
+	// *   **pet**: stress testing environment
+	// *   **stag**: staging environment
+	//
+	// > For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the logical database.
+	LogicDbId *int64 `json:"LogicDbId,omitempty" xml:"LogicDbId,omitempty"`
+	// The name of the logical database.
+	LogicDbName *string `json:"LogicDbName,omitempty" xml:"LogicDbName,omitempty"`
+	// The name that is used to search for the logical database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetDBTopologyResponseBodyDBTopology) String() string {
@@ -8056,16 +8842,53 @@ func (s *GetDBTopologyResponseBodyDBTopology) SetSearchName(v string) *GetDBTopo
 }
 
 type GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList struct {
-	CatalogName        *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DbId               *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType             *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the catalog to which the database belongs.
+	//
+	// > If the database is a PostgreSQL database, the value of this parameter is the name of the database.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The ID of the logical database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the logical database belongs. Valid values:
+	//
+	// *   **product**: production environment
+	// *   **dev**: development environment
+	// *   **pre**: pre-release environment
+	// *   **test**: test environment
+	// *   **sit**: SIT environment
+	// *   **uat**: UAT environment
+	// *   **pet**: stress testing environment
+	// *   **stag**: staging environment
+	//
+	// > For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the instance in which the logical database resides.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource related to the instance. The resource corresponds with the database instance type returned in the InstanceSource parameter.
+	//
+	// *   If the value of the InstanceSource parameter is RDS, the ID of an ApsaraDB RDS instance is returned.
+	// *   If the value of the InstanceSource parameter is ECS_OWN, the ID of a self-managed database that is hosted on an Elastic Compute Service (ECS) instance is returned.
+	// *   If the value of the InstanceSource parameter is PUBLIC_OWN, an empty string is returned.
+	// *   If the value of the InstanceSource parameter is VPC_ID, the ID of a self-managed database instance in a virtual private cloud (VPC) that is connected over Express Connect circuits is returned.
+	// *   If the value of the InstanceSource parameter is GATEWAY, the ID of a database instance connected by using a database gateway is returned.
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
-	InstanceSource     *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName         *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SearchName         *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The type of the database instance. Valid values:
+	//
+	// *   **RDS**: an ApsaraDB RDS instance.
+	// *   **ECS_OWN**: a self-managed database that is hosted on an ECS instance.
+	// *   **PUBLIC_OWN**: a self-managed database instance that is connected over the Internet.
+	// *   **VPC_ID**: a self-managed database instance in a VPC that is connected over Express Connect circuits.
+	// *   **GATEWAY**: a database instance connected by using a database gateway.
+	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the logical database.
+	//
+	// > If the database is a PostgreSQL database, the value of this parameter is the name of the database schema.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetDBTopologyResponseBodyDBTopologyDBTopologyInfoList) String() string {
@@ -8813,8 +9636,12 @@ func (s *GetDataCorrectRollbackFileResponse) SetBody(v *GetDataCorrectRollbackFi
 }
 
 type GetDataCorrectSQLFileRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileRequest) String() string {
@@ -8836,11 +9663,16 @@ func (s *GetDataCorrectSQLFileRequest) SetTid(v int64) *GetDataCorrectSQLFileReq
 }
 
 type GetDataCorrectSQLFileResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The download URL of the SQL script.
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataCorrectSQLFileResponseBody) String() string {
@@ -8906,8 +9738,12 @@ func (s *GetDataCorrectSQLFileResponse) SetBody(v *GetDataCorrectSQLFileResponse
 }
 
 type GetDataCorrectTaskDetailRequest struct {
+	// The ID of the ticket. You can call the [CreateDataCorrectOrder](~~208388~~), [CreateDataImportOrder](~~208387~~), or [CreateFreeLockCorrectOrder](~~208386~~) operation to obtain the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCorrectTaskDetailRequest) String() string {
@@ -8929,11 +9765,16 @@ func (s *GetDataCorrectTaskDetailRequest) SetTid(v int64) *GetDataCorrectTaskDet
 }
 
 type GetDataCorrectTaskDetailResponseBody struct {
+	// The details of the data change task.
 	DataCorrectTaskDetail *GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail `json:"DataCorrectTaskDetail,omitempty" xml:"DataCorrectTaskDetail,omitempty" type:"Struct"`
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataCorrectTaskDetailResponseBody) String() string {
@@ -8970,10 +9811,23 @@ func (s *GetDataCorrectTaskDetailResponseBody) SetSuccess(v bool) *GetDataCorrec
 }
 
 type GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail struct {
-	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// The number of rows affected by the SQL statement.
+	ActualAffectRows *int64 `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	// The time when the task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the SQL task group.
+	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	// The state of the SQL task. Valid values:
+	//
+	// *   **INIT**: The SQL task was initialized.
+	// *   **PENDING**: The SQL task waited to be run.
+	// *   **BE_SCHEDULED**: The SQL task waited to be scheduled.
+	// *   **FAIL**: The SQL task failed.
+	// *   **SUCCESS**: The SQL task was successful.
+	// *   **PAUSE**: The SQL task was paused.
+	// *   **DELETE**: The SQL task was deleted.
+	// *   **RUNNING**: The SQL task was being run.
+	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
 }
 
 func (s GetDataCorrectTaskDetailResponseBodyDataCorrectTaskDetail) String() string {
@@ -9211,10 +10065,16 @@ func (s *GetDataCronClearConfigResponse) SetBody(v *GetDataCronClearConfigRespon
 }
 
 type GetDataCronClearTaskDetailListRequest struct {
-	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the ticket. You can query the ticket ID from the response parameters of the [CreateDataCronClearOrder](~~208385~~) operation.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The number of the page to return.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataCronClearTaskDetailListRequest) String() string {
@@ -9246,12 +10106,18 @@ func (s *GetDataCronClearTaskDetailListRequest) SetTid(v int64) *GetDataCronClea
 }
 
 type GetDataCronClearTaskDetailListResponseBody struct {
+	// The historical data cleansing tasks
 	DataCronClearTaskDetailList []*GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList `json:"DataCronClearTaskDetailList,omitempty" xml:"DataCronClearTaskDetailList,omitempty" type:"Repeated"`
-	ErrorCode                   *string                                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage                *string                                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId                   *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                     *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount                  *int64                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of SQL tasks.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetDataCronClearTaskDetailListResponseBody) String() string {
@@ -9293,10 +10159,23 @@ func (s *GetDataCronClearTaskDetailListResponseBody) SetTotalCount(v int64) *Get
 }
 
 type GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList struct {
-	ActualAffectRows *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBTaskGroupId    *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	JobStatus        *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
+	// The number of rows affected by the SQL task.
+	ActualAffectRows *int64 `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	// The time when the SQL task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the SQL task group.
+	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	// The state of the SQL task. Valid values:
+	//
+	// *   **INIT**: The SQL task was initialized.
+	// *   **PENDING**: The SQL task waited to be run.
+	// *   **BE_SCHEDULED**: The SQL task waited to be scheduled.
+	// *   **FAIL**: The SQL task failed.
+	// *   **SUCCESS**: The SQL task was successful.
+	// *   **PAUSE**: The SQL task was paused.
+	// *   **DELETE**: The SQL task was deleted.
+	// *   **RUNNING**: The SQL task was being run.
+	JobStatus *string `json:"jobStatus,omitempty" xml:"jobStatus,omitempty"`
 }
 
 func (s GetDataCronClearTaskDetailListResponseBodyDataCronClearTaskDetailList) String() string {
@@ -9495,8 +10374,12 @@ func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLRe
 }
 
 type GetDataExportOrderDetailRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataExportOrderDetailRequest) String() string {
@@ -9518,11 +10401,16 @@ func (s *GetDataExportOrderDetailRequest) SetTid(v int64) *GetDataExportOrderDet
 }
 
 type GetDataExportOrderDetailResponseBody struct {
+	// The details of the data export ticket.
 	DataExportOrderDetail *GetDataExportOrderDetailResponseBodyDataExportOrderDetail `json:"DataExportOrderDetail,omitempty" xml:"DataExportOrderDetail,omitempty" type:"Struct"`
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBody) String() string {
@@ -9559,7 +10447,9 @@ func (s *GetDataExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataExport
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetail struct {
-	KeyInfo     *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo     `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	// The status information of the data export ticket.
+	KeyInfo *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	// The details of the ticket.
 	OrderDetail *GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
 }
 
@@ -9582,8 +10472,21 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) SetOrderDeta
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo struct {
-	JobStatus  *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	PreCheckId *int64  `json:"PreCheckId,omitempty" xml:"PreCheckId,omitempty"`
+	// The status of the data export ticket. Valid values:
+	//
+	// *   PRE_CHECKING: The ticket is being prechecked.
+	// *   PRE_CHECK_SUCCESS: The ticket passes the precheck.
+	// *   PRE_CHECK_FAIL: The ticket fails to pass the precheck.
+	// *   WAITING_APPLY_AUDIT: The ticket is to be submitted for approval.
+	// *   APPLY_AUDIT_SUCESS: The ticket is submitted for approval.
+	// *   ENABLE_EXPORT: The ticket is approved. Data can be exported.
+	// *   WAITING_EXPORT: Data is to be scheduled for export.
+	// *   DOING_EXPORT: Data is being exported.
+	// *   EXPORT_FAIL: Data fails to be exported.
+	// *   EXPORT_SUCCESS: Data is exported.
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The ID of the precheck.
+	PreCheckId *int64 `json:"PreCheckId,omitempty" xml:"PreCheckId,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) String() string {
@@ -9605,15 +10508,24 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) SetPr
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail struct {
-	ActualAffectRows       *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
-	Classify               *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	Database               *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	DbId                   *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	EnvType                *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	ExeSQL                 *string `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
-	IgnoreAffectRows       *bool   `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	// The number of rows that are affected by the system check.
+	ActualAffectRows *int64 `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	// The category of the reason for the data export.
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The database from which data is exported.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the database from which you want to export data.
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the environment to which the database belongs.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The SQL statement that is executed to export data.
+	ExeSQL *string `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
+	// Indicates whether the affected rows are skipped.
+	IgnoreAffectRows *bool `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	// The reason why the affected rows are skipped.
 	IgnoreAffectRowsReason *string `json:"IgnoreAffectRowsReason,omitempty" xml:"IgnoreAffectRowsReason,omitempty"`
-	Logic                  *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// Indicates whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail) String() string {
@@ -9694,6 +10606,122 @@ func (s *GetDataExportOrderDetailResponse) SetStatusCode(v int32) *GetDataExport
 }
 
 func (s *GetDataExportOrderDetailResponse) SetBody(v *GetDataExportOrderDetailResponseBody) *GetDataExportOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataImportSQLRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	SqlId   *int64 `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataImportSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataImportSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataImportSQLRequest) SetOrderId(v int64) *GetDataImportSQLRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataImportSQLRequest) SetSqlId(v int64) *GetDataImportSQLRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetDataImportSQLRequest) SetTid(v int64) *GetDataImportSQLRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataImportSQLResponseBody struct {
+	ErrorCode    *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SQLDetail    *GetDataImportSQLResponseBodySQLDetail `json:"SQLDetail,omitempty" xml:"SQLDetail,omitempty" type:"Struct"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataImportSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataImportSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataImportSQLResponseBody) SetErrorCode(v string) *GetDataImportSQLResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataImportSQLResponseBody) SetErrorMessage(v string) *GetDataImportSQLResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataImportSQLResponseBody) SetRequestId(v string) *GetDataImportSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataImportSQLResponseBody) SetSQLDetail(v *GetDataImportSQLResponseBodySQLDetail) *GetDataImportSQLResponseBody {
+	s.SQLDetail = v
+	return s
+}
+
+func (s *GetDataImportSQLResponseBody) SetSuccess(v bool) *GetDataImportSQLResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataImportSQLResponseBodySQLDetail struct {
+	ExecSql *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
+}
+
+func (s GetDataImportSQLResponseBodySQLDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataImportSQLResponseBodySQLDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataImportSQLResponseBodySQLDetail) SetExecSql(v string) *GetDataImportSQLResponseBodySQLDetail {
+	s.ExecSql = &v
+	return s
+}
+
+type GetDataImportSQLResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataImportSQLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataImportSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataImportSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataImportSQLResponse) SetHeaders(v map[string]*string) *GetDataImportSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataImportSQLResponse) SetStatusCode(v int32) *GetDataImportSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataImportSQLResponse) SetBody(v *GetDataImportSQLResponseBody) *GetDataImportSQLResponse {
 	s.Body = v
 	return s
 }
@@ -10693,11 +11721,11 @@ func (s *GetLhSpaceByNameResponse) SetBody(v *GetLhSpaceByNameResponseBody) *Get
 }
 
 type GetLogicDatabaseRequest struct {
-	// The ID of the logical database. You can call the [ListLogicDatabases](https://www.alibabacloud.com/help/en/data-management-service/latest/listlogicdatabases) or [SearchDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/searchdatabase) operation to obtain the ID of the logical database.
+	// The ID of the logical database. You can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the ID of the logical database.
 	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// The ID of the tenant.
 	//
-	// >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](https://www.alibabacloud.com/help/en/data-management-service/latest/manage-dms-tenants) topic.
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -10720,18 +11748,18 @@ func (s *GetLogicDatabaseRequest) SetTid(v int64) *GetLogicDatabaseRequest {
 }
 
 type GetLogicDatabaseResponseBody struct {
-	// The error code.
+	// The status code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details about the logical database.
+	// The details of the logical database.
 	LogicDatabase *GetLogicDatabaseResponseBodyLogicDatabase `json:"LogicDatabase,omitempty" xml:"LogicDatabase,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The request is successful.
-	// - false: The request fails.
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10772,20 +11800,21 @@ type GetLogicDatabaseResponseBodyLogicDatabase struct {
 	// The alias of the logical database.
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The ID of the logical database.
-	DatabaseId  *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	// The IDs of database shards of the logical database.
 	DatabaseIds *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
-	// The type of the database. For more information about the valid values of the DbType parameter, see [DbType parameter](https://www.alibabacloud.com/help/en/data-management-service/latest/dbtype-parameter).
+	// The database engine. For more information about the valid values of the DbType parameter, see [DbType parameter](~~198106~~).
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The type of the environment to which the database belongs. Valid values:
 	//
-	// - product: production environment
-	// - dev: development environment
-	// - pre: staging environment
-	// - test: test environment
-	// - sit: SIT environment
-	// - uat: user acceptance testing (UAT) environment
-	// - pet: stress testing environment
-	// - stag: STAG environment
+	// *   product: production environment
+	// *   dev: development environment
+	// *   pre: pre-release environment
+	// *   test: test environment
+	// *   sit: system integration testing (SIT) environment
+	// *   uat: user acceptance testing (UAT) environment
+	// *   pet: stress testing environment
+	// *   stag: staging environment
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// Indicates whether the database is a logical database. The return value is true.
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
@@ -10943,7 +11972,7 @@ type GetMetaTableColumnRequest struct {
 	// *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](~~141875~~) operation to obtain the value of this parameter.
 	// *   If the database to which the table belongs is a physical database, you can call the [ListTables](~~141878~~) operation to obtain the value of this parameter.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -11015,26 +12044,26 @@ func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnR
 }
 
 type GetMetaTableColumnResponseBodyColumnList struct {
-	// Indicates whether the field is an auto-increment field. Valid values:
+	// Indicates whether the column is an auto-increment column. Valid values:
 	//
-	// *   **true**: The field is an auto-increment field.
-	// *   **false**: The field is not an auto-increment field.
+	// *   **true**: The column is an auto-increment column.
+	// *   **false**: The column is not an auto-increment column.
 	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	// The ID of the field.
+	// The ID of the column.
 	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	// The name of the field.
+	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
+	// The data type of the column.
 	//
-	// >  The returned data type is not unique. For example, the returned data type can be **bigint** or **int**.
+	// > The return value of a column is not unique, such as **bigint** or **int**.
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// The length of the field.
 	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
 	// The precision of the field.
 	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	// The number of decimal places that the field shows.
+	// The number of decimal places for the field.
 	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	// The description of the field.
+	// The description of the column.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the field can be empty. Valid values:
 	//
@@ -11048,13 +12077,13 @@ type GetMetaTableColumnResponseBodyColumnList struct {
 	// *   **true**: The field is the primary key.
 	// *   **false**: The field is not the primary key.
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The sensitivity level of the field. Valid values:
+	// The sensitivity level of the column. Valid values:
 	//
-	// *   **INNER**: The field is not sensitive.
-	// *   **SENSITIVE**: The field is sensitive.
-	// *   **CONFIDENTIAL**: The field is confidential.
+	// *   **INNER**: The column is not sensitive.
+	// *   **SENSITIVE**: The column is sensitive.
+	// *   **CONFIDENTIAL**: The column is confidential.
 	//
-	// >  For more information, see [Sensitivity levels of fields](~~66091~~).
+	// > For more information, see [Sensitivity levels of columns](~~66091~~).
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 }
 
@@ -11156,8 +12185,18 @@ func (s *GetMetaTableColumnResponse) SetBody(v *GetMetaTableColumnResponseBody) 
 }
 
 type GetMetaTableDetailInfoRequest struct {
+	// The GUID of the table in Data Management (DMS).
+	//
+	// >
+	//
+	// *   You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
+	//
+	// *   You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetMetaTableDetailInfoRequest) String() string {
@@ -11179,11 +12218,16 @@ func (s *GetMetaTableDetailInfoRequest) SetTid(v int64) *GetMetaTableDetailInfoR
 }
 
 type GetMetaTableDetailInfoResponseBody struct {
-	DetailInfo   *GetMetaTableDetailInfoResponseBodyDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	ErrorCode    *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the table.
+	DetailInfo *GetMetaTableDetailInfoResponseBodyDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	// The error code returned.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMetaTableDetailInfoResponseBody) String() string {
@@ -11220,8 +12264,10 @@ func (s *GetMetaTableDetailInfoResponseBody) SetSuccess(v bool) *GetMetaTableDet
 }
 
 type GetMetaTableDetailInfoResponseBodyDetailInfo struct {
+	// The columns in the table.
 	ColumnList []*GetMetaTableDetailInfoResponseBodyDetailInfoColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	IndexList  []*GetMetaTableDetailInfoResponseBodyDetailInfoIndexList  `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Repeated"`
+	// The list of indexes.
+	IndexList []*GetMetaTableDetailInfoResponseBodyDetailInfoIndexList `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Repeated"`
 }
 
 func (s GetMetaTableDetailInfoResponseBodyDetailInfo) String() string {
@@ -11243,16 +12289,32 @@ func (s *GetMetaTableDetailInfoResponseBodyDetailInfo) SetIndexList(v []*GetMeta
 }
 
 type GetMetaTableDetailInfoResponseBodyDetailInfoColumnList struct {
-	AutoIncrement *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	ColumnId      *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnType    *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-	DataPrecision *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	DataScale     *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	Position      *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Indicates whether the column is an auto-increment column. Valid values:
+	//
+	// *   true: The column is an auto-increment column.
+	// *   false: The column is not an auto-increment column.
+	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	// The ID of the column.
+	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
+	// The name of the column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type of the column. Examples: Bigint, Int, and Varchar.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// The length of the field.
+	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	// The precision of the field.
+	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	// The scale of the column.
+	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	// The description of the column.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the column is nullable. Valid values:
+	//
+	// *   true: The column is nullable.
+	// *   false: The column is not nullable.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The position of the field in the table.
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) String() string {
@@ -11314,11 +12376,19 @@ func (s *GetMetaTableDetailInfoResponseBodyDetailInfoColumnList) SetPosition(v s
 }
 
 type GetMetaTableDetailInfoResponseBodyDetailInfoIndexList struct {
+	// The index column.
 	IndexColumns []*string `json:"IndexColumns,omitempty" xml:"IndexColumns,omitempty" type:"Repeated"`
-	IndexId      *string   `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	IndexName    *string   `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexType    *string   `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	Unique       *bool     `json:"Unique,omitempty" xml:"Unique,omitempty"`
+	// The ID of the index.
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The name of the index.
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The type of the index. Examples: Primary, Unique, and Normal.
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// Indicates whether the index is unique. Valid values:
+	//
+	// *   true: The index is unique.
+	// *   false: The index is not unique.
+	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
 }
 
 func (s GetMetaTableDetailInfoResponseBodyDetailInfoIndexList) String() string {
@@ -11384,8 +12454,12 @@ func (s *GetMetaTableDetailInfoResponse) SetBody(v *GetMetaTableDetailInfoRespon
 }
 
 type GetOnlineDDLProgressRequest struct {
+	// The ID of the OnlineDDL SQL task details. You can call the [ListDBTaskSQLJobDetail](~~207073~~) operation to obtain the task detail ID.
 	JobDetailId *int64 `json:"JobDetailId,omitempty" xml:"JobDetailId,omitempty"`
-	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOnlineDDLProgressRequest) String() string {
@@ -11407,11 +12481,19 @@ func (s *GetOnlineDDLProgressRequest) SetTid(v int64) *GetOnlineDDLProgressReque
 }
 
 type GetOnlineDDLProgressResponseBody struct {
-	ErrorCode           *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage        *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the task.
 	OnlineDDLTaskDetail *GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail `json:"OnlineDDLTaskDetail,omitempty" xml:"OnlineDDLTaskDetail,omitempty" type:"Struct"`
-	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success             *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOnlineDDLProgressResponseBody) String() string {
@@ -11448,19 +12530,52 @@ func (s *GetOnlineDDLProgressResponseBody) SetSuccess(v bool) *GetOnlineDDLProgr
 }
 
 type GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail struct {
-	CleanStrategy          *string `json:"CleanStrategy,omitempty" xml:"CleanStrategy,omitempty"`
-	CopyChunkMode          *string `json:"CopyChunkMode,omitempty" xml:"CopyChunkMode,omitempty"`
-	CopyChunkSize          *int64  `json:"CopyChunkSize,omitempty" xml:"CopyChunkSize,omitempty"`
-	CopyCount              *int64  `json:"CopyCount,omitempty" xml:"CopyCount,omitempty"`
-	CopyTotal              *int64  `json:"CopyTotal,omitempty" xml:"CopyTotal,omitempty"`
-	CutoverFailRetryTimes  *int64  `json:"CutoverFailRetryTimes,omitempty" xml:"CutoverFailRetryTimes,omitempty"`
-	CutoverLockTimeSeconds *int64  `json:"CutoverLockTimeSeconds,omitempty" xml:"CutoverLockTimeSeconds,omitempty"`
-	CutoverWindowEndTime   *string `json:"CutoverWindowEndTime,omitempty" xml:"CutoverWindowEndTime,omitempty"`
+	// The cleanup policy of the original table after the cut-over. Valid values:
+	//
+	// *   **DROP**: Invalid original tables are deleted.
+	// *   **MOVE**: Invalid original tables are moved to the test database. You can delete the tables manually.
+	// *   **NOTHING**: Invalid original tables are retained in the original database. You can delete the tables manually.
+	CleanStrategy *string `json:"CleanStrategy,omitempty" xml:"CleanStrategy,omitempty"`
+	// The policy of full replication. Valid values:
+	//
+	// *   **AUTO**: DMS dynamically adjusts the chunk size based on the performance of the database. Tables are locked for less than 1.5 seconds during a single replication operation.
+	// *   **RUNNING**: DMS uses the specified value of the CopyChunkSize parameter. The valid value of the CopyChunkSize parameter ranges from 1 to 60000. If you set this parameter to RUNNING, you must specify the CopyChunkSize parameter.
+	CopyChunkMode *string `json:"CopyChunkMode,omitempty" xml:"CopyChunkMode,omitempty"`
+	// The size of each chunk that is used to replicate data. This parameter is used to specify the size of each chunk. A larger chunk size increases the replication efficiency and decreases the business performance.
+	//
+	// > During full replication, the original table is divided into N small chunks and each chunk is replicated to the temporary table one by one. By default, DMS dynamically adjusts the size of each chunk.
+	CopyChunkSize *int64 `json:"CopyChunkSize,omitempty" xml:"CopyChunkSize,omitempty"`
+	// The actual amount of data replicated from the original table in the lock-free change operation.
+	CopyCount *int64 `json:"CopyCount,omitempty" xml:"CopyCount,omitempty"`
+	// The estimated total number of rows of the data. The value is obtained from the statistical data in the information_schema database. In most cases, the estimated total number of rows is smaller than the actual number of rows in a table.
+	CopyTotal *int64 `json:"CopyTotal,omitempty" xml:"CopyTotal,omitempty"`
+	// The number of retries when the cut-over fails.
+	CutoverFailRetryTimes *int64 `json:"CutoverFailRetryTimes,omitempty" xml:"CutoverFailRetryTimes,omitempty"`
+	// The maximum period of time that a table can be locked during cut-over. Unit: seconds.
+	CutoverLockTimeSeconds *int64 `json:"CutoverLockTimeSeconds,omitempty" xml:"CutoverLockTimeSeconds,omitempty"`
+	// The end of the time window of the cut-over operation. This value is at least 30 minutes later than the CutoverWindowStartTime parameter. Default value: 23:59:59
+	CutoverWindowEndTime *string `json:"CutoverWindowEndTime,omitempty" xml:"CutoverWindowEndTime,omitempty"`
+	// The beginning of the time window of the cut-over operation. Default value: 00:00:00. This parameter controls the time window of the cut-over. Cut-over can be performed only when the cut-over conditions are met and the time is within the specified time window. If the time is not within the time window, the cut-over operation is not performed until the time reaches the beginning of the time window.
 	CutoverWindowStartTime *string `json:"CutoverWindowStartTime,omitempty" xml:"CutoverWindowStartTime,omitempty"`
-	DelaySeconds           *int64  `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
-	JobStatus              *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	ProgressRatio          *string `json:"ProgressRatio,omitempty" xml:"ProgressRatio,omitempty"`
-	StatusDesc             *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The replay latency of DMS. Unit: seconds. The replay latency is the period of time that is taken to replay the binary logs of the table to the temporary table. The latency does not indicate the data migration latency between a primary database and a secondary database.
+	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// *   **INIT**: The task is being initialized.
+	// *   **SUCCESS**: The task is complete.
+	// *   **RUNNING**: The task is being executed.
+	// *   **WAITING_CUTOVER**: The task is waiting for cut-over.
+	// *   **RESTARTING**: The task is restarting.
+	// *   **PAUSE**: The task is suspended.
+	// *   **UNSUPPORTED**: The task is not supported.
+	// *   **CANCELED**: The task is canceled.
+	// *   **FAIL**: The task failed.
+	// *   **INTERRUPT**: The task is interrupted.
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The estimated execution progress. The actual progress is subject to the task status.
+	ProgressRatio *string `json:"ProgressRatio,omitempty" xml:"ProgressRatio,omitempty"`
+	// The description of the task status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 }
 
 func (s GetOnlineDDLProgressResponseBodyOnlineDDLTaskDetail) String() string {
@@ -11573,7 +12688,7 @@ type GetOpLogRequest struct {
 	// *   **PERMISSION**: permissions
 	// *   **OWNER**: data owner
 	// *   **SQL_CONSOLE**: data query
-	// *   **SQL\_CONSOLE\_EXPORT**: query result export
+	// *   **SQL_CONSOLE_EXPORT**: query result export
 	// *   **DATA_CHANGE**: data change
 	// *   **DATA_EXPORT**: data export
 	// *   **SQL_REVIEW**: SQL review
@@ -11582,10 +12697,18 @@ type GetOpLogRequest struct {
 	// *   **DB_TASK**: task management
 	// *   **INSTANCE_MANAGE**: instance management
 	// *   **USER_MANAGE**: user management
-	// *   **SECURITY_RULE**: security rule
+	// *   **SECURITY_RULE**: security rules
 	// *   **CONFIG_MANAGE**: configuration management
 	// *   **RESOURCE_AUTH**: resource authorization
-	// *   **ACCESS\_WHITE\_IP**: access IP address allowlist
+	// *   **ACCESS_WHITE_IP**: access IP address whitelist
+	// *   **NDDL**: schema design
+	// *   **DSQL_CONSOLE**: cross-database data query
+	// *   **DSQL_CONSOLE_EXPORT**: cross-database query result export
+	// *   **DATA_TRACT**: data tracking
+	// *   **DATA_QUALITY**: data quality
+	// *   **DATALINK_MANAGE** :DBLink management
+	// *   **DATASEC_MANAGE**: sensitive data management
+	// *   **SELL**: sales
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The number of the page to return. Pages start from page 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -11597,7 +12720,7 @@ type GetOpLogRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-DD HH:mm:ss format.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -11640,18 +12763,18 @@ func (s *GetOpLogRequest) SetTid(v int64) *GetOpLogRequest {
 }
 
 type GetOpLogResponseBody struct {
-	// The error code returned if the request fails.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The details of the operation log.
 	OpLogDetails *GetOpLogResponseBodyOpLogDetails `json:"OpLogDetails,omitempty" xml:"OpLogDetails,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
-	// - **false**: The request fails.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of operation logs that are returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -11715,8 +12838,11 @@ func (s *GetOpLogResponseBodyOpLogDetails) SetOpLogDetail(v []*GetOpLogResponseB
 type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {
 	// The endpoint of the database instance.
 	//
-	// > * This parameter is valid only for database instances of the LocalInstance type.
-	// > * This parameter is valid only for operations on the functional modules related to tasks.
+	// >
+	//
+	// *   This parameter is valid only for database instances of the LocalInstance type.
+	//
+	// *   This parameter is valid only for operations on the functional modules related to tasks.
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The functional module for which the operation log is queried.
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
@@ -11730,7 +12856,7 @@ type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {
 	//
 	// >  This parameter is valid only for operations on the functional modules related to tasks and the task management module in system management.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The UID of the Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The display name of the user.
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
@@ -11922,8 +13048,12 @@ func (s *GetOrderAttachmentFileResponse) SetBody(v *GetOrderAttachmentFileRespon
 }
 
 type GetOrderBaseInfoRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOrderBaseInfoRequest) String() string {
@@ -11945,11 +13075,16 @@ func (s *GetOrderBaseInfoRequest) SetTid(v int64) *GetOrderBaseInfoRequest {
 }
 
 type GetOrderBaseInfoResponseBody struct {
-	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The basic information about the ticket.
 	OrderBaseInfo *GetOrderBaseInfoResponseBodyOrderBaseInfo `json:"OrderBaseInfo,omitempty" xml:"OrderBaseInfo,omitempty" type:"Struct"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOrderBaseInfoResponseBody) String() string {
@@ -11986,19 +13121,40 @@ func (s *GetOrderBaseInfoResponseBody) SetSuccess(v bool) *GetOrderBaseInfoRespo
 }
 
 type GetOrderBaseInfoResponseBodyOrderBaseInfo struct {
-	Comment             *string                                                       `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Committer           *string                                                       `json:"Committer,omitempty" xml:"Committer,omitempty"`
-	CommitterId         *int64                                                        `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
-	CreateTime          *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LastModifyTime      *string                                                       `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	OrderId             *int64                                                        `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PluginType          *string                                                       `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	RelatedUserList     *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList     `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Struct"`
+	// The remarks of the ticket.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The applicant.
+	Committer *string `json:"Committer,omitempty" xml:"Committer,omitempty"`
+	// The ID of the applicant. Note: The ID is different from the Alibaba Cloud account ID of the applicant.
+	CommitterId *int64 `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
+	// The time when the ticket was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the ticket was last modified.
+	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](~~465865~~) operation.
+	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	// The IDs of the operators that are related to the ticket.
+	RelatedUserList *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Struct"`
+	// The nicknames of the operators that are related to the ticket.
 	RelatedUserNickList *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserNickList `json:"RelatedUserNickList,omitempty" xml:"RelatedUserNickList,omitempty" type:"Struct"`
-	StatusCode          *string                                                       `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	StatusDesc          *string                                                       `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	WorkflowInstanceId  *int64                                                        `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	WorkflowStatusDesc  *string                                                       `json:"WorkflowStatusDesc,omitempty" xml:"WorkflowStatusDesc,omitempty"`
+	// The status code of the ticket. Valid values:
+	//
+	// *   **new**: The ticket is created.
+	// *   **toaudit**: The ticket is being reviewed.
+	// *   **Approved**: The ticket is approved.
+	// *   **reject**: The ticket is rejected.
+	// *   **processing**: The ticket is being executed.
+	// *   **success**: The ticket is executed.
+	// *   **closed**: The ticket is closed.
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// The description of the status.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The ID of the approval process.
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The description of the approval process.
+	WorkflowStatusDesc *string `json:"WorkflowStatusDesc,omitempty" xml:"WorkflowStatusDesc,omitempty"`
 }
 
 func (s GetOrderBaseInfoResponseBodyOrderBaseInfo) String() string {
@@ -12138,8 +13294,12 @@ func (s *GetOrderBaseInfoResponse) SetBody(v *GetOrderBaseInfoResponseBody) *Get
 }
 
 type GetOwnerApplyOrderDetailRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailRequest) String() string {
@@ -12161,11 +13321,16 @@ func (s *GetOwnerApplyOrderDetailRequest) SetTid(v int64) *GetOwnerApplyOrderDet
 }
 
 type GetOwnerApplyOrderDetailResponseBody struct {
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the ticket.
 	OwnerApplyOrderDetail *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail `json:"OwnerApplyOrderDetail,omitempty" xml:"OwnerApplyOrderDetail,omitempty" type:"Struct"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailResponseBody) String() string {
@@ -12202,7 +13367,13 @@ func (s *GetOwnerApplyOrderDetailResponseBody) SetSuccess(v bool) *GetOwnerApply
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail struct {
-	ApplyType *string                                                               `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// The type of the submitted ticket. Valid values:
+	//
+	// *   **INSTANCE**: the ticket that applies for the permissions to be an instance owner
+	// *   **DB**: the ticket that applies for the permissions to be a database owner
+	// *   **TABLE**: the ticket that applies for the permissions to be a table owner
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// The details of the requested resource.
 	Resources []*GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -12225,9 +13396,15 @@ func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetail) SetResources
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources struct {
-	Logic          *bool                                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The instance is a logical database.
+	// *   **false**: The instance is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The details of the resource.
 	ResourceDetail *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResourceDetail `json:"ResourceDetail,omitempty" xml:"ResourceDetail,omitempty" type:"Struct"`
-	TargetId       *string                                                                           `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The ID of the resource.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources) String() string {
@@ -12254,12 +13431,20 @@ func (s *GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResources) Set
 }
 
 type GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResourceDetail struct {
-	DbType         *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType        *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The IDs of the original owners.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners.
 	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
-	SearchName     *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	TableName      *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The search name of the resource.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The name of the table.
+	//
+	// > : This parameter is returned when you submit a Database-OWNER ticket.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetOwnerApplyOrderDetailResponseBodyOwnerApplyOrderDetailResourcesResourceDetail) String() string {
@@ -12330,8 +13515,12 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 }
 
 type GetPermApplyOrderDetailRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailRequest) String() string {
@@ -12353,11 +13542,16 @@ func (s *GetPermApplyOrderDetailRequest) SetTid(v int64) *GetPermApplyOrderDetai
 }
 
 type GetPermApplyOrderDetailResponseBody struct {
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the permission application ticket.
 	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBody) String() string {
@@ -12394,10 +13588,27 @@ func (s *GetPermApplyOrderDetailResponseBody) SetSuccess(v bool) *GetPermApplyOr
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
-	ApplyType *string                                                             `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	PermType  *int64                                                              `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The type of objects on which you apply for permissions. Valid values:
+	//
+	// *   **DB**: database
+	// *   **TAB**: table
+	// *   **COL**: column
+	// *   **INSTANT**: instance
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// The type of permissions that you apply for. Valid values:
+	//
+	// *   **1**: the permissions to query information
+	// *   **2**: the permissions to export information
+	// *   **3**: the permissions to query and export information
+	// *   **4**: the permissions to modify information
+	// *   **5**: the permissions to query and modify information
+	// *   **6**: the permissions to export and modify information
+	// *   **7**: the permissions to query, export, and modify information
+	PermType *int64 `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The list of resources.
 	Resources []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Seconds   *int64                                                              `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
+	// The validity duration of the permissions. Unit: seconds.
+	Seconds *int64 `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) String() string {
@@ -12429,10 +13640,14 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v i
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
-	ColumnInfo   *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo   `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
+	// The information about the column.
+	ColumnInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
+	// The information about the database.
 	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
+	// The information about the instance.
 	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-	TableInfo    *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo    `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
+	// The information about the table.
+	TableInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) String() string {
@@ -12464,8 +13679,10 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTa
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {
+	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) String() string {
@@ -12487,13 +13704,23 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnI
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo struct {
-	DbId           *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType         *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType        *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic          *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The IDs of the owners of the database.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners of the database.
 	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
-	SearchName     *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) String() string {
@@ -12540,16 +13767,26 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabas
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo struct {
-	DbType        *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbaId         *int64    `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	DbaNickName   *string   `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
-	EnvType       *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Host          *string   `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerIds      []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The ID of the database administrator (DBA) of the instance.
+	DbaId *int64 `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	// The nickname of the DBA of the instance.
+	DbaNickName *string `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The endpoint of the instance.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the owners of the instance.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners of the instance.
 	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
-	Port          *int64    `json:"Port,omitempty" xml:"Port,omitempty"`
-	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The port that is used to connect to the instance.
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name that is used to search for the instance.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) String() string {
@@ -12611,6 +13848,7 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanc
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo struct {
+	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -12657,8 +13895,10 @@ func (s *GetPermApplyOrderDetailResponse) SetBody(v *GetPermApplyOrderDetailResp
 }
 
 type GetPhysicalDatabaseRequest struct {
+	// The ID of the physical database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID.
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPhysicalDatabaseRequest) String() string {
@@ -12680,11 +13920,16 @@ func (s *GetPhysicalDatabaseRequest) SetTid(v int64) *GetPhysicalDatabaseRequest
 }
 
 type GetPhysicalDatabaseResponseBody struct {
-	Database     *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
-	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the physical database.
+	Database *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPhysicalDatabaseResponseBody) String() string {
@@ -12721,22 +13966,49 @@ func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabas
 }
 
 type GetPhysicalDatabaseResponseBodyDatabase struct {
-	CatalogName   *string                                               `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DatabaseId    *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	DbType        *string                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbaId         *string                                               `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	DbaName       *string                                               `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	Encoding      *string                                               `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	EnvType       *string                                               `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Host          *string                                               `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The name of the catalog to which the database belongs.
+	//
+	// > : If the database is a PostgreSQL database, the name of the database is displayed.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The ID of the physical database.
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The user ID of the DBA in the destination database.
+	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	// The nickname of the database administrator (DBA) in the destination database.
+	DbaName *string `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	// The encoding format of the database.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The endpoint that is used to connect to the database.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The instance ID of the destination database.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The user IDs of the database owners.
+	OwnerIdList *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The nicknames of the database owners.
 	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	Port          *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
-	SchemaName    *string                                               `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SearchName    *string                                               `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Sid           *string                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	State         *string                                               `json:"State,omitempty" xml:"State,omitempty"`
+	// The port that is used to connect to the database.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the database.
+	//
+	// > : If the database is a PostgreSQL database, the name of the mode is displayed.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name that is used for searching the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The system ID (SID) of the database.
+	//
+	// > : The value of the parameter is returned only for Oracle databases.
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// The state of the database. Valid values:
+	//
+	// *   **NORMAL**: The database is normal.
+	// *   **DISABLE**: The database is disabled.
+	// *   **OFFLINE**: The database is unpublished.
+	// *   **NOT_EXIST**: The database does not exist.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetPhysicalDatabaseResponseBodyDatabase) String() string {
@@ -12891,11 +14163,9 @@ func (s *GetPhysicalDatabaseResponse) SetBody(v *GetPhysicalDatabaseResponseBody
 }
 
 type GetProxyRequest struct {
-	// The ID of the database instance. You can call the [ListInstances](https://www.alibabacloud.com/help/en/data-management-service/latest/listinstances) or [GetInstance](https://www.alibabacloud.com/help/en/data-management-service/latest/getinstance) operation to query the database instance ID.
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the secure access proxy. You can call the [ListProxies](https://www.alibabacloud.com/help/en/data-management-service/latest/listproxies) operation to query the ID of the secure access proxy.
+	// The ID of the secure access proxy. You can call the [ListProxies](~~295371~~) operation to query the ID of the secure access proxy.
 	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -12905,11 +14175,6 @@ func (s GetProxyRequest) String() string {
 
 func (s GetProxyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetProxyRequest) SetInstanceId(v int64) *GetProxyRequest {
-	s.InstanceId = &v
-	return s
 }
 
 func (s *GetProxyRequest) SetProxyId(v int64) *GetProxyRequest {
@@ -12927,39 +14192,45 @@ type GetProxyResponseBody struct {
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The nickname of the user who enabled the secure access proxy feature.
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The error code returned.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The port that was used by HTTPS clients to connect to the database instance.
+	// The port number used by the HTTPS protocol.
 	HttpsPort *int32 `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	// The ID of the database instance.
+	// The ID of the instance.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the internal endpoint is enabled. Default value: **true**.
+	// Indicates whether the internal endpoint was enabled. Default value: **true**.
 	PrivateEnable *bool `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
 	// The internal endpoint.
-	PrivateHost  *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
-	ProtocolPort *int32  `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	// The port number used by the protocol.
+	ProtocolPort *int32 `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	// The protocol type of the database. Example: MYSQL.
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The ID of the secure access proxy.
 	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// Indicates whether the public endpoint is enabled. Valid values:
+	// Indicates whether the public endpoint was enabled. Valid values:
 	//
-	// - **true**: The public endpoint is enabled.
-	// - **false**: The public endpoint is disabled.
+	// *   **true**: The public endpoint was enabled.
+	// *   **false**: The public endpoint was disabled.
 	PublicEnable *bool `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
 	// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled.
 	//
-	// > - If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS (DNS) is returned.
-	// > - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
+	// >
+	//
+	// *   If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS is returned.
+	//
+	// *   If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using Alibaba Cloud DNS is returned.
 	PublicHost *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13081,8 +14352,10 @@ func (s *GetProxyResponse) SetBody(v *GetProxyResponseBody) *GetProxyResponse {
 }
 
 type GetProxyAccessRequest struct {
+	// The ID that Data Management (DMS) generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](~~295386~~) operation to query the ID.
 	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetProxyAccessRequest) String() string {
@@ -13104,12 +14377,19 @@ func (s *GetProxyAccessRequest) SetTid(v int64) *GetProxyAccessRequest {
 }
 
 type GetProxyAccessResponseBody struct {
-	ErrorCode    *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ProxyAccess  *GetProxyAccessResponseBodyProxyAccess `json:"ProxyAccess,omitempty" xml:"ProxyAccess,omitempty" type:"Struct"`
-	// Id of the request
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The authorization information about the secure access proxy feature.
+	ProxyAccess *GetProxyAccessResponseBodyProxyAccess `json:"ProxyAccess,omitempty" xml:"ProxyAccess,omitempty" type:"Struct"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetProxyAccessResponseBody) String() string {
@@ -13146,16 +14426,31 @@ func (s *GetProxyAccessResponseBody) SetSuccess(v bool) *GetProxyAccessResponseB
 }
 
 type GetProxyAccessResponseBodyProxyAccess struct {
-	AccessId      *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	GmtCreate     *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	IndepAccount  *string `json:"IndepAccount,omitempty" xml:"IndepAccount,omitempty"`
-	InstanceId    *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OriginInfo    *string `json:"OriginInfo,omitempty" xml:"OriginInfo,omitempty"`
-	ProxyAccessId *int64  `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
-	ProxyId       *int64  `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserUid       *string `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
+	// The username of the database account that is authorized to enable the secure access proxy feature for an instance.
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// The time when the user is authorized to enable the secure access proxy feature for an instance.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The username of the independent database account.
+	IndepAccount *string `json:"IndepAccount,omitempty" xml:"IndepAccount,omitempty"`
+	// The ID of the instance for which the secure access proxy feature is enabled.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The method that is used to authorize the user to enable the secure access proxy feature for an instance. Valid values:
+	//
+	// *   **Authorization by the Alibaba Cloud Account ()**: The information in the parentheses () indicates the ID of the Alibaba Cloud account.
+	// *   **Authorization by submitting the ticket ()**:The information in the parentheses () indicates the number of the ticket that the user submits to apply for permissions.
+	OriginInfo *string `json:"OriginInfo,omitempty" xml:"OriginInfo,omitempty"`
+	// The ID that DMS generates after the user is authorized to enable the secure access proxy feature for an instance. The ID is unique in DMS. You can call the [ListProxyAccesses](~~295386~~) operation to query the ID.
+	ProxyAccessId *int64 `json:"ProxyAccessId,omitempty" xml:"ProxyAccessId,omitempty"`
+	// The ID of the secure access proxy.
+	//
+	// >  You can call the [ListProxies](~~295371~~) operation to query the ID of the secure access proxy.
+	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	// The ID of the user.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The nickname of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	UserUid *string `json:"UserUid,omitempty" xml:"UserUid,omitempty"`
 }
 
 func (s GetProxyAccessResponseBodyProxyAccess) String() string {
@@ -13850,10 +15145,16 @@ func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDeta
 }
 
 type GetStructSyncExecSqlDetailRequest struct {
-	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The number of the page to return.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncExecSqlDetailRequest) String() string {
@@ -13885,12 +15186,16 @@ func (s *GetStructSyncExecSqlDetailRequest) SetTid(v int64) *GetStructSyncExecSq
 }
 
 type GetStructSyncExecSqlDetailResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the SQL statements.
 	StructSyncExecSqlDetail *GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail `json:"StructSyncExecSqlDetail,omitempty" xml:"StructSyncExecSqlDetail,omitempty" type:"Struct"`
-	Success                 *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStructSyncExecSqlDetailResponseBody) String() string {
@@ -13927,8 +15232,10 @@ func (s *GetStructSyncExecSqlDetailResponseBody) SetSuccess(v bool) *GetStructSy
 }
 
 type GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail struct {
-	ExecSql       *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
-	TotalSqlCount *int64  `json:"TotalSqlCount,omitempty" xml:"TotalSqlCount,omitempty"`
+	// The SQL statements that are executed.
+	ExecSql *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
+	// The total number of SQL statements.
+	TotalSqlCount *int64 `json:"TotalSqlCount,omitempty" xml:"TotalSqlCount,omitempty"`
 }
 
 func (s GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail) String() string {
@@ -13979,11 +15286,24 @@ func (s *GetStructSyncExecSqlDetailResponse) SetBody(v *GetStructSyncExecSqlDeta
 }
 
 type GetStructSyncJobAnalyzeResultRequest struct {
+	// The type of the comparison. Valid values:
+	//
+	// *   **CREATE_TABLE**: compares the created tables.
+	// *   **ALTER_TABLE**: compares the modified tables.
+	// *   **EQUAL_TABLE**: compares the identical tables.
+	// *   **PASS_TABLE**: compares the tables that are skipped during schema synchronization.
+	// *   **NOT_COMPARE**: does not compare tables.
 	CompareType *string `json:"CompareType,omitempty" xml:"CompareType,omitempty"`
-	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the ticket.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The number of the page to return.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncJobAnalyzeResultRequest) String() string {
@@ -14020,11 +15340,16 @@ func (s *GetStructSyncJobAnalyzeResultRequest) SetTid(v int64) *GetStructSyncJob
 }
 
 type GetStructSyncJobAnalyzeResultResponseBody struct {
-	ErrorCode                  *string                                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage               *string                                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The analysis result of the schema synchronization task.
 	StructSyncJobAnalyzeResult *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult `json:"StructSyncJobAnalyzeResult,omitempty" xml:"StructSyncJobAnalyzeResult,omitempty" type:"Struct"`
-	Success                    *bool                                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStructSyncJobAnalyzeResultResponseBody) String() string {
@@ -14061,7 +15386,9 @@ func (s *GetStructSyncJobAnalyzeResultResponseBody) SetSuccess(v bool) *GetStruc
 }
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult struct {
-	ResultList  []*GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultList  `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+	// The details of the analysis results.
+	ResultList []*GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+	// The statistics on the analysis results.
 	SummaryList []*GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultSummaryList `json:"SummaryList,omitempty" xml:"SummaryList,omitempty" type:"Repeated"`
 }
 
@@ -14084,8 +15411,11 @@ func (s *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult) Se
 }
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultList struct {
-	Script          *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// The SQL script.
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// The name of the source table.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the destination table.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -14113,8 +15443,16 @@ func (s *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResu
 }
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultSummaryList struct {
+	// The type of the comparison. Valid values:
+	//
+	// *   **CREATE_TABLE**: compares the created tables.
+	// *   **ALTER_TABLE**: compares the modified tables.
+	// *   **EQUAL_TABLE**: compares the identical tables.
+	// *   **PASS_TABLE**: compares the tables that are skipped during schema synchronization.
+	// *   **NOT_COMPARE**: does not compare tables.
 	CompareType *string `json:"CompareType,omitempty" xml:"CompareType,omitempty"`
-	Count       *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of tables.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultSummaryList) String() string {
@@ -14348,8 +15686,12 @@ func (s *GetStructSyncJobDetailResponse) SetBody(v *GetStructSyncJobDetailRespon
 }
 
 type GetStructSyncOrderDetailRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetStructSyncOrderDetailRequest) String() string {
@@ -14371,11 +15713,16 @@ func (s *GetStructSyncOrderDetailRequest) SetTid(v int64) *GetStructSyncOrderDet
 }
 
 type GetStructSyncOrderDetailResponseBody struct {
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the schema synchronization ticket.
 	StructSyncOrderDetail *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail `json:"StructSyncOrderDetail,omitempty" xml:"StructSyncOrderDetail,omitempty" type:"Struct"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetStructSyncOrderDetailResponseBody) String() string {
@@ -14412,14 +15759,35 @@ func (s *GetStructSyncOrderDetailResponseBody) SetSuccess(v bool) *GetStructSync
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail struct {
-	IgnoreError        *bool                                                                        `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	// Indicates whether to skip errors. Valid values:
+	//
+	// *   **true**: skips the error and continues to execute SQL statements.
+	// *   **false**: stops executing SQL statements.
+	IgnoreError *bool `json:"IgnoreError,omitempty" xml:"IgnoreError,omitempty"`
+	// The information about the source database.
 	SourceDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo `json:"SourceDatabaseInfo,omitempty" xml:"SourceDatabaseInfo,omitempty" type:"Struct"`
-	SourceType         *string                                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SourceVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo  `json:"SourceVersionInfo,omitempty" xml:"SourceVersionInfo,omitempty" type:"Struct"`
-	TableInfoList      []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList    `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
+	// The schema version of the source database. Valid values:
+	//
+	// *   **DATASOURCE**: the default latest version of the system
+	// *   **VERSION**: a previous schema version that you manually specify
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The version information about the source instance.
+	//
+	// > This parameter is displayed only when the value of the **SourceType** parameter is **VERSION**.
+	SourceVersionInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo `json:"SourceVersionInfo,omitempty" xml:"SourceVersionInfo,omitempty" type:"Struct"`
+	// The information about the table whose schema you want to synchronize.
+	TableInfoList []*GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
+	// The information about the destination database.
 	TargetDatabaseInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo `json:"TargetDatabaseInfo,omitempty" xml:"TargetDatabaseInfo,omitempty" type:"Struct"`
-	TargetType         *string                                                                      `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	TargetVersionInfo  *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo  `json:"TargetVersionInfo,omitempty" xml:"TargetVersionInfo,omitempty" type:"Struct"`
+	// The schema version of the destination database. Valid values:
+	//
+	// *   **DATASOURCE**: the default latest version of the system
+	// *   **VERSION**: a previous schema version that you manually specify
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The version information about the destination instance.
+	//
+	// > This parameter is displayed only when the value of the **SourceType** parameter is **VERSION**.
+	TargetVersionInfo *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo `json:"TargetVersionInfo,omitempty" xml:"TargetVersionInfo,omitempty" type:"Struct"`
 }
 
 func (s GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) String() string {
@@ -14471,10 +15839,18 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetail) SetTargetVer
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabaseInfo struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The ID of the source database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The name that is used to search for the database.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -14512,6 +15888,7 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceDatabase
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionInfo struct {
+	// The version number.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -14529,7 +15906,9 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailSourceVersionI
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList struct {
+	// The name of the table whose schema you want to synchronize.
 	SourceTableName *string `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	// The name of the table to which you want to synchronize the schema of a table.
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 }
 
@@ -14552,10 +15931,18 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTableInfoList)
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabaseInfo struct {
-	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The ID of the destination database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the database instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The name that is used to search for the database.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -14593,6 +15980,7 @@ func (s *GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetDatabase
 }
 
 type GetStructSyncOrderDetailResponseBodyStructSyncOrderDetailTargetVersionInfo struct {
+	// The version number.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -14639,8 +16027,18 @@ func (s *GetStructSyncOrderDetailResponse) SetBody(v *GetStructSyncOrderDetailRe
 }
 
 type GetTableDBTopologyRequest struct {
+	// The GUID of the table in DMS.
+	//
+	// >
+	//
+	// *   If the database to which the table belongs is a logical database, you can call the [ListLogicTables](~~141875~~) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
+	//
+	// *   If the database to which the table belongs is a physical database, you can call the [ListTables](~~141878~~) operation to obtain the GUID. The value of the ReturnGuid parameter must be set to true.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetTableDBTopologyRequest) String() string {
@@ -14662,11 +16060,16 @@ func (s *GetTableDBTopologyRequest) SetTid(v int64) *GetTableDBTopologyRequest {
 }
 
 type GetTableDBTopologyResponseBody struct {
-	DBTopology   *GetTableDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
-	ErrorCode    *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topology of the data table.
+	DBTopology *GetTableDBTopologyResponseBodyDBTopology `json:"DBTopology,omitempty" xml:"DBTopology,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTableDBTopologyResponseBody) String() string {
@@ -14703,9 +16106,18 @@ func (s *GetTableDBTopologyResponseBody) SetSuccess(v bool) *GetTableDBTopologyR
 }
 
 type GetTableDBTopologyResponseBodyDBTopology struct {
+	// The data sources.
 	DataSourceList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceList `json:"DataSourceList,omitempty" xml:"DataSourceList,omitempty" type:"Repeated"`
-	TableGuid      *string                                                   `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableName      *string                                                   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The GUID of the table in DMS.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the table.
+	//
+	// >
+	//
+	// *   If a logical table is queried, the name of the logical table is returned.
+	//
+	// *   If a physical table is queried, the name of the physical table is returned.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetTableDBTopologyResponseBodyDBTopology) String() string {
@@ -14732,11 +16144,16 @@ func (s *GetTableDBTopologyResponseBodyDBTopology) SetTableName(v string) *GetTa
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceList struct {
+	// The physical databases.
 	DatabaseList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Repeated"`
-	DbType       *string                                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Host         *string                                                               `json:"Host,omitempty" xml:"Host,omitempty"`
-	Port         *int32                                                                `json:"Port,omitempty" xml:"Port,omitempty"`
-	Sid          *string                                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The endpoint of the data source.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The port that is used to connect to the data source.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The system ID (SID) of the data source.
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 }
 
 func (s GetTableDBTopologyResponseBodyDBTopologyDataSourceList) String() string {
@@ -14773,10 +16190,26 @@ func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceList) SetSid(v string
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList struct {
-	DbId      *string                                                                        `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbName    *string                                                                        `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbType    *string                                                                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType   *string                                                                        `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the database.
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the database belongs. Valid values:
+	//
+	// *   **product**: production environment
+	// *   **dev**: development environment
+	// *   **pre**: pre-release environment
+	// *   **test**: test environment
+	// *   **sit**: system integration testing (SIT) environment
+	// *   **uat**: user acceptance testing (UAT) environment
+	// *   **pet**: stress testing environment
+	// *   **stag**: staging environment
+	//
+	// > For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The physical tables.
 	TableList []*GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
 }
 
@@ -14814,8 +16247,11 @@ func (s *GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseList) Set
 }
 
 type GetTableDBTopologyResponseBodyDBTopologyDataSourceListDatabaseListTableList struct {
-	TableId   *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The ID of the table.
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the physical table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The type of the table. This is a reserved parameter.
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
@@ -14872,8 +16308,18 @@ func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) 
 }
 
 type GetTableTopologyRequest struct {
+	// The GUID of the table in Data Management (DMS).
+	//
+	// >
+	//
+	// *   You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
+	//
+	// *   You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the DMS console. For more information, see the "View information about the current tenant" section of the [Tenant information](~~181330~~) topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetTableTopologyRequest) String() string {
@@ -14895,10 +16341,15 @@ func (s *GetTableTopologyRequest) SetTid(v int64) *GetTableTopologyRequest {
 }
 
 type GetTableTopologyResponseBody struct {
-	ErrorCode     *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The topology information.
 	TableTopology *GetTableTopologyResponseBodyTableTopology `json:"TableTopology,omitempty" xml:"TableTopology,omitempty" type:"Struct"`
 }
 
@@ -14936,9 +16387,16 @@ func (s *GetTableTopologyResponseBody) SetTableTopology(v *GetTableTopologyRespo
 }
 
 type GetTableTopologyResponseBodyTableTopology struct {
-	Logic                 *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	TableGuid             *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableName             *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Indicates whether the table is a logical table. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The GUID of the table in DMS.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Information of the topology of the table.
 	TableTopologyInfoList []*GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList `json:"TableTopologyInfoList,omitempty" xml:"TableTopologyInfoList,omitempty" type:"Repeated"`
 }
 
@@ -14971,17 +16429,46 @@ func (s *GetTableTopologyResponseBodyTableTopology) SetTableTopologyInfoList(v [
 }
 
 type GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList struct {
-	DbId               *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbName             *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbSearchName       *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	DbType             *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	InstanceId         *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the physical database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name that is used to search for the database.
+	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
+	// The database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The ID of the instance to which the physical database belongs.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the resource related to the instance. The resource corresponds with the database instance type returned in the InstanceSource parameter.
+	//
+	// *   **RDS**:The ID of the ApsaraDB RDS instance.
+	// *   **ECS_OWN**: The ID of the Elastic Compute Service (ECS) instance.
+	// *   **PUBLIC_OWN**: This parameter is left empty for self-managed database instances that are connected over the Internet.
+	// *   **VPC_ID**:The ID of the virtual private cloud (VPC).
+	// *   **GATEWAY**: The ID of the database gateway.
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
-	InstanceSource     *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TableCount         *int64  `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	TableNameExpr      *string `json:"TableNameExpr,omitempty" xml:"TableNameExpr,omitempty"`
-	TableNameList      *string `json:"TableNameList,omitempty" xml:"TableNameList,omitempty"`
+	// The type of the database instance. Valid values:
+	//
+	// *   **RDS**: an ApsaraDB RDS instance.
+	// *   **ECS_OWN**: a self-managed database that is deployed on an ECS instance
+	// *   **PUBLIC_OWN**: a self-managed database instance that is connected over the Internet.
+	// *   **VPC_ID**: a self-managed database instance in a VPC that is connected over Express Connect circuits.
+	// *   **GATEWAY**: a database instance connected by using a database gateway.
+	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of tables.
+	TableCount *int64 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	// The expression of the names of logical tables.
+	//
+	// **
+	//
+	// **Description**This parameter is not returned for physical tables.
+	TableNameExpr *string `json:"TableNameExpr,omitempty" xml:"TableNameExpr,omitempty"`
+	// The names of tables.
+	//
+	// > The table names are separated by commas (,).
+	TableNameList *string `json:"TableNameList,omitempty" xml:"TableNameList,omitempty"`
 }
 
 func (s GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList) String() string {
@@ -15901,9 +17388,9 @@ func (s *GetTaskInstanceRelationResponse) SetBody(v *GetTaskInstanceRelationResp
 }
 
 type GetUserRequest struct {
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The UID of the user. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
+	// The UID of the Alibaba Cloud account. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	// The ID of the user. You can call the [ListUsers](~~141938~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -15933,16 +17420,16 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	// The error code returned.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// *   **false**: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The information about the user.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -15988,59 +17475,56 @@ type GetUserResponseBodyUser struct {
 	CurResultCount *int64 `json:"CurResultCount,omitempty" xml:"CurResultCount,omitempty"`
 	// The DingTalk chatbot URL that is used to receive notifications.
 	//
-	// > * The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set a DingTalk chatbot URL.
+	// >
+	//
+	// *   The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if the user has not set a DingTalk chatbot URL.
 	DingRobot *string `json:"DingRobot,omitempty" xml:"DingRobot,omitempty"`
 	// The email address that is used to receive notifications.
 	//
-	// > * The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set an email address.
+	// >
+	//
+	// *   The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if the user has not set an email address.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The last time when the user logged on to the console.
+	// The last point in time when the user logged on to the console.
 	LastLoginTime *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
 	// The maximum number of queries that can be performed on the current day.
 	MaxExecuteCount *int64 `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
 	// The maximum number of rows that can be queried on the current day.
 	MaxResultCount *int64 `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
-	// The mobile phone number that is used to receive notifications.
+	// The mobile number of the user.
 	//
-	// > * The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set a mobile phone number.
+	// >
+	//
+	// *   The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if the user has not set a mobile phone number.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The nickname of the user.
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The notification method. The system returns one or more values. Valid values:
 	//
-	// *   **SMS**: text message.
+	// *   **SMS**: text message
 	// *   **EMAIL**: email.
-	// *   **DingTalk**: DingTalk.
+	// *   **DINGDING**: DingTalk.
 	// *   **DINGROBOT**: DingTalk chatbot.
 	// *   **WEBHOOK**: webhook.
 	NotificationMode *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
 	// The UID of the Alibaba Cloud account of the user.
 	//
-	// >  An Alibaba Cloud account can contain one or more RAM users.
+	// > An Alibaba Cloud account can contain one or more RAM users.
 	ParentUid *int64 `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The ID of the role that is assigned to the user. Valid values:
-	//
-	// *   **1**: a regular user role.
-	// *   **2**: a database administrator (DBA) role.
-	// *   **3**: a DMS administrator role.
-	// *   **4**: a security administrator role.
-	// *   **6**: a schema read-only user role.
+	// The list of role IDs.
 	RoleIdList *GetUserResponseBodyUserRoleIdList `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Struct"`
-	// The name of the role that is assigned to the user. Valid values:
-	//
-	// *   **USER**: a regular user.
-	// *   **DBA** : a DBA.
-	// *   **ADMIN**: a DMS administrator.
-	// *   **SECURITY_ADMIN**: a security administrator.
-	// *   **STRUCT_READ_ONLY**: a schema read-only user.
+	// The list of role names.
 	RoleNameList *GetUserResponseBodyUserRoleNameList `json:"RoleNameList,omitempty" xml:"RoleNameList,omitempty" type:"Struct"`
 	// The signature method that is used to secure connections when a webhook URL is used. Valid values:
 	//
 	// *   **NONE**: no signature.
-	// *   **HMAC\_SHA1**: HMAC_SHA1.
+	// *   **HMAC_SHA1**: HMAC_SHA1.
 	SignatureMethod *string `json:"SignatureMethod,omitempty" xml:"SignatureMethod,omitempty"`
 	// The status of the user. Valid values:
 	//
@@ -16054,8 +17538,11 @@ type GetUserResponseBodyUser struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The webhook URL that is used to receive notifications.
 	//
-	// > * If the user has set a webhook URL, DMS sends notifications to the specified URL.
-	// > * The system does not return this parameter if the user has not set a webhook URL.
+	// >
+	//
+	// *   If the user has set a webhook URL, DMS sends notifications to the specified URL.
+	//
+	// *   The system does not return this parameter if the user has not set a webhook URL.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -16592,6 +18079,130 @@ func (s *GetUserUploadFileJobResponse) SetBody(v *GetUserUploadFileJobResponseBo
 	return s
 }
 
+type GrantTemplateAuthorityRequest struct {
+	// The reason why you want to grant permissions on resources to the users by using the permission template.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the permission expires. Specify the time in the yyyy-MM-DD HH:mm:ss format.
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The IDs of users to which you want to grant permissions on resources by using the permission template.
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s GrantTemplateAuthorityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantTemplateAuthorityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantTemplateAuthorityRequest) SetComment(v string) *GrantTemplateAuthorityRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityRequest) SetExpireDate(v string) *GrantTemplateAuthorityRequest {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityRequest) SetTemplateId(v int64) *GrantTemplateAuthorityRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityRequest) SetTid(v int64) *GrantTemplateAuthorityRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityRequest) SetUserIds(v string) *GrantTemplateAuthorityRequest {
+	s.UserIds = &v
+	return s
+}
+
+type GrantTemplateAuthorityResponseBody struct {
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the permissions on resources were granted to the users by using the permission template.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GrantTemplateAuthorityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantTemplateAuthorityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantTemplateAuthorityResponseBody) SetErrorCode(v string) *GrantTemplateAuthorityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponseBody) SetErrorMessage(v string) *GrantTemplateAuthorityResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponseBody) SetRequestId(v string) *GrantTemplateAuthorityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponseBody) SetResult(v bool) *GrantTemplateAuthorityResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponseBody) SetSuccess(v bool) *GrantTemplateAuthorityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GrantTemplateAuthorityResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantTemplateAuthorityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantTemplateAuthorityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantTemplateAuthorityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantTemplateAuthorityResponse) SetHeaders(v map[string]*string) *GrantTemplateAuthorityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponse) SetStatusCode(v int32) *GrantTemplateAuthorityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantTemplateAuthorityResponse) SetBody(v *GrantTemplateAuthorityResponseBody) *GrantTemplateAuthorityResponse {
+	s.Body = v
+	return s
+}
+
 type GrantUserPermissionRequest struct {
 	// The ID of the database. You can call the [ListDatabases](~~141873~~) operation to query the ID of a physical database and the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
 	//
@@ -17041,7 +18652,7 @@ func (s *ListColumnsRequest) SetTid(v int64) *ListColumnsRequest {
 }
 
 type ListColumnsResponseBody struct {
-	// The information about the columns returned.
+	// The details about columns.
 	ColumnList *ListColumnsResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
 	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -17051,8 +18662,8 @@ type ListColumnsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17107,16 +18718,16 @@ func (s *ListColumnsResponseBodyColumnList) SetColumn(v []*ListColumnsResponseBo
 }
 
 type ListColumnsResponseBodyColumnListColumn struct {
-	// Indicates whether the field is an auto-increment field. Valid values:
+	// Indicates whether the column is an auto-increment column. Valid values:
 	//
-	// *   true: The field is an auto-increment field.
-	// *   false: The field is not an auto-increment field.
+	// *   true: The column is an auto-increment column.
+	// *   false: The column is not an auto-increment column.
 	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	// The ID of the field.
+	// The ID of the column.
 	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	// The name of the field.
+	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
+	// The data type of the column.
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// The length of the field.
 	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
@@ -17124,9 +18735,9 @@ type ListColumnsResponseBodyColumnListColumn struct {
 	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
 	// The number of decimal places for the field.
 	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	// The default value of the field.
+	// The default value of the column.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The description of the field.
+	// The description of the column.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the masking algorithm that is used for the field. Valid values:
 	//
@@ -17135,23 +18746,23 @@ type ListColumnsResponseBodyColumnListColumn struct {
 	// *   FIX_POS: The fixed position is masked.
 	// *   FIX_CHAR: The fixed characters are replaced.
 	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// Indicates whether the field can be empty. Valid values:
+	// Indicates whether the column can be empty. Valid values:
 	//
-	// *   **true**: The field can be empty.
-	// *   **false**: The field cannot be empty.
+	// *   **true**: The column can be empty.
+	// *   **false**: The column cannot be empty.
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	// The security level of the field. Valid values:
+	// The security level of the column. Valid values:
 	//
-	// *   INNER: The field is an internal field but not sensitive.
-	// *   SENSITIVE: The field is a sensitive field.
-	// *   CONFIDENTIAL: The field is a confidential field.
+	// *   INNER: The column is an internal column but not sensitive.
+	// *   SENSITIVE: The column is a sensitive column.
+	// *   CONFIDENTIAL: The column is a confidential column.
 	//
-	// >  For more information, see [Adjust the sensitivity level of one or more fields](~~66091~~).
+	// > For more information, see [Sensitivity levels of fields](~~66091~~).
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Indicates whether the field is a sensitive field. Valid values:
+	// Indicates whether the column is a sensitive column. Valid values:
 	//
-	// *   **true**: The field is a sensitive field.
-	// *   **false**: The field is not a sensitive field.
+	// *   **true**: The column is a sensitive column.
+	// *   **false**: The column is not a sensitive column.
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
 }
 
@@ -17452,10 +19063,16 @@ func (s *ListDAGVersionsResponse) SetBody(v *ListDAGVersionsResponseBody) *ListD
 }
 
 type ListDBTaskSQLJobRequest struct {
+	// The ID of the SQL task group. You can call the [GetStructSyncJobDetail](~~206160~~) operation to obtain this parameter.
 	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	PageNumber    *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The number of the page to return.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDBTaskSQLJobRequest) String() string {
@@ -17487,12 +19104,18 @@ func (s *ListDBTaskSQLJobRequest) SetTid(v int64) *ListDBTaskSQLJobRequest {
 }
 
 type ListDBTaskSQLJobResponseBody struct {
+	// The list of the SQL tasks.
 	DBTaskSQLJobList []*ListDBTaskSQLJobResponseBodyDBTaskSQLJobList `json:"DBTaskSQLJobList,omitempty" xml:"DBTaskSQLJobList,omitempty" type:"Repeated"`
-	ErrorCode        *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage     *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId        *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount       *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of the SQL tasks.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDBTaskSQLJobResponseBody) String() string {
@@ -17534,17 +19157,43 @@ func (s *ListDBTaskSQLJobResponseBody) SetTotalCount(v int64) *ListDBTaskSQLJobR
 }
 
 type ListDBTaskSQLJobResponseBodyDBTaskSQLJobList struct {
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DbId          *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbSearchName  *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
-	DbTaskGroupId *int64  `json:"DbTaskGroupId,omitempty" xml:"DbTaskGroupId,omitempty"`
-	JobId         *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType       *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	LastExecTime  *string `json:"LastExecTime,omitempty" xml:"LastExecTime,omitempty"`
-	Logic         *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Transactional *bool   `json:"Transactional,omitempty" xml:"Transactional,omitempty"`
+	// The description of the SQL task.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the SQL task was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name that is used to search for the database.
+	DbSearchName *string `json:"DbSearchName,omitempty" xml:"DbSearchName,omitempty"`
+	// The ID of the SQL task group.
+	DbTaskGroupId *int64 `json:"DbTaskGroupId,omitempty" xml:"DbTaskGroupId,omitempty"`
+	// The ID of the SQL task.
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the SQL task.
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The time when the SQL task was last executed.
+	LastExecTime *string `json:"LastExecTime,omitempty" xml:"LastExecTime,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The state of the SQL task. Valid values:
+	//
+	// *   **INIT**: The SQL task was initialized.
+	// *   **PENDING**: The SQL task waited to be run.
+	// *   **BE_SCHEDULED**: The SQL task waited to be scheduled.
+	// *   **FAIL**: The SQL task failed.
+	// *   **SUCCESS**: The SQL task was successful.
+	// *   **PAUSE**: The SQL task was paused.
+	// *   **DELETE**: The SQL task was deleted.
+	// *   **RUNNING**: The SQL task was being run.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the SQL task is executed as a transaction. Valid values:
+	//
+	// *   **true**: The SQL task is executed as a transaction.
+	// *   **false**: The SQL task is not executed as a transaction.
+	Transactional *bool `json:"Transactional,omitempty" xml:"Transactional,omitempty"`
 }
 
 func (s ListDBTaskSQLJobResponseBodyDBTaskSQLJobList) String() string {
@@ -17888,8 +19537,14 @@ func (s *ListDBTaskSQLJobDetailResponse) SetBody(v *ListDBTaskSQLJobDetailRespon
 }
 
 type ListDDLPublishRecordsRequest struct {
+	// The ID of the ticket.
+	//
+	// > You can create a schema design ticket in the Data Management (DMS) console. For more information, see [Design schemas](~~69711~~). You can also call the [CreateOrder](~~144649~~) operation to create a schema design ticket and obtain the ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, log on to the DMS console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDDLPublishRecordsRequest) String() string {
@@ -17911,11 +19566,16 @@ func (s *ListDDLPublishRecordsRequest) SetTid(v int64) *ListDDLPublishRecordsReq
 }
 
 type ListDDLPublishRecordsResponseBody struct {
+	// The details of the publishing records.
 	DDLPublishRecordList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordList `json:"DDLPublishRecordList,omitempty" xml:"DDLPublishRecordList,omitempty" type:"Repeated"`
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDDLPublishRecordsResponseBody) String() string {
@@ -17952,16 +19612,48 @@ func (s *ListDDLPublishRecordsResponseBody) SetSuccess(v bool) *ListDDLPublishRe
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
-	AuditExpireTime     *string                                                                     `json:"AuditExpireTime,omitempty" xml:"AuditExpireTime,omitempty"`
-	AuditStatus         *string                                                                     `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	CreatorId           *int64                                                                      `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	Finality            *bool                                                                       `json:"Finality,omitempty" xml:"Finality,omitempty"`
-	FinalityReason      *string                                                                     `json:"FinalityReason,omitempty" xml:"FinalityReason,omitempty"`
-	PublishStatus       *string                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The time when the approval expires.
+	AuditExpireTime *string `json:"AuditExpireTime,omitempty" xml:"AuditExpireTime,omitempty"`
+	// The approval state of the ticket. Valid values:
+	//
+	// *   **EXEMPT_PASS**: The ticket passes without approval.
+	// *   **TO_AUDIT**: The ticket is pending for approval.
+	// *   **CANCEL**: The ticket is canceled.
+	// *   **SUCCESS**: The ticket is approved.
+	// *   **FAIL**: The ticket fails to pass the approval.
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The ID of the user who creates the ticket. You can obtain the user ID by calling the [GetUser](~~147098~~) operation and querying the value of the UserId parameter. The value is not the unique ID (UID) of the Alibaba Cloud account.
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// Indicates whether the approval is terminated. Valid values:
+	//
+	// *   **true**: The approval is terminated.
+	// *   **false**: The approval is not terminated.
+	//
+	// > Multiple reasons can terminate the approval. For example, you withdraw the application or your ticket is not approved before the specified time.
+	Finality *bool `json:"Finality,omitempty" xml:"Finality,omitempty"`
+	// The reason for the termination.
+	FinalityReason *string `json:"FinalityReason,omitempty" xml:"FinalityReason,omitempty"`
+	// The publishing state of the ticket. Valid values:
+	//
+	// *   **START**: The ticket is created.
+	// *   **ANALYZE**: The ticket is under analysis.
+	// *   **AUDIT**: The ticket is under approval.
+	// *   **DISPATCH**: A task is generated for the ticket.
+	// *   **SUCCESS**: The task is successful.
+	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	// The list of publishing tasks.
 	PublishTaskInfoList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList `json:"PublishTaskInfoList,omitempty" xml:"PublishTaskInfoList,omitempty" type:"Repeated"`
-	RiskLevel           *string                                                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	StatusDesc          *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	WorkflowInstanceId  *int64                                                                      `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The risk level of the operation. Valid values:
+	//
+	// *   **NONE_RISK**: The operation does not have risks.
+	// *   **LOW_RISK**: The operation is at low risk.
+	// *   **MIDDLE_RISK**: The operation is at medium risk.
+	// *   **HIGH_RISK**: The operation is at high risk.
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The description of the publishing state.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The ID of the approval process.
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 }
 
 func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordList) String() string {
@@ -18023,13 +19715,26 @@ func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetWorkflowInsta
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList struct {
-	DbId            *int64                                                                                    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic           *bool                                                                                     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	PlanTime        *string                                                                                   `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
-	PublishJobList  []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList `json:"PublishJobList,omitempty" xml:"PublishJobList,omitempty" type:"Repeated"`
-	PublishStrategy *string                                                                                   `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
-	StatusDesc      *string                                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TaskJobStatus   *string                                                                                   `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: the database is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The time to publish the ticket.
+	PlanTime *string `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	// The list of the publishing tasks.
+	PublishJobList []*ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList `json:"PublishJobList,omitempty" xml:"PublishJobList,omitempty" type:"Repeated"`
+	// The publishing policy. Valid values:
+	//
+	// *   **IMMEDIATELY**: immediately publishes the ticket.
+	// *   **REGULARLY**: publishes the ticket at a scheduled time.
+	PublishStrategy *string `json:"PublishStrategy,omitempty" xml:"PublishStrategy,omitempty"`
+	// The description of the state.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The state of the task.
+	TaskJobStatus *string `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
 }
 
 func (s ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoList) String() string {
@@ -18076,11 +19781,21 @@ func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoLis
 }
 
 type ListDDLPublishRecordsResponseBodyDDLPublishRecordListPublishTaskInfoListPublishJobList struct {
-	DBTaskGroupId *int64  `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	ExecuteCount  *int64  `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
-	Scripts       *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
-	StatusDesc    *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the SQL task group.
+	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
+	// The number of SQL statements that are executed.
+	ExecuteCount *int64 `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	// The script for data changes.
+	Scripts *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
+	// The description of the state.
+	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	// The name of the table after the change.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The state of the publishing task. Valid values:
+	//
+	// *   **NONE**: The state of the task is unknown.
+	// *   **SUCCESS**: The task is successful.
+	// *   **FAIL**: The task fails.
 	TaskJobStatus *string `json:"TaskJobStatus,omitempty" xml:"TaskJobStatus,omitempty"`
 }
 
@@ -18494,14 +20209,278 @@ func (s *ListDataCorrectPreCheckSQLResponse) SetBody(v *ListDataCorrectPreCheckS
 	return s
 }
 
-type ListDatabaseUserPermssionsRequest struct {
-	DbId       *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PermType   *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+type ListDataImportSQLPreCheckDetailRequest struct {
+	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNumer  *int64  `json:"PageNumer,omitempty" xml:"PageNumer,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SqlType    *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s ListDataImportSQLPreCheckDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLPreCheckDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetOrderId(v int64) *ListDataImportSQLPreCheckDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetPageNumer(v int64) *ListDataImportSQLPreCheckDetailRequest {
+	s.PageNumer = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetPageSize(v int64) *ListDataImportSQLPreCheckDetailRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetSqlType(v string) *ListDataImportSQLPreCheckDetailRequest {
+	s.SqlType = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetStatusCode(v string) *ListDataImportSQLPreCheckDetailRequest {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailRequest) SetTid(v int64) *ListDataImportSQLPreCheckDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataImportSQLPreCheckDetailResponseBody struct {
+	ErrorCode             *string                                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage          *string                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	PreCheckSQLDetailList []*ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList `json:"PreCheckSQLDetailList,omitempty" xml:"PreCheckSQLDetailList,omitempty" type:"Repeated"`
+	RequestId             *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success               *bool                                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount            *int64                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataImportSQLPreCheckDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLPreCheckDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetErrorCode(v string) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetErrorMessage(v string) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetPreCheckSQLDetailList(v []*ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.PreCheckSQLDetailList = v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetRequestId(v string) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetSuccess(v bool) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBody) SetTotalCount(v int64) *ListDataImportSQLPreCheckDetailResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList struct {
+	Skip       *bool   `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	SqlId      *int64  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlType    *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) SetSkip(v bool) *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList {
+	s.Skip = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) SetSqlId(v int64) *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) SetSqlType(v string) *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList) SetStatusCode(v string) *ListDataImportSQLPreCheckDetailResponseBodyPreCheckSQLDetailList {
+	s.StatusCode = &v
+	return s
+}
+
+type ListDataImportSQLPreCheckDetailResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataImportSQLPreCheckDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataImportSQLPreCheckDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLPreCheckDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponse) SetHeaders(v map[string]*string) *ListDataImportSQLPreCheckDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponse) SetStatusCode(v int32) *ListDataImportSQLPreCheckDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataImportSQLPreCheckDetailResponse) SetBody(v *ListDataImportSQLPreCheckDetailResponseBody) *ListDataImportSQLPreCheckDetailResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataImportSQLTypeRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDataImportSQLTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLTypeRequest) SetOrderId(v int64) *ListDataImportSQLTypeRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListDataImportSQLTypeRequest) SetTid(v int64) *ListDataImportSQLTypeRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDataImportSQLTypeResponseBody struct {
+	ErrorCode     *string   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SqlTypeResult []*string `json:"SqlTypeResult,omitempty" xml:"SqlTypeResult,omitempty" type:"Repeated"`
+	Success       *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDataImportSQLTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLTypeResponseBody) SetErrorCode(v string) *ListDataImportSQLTypeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponseBody) SetErrorMessage(v string) *ListDataImportSQLTypeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponseBody) SetRequestId(v string) *ListDataImportSQLTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponseBody) SetSqlTypeResult(v []*string) *ListDataImportSQLTypeResponseBody {
+	s.SqlTypeResult = v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponseBody) SetSuccess(v bool) *ListDataImportSQLTypeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDataImportSQLTypeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataImportSQLTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataImportSQLTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataImportSQLTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataImportSQLTypeResponse) SetHeaders(v map[string]*string) *ListDataImportSQLTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponse) SetStatusCode(v int32) *ListDataImportSQLTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataImportSQLTypeResponse) SetBody(v *ListDataImportSQLTypeResponseBody) *ListDataImportSQLTypeResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabaseUserPermssionsRequest struct {
+	// The ID of the database.
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Specifies whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the permission. Valid values:
+	//
+	// *   DATABASE: permissions on databases
+	// *   TABLE: permissions on tables
+	// *   COLUMN: permissions on fields
+	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The nickname of the user.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListDatabaseUserPermssionsRequest) String() string {
@@ -18548,11 +20527,17 @@ func (s *ListDatabaseUserPermssionsRequest) SetUserName(v string) *ListDatabaseU
 }
 
 type ListDatabaseUserPermssionsResponseBody struct {
-	ErrorCode       *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage    *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount      *int64                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The details of user permissions.
 	UserPermissions *ListDatabaseUserPermssionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
 }
 
@@ -18612,21 +20597,36 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissions) SetUserPermissio
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission struct {
-	Alias        *string                                                                         `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	ColumnName   *string                                                                         `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	DbId         *string                                                                         `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType       *string                                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DsType       *string                                                                         `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	EnvType      *string                                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	InstanceId   *string                                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Logic        *bool                                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	PermDetails  *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
-	SchemaName   *string                                                                         `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SearchName   *string                                                                         `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	TableId      *string                                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName    *string                                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UserId       *string                                                                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserNickName *string                                                                         `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	// The alias of the database instance.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The name of a column.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the database.
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of resources on which the user has permissions.
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// The type of the environment to which the database belongs.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The details of user permissions.
+	PermDetails *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The ID of the table.
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The nickname of the user.
+	UserNickName *string `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
 }
 
 func (s ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission) String() string {
@@ -18730,11 +20730,21 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPerm
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
-	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
-	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The time when the permission was created.
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the permissions expire.
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The extra information. This parameter is reserved.
+	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	// The description of the entity that authorizes the permission.
+	OriginFrom *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
+	// The type of the permission. Valid values:
+	//
+	// *   QUERY: the query permissions
+	// *   EXPORT: the export permissions
+	// *   CORRECT: the change permissions
+	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The ID of the authorization record.
 	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
 }
 
@@ -18806,10 +20816,16 @@ func (s *ListDatabaseUserPermssionsResponse) SetBody(v *ListDatabaseUserPermssio
 }
 
 type ListDatabasesRequest struct {
+	// The ID of the instance. The valid value is returned if you call the ListInstances operation. The instance ID is not the ID of the RDS instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListDatabasesRequest) String() string {
@@ -18841,12 +20857,18 @@ func (s *ListDatabasesRequest) SetTid(v int64) *ListDatabasesRequest {
 }
 
 type ListDatabasesResponseBody struct {
+	// The details of the databases.
 	DatabaseList *ListDatabasesResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
-	ErrorCode    *string                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount   *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of databases that belong to an instance.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDatabasesResponseBody) String() string {
@@ -18905,22 +20927,43 @@ func (s *ListDatabasesResponseBodyDatabaseList) SetDatabase(v []*ListDatabasesRe
 }
 
 type ListDatabasesResponseBodyDatabaseListDatabase struct {
-	CatalogName   *string                                                     `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DatabaseId    *string                                                     `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	DbType        *string                                                     `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbaId         *string                                                     `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	DbaName       *string                                                     `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	Encoding      *string                                                     `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	EnvType       *string                                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Host          *string                                                     `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId    *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerIdList   *ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The name of the catalog to which the database belongs.
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The ID of the database.
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The ID of the DBA.
+	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	// The nickname of the Database administrator (DBA) to which the database belongs.
+	DbaName *string `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	// The encoding format of the database.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The type of the environment to which the database belongs.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The endpoint of the instance to which the database belongs.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The ID of the instance to which the database belongs.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the owners of the database.
+	OwnerIdList *ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The nicknames of the database owners.
 	OwnerNameList *ListDatabasesResponseBodyDatabaseListDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	Port          *int32                                                      `json:"Port,omitempty" xml:"Port,omitempty"`
-	SchemaName    *string                                                     `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	SearchName    *string                                                     `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Sid           *string                                                     `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	State         *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	// The connection port of the instance to which the database belongs.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the database.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name that is used for searching the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The system ID (SID) of the instance to which the database belongs.
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// The state of the database. Valid values:
+	//
+	// *   NORMAL: The database is normal.
+	// *   DISABLE: The database is disabled.
+	// *   OFFLINE: The database is unpublished.
+	// *   NOT_EXIST: The database does not exist.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListDatabasesResponseBodyDatabaseListDatabase) String() string {
@@ -19680,9 +21723,14 @@ func (s *ListEffectiveOrdersResponse) SetBody(v *ListEffectiveOrdersResponseBody
 }
 
 type ListIndexesRequest struct {
-	Logic   *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// Specifies whether the table is a logical table.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The ID of the table.
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListIndexesRequest) String() string {
@@ -19709,11 +21757,16 @@ func (s *ListIndexesRequest) SetTid(v int64) *ListIndexesRequest {
 }
 
 type ListIndexesResponseBody struct {
-	ErrorCode    *string                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	IndexList    *ListIndexesResponseBodyIndexList `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Struct"`
-	RequestId    *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of indexes.
+	IndexList *ListIndexesResponseBodyIndexList `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListIndexesResponseBody) String() string {
@@ -19767,11 +21820,22 @@ func (s *ListIndexesResponseBodyIndexList) SetIndex(v []*ListIndexesResponseBody
 }
 
 type ListIndexesResponseBodyIndexListIndex struct {
+	// The description of the index.
 	IndexComment *string `json:"IndexComment,omitempty" xml:"IndexComment,omitempty"`
-	IndexId      *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	IndexName    *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	IndexType    *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	TableId      *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The ID of the index.
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// The name of the index.
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// The type of the index. Valid values:
+	//
+	// *   Primary
+	// *   Unique
+	// *   Normal
+	// *   FullText
+	// *   Spatial
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// The ID of the table.
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 
 func (s ListIndexesResponseBodyIndexListIndex) String() string {
@@ -21717,12 +23781,20 @@ func (s *ListLogicTableRouteConfigResponse) SetBody(v *ListLogicTableRouteConfig
 }
 
 type ListLogicTablesRequest struct {
+	// The ID of the logical database.
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ReturnGuid *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to return the GUID of the table.
+	ReturnGuid *bool `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
+	// The keyword that is used to search for the logical tables. Prefix match is supported.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListLogicTablesRequest) String() string {
@@ -21764,12 +23836,18 @@ func (s *ListLogicTablesRequest) SetTid(v int64) *ListLogicTablesRequest {
 }
 
 type ListLogicTablesResponseBody struct {
-	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the logical tables.
 	LogicTableList *ListLogicTablesResponseBodyLogicTableList `json:"LogicTableList,omitempty" xml:"LogicTableList,omitempty" type:"Struct"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of logical tables that meet the query conditions.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLogicTablesResponseBody) String() string {
@@ -21828,16 +23906,26 @@ func (s *ListLogicTablesResponseBodyLogicTableList) SetLogicTable(v []*ListLogic
 }
 
 type ListLogicTablesResponseBodyLogicTableListLogicTable struct {
-	DatabaseId    *string                                                           `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	Logic         *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OwnerIdList   *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The ID of the logical database.
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	// Indicates whether the table is a logical table. The value is fixed to true.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The IDs of the owners of the logical tables.
+	OwnerIdList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The nicknames of the owners of the logical tables.
 	OwnerNameList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	SchemaName    *string                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableCount    *string                                                           `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	TableExpr     *string                                                           `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
-	TableGuid     *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableId       *string                                                           `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName     *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The logical database to which the logical table belongs.
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The number of logical tables.
+	TableCount *string `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	// The expression of the logical table.
+	TableExpr *string `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
+	// The GUID of the logical table.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The ID of the logical table.
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the logical table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListLogicTablesResponseBodyLogicTableListLogicTable) String() string {
@@ -22241,7 +24329,7 @@ func (s *ListOrdersResponse) SetBody(v *ListOrdersResponseBody) *ListOrdersRespo
 }
 
 type ListProxiesRequest struct {
-	// The ID of the tenant. You can call the [GetUserActiveTenant](https://www.alibabacloud.com/help/en/data-management-service/latest/getuseractivetenant) operation to query the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -22259,18 +24347,18 @@ func (s *ListProxiesRequest) SetTid(v int64) *ListProxiesRequest {
 }
 
 type ListProxiesResponseBody struct {
-	// The error code returned.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// An array that consists of secure access proxies.
+	// The proxies that are generated by the secure access proxy feature.
 	ProxyList []*ListProxiesResponseBodyProxyList `json:"ProxyList,omitempty" xml:"ProxyList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22312,29 +24400,35 @@ type ListProxiesResponseBodyProxyList struct {
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// The nickname of the user who enabled the secure access proxy feature.
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The port that was used by HTTPS clients to connect to the database instance.
+	// The number of the port that was used by HTTPS clients to connect to the database instance.
 	HttpsPort *int32 `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	// The ID of the database instance.
+	// The ID of the instance.
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the internal endpoint is enabled. Default value: **true**.
 	PrivateEnable *bool `json:"PrivateEnable,omitempty" xml:"PrivateEnable,omitempty"`
 	// The internal endpoint.
-	PrivateHost  *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
-	ProtocolPort *int32  `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	PrivateHost *string `json:"PrivateHost,omitempty" xml:"PrivateHost,omitempty"`
+	// The number of the port that is used to connect the database instance.
+	ProtocolPort *int32 `json:"ProtocolPort,omitempty" xml:"ProtocolPort,omitempty"`
+	// The type of the database. Example: MYSQL.
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The ID of the secure access proxy.
 	ProxyId *int64 `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
 	// Indicates whether the public endpoint is enabled. Valid values:
 	//
-	// - **true**: The public endpoint is enabled.
-	// - **false**: The public endpoint is disabled.
+	// *   **true**: The public endpoint is enabled.
+	// *   **false**: The public endpoint is disabled.
 	PublicEnable *bool `json:"PublicEnable,omitempty" xml:"PublicEnable,omitempty"`
 	// The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled.
 	//
-	// > - If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS (DNS) is returned.
-	// > - If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
+	// >
+	//
+	// *   If the value of the PublicEnable parameter is **true**, a valid public endpoint that can be resolved by using Alibaba Cloud DNS (DNS) is returned.
+	//
+	// *   If the value of the PublicEnable parameter is **false**, an invalid public endpoint that cannot be resolved by using DNS is returned.
 	PublicHost *string `json:"PublicHost,omitempty" xml:"PublicHost,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListProxiesResponseBodyProxyList) String() string {
@@ -24830,7 +26924,7 @@ type ListTablesRequest struct {
 	ReturnGuid *bool `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
 	// The name used to search for tables. Fuzzy search is supported.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -24873,16 +26967,16 @@ func (s *ListTablesRequest) SetTid(v int64) *ListTablesRequest {
 }
 
 type ListTablesResponseBody struct {
-	// The error code that is returned if the request fails.
+	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The details of the tables.
 	TableList *ListTablesResponseBodyTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Struct"`
@@ -24956,9 +27050,9 @@ type ListTablesResponseBodyTableListTable struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The number of rows in the table. This is a statistical value and does not indicate the actual number of rows.
 	NumRows *int64 `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
-	// The IDs of the owners of the table.
+	// The ID list of the table owners.
 	OwnerIdList *ListTablesResponseBodyTableListTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the owners of the table.
+	// The nickname list of the table owners.
 	OwnerNameList *ListTablesResponseBodyTableListTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
 	// The storage space that is occupied by the table. This is a statistical value and does not indicate the accurate storage space. Unit: MB.
 	StoreCapacity *int64 `json:"StoreCapacity,omitempty" xml:"StoreCapacity,omitempty"`
@@ -24966,7 +27060,7 @@ type ListTablesResponseBodyTableListTable struct {
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The ID of the table.
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table.
+	// The table name.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The database in which the table resides.
 	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
@@ -27171,21 +29265,23 @@ type ListUsersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// >  Valid values: 10, 20, 50, and 100. Default value: 10.
+	// **
+	//
+	// Valid values: 10, 20, 50, and 100.**** Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role that is assigned to the user. Valid values:
 	//
-	// *   **USER**: a regular user role.
-	// *   **DBA**: a database administrator (DBA) role.
-	// *   **ADMIN**: a Data Management (DMS) administrator role.
-	// *   **SECURITY_ADMIN**: a security administrator role.
-	// *   **STRUCT\_READ\_ONLY**: a schema read-only user role.
+	// *   **USER**: a regular user.
+	// *   **DBA** : a database administrator (DBA).
+	// *   **ADMIN**: a Data Management (DMS) administrator.
+	// *   **SECURITY_ADMIN**: a security administrator.
+	// *   **STRUCT_READ_ONLY**: a schema read-only user.
 	//
 	// >  To check your role, move the pointer over the profile picture in the upper-right corner of the DMS console.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The search keyword. Fuzzy match is supported.
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 	// The status of the user. Valid values:
 	//
@@ -27234,16 +29330,16 @@ func (s *ListUsersRequest) SetUserState(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	// The error code returned.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -27307,63 +29403,60 @@ func (s *ListUsersResponseBodyUserList) SetUser(v []*ListUsersResponseBodyUserLi
 }
 
 type ListUsersResponseBodyUserListUser struct {
-	// The number of queries that are performed on the current day.
+	// The number of queries that were performed on the current day.
 	CurExecuteCount *int64 `json:"CurExecuteCount,omitempty" xml:"CurExecuteCount,omitempty"`
-	// The number of rows that are queried on the current day.
+	// The number of rows that were queried on the current day.
 	CurResultCount *int64 `json:"CurResultCount,omitempty" xml:"CurResultCount,omitempty"`
 	// The DingTalk chatbot URL that is used to receive notifications.
 	//
-	// > * The system returns this parameter if the user has set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set a DingTalk chatbot URL.
+	// >
+	//
+	// *   The system returns this parameter if you have set a DingTalk chatbot URL in the console. To set a DingTalk chatbot URL in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if you have not set a DingTalk chatbot URL.
 	DingRobot *string `json:"DingRobot,omitempty" xml:"DingRobot,omitempty"`
 	// The email address that is used to receive notifications.
 	//
-	// > * The system returns this parameter if the user has set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set an email address.
+	// >
+	//
+	// *   The system returns this parameter if you have set an email address in the console. To set an email address in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if you have not set an email address.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The last time when the user logged on to the console.
+	// The time when the user last logged on to the console.
 	LastLoginTime *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
 	// The maximum number of queries that can be performed on the current day.
 	MaxExecuteCount *int64 `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
 	// The maximum number of rows that can be queried on the current day.
 	MaxResultCount *int64 `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
-	// The mobile phone number that is used to receive notifications.
+	// The mobile phone number of the user.
 	//
-	// > * The system returns this parameter if the user has set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
-	// > * The system does not return this parameter if the user has not set a mobile phone number.
+	// >
+	//
+	// *   The system returns this parameter if you have set a mobile phone number in the console. To set a mobile phone number in the console, move the pointer over the profile picture in the upper-right corner and click the Edit icon next to **Notice**.
+	//
+	// *   The system does not return this parameter if you have not set a mobile phone number.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The nickname of the user.
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The notification method. The system returns one or more values. Valid values:
 	//
-	// *   **SMS**: text message.
+	// *   **SMS**: text message
 	// *   **EMAIL**: email.
-	// *   **DingTalk**: DingTalk.
+	// *   **DINGDING**: DingTalk.
 	// *   **DINGROBOT**: DingTalk chatbot.
 	// *   **WEBHOOK**: webhook.
 	NotificationMode *string `json:"NotificationMode,omitempty" xml:"NotificationMode,omitempty"`
-	// The UID of the Alibaba Cloud account of the user.
+	// The ID of the Alibaba Cloud account of the user.
 	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The ID of the role that is assigned to the user. Valid values:
-	//
-	// *   **1**: a regular user role.
-	// *   **2**: a DBA role.
-	// *   **3**: a DMS administrator role.
-	// *   **4**: a security administrator role.
-	// *   **6**: a schema read-only user role.
+	// The IDs of the roles.
 	RoleIdList *ListUsersResponseBodyUserListUserRoleIdList `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Struct"`
-	// The name of the role that is assigned to the user. Valid values:
-	//
-	// *   **USER**: a regular user.
-	// *   **DBA**: a DBA.
-	// *   **ADMIN**: a DMS administrator.
-	// *   **SECURITY_ADMIN**: a security administrator.
-	// *   **STRUCT\_READ\_ONLY**: a schema read-only user.
+	// The names of roles.
 	RoleNameList *ListUsersResponseBodyUserListUserRoleNameList `json:"RoleNameList,omitempty" xml:"RoleNameList,omitempty" type:"Struct"`
 	// The signature method that is used to secure connections when a webhook URL is used. Valid values:
 	//
 	// *   **NONE**: no signature.
-	// *   **HMAC_SHA1**: HMAC-SHA1.
+	// *   **HMAC_SHA1**: HMAC_SHA1.
 	SignatureMethod *string `json:"SignatureMethod,omitempty" xml:"SignatureMethod,omitempty"`
 	// The status of the user. Valid values:
 	//
@@ -27371,14 +29464,17 @@ type ListUsersResponseBodyUserListUser struct {
 	// *   **DISABLE**: The user is disabled.
 	// *   **DELETE**: The user is deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The UID of the user.
+	// The ID of the Alibaba Cloud account.
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 	// The ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The webhook URL that is used to receive notifications.
 	//
-	// > * If the user has set a webhook URL, DMS sends notifications to the specified URL.
-	// > * The system does not return this parameter if the user has not set a webhook URL.
+	// >
+	//
+	// *   If you have set a webhook URL, DMS sends notifications to the specified URL.
+	//
+	// *   The system does not return this parameter if you have not set a webhook URL.
 	Webhook *string `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
@@ -27544,8 +29640,12 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type ListWorkFlowNodesRequest struct {
+	// The name that is used to search for approval nodes.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	Tid        *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListWorkFlowNodesRequest) String() string {
@@ -27567,10 +29667,15 @@ func (s *ListWorkFlowNodesRequest) SetTid(v int64) *ListWorkFlowNodesRequest {
 }
 
 type ListWorkFlowNodesResponseBody struct {
-	ErrorCode     *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of approval nodes.
 	WorkflowNodes *ListWorkFlowNodesResponseBodyWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
 }
 
@@ -27625,13 +29730,23 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) SetWorkflowNode(v []*ListWo
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode struct {
-	AuditUsers         *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
-	Comment            *string                                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateUserId       *int64                                                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	CreateUserNickName *string                                                           `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
-	NodeId             *int64                                                            `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName           *string                                                           `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeType           *string                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The details about approvers.
+	AuditUsers *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
+	// The description of the approval template.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the creator. This ID is different from the ID of the Alibaba Cloud account of the creator.
+	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The name of the user who creates the approval node.
+	CreateUserNickName *string `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
+	// The ID of the approval node.
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the approval node.
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The type of the approval node. Valid values:
+	//
+	// *   SYS: The approval node is predefined by the system.
+	// *   USER_LIST: The approval node is created by a user.
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) String() string {
@@ -27695,9 +29810,12 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) SetAu
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser struct {
+	// The nickname of the approver.
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The real name of the approver.
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the approver. The ID is different from the ID of the Alibaba Cloud account of the approver.
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) String() string {
@@ -29882,6 +32000,116 @@ func (s *RetryDataCorrectPreCheckResponse) SetBody(v *RetryDataCorrectPreCheckRe
 	return s
 }
 
+type RevokeTemplateAuthorityRequest struct {
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The IDs of users from whom you want to revoke permissions by using a permission template.
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+}
+
+func (s RevokeTemplateAuthorityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeTemplateAuthorityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeTemplateAuthorityRequest) SetTemplateId(v int64) *RevokeTemplateAuthorityRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityRequest) SetTid(v int64) *RevokeTemplateAuthorityRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityRequest) SetUserIds(v string) *RevokeTemplateAuthorityRequest {
+	s.UserIds = &v
+	return s
+}
+
+type RevokeTemplateAuthorityResponseBody struct {
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the permissions were revoked from the users.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RevokeTemplateAuthorityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeTemplateAuthorityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeTemplateAuthorityResponseBody) SetErrorCode(v string) *RevokeTemplateAuthorityResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponseBody) SetErrorMessage(v string) *RevokeTemplateAuthorityResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponseBody) SetRequestId(v string) *RevokeTemplateAuthorityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponseBody) SetResult(v bool) *RevokeTemplateAuthorityResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponseBody) SetSuccess(v bool) *RevokeTemplateAuthorityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RevokeTemplateAuthorityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RevokeTemplateAuthorityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RevokeTemplateAuthorityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeTemplateAuthorityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeTemplateAuthorityResponse) SetHeaders(v map[string]*string) *RevokeTemplateAuthorityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponse) SetStatusCode(v int32) *RevokeTemplateAuthorityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeTemplateAuthorityResponse) SetBody(v *RevokeTemplateAuthorityResponseBody) *RevokeTemplateAuthorityResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeUserPermissionRequest struct {
 	// The ID of the database. The database can be a physical database or a logical database.
 	//
@@ -30056,7 +32284,7 @@ func (s *RevokeUserPermissionResponse) SetBody(v *RevokeUserPermissionResponseBo
 type SearchDatabaseRequest struct {
 	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](~~198106~~).
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	// The environment type of the database. For more information, see [Change the environment type of an instance](~~163309~~).
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -30077,7 +32305,7 @@ type SearchDatabaseRequest struct {
 	// *   **SINGLE_DB**: single database.
 	// *   **LOGIC_DB**: logical database.
 	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -30130,18 +32358,18 @@ func (s *SearchDatabaseRequest) SetTid(v int64) *SearchDatabaseRequest {
 }
 
 type SearchDatabaseResponseBody struct {
-	// The error code returned.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the databases.
 	SearchDatabaseList *SearchDatabaseResponseBodySearchDatabaseList `json:"SearchDatabaseList,omitempty" xml:"SearchDatabaseList,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
-	// - **false**: The request failed.
+	// *   **true**: The request is successful.
+	// *   **false**: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -30204,19 +32432,22 @@ func (s *SearchDatabaseResponseBodySearchDatabaseList) SetSearchDatabase(v []*Se
 
 type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
 	// The alias of the database.
-	Alias       *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The name of the catalog to which the database belongs.
+	//
+	// > If the type of the database engine is PostgreSQL, the name of the database is displayed.
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The ID of the database.
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// The name of the data link for cross-database queries.
 	DatalinkName *string `json:"DatalinkName,omitempty" xml:"DatalinkName,omitempty"`
-	// The type of the database.
+	// The type of the database engine.
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The ID of the user who assumes the database administrator (DBA) role.
 	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
 	// The encoding method of the database.
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	// The environment type of the database. For more information, see [Change the environment type of an instance](~~163309~~).
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The endpoint of the instance in which the database resides.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -30225,17 +32456,17 @@ type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
 	// *   **true**: The database is a logical database.
 	// *   **false**: The database is not a logical database.
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the owners of the database.
+	// The IDs of the owners of the databases.
 	OwnerIdList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	// The nicknames of the database owners.
 	OwnerNameList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The port number of the instance in which the database resides.
+	// The port of the instance in which the database resides.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The name of the database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The name that is used to search for the database.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The system ID (Sid) of the instance in which the database resides.
+	// The system ID (SID) of the instance in which the database resides.
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 }
 
@@ -30391,15 +32622,44 @@ func (s *SearchDatabaseResponse) SetBody(v *SearchDatabaseResponseBody) *SearchD
 }
 
 type SearchTableRequest struct {
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ReturnGuid   *bool   `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
-	SearchKey    *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	SearchRange  *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
+	// The type of database. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQLServer**
+	// *   **PostgreSQL**
+	// *   **Oracle**
+	// *   **DRDS**
+	// *   **OceanBase**
+	// *   **Mongo**
+	// *   **Redis**
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which databases belong. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to return the GUID of each table.
+	ReturnGuid *bool `json:"ReturnGuid,omitempty" xml:"ReturnGuid,omitempty"`
+	// The keyword that is used to query tables.
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The scope of tables that you want to query. Valid values:
+	//
+	// *   **HAS_PERMSSION**: the tables on which the current account has permissions.
+	// *   **OWNER**: the tables owned by the current account.
+	// *   **MY_FOCUS**: the tables that the current account follows.
+	// *   **UNKNOWN**: all tables.
+	SearchRange *string `json:"SearchRange,omitempty" xml:"SearchRange,omitempty"`
+	// The type of table that you want to query. Valid values:
+	//
+	// *   **TABLE**: physical and logical tables
+	// *   **SINGLE_TABLE**: physical tables
+	// *   **LOGIC_TABLE**: logical tables
 	SearchTarget *string `json:"SearchTarget,omitempty" xml:"SearchTarget,omitempty"`
-	Tid          *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SearchTableRequest) String() string {
@@ -30456,12 +32716,18 @@ func (s *SearchTableRequest) SetTid(v int64) *SearchTableRequest {
 }
 
 type SearchTableResponseBody struct {
-	ErrorCode       *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage    *string                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the tables.
 	SearchTableList *SearchTableResponseBodySearchTableList `json:"SearchTableList,omitempty" xml:"SearchTableList,omitempty" type:"Struct"`
-	Success         *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount      *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that are returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchTableResponseBody) String() string {
@@ -30520,21 +32786,48 @@ func (s *SearchTableResponseBodySearchTableList) SetSearchTable(v []*SearchTable
 }
 
 type SearchTableResponseBodySearchTableListSearchTable struct {
-	DBSearchName    *string                                                         `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
-	DatabaseId      *string                                                         `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	DbName          *string                                                         `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DbType          *string                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	Description     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Encoding        *string                                                         `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	Engine          *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EnvType         *string                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic           *bool                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OwnerIdList     *SearchTableResponseBodySearchTableListSearchTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	OwnerNameList   *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	TableGuid       *string                                                         `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	TableId         *string                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName       *string                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableSchemaName *string                                                         `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+	// The name that is used to search for the database to which the table belongs.
+	DBSearchName *string `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
+	// The ID of the database to which the table belongs.
+	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of the database. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQLServer**
+	// *   **PostgreSQL**
+	// *   **Oracle**
+	// *   **DRDS**
+	// *   **OceanBase**
+	// *   **Mongo**
+	// *   **Redis**
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The description of the table.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The encoding format of the table.
+	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The engine of the table.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The type of the environment to which the database belongs.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the table is a logical table. Valid values:
+	//
+	// *   **true**: The table is a logical table.
+	// *   **false**: The table is not a logical table.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The IDs of the table owners.
+	OwnerIdList *SearchTableResponseBodySearchTableListSearchTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	// The nicknames of the table owners.
+	OwnerNameList *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	// The GUID of the table.
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The ID of the table.
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the database to which the table belongs.
+	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 
 func (s SearchTableResponseBodySearchTableListSearchTable) String() string {
@@ -30915,8 +33208,12 @@ func (s *StopTaskFlowInstanceResponse) SetBody(v *StopTaskFlowInstanceResponseBo
 }
 
 type SubmitOrderApprovalRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SubmitOrderApprovalRequest) String() string {
@@ -30938,10 +33235,14 @@ func (s *SubmitOrderApprovalRequest) SetTid(v int64) *SubmitOrderApprovalRequest
 }
 
 type SubmitOrderApprovalResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitOrderApprovalResponseBody) String() string {
@@ -31002,8 +33303,12 @@ func (s *SubmitOrderApprovalResponse) SetBody(v *SubmitOrderApprovalResponseBody
 }
 
 type SubmitStructSyncOrderApprovalRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SubmitStructSyncOrderApprovalRequest) String() string {
@@ -31025,11 +33330,16 @@ func (s *SubmitStructSyncOrderApprovalRequest) SetTid(v int64) *SubmitStructSync
 }
 
 type SubmitStructSyncOrderApprovalResponseBody struct {
-	ErrorCode          *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	WorkflowInstanceId *int64  `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the approval process.
+	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
 }
 
 func (s SubmitStructSyncOrderApprovalResponseBody) String() string {
@@ -31200,9 +33510,14 @@ func (s *SuspendTaskFlowInstanceResponse) SetBody(v *SuspendTaskFlowInstanceResp
 }
 
 type SyncDatabaseMetaRequest struct {
-	DbId  *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	Tid   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the database.
+	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// Specifies whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SyncDatabaseMetaRequest) String() string {
@@ -31229,10 +33544,14 @@ func (s *SyncDatabaseMetaRequest) SetTid(v int64) *SyncDatabaseMetaRequest {
 }
 
 type SyncDatabaseMetaResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SyncDatabaseMetaResponseBody) String() string {
@@ -31293,9 +33612,17 @@ func (s *SyncDatabaseMetaResponse) SetBody(v *SyncDatabaseMetaResponseBody) *Syn
 }
 
 type SyncInstanceMetaRequest struct {
-	IgnoreTable *bool   `json:"IgnoreTable,omitempty" xml:"IgnoreTable,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// Specifies whether to skip synchronization for the metadata of table dictionaries. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IgnoreTable *bool `json:"IgnoreTable,omitempty" xml:"IgnoreTable,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the Manage DMS tenants topic.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s SyncInstanceMetaRequest) String() string {
@@ -31322,10 +33649,17 @@ func (s *SyncInstanceMetaRequest) SetTid(v int64) *SyncInstanceMetaRequest {
 }
 
 type SyncInstanceMetaResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Details about the topology of the data table.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code returned.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SyncInstanceMetaResponseBody) String() string {
@@ -31381,6 +33715,166 @@ func (s *SyncInstanceMetaResponse) SetStatusCode(v int32) *SyncInstanceMetaRespo
 }
 
 func (s *SyncInstanceMetaResponse) SetBody(v *SyncInstanceMetaResponseBody) *SyncInstanceMetaResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAuthorityTemplateRequest struct {
+	// The description of the permission template.
+	//
+	// >  You must specify the Name or Description parameter. Otherwise, the API call fails.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission template.
+	//
+	// >  You must specify the Name or Description parameter. Otherwise, the API call fails.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to query the tenant ID.
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s UpdateAuthorityTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAuthorityTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAuthorityTemplateRequest) SetDescription(v string) *UpdateAuthorityTemplateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateRequest) SetName(v string) *UpdateAuthorityTemplateRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateRequest) SetTemplateId(v int64) *UpdateAuthorityTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateRequest) SetTid(v int64) *UpdateAuthorityTemplateRequest {
+	s.Tid = &v
+	return s
+}
+
+type UpdateAuthorityTemplateResponseBody struct {
+	// The details of the permission template.
+	AuthorityTemplateView *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView `json:"AuthorityTemplateView,omitempty" xml:"AuthorityTemplateView,omitempty" type:"Struct"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAuthorityTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAuthorityTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetAuthorityTemplateView(v *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) *UpdateAuthorityTemplateResponseBody {
+	s.AuthorityTemplateView = v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetErrorCode(v string) *UpdateAuthorityTemplateResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetErrorMessage(v string) *UpdateAuthorityTemplateResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetRequestId(v string) *UpdateAuthorityTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBody) SetSuccess(v bool) *UpdateAuthorityTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAuthorityTemplateResponseBodyAuthorityTemplateView struct {
+	// The ID of the user who created the permission template.
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the permission template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the permission template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) SetCreatorId(v int64) *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) SetDescription(v string) *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) SetName(v string) *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView) SetTemplateId(v int64) *UpdateAuthorityTemplateResponseBodyAuthorityTemplateView {
+	s.TemplateId = &v
+	return s
+}
+
+type UpdateAuthorityTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAuthorityTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAuthorityTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAuthorityTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAuthorityTemplateResponse) SetHeaders(v map[string]*string) *UpdateAuthorityTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponse) SetStatusCode(v int32) *UpdateAuthorityTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAuthorityTemplateResponse) SetBody(v *UpdateAuthorityTemplateResponseBody) *UpdateAuthorityTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -31875,7 +34369,7 @@ type UpdateScenarioRequest struct {
 	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
 	// The ID of the tenant.
 	//
-	// >  The ID of the tenant is displayed when you move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the ["View information about the current tenant"](~~181330~~) section of the Manage DMS tenants topic.
+	// > : To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -33750,16 +36244,21 @@ func (s *UpdateTaskTimeVariablesResponse) SetBody(v *UpdateTaskTimeVariablesResp
 }
 
 type UpdateUserRequest struct {
-	MaxExecuteCount *int64  `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
-	MaxResultCount  *int64  `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	RoleNames       *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
+	// The maximum number of queries that can be performed each day.
+	MaxExecuteCount *int64 `json:"MaxExecuteCount,omitempty" xml:"MaxExecuteCount,omitempty"`
+	// The maximum number of rows that can be queried each day.
+	MaxResultCount *int64 `json:"MaxResultCount,omitempty" xml:"MaxResultCount,omitempty"`
+	// The DingTalk ID or mobile number of the user.
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The roles that the user assumes. For more information about the valid values, see the Request parameters section in the [RegisterUser](~~141565~~) topic.
+	RoleNames *string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty"`
 	// The ID of the tenant.
 	//
-	// >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the "View information about the current tenant" section of the [Manage DMS tenants](~~181330~~) topic.
+	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The UID of the user. You can view your UID by moving the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console.
-	Uid      *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The Alibaba Cloud unique ID (UID) of the user to update.
+	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The nickname of the user.
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -33807,16 +36306,13 @@ func (s *UpdateUserRequest) SetUserNick(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   **true**: The request was successful.
-	// *   **false**: The request failed.
+	// Indicates whether the request succeeded.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -34600,6 +37096,71 @@ func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrde
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseOrderResponse{}
 	_body, _err := client.CloseOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request CreateAuthorityTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAuthorityTemplateResponse
+ */
+func (client *Client) CreateAuthorityTemplateWithOptions(request *CreateAuthorityTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAuthorityTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAuthorityTemplate"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAuthorityTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request CreateAuthorityTemplateRequest
+ * @return CreateAuthorityTemplateResponse
+ */
+func (client *Client) CreateAuthorityTemplate(request *CreateAuthorityTemplateRequest) (_result *CreateAuthorityTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAuthorityTemplateResponse{}
+	_body, _err := client.CreateAuthorityTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35394,7 +37955,7 @@ func (client *Client) CreatePublishGroupTask(request *CreatePublishGroupTaskRequ
 }
 
 /**
- * For more instructions on this feature, see [SQL audit](~~60374~~) .
+ * For more information about the SQL review feature, see [SQL review](~~60374~~).
  *
  * @param tmpReq CreateSQLReviewOrderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35456,7 +38017,7 @@ func (client *Client) CreateSQLReviewOrderWithOptions(tmpReq *CreateSQLReviewOrd
 }
 
 /**
- * For more instructions on this feature, see [SQL audit](~~60374~~) .
+ * For more information about the SQL review feature, see [SQL review](~~60374~~).
  *
  * @param request CreateSQLReviewOrderRequest
  * @return CreateSQLReviewOrderResponse
@@ -36966,8 +39527,8 @@ func (client *Client) ExecuteScript(request *ExecuteScriptRequest) (_result *Exe
 }
 
 /**
- * If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
- * >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+ * If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+ * >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
  *
  * @param request ExecuteStructSyncRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37011,8 +39572,8 @@ func (client *Client) ExecuteStructSyncWithOptions(request *ExecuteStructSyncReq
 }
 
 /**
- * If the security rules of the instance need to be approved for synchronization, call [SubmitStructSyncOrderApproval](~~206166~~) The interface initiates an approval process and completes the approval.
- * >  You can call [GetStructSyncJobDetail](~~206160~~) You can call this operation to query whether the target instance requires an approval.
+ * If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+ * >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
  *
  * @param request ExecuteStructSyncRequest
  * @return ExecuteStructSyncResponse
@@ -37069,6 +39630,128 @@ func (client *Client) GetApprovalDetail(request *GetApprovalDetailRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApprovalDetailResponse{}
 	_body, _err := client.GetApprovalDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GetAuthorityTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAuthorityTemplateResponse
+ */
+func (client *Client) GetAuthorityTemplateWithOptions(request *GetAuthorityTemplateRequest, runtime *util.RuntimeOptions) (_result *GetAuthorityTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthorityTemplate"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAuthorityTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You must be a Data Management (DMS) administrator or a database administrator (DBA). For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GetAuthorityTemplateRequest
+ * @return GetAuthorityTemplateResponse
+ */
+func (client *Client) GetAuthorityTemplate(request *GetAuthorityTemplateRequest) (_result *GetAuthorityTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAuthorityTemplateResponse{}
+	_body, _err := client.GetAuthorityTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GetAuthorityTemplateItemRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAuthorityTemplateItemResponse
+ */
+func (client *Client) GetAuthorityTemplateItemWithOptions(request *GetAuthorityTemplateItemRequest, runtime *util.RuntimeOptions) (_result *GetAuthorityTemplateItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthorityTemplateItem"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAuthorityTemplateItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GetAuthorityTemplateItemRequest
+ * @return GetAuthorityTemplateItemResponse
+ */
+func (client *Client) GetAuthorityTemplateItem(request *GetAuthorityTemplateItemRequest) (_result *GetAuthorityTemplateItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAuthorityTemplateItemResponse{}
+	_body, _err := client.GetAuthorityTemplateItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37327,7 +40010,7 @@ func (client *Client) GetDataCorrectRollbackFile(request *GetDataCorrectRollback
 }
 
 /**
- * This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+ * This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
  *
  * @param request GetDataCorrectSQLFileRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37371,7 +40054,7 @@ func (client *Client) GetDataCorrectSQLFileWithOptions(request *GetDataCorrectSQ
 }
 
 /**
- * This interface applies to: [Common data change](~~58419~~) and [Batch Data import](~~144643~~) .
+ * This operation applies to [regular data change](~~58419~~) and [batch data import](~~144643~~).
  *
  * @param request GetDataCorrectSQLFileRequest
  * @return GetDataCorrectSQLFileResponse
@@ -37630,6 +40313,58 @@ func (client *Client) GetDataExportOrderDetail(request *GetDataExportOrderDetail
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDataExportOrderDetailResponse{}
 	_body, _err := client.GetDataExportOrderDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataImportSQLWithOptions(request *GetDataImportSQLRequest, runtime *util.RuntimeOptions) (_result *GetDataImportSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		query["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataImportSQL"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataImportSQLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataImportSQL(request *GetDataImportSQLRequest) (_result *GetDataImportSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataImportSQLResponse{}
+	_body, _err := client.GetDataImportSQLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37923,6 +40658,13 @@ func (client *Client) GetLogicDatabase(request *GetLogicDatabaseRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request GetMetaTableColumnRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMetaTableColumnResponse
+ */
 func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableColumnResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37960,6 +40702,12 @@ func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnR
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request GetMetaTableColumnRequest
+ * @return GetMetaTableColumnResponse
+ */
 func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_result *GetMetaTableColumnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetaTableColumnResponse{}
@@ -37971,6 +40719,13 @@ func (client *Client) GetMetaTableColumn(request *GetMetaTableColumnRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request GetMetaTableDetailInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMetaTableDetailInfoResponse
+ */
 func (client *Client) GetMetaTableDetailInfoWithOptions(request *GetMetaTableDetailInfoRequest, runtime *util.RuntimeOptions) (_result *GetMetaTableDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38008,6 +40763,12 @@ func (client *Client) GetMetaTableDetailInfoWithOptions(request *GetMetaTableDet
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request GetMetaTableDetailInfoRequest
+ * @return GetMetaTableDetailInfoResponse
+ */
 func (client *Client) GetMetaTableDetailInfo(request *GetMetaTableDetailInfoRequest) (_result *GetMetaTableDetailInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetaTableDetailInfoResponse{}
@@ -38289,7 +41050,7 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 }
 
 /**
- * This interface is applicable to obtaining: **Database-permission** , **Table-permissions** , **sensitive column-permission** .
+ * You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
  *
  * @param request GetPermApplyOrderDetailRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38333,7 +41094,7 @@ func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOr
 }
 
 /**
- * This interface is applicable to obtaining: **Database-permission** , **Table-permissions** , **sensitive column-permission** .
+ * You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
  *
  * @param request GetPermApplyOrderDetailRequest
  * @return GetPermApplyOrderDetailResponse
@@ -38403,10 +41164,6 @@ func (client *Client) GetProxyWithOptions(request *GetProxyRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProxyId)) {
 		query["ProxyId"] = request.ProxyId
 	}
@@ -39315,6 +42072,79 @@ func (client *Client) GetUserUploadFileJob(request *GetUserUploadFileJobRequest)
 	return _result, _err
 }
 
+/**
+ * You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GrantTemplateAuthorityRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GrantTemplateAuthorityResponse
+ */
+func (client *Client) GrantTemplateAuthorityWithOptions(request *GrantTemplateAuthorityRequest, runtime *util.RuntimeOptions) (_result *GrantTemplateAuthorityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireDate)) {
+		query["ExpireDate"] = request.ExpireDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantTemplateAuthority"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantTemplateAuthorityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You must be a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request GrantTemplateAuthorityRequest
+ * @return GrantTemplateAuthorityResponse
+ */
+func (client *Client) GrantTemplateAuthority(request *GrantTemplateAuthorityRequest) (_result *GrantTemplateAuthorityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantTemplateAuthorityResponse{}
+	_body, _err := client.GrantTemplateAuthorityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissionRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39487,6 +42317,13 @@ func (client *Client) ListClassificationTemplates(request *ListClassificationTem
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request ListColumnsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListColumnsResponse
+ */
 func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtime *util.RuntimeOptions) (_result *ListColumnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39528,6 +42365,12 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request ListColumnsRequest
+ * @return ListColumnsResponse
+ */
 func (client *Client) ListColumns(request *ListColumnsRequest) (_result *ListColumnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListColumnsResponse{}
@@ -39890,6 +42733,118 @@ func (client *Client) ListDataCorrectPreCheckSQL(request *ListDataCorrectPreChec
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDataCorrectPreCheckSQLResponse{}
 	_body, _err := client.ListDataCorrectPreCheckSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataImportSQLPreCheckDetailWithOptions(request *ListDataImportSQLPreCheckDetailRequest, runtime *util.RuntimeOptions) (_result *ListDataImportSQLPreCheckDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumer)) {
+		query["PageNumer"] = request.PageNumer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlType)) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusCode)) {
+		query["StatusCode"] = request.StatusCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataImportSQLPreCheckDetail"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataImportSQLPreCheckDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataImportSQLPreCheckDetail(request *ListDataImportSQLPreCheckDetailRequest) (_result *ListDataImportSQLPreCheckDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataImportSQLPreCheckDetailResponse{}
+	_body, _err := client.ListDataImportSQLPreCheckDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataImportSQLTypeWithOptions(request *ListDataImportSQLTypeRequest, runtime *util.RuntimeOptions) (_result *ListDataImportSQLTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataImportSQLType"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataImportSQLTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataImportSQLType(request *ListDataImportSQLTypeRequest) (_result *ListDataImportSQLTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataImportSQLTypeResponse{}
+	_body, _err := client.ListDataImportSQLTypeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41419,6 +44374,13 @@ func (client *Client) ListStandardGroups(request *ListStandardGroupsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request ListTablesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTablesResponse
+ */
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41472,6 +44434,12 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request ListTablesRequest
+ * @return ListTablesResponse
+ */
 func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTablesResponse{}
@@ -43139,6 +46107,71 @@ func (client *Client) RetryDataCorrectPreCheck(request *RetryDataCorrectPreCheck
 	return _result, _err
 }
 
+/**
+ * You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request RevokeTemplateAuthorityRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevokeTemplateAuthorityResponse
+ */
+func (client *Client) RevokeTemplateAuthorityWithOptions(request *RevokeTemplateAuthorityRequest, runtime *util.RuntimeOptions) (_result *RevokeTemplateAuthorityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIds)) {
+		query["UserIds"] = request.UserIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeTemplateAuthority"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeTemplateAuthorityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You must be a database administrator (DBA) or a DMS administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request RevokeTemplateAuthorityRequest
+ * @return RevokeTemplateAuthorityResponse
+ */
+func (client *Client) RevokeTemplateAuthority(request *RevokeTemplateAuthorityRequest) (_result *RevokeTemplateAuthorityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeTemplateAuthorityResponse{}
+	_body, _err := client.RevokeTemplateAuthorityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RevokeUserPermissionWithOptions(request *RevokeUserPermissionRequest, runtime *util.RuntimeOptions) (_result *RevokeUserPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43291,6 +46324,13 @@ func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *S
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances that are managed in Security Collaboration mode.
+ *
+ * @param request SearchTableRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SearchTableResponse
+ */
 func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtime *util.RuntimeOptions) (_result *SearchTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43356,6 +46396,12 @@ func (client *Client) SearchTableWithOptions(request *SearchTableRequest, runtim
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances that are managed in Security Collaboration mode.
+ *
+ * @param request SearchTableRequest
+ * @return SearchTableResponse
+ */
 func (client *Client) SearchTable(request *SearchTableRequest) (_result *SearchTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchTableResponse{}
@@ -43675,6 +46721,13 @@ func (client *Client) SyncDatabaseMeta(request *SyncDatabaseMetaRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request SyncInstanceMetaRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SyncInstanceMetaResponse
+ */
 func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaRequest, runtime *util.RuntimeOptions) (_result *SyncInstanceMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43716,10 +46769,85 @@ func (client *Client) SyncInstanceMetaWithOptions(request *SyncInstanceMetaReque
 	return _result, _err
 }
 
+/**
+ * You can call this operation only for database instances whose control mode is Security Collaboration.
+ *
+ * @param request SyncInstanceMetaRequest
+ * @return SyncInstanceMetaResponse
+ */
 func (client *Client) SyncInstanceMeta(request *SyncInstanceMetaRequest) (_result *SyncInstanceMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncInstanceMetaResponse{}
 	_body, _err := client.SyncInstanceMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request UpdateAuthorityTemplateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAuthorityTemplateResponse
+ */
+func (client *Client) UpdateAuthorityTemplateWithOptions(request *UpdateAuthorityTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateAuthorityTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAuthorityTemplate"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAuthorityTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You are a database administrator (DBA) or a Data Management (DMS) administrator. For more information about how to view system roles, see [View system roles](~~324212~~).
+ *
+ * @param request UpdateAuthorityTemplateRequest
+ * @return UpdateAuthorityTemplateResponse
+ */
+func (client *Client) UpdateAuthorityTemplate(request *UpdateAuthorityTemplateRequest) (_result *UpdateAuthorityTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAuthorityTemplateResponse{}
+	_body, _err := client.UpdateAuthorityTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
