@@ -2947,9 +2947,10 @@ func (s *GetOperateResultResponseBody) SetSuccess(v bool) *GetOperateResultRespo
 }
 
 type GetOperateResultResponseBodyData struct {
-	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Result      *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ExecuteResult *string `json:"ExecuteResult,omitempty" xml:"ExecuteResult,omitempty"`
+	OperateType   *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Result        *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetOperateResultResponseBodyData) String() string {
@@ -2958,6 +2959,11 @@ func (s GetOperateResultResponseBodyData) String() string {
 
 func (s GetOperateResultResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetOperateResultResponseBodyData) SetExecuteResult(v string) *GetOperateResultResponseBodyData {
+	s.ExecuteResult = &v
+	return s
 }
 
 func (s *GetOperateResultResponseBodyData) SetOperateType(v string) *GetOperateResultResponseBodyData {
@@ -4227,13 +4233,14 @@ func (s *ListDirectionalDetailResponse) SetBody(v *ListDirectionalDetailResponse
 }
 
 type ListOrderRequest struct {
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	OrderType   *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PageNo      *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderStatus  *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s ListOrderRequest) String() string {
@@ -4242,6 +4249,11 @@ func (s ListOrderRequest) String() string {
 
 func (s ListOrderRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOrderRequest) SetCredentialNo(v string) *ListOrderRequest {
+	s.CredentialNo = &v
+	return s
 }
 
 func (s *ListOrderRequest) SetEndDate(v string) *ListOrderRequest {
@@ -6684,6 +6696,10 @@ func (client *Client) ListOrderWithOptions(request *ListOrderRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialNo)) {
+		query["CredentialNo"] = request.CredentialNo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		query["EndDate"] = request.EndDate
 	}
