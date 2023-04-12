@@ -1,3 +1,6 @@
+2023-04-12 Version: v1.0.1
+- Contact OpenAPI.
+
 2023-02-16 Version: v1.0.0
 - SyncResourceOperation supported ResourceIdType.
 
