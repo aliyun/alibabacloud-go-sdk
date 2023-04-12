@@ -60,7 +60,13 @@ func (s *ResourceDirectoryFolderNode) SetParentFolderId(v string) *ResourceDirec
 }
 
 type ActiveAggregateConfigRulesRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -83,8 +89,10 @@ func (s *ActiveAggregateConfigRulesRequest) SetConfigRuleIds(v string) *ActiveAg
 }
 
 type ActiveAggregateConfigRulesResponseBody struct {
+	// The results of the operations to enable the specified rules.
 	OperateRuleResult *ActiveAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesResponseBody) String() string {
@@ -106,6 +114,7 @@ func (s *ActiveAggregateConfigRulesResponseBody) SetRequestId(v string) *ActiveA
 }
 
 type ActiveAggregateConfigRulesResponseBodyOperateRuleResult struct {
+	// The result of the operation to enable the rule.
 	OperateRuleItemList []*ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -123,9 +132,18 @@ func (s *ActiveAggregateConfigRulesResponseBodyOperateRuleResult) SetOperateRule
 }
 
 type ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned.
+	//
+	// *   If the rule is enabled, no error code is returned.
+	// *   If the rule fails to be enabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -181,9 +199,18 @@ func (s *ActiveAggregateConfigRulesResponse) SetBody(v *ActiveAggregateConfigRul
 }
 
 type AttachAggregateConfigRuleToCompliancePackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package to which you want to add the rule.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	// The ID of the rule to be added to the compliance package. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackRequest) String() string {
@@ -210,8 +237,10 @@ func (s *AttachAggregateConfigRuleToCompliancePackRequest) SetConfigRuleIds(v st
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBody struct {
+	// The results of the operations to add one or more rules.
 	OperateRuleResult *AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackResponseBody) String() string {
@@ -233,6 +262,7 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponseBody) SetRequestId(v s
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
+	// The result of the operation to add the rule.
 	OperateRuleItemList []*AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -250,9 +280,21 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult)
 }
 
 type AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule that is added to the compliance package.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   This parameter is empty if the rule is added to the compliance package.
+	//
+	// <!---->
+	//
+	// *   An error code is returned if the rule fails to be added to the compliance package. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AttachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -308,8 +350,14 @@ func (s *AttachAggregateConfigRuleToCompliancePackResponse) SetBody(v *AttachAgg
 }
 
 type AttachConfigRuleToCompliancePackRequest struct {
+	// The ID of the compliance package to which you want to add the rule.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	// The ID of the rule to be added to the compliance package. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s AttachConfigRuleToCompliancePackRequest) String() string {
@@ -331,8 +379,10 @@ func (s *AttachConfigRuleToCompliancePackRequest) SetConfigRuleIds(v string) *At
 }
 
 type AttachConfigRuleToCompliancePackResponseBody struct {
+	// The results of the operations to add one or more rules.
 	OperateRuleResult *AttachConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AttachConfigRuleToCompliancePackResponseBody) String() string {
@@ -354,6 +404,7 @@ func (s *AttachConfigRuleToCompliancePackResponseBody) SetRequestId(v string) *A
 }
 
 type AttachConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
+	// The result of the operation to add the rule.
 	OperateRuleItemList []*AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -371,9 +422,21 @@ func (s *AttachConfigRuleToCompliancePackResponseBodyOperateRuleResult) SetOpera
 }
 
 type AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule that is added to the compliance package.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   This parameter is empty if the rule is added to the compliance package.
+	//
+	// <!---->
+	//
+	// *   An error code is returned if the rule fails to be added to the compliance package. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AttachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -429,8 +492,17 @@ func (s *AttachConfigRuleToCompliancePackResponse) SetBody(v *AttachConfigRuleTo
 }
 
 type CopyCompliancePacksRequest struct {
-	DesAggregatorIds     *string `json:"DesAggregatorIds,omitempty" xml:"DesAggregatorIds,omitempty"`
-	SrcAggregatorId      *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	// The IDs of the destination account groups into which the compliance packages are replicated. Separate multiple account group IDs with commas (,).
+	//
+	// >  If you leave this parameter empty, the compliance packages are replicated under the same account group.
+	DesAggregatorIds *string `json:"DesAggregatorIds,omitempty" xml:"DesAggregatorIds,omitempty"`
+	// The ID of the account group to which the compliance packages belong.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	SrcAggregatorId *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	// The IDs of the compliance packages. Separate multiple compliance package IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	SrcCompliancePackIds *string `json:"SrcCompliancePackIds,omitempty" xml:"SrcCompliancePackIds,omitempty"`
 }
 
@@ -458,8 +530,13 @@ func (s *CopyCompliancePacksRequest) SetSrcCompliancePackIds(v string) *CopyComp
 }
 
 type CopyCompliancePacksResponseBody struct {
-	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the compliance packages are successfully replicated. Valid values:
+	//
+	// *   true
+	// *   false
+	CopyRulesResult *bool `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CopyCompliancePacksResponseBody) String() string {
@@ -510,8 +587,15 @@ func (s *CopyCompliancePacksResponse) SetBody(v *CopyCompliancePacksResponseBody
 }
 
 type CopyConfigRulesRequest struct {
+	// The IDs of the destination account groups into which the rules are replicated. Separate multiple account group IDs with commas (,).
+	//
+	// >  If you leave this parameter empty, the compliance packages are replicated under the same account group.
 	DesAggregatorIds *string `json:"DesAggregatorIds,omitempty" xml:"DesAggregatorIds,omitempty"`
-	SrcAggregatorId  *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	// The ID of the account group to which the rules belong.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	SrcAggregatorId *string `json:"SrcAggregatorId,omitempty" xml:"SrcAggregatorId,omitempty"`
+	// The IDs of the rules. Separate multiple rule IDs with commas (,).
 	SrcConfigRuleIds *string `json:"SrcConfigRuleIds,omitempty" xml:"SrcConfigRuleIds,omitempty"`
 }
 
@@ -539,8 +623,13 @@ func (s *CopyConfigRulesRequest) SetSrcConfigRuleIds(v string) *CopyConfigRulesR
 }
 
 type CopyConfigRulesResponseBody struct {
-	CopyRulesResult *bool   `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the rules are successfully replicated. Valid values:
+	//
+	// *   true
+	// *   false
+	CopyRulesResult *bool `json:"CopyRulesResult,omitempty" xml:"CopyRulesResult,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CopyConfigRulesResponseBody) String() string {
@@ -591,19 +680,45 @@ func (s *CopyConfigRulesResponse) SetBody(v *CopyConfigRulesResponseBody) *CopyC
 }
 
 type CreateAggregateCompliancePackRequest struct {
-	AggregatorId             *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken              *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackName       *string                                            `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CompliancePackTemplateId *string                                            `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRules              []*CreateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	DefaultEnable            *bool                                              `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	Description              *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope  *string                                            `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope           *string                                            `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope    *string                                            `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel                *int32                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope              *string                                            `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope            *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	//
+	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](~~261176~~).
+	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
+	// The rules in the compliance package.
+	ConfigRules []*CreateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// Specifies whether to enable the rule together with the compliance package. Valid values:
+	//
+	// *   true: The system enables the rule together with the compliance package.
+	// *   false: The system does not enable the rule together with the compliance package.
+	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackRequest) String() string {
@@ -680,12 +795,26 @@ func (s *CreateAggregateCompliancePackRequest) SetTagValueScope(v string) *Creat
 }
 
 type CreateAggregateCompliancePackRequestConfigRules struct {
-	ConfigRuleId          *string                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                                `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The details of the input parameter of the rule.
+	ConfigRuleParameters []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule. Cloud Config automatically create a managed rule of the specified ID and adds the rule to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter take precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackRequestConfigRules) String() string {
@@ -727,7 +856,13 @@ func (s *CreateAggregateCompliancePackRequestConfigRules) SetRiskLevel(v int32) 
 }
 
 type CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -750,19 +885,45 @@ func (s *CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Se
 }
 
 type CreateAggregateCompliancePackShrinkRequest struct {
-	AggregatorId             *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackName       *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	//
+	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](~~261176~~).
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRulesShrink        *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	DefaultEnable            *bool   `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope  *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope           *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope    *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope              *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope            *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The rules in the compliance package.
+	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	// Specifies whether to enable the rule together with the compliance package. Valid values:
+	//
+	// *   true: The system enables the rule together with the compliance package.
+	// *   false: The system does not enable the rule together with the compliance package.
+	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackShrinkRequest) String() string {
@@ -839,8 +1000,10 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) 
 }
 
 type CreateAggregateCompliancePackResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAggregateCompliancePackResponseBody) String() string {
@@ -891,18 +1054,77 @@ func (s *CreateAggregateCompliancePackResponse) SetBody(v *CreateAggregateCompli
 }
 
 type CreateAggregateConfigDeliveryChannelRequest struct {
-	AggregatorId                        *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The value of the `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: Cloud Config delivers resource change logs.
+	// *   false: Cloud Config does not deliver resource change logs. This is the default value.
+	//
+	// >  This parameter is available for delivery channels of the OSS, SLS, and MNS types.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: Cloud Config delivers scheduled resource snapshots.
+	// *   false: Cloud Config does not deliver scheduled resource snapshots. This is the default value.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If you set the DeliveryChannelType parameter to MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you want to subscribe:
+	//
+	//     *   The lowest risk level of the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots to which you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the snapshots to which you want to deliver. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The name of the delivery channel.
+	//
+	// >  If you do not configure this parameter, this parameter is left empty.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when you want Cloud Config to deliver scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	//
+	// >  When you enable the scheduled resource delivery feature, you can specify a custom delivery time for this parameter. If you do not configure this parameter, Cloud Config automatically delivers scheduled resource snapshots at `04:00Z` and `16:00Z` every day.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: Cloud Config delivers resource non-compliance events.
+	// *   false: Cloud Config does not deliver resource non-compliance events. This is the default value.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS or MNS type. The upper limit on the storage size of delivery channels of the SLS type is 1 MB, and the upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
 }
 
 func (s CreateAggregateConfigDeliveryChannelRequest) String() string {
@@ -974,8 +1196,10 @@ func (s *CreateAggregateConfigDeliveryChannelRequest) SetOversizedDataOSSTargetA
 }
 
 type CreateAggregateConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAggregateConfigDeliveryChannelResponseBody) String() string {
@@ -1026,26 +1250,94 @@ func (s *CreateAggregateConfigDeliveryChannelResponse) SetBody(v *CreateAggregat
 }
 
 type CreateAggregateConfigRuleRequest struct {
-	AggregatorId              *string                `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken               *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeAccountIdsScope    *string                `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	ExcludeFolderIdsScope     *string                `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	FolderIdsScope            *string                `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SourceIdentifier          *string                `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	SourceOwner               *string                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours: 24 hours. This is the default value.
+	//
+	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The identifier of the rule.
+	//
+	// *   If the SourceOwner parameter is set to ALIYUN, set this parameter to the name of the managed rule.
+	// *   If the SourceOwner parameter is set to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//
+	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
+	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The way in which the rule is to be created. Valid values:
+	//
+	// *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
+	// *   CUSTOM_FC: The rule is a custom rule.
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: the logical relationship of AND
+	// *   OR: the logical relationship of OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateConfigRuleRequest) String() string {
@@ -1157,26 +1449,94 @@ func (s *CreateAggregateConfigRuleRequest) SetTagValueScope(v string) *CreateAgg
 }
 
 type CreateAggregateConfigRuleShrinkRequest struct {
-	AggregatorId              *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeAccountIdsScope    *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	ExcludeFolderIdsScope     *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	FolderIdsScope            *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours: 24 hours. This is the default value.
+	//
+	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SourceIdentifier          *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	SourceOwner               *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The identifier of the rule.
+	//
+	// *   If the SourceOwner parameter is set to ALIYUN, set this parameter to the name of the managed rule.
+	// *   If the SourceOwner parameter is set to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//
+	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
+	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The way in which the rule is to be created. Valid values:
+	//
+	// *   ALIYUN: The rule is to be created based on a managed rule of Alibaba Cloud.
+	// *   CUSTOM_FC: The rule is a custom rule.
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: the logical relationship of AND
+	// *   OR: the logical relationship of OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateAggregateConfigRuleShrinkRequest) String() string {
@@ -1288,8 +1648,10 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetTagValueScope(v string) *Cre
 }
 
 type CreateAggregateConfigRuleResponseBody struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAggregateConfigRuleResponseBody) String() string {
@@ -1340,14 +1702,43 @@ func (s *CreateAggregateConfigRuleResponse) SetBody(v *CreateAggregateConfigRule
 }
 
 type CreateAggregateRemediationRequest struct {
-	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The ID of the account group.
+	//
+	// You can call the [ListAggregators](~~255797~~) operation to obtain the account group ID.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// You can call the [ListAggregateConfigRules](~~264148~~) operation to obtain the rule ID.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The execution mode of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The configuration of the remediation template.
+	//
+	// You can call the [ListRemediationTemplates](~~416781~~) operation to obtain the remediation template configuration from the `TemplateDefinition` response parameter.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The identifier of the remediation template.
+	//
+	// *   If you set the `RemediationType` parameter to `OOS`, set this parameter to the identifier of the relevant official remediation template, such as `ACS-OSS-PutBucketAcl`. You can call the [ListRemediationTemplates](~~416781~~) operation to obtain the remediation template identifier.
+	// *   If you set the `RemediationType` parameter to `FC`, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant Function Compute resource, such as `acs:fc:cn-hangzhou:100931896542****:services/ConfigService.LATEST/functions/test-php`.
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of remediation to perform. Valid values:
+	//
+	// *   OOS: stands for Operation Orchestration Service and indicates official remediation.
+	// *   FC: stands for Function Compute and indicates custom remediation.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The source of remediation. Valid values:
+	//
+	// *   ALIYUN: official template. This is the default value.
+	// *   CUSTOM: custom template.
+	// *   NONE: none.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s CreateAggregateRemediationRequest) String() string {
@@ -1399,8 +1790,10 @@ func (s *CreateAggregateRemediationRequest) SetSourceType(v string) *CreateAggre
 }
 
 type CreateAggregateRemediationResponseBody struct {
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAggregateRemediationResponseBody) String() string {
@@ -1451,11 +1844,34 @@ func (s *CreateAggregateRemediationResponse) SetBody(v *CreateAggregateRemediati
 }
 
 type CreateAggregatorRequest struct {
+	// The information about the member accounts in the account group. Example:
+	//
+	// ```
+	//
+	// [{
+	// 	"accountId": 171322098523****,
+	// 	"accountType":"ResourceDirectory",
+	//                 "accountName":"Alice"
+	// }, {
+	// 	"accountId": 100532098349****,
+	// 	"accountType":"ResourceDirectory",
+	//                 "accountName":"Tom"
+	// }]
+	// ```
+	//
+	// >  If the `AggregatorType` parameter is set to `RD`, this parameter can be left empty because all accounts in the resource directory are automatically added to the global account group.
 	AggregatorAccounts []*CreateAggregatorRequestAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
-	AggregatorName     *string                                      `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	AggregatorType     *string                                      `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	ClientToken        *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description        *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The type of the account group. Valid values:
+	//
+	// *   RD: global account group.
+	// *   CUSTOM: custom account group. This is the default value.
+	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the account group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s CreateAggregatorRequest) String() string {
@@ -1492,8 +1908,15 @@ func (s *CreateAggregatorRequest) SetDescription(v string) *CreateAggregatorRequ
 }
 
 type CreateAggregatorRequestAggregatorAccounts struct {
-	AccountId   *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the member account.
+	//
+	// For more information about how to obtain the ID of a member account, see [ListAccounts](~~160016~~).
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the member account.
+	//
+	// For more information about how to obtain the name of a member account, see [ListAccounts](~~160016~~).
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The affiliation of the member account. You can set this parameter only to ResourceDirectory.
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 }
 
@@ -1521,11 +1944,34 @@ func (s *CreateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Cr
 }
 
 type CreateAggregatorShrinkRequest struct {
+	// The information about the member accounts in the account group. Example:
+	//
+	// ```
+	//
+	// [{
+	// 	"accountId": 171322098523****,
+	// 	"accountType":"ResourceDirectory",
+	//                 "accountName":"Alice"
+	// }, {
+	// 	"accountId": 100532098349****,
+	// 	"accountType":"ResourceDirectory",
+	//                 "accountName":"Tom"
+	// }]
+	// ```
+	//
+	// >  If the `AggregatorType` parameter is set to `RD`, this parameter can be left empty because all accounts in the resource directory are automatically added to the global account group.
 	AggregatorAccountsShrink *string `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty"`
-	AggregatorName           *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	AggregatorType           *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The type of the account group. Valid values:
+	//
+	// *   RD: global account group.
+	// *   CUSTOM: custom account group. This is the default value.
+	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the account group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s CreateAggregatorShrinkRequest) String() string {
@@ -1562,8 +2008,10 @@ func (s *CreateAggregatorShrinkRequest) SetDescription(v string) *CreateAggregat
 }
 
 type CreateAggregatorResponseBody struct {
+	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAggregatorResponseBody) String() string {
@@ -1614,18 +2062,41 @@ func (s *CreateAggregatorResponse) SetBody(v *CreateAggregatorResponseBody) *Cre
 }
 
 type CreateCompliancePackRequest struct {
-	ClientToken              *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackName       *string                                   `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CompliancePackTemplateId *string                                   `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRules              []*CreateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	DefaultEnable            *bool                                     `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	Description              *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope  *string                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope           *string                                   `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope    *string                                   `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel                *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope              *string                                   `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope            *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	//
+	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](~~261176~~).
+	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
+	// The rules in the compliance package.
+	ConfigRules []*CreateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// Specifies whether to enable the rule together with the compliance package. Valid values:
+	//
+	// *   true: The system enables the rule together with the compliance package.
+	// *   false: The system does not enable the rule together with the compliance package.
+	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateCompliancePackRequest) String() string {
@@ -1697,12 +2168,26 @@ func (s *CreateCompliancePackRequest) SetTagValueScope(v string) *CreateComplian
 }
 
 type CreateCompliancePackRequestConfigRules struct {
-	ConfigRuleId          *string                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*CreateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The details of the input parameters of the rule.
+	ConfigRuleParameters []*CreateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule. Cloud Config automatically creates a managed rule based on the specified ID and adds the rule to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter take precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s CreateCompliancePackRequestConfigRules) String() string {
@@ -1744,7 +2229,13 @@ func (s *CreateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *CreateCo
 }
 
 type CreateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists you must configure this parameter. For more information about how to obtain the expected value of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -1767,18 +2258,41 @@ func (s *CreateCompliancePackRequestConfigRulesConfigRuleParameters) SetParamete
 }
 
 type CreateCompliancePackShrinkRequest struct {
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackName       *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	//
+	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](~~261176~~).
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRulesShrink        *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	DefaultEnable            *bool   `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope  *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope           *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope    *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope              *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope            *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The rules in the compliance package.
+	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	// Specifies whether to enable the rule together with the compliance package. Valid values:
+	//
+	// *   true: The system enables the rule together with the compliance package.
+	// *   false: The system does not enable the rule together with the compliance package.
+	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateCompliancePackShrinkRequest) String() string {
@@ -1850,8 +2364,10 @@ func (s *CreateCompliancePackShrinkRequest) SetTagValueScope(v string) *CreateCo
 }
 
 type CreateCompliancePackResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCompliancePackResponseBody) String() string {
@@ -1902,17 +2418,73 @@ func (s *CreateCompliancePackResponse) SetBody(v *CreateCompliancePackResponseBo
 }
 
 type CreateConfigDeliveryChannelRequest struct {
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The value of the `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~)
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: Cloud Config delivers resource change logs.
+	// *   false: Cloud Config does not deliver resource change logs. This is the default value.
+	//
+	// >  This parameter is available for delivery channels of the OSS, SLS, and MNS types.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: Cloud Config delivers scheduled resource snapshots.
+	// *   false: Cloud Config does not deliver scheduled resource snapshots. This is the default value.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If you set the DeliveryChannelType parameter to MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you want to subscribe:
+	//
+	//     *   The setting of the lowest risk level of the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots that you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the snapshots that you want to deliver. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The name of the delivery channel.
+	//
+	// >  If you do not configure this parameter, this parameter is left empty.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when you want Cloud Config to deliver scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. This time is displayed in UTC.
+	//
+	// >  When you enable the scheduled resource snapshot delivery feature, you can specify a custom delivery time for this parameter. If you do not configure this parameter, Cloud Config automatically delivers scheduled resource snapshots at `04:00Z` and `16:00Z` every day.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: Cloud Config delivers resource non-compliance events.
+	// *   false: Cloud Config does not deliver resource non-compliance events. This is the default value.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types. The upper limit on the storage size of delivery channels of the SLS type is 1 MB. The upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
 }
 
 func (s CreateConfigDeliveryChannelRequest) String() string {
@@ -1979,8 +2551,10 @@ func (s *CreateConfigDeliveryChannelRequest) SetOversizedDataOSSTargetArn(v stri
 }
 
 type CreateConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigDeliveryChannelResponseBody) String() string {
@@ -2031,22 +2605,76 @@ func (s *CreateConfigDeliveryChannelResponse) SetBody(v *CreateConfigDeliveryCha
 }
 
 type CreateConfigRuleRequest struct {
-	ClientToken               *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SourceIdentifier          *string                `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	SourceOwner               *string                `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The input parameter of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours (default): 24 hours.
+	//
+	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule.
+	//
+	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
+	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//
+	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
+	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The type of the rule Valid values:
+	//
+	// *   ALIYUN: managed rule.
+	// *   CUSTOM_FC: custom rule.
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: logical AND
+	// *   OR: logical OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateConfigRuleRequest) String() string {
@@ -2138,22 +2766,76 @@ func (s *CreateConfigRuleRequest) SetTagValueScope(v string) *CreateConfigRuleRe
 }
 
 type CreateConfigRuleShrinkRequest struct {
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  If a rule supports the preceding trigger types, separate the types with a comma (,).
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The input parameter of the rule.
+	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours (default): 24 hours.
+	//
+	// >  This parameter is required if the ConfigRuleTriggerTypes parameter is set to ScheduledNotification.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SourceIdentifier          *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	SourceOwner               *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule.
+	//
+	// *   If you set the SourceOwner parameter to ALIYUN, set this parameter to the name of the managed rule.
+	// *   If you set the SourceOwner parameter to CUSTOM_FC, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	//
+	// For more information about how to query the name of a managed rule, see [Managed rules](~~127404~~).
+	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The type of the rule Valid values:
+	//
+	// *   ALIYUN: managed rule.
+	// *   CUSTOM_FC: custom rule.
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: logical AND
+	// *   OR: logical OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with a specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s CreateConfigRuleShrinkRequest) String() string {
@@ -2245,8 +2927,10 @@ func (s *CreateConfigRuleShrinkRequest) SetTagValueScope(v string) *CreateConfig
 }
 
 type CreateConfigRuleResponseBody struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateConfigRuleResponseBody) String() string {
@@ -2297,17 +2981,67 @@ func (s *CreateConfigRuleResponse) SetBody(v *CreateConfigRuleResponseBody) *Cre
 }
 
 type CreateDeliveryChannelRequest struct {
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs to the specified destination. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is available for delivery channels of the OSS, SLS, or MNS type.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots to the OSS bucket. If the value of this parameter is true, the scheduled resource snapshots are delivered to the specified OSS bucket at 00:00:00 and 12:00:00 on a daily basis. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is available only for delivery channels of the OSS type.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role that you want to assign to the delivery channel. Specify an ARN in the following format: `acs:ram::{accountId}:role/aliyunserviceroleforconfig`.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available only for delivery channels of the MNS type.
+	//
+	// This parameter specifies the lowest risk level and the resource types for the events to which you want to subscribe.
+	//
+	// *   The setting of the lowest risk level for the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level for the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk leve, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	// *   The setting of the resource types for the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types for which you want to subscribe to events. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The name of the delivery channel.
+	//
+	// >  If you do not configure this parameter, this parameter is left empty.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events to the specified destination. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered incompliant. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is applicable only to delivery channels of the SLS or MNS type.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS type or MNS type. The upper limit on the storage size of delivery channels of the SLS type is 1 MB, and the upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
 }
 
 func (s CreateDeliveryChannelRequest) String() string {
@@ -2374,8 +3108,10 @@ func (s *CreateDeliveryChannelRequest) SetOversizedDataOSSTargetArn(v string) *C
 }
 
 type CreateDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDeliveryChannelResponseBody) String() string {
@@ -2426,13 +3162,39 @@ func (s *CreateDeliveryChannelResponse) SetBody(v *CreateDeliveryChannelResponse
 }
 
 type CreateRemediationRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// You can call the [ListConfigRules](~~169607~~) operation to obtain the rule ID.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The execution mode of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The configuration of the remediation template.
+	//
+	// You can call the [ListRemediationTemplates](~~416781~~) operation to obtain the remediation template configuration from the `TemplateDefinition` response parameter.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The identifier of the remediation template.
+	//
+	// *   If you set the `RemediationType` parameter to `OOS`, set this parameter to the identifier of the relevant official remediation template, such as `ACS-OSS-PutBucketAcl`. You can call the [ListRemediationTemplates](~~416781~~) operation to obtain the remediation template identifier.
+	// *   If you set the `RemediationType` parameter to `FC`, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant Function Compute resource, such as `acs:fc:cn-hangzhou:100931896542****:services/ConfigService.LATEST/functions/test-php`.
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of remediation to perform. Valid values:
+	//
+	// *   OOS: stands for Operation Orchestration Service and indicates official remediation.
+	// *   FC: stands for Function Compute and indicates custom remediation.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The source of remediation. Valid values:
+	//
+	// *   ALIYUN: official template. This is the default value.
+	// *   CUSTOM: custom template.
+	// *   NONE: none.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s CreateRemediationRequest) String() string {
@@ -2479,8 +3241,10 @@ func (s *CreateRemediationRequest) SetSourceType(v string) *CreateRemediationReq
 }
 
 type CreateRemediationResponseBody struct {
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRemediationResponseBody) String() string {
@@ -2531,7 +3295,13 @@ func (s *CreateRemediationResponse) SetBody(v *CreateRemediationResponseBody) *C
 }
 
 type DeactiveAggregateConfigRulesRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -2554,8 +3324,10 @@ func (s *DeactiveAggregateConfigRulesRequest) SetConfigRuleIds(v string) *Deacti
 }
 
 type DeactiveAggregateConfigRulesResponseBody struct {
+	// The results of the operations to disable the specified rules.
 	OperateRuleResult *DeactiveAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesResponseBody) String() string {
@@ -2577,6 +3349,7 @@ func (s *DeactiveAggregateConfigRulesResponseBody) SetRequestId(v string) *Deact
 }
 
 type DeactiveAggregateConfigRulesResponseBodyOperateRuleResult struct {
+	// The result of the operation to disable the rule.
 	OperateRuleItemList []*DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -2594,9 +3367,18 @@ func (s *DeactiveAggregateConfigRulesResponseBodyOperateRuleResult) SetOperateRu
 }
 
 type DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned.
+	//
+	// *   If the rule is disabled, no error code is returned.
+	// *   If the rule fails to be disabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -2652,6 +3434,9 @@ func (s *DeactiveAggregateConfigRulesResponse) SetBody(v *DeactiveAggregateConfi
 }
 
 type DeactiveConfigRulesRequest struct {
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -2669,8 +3454,10 @@ func (s *DeactiveConfigRulesRequest) SetConfigRuleIds(v string) *DeactiveConfigR
 }
 
 type DeactiveConfigRulesResponseBody struct {
+	// The results of the operations to disable the specified rules.
 	OperateRuleResult *DeactiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeactiveConfigRulesResponseBody) String() string {
@@ -2692,6 +3479,7 @@ func (s *DeactiveConfigRulesResponseBody) SetRequestId(v string) *DeactiveConfig
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResult struct {
+	// The result of the operation to disable the rule.
 	OperateRuleItemList []*DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -2709,9 +3497,21 @@ func (s *DeactiveConfigRulesResponseBodyOperateRuleResult) SetOperateRuleItemLis
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   If the rule is disabled, no error code is returned.
+	//
+	// <!---->
+	//
+	// *   If the rule fails to be disabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -2767,10 +3567,21 @@ func (s *DeactiveConfigRulesResponse) SetBody(v *DeactiveConfigRulesResponseBody
 }
 
 type DeleteAggregateCompliancePacksRequest struct {
-	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package. Separate multiple compliance package IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackIds *string `json:"CompliancePackIds,omitempty" xml:"CompliancePackIds,omitempty"`
-	DeleteRule        *bool   `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
+	// Specifies whether to delete the rules in the compliance package. Valid values:
+	//
+	// *   true: deletes the rules.
+	// *   false: retains the rules. This is the default value.
+	DeleteRule *bool `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksRequest) String() string {
@@ -2802,8 +3613,10 @@ func (s *DeleteAggregateCompliancePacksRequest) SetDeleteRule(v bool) *DeleteAgg
 }
 
 type DeleteAggregateCompliancePacksResponseBody struct {
+	// The results of the delete operations.
 	OperateCompliancePacksResult *DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult `json:"OperateCompliancePacksResult,omitempty" xml:"OperateCompliancePacksResult,omitempty" type:"Struct"`
-	RequestId                    *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksResponseBody) String() string {
@@ -2825,6 +3638,7 @@ func (s *DeleteAggregateCompliancePacksResponseBody) SetRequestId(v string) *Del
 }
 
 type DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult struct {
+	// The result of the delete operation.
 	OperateCompliancePacks []*DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks `json:"OperateCompliancePacks,omitempty" xml:"OperateCompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -2842,9 +3656,18 @@ func (s *DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult)
 }
 
 type DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   If the compliance package is deleted, no error code is returned.
+	// *   If the compliance package fails to be deleted, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks) String() string {
@@ -2900,7 +3723,11 @@ func (s *DeleteAggregateCompliancePacksResponse) SetBody(v *DeleteAggregateCompl
 }
 
 type DeleteAggregateConfigDeliveryChannelRequest struct {
-	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](~~429842~~).
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 
@@ -2923,8 +3750,10 @@ func (s *DeleteAggregateConfigDeliveryChannelRequest) SetDeliveryChannelId(v str
 }
 
 type DeleteAggregateConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateConfigDeliveryChannelResponseBody) String() string {
@@ -2975,7 +3804,13 @@ func (s *DeleteAggregateConfigDeliveryChannelResponse) SetBody(v *DeleteAggregat
 }
 
 type DeleteAggregateConfigRulesRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// You can call the [ListAggregateConfigRules](~~264148~~) operation to obtain the rule ID.
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -2998,8 +3833,10 @@ func (s *DeleteAggregateConfigRulesRequest) SetConfigRuleIds(v string) *DeleteAg
 }
 
 type DeleteAggregateConfigRulesResponseBody struct {
+	// The results of the delete operations.
 	OperateRuleResult *DeleteAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateConfigRulesResponseBody) String() string {
@@ -3021,6 +3858,7 @@ func (s *DeleteAggregateConfigRulesResponseBody) SetRequestId(v string) *DeleteA
 }
 
 type DeleteAggregateConfigRulesResponseBodyOperateRuleResult struct {
+	// The details of the result.
 	OperateRuleItemList []*DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -3038,9 +3876,21 @@ func (s *DeleteAggregateConfigRulesResponseBodyOperateRuleResult) SetOperateRule
 }
 
 type DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   If the rule is deleted, no error code is returned.
+	//
+	// <!---->
+	//
+	// *   If the rule fails to be deleted, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -3096,7 +3946,13 @@ func (s *DeleteAggregateConfigRulesResponse) SetBody(v *DeleteAggregateConfigRul
 }
 
 type DeleteAggregateRemediationsRequest struct {
-	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// You can call the [ListAggregators](~~255797~~) operation to obtain the account group ID.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the remediation setting. If you want to specify multiple IDs, separate them with commas (,).
+	//
+	// You can call the [ListAggregateRemediations](~~270036~~) operation to obtain the remediation setting ID.
 	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
 }
 
@@ -3119,8 +3975,10 @@ func (s *DeleteAggregateRemediationsRequest) SetRemediationIds(v string) *Delete
 }
 
 type DeleteAggregateRemediationsResponseBody struct {
+	// The results of the delete operation.
 	RemediationDeleteResults []*DeleteAggregateRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
-	RequestId                *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateRemediationsResponseBody) String() string {
@@ -3142,9 +4000,18 @@ func (s *DeleteAggregateRemediationsResponseBody) SetRequestId(v string) *Delete
 }
 
 type DeleteAggregateRemediationsResponseBodyRemediationDeleteResults struct {
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code.
+	//
+	// *   If the remediation setting is deleted, no error code is returned.
+	// *   If the remediation setting fails to be deleted, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) String() string {
@@ -3200,8 +4067,10 @@ func (s *DeleteAggregateRemediationsResponse) SetBody(v *DeleteAggregateRemediat
 }
 
 type DeleteAggregatorsRequest struct {
+	// The ID of the account group. Separate multiple IDs with commas (,).
 	AggregatorIds *string `json:"AggregatorIds,omitempty" xml:"AggregatorIds,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. ClientToken can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s DeleteAggregatorsRequest) String() string {
@@ -3223,8 +4092,10 @@ func (s *DeleteAggregatorsRequest) SetClientToken(v string) *DeleteAggregatorsRe
 }
 
 type DeleteAggregatorsResponseBody struct {
+	// The results of the delete operations.
 	OperateAggregatorsResult *DeleteAggregatorsResponseBodyOperateAggregatorsResult `json:"OperateAggregatorsResult,omitempty" xml:"OperateAggregatorsResult,omitempty" type:"Struct"`
-	RequestId                *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregatorsResponseBody) String() string {
@@ -3246,6 +4117,7 @@ func (s *DeleteAggregatorsResponseBody) SetRequestId(v string) *DeleteAggregator
 }
 
 type DeleteAggregatorsResponseBodyOperateAggregatorsResult struct {
+	// The result for the account group.
 	OperateAggregators []*DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators `json:"OperateAggregators,omitempty" xml:"OperateAggregators,omitempty" type:"Repeated"`
 }
 
@@ -3263,9 +4135,17 @@ func (s *DeleteAggregatorsResponseBodyOperateAggregatorsResult) SetOperateAggreg
 }
 
 type DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators struct {
+	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// >  No error code is returned for the account group if the account group is deleted.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the delete operation is successful. Valid values:
+	//
+	// *   true: The account group is deleted.
+	// *   false: The account group fails to be deleted.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators) String() string {
@@ -3321,9 +4201,17 @@ func (s *DeleteAggregatorsResponse) SetBody(v *DeleteAggregatorsResponseBody) *D
 }
 
 type DeleteCompliancePacksRequest struct {
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the value is unique among different requests. The value of this parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package. Separate multiple compliance package IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackIds *string `json:"CompliancePackIds,omitempty" xml:"CompliancePackIds,omitempty"`
-	DeleteRule        *bool   `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
+	// Specifies whether to delete the rules in the compliance package. Valid values:
+	//
+	// *   true: deletes the rules.
+	// *   false: retains the rules. This is the default value.
+	DeleteRule *bool `json:"DeleteRule,omitempty" xml:"DeleteRule,omitempty"`
 }
 
 func (s DeleteCompliancePacksRequest) String() string {
@@ -3350,8 +4238,10 @@ func (s *DeleteCompliancePacksRequest) SetDeleteRule(v bool) *DeleteCompliancePa
 }
 
 type DeleteCompliancePacksResponseBody struct {
+	// The results of the delete operations.
 	OperateCompliancePacksResult *DeleteCompliancePacksResponseBodyOperateCompliancePacksResult `json:"OperateCompliancePacksResult,omitempty" xml:"OperateCompliancePacksResult,omitempty" type:"Struct"`
-	RequestId                    *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteCompliancePacksResponseBody) String() string {
@@ -3373,6 +4263,7 @@ func (s *DeleteCompliancePacksResponseBody) SetRequestId(v string) *DeleteCompli
 }
 
 type DeleteCompliancePacksResponseBodyOperateCompliancePacksResult struct {
+	// The result of the delete operation.
 	OperateCompliancePacks []*DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks `json:"OperateCompliancePacks,omitempty" xml:"OperateCompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -3390,9 +4281,18 @@ func (s *DeleteCompliancePacksResponseBodyOperateCompliancePacksResult) SetOpera
 }
 
 type DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   If the compliance package is deleted, no error code is returned.
+	// *   If the compliance package fails to be deleted, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks) String() string {
@@ -3448,6 +4348,9 @@ func (s *DeleteCompliancePacksResponse) SetBody(v *DeleteCompliancePacksResponse
 }
 
 type DeleteConfigDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [DescribeDeliveryChannels](~~429841~~).
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 
@@ -3465,8 +4368,10 @@ func (s *DeleteConfigDeliveryChannelRequest) SetDeliveryChannelId(v string) *Del
 }
 
 type DeleteConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteConfigDeliveryChannelResponseBody) String() string {
@@ -3517,6 +4422,9 @@ func (s *DeleteConfigDeliveryChannelResponse) SetBody(v *DeleteConfigDeliveryCha
 }
 
 type DeleteRemediationsRequest struct {
+	// The ID of the remediation setting. If you want to specify multiple IDs, separate them with commas (,).
+	//
+	// You can call the [ListRemediations](~~270772~~) operation to obtain the remediation setting ID.
 	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
 }
 
@@ -3534,8 +4442,10 @@ func (s *DeleteRemediationsRequest) SetRemediationIds(v string) *DeleteRemediati
 }
 
 type DeleteRemediationsResponseBody struct {
+	// The results of the delete operation.
 	RemediationDeleteResults []*DeleteRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
-	RequestId                *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteRemediationsResponseBody) String() string {
@@ -3557,9 +4467,18 @@ func (s *DeleteRemediationsResponseBody) SetRequestId(v string) *DeleteRemediati
 }
 
 type DeleteRemediationsResponseBodyRemediationDeleteResults struct {
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code.
+	//
+	// *   If the remediation setting is deleted, no error code is returned.
+	// *   If the remediation setting fails to be deleted, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteRemediationsResponseBodyRemediationDeleteResults) String() string {
@@ -3615,9 +4534,18 @@ func (s *DeleteRemediationsResponse) SetBody(v *DeleteRemediationsResponseBody) 
 }
 
 type DetachAggregateConfigRuleToCompliancePackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package from which you want to remove the rule.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	// The ID of the rule to be removed from the compliance package. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s DetachAggregateConfigRuleToCompliancePackRequest) String() string {
@@ -3644,8 +4572,10 @@ func (s *DetachAggregateConfigRuleToCompliancePackRequest) SetConfigRuleIds(v st
 }
 
 type DetachAggregateConfigRuleToCompliancePackResponseBody struct {
+	// The results of the operations to remove one or more rules.
 	OperateRuleResult *DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetachAggregateConfigRuleToCompliancePackResponseBody) String() string {
@@ -3667,6 +4597,7 @@ func (s *DetachAggregateConfigRuleToCompliancePackResponseBody) SetRequestId(v s
 }
 
 type DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
+	// The result of the operation to remove the rule.
 	OperateRuleItemList []*DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -3684,9 +4615,21 @@ func (s *DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResult)
 }
 
 type DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule that is removed from the compliance package.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   This parameter is empty if the rule is removed from the compliance package.
+	//
+	// <!---->
+	//
+	// *   An error code is returned if the rule fails to be removed from the compliance package. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetachAggregateConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -3742,8 +4685,14 @@ func (s *DetachAggregateConfigRuleToCompliancePackResponse) SetBody(v *DetachAgg
 }
 
 type DetachConfigRuleToCompliancePackRequest struct {
+	// The ID of the compliance package from which you want to remove the rule.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleIds    *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+	// The ID of the rule to be removed from the compliance package. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
 func (s DetachConfigRuleToCompliancePackRequest) String() string {
@@ -3765,8 +4714,10 @@ func (s *DetachConfigRuleToCompliancePackRequest) SetConfigRuleIds(v string) *De
 }
 
 type DetachConfigRuleToCompliancePackResponseBody struct {
+	// The results of the operations to remove one or more rules.
 	OperateRuleResult *DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetachConfigRuleToCompliancePackResponseBody) String() string {
@@ -3788,6 +4739,7 @@ func (s *DetachConfigRuleToCompliancePackResponseBody) SetRequestId(v string) *D
 }
 
 type DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult struct {
+	// The result of the operation to remove the rule.
 	OperateRuleItemList []*DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -3805,9 +4757,21 @@ func (s *DetachConfigRuleToCompliancePackResponseBodyOperateRuleResult) SetOpera
 }
 
 type DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The ID of the rule that is removed from the compliance package.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// *   This parameter is empty if the rule is removed from the compliance package.
+	//
+	// <!---->
+	//
+	// *   An error code is returned if the rule fails to be removed from the compliance package. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetachConfigRuleToCompliancePackResponseBodyOperateRuleResultOperateRuleItemList) String() string {
@@ -3863,7 +4827,14 @@ func (s *DetachConfigRuleToCompliancePackResponse) SetBody(v *DetachConfigRuleTo
 }
 
 type EvaluatePreConfigRulesRequest struct {
-	EnableManagedRules    *bool                                                 `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	// Specifies whether to enable the managed rule. Valid values:
+	//
+	// *   true: enables the managed rule.
+	// *   false: does not enable the managed rule. This is the default value.
+	//
+	// >  After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
+	EnableManagedRules *bool `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	// The resources that you want to evaluate.
 	ResourceEvaluateItems []*EvaluatePreConfigRulesRequestResourceEvaluateItems `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty" type:"Repeated"`
 }
 
@@ -3886,10 +4857,14 @@ func (s *EvaluatePreConfigRulesRequest) SetResourceEvaluateItems(v []*EvaluatePr
 }
 
 type EvaluatePreConfigRulesRequestResourceEvaluateItems struct {
-	ResourceLogicalId  *string                                                    `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
-	ResourceProperties *string                                                    `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty"`
-	ResourceType       *string                                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Rules              []*EvaluatePreConfigRulesRequestResourceEvaluateItemsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The logical ID of the resource.
+	ResourceLogicalId *string `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
+	// The properties of the resource.
+	ResourceProperties *string `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The evaluation rules.
+	Rules []*EvaluatePreConfigRulesRequestResourceEvaluateItemsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s EvaluatePreConfigRulesRequestResourceEvaluateItems) String() string {
@@ -3921,7 +4896,11 @@ func (s *EvaluatePreConfigRulesRequestResourceEvaluateItems) SetRules(v []*Evalu
 }
 
 type EvaluatePreConfigRulesRequestResourceEvaluateItemsRules struct {
-	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The identifier of the evaluation rule.
+	//
+	// For more information about how to obtain the identifier of an evaluation rule, see [ListManagedRules](~~467810~~).
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The input parameters of the evaluation rule.
 	InputParameters *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 }
 
@@ -3944,7 +4923,14 @@ func (s *EvaluatePreConfigRulesRequestResourceEvaluateItemsRules) SetInputParame
 }
 
 type EvaluatePreConfigRulesShrinkRequest struct {
-	EnableManagedRules          *bool   `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	// Specifies whether to enable the managed rule. Valid values:
+	//
+	// *   true: enables the managed rule.
+	// *   false: does not enable the managed rule. This is the default value.
+	//
+	// >  After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
+	EnableManagedRules *bool `json:"EnableManagedRules,omitempty" xml:"EnableManagedRules,omitempty"`
+	// The resources that you want to evaluate.
 	ResourceEvaluateItemsShrink *string `json:"ResourceEvaluateItems,omitempty" xml:"ResourceEvaluateItems,omitempty"`
 }
 
@@ -3967,7 +4953,9 @@ func (s *EvaluatePreConfigRulesShrinkRequest) SetResourceEvaluateItemsShrink(v s
 }
 
 type EvaluatePreConfigRulesResponseBody struct {
-	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the compliance evaluation result.
 	ResourceEvaluations []*EvaluatePreConfigRulesResponseBodyResourceEvaluations `json:"ResourceEvaluations,omitempty" xml:"ResourceEvaluations,omitempty" type:"Repeated"`
 }
 
@@ -3990,9 +4978,14 @@ func (s *EvaluatePreConfigRulesResponseBody) SetResourceEvaluations(v []*Evaluat
 }
 
 type EvaluatePreConfigRulesResponseBodyResourceEvaluations struct {
-	ResourceLogicalId *string                                                       `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
-	ResourceType      *string                                                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Rules             []*EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The logical ID of the resource.
+	//
+	// >  If the ResourceLogicalId request parameter is left empty, the value of the ResourceLogicalId response parameter is generated based on the value of the `ResourceProperties` parameter.
+	ResourceLogicalId *string `json:"ResourceLogicalId,omitempty" xml:"ResourceLogicalId,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The evaluation rules.
+	Rules []*EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s EvaluatePreConfigRulesResponseBodyResourceEvaluations) String() string {
@@ -4019,10 +5012,18 @@ func (s *EvaluatePreConfigRulesResponseBodyResourceEvaluations) SetRules(v []*Ev
 }
 
 type EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules struct {
-	Annotation     *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The reason why the resource was evaluated as incompliant.
+	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The compliance type of the resource that was evaluated by using the evaluation rule. Valid values:
+	//
+	// *   COMPLIANT: The resource was evaluated as compliant.
+	// *   NON_COMPLIANT: The resource was evaluated as incompliant.
+	// *   NOT_APPLICABLE: The evaluation rule does not apply to the resource.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	HelpUrl        *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
-	Identifier     *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+	HelpUrl *string `json:"HelpUrl,omitempty" xml:"HelpUrl,omitempty"`
+	// The identifier of the evaluation rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
 func (s EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules) String() string {
@@ -4083,8 +5084,15 @@ func (s *EvaluatePreConfigRulesResponse) SetBody(v *EvaluatePreConfigRulesRespon
 }
 
 type GenerateAggregateCompliancePackReportRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters. It cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -4112,8 +5120,10 @@ func (s *GenerateAggregateCompliancePackReportRequest) SetCompliancePackId(v str
 }
 
 type GenerateAggregateCompliancePackReportResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateAggregateCompliancePackReportResponseBody) String() string {
@@ -4164,8 +5174,15 @@ func (s *GenerateAggregateCompliancePackReportResponse) SetBody(v *GenerateAggre
 }
 
 type GenerateAggregateConfigRulesReportRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -4193,9 +5210,12 @@ func (s *GenerateAggregateConfigRulesReportRequest) SetConfigRuleIds(v string) *
 }
 
 type GenerateAggregateConfigRulesReportResponseBody struct {
+	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the compliance evaluation report.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateAggregateConfigRulesReportResponseBody) String() string {
@@ -4251,7 +5271,11 @@ func (s *GenerateAggregateConfigRulesReportResponse) SetBody(v *GenerateAggregat
 }
 
 type GenerateCompliancePackReportRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters. It cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -4274,8 +5298,10 @@ func (s *GenerateCompliancePackReportRequest) SetCompliancePackId(v string) *Gen
 }
 
 type GenerateCompliancePackReportResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateCompliancePackReportResponseBody) String() string {
@@ -4326,7 +5352,11 @@ func (s *GenerateCompliancePackReportResponse) SetBody(v *GenerateCompliancePack
 }
 
 type GenerateConfigRulesReportRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule. Separate multiple rule IDs with commas (,).
+	//
+	// For more information about how to query the ID of a rule, see [ListConfigRules](~~169607~~).
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -4349,7 +5379,9 @@ func (s *GenerateConfigRulesReportRequest) SetConfigRuleIds(v string) *GenerateC
 }
 
 type GenerateConfigRulesReportResponseBody struct {
-	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the compliance evaluation report.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4401,7 +5433,13 @@ func (s *GenerateConfigRulesReportResponse) SetBody(v *GenerateConfigRulesReport
 }
 
 type GetAggregateAccountComplianceByPackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -4424,8 +5462,10 @@ func (s *GetAggregateAccountComplianceByPackRequest) SetCompliancePackId(v strin
 }
 
 type GetAggregateAccountComplianceByPackResponseBody struct {
+	// The compliance evaluation results of member accounts monitored by the compliance package.
 	AccountComplianceResult *GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult `json:"AccountComplianceResult,omitempty" xml:"AccountComplianceResult,omitempty" type:"Struct"`
-	RequestId               *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateAccountComplianceByPackResponseBody) String() string {
@@ -4447,10 +5487,14 @@ func (s *GetAggregateAccountComplianceByPackResponseBody) SetRequestId(v string)
 }
 
 type GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult struct {
+	// The information about the compliance evaluation result of member account.
 	AccountCompliances []*GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultAccountCompliances `json:"AccountCompliances,omitempty" xml:"AccountCompliances,omitempty" type:"Repeated"`
-	CompliancePackId   *string                                                                                     `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	NonCompliantCount  *int32                                                                                      `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	TotalCount         *int32                                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The number of non-compliant member accounts.
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The total number of monitored member accounts.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult) String() string {
@@ -4482,8 +5526,16 @@ func (s *GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResult)
 }
 
 type GetAggregateAccountComplianceByPackResponseBodyAccountComplianceResultAccountCompliances struct {
-	AccountId      *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The ID of the member account in the account group.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the member account in the account group.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The resources of the member accounts are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources of the member account are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rules do not apply to the resources of the member account.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 }
 
@@ -4540,7 +5592,13 @@ func (s *GetAggregateAccountComplianceByPackResponse) SetBody(v *GetAggregateAcc
 }
 
 type GetAggregateCompliancePackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -4563,8 +5621,10 @@ func (s *GetAggregateCompliancePackRequest) SetCompliancePackId(v string) *GetAg
 }
 
 type GetAggregateCompliancePackResponseBody struct {
+	// The details of the compliance package.
 	CompliancePack *GetAggregateCompliancePackResponseBodyCompliancePack `json:"CompliancePack,omitempty" xml:"CompliancePack,omitempty" type:"Struct"`
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBody) String() string {
@@ -4586,17 +5646,35 @@ func (s *GetAggregateCompliancePackResponseBody) SetRequestId(v string) *GetAggr
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePack struct {
-	AccountId                *int64                                                             `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId             *string                                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	CompliancePackId         *string                                                            `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName       *string                                                            `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CompliancePackTemplateId *string                                                            `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRules              []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	CreateTimestamp          *int64                                                             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description              *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel                *int32                                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Scope                    *GetAggregateCompliancePackResponseBodyCompliancePackScope         `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	Status                   *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the management account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
+	// The rules in the compliance package.
+	ConfigRules []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// The timestamp when the compliance package was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The evaluation scope of the compliance package.
+	Scope *GetAggregateCompliancePackResponseBodyCompliancePackScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// The status of the compliance package. Valid values:
+	//
+	// *   ACTIVE: The compliance package is normal.
+	// *   CREATING: The compliance package is being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePack) String() string {
@@ -4663,12 +5741,22 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePack) SetStatus(v strin
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
-	ConfigRuleId          *string                                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                                                `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The input parameters of the rule.
+	ConfigRuleParameters []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule.
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) String() string {
@@ -4710,9 +5798,15 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRules) SetRis
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	Required       *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the input parameter is required. Valid values:
+	//
+	// *   true: required
+	// *   false: optional
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) String() string {
@@ -4739,11 +5833,16 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRu
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
+	// The ID of the resource that is not evaluated by using the compliance package.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region whose resources are evaluated by using the compliance package.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources are evaluated by using the compliance package.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The tag key of the resource that is evaluated by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that is evaluated by using the compliance package.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePackScope) String() string {
@@ -4809,7 +5908,13 @@ func (s *GetAggregateCompliancePackResponse) SetBody(v *GetAggregateCompliancePa
 }
 
 type GetAggregateCompliancePackReportRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -4832,8 +5937,10 @@ func (s *GetAggregateCompliancePackReportRequest) SetCompliancePackId(v string) 
 }
 
 type GetAggregateCompliancePackReportResponseBody struct {
+	// The information about the compliance evaluation report.
 	CompliancePackReport *GetAggregateCompliancePackReportResponseBodyCompliancePackReport `json:"CompliancePackReport,omitempty" xml:"CompliancePackReport,omitempty" type:"Struct"`
-	RequestId            *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateCompliancePackReportResponseBody) String() string {
@@ -4855,11 +5962,20 @@ func (s *GetAggregateCompliancePackReportResponseBody) SetRequestId(v string) *G
 }
 
 type GetAggregateCompliancePackReportResponseBodyCompliancePackReport struct {
-	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CompliancePackId      *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The ID of the management account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
+	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	// The status of the compliance evaluation report. Valid values:
+	//
+	// *   NONE: The compliance evaluation report is not generated.
+	// *   CREATING: The compliance evaluation report is being generated.
+	// *   COMPLETED: The compliance evaluation report is generated.
+	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The URL that is used to download the compliance evaluation report.
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetAggregateCompliancePackReportResponseBodyCompliancePackReport) String() string {
@@ -4925,7 +6041,13 @@ func (s *GetAggregateCompliancePackReportResponse) SetBody(v *GetAggregateCompli
 }
 
 type GetAggregateConfigDeliveryChannelRequest struct {
-	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](~~429842~~).
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 
@@ -4948,8 +6070,10 @@ func (s *GetAggregateConfigDeliveryChannelRequest) SetDeliveryChannelId(v string
 }
 
 type GetAggregateConfigDeliveryChannelResponseBody struct {
+	// The information about the delivery channel.
 	DeliveryChannel *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel `json:"DeliveryChannel,omitempty" xml:"DeliveryChannel,omitempty" type:"Struct"`
-	RequestId       *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigDeliveryChannelResponseBody) String() string {
@@ -4971,21 +6095,70 @@ func (s *GetAggregateConfigDeliveryChannelResponseBody) SetRequestId(v string) *
 }
 
 type GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel struct {
-	AccountId                           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId                        *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the member in the account group.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: The specified destination receives resource change logs.
+	// *   false: The specified destination does not receive resource change logs.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at `04:00Z` and `16:00Z` to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: The specified destination receives scheduled resource snapshots.
+	// *   false: The specified destination does not receive scheduled resource snapshots.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role assumed by the delivery channel.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that is attached to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you subscribed:
+	//
+	//     *   The setting of the lowest risk level of the events to which you subscribed is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field indicates the lowest risk level of the events to which you subscribed. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you subscribed is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the events to which you subscribed. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If the value of the DeliveryChannelType parameter is SLS, the setting of the resource types of the snapshots that you delivered is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the snapshots that you delivered. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	//
+	// *   If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+	// *   If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+	// *   If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when Cloud Config delivers scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: The specified destination receives resource non-compliance events.
+	// *   false: The specified destination does not receive resource non-compliance events.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which the delivery data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The status of the delivery channel. Valid values:
+	//
+	// *   0: The delivery channel is disabled.
+	// *   1: The delivery channel is enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) String() string {
@@ -5101,7 +6274,13 @@ func (s *GetAggregateConfigDeliveryChannelResponse) SetBody(v *GetAggregateConfi
 }
 
 type GetAggregateConfigRuleRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule.
+	//
+	// You can call the [ListAggregateConfigRules](~~264148~~) operation to obtain the rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
@@ -5124,8 +6303,10 @@ func (s *GetAggregateConfigRuleRequest) SetConfigRuleId(v string) *GetAggregateC
 }
 
 type GetAggregateConfigRuleResponseBody struct {
+	// The details of the rule.
 	ConfigRule *GetAggregateConfigRuleResponseBodyConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" type:"Struct"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBody) String() string {
@@ -5147,33 +6328,91 @@ func (s *GetAggregateConfigRuleResponseBody) SetRequestId(v string) *GetAggregat
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRule struct {
-	AccountId                  *int64                                                                  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Compliance                 *GetAggregateConfigRuleResponseBodyConfigRuleCompliance                 `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
-	ConfigRuleArn              *string                                                                 `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the Alibaba Cloud account to which the rule belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The details of compliance evaluation results.
+	Compliance *GetAggregateConfigRuleResponseBodyConfigRuleCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
+	// The ARN of the managed rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The information about compliance evaluations performed by the rule.
 	ConfigRuleEvaluationStatus *GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
-	ConfigRuleId               *string                                                                 `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName             *string                                                                 `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleState            *string                                                                 `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	ConfigRuleTriggerTypes     *string                                                                 `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	CreateBy                   *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy                   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
-	CreateTimestamp            *int64                                                                  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description                *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeAccountIdsScope     *string                                                                 `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	ExcludeFolderIdsScope      *string                                                                 `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	ExcludeResourceIdsScope    *string                                                                 `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	FolderIdsScope             *string                                                                 `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	InputParameters            map[string]interface{}                                                  `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	ManagedRule                *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule                `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
-	MaximumExecutionFrequency  *string                                                                 `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	ModifiedTimestamp          *int64                                                                  `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
-	RegionIdsScope             *string                                                                 `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope      *string                                                                 `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope         *string                                                                 `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                  *int32                                                                  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Source                     *GetAggregateConfigRuleResponseBodyConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	TagKeyLogicScope           *string                                                                 `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope                *string                                                                 `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope              *string                                                                 `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the monitoring rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   ACTIVE: The rule is being used to monitor resource configurations.
+	// *   DELETING: The rule is being deleted.
+	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// *   INACTIVE: The rule is disabled and is no longer used to monitor resource configurations.
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The information about the creation of the rule.
+	CreateBy *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	// The timestamp when the rule was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	// The ID of the resource excluded from the compliance evaluations performed by the rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to rules of a global account group.
+	// *   This parameter applies only to managed rules.
+	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The details of the managed rule.
+	ManagedRule *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The timestamp when the rule was last updated. Unit: milliseconds.
+	ModifiedTimestamp *int64 `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
+	// The ID of the region to which the rule applies.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource evaluated by the rule.
+	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The information about how the rule was created.
+	Source *GetAggregateConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: the logical relationship of AND
+	// *   OR: the logical relationship of OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRule) String() string {
@@ -5320,8 +6559,15 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagValueScope(v string
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleCompliance struct {
+	// The statistics on the compliance evaluation results by compliance type. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of evaluated resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleCompliance) String() string {
@@ -5343,14 +6589,25 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleCompliance) SetCount(v int3
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus struct {
-	FirstActivatedTimestamp           *int64  `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
-	FirstEvaluationStarted            *bool   `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
-	LastErrorCode                     *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
-	LastErrorMessage                  *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
-	LastFailedEvaluationTimestamp     *int64  `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
-	LastFailedInvocationTimestamp     *int64  `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
-	LastSuccessfulEvaluationTimestamp *int64  `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
-	LastSuccessfulInvocationTimestamp *int64  `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty"`
+	// The timestamp when the rule was first triggered.
+	FirstActivatedTimestamp *int64 `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
+	// Indicates whether resources were evaluated based on the rule. Valid values:
+	//
+	// *   true: Resources were evaluated based on the rule.
+	// *   false: Resources were not evaluated based on the rule.
+	FirstEvaluationStarted *bool `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
+	// The error code returned for the last failed compliance evaluation.
+	LastErrorCode *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
+	// The error message returned for the last failed compliance evaluation.
+	LastErrorMessage *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
+	// The timestamp when the last failed compliance evaluation of the rule ended. Unit: milliseconds.
+	LastFailedEvaluationTimestamp *int64 `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
+	// The timestamp when the last failed compliance evaluation of the rule started. Unit: milliseconds.
+	LastFailedInvocationTimestamp *int64 `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
+	// The timestamp when the last successful compliance evaluation of the rule ended. Unit: milliseconds.
+	LastSuccessfulEvaluationTimestamp *int64 `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
+	// The timestamp when the last successful compliance evaluation of the rule started. Unit: milliseconds.
+	LastSuccessfulInvocationTimestamp *int64 `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) String() string {
@@ -5402,13 +6659,20 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus)
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleCreateBy struct {
-	AggregatorId       *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName     *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CreatorId          *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName        *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	CreatorType        *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	// The ID of the account that was used to create the rule.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the account that was used to create the rule.
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The type of the entity to which the rule belongs. The value is fixed to `AGGREGATOR`, which indicates an account group.
+	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleCreateBy) String() string {
@@ -5455,13 +6719,20 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorType(v 
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleManagedRule struct {
-	CompulsoryInputParameterDetails map[string]interface{}                                                  `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	Description                     *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	Identifier                      *string                                                                 `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Labels                          []*string                                                               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ManagedRuleName                 *string                                                                 `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	OptionalInputParameterDetails   map[string]interface{}                                                  `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	SourceDetails                   []*GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	// The required input parameters of the managed rule.
+	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The identifier of the managed rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The tags of the managed rule.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The name of the managed rule.
+	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
+	// The optional input parameters of the managed rule.
+	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	// The details of the source of the managed rule.
+	SourceDetails []*GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleManagedRule) String() string {
@@ -5508,9 +6779,23 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleManagedRule) SetSourceDetai
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The event source of the managed rule.
+	//
+	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) String() string {
@@ -5537,8 +6822,17 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) S
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleSource struct {
-	Identifier    *string                                                            `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Owner         *string                                                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The identifier of the rule.
+	//
+	// *   If the rule was created based on a managed rule, the value of this parameter is the name of the managed rule.
+	// *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The way in which the rule was created. Valid values:
+	//
+	// *   CUSTOM_FC: The rule is a custom rule.
+	// *   ALIYUN: The rule was created based on a managed rule of Alibaba Cloud.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The details of the source of the rule.
 	SourceDetails []*GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -5566,9 +6860,23 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSource) SetSourceDetails(v 
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The event source of the managed rule.
+	//
+	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) String() string {
@@ -5624,7 +6932,13 @@ func (s *GetAggregateConfigRuleResponse) SetBody(v *GetAggregateConfigRuleRespon
 }
 
 type GetAggregateConfigRuleComplianceByPackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -5647,8 +6961,10 @@ func (s *GetAggregateConfigRuleComplianceByPackRequest) SetCompliancePackId(v st
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBody struct {
+	// The compliance evaluation results that are returned by rules in the compliance package.
 	ConfigRuleComplianceResult *GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult `json:"ConfigRuleComplianceResult,omitempty" xml:"ConfigRuleComplianceResult,omitempty" type:"Struct"`
-	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRuleComplianceByPackResponseBody) String() string {
@@ -5670,10 +6986,14 @@ func (s *GetAggregateConfigRuleComplianceByPackResponseBody) SetRequestId(v stri
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult struct {
-	CompliancePackId      *string                                                                                              `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The information about rules in the compliance package.
 	ConfigRuleCompliances []*GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances `json:"ConfigRuleCompliances,omitempty" xml:"ConfigRuleCompliances,omitempty" type:"Repeated"`
-	NonCompliantCount     *int32                                                                                               `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	TotalCount            *int32                                                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as non-compliant.
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The total number of rules in the compliance package.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult) String() string {
@@ -5705,8 +7025,16 @@ func (s *GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceR
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances struct {
+	// The compliance evaluation result returned by the rule. Valid values:
+	//
+	// *   COMPLIANT: The relevant resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 }
 
@@ -5763,6 +7091,9 @@ func (s *GetAggregateConfigRuleComplianceByPackResponse) SetBody(v *GetAggregate
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 }
 
@@ -5780,8 +7111,10 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelRequest) SetAggregatorId(v stri
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelResponseBody struct {
+	// The summary of compliance evaluation results by rule risk level.
 	ConfigRuleSummaries []*GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries `json:"ConfigRuleSummaries,omitempty" xml:"ConfigRuleSummaries,omitempty" type:"Repeated"`
-	RequestId           *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRuleSummaryByRiskLevelResponseBody) String() string {
@@ -5803,9 +7136,16 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelResponseBody) SetRequestId(v st
 }
 
 type GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries struct {
-	CompliantCount    *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as compliant.
+	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as non-compliant.
 	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	RiskLevel         *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The risk level of the resources that are not compliant with the rules. Valid values:
+	//
+	// *   1: high risk level.
+	// *   2: medium risk level.
+	// *   3: low risk level.
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries) String() string {
@@ -5861,8 +7201,12 @@ func (s *GetAggregateConfigRuleSummaryByRiskLevelResponse) SetBody(v *GetAggrega
 }
 
 type GetAggregateConfigRulesReportRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ReportId     *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the compliance evaluation report.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportRequest) String() string {
@@ -5884,8 +7228,10 @@ func (s *GetAggregateConfigRulesReportRequest) SetReportId(v string) *GetAggrega
 }
 
 type GetAggregateConfigRulesReportResponseBody struct {
+	// The information about the compliance evaluation report.
 	ConfigRulesReport *GetAggregateConfigRulesReportResponseBodyConfigRulesReport `json:"ConfigRulesReport,omitempty" xml:"ConfigRulesReport,omitempty" type:"Struct"`
-	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportResponseBody) String() string {
@@ -5907,12 +7253,22 @@ func (s *GetAggregateConfigRulesReportResponseBody) SetRequestId(v string) *GetA
 }
 
 type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
-	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	ReportId              *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The ID of the management account to which the rules belong.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
+	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	// The ID of the compliance evaluation report.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The status of the compliance evaluation report. Valid values:
+	//
+	// *   NONE: The compliance evaluation report is not generated.
+	// *   CREATING: The compliance evaluation report is being generated.
+	// *   COMPLETE: The compliance evaluation report is generated.
+	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The URL that is used to download the compliance evaluation report.
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetAggregateConfigRulesReportResponseBodyConfigRulesReport) String() string {
@@ -5983,11 +7339,25 @@ func (s *GetAggregateConfigRulesReportResponse) SetBody(v *GetAggregateConfigRul
 }
 
 type GetAggregateDiscoveredResourceRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to query the region ID of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~411691~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetAggregateDiscoveredResourceRequest) String() string {
@@ -6008,6 +7378,11 @@ func (s *GetAggregateDiscoveredResourceRequest) SetRegion(v string) *GetAggregat
 	return s
 }
 
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceAccountId(v int64) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateDiscoveredResourceRequest) SetResourceId(v string) *GetAggregateDiscoveredResourceRequest {
 	s.ResourceId = &v
 	return s
@@ -6024,8 +7399,10 @@ func (s *GetAggregateDiscoveredResourceRequest) SetResourceType(v string) *GetAg
 }
 
 type GetAggregateDiscoveredResourceResponseBody struct {
+	// The information about the resource.
 	DiscoveredResourceDetail *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateDiscoveredResourceResponseBody) String() string {
@@ -6047,17 +7424,34 @@ func (s *GetAggregateDiscoveredResourceResponseBody) SetRequestId(v string) *Get
 }
 
 type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
-	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone in which the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The configuration of the resource.
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created.
+	ResourceCreationTime *int64 `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// *   1: The resource is retained.
+	// *   0: The resource is deleted.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+	//
+	// *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that does not have a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
@@ -6153,10 +7547,24 @@ func (s *GetAggregateDiscoveredResourceResponse) SetBody(v *GetAggregateDiscover
 }
 
 type GetAggregateResourceComplianceByConfigRuleRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId      *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleRequest) String() string {
@@ -6182,14 +7590,21 @@ func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetConfigRuleId(v st
 	return s
 }
 
+func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetResourceAccountId(v int64) *GetAggregateResourceComplianceByConfigRuleRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetResourceOwnerId(v int64) *GetAggregateResourceComplianceByConfigRuleRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
 type GetAggregateResourceComplianceByConfigRuleResponseBody struct {
+	// The return result of the request.
 	ComplianceResult *GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
-	RequestId        *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleResponseBody) String() string {
@@ -6211,8 +7626,10 @@ func (s *GetAggregateResourceComplianceByConfigRuleResponseBody) SetRequestId(v 
 }
 
 type GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult struct {
+	// The compliance evaluation results returned.
 	Compliances []*GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
-	TotalCount  *int64                                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of evaluated resources.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult) String() string {
@@ -6234,8 +7651,15 @@ func (s *GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult)
 }
 
 type GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances struct {
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of resources that have the compliance evaluation result. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances) String() string {
@@ -6286,7 +7710,13 @@ func (s *GetAggregateResourceComplianceByConfigRuleResponse) SetBody(v *GetAggre
 }
 
 type GetAggregateResourceComplianceByPackRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -6309,7 +7739,9 @@ func (s *GetAggregateResourceComplianceByPackRequest) SetCompliancePackId(v stri
 }
 
 type GetAggregateResourceComplianceByPackResponseBody struct {
-	RequestId                *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The compliance evaluation results of resources monitored by the compliance package.
 	ResourceComplianceResult *GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResult `json:"ResourceComplianceResult,omitempty" xml:"ResourceComplianceResult,omitempty" type:"Struct"`
 }
 
@@ -6332,9 +7764,12 @@ func (s *GetAggregateResourceComplianceByPackResponseBody) SetResourceCompliance
 }
 
 type GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResult struct {
-	CompliancePackId  *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	NonCompliantCount *int32  `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	TotalCount        *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The number of non-compliant resources.
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The total number of monitored resources.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResult) String() string {
@@ -6666,15 +8101,33 @@ func (s *GetAggregateResourceComplianceGroupByResourceTypeResponse) SetBody(v *G
 }
 
 type GetAggregateResourceComplianceTimelineRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceComplianceTimeline operation is called. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceTimelineRequest) String() string {
@@ -6710,6 +8163,11 @@ func (s *GetAggregateResourceComplianceTimelineRequest) SetRegion(v string) *Get
 	return s
 }
 
+func (s *GetAggregateResourceComplianceTimelineRequest) SetResourceAccountId(v int64) *GetAggregateResourceComplianceTimelineRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateResourceComplianceTimelineRequest) SetResourceId(v string) *GetAggregateResourceComplianceTimelineRequest {
 	s.ResourceId = &v
 	return s
@@ -6731,7 +8189,9 @@ func (s *GetAggregateResourceComplianceTimelineRequest) SetStartTime(v int64) *G
 }
 
 type GetAggregateResourceComplianceTimelineResponseBody struct {
-	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the compliance timeline.
 	ResourceComplianceTimeline *GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" type:"Struct"`
 }
 
@@ -6754,9 +8214,12 @@ func (s *GetAggregateResourceComplianceTimelineResponseBody) SetResourceComplian
 }
 
 type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline struct {
+	// The compliance evaluation records on the compliance timeline.
 	ComplianceList []*GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" type:"Repeated"`
-	MaxResults     *int32                                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeline) String() string {
@@ -6783,18 +8246,33 @@ func (s *GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTim
 }
 
 type GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList struct {
-	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	CaptureTime        *int64  `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	Configuration      *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime *int64  `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceStatus     *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone in which the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The timestamp when the compliance evaluation was recorded. Unit: milliseconds.
+	CaptureTime *int64 `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	// The information about the rules that evaluated the resource and the compliance evaluation result.
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The details of the resource change that triggered the compliance evaluation.
+	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
+	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+	//
+	// *   If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the ResourceType parameter is set to ACS::OSS::Bucket, the resource is an OSS bucket that does not have a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) String() string {
@@ -6895,15 +8373,33 @@ func (s *GetAggregateResourceComplianceTimelineResponse) SetBody(v *GetAggregate
 }
 
 type GetAggregateResourceConfigurationTimelineRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The timestamp that specifies the end of the time range to query. The default value indicates the time when the GetAggregateResourceConfigurationTimeline operation is called. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetAggregateResourceConfigurationTimelineRequest) String() string {
@@ -6939,6 +8435,11 @@ func (s *GetAggregateResourceConfigurationTimelineRequest) SetRegion(v string) *
 	return s
 }
 
+func (s *GetAggregateResourceConfigurationTimelineRequest) SetResourceAccountId(v int64) *GetAggregateResourceConfigurationTimelineRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateResourceConfigurationTimelineRequest) SetResourceId(v string) *GetAggregateResourceConfigurationTimelineRequest {
 	s.ResourceId = &v
 	return s
@@ -6960,7 +8461,9 @@ func (s *GetAggregateResourceConfigurationTimelineRequest) SetStartTime(v int64)
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBody struct {
-	RequestId                     *string                                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the configuration timeline.
 	ResourceConfigurationTimeline *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" type:"Struct"`
 }
 
@@ -6983,9 +8486,12 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBody) SetResourceConfi
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline struct {
+	// The configuration changes on the configuration timeline.
 	ConfigurationList []*GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" type:"Repeated"`
-	MaxResults        *int32                                                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string                                                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) String() string {
@@ -7012,17 +8518,38 @@ func (s *GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurat
 }
 
 type GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList struct {
-	AccountId          *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	CaptureTime        *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone in which the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
+	CaptureTime *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	// The details of the resource change that triggered the compliance evaluation.
+	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceEventType  *string `json:"ResourceEventType,omitempty" xml:"ResourceEventType,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the resource change event involved. Valid values:
+	//
+	// *   DISCOVERED: A resource is created.
+	// *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
+	// *   MODIFY: A resource is modified.
+	// *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
+	// *   REMOVE: A resource is deleted.
+	//
+	// >
+	// *   To ensure the integrity of resources, periodic remediation tasks are run to check data and generate events that indicate the creation of new resources. Such events are infrequent.
+	// *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
+	ResourceEventType *string `json:"ResourceEventType,omitempty" xml:"ResourceEventType,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetAggregateResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) String() string {
@@ -7118,10 +8645,19 @@ func (s *GetAggregateResourceConfigurationTimelineResponse) SetBody(v *GetAggreg
 }
 
 type GetAggregateResourceCountsGroupByRegionRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the folder in the resource directory. For more information about how to obtain the ID of a folder, see [View the basic information of a folder](~~111223~~).
+	FolderId          *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByRegionRequest) String() string {
@@ -7142,6 +8678,11 @@ func (s *GetAggregateResourceCountsGroupByRegionRequest) SetFolderId(v string) *
 	return s
 }
 
+func (s *GetAggregateResourceCountsGroupByRegionRequest) SetResourceAccountId(v int64) *GetAggregateResourceCountsGroupByRegionRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateResourceCountsGroupByRegionRequest) SetResourceOwnerId(v int64) *GetAggregateResourceCountsGroupByRegionRequest {
 	s.ResourceOwnerId = &v
 	return s
@@ -7153,8 +8694,10 @@ func (s *GetAggregateResourceCountsGroupByRegionRequest) SetResourceType(v strin
 }
 
 type GetAggregateResourceCountsGroupByRegionResponseBody struct {
+	// The statistics on resources.
 	DiscoveredResourceCountsSummary []*GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByRegionResponseBody) String() string {
@@ -7176,9 +8719,14 @@ func (s *GetAggregateResourceCountsGroupByRegionResponseBody) SetRequestId(v str
 }
 
 type GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The dimension by which statistics are collected.
+	//
+	// >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the region by which statistics are collected.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The total number of resources in the region.
+	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary) String() string {
@@ -7234,10 +8782,19 @@ func (s *GetAggregateResourceCountsGroupByRegionResponse) SetBody(v *GetAggregat
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	FolderId        *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the folder in the resource directory.
+	//
+	// For more information about how to obtain the ID of a folder, see [View the basic information of a folder](~~111223~~).
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeRequest) String() string {
@@ -7263,14 +8820,21 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeRequest) SetRegion(v strin
 	return s
 }
 
+func (s *GetAggregateResourceCountsGroupByResourceTypeRequest) SetResourceAccountId(v int64) *GetAggregateResourceCountsGroupByResourceTypeRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *GetAggregateResourceCountsGroupByResourceTypeRequest) SetResourceOwnerId(v int64) *GetAggregateResourceCountsGroupByResourceTypeRequest {
 	s.ResourceOwnerId = &v
 	return s
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponseBody struct {
+	// The statistics on the resources.
 	DiscoveredResourceCountsSummary []*GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeResponseBody) String() string {
@@ -7292,9 +8856,12 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponseBody) SetRequestId
 }
 
 type GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is expired. The resource type by which statistics are collected.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The total number of resources in the region.
+	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The resource type by which statistics are collected.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetAggregateResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary) String() string {
@@ -7350,6 +8917,7 @@ func (s *GetAggregateResourceCountsGroupByResourceTypeResponse) SetBody(v *GetAg
 }
 
 type GetAggregatorRequest struct {
+	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 }
 
@@ -7367,8 +8935,10 @@ func (s *GetAggregatorRequest) SetAggregatorId(v string) *GetAggregatorRequest {
 }
 
 type GetAggregatorResponseBody struct {
+	// The details of the account group.
 	Aggregator *GetAggregatorResponseBodyAggregator `json:"Aggregator,omitempty" xml:"Aggregator,omitempty" type:"Struct"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAggregatorResponseBody) String() string {
@@ -7390,15 +8960,30 @@ func (s *GetAggregatorResponseBody) SetRequestId(v string) *GetAggregatorRespons
 }
 
 type GetAggregatorResponseBodyAggregator struct {
-	AccountId                 *int64                                                   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorAccountCount    *int64                                                   `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
-	AggregatorAccounts        []*GetAggregatorResponseBodyAggregatorAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
-	AggregatorCreateTimestamp *string                                                  `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
-	AggregatorId              *string                                                  `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName            *string                                                  `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	AggregatorStatus          *int32                                                   `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
-	AggregatorType            *string                                                  `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	Description               *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the management account used to create the account group.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The number of member accounts in the account group.
+	AggregatorAccountCount *int64 `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
+	// The information about the member accounts in the account group.
+	AggregatorAccounts []*GetAggregatorResponseBodyAggregatorAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
+	// The timestamp when the account group was created.
+	AggregatorCreateTimestamp *string `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The status of the account group. Valid values:
+	//
+	// *   0: The account group is being created.
+	// *   1: The account group has been created.
+	AggregatorStatus *int32 `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
+	// The type of the account group. Valid values:
+	//
+	// *   RD: global account group
+	// *   CUSTOM: custom account group
+	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
+	// The description of the account group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s GetAggregatorResponseBodyAggregator) String() string {
@@ -7455,9 +9040,18 @@ func (s *GetAggregatorResponseBodyAggregator) SetDescription(v string) *GetAggre
 }
 
 type GetAggregatorResponseBodyAggregatorAggregatorAccounts struct {
-	AccountId      *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType    *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The ID of the member account.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the member account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The affiliation of the member account. The value is fixed to ResourceDirectory.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The status of the configuration recorder for the member account. Valid values:
+	//
+	// *   REGISTRABLE: The configuration recorder has not been registered.
+	// *   BUILDING: The configuration recorder is being deployed.
+	// *   REGISTERED: The configuration recorder has been registered.
+	// *   REBUILDING: The configuration recorder is being redeployed.
 	RecorderStatus *string `json:"RecorderStatus,omitempty" xml:"RecorderStatus,omitempty"`
 }
 
@@ -7519,6 +9113,9 @@ func (s *GetAggregatorResponse) SetBody(v *GetAggregatorResponseBody) *GetAggreg
 }
 
 type GetCompliancePackRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -7536,8 +9133,10 @@ func (s *GetCompliancePackRequest) SetCompliancePackId(v string) *GetComplianceP
 }
 
 type GetCompliancePackResponseBody struct {
+	// The details of the compliance package.
 	CompliancePack *GetCompliancePackResponseBodyCompliancePack `json:"CompliancePack,omitempty" xml:"CompliancePack,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCompliancePackResponseBody) String() string {
@@ -7559,16 +9158,33 @@ func (s *GetCompliancePackResponseBody) SetRequestId(v string) *GetCompliancePac
 }
 
 type GetCompliancePackResponseBodyCompliancePack struct {
-	AccountId                *int64                                                    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CompliancePackId         *string                                                   `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName       *string                                                   `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CompliancePackTemplateId *string                                                   `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	ConfigRules              []*GetCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	CreateTimestamp          *int64                                                    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description              *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel                *int32                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Scope                    *GetCompliancePackResponseBodyCompliancePackScope         `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	Status                   *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Alibaba Cloud account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
+	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
+	// The rules in the compliance package.
+	ConfigRules []*GetCompliancePackResponseBodyCompliancePackConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// The timestamp when the compliance package was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The resource group for which the compliance package takes effect.
+	Scope *GetCompliancePackResponseBodyCompliancePackScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// The status of the compliance package. Valid values:
+	//
+	// *   ACTIVE: The compliance package is normal.
+	// *   CREATING: The compliance package is being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePack) String() string {
@@ -7630,12 +9246,22 @@ func (s *GetCompliancePackResponseBodyCompliancePack) SetStatus(v string) *GetCo
 }
 
 type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
-	ConfigRuleId          *string                                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The input parameters of the rule.
+	ConfigRuleParameters []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule.
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePackConfigRules) String() string {
@@ -7677,9 +9303,15 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRules) SetRiskLevel(v 
 }
 
 type GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	Required       *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the input parameter is required. Valid values:
+	//
+	// *   true: required
+	// *   false: optional
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters) String() string {
@@ -7706,11 +9338,16 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParamet
 }
 
 type GetCompliancePackResponseBodyCompliancePackScope struct {
+	// The ID of the resource that is not evaluated by using the compliance package.
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region whose resources are evaluated by using the compliance package.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources are evaluated by using the compliance package.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The tag key of the resource that is evaluated by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that is evaluated by using the compliance package.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePackScope) String() string {
@@ -7776,6 +9413,9 @@ func (s *GetCompliancePackResponse) SetBody(v *GetCompliancePackResponseBody) *G
 }
 
 type GetCompliancePackReportRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -7793,8 +9433,10 @@ func (s *GetCompliancePackReportRequest) SetCompliancePackId(v string) *GetCompl
 }
 
 type GetCompliancePackReportResponseBody struct {
+	// The information about the compliance evaluation report.
 	CompliancePackReport *GetCompliancePackReportResponseBodyCompliancePackReport `json:"CompliancePackReport,omitempty" xml:"CompliancePackReport,omitempty" type:"Struct"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCompliancePackReportResponseBody) String() string {
@@ -7816,11 +9458,20 @@ func (s *GetCompliancePackReportResponseBody) SetRequestId(v string) *GetComplia
 }
 
 type GetCompliancePackReportResponseBodyCompliancePackReport struct {
-	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CompliancePackId      *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The ID of the Alibaba Cloud account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
+	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	// The status of the compliance evaluation report. Valid values:
+	//
+	// *   NONE: The compliance evaluation report is not generated.
+	// *   CREATING: The compliance evaluation report is being generated.
+	// *   COMPLETE: The compliance evaluation report is generated.
+	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The URL that is used to download the compliance evaluation report.
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetCompliancePackReportResponseBodyCompliancePackReport) String() string {
@@ -7886,6 +9537,9 @@ func (s *GetCompliancePackReportResponse) SetBody(v *GetCompliancePackReportResp
 }
 
 type GetConfigDeliveryChannelRequest struct {
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [DescribeDeliveryChannels](~~429841~~).
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
 }
 
@@ -7903,8 +9557,10 @@ func (s *GetConfigDeliveryChannelRequest) SetDeliveryChannelId(v string) *GetCon
 }
 
 type GetConfigDeliveryChannelResponseBody struct {
+	// The information about the delivery channel.
 	DeliveryChannel *GetConfigDeliveryChannelResponseBodyDeliveryChannel `json:"DeliveryChannel,omitempty" xml:"DeliveryChannel,omitempty" type:"Struct"`
-	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigDeliveryChannelResponseBody) String() string {
@@ -7926,20 +9582,68 @@ func (s *GetConfigDeliveryChannelResponseBody) SetRequestId(v string) *GetConfig
 }
 
 type GetConfigDeliveryChannelResponseBodyDeliveryChannel struct {
-	AccountId                           *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: The specified destination receives resource change logs.
+	// *   false: The specified destination does not receive resource change logs
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at `04:00Z` and `16:00Z` to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: The specified destination receives scheduled resource snapshots.
+	// *   false: The specified destination does not receive scheduled resource snapshots.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role assumed by the delivery channel.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that is attached to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you subscribed:
+	//
+	//     *   The setting of the lowest risk level for the events to which you subscribed is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field indicates the lowest risk level of the events to which you subscribed. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you subscribed is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the events to which you subscribed. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	//
+	// *   If the value of the DeliveryChannelType parameter is SLS, the setting of the resource types of the snapshots that you delivered is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the snapshots that you delivered. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	//
+	// *   If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+	// *   If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+	// *   If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when Cloud Config delivers scheduled resources snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
+	//
+	// *   true: The specified destination receives resource non-compliance events.
+	// *   false: The specified destination does not receive resource non-compliance events.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The status of the delivery channel. Valid values:
+	//
+	// *   0: The delivery channel is disabled.
+	// *   1: The delivery channel is enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetConfigDeliveryChannelResponseBodyDeliveryChannel) String() string {
@@ -8050,6 +9754,9 @@ func (s *GetConfigDeliveryChannelResponse) SetBody(v *GetConfigDeliveryChannelRe
 }
 
 type GetConfigRuleRequest struct {
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListConfigRules](~~169607~~).
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
@@ -8067,8 +9774,10 @@ func (s *GetConfigRuleRequest) SetConfigRuleId(v string) *GetConfigRuleRequest {
 }
 
 type GetConfigRuleResponseBody struct {
+	// The details of the rule.
 	ConfigRule *GetConfigRuleResponseBodyConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" type:"Struct"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigRuleResponseBody) String() string {
@@ -8090,30 +9799,80 @@ func (s *GetConfigRuleResponseBody) SetRequestId(v string) *GetConfigRuleRespons
 }
 
 type GetConfigRuleResponseBodyConfigRule struct {
-	AccountId                  *int64                                                         `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Compliance                 *GetConfigRuleResponseBodyConfigRuleCompliance                 `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
-	ConfigRuleArn              *string                                                        `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the Alibaba Cloud account to which the rule belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The details of compliance evaluation results.
+	Compliance *GetConfigRuleResponseBodyConfigRuleCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
+	// The ARN of the managed rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The information about compliance evaluations performed by the rule.
 	ConfigRuleEvaluationStatus *GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
-	ConfigRuleId               *string                                                        `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName             *string                                                        `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleState            *string                                                        `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	ConfigRuleTriggerTypes     *string                                                        `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	CreateBy                   *GetConfigRuleResponseBodyConfigRuleCreateBy                   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
-	CreateTimestamp            *int64                                                         `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description                *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope    *string                                                        `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	InputParameters            map[string]interface{}                                         `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	ManagedRule                *GetConfigRuleResponseBodyConfigRuleManagedRule                `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
-	MaximumExecutionFrequency  *string                                                        `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	ModifiedTimestamp          *int64                                                         `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
-	RegionIdsScope             *string                                                        `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope      *string                                                        `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope         *string                                                        `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                  *int32                                                         `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Source                     *GetConfigRuleResponseBodyConfigRuleSource                     `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	TagKeyLogicScope           *string                                                        `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope                *string                                                        `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope              *string                                                        `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the monitoring rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   ACTIVE: The rule is being used to monitor resource configurations.
+	// *   DELETING: The rule is being deleted.
+	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// *   INACTIVE: The rule is disabled and is no longer used to monitor resource configurations.
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The information about the creation of the rule.
+	CreateBy *GetConfigRuleResponseBodyConfigRuleCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	// The timestamp when the rule was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource excluded from the compliance evaluations performed by the rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The details of the managed rule.
+	ManagedRule *GetConfigRuleResponseBodyConfigRuleManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// >  This parameter is returned if the managed rule is periodically triggered.
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The timestamp when the rule was last updated. Unit: milliseconds.
+	ModifiedTimestamp *int64 `json:"ModifiedTimestamp,omitempty" xml:"ModifiedTimestamp,omitempty"`
+	// The ID of the region to which the rule applies.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource evaluated by the rule.
+	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The information about how the rule was created.
+	Source *GetConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
+	//
+	// >  This parameter applies only to managed rules.
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRule) String() string {
@@ -8245,8 +10004,15 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetTagValueScope(v string) *GetCon
 }
 
 type GetConfigRuleResponseBodyConfigRuleCompliance struct {
+	// The statistics of compliance evaluation results based on compliance types. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of evaluated resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleCompliance) String() string {
@@ -8268,14 +10034,25 @@ func (s *GetConfigRuleResponseBodyConfigRuleCompliance) SetCount(v int32) *GetCo
 }
 
 type GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus struct {
-	FirstActivatedTimestamp           *int64  `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
-	FirstEvaluationStarted            *bool   `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
-	LastErrorCode                     *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
-	LastErrorMessage                  *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
-	LastFailedEvaluationTimestamp     *int64  `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
-	LastFailedInvocationTimestamp     *int64  `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
-	LastSuccessfulEvaluationTimestamp *int64  `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
-	LastSuccessfulInvocationTimestamp *int64  `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty"`
+	// The timestamp when the rule was first triggered. Unit: milliseconds.
+	FirstActivatedTimestamp *int64 `json:"FirstActivatedTimestamp,omitempty" xml:"FirstActivatedTimestamp,omitempty"`
+	// Indicates whether resources were evaluated based on the rule. Valid values:
+	//
+	// *   true: Resources were evaluated based on the rule.
+	// *   false: Resources were not evaluated based on the rule.
+	FirstEvaluationStarted *bool `json:"FirstEvaluationStarted,omitempty" xml:"FirstEvaluationStarted,omitempty"`
+	// The error code returned for the last failed compliance evaluation.
+	LastErrorCode *string `json:"LastErrorCode,omitempty" xml:"LastErrorCode,omitempty"`
+	// The error message returned for the last failed compliance evaluation.
+	LastErrorMessage *string `json:"LastErrorMessage,omitempty" xml:"LastErrorMessage,omitempty"`
+	// The timestamp when the last failed compliance evaluation of the rule ended. Unit: milliseconds.
+	LastFailedEvaluationTimestamp *int64 `json:"LastFailedEvaluationTimestamp,omitempty" xml:"LastFailedEvaluationTimestamp,omitempty"`
+	// The timestamp when the last failed compliance evaluation of the rule started. Unit: milliseconds.
+	LastFailedInvocationTimestamp *int64 `json:"LastFailedInvocationTimestamp,omitempty" xml:"LastFailedInvocationTimestamp,omitempty"`
+	// The timestamp when the last successful compliance evaluation of the rule ended. Unit: milliseconds.
+	LastSuccessfulEvaluationTimestamp *int64 `json:"LastSuccessfulEvaluationTimestamp,omitempty" xml:"LastSuccessfulEvaluationTimestamp,omitempty"`
+	// The timestamp when the last successful compliance evaluation of the rule started. Unit: milliseconds.
+	LastSuccessfulInvocationTimestamp *int64 `json:"LastSuccessfulInvocationTimestamp,omitempty" xml:"LastSuccessfulInvocationTimestamp,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) String() string {
@@ -8327,10 +10104,14 @@ func (s *GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus) SetLastS
 }
 
 type GetConfigRuleResponseBodyConfigRuleCreateBy struct {
-	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CreatorId          *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName        *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The ID of the account that was used to create the rule.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the account that was used to create the rule.
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleCreateBy) String() string {
@@ -8362,13 +10143,20 @@ func (s *GetConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorName(v string) *
 }
 
 type GetConfigRuleResponseBodyConfigRuleManagedRule struct {
-	CompulsoryInputParameterDetails map[string]interface{}                                         `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	Description                     *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Identifier                      *string                                                        `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Labels                          []*string                                                      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ManagedRuleName                 *string                                                        `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	OptionalInputParameterDetails   map[string]interface{}                                         `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	SourceDetails                   []*GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	// The required input parameters of the managed rule.
+	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The identifier of the managed rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The tags of the managed rule.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The name of the managed rule.
+	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
+	// The optional input parameters of the managed rule.
+	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	// The details of the source of the managed rule.
+	SourceDetails []*GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleManagedRule) String() string {
@@ -8415,9 +10203,25 @@ func (s *GetConfigRuleResponseBodyConfigRuleManagedRule) SetSourceDetails(v []*G
 }
 
 type GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The event source of the managed rule.
+	//
+	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// >  This parameter is returned if the managed rule is periodically triggered.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) String() string {
@@ -8444,8 +10248,17 @@ func (s *GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails) SetMessage
 }
 
 type GetConfigRuleResponseBodyConfigRuleSource struct {
-	Identifier    *string                                                   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Owner         *string                                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The identifier of the rule.
+	//
+	// *   If the rule was created based on a managed rule, the value of this parameter is the name of the managed rule.
+	// *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The way in which the rule was created. Valid values:
+	//
+	// *   CUSTOM_FC: The rule is a custom rule.
+	// *   ALIYUN: The rule was created based on a managed rule of Alibaba Cloud.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The details of the source of the rule.
 	SourceDetails []*GetConfigRuleResponseBodyConfigRuleSourceSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -8473,9 +10286,25 @@ func (s *GetConfigRuleResponseBodyConfigRuleSource) SetSourceDetails(v []*GetCon
 }
 
 type GetConfigRuleResponseBodyConfigRuleSourceSourceDetails struct {
-	EventSource               *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The event source of the managed rule.
+	//
+	// >  Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	// The intervals at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// >  This parameter is returned if the rule is periodically triggered.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) String() string {
@@ -8531,6 +10360,9 @@ func (s *GetConfigRuleResponse) SetBody(v *GetConfigRuleResponseBody) *GetConfig
 }
 
 type GetConfigRuleComplianceByPackRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -8548,8 +10380,10 @@ func (s *GetConfigRuleComplianceByPackRequest) SetCompliancePackId(v string) *Ge
 }
 
 type GetConfigRuleComplianceByPackResponseBody struct {
+	// The information about the compliance evaluation results returned.
 	ConfigRuleComplianceResult *GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult `json:"ConfigRuleComplianceResult,omitempty" xml:"ConfigRuleComplianceResult,omitempty" type:"Struct"`
-	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigRuleComplianceByPackResponseBody) String() string {
@@ -8571,10 +10405,14 @@ func (s *GetConfigRuleComplianceByPackResponseBody) SetRequestId(v string) *GetC
 }
 
 type GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult struct {
-	CompliancePackId      *string                                                                                     `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The rule enabled in the compliance package and the compliance evaluation result returned by the rule.
 	ConfigRuleCompliances []*GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances `json:"ConfigRuleCompliances,omitempty" xml:"ConfigRuleCompliances,omitempty" type:"Repeated"`
-	NonCompliantCount     *int32                                                                                      `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	TotalCount            *int32                                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as non-compliant.
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The total number of rules enabled in the compliance package.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult) String() string {
@@ -8606,8 +10444,16 @@ func (s *GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult) Se
 }
 
 type GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances struct {
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The relevant resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the rule enabled in the compliance package.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule enabled in the compliance package.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 }
 
@@ -8664,8 +10510,10 @@ func (s *GetConfigRuleComplianceByPackResponse) SetBody(v *GetConfigRuleComplian
 }
 
 type GetConfigRuleSummaryByRiskLevelResponseBody struct {
+	// The summary of compliance evaluation results by rule risk level.
 	ConfigRuleSummaries []*GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries `json:"ConfigRuleSummaries,omitempty" xml:"ConfigRuleSummaries,omitempty" type:"Repeated"`
-	RequestId           *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigRuleSummaryByRiskLevelResponseBody) String() string {
@@ -8687,9 +10535,16 @@ func (s *GetConfigRuleSummaryByRiskLevelResponseBody) SetRequestId(v string) *Ge
 }
 
 type GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries struct {
-	CompliantCount    *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as compliant.
+	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as non-compliant.
 	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	RiskLevel         *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The risk level of the resources that are not compliant with the rules. Valid values:
+	//
+	// *   1: high risk level.
+	// *   2: medium risk level.
+	// *   3: low risk level.
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s GetConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries) String() string {
@@ -8745,6 +10600,7 @@ func (s *GetConfigRuleSummaryByRiskLevelResponse) SetBody(v *GetConfigRuleSummar
 }
 
 type GetConfigRulesReportRequest struct {
+	// The ID of the compliance evaluation report.
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
@@ -8762,8 +10618,10 @@ func (s *GetConfigRulesReportRequest) SetReportId(v string) *GetConfigRulesRepor
 }
 
 type GetConfigRulesReportResponseBody struct {
+	// The information about the compliance evaluation report.
 	ConfigRulesReport *GetConfigRulesReportResponseBodyConfigRulesReport `json:"ConfigRulesReport,omitempty" xml:"ConfigRulesReport,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetConfigRulesReportResponseBody) String() string {
@@ -8785,11 +10643,20 @@ func (s *GetConfigRulesReportResponseBody) SetRequestId(v string) *GetConfigRule
 }
 
 type GetConfigRulesReportResponseBodyConfigRulesReport struct {
-	AccountId             *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ReportCreateTimestamp *int64  `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
-	ReportId              *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ReportStatus          *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	ReportUrl             *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The ID of the Alibaba Cloud account to which the rules belong.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The timestamp when the compliance evaluation report was generated. Unit: milliseconds.
+	ReportCreateTimestamp *int64 `json:"ReportCreateTimestamp,omitempty" xml:"ReportCreateTimestamp,omitempty"`
+	// The ID of the compliance evaluation report.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The status of the compliance evaluation report. Valid values:
+	//
+	// *   NONE: The compliance evaluation report is not generated.
+	// *   CREATING: The compliance evaluation report is being generated.
+	// *   COMPLETE: The compliance evaluation report is generated.
+	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+	// The URL that is used to download the compliance evaluation report.
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
 func (s GetConfigRulesReportResponseBodyConfigRulesReport) String() string {
@@ -8855,8 +10722,17 @@ func (s *GetConfigRulesReportResponse) SetBody(v *GetConfigRulesReportResponseBo
 }
 
 type GetDiscoveredResourceRequest struct {
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to query the region ID of a resource, see [ListDiscoveredResources](~~411702~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to query the ID of a resource, see [ListDiscoveredResources](~~411702~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListDiscoveredResources](~~411702~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -8884,8 +10760,10 @@ func (s *GetDiscoveredResourceRequest) SetResourceType(v string) *GetDiscoveredR
 }
 
 type GetDiscoveredResourceResponseBody struct {
+	// The information about the resource.
 	DiscoveredResourceDetail *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
-	RequestId                *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDiscoveredResourceResponseBody) String() string {
@@ -8907,17 +10785,34 @@ func (s *GetDiscoveredResourceResponseBody) SetRequestId(v string) *GetDiscovere
 }
 
 type GetDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
-	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone in which the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The configuration of the resource.
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created.
+	ResourceCreationTime *int64 `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// *   1: The resource is retained.
+	// *   0: The resource is deleted.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+	//
+	// *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that does not have a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
@@ -9013,6 +10908,9 @@ func (s *GetDiscoveredResourceResponse) SetBody(v *GetDiscoveredResourceResponse
 }
 
 type GetDiscoveredResourceCountsGroupByRegionRequest struct {
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListDiscoveredResources](~~169620~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -9030,8 +10928,10 @@ func (s *GetDiscoveredResourceCountsGroupByRegionRequest) SetResourceType(v stri
 }
 
 type GetDiscoveredResourceCountsGroupByRegionResponseBody struct {
+	// The statistics on resources.
 	DiscoveredResourceCountsSummary []*GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByRegionResponseBody) String() string {
@@ -9053,9 +10953,14 @@ func (s *GetDiscoveredResourceCountsGroupByRegionResponseBody) SetRequestId(v st
 }
 
 type GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The dimension by which statistics are collected.
+	//
+	// >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the region by which statistics are collected.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The total number of resources in the region.
+	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary) String() string {
@@ -9111,6 +11016,7 @@ func (s *GetDiscoveredResourceCountsGroupByRegionResponse) SetBody(v *GetDiscove
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeRequest struct {
+	// The ID of the region where the resource resides.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
@@ -9128,8 +11034,10 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeRequest) SetRegion(v stri
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeResponseBody struct {
+	// The statistics on the resources.
 	DiscoveredResourceCountsSummary []*GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary `json:"DiscoveredResourceCountsSummary,omitempty" xml:"DiscoveredResourceCountsSummary,omitempty" type:"Repeated"`
-	RequestId                       *string                                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByResourceTypeResponseBody) String() string {
@@ -9151,9 +11059,14 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponseBody) SetRequestI
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	ResourceCount *int64  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource type by which the statistics are collected.
+	//
+	// >  We recommend that you use the `ResourceType` parameter.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The total number of resources.
+	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The resource type by which the statistics are collected.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetDiscoveredResourceCountsGroupByResourceTypeResponseBodyDiscoveredResourceCountsSummary) String() string {
@@ -9209,6 +11122,9 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponse) SetBody(v *GetD
 }
 
 type GetIntegratedServiceStatusRequest struct {
+	// The product code of the cloud product. Valid values:
+	//
+	// cadt: Cloud Architecture Design Tool
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -9226,7 +11142,12 @@ func (s *GetIntegratedServiceStatusRequest) SetServiceCode(v string) *GetIntegra
 }
 
 type GetIntegratedServiceStatusResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the product has been integrated. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9278,6 +11199,9 @@ func (s *GetIntegratedServiceStatusResponse) SetBody(v *GetIntegratedServiceStat
 }
 
 type GetManagedRuleRequest struct {
+	// The identifier of the managed rule.
+	//
+	// You can call the [ListManagedRules](~~421144~~) operation to obtain the managed rule identifier.
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 }
 
@@ -9295,8 +11219,10 @@ func (s *GetManagedRuleRequest) SetIdentifier(v string) *GetManagedRuleRequest {
 }
 
 type GetManagedRuleResponseBody struct {
+	// The details of the managed rule.
 	ManagedRule *GetManagedRuleResponseBodyManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetManagedRuleResponseBody) String() string {
@@ -9318,16 +11244,30 @@ func (s *GetManagedRuleResponseBody) SetRequestId(v string) *GetManagedRuleRespo
 }
 
 type GetManagedRuleResponseBodyManagedRule struct {
-	CompulsoryInputParameterDetails map[string]interface{}                                `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	ConfigRuleName                  *string                                               `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	Description                     *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	HelpUrls                        *string                                               `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	Identifier                      *string                                               `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Labels                          []*string                                             `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	OptionalInputParameterDetails   map[string]interface{}                                `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	RiskLevel                       *int32                                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Scope                           *GetManagedRuleResponseBodyManagedRuleScope           `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	SourceDetails                   []*GetManagedRuleResponseBodyManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
+	// The settings of the required input parameters for the managed rule.
+	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
+	// The name of the managed rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the topic that provides guidance on remediation for the managed rule.
+	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	// The identifier of the managed rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The tags of the managed rule.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The settings of the optional input parameters for the managed rule.
+	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	// The risk level of the resources that are not compliant with the managed rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The effective scope of the managed rule.
+	Scope *GetManagedRuleResponseBodyManagedRuleScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
+	// The information about the trigger type of the managed rule.
+	SourceDetails []*GetManagedRuleResponseBodyManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
 func (s GetManagedRuleResponseBodyManagedRule) String() string {
@@ -9389,6 +11329,7 @@ func (s *GetManagedRuleResponseBodyManagedRule) SetSourceDetails(v []*GetManaged
 }
 
 type GetManagedRuleResponseBodyManagedRuleScope struct {
+	// The type of resource to which the managed rule applies.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -9406,8 +11347,19 @@ func (s *GetManagedRuleResponseBodyManagedRuleScope) SetComplianceResourceTypes(
 }
 
 type GetManagedRuleResponseBodyManagedRuleSourceDetails struct {
+	// The interval at which the managed rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	MessageType               *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	// The trigger type of the managed rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s GetManagedRuleResponseBodyManagedRuleSourceDetails) String() string {
@@ -9458,8 +11410,17 @@ func (s *GetManagedRuleResponse) SetBody(v *GetManagedRuleResponseBody) *GetMana
 }
 
 type GetResourceComplianceByConfigRuleRequest struct {
+	// The compliance evaluation results to be returned. Valid values:
+	//
+	// *   COMPLIANT: The relevant resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleRequest) String() string {
@@ -9481,8 +11442,10 @@ func (s *GetResourceComplianceByConfigRuleRequest) SetConfigRuleId(v string) *Ge
 }
 
 type GetResourceComplianceByConfigRuleResponseBody struct {
+	// The compliance evaluation results returned.
 	ComplianceResult *GetResourceComplianceByConfigRuleResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
-	RequestId        *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBody) String() string {
@@ -9504,8 +11467,10 @@ func (s *GetResourceComplianceByConfigRuleResponseBody) SetRequestId(v string) *
 }
 
 type GetResourceComplianceByConfigRuleResponseBodyComplianceResult struct {
+	// The information about the compliance evaluation.
 	Compliances []*GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
-	TotalCount  *int64                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of evaluated resources.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBodyComplianceResult) String() string {
@@ -9527,8 +11492,15 @@ func (s *GetResourceComplianceByConfigRuleResponseBodyComplianceResult) SetTotal
 }
 
 type GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances struct {
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The relevant resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of resources that have the compliance evaluation result. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances) String() string {
@@ -9579,6 +11551,9 @@ func (s *GetResourceComplianceByConfigRuleResponse) SetBody(v *GetResourceCompli
 }
 
 type GetResourceComplianceByPackRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 }
 
@@ -9596,7 +11571,9 @@ func (s *GetResourceComplianceByPackRequest) SetCompliancePackId(v string) *GetR
 }
 
 type GetResourceComplianceByPackResponseBody struct {
-	RequestId                *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The compliance evaluation results returned.
 	ResourceComplianceResult *GetResourceComplianceByPackResponseBodyResourceComplianceResult `json:"ResourceComplianceResult,omitempty" xml:"ResourceComplianceResult,omitempty" type:"Struct"`
 }
 
@@ -9619,9 +11596,12 @@ func (s *GetResourceComplianceByPackResponseBody) SetResourceComplianceResult(v 
 }
 
 type GetResourceComplianceByPackResponseBodyResourceComplianceResult struct {
-	CompliancePackId  *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	NonCompliantCount *int32  `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	TotalCount        *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The number of non-compliant resources.
+	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
+	// The total number of resources.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetResourceComplianceByPackResponseBodyResourceComplianceResult) String() string {
@@ -9941,13 +11921,24 @@ func (s *GetResourceComplianceGroupByResourceTypeResponse) SetBody(v *GetResourc
 }
 
 type GetResourceComplianceTimelineRequest struct {
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The timestamp that specifies the end of the time range to query. The default value is the time when the GetResourceComplianceTimeline operation is called. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the compliance evaluations in the last 30 days for the specified resource. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetResourceComplianceTimelineRequest) String() string {
@@ -9994,7 +11985,9 @@ func (s *GetResourceComplianceTimelineRequest) SetStartTime(v int64) *GetResourc
 }
 
 type GetResourceComplianceTimelineResponseBody struct {
-	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the compliance timeline.
 	ResourceComplianceTimeline *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline `json:"ResourceComplianceTimeline,omitempty" xml:"ResourceComplianceTimeline,omitempty" type:"Struct"`
 }
 
@@ -10017,9 +12010,12 @@ func (s *GetResourceComplianceTimelineResponseBody) SetResourceComplianceTimelin
 }
 
 type GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline struct {
+	// The compliance evaluation records on the compliance timeline.
 	ComplianceList []*GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList `json:"ComplianceList,omitempty" xml:"ComplianceList,omitempty" type:"Repeated"`
-	MaxResults     *int32                                                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string                                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries that can be returned for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) String() string {
@@ -10046,18 +12042,33 @@ func (s *GetResourceComplianceTimelineResponseBodyResourceComplianceTimeline) Se
 }
 
 type GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList struct {
-	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	CaptureTime        *int64  `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	Configuration      *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime *int64  `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceStatus     *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The zone where the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The timestamp when the compliance evaluation was recorded. Unit: milliseconds.
+	CaptureTime *int64 `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	// The information about the rules that evaluated the resource and the compliance evaluation result.
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	// The details of the configuration change that triggered the compliance evaluation.
+	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	// The ID of the region where the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
+	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the resource. The parameter value varies with the resource type and may be left empty. Examples:
+	//
+	// *   If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, valid values of this parameter include Running and Stopped.
+	// *   If the ResourceType parameter is set to ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that does not have a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetResourceComplianceTimelineResponseBodyResourceComplianceTimelineComplianceList) String() string {
@@ -10158,13 +12169,24 @@ func (s *GetResourceComplianceTimelineResponse) SetBody(v *GetResourceCompliance
 }
 
 type GetResourceConfigurationTimelineRequest struct {
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The timestamp that specifies the end of the time range to query. The default value is the time when the GetResourceConfigurationTimeline operation is called. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The timestamp that specifies the beginning of the time range to query. By default, Cloud Config retrieves the configuration changes in the last 30 days for the specified resource. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetResourceConfigurationTimelineRequest) String() string {
@@ -10211,7 +12233,9 @@ func (s *GetResourceConfigurationTimelineRequest) SetStartTime(v int64) *GetReso
 }
 
 type GetResourceConfigurationTimelineResponseBody struct {
-	RequestId                     *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the configuration timeline.
 	ResourceConfigurationTimeline *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline `json:"ResourceConfigurationTimeline,omitempty" xml:"ResourceConfigurationTimeline,omitempty" type:"Struct"`
 }
 
@@ -10234,9 +12258,12 @@ func (s *GetResourceConfigurationTimelineResponseBody) SetResourceConfigurationT
 }
 
 type GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline struct {
+	// The configuration changes on the configuration timeline.
 	ConfigurationList []*GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList `json:"ConfigurationList,omitempty" xml:"ConfigurationList,omitempty" type:"Repeated"`
-	MaxResults        *int32                                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeline) String() string {
@@ -10263,19 +12290,42 @@ func (s *GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimeli
 }
 
 type GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList struct {
-	AccountId          *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone   *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	CaptureTime        *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
-	ConfigurationDiff  *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Relationship       *string `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
-	RelationshipDiff   *string `json:"RelationshipDiff,omitempty" xml:"RelationshipDiff,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The timestamp when the resource change snapshot was recorded. Unit: milliseconds.
+	CaptureTime *string `json:"CaptureTime,omitempty" xml:"CaptureTime,omitempty"`
+	// The details of the resource change that triggered the compliance evaluation.
+	ConfigurationDiff *string `json:"ConfigurationDiff,omitempty" xml:"ConfigurationDiff,omitempty"`
+	// The ID of the region in which the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The details of each resource that is associated with the current resource, including the region ID, resource relationship, resource ID, and resource type.
+	Relationship *string `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
+	// The change records of the resource relationship.
+	RelationshipDiff *string `json:"RelationshipDiff,omitempty" xml:"RelationshipDiff,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceEventType  *string `json:"ResourceEventType,omitempty" xml:"ResourceEventType,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags               *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The type of the resource change event involved. Valid values:
+	//
+	// *   DISCOVERED: A resource is created.
+	// *   DISCOVERED_REVISED: A resource is created by periodic remediation tasks.
+	// *   MODIFY: A resource is modified.
+	// *   MODIFY_REVISED: A resource is modified by periodic remediation tasks.
+	// *   REMOVE: A resource is deleted.
+	//
+	// >
+	// *   To ensure the integrity of resources, periodic remediation tasks are executed to check data and generate events that indicate the creation of new resources. Such events are infrequent.
+	// *   The time when a resource change event is generated by a periodic remediation task is considered as the detection time of Cloud Config. The detection time is later than the time when the resource is modified.
+	ResourceEventType *string `json:"ResourceEventType,omitempty" xml:"ResourceEventType,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s GetResourceConfigurationTimelineResponseBodyResourceConfigurationTimelineConfigurationList) String() string {
@@ -10381,11 +12431,22 @@ func (s *GetResourceConfigurationTimelineResponse) SetBody(v *GetResourceConfigu
 }
 
 type IgnoreAggregateEvaluationResultsRequest struct {
-	AggregatorId *string                                             `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId *string                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	IgnoreDate   *string                                             `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	Reason       *string                                             `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Resources    []*IgnoreAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The reason why you ignore the resource.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resources to be ignored.
+	Resources []*IgnoreAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s IgnoreAggregateEvaluationResultsRequest) String() string {
@@ -10422,10 +12483,22 @@ func (s *IgnoreAggregateEvaluationResultsRequest) SetResources(v []*IgnoreAggreg
 }
 
 type IgnoreAggregateEvaluationResultsRequestResources struct {
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources belong.
+	//
+	// >  You must specify the ID of the current management account or a member account in the account group of the management account.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s IgnoreAggregateEvaluationResultsRequestResources) String() string {
@@ -10457,10 +12530,21 @@ func (s *IgnoreAggregateEvaluationResultsRequestResources) SetResourceType(v str
 }
 
 type IgnoreAggregateEvaluationResultsShrinkRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	IgnoreDate      *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The reason why you ignore the resource.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resources to be ignored.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -10498,6 +12582,7 @@ func (s *IgnoreAggregateEvaluationResultsShrinkRequest) SetResourcesShrink(v str
 }
 
 type IgnoreAggregateEvaluationResultsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10544,10 +12629,18 @@ func (s *IgnoreAggregateEvaluationResultsResponse) SetBody(v *IgnoreAggregateEva
 }
 
 type IgnoreEvaluationResultsRequest struct {
-	ConfigRuleId *string                                    `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	IgnoreDate   *string                                    `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	Reason       *string                                    `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Resources    []*IgnoreEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The reason why you want to ignore the resource.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resources to be ignored.
+	Resources []*IgnoreEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s IgnoreEvaluationResultsRequest) String() string {
@@ -10579,10 +12672,20 @@ func (s *IgnoreEvaluationResultsRequest) SetResources(v []*IgnoreEvaluationResul
 }
 
 type IgnoreEvaluationResultsRequestResources struct {
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of the region in which a resource resides, see [ListDiscoveredResources](~~169620~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources belong.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s IgnoreEvaluationResultsRequestResources) String() string {
@@ -10614,9 +12717,17 @@ func (s *IgnoreEvaluationResultsRequestResources) SetResourceType(v string) *Ign
 }
 
 type IgnoreEvaluationResultsShrinkRequest struct {
-	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	IgnoreDate      *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If you leave this parameter empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The reason why you want to ignore the resource.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The resources to be ignored.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -10649,6 +12760,7 @@ func (s *IgnoreEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *Ign
 }
 
 type IgnoreEvaluationResultsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10695,10 +12807,23 @@ func (s *IgnoreEvaluationResultsResponse) SetBody(v *IgnoreEvaluationResultsResp
 }
 
 type ListAggregateCompliancePacksRequest struct {
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the one or more compliance packages to be queried. Valid values:
+	//
+	// *   ACTIVE: compliance packages that are available for use.
+	// *   CREATING: compliance packages that are being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAggregateCompliancePacksRequest) String() string {
@@ -10730,8 +12855,10 @@ func (s *ListAggregateCompliancePacksRequest) SetStatus(v string) *ListAggregate
 }
 
 type ListAggregateCompliancePacksResponseBody struct {
+	// The information about the compliance packages.
 	CompliancePacksResult *ListAggregateCompliancePacksResponseBodyCompliancePacksResult `json:"CompliancePacksResult,omitempty" xml:"CompliancePacksResult,omitempty" type:"Struct"`
-	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateCompliancePacksResponseBody) String() string {
@@ -10753,10 +12880,14 @@ func (s *ListAggregateCompliancePacksResponseBody) SetRequestId(v string) *ListA
 }
 
 type ListAggregateCompliancePacksResponseBodyCompliancePacksResult struct {
+	// The details of the compliance package.
 	CompliancePacks []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
-	PageNumber      *int32                                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount      *int64                                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of compliance packages returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResult) String() string {
@@ -10788,15 +12919,31 @@ func (s *ListAggregateCompliancePacksResponseBodyCompliancePacksResult) SetTotal
 }
 
 type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct {
-	AccountId                *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId             *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	CompliancePackId         *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName       *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the management account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template.
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	CreateTimestamp          *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp when the compliance package was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level.
+	// *   2: medium risk level.
+	// *   3: low risk level.
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The status of the compliance package. Valid values:
+	//
+	// *   ACTIVE: The compliance package is available for use.
+	// *   CREATING: The compliance package is being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -10882,7 +13029,11 @@ func (s *ListAggregateCompliancePacksResponse) SetBody(v *ListAggregateComplianc
 }
 
 type ListAggregateConfigDeliveryChannelsRequest struct {
-	AggregatorId       *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the delivery channel. Separate multiple IDs with commas (,).
 	DeliveryChannelIds *string `json:"DeliveryChannelIds,omitempty" xml:"DeliveryChannelIds,omitempty"`
 }
 
@@ -10905,8 +13056,10 @@ func (s *ListAggregateConfigDeliveryChannelsRequest) SetDeliveryChannelIds(v str
 }
 
 type ListAggregateConfigDeliveryChannelsResponseBody struct {
+	// The information about the delivery channel.
 	DeliveryChannels []*ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
-	RequestId        *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateConfigDeliveryChannelsResponseBody) String() string {
@@ -10928,21 +13081,70 @@ func (s *ListAggregateConfigDeliveryChannelsResponseBody) SetRequestId(v string)
 }
 
 type ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
-	AccountId                           *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId                        *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the member in the account group.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: The specified destination receives resource change logs.
+	// *   false: The specified destination does not receive resource change logs.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: The specified destination receives scheduled resource snapshots.
+	// *   false: The specified destination does not receive scheduled resource snapshots.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role assumed by the delivery channel.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that is attached to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you subscribed:
+	//
+	//     *   The setting of the lowest risk level of the events to which you subscribed is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field indicates the lowest risk level of the events to which you subscribed. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you subscribed is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the events to which you subscribed. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If the value of the DeliveryChannelType parameter is SLS, The setting of the resource types of the snapshots that you delivered is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the snapshots that you delivered. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	//
+	// *   If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+	// *   If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+	// *   If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when Cloud Config delivers scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: The specified destination receives resource non-compliance events.
+	// *   false: The specified destination does not receive resource non-compliance events.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which the delivery data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The status of the delivery channel. Valid values:
+	//
+	// *   0: The delivery channel is disabled.
+	// *   1: The delivery channel is enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) String() string {
@@ -11058,16 +13260,39 @@ func (s *ListAggregateConfigDeliveryChannelsResponse) SetBody(v *ListAggregateCo
 }
 
 type ListAggregateConfigRuleEvaluationResultsRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ComplianceType   *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Regions          *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resources are ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response to the current request is truncated, this token is used to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region whose resources you want to evaluate. Separate multiple region IDs with commas (,).
+	Regions           *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate. Separate multiple resource group IDs with commas (,).
 	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceTypes    *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resources that you want to evaluate. Separate multiple resource types with commas (,).
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsRequest) String() string {
@@ -11113,6 +13338,11 @@ func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetRegions(v string) *
 	return s
 }
 
+func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceAccountId(v int64) *ListAggregateConfigRuleEvaluationResultsRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceGroupIds(v string) *ListAggregateConfigRuleEvaluationResultsRequest {
 	s.ResourceGroupIds = &v
 	return s
@@ -11129,8 +13359,10 @@ func (s *ListAggregateConfigRuleEvaluationResultsRequest) SetResourceTypes(v str
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponseBody struct {
+	// The information about the compliance evaluation results returned.
 	EvaluationResults *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
-	RequestId         *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponseBody) String() string {
@@ -11152,9 +13384,12 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBody) SetRequestId(v st
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResults struct {
+	// The details of the compliance evaluation results.
 	EvaluationResultList []*ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
-	MaxResults           *int32                                                                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                                                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResults) String() string {
@@ -11181,14 +13416,44 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResults) 
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
-	Annotation                 *string                                                                                                              `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	ComplianceType             *string                                                                                                              `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleInvokedTimestamp *int64                                                                                                               `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The annotation to the resource that is evaluated as incompliant. The following section describe the parameters that can be returned:
+	//
+	// *   `configuration`: the current resource configuration that is evaluated as incompliant by using the rule.
+	// *   `desiredValue`: the expected resource configuration that is evaluated as compliant by using the rule.
+	// *   `operator`: the operator that is used to compare the current configuration with the expected configuration of the resource.
+	// *   `property`: the JSON path of the current configuration in the resource property struct.
+	// *   `reason`: the reason why the resource is evaluated as incompliant.
+	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resources are ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
+	ConfigRuleInvokedTimestamp *int64 `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The identifier of the compliance evaluation result.
 	EvaluationResultIdentifier *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
-	InvokingEventMessageType   *string                                                                                                              `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
-	RemediationEnabled         *bool                                                                                                                `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
-	ResultRecordedTimestamp    *int64                                                                                                               `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
-	RiskLevel                  *int32                                                                                                               `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// Indicates whether the remediation template is enabled. Valid values:
+	//
+	// - true: The remediation template is enabled.
+	// - false: The remediation template is disabled.
+	RemediationEnabled *bool `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
+	// The timestamp when the compliance evaluation result was generated. Unit: milliseconds.
+	ResultRecordedTimestamp *int64 `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) String() string {
@@ -11240,8 +13505,12 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
+	// The information about the evaluated resource in the compliance evaluation result.
 	EvaluationResultQualifier *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
-	OrderingTimestamp         *int64                                                                                                                                        `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
+	// The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+	//
+	// >  This timestamp indicates the time when the rule was triggered. You can obtain the timestamp from the value of the `ConfigRuleInvokedTimestamp` parameter.
+	OrderingTimestamp *int64 `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
@@ -11263,16 +13532,28 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEv
 }
 
 type ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
+	// The ID of the compliance package to which the rule belongs.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleArn    *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName   *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	IgnoreDate       *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The date on which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The ID of the region where the resource resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListAggregateConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
@@ -11363,14 +13644,45 @@ func (s *ListAggregateConfigRuleEvaluationResultsResponse) SetBody(v *ListAggreg
 }
 
 type ListAggregateConfigRulesRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleName  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   ACTIVE: The rule is being used to monitor resource configurations.
+	// *   DELETING: The rule is being deleted.
+	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// *   INACTIVE: The rule is disabled.
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevel       *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The keyword that you want to use to query the rules.
+	//
+	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListAggregateConfigRulesRequest) String() string {
@@ -11416,14 +13728,21 @@ func (s *ListAggregateConfigRulesRequest) SetPageSize(v int32) *ListAggregateCon
 	return s
 }
 
+func (s *ListAggregateConfigRulesRequest) SetResourceTypes(v string) *ListAggregateConfigRulesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
 func (s *ListAggregateConfigRulesRequest) SetRiskLevel(v int32) *ListAggregateConfigRulesRequest {
 	s.RiskLevel = &v
 	return s
 }
 
 type ListAggregateConfigRulesResponseBody struct {
+	// The rules.
 	ConfigRules *ListAggregateConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateConfigRulesResponseBody) String() string {
@@ -11445,10 +13764,14 @@ func (s *ListAggregateConfigRulesResponseBody) SetRequestId(v string) *ListAggre
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRules struct {
+	// The details of the rules.
 	ConfigRuleList []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
-	PageNumber     *int32                                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount     *int64                                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rules.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAggregateConfigRulesResponseBodyConfigRules) String() string {
@@ -11480,19 +13803,47 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRules) SetTotalCount(v int64)
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
-	AccountId        *int64                                                                   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AutomationType   *string                                                                  `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
-	Compliance       *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
-	ConfigRuleArn    *string                                                                  `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	ConfigRuleId     *string                                                                  `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName   *string                                                                  `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleState  *string                                                                  `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	CreateBy         *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
-	Description      *string                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel        *int32                                                                   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	SourceIdentifier *string                                                                  `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	SourceOwner      *string                                                                  `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
-	Tags             []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the management account to which the rules belong.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
+	AutomationType *string `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
+	// The information about the compliance package.
+	Compliance *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
+	// The ARN of the rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   ACTIVE: The rule is being used to monitor resource configurations.
+	// *   DELETING: The rule is being deleted.
+	// *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+	// *   INACTIVE: The rule is disabled.
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	// The information about the creation of the rule.
+	CreateBy *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule.
+	//
+	// *   If the rule was created based on a managed rule, the value of this parameter is the name of the managed rule.
+	// *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	// The way in which the rule was created. Valid values:
+	//
+	// *   CUSTOM_FC: The rule is a custom rule.
+	// *   ALIYUN: The rule is created based on a managed rule of Alibaba Cloud.
+	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	// The tag of the rule.
+	Tags []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList) String() string {
@@ -11569,8 +13920,15 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList) SetTags(
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
+	// The compliance evaluation result. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of resources evaluated by the rule.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) String() string {
@@ -11592,13 +13950,20 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
-	AggregatorId       *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName     *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	CreatorId          *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	CreatorName        *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	CreatorType        *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	// The ID of the management account that was used to create the rule.
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the management account that was used to create the rule.
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The type of the creator of the rule. The value is fixed to AGGREGATOR, which indicates an account group.
+	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 }
 
 func (s ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) String() string {
@@ -11645,7 +14010,9 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) 
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the rule.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the rule.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11697,14 +14064,28 @@ func (s *ListAggregateConfigRulesResponse) SetBody(v *ListAggregateConfigRulesRe
 }
 
 type ListAggregateDiscoveredResourcesRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
+	Regions           *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// *   0: The resource is deleted.
+	// *   1: The resource is retained. This is the default value.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource. Separate multiple resource types with commas (,).
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesRequest) String() string {
@@ -11735,6 +14116,11 @@ func (s *ListAggregateDiscoveredResourcesRequest) SetRegions(v string) *ListAggr
 	return s
 }
 
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceAccountId(v int64) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceAccountId = &v
+	return s
+}
+
 func (s *ListAggregateDiscoveredResourcesRequest) SetResourceDeleted(v int32) *ListAggregateDiscoveredResourcesRequest {
 	s.ResourceDeleted = &v
 	return s
@@ -11756,8 +14142,10 @@ func (s *ListAggregateDiscoveredResourcesRequest) SetResourceTypes(v string) *Li
 }
 
 type ListAggregateDiscoveredResourcesResponseBody struct {
+	// The return result of the request.
 	DiscoveredResourceProfiles *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
-	RequestId                  *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponseBody) String() string {
@@ -11779,10 +14167,14 @@ func (s *ListAggregateDiscoveredResourcesResponseBody) SetRequestId(v string) *L
 }
 
 type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	// The information about resources.
 	DiscoveredResourceProfileList []*ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
-	MaxResults                    *int32                                                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                     *string                                                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount                    *int32                                                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of entries returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of resources.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
@@ -11814,18 +14206,36 @@ func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles)
 }
 
 type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
-	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Version              *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone where the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The region ID.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
+	ResourceCreationTime *int64 `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// *   0: The resource is deleted.
+	// *   1: The resource is retained.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources belong.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Indicates whether the resource is deleted. The value of this parameter varies based on the resource type and may be left empty. Example:
+	//
+	// *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The build version of the resource.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -11926,7 +14336,13 @@ func (s *ListAggregateDiscoveredResourcesResponse) SetBody(v *ListAggregateDisco
 }
 
 type ListAggregateRemediationsRequest struct {
-	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// You can call the [ListAggregators](~~255797~~) operation to obtain the account group ID.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule. If you want to specify multiple IDs, separate them with commas (,).
+	//
+	// You can call the [ListAggregateConfigRules](~~264148~~) operation to obtain the rule ID.
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -11949,8 +14365,10 @@ func (s *ListAggregateRemediationsRequest) SetConfigRuleIds(v string) *ListAggre
 }
 
 type ListAggregateRemediationsResponseBody struct {
+	// The remediation settings returned.
 	Remediations []*ListAggregateRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateRemediationsResponseBody) String() string {
@@ -11972,18 +14390,47 @@ func (s *ListAggregateRemediationsResponseBody) SetRequestId(v string) *ListAggr
 }
 
 type ListAggregateRemediationsResponseBodyRemediations struct {
-	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorId                 *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	// The ID of the Alibaba Cloud account involved.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The execution mode of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The ID of the last successful execution of the remediation template.
+	LastSuccessfulInvocationId *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	// The timestamp of the last successful execution of the remediation template Unit: milliseconds.
+	LastSuccessfulInvocationTime *int64 `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	// The mode of the last successful execution of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
 	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	RemediaitonOriginParams      *string `json:"RemediaitonOriginParams,omitempty" xml:"RemediaitonOriginParams,omitempty"`
-	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
-	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
+	RemediaitonOriginParams *string `json:"RemediaitonOriginParams,omitempty" xml:"RemediaitonOriginParams,omitempty"`
+	// The ID of the remediation setting.
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The source of remediation. Valid values:
+	//
+	// *   ALIYUN: official template.
+	// *   CUSTOM: custom template.
+	// *   NONE: none.
+	RemediationSourceType *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	// The identifier of the remediation template.
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	// The type of remediation to perform. Valid values:
+	//
+	// *   OOS: stands for Operation Orchestration Service and indicates official remediation.
+	// *   FC: stands for Function Compute and indicates custom remediation.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
 
 func (s ListAggregateRemediationsResponseBodyRemediations) String() string {
@@ -12084,13 +14531,34 @@ func (s *ListAggregateRemediationsResponse) SetBody(v *ListAggregateRemediations
 }
 
 type ListAggregateResourceEvaluationResultsRequest struct {
-	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as incompliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where one or more resources that you want to query reside. For example, the value `global` indicates global regions and the value `cn-hangzhou` indicates the China (Hangzhou) region.
+	//
+	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](~~265983~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsRequest) String() string {
@@ -12137,8 +14605,10 @@ func (s *ListAggregateResourceEvaluationResultsRequest) SetResourceType(v string
 }
 
 type ListAggregateResourceEvaluationResultsResponseBody struct {
+	// The information about the compliance evaluation results returned.
 	EvaluationResults *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
-	RequestId         *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponseBody) String() string {
@@ -12160,9 +14630,12 @@ func (s *ListAggregateResourceEvaluationResultsResponseBody) SetRequestId(v stri
 }
 
 type ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults struct {
+	// The details of the compliance evaluation result.
 	EvaluationResultList []*ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
-	MaxResults           *int32                                                                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults) String() string {
@@ -12189,14 +14662,38 @@ func (s *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults) Se
 }
 
 type ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
-	Annotation                 *string                                                                                                            `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	ComplianceType             *string                                                                                                            `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleInvokedTimestamp *int64                                                                                                             `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The annotation to the resource that is evaluated as incompliant.
+	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as incompliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The timestamp when the rule was triggered. Unit: milliseconds.
+	ConfigRuleInvokedTimestamp *int64 `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The identifying information about the compliance evaluation result.
 	EvaluationResultIdentifier *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
-	InvokingEventMessageType   *string                                                                                                            `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
-	RemediationEnabled         *bool                                                                                                              `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
-	ResultRecordedTimestamp    *int64                                                                                                             `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
-	RiskLevel                  *int32                                                                                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The trigger type of the managed rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// Indicates whether the remediation template is enabled. Valid values:
+	//
+	// - true: The remediation template is enabled.
+	// - false: The remediation template is disabled.
+	RemediationEnabled *bool `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
+	// The timestamp when the compliance evaluation result was recorded. Unit: milliseconds.
+	ResultRecordedTimestamp *int64 `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) String() string {
@@ -12248,8 +14745,10 @@ func (s *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEval
 }
 
 type ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
+	// The information about the evaluated resource in the compliance evaluation result.
 	EvaluationResultQualifier *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
-	OrderingTimestamp         *int64                                                                                                                                      `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
+	// The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+	OrderingTimestamp *int64 `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
@@ -12271,14 +14770,24 @@ func (s *ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEval
 }
 
 type ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
-	ConfigRuleArn  *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the monitoring rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	IgnoreDate     *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName   *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If the value of this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The ID of the region where the resource resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
@@ -12359,8 +14868,10 @@ func (s *ListAggregateResourceEvaluationResultsResponse) SetBody(v *ListAggregat
 }
 
 type ListAggregatorsRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAggregatorsRequest) String() string {
@@ -12382,8 +14893,10 @@ func (s *ListAggregatorsRequest) SetNextToken(v string) *ListAggregatorsRequest 
 }
 
 type ListAggregatorsResponseBody struct {
+	// The account groups returned.
 	AggregatorsResult *ListAggregatorsResponseBodyAggregatorsResult `json:"AggregatorsResult,omitempty" xml:"AggregatorsResult,omitempty" type:"Struct"`
-	RequestId         *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregatorsResponseBody) String() string {
@@ -12405,8 +14918,10 @@ func (s *ListAggregatorsResponseBody) SetRequestId(v string) *ListAggregatorsRes
 }
 
 type ListAggregatorsResponseBodyAggregatorsResult struct {
+	// The information about the account groups.
 	Aggregators []*ListAggregatorsResponseBodyAggregatorsResultAggregators `json:"Aggregators,omitempty" xml:"Aggregators,omitempty" type:"Repeated"`
-	NextToken   *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, this token is used to initiate another request and obtain the remaining entries.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResult) String() string {
@@ -12428,14 +14943,28 @@ func (s *ListAggregatorsResponseBodyAggregatorsResult) SetNextToken(v string) *L
 }
 
 type ListAggregatorsResponseBodyAggregatorsResultAggregators struct {
-	AccountId                 *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorAccountCount    *int64  `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
-	AggregatorCreateTimestamp *int64  `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
-	AggregatorId              *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName            *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	AggregatorStatus          *int32  `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
-	AggregatorType            *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the management account used to create the account group.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The number of member accounts in the account group.
+	AggregatorAccountCount *int64 `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
+	// The timestamp when the account group was created.
+	AggregatorCreateTimestamp *int64 `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
+	// The ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The status of the account group. Valid values:
+	//
+	// *   0: being created.
+	// *   1: created.
+	AggregatorStatus *int32 `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
+	// The type of the account group. Valid values:
+	//
+	// *   RD: global account group.
+	// *   CUSTOM: custom account group.
+	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
+	// The description of the account group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResultAggregators) String() string {
@@ -12516,9 +15045,19 @@ func (s *ListAggregatorsResponse) SetBody(v *ListAggregatorsResponseBody) *ListA
 }
 
 type ListCompliancePackTemplatesRequest struct {
+	// The ID of the compliance package template.
+	//
+	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](~~261176~~).
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	PageNumber               *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                 *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Pages start from page 1. Default value: 10.
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesRequest) String() string {
@@ -12544,9 +15083,16 @@ func (s *ListCompliancePackTemplatesRequest) SetPageSize(v int32) *ListComplianc
 	return s
 }
 
+func (s *ListCompliancePackTemplatesRequest) SetResourceTypes(v string) *ListCompliancePackTemplatesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
 type ListCompliancePackTemplatesResponseBody struct {
+	// The information about the compliance package templates returned.
 	CompliancePackTemplatesResult *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult `json:"CompliancePackTemplatesResult,omitempty" xml:"CompliancePackTemplatesResult,omitempty" type:"Struct"`
-	RequestId                     *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponseBody) String() string {
@@ -12568,10 +15114,14 @@ func (s *ListCompliancePackTemplatesResponseBody) SetRequestId(v string) *ListCo
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult struct {
+	// The compliance package templates.
 	CompliancePackTemplates []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates `json:"CompliancePackTemplates,omitempty" xml:"CompliancePackTemplates,omitempty" type:"Repeated"`
-	PageNumber              *int32                                                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                *int32                                                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount              *int64                                                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of the compliance package templates returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult) String() string {
@@ -12603,13 +15153,24 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult) S
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates struct {
-	CompliancePackTemplateId   *string                                                                                                   `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	CompliancePackTemplateName *string                                                                                                   `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
-	ConfigRules                []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	Description                *string                                                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels                     *string                                                                                                   `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	LastUpdate                 *int32                                                                                                    `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
-	RiskLevel                  *int32                                                                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the compliance package template.
+	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
+	// The name of the compliance package template.
+	CompliancePackTemplateName *string `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
+	// The information about managed rules in the compliance package.
+	ConfigRules []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tag of the compliance package.
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The time when the compliance package was last updated.
+	LastUpdate *int32 `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
+	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplates) String() string {
@@ -12656,14 +15217,31 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules struct {
-	ConfigRuleParameters  []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	ControlDescription    *string                                                                                                                       `json:"ControlDescription,omitempty" xml:"ControlDescription,omitempty"`
-	ControlId             *string                                                                                                                       `json:"ControlId,omitempty" xml:"ControlId,omitempty"`
-	DefaultEnable         *bool                                                                                                                         `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	Description           *string                                                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                                                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	ManagedRuleName       *string                                                                                                                       `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	RiskLevel             *int32                                                                                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The input parameters of the managed rule.
+	ConfigRuleParameters []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the regulation. This parameter is available only for regulation compliance packages.
+	ControlDescription *string `json:"ControlDescription,omitempty" xml:"ControlDescription,omitempty"`
+	// The ID of the regulation.
+	//
+	// >  This parameter is available only for regulation compliance packages.
+	ControlId *string `json:"ControlId,omitempty" xml:"ControlId,omitempty"`
+	// Indicates whether the rule was enabled together with the compliance package. Default value: false. The value true indicates that the rule was enabled together with the compliance package. Valid values:
+	//
+	// *   true
+	// *   false
+	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule.
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The name of the managed rule.
+	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
+	// The risk level of the resources that are not compliant with the managed rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules) String() string {
@@ -12715,9 +15293,15 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	Required       *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the input parameter is required. Valid values:
+	//
+	// *   true: The input parameter is required.
+	// *   false: The input parameter is optional.
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters) String() string {
@@ -12773,9 +15357,19 @@ func (s *ListCompliancePackTemplatesResponse) SetBody(v *ListCompliancePackTempl
 }
 
 type ListCompliancePacksRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Pages start from page 1. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the compliance package to be queried. Valid values:
+	//
+	// *   ACTIVE: The compliance package is active.
+	// *   CREATING: The compliance package is being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCompliancePacksRequest) String() string {
@@ -12802,8 +15396,10 @@ func (s *ListCompliancePacksRequest) SetStatus(v string) *ListCompliancePacksReq
 }
 
 type ListCompliancePacksResponseBody struct {
+	// The compliance packages returned.
 	CompliancePacksResult *ListCompliancePacksResponseBodyCompliancePacksResult `json:"CompliancePacksResult,omitempty" xml:"CompliancePacksResult,omitempty" type:"Struct"`
-	RequestId             *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListCompliancePacksResponseBody) String() string {
@@ -12825,10 +15421,14 @@ func (s *ListCompliancePacksResponseBody) SetRequestId(v string) *ListCompliance
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResult struct {
+	// The details of the compliance package.
 	CompliancePacks []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
-	PageNumber      *int32                                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount      *int64                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of compliance packages returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCompliancePacksResponseBodyCompliancePacksResult) String() string {
@@ -12860,14 +15460,29 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResult) SetTotalCount(v i
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct {
-	AccountId                *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CompliancePackId         *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName       *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the compliance package belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the compliance package.
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The ID of the compliance package template based on which the compliance package was created.
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	CreateTimestamp          *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RiskLevel                *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timestamp when the compliance package was created. Unit: milliseconds.
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The description of the compliance package.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level.
+	// *   2: medium risk level.
+	// *   3: low risk level.
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The status of the compliance package. Valid values:
+	//
+	// *   ACTIVE: The compliance package is active.
+	// *   CREATING: The compliance package is being created.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) String() string {
@@ -12948,6 +15563,7 @@ func (s *ListCompliancePacksResponse) SetBody(v *ListCompliancePacksResponseBody
 }
 
 type ListConfigDeliveryChannelsRequest struct {
+	// The ID of the delivery channel. Separate multiple IDs with commas (,).
 	DeliveryChannelIds *string `json:"DeliveryChannelIds,omitempty" xml:"DeliveryChannelIds,omitempty"`
 }
 
@@ -12965,8 +15581,10 @@ func (s *ListConfigDeliveryChannelsRequest) SetDeliveryChannelIds(v string) *Lis
 }
 
 type ListConfigDeliveryChannelsResponseBody struct {
+	// The information about the delivery channels.
 	DeliveryChannels []*ListConfigDeliveryChannelsResponseBodyDeliveryChannels `json:"DeliveryChannels,omitempty" xml:"DeliveryChannels,omitempty" type:"Repeated"`
-	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigDeliveryChannelsResponseBody) String() string {
@@ -12988,20 +15606,68 @@ func (s *ListConfigDeliveryChannelsResponseBody) SetRequestId(v string) *ListCon
 }
 
 type ListConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
-	AccountId                           *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliveryChannelType                 *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: The specified destination receives resource change logs.
+	// *   false: The specified destination does not receive resource change logs.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: The specified destination receives scheduled resource snapshots.
+	// *   false: The specified destination does not receive scheduled resource snapshots.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role that is assigned to the delivery channel.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that is attached to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If the value of the DeliveryChannelType parameter is MNS, take note of the following settings of the lowest risk level and resource types of the events to which you subscribed:
+	//
+	//     *   The setting of the lowest risk level of the events to which you subscribed is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field indicates the lowest risk level of the events to which you subscribed. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you subscribed is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the events to which you subscribed. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If the value of the DeliveryChannelType parameter is SLS, the setting of the resource types of the snapshots that you delivered is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field indicates the resource types of the snapshots that you delivered. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	//
+	// *   If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+	// *   If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+	// *   If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The type of the delivery channel. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS)
+	// *   MNS: Message Service (MNS)
+	// *   SLS: Log Service
+	DeliveryChannelType *string `json:"DeliveryChannelType,omitempty" xml:"DeliveryChannelType,omitempty"`
+	// The time when Cloud Config delivers scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: The specified destination receives resource non-compliance events.
+	// *   false: The specified destination does not receive resource non-compliance events.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which the delivery data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// The status of the delivery channel. Valid values:
+	//
+	// *   0: The delivery channel is disabled.
+	// *   1: The delivery channel is enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListConfigDeliveryChannelsResponseBodyDeliveryChannels) String() string {
@@ -13112,14 +15778,32 @@ func (s *ListConfigDeliveryChannelsResponse) SetBody(v *ListConfigDeliveryChanne
 }
 
 type ListConfigRuleEvaluationResultsRequest struct {
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ComplianceType   *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Regions          *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The compliance evaluation result of resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the next request. If the response to the current request is truncated, this token is used to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the resources that you want to evaluate reside. Separate multiple region IDs with commas (,).
+	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The ID of the resource group to which the resources that you want to evaluate belong. Separate multiple resource group IDs with commas (,).
 	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
-	ResourceTypes    *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The type of the resources that you want to evaluate. Separate multiple resource types with commas (,).
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsRequest) String() string {
@@ -13171,8 +15855,10 @@ func (s *ListConfigRuleEvaluationResultsRequest) SetResourceTypes(v string) *Lis
 }
 
 type ListConfigRuleEvaluationResultsResponseBody struct {
+	// The compliance evaluation result returned.
 	EvaluationResults *ListConfigRuleEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
-	RequestId         *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponseBody) String() string {
@@ -13194,9 +15880,12 @@ func (s *ListConfigRuleEvaluationResultsResponseBody) SetRequestId(v string) *Li
 }
 
 type ListConfigRuleEvaluationResultsResponseBodyEvaluationResults struct {
+	// The details of the compliance evaluation result.
 	EvaluationResultList []*ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
-	MaxResults           *int32                                                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries returned per page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponseBodyEvaluationResults) String() string {
@@ -13223,14 +15912,44 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResults) SetNextTo
 }
 
 type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
-	Annotation                 *string                                                                                                     `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	ComplianceType             *string                                                                                                     `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleInvokedTimestamp *int64                                                                                                      `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The annotation to the resource that is evaluated as non-compliant. The following parameters may be returned:
+	//
+	// *   `configuration`: the current resource configuration that is evaluated as non-compliant.
+	// *   `desiredValue`: the expected resource configuration that is evaluated as compliant.
+	// *   `operator`: the operator that compares the current configuration with the expected configuration of the resource.
+	// *   `property`: the JSON path of the current configuration in the resource property struct.
+	// *   `reason`: the reason why the resource is evaluated as non-compliant.
+	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// *   NOT_APPLICABLE: The rule does not apply to the resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
+	ConfigRuleInvokedTimestamp *int64 `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The identifier of the compliance evaluation result.
 	EvaluationResultIdentifier *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
-	InvokingEventMessageType   *string                                                                                                     `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
-	RemediationEnabled         *bool                                                                                                       `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
-	ResultRecordedTimestamp    *int64                                                                                                      `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
-	RiskLevel                  *int32                                                                                                      `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// Indicates whether the remediation template is enabled. Valid values:
+	//
+	// - true: The remediation template is enabled.
+	// - false: The remediation template is disabled.
+	RemediationEnabled *bool `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
+	// The timestamp when the compliance evaluation result was recorded. Unit: milliseconds.
+	ResultRecordedTimestamp *int64 `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) String() string {
@@ -13282,8 +16001,10 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 }
 
 type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
+	// The information about the evaluated resource in the compliance evaluation result.
 	EvaluationResultQualifier *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
-	OrderingTimestamp         *int64                                                                                                                               `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
+	// The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+	OrderingTimestamp *int64 `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
@@ -13305,16 +16026,28 @@ func (s *ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationR
 }
 
 type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
+	// The ID of the compliance package to which the rule belongs.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleArn    *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName   *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	IgnoreDate       *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType     *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The date on which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The ID of the region where the resource resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources belong.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
@@ -13404,13 +16137,326 @@ func (s *ListConfigRuleEvaluationResultsResponse) SetBody(v *ListConfigRuleEvalu
 	return s
 }
 
-type ListDiscoveredResourcesRequest struct {
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+type ListConfigRulesRequest struct {
+	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	ConfigRuleName  *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	RiskLevel       *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s ListConfigRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesRequest) SetComplianceType(v string) *ListConfigRulesRequest {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetConfigRuleName(v string) *ListConfigRulesRequest {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetConfigRuleState(v string) *ListConfigRulesRequest {
+	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetKeyword(v string) *ListConfigRulesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetPageNumber(v int32) *ListConfigRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetPageSize(v int32) *ListConfigRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetResourceTypes(v string) *ListConfigRulesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
+func (s *ListConfigRulesRequest) SetRiskLevel(v int32) *ListConfigRulesRequest {
+	s.RiskLevel = &v
+	return s
+}
+
+type ListConfigRulesResponseBody struct {
+	ConfigRules *ListConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListConfigRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBody) SetConfigRules(v *ListConfigRulesResponseBodyConfigRules) *ListConfigRulesResponseBody {
+	s.ConfigRules = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBody) SetRequestId(v string) *ListConfigRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRules struct {
+	ConfigRuleList []*ListConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
+	PageNumber     *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount     *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetConfigRuleList(v []*ListConfigRulesResponseBodyConfigRulesConfigRuleList) *ListConfigRulesResponseBodyConfigRules {
+	s.ConfigRuleList = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetPageNumber(v int32) *ListConfigRulesResponseBodyConfigRules {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetPageSize(v int32) *ListConfigRulesResponseBodyConfigRules {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRules) SetTotalCount(v int64) *ListConfigRulesResponseBodyConfigRules {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
+	AccountId        *int64                                                          `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AutomationType   *string                                                         `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
+	Compliance       *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
+	ConfigRuleArn    *string                                                         `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	ConfigRuleId     *string                                                         `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ConfigRuleName   *string                                                         `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	ConfigRuleState  *string                                                         `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
+	CreateBy         *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy   `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	Description      *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	RiskLevel        *int32                                                          `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SourceIdentifier *string                                                         `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
+	SourceOwner      *string                                                         `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
+	Tags             []*ListConfigRulesResponseBodyConfigRulesConfigRuleListTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetAccountId(v int64) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetAutomationType(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.AutomationType = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetCompliance(v *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Compliance = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleArn(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleArn = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleId(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleName(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleName = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetConfigRuleState(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.ConfigRuleState = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetCreateBy(v *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.CreateBy = v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetDescription(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetRiskLevel(v int32) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetSourceIdentifier(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.SourceIdentifier = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetSourceOwner(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.SourceOwner = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) SetTags(v []*ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) *ListConfigRulesResponseBodyConfigRulesConfigRuleList {
+	s.Tags = v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) SetComplianceType(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) SetCount(v int32) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance {
+	s.Count = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
+	CompliancePackId   *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) SetCompliancePackId(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy {
+	s.CompliancePackId = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) SetCompliancePackName(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy {
+	s.CompliancePackName = &v
+	return s
+}
+
+type ListConfigRulesResponseBodyConfigRulesConfigRuleListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetKey(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags) SetValue(v string) *ListConfigRulesResponseBodyConfigRulesConfigRuleListTags {
+	s.Value = &v
+	return s
+}
+
+type ListConfigRulesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConfigRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListConfigRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigRulesResponse) SetHeaders(v map[string]*string) *ListConfigRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConfigRulesResponse) SetStatusCode(v int32) *ListConfigRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConfigRulesResponse) SetBody(v *ListConfigRulesResponseBody) *ListConfigRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDiscoveredResourcesRequest struct {
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to initiate the subsequent request. If the response to the current request is truncated, this token is used to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
+	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// The status of the resource. Valid values:
+	//
+	// *   0: The resource is deleted.
+	// *   1 (default): The resource is retained.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource. Separate multiple resource types with commas (,).
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
 func (s ListDiscoveredResourcesRequest) String() string {
@@ -13452,8 +16498,10 @@ func (s *ListDiscoveredResourcesRequest) SetResourceTypes(v string) *ListDiscove
 }
 
 type ListDiscoveredResourcesResponseBody struct {
+	// The resources.
 	DiscoveredResourceProfiles *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
-	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponseBody) String() string {
@@ -13475,10 +16523,14 @@ func (s *ListDiscoveredResourcesResponseBody) SetRequestId(v string) *ListDiscov
 }
 
 type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	// The information about the resources.
 	DiscoveredResourceProfileList []*ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
-	MaxResults                    *int32                                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                     *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount                    *int32                                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The maximum number of entries returned on each page.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resources belong.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of resources.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
@@ -13510,17 +16562,34 @@ func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetTotal
 }
 
 type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
-	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
-	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Version              *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the zone in which the resource resides.
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The ID of the region where the resource resides.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The timestamp when the resource was created. Unit: milliseconds.
+	ResourceCreationTime *int64 `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	// The status of the resource. Valid values:
+	//
+	// *   0: The resource is deleted.
+	// *   1: The resource is retained.
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The status of the resource. The value of this parameter varies based on the resource type and may be left empty. Example:
+	//
+	// *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The version of the resource change.
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
@@ -13616,10 +16685,23 @@ func (s *ListDiscoveredResourcesResponse) SetBody(v *ListDiscoveredResourcesResp
 }
 
 type ListManagedRulesRequest struct {
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskLevel  *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The keyword that you want to use to filter managed rules.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// The risk level that you want to use to filter managed rules. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListManagedRulesRequest) String() string {
@@ -13645,14 +16727,21 @@ func (s *ListManagedRulesRequest) SetPageSize(v int32) *ListManagedRulesRequest 
 	return s
 }
 
+func (s *ListManagedRulesRequest) SetResourceTypes(v string) *ListManagedRulesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
 func (s *ListManagedRulesRequest) SetRiskLevel(v int32) *ListManagedRulesRequest {
 	s.RiskLevel = &v
 	return s
 }
 
 type ListManagedRulesResponseBody struct {
+	// The managed rules.
 	ManagedRules *ListManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Struct"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListManagedRulesResponseBody) String() string {
@@ -13674,10 +16763,14 @@ func (s *ListManagedRulesResponseBody) SetRequestId(v string) *ListManagedRulesR
 }
 
 type ListManagedRulesResponseBodyManagedRules struct {
+	// The details of the managed rules.
 	ManagedRuleList []*ListManagedRulesResponseBodyManagedRulesManagedRuleList `json:"ManagedRuleList,omitempty" xml:"ManagedRuleList,omitempty" type:"Repeated"`
-	PageNumber      *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount      *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page. Minimum value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Valid values: 1 to 500.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of managed rules returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListManagedRulesResponseBodyManagedRules) String() string {
@@ -13709,12 +16802,23 @@ func (s *ListManagedRulesResponseBodyManagedRules) SetTotalCount(v int64) *ListM
 }
 
 type ListManagedRulesResponseBodyManagedRulesManagedRuleList struct {
-	ConfigRuleName *string   `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	HelpUrls       *string   `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	Identifier     *string   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Labels         []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	RiskLevel      *int32    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The name of the managed rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The description of the managed rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	// The unique identifier of the managed rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The tags of the managed rule.
+	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The risk level of the resources that do not comply with the managed rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Scope     *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
 }
 
 func (s ListManagedRulesResponseBodyManagedRulesManagedRuleList) String() string {
@@ -13755,6 +16859,28 @@ func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetRiskLevel(v
 	return s
 }
 
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetScope(v *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope) *ListManagedRulesResponseBodyManagedRulesManagedRuleList {
+	s.Scope = v
+	return s
+}
+
+type ListManagedRulesResponseBodyManagedRulesManagedRuleListScope struct {
+	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListManagedRulesResponseBodyManagedRulesManagedRuleListScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListManagedRulesResponseBodyManagedRulesManagedRuleListScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope) SetComplianceResourceTypes(v []*string) *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope {
+	s.ComplianceResourceTypes = v
+	return s
+}
+
 type ListManagedRulesResponse struct {
 	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -13785,8 +16911,15 @@ func (s *ListManagedRulesResponse) SetBody(v *ListManagedRulesResponseBody) *Lis
 }
 
 type ListPreManagedRulesRequest struct {
-	PageNumber    *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 10.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -13814,8 +16947,15 @@ func (s *ListPreManagedRulesRequest) SetResourceTypes(v []*string) *ListPreManag
 }
 
 type ListPreManagedRulesShrinkRequest struct {
-	PageNumber          *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// Default value: 10.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource.
 	ResourceTypesShrink *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 
@@ -13843,10 +16983,14 @@ func (s *ListPreManagedRulesShrinkRequest) SetResourceTypesShrink(v string) *Lis
 }
 
 type ListPreManagedRulesResponseBody struct {
+	// The evaluation rules.
 	ManagedRules []*ListPreManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
-	PageNumber   *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPreManagedRulesResponseBody) String() string {
@@ -13878,13 +17022,20 @@ func (s *ListPreManagedRulesResponseBody) SetRequestId(v string) *ListPreManaged
 }
 
 type ListPreManagedRulesResponseBodyManagedRules struct {
+	// The required input parameters of the evaluation rule.
 	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	ConfigRuleName                  *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	Description                     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	HelpUrls                        *string                `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	Identifier                      *string                `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	OptionalInputParameterDetails   map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	ResourceType                    *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The name of the evaluation rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The description of the evaluation rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
+	// The identifier of the evaluation rule.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The details of the optional input parameters of the evaluation rule.
+	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListPreManagedRulesResponseBodyManagedRules) String() string {
@@ -13960,8 +17111,12 @@ func (s *ListPreManagedRulesResponse) SetBody(v *ListPreManagedRulesResponseBody
 }
 
 type ListRemediationTemplatesRequest struct {
+	// The identifier of the managed rule.
+	//
+	// You can call the [ListCompliancePackTemplates](~~261176~~) operation to obtain the managed rule identifier.
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
 
 func (s ListRemediationTemplatesRequest) String() string {
@@ -13983,8 +17138,10 @@ func (s *ListRemediationTemplatesRequest) SetRemediationType(v string) *ListReme
 }
 
 type ListRemediationTemplatesResponseBody struct {
+	// The details of the remediation template.
 	RemediationTemplates []*ListRemediationTemplatesResponseBodyRemediationTemplates `json:"RemediationTemplates,omitempty" xml:"RemediationTemplates,omitempty" type:"Repeated"`
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRemediationTemplatesResponseBody) String() string {
@@ -14006,10 +17163,14 @@ func (s *ListRemediationTemplatesResponseBody) SetRequestId(v string) *ListRemed
 }
 
 type ListRemediationTemplatesResponseBodyRemediationTemplates struct {
-	RemediationType    *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The type of the remediation template. Valid value: OOS, which stands for Operation Orchestration Service.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The configuration of the remediation template.
 	TemplateDefinition *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
+	// The identifier of the remediation template.
 	TemplateIdentifier *string `json:"TemplateIdentifier,omitempty" xml:"TemplateIdentifier,omitempty"`
-	TemplateName       *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The name of the remediation template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListRemediationTemplatesResponseBodyRemediationTemplates) String() string {
@@ -14070,6 +17231,9 @@ func (s *ListRemediationTemplatesResponse) SetBody(v *ListRemediationTemplatesRe
 }
 
 type ListRemediationsRequest struct {
+	// The ID of the rule. If you want to specify multiple IDs, separate them with commas (,).
+	//
+	// You can call the [ListConfigRules](~~169607~~) operation to obtain the rule ID.
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
 }
 
@@ -14087,8 +17251,10 @@ func (s *ListRemediationsRequest) SetConfigRuleIds(v string) *ListRemediationsRe
 }
 
 type ListRemediationsResponseBody struct {
+	// The remediation settings returned.
 	Remediations []*ListRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListRemediationsResponseBody) String() string {
@@ -14110,17 +17276,45 @@ func (s *ListRemediationsResponseBody) SetRequestId(v string) *ListRemediationsR
 }
 
 type ListRemediationsResponseBodyRemediations struct {
-	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
-	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	// The ID of the Alibaba Cloud account involved.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The execution mode of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The ID of the last successful execution of the remediation template.
+	LastSuccessfulInvocationId *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	// The timestamp of the last successful execution of the remediation template Unit: milliseconds.
+	LastSuccessfulInvocationTime *int64 `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	// The mode of the last successful execution of the remediation template. Valid values:
+	//
+	// *   NON_EXECUTION: no execution.
+	// *   AUTO_EXECUTION: automatic execution.
+	// *   MANUAL_EXECUTION: manual execution.
+	// *   NOT_CONFIG: not specified.
 	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
-	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RemediationOriginParams      *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
-	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
-	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The ID of the remediation setting.
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
+	RemediationOriginParams *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
+	// The source of remediation. Valid values:
+	//
+	// *   ALIYUN: official template.
+	// *   CUSTOM: custom template.
+	// *   NONE: none.
+	RemediationSourceType *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	// The identifier of the remediation template.
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	// The type of remediation to perform. Valid values:
+	//
+	// *   OOS: stands for Operation Orchestration Service and indicates official remediation.
+	// *   FC: stands for Function Compute and indicates custom remediation.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
 }
 
 func (s ListRemediationsResponseBodyRemediations) String() string {
@@ -14216,12 +17410,30 @@ func (s *ListRemediationsResponse) SetBody(v *ListRemediationsResponseBody) *Lis
 }
 
 type ListResourceEvaluationResultsRequest struct {
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as incompliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where one or more resources you want to query reside. For example, the value `global` indicates global regions and the value `cn-hangzhou` indicates the China (Hangzhou) region.
+	//
+	// For more information about how to obtain the ID of the region where a resource resides, see [ListDiscoveredResources](~~169620~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to query the type of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsRequest) String() string {
@@ -14263,8 +17475,10 @@ func (s *ListResourceEvaluationResultsRequest) SetResourceType(v string) *ListRe
 }
 
 type ListResourceEvaluationResultsResponseBody struct {
+	// The information about the compliance evaluation results returned.
 	EvaluationResults *ListResourceEvaluationResultsResponseBodyEvaluationResults `json:"EvaluationResults,omitempty" xml:"EvaluationResults,omitempty" type:"Struct"`
-	RequestId         *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponseBody) String() string {
@@ -14286,9 +17500,12 @@ func (s *ListResourceEvaluationResultsResponseBody) SetRequestId(v string) *List
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResults struct {
+	// The details of the compliance evaluation result.
 	EvaluationResultList []*ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList `json:"EvaluationResultList,omitempty" xml:"EvaluationResultList,omitempty" type:"Repeated"`
-	MaxResults           *int32                                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string                                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of entries to return for a single request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that was used to initiate the next request.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponseBodyEvaluationResults) String() string {
@@ -14315,14 +17532,44 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResults) SetNextToke
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList struct {
-	Annotation                 *string                                                                                                   `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	ComplianceType             *string                                                                                                   `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleInvokedTimestamp *int64                                                                                                    `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The annotation to the resource that is evaluated as incompliant. The following section describes the parameters that can be returned:
+	//
+	// *   `configuration`: the current resource configuration that is evaluated as incompliant by using the rule.
+	// *   `desiredValue`: the expected resource configuration that is evaluated as compliant by using the rule.
+	// *   `operator`: the operator that is used to compare the current configuration with the expected configuration of the resource.
+	// *   `property`: the JSON path of the current configuration in the resource property struct.
+	// *   `reason`: the reason why the resource is evaluated as incompliant.
+	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The compliance evaluation result of the resources. Valid values:
+	//
+	// *   COMPLIANT: The resources are evaluated as compliant.
+	// *   NON_COMPLIANT: The resources are evaluated as incompliant.
+	// *   NOT_APPLICABLE: The rule does not apply to your resources.
+	// *   INSUFFICIENT_DATA: No resource data is available.
+	// *   IGNORED: The resource is ignored during compliance evaluation.
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	// The timestamp when the rule was triggered for the compliance evaluation. Unit: milliseconds.
+	ConfigRuleInvokedTimestamp *int64 `json:"ConfigRuleInvokedTimestamp,omitempty" xml:"ConfigRuleInvokedTimestamp,omitempty"`
+	// The identifying information about the compliance evaluation result.
 	EvaluationResultIdentifier *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier `json:"EvaluationResultIdentifier,omitempty" xml:"EvaluationResultIdentifier,omitempty" type:"Struct"`
-	InvokingEventMessageType   *string                                                                                                   `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
-	RemediationEnabled         *bool                                                                                                     `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
-	ResultRecordedTimestamp    *int64                                                                                                    `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
-	RiskLevel                  *int32                                                                                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The trigger type of the managed rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// *   ScheduledNotification: The managed rule is periodically triggered.
+	InvokingEventMessageType *string `json:"InvokingEventMessageType,omitempty" xml:"InvokingEventMessageType,omitempty"`
+	// Indicates whether the remediation template is enabled. Valid values:
+	//
+	// - true: The remediation template is enabled.
+	// - false: The remediation template is disabled.
+	RemediationEnabled *bool `json:"RemediationEnabled,omitempty" xml:"RemediationEnabled,omitempty"`
+	// The timestamp when the compliance evaluation result was recorded. Unit: milliseconds.
+	ResultRecordedTimestamp *int64 `json:"ResultRecordedTimestamp,omitempty" xml:"ResultRecordedTimestamp,omitempty"`
+	// The risk level of the resources that do not comply with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList) String() string {
@@ -14374,8 +17621,10 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationRes
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier struct {
+	// The information about the evaluated resource returned in the compliance evaluation result.
 	EvaluationResultQualifier *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier `json:"EvaluationResultQualifier,omitempty" xml:"EvaluationResultQualifier,omitempty" type:"Struct"`
-	OrderingTimestamp         *int64                                                                                                                             `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
+	// The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+	OrderingTimestamp *int64 `json:"OrderingTimestamp,omitempty" xml:"OrderingTimestamp,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier) String() string {
@@ -14397,14 +17646,24 @@ func (s *ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationRes
 }
 
 type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier struct {
-	ConfigRuleArn  *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the rule.
+	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
+	// The ID of the rule.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the monitoring rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	IgnoreDate     *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName   *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The date from which the system automatically re-evaluates the ignored incompliant resources.
+	//
+	// >  If the value of this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must re-evaluate the ignored incompliant resources.
+	IgnoreDate *string `json:"IgnoreDate,omitempty" xml:"IgnoreDate,omitempty"`
+	// The ID of the region where your resources reside.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource.
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier) String() string {
@@ -14485,11 +17744,26 @@ func (s *ListResourceEvaluationResultsResponse) SetBody(v *ListResourceEvaluatio
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The token that determines the start point of the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the tag.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	//
+	// You can specify up to 50 resources.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   `ACS::Config::Rule`
+	// *   `ACS::Config::AggregateConfigRule`
+	// *   `ACS::Config::Aggregator`
+	// *   `ACS::Config::CompliancePack`
+	// *   `ACS::Config::AggregateCompliancePack`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	//
+	// You can specify up to 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -14526,7 +17800,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag keys of the resource.
+	//
+	// You can specify up to 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values of the resource.
+	//
+	// You can specify up to 20 tag values.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14549,11 +17829,26 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesShrinkRequest struct {
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagShrink    *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The token that determines the start point of the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the tag.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	//
+	// You can specify up to 50 resources.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   `ACS::Config::Rule`
+	// *   `ACS::Config::AggregateConfigRule`
+	// *   `ACS::Config::Aggregator`
+	// *   `ACS::Config::CompliancePack`
+	// *   `ACS::Config::AggregateCompliancePack`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	//
+	// You can specify up to 20 tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -14590,8 +17885,13 @@ func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResources
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token that determines the start point of the next query.
+	//
+	// >  If this parameter is left empty, no subsequent query exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags of the resource.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -14636,10 +17936,14 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -14700,9 +18004,14 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type RevertAggregateEvaluationResultsRequest struct {
-	AggregatorId *string                                             `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId *string                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	Resources    []*RevertAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule in the account group.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The resources that are to be reevaluated.
+	Resources []*RevertAggregateEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s RevertAggregateEvaluationResultsRequest) String() string {
@@ -14729,10 +18038,22 @@ func (s *RevertAggregateEvaluationResultsRequest) SetResources(v []*RevertAggreg
 }
 
 type RevertAggregateEvaluationResultsRequestResources struct {
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of a region in which a resource resides, see [ListAggregateDiscoveredResources](~~265983~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// >  The value must be the ID of the current management account or the member account in the account group of the management account.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](~~265983~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s RevertAggregateEvaluationResultsRequestResources) String() string {
@@ -14764,8 +18085,13 @@ func (s *RevertAggregateEvaluationResultsRequestResources) SetResourceType(v str
 }
 
 type RevertAggregateEvaluationResultsShrinkRequest struct {
-	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule in the account group.
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The resources that are to be reevaluated.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -14793,6 +18119,7 @@ func (s *RevertAggregateEvaluationResultsShrinkRequest) SetResourcesShrink(v str
 }
 
 type RevertAggregateEvaluationResultsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14839,8 +18166,12 @@ func (s *RevertAggregateEvaluationResultsResponse) SetBody(v *RevertAggregateEva
 }
 
 type RevertEvaluationResultsRequest struct {
-	ConfigRuleId *string                                    `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	Resources    []*RevertEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The resources that are to be reevaluated.
+	Resources []*RevertEvaluationResultsRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
 func (s RevertEvaluationResultsRequest) String() string {
@@ -14862,10 +18193,20 @@ func (s *RevertEvaluationResultsRequest) SetResources(v []*RevertEvaluationResul
 }
 
 type RevertEvaluationResultsRequestResources struct {
-	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceAccountId *int64  `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the region in which the resource resides.
+	//
+	// For more information about how to obtain the ID of the region in which a resource resides, see [ListDiscoveredResources](~~169620~~).
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
+	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
+	// The ID of the resource.
+	//
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
+	//
+	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s RevertEvaluationResultsRequestResources) String() string {
@@ -14897,7 +18238,11 @@ func (s *RevertEvaluationResultsRequestResources) SetResourceType(v string) *Rev
 }
 
 type RevertEvaluationResultsShrinkRequest struct {
-	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The resources that are to be reevaluated.
 	ResourcesShrink *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -14920,6 +18265,7 @@ func (s *RevertEvaluationResultsShrinkRequest) SetResourcesShrink(v string) *Rev
 }
 
 type RevertEvaluationResultsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14966,10 +18312,25 @@ func (s *RevertEvaluationResultsResponse) SetBody(v *RevertEvaluationResultsResp
 }
 
 type StartAggregateConfigRuleEvaluationRequest struct {
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
+	//
+	// >  You must set either the `CompliancePackId` or `ConfigRuleId` parameter.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ConfigRuleId     *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	RevertEvaluation *bool   `json:"RevertEvaluation,omitempty" xml:"RevertEvaluation,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// Specifies whether to re-evaluate the ignored non-compliant resource. Valid values:
+	//
+	// *   true: re-evaluates the ignored non-compliant resource based on the rule.
+	// *   false: continues to ignore the resource in the compliance evaluation based on the rule.
+	RevertEvaluation *bool `json:"RevertEvaluation,omitempty" xml:"RevertEvaluation,omitempty"`
 }
 
 func (s StartAggregateConfigRuleEvaluationRequest) String() string {
@@ -15001,8 +18362,13 @@ func (s *StartAggregateConfigRuleEvaluationRequest) SetRevertEvaluation(v bool) 
 }
 
 type StartAggregateConfigRuleEvaluationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the operation is successful. Valid values:
+	//
+	// *   true: The operation is successful.
+	// *   false: The operation fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StartAggregateConfigRuleEvaluationResponseBody) String() string {
@@ -15053,7 +18419,13 @@ func (s *StartAggregateConfigRuleEvaluationResponse) SetBody(v *StartAggregateCo
 }
 
 type StartAggregateRemediationRequest struct {
+	// The ID of the account group.
+	//
+	// You can call the [ListAggregators](~~255797~~) operation to obtain the account group ID.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The ID of the rule.
+	//
+	// You can call the [ListAggregateConfigRules](~~264148~~) operation to obtain the rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
@@ -15076,7 +18448,12 @@ func (s *StartAggregateRemediationRequest) SetConfigRuleId(v string) *StartAggre
 }
 
 type StartAggregateRemediationResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15128,6 +18505,9 @@ func (s *StartAggregateRemediationResponse) SetBody(v *StartAggregateRemediation
 }
 
 type StartRemediationRequest struct {
+	// The ID of the rule.
+	//
+	// You can call the [ListConfigRules](~~169607~~) operation to obtain the rule ID.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
 }
 
@@ -15145,7 +18525,12 @@ func (s *StartRemediationRequest) SetConfigRuleId(v string) *StartRemediationReq
 }
 
 type StartRemediationResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15197,8 +18582,13 @@ func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *Sta
 }
 
 type StopConfigurationRecorderResponseBody struct {
-	RequestId                       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StopConfigurationRecorderResult *bool   `json:"StopConfigurationRecorderResult,omitempty" xml:"StopConfigurationRecorderResult,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	StopConfigurationRecorderResult *bool `json:"StopConfigurationRecorderResult,omitempty" xml:"StopConfigurationRecorderResult,omitempty"`
 }
 
 func (s StopConfigurationRecorderResponseBody) String() string {
@@ -15249,10 +18639,21 @@ func (s *StopConfigurationRecorderResponse) SetBody(v *StopConfigurationRecorder
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the tag.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   `ACS::Config::Rule`
+	// *   `ACS::Config::AggregateConfigRule`
+	// *   `ACS::Config::Aggregator`
+	// *   `ACS::Config::CompliancePack`
+	// *   `ACS::Config::AggregateCompliancePack`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	//
+	// You can specify up to 20 tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -15284,7 +18685,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource.
+	//
+	// You can specify up to 20 tag keys.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource.
+	//
+	// You can specify up to 20 tag values.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15307,10 +18714,21 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesShrinkRequest struct {
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagShrink    *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The region ID of the tag.
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   `ACS::Config::Rule`
+	// *   `ACS::Config::AggregateConfigRule`
+	// *   `ACS::Config::Aggregator`
+	// *   `ACS::Config::CompliancePack`
+	// *   `ACS::Config::AggregateCompliancePack`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags of the resource.
+	//
+	// You can specify up to 20 tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s TagResourcesShrinkRequest) String() string {
@@ -15342,6 +18760,7 @@ func (s *TagResourcesShrinkRequest) SetTagShrink(v string) *TagResourcesShrinkRe
 }
 
 type TagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15388,11 +18807,29 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the resource. Valid values:
+	//
+	// *   true: All tags are removed from the resource.
+	// *   false: Specified tags are removed from the resource.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID of the tag.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource.
+	//
+	// You can specify up to 50 resources.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// *   `ACS::Config::Rule`
+	// *   `ACS::Config::AggregateConfigRule`
+	// *   `ACS::Config::Aggregator`
+	// *   `ACS::Config::CompliancePack`
+	// *   `ACS::Config::AggregateCompliancePack`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys of the resource.
+	//
+	// You can specify up to 20 tag keys.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -15429,6 +18866,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15475,18 +18913,46 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAggregateCompliancePackRequest struct {
-	AggregatorId            *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken             *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId        *string                                            `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName      *string                                            `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRules             []*UpdateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	Description             *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope *string                                            `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string                                            `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string                                            `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel               *int32                                             `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope             *string                                            `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	//
+	// For more information about how to obtain the name of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The rules in the compliance package.
+	//
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	ConfigRules []*UpdateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// The description of the compliance package.
+	//
+	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](~~262059~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackRequest) String() string {
@@ -15558,12 +19024,26 @@ func (s *UpdateAggregateCompliancePackRequest) SetTagValueScope(v string) *Updat
 }
 
 type UpdateAggregateCompliancePackRequestConfigRules struct {
-	ConfigRuleId          *string                                                                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                                `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The input parameter settings of the rule.
+	ConfigRuleParameters []*UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule. Cloud Config automatically creates a managed rule based on the specified ID and adds the rule to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackRequestConfigRules) String() string {
@@ -15605,7 +19085,13 @@ func (s *UpdateAggregateCompliancePackRequestConfigRules) SetRiskLevel(v int32) 
 }
 
 type UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -15628,18 +19114,46 @@ func (s *UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Se
 }
 
 type UpdateAggregateCompliancePackShrinkRequest struct {
-	AggregatorId            *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId        *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName      *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRulesShrink       *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	//
+	// For more information about how to obtain the name of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The rules in the compliance package.
+	//
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	// The description of the compliance package.
+	//
+	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](~~262059~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel               *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagKeyScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackShrinkRequest) String() string {
@@ -15711,8 +19225,10 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) 
 }
 
 type UpdateAggregateCompliancePackResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregateCompliancePackResponseBody) String() string {
@@ -15763,19 +19279,78 @@ func (s *UpdateAggregateCompliancePackResponse) SetBody(v *UpdateAggregateCompli
 }
 
 type UpdateAggregateConfigDeliveryChannelRequest struct {
-	AggregatorId                        *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the account group.
+	//
+	// For information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The value of the `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: Cloud Config delivers resource change logs.
+	// *   false: Cloud Config does not deliver resource change logs. This is the default value.
+	//
+	// >  This parameter is available for delivery channels of the OSS, SLS, and MNS types.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: Cloud Config delivers scheduled resource snapshots.
+	// *   false: Cloud Config does not deliver scheduled resource snapshots. This is the default value.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If you set the DeliveryChannelType parameter to MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you want to subscribe:
+	//
+	//     *   The setting of the lowest risk level of the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you want to subscribe is the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots that you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the snapshots that you want to deliver. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](~~429842~~).
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The time when you want Cloud Config to deliver scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	//
+	// >  When you enable the scheduled resource snapshot delivery feature, you can specify a custom delivery time for this parameter. If you do not configure this parameter, Cloud Config automatically delivers scheduled resource snapshots at `04:00Z` and `16:00Z` every day.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: Cloud Config delivers resource non-compliance events.
+	// *   false: Cloud Config does not deliver resource non-compliance events. This is the default value.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types. The upper limit on the storage size of delivery channels of the SLS type is 1 MB. The upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// Specifies whether to enable the delivery channel. Valid values:
+	//
+	// *   0: Cloud Config disables the delivery channel. Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+	// *   1: Cloud Config enables the delivery channel. This is the default value.
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateAggregateConfigDeliveryChannelRequest) String() string {
@@ -15852,8 +19427,10 @@ func (s *UpdateAggregateConfigDeliveryChannelRequest) SetStatus(v int64) *Update
 }
 
 type UpdateAggregateConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregateConfigDeliveryChannelResponseBody) String() string {
@@ -15904,25 +19481,90 @@ func (s *UpdateAggregateConfigDeliveryChannelResponse) SetBody(v *UpdateAggregat
 }
 
 type UpdateAggregateConfigRuleRequest struct {
-	AggregatorId              *string                `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken               *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId              *string                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeAccountIdsScope    *string                `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	ExcludeFolderIdsScope     *string                `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	FolderIdsScope            *string                `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	//
+	// For more information about how to query the name of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  This parameter applies only to a custom rule.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour
+	// *   Three_Hours: 3 hours
+	// *   Six_Hours: 6 hours
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: the logical relationship of AND
+	// *   OR: the logical relationship of OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateConfigRuleRequest) String() string {
@@ -16029,25 +19671,90 @@ func (s *UpdateAggregateConfigRuleRequest) SetTagValueScope(v string) *UpdateAgg
 }
 
 type UpdateAggregateConfigRuleShrinkRequest struct {
-	AggregatorId              *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId              *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeAccountIdsScope    *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	ExcludeFolderIdsScope     *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
-	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	FolderIdsScope            *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
-	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to query the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	//
+	// For more information about how to query the name of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  This parameter applies only to a custom rule.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	//
+	// >
+	// *   This parameter applies only to a rule of a global account group.
+	// *   This parameter applies only to a managed rule.
+	FolderIdsScope *string `json:"FolderIdsScope,omitempty" xml:"FolderIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour
+	// *   Three_Hours: 3 hours
+	// *   Six_Hours: 6 hours
+	// *   Twelve_Hours: 12 hours
+	// *   TwentyFour_Hours: 24 hours
+	//
+	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to a managed rule.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: the logical relationship of AND
+	// *   OR: the logical relationship of OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateAggregateConfigRuleShrinkRequest) String() string {
@@ -16154,8 +19861,10 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagValueScope(v string) *Upd
 }
 
 type UpdateAggregateConfigRuleResponseBody struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregateConfigRuleResponseBody) String() string {
@@ -16206,13 +19915,38 @@ func (s *UpdateAggregateConfigRuleResponse) SetBody(v *UpdateAggregateConfigRule
 }
 
 type UpdateAggregateRemediationRequest struct {
-	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The ID of the account group.
+	//
+	// You can the [ListAggregators](~~255797~~) operation to obtain the ID of the account group.
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The execution mode of the remediation. Valid values:
+	//
+	// *   NON_EXECUTION: The remediation is not executed.
+	// *   AUTO_EXECUTION: The remediation is automatically executed.
+	// *   MANUAL_EXECUTION: The remediation is manually executed.
+	// *   NOT_CONFIG: The execution mode is not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The desired parameter values of the remediation setting.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The ID of the remediation setting.
+	//
+	// You can call the [ListAggregateRemediations](~~270036~~) operation to obtain the ID of the remediation setting.
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The ID of the remediation template.
+	//
+	// You can call the [ListRemediationTemplates](~~270066~~) operation to obtain the ID of the remediation template.
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of the remediation template. Valid values:
+	//
+	// *   OOS: Operation Orchestration Service (OOS)
+	// *   FC: Function Compute. You can use Function Compute to configure custom remediation settings.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The type of the rule for which the remediation template is configured. Valid values:
+	//
+	// *   ALIYUN: managed rule.
+	// *   CUSTOM: custom rule.
+	// *   NONE: The rule is not specified.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s UpdateAggregateRemediationRequest) String() string {
@@ -16259,8 +19993,10 @@ func (s *UpdateAggregateRemediationRequest) SetSourceType(v string) *UpdateAggre
 }
 
 type UpdateAggregateRemediationResponseBody struct {
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregateRemediationResponseBody) String() string {
@@ -16311,11 +20047,24 @@ func (s *UpdateAggregateRemediationResponse) SetBody(v *UpdateAggregateRemediati
 }
 
 type UpdateAggregatorRequest struct {
+	// The information about the member accounts in the account group.
+	//
+	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member account list is not updated. If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
 	AggregatorAccounts []*UpdateAggregatorRequestAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
-	AggregatorId       *string                                      `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName     *string                                      `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	ClientToken        *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description        *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	//
+	// For more information about how to obtain the name of an account group, see [ListAggregators](~~255797~~).
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the account group.
+	//
+	// For more information about how to obtain the description of an account group, see [ListAggregators](~~255797~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s UpdateAggregatorRequest) String() string {
@@ -16352,8 +20101,21 @@ func (s *UpdateAggregatorRequest) SetDescription(v string) *UpdateAggregatorRequ
 }
 
 type UpdateAggregatorRequestAggregatorAccounts struct {
-	AccountId   *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The member account ID, which indicates the Alibaba Cloud account ID of the member account.
+	//
+	// For more information about how to obtain the ID of a member account, see [ListAccounts](~~160016~~).
+	//
+	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The member account name, which indicates the name of the Alibaba Cloud account that corresponds to the member account.
+	//
+	// For more information about how to obtain the name of a member account, see [ListAccounts](~~160016~~).
+	//
+	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The affiliation of the member account. You can set this parameter to only ResourceDirectory.
+	//
+	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 }
 
@@ -16381,11 +20143,24 @@ func (s *UpdateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Up
 }
 
 type UpdateAggregatorShrinkRequest struct {
+	// The information about the member accounts in the account group.
+	//
+	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member account list is not updated. If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
 	AggregatorAccountsShrink *string `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty"`
-	AggregatorId             *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName           *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the account group.
+	//
+	// For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	//
+	// For more information about how to obtain the name of an account group, see [ListAggregators](~~255797~~).
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the account group.
+	//
+	// For more information about how to obtain the description of an account group, see [ListAggregators](~~255797~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s UpdateAggregatorShrinkRequest) String() string {
@@ -16422,8 +20197,10 @@ func (s *UpdateAggregatorShrinkRequest) SetDescription(v string) *UpdateAggregat
 }
 
 type UpdateAggregatorResponseBody struct {
+	// The ID of the account group.
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAggregatorResponseBody) String() string {
@@ -16474,17 +20251,42 @@ func (s *UpdateAggregatorResponse) SetBody(v *UpdateAggregatorResponseBody) *Upd
 }
 
 type UpdateCompliancePackRequest struct {
-	ClientToken             *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId        *string                                   `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName      *string                                   `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRules             []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	Description             *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope *string                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string                                   `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string                                   `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel               *int32                                    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope             *string                                   `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	//
+	// For more information about how to obtain the name of a compliance package, see [ListCompliancePacks](~~263332~~).
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The rules in the compliance package.
+	//
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	ConfigRules []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
+	// The description of the compliance package.
+	//
+	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](~~263332~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagValueScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateCompliancePackRequest) String() string {
@@ -16551,12 +20353,26 @@ func (s *UpdateCompliancePackRequest) SetTagValueScope(v string) *UpdateComplian
 }
 
 type UpdateCompliancePackRequestConfigRules struct {
-	ConfigRuleId          *string                                                       `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName        *string                                                       `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleParameters  []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	Description           *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	ManagedRuleIdentifier *string                                                       `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	RiskLevel             *int32                                                        `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The details of the input parameters of the rule.
+	ConfigRuleParameters []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
+	// The description of the rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the managed rule. Cloud Config automatically create a managed rule of the specified ID and adds the rule to the compliance package.
+	//
+	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter take precedence. For more information about how to obtain the ID of a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s UpdateCompliancePackRequestConfigRules) String() string {
@@ -16598,7 +20414,13 @@ func (s *UpdateCompliancePackRequestConfigRules) SetRiskLevel(v int32) *UpdateCo
 }
 
 type UpdateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The name of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The value of the input parameter.
+	//
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](~~261176~~).
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -16621,17 +20443,42 @@ func (s *UpdateCompliancePackRequestConfigRulesConfigRuleParameters) SetParamete
 }
 
 type UpdateCompliancePackShrinkRequest struct {
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CompliancePackId        *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	CompliancePackName      *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	ConfigRulesShrink       *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the compliance package.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
+	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	// The name of the compliance package.
+	//
+	// For more information about how to obtain the name of a compliance package, see [ListCompliancePacks](~~263332~~).
+	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
+	// The rules in the compliance package.
+	//
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
+	// The description of the compliance package.
+	//
+	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](~~263332~~).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	RegionIdsScope          *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope   *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	RiskLevel               *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyScope             *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope           *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The tag key of the resource that you want to evaluate by using the compliance package.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag value of the resource that you want to evaluate by using the compliance package.
+	//
+	// >  You must configure the TagValueScope parameter together with the TagValueScope parameter.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateCompliancePackShrinkRequest) String() string {
@@ -16698,8 +20545,10 @@ func (s *UpdateCompliancePackShrinkRequest) SetTagValueScope(v string) *UpdateCo
 }
 
 type UpdateCompliancePackResponseBody struct {
+	// The ID of the compliance package.
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateCompliancePackResponseBody) String() string {
@@ -16750,18 +20599,74 @@ func (s *UpdateCompliancePackResponse) SetBody(v *UpdateCompliancePackResponseBo
 }
 
 type UpdateConfigDeliveryChannelRequest struct {
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	DeliverySnapshotTime                *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The value of the `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true: Cloud Config delivers resource change logs.
+	// *   false: Cloud Config does not deliver resource change logs. This is the default value.
+	//
+	// >  This parameter is available for delivery channels of the OSS, SLS, and MNS types.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots to OSS, MNS, or Log Service at `04:00Z` and `16:00Z` every day. The time is displayed in UTC. Valid values:
+	//
+	// *   true: Cloud Config delivers scheduled resource snapshots.
+	// *   false: Cloud Config does not deliver scheduled resource snapshots. This is the default value.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+	//
+	// *   If you set the DeliveryChannelType parameter to MNS, take note of the following settings of the lowest risk level and the resource types of the events to which you want to subscribe:
+	//
+	//     *   The setting of the lowest risk level of the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	//     *   The setting of the resource types of the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+	//
+	//         Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	//
+	// *   If you set the DeliveryChannelType parameter to SLS, the setting of the resource types of the snapshots that you want to deliver is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types of the snapshots that you want to deliver. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`.
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	//
+	// For information about how to obtain the ID of a delivery channel, see [DescribeDeliveryChannels](~~429841~~).
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The time when you want Cloud Config to deliver scheduled resource snapshots every day.
+	//
+	// Format: `HH:mmZ`. The time is displayed in UTC.
+	//
+	// >  When you enable the scheduled resource snapshot delivery feature, you can specify a custom delivery time for this parameter. If you do not configure this parameter, Cloud Config automatically delivers scheduled resource snapshots at `04:00Z` and `16:00Z` every day.
+	DeliverySnapshotTime *string `json:"DeliverySnapshotTime,omitempty" xml:"DeliverySnapshotTime,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered non-compliant. Valid values:
+	//
+	// *   true: Cloud Config delivers resource non-compliance events.
+	// *   false: Cloud Config does not deliver resource non-compliance events. This is the default value.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS and MNS types. The upper limit on the storage size of delivery channels of the SLS type is 1 MB. The upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// Specifies whether to enable the delivery channel. Valid values:
+	//
+	// *   0: Cloud Config disables the delivery channel. Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+	// *   1: Cloud Config enables the delivery channel. This is the default value.
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateConfigDeliveryChannelRequest) String() string {
@@ -16833,8 +20738,10 @@ func (s *UpdateConfigDeliveryChannelRequest) SetStatus(v int64) *UpdateConfigDel
 }
 
 type UpdateConfigDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateConfigDeliveryChannelResponseBody) String() string {
@@ -16885,21 +20792,70 @@ func (s *UpdateConfigDeliveryChannelResponse) SetBody(v *UpdateConfigDeliveryCha
 }
 
 type UpdateConfigRuleRequest struct {
-	ClientToken               *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId              *string                `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName            *string                `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string                `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope   *string                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	InputParameters           map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	MaximumExecutionFrequency *string                `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string                `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string                `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScope        []*string              `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	RiskLevel                 *int32                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyLogicScope          *string                `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string                `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	//
+	// For more information about how to query the name of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  This parameter applies only to custom rules.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule. You can enter up to 500 characters.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours (default): 24 hours.
+	//
+	// >  This parameter is required if you set the `ConfigRuleTriggerTypes` parameter to `ScheduledNotification`.
+	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: logical AND
+	// *   OR: logical OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateConfigRuleRequest) String() string {
@@ -16986,21 +20942,70 @@ func (s *UpdateConfigRuleRequest) SetTagValueScope(v string) *UpdateConfigRuleRe
 }
 
 type UpdateConfigRuleShrinkRequest struct {
-	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigRuleId              *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ConfigRuleName            *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	ConfigRuleTriggerTypes    *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExcludeResourceIdsScope   *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	InputParametersShrink     *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the rule.
+	//
+	// For more information about how to query the ID of a rule, see [ListConfigRules](~~169607~~).
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The name of the rule.
+	//
+	// For more information about how to query the name of a rule, see [ListAggregateConfigRules](~~264148~~).
+	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
+	// The trigger type of the rule. Valid values:
+	//
+	// *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+	// *   ScheduledNotification: The rule is periodically triggered.
+	//
+	// >  This parameter applies only to custom rules.
+	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
+	// The description of the rule. You can enter up to 500 characters.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// The input parameters of the rule.
+	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// The intervals at which the rule is triggered. Valid values:
+	//
+	// *   One_Hour: 1 hour.
+	// *   Three_Hours: 3 hours.
+	// *   Six_Hours: 6 hours.
+	// *   Twelve_Hours: 12 hours.
+	// *   TwentyFour_Hours (default): 24 hours.
+	//
+	// >  This parameter is required if you set the `ConfigRuleTriggerTypes` parameter to `ScheduledNotification`.
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	RegionIdsScope            *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	ResourceGroupIdsScope     *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	ResourceTypesScopeShrink  *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	RiskLevel                 *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	TagKeyLogicScope          *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
-	TagKeyScope               *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	TagValueScope             *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
+	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	//
+	// >  This parameter applies only to managed rules.
+	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
+	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
+	// The risk level of the resources that are not compliant with the rule. Valid values:
+	//
+	// *   1: high risk level
+	// *   2: medium risk level
+	// *   3: low risk level
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// *   AND: logical AND
+	// *   OR: logical OR
+	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	//
+	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 }
 
 func (s UpdateConfigRuleShrinkRequest) String() string {
@@ -17087,8 +21092,10 @@ func (s *UpdateConfigRuleShrinkRequest) SetTagValueScope(v string) *UpdateConfig
 }
 
 type UpdateConfigRuleResponseBody struct {
+	// The ID of the rule.
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateConfigRuleResponseBody) String() string {
@@ -17139,18 +21146,70 @@ func (s *UpdateConfigRuleResponse) SetBody(v *UpdateConfigRuleResponseBody) *Upd
 }
 
 type UpdateDeliveryChannelRequest struct {
-	ClientToken                         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConfigurationItemChangeNotification *bool   `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
-	ConfigurationSnapshot               *bool   `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
-	DeliveryChannelAssumeRoleArn        *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
-	DeliveryChannelCondition            *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
-	DeliveryChannelId                   *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	DeliveryChannelName                 *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
-	DeliveryChannelTargetArn            *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
-	Description                         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NonCompliantNotification            *bool   `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
-	OversizedDataOSSTargetArn           *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
-	Status                              *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests.
+	//
+	// The `ClientToken` value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](~~25693~~).
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to deliver resource change logs to the specified destination. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is applicable to delivery channels of the OSS, SLS, or MNS type.
+	ConfigurationItemChangeNotification *bool `json:"ConfigurationItemChangeNotification,omitempty" xml:"ConfigurationItemChangeNotification,omitempty"`
+	// Specifies whether to deliver scheduled resource snapshots to the OSS bucket. If the value of this parameter is true, the scheduled resource snapshots are delivered to the specified OSS bucket at 00:00:00 and 12:00:00 on a daily basis. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is applicable only to delivery channels of the OSS type.
+	ConfigurationSnapshot *bool `json:"ConfigurationSnapshot,omitempty" xml:"ConfigurationSnapshot,omitempty"`
+	// The ARN of the role that you want to assign to the delivery channel. Specify the ARN in the following format: `acs:ram::{accountId}:role/aliyunserviceroleforconfig`.
+	DeliveryChannelAssumeRoleArn *string `json:"DeliveryChannelAssumeRoleArn,omitempty" xml:"DeliveryChannelAssumeRoleArn,omitempty"`
+	// The rule that you want to attach to the delivery channel. This parameter is available only for delivery channels of the MNS type.
+	//
+	// This parameter specifies the lowest risk level and the resource types for the events to which you want to subscribe.
+	//
+	// *   The setting of the lowest risk level for the events to which you want to subscribe is in the following format: `{"filterType":"RuleRiskLevel","value":"1","multiple":false}`. The `value` field specifies the lowest risk level for the events to which you want to subscribe. Valid values: 1, 2, and 3, where 1 indicates the high risk level, 2 indicates the medium risk level, and 3 indicates the low risk level.
+	//
+	// *   The setting of the resource types for the events to which you want to subscribe is in the following format: `{"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}`. The `values` field specifies the resource types for which you want to subscribe to events. The value of the field is a JSON array.
+	//
+	//     Example: `[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}]`
+	DeliveryChannelCondition *string `json:"DeliveryChannelCondition,omitempty" xml:"DeliveryChannelCondition,omitempty"`
+	// The ID of the delivery channel.
+	//
+	// For more information about how to obtain the ID of the delivery channel, see [DescribeDeliveryChannels](~~174466~~).
+	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
+	// The name of the delivery channel.
+	//
+	// >  If you do not configure this parameter, this parameter is left empty.
+	DeliveryChannelName *string `json:"DeliveryChannelName,omitempty" xml:"DeliveryChannelName,omitempty"`
+	// The ARN of the delivery destination. Valid values:
+	//
+	// *   `acs:oss:{RegionId}:{accountId}:{bucketName}` if your delivery destination is an OSS bucket. Example: `acs:oss:cn-shanghai:100931896542****:new-bucket`.
+	// *   `acs:mns:{RegionId}:{accountId}:/topics/{topicName}` if your delivery destination is an MNS topic. Example: `acs:mns:cn-shanghai:100931896542****:/topics/topic1`.
+	// *   `acs:log:{RegionId}:{accountId}:project/{projectName}/logstore/{logstoreName}` if your delivery destination is a Log Service Logstore. Example: `acs:log:cn-shanghai:100931896542****:project/project1/logstore/logstore1`.
+	DeliveryChannelTargetArn *string `json:"DeliveryChannelTargetArn,omitempty" xml:"DeliveryChannelTargetArn,omitempty"`
+	// The description of the delivery channel.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to deliver resource non-compliance events to the specified destination. If you set this parameter to true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are considered incompliant. Valid values:
+	//
+	// *   true
+	// *   false. This is the default value.
+	//
+	// >  This parameter is applicable only to delivery channels of the SLS or MNS type.
+	NonCompliantNotification *bool `json:"NonCompliantNotification,omitempty" xml:"NonCompliantNotification,omitempty"`
+	// The ARN of the OSS bucket to which you want to transfer the delivery data when the size of the data exceeds the specified upper limit of the delivery channel. Format: `acs:oss:{RegionId}:{accountId}:{bucketName}`.
+	//
+	// If you do not configure this parameter, Cloud Config delivers only summary data.
+	//
+	// >  This parameter is available only for delivery channels of the SLS type or MNS type. The upper limit on the storage size of delivery channels of the SLS type is 1 MB, and the upper limit on the storage size of delivery channels of the MNS type is 64 KB.
+	OversizedDataOSSTargetArn *string `json:"OversizedDataOSSTargetArn,omitempty" xml:"OversizedDataOSSTargetArn,omitempty"`
+	// Specifies whether to disable the delivery channel. Valid values:
+	//
+	// *   0: Cloud Config disables the delivery channel. Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+	// *   1: Cloud Config enables the delivery channel. This is the default value.
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateDeliveryChannelRequest) String() string {
@@ -17222,8 +21281,10 @@ func (s *UpdateDeliveryChannelRequest) SetStatus(v int64) *UpdateDeliveryChannel
 }
 
 type UpdateDeliveryChannelResponseBody struct {
+	// The ID of the delivery channel.
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDeliveryChannelResponseBody) String() string {
@@ -17274,8 +21335,15 @@ func (s *UpdateDeliveryChannelResponse) SetBody(v *UpdateDeliveryChannelResponse
 }
 
 type UpdateIntegratedServiceStatusRequest struct {
+	// The product code of the cloud product. Valid values:
+	//
+	// *   cadt: Cloud Architecture Design Tool
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	Status      *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether you want the product to be integrated. Valid values:
+	//
+	// *   true
+	// *   false
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpdateIntegratedServiceStatusRequest) String() string {
@@ -17297,6 +21365,7 @@ func (s *UpdateIntegratedServiceStatusRequest) SetStatus(v bool) *UpdateIntegrat
 }
 
 type UpdateIntegratedServiceStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17343,13 +21412,36 @@ func (s *UpdateIntegratedServiceStatusResponse) SetBody(v *UpdateIntegratedServi
 }
 
 type UpdateRemediationRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
-	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The execution mode of the remediation. Valid values:
+	//
+	// *   NON_EXECUTION: The remediation is not executed.
+	// *   AUTO_EXECUTION: The remediation is automatically executed.
+	// *   MANUAL_EXECUTION: The remediation is manually executed.
+	// *   NOT_CONFIG: The execution mode is not specified.
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// The desired parameter values of the remediation setting.
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The ID of the remediation setting.
+	//
+	// You can call the [ListRemediations](~~270772~~) operation to obtain the ID of the remediation setting.
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	// The ID of the remediation template.
+	//
+	// You can call the [ListRemediationTemplates](~~270066~~) operation to obtain the ID of the remediation template.
 	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
-	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
-	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The type of the remediation template. Valid values:
+	//
+	// *   OOS: Operation Orchestration Service (OOS)
+	// *   FC: Function Compute. You can use Function Compute to configure custom remediation settings.
+	RemediationType *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	// The source of the remediation setting. Valid values:
+	//
+	// *   ALIYUN: the default remediation setting of Alibaba Cloud.
+	// *   CUSTOM: a custom remediation setting.
+	// *   NONE: The source is not specified.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s UpdateRemediationRequest) String() string {
@@ -17396,8 +21488,10 @@ func (s *UpdateRemediationRequest) SetSourceType(v string) *UpdateRemediationReq
 }
 
 type UpdateRemediationResponseBody struct {
+	// The ID of the remediation setting.
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateRemediationResponseBody) String() string {
@@ -17498,6 +21592,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to enable the `cr-5772ba41209e007b****` rule in the `ca-a4e5626622af0079****` account group.
+ *
+ * @param request ActiveAggregateConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ActiveAggregateConfigRulesResponse
+ */
 func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ActiveAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17535,6 +21636,12 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to enable the `cr-5772ba41209e007b****` rule in the `ca-a4e5626622af0079****` account group.
+ *
+ * @param request ActiveAggregateConfigRulesRequest
+ * @return ActiveAggregateConfigRulesResponse
+ */
 func (client *Client) ActiveAggregateConfigRules(request *ActiveAggregateConfigRulesRequest) (_result *ActiveAggregateConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ActiveAggregateConfigRulesResponse{}
@@ -17546,6 +21653,13 @@ func (client *Client) ActiveAggregateConfigRules(request *ActiveAggregateConfigR
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+ *
+ * @param request AttachAggregateConfigRuleToCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AttachAggregateConfigRuleToCompliancePackResponse
+ */
 func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(request *AttachAggregateConfigRuleToCompliancePackRequest, runtime *util.RuntimeOptions) (_result *AttachAggregateConfigRuleToCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17587,6 +21701,12 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePackWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group to the `cp-5bb1626622af00bd****` compliance package.
+ *
+ * @param request AttachAggregateConfigRuleToCompliancePackRequest
+ * @return AttachAggregateConfigRuleToCompliancePackResponse
+ */
 func (client *Client) AttachAggregateConfigRuleToCompliancePack(request *AttachAggregateConfigRuleToCompliancePackRequest) (_result *AttachAggregateConfigRuleToCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachAggregateConfigRuleToCompliancePackResponse{}
@@ -17598,6 +21718,13 @@ func (client *Client) AttachAggregateConfigRuleToCompliancePack(request *AttachA
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add the `cr-6cc4626622af00e7****` rule to the `cp-5bb1626622af00bd****` compliance package.
+ *
+ * @param request AttachConfigRuleToCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AttachConfigRuleToCompliancePackResponse
+ */
 func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *AttachConfigRuleToCompliancePackRequest, runtime *util.RuntimeOptions) (_result *AttachConfigRuleToCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17635,6 +21762,12 @@ func (client *Client) AttachConfigRuleToCompliancePackWithOptions(request *Attac
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add the `cr-6cc4626622af00e7****` rule to the `cp-5bb1626622af00bd****` compliance package.
+ *
+ * @param request AttachConfigRuleToCompliancePackRequest
+ * @return AttachConfigRuleToCompliancePackResponse
+ */
 func (client *Client) AttachConfigRuleToCompliancePack(request *AttachConfigRuleToCompliancePackRequest) (_result *AttachConfigRuleToCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachConfigRuleToCompliancePackResponse{}
@@ -17750,6 +21883,14 @@ func (client *Client) CopyConfigRules(request *CopyConfigRulesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * You can use your management account to create up to five compliance packages for each account group.
+ * This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+ *
+ * @param tmpReq CreateAggregateCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAggregateCompliancePackResponse
+ */
 func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -17837,6 +21978,13 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 	return _result, _err
 }
 
+/**
+ * You can use your management account to create up to five compliance packages for each account group.
+ * This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+ *
+ * @param request CreateAggregateCompliancePackRequest
+ * @return CreateAggregateCompliancePackResponse
+ */
 func (client *Client) CreateAggregateCompliancePack(request *CreateAggregateCompliancePackRequest) (_result *CreateAggregateCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregateCompliancePackResponse{}
@@ -17848,6 +21996,13 @@ func (client *Client) CreateAggregateCompliancePack(request *CreateAggregateComp
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079****`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateAggregateConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) CreateAggregateConfigDeliveryChannelWithOptions(request *CreateAggregateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17925,6 +22080,12 @@ func (client *Client) CreateAggregateConfigDeliveryChannelWithOptions(request *C
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is created for an account group. The ID of the account group is `ca-a4e5626622af0079****`. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateAggregateConfigDeliveryChannelRequest
+ * @return CreateAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) CreateAggregateConfigDeliveryChannel(request *CreateAggregateConfigDeliveryChannelRequest) (_result *CreateAggregateConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregateConfigDeliveryChannelResponse{}
@@ -17936,6 +22097,15 @@ func (client *Client) CreateAggregateConfigDeliveryChannel(request *CreateAggreg
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+ * ## Limits
+ * A management account can contain up to 200 rules.
+ *
+ * @param tmpReq CreateAggregateConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAggregateConfigRuleResponse
+ */
 func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggregateConfigRuleRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18055,6 +22225,14 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to create a rule based on the required-tags managed rule in the `ca-a4e5626622af0079****` account group. The return result shows that the rule is created and its ID is `cr-4e3d626622af0080****`.
+ * ## Limits
+ * A management account can contain up to 200 rules.
+ *
+ * @param request CreateAggregateConfigRuleRequest
+ * @return CreateAggregateConfigRuleResponse
+ */
 func (client *Client) CreateAggregateConfigRule(request *CreateAggregateConfigRuleRequest) (_result *CreateAggregateConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregateConfigRuleResponse{}
@@ -18066,6 +22244,13 @@ func (client *Client) CreateAggregateConfigRule(request *CreateAggregateConfigRu
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to configure a remediation template for the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that a remediation template is configured and the ID of the remediation setting is `crr-909ba2d4716700eb****`.
+ *
+ * @param request CreateAggregateRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAggregateRemediationResponse
+ */
 func (client *Client) CreateAggregateRemediationWithOptions(request *CreateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18127,6 +22312,12 @@ func (client *Client) CreateAggregateRemediationWithOptions(request *CreateAggre
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to configure a remediation template for the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that a remediation template is configured and the ID of the remediation setting is `crr-909ba2d4716700eb****`.
+ *
+ * @param request CreateAggregateRemediationRequest
+ * @return CreateAggregateRemediationResponse
+ */
 func (client *Client) CreateAggregateRemediation(request *CreateAggregateRemediationRequest) (_result *CreateAggregateRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregateRemediationResponse{}
@@ -18138,6 +22329,19 @@ func (client *Client) CreateAggregateRemediation(request *CreateAggregateRemedia
 	return _result, _err
 }
 
+/**
+ * Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+ * Cloud Config supports the following types of account groups:
+ * *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+ * *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+ * In the example of this topic, a request is sent to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
+ * *   Member account ID: `171322098523****`. Member account name: `Alice`.
+ * *   Member account ID: `100532098349****`. Member account name: `Tom`.
+ *
+ * @param tmpReq CreateAggregatorRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateAggregatorResponse
+ */
 func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorRequest, runtime *util.RuntimeOptions) (_result *CreateAggregatorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18193,6 +22397,18 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 	return _result, _err
 }
 
+/**
+ * Each management account can create a maximum of five account groups. Each account group can contain a maximum of 200 member accounts.
+ * Cloud Config supports the following types of account groups:
+ * *   Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+ * *   Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+ * In the example of this topic, a request is sent to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
+ * *   Member account ID: `171322098523****`. Member account name: `Alice`.
+ * *   Member account ID: `100532098349****`. Member account name: `Tom`.
+ *
+ * @param request CreateAggregatorRequest
+ * @return CreateAggregatorResponse
+ */
 func (client *Client) CreateAggregator(request *CreateAggregatorRequest) (_result *CreateAggregatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAggregatorResponse{}
@@ -18204,6 +22420,14 @@ func (client *Client) CreateAggregator(request *CreateAggregatorRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * Each ordinary account can create up to five compliance packages.
+ * This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
+ *
+ * @param tmpReq CreateCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCompliancePackResponse
+ */
 func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *CreateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18287,6 +22511,13 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 	return _result, _err
 }
 
+/**
+ * Each ordinary account can create up to five compliance packages.
+ * This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck. The compliance package contains a managed rule named `eip-bandwidth-limit`.
+ *
+ * @param request CreateCompliancePackRequest
+ * @return CreateCompliancePackResponse
+ */
 func (client *Client) CreateCompliancePack(request *CreateCompliancePackRequest) (_result *CreateCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCompliancePackResponse{}
@@ -18298,6 +22529,13 @@ func (client *Client) CreateCompliancePack(request *CreateCompliancePackRequest)
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConfigDeliveryChannelResponse
+ */
 func (client *Client) CreateConfigDeliveryChannelWithOptions(request *CreateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18371,6 +22609,12 @@ func (client *Client) CreateConfigDeliveryChannelWithOptions(request *CreateConf
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is created. The type of the delivery channel is `OSS` and the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`. The result indicates that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateConfigDeliveryChannelRequest
+ * @return CreateConfigDeliveryChannelResponse
+ */
 func (client *Client) CreateConfigDeliveryChannel(request *CreateConfigDeliveryChannelRequest) (_result *CreateConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConfigDeliveryChannelResponse{}
@@ -18382,6 +22626,15 @@ func (client *Client) CreateConfigDeliveryChannel(request *CreateConfigDeliveryC
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
+ * ## Limits
+ * You can use a common account to create up to 200 rules.
+ *
+ * @param tmpReq CreateConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConfigRuleResponse
+ */
 func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleRequest, runtime *util.RuntimeOptions) (_result *CreateConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18485,6 +22738,14 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to create a managed rule named required-tags. The returned result indicates that the rule is created and the ID of the rule is `cr-5772ba41209e007b****`.
+ * ## Limits
+ * You can use a common account to create up to 200 rules.
+ *
+ * @param request CreateConfigRuleRequest
+ * @return CreateConfigRuleResponse
+ */
 func (client *Client) CreateConfigRule(request *CreateConfigRuleRequest) (_result *CreateConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConfigRuleResponse{}
@@ -18496,6 +22757,15 @@ func (client *Client) CreateConfigRule(request *CreateConfigRuleRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+ * In this example, a delivery channel is created. The type of the delivery channle is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The response shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDeliveryChannelResponse
+ */
+// Deprecated
 func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *CreateDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18569,6 +22839,14 @@ func (client *Client) CreateDeliveryChannelWithOptions(request *CreateDeliveryCh
 	return _result, _err
 }
 
+/**
+ * @deprecated : CreateDeliveryChannel is deprecated, please use Config::2020-09-07::CreateConfigDeliveryChannel,Config::2020-09-07::CreateAggregateConfigDeliveryChannel instead.
+ * In this example, a delivery channel is created. The type of the delivery channle is `OSS`, the Alibaba Cloud Resource Name (ARN) of the delivery destination is `acs:oss:cn-shanghai:100931896542****:new-bucket`, and the ARN of the role that is assigned to the delivery channel is `acs:ram::100931896542****:role/aliyunserviceroleforconfig`. The response shows that the delivery channel is created, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****`.
+ *
+ * @param request CreateDeliveryChannelRequest
+ * @return CreateDeliveryChannelResponse
+ */
+// Deprecated
 func (client *Client) CreateDeliveryChannel(request *CreateDeliveryChannelRequest) (_result *CreateDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDeliveryChannelResponse{}
@@ -18580,6 +22858,13 @@ func (client *Client) CreateDeliveryChannel(request *CreateDeliveryChannelReques
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-8a973ac2e2be00a2****` is used as an example. The return result shows that a remediation template is configured and the ID of the remediation setting is `crr-909ba2d4716700eb****`.
+ *
+ * @param request CreateRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRemediationResponse
+ */
 func (client *Client) CreateRemediationWithOptions(request *CreateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18637,6 +22922,12 @@ func (client *Client) CreateRemediationWithOptions(request *CreateRemediationReq
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-8a973ac2e2be00a2****` is used as an example. The return result shows that a remediation template is configured and the ID of the remediation setting is `crr-909ba2d4716700eb****`.
+ *
+ * @param request CreateRemediationRequest
+ * @return CreateRemediationResponse
+ */
 func (client *Client) CreateRemediation(request *CreateRemediationRequest) (_result *CreateRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRemediationResponse{}
@@ -18648,6 +22939,13 @@ func (client *Client) CreateRemediation(request *CreateRemediationRequest) (_res
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to disable the `cr-5772ba41209e007b****` rule in the `ca-04b3fd170e340007****` account group.
+ *
+ * @param request DeactiveAggregateConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeactiveAggregateConfigRulesResponse
+ */
 func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeactiveAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18685,6 +22983,12 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to disable the `cr-5772ba41209e007b****` rule in the `ca-04b3fd170e340007****` account group.
+ *
+ * @param request DeactiveAggregateConfigRulesRequest
+ * @return DeactiveAggregateConfigRulesResponse
+ */
 func (client *Client) DeactiveAggregateConfigRules(request *DeactiveAggregateConfigRulesRequest) (_result *DeactiveAggregateConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeactiveAggregateConfigRulesResponse{}
@@ -18696,6 +23000,13 @@ func (client *Client) DeactiveAggregateConfigRules(request *DeactiveAggregateCon
 	return _result, _err
 }
 
+/**
+ * In this example, the `cr-19a56457e0d90058****` rule is used.
+ *
+ * @param request DeactiveConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeactiveConfigRulesResponse
+ */
 func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeactiveConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18729,6 +23040,12 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 	return _result, _err
 }
 
+/**
+ * In this example, the `cr-19a56457e0d90058****` rule is used.
+ *
+ * @param request DeactiveConfigRulesRequest
+ * @return DeactiveConfigRulesResponse
+ */
 func (client *Client) DeactiveConfigRules(request *DeactiveConfigRulesRequest) (_result *DeactiveConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeactiveConfigRulesResponse{}
@@ -18740,6 +23057,13 @@ func (client *Client) DeactiveConfigRules(request *DeactiveConfigRulesRequest) (
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to delete the `cp-541e626622af0087****` compliance package from the `ca-04b3fd170e340007****` account group.
+ *
+ * @param request DeleteAggregateCompliancePacksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAggregateCompliancePacksResponse
+ */
 func (client *Client) DeleteAggregateCompliancePacksWithOptions(request *DeleteAggregateCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateCompliancePacksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18785,6 +23109,12 @@ func (client *Client) DeleteAggregateCompliancePacksWithOptions(request *DeleteA
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to delete the `cp-541e626622af0087****` compliance package from the `ca-04b3fd170e340007****` account group.
+ *
+ * @param request DeleteAggregateCompliancePacksRequest
+ * @return DeleteAggregateCompliancePacksResponse
+ */
 func (client *Client) DeleteAggregateCompliancePacks(request *DeleteAggregateCompliancePacksRequest) (_result *DeleteAggregateCompliancePacksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAggregateCompliancePacksResponse{}
@@ -18796,6 +23126,13 @@ func (client *Client) DeleteAggregateCompliancePacks(request *DeleteAggregateCom
 	return _result, _err
 }
 
+/**
+ * This example shows how to delete the `cdc-38c3013b46c9002c****` delivery channel from the `ca-23c6626622af0041****` account group. The response shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+ *
+ * @param request DeleteAggregateConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) DeleteAggregateConfigDeliveryChannelWithOptions(request *DeleteAggregateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18833,6 +23170,12 @@ func (client *Client) DeleteAggregateConfigDeliveryChannelWithOptions(request *D
 	return _result, _err
 }
 
+/**
+ * This example shows how to delete the `cdc-38c3013b46c9002c****` delivery channel from the `ca-23c6626622af0041****` account group. The response shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+ *
+ * @param request DeleteAggregateConfigDeliveryChannelRequest
+ * @return DeleteAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) DeleteAggregateConfigDeliveryChannel(request *DeleteAggregateConfigDeliveryChannelRequest) (_result *DeleteAggregateConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAggregateConfigDeliveryChannelResponse{}
@@ -18844,6 +23187,15 @@ func (client *Client) DeleteAggregateConfigDeliveryChannel(request *DeleteAggreg
 	return _result, _err
 }
 
+/**
+ * In this example, a rule named `cr-4e3d626622af0080****` is deleted from the `ca-a4e5626622af0079****` account group.
+ * ## Background information
+ * You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
+ *
+ * @param request DeleteAggregateConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAggregateConfigRulesResponse
+ */
 func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18881,6 +23233,14 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 	return _result, _err
 }
 
+/**
+ * In this example, a rule named `cr-4e3d626622af0080****` is deleted from the `ca-a4e5626622af0079****` account group.
+ * ## Background information
+ * You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
+ *
+ * @param request DeleteAggregateConfigRulesRequest
+ * @return DeleteAggregateConfigRulesResponse
+ */
 func (client *Client) DeleteAggregateConfigRules(request *DeleteAggregateConfigRulesRequest) (_result *DeleteAggregateConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAggregateConfigRulesResponse{}
@@ -18892,6 +23252,13 @@ func (client *Client) DeleteAggregateConfigRules(request *DeleteAggregateConfigR
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to delete the remediation setting whose ID is `crr-909ba2d4716700eb****` from the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the remediation setting whose ID is `crr-909ba2d4716700eb****` is deleted.
+ *
+ * @param request DeleteAggregateRemediationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAggregateRemediationsResponse
+ */
 func (client *Client) DeleteAggregateRemediationsWithOptions(request *DeleteAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateRemediationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18929,6 +23296,12 @@ func (client *Client) DeleteAggregateRemediationsWithOptions(request *DeleteAggr
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to delete the remediation setting whose ID is `crr-909ba2d4716700eb****` from the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the remediation setting whose ID is `crr-909ba2d4716700eb****` is deleted.
+ *
+ * @param request DeleteAggregateRemediationsRequest
+ * @return DeleteAggregateRemediationsResponse
+ */
 func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemediationsRequest) (_result *DeleteAggregateRemediationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAggregateRemediationsResponse{}
@@ -18940,6 +23313,13 @@ func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemedi
 	return _result, _err
 }
 
+/**
+ * In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9****`.
+ *
+ * @param request DeleteAggregatorsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteAggregatorsResponse
+ */
 func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18977,6 +23357,12 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 	return _result, _err
 }
 
+/**
+ * In the example of this topic, a request is sent to delete the account group whose ID is `ca-9190626622af00a9****`.
+ *
+ * @param request DeleteAggregatorsRequest
+ * @return DeleteAggregatorsResponse
+ */
 func (client *Client) DeleteAggregators(request *DeleteAggregatorsRequest) (_result *DeleteAggregatorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAggregatorsResponse{}
@@ -18988,6 +23374,13 @@ func (client *Client) DeleteAggregators(request *DeleteAggregatorsRequest) (_res
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example.
+ *
+ * @param request DeleteCompliancePacksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteCompliancePacksResponse
+ */
 func (client *Client) DeleteCompliancePacksWithOptions(request *DeleteCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *DeleteCompliancePacksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19029,6 +23422,12 @@ func (client *Client) DeleteCompliancePacksWithOptions(request *DeleteCompliance
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example.
+ *
+ * @param request DeleteCompliancePacksRequest
+ * @return DeleteCompliancePacksResponse
+ */
 func (client *Client) DeleteCompliancePacks(request *DeleteCompliancePacksRequest) (_result *DeleteCompliancePacksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCompliancePacksResponse{}
@@ -19040,6 +23439,13 @@ func (client *Client) DeleteCompliancePacks(request *DeleteCompliancePacksReques
 	return _result, _err
 }
 
+/**
+ * This example shows how to delete the `cdc-38c3013b46c9002c****` delivery channel. The response shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+ *
+ * @param request DeleteConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteConfigDeliveryChannelResponse
+ */
 func (client *Client) DeleteConfigDeliveryChannelWithOptions(request *DeleteConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *DeleteConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19073,6 +23479,12 @@ func (client *Client) DeleteConfigDeliveryChannelWithOptions(request *DeleteConf
 	return _result, _err
 }
 
+/**
+ * This example shows how to delete the `cdc-38c3013b46c9002c****` delivery channel. The response shows that the `cdc-38c3013b46c9002c****` delivery channel is deleted.
+ *
+ * @param request DeleteConfigDeliveryChannelRequest
+ * @return DeleteConfigDeliveryChannelResponse
+ */
 func (client *Client) DeleteConfigDeliveryChannel(request *DeleteConfigDeliveryChannelRequest) (_result *DeleteConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConfigDeliveryChannelResponse{}
@@ -19084,6 +23496,13 @@ func (client *Client) DeleteConfigDeliveryChannel(request *DeleteConfigDeliveryC
 	return _result, _err
 }
 
+/**
+ * In this topic, the remediation setting whose ID is `crr-909ba2d4716700eb****` is used as an example. The return result shows that the remediation setting whose ID is `crr-909ba2d4716700eb****` is deleted.
+ *
+ * @param request DeleteRemediationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteRemediationsResponse
+ */
 func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteRemediationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19117,6 +23536,12 @@ func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsR
 	return _result, _err
 }
 
+/**
+ * In this topic, the remediation setting whose ID is `crr-909ba2d4716700eb****` is used as an example. The return result shows that the remediation setting whose ID is `crr-909ba2d4716700eb****` is deleted.
+ *
+ * @param request DeleteRemediationsRequest
+ * @return DeleteRemediationsResponse
+ */
 func (client *Client) DeleteRemediations(request *DeleteRemediationsRequest) (_result *DeleteRemediationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRemediationsResponse{}
@@ -19128,6 +23553,15 @@ func (client *Client) DeleteRemediations(request *DeleteRemediationsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+ * ## Prerequisites
+ * One or more rules in an account group are added to a compliance package.
+ *
+ * @param request DetachAggregateConfigRuleToCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DetachAggregateConfigRuleToCompliancePackResponse
+ */
 func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(request *DetachAggregateConfigRuleToCompliancePackRequest, runtime *util.RuntimeOptions) (_result *DetachAggregateConfigRuleToCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19169,6 +23603,14 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePackWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule in the `ca-75b4626622af00c3****` account group from the `cp-5bb1626622af00bd****` compliance package.
+ * ## Prerequisites
+ * One or more rules in an account group are added to a compliance package.
+ *
+ * @param request DetachAggregateConfigRuleToCompliancePackRequest
+ * @return DetachAggregateConfigRuleToCompliancePackResponse
+ */
 func (client *Client) DetachAggregateConfigRuleToCompliancePack(request *DetachAggregateConfigRuleToCompliancePackRequest) (_result *DetachAggregateConfigRuleToCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachAggregateConfigRuleToCompliancePackResponse{}
@@ -19180,6 +23622,15 @@ func (client *Client) DetachAggregateConfigRuleToCompliancePack(request *DetachA
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+ * ## Prerequisites
+ * One or more rules are added to a compliance package.
+ *
+ * @param request DetachConfigRuleToCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DetachConfigRuleToCompliancePackResponse
+ */
 func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *DetachConfigRuleToCompliancePackRequest, runtime *util.RuntimeOptions) (_result *DetachConfigRuleToCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19217,6 +23668,14 @@ func (client *Client) DetachConfigRuleToCompliancePackWithOptions(request *Detac
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to remove the `cr-6cc4626622af00e7****` rule from the `cp-5bb1626622af00bd****` compliance package.
+ * ## Prerequisites
+ * One or more rules are added to a compliance package.
+ *
+ * @param request DetachConfigRuleToCompliancePackRequest
+ * @return DetachConfigRuleToCompliancePackResponse
+ */
 func (client *Client) DetachConfigRuleToCompliancePack(request *DetachConfigRuleToCompliancePackRequest) (_result *DetachConfigRuleToCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachConfigRuleToCompliancePackResponse{}
@@ -19282,6 +23741,14 @@ func (client *Client) EvaluatePreConfigRules(request *EvaluatePreConfigRulesRequ
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
+ * The sample request in this topic shows you how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GenerateAggregateCompliancePackReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GenerateAggregateCompliancePackReportResponse
+ */
 func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *GenerateAggregateCompliancePackReportRequest, runtime *util.RuntimeOptions) (_result *GenerateAggregateCompliancePackReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19323,6 +23790,13 @@ func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateCompliancePackReport](~~262699~~).
+ * The sample request in this topic shows you how to generate a compliance evaluation report based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GenerateAggregateCompliancePackReportRequest
+ * @return GenerateAggregateCompliancePackReportResponse
+ */
 func (client *Client) GenerateAggregateCompliancePackReport(request *GenerateAggregateCompliancePackReportRequest) (_result *GenerateAggregateCompliancePackReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateAggregateCompliancePackReportResponse{}
@@ -19334,6 +23808,14 @@ func (client *Client) GenerateAggregateCompliancePackReport(request *GenerateAgg
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
+ * The sample request in this topic shows you how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GenerateAggregateConfigRulesReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GenerateAggregateConfigRulesReportResponse
+ */
 func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *GenerateAggregateConfigRulesReportRequest, runtime *util.RuntimeOptions) (_result *GenerateAggregateConfigRulesReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19375,6 +23857,13 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetAggregateConfigRulesReport operation. For more information, see [GetAggregateConfigRulesReport](~~262706~~).
+ * The sample request in this topic shows you how to generate a compliance evaluation report based on all rules in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GenerateAggregateConfigRulesReportRequest
+ * @return GenerateAggregateConfigRulesReportResponse
+ */
 func (client *Client) GenerateAggregateConfigRulesReport(request *GenerateAggregateConfigRulesReportRequest) (_result *GenerateAggregateConfigRulesReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateAggregateConfigRulesReportResponse{}
@@ -19386,6 +23875,14 @@ func (client *Client) GenerateAggregateConfigRulesReport(request *GenerateAggreg
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
+ * In this topic, the `cp-a8a8626622af0082****` compliance package is used as an example.
+ *
+ * @param request GenerateCompliancePackReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GenerateCompliancePackReportResponse
+ */
 func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateCompliancePackReportRequest, runtime *util.RuntimeOptions) (_result *GenerateCompliancePackReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19423,6 +23920,13 @@ func (client *Client) GenerateCompliancePackReportWithOptions(request *GenerateC
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetCompliancePackReport operation. For more information, see [GetCompliancePackReport](~~263347~~).
+ * In this topic, the `cp-a8a8626622af0082****` compliance package is used as an example.
+ *
+ * @param request GenerateCompliancePackReportRequest
+ * @return GenerateCompliancePackReportResponse
+ */
 func (client *Client) GenerateCompliancePackReport(request *GenerateCompliancePackReportRequest) (_result *GenerateCompliancePackReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateCompliancePackReportResponse{}
@@ -19434,6 +23938,14 @@ func (client *Client) GenerateCompliancePackReport(request *GenerateCompliancePa
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+ * This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
+ *
+ * @param request GenerateConfigRulesReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GenerateConfigRulesReportResponse
+ */
 func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConfigRulesReportRequest, runtime *util.RuntimeOptions) (_result *GenerateConfigRulesReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19471,6 +23983,13 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 	return _result, _err
 }
 
+/**
+ * >  You can call this operation to generate the latest compliance evaluation report. To download the report, call the GetConfigRulesReport operation. For more information, see [GetConfigRulesReport](~~263608~~).
+ * This topic provides an example of how to generate a compliance evaluation report based on all existing rules.
+ *
+ * @param request GenerateConfigRulesReportRequest
+ * @return GenerateConfigRulesReportResponse
+ */
 func (client *Client) GenerateConfigRulesReport(request *GenerateConfigRulesReportRequest) (_result *GenerateConfigRulesReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateConfigRulesReportResponse{}
@@ -19482,6 +24001,13 @@ func (client *Client) GenerateConfigRulesReport(request *GenerateConfigRulesRepo
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results of member accounts monitored by the `cp-541e626622af0087****` compliance package in the `ca-04b3fd170e340007****` account group. The return result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+ *
+ * @param request GetAggregateAccountComplianceByPackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateAccountComplianceByPackResponse
+ */
 func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *GetAggregateAccountComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateAccountComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19511,6 +24037,12 @@ func (client *Client) GetAggregateAccountComplianceByPackWithOptions(request *Ge
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results of member accounts monitored by the `cp-541e626622af0087****` compliance package in the `ca-04b3fd170e340007****` account group. The return result shows that two member accounts are monitored by the compliance package and they are both evaluated as compliant.
+ *
+ * @param request GetAggregateAccountComplianceByPackRequest
+ * @return GetAggregateAccountComplianceByPackResponse
+ */
 func (client *Client) GetAggregateAccountComplianceByPack(request *GetAggregateAccountComplianceByPackRequest) (_result *GetAggregateAccountComplianceByPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateAccountComplianceByPackResponse{}
@@ -19522,6 +24054,13 @@ func (client *Client) GetAggregateAccountComplianceByPack(request *GetAggregateA
 	return _result, _err
 }
 
+/**
+ * The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****` in an account group whose ID is `ca-f632626622af0079****`.
+ *
+ * @param request GetAggregateCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateCompliancePackResponse
+ */
 func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19551,6 +24090,12 @@ func (client *Client) GetAggregateCompliancePackWithOptions(request *GetAggregat
 	return _result, _err
 }
 
+/**
+ * The topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****` in an account group whose ID is `ca-f632626622af0079****`.
+ *
+ * @param request GetAggregateCompliancePackRequest
+ * @return GetAggregateCompliancePackResponse
+ */
 func (client *Client) GetAggregateCompliancePack(request *GetAggregateCompliancePackRequest) (_result *GetAggregateCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateCompliancePackResponse{}
@@ -19562,6 +24107,14 @@ func (client *Client) GetAggregateCompliancePack(request *GetAggregateCompliance
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package as required. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
+ * The sample request in this topic shows you how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GetAggregateCompliancePackReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateCompliancePackReportResponse
+ */
 func (client *Client) GetAggregateCompliancePackReportWithOptions(request *GetAggregateCompliancePackReportRequest, runtime *util.RuntimeOptions) (_result *GetAggregateCompliancePackReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19591,6 +24144,13 @@ func (client *Client) GetAggregateCompliancePackReportWithOptions(request *GetAg
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateAggregateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package as required. For more information, see [GenerateAggregateCompliancePackReport](~~262687~~).
+ * The sample request in this topic shows you how to query the compliance evaluation report that is generated based on the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GetAggregateCompliancePackReportRequest
+ * @return GetAggregateCompliancePackReportResponse
+ */
 func (client *Client) GetAggregateCompliancePackReport(request *GetAggregateCompliancePackReportRequest) (_result *GetAggregateCompliancePackReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateCompliancePackReportResponse{}
@@ -19650,6 +24210,13 @@ func (client *Client) GetAggregateConfigDeliveryChannel(request *GetAggregateCon
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the details of the `cr-7f7d626622af0041****` rule in the `ca-7f00626622af0041****` account group.
+ *
+ * @param request GetAggregateConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateConfigRuleResponse
+ */
 func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetAggregateConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19687,6 +24254,12 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the details of the `cr-7f7d626622af0041****` rule in the `ca-7f00626622af0041****` account group.
+ *
+ * @param request GetAggregateConfigRuleRequest
+ * @return GetAggregateConfigRuleResponse
+ */
 func (client *Client) GetAggregateConfigRule(request *GetAggregateConfigRuleRequest) (_result *GetAggregateConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateConfigRuleResponse{}
@@ -19698,6 +24271,13 @@ func (client *Client) GetAggregateConfigRule(request *GetAggregateConfigRuleRequ
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087****` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+ *
+ * @param request GetAggregateConfigRuleComplianceByPackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateConfigRuleComplianceByPackResponse
+ */
 func (client *Client) GetAggregateConfigRuleComplianceByPackWithOptions(request *GetAggregateConfigRuleComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateConfigRuleComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19727,6 +24307,12 @@ func (client *Client) GetAggregateConfigRuleComplianceByPackWithOptions(request 
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results based on rules in the `cp-541e626622af0087****` compliance package that is created for the `ca-04b3fd170e340007****` account group. The return result shows a total of `one` rule. `No resources` are evaluated as non-compliant based on the rule.
+ *
+ * @param request GetAggregateConfigRuleComplianceByPackRequest
+ * @return GetAggregateConfigRuleComplianceByPackResponse
+ */
 func (client *Client) GetAggregateConfigRuleComplianceByPack(request *GetAggregateConfigRuleComplianceByPackRequest) (_result *GetAggregateConfigRuleComplianceByPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateConfigRuleComplianceByPackResponse{}
@@ -19738,6 +24324,13 @@ func (client *Client) GetAggregateConfigRuleComplianceByPack(request *GetAggrega
 	return _result, _err
 }
 
+/**
+ * In this topic, the `ca-3a58626622af0005****` account group is used as an example. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+ *
+ * @param request GetAggregateConfigRuleSummaryByRiskLevelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateConfigRuleSummaryByRiskLevelResponse
+ */
 func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(request *GetAggregateConfigRuleSummaryByRiskLevelRequest, runtime *util.RuntimeOptions) (_result *GetAggregateConfigRuleSummaryByRiskLevelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19767,6 +24360,12 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevelWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * In this topic, the `ca-3a58626622af0005****` account group is used as an example. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+ *
+ * @param request GetAggregateConfigRuleSummaryByRiskLevelRequest
+ * @return GetAggregateConfigRuleSummaryByRiskLevelResponse
+ */
 func (client *Client) GetAggregateConfigRuleSummaryByRiskLevel(request *GetAggregateConfigRuleSummaryByRiskLevelRequest) (_result *GetAggregateConfigRuleSummaryByRiskLevelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateConfigRuleSummaryByRiskLevelResponse{}
@@ -19778,6 +24377,14 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevel(request *GetAggre
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group as required. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
+ * The sample request in this topic shows you how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GetAggregateConfigRulesReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateConfigRulesReportResponse
+ */
 func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggregateConfigRulesReportRequest, runtime *util.RuntimeOptions) (_result *GetAggregateConfigRulesReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19815,6 +24422,13 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateAggregateConfigRulesReport operation to generate the latest compliance evaluation report based on all rules in an account group as required. For more information, see [GenerateAggregateConfigRulesReport](~~262701~~).
+ * The sample request in this topic shows you how to query the compliance evaluation report that is generated based on all rules in the `ca-f632626622af0079****` account group.
+ *
+ * @param request GetAggregateConfigRulesReportRequest
+ * @return GetAggregateConfigRulesReportResponse
+ */
 func (client *Client) GetAggregateConfigRulesReport(request *GetAggregateConfigRulesReportRequest) (_result *GetAggregateConfigRulesReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateConfigRulesReportResponse{}
@@ -19826,6 +24440,13 @@ func (client *Client) GetAggregateConfigRulesReport(request *GetAggregateConfigR
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008****` account group.
+ *
+ * @param request GetAggregateDiscoveredResourceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateDiscoveredResourceResponse
+ */
 func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggregateDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19855,6 +24476,12 @@ func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggr
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the `new-bucket` resource in the `ca-5885626622af0008****` account group.
+ *
+ * @param request GetAggregateDiscoveredResourceRequest
+ * @return GetAggregateDiscoveredResourceResponse
+ */
 func (client *Client) GetAggregateDiscoveredResource(request *GetAggregateDiscoveredResourceRequest) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateDiscoveredResourceResponse{}
@@ -19866,6 +24493,13 @@ func (client *Client) GetAggregateDiscoveredResource(request *GetAggregateDiscov
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e****` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+ *
+ * @param request GetAggregateResourceComplianceByConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceComplianceByConfigRuleResponse
+ */
 func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(request *GetAggregateResourceComplianceByConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceByConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19882,6 +24516,10 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
 		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -19911,6 +24549,12 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results based on the `cr-d369626622af008e****` rule in the `ca-a4e5626622af0079****` account group. The return result shows that a total of 10 resources are evaluated by the rule and five of them are evaluated as compliant.
+ *
+ * @param request GetAggregateResourceComplianceByConfigRuleRequest
+ * @return GetAggregateResourceComplianceByConfigRuleResponse
+ */
 func (client *Client) GetAggregateResourceComplianceByConfigRule(request *GetAggregateResourceComplianceByConfigRuleRequest) (_result *GetAggregateResourceComplianceByConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceComplianceByConfigRuleResponse{}
@@ -19922,6 +24566,13 @@ func (client *Client) GetAggregateResourceComplianceByConfigRule(request *GetAgg
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results of resources monitored by the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****`account group. The return result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+ *
+ * @param request GetAggregateResourceComplianceByPackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceComplianceByPackResponse
+ */
 func (client *Client) GetAggregateResourceComplianceByPackWithOptions(request *GetAggregateResourceComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19951,6 +24602,12 @@ func (client *Client) GetAggregateResourceComplianceByPackWithOptions(request *G
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance evaluation results of resources monitored by the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****`account group. The return result shows that the total number of monitored resources is `10` and the number of non-compliant resources is `7`.
+ *
+ * @param request GetAggregateResourceComplianceByPackRequest
+ * @return GetAggregateResourceComplianceByPackResponse
+ */
 func (client *Client) GetAggregateResourceComplianceByPack(request *GetAggregateResourceComplianceByPackRequest) (_result *GetAggregateResourceComplianceByPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceComplianceByPackResponse{}
@@ -20058,6 +24715,13 @@ func (client *Client) GetAggregateResourceComplianceGroupByResourceType(request 
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542****` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+ *
+ * @param request GetAggregateResourceComplianceTimelineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceComplianceTimelineResponse
+ */
 func (client *Client) GetAggregateResourceComplianceTimelineWithOptions(request *GetAggregateResourceComplianceTimelineRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20087,6 +24751,12 @@ func (client *Client) GetAggregateResourceComplianceTimelineWithOptions(request 
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542****` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8), and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+ *
+ * @param request GetAggregateResourceComplianceTimelineRequest
+ * @return GetAggregateResourceComplianceTimelineResponse
+ */
 func (client *Client) GetAggregateResourceComplianceTimeline(request *GetAggregateResourceComplianceTimelineRequest) (_result *GetAggregateResourceComplianceTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceComplianceTimelineResponse{}
@@ -20098,6 +24768,13 @@ func (client *Client) GetAggregateResourceComplianceTimeline(request *GetAggrega
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542****` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+ *
+ * @param request GetAggregateResourceConfigurationTimelineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceConfigurationTimelineResponse
+ */
 func (client *Client) GetAggregateResourceConfigurationTimelineWithOptions(request *GetAggregateResourceConfigurationTimelineRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceConfigurationTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20127,6 +24804,12 @@ func (client *Client) GetAggregateResourceConfigurationTimelineWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region within the `100931896542****` member account of the `ca-5885626622af0008****` account group. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+ *
+ * @param request GetAggregateResourceConfigurationTimelineRequest
+ * @return GetAggregateResourceConfigurationTimelineResponse
+ */
 func (client *Client) GetAggregateResourceConfigurationTimeline(request *GetAggregateResourceConfigurationTimelineRequest) (_result *GetAggregateResourceConfigurationTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceConfigurationTimelineResponse{}
@@ -20138,6 +24821,13 @@ func (client *Client) GetAggregateResourceConfigurationTimeline(request *GetAggr
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005****` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+ *
+ * @param request GetAggregateResourceCountsGroupByRegionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceCountsGroupByRegionResponse
+ */
 func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request *GetAggregateResourceCountsGroupByRegionRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceCountsGroupByRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20150,6 +24840,10 @@ func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request
 
 	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
 		query["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -20183,6 +24877,12 @@ func (client *Client) GetAggregateResourceCountsGroupByRegionWithOptions(request
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics on the resources in an account group named `ca-a260626622af0005****` by region. The returned result shows that a total of `10` resources exist in the `cn-hangzhou` region.
+ *
+ * @param request GetAggregateResourceCountsGroupByRegionRequest
+ * @return GetAggregateResourceCountsGroupByRegionResponse
+ */
 func (client *Client) GetAggregateResourceCountsGroupByRegion(request *GetAggregateResourceCountsGroupByRegionRequest) (_result *GetAggregateResourceCountsGroupByRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceCountsGroupByRegionResponse{}
@@ -20194,6 +24894,13 @@ func (client *Client) GetAggregateResourceCountsGroupByRegion(request *GetAggreg
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+ *
+ * @param request GetAggregateResourceCountsGroupByResourceTypeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregateResourceCountsGroupByResourceTypeResponse
+ */
 func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(request *GetAggregateResourceCountsGroupByResourceTypeRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceCountsGroupByResourceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20210,6 +24917,10 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
@@ -20239,6 +24950,12 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceTypeWithOptions(r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the statistics on the resources in an account group whose ID is `ca-a260626622af0005****` by resource type. The returned result shows that a total of `seven` resources of the `ACS::RAM::Role` resource type exist.
+ *
+ * @param request GetAggregateResourceCountsGroupByResourceTypeRequest
+ * @return GetAggregateResourceCountsGroupByResourceTypeResponse
+ */
 func (client *Client) GetAggregateResourceCountsGroupByResourceType(request *GetAggregateResourceCountsGroupByResourceTypeRequest) (_result *GetAggregateResourceCountsGroupByResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregateResourceCountsGroupByResourceTypeResponse{}
@@ -20250,6 +24967,13 @@ func (client *Client) GetAggregateResourceCountsGroupByResourceType(request *Get
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055****` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+ *
+ * @param request GetAggregatorRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAggregatorResponse
+ */
 func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, runtime *util.RuntimeOptions) (_result *GetAggregatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20279,6 +25003,12 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the details of the `ca-88ea626622af0055****` account group. The return result shows that the account group is named `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type. The account group is in the `1` state, which indicates that it is created.
+ *
+ * @param request GetAggregatorRequest
+ * @return GetAggregatorResponse
+ */
 func (client *Client) GetAggregator(request *GetAggregatorRequest) (_result *GetAggregatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAggregatorResponse{}
@@ -20290,6 +25020,13 @@ func (client *Client) GetAggregator(request *GetAggregatorRequest) (_result *Get
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+ *
+ * @param request GetCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCompliancePackResponse
+ */
 func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackRequest, runtime *util.RuntimeOptions) (_result *GetCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20319,6 +25056,12 @@ func (client *Client) GetCompliancePackWithOptions(request *GetCompliancePackReq
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the details of a compliance package whose ID is `cp-fdc8626622af00f9****`. The returned result shows that the name of the compliance package is `ClassifiedProtectionPreCheck`, the compliance package is in the `ACTIVE` state, and the risk level of the rules in the compliance package is `1`, which indicates high risk level.
+ *
+ * @param request GetCompliancePackRequest
+ * @return GetCompliancePackResponse
+ */
 func (client *Client) GetCompliancePack(request *GetCompliancePackRequest) (_result *GetCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCompliancePackResponse{}
@@ -20330,6 +25073,14 @@ func (client *Client) GetCompliancePack(request *GetCompliancePackRequest) (_res
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package as required. For more information, see [GenerateCompliancePackReport](~~263525~~).
+ * In this topic, the `cp-fdc8626622af00f9****` compliance package is used as an example.
+ *
+ * @param request GetCompliancePackReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCompliancePackReportResponse
+ */
 func (client *Client) GetCompliancePackReportWithOptions(request *GetCompliancePackReportRequest, runtime *util.RuntimeOptions) (_result *GetCompliancePackReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20359,6 +25110,13 @@ func (client *Client) GetCompliancePackReportWithOptions(request *GetComplianceP
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateCompliancePackReport operation to generate the latest compliance evaluation report based on a compliance package as required. For more information, see [GenerateCompliancePackReport](~~263525~~).
+ * In this topic, the `cp-fdc8626622af00f9****` compliance package is used as an example.
+ *
+ * @param request GetCompliancePackReportRequest
+ * @return GetCompliancePackReportResponse
+ */
 func (client *Client) GetCompliancePackReport(request *GetCompliancePackReportRequest) (_result *GetCompliancePackReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCompliancePackReportResponse{}
@@ -20414,6 +25172,13 @@ func (client *Client) GetConfigDeliveryChannel(request *GetConfigDeliveryChannel
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the details of the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request GetConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConfigRuleResponse
+ */
 func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20447,6 +25212,12 @@ func (client *Client) GetConfigRuleWithOptions(request *GetConfigRuleRequest, ru
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the details of the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request GetConfigRuleRequest
+ * @return GetConfigRuleResponse
+ */
 func (client *Client) GetConfigRule(request *GetConfigRuleRequest) (_result *GetConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRuleResponse{}
@@ -20458,6 +25229,13 @@ func (client *Client) GetConfigRule(request *GetConfigRuleRequest) (_result *Get
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+ *
+ * @param request GetConfigRuleComplianceByPackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConfigRuleComplianceByPackResponse
+ */
 func (client *Client) GetConfigRuleComplianceByPackWithOptions(request *GetConfigRuleComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetConfigRuleComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20487,6 +25265,12 @@ func (client *Client) GetConfigRuleComplianceByPackWithOptions(request *GetConfi
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example. The return result shows a total of one rule against which specific resources are evaluated as compliant.
+ *
+ * @param request GetConfigRuleComplianceByPackRequest
+ * @return GetConfigRuleComplianceByPackResponse
+ */
 func (client *Client) GetConfigRuleComplianceByPack(request *GetConfigRuleComplianceByPackRequest) (_result *GetConfigRuleComplianceByPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRuleComplianceByPackResponse{}
@@ -20498,6 +25282,13 @@ func (client *Client) GetConfigRuleComplianceByPack(request *GetConfigRuleCompli
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+ *
+ * @param request GetConfigRuleSummaryByRiskLevelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConfigRuleSummaryByRiskLevelResponse
+ */
 func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.RuntimeOptions) (_result *GetConfigRuleSummaryByRiskLevelResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -20520,6 +25311,11 @@ func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.R
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query the summary of compliance evaluation results by rule risk level. The return result shows four rules that are specified with the high risk level. One of them detects non-compliant resources, and the resources evaluated by the remaining three are all compliant.
+ *
+ * @return GetConfigRuleSummaryByRiskLevelResponse
+ */
 func (client *Client) GetConfigRuleSummaryByRiskLevel() (_result *GetConfigRuleSummaryByRiskLevelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRuleSummaryByRiskLevelResponse{}
@@ -20531,6 +25327,14 @@ func (client *Client) GetConfigRuleSummaryByRiskLevel() (_result *GetConfigRuleS
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+ * This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
+ *
+ * @param request GetConfigRulesReportRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetConfigRulesReportResponse
+ */
 func (client *Client) GetConfigRulesReportWithOptions(request *GetConfigRulesReportRequest, runtime *util.RuntimeOptions) (_result *GetConfigRulesReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20564,6 +25368,13 @@ func (client *Client) GetConfigRulesReportWithOptions(request *GetConfigRulesRep
 	return _result, _err
 }
 
+/**
+ * >  Before you call this operation, you must call the GenerateConfigRulesReport operation to generate the latest compliance evaluation report based on all existing rules. For more information, see [GenerateConfigRulesReport](~~263601~~).
+ * This topic provides an example of how to query the compliance evaluation report that is generated based on all existing rules.
+ *
+ * @param request GetConfigRulesReportRequest
+ * @return GetConfigRulesReportResponse
+ */
 func (client *Client) GetConfigRulesReport(request *GetConfigRulesReportRequest) (_result *GetConfigRulesReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRulesReportResponse{}
@@ -20575,6 +25386,13 @@ func (client *Client) GetConfigRulesReport(request *GetConfigRulesReportRequest)
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+ *
+ * @param request GetDiscoveredResourceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDiscoveredResourceResponse
+ */
 func (client *Client) GetDiscoveredResourceWithOptions(request *GetDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20604,6 +25422,12 @@ func (client *Client) GetDiscoveredResourceWithOptions(request *GetDiscoveredRes
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+ *
+ * @param request GetDiscoveredResourceRequest
+ * @return GetDiscoveredResourceResponse
+ */
 func (client *Client) GetDiscoveredResource(request *GetDiscoveredResourceRequest) (_result *GetDiscoveredResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDiscoveredResourceResponse{}
@@ -20615,6 +25439,13 @@ func (client *Client) GetDiscoveredResource(request *GetDiscoveredResourceReques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+ *
+ * @param request GetDiscoveredResourceCountsGroupByRegionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDiscoveredResourceCountsGroupByRegionResponse
+ */
 func (client *Client) GetDiscoveredResourceCountsGroupByRegionWithOptions(request *GetDiscoveredResourceCountsGroupByRegionRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceCountsGroupByRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20648,6 +25479,12 @@ func (client *Client) GetDiscoveredResourceCountsGroupByRegionWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+ *
+ * @param request GetDiscoveredResourceCountsGroupByRegionRequest
+ * @return GetDiscoveredResourceCountsGroupByRegionResponse
+ */
 func (client *Client) GetDiscoveredResourceCountsGroupByRegion(request *GetDiscoveredResourceCountsGroupByRegionRequest) (_result *GetDiscoveredResourceCountsGroupByRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDiscoveredResourceCountsGroupByRegionResponse{}
@@ -20659,6 +25496,13 @@ func (client *Client) GetDiscoveredResourceCountsGroupByRegion(request *GetDisco
 	return _result, _err
 }
 
+/**
+ * This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+ *
+ * @param request GetDiscoveredResourceCountsGroupByResourceTypeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDiscoveredResourceCountsGroupByResourceTypeResponse
+ */
 func (client *Client) GetDiscoveredResourceCountsGroupByResourceTypeWithOptions(request *GetDiscoveredResourceCountsGroupByResourceTypeRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceCountsGroupByResourceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20692,6 +25536,12 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceTypeWithOptions(
 	return _result, _err
 }
 
+/**
+ * This topic describes how to query the statistics on resources by resource type. The returned result shows that a total of 10 resources of the `ACS::ECS::Instance` resource type exist.
+ *
+ * @param request GetDiscoveredResourceCountsGroupByResourceTypeRequest
+ * @return GetDiscoveredResourceCountsGroupByResourceTypeResponse
+ */
 func (client *Client) GetDiscoveredResourceCountsGroupByResourceType(request *GetDiscoveredResourceCountsGroupByResourceTypeRequest) (_result *GetDiscoveredResourceCountsGroupByResourceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDiscoveredResourceCountsGroupByResourceTypeResponse{}
@@ -20747,6 +25597,13 @@ func (client *Client) GetIntegratedServiceStatus(request *GetIntegratedServiceSt
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+ *
+ * @param request GetManagedRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetManagedRuleResponse
+ */
 func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, runtime *util.RuntimeOptions) (_result *GetManagedRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20780,6 +25637,12 @@ func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, 
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+ *
+ * @param request GetManagedRuleRequest
+ * @return GetManagedRuleResponse
+ */
 func (client *Client) GetManagedRule(request *GetManagedRuleRequest) (_result *GetManagedRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManagedRuleResponse{}
@@ -20791,6 +25654,13 @@ func (client *Client) GetManagedRule(request *GetManagedRuleRequest) (_result *G
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cr-d369626622af008e****` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+ *
+ * @param request GetResourceComplianceByConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetResourceComplianceByConfigRuleResponse
+ */
 func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetResourceComplianceByConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceByConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20820,6 +25690,12 @@ func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetR
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cr-d369626622af008e****` rule is used as an example. The return result shows that a total of 10 resources are evaluated by the rule and `five` of them are evaluated as compliant.
+ *
+ * @param request GetResourceComplianceByConfigRuleRequest
+ * @return GetResourceComplianceByConfigRuleResponse
+ */
 func (client *Client) GetResourceComplianceByConfigRule(request *GetResourceComplianceByConfigRuleRequest) (_result *GetResourceComplianceByConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceComplianceByConfigRuleResponse{}
@@ -20831,6 +25707,13 @@ func (client *Client) GetResourceComplianceByConfigRule(request *GetResourceComp
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example. The return result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+ *
+ * @param request GetResourceComplianceByPackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetResourceComplianceByPackResponse
+ */
 func (client *Client) GetResourceComplianceByPackWithOptions(request *GetResourceComplianceByPackRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceByPackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20860,6 +25743,12 @@ func (client *Client) GetResourceComplianceByPackWithOptions(request *GetResourc
 	return _result, _err
 }
 
+/**
+ * In this topic, the `cp-541e626622af0087****` compliance package is used as an example. The return result shows a total of 10 resources and seven of them are evaluated as non-compliant.
+ *
+ * @param request GetResourceComplianceByPackRequest
+ * @return GetResourceComplianceByPackResponse
+ */
 func (client *Client) GetResourceComplianceByPack(request *GetResourceComplianceByPackRequest) (_result *GetResourceComplianceByPackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceComplianceByPackResponse{}
@@ -20959,6 +25848,13 @@ func (client *Client) GetResourceComplianceGroupByResourceType(request *GetResou
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+ *
+ * @param request GetResourceComplianceTimelineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetResourceComplianceTimelineResponse
+ */
 func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResourceComplianceTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceComplianceTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20988,6 +25884,12 @@ func (client *Client) GetResourceComplianceTimelineWithOptions(request *GetResou
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the compliance timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The resource is an Object Storage Service (OSS) bucket. The return result shows the following two timestamps on the compliance timeline: `1625200295276` and `1625200228510`. The first timestamp indicates 12:31:35 on July 2, 2021 (UTC+8) and the second timestamp indicates 12:30:28 on July 2, 2021 (UTC+8).
+ *
+ * @param request GetResourceComplianceTimelineRequest
+ * @return GetResourceComplianceTimelineResponse
+ */
 func (client *Client) GetResourceComplianceTimeline(request *GetResourceComplianceTimelineRequest) (_result *GetResourceComplianceTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceComplianceTimelineResponse{}
@@ -20999,6 +25901,13 @@ func (client *Client) GetResourceComplianceTimeline(request *GetResourceComplian
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+ *
+ * @param request GetResourceConfigurationTimelineRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetResourceConfigurationTimelineResponse
+ */
 func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetResourceConfigurationTimelineRequest, runtime *util.RuntimeOptions) (_result *GetResourceConfigurationTimelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21028,6 +25937,12 @@ func (client *Client) GetResourceConfigurationTimelineWithOptions(request *GetRe
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the configuration timeline of the `new-bucket` resource that resides in the `cn-hangzhou` region. The new-bucket resource is an Object Storage Service (OSS) bucket. The return result shows that the timestamp when the resource configuration changes is `1624961112000`. The timestamp indicates 18:05:12 on June 29, 2021 (UTC+8).
+ *
+ * @param request GetResourceConfigurationTimelineRequest
+ * @return GetResourceConfigurationTimelineResponse
+ */
 func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfigurationTimelineRequest) (_result *GetResourceConfigurationTimelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceConfigurationTimelineResponse{}
@@ -21039,6 +25954,14 @@ func (client *Client) GetResourceConfigurationTimeline(request *GetResourceConfi
 	return _result, _err
 }
 
+/**
+ * After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+ * This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ *
+ * @param tmpReq IgnoreAggregateEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return IgnoreAggregateEvaluationResultsResponse
+ */
 func (client *Client) IgnoreAggregateEvaluationResultsWithOptions(tmpReq *IgnoreAggregateEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *IgnoreAggregateEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21094,6 +26017,13 @@ func (client *Client) IgnoreAggregateEvaluationResultsWithOptions(tmpReq *Ignore
 	return _result, _err
 }
 
+/**
+ * After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+ * This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` incompliant resource that is evaluated by using the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region where the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ *
+ * @param request IgnoreAggregateEvaluationResultsRequest
+ * @return IgnoreAggregateEvaluationResultsResponse
+ */
 func (client *Client) IgnoreAggregateEvaluationResults(request *IgnoreAggregateEvaluationResultsRequest) (_result *IgnoreAggregateEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IgnoreAggregateEvaluationResultsResponse{}
@@ -21105,6 +26035,14 @@ func (client *Client) IgnoreAggregateEvaluationResults(request *IgnoreAggregateE
 	return _result, _err
 }
 
+/**
+ * After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+ * This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ *
+ * @param tmpReq IgnoreEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return IgnoreEvaluationResultsResponse
+ */
 func (client *Client) IgnoreEvaluationResultsWithOptions(tmpReq *IgnoreEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *IgnoreEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21156,6 +26094,13 @@ func (client *Client) IgnoreEvaluationResultsWithOptions(tmpReq *IgnoreEvaluatio
 	return _result, _err
 }
 
+/**
+ * After you ignore a resource that is evaluated as incompliant by using a rule, the resource is still evaluated by using the rule, but the compliance result is Ignored.
+ * This example shows how to ignore the `lb-hp3a3b4ztyfm2plgm****` resource that is evaluated as incompliant by using the `cr-7e72626622af0051****` rule in the `100931896542****` account. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ *
+ * @param request IgnoreEvaluationResultsRequest
+ * @return IgnoreEvaluationResultsResponse
+ */
 func (client *Client) IgnoreEvaluationResults(request *IgnoreEvaluationResultsRequest) (_result *IgnoreEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IgnoreEvaluationResultsResponse{}
@@ -21167,6 +26112,13 @@ func (client *Client) IgnoreEvaluationResults(request *IgnoreEvaluationResultsRe
 	return _result, _err
 }
 
+/**
+ * In this topic, the `ca-f632626622af0079****` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+ *
+ * @param request ListAggregateCompliancePacksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateCompliancePacksResponse
+ */
 func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggregateCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListAggregateCompliancePacksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21212,6 +26164,12 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 	return _result, _err
 }
 
+/**
+ * In this topic, the `ca-f632626622af0079****` account group is used as an example. The return result shows one compliance package whose ID is `cp-fdc8626622af00f9****`.
+ *
+ * @param request ListAggregateCompliancePacksRequest
+ * @return ListAggregateCompliancePacksResponse
+ */
 func (client *Client) ListAggregateCompliancePacks(request *ListAggregateCompliancePacksRequest) (_result *ListAggregateCompliancePacksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateCompliancePacksResponse{}
@@ -21271,6 +26229,13 @@ func (client *Client) ListAggregateConfigDeliveryChannels(request *ListAggregate
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae****` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+ *
+ * @param request ListAggregateConfigRuleEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateConfigRuleEvaluationResultsResponse
+ */
 func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(request *ListAggregateConfigRuleEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateConfigRuleEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21303,6 +26268,10 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 
 	if !tea.BoolValue(util.IsUnset(request.Regions)) {
 		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
@@ -21340,6 +26309,12 @@ func (client *Client) ListAggregateConfigRuleEvaluationResultsWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the compliance evaluation results of resources based on the `cr-888f626622af00ae****` rule in the `ca-d1e3326622af00cb****` account group. The returned result indicates that the `Bucket-test` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Object Storage Service (OSS) bucket.
+ *
+ * @param request ListAggregateConfigRuleEvaluationResultsRequest
+ * @return ListAggregateConfigRuleEvaluationResultsResponse
+ */
 func (client *Client) ListAggregateConfigRuleEvaluationResults(request *ListAggregateConfigRuleEvaluationResultsRequest) (_result *ListAggregateConfigRuleEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateConfigRuleEvaluationResultsResponse{}
@@ -21351,6 +26326,13 @@ func (client *Client) ListAggregateConfigRuleEvaluationResults(request *ListAggr
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079****`. The return result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+ *
+ * @param request ListAggregateConfigRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateConfigRulesResponse
+ */
 func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21385,6 +26367,10 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
 		query["RiskLevel"] = request.RiskLevel
 	}
@@ -21412,6 +26398,12 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the rules in an account group whose ID is `ca-f632626622af0079****`. The return result shows a total of one rule and two evaluated resources. The resources are both evaluated as `COMPLIANT`.
+ *
+ * @param request ListAggregateConfigRulesRequest
+ * @return ListAggregateConfigRulesResponse
+ */
 func (client *Client) ListAggregateConfigRules(request *ListAggregateConfigRulesRequest) (_result *ListAggregateConfigRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateConfigRulesResponse{}
@@ -21423,6 +26415,13 @@ func (client *Client) ListAggregateConfigRules(request *ListAggregateConfigRules
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the resources in the `ca-c560626622af0005****` account group. The response shows that the account group contains eight resources.
+ *
+ * @param request ListAggregateDiscoveredResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateDiscoveredResourcesResponse
+ */
 func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListAggregateDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21443,6 +26442,10 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 
 	if !tea.BoolValue(util.IsUnset(request.Regions)) {
 		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAccountId)) {
+		query["ResourceAccountId"] = request.ResourceAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceDeleted)) {
@@ -21484,6 +26487,12 @@ func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListA
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the resources in the `ca-c560626622af0005****` account group. The response shows that the account group contains eight resources.
+ *
+ * @param request ListAggregateDiscoveredResourcesRequest
+ * @return ListAggregateDiscoveredResourcesResponse
+ */
 func (client *Client) ListAggregateDiscoveredResources(request *ListAggregateDiscoveredResourcesRequest) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateDiscoveredResourcesResponse{}
@@ -21495,6 +26504,13 @@ func (client *Client) ListAggregateDiscoveredResources(request *ListAggregateDis
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the remediation setting of the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`.
+ *
+ * @param request ListAggregateRemediationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateRemediationsResponse
+ */
 func (client *Client) ListAggregateRemediationsWithOptions(request *ListAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateRemediationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21532,6 +26548,12 @@ func (client *Client) ListAggregateRemediationsWithOptions(request *ListAggregat
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query the remediation setting of the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`.
+ *
+ * @param request ListAggregateRemediationsRequest
+ * @return ListAggregateRemediationsResponse
+ */
 func (client *Client) ListAggregateRemediations(request *ListAggregateRemediationsRequest) (_result *ListAggregateRemediationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateRemediationsResponse{}
@@ -21543,6 +26565,13 @@ func (client *Client) ListAggregateRemediations(request *ListAggregateRemediatio
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the compliance evaluation result of the `23642660635396****` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request ListAggregateResourceEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregateResourceEvaluationResultsResponse
+ */
 func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request *ListAggregateResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21600,6 +26629,12 @@ func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request 
 	return _result, _err
 }
 
+/**
+ * This example shows how to query the compliance evaluation result of the `23642660635396****` resource in the `ca-7f00626622af0041****` account group. The resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request ListAggregateResourceEvaluationResultsRequest
+ * @return ListAggregateResourceEvaluationResultsResponse
+ */
 func (client *Client) ListAggregateResourceEvaluationResults(request *ListAggregateResourceEvaluationResultsRequest) (_result *ListAggregateResourceEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregateResourceEvaluationResultsResponse{}
@@ -21611,6 +26646,13 @@ func (client *Client) ListAggregateResourceEvaluationResults(request *ListAggreg
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+ *
+ * @param request ListAggregatorsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAggregatorsResponse
+ */
 func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest, runtime *util.RuntimeOptions) (_result *ListAggregatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21648,6 +26690,12 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to query account groups. A maximum of 10 entries can be returned for the request. As shown in the responses, the account group returned is named as `Test_Group`, its description is `Test account group`, and it is of the `CUSTOM` type, which indicates a custom account group. The account group contains two member accounts.
+ *
+ * @param request ListAggregatorsRequest
+ * @return ListAggregatorsResponse
+ */
 func (client *Client) ListAggregators(request *ListAggregatorsRequest) (_result *ListAggregatorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAggregatorsResponse{}
@@ -21659,6 +26707,13 @@ func (client *Client) ListAggregators(request *ListAggregatorsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf****`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+ *
+ * @param request ListCompliancePackTemplatesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCompliancePackTemplatesResponse
+ */
 func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompliancePackTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListCompliancePackTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21675,6 +26730,10 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21700,6 +26759,12 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the details of a compliance package template whose ID is `ct-d254ff4e06a300cf****`. The returned result indicates that the template name is `BestPracticesForNetwork`, the template ID is `ct-d254ff4e06a300cf****`, and the ID of the managed rule of the template is `slb-servercertificate-expired-check`.
+ *
+ * @param request ListCompliancePackTemplatesRequest
+ * @return ListCompliancePackTemplatesResponse
+ */
 func (client *Client) ListCompliancePackTemplates(request *ListCompliancePackTemplatesRequest) (_result *ListCompliancePackTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCompliancePackTemplatesResponse{}
@@ -21711,6 +26776,13 @@ func (client *Client) ListCompliancePackTemplates(request *ListCompliancePackTem
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9****` compliance package.
+ *
+ * @param request ListCompliancePacksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCompliancePacksResponse
+ */
 func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePacksRequest, runtime *util.RuntimeOptions) (_result *ListCompliancePacksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21752,6 +26824,12 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 	return _result, _err
 }
 
+/**
+ * This topic provides an example of how to query compliance packages. The return result shows the details of the `cp-fdc8626622af00f9****` compliance package.
+ *
+ * @param request ListCompliancePacksRequest
+ * @return ListCompliancePacksResponse
+ */
 func (client *Client) ListCompliancePacks(request *ListCompliancePacksRequest) (_result *ListCompliancePacksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCompliancePacksResponse{}
@@ -21807,6 +26885,13 @@ func (client *Client) ListConfigDeliveryChannels(request *ListConfigDeliveryChan
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3****`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+ *
+ * @param request ListConfigRuleEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConfigRuleEvaluationResultsResponse
+ */
 func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListConfigRuleEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListConfigRuleEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21836,6 +26921,12 @@ func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListCo
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to query the compliance evaluation result of resources based on a rule whose ID is `cr-cac56457e0d900d3****`. The returned result indicates that the `i-hp3e4kvhzqn2s11t****` resource is evaluated as `NON_COMPLIANT` by using the rule. The resource is an Elastic Compute Service (ECS) instance.
+ *
+ * @param request ListConfigRuleEvaluationResultsRequest
+ * @return ListConfigRuleEvaluationResultsResponse
+ */
 func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEvaluationResultsRequest) (_result *ListConfigRuleEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConfigRuleEvaluationResultsResponse{}
@@ -21847,6 +26938,85 @@ func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEva
 	return _result, _err
 }
 
+func (client *Client) ListConfigRulesWithOptions(request *ListConfigRulesRequest, runtime *util.RuntimeOptions) (_result *ListConfigRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		query["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleState)) {
+		query["ConfigRuleState"] = request.ConfigRuleState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigRules"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConfigRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListConfigRules(request *ListConfigRulesRequest) (_result *ListConfigRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListConfigRulesResponse{}
+	_body, _err := client.ListConfigRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+ *
+ * @param request ListDiscoveredResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDiscoveredResourcesResponse
+ */
 func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListDiscoveredResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21900,6 +27070,12 @@ func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscovered
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the ListDiscoveredResources operation to query the resources in the current Alibaba Cloud account. The returned result indicates that a total of eight resources exist in the account.
+ *
+ * @param request ListDiscoveredResourcesRequest
+ * @return ListDiscoveredResourcesResponse
+ */
 func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRequest) (_result *ListDiscoveredResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDiscoveredResourcesResponse{}
@@ -21911,6 +27087,13 @@ func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRe
 	return _result, _err
 }
 
+/**
+ * This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+ *
+ * @param request ListManagedRulesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListManagedRulesResponse
+ */
 func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesRequest, runtime *util.RuntimeOptions) (_result *ListManagedRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21927,6 +27110,10 @@ func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
@@ -21956,6 +27143,12 @@ func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesReque
 	return _result, _err
 }
 
+/**
+ * This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+ *
+ * @param request ListManagedRulesRequest
+ * @return ListManagedRulesResponse
+ */
 func (client *Client) ListManagedRules(request *ListManagedRulesRequest) (_result *ListManagedRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManagedRulesResponse{}
@@ -22025,6 +27218,13 @@ func (client *Client) ListPreManagedRules(request *ListPreManagedRulesRequest) (
 	return _result, _err
 }
 
+/**
+ * In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+ *
+ * @param request ListRemediationTemplatesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListRemediationTemplatesResponse
+ */
 func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediationTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListRemediationTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22062,6 +27262,12 @@ func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediati
 	return _result, _err
 }
 
+/**
+ * In this topic, the `oss-bucket-public-write-prohibited` managed rule is used as an example. The return result shows the details of the remediation template of the `OOS` type for the managed rule. OOS represents Operation Orchestration Service.
+ *
+ * @param request ListRemediationTemplatesRequest
+ * @return ListRemediationTemplatesResponse
+ */
 func (client *Client) ListRemediationTemplates(request *ListRemediationTemplatesRequest) (_result *ListRemediationTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRemediationTemplatesResponse{}
@@ -22073,6 +27279,13 @@ func (client *Client) ListRemediationTemplates(request *ListRemediationTemplates
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-6b7c626622af00b4****` is used as an example.
+ *
+ * @param request ListRemediationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListRemediationsResponse
+ */
 func (client *Client) ListRemediationsWithOptions(request *ListRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListRemediationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22106,6 +27319,12 @@ func (client *Client) ListRemediationsWithOptions(request *ListRemediationsReque
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-6b7c626622af00b4****` is used as an example.
+ *
+ * @param request ListRemediationsRequest
+ * @return ListRemediationsResponse
+ */
 func (client *Client) ListRemediations(request *ListRemediationsRequest) (_result *ListRemediationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRemediationsResponse{}
@@ -22117,6 +27336,13 @@ func (client *Client) ListRemediations(request *ListRemediationsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * In this example, the compliance evaluation result of the `23642660635396****` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request ListResourceEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceEvaluationResultsResponse
+ */
 func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22170,6 +27396,12 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 	return _result, _err
 }
 
+/**
+ * In this example, the compliance evaluation result of the `23642660635396****` resource is queried and the resource is a RAM user. The returned result indicates that the resource is evaluated as `NON_COMPLIANT` by using the `cr-7f7d626622af0041****` rule.
+ *
+ * @param request ListResourceEvaluationResultsRequest
+ * @return ListResourceEvaluationResultsResponse
+ */
 func (client *Client) ListResourceEvaluationResults(request *ListResourceEvaluationResultsRequest) (_result *ListResourceEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceEvaluationResultsResponse{}
@@ -22247,6 +27479,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to reevaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ * ## Prerequisites
+ * One or more non-compliant resources that are evaluated by a rule in an account group are ignored.
+ *
+ * @param tmpReq RevertAggregateEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevertAggregateEvaluationResultsResponse
+ */
 func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *RevertAggregateEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *RevertAggregateEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22294,6 +27535,14 @@ func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *Revert
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to reevaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ * ## Prerequisites
+ * One or more non-compliant resources that are evaluated by a rule in an account group are ignored.
+ *
+ * @param request RevertAggregateEvaluationResultsRequest
+ * @return RevertAggregateEvaluationResultsResponse
+ */
 func (client *Client) RevertAggregateEvaluationResults(request *RevertAggregateEvaluationResultsRequest) (_result *RevertAggregateEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevertAggregateEvaluationResultsResponse{}
@@ -22305,6 +27554,15 @@ func (client *Client) RevertAggregateEvaluationResults(request *RevertAggregateE
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to reevaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ * ## Prerequisites
+ * One or more non-compliant resources that are evaluated by a rule are ignored.
+ *
+ * @param tmpReq RevertEvaluationResultsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevertEvaluationResultsResponse
+ */
 func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *RevertEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22348,6 +27606,14 @@ func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluatio
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to reevaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+ * ## Prerequisites
+ * One or more non-compliant resources that are evaluated by a rule are ignored.
+ *
+ * @param request RevertEvaluationResultsRequest
+ * @return RevertEvaluationResultsResponse
+ */
 func (client *Client) RevertEvaluationResults(request *RevertEvaluationResultsRequest) (_result *RevertEvaluationResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevertEvaluationResultsResponse{}
@@ -22359,6 +27625,14 @@ func (client *Client) RevertEvaluationResults(request *RevertEvaluationResultsRe
 	return _result, _err
 }
 
+/**
+ * >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
+ * The sample request in this topic shows you how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+ *
+ * @param request StartAggregateConfigRuleEvaluationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartAggregateConfigRuleEvaluationResponse
+ */
 func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *StartAggregateConfigRuleEvaluationRequest, runtime *util.RuntimeOptions) (_result *StartAggregateConfigRuleEvaluationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22404,6 +27678,13 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 	return _result, _err
 }
 
+/**
+ * >  After you call this operation, the compliance evaluation is performed only once. To query the compliance evaluation results returned by the rule, call the ListAggregateConfigRuleEvaluationResults operation. For more information, see [ListAggregateConfigRuleEvaluationResults](~~265979~~).
+ * The sample request in this topic shows you how to use the `cr-c169626622af009f****` rule in the `ca-3a58626622af0005****` account group to evaluate resources.
+ *
+ * @param request StartAggregateConfigRuleEvaluationRequest
+ * @return StartAggregateConfigRuleEvaluationResponse
+ */
 func (client *Client) StartAggregateConfigRuleEvaluation(request *StartAggregateConfigRuleEvaluationRequest) (_result *StartAggregateConfigRuleEvaluationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAggregateConfigRuleEvaluationResponse{}
@@ -22415,6 +27696,13 @@ func (client *Client) StartAggregateConfigRuleEvaluation(request *StartAggregate
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to manually execute the remediation template configured for the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+ *
+ * @param request StartAggregateRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartAggregateRemediationResponse
+ */
 func (client *Client) StartAggregateRemediationWithOptions(request *StartAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *StartAggregateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22452,6 +27740,12 @@ func (client *Client) StartAggregateRemediationWithOptions(request *StartAggrega
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to manually execute the remediation template configured for the rule whose ID is `cr-6b7c626622af00b4****` in the account group whose ID is `ca-6b4a626622af0012****`. The return result shows that the manual execution is successful.
+ *
+ * @param request StartAggregateRemediationRequest
+ * @return StartAggregateRemediationResponse
+ */
 func (client *Client) StartAggregateRemediation(request *StartAggregateRemediationRequest) (_result *StartAggregateRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAggregateRemediationResponse{}
@@ -22463,6 +27757,13 @@ func (client *Client) StartAggregateRemediation(request *StartAggregateRemediati
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-8a973ac2e2be00a2****` is used as an example. The return result shows that the manual execution is successful.
+ *
+ * @param request StartRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartRemediationResponse
+ */
 func (client *Client) StartRemediationWithOptions(request *StartRemediationRequest, runtime *util.RuntimeOptions) (_result *StartRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22496,6 +27797,12 @@ func (client *Client) StartRemediationWithOptions(request *StartRemediationReque
 	return _result, _err
 }
 
+/**
+ * In this topic, the rule whose ID is `cr-8a973ac2e2be00a2****` is used as an example. The return result shows that the manual execution is successful.
+ *
+ * @param request StartRemediationRequest
+ * @return StartRemediationResponse
+ */
 func (client *Client) StartRemediation(request *StartRemediationRequest) (_result *StartRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRemediationResponse{}
@@ -22662,6 +27969,13 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param tmpReq UpdateAggregateCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAggregateCompliancePackResponse
+ */
 func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22745,6 +28059,12 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+ *
+ * @param request UpdateAggregateCompliancePackRequest
+ * @return UpdateAggregateCompliancePackResponse
+ */
 func (client *Client) UpdateAggregateCompliancePack(request *UpdateAggregateCompliancePackRequest) (_result *UpdateAggregateCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateCompliancePackResponse{}
@@ -22756,6 +28076,13 @@ func (client *Client) UpdateAggregateCompliancePack(request *UpdateAggregateComp
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel in an account group is disabled. The ID of the account group is `ca-a4e5626622af0079****`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+ *
+ * @param request UpdateAggregateConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) UpdateAggregateConfigDeliveryChannelWithOptions(request *UpdateAggregateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22837,6 +28164,12 @@ func (client *Client) UpdateAggregateConfigDeliveryChannelWithOptions(request *U
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel in an account group is disabled. The ID of the account group is `ca-a4e5626622af0079****`, and the ID of the delivery channel is `cdc-8e45ff4e06a3a8****```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops resource data delivery.
+ *
+ * @param request UpdateAggregateConfigDeliveryChannelRequest
+ * @return UpdateAggregateConfigDeliveryChannelResponse
+ */
 func (client *Client) UpdateAggregateConfigDeliveryChannel(request *UpdateAggregateConfigDeliveryChannelRequest) (_result *UpdateAggregateConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateConfigDeliveryChannelResponse{}
@@ -22848,6 +28181,13 @@ func (client *Client) UpdateAggregateConfigDeliveryChannel(request *UpdateAggreg
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080****` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+ *
+ * @param tmpReq UpdateAggregateConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAggregateConfigRuleResponse
+ */
 func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggregateConfigRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -22963,6 +28303,12 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080****` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+ *
+ * @param request UpdateAggregateConfigRuleRequest
+ * @return UpdateAggregateConfigRuleResponse
+ */
 func (client *Client) UpdateAggregateConfigRule(request *UpdateAggregateConfigRuleRequest) (_result *UpdateAggregateConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateConfigRuleResponse{}
@@ -22974,6 +28320,13 @@ func (client *Client) UpdateAggregateConfigRule(request *UpdateAggregateConfigRu
 	return _result, _err
 }
 
+/**
+ * This topic describes how to change the execution mode of the `crr-909ba2d4716700eb****` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+ *
+ * @param request UpdateAggregateRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAggregateRemediationResponse
+ */
 func (client *Client) UpdateAggregateRemediationWithOptions(request *UpdateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23031,6 +28384,12 @@ func (client *Client) UpdateAggregateRemediationWithOptions(request *UpdateAggre
 	return _result, _err
 }
 
+/**
+ * This topic describes how to change the execution mode of the `crr-909ba2d4716700eb****` remediation setting for a rule in the `ca-6b4a626622af0012****` account group to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+ *
+ * @param request UpdateAggregateRemediationRequest
+ * @return UpdateAggregateRemediationResponse
+ */
 func (client *Client) UpdateAggregateRemediation(request *UpdateAggregateRemediationRequest) (_result *UpdateAggregateRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateRemediationResponse{}
@@ -23042,6 +28401,13 @@ func (client *Client) UpdateAggregateRemediation(request *UpdateAggregateRemedia
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb****`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+ *
+ * @param tmpReq UpdateAggregatorRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateAggregatorResponse
+ */
 func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregatorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23097,6 +28463,12 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 	return _result, _err
 }
 
+/**
+ * The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb****`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+ *
+ * @param request UpdateAggregatorRequest
+ * @return UpdateAggregatorResponse
+ */
 func (client *Client) UpdateAggregator(request *UpdateAggregatorRequest) (_result *UpdateAggregatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregatorResponse{}
@@ -23108,6 +28480,13 @@ func (client *Client) UpdateAggregator(request *UpdateAggregatorRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082****` compliance package.
+ *
+ * @param tmpReq UpdateCompliancePackRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateCompliancePackResponse
+ */
 func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *UpdateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23187,6 +28566,12 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082****` compliance package.
+ *
+ * @param request UpdateCompliancePackRequest
+ * @return UpdateCompliancePackResponse
+ */
 func (client *Client) UpdateCompliancePack(request *UpdateCompliancePackRequest) (_result *UpdateCompliancePackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCompliancePackResponse{}
@@ -23198,6 +28583,13 @@ func (client *Client) UpdateCompliancePack(request *UpdateCompliancePackRequest)
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+ *
+ * @param request UpdateConfigDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConfigDeliveryChannelResponse
+ */
 func (client *Client) UpdateConfigDeliveryChannelWithOptions(request *UpdateConfigDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateConfigDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23275,6 +28667,12 @@ func (client *Client) UpdateConfigDeliveryChannelWithOptions(request *UpdateConf
 	return _result, _err
 }
 
+/**
+ * In this example, a delivery channel is disabled. The ID of the delivery channel is `cdc-8e45ff4e06a3a8****```. The Status parameter is set to 0. After the delivery channel is disabled, Cloud Config retains the most recent delivery configuration and stops the delivery of resource data.
+ *
+ * @param request UpdateConfigDeliveryChannelRequest
+ * @return UpdateConfigDeliveryChannelResponse
+ */
 func (client *Client) UpdateConfigDeliveryChannel(request *UpdateConfigDeliveryChannelRequest) (_result *UpdateConfigDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConfigDeliveryChannelResponse{}
@@ -23286,6 +28684,13 @@ func (client *Client) UpdateConfigDeliveryChannel(request *UpdateConfigDeliveryC
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005****` to `3` (low risk level).
+ *
+ * @param tmpReq UpdateConfigRuleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConfigRuleResponse
+ */
 func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -23385,6 +28790,12 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005****` to `3` (low risk level).
+ *
+ * @param request UpdateConfigRuleRequest
+ * @return UpdateConfigRuleResponse
+ */
 func (client *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (_result *UpdateConfigRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateConfigRuleResponse{}
@@ -23396,6 +28807,15 @@ func (client *Client) UpdateConfigRule(request *UpdateConfigRuleRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+ * In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+ *
+ * @param request UpdateDeliveryChannelRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDeliveryChannelResponse
+ */
+// Deprecated
 func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryChannelRequest, runtime *util.RuntimeOptions) (_result *UpdateDeliveryChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23473,6 +28893,14 @@ func (client *Client) UpdateDeliveryChannelWithOptions(request *UpdateDeliveryCh
 	return _result, _err
 }
 
+/**
+ * @deprecated : UpdateDeliveryChannel is deprecated, please use Config::2020-09-07::UpdateConfigDeliveryChannel,Config::2020-09-07::UpdateAggregateConfigDeliveryChannel instead.
+ * In this example, the status of the delivery channel whose ID is `cdc-8e45ff4e06a3a8****` is changed to 0, which indicates that the delivery channel is disabled. After the delivery channel is disabled, Cloud Config retains the last delivery configuration and stops resource data delivery.
+ *
+ * @param request UpdateDeliveryChannelRequest
+ * @return UpdateDeliveryChannelResponse
+ */
+// Deprecated
 func (client *Client) UpdateDeliveryChannel(request *UpdateDeliveryChannelRequest) (_result *UpdateDeliveryChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDeliveryChannelResponse{}
@@ -23532,6 +28960,13 @@ func (client *Client) UpdateIntegratedServiceStatus(request *UpdateIntegratedSer
 	return _result, _err
 }
 
+/**
+ * This topic describes how to change the execution mode of the `crr-909ba2d4716700eb****` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+ *
+ * @param request UpdateRemediationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateRemediationResponse
+ */
 func (client *Client) UpdateRemediationWithOptions(request *UpdateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateRemediationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23589,6 +29024,12 @@ func (client *Client) UpdateRemediationWithOptions(request *UpdateRemediationReq
 	return _result, _err
 }
 
+/**
+ * This topic describes how to change the execution mode of the `crr-909ba2d4716700eb****` remediation setting to `AUTO_EXECUTION`, which specifies automatic remediation. This topic also provides a sample request.
+ *
+ * @param request UpdateRemediationRequest
+ * @return UpdateRemediationResponse
+ */
 func (client *Client) UpdateRemediation(request *UpdateRemediationRequest) (_result *UpdateRemediationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRemediationResponse{}
