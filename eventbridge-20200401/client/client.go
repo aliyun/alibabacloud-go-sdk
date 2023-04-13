@@ -9240,7 +9240,7 @@ func (s *ListEventBusesResponse) SetBody(v *ListEventBusesResponseBody) *ListEve
 }
 
 type ListEventStreamingsRequest struct {
-	Limit      *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit      *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	NamePrefix *string `json:"NamePrefix,omitempty" xml:"NamePrefix,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
@@ -9253,7 +9253,7 @@ func (s ListEventStreamingsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListEventStreamingsRequest) SetLimit(v int64) *ListEventStreamingsRequest {
+func (s *ListEventStreamingsRequest) SetLimit(v int32) *ListEventStreamingsRequest {
 	s.Limit = &v
 	return s
 }
@@ -12840,6 +12840,116 @@ func (s *StartEventStreamingResponse) SetStatusCode(v int32) *StartEventStreamin
 }
 
 func (s *StartEventStreamingResponse) SetBody(v *StartEventStreamingResponseBody) *StartEventStreamingResponse {
+	s.Body = v
+	return s
+}
+
+type TestEventPatternRequest struct {
+	Event        *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventPattern *string `json:"EventPattern,omitempty" xml:"EventPattern,omitempty"`
+}
+
+func (s TestEventPatternRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventPatternRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventPatternRequest) SetEvent(v string) *TestEventPatternRequest {
+	s.Event = &v
+	return s
+}
+
+func (s *TestEventPatternRequest) SetEventPattern(v string) *TestEventPatternRequest {
+	s.EventPattern = &v
+	return s
+}
+
+type TestEventPatternResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *TestEventPatternResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TestEventPatternResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventPatternResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventPatternResponseBody) SetCode(v string) *TestEventPatternResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TestEventPatternResponseBody) SetData(v *TestEventPatternResponseBodyData) *TestEventPatternResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TestEventPatternResponseBody) SetMessage(v string) *TestEventPatternResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TestEventPatternResponseBody) SetRequestId(v string) *TestEventPatternResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TestEventPatternResponseBody) SetSuccess(v bool) *TestEventPatternResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TestEventPatternResponseBodyData struct {
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s TestEventPatternResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventPatternResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventPatternResponseBodyData) SetResult(v bool) *TestEventPatternResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type TestEventPatternResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TestEventPatternResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TestEventPatternResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestEventPatternResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestEventPatternResponse) SetHeaders(v map[string]*string) *TestEventPatternResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TestEventPatternResponse) SetStatusCode(v int32) *TestEventPatternResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TestEventPatternResponse) SetBody(v *TestEventPatternResponseBody) *TestEventPatternResponse {
 	s.Body = v
 	return s
 }
@@ -17813,6 +17923,54 @@ func (client *Client) StartEventStreaming(request *StartEventStreamingRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StartEventStreamingResponse{}
 	_body, _err := client.StartEventStreamingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TestEventPatternWithOptions(request *TestEventPatternRequest, runtime *util.RuntimeOptions) (_result *TestEventPatternResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Event)) {
+		body["Event"] = request.Event
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventPattern)) {
+		body["EventPattern"] = request.EventPattern
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestEventPattern"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TestEventPatternResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TestEventPattern(request *TestEventPatternRequest) (_result *TestEventPatternResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TestEventPatternResponse{}
+	_body, _err := client.TestEventPatternWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
