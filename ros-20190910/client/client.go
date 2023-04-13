@@ -932,7 +932,8 @@ type CreateStackRequest struct {
 	// *   KeepStackOnCreationComplete: retains the stack and its resources after the stack is created. In this case, your stack quota in ROS is consumed.
 	// *   AbandonStackOnCreationComplete: deletes the stack, but retains its resources after the stack is created. In this case, your stack quota in ROS is not consumed. If the stack fails to be created, the stack is retained.
 	// *   AbandonStackOnCreationRollbackComplete: deletes the stack when its resources are rolled back after the stack fails to be created. In this case, your stack quota in ROS is not consumed. In other rollback scenarios, the stack is retained.
-	CreateOption *string `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
+	CreateOption  *string   `json:"CreateOption,omitempty" xml:"CreateOption,omitempty"`
+	CreateOptions []*string `json:"CreateOptions,omitempty" xml:"CreateOptions,omitempty" type:"Repeated"`
 	// Specifies whether to enable deletion protection for the stack. Default value: Disabled. Valid values:
 	//
 	// *   Enabled: enables deletion protection.
@@ -1036,6 +1037,11 @@ func (s *CreateStackRequest) SetClientToken(v string) *CreateStackRequest {
 
 func (s *CreateStackRequest) SetCreateOption(v string) *CreateStackRequest {
 	s.CreateOption = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetCreateOptions(v []*string) *CreateStackRequest {
+	s.CreateOptions = v
 	return s
 }
 
@@ -12193,6 +12199,7 @@ func (s *ListStackResourcesResponse) SetBody(v *ListStackResourcesResponseBody) 
 }
 
 type ListStacksRequest struct {
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of the page to return.
 	//
 	// Pages start from page 1.
@@ -12227,6 +12234,7 @@ type ListStacksRequest struct {
 	StackIds []*string `json:"StackIds,omitempty" xml:"StackIds,omitempty" type:"Repeated"`
 	// The name of stack N.
 	StackName []*string `json:"StackName,omitempty" xml:"StackName,omitempty" type:"Repeated"`
+	StartTime *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state N of the stack.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The tags.
@@ -12239,6 +12247,11 @@ func (s ListStacksRequest) String() string {
 
 func (s ListStacksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListStacksRequest) SetEndTime(v string) *ListStacksRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *ListStacksRequest) SetPageNumber(v int64) *ListStacksRequest {
@@ -12283,6 +12296,11 @@ func (s *ListStacksRequest) SetStackIds(v []*string) *ListStacksRequest {
 
 func (s *ListStacksRequest) SetStackName(v []*string) *ListStacksRequest {
 	s.StackName = v
+	return s
+}
+
+func (s *ListStacksRequest) SetStartTime(v string) *ListStacksRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -13905,21 +13923,18 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 }
 
 type MoveResourceGroupRequest struct {
-	// The ID of the destination resource group.
-	//
-	// For more information about resource groups, see [What is a resource group?](~~94475~~)
+	// The ID of the resource group to which you want to move the resource. For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The region ID of the resource.
-	//
-	// You can call the [DescribeRegions](~~131035~~) operation to query region IDs.
+	// The region ID of the resource.\
+	// You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   stack
-	// *   stackgroup
-	// *   template
+	// *   stack: stack
+	// *   stackgroup: stack group
+	// *   template: template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -18104,6 +18119,10 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, runtim
 		query["CreateOption"] = request.CreateOption
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CreateOptions)) {
+		query["CreateOptions"] = request.CreateOptions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeletionProtection)) {
 		query["DeletionProtection"] = request.DeletionProtection
 	}
@@ -21510,6 +21529,10 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -21544,6 +21567,10 @@ func (client *Client) ListStacksWithOptions(request *ListStacksRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.StackName)) {
 		query["StackName"] = request.StackName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
