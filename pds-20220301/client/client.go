@@ -504,33 +504,34 @@ func (s *FaceGroupGroupCoverFaceBoundary) SetWidth(v int32) *FaceGroupGroupCover
 }
 
 type File struct {
-	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
-	ContentHash     *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
-	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
-	ContentType     *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
-	Crc64Hash       *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	DomainId        *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DownloadUrl     *string `json:"download_url,omitempty" xml:"download_url,omitempty"`
-	DriveId         *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileExtension   *string `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
-	FileId          *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Hidden          *bool   `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	Labels          *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	LocalCreatedAt  *string `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
-	LocalModifiedAt *string `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	ParentFileId    *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	RevisionId      *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	Size            *int64  `json:"size,omitempty" xml:"size,omitempty"`
-	Starred         *bool   `json:"starred,omitempty" xml:"starred,omitempty"`
-	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
-	Thumbnail       *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
-	TrashedAt       *string `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
-	Type            *string `json:"type,omitempty" xml:"type,omitempty"`
-	UpdatedAt       *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UploadId        *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
+	Category          *string                `json:"category,omitempty" xml:"category,omitempty"`
+	ContentHash       *string                `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
+	ContentHashName   *string                `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
+	ContentType       *string                `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	Crc64Hash         *string                `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
+	CreatedAt         *string                `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Description       *string                `json:"description,omitempty" xml:"description,omitempty"`
+	DomainId          *string                `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	DownloadUrl       *string                `json:"download_url,omitempty" xml:"download_url,omitempty"`
+	DriveId           *string                `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileExtension     *string                `json:"file_extension,omitempty" xml:"file_extension,omitempty"`
+	FileId            *string                `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	Hidden            *bool                  `json:"hidden,omitempty" xml:"hidden,omitempty"`
+	InvestigationInfo *FileInvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty" type:"Struct"`
+	Labels            *string                `json:"labels,omitempty" xml:"labels,omitempty"`
+	LocalCreatedAt    *string                `json:"local_created_at,omitempty" xml:"local_created_at,omitempty"`
+	LocalModifiedAt   *string                `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
+	Name              *string                `json:"name,omitempty" xml:"name,omitempty"`
+	ParentFileId      *string                `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	RevisionId        *string                `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+	Size              *int64                 `json:"size,omitempty" xml:"size,omitempty"`
+	Starred           *bool                  `json:"starred,omitempty" xml:"starred,omitempty"`
+	Status            *string                `json:"status,omitempty" xml:"status,omitempty"`
+	Thumbnail         *string                `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	TrashedAt         *string                `json:"trashed_at,omitempty" xml:"trashed_at,omitempty"`
+	Type              *string                `json:"type,omitempty" xml:"type,omitempty"`
+	UpdatedAt         *string                `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UploadId          *string                `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
 }
 
 func (s File) String() string {
@@ -606,6 +607,11 @@ func (s *File) SetHidden(v bool) *File {
 	return s
 }
 
+func (s *File) SetInvestigationInfo(v *FileInvestigationInfo) *File {
+	s.InvestigationInfo = v
+	return s
+}
+
 func (s *File) SetLabels(v string) *File {
 	s.Labels = &v
 	return s
@@ -673,6 +679,29 @@ func (s *File) SetUpdatedAt(v string) *File {
 
 func (s *File) SetUploadId(v string) *File {
 	s.UploadId = &v
+	return s
+}
+
+type FileInvestigationInfo struct {
+	Status     *int64  `json:"status,omitempty" xml:"status,omitempty"`
+	Suggestion *string `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
+}
+
+func (s FileInvestigationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileInvestigationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FileInvestigationInfo) SetStatus(v int64) *FileInvestigationInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *FileInvestigationInfo) SetSuggestion(v string) *FileInvestigationInfo {
+	s.Suggestion = &v
 	return s
 }
 
@@ -934,6 +963,81 @@ func (s *ImageTag) SetName(v string) *ImageTag {
 	return s
 }
 
+type InvestigationInfo struct {
+	Status      *int64                        `json:"status,omitempty" xml:"status,omitempty"`
+	Suggestion  *string                       `json:"suggestion,omitempty" xml:"suggestion,omitempty"`
+	VideoDetail *InvestigationInfoVideoDetail `json:"video_detail,omitempty" xml:"video_detail,omitempty" type:"Struct"`
+}
+
+func (s InvestigationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigationInfo) SetStatus(v int64) *InvestigationInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *InvestigationInfo) SetSuggestion(v string) *InvestigationInfo {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *InvestigationInfo) SetVideoDetail(v *InvestigationInfoVideoDetail) *InvestigationInfo {
+	s.VideoDetail = v
+	return s
+}
+
+type InvestigationInfoVideoDetail struct {
+	BlockFrames []*InvestigationInfoVideoDetailBlockFrames `json:"block_frames,omitempty" xml:"block_frames,omitempty" type:"Repeated"`
+}
+
+func (s InvestigationInfoVideoDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigationInfoVideoDetail) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigationInfoVideoDetail) SetBlockFrames(v []*InvestigationInfoVideoDetailBlockFrames) *InvestigationInfoVideoDetail {
+	s.BlockFrames = v
+	return s
+}
+
+type InvestigationInfoVideoDetailBlockFrames struct {
+	Label  *string  `json:"label,omitempty" xml:"label,omitempty"`
+	Offset *int64   `json:"offset,omitempty" xml:"offset,omitempty"`
+	Rate   *float64 `json:"rate,omitempty" xml:"rate,omitempty"`
+}
+
+func (s InvestigationInfoVideoDetailBlockFrames) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigationInfoVideoDetailBlockFrames) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigationInfoVideoDetailBlockFrames) SetLabel(v string) *InvestigationInfoVideoDetailBlockFrames {
+	s.Label = &v
+	return s
+}
+
+func (s *InvestigationInfoVideoDetailBlockFrames) SetOffset(v int64) *InvestigationInfoVideoDetailBlockFrames {
+	s.Offset = &v
+	return s
+}
+
+func (s *InvestigationInfoVideoDetailBlockFrames) SetRate(v float64) *InvestigationInfoVideoDetailBlockFrames {
+	s.Rate = &v
+	return s
+}
+
 type JWTPayload struct {
 	Aud        *string `json:"aud,omitempty" xml:"aud,omitempty"`
 	AutoCreate *bool   `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
@@ -1125,30 +1229,31 @@ func (s *Revision) SetUrl(v string) *Revision {
 }
 
 type ShareLink struct {
-	AccessCount       *int64  `json:"access_count,omitempty" xml:"access_count,omitempty"`
-	CreatedAt         *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	Creator           *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisableDownload   *bool   `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
-	DisablePreview    *bool   `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
-	DisableSave       *bool   `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
-	DownloadCount     *int64  `json:"download_count,omitempty" xml:"download_count,omitempty"`
-	DownloadLimit     *int64  `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
-	DriveId           *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Expiration        *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	Expired           *bool   `json:"expired,omitempty" xml:"expired,omitempty"`
-	FileIdList        *string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty"`
-	PreviewCount      *int64  `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
-	PreviewLimit      *int64  `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
-	ReportCount       *int64  `json:"report_count,omitempty" xml:"report_count,omitempty"`
-	SaveCount         *int64  `json:"save_count,omitempty" xml:"save_count,omitempty"`
-	SaveLimit         *int64  `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
-	ShareId           *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	ShareName         *string `json:"share_name,omitempty" xml:"share_name,omitempty"`
-	SharePwd          *string `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
-	Status            *string `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt         *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	VideoPreviewCount *int64  `json:"video_preview_count,omitempty" xml:"video_preview_count,omitempty"`
+	AccessCount       *int64    `json:"access_count,omitempty" xml:"access_count,omitempty"`
+	CreatedAt         *string   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator           *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description       *string   `json:"description,omitempty" xml:"description,omitempty"`
+	DisableDownload   *bool     `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
+	DisablePreview    *bool     `json:"disable_preview,omitempty" xml:"disable_preview,omitempty"`
+	DisableSave       *bool     `json:"disable_save,omitempty" xml:"disable_save,omitempty"`
+	DownloadCount     *int64    `json:"download_count,omitempty" xml:"download_count,omitempty"`
+	DownloadLimit     *int64    `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
+	DriveId           *string   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	Expiration        *string   `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	Expired           *bool     `json:"expired,omitempty" xml:"expired,omitempty"`
+	FileIdList        []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
+	PreviewCount      *int64    `json:"preview_count,omitempty" xml:"preview_count,omitempty"`
+	PreviewLimit      *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
+	ReportCount       *int64    `json:"report_count,omitempty" xml:"report_count,omitempty"`
+	SaveCount         *int64    `json:"save_count,omitempty" xml:"save_count,omitempty"`
+	SaveLimit         *int64    `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
+	ShareAllFiles     *bool     `json:"share_all_files,omitempty" xml:"share_all_files,omitempty"`
+	ShareId           *string   `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	ShareName         *string   `json:"share_name,omitempty" xml:"share_name,omitempty"`
+	SharePwd          *string   `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
+	Status            *string   `json:"status,omitempty" xml:"status,omitempty"`
+	UpdatedAt         *string   `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	VideoPreviewCount *int64    `json:"video_preview_count,omitempty" xml:"video_preview_count,omitempty"`
 }
 
 func (s ShareLink) String() string {
@@ -1219,8 +1324,8 @@ func (s *ShareLink) SetExpired(v bool) *ShareLink {
 	return s
 }
 
-func (s *ShareLink) SetFileIdList(v string) *ShareLink {
-	s.FileIdList = &v
+func (s *ShareLink) SetFileIdList(v []*string) *ShareLink {
+	s.FileIdList = v
 	return s
 }
 
@@ -1246,6 +1351,11 @@ func (s *ShareLink) SetSaveCount(v int64) *ShareLink {
 
 func (s *ShareLink) SetSaveLimit(v int64) *ShareLink {
 	s.SaveLimit = &v
+	return s
+}
+
+func (s *ShareLink) SetShareAllFiles(v bool) *ShareLink {
+	s.ShareAllFiles = &v
 	return s
 }
 
@@ -2321,6 +2431,8 @@ type CopyFileRequest struct {
 	AutoRename     *bool   `json:"auto_rename,omitempty" xml:"auto_rename,omitempty"`
 	DriveId        *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	FileId         *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	ShareId        *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
+	ToDriveId      *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty"`
 	ToParentFileId *string `json:"to_parent_file_id,omitempty" xml:"to_parent_file_id,omitempty"`
 }
 
@@ -2344,6 +2456,16 @@ func (s *CopyFileRequest) SetDriveId(v string) *CopyFileRequest {
 
 func (s *CopyFileRequest) SetFileId(v string) *CopyFileRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetShareId(v string) *CopyFileRequest {
+	s.ShareId = &v
+	return s
+}
+
+func (s *CopyFileRequest) SetToDriveId(v string) *CopyFileRequest {
+	s.ToDriveId = &v
 	return s
 }
 
@@ -2944,6 +3066,7 @@ type CreateShareLinkRequest struct {
 	FileIdList      []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
 	PreviewLimit    *int64    `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	SaveLimit       *int64    `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
+	ShareAllFiles   *bool     `json:"share_all_files,omitempty" xml:"share_all_files,omitempty"`
 	ShareName       *string   `json:"share_name,omitempty" xml:"share_name,omitempty"`
 	SharePwd        *string   `json:"share_pwd,omitempty" xml:"share_pwd,omitempty"`
 	UserId          *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
@@ -3004,6 +3127,11 @@ func (s *CreateShareLinkRequest) SetPreviewLimit(v int64) *CreateShareLinkReques
 
 func (s *CreateShareLinkRequest) SetSaveLimit(v int64) *CreateShareLinkRequest {
 	s.SaveLimit = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetShareAllFiles(v bool) *CreateShareLinkRequest {
+	s.ShareAllFiles = &v
 	return s
 }
 
@@ -3271,6 +3399,87 @@ func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
 }
 
 func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserResponse {
+	s.Body = v
+	return s
+}
+
+type CsiGetFileInfoRequest struct {
+	DriveId      *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	UrlExpireSec *int32  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+}
+
+func (s CsiGetFileInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CsiGetFileInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CsiGetFileInfoRequest) SetDriveId(v string) *CsiGetFileInfoRequest {
+	s.DriveId = &v
+	return s
+}
+
+func (s *CsiGetFileInfoRequest) SetFileId(v string) *CsiGetFileInfoRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *CsiGetFileInfoRequest) SetUrlExpireSec(v int32) *CsiGetFileInfoRequest {
+	s.UrlExpireSec = &v
+	return s
+}
+
+type CsiGetFileInfoResponseBody struct {
+	InvestigationInfo *InvestigationInfo `json:"investigation_info,omitempty" xml:"investigation_info,omitempty"`
+	Url               *string            `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CsiGetFileInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CsiGetFileInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CsiGetFileInfoResponseBody) SetInvestigationInfo(v *InvestigationInfo) *CsiGetFileInfoResponseBody {
+	s.InvestigationInfo = v
+	return s
+}
+
+func (s *CsiGetFileInfoResponseBody) SetUrl(v string) *CsiGetFileInfoResponseBody {
+	s.Url = &v
+	return s
+}
+
+type CsiGetFileInfoResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CsiGetFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CsiGetFileInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CsiGetFileInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CsiGetFileInfoResponse) SetHeaders(v map[string]*string) *CsiGetFileInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CsiGetFileInfoResponse) SetStatusCode(v int32) *CsiGetFileInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CsiGetFileInfoResponse) SetBody(v *CsiGetFileInfoResponseBody) *CsiGetFileInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3649,6 +3858,7 @@ type DownloadFileRequest struct {
 	FileId                 *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	ImageThumbnailProcess  *string `json:"image_thumbnail_process,omitempty" xml:"image_thumbnail_process,omitempty"`
 	OfficeThumbnailProcess *string `json:"office_thumbnail_process,omitempty" xml:"office_thumbnail_process,omitempty"`
+	ShareId                *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	VideoThumbnailProcess  *string `json:"video_thumbnail_process,omitempty" xml:"video_thumbnail_process,omitempty"`
 }
 
@@ -3677,6 +3887,11 @@ func (s *DownloadFileRequest) SetImageThumbnailProcess(v string) *DownloadFileRe
 
 func (s *DownloadFileRequest) SetOfficeThumbnailProcess(v string) *DownloadFileRequest {
 	s.OfficeThumbnailProcess = &v
+	return s
+}
+
+func (s *DownloadFileRequest) SetShareId(v string) *DownloadFileRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -4241,6 +4456,7 @@ type GetDownloadUrlRequest struct {
 	ExpireSec *int32  `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
 	FileId    *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	FileName  *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	ShareId   *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 }
 
 func (s GetDownloadUrlRequest) String() string {
@@ -4268,6 +4484,11 @@ func (s *GetDownloadUrlRequest) SetFileId(v string) *GetDownloadUrlRequest {
 
 func (s *GetDownloadUrlRequest) SetFileName(v string) *GetDownloadUrlRequest {
 	s.FileName = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetShareId(v string) *GetDownloadUrlRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -4409,6 +4630,7 @@ type GetFileRequest struct {
 	DriveId      *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Fields       *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	ShareId      *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	UrlExpireSec *int32  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
@@ -4432,6 +4654,11 @@ func (s *GetFileRequest) SetFields(v string) *GetFileRequest {
 
 func (s *GetFileRequest) SetFileId(v string) *GetFileRequest {
 	s.FileId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetShareId(v string) *GetFileRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -5535,6 +5762,69 @@ func (s *ImportUserResponse) SetBody(v *User) *ImportUserResponse {
 	return s
 }
 
+type InvestigateFileRequest struct {
+	DriveFileIds []*InvestigateFileRequestDriveFileIds `json:"drive_file_ids,omitempty" xml:"drive_file_ids,omitempty" type:"Repeated"`
+}
+
+func (s InvestigateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigateFileRequest) SetDriveFileIds(v []*InvestigateFileRequestDriveFileIds) *InvestigateFileRequest {
+	s.DriveFileIds = v
+	return s
+}
+
+type InvestigateFileRequestDriveFileIds struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+}
+
+func (s InvestigateFileRequestDriveFileIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigateFileRequestDriveFileIds) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigateFileRequestDriveFileIds) SetDriveId(v string) *InvestigateFileRequestDriveFileIds {
+	s.DriveId = &v
+	return s
+}
+
+func (s *InvestigateFileRequestDriveFileIds) SetFileId(v string) *InvestigateFileRequestDriveFileIds {
+	s.FileId = &v
+	return s
+}
+
+type InvestigateFileResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s InvestigateFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvestigateFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InvestigateFileResponse) SetHeaders(v map[string]*string) *InvestigateFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InvestigateFileResponse) SetStatusCode(v int32) *InvestigateFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type LinkAccountRequest struct {
 	Extra    *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
@@ -6078,6 +6368,7 @@ type ListFileRequest struct {
 	OrderBy        *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 	ParentFileId   *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
+	ShareId        *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
 	Type           *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -6127,6 +6418,11 @@ func (s *ListFileRequest) SetOrderDirection(v string) *ListFileRequest {
 
 func (s *ListFileRequest) SetParentFileId(v string) *ListFileRequest {
 	s.ParentFileId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetShareId(v string) *ListFileRequest {
+	s.ShareId = &v
 	return s
 }
 
@@ -8538,6 +8834,7 @@ type UpdateDriveRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	DriveName   *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
+	Owner       *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
 	TotalSize   *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
@@ -8562,6 +8859,11 @@ func (s *UpdateDriveRequest) SetDriveId(v string) *UpdateDriveRequest {
 
 func (s *UpdateDriveRequest) SetDriveName(v string) *UpdateDriveRequest {
 	s.DriveName = &v
+	return s
+}
+
+func (s *UpdateDriveRequest) SetOwner(v string) *UpdateDriveRequest {
+	s.Owner = &v
 	return s
 }
 
@@ -9551,6 +9853,14 @@ func (client *Client) CopyFileWithOptions(request *CopyFileRequest, headers map[
 		body["file_id"] = request.FileId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
+		body["share_id"] = request.ShareId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToDriveId)) {
+		body["to_drive_id"] = request.ToDriveId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ToParentFileId)) {
 		body["to_parent_file_id"] = request.ToParentFileId
 	}
@@ -9965,6 +10275,10 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 		body["save_limit"] = request.SaveLimit
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShareAllFiles)) {
+		body["share_all_files"] = request.ShareAllFiles
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShareName)) {
 		body["share_name"] = request.ShareName
 	}
@@ -10092,6 +10406,60 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	headers := make(map[string]*string)
 	_result = &CreateUserResponse{}
 	_body, _err := client.CreateUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CsiGetFileInfoWithOptions(request *CsiGetFileInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CsiGetFileInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["file_id"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
+		body["url_expire_sec"] = request.UrlExpireSec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CsiGetFileInfo"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/csi/get_file_info"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CsiGetFileInfoResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CsiGetFileInfo(request *CsiGetFileInfoRequest) (_result *CsiGetFileInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CsiGetFileInfoResponse{}
+	_body, _err := client.CsiGetFileInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10457,6 +10825,10 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.OfficeThumbnailProcess)) {
 		body["office_thumbnail_process"] = request.OfficeThumbnailProcess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
+		body["share_id"] = request.ShareId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VideoThumbnailProcess)) {
@@ -10929,6 +11301,10 @@ func (client *Client) GetDownloadUrlWithOptions(request *GetDownloadUrlRequest, 
 		body["file_name"] = request.FileName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
+		body["share_id"] = request.ShareId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -11027,6 +11403,10 @@ func (client *Client) GetFileWithOptions(request *GetFileRequest, headers map[st
 
 	if !tea.BoolValue(util.IsUnset(request.FileId)) {
 		body["file_id"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
+		body["share_id"] = request.ShareId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UrlExpireSec)) {
@@ -11733,6 +12113,52 @@ func (client *Client) ImportUser(request *ImportUserRequest) (_result *ImportUse
 	return _result, _err
 }
 
+func (client *Client) InvestigateFileWithOptions(request *InvestigateFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvestigateFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DriveFileIds)) {
+		body["drive_file_ids"] = request.DriveFileIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InvestigateFile"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/csi/investigate_file"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InvestigateFileResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InvestigateFile(request *InvestigateFileRequest) (_result *InvestigateFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InvestigateFileResponse{}
+	_body, _err := client.InvestigateFileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) LinkAccountWithOptions(request *LinkAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LinkAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12117,6 +12543,10 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, headers map[
 
 	if !tea.BoolValue(util.IsUnset(request.ParentFileId)) {
 		body["parent_file_id"] = request.ParentFileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
+		body["share_id"] = request.ShareId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -13770,6 +14200,10 @@ func (client *Client) UpdateDriveWithOptions(request *UpdateDriveRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.DriveName)) {
 		body["drive_name"] = request.DriveName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["owner"] = request.Owner
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
