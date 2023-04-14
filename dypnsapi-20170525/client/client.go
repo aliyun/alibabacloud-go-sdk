@@ -713,6 +713,141 @@ func (s *GetAuthorizationUrlResponse) SetBody(v *GetAuthorizationUrlResponseBody
 	return s
 }
 
+type GetFusionAuthTokenRequest struct {
+	BundleId             *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
+	DurationSeconds      *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PackageName          *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	PackageSign          *string `json:"PackageSign,omitempty" xml:"PackageSign,omitempty"`
+	Platform             *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SchemeCode           *string `json:"SchemeCode,omitempty" xml:"SchemeCode,omitempty"`
+}
+
+func (s GetFusionAuthTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFusionAuthTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFusionAuthTokenRequest) SetBundleId(v string) *GetFusionAuthTokenRequest {
+	s.BundleId = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetDurationSeconds(v int64) *GetFusionAuthTokenRequest {
+	s.DurationSeconds = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetOwnerId(v int64) *GetFusionAuthTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetPackageName(v string) *GetFusionAuthTokenRequest {
+	s.PackageName = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetPackageSign(v string) *GetFusionAuthTokenRequest {
+	s.PackageSign = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetPlatform(v string) *GetFusionAuthTokenRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetResourceOwnerAccount(v string) *GetFusionAuthTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetResourceOwnerId(v int64) *GetFusionAuthTokenRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenRequest) SetSchemeCode(v string) *GetFusionAuthTokenRequest {
+	s.SchemeCode = &v
+	return s
+}
+
+type GetFusionAuthTokenResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFusionAuthTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFusionAuthTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFusionAuthTokenResponseBody) SetCode(v string) *GetFusionAuthTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponseBody) SetMessage(v string) *GetFusionAuthTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponseBody) SetModel(v string) *GetFusionAuthTokenResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponseBody) SetRequestId(v string) *GetFusionAuthTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponseBody) SetSuccess(v bool) *GetFusionAuthTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFusionAuthTokenResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFusionAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFusionAuthTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFusionAuthTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFusionAuthTokenResponse) SetHeaders(v map[string]*string) *GetFusionAuthTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponse) SetStatusCode(v int32) *GetFusionAuthTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFusionAuthTokenResponse) SetBody(v *GetFusionAuthTokenResponseBody) *GetFusionAuthTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GetMobileRequest struct {
 	AccessToken          *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
@@ -1856,6 +1991,140 @@ func (s *VerifySmsCodeResponse) SetBody(v *VerifySmsCodeResponseBody) *VerifySms
 	return s
 }
 
+type VerifyWithFusionAuthTokenRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VerifyToken          *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
+}
+
+func (s VerifyWithFusionAuthTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyWithFusionAuthTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyWithFusionAuthTokenRequest) SetOwnerId(v int64) *VerifyWithFusionAuthTokenRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenRequest) SetResourceOwnerAccount(v string) *VerifyWithFusionAuthTokenRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenRequest) SetResourceOwnerId(v int64) *VerifyWithFusionAuthTokenRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenRequest) SetVerifyToken(v string) *VerifyWithFusionAuthTokenRequest {
+	s.VerifyToken = &v
+	return s
+}
+
+type VerifyWithFusionAuthTokenResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model     *VerifyWithFusionAuthTokenResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s VerifyWithFusionAuthTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyWithFusionAuthTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBody) SetCode(v string) *VerifyWithFusionAuthTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBody) SetMessage(v string) *VerifyWithFusionAuthTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBody) SetModel(v *VerifyWithFusionAuthTokenResponseBodyModel) *VerifyWithFusionAuthTokenResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBody) SetRequestId(v string) *VerifyWithFusionAuthTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBody) SetSuccess(v bool) *VerifyWithFusionAuthTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type VerifyWithFusionAuthTokenResponseBodyModel struct {
+	PhoneNumber  *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneScore   *int64  `json:"PhoneScore,omitempty" xml:"PhoneScore,omitempty"`
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+}
+
+func (s VerifyWithFusionAuthTokenResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyWithFusionAuthTokenResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBodyModel) SetPhoneNumber(v string) *VerifyWithFusionAuthTokenResponseBodyModel {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBodyModel) SetPhoneScore(v int64) *VerifyWithFusionAuthTokenResponseBodyModel {
+	s.PhoneScore = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponseBodyModel) SetVerifyResult(v string) *VerifyWithFusionAuthTokenResponseBodyModel {
+	s.VerifyResult = &v
+	return s
+}
+
+type VerifyWithFusionAuthTokenResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyWithFusionAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyWithFusionAuthTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyWithFusionAuthTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyWithFusionAuthTokenResponse) SetHeaders(v map[string]*string) *VerifyWithFusionAuthTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponse) SetStatusCode(v int32) *VerifyWithFusionAuthTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VerifyWithFusionAuthTokenResponse) SetBody(v *VerifyWithFusionAuthTokenResponseBody) *VerifyWithFusionAuthTokenResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2257,6 +2526,82 @@ func (client *Client) GetAuthorizationUrl(request *GetAuthorizationUrlRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthorizationUrlResponse{}
 	_body, _err := client.GetAuthorizationUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFusionAuthTokenWithOptions(request *GetFusionAuthTokenRequest, runtime *util.RuntimeOptions) (_result *GetFusionAuthTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BundleId)) {
+		query["BundleId"] = request.BundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DurationSeconds)) {
+		query["DurationSeconds"] = request.DurationSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageName)) {
+		query["PackageName"] = request.PackageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageSign)) {
+		query["PackageSign"] = request.PackageSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemeCode)) {
+		query["SchemeCode"] = request.SchemeCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFusionAuthToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFusionAuthTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFusionAuthToken(request *GetFusionAuthTokenRequest) (_result *GetFusionAuthTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFusionAuthTokenResponse{}
+	_body, _err := client.GetFusionAuthTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2757,6 +3102,62 @@ func (client *Client) VerifySmsCode(request *VerifySmsCodeRequest) (_result *Ver
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifySmsCodeResponse{}
 	_body, _err := client.VerifySmsCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyWithFusionAuthTokenWithOptions(request *VerifyWithFusionAuthTokenRequest, runtime *util.RuntimeOptions) (_result *VerifyWithFusionAuthTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyToken)) {
+		query["VerifyToken"] = request.VerifyToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyWithFusionAuthToken"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyWithFusionAuthTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyWithFusionAuthToken(request *VerifyWithFusionAuthTokenRequest) (_result *VerifyWithFusionAuthTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyWithFusionAuthTokenResponse{}
+	_body, _err := client.VerifyWithFusionAuthTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
