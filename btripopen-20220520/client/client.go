@@ -8685,6 +8685,151 @@ func (s *CostCenterSaveResponse) SetBody(v *CostCenterSaveResponseBody) *CostCen
 	return s
 }
 
+type CreateSubCorpHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s CreateSubCorpHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubCorpHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCorpHeaders) SetCommonHeaders(v map[string]*string) *CreateSubCorpHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateSubCorpHeaders) SetXAcsBtripCorpToken(v string) *CreateSubCorpHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type CreateSubCorpRequest struct {
+	OuterCorpId   *string `json:"outer_corp_id,omitempty" xml:"outer_corp_id,omitempty"`
+	OuterCorpName *string `json:"outer_corp_name,omitempty" xml:"outer_corp_name,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s CreateSubCorpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubCorpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCorpRequest) SetOuterCorpId(v string) *CreateSubCorpRequest {
+	s.OuterCorpId = &v
+	return s
+}
+
+func (s *CreateSubCorpRequest) SetOuterCorpName(v string) *CreateSubCorpRequest {
+	s.OuterCorpName = &v
+	return s
+}
+
+func (s *CreateSubCorpRequest) SetUserId(v string) *CreateSubCorpRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateSubCorpResponseBody struct {
+	Code      *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                          `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *CreateSubCorpResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                            `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                          `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CreateSubCorpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubCorpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCorpResponseBody) SetCode(v string) *CreateSubCorpResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSubCorpResponseBody) SetMessage(v string) *CreateSubCorpResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSubCorpResponseBody) SetModule(v *CreateSubCorpResponseBodyModule) *CreateSubCorpResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CreateSubCorpResponseBody) SetRequestId(v string) *CreateSubCorpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSubCorpResponseBody) SetSuccess(v bool) *CreateSubCorpResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateSubCorpResponseBody) SetTraceId(v string) *CreateSubCorpResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateSubCorpResponseBodyModule struct {
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+}
+
+func (s CreateSubCorpResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubCorpResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCorpResponseBodyModule) SetSubCorpId(v string) *CreateSubCorpResponseBodyModule {
+	s.SubCorpId = &v
+	return s
+}
+
+type CreateSubCorpResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSubCorpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSubCorpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSubCorpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSubCorpResponse) SetHeaders(v map[string]*string) *CreateSubCorpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSubCorpResponse) SetStatusCode(v int32) *CreateSubCorpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSubCorpResponse) SetBody(v *CreateSubCorpResponseBody) *CreateSubCorpResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInvoiceEntityHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -11979,23 +12124,30 @@ func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalSize(v int32) *Flig
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItems struct {
-	BillDate      *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	Build         *string `json:"build,omitempty" xml:"build,omitempty"`
-	CostCenter    *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department    *string `json:"department,omitempty" xml:"department,omitempty"`
-	FuelSurcharge *string `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
-	Insurance     *string `json:"insurance,omitempty" xml:"insurance,omitempty"`
-	InvoiceTitle  *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	ItineraryNum  *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
-	OrderId       *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OssUrl        *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	Project       *string `json:"project,omitempty" xml:"project,omitempty"`
-	TaxAmount     *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo      *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice   *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TotalPrice    *string `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	AgentCode      *string                                                   `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
+	BillDate       *string                                                   `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	Build          *string                                                   `json:"build,omitempty" xml:"build,omitempty"`
+	CostCenter     *string                                                   `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department     *string                                                   `json:"department,omitempty" xml:"department,omitempty"`
+	Flights        []*FlightItineraryScanQueryResponseBodyModuleItemsFlights `json:"flights,omitempty" xml:"flights,omitempty" type:"Repeated"`
+	FuelSurcharge  *string                                                   `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
+	Id             *string                                                   `json:"id,omitempty" xml:"id,omitempty"`
+	Insurance      *string                                                   `json:"insurance,omitempty" xml:"insurance,omitempty"`
+	InvoiceTitle   *string                                                   `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IssueCompany   *string                                                   `json:"issue_company,omitempty" xml:"issue_company,omitempty"`
+	IssueDate      *string                                                   `json:"issue_date,omitempty" xml:"issue_date,omitempty"`
+	ItineraryNum   *string                                                   `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	OrderId        *int64                                                    `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl         *string                                                   `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PassengerName  *string                                                   `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	Project        *string                                                   `json:"project,omitempty" xml:"project,omitempty"`
+	PromptMessage  *string                                                   `json:"prompt_message,omitempty" xml:"prompt_message,omitempty"`
+	TaxAmount      *string                                                   `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate        *string                                                   `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketNo       *string                                                   `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice    *string                                                   `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice     *string                                                   `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	ValidationCode *string                                                   `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
@@ -12004,6 +12156,11 @@ func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
 
 func (s FlightItineraryScanQueryResponseBodyModuleItems) GoString() string {
 	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetAgentCode(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.AgentCode = &v
+	return s
 }
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetBillDate(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
@@ -12026,8 +12183,18 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetDepartment(v string
 	return s
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetFlights(v []*FlightItineraryScanQueryResponseBodyModuleItemsFlights) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Flights = v
+	return s
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetFuelSurcharge(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.FuelSurcharge = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetId(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.Id = &v
 	return s
 }
 
@@ -12038,6 +12205,16 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetInsurance(v string)
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetIssueCompany(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.IssueCompany = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetIssueDate(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.IssueDate = &v
 	return s
 }
 
@@ -12066,6 +12243,11 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetProject(v string) *
 	return s
 }
 
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetPromptMessage(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.PromptMessage = &v
+	return s
+}
+
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.TaxAmount = &v
 	return s
@@ -12088,6 +12270,94 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTicketPrice(v strin
 
 func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetTotalPrice(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
 	s.TotalPrice = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetValidationCode(v string) *FlightItineraryScanQueryResponseBodyModuleItems {
+	s.ValidationCode = &v
+	return s
+}
+
+type FlightItineraryScanQueryResponseBodyModuleItemsFlights struct {
+	ArrivalStation       *string `json:"arrival_station,omitempty" xml:"arrival_station,omitempty"`
+	CabinClass           *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	Carrier              *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
+	DepartureStation     *string `json:"departure_station,omitempty" xml:"departure_station,omitempty"`
+	FlightDate           *string `json:"flight_date,omitempty" xml:"flight_date,omitempty"`
+	FlightNumber         *string `json:"flight_number,omitempty" xml:"flight_number,omitempty"`
+	FlightTime           *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	FreeBaggageAllowance *string `json:"free_baggage_allowance,omitempty" xml:"free_baggage_allowance,omitempty"`
+	Index                *string `json:"index,omitempty" xml:"index,omitempty"`
+	SeatClass            *string `json:"seat_class,omitempty" xml:"seat_class,omitempty"`
+	ValidFromDate        *string `json:"valid_from_date,omitempty" xml:"valid_from_date,omitempty"`
+	ValidToDate          *string `json:"valid_to_date,omitempty" xml:"valid_to_date,omitempty"`
+}
+
+func (s FlightItineraryScanQueryResponseBodyModuleItemsFlights) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightItineraryScanQueryResponseBodyModuleItemsFlights) GoString() string {
+	return s.String()
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetArrivalStation(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.ArrivalStation = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetCabinClass(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetCarrier(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.Carrier = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetDepartureStation(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.DepartureStation = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetFlightDate(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.FlightDate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetFlightNumber(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.FlightNumber = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetFlightTime(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.FlightTime = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetFreeBaggageAllowance(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.FreeBaggageAllowance = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetIndex(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.Index = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetSeatClass(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.SeatClass = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetValidFromDate(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.ValidFromDate = &v
+	return s
+}
+
+func (s *FlightItineraryScanQueryResponseBodyModuleItemsFlights) SetValidToDate(v string) *FlightItineraryScanQueryResponseBodyModuleItemsFlights {
+	s.ValidToDate = &v
 	return s
 }
 
@@ -22619,6 +22889,421 @@ func (s *FlightSearchListResponse) SetBody(v *FlightSearchListResponseBody) *Fli
 	return s
 }
 
+type GroupDepartSaveHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s GroupDepartSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupDepartSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GroupDepartSaveHeaders) SetCommonHeaders(v map[string]*string) *GroupDepartSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GroupDepartSaveHeaders) SetXAcsBtripCorpToken(v string) *GroupDepartSaveHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type GroupDepartSaveRequest struct {
+	DeptName      *string   `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerIds    *string   `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
+	OuterDeptId   *string   `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
+	OuterDeptPid  *string   `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
+	Status        *int32    `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpIdList []*string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
+}
+
+func (s GroupDepartSaveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupDepartSaveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GroupDepartSaveRequest) SetDeptName(v string) *GroupDepartSaveRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *GroupDepartSaveRequest) SetManagerIds(v string) *GroupDepartSaveRequest {
+	s.ManagerIds = &v
+	return s
+}
+
+func (s *GroupDepartSaveRequest) SetOuterDeptId(v string) *GroupDepartSaveRequest {
+	s.OuterDeptId = &v
+	return s
+}
+
+func (s *GroupDepartSaveRequest) SetOuterDeptPid(v string) *GroupDepartSaveRequest {
+	s.OuterDeptPid = &v
+	return s
+}
+
+func (s *GroupDepartSaveRequest) SetStatus(v int32) *GroupDepartSaveRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GroupDepartSaveRequest) SetSubCorpIdList(v []*string) *GroupDepartSaveRequest {
+	s.SubCorpIdList = v
+	return s
+}
+
+type GroupDepartSaveShrinkRequest struct {
+	DeptName            *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerIds          *string `json:"manager_ids,omitempty" xml:"manager_ids,omitempty"`
+	OuterDeptId         *string `json:"outer_dept_id,omitempty" xml:"outer_dept_id,omitempty"`
+	OuterDeptPid        *string `json:"outer_dept_pid,omitempty" xml:"outer_dept_pid,omitempty"`
+	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
+}
+
+func (s GroupDepartSaveShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupDepartSaveShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetDeptName(v string) *GroupDepartSaveShrinkRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetManagerIds(v string) *GroupDepartSaveShrinkRequest {
+	s.ManagerIds = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetOuterDeptId(v string) *GroupDepartSaveShrinkRequest {
+	s.OuterDeptId = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetOuterDeptPid(v string) *GroupDepartSaveShrinkRequest {
+	s.OuterDeptPid = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetStatus(v int32) *GroupDepartSaveShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GroupDepartSaveShrinkRequest) SetSubCorpIdListShrink(v string) *GroupDepartSaveShrinkRequest {
+	s.SubCorpIdListShrink = &v
+	return s
+}
+
+type GroupDepartSaveResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s GroupDepartSaveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupDepartSaveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GroupDepartSaveResponseBody) SetCode(v string) *GroupDepartSaveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GroupDepartSaveResponseBody) SetMessage(v string) *GroupDepartSaveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GroupDepartSaveResponseBody) SetRequestId(v string) *GroupDepartSaveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GroupDepartSaveResponseBody) SetSuccess(v bool) *GroupDepartSaveResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GroupDepartSaveResponseBody) SetTraceId(v string) *GroupDepartSaveResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GroupDepartSaveResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GroupDepartSaveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GroupDepartSaveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupDepartSaveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GroupDepartSaveResponse) SetHeaders(v map[string]*string) *GroupDepartSaveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GroupDepartSaveResponse) SetStatusCode(v int32) *GroupDepartSaveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GroupDepartSaveResponse) SetBody(v *GroupDepartSaveResponseBody) *GroupDepartSaveResponse {
+	s.Body = v
+	return s
+}
+
+type GroupUserSaveHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s GroupUserSaveHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveHeaders) SetCommonHeaders(v map[string]*string) *GroupUserSaveHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GroupUserSaveHeaders) SetXAcsBtripCorpToken(v string) *GroupUserSaveHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type GroupUserSaveRequest struct {
+	JobNo         *string                              `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus   *int32                               `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	Phone         *string                              `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealNameEn    *string                              `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	SubCorpIdList []*GroupUserSaveRequestSubCorpIdList `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
+	UserId        *string                              `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName      *string                              `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s GroupUserSaveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveRequest) SetJobNo(v string) *GroupUserSaveRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetLeaveStatus(v int32) *GroupUserSaveRequest {
+	s.LeaveStatus = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetPhone(v string) *GroupUserSaveRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetRealNameEn(v string) *GroupUserSaveRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetSubCorpIdList(v []*GroupUserSaveRequestSubCorpIdList) *GroupUserSaveRequest {
+	s.SubCorpIdList = v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetUserId(v string) *GroupUserSaveRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetUserName(v string) *GroupUserSaveRequest {
+	s.UserName = &v
+	return s
+}
+
+type GroupUserSaveRequestSubCorpIdList struct {
+	DepartIds     []*string `json:"depart_ids,omitempty" xml:"depart_ids,omitempty" type:"Repeated"`
+	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	SubCorpId     *string   `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+}
+
+func (s GroupUserSaveRequestSubCorpIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveRequestSubCorpIdList) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveRequestSubCorpIdList) SetDepartIds(v []*string) *GroupUserSaveRequestSubCorpIdList {
+	s.DepartIds = v
+	return s
+}
+
+func (s *GroupUserSaveRequestSubCorpIdList) SetManagerUserId(v string) *GroupUserSaveRequestSubCorpIdList {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestSubCorpIdList) SetSubCorpId(v string) *GroupUserSaveRequestSubCorpIdList {
+	s.SubCorpId = &v
+	return s
+}
+
+type GroupUserSaveShrinkRequest struct {
+	JobNo               *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	LeaveStatus         *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
+	Phone               *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealNameEn          *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
+	UserId              *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName            *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s GroupUserSaveShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveShrinkRequest) SetJobNo(v string) *GroupUserSaveShrinkRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetLeaveStatus(v int32) *GroupUserSaveShrinkRequest {
+	s.LeaveStatus = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetPhone(v string) *GroupUserSaveShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetRealNameEn(v string) *GroupUserSaveShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetSubCorpIdListShrink(v string) *GroupUserSaveShrinkRequest {
+	s.SubCorpIdListShrink = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetUserId(v string) *GroupUserSaveShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetUserName(v string) *GroupUserSaveShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+type GroupUserSaveResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s GroupUserSaveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveResponseBody) SetCode(v string) *GroupUserSaveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GroupUserSaveResponseBody) SetMessage(v string) *GroupUserSaveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GroupUserSaveResponseBody) SetRequestId(v string) *GroupUserSaveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GroupUserSaveResponseBody) SetSuccess(v bool) *GroupUserSaveResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GroupUserSaveResponseBody) SetTraceId(v string) *GroupUserSaveResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GroupUserSaveResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GroupUserSaveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GroupUserSaveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveResponse) SetHeaders(v map[string]*string) *GroupUserSaveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GroupUserSaveResponse) SetStatusCode(v int32) *GroupUserSaveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GroupUserSaveResponse) SetBody(v *GroupUserSaveResponseBody) *GroupUserSaveResponse {
+	s.Body = v
+	return s
+}
+
 type HotelBillSettlementQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -25292,12 +25977,10 @@ type HotelOrderDetailInfoResponseBodyModule struct {
 	CancelInfo                *HotelOrderDetailInfoResponseBodyModuleCancelInfo                `json:"cancel_info,omitempty" xml:"cancel_info,omitempty" type:"Struct"`
 	CheckIn                   *string                                                          `json:"check_in,omitempty" xml:"check_in,omitempty"`
 	CheckOut                  *string                                                          `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	Code                      *string                                                          `json:"code,omitempty" xml:"code,omitempty"`
 	ConfirmOrderTime          *string                                                          `json:"confirm_order_time,omitempty" xml:"confirm_order_time,omitempty"`
 	ContractName              *string                                                          `json:"contract_name,omitempty" xml:"contract_name,omitempty"`
 	ContractTel               *string                                                          `json:"contract_tel,omitempty" xml:"contract_tel,omitempty"`
 	CreateOrderTime           *string                                                          `json:"create_order_time,omitempty" xml:"create_order_time,omitempty"`
-	Desc                      *string                                                          `json:"desc,omitempty" xml:"desc,omitempty"`
 	EarlyArrivalTime          *string                                                          `json:"early_arrival_time,omitempty" xml:"early_arrival_time,omitempty"`
 	EarlyDeparture            *bool                                                            `json:"early_departure,omitempty" xml:"early_departure,omitempty"`
 	GuestCount                *int32                                                           `json:"guest_count,omitempty" xml:"guest_count,omitempty"`
@@ -25373,11 +26056,6 @@ func (s *HotelOrderDetailInfoResponseBodyModule) SetCheckOut(v string) *HotelOrd
 	return s
 }
 
-func (s *HotelOrderDetailInfoResponseBodyModule) SetCode(v string) *HotelOrderDetailInfoResponseBodyModule {
-	s.Code = &v
-	return s
-}
-
 func (s *HotelOrderDetailInfoResponseBodyModule) SetConfirmOrderTime(v string) *HotelOrderDetailInfoResponseBodyModule {
 	s.ConfirmOrderTime = &v
 	return s
@@ -25395,11 +26073,6 @@ func (s *HotelOrderDetailInfoResponseBodyModule) SetContractTel(v string) *Hotel
 
 func (s *HotelOrderDetailInfoResponseBodyModule) SetCreateOrderTime(v string) *HotelOrderDetailInfoResponseBodyModule {
 	s.CreateOrderTime = &v
-	return s
-}
-
-func (s *HotelOrderDetailInfoResponseBodyModule) SetDesc(v string) *HotelOrderDetailInfoResponseBodyModule {
-	s.Desc = &v
 	return s
 }
 
@@ -39879,6 +40552,7 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	DepStation   *string `json:"dep_station,omitempty" xml:"dep_station,omitempty"`
 	DepTime      *string `json:"dep_time,omitempty" xml:"dep_time,omitempty"`
 	Department   *string `json:"department,omitempty" xml:"department,omitempty"`
+	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
 	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
 	OrderId      *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OssUrl       *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
@@ -39932,6 +40606,11 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepTime(v string) *Trai
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetDepartment(v string) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.Department = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetId(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.Id = &v
 	return s
 }
 
@@ -40379,23 +41058,38 @@ func (s *VatInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *VatInvoic
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItems struct {
-	AmountWithTax    *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	InvoiceCode      *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	InvoiceDay       *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	InvoiceDetail    *string `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
-	InvoiceNo        *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	InvoiceSubTaskId *int64  `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
-	InvoiceType      *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	InvoiceTypeDesc  *string `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
-	OssUrl           *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	PurchaserName    *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo   *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	SellerName       *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	SellerTaxNo      *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	TaxAmount        *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceDetail            *string                                                     `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
+	InvoiceDetails           []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	InvoiceSubTaskId         *int64                                                      `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	InvoiceType              *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	InvoiceTypeDesc          *string                                                     `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
+	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -40421,6 +41115,21 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *VatI
 	return s
 }
 
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetCheckCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.CheckCode = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetDrawer(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Drawer = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetId(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Id = &v
+	return s
+}
+
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.InvoiceCode = &v
 	return s
@@ -40433,6 +41142,16 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDay(v string) *Va
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDetail(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.InvoiceDetail = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDetails(v []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceDetails = v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceLocation(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceLocation = &v
 	return s
 }
 
@@ -40461,6 +41180,21 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetOssUrl(v string) *VatInv
 	return s
 }
 
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPasswordArea(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PasswordArea = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserBankAccountInfo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserBankAccountInfo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserContactInfo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserContactInfo = &v
+	return s
+}
+
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserName(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.PurchaserName = &v
 	return s
@@ -40468,6 +41202,31 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserName(v string) 
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetPurchaserTaxNo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.PurchaserTaxNo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetRecipient(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Recipient = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetRemarks(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Remarks = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetReviewer(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSellerBankAccountInfo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerBankAccountInfo = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSellerContactInfo(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerContactInfo = &v
 	return s
 }
 
@@ -40481,6 +41240,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSellerTaxNo(v string) *V
 	return s
 }
 
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetSmartCheckCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.SmartCheckCode = &v
+	return s
+}
+
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.TaxAmount = &v
 	return s
@@ -40488,6 +41252,76 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *Vat
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTaxRate(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.TotalAmountInWords = &v
+	return s
+}
+
+type VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
+	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
+	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
+	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
+	Tax           *string `json:"tax,omitempty" xml:"tax,omitempty"`
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	UnitPrice     *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
+}
+
+func (s VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetAmount(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetIndex(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Index = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetItemName(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.ItemName = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetQuantity(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Quantity = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetSpecification(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Specification = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetTax(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Tax = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetTaxRate(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetUnit(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Unit = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetUnitPrice(v string) *VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.UnitPrice = &v
 	return s
 }
 
@@ -42927,6 +43761,69 @@ func (client *Client) CostCenterSave(request *CostCenterSaveRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateSubCorpWithOptions(request *CreateSubCorpRequest, headers *CreateSubCorpHeaders, runtime *util.RuntimeOptions) (_result *CreateSubCorpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OuterCorpId)) {
+		body["outer_corp_id"] = request.OuterCorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterCorpName)) {
+		body["outer_corp_name"] = request.OuterCorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSubCorp"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sub_corps/v1/corps"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSubCorpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSubCorp(request *CreateSubCorpRequest) (_result *CreateSubCorpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateSubCorpHeaders{}
+	_result = &CreateSubCorpResponse{}
+	_body, _err := client.CreateSubCorpWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteInvoiceEntityWithOptions(tmpReq *DeleteInvoiceEntityRequest, headers *DeleteInvoiceEntityHeaders, runtime *util.RuntimeOptions) (_result *DeleteInvoiceEntityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -44590,6 +45487,172 @@ func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_resul
 	headers := &FlightSearchListHeaders{}
 	_result = &FlightSearchListResponse{}
 	_body, _err := client.FlightSearchListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GroupDepartSaveWithOptions(tmpReq *GroupDepartSaveRequest, headers *GroupDepartSaveHeaders, runtime *util.RuntimeOptions) (_result *GroupDepartSaveResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GroupDepartSaveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubCorpIdList)) {
+		request.SubCorpIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCorpIdList, tea.String("sub_corp_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeptName)) {
+		body["dept_name"] = request.DeptName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerIds)) {
+		body["manager_ids"] = request.ManagerIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterDeptId)) {
+		body["outer_dept_id"] = request.OuterDeptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OuterDeptPid)) {
+		body["outer_dept_pid"] = request.OuterDeptPid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpIdListShrink)) {
+		body["sub_corp_id_list"] = request.SubCorpIdListShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GroupDepartSave"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sub_corps/v1/departs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GroupDepartSaveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GroupDepartSave(request *GroupDepartSaveRequest) (_result *GroupDepartSaveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GroupDepartSaveHeaders{}
+	_result = &GroupDepartSaveResponse{}
+	_body, _err := client.GroupDepartSaveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, headers *GroupUserSaveHeaders, runtime *util.RuntimeOptions) (_result *GroupUserSaveResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GroupUserSaveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SubCorpIdList)) {
+		request.SubCorpIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCorpIdList, tea.String("sub_corp_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
+		body["job_no"] = request.JobNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LeaveStatus)) {
+		body["leave_status"] = request.LeaveStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpIdListShrink)) {
+		body["sub_corp_id_list"] = request.SubCorpIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GroupUserSave"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/sub_corps/v1/users"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GroupUserSaveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *GroupUserSaveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GroupUserSaveHeaders{}
+	_result = &GroupUserSaveResponse{}
+	_body, _err := client.GroupUserSaveWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
