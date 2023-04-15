@@ -3557,7 +3557,8 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// *   **IPV4**: IPv4
 	// *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion  *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block. Valid values:
 	//
 	// *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
@@ -3606,6 +3607,11 @@ func (s *AssociateVpcCidrBlockRequest) SetIPv6CidrBlock(v string) *AssociateVpcC
 
 func (s *AssociateVpcCidrBlockRequest) SetIpVersion(v string) *AssociateVpcCidrBlockRequest {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *AssociateVpcCidrBlockRequest) SetIpamPoolId(v string) *AssociateVpcCidrBlockRequest {
+	s.IpamPoolId = &v
 	return s
 }
 
@@ -10353,10 +10359,7 @@ func (s *CreateRouteEntriesRequest) SetRouteEntries(v []*CreateRouteEntriesReque
 }
 
 type CreateRouteEntriesRequestRouteEntries struct {
-	// The description of the custom route entry. You can specify up to 50 descriptions.
-	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-	Describption *string `json:"Describption,omitempty" xml:"Describption,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination CIDR block of the custom route entry. Both IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks. Make sure that the destination CIDR block meets the following requirements:
 	//
 	// *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
@@ -10397,8 +10400,8 @@ func (s CreateRouteEntriesRequestRouteEntries) GoString() string {
 	return s.String()
 }
 
-func (s *CreateRouteEntriesRequestRouteEntries) SetDescribption(v string) *CreateRouteEntriesRequestRouteEntries {
-	s.Describption = &v
+func (s *CreateRouteEntriesRequestRouteEntries) SetDescription(v string) *CreateRouteEntriesRequestRouteEntries {
+	s.Description = &v
 	return s
 }
 
@@ -13595,7 +13598,8 @@ type CreateVpcRequest struct {
 	//
 	// *   **false** (default): no
 	// *   **true**: yes
-	EnableIpv6 *bool `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	EnableIpv6     *bool   `json:"EnableIpv6,omitempty" xml:"EnableIpv6,omitempty"`
+	Ipv4IpamPoolId *string `json:"Ipv4IpamPoolId,omitempty" xml:"Ipv4IpamPoolId,omitempty"`
 	// The IPv6 CIDR blocks of the VPC.
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
 	// The type of the IPv6 CIDR block. Valid values:
@@ -13659,6 +13663,11 @@ func (s *CreateVpcRequest) SetDryRun(v bool) *CreateVpcRequest {
 
 func (s *CreateVpcRequest) SetEnableIpv6(v bool) *CreateVpcRequest {
 	s.EnableIpv6 = &v
+	return s
+}
+
+func (s *CreateVpcRequest) SetIpv4IpamPoolId(v string) *CreateVpcRequest {
+	s.Ipv4IpamPoolId = &v
 	return s
 }
 
@@ -25214,6 +25223,7 @@ type DescribeEipSegmentResponseBodyEipSegmentsEipSegment struct {
 	// *   **Allocated**: allocated
 	// *   **Releasing**: being released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Zone   *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeEipSegmentResponseBodyEipSegmentsEipSegment) String() string {
@@ -25261,6 +25271,11 @@ func (s *DescribeEipSegmentResponseBodyEipSegmentsEipSegment) SetSegment(v strin
 
 func (s *DescribeEipSegmentResponseBodyEipSegmentsEipSegment) SetStatus(v string) *DescribeEipSegmentResponseBodyEipSegmentsEipSegment {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeEipSegmentResponseBodyEipSegmentsEipSegment) SetZone(v string) *DescribeEipSegmentResponseBodyEipSegmentsEipSegment {
+	s.Zone = &v
 	return s
 }
 
@@ -67914,6 +67929,7 @@ type UpdateTrafficMirrorSessionAttributeRequest struct {
 	Enabled      *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PacketLength *int32  `json:"PacketLength,omitempty" xml:"PacketLength,omitempty"`
 	// The priority of the traffic mirror session. Valid values: **1** to **32766**.
 	//
 	// A smaller value specifies a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
@@ -67977,6 +67993,11 @@ func (s *UpdateTrafficMirrorSessionAttributeRequest) SetOwnerAccount(v string) *
 
 func (s *UpdateTrafficMirrorSessionAttributeRequest) SetOwnerId(v int64) *UpdateTrafficMirrorSessionAttributeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateTrafficMirrorSessionAttributeRequest) SetPacketLength(v int32) *UpdateTrafficMirrorSessionAttributeRequest {
+	s.PacketLength = &v
 	return s
 }
 
@@ -71045,6 +71066,10 @@ func (client *Client) AssociateVpcCidrBlockWithOptions(request *AssociateVpcCidr
 
 	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
 		query["IpVersion"] = request.IpVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpamPoolId)) {
+		query["IpamPoolId"] = request.IpamPoolId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ipv6Isp)) {
@@ -76751,6 +76776,10 @@ func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.EnableIpv6)) {
 		query["EnableIpv6"] = request.EnableIpv6
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv4IpamPoolId)) {
+		query["Ipv4IpamPoolId"] = request.Ipv4IpamPoolId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ipv6CidrBlock)) {
@@ -99722,6 +99751,10 @@ func (client *Client) UpdateTrafficMirrorSessionAttributeWithOptions(request *Up
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PacketLength)) {
+		query["PacketLength"] = request.PacketLength
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Priority)) {
