@@ -838,7 +838,8 @@ type AddGatewayRequest struct {
 	// The ID of the region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of nodes.
-	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	Replica     *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
@@ -919,6 +920,11 @@ func (s *AddGatewayRequest) SetRegion(v string) *AddGatewayRequest {
 
 func (s *AddGatewayRequest) SetReplica(v int32) *AddGatewayRequest {
 	s.Replica = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetRequestPars(v string) *AddGatewayRequest {
+	s.RequestPars = &v
 	return s
 }
 
@@ -42390,6 +42396,10 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Replica)) {
 		query["Replica"] = request.Replica
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {

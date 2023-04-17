@@ -1,3 +1,11 @@
+2023-04-17 Version: v3.0.31117
+- Support RAM.
+- Update API CreateOrUpdateSwimmingLaneGroup.
+- Update API GetApplicationInstanceList.
+- Update error code for QueryAppSystemMetricsOfGroup, QueryAppSummaryMetricsOverview, ListEventsPage, GetServiceListPage.
+- Update APIs.
+- Supported for creating gateway of exact version.
+
 2023-04-11 Version: v3.0.31116
 - Optimize lossless offline and online.
 
