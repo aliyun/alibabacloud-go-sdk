@@ -13,7 +13,6 @@ import (
 )
 
 type AccessTokenRequest struct {
-	AppKey    *string `json:"app_key,omitempty" xml:"app_key,omitempty"`
 	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
 }
 
@@ -23,11 +22,6 @@ func (s AccessTokenRequest) String() string {
 
 func (s AccessTokenRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AccessTokenRequest) SetAppKey(v string) *AccessTokenRequest {
-	s.AppKey = &v
-	return s
 }
 
 func (s *AccessTokenRequest) SetAppSecret(v string) *AccessTokenRequest {
@@ -41650,10 +41644,6 @@ func (client *Client) AccessTokenWithOptions(request *AccessTokenRequest, header
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
-		query["app_key"] = request.AppKey
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AppSecret)) {
 		query["app_secret"] = request.AppSecret
 	}
