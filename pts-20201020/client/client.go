@@ -111,6 +111,145 @@ func (s *AdjustJMeterSceneSpeedResponse) SetBody(v *AdjustJMeterSceneSpeedRespon
 	return s
 }
 
+type AdjustPtsSceneSpeedRequest struct {
+	ApiSpeedList []*AdjustPtsSceneSpeedRequestApiSpeedList `json:"ApiSpeedList,omitempty" xml:"ApiSpeedList,omitempty" type:"Repeated"`
+	SceneId      *string                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s AdjustPtsSceneSpeedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustPtsSceneSpeedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustPtsSceneSpeedRequest) SetApiSpeedList(v []*AdjustPtsSceneSpeedRequestApiSpeedList) *AdjustPtsSceneSpeedRequest {
+	s.ApiSpeedList = v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedRequest) SetSceneId(v string) *AdjustPtsSceneSpeedRequest {
+	s.SceneId = &v
+	return s
+}
+
+type AdjustPtsSceneSpeedRequestApiSpeedList struct {
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Speed *int64  `json:"Speed,omitempty" xml:"Speed,omitempty"`
+}
+
+func (s AdjustPtsSceneSpeedRequestApiSpeedList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustPtsSceneSpeedRequestApiSpeedList) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustPtsSceneSpeedRequestApiSpeedList) SetApiId(v string) *AdjustPtsSceneSpeedRequestApiSpeedList {
+	s.ApiId = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedRequestApiSpeedList) SetSpeed(v int64) *AdjustPtsSceneSpeedRequestApiSpeedList {
+	s.Speed = &v
+	return s
+}
+
+type AdjustPtsSceneSpeedShrinkRequest struct {
+	ApiSpeedListShrink *string `json:"ApiSpeedList,omitempty" xml:"ApiSpeedList,omitempty"`
+	SceneId            *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s AdjustPtsSceneSpeedShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustPtsSceneSpeedShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustPtsSceneSpeedShrinkRequest) SetApiSpeedListShrink(v string) *AdjustPtsSceneSpeedShrinkRequest {
+	s.ApiSpeedListShrink = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedShrinkRequest) SetSceneId(v string) *AdjustPtsSceneSpeedShrinkRequest {
+	s.SceneId = &v
+	return s
+}
+
+type AdjustPtsSceneSpeedResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AdjustPtsSceneSpeedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustPtsSceneSpeedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustPtsSceneSpeedResponseBody) SetCode(v string) *AdjustPtsSceneSpeedResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponseBody) SetHttpStatusCode(v int32) *AdjustPtsSceneSpeedResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponseBody) SetMessage(v string) *AdjustPtsSceneSpeedResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponseBody) SetRequestId(v string) *AdjustPtsSceneSpeedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponseBody) SetSuccess(v bool) *AdjustPtsSceneSpeedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AdjustPtsSceneSpeedResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AdjustPtsSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AdjustPtsSceneSpeedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustPtsSceneSpeedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustPtsSceneSpeedResponse) SetHeaders(v map[string]*string) *AdjustPtsSceneSpeedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponse) SetStatusCode(v int32) *AdjustPtsSceneSpeedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AdjustPtsSceneSpeedResponse) SetBody(v *AdjustPtsSceneSpeedResponseBody) *AdjustPtsSceneSpeedResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePtsSceneRequest struct {
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
@@ -1671,6 +1810,248 @@ func (s *GetOpenJMeterSceneResponse) SetStatusCode(v int32) *GetOpenJMeterSceneR
 }
 
 func (s *GetOpenJMeterSceneResponse) SetBody(v *GetOpenJMeterSceneResponseBody) *GetOpenJMeterSceneResponse {
+	s.Body = v
+	return s
+}
+
+type GetPtsDebugSampleLogsRequest struct {
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlanId     *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+}
+
+func (s GetPtsDebugSampleLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPtsDebugSampleLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPtsDebugSampleLogsRequest) SetPageNumber(v int32) *GetPtsDebugSampleLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsRequest) SetPageSize(v int32) *GetPtsDebugSampleLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsRequest) SetPlanId(v string) *GetPtsDebugSampleLogsRequest {
+	s.PlanId = &v
+	return s
+}
+
+type GetPtsDebugSampleLogsResponseBody struct {
+	Code         *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message      *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber   *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SamplingLogs []*GetPtsDebugSampleLogsResponseBodySamplingLogs `json:"SamplingLogs,omitempty" xml:"SamplingLogs,omitempty" type:"Repeated"`
+	Success      *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount   *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetPtsDebugSampleLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPtsDebugSampleLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetCode(v string) *GetPtsDebugSampleLogsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetMessage(v string) *GetPtsDebugSampleLogsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetPageNumber(v int32) *GetPtsDebugSampleLogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetPageSize(v int32) *GetPtsDebugSampleLogsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetRequestId(v string) *GetPtsDebugSampleLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetSamplingLogs(v []*GetPtsDebugSampleLogsResponseBodySamplingLogs) *GetPtsDebugSampleLogsResponseBody {
+	s.SamplingLogs = v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetSuccess(v bool) *GetPtsDebugSampleLogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBody) SetTotalCount(v int64) *GetPtsDebugSampleLogsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetPtsDebugSampleLogsResponseBodySamplingLogs struct {
+	ChainId             *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
+	ChainName           *string `json:"ChainName,omitempty" xml:"ChainName,omitempty"`
+	CheckResult         *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	ExportConfig        *string `json:"ExportConfig,omitempty" xml:"ExportConfig,omitempty"`
+	ExportContent       *string `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	HttpRequestBody     *string `json:"HttpRequestBody,omitempty" xml:"HttpRequestBody,omitempty"`
+	HttpRequestHeaders  *string `json:"HttpRequestHeaders,omitempty" xml:"HttpRequestHeaders,omitempty"`
+	HttpRequestMethod   *string `json:"HttpRequestMethod,omitempty" xml:"HttpRequestMethod,omitempty"`
+	HttpRequestUrl      *string `json:"HttpRequestUrl,omitempty" xml:"HttpRequestUrl,omitempty"`
+	HttpResponseBody    *string `json:"HttpResponseBody,omitempty" xml:"HttpResponseBody,omitempty"`
+	HttpResponseFailMsg *string `json:"HttpResponseFailMsg,omitempty" xml:"HttpResponseFailMsg,omitempty"`
+	HttpResponseHeaders *string `json:"HttpResponseHeaders,omitempty" xml:"HttpResponseHeaders,omitempty"`
+	HttpResponseStatus  *string `json:"HttpResponseStatus,omitempty" xml:"HttpResponseStatus,omitempty"`
+	HttpStartTime       *int64  `json:"HttpStartTime,omitempty" xml:"HttpStartTime,omitempty"`
+	HttpTiming          *string `json:"HttpTiming,omitempty" xml:"HttpTiming,omitempty"`
+	ImportContent       *string `json:"ImportContent,omitempty" xml:"ImportContent,omitempty"`
+	NodeId              *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Rt                  *string `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	Timestamp           *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetPtsDebugSampleLogsResponseBodySamplingLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPtsDebugSampleLogsResponseBodySamplingLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetChainId(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.ChainId = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetChainName(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.ChainName = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetCheckResult(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetExportConfig(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.ExportConfig = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetExportContent(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.ExportContent = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpRequestBody(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpRequestBody = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpRequestHeaders(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpRequestHeaders = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpRequestMethod(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpRequestMethod = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpRequestUrl(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpRequestUrl = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpResponseBody(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpResponseBody = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpResponseFailMsg(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpResponseFailMsg = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpResponseHeaders(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpResponseHeaders = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpResponseStatus(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpResponseStatus = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpStartTime(v int64) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpStartTime = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetHttpTiming(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.HttpTiming = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetImportContent(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.ImportContent = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetNodeId(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetRt(v string) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponseBodySamplingLogs) SetTimestamp(v int64) *GetPtsDebugSampleLogsResponseBodySamplingLogs {
+	s.Timestamp = &v
+	return s
+}
+
+type GetPtsDebugSampleLogsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPtsDebugSampleLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPtsDebugSampleLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPtsDebugSampleLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPtsDebugSampleLogsResponse) SetHeaders(v map[string]*string) *GetPtsDebugSampleLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponse) SetStatusCode(v int32) *GetPtsDebugSampleLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPtsDebugSampleLogsResponse) SetBody(v *GetPtsDebugSampleLogsResponseBody) *GetPtsDebugSampleLogsResponse {
 	s.Body = v
 	return s
 }
@@ -8004,6 +8385,60 @@ func (client *Client) AdjustJMeterSceneSpeed(request *AdjustJMeterSceneSpeedRequ
 	return _result, _err
 }
 
+func (client *Client) AdjustPtsSceneSpeedWithOptions(tmpReq *AdjustPtsSceneSpeedRequest, runtime *util.RuntimeOptions) (_result *AdjustPtsSceneSpeedResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AdjustPtsSceneSpeedShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApiSpeedList)) {
+		request.ApiSpeedListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApiSpeedList, tea.String("ApiSpeedList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiSpeedListShrink)) {
+		query["ApiSpeedList"] = request.ApiSpeedListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AdjustPtsSceneSpeed"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AdjustPtsSceneSpeedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AdjustPtsSceneSpeed(request *AdjustPtsSceneSpeedRequest) (_result *AdjustPtsSceneSpeedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AdjustPtsSceneSpeedResponse{}
+	_body, _err := client.AdjustPtsSceneSpeedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, runtime *util.RuntimeOptions) (_result *CreatePtsSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8572,6 +9007,58 @@ func (client *Client) GetOpenJMeterScene(request *GetOpenJMeterSceneRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpenJMeterSceneResponse{}
 	_body, _err := client.GetOpenJMeterSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPtsDebugSampleLogsWithOptions(request *GetPtsDebugSampleLogsRequest, runtime *util.RuntimeOptions) (_result *GetPtsDebugSampleLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPtsDebugSampleLogs"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPtsDebugSampleLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPtsDebugSampleLogs(request *GetPtsDebugSampleLogsRequest) (_result *GetPtsDebugSampleLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPtsDebugSampleLogsResponse{}
+	_body, _err := client.GetPtsDebugSampleLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
