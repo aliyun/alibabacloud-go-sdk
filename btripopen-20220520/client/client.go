@@ -386,12 +386,13 @@ func (s *AddressGetHeaders) SetXAcsBtripSoCorpToken(v string) *AddressGetHeaders
 }
 
 type AddressGetRequest struct {
-	ActionType  *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
-	ItineraryId *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	Phone       *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ActionType    *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
+	CarScenesCode *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
+	ItineraryId   *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	Phone         *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	SubCorpId     *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	Type          *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s AddressGetRequest) String() string {
@@ -404,6 +405,11 @@ func (s AddressGetRequest) GoString() string {
 
 func (s *AddressGetRequest) SetActionType(v int32) *AddressGetRequest {
 	s.ActionType = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetCarScenesCode(v string) *AddressGetRequest {
+	s.CarScenesCode = &v
 	return s
 }
 
@@ -30802,28 +30808,43 @@ func (s *InsInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *InsInvoic
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItems struct {
-	AmountWithTax    *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	CostCenter       *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department       *string `json:"department,omitempty" xml:"department,omitempty"`
-	InsuranceCompany *string `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
-	InsuranceOrderId *string `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
-	InsuranceType    *string `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
-	InvoiceCode      *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	InvoiceDay       *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	InvoiceNo        *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	OrderId          *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OssUrl           *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	Passenger        *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
-	Project          *string `json:"project,omitempty" xml:"project,omitempty"`
-	PurchaserName    *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo   *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	RealInvoiceTitle *string `json:"real_invoice_title,omitempty" xml:"real_invoice_title,omitempty"`
-	SellerName       *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	SellerTaxNo      *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	TaxAmount        *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate          *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	CostCenter               *string                                                     `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department               *string                                                     `json:"department,omitempty" xml:"department,omitempty"`
+	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	InsuranceCompany         *string                                                     `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
+	InsuranceOrderId         *string                                                     `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
+	InsuranceType            *string                                                     `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
+	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceDetails           []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	InvoiceTitle             *string                                                     `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	OrderId                  *int64                                                      `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	Passenger                *string                                                     `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	Project                  *string                                                     `json:"project,omitempty" xml:"project,omitempty"`
+	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -30849,6 +30870,11 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *InsI
 	return s
 }
 
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetCheckCode(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.CheckCode = &v
+	return s
+}
+
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetCostCenter(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.CostCenter = &v
 	return s
@@ -30856,6 +30882,16 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetCostCenter(v string) *In
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetDepartment(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.Department = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetDrawer(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Drawer = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetId(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Id = &v
 	return s
 }
 
@@ -30884,8 +30920,23 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDay(v string) *In
 	return s
 }
 
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceDetails(v []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceDetails = v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceLocation(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceLocation = &v
+	return s
+}
+
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceNo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.InvoiceNo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceTitle = &v
 	return s
 }
 
@@ -30904,8 +30955,23 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPassenger(v string) *Ins
 	return s
 }
 
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPasswordArea(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.PasswordArea = &v
+	return s
+}
+
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetProject(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.Project = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPurchaserBankAccountInfo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserBankAccountInfo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPurchaserContactInfo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.PurchaserContactInfo = &v
 	return s
 }
 
@@ -30919,8 +30985,28 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetPurchaserTaxNo(v string)
 	return s
 }
 
-func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetRealInvoiceTitle(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
-	s.RealInvoiceTitle = &v
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetRecipient(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Recipient = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetRemarks(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Remarks = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetReviewer(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSellerBankAccountInfo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerBankAccountInfo = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSellerContactInfo(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.SellerContactInfo = &v
 	return s
 }
 
@@ -30934,6 +31020,11 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSellerTaxNo(v string) *I
 	return s
 }
 
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetSmartCheckCode(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.SmartCheckCode = &v
+	return s
+}
+
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.TaxAmount = &v
 	return s
@@ -30941,6 +31032,76 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *Ins
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxRate(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.TotalAmountInWords = &v
+	return s
+}
+
+type InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
+	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
+	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
+	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
+	Tax           *string `json:"tax,omitempty" xml:"tax,omitempty"`
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	UnitPrice     *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
+}
+
+func (s InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetAmount(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Amount = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetIndex(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Index = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetItemName(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.ItemName = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetQuantity(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Quantity = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetSpecification(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Specification = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetTax(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Tax = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetTaxRate(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetUnit(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.Unit = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) SetUnitPrice(v string) *InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails {
+	s.UnitPrice = &v
 	return s
 }
 
@@ -40558,6 +40719,8 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	SerialNumber *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
 	TaxAmount    *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
 	TaxRate      *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketNo     *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TrainNo      *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {
@@ -40660,6 +40823,16 @@ func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTaxAmount(v string) *Tr
 
 func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTaxRate(v string) *TrainTicketScanQueryResponseBodyModuleItems {
 	s.TaxRate = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTicketNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainTicketScanQueryResponseBodyModuleItems) SetTrainNo(v string) *TrainTicketScanQueryResponseBodyModuleItems {
+	s.TrainNo = &v
 	return s
 }
 
@@ -41757,6 +41930,10 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ActionType)) {
 		query["action_type"] = request.ActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CarScenesCode)) {
+		query["car_scenes_code"] = request.CarScenesCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ItineraryId)) {
