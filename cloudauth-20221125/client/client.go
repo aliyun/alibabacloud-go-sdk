@@ -114,8 +114,9 @@ func (s *EntElementVerifyResponseBody) SetResult(v *EntElementVerifyResponseBody
 }
 
 type EntElementVerifyResponseBodyResult struct {
-	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizCode    *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EntElementVerifyResponseBodyResult) String() string {
@@ -128,6 +129,11 @@ func (s EntElementVerifyResponseBodyResult) GoString() string {
 
 func (s *EntElementVerifyResponseBodyResult) SetBizCode(v string) *EntElementVerifyResponseBodyResult {
 	s.BizCode = &v
+	return s
+}
+
+func (s *EntElementVerifyResponseBodyResult) SetReasonCode(v string) *EntElementVerifyResponseBodyResult {
+	s.ReasonCode = &v
 	return s
 }
 
