@@ -306,17 +306,22 @@ func (s *FaceCompareResponse) SetBody(v *FaceCompareResponseBody) *FaceCompareRe
 }
 
 type InitializeRequest struct {
+	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	FacePictureUrl    *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
 	FlowType          *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
+	IdFaceQuality     *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	IdSpoof           *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
 	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
 	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
 	OperationMode     *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
 	Pages             *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
 	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductConfig     *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
+	ReturnUrl         *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneCode         *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
 	ServiceLevel      *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
 }
@@ -327,6 +332,11 @@ func (s InitializeRequest) String() string {
 
 func (s InitializeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InitializeRequest) SetCrop(v string) *InitializeRequest {
+	s.Crop = &v
+	return s
 }
 
 func (s *InitializeRequest) SetDocType(v string) *InitializeRequest {
@@ -349,6 +359,16 @@ func (s *InitializeRequest) SetFlowType(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetIdFaceQuality(v string) *InitializeRequest {
+	s.IdFaceQuality = &v
+	return s
+}
+
+func (s *InitializeRequest) SetIdSpoof(v string) *InitializeRequest {
+	s.IdSpoof = &v
+	return s
+}
+
 func (s *InitializeRequest) SetMerchantBizId(v string) *InitializeRequest {
 	s.MerchantBizId = &v
 	return s
@@ -361,6 +381,11 @@ func (s *InitializeRequest) SetMerchantUserId(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetMetaInfo(v string) *InitializeRequest {
 	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitializeRequest) SetOcr(v string) *InitializeRequest {
+	s.Ocr = &v
 	return s
 }
 
@@ -381,6 +406,11 @@ func (s *InitializeRequest) SetProductCode(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetProductConfig(v string) *InitializeRequest {
 	s.ProductConfig = &v
+	return s
+}
+
+func (s *InitializeRequest) SetReturnUrl(v string) *InitializeRequest {
+	s.ReturnUrl = &v
 	return s
 }
 
@@ -430,8 +460,9 @@ func (s *InitializeResponseBody) SetResult(v *InitializeResponseBodyResult) *Ini
 }
 
 type InitializeResponseBodyResult struct {
-	ClientCfg     *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
-	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	ClientCfg      *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
+	TransactionId  *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	TransactionUrl *string `json:"TransactionUrl,omitempty" xml:"TransactionUrl,omitempty"`
 }
 
 func (s InitializeResponseBodyResult) String() string {
@@ -449,6 +480,11 @@ func (s *InitializeResponseBodyResult) SetClientCfg(v string) *InitializeRespons
 
 func (s *InitializeResponseBodyResult) SetTransactionId(v string) *InitializeResponseBodyResult {
 	s.TransactionId = &v
+	return s
+}
+
+func (s *InitializeResponseBodyResult) SetTransactionUrl(v string) *InitializeResponseBodyResult {
+	s.TransactionUrl = &v
 	return s
 }
 
@@ -654,6 +690,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		query["Crop"] = request.Crop
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DocType)) {
 		query["DocType"] = request.DocType
 	}
@@ -670,6 +710,14 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["FlowType"] = request.FlowType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdFaceQuality)) {
+		query["IdFaceQuality"] = request.IdFaceQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdSpoof)) {
+		query["IdSpoof"] = request.IdSpoof
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
@@ -680,6 +728,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.MetaInfo)) {
 		query["MetaInfo"] = request.MetaInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ocr)) {
+		query["Ocr"] = request.Ocr
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OperationMode)) {
@@ -696,6 +748,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.ProductConfig)) {
 		query["ProductConfig"] = request.ProductConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnUrl)) {
+		query["ReturnUrl"] = request.ReturnUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
