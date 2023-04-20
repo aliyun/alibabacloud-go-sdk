@@ -817,27 +817,27 @@ func (s *BandwidthPackageRemoveAcceleratorResponse) SetBody(v *BandwidthPackageR
 type ChangeResourceGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.****
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The client token can contain only ASCII characters.**
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the new resource group.
+	// The ID of the resource group that you want to use to replace the previous resource group.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the GA resource.
 	//
-	// *   If **ResourceType** is set to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
-	// *   If **ResourceType** is set to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-	// *   If **ResourceType** is set to**bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
-	// *   If **ResourceType** is set to **acl**, set the value of ResourceId to the ID of a network ACL.
+	// *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
+	// *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
+	// *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+	// *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an access control list (ACL).
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the GA resource. Valid values:
 	//
-	// *   **accelerator**: a standard GA instance.
-	// *   **basicaccelerator**: a basic GA instance.
-	// *   **bandwidthpackage**: a bandwidth plan.
-	// *   **acl**: a network ACL.
+	// *   **accelerator:** a standard GA instance.
+	// *   **basicaccelerator:** a basic GA instance.
+	// *   **bandwidthpackage:** a bandwidth plan.
+	// *   **acl:** an ACL.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1053,7 +1053,7 @@ func (s *ConfigEndpointProbeResponse) SetBody(v *ConfigEndpointProbeResponseBody
 type CreateAcceleratorRequest struct {
 	// Specifies whether to enable automatic payment. Valid values:
 	//
-	// *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated. This is the default value.
+	// *   **false:** disables automatic payment. This is the default value. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
 	// *   **true:** enables automatic payment. Payments are automatically completed.
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
@@ -1065,31 +1065,31 @@ type CreateAcceleratorRequest struct {
 	//
 	// Valid values: **1** to **12**. Default value: **1**.
 	//
-	// >  This parameter takes effect only if **AutoRenew** is set to **true**.
+	// >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// Specifies whether to automatically pay bills by using coupons. Valid values:
+	// Specifies whether to automatically apply coupons to your bills. Valid values:
 	//
-	// *   **true:** automatically pays bills by using coupons.
-	// *   **false:** does not automatically pay bills by using coupons. This is the default value.
+	// *   **true:** automatically applies coupons to your bills.
+	// *   **false:** does not automatically apply coupons to your bills. This is the default value.
 	//
-	// >  This parameter takes effect only if **AutoPay** is set to **true**.
+	// >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The bandwidth billing method.
+	// The bandwidth billing method. Valid values:
 	//
 	// *   **BandwidthPackage:** billed based on bandwidth plans.
 	// *   **CDT:** billed based on data transfer.
-	// *   **CDT95:** billed based on the 95th percentile bandwidth. The billing is managed by Cloud Data Transfer (CDT). This bandwidth billing method is available only for users that are included in the whitelist.
+	// *   **CDT95:** billed based on the 95th percentile bandwidth. The bills are managed by using Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
 	BandwidthBillingType *string `json:"BandwidthBillingType,omitempty" xml:"BandwidthBillingType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The subscription duration of the GA instance.
 	//
-	// *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
-	// *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
+	// *   If you set the **PricingCycle** parameter to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
+	// *   If you set the **PricingCycle** parameter to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The configurations of the acceleration area.
 	IpSetConfig *CreateAcceleratorRequestIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
@@ -1099,14 +1099,14 @@ type CreateAcceleratorRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The billing cycle of the GA instance. Valid values:
 	//
-	// *   **Month**: billed on a monthly basis.
-	// *   **Year**: billed on an annual basis.
+	// *   **Month:** billed on a monthly basis.
+	// *   **Year:** billed on an annual basis.
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The coupon code.
+	// The code of the coupon.
 	//
-	// >  This parameter is available only on the Alibaba International Site (alibabacloud.com).
+	// >  This parameter takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The ID of the region where you want to create the GA instance. Set the value to **cn-hangzhou**.
+	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the standard GA instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -1129,9 +1129,9 @@ type CreateAcceleratorRequest struct {
 	// *   **100:** Super Large Ⅰ
 	// *   **200:** Super Large Ⅱ
 	//
-	// >  The Large Ⅲ specification and higher specifications are available only for accounts that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+	// >  GA instances Large III and above are not available by default. To use these specifications, contact your Alibaba Cloud account manager.
 	//
-	// Different specifications provide different capabilities. For more information, see [Instance specifications](~~153127~~).
+	// Each instance specification provides different capabilities. For more information, see [Instance specifications](~~153127~~).
 	Spec *string                        `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Tag  []*CreateAcceleratorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -1268,7 +1268,7 @@ type CreateAcceleratorResponseBody struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// The ID of the order.
 	//
-	// If bills are not automatically paid, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payments.
+	// If you did not configure automatic payment, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payments.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -2392,7 +2392,8 @@ type CreateBasicAcceleratorRequest struct {
 	// The ID of the region to which the basic GA instance belongs. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the basic GA instance belongs.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateBasicAcceleratorRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateBasicAcceleratorRequest) String() string {
@@ -2465,6 +2466,34 @@ func (s *CreateBasicAcceleratorRequest) SetRegionId(v string) *CreateBasicAccele
 
 func (s *CreateBasicAcceleratorRequest) SetResourceGroupId(v string) *CreateBasicAcceleratorRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequest) SetTag(v []*CreateBasicAcceleratorRequestTag) *CreateBasicAcceleratorRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateBasicAcceleratorRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateBasicAcceleratorRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBasicAcceleratorRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBasicAcceleratorRequestTag) SetKey(v string) *CreateBasicAcceleratorRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateBasicAcceleratorRequestTag) SetValue(v string) *CreateBasicAcceleratorRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -7460,7 +7489,7 @@ type DeleteCustomRoutingEndpointGroupDestinationsRequest struct {
 	//
 	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The IDs of the endpoint group mappings.
 	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
@@ -7564,7 +7593,7 @@ type DeleteCustomRoutingEndpointGroupsRequest struct {
 	//
 	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
@@ -21914,7 +21943,7 @@ type ListTagResourcesRequest struct {
 	//
 	// *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
 	// *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-	// *   If you set the **ResourceType** parameter to**bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+	// *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
 	// *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an ACL.
 	//
 	// You can specify up to 50 GA resource IDs.
@@ -23169,16 +23198,16 @@ type UpdateAdditionalCertificateWithListenerRequest struct {
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The ClientToken value contain only ASCII characters.
+	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The domain name associated with the additional certificate that you want to replace.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether to only precheck the request. Default value: false. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: prechecks the request without performing this operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the listener. Only HTTPS listeners are supported.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -23232,7 +23261,7 @@ func (s *UpdateAdditionalCertificateWithListenerRequest) SetRegionId(v string) *
 type UpdateAdditionalCertificateWithListenerResponseBody struct {
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24258,7 +24287,7 @@ type UpdateCustomRoutingEndpointGroupDestinationsRequest struct {
 	//
 	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The mapping configurations of endpoint group.
 	//
@@ -24955,7 +24984,7 @@ type UpdateEndpointGroupRequest struct {
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId**as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the endpoint group.
 	//
@@ -27230,8 +27259,7 @@ func (client *Client) BandwidthPackageRemoveAccelerator(request *BandwidthPackag
 }
 
 /**
- * ## Usage notes
- * The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * You cannot call the **ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request ChangeResourceGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27287,8 +27315,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 }
 
 /**
- * ## Usage notes
- * The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
+ * You cannot call the **ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
  *
  * @param request ChangeResourceGroupRequest
  * @return ChangeResourceGroupResponse
@@ -27396,8 +27423,8 @@ func (client *Client) ConfigEndpointProbe(request *ConfigEndpointProbeRequest) (
 }
 
 /**
- * **CreateAccelerator** is an asynchronous operation. After you send a request, the system returns the ID of a GA instance, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
- * *   If the GA instance is in the **init** state, it indicates that the GA instance is being created. In this case, you can perform only query operations.
+ * **CreateAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
+ * *   If the GA instance is in the **init** state, it indicates that the GA instance is being created. In this case, you can continue to perform query operations on the GA instance.
  * *   If the GA instance is in the **active** state, it indicates that the GA instance is created.
  *
  * @param request CreateAcceleratorRequest
@@ -27494,8 +27521,8 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 }
 
 /**
- * **CreateAccelerator** is an asynchronous operation. After you send a request, the system returns the ID of a GA instance, but the operation is still being performed in the system background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
- * *   If the GA instance is in the **init** state, it indicates that the GA instance is being created. In this case, you can perform only query operations.
+ * **CreateAccelerator** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeAccelerator](~~153235~~) operation to query the status of a GA instance.
+ * *   If the GA instance is in the **init** state, it indicates that the GA instance is being created. In this case, you can continue to perform query operations on the GA instance.
  * *   If the GA instance is in the **active** state, it indicates that the GA instance is created.
  *
  * @param request CreateAcceleratorRequest
@@ -28151,6 +28178,10 @@ func (client *Client) CreateBasicAcceleratorWithOptions(request *CreateBasicAcce
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35698,11 +35729,11 @@ func (client *Client) UpdateAclAttribute(request *UpdateAclAttributeRequest) (_r
 }
 
 /**
- * The UpdateAdditionalCertificateWithListener operation is used to replace an additional certificate. You can call this operation when you want to replace an expired additional certificate with a new additional certificate without changing the associated domain name.
- * *   **UpdateAdditionalCertificateWithListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListListenerCertificates](~~307743~~) operation to query the state of the additional certificate that is associated with an HTTP listener:
- *     *   If the certificate that you want to replace is in the **updating** state, it indicates that the additional certificate is being replaced for the HTTP listener. In this case, you can perform only query operations.
+ * The UpdateAdditionalCertificateWithListener operation is used to replace an additional certificate. You can use this operation when you want to replace an expired additional certificate with a new additional certificate without changing the associated domain name.
+ * *   **UpdateAdditionalCertificateWithListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can use the [ListListenerCertificates](~~307743~~) operation to query the state of the additional certificate that is associated with an HTTP listener:
+ *     *   If the certificate that you want to replace is in the **updating** state, it is being replaced for the HTTP listener. In this case, you can perform only query operations.
  *     *   If the replacement certificate is in the **active** state, it indicates that the replacement operation is complete and the replacement certificate is associated with the HTTP listener.
- * *   The **UpdateAdditionalCertificateWithListener** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ * *   You cannot perform the **UpdateAdditionalCertificateWithListener** operation again on the same Global Accelerator (GA) instance before the previous operation is complete.
  *
  * @param request UpdateAdditionalCertificateWithListenerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35766,11 +35797,11 @@ func (client *Client) UpdateAdditionalCertificateWithListenerWithOptions(request
 }
 
 /**
- * The UpdateAdditionalCertificateWithListener operation is used to replace an additional certificate. You can call this operation when you want to replace an expired additional certificate with a new additional certificate without changing the associated domain name.
- * *   **UpdateAdditionalCertificateWithListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [ListListenerCertificates](~~307743~~) operation to query the state of the additional certificate that is associated with an HTTP listener:
- *     *   If the certificate that you want to replace is in the **updating** state, it indicates that the additional certificate is being replaced for the HTTP listener. In this case, you can perform only query operations.
+ * The UpdateAdditionalCertificateWithListener operation is used to replace an additional certificate. You can use this operation when you want to replace an expired additional certificate with a new additional certificate without changing the associated domain name.
+ * *   **UpdateAdditionalCertificateWithListener** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can use the [ListListenerCertificates](~~307743~~) operation to query the state of the additional certificate that is associated with an HTTP listener:
+ *     *   If the certificate that you want to replace is in the **updating** state, it is being replaced for the HTTP listener. In this case, you can perform only query operations.
  *     *   If the replacement certificate is in the **active** state, it indicates that the replacement operation is complete and the replacement certificate is associated with the HTTP listener.
- * *   The **UpdateAdditionalCertificateWithListener** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
+ * *   You cannot perform the **UpdateAdditionalCertificateWithListener** operation again on the same Global Accelerator (GA) instance before the previous operation is complete.
  *
  * @param request UpdateAdditionalCertificateWithListenerRequest
  * @return UpdateAdditionalCertificateWithListenerResponse
