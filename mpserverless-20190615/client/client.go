@@ -1097,6 +1097,117 @@ func (s *CreateSpaceResponse) SetBody(v *CreateSpaceResponseBody) *CreateSpaceRe
 	return s
 }
 
+type CreateSpaceWithOrderRequest struct {
+	Desc             *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PackageVersion   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	UseCoupon        *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+}
+
+func (s CreateSpaceWithOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSpaceWithOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSpaceWithOrderRequest) SetDesc(v string) *CreateSpaceWithOrderRequest {
+	s.Desc = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderRequest) SetName(v string) *CreateSpaceWithOrderRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderRequest) SetPackageVersion(v string) *CreateSpaceWithOrderRequest {
+	s.PackageVersion = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderRequest) SetPeriod(v int32) *CreateSpaceWithOrderRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderRequest) SetSubscriptionType(v string) *CreateSpaceWithOrderRequest {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderRequest) SetUseCoupon(v bool) *CreateSpaceWithOrderRequest {
+	s.UseCoupon = &v
+	return s
+}
+
+type CreateSpaceWithOrderResponseBody struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId    *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpaceId    *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+}
+
+func (s CreateSpaceWithOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSpaceWithOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSpaceWithOrderResponseBody) SetInstanceId(v string) *CreateSpaceWithOrderResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderResponseBody) SetOrderId(v string) *CreateSpaceWithOrderResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderResponseBody) SetRequestId(v string) *CreateSpaceWithOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderResponseBody) SetSpaceId(v string) *CreateSpaceWithOrderResponseBody {
+	s.SpaceId = &v
+	return s
+}
+
+type CreateSpaceWithOrderResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSpaceWithOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSpaceWithOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSpaceWithOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSpaceWithOrderResponse) SetHeaders(v map[string]*string) *CreateSpaceWithOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSpaceWithOrderResponse) SetStatusCode(v int32) *CreateSpaceWithOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSpaceWithOrderResponse) SetBody(v *CreateSpaceWithOrderResponseBody) *CreateSpaceWithOrderResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAntOpenPlatformConfigRequest struct {
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
@@ -1916,6 +2027,7 @@ func (s *DescribeFCOpenStatusResponse) SetBody(v *DescribeFCOpenStatusResponseBo
 
 type DescribeFileUploadSignedUrlRequest struct {
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	FileId      *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Filename    *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	Size        *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 	SpaceId     *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
@@ -1931,6 +2043,11 @@ func (s DescribeFileUploadSignedUrlRequest) GoString() string {
 
 func (s *DescribeFileUploadSignedUrlRequest) SetContentType(v string) *DescribeFileUploadSignedUrlRequest {
 	s.ContentType = &v
+	return s
+}
+
+func (s *DescribeFileUploadSignedUrlRequest) SetFileId(v string) *DescribeFileUploadSignedUrlRequest {
+	s.FileId = &v
 	return s
 }
 
@@ -4389,8 +4506,10 @@ func (s *ListExtensionsResponse) SetBody(v *ListExtensionsResponseBody) *ListExt
 type ListFileRequest struct {
 	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Mode      *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Prefix    *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
 	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 }
 
@@ -4412,6 +4531,11 @@ func (s *ListFileRequest) SetKeyword(v string) *ListFileRequest {
 	return s
 }
 
+func (s *ListFileRequest) SetMode(v string) *ListFileRequest {
+	s.Mode = &v
+	return s
+}
+
 func (s *ListFileRequest) SetNextToken(v string) *ListFileRequest {
 	s.NextToken = &v
 	return s
@@ -4419,6 +4543,11 @@ func (s *ListFileRequest) SetNextToken(v string) *ListFileRequest {
 
 func (s *ListFileRequest) SetPageSize(v int32) *ListFileRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListFileRequest) SetPrefix(v string) *ListFileRequest {
+	s.Prefix = &v
 	return s
 }
 
@@ -7025,11 +7154,12 @@ func (s *QuerySpaceUsageResponseBody) SetStartTime(v string) *QuerySpaceUsageRes
 }
 
 type QuerySpaceUsageResponseBodySpaceUsageDataList struct {
-	CsUsage   *QuerySpaceUsageResponseBodySpaceUsageDataListCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
-	DbUsage   *QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
-	FcUsage   *QuerySpaceUsageResponseBodySpaceUsageDataListFcUsage `json:"FcUsage,omitempty" xml:"FcUsage,omitempty" type:"Struct"`
-	Timestamp *string                                               `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	WhUsage   *QuerySpaceUsageResponseBodySpaceUsageDataListWhUsage `json:"WhUsage,omitempty" xml:"WhUsage,omitempty" type:"Struct"`
+	CsUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
+	DbUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
+	EffectiveBillFlag *bool                                                 `json:"EffectiveBillFlag,omitempty" xml:"EffectiveBillFlag,omitempty"`
+	FcUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListFcUsage `json:"FcUsage,omitempty" xml:"FcUsage,omitempty" type:"Struct"`
+	Timestamp         *string                                               `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	WhUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListWhUsage `json:"WhUsage,omitempty" xml:"WhUsage,omitempty" type:"Struct"`
 }
 
 func (s QuerySpaceUsageResponseBodySpaceUsageDataList) String() string {
@@ -7047,6 +7177,11 @@ func (s *QuerySpaceUsageResponseBodySpaceUsageDataList) SetCsUsage(v *QuerySpace
 
 func (s *QuerySpaceUsageResponseBodySpaceUsageDataList) SetDbUsage(v *QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage) *QuerySpaceUsageResponseBodySpaceUsageDataList {
 	s.DbUsage = v
+	return s
+}
+
+func (s *QuerySpaceUsageResponseBodySpaceUsageDataList) SetEffectiveBillFlag(v bool) *QuerySpaceUsageResponseBodySpaceUsageDataList {
+	s.EffectiveBillFlag = &v
 	return s
 }
 
@@ -9547,6 +9682,70 @@ func (client *Client) CreateSpace(request *CreateSpaceRequest) (_result *CreateS
 	return _result, _err
 }
 
+func (client *Client) CreateSpaceWithOrderWithOptions(request *CreateSpaceWithOrderRequest, runtime *util.RuntimeOptions) (_result *CreateSpaceWithOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["Desc"] = request.Desc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageVersion)) {
+		body["PackageVersion"] = request.PackageVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		body["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		body["SubscriptionType"] = request.SubscriptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseCoupon)) {
+		body["UseCoupon"] = request.UseCoupon
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSpaceWithOrder"),
+		Version:     tea.String("2019-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSpaceWithOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSpaceWithOrder(request *CreateSpaceWithOrderRequest) (_result *CreateSpaceWithOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSpaceWithOrderResponse{}
+	_body, _err := client.CreateSpaceWithOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAntOpenPlatformConfigWithOptions(request *DeleteAntOpenPlatformConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteAntOpenPlatformConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10112,6 +10311,10 @@ func (client *Client) DescribeFileUploadSignedUrlWithOptions(request *DescribeFi
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
 		body["ContentType"] = request.ContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Filename)) {
@@ -11061,8 +11264,16 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, runtime *uti
 		body["Keyword"] = request.Keyword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["Mode"] = request.Mode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		body["Prefix"] = request.Prefix
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
