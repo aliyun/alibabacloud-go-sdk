@@ -7680,6 +7680,87 @@ func (s *GetCategoriesResponse) SetBody(v *GetCategoriesResponseBody) *GetCatego
 	return s
 }
 
+type GetContentAnalyzeConfigResponseBody struct {
+	ContentAnalyzeConfig *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig `json:"ContentAnalyzeConfig,omitempty" xml:"ContentAnalyzeConfig,omitempty" type:"Struct"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetContentAnalyzeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContentAnalyzeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetContentAnalyzeConfigResponseBody) SetContentAnalyzeConfig(v *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) *GetContentAnalyzeConfigResponseBody {
+	s.ContentAnalyzeConfig = v
+	return s
+}
+
+func (s *GetContentAnalyzeConfigResponseBody) SetRequestId(v string) *GetContentAnalyzeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig struct {
+	Auto       *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) SetAuto(v bool) *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig {
+	s.Auto = &v
+	return s
+}
+
+func (s *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) SetSaveType(v string) *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig {
+	s.SaveType = &v
+	return s
+}
+
+func (s *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig) SetTemplateId(v string) *GetContentAnalyzeConfigResponseBodyContentAnalyzeConfig {
+	s.TemplateId = &v
+	return s
+}
+
+type GetContentAnalyzeConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetContentAnalyzeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetContentAnalyzeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContentAnalyzeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetContentAnalyzeConfigResponse) SetHeaders(v map[string]*string) *GetContentAnalyzeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetContentAnalyzeConfigResponse) SetStatusCode(v int32) *GetContentAnalyzeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetContentAnalyzeConfigResponse) SetBody(v *GetContentAnalyzeConfigResponseBody) *GetContentAnalyzeConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetCustomTemplateRequest struct {
 	Subtype    *int32  `json:"Subtype,omitempty" xml:"Subtype,omitempty"`
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -21718,6 +21799,122 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 	return s
 }
 
+type ListSmartSysAvatarModelsRequest struct {
+	PageNo   *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListSmartSysAvatarModelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartSysAvatarModelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartSysAvatarModelsRequest) SetPageNo(v int64) *ListSmartSysAvatarModelsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsRequest) SetPageSize(v int64) *ListSmartSysAvatarModelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListSmartSysAvatarModelsResponseBody struct {
+	RequestId               *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmartSysAvatarModelList []*ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList `json:"SmartSysAvatarModelList,omitempty" xml:"SmartSysAvatarModelList,omitempty" type:"Repeated"`
+	TotalCount              *int32                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSmartSysAvatarModelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartSysAvatarModelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartSysAvatarModelsResponseBody) SetRequestId(v string) *ListSmartSysAvatarModelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBody) SetSmartSysAvatarModelList(v []*ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) *ListSmartSysAvatarModelsResponseBody {
+	s.SmartSysAvatarModelList = v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBody) SetTotalCount(v int32) *ListSmartSysAvatarModelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList struct {
+	AvatarId   *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarName *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
+	CoverUrl   *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	VideoUrl   *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetAvatarId(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.AvatarId = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetAvatarName(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.AvatarName = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetCoverUrl(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList) SetVideoUrl(v string) *ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList {
+	s.VideoUrl = &v
+	return s
+}
+
+type ListSmartSysAvatarModelsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSmartSysAvatarModelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSmartSysAvatarModelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartSysAvatarModelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartSysAvatarModelsResponse) SetHeaders(v map[string]*string) *ListSmartSysAvatarModelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponse) SetStatusCode(v int32) *ListSmartSysAvatarModelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsResponse) SetBody(v *ListSmartSysAvatarModelsResponseBody) *ListSmartSysAvatarModelsResponse {
+	s.Body = v
+	return s
+}
+
 type ListSnapshotJobsRequest struct {
 	EndOfCreateTime   *string `json:"EndOfCreateTime,omitempty" xml:"EndOfCreateTime,omitempty"`
 	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -26661,6 +26858,373 @@ func (s *SearchMediaResponse) SetBody(v *SearchMediaResponseBody) *SearchMediaRe
 	return s
 }
 
+type SearchMediaByFaceRequest struct {
+	EntityId        *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
+	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PersonImageUrl  *string `json:"PersonImageUrl,omitempty" xml:"PersonImageUrl,omitempty"`
+}
+
+func (s SearchMediaByFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByFaceRequest) SetEntityId(v string) *SearchMediaByFaceRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetFaceSearchToken(v string) *SearchMediaByFaceRequest {
+	s.FaceSearchToken = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetPageNo(v int32) *SearchMediaByFaceRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetPageSize(v int32) *SearchMediaByFaceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetPersonImageUrl(v string) *SearchMediaByFaceRequest {
+	s.PersonImageUrl = &v
+	return s
+}
+
+type SearchMediaByFaceResponseBody struct {
+	Code          *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaInfoList []*SearchMediaByFaceResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *string                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total         *int64                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchMediaByFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByFaceResponseBody) SetCode(v string) *SearchMediaByFaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchMediaByFaceResponseBody) SetMediaInfoList(v []*SearchMediaByFaceResponseBodyMediaInfoList) *SearchMediaByFaceResponseBody {
+	s.MediaInfoList = v
+	return s
+}
+
+func (s *SearchMediaByFaceResponseBody) SetRequestId(v string) *SearchMediaByFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaByFaceResponseBody) SetSuccess(v string) *SearchMediaByFaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchMediaByFaceResponseBody) SetTotal(v int64) *SearchMediaByFaceResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchMediaByFaceResponseBodyMediaInfoList struct {
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s SearchMediaByFaceResponseBodyMediaInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByFaceResponseBodyMediaInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByFaceResponseBodyMediaInfoList) SetMediaId(v string) *SearchMediaByFaceResponseBodyMediaInfoList {
+	s.MediaId = &v
+	return s
+}
+
+type SearchMediaByFaceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchMediaByFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchMediaByFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByFaceResponse) SetHeaders(v map[string]*string) *SearchMediaByFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchMediaByFaceResponse) SetStatusCode(v int32) *SearchMediaByFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchMediaByFaceResponse) SetBody(v *SearchMediaByFaceResponseBody) *SearchMediaByFaceResponse {
+	s.Body = v
+	return s
+}
+
+type SearchMediaClipByFaceRequest struct {
+	EntityId        *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
+	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s SearchMediaClipByFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceRequest) SetEntityId(v string) *SearchMediaClipByFaceRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceRequest) SetFaceSearchToken(v string) *SearchMediaClipByFaceRequest {
+	s.FaceSearchToken = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceRequest) SetMediaId(v string) *SearchMediaClipByFaceRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceRequest) SetPageNo(v int32) *SearchMediaClipByFaceRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceRequest) SetPageSize(v int32) *SearchMediaClipByFaceRequest {
+	s.PageSize = &v
+	return s
+}
+
+type SearchMediaClipByFaceResponseBody struct {
+	Code          *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaClipList []*SearchMediaClipByFaceResponseBodyMediaClipList `json:"MediaClipList,omitempty" xml:"MediaClipList,omitempty" type:"Repeated"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *string                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total         *int64                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchMediaClipByFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponseBody) SetCode(v string) *SearchMediaClipByFaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBody) SetMediaClipList(v []*SearchMediaClipByFaceResponseBodyMediaClipList) *SearchMediaClipByFaceResponseBody {
+	s.MediaClipList = v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBody) SetRequestId(v string) *SearchMediaClipByFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBody) SetSuccess(v string) *SearchMediaClipByFaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBody) SetTotal(v int64) *SearchMediaClipByFaceResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchMediaClipByFaceResponseBodyMediaClipList struct {
+	Category         *string                                                           `json:"Category,omitempty" xml:"Category,omitempty"`
+	EntityId         *string                                                           `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	LabelName        *string                                                           `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	OccurrencesInfos []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos `json:"OccurrencesInfos,omitempty" xml:"OccurrencesInfos,omitempty" type:"Repeated"`
+	Score            *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetCategory(v string) *SearchMediaClipByFaceResponseBodyMediaClipList {
+	s.Category = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetEntityId(v string) *SearchMediaClipByFaceResponseBodyMediaClipList {
+	s.EntityId = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetLabelName(v string) *SearchMediaClipByFaceResponseBodyMediaClipList {
+	s.LabelName = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetOccurrencesInfos(v []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) *SearchMediaClipByFaceResponseBodyMediaClipList {
+	s.OccurrencesInfos = v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipList) SetScore(v float32) *SearchMediaClipByFaceResponseBodyMediaClipList {
+	s.Score = &v
+	return s
+}
+
+type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos struct {
+	EndTime   *float32                                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *float32                                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TrackData []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData `json:"TrackData,omitempty" xml:"TrackData,omitempty" type:"Repeated"`
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetEndTime(v float32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetStartTime(v float32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos) SetTrackData(v []*SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos {
+	s.TrackData = v
+	return s
+}
+
+type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData struct {
+	BoxPosition *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition `json:"BoxPosition,omitempty" xml:"BoxPosition,omitempty" type:"Struct"`
+	Timestamp   *float32                                                                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) SetBoxPosition(v *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData {
+	s.BoxPosition = v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData) SetTimestamp(v float32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackData {
+	s.Timestamp = &v
+	return s
+}
+
+type SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) SetH(v int32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition {
+	s.H = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) SetW(v int32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition {
+	s.W = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) SetX(v int32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition {
+	s.X = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition) SetY(v int32) *SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfosTrackDataBoxPosition {
+	s.Y = &v
+	return s
+}
+
+type SearchMediaClipByFaceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchMediaClipByFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchMediaClipByFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaClipByFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaClipByFaceResponse) SetHeaders(v map[string]*string) *SearchMediaClipByFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponse) SetStatusCode(v int32) *SearchMediaClipByFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceResponse) SetBody(v *SearchMediaClipByFaceResponseBody) *SearchMediaClipByFaceResponse {
+	s.Body = v
+	return s
+}
+
 type SearchPublicMediaInfoRequest struct {
 	Authorized                 *bool   `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
 	DynamicMetaDataMatchFields *string `json:"DynamicMetaDataMatchFields,omitempty" xml:"DynamicMetaDataMatchFields,omitempty"`
@@ -27102,6 +27666,87 @@ func (s *SendLiveTranscodeJobCommandResponse) SetStatusCode(v int32) *SendLiveTr
 }
 
 func (s *SendLiveTranscodeJobCommandResponse) SetBody(v *SendLiveTranscodeJobCommandResponseBody) *SendLiveTranscodeJobCommandResponse {
+	s.Body = v
+	return s
+}
+
+type SetContentAnalyzeConfigRequest struct {
+	Auto       *bool   `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	SaveType   *string `json:"SaveType,omitempty" xml:"SaveType,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SetContentAnalyzeConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetContentAnalyzeConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetContentAnalyzeConfigRequest) SetAuto(v bool) *SetContentAnalyzeConfigRequest {
+	s.Auto = &v
+	return s
+}
+
+func (s *SetContentAnalyzeConfigRequest) SetSaveType(v string) *SetContentAnalyzeConfigRequest {
+	s.SaveType = &v
+	return s
+}
+
+func (s *SetContentAnalyzeConfigRequest) SetTemplateId(v string) *SetContentAnalyzeConfigRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SetContentAnalyzeConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetContentAnalyzeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetContentAnalyzeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetContentAnalyzeConfigResponseBody) SetRequestId(v string) *SetContentAnalyzeConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetContentAnalyzeConfigResponseBody) SetSuccess(v bool) *SetContentAnalyzeConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetContentAnalyzeConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetContentAnalyzeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetContentAnalyzeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetContentAnalyzeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetContentAnalyzeConfigResponse) SetHeaders(v map[string]*string) *SetContentAnalyzeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetContentAnalyzeConfigResponse) SetStatusCode(v int32) *SetContentAnalyzeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetContentAnalyzeConfigResponse) SetBody(v *SetContentAnalyzeConfigResponseBody) *SetContentAnalyzeConfigResponse {
 	s.Body = v
 	return s
 }
@@ -27648,6 +28293,112 @@ func (s *SubmitAudioProduceJobResponse) SetStatusCode(v int32) *SubmitAudioProdu
 }
 
 func (s *SubmitAudioProduceJobResponse) SetBody(v *SubmitAudioProduceJobResponseBody) *SubmitAudioProduceJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitAvatarVideoJobRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	InputConfig   *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	OutputConfig  *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitAvatarVideoJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarVideoJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetDescription(v string) *SubmitAvatarVideoJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetEditingConfig(v string) *SubmitAvatarVideoJobRequest {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetInputConfig(v string) *SubmitAvatarVideoJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetOutputConfig(v string) *SubmitAvatarVideoJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetTitle(v string) *SubmitAvatarVideoJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobRequest) SetUserData(v string) *SubmitAvatarVideoJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitAvatarVideoJobResponseBody struct {
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitAvatarVideoJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarVideoJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarVideoJobResponseBody) SetJobId(v string) *SubmitAvatarVideoJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobResponseBody) SetMediaId(v string) *SubmitAvatarVideoJobResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobResponseBody) SetRequestId(v string) *SubmitAvatarVideoJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitAvatarVideoJobResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitAvatarVideoJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitAvatarVideoJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAvatarVideoJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAvatarVideoJobResponse) SetHeaders(v map[string]*string) *SubmitAvatarVideoJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobResponse) SetStatusCode(v int32) *SubmitAvatarVideoJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAvatarVideoJobResponse) SetBody(v *SubmitAvatarVideoJobResponseBody) *SubmitAvatarVideoJobResponse {
 	s.Body = v
 	return s
 }
@@ -40225,6 +40976,39 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetContentAnalyzeConfigWithOptions(runtime *util.RuntimeOptions) (_result *GetContentAnalyzeConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetContentAnalyzeConfig"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetContentAnalyzeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetContentAnalyzeConfig() (_result *GetContentAnalyzeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetContentAnalyzeConfigResponse{}
+	_body, _err := client.GetContentAnalyzeConfigWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCustomTemplateWithOptions(request *GetCustomTemplateRequest, runtime *util.RuntimeOptions) (_result *GetCustomTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42755,6 +43539,46 @@ func (client *Client) ListSmartJobs(request *ListSmartJobsRequest) (_result *Lis
 	return _result, _err
 }
 
+func (client *Client) ListSmartSysAvatarModelsWithOptions(request *ListSmartSysAvatarModelsRequest, runtime *util.RuntimeOptions) (_result *ListSmartSysAvatarModelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSmartSysAvatarModels"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSmartSysAvatarModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSmartSysAvatarModels(request *ListSmartSysAvatarModelsRequest) (_result *ListSmartSysAvatarModelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSmartSysAvatarModelsResponse{}
+	_body, _err := client.ListSmartSysAvatarModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListSnapshotJobsWithOptions(request *ListSnapshotJobsRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43663,6 +44487,126 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 	return _result, _err
 }
 
+func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceRequest, runtime *util.RuntimeOptions) (_result *SearchMediaByFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceSearchToken)) {
+		query["FaceSearchToken"] = request.FaceSearchToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PersonImageUrl)) {
+		query["PersonImageUrl"] = request.PersonImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMediaByFace"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchMediaByFaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchMediaByFace(request *SearchMediaByFaceRequest) (_result *SearchMediaByFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchMediaByFaceResponse{}
+	_body, _err := client.SearchMediaByFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchMediaClipByFaceWithOptions(request *SearchMediaClipByFaceRequest, runtime *util.RuntimeOptions) (_result *SearchMediaClipByFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceSearchToken)) {
+		query["FaceSearchToken"] = request.FaceSearchToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMediaClipByFace"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchMediaClipByFaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchMediaClipByFace(request *SearchMediaClipByFaceRequest) (_result *SearchMediaClipByFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchMediaClipByFaceResponse{}
+	_body, _err := client.SearchMediaClipByFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchPublicMediaInfoWithOptions(request *SearchPublicMediaInfoRequest, runtime *util.RuntimeOptions) (_result *SearchPublicMediaInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43824,6 +44768,58 @@ func (client *Client) SendLiveTranscodeJobCommand(request *SendLiveTranscodeJobC
 	runtime := &util.RuntimeOptions{}
 	_result = &SendLiveTranscodeJobCommandResponse{}
 	_body, _err := client.SendLiveTranscodeJobCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetContentAnalyzeConfigWithOptions(request *SetContentAnalyzeConfigRequest, runtime *util.RuntimeOptions) (_result *SetContentAnalyzeConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Auto)) {
+		query["Auto"] = request.Auto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaveType)) {
+		query["SaveType"] = request.SaveType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetContentAnalyzeConfig"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetContentAnalyzeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetContentAnalyzeConfig(request *SetContentAnalyzeConfigRequest) (_result *SetContentAnalyzeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetContentAnalyzeConfigResponse{}
+	_body, _err := client.SetContentAnalyzeConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44168,6 +45164,70 @@ func (client *Client) SubmitAudioProduceJob(request *SubmitAudioProduceJobReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAudioProduceJobResponse{}
 	_body, _err := client.SubmitAudioProduceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitAvatarVideoJobWithOptions(request *SubmitAvatarVideoJobRequest, runtime *util.RuntimeOptions) (_result *SubmitAvatarVideoJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingConfig)) {
+		query["EditingConfig"] = request.EditingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		query["InputConfig"] = request.InputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAvatarVideoJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAvatarVideoJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitAvatarVideoJob(request *SubmitAvatarVideoJobRequest) (_result *SubmitAvatarVideoJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAvatarVideoJobResponse{}
+	_body, _err := client.SubmitAvatarVideoJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
