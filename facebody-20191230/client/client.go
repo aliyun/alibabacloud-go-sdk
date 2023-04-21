@@ -332,7 +332,8 @@ func (s *AddFaceImageTemplateResponseBody) SetRequestId(v string) *AddFaceImageT
 }
 
 type AddFaceImageTemplateResponseBodyData struct {
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	FaceInfos  []*AddFaceImageTemplateResponseBodyDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	TemplateId *string                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s AddFaceImageTemplateResponseBodyData) String() string {
@@ -343,8 +344,71 @@ func (s AddFaceImageTemplateResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *AddFaceImageTemplateResponseBodyData) SetFaceInfos(v []*AddFaceImageTemplateResponseBodyDataFaceInfos) *AddFaceImageTemplateResponseBodyData {
+	s.FaceInfos = v
+	return s
+}
+
 func (s *AddFaceImageTemplateResponseBodyData) SetTemplateId(v string) *AddFaceImageTemplateResponseBodyData {
 	s.TemplateId = &v
+	return s
+}
+
+type AddFaceImageTemplateResponseBodyDataFaceInfos struct {
+	FaceRect       *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
+	TemplateFaceID *string                                                `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+}
+
+func (s AddFaceImageTemplateResponseBodyDataFaceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFaceImageTemplateResponseBodyDataFaceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfos) SetFaceRect(v *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) *AddFaceImageTemplateResponseBodyDataFaceInfos {
+	s.FaceRect = v
+	return s
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfos) SetTemplateFaceID(v string) *AddFaceImageTemplateResponseBodyDataFaceInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+type AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect struct {
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *string `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *string `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) GoString() string {
+	return s.String()
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) SetHeight(v string) *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect {
+	s.Height = &v
+	return s
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) SetWidth(v string) *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect {
+	s.Width = &v
+	return s
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) SetX(v string) *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect {
+	s.X = &v
+	return s
+}
+
+func (s *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect) SetY(v string) *AddFaceImageTemplateResponseBodyDataFaceInfosFaceRect {
+	s.Y = &v
 	return s
 }
 
@@ -6810,8 +6874,11 @@ func (s *ListFaceEntitiesResponse) SetBody(v *ListFaceEntitiesResponseBody) *Lis
 }
 
 type MergeImageFaceRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	AddWatermark *bool                              `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	ImageURL     *string                            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MergeInfos   []*MergeImageFaceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	ModelVersion *string                            `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	TemplateId   *string                            `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s MergeImageFaceRequest) String() string {
@@ -6822,8 +6889,23 @@ func (s MergeImageFaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MergeImageFaceRequest) SetAddWatermark(v bool) *MergeImageFaceRequest {
+	s.AddWatermark = &v
+	return s
+}
+
 func (s *MergeImageFaceRequest) SetImageURL(v string) *MergeImageFaceRequest {
 	s.ImageURL = &v
+	return s
+}
+
+func (s *MergeImageFaceRequest) SetMergeInfos(v []*MergeImageFaceRequestMergeInfos) *MergeImageFaceRequest {
+	s.MergeInfos = v
+	return s
+}
+
+func (s *MergeImageFaceRequest) SetModelVersion(v string) *MergeImageFaceRequest {
+	s.ModelVersion = &v
 	return s
 }
 
@@ -6832,9 +6914,35 @@ func (s *MergeImageFaceRequest) SetTemplateId(v string) *MergeImageFaceRequest {
 	return s
 }
 
+type MergeImageFaceRequestMergeInfos struct {
+	ImageURL       *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	TemplateFaceID *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+}
+
+func (s MergeImageFaceRequestMergeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeImageFaceRequestMergeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *MergeImageFaceRequestMergeInfos) SetImageURL(v string) *MergeImageFaceRequestMergeInfos {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *MergeImageFaceRequestMergeInfos) SetTemplateFaceID(v string) *MergeImageFaceRequestMergeInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
 type MergeImageFaceAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	TemplateId     *string   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	AddWatermark   *bool                                     `json:"AddWatermark,omitempty" xml:"AddWatermark,omitempty"`
+	ImageURLObject io.Reader                                 `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	MergeInfos     []*MergeImageFaceAdvanceRequestMergeInfos `json:"MergeInfos,omitempty" xml:"MergeInfos,omitempty" type:"Repeated"`
+	ModelVersion   *string                                   `json:"ModelVersion,omitempty" xml:"ModelVersion,omitempty"`
+	TemplateId     *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s MergeImageFaceAdvanceRequest) String() string {
@@ -6845,13 +6953,51 @@ func (s MergeImageFaceAdvanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MergeImageFaceAdvanceRequest) SetAddWatermark(v bool) *MergeImageFaceAdvanceRequest {
+	s.AddWatermark = &v
+	return s
+}
+
 func (s *MergeImageFaceAdvanceRequest) SetImageURLObject(v io.Reader) *MergeImageFaceAdvanceRequest {
 	s.ImageURLObject = v
 	return s
 }
 
+func (s *MergeImageFaceAdvanceRequest) SetMergeInfos(v []*MergeImageFaceAdvanceRequestMergeInfos) *MergeImageFaceAdvanceRequest {
+	s.MergeInfos = v
+	return s
+}
+
+func (s *MergeImageFaceAdvanceRequest) SetModelVersion(v string) *MergeImageFaceAdvanceRequest {
+	s.ModelVersion = &v
+	return s
+}
+
 func (s *MergeImageFaceAdvanceRequest) SetTemplateId(v string) *MergeImageFaceAdvanceRequest {
 	s.TemplateId = &v
+	return s
+}
+
+type MergeImageFaceAdvanceRequestMergeInfos struct {
+	ImageURL       *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	TemplateFaceID *string `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+}
+
+func (s MergeImageFaceAdvanceRequestMergeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeImageFaceAdvanceRequestMergeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *MergeImageFaceAdvanceRequestMergeInfos) SetImageURL(v string) *MergeImageFaceAdvanceRequestMergeInfos {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *MergeImageFaceAdvanceRequestMergeInfos) SetTemplateFaceID(v string) *MergeImageFaceAdvanceRequestMergeInfos {
+	s.TemplateFaceID = &v
 	return s
 }
 
@@ -7775,11 +7921,12 @@ func (s *QueryFaceImageTemplateResponseBodyData) SetElements(v []*QueryFaceImage
 }
 
 type QueryFaceImageTemplateResponseBodyDataElements struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CreateTime  *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FaceInfos   []*QueryFaceImageTemplateResponseBodyDataElementsFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Repeated"`
+	TemplateId  *string                                                    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateURL *string                                                    `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	UpdateTime  *string                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId      *string                                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s QueryFaceImageTemplateResponseBodyDataElements) String() string {
@@ -7792,6 +7939,11 @@ func (s QueryFaceImageTemplateResponseBodyDataElements) GoString() string {
 
 func (s *QueryFaceImageTemplateResponseBodyDataElements) SetCreateTime(v string) *QueryFaceImageTemplateResponseBodyDataElements {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElements) SetFaceInfos(v []*QueryFaceImageTemplateResponseBodyDataElementsFaceInfos) *QueryFaceImageTemplateResponseBodyDataElements {
+	s.FaceInfos = v
 	return s
 }
 
@@ -7812,6 +7964,64 @@ func (s *QueryFaceImageTemplateResponseBodyDataElements) SetUpdateTime(v string)
 
 func (s *QueryFaceImageTemplateResponseBodyDataElements) SetUserId(v string) *QueryFaceImageTemplateResponseBodyDataElements {
 	s.UserId = &v
+	return s
+}
+
+type QueryFaceImageTemplateResponseBodyDataElementsFaceInfos struct {
+	FaceRect       *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
+	TemplateFaceID *string                                                          `json:"TemplateFaceID,omitempty" xml:"TemplateFaceID,omitempty"`
+}
+
+func (s QueryFaceImageTemplateResponseBodyDataElementsFaceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFaceImageTemplateResponseBodyDataElementsFaceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfos) SetFaceRect(v *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfos {
+	s.FaceRect = v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfos) SetTemplateFaceID(v string) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfos {
+	s.TemplateFaceID = &v
+	return s
+}
+
+type QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect struct {
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *string `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *string `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) GoString() string {
+	return s.String()
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) SetHeight(v string) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) SetWidth(v string) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect {
+	s.Width = &v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) SetX(v string) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect {
+	s.X = &v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect) SetY(v string) *QueryFaceImageTemplateResponseBodyDataElementsFaceInfosFaceRect {
+	s.Y = &v
 	return s
 }
 
@@ -15437,8 +15647,20 @@ func (client *Client) MergeImageFaceWithOptions(request *MergeImageFaceRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddWatermark)) {
+		body["AddWatermark"] = request.AddWatermark
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
 		body["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeInfos)) {
+		body["MergeInfos"] = request.MergeInfos
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelVersion)) {
+		body["ModelVersion"] = request.ModelVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
