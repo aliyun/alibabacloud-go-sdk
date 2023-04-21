@@ -739,16 +739,18 @@ func (s *CreateEventBusResponse) SetBody(v *CreateEventBusResponseBody) *CreateE
 
 type CreateEventSourceRequest struct {
 	// 事件源描述详情
-	Description  []byte `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
-	EventSourceName           []byte                                             `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName           *string                                            `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	SourceHttpEventParameters *CreateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
+	SourceKafkaParameters     *CreateEventSourceRequestSourceKafkaParameters     `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
 	SourceMNSParameters       *CreateEventSourceRequestSourceMNSParameters       `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	SourceRabbitMQParameters  *CreateEventSourceRequestSourceRabbitMQParameters  `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourceRocketMQParameters  *CreateEventSourceRequestSourceRocketMQParameters  `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
 	// SourceSLSParameters
-	SourceSLSParameters *CreateEventSourceRequestSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	SourceSLSParameters            *CreateEventSourceRequestSourceSLSParameters            `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	SourceScheduledEventParameters *CreateEventSourceRequestSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
 }
 
 func (s CreateEventSourceRequest) String() string {
@@ -759,23 +761,28 @@ func (s CreateEventSourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEventSourceRequest) SetDescription(v []byte) *CreateEventSourceRequest {
-	s.Description = v
+func (s *CreateEventSourceRequest) SetDescription(v string) *CreateEventSourceRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *CreateEventSourceRequest) SetEventBusName(v []byte) *CreateEventSourceRequest {
-	s.EventBusName = v
+func (s *CreateEventSourceRequest) SetEventBusName(v string) *CreateEventSourceRequest {
+	s.EventBusName = &v
 	return s
 }
 
-func (s *CreateEventSourceRequest) SetEventSourceName(v []byte) *CreateEventSourceRequest {
-	s.EventSourceName = v
+func (s *CreateEventSourceRequest) SetEventSourceName(v string) *CreateEventSourceRequest {
+	s.EventSourceName = &v
 	return s
 }
 
 func (s *CreateEventSourceRequest) SetSourceHttpEventParameters(v *CreateEventSourceRequestSourceHttpEventParameters) *CreateEventSourceRequest {
 	s.SourceHttpEventParameters = v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetSourceKafkaParameters(v *CreateEventSourceRequestSourceKafkaParameters) *CreateEventSourceRequest {
+	s.SourceKafkaParameters = v
 	return s
 }
 
@@ -796,6 +803,11 @@ func (s *CreateEventSourceRequest) SetSourceRocketMQParameters(v *CreateEventSou
 
 func (s *CreateEventSourceRequest) SetSourceSLSParameters(v *CreateEventSourceRequestSourceSLSParameters) *CreateEventSourceRequest {
 	s.SourceSLSParameters = v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetSourceScheduledEventParameters(v *CreateEventSourceRequestSourceScheduledEventParameters) *CreateEventSourceRequest {
+	s.SourceScheduledEventParameters = v
 	return s
 }
 
@@ -837,6 +849,77 @@ func (s *CreateEventSourceRequestSourceHttpEventParameters) SetSecurityConfig(v 
 
 func (s *CreateEventSourceRequestSourceHttpEventParameters) SetType(v string) *CreateEventSourceRequestSourceHttpEventParameters {
 	s.Type = &v
+	return s
+}
+
+type CreateEventSourceRequestSourceKafkaParameters struct {
+	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaximumTasks    *int32  `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateEventSourceRequestSourceKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventSourceRequestSourceKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetConsumerGroup(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetInstanceId(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetMaximumTasks(v int32) *CreateEventSourceRequestSourceKafkaParameters {
+	s.MaximumTasks = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetNetwork(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetOffsetReset(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetRegionId(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetSecurityGroupId(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetTopic(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetVSwitchIds(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceKafkaParameters) SetVpcId(v string) *CreateEventSourceRequestSourceKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -1022,18 +1105,43 @@ func (s *CreateEventSourceRequestSourceSLSParameters) SetRoleName(v string) *Cre
 	return s
 }
 
+type CreateEventSourceRequestSourceScheduledEventParameters struct {
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s CreateEventSourceRequestSourceScheduledEventParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventSourceRequestSourceScheduledEventParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventSourceRequestSourceScheduledEventParameters) SetSchedule(v string) *CreateEventSourceRequestSourceScheduledEventParameters {
+	s.Schedule = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceScheduledEventParameters) SetTimeZone(v string) *CreateEventSourceRequestSourceScheduledEventParameters {
+	s.TimeZone = &v
+	return s
+}
+
 type CreateEventSourceShrinkRequest struct {
 	// 事件源描述详情
-	Description  []byte `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
-	EventSourceName                 []byte  `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName                 *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
+	SourceKafkaParametersShrink     *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
 	SourceMNSParametersShrink       *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
 	SourceRabbitMQParametersShrink  *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
 	SourceRocketMQParametersShrink  *string `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty"`
 	// SourceSLSParameters
-	SourceSLSParametersShrink *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
+	SourceSLSParametersShrink            *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
+	SourceScheduledEventParametersShrink *string `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty"`
 }
 
 func (s CreateEventSourceShrinkRequest) String() string {
@@ -1044,23 +1152,28 @@ func (s CreateEventSourceShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateEventSourceShrinkRequest) SetDescription(v []byte) *CreateEventSourceShrinkRequest {
-	s.Description = v
+func (s *CreateEventSourceShrinkRequest) SetDescription(v string) *CreateEventSourceShrinkRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *CreateEventSourceShrinkRequest) SetEventBusName(v []byte) *CreateEventSourceShrinkRequest {
-	s.EventBusName = v
+func (s *CreateEventSourceShrinkRequest) SetEventBusName(v string) *CreateEventSourceShrinkRequest {
+	s.EventBusName = &v
 	return s
 }
 
-func (s *CreateEventSourceShrinkRequest) SetEventSourceName(v []byte) *CreateEventSourceShrinkRequest {
-	s.EventSourceName = v
+func (s *CreateEventSourceShrinkRequest) SetEventSourceName(v string) *CreateEventSourceShrinkRequest {
+	s.EventSourceName = &v
 	return s
 }
 
 func (s *CreateEventSourceShrinkRequest) SetSourceHttpEventParametersShrink(v string) *CreateEventSourceShrinkRequest {
 	s.SourceHttpEventParametersShrink = &v
+	return s
+}
+
+func (s *CreateEventSourceShrinkRequest) SetSourceKafkaParametersShrink(v string) *CreateEventSourceShrinkRequest {
+	s.SourceKafkaParametersShrink = &v
 	return s
 }
 
@@ -1081,6 +1194,11 @@ func (s *CreateEventSourceShrinkRequest) SetSourceRocketMQParametersShrink(v str
 
 func (s *CreateEventSourceShrinkRequest) SetSourceSLSParametersShrink(v string) *CreateEventSourceShrinkRequest {
 	s.SourceSLSParametersShrink = &v
+	return s
+}
+
+func (s *CreateEventSourceShrinkRequest) SetSourceScheduledEventParametersShrink(v string) *CreateEventSourceShrinkRequest {
+	s.SourceScheduledEventParametersShrink = &v
 	return s
 }
 
@@ -1606,6 +1724,7 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersTopicType) SetValue
 
 type CreateEventStreamingRequestSinkSinkFcParameters struct {
 	Body           *CreateEventStreamingRequestSinkSinkFcParametersBody           `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Concurrency    *CreateEventStreamingRequestSinkSinkFcParametersConcurrency    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	FunctionName   *CreateEventStreamingRequestSinkSinkFcParametersFunctionName   `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	InvocationType *CreateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	Qualifier      *CreateEventStreamingRequestSinkSinkFcParametersQualifier      `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -1622,6 +1741,11 @@ func (s CreateEventStreamingRequestSinkSinkFcParameters) GoString() string {
 
 func (s *CreateEventStreamingRequestSinkSinkFcParameters) SetBody(v *CreateEventStreamingRequestSinkSinkFcParametersBody) *CreateEventStreamingRequestSinkSinkFcParameters {
 	s.Body = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkFcParameters) SetConcurrency(v *CreateEventStreamingRequestSinkSinkFcParametersConcurrency) *CreateEventStreamingRequestSinkSinkFcParameters {
+	s.Concurrency = v
 	return s
 }
 
@@ -1670,6 +1794,35 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersBody) SetTemplate(v stri
 }
 
 func (s *CreateEventStreamingRequestSinkSinkFcParametersBody) SetValue(v string) *CreateEventStreamingRequestSinkSinkFcParametersBody {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkFcParametersConcurrency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkFcParametersConcurrency) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkFcParametersConcurrency) SetForm(v string) *CreateEventStreamingRequestSinkSinkFcParametersConcurrency {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkFcParametersConcurrency) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkFcParametersConcurrency {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkFcParametersConcurrency) SetValue(v string) *CreateEventStreamingRequestSinkSinkFcParametersConcurrency {
 	s.Value = &v
 	return s
 }
@@ -6247,6 +6400,7 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkSLSParameters(v *GetEvent
 
 type GetEventStreamingResponseBodyDataSinkSinkFcParameters struct {
 	Body           *GetEventStreamingResponseBodyDataSinkSinkFcParametersBody           `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Concurrency    *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	FunctionName   *GetEventStreamingResponseBodyDataSinkSinkFcParametersFunctionName   `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	InvocationType *GetEventStreamingResponseBodyDataSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	Qualifier      *GetEventStreamingResponseBodyDataSinkSinkFcParametersQualifier      `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -6263,6 +6417,11 @@ func (s GetEventStreamingResponseBodyDataSinkSinkFcParameters) GoString() string
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkFcParameters) SetBody(v *GetEventStreamingResponseBodyDataSinkSinkFcParametersBody) *GetEventStreamingResponseBodyDataSinkSinkFcParameters {
 	s.Body = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkFcParameters) SetConcurrency(v *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) *GetEventStreamingResponseBodyDataSinkSinkFcParameters {
+	s.Concurrency = v
 	return s
 }
 
@@ -6311,6 +6470,35 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkFcParametersBody) SetTemplate(
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkFcParametersBody) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkFcParametersBody {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkFcParametersConcurrency {
 	s.Value = &v
 	return s
 }
@@ -9552,6 +9740,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkSLSParam
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters struct {
 	Body           *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody           `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Concurrency    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	FunctionName   *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersFunctionName   `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	InvocationType *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	Qualifier      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersQualifier      `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -9568,6 +9757,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters) 
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters) SetBody(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters {
 	s.Body = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters) SetConcurrency(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters {
+	s.Concurrency = v
 	return s
 }
 
@@ -9616,6 +9810,35 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersB
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency {
 	s.Value = &v
 	return s
 }
@@ -13619,16 +13842,18 @@ func (s *UpdateEventBusResponse) SetBody(v *UpdateEventBusResponseBody) *UpdateE
 
 type UpdateEventSourceRequest struct {
 	// 事件源描述详情
-	Description  []byte `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventBusName []byte  `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
-	EventSourceName           []byte                                             `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName           *string                                            `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	SourceHttpEventParameters *UpdateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
+	SourceKafkaParameters     *UpdateEventSourceRequestSourceKafkaParameters     `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
 	SourceMNSParameters       *UpdateEventSourceRequestSourceMNSParameters       `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	SourceRabbitMQParameters  *UpdateEventSourceRequestSourceRabbitMQParameters  `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourceRocketMQParameters  *UpdateEventSourceRequestSourceRocketMQParameters  `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
 	// SourceSLSParameters
-	SourceSLSParameters *UpdateEventSourceRequestSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	SourceSLSParameters            *UpdateEventSourceRequestSourceSLSParameters            `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
+	SourceScheduledEventParameters *UpdateEventSourceRequestSourceScheduledEventParameters `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty" type:"Struct"`
 }
 
 func (s UpdateEventSourceRequest) String() string {
@@ -13639,8 +13864,8 @@ func (s UpdateEventSourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEventSourceRequest) SetDescription(v []byte) *UpdateEventSourceRequest {
-	s.Description = v
+func (s *UpdateEventSourceRequest) SetDescription(v string) *UpdateEventSourceRequest {
+	s.Description = &v
 	return s
 }
 
@@ -13649,13 +13874,18 @@ func (s *UpdateEventSourceRequest) SetEventBusName(v []byte) *UpdateEventSourceR
 	return s
 }
 
-func (s *UpdateEventSourceRequest) SetEventSourceName(v []byte) *UpdateEventSourceRequest {
-	s.EventSourceName = v
+func (s *UpdateEventSourceRequest) SetEventSourceName(v string) *UpdateEventSourceRequest {
+	s.EventSourceName = &v
 	return s
 }
 
 func (s *UpdateEventSourceRequest) SetSourceHttpEventParameters(v *UpdateEventSourceRequestSourceHttpEventParameters) *UpdateEventSourceRequest {
 	s.SourceHttpEventParameters = v
+	return s
+}
+
+func (s *UpdateEventSourceRequest) SetSourceKafkaParameters(v *UpdateEventSourceRequestSourceKafkaParameters) *UpdateEventSourceRequest {
+	s.SourceKafkaParameters = v
 	return s
 }
 
@@ -13676,6 +13906,11 @@ func (s *UpdateEventSourceRequest) SetSourceRocketMQParameters(v *UpdateEventSou
 
 func (s *UpdateEventSourceRequest) SetSourceSLSParameters(v *UpdateEventSourceRequestSourceSLSParameters) *UpdateEventSourceRequest {
 	s.SourceSLSParameters = v
+	return s
+}
+
+func (s *UpdateEventSourceRequest) SetSourceScheduledEventParameters(v *UpdateEventSourceRequestSourceScheduledEventParameters) *UpdateEventSourceRequest {
+	s.SourceScheduledEventParameters = v
 	return s
 }
 
@@ -13717,6 +13952,77 @@ func (s *UpdateEventSourceRequestSourceHttpEventParameters) SetSecurityConfig(v 
 
 func (s *UpdateEventSourceRequestSourceHttpEventParameters) SetType(v string) *UpdateEventSourceRequestSourceHttpEventParameters {
 	s.Type = &v
+	return s
+}
+
+type UpdateEventSourceRequestSourceKafkaParameters struct {
+	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaximumTasks    *int32  `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateEventSourceRequestSourceKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventSourceRequestSourceKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetConsumerGroup(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetInstanceId(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetMaximumTasks(v int32) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.MaximumTasks = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetNetwork(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetOffsetReset(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetRegionId(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetSecurityGroupId(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetTopic(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetVSwitchIds(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceKafkaParameters) SetVpcId(v string) *UpdateEventSourceRequestSourceKafkaParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -13902,18 +14208,43 @@ func (s *UpdateEventSourceRequestSourceSLSParameters) SetRoleName(v string) *Upd
 	return s
 }
 
+type UpdateEventSourceRequestSourceScheduledEventParameters struct {
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+}
+
+func (s UpdateEventSourceRequestSourceScheduledEventParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventSourceRequestSourceScheduledEventParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventSourceRequestSourceScheduledEventParameters) SetSchedule(v string) *UpdateEventSourceRequestSourceScheduledEventParameters {
+	s.Schedule = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequestSourceScheduledEventParameters) SetTimeZone(v string) *UpdateEventSourceRequestSourceScheduledEventParameters {
+	s.TimeZone = &v
+	return s
+}
+
 type UpdateEventSourceShrinkRequest struct {
 	// 事件源描述详情
-	Description  []byte `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventBusName []byte `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventBusName []byte  `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// 事件源英文Code
-	EventSourceName                 []byte  `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName                 *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
+	SourceKafkaParametersShrink     *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
 	SourceMNSParametersShrink       *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
 	SourceRabbitMQParametersShrink  *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
 	SourceRocketMQParametersShrink  *string `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty"`
 	// SourceSLSParameters
-	SourceSLSParametersShrink *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
+	SourceSLSParametersShrink            *string `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty"`
+	SourceScheduledEventParametersShrink *string `json:"SourceScheduledEventParameters,omitempty" xml:"SourceScheduledEventParameters,omitempty"`
 }
 
 func (s UpdateEventSourceShrinkRequest) String() string {
@@ -13924,8 +14255,8 @@ func (s UpdateEventSourceShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateEventSourceShrinkRequest) SetDescription(v []byte) *UpdateEventSourceShrinkRequest {
-	s.Description = v
+func (s *UpdateEventSourceShrinkRequest) SetDescription(v string) *UpdateEventSourceShrinkRequest {
+	s.Description = &v
 	return s
 }
 
@@ -13934,13 +14265,18 @@ func (s *UpdateEventSourceShrinkRequest) SetEventBusName(v []byte) *UpdateEventS
 	return s
 }
 
-func (s *UpdateEventSourceShrinkRequest) SetEventSourceName(v []byte) *UpdateEventSourceShrinkRequest {
-	s.EventSourceName = v
+func (s *UpdateEventSourceShrinkRequest) SetEventSourceName(v string) *UpdateEventSourceShrinkRequest {
+	s.EventSourceName = &v
 	return s
 }
 
 func (s *UpdateEventSourceShrinkRequest) SetSourceHttpEventParametersShrink(v string) *UpdateEventSourceShrinkRequest {
 	s.SourceHttpEventParametersShrink = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetSourceKafkaParametersShrink(v string) *UpdateEventSourceShrinkRequest {
+	s.SourceKafkaParametersShrink = &v
 	return s
 }
 
@@ -13961,6 +14297,11 @@ func (s *UpdateEventSourceShrinkRequest) SetSourceRocketMQParametersShrink(v str
 
 func (s *UpdateEventSourceShrinkRequest) SetSourceSLSParametersShrink(v string) *UpdateEventSourceShrinkRequest {
 	s.SourceSLSParametersShrink = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetSourceScheduledEventParametersShrink(v string) *UpdateEventSourceShrinkRequest {
+	s.SourceScheduledEventParametersShrink = &v
 	return s
 }
 
@@ -14242,6 +14583,7 @@ func (s *UpdateEventStreamingRequestSink) SetSinkSLSParameters(v *UpdateEventStr
 
 type UpdateEventStreamingRequestSinkSinkFcParameters struct {
 	Body           *UpdateEventStreamingRequestSinkSinkFcParametersBody           `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Concurrency    *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
 	FunctionName   *UpdateEventStreamingRequestSinkSinkFcParametersFunctionName   `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
 	InvocationType *UpdateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
 	Qualifier      *UpdateEventStreamingRequestSinkSinkFcParametersQualifier      `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
@@ -14258,6 +14600,11 @@ func (s UpdateEventStreamingRequestSinkSinkFcParameters) GoString() string {
 
 func (s *UpdateEventStreamingRequestSinkSinkFcParameters) SetBody(v *UpdateEventStreamingRequestSinkSinkFcParametersBody) *UpdateEventStreamingRequestSinkSinkFcParameters {
 	s.Body = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkFcParameters) SetConcurrency(v *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) *UpdateEventStreamingRequestSinkSinkFcParameters {
+	s.Concurrency = v
 	return s
 }
 
@@ -14306,6 +14653,35 @@ func (s *UpdateEventStreamingRequestSinkSinkFcParametersBody) SetTemplate(v stri
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkFcParametersBody) SetValue(v string) *UpdateEventStreamingRequestSinkSinkFcParametersBody {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) SetForm(v string) *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency) SetValue(v string) *UpdateEventStreamingRequestSinkSinkFcParametersConcurrency {
 	s.Value = &v
 	return s
 }
@@ -16251,6 +16627,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 		request.SourceHttpEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceHttpEventParameters, tea.String("SourceHttpEventParameters"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceKafkaParameters)) {
+		request.SourceKafkaParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceKafkaParameters, tea.String("SourceKafkaParameters"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceMNSParameters)) {
 		request.SourceMNSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMNSParameters, tea.String("SourceMNSParameters"), tea.String("json"))
 	}
@@ -16265,6 +16645,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSLSParameters)) {
 		request.SourceSLSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSLSParameters, tea.String("SourceSLSParameters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceScheduledEventParameters)) {
+		request.SourceScheduledEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceScheduledEventParameters, tea.String("SourceScheduledEventParameters"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -16284,6 +16668,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 		body["SourceHttpEventParameters"] = request.SourceHttpEventParametersShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceKafkaParametersShrink)) {
+		body["SourceKafkaParameters"] = request.SourceKafkaParametersShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceMNSParametersShrink)) {
 		body["SourceMNSParameters"] = request.SourceMNSParametersShrink
 	}
@@ -16298,6 +16686,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(request.SourceSLSParametersShrink)) {
 		body["SourceSLSParameters"] = request.SourceSLSParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceScheduledEventParametersShrink)) {
+		body["SourceScheduledEventParameters"] = request.SourceScheduledEventParametersShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18165,6 +18557,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 		request.SourceHttpEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceHttpEventParameters, tea.String("SourceHttpEventParameters"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceKafkaParameters)) {
+		request.SourceKafkaParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceKafkaParameters, tea.String("SourceKafkaParameters"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceMNSParameters)) {
 		request.SourceMNSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMNSParameters, tea.String("SourceMNSParameters"), tea.String("json"))
 	}
@@ -18179,6 +18575,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSLSParameters)) {
 		request.SourceSLSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSLSParameters, tea.String("SourceSLSParameters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceScheduledEventParameters)) {
+		request.SourceScheduledEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceScheduledEventParameters, tea.String("SourceScheduledEventParameters"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -18198,6 +18598,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 		body["SourceHttpEventParameters"] = request.SourceHttpEventParametersShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceKafkaParametersShrink)) {
+		body["SourceKafkaParameters"] = request.SourceKafkaParametersShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceMNSParametersShrink)) {
 		body["SourceMNSParameters"] = request.SourceMNSParametersShrink
 	}
@@ -18212,6 +18616,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(request.SourceSLSParametersShrink)) {
 		body["SourceSLSParameters"] = request.SourceSLSParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceScheduledEventParametersShrink)) {
+		body["SourceScheduledEventParameters"] = request.SourceScheduledEventParametersShrink
 	}
 
 	req := &openapi.OpenApiRequest{
