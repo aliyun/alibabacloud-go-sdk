@@ -951,13 +951,13 @@ func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupA
 
 type Project struct {
 	CreateTime      *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
 	LastModifyTime  *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	ProjectDesc     *string `json:"projectDesc,omitempty" xml:"projectDesc,omitempty"`
+	Owner           *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	ProjectOwner    *string `json:"projectOwner,omitempty" xml:"projectOwner,omitempty"`
-	ProjectStatus   *string `json:"projectStatus,omitempty" xml:"projectStatus,omitempty"`
 	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Status          *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s Project) String() string {
@@ -973,28 +973,23 @@ func (s *Project) SetCreateTime(v string) *Project {
 	return s
 }
 
+func (s *Project) SetDescription(v string) *Project {
+	s.Description = &v
+	return s
+}
+
 func (s *Project) SetLastModifyTime(v string) *Project {
 	s.LastModifyTime = &v
 	return s
 }
 
-func (s *Project) SetProjectDesc(v string) *Project {
-	s.ProjectDesc = &v
+func (s *Project) SetOwner(v string) *Project {
+	s.Owner = &v
 	return s
 }
 
 func (s *Project) SetProjectName(v string) *Project {
 	s.ProjectName = &v
-	return s
-}
-
-func (s *Project) SetProjectOwner(v string) *Project {
-	s.ProjectOwner = &v
-	return s
-}
-
-func (s *Project) SetProjectStatus(v string) *Project {
-	s.ProjectStatus = &v
 	return s
 }
 
@@ -1005,6 +1000,11 @@ func (s *Project) SetRegion(v string) *Project {
 
 func (s *Project) SetResourceGroupId(v string) *Project {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *Project) SetStatus(v string) *Project {
+	s.Status = &v
 	return s
 }
 
@@ -1215,6 +1215,58 @@ func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeRe
 
 func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type ConsumerGroupHeartBeatRequest struct {
+	Body     []*int32 `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Consumer *string  `json:"consumer,omitempty" xml:"consumer,omitempty"`
+}
+
+func (s ConsumerGroupHeartBeatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConsumerGroupHeartBeatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConsumerGroupHeartBeatRequest) SetBody(v []*int32) *ConsumerGroupHeartBeatRequest {
+	s.Body = v
+	return s
+}
+
+func (s *ConsumerGroupHeartBeatRequest) SetConsumer(v string) *ConsumerGroupHeartBeatRequest {
+	s.Consumer = &v
+	return s
+}
+
+type ConsumerGroupHeartBeatResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*int32           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ConsumerGroupHeartBeatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConsumerGroupHeartBeatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConsumerGroupHeartBeatResponse) SetHeaders(v map[string]*string) *ConsumerGroupHeartBeatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConsumerGroupHeartBeatResponse) SetStatusCode(v int32) *ConsumerGroupHeartBeatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeartBeatResponse {
+	s.Body = v
 	return s
 }
 
@@ -3412,23 +3464,6 @@ func (s *GetMachineGroupResponse) SetStatusCode(v int32) *GetMachineGroupRespons
 
 func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupResponse {
 	s.Body = v
-	return s
-}
-
-type GetProjectRequest struct {
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-}
-
-func (s GetProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetProjectRequest) SetProject(v string) *GetProjectRequest {
-	s.Project = &v
 	return s
 }
 
@@ -6192,6 +6227,56 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) ConsumerGroupHeartBeatWithOptions(project *string, logstore *string, consumerGroup *string, request *ConsumerGroupHeartBeatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ConsumerGroupHeartBeatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Consumer)) {
+		query["consumer"] = request.Consumer
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConsumerGroupHeartBeat"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/consumergroups/" + tea.StringValue(consumerGroup) + "?type=heartbeat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ConsumerGroupHeartBeatResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, consumerGroup *string, request *ConsumerGroupHeartBeatRequest) (_result *ConsumerGroupHeartBeatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ConsumerGroupHeartBeatResponse{}
+	_body, _err := client.ConsumerGroupHeartBeatWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7977,19 +8062,12 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 	return _result, _err
 }
 
-func (client *Client) GetProjectWithOptions(request *GetProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Project)) {
-		query["project"] = request.Project
-	}
-
+func (client *Client) GetProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
 	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -8011,11 +8089,11 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) GetProject(request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(request, headers, runtime)
+	_body, _err := client.GetProjectWithOptions(project, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8547,7 +8625,7 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListProjectWithOptions(request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListProjectWithOptions(resourceGroupId *string, request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -8589,11 +8667,11 @@ func (client *Client) ListProjectWithOptions(request *ListProjectRequest, header
 	return _result, _err
 }
 
-func (client *Client) ListProject(request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListProject(resourceGroupId *string, request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListProjectResponse{}
-	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
+	_body, _err := client.ListProjectWithOptions(resourceGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
