@@ -7181,6 +7181,135 @@ func (s *CarOrderQueryResponse) SetBody(v *CarOrderQueryResponseBody) *CarOrderQ
 	return s
 }
 
+type CarSceneQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s CarSceneQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarSceneQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CarSceneQueryHeaders) SetCommonHeaders(v map[string]*string) *CarSceneQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CarSceneQueryHeaders) SetXAcsBtripCorpToken(v string) *CarSceneQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type CarSceneQueryResponseBody struct {
+	Code      *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*CarSceneQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s CarSceneQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarSceneQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CarSceneQueryResponseBody) SetCode(v string) *CarSceneQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBody) SetMessage(v string) *CarSceneQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBody) SetModule(v []*CarSceneQueryResponseBodyModule) *CarSceneQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CarSceneQueryResponseBody) SetRequestId(v string) *CarSceneQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBody) SetSuccess(v bool) *CarSceneQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBody) SetTraceId(v string) *CarSceneQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CarSceneQueryResponseBodyModule struct {
+	ScenarioTemplateId   *string `json:"scenarioTemplateId,omitempty" xml:"scenarioTemplateId,omitempty"`
+	ScenarioTemplateName *string `json:"scenarioTemplateName,omitempty" xml:"scenarioTemplateName,omitempty"`
+	State                *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s CarSceneQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarSceneQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CarSceneQueryResponseBodyModule) SetScenarioTemplateId(v string) *CarSceneQueryResponseBodyModule {
+	s.ScenarioTemplateId = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBodyModule) SetScenarioTemplateName(v string) *CarSceneQueryResponseBodyModule {
+	s.ScenarioTemplateName = &v
+	return s
+}
+
+func (s *CarSceneQueryResponseBodyModule) SetState(v string) *CarSceneQueryResponseBodyModule {
+	s.State = &v
+	return s
+}
+
+type CarSceneQueryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CarSceneQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CarSceneQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CarSceneQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CarSceneQueryResponse) SetHeaders(v map[string]*string) *CarSceneQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CarSceneQueryResponse) SetStatusCode(v int32) *CarSceneQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CarSceneQueryResponse) SetBody(v *CarSceneQueryResponseBody) *CarSceneQueryResponse {
+	s.Body = v
+	return s
+}
+
 type CitySearchHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -26867,6 +26996,7 @@ type HotelOrderListQueryResponseBodyModule struct {
 	CostCenter                 *HotelOrderListQueryResponseBodyModuleCostCenter          `json:"cost_center,omitempty" xml:"cost_center,omitempty" type:"Struct"`
 	DepartId                   *string                                                   `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName                 *string                                                   `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField                *string                                                   `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	GmtCreate                  *string                                                   `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModified                *string                                                   `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
 	Guest                      *string                                                   `json:"guest,omitempty" xml:"guest,omitempty"`
@@ -26953,6 +27083,11 @@ func (s *HotelOrderListQueryResponseBodyModule) SetDepartId(v string) *HotelOrde
 
 func (s *HotelOrderListQueryResponseBodyModule) SetDepartName(v string) *HotelOrderListQueryResponseBodyModule {
 	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderListQueryResponseBodyModule) SetExtendField(v string) *HotelOrderListQueryResponseBodyModule {
+	s.ExtendField = &v
 	return s
 }
 
@@ -28300,6 +28435,7 @@ type HotelOrderQueryResponseBodyModuleOrderBaseInfo struct {
 	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
 	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
 	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExtendField          *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	GmtCreate            *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModified          *int64  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
 	Id                   *int64  `json:"id,omitempty" xml:"id,omitempty"`
@@ -28348,6 +28484,11 @@ func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *
 
 func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetExtendField(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExtendField = &v
 	return s
 }
 
@@ -43365,6 +43506,51 @@ func (client *Client) CarOrderQuery(request *CarOrderQueryRequest) (_result *Car
 	headers := &CarOrderQueryHeaders{}
 	_result = &CarOrderQueryResponse{}
 	_body, _err := client.CarOrderQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CarSceneQueryWithOptions(headers *CarSceneQueryHeaders, runtime *util.RuntimeOptions) (_result *CarSceneQueryResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CarSceneQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/car/v1/scenes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CarSceneQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CarSceneQueryHeaders{}
+	_result = &CarSceneQueryResponse{}
+	_body, _err := client.CarSceneQueryWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
