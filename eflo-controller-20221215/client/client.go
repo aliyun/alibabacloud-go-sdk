@@ -1013,6 +1013,7 @@ type DescribeNodeResponseBody struct {
 	ExpiredTime    *string                             `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	Hostname       *string                             `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	ImageId        *string                             `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName      *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	MachineType    *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
 	Networks       []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
 	NodeGroupId    *string                             `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
@@ -1059,6 +1060,11 @@ func (s *DescribeNodeResponseBody) SetHostname(v string) *DescribeNodeResponseBo
 
 func (s *DescribeNodeResponseBody) SetImageId(v string) *DescribeNodeResponseBody {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetImageName(v string) *DescribeNodeResponseBody {
+	s.ImageName = &v
 	return s
 }
 
