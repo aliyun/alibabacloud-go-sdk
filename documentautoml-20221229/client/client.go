@@ -418,6 +418,112 @@ func (s *PredictModelResponse) SetBody(v *PredictModelResponseBody) *PredictMode
 	return s
 }
 
+type PredictPreTrainModelRequest struct {
+	BinaryToText   *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
+	Body           *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s PredictPreTrainModelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictPreTrainModelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PredictPreTrainModelRequest) SetBinaryToText(v bool) *PredictPreTrainModelRequest {
+	s.BinaryToText = &v
+	return s
+}
+
+func (s *PredictPreTrainModelRequest) SetBody(v string) *PredictPreTrainModelRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PredictPreTrainModelRequest) SetContent(v string) *PredictPreTrainModelRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *PredictPreTrainModelRequest) SetServiceName(v string) *PredictPreTrainModelRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *PredictPreTrainModelRequest) SetServiceVersion(v string) *PredictPreTrainModelRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type PredictPreTrainModelResponseBody struct {
+	Code    *int32                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PredictPreTrainModelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictPreTrainModelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PredictPreTrainModelResponseBody) SetCode(v int32) *PredictPreTrainModelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PredictPreTrainModelResponseBody) SetData(v map[string]interface{}) *PredictPreTrainModelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PredictPreTrainModelResponseBody) SetMessage(v string) *PredictPreTrainModelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PredictPreTrainModelResponseBody) SetRequestId(v string) *PredictPreTrainModelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PredictPreTrainModelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PredictPreTrainModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PredictPreTrainModelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictPreTrainModelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PredictPreTrainModelResponse) SetHeaders(v map[string]*string) *PredictPreTrainModelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PredictPreTrainModelResponse) SetStatusCode(v int32) *PredictPreTrainModelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PredictPreTrainModelResponse) SetBody(v *PredictPreTrainModelResponseBody) *PredictPreTrainModelResponse {
+	s.Body = v
+	return s
+}
+
 type PredictTemplateModelRequest struct {
 	BinaryToText *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
 	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
@@ -792,6 +898,68 @@ func (client *Client) PredictModel(request *PredictModelRequest) (_result *Predi
 	runtime := &util.RuntimeOptions{}
 	_result = &PredictModelResponse{}
 	_body, _err := client.PredictModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PredictPreTrainModelWithOptions(request *PredictPreTrainModelRequest, runtime *util.RuntimeOptions) (_result *PredictPreTrainModelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BinaryToText)) {
+		query["BinaryToText"] = request.BinaryToText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PredictPreTrainModel"),
+		Version:     tea.String("2022-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PredictPreTrainModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PredictPreTrainModel(request *PredictPreTrainModelRequest) (_result *PredictPreTrainModelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PredictPreTrainModelResponse{}
+	_body, _err := client.PredictPreTrainModelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
