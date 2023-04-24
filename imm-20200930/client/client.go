@@ -1737,94 +1737,6 @@ func (s *File) SetVideoWidth(v int64) *File {
 	return s
 }
 
-type FileForReq struct {
-	ContentType  *string                `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	Figures      []*FileForReqFigures   `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
-	FileHash     *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
-	MediaType    *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	OSSURI       *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
-	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
-}
-
-func (s FileForReq) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FileForReq) GoString() string {
-	return s.String()
-}
-
-func (s *FileForReq) SetContentType(v string) *FileForReq {
-	s.ContentType = &v
-	return s
-}
-
-func (s *FileForReq) SetCustomId(v string) *FileForReq {
-	s.CustomId = &v
-	return s
-}
-
-func (s *FileForReq) SetCustomLabels(v map[string]interface{}) *FileForReq {
-	s.CustomLabels = v
-	return s
-}
-
-func (s *FileForReq) SetFigures(v []*FileForReqFigures) *FileForReq {
-	s.Figures = v
-	return s
-}
-
-func (s *FileForReq) SetFileHash(v string) *FileForReq {
-	s.FileHash = &v
-	return s
-}
-
-func (s *FileForReq) SetMediaType(v string) *FileForReq {
-	s.MediaType = &v
-	return s
-}
-
-func (s *FileForReq) SetOSSURI(v string) *FileForReq {
-	s.OSSURI = &v
-	return s
-}
-
-func (s *FileForReq) SetURI(v string) *FileForReq {
-	s.URI = &v
-	return s
-}
-
-type FileForReqFigures struct {
-	FigureClusterId *string `json:"FigureClusterId,omitempty" xml:"FigureClusterId,omitempty"`
-	FigureId        *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	FigureType      *string `json:"FigureType,omitempty" xml:"FigureType,omitempty"`
-}
-
-func (s FileForReqFigures) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FileForReqFigures) GoString() string {
-	return s.String()
-}
-
-func (s *FileForReqFigures) SetFigureClusterId(v string) *FileForReqFigures {
-	s.FigureClusterId = &v
-	return s
-}
-
-func (s *FileForReqFigures) SetFigureId(v string) *FileForReqFigures {
-	s.FigureId = &v
-	return s
-}
-
-func (s *FileForReqFigures) SetFigureType(v string) *FileForReqFigures {
-	s.FigureType = &v
-	return s
-}
-
 type HeadPose struct {
 	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
 	Roll  *float32 `json:"Roll,omitempty" xml:"Roll,omitempty"`
@@ -4958,9 +4870,9 @@ func (s *BatchIndexFileMetaResponse) SetBody(v *BatchIndexFileMetaResponseBody) 
 }
 
 type BatchUpdateFileMetaRequest struct {
-	DatasetName *string       `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Files       []*FileForReq `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	ProjectName *string       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string      `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*InputFile `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	ProjectName *string      `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s BatchUpdateFileMetaRequest) String() string {
@@ -4976,7 +4888,7 @@ func (s *BatchUpdateFileMetaRequest) SetDatasetName(v string) *BatchUpdateFileMe
 	return s
 }
 
-func (s *BatchUpdateFileMetaRequest) SetFiles(v []*FileForReq) *BatchUpdateFileMetaRequest {
+func (s *BatchUpdateFileMetaRequest) SetFiles(v []*InputFile) *BatchUpdateFileMetaRequest {
 	s.Files = v
 	return s
 }
@@ -17664,9 +17576,9 @@ func (s *UpdateFigureClusterResponse) SetBody(v *UpdateFigureClusterResponseBody
 }
 
 type UpdateFileMetaRequest struct {
-	DatasetName *string     `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	File        *FileForReq `json:"File,omitempty" xml:"File,omitempty"`
-	ProjectName *string     `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	DatasetName *string    `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	File        *InputFile `json:"File,omitempty" xml:"File,omitempty"`
+	ProjectName *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s UpdateFileMetaRequest) String() string {
@@ -17682,7 +17594,7 @@ func (s *UpdateFileMetaRequest) SetDatasetName(v string) *UpdateFileMetaRequest 
 	return s
 }
 
-func (s *UpdateFileMetaRequest) SetFile(v *FileForReq) *UpdateFileMetaRequest {
+func (s *UpdateFileMetaRequest) SetFile(v *InputFile) *UpdateFileMetaRequest {
 	s.File = v
 	return s
 }
