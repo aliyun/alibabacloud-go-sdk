@@ -2728,6 +2728,293 @@ func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderRe
 	return s
 }
 
+type CreateDataExportOrderRequest struct {
+	AttachmentKey   *string                                  `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment         *string                                  `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParentId        *int64                                   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginParam     *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	RelatedUserList []*int64                                 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                                   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataExportOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequest) SetAttachmentKey(v string) *CreateDataExportOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetComment(v string) *CreateDataExportOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetParentId(v int64) *CreateDataExportOrderRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetPluginParam(v *CreateDataExportOrderRequestPluginParam) *CreateDataExportOrderRequest {
+	s.PluginParam = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetRelatedUserList(v []*int64) *CreateDataExportOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetTid(v int64) *CreateDataExportOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataExportOrderRequestPluginParam struct {
+	AffectRows             *int64                                            `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	Classify               *string                                           `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	DbId                   *int64                                            `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ExeSQL                 *string                                           `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
+	IgnoreAffectRows       *bool                                             `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	IgnoreAffectRowsReason *string                                           `json:"IgnoreAffectRowsReason,omitempty" xml:"IgnoreAffectRowsReason,omitempty"`
+	InstanceId             *int64                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Logic                  *bool                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Watermark              *CreateDataExportOrderRequestPluginParamWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
+}
+
+func (s CreateDataExportOrderRequestPluginParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequestPluginParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetAffectRows(v int64) *CreateDataExportOrderRequestPluginParam {
+	s.AffectRows = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetClassify(v string) *CreateDataExportOrderRequestPluginParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetDbId(v int64) *CreateDataExportOrderRequestPluginParam {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetExeSQL(v string) *CreateDataExportOrderRequestPluginParam {
+	s.ExeSQL = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetIgnoreAffectRows(v bool) *CreateDataExportOrderRequestPluginParam {
+	s.IgnoreAffectRows = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetIgnoreAffectRowsReason(v string) *CreateDataExportOrderRequestPluginParam {
+	s.IgnoreAffectRowsReason = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetInstanceId(v int64) *CreateDataExportOrderRequestPluginParam {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetLogic(v bool) *CreateDataExportOrderRequestPluginParam {
+	s.Logic = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParam) SetWatermark(v *CreateDataExportOrderRequestPluginParamWatermark) *CreateDataExportOrderRequestPluginParam {
+	s.Watermark = v
+	return s
+}
+
+type CreateDataExportOrderRequestPluginParamWatermark struct {
+	ColumnName     *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DataWatermark  *string   `json:"DataWatermark,omitempty" xml:"DataWatermark,omitempty"`
+	FileWatermark  *string   `json:"FileWatermark,omitempty" xml:"FileWatermark,omitempty"`
+	Keys           []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	WatermarkTypes []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataExportOrderRequestPluginParamWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequestPluginParamWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequestPluginParamWatermark) SetColumnName(v string) *CreateDataExportOrderRequestPluginParamWatermark {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParamWatermark) SetDataWatermark(v string) *CreateDataExportOrderRequestPluginParamWatermark {
+	s.DataWatermark = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParamWatermark) SetFileWatermark(v string) *CreateDataExportOrderRequestPluginParamWatermark {
+	s.FileWatermark = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParamWatermark) SetKeys(v []*string) *CreateDataExportOrderRequestPluginParamWatermark {
+	s.Keys = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestPluginParamWatermark) SetWatermarkTypes(v []*string) *CreateDataExportOrderRequestPluginParamWatermark {
+	s.WatermarkTypes = v
+	return s
+}
+
+type CreateDataExportOrderShrinkRequest struct {
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParentId              *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginParamShrink     *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataExportOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataExportOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetComment(v string) *CreateDataExportOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetParentId(v int64) *CreateDataExportOrderShrinkRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetPluginParamShrink(v string) *CreateDataExportOrderShrinkRequest {
+	s.PluginParamShrink = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataExportOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetTid(v int64) *CreateDataExportOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataExportOrderResponseBody struct {
+	CreateOrderResult *CreateDataExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
+	ErrorCode         *string                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataExportOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderResponseBody) SetCreateOrderResult(v *CreateDataExportOrderResponseBodyCreateOrderResult) *CreateDataExportOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetErrorCode(v string) *CreateDataExportOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetErrorMessage(v string) *CreateDataExportOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetRequestId(v string) *CreateDataExportOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetSuccess(v bool) *CreateDataExportOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataExportOrderResponseBodyCreateOrderResult struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataExportOrderResponseBodyCreateOrderResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderResponseBodyCreateOrderResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderResponseBodyCreateOrderResult) SetCreateOrderResult(v []*int64) *CreateDataExportOrderResponseBodyCreateOrderResult {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateDataExportOrderResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDataExportOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataExportOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderResponse) SetHeaders(v map[string]*string) *CreateDataExportOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataExportOrderResponse) SetStatusCode(v int32) *CreateDataExportOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponse) SetBody(v *CreateDataExportOrderResponseBody) *CreateDataExportOrderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataImportOrderRequest struct {
 	// The key of the attachment that provides more instructions for the ticket. You can call the [GetUserUploadFileJob](~~206069~~) operation to obtain the attachment key from the value of the AttachmentKey parameter.
 	AttachmentKey *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
@@ -3063,6 +3350,468 @@ func (s *CreateDataImportOrderResponse) SetStatusCode(v int32) *CreateDataImport
 }
 
 func (s *CreateDataImportOrderResponse) SetBody(v *CreateDataImportOrderResponseBody) *CreateDataImportOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataTrackOrderRequest struct {
+	Comment         *string                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Param           *CreateDataTrackOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RelatedUserList []*string                         `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                            `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataTrackOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTrackOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTrackOrderRequest) SetComment(v string) *CreateDataTrackOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequest) SetParam(v *CreateDataTrackOrderRequestParam) *CreateDataTrackOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequest) SetRelatedUserList(v []*string) *CreateDataTrackOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequest) SetTid(v int64) *CreateDataTrackOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataTrackOrderRequestParam struct {
+	DbId         *string   `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	JobEndTime   *string   `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
+	JobStartTime *string   `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
+	TableNames   []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	TrackTypes   []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
+}
+
+func (s CreateDataTrackOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTrackOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTrackOrderRequestParam) SetDbId(v string) *CreateDataTrackOrderRequestParam {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequestParam) SetJobEndTime(v string) *CreateDataTrackOrderRequestParam {
+	s.JobEndTime = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequestParam) SetJobStartTime(v string) *CreateDataTrackOrderRequestParam {
+	s.JobStartTime = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequestParam) SetTableNames(v []*string) *CreateDataTrackOrderRequestParam {
+	s.TableNames = v
+	return s
+}
+
+func (s *CreateDataTrackOrderRequestParam) SetTrackTypes(v []*string) *CreateDataTrackOrderRequestParam {
+	s.TrackTypes = v
+	return s
+}
+
+type CreateDataTrackOrderShrinkRequest struct {
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataTrackOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTrackOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTrackOrderShrinkRequest) SetComment(v string) *CreateDataTrackOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderShrinkRequest) SetParamShrink(v string) *CreateDataTrackOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataTrackOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderShrinkRequest) SetTid(v int64) *CreateDataTrackOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataTrackOrderResponseBody struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataTrackOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTrackOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTrackOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataTrackOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponseBody) SetErrorCode(v string) *CreateDataTrackOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponseBody) SetErrorMessage(v string) *CreateDataTrackOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponseBody) SetRequestId(v string) *CreateDataTrackOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponseBody) SetSuccess(v bool) *CreateDataTrackOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataTrackOrderResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDataTrackOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataTrackOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataTrackOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataTrackOrderResponse) SetHeaders(v map[string]*string) *CreateDataTrackOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponse) SetStatusCode(v int32) *CreateDataTrackOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataTrackOrderResponse) SetBody(v *CreateDataTrackOrderResponseBody) *CreateDataTrackOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDatabaseExportOrderRequest struct {
+	AttachmentKey   *string                                      `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment         *string                                      `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParentId        *int64                                       `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginParam     *CreateDatabaseExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	RelatedUserList []*int64                                     `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                                       `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDatabaseExportOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetAttachmentKey(v string) *CreateDatabaseExportOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetComment(v string) *CreateDatabaseExportOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetParentId(v int64) *CreateDatabaseExportOrderRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetPluginParam(v *CreateDatabaseExportOrderRequestPluginParam) *CreateDatabaseExportOrderRequest {
+	s.PluginParam = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetRelatedUserList(v []*int64) *CreateDatabaseExportOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequest) SetTid(v int64) *CreateDatabaseExportOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDatabaseExportOrderRequestPluginParam struct {
+	Classify   *string                                            `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	Config     *CreateDatabaseExportOrderRequestPluginParamConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	DbId       *int64                                             `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	InstanceId *int64                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Logic      *bool                                              `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	SearchName *string                                            `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s CreateDatabaseExportOrderRequestPluginParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderRequestPluginParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetClassify(v string) *CreateDatabaseExportOrderRequestPluginParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetConfig(v *CreateDatabaseExportOrderRequestPluginParamConfig) *CreateDatabaseExportOrderRequestPluginParam {
+	s.Config = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetDbId(v int64) *CreateDatabaseExportOrderRequestPluginParam {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetInstanceId(v int64) *CreateDatabaseExportOrderRequestPluginParam {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetLogic(v bool) *CreateDatabaseExportOrderRequestPluginParam {
+	s.Logic = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParam) SetSearchName(v string) *CreateDatabaseExportOrderRequestPluginParam {
+	s.SearchName = &v
+	return s
+}
+
+type CreateDatabaseExportOrderRequestPluginParamConfig struct {
+	DataOption     []*string          `json:"DataOption,omitempty" xml:"DataOption,omitempty" type:"Repeated"`
+	ExportContent  *string            `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	ExportTypes    []*string          `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Repeated"`
+	SQLExtOption   []*string          `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Repeated"`
+	SelectedTables []*string          `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Repeated"`
+	Tables         map[string]*string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	TargetOption   *string            `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
+}
+
+func (s CreateDatabaseExportOrderRequestPluginParamConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderRequestPluginParamConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetDataOption(v []*string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.DataOption = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetExportContent(v string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.ExportContent = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetExportTypes(v []*string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.ExportTypes = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetSQLExtOption(v []*string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.SQLExtOption = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetSelectedTables(v []*string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.SelectedTables = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetTables(v map[string]*string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderRequestPluginParamConfig) SetTargetOption(v string) *CreateDatabaseExportOrderRequestPluginParamConfig {
+	s.TargetOption = &v
+	return s
+}
+
+type CreateDatabaseExportOrderShrinkRequest struct {
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParentId              *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PluginParamShrink     *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDatabaseExportOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetAttachmentKey(v string) *CreateDatabaseExportOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetComment(v string) *CreateDatabaseExportOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetParentId(v int64) *CreateDatabaseExportOrderShrinkRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetPluginParamShrink(v string) *CreateDatabaseExportOrderShrinkRequest {
+	s.PluginParamShrink = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDatabaseExportOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderShrinkRequest) SetTid(v int64) *CreateDatabaseExportOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDatabaseExportOrderResponseBody struct {
+	CreateOrderResult *CreateDatabaseExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
+	ErrorCode         *string                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string                                                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDatabaseExportOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderResponseBody) SetCreateOrderResult(v *CreateDatabaseExportOrderResponseBodyCreateOrderResult) *CreateDatabaseExportOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponseBody) SetErrorCode(v string) *CreateDatabaseExportOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponseBody) SetErrorMessage(v string) *CreateDatabaseExportOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponseBody) SetRequestId(v string) *CreateDatabaseExportOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponseBody) SetSuccess(v bool) *CreateDatabaseExportOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDatabaseExportOrderResponseBodyCreateOrderResult struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+}
+
+func (s CreateDatabaseExportOrderResponseBodyCreateOrderResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderResponseBodyCreateOrderResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderResponseBodyCreateOrderResult) SetCreateOrderResult(v []*int64) *CreateDatabaseExportOrderResponseBodyCreateOrderResult {
+	s.CreateOrderResult = v
+	return s
+}
+
+type CreateDatabaseExportOrderResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDatabaseExportOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDatabaseExportOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDatabaseExportOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatabaseExportOrderResponse) SetHeaders(v map[string]*string) *CreateDatabaseExportOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponse) SetStatusCode(v int32) *CreateDatabaseExportOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDatabaseExportOrderResponse) SetBody(v *CreateDatabaseExportOrderResponseBody) *CreateDatabaseExportOrderResponse {
 	s.Body = v
 	return s
 }
@@ -6972,6 +7721,253 @@ func (s *DisableUserResponse) SetBody(v *DisableUserResponseBody) *DisableUserRe
 	return s
 }
 
+type DownloadDataTrackResultRequest struct {
+	ColumnFilter    *DownloadDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
+	EventIdList     []*int64                                    `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	FilterEndTime   *string                                     `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	FilterStartTime *string                                     `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	FilterTableList []*string                                   `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
+	FilterTypeList  []*string                                   `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
+	OrderId         *int64                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RollbackSQLType *string                                     `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
+	Tid             *int64                                      `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DownloadDataTrackResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDataTrackResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDataTrackResultRequest) SetColumnFilter(v *DownloadDataTrackResultRequestColumnFilter) *DownloadDataTrackResultRequest {
+	s.ColumnFilter = v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetEventIdList(v []*int64) *DownloadDataTrackResultRequest {
+	s.EventIdList = v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetFilterEndTime(v string) *DownloadDataTrackResultRequest {
+	s.FilterEndTime = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetFilterStartTime(v string) *DownloadDataTrackResultRequest {
+	s.FilterStartTime = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetFilterTableList(v []*string) *DownloadDataTrackResultRequest {
+	s.FilterTableList = v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetFilterTypeList(v []*string) *DownloadDataTrackResultRequest {
+	s.FilterTypeList = v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetOrderId(v int64) *DownloadDataTrackResultRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetRollbackSQLType(v string) *DownloadDataTrackResultRequest {
+	s.RollbackSQLType = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequest) SetTid(v int64) *DownloadDataTrackResultRequest {
+	s.Tid = &v
+	return s
+}
+
+type DownloadDataTrackResultRequestColumnFilter struct {
+	BetweenEnd   *string   `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
+	BetweenStart *string   `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
+	ColumnName   *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	InList       []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
+	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value        *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DownloadDataTrackResultRequestColumnFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDataTrackResultRequestColumnFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetBetweenEnd(v string) *DownloadDataTrackResultRequestColumnFilter {
+	s.BetweenEnd = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetBetweenStart(v string) *DownloadDataTrackResultRequestColumnFilter {
+	s.BetweenStart = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetColumnName(v string) *DownloadDataTrackResultRequestColumnFilter {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetInList(v []*string) *DownloadDataTrackResultRequestColumnFilter {
+	s.InList = v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetOperator(v string) *DownloadDataTrackResultRequestColumnFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultRequestColumnFilter) SetValue(v string) *DownloadDataTrackResultRequestColumnFilter {
+	s.Value = &v
+	return s
+}
+
+type DownloadDataTrackResultShrinkRequest struct {
+	ColumnFilterShrink    *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
+	EventIdListShrink     *string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty"`
+	FilterEndTime         *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	FilterStartTime       *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	FilterTableListShrink *string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty"`
+	FilterTypeListShrink  *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
+	OrderId               *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RollbackSQLType       *string `json:"RollbackSQLType,omitempty" xml:"RollbackSQLType,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DownloadDataTrackResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDataTrackResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetColumnFilterShrink(v string) *DownloadDataTrackResultShrinkRequest {
+	s.ColumnFilterShrink = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetEventIdListShrink(v string) *DownloadDataTrackResultShrinkRequest {
+	s.EventIdListShrink = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetFilterEndTime(v string) *DownloadDataTrackResultShrinkRequest {
+	s.FilterEndTime = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetFilterStartTime(v string) *DownloadDataTrackResultShrinkRequest {
+	s.FilterStartTime = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetFilterTableListShrink(v string) *DownloadDataTrackResultShrinkRequest {
+	s.FilterTableListShrink = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetFilterTypeListShrink(v string) *DownloadDataTrackResultShrinkRequest {
+	s.FilterTypeListShrink = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetOrderId(v int64) *DownloadDataTrackResultShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetRollbackSQLType(v string) *DownloadDataTrackResultShrinkRequest {
+	s.RollbackSQLType = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultShrinkRequest) SetTid(v int64) *DownloadDataTrackResultShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type DownloadDataTrackResultResponseBody struct {
+	DownloadKeyId *string `json:"DownloadKeyId,omitempty" xml:"DownloadKeyId,omitempty"`
+	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DownloadDataTrackResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDataTrackResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDataTrackResultResponseBody) SetDownloadKeyId(v string) *DownloadDataTrackResultResponseBody {
+	s.DownloadKeyId = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponseBody) SetErrorCode(v string) *DownloadDataTrackResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponseBody) SetErrorMessage(v string) *DownloadDataTrackResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponseBody) SetRequestId(v string) *DownloadDataTrackResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponseBody) SetSuccess(v bool) *DownloadDataTrackResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DownloadDataTrackResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadDataTrackResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DownloadDataTrackResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDataTrackResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDataTrackResultResponse) SetHeaders(v map[string]*string) *DownloadDataTrackResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponse) SetStatusCode(v int32) *DownloadDataTrackResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadDataTrackResultResponse) SetBody(v *DownloadDataTrackResultResponseBody) *DownloadDataTrackResultResponse {
+	s.Body = v
+	return s
+}
+
 type EditLogicDatabaseRequest struct {
 	// - The alias of the logical database. If you want to change the alias, specify a new alias.
 	// - If you do not need to change the alias of the logical database, call the [GetLogicDatabase](https://www.alibabacloud.com/help/en/data-management-service/latest/getlogicdatabase) or [GetDBTopology](https://www.alibabacloud.com/help/en/data-management-service/latest/getdbtopology) operation to query the alias of the logical database.
@@ -10726,6 +11722,467 @@ func (s *GetDataImportSQLResponse) SetBody(v *GetDataImportSQLResponseBody) *Get
 	return s
 }
 
+type GetDataTrackJobDegreeRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataTrackJobDegreeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobDegreeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobDegreeRequest) SetOrderId(v int64) *GetDataTrackJobDegreeRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeRequest) SetTid(v int64) *GetDataTrackJobDegreeRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataTrackJobDegreeResponseBody struct {
+	ErrorCode    *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	JobDegree    *GetDataTrackJobDegreeResponseBodyJobDegree `json:"JobDegree,omitempty" xml:"JobDegree,omitempty" type:"Struct"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataTrackJobDegreeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobDegreeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobDegreeResponseBody) SetErrorCode(v string) *GetDataTrackJobDegreeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBody) SetErrorMessage(v string) *GetDataTrackJobDegreeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBody) SetJobDegree(v *GetDataTrackJobDegreeResponseBodyJobDegree) *GetDataTrackJobDegreeResponseBody {
+	s.JobDegree = v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBody) SetRequestId(v string) *GetDataTrackJobDegreeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBody) SetSuccess(v bool) *GetDataTrackJobDegreeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataTrackJobDegreeResponseBodyJobDegree struct {
+	DownloadCompletionDegree *float64 `json:"DownloadCompletionDegree,omitempty" xml:"DownloadCompletionDegree,omitempty"`
+	FilterCompletionDegree   *float64 `json:"FilterCompletionDegree,omitempty" xml:"FilterCompletionDegree,omitempty"`
+	JobStatus                *string  `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	ListCompletionDegree     *float64 `json:"ListCompletionDegree,omitempty" xml:"ListCompletionDegree,omitempty"`
+	StatusDesc               *string  `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+}
+
+func (s GetDataTrackJobDegreeResponseBodyJobDegree) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobDegreeResponseBodyJobDegree) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobDegreeResponseBodyJobDegree) SetDownloadCompletionDegree(v float64) *GetDataTrackJobDegreeResponseBodyJobDegree {
+	s.DownloadCompletionDegree = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBodyJobDegree) SetFilterCompletionDegree(v float64) *GetDataTrackJobDegreeResponseBodyJobDegree {
+	s.FilterCompletionDegree = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBodyJobDegree) SetJobStatus(v string) *GetDataTrackJobDegreeResponseBodyJobDegree {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBodyJobDegree) SetListCompletionDegree(v float64) *GetDataTrackJobDegreeResponseBodyJobDegree {
+	s.ListCompletionDegree = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponseBodyJobDegree) SetStatusDesc(v string) *GetDataTrackJobDegreeResponseBodyJobDegree {
+	s.StatusDesc = &v
+	return s
+}
+
+type GetDataTrackJobDegreeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataTrackJobDegreeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataTrackJobDegreeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobDegreeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobDegreeResponse) SetHeaders(v map[string]*string) *GetDataTrackJobDegreeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponse) SetStatusCode(v int32) *GetDataTrackJobDegreeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataTrackJobDegreeResponse) SetBody(v *GetDataTrackJobDegreeResponseBody) *GetDataTrackJobDegreeResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataTrackJobTableMetaRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataTrackJobTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobTableMetaRequest) SetOrderId(v int64) *GetDataTrackJobTableMetaRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaRequest) SetTid(v int64) *GetDataTrackJobTableMetaRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataTrackJobTableMetaResponseBody struct {
+	ErrorCode     *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage  *string                                              `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableMetaList []*GetDataTrackJobTableMetaResponseBodyTableMetaList `json:"TableMetaList,omitempty" xml:"TableMetaList,omitempty" type:"Repeated"`
+}
+
+func (s GetDataTrackJobTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobTableMetaResponseBody) SetErrorCode(v string) *GetDataTrackJobTableMetaResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBody) SetErrorMessage(v string) *GetDataTrackJobTableMetaResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBody) SetRequestId(v string) *GetDataTrackJobTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBody) SetSuccess(v bool) *GetDataTrackJobTableMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBody) SetTableMetaList(v []*GetDataTrackJobTableMetaResponseBodyTableMetaList) *GetDataTrackJobTableMetaResponseBody {
+	s.TableMetaList = v
+	return s
+}
+
+type GetDataTrackJobTableMetaResponseBodyTableMetaList struct {
+	Columns    []*GetDataTrackJobTableMetaResponseBodyTableMetaListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	SchemaName *string                                                     `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName  *string                                                     `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetDataTrackJobTableMetaResponseBodyTableMetaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobTableMetaResponseBodyTableMetaList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) SetColumns(v []*GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) *GetDataTrackJobTableMetaResponseBodyTableMetaList {
+	s.Columns = v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) SetSchemaName(v string) *GetDataTrackJobTableMetaResponseBodyTableMetaList {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaList) SetTableName(v string) *GetDataTrackJobTableMetaResponseBodyTableMetaList {
+	s.TableName = &v
+	return s
+}
+
+type GetDataTrackJobTableMetaResponseBodyTableMetaListColumns struct {
+	Charset        *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	ColumnName     *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnPosition *int32  `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
+	ColumnType     *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	Fictive        *bool   `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
+}
+
+func (s GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) SetCharset(v string) *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns {
+	s.Charset = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) SetColumnName(v string) *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) SetColumnPosition(v int32) *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns {
+	s.ColumnPosition = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) SetColumnType(v string) *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns) SetFictive(v bool) *GetDataTrackJobTableMetaResponseBodyTableMetaListColumns {
+	s.Fictive = &v
+	return s
+}
+
+type GetDataTrackJobTableMetaResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataTrackJobTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataTrackJobTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackJobTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackJobTableMetaResponse) SetHeaders(v map[string]*string) *GetDataTrackJobTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponse) SetStatusCode(v int32) *GetDataTrackJobTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataTrackJobTableMetaResponse) SetBody(v *GetDataTrackJobTableMetaResponseBody) *GetDataTrackJobTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type GetDataTrackOrderDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDataTrackOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackOrderDetailRequest) SetOrderId(v int64) *GetDataTrackOrderDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailRequest) SetTid(v int64) *GetDataTrackOrderDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDataTrackOrderDetailResponseBody struct {
+	DataTrackOrderDetail *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail `json:"DataTrackOrderDetail,omitempty" xml:"DataTrackOrderDetail,omitempty" type:"Struct"`
+	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDataTrackOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackOrderDetailResponseBody) SetDataTrackOrderDetail(v *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) *GetDataTrackOrderDetailResponseBody {
+	s.DataTrackOrderDetail = v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBody) SetErrorCode(v string) *GetDataTrackOrderDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBody) SetErrorMessage(v string) *GetDataTrackOrderDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBody) SetRequestId(v string) *GetDataTrackOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBody) SetSuccess(v bool) *GetDataTrackOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail struct {
+	DatabaseSearchName *string   `json:"DatabaseSearchName,omitempty" xml:"DatabaseSearchName,omitempty"`
+	DbId               *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	JobEndTime         *string   `json:"JobEndTime,omitempty" xml:"JobEndTime,omitempty"`
+	JobStartTime       *string   `json:"JobStartTime,omitempty" xml:"JobStartTime,omitempty"`
+	JobStatus          *string   `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	Logic              *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	SchemaName         *string   `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	StatusDesc         *string   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TableNames         []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	TrackTypes         []*string `json:"TrackTypes,omitempty" xml:"TrackTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetDatabaseSearchName(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.DatabaseSearchName = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetDbId(v int64) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetJobEndTime(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.JobEndTime = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetJobStartTime(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.JobStartTime = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetJobStatus(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetLogic(v bool) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.Logic = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetSchemaName(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetStatusDesc(v string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetTableNames(v []*string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.TableNames = v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail) SetTrackTypes(v []*string) *GetDataTrackOrderDetailResponseBodyDataTrackOrderDetail {
+	s.TrackTypes = v
+	return s
+}
+
+type GetDataTrackOrderDetailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataTrackOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataTrackOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataTrackOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataTrackOrderDetailResponse) SetHeaders(v map[string]*string) *GetDataTrackOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponse) SetStatusCode(v int32) *GetDataTrackOrderDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataTrackOrderDetailResponse) SetBody(v *GetDataTrackOrderDetailResponseBody) *GetDataTrackOrderDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetDatabaseRequest struct {
 	// The endpoint that is used to connect to the database.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -11021,6 +12478,297 @@ func (s *GetDatabaseResponse) SetStatusCode(v int32) *GetDatabaseResponse {
 }
 
 func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatabaseExportOrderDetailRequest struct {
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetDatabaseExportOrderDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailRequest) SetOrderId(v int64) *GetDatabaseExportOrderDetailRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailRequest) SetTid(v int64) *GetDatabaseExportOrderDetailRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBody struct {
+	DatabaseExportOrderDetail *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail `json:"DatabaseExportOrderDetail,omitempty" xml:"DatabaseExportOrderDetail,omitempty" type:"Struct"`
+	ErrorCode                 *string                                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage              *string                                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                   *bool                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBody) SetDatabaseExportOrderDetail(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) *GetDatabaseExportOrderDetailResponseBody {
+	s.DatabaseExportOrderDetail = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBody) SetErrorCode(v string) *GetDatabaseExportOrderDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBody) SetErrorMessage(v string) *GetDatabaseExportOrderDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBody) SetRequestId(v string) *GetDatabaseExportOrderDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBody) SetSuccess(v bool) *GetDatabaseExportOrderDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail struct {
+	Comment            *string                                                                   `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Committer          *string                                                                   `json:"Committer,omitempty" xml:"Committer,omitempty"`
+	CommitterId        *string                                                                   `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
+	Id                 *int64                                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	KeyInfo            *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	Log                *string                                                                   `json:"Log,omitempty" xml:"Log,omitempty"`
+	SearchName         *string                                                                   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	StatusDesc         *string                                                                   `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	WorkflowStatusDesc *string                                                                   `json:"WorkflowStatusDesc,omitempty" xml:"WorkflowStatusDesc,omitempty"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetComment(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetCommitter(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.Committer = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetCommitterId(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.CommitterId = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetId(v int64) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetKeyInfo(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.KeyInfo = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetLog(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.Log = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetSearchName(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.SearchName = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetStatusDesc(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail) SetWorkflowStatusDesc(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetail {
+	s.WorkflowStatusDesc = &v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo struct {
+	AuditDate   *string                                                                         `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	Config      *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	DbId        *int64                                                                          `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DownloadURL *string                                                                         `json:"DownloadURL,omitempty" xml:"DownloadURL,omitempty"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) SetAuditDate(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo {
+	s.AuditDate = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) SetConfig(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo {
+	s.Config = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) SetDbId(v int64) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo) SetDownloadURL(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfo {
+	s.DownloadURL = &v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig struct {
+	DbName         *string                                                                                       `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	ExportContent  *string                                                                                       `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	ExportTypes    *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes    `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Struct"`
+	SQLExtOption   *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption   `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Struct"`
+	SelectedTables *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Struct"`
+	TargetOption   *string                                                                                       `json:"TargetOption,omitempty" xml:"TargetOption,omitempty"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetDbName(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetExportContent(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.ExportContent = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetExportTypes(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.ExportTypes = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetSQLExtOption(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.SQLExtOption = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetSelectedTables(v *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.SelectedTables = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig) SetTargetOption(v string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfig {
+	s.TargetOption = &v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes struct {
+	ExportTypes []*string `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes) SetExportTypes(v []*string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes {
+	s.ExportTypes = v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption struct {
+	SQLExtOption []*string `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption) SetSQLExtOption(v []*string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption {
+	s.SQLExtOption = v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables struct {
+	SelectedTables []*string `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables) SetSelectedTables(v []*string) *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables {
+	s.SelectedTables = v
+	return s
+}
+
+type GetDatabaseExportOrderDetailResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDatabaseExportOrderDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDatabaseExportOrderDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseExportOrderDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseExportOrderDetailResponse) SetHeaders(v map[string]*string) *GetDatabaseExportOrderDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponse) SetStatusCode(v int32) *GetDatabaseExportOrderDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseExportOrderDetailResponse) SetBody(v *GetDatabaseExportOrderDetailResponseBody) *GetDatabaseExportOrderDetailResponse {
 	s.Body = v
 	return s
 }
@@ -16311,10 +18059,8 @@ type GetTableTopologyRequest struct {
 	// The GUID of the table in Data Management (DMS).
 	//
 	// >
-	//
-	// *   You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
-	//
-	// *   You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
+	// > - You can call the [ListLogicTables](~~141875~~) operation with ReturnGuid set to true to query the GUIDs of logical tables in a specific logical database.
+	// > - You can call the [ListTables](~~141878~~) operation with ReturnGuid set to true to query the GUIDs of tables in a specific physical database.
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	// The ID of the tenant.
 	//
@@ -16463,7 +18209,7 @@ type GetTableTopologyResponseBodyTableTopologyTableTopologyInfoList struct {
 	//
 	// **
 	//
-	// **Description**This parameter is not returned for physical tables.
+	// **Description** This parameter is not returned for physical tables.
 	TableNameExpr *string `json:"TableNameExpr,omitempty" xml:"TableNameExpr,omitempty"`
 	// The names of tables.
 	//
@@ -19622,6 +21368,7 @@ type ListDDLPublishRecordsResponseBodyDDLPublishRecordList struct {
 	// *   **SUCCESS**: The ticket is approved.
 	// *   **FAIL**: The ticket fails to pass the approval.
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the user who creates the ticket. You can obtain the user ID by calling the [GetUser](~~147098~~) operation and querying the value of the UserId parameter. The value is not the unique ID (UID) of the Alibaba Cloud account.
 	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// Indicates whether the approval is terminated. Valid values:
@@ -19671,6 +21418,11 @@ func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditExpireTi
 
 func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetAuditStatus(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
 	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListDDLPublishRecordsResponseBodyDDLPublishRecordList) SetComment(v string) *ListDDLPublishRecordsResponseBodyDDLPublishRecordList {
+	s.Comment = &v
 	return s
 }
 
@@ -30931,6 +32683,140 @@ func (s *PublishAndDeployTaskFlowResponse) SetBody(v *PublishAndDeployTaskFlowRe
 	return s
 }
 
+type QueryDataTrackResultDownloadStatusRequest struct {
+	DownloadKeyId *string `json:"DownloadKeyId,omitempty" xml:"DownloadKeyId,omitempty"`
+	OrderId       *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s QueryDataTrackResultDownloadStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataTrackResultDownloadStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataTrackResultDownloadStatusRequest) SetDownloadKeyId(v string) *QueryDataTrackResultDownloadStatusRequest {
+	s.DownloadKeyId = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusRequest) SetOrderId(v int64) *QueryDataTrackResultDownloadStatusRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusRequest) SetTid(v int64) *QueryDataTrackResultDownloadStatusRequest {
+	s.Tid = &v
+	return s
+}
+
+type QueryDataTrackResultDownloadStatusResponseBody struct {
+	ErrorCode    *string                                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StatusResult *QueryDataTrackResultDownloadStatusResponseBodyStatusResult `json:"StatusResult,omitempty" xml:"StatusResult,omitempty" type:"Struct"`
+	Success      *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDataTrackResultDownloadStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataTrackResultDownloadStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBody) SetErrorCode(v string) *QueryDataTrackResultDownloadStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBody) SetErrorMessage(v string) *QueryDataTrackResultDownloadStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBody) SetRequestId(v string) *QueryDataTrackResultDownloadStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBody) SetStatusResult(v *QueryDataTrackResultDownloadStatusResponseBodyStatusResult) *QueryDataTrackResultDownloadStatusResponseBody {
+	s.StatusResult = v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBody) SetSuccess(v bool) *QueryDataTrackResultDownloadStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDataTrackResultDownloadStatusResponseBodyStatusResult struct {
+	DownloadStatus *string `json:"DownloadStatus,omitempty" xml:"DownloadStatus,omitempty"`
+	DownloadUrl    *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	StatusDesc     *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	TotalCount     *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryDataTrackResultDownloadStatusResponseBodyStatusResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataTrackResultDownloadStatusResponseBodyStatusResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBodyStatusResult) SetDownloadStatus(v string) *QueryDataTrackResultDownloadStatusResponseBodyStatusResult {
+	s.DownloadStatus = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBodyStatusResult) SetDownloadUrl(v string) *QueryDataTrackResultDownloadStatusResponseBodyStatusResult {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBodyStatusResult) SetStatusDesc(v string) *QueryDataTrackResultDownloadStatusResponseBodyStatusResult {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponseBodyStatusResult) SetTotalCount(v int64) *QueryDataTrackResultDownloadStatusResponseBodyStatusResult {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryDataTrackResultDownloadStatusResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDataTrackResultDownloadStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDataTrackResultDownloadStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataTrackResultDownloadStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponse) SetHeaders(v map[string]*string) *QueryDataTrackResultDownloadStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponse) SetStatusCode(v int32) *QueryDataTrackResultDownloadStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDataTrackResultDownloadStatusResponse) SetBody(v *QueryDataTrackResultDownloadStatusResponseBody) *QueryDataTrackResultDownloadStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ReDeployLhDagVersionRequest struct {
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to obtain the ID of the task flow.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -32277,6 +34163,381 @@ func (s *RevokeUserPermissionResponse) SetStatusCode(v int32) *RevokeUserPermiss
 }
 
 func (s *RevokeUserPermissionResponse) SetBody(v *RevokeUserPermissionResponseBody) *RevokeUserPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type SearchDataTrackResultRequest struct {
+	ColumnFilter    *SearchDataTrackResultRequestColumnFilter `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty" type:"Struct"`
+	FilterEndTime   *string                                   `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	FilterStartTime *string                                   `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	FilterTableList []*string                                 `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty" type:"Repeated"`
+	FilterTypeList  []*string                                 `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty" type:"Repeated"`
+	OrderId         *int64                                    `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid             *int64                                    `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SearchDataTrackResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultRequest) SetColumnFilter(v *SearchDataTrackResultRequestColumnFilter) *SearchDataTrackResultRequest {
+	s.ColumnFilter = v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetFilterEndTime(v string) *SearchDataTrackResultRequest {
+	s.FilterEndTime = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetFilterStartTime(v string) *SearchDataTrackResultRequest {
+	s.FilterStartTime = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetFilterTableList(v []*string) *SearchDataTrackResultRequest {
+	s.FilterTableList = v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetFilterTypeList(v []*string) *SearchDataTrackResultRequest {
+	s.FilterTypeList = v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetOrderId(v int64) *SearchDataTrackResultRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequest) SetTid(v int64) *SearchDataTrackResultRequest {
+	s.Tid = &v
+	return s
+}
+
+type SearchDataTrackResultRequestColumnFilter struct {
+	BetweenEnd   *string   `json:"BetweenEnd,omitempty" xml:"BetweenEnd,omitempty"`
+	BetweenStart *string   `json:"BetweenStart,omitempty" xml:"BetweenStart,omitempty"`
+	ColumnName   *string   `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	InList       []*string `json:"InList,omitempty" xml:"InList,omitempty" type:"Repeated"`
+	Operator     *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Value        *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SearchDataTrackResultRequestColumnFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultRequestColumnFilter) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetBetweenEnd(v string) *SearchDataTrackResultRequestColumnFilter {
+	s.BetweenEnd = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetBetweenStart(v string) *SearchDataTrackResultRequestColumnFilter {
+	s.BetweenStart = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetColumnName(v string) *SearchDataTrackResultRequestColumnFilter {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetInList(v []*string) *SearchDataTrackResultRequestColumnFilter {
+	s.InList = v
+	return s
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetOperator(v string) *SearchDataTrackResultRequestColumnFilter {
+	s.Operator = &v
+	return s
+}
+
+func (s *SearchDataTrackResultRequestColumnFilter) SetValue(v string) *SearchDataTrackResultRequestColumnFilter {
+	s.Value = &v
+	return s
+}
+
+type SearchDataTrackResultShrinkRequest struct {
+	ColumnFilterShrink    *string `json:"ColumnFilter,omitempty" xml:"ColumnFilter,omitempty"`
+	FilterEndTime         *string `json:"FilterEndTime,omitempty" xml:"FilterEndTime,omitempty"`
+	FilterStartTime       *string `json:"FilterStartTime,omitempty" xml:"FilterStartTime,omitempty"`
+	FilterTableListShrink *string `json:"FilterTableList,omitempty" xml:"FilterTableList,omitempty"`
+	FilterTypeListShrink  *string `json:"FilterTypeList,omitempty" xml:"FilterTypeList,omitempty"`
+	OrderId               *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SearchDataTrackResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetColumnFilterShrink(v string) *SearchDataTrackResultShrinkRequest {
+	s.ColumnFilterShrink = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetFilterEndTime(v string) *SearchDataTrackResultShrinkRequest {
+	s.FilterEndTime = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetFilterStartTime(v string) *SearchDataTrackResultShrinkRequest {
+	s.FilterStartTime = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetFilterTableListShrink(v string) *SearchDataTrackResultShrinkRequest {
+	s.FilterTableListShrink = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetFilterTypeListShrink(v string) *SearchDataTrackResultShrinkRequest {
+	s.FilterTypeListShrink = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetOrderId(v int64) *SearchDataTrackResultShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *SearchDataTrackResultShrinkRequest) SetTid(v int64) *SearchDataTrackResultShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type SearchDataTrackResultResponseBody struct {
+	ErrorCode    *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TrackResult  *SearchDataTrackResultResponseBodyTrackResult `json:"TrackResult,omitempty" xml:"TrackResult,omitempty" type:"Struct"`
+}
+
+func (s SearchDataTrackResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponseBody) SetErrorCode(v string) *SearchDataTrackResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBody) SetErrorMessage(v string) *SearchDataTrackResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBody) SetRequestId(v string) *SearchDataTrackResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBody) SetSuccess(v bool) *SearchDataTrackResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBody) SetTrackResult(v *SearchDataTrackResultResponseBodyTrackResult) *SearchDataTrackResultResponseBody {
+	s.TrackResult = v
+	return s
+}
+
+type SearchDataTrackResultResponseBodyTrackResult struct {
+	EventList     []*SearchDataTrackResultResponseBodyTrackResultEventList     `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	TableInfoList []*SearchDataTrackResultResponseBodyTrackResultTableInfoList `json:"TableInfoList,omitempty" xml:"TableInfoList,omitempty" type:"Repeated"`
+	TotalCount    *int64                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResult) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResult) SetEventList(v []*SearchDataTrackResultResponseBodyTrackResultEventList) *SearchDataTrackResultResponseBodyTrackResult {
+	s.EventList = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResult) SetTableInfoList(v []*SearchDataTrackResultResponseBodyTrackResultTableInfoList) *SearchDataTrackResultResponseBodyTrackResult {
+	s.TableInfoList = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResult) SetTotalCount(v int64) *SearchDataTrackResultResponseBodyTrackResult {
+	s.TotalCount = &v
+	return s
+}
+
+type SearchDataTrackResultResponseBodyTrackResultEventList struct {
+	DataAfter      []*string `json:"DataAfter,omitempty" xml:"DataAfter,omitempty" type:"Repeated"`
+	DataBefore     []*string `json:"DataBefore,omitempty" xml:"DataBefore,omitempty" type:"Repeated"`
+	EventId        *int64    `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventLength    *int64    `json:"EventLength,omitempty" xml:"EventLength,omitempty"`
+	EventTimestamp *string   `json:"EventTimestamp,omitempty" xml:"EventTimestamp,omitempty"`
+	EventType      *string   `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	RollSQL        *string   `json:"RollSQL,omitempty" xml:"RollSQL,omitempty"`
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultEventList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultEventList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetDataAfter(v []*string) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.DataAfter = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetDataBefore(v []*string) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.DataBefore = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetEventId(v int64) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.EventId = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetEventLength(v int64) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.EventLength = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetEventTimestamp(v string) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.EventTimestamp = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetEventType(v string) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.EventType = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultEventList) SetRollSQL(v string) *SearchDataTrackResultResponseBodyTrackResultEventList {
+	s.RollSQL = &v
+	return s
+}
+
+type SearchDataTrackResultResponseBodyTrackResultTableInfoList struct {
+	Columns     []*SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Description *string                                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	SchemaName  *string                                                             `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string                                                             `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultTableInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultTableInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetColumns(v []*SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) *SearchDataTrackResultResponseBodyTrackResultTableInfoList {
+	s.Columns = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetDescription(v string) *SearchDataTrackResultResponseBodyTrackResultTableInfoList {
+	s.Description = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetSchemaName(v string) *SearchDataTrackResultResponseBodyTrackResultTableInfoList {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoList) SetTableName(v string) *SearchDataTrackResultResponseBodyTrackResultTableInfoList {
+	s.TableName = &v
+	return s
+}
+
+type SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns struct {
+	ColumnName     *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnPosition *int32  `json:"ColumnPosition,omitempty" xml:"ColumnPosition,omitempty"`
+	ColumnType     *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	Fictive        *bool   `json:"Fictive,omitempty" xml:"Fictive,omitempty"`
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) SetColumnName(v string) *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) SetColumnPosition(v int32) *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns {
+	s.ColumnPosition = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) SetColumnType(v string) *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns) SetFictive(v bool) *SearchDataTrackResultResponseBodyTrackResultTableInfoListColumns {
+	s.Fictive = &v
+	return s
+}
+
+type SearchDataTrackResultResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchDataTrackResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchDataTrackResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchDataTrackResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchDataTrackResultResponse) SetHeaders(v map[string]*string) *SearchDataTrackResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchDataTrackResultResponse) SetStatusCode(v int32) *SearchDataTrackResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchDataTrackResultResponse) SetBody(v *SearchDataTrackResultResponseBody) *SearchDataTrackResultResponse {
 	s.Body = v
 	return s
 }
@@ -37336,6 +39597,80 @@ func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrder
 	return _result, _err
 }
 
+func (client *Client) CreateDataExportOrderWithOptions(tmpReq *CreateDataExportOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataExportOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataExportOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PluginParam)) {
+		request.PluginParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PluginParam, tea.String("PluginParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginParamShrink)) {
+		query["PluginParam"] = request.PluginParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataExportOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataExportOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataExportOrder(request *CreateDataExportOrderRequest) (_result *CreateDataExportOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataExportOrderResponse{}
+	_body, _err := client.CreateDataExportOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * For more information about the Large Data Import feature, see [Import data](~~161439~~).
  *
@@ -37412,6 +39747,146 @@ func (client *Client) CreateDataImportOrder(request *CreateDataImportOrderReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataImportOrderResponse{}
 	_body, _err := client.CreateDataImportOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataTrackOrderWithOptions(tmpReq *CreateDataTrackOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataTrackOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataTrackOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Param)) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Param, tea.String("Param"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataTrackOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataTrackOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataTrackOrder(request *CreateDataTrackOrderRequest) (_result *CreateDataTrackOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataTrackOrderResponse{}
+	_body, _err := client.CreateDataTrackOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDatabaseExportOrderWithOptions(tmpReq *CreateDatabaseExportOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDatabaseExportOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDatabaseExportOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PluginParam)) {
+		request.PluginParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PluginParam, tea.String("PluginParam"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginParamShrink)) {
+		query["PluginParam"] = request.PluginParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDatabaseExportOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDatabaseExportOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDatabaseExportOrder(request *CreateDatabaseExportOrderRequest) (_result *CreateDatabaseExportOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDatabaseExportOrderResponse{}
+	_body, _err := client.CreateDatabaseExportOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39216,6 +41691,100 @@ func (client *Client) DisableUser(request *DisableUserRequest) (_result *Disable
 	return _result, _err
 }
 
+func (client *Client) DownloadDataTrackResultWithOptions(tmpReq *DownloadDataTrackResultRequest, runtime *util.RuntimeOptions) (_result *DownloadDataTrackResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DownloadDataTrackResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ColumnFilter)) {
+		request.ColumnFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ColumnFilter, tea.String("ColumnFilter"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.EventIdList)) {
+		request.EventIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventIdList, tea.String("EventIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTableList)) {
+		request.FilterTableListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTableList, tea.String("FilterTableList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTypeList)) {
+		request.FilterTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTypeList, tea.String("FilterTypeList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnFilterShrink)) {
+		query["ColumnFilter"] = request.ColumnFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventIdListShrink)) {
+		query["EventIdList"] = request.EventIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterEndTime)) {
+		query["FilterEndTime"] = request.FilterEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterStartTime)) {
+		query["FilterStartTime"] = request.FilterStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTableListShrink)) {
+		query["FilterTableList"] = request.FilterTableListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTypeListShrink)) {
+		query["FilterTypeList"] = request.FilterTypeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RollbackSQLType)) {
+		query["RollbackSQLType"] = request.RollbackSQLType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadDataTrackResult"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadDataTrackResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DownloadDataTrackResult(request *DownloadDataTrackResultRequest) (_result *DownloadDataTrackResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadDataTrackResultResponse{}
+	_body, _err := client.DownloadDataTrackResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EditLogicDatabaseWithOptions(tmpReq *EditLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *EditLogicDatabaseResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -40372,6 +42941,150 @@ func (client *Client) GetDataImportSQL(request *GetDataImportSQLRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) GetDataTrackJobDegreeWithOptions(request *GetDataTrackJobDegreeRequest, runtime *util.RuntimeOptions) (_result *GetDataTrackJobDegreeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataTrackJobDegree"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataTrackJobDegreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataTrackJobDegree(request *GetDataTrackJobDegreeRequest) (_result *GetDataTrackJobDegreeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataTrackJobDegreeResponse{}
+	_body, _err := client.GetDataTrackJobDegreeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataTrackJobTableMetaWithOptions(request *GetDataTrackJobTableMetaRequest, runtime *util.RuntimeOptions) (_result *GetDataTrackJobTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataTrackJobTableMeta"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataTrackJobTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataTrackJobTableMeta(request *GetDataTrackJobTableMetaRequest) (_result *GetDataTrackJobTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataTrackJobTableMetaResponse{}
+	_body, _err := client.GetDataTrackJobTableMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDataTrackOrderDetailWithOptions(request *GetDataTrackOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetDataTrackOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataTrackOrderDetail"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataTrackOrderDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataTrackOrderDetail(request *GetDataTrackOrderDetailRequest) (_result *GetDataTrackOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataTrackOrderDetailResponse{}
+	_body, _err := client.GetDataTrackOrderDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40425,6 +43138,56 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDatabaseResponse{}
 	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseExportOrderDetailWithOptions(request *GetDatabaseExportOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseExportOrderDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		body["OrderId"] = request.OrderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabaseExportOrderDetail"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseExportOrderDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDatabaseExportOrderDetail(request *GetDatabaseExportOrderDetailRequest) (_result *GetDatabaseExportOrderDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatabaseExportOrderDetailResponse{}
+	_body, _err := client.GetDatabaseExportOrderDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45552,6 +48315,58 @@ func (client *Client) PublishAndDeployTaskFlow(request *PublishAndDeployTaskFlow
 	return _result, _err
 }
 
+func (client *Client) QueryDataTrackResultDownloadStatusWithOptions(request *QueryDataTrackResultDownloadStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDataTrackResultDownloadStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DownloadKeyId)) {
+		query["DownloadKeyId"] = request.DownloadKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDataTrackResultDownloadStatus"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDataTrackResultDownloadStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDataTrackResultDownloadStatus(request *QueryDataTrackResultDownloadStatusRequest) (_result *QueryDataTrackResultDownloadStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDataTrackResultDownloadStatusResponse{}
+	_body, _err := client.QueryDataTrackResultDownloadStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReDeployLhDagVersionWithOptions(request *ReDeployLhDagVersionRequest, runtime *util.RuntimeOptions) (_result *ReDeployLhDagVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46245,6 +49060,88 @@ func (client *Client) RevokeUserPermission(request *RevokeUserPermissionRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeUserPermissionResponse{}
 	_body, _err := client.RevokeUserPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchDataTrackResultWithOptions(tmpReq *SearchDataTrackResultRequest, runtime *util.RuntimeOptions) (_result *SearchDataTrackResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchDataTrackResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ColumnFilter)) {
+		request.ColumnFilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ColumnFilter, tea.String("ColumnFilter"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTableList)) {
+		request.FilterTableListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTableList, tea.String("FilterTableList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTypeList)) {
+		request.FilterTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTypeList, tea.String("FilterTypeList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnFilterShrink)) {
+		query["ColumnFilter"] = request.ColumnFilterShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterEndTime)) {
+		query["FilterEndTime"] = request.FilterEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterStartTime)) {
+		query["FilterStartTime"] = request.FilterStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTableListShrink)) {
+		query["FilterTableList"] = request.FilterTableListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTypeListShrink)) {
+		query["FilterTypeList"] = request.FilterTypeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchDataTrackResult"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchDataTrackResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchDataTrackResult(request *SearchDataTrackResultRequest) (_result *SearchDataTrackResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchDataTrackResultResponse{}
+	_body, _err := client.SearchDataTrackResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
