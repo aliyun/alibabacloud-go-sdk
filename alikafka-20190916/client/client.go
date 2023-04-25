@@ -211,13 +211,38 @@ func (s *ConvertPostPayOrderResponse) SetBody(v *ConvertPostPayOrderResponseBody
 }
 
 type CreateAclRequest struct {
-	AclOperationType       *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	// The type of operation allowed by the ACL. Valid values:
+	//
+	// *   **Write**: data writes.
+	// *   **Read**: data reads.
+	// *   **Describe**: reads of transaction IDs.****
+	// *   **IdempotentWrite**: idempotent data writes to clusters.
+	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	// The name or ID of the resource.
+	//
+	// *   The value can be the name of a topic, consumer group, or cluster, or the ID of a transaction.
+	// *   You can use an asterisk (\*) to represent the names or IDs of all relevant resources.
+	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	// The mode that is used to match resources. Valid values:
+	//
+	// *   **LITERAL**: exact match
+	// *   **PREFIXED**: prefix match
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The resource type. Valid values:
+	//
+	// *   **Topic**: specifies topics.
+	// *   **Group**: specifies consumer groups.
+	// *   **Cluster**: specifies instances.
+	// *   **TransactionalId**: specifies transactions.
+	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The username.
+	//
+	// You can use an asterisk (\*) to represent all usernames.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateAclRequest) String() string {
@@ -264,10 +289,14 @@ func (s *CreateAclRequest) SetUsername(v string) *CreateAclRequest {
 }
 
 type CreateAclResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAclResponseBody) String() string {
@@ -632,18 +661,60 @@ func (s *CreatePostPayOrderResponse) SetBody(v *CreatePostPayOrderResponseBody) 
 }
 
 type CreatePrePayOrderRequest struct {
-	DeployType      *int32                         `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize        *int32                         `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType        *string                        `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EipMax          *int32                         `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	IoMax           *int32                         `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec       *string                        `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PartitionNum    *int32                         `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SpecType        *string                        `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Tag             []*CreatePrePayOrderRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TopicQuota      *int32                         `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk size. Unit: GB.
+	//
+	// For more information about the valid values, see [Billing](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The disk type. Valid values:
+	//
+	// *   **0**: ultra disk
+	// *   **1**: standard SSD
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The deployment mode of the instance. Valid values:
+	//
+	// *   **4**: deploys the instance that allows access from the Internet and a VPC.
+	// *   **5**: deploys the instance that allows access only from a VPC.
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The message returned.
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   This parameter is required if the **DeployType** parameter is set to **4**.
+	// *   For more information about the valid values, see [Pay-as-you-go](~~72142~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// For more information, see [Billing](~~84737~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	//
+	// *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource group.
+	//
+	// If this parameter is left empty, the default resource group is used. You can view the resource group ID on the Resource Group page in the Resource Management console.
+	SpecType *string                        `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	Tag      []*CreatePrePayOrderRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The tag key.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   If this parameter is not configured, all tag keys are matched.
+	// *   The tag key can be up to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s CreatePrePayOrderRequest) String() string {
@@ -715,7 +786,13 @@ func (s *CreatePrePayOrderRequest) SetTopicQuota(v int32) *CreatePrePayOrderRequ
 }
 
 type CreatePrePayOrderRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The region ID of the instance.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   This parameter is optional.
+	// *   The tag value can be 1 to 128 characters in length. The tag value cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -738,9 +815,16 @@ func (s *CreatePrePayOrderRequestTag) SetValue(v string) *CreatePrePayOrderReque
 }
 
 type CreatePrePayOrderResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Creates a subscription Message Queue for Apache Kafka instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
@@ -913,17 +997,59 @@ func (s *CreateSaslUserResponse) SetBody(v *CreateSaslUserResponseBody) *CreateS
 }
 
 type CreateTopicRequest struct {
-	CompactTopic      *bool                    `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	Config            map[string]interface{}   `json:"Config,omitempty" xml:"Config,omitempty"`
-	InstanceId        *string                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LocalTopic        *bool                    `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	MinInsyncReplicas *int64                   `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
-	PartitionNum      *string                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId          *string                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark            *string                  `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The number of replicas for the topic.
+	//
+	// *   This parameter is available only when the **LocalTopic** parameter is set to **true**\<props="local_disk">, or the **edition of the instance** is **Open Source Edition (Local Disk)**.
+	// *   Valid values: 1 to 3.
+	//
+	// > If you set this parameter to **1**, the risk of data loss increases. Exercise caution when you configure this parameter.
+	CompactTopic *bool `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
+	// The status code returned. The status code 200 indicates that the request is successful.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The region ID of the instance in which you want to create a topic.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Additional configurations.
+	//
+	// *   The value of this parameter must be in JSON format.
+	// *   The key must be **replications**. The value specifies the number of replicas for the topic. The value must be an integer that ranges from 1 to 3.
+	// *   This parameter is available only when the **LocalTopic** parameter is set to **true**\<props="local_disk">, or the **edition of the instance** is **Open Source Edition (Local Disk)**.
+	//
+	// > If you configure this parameter, the **ReplicationFactor** parameter does not take effect.
+	LocalTopic *bool `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
+	// The value of tag N to add to the resource.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   This parameter can be left empty.
+	// *   A tag value can be 1 to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	MinInsyncReplicas *int64 `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
+	// The minimum number of in-sync replicas (ISRs).
+	//
+	// *   This parameter is available only when the **LocalTopic** parameter is set to **true**\<props="local_disk">, or the **edition of the instance** is **Open Source Edition (Local Disk)**.
+	// *   The value of this parameter must be smaller than the value of the ReplicationFactor parameter.
+	// *   Valid values: 1 to 3.
+	PartitionNum *string `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// Specifies whether the topic uses local storage. Valid values:
+	//
+	// *   false: The topic uses cloud storage.
+	// *   true: The topic uses local storage.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of partitions in the topic.
+	//
+	// *   Valid values: 1 to 360.
+	// *   In the Message Queue for Apache Kafka console, you can view the number of partitions that the system recommends based on the specification of the instance. We recommend that you specify the number that is recommended by the system as the value of this parameter to reduce the risk of data skew.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The key of tag N to add to the resource.
+	//
+	// *   Valid values of N: 1 to 20.
+	// *   If this parameter is left empty, the keys of all tags are matched.
+	// *   A tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
 	ReplicationFactor *int64                   `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	Tag               []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Topic             *string                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The log cleanup policy that is used for the topic. This parameter is available only when the LocalTopic parameter is set to true. Valid values:
+	//
+	// *   false: The topic uses the delete policy.
+	// *   true: The topic uses the compact policy.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -939,8 +1065,8 @@ func (s *CreateTopicRequest) SetCompactTopic(v bool) *CreateTopicRequest {
 	return s
 }
 
-func (s *CreateTopicRequest) SetConfig(v map[string]interface{}) *CreateTopicRequest {
-	s.Config = v
+func (s *CreateTopicRequest) SetConfig(v string) *CreateTopicRequest {
+	s.Config = &v
 	return s
 }
 
@@ -1012,111 +1138,16 @@ func (s *CreateTopicRequestTag) SetValue(v string) *CreateTopicRequestTag {
 	return s
 }
 
-type CreateTopicShrinkRequest struct {
-	CompactTopic      *bool                          `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	ConfigShrink      *string                        `json:"Config,omitempty" xml:"Config,omitempty"`
-	InstanceId        *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LocalTopic        *bool                          `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	MinInsyncReplicas *int64                         `json:"MinInsyncReplicas,omitempty" xml:"MinInsyncReplicas,omitempty"`
-	PartitionNum      *string                        `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId          *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark            *string                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ReplicationFactor *int64                         `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	Tag               []*CreateTopicShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	Topic             *string                        `json:"Topic,omitempty" xml:"Topic,omitempty"`
-}
-
-func (s CreateTopicShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTopicShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTopicShrinkRequest) SetCompactTopic(v bool) *CreateTopicShrinkRequest {
-	s.CompactTopic = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetConfigShrink(v string) *CreateTopicShrinkRequest {
-	s.ConfigShrink = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetInstanceId(v string) *CreateTopicShrinkRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetLocalTopic(v bool) *CreateTopicShrinkRequest {
-	s.LocalTopic = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetMinInsyncReplicas(v int64) *CreateTopicShrinkRequest {
-	s.MinInsyncReplicas = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetPartitionNum(v string) *CreateTopicShrinkRequest {
-	s.PartitionNum = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetRegionId(v string) *CreateTopicShrinkRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetRemark(v string) *CreateTopicShrinkRequest {
-	s.Remark = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetReplicationFactor(v int64) *CreateTopicShrinkRequest {
-	s.ReplicationFactor = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetTag(v []*CreateTopicShrinkRequestTag) *CreateTopicShrinkRequest {
-	s.Tag = v
-	return s
-}
-
-func (s *CreateTopicShrinkRequest) SetTopic(v string) *CreateTopicShrinkRequest {
-	s.Topic = &v
-	return s
-}
-
-type CreateTopicShrinkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateTopicShrinkRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTopicShrinkRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTopicShrinkRequestTag) SetKey(v string) *CreateTopicShrinkRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *CreateTopicShrinkRequestTag) SetValue(v string) *CreateTopicShrinkRequestTag {
-	s.Value = &v
-	return s
-}
-
 type CreateTopicResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The message returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// *   Each Alibaba Cloud account can call this operation up to once per second.
+	// *   The maximum number of topics that you can create in an instance is determined by the specification of the instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTopicResponseBody) String() string {
@@ -1177,13 +1208,32 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteAclRequest struct {
-	AclOperationType       *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	// The type of operation allowed by the ACL. Valid values:
+	//
+	// *   **Write**
+	// *   **Read**
+	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	// The name of the resource.
+	//
+	// *   The value can be the name of a topic or consumer group.
+	// *   You can use an asterisk (\*) to indicate the names of all topics or consumer groups.
+	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
+	// The mode that is used to match resources. Valid values:
+	//
+	// *   **LITERAL:** full match
+	// *   **PREFIXED**: prefix match
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The type of the resource.
+	//
+	// *   **Topic**
+	// *   **Group**
+	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the user.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DeleteAclRequest) String() string {
@@ -1230,10 +1280,14 @@ func (s *DeleteAclRequest) SetUsername(v string) *DeleteAclRequest {
 }
 
 type DeleteAclResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAclResponseBody) String() string {
@@ -1294,9 +1348,12 @@ func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse
 }
 
 type DeleteConsumerGroupRequest struct {
+	// The name of the consumer group.
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteConsumerGroupRequest) String() string {
@@ -1323,10 +1380,14 @@ func (s *DeleteConsumerGroupRequest) SetRegionId(v string) *DeleteConsumerGroupR
 }
 
 type DeleteConsumerGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponseBody) String() string {
@@ -1387,8 +1448,10 @@ func (s *DeleteConsumerGroupResponse) SetBody(v *DeleteConsumerGroupResponseBody
 }
 
 type DeleteInstanceRequest struct {
+	// The region ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -1410,10 +1473,14 @@ func (s *DeleteInstanceRequest) SetRegionId(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Deletes a Message Queue for Apache Kafka instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -1474,10 +1541,19 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteSaslUserRequest struct {
+	// The name of the user.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The SASL mechanism. Valid values:
+	//
+	// *   **plain**: a simple mechanism that uses usernames and passwords to verify user identities. Message Queue for Apache Kafka provides an optimized PLAIN mechanism that allows you to dynamically create SASL users for an instance without the need to restart the instance.
+	// *   **scram**: a mechanism that uses usernames and passwords to verify user identities. This mechanism provides better security protection than the PLAIN mechanism. Message Queue for Apache Kafka uses SCRAM-SHA-256.
+	//
+	// Default value: **plain**.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DeleteSaslUserRequest) String() string {
@@ -1509,10 +1585,14 @@ func (s *DeleteSaslUserRequest) SetUsername(v string) *DeleteSaslUserRequest {
 }
 
 type DeleteSaslUserResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Deletes a Simple Authentication and Security Layer (SASL) user.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteSaslUserResponseBody) String() string {
@@ -1573,9 +1653,12 @@ func (s *DeleteSaslUserResponse) SetBody(v *DeleteSaslUserResponseBody) *DeleteS
 }
 
 type DeleteTopicRequest struct {
+	// The name of the topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DeleteTopicRequest) String() string {
@@ -1602,10 +1685,14 @@ func (s *DeleteTopicRequest) SetTopic(v string) *DeleteTopicRequest {
 }
 
 type DeleteTopicResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Deletes a topic.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTopicResponseBody) String() string {
@@ -2073,8 +2160,10 @@ func (s *GetAllInstanceIdListResponse) SetBody(v *GetAllInstanceIdListResponseBo
 }
 
 type GetAllowedIpListRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetAllowedIpListRequest) String() string {
@@ -2096,11 +2185,16 @@ func (s *GetAllowedIpListRequest) SetRegionId(v string) *GetAllowedIpListRequest
 }
 
 type GetAllowedIpListResponseBody struct {
+	// The IP address whitelist of the instance.
 	AllowedList *GetAllowedIpListResponseBodyAllowedList `json:"AllowedList,omitempty" xml:"AllowedList,omitempty" type:"Struct"`
-	Code        *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBody) String() string {
@@ -2137,9 +2231,17 @@ func (s *GetAllowedIpListResponseBody) SetSuccess(v bool) *GetAllowedIpListRespo
 }
 
 type GetAllowedIpListResponseBodyAllowedList struct {
-	DeployType   *int32                                                 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The deployment mode of the instance. Valid values:
+	//
+	// *   **4**: allows access from the Internet and a virtual private cloud (VPC).
+	// *   **5**: allows access from a VPC.
+	//
+	// >  Only integrators need to concern themselves with the value of this parameter.
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The whitelist for access from the Internet.
 	InternetList []*GetAllowedIpListResponseBodyAllowedListInternetList `json:"InternetList,omitempty" xml:"InternetList,omitempty" type:"Repeated"`
-	VpcList      []*GetAllowedIpListResponseBodyAllowedListVpcList      `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
+	// The whitelist for access from a VPC.
+	VpcList []*GetAllowedIpListResponseBodyAllowedListVpcList `json:"VpcList,omitempty" xml:"VpcList,omitempty" type:"Repeated"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedList) String() string {
@@ -2166,9 +2268,13 @@ func (s *GetAllowedIpListResponseBodyAllowedList) SetVpcList(v []*GetAllowedIpLi
 }
 
 type GetAllowedIpListResponseBodyAllowedListInternetList struct {
+	// The IP address whitelist group.
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
 	AllowedIpList  []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	PortRange      *string            `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The port range. Valid values:
+	//
+	// **9093/9093**.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListInternetList) String() string {
@@ -2197,7 +2303,10 @@ func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetPortRange(v str
 type GetAllowedIpListResponseBodyAllowedListVpcList struct {
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
 	AllowedIpList  []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
-	PortRange      *string            `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The port range. Valid values:
+	//
+	// **9092/9092**.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListVpcList) String() string {
@@ -2253,9 +2362,12 @@ func (s *GetAllowedIpListResponse) SetBody(v *GetAllowedIpListResponseBody) *Get
 }
 
 type GetConsumerListRequest struct {
+	// The ID of the instance.
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The tags of the topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the consumer group. If you do not configure this parameter, all consumer groups are queried.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerListRequest) String() string {
@@ -2282,11 +2394,16 @@ func (s *GetConsumerListRequest) SetRegionId(v string) *GetConsumerListRequest {
 }
 
 type GetConsumerListResponseBody struct {
-	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the consumer group.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
-	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The key of the tag.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the consumer groups.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConsumerListResponseBody) String() string {
@@ -2340,11 +2457,18 @@ func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumer
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
-	ConsumerId *string                                                `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	InstanceId *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string                                                `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Tags       *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// 自动创建的Group
+	AutomaticallyCreatedGroup *bool `json:"AutomaticallyCreatedGroup,omitempty" xml:"AutomaticallyCreatedGroup,omitempty"`
+	// The ID of the instance to which the consumer group belongs.
+	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The value of the tag.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The description of the consumer group.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Queries one or more consumer groups in a specified Message Queue for Apache Kafka instance.
+	Tags *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s GetConsumerListResponseBodyConsumerListConsumerVO) String() string {
@@ -2353,6 +2477,11 @@ func (s GetConsumerListResponseBodyConsumerListConsumerVO) String() string {
 
 func (s GetConsumerListResponseBodyConsumerListConsumerVO) GoString() string {
 	return s.String()
+}
+
+func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetAutomaticallyCreatedGroup(v bool) *GetConsumerListResponseBodyConsumerListConsumerVO {
+	s.AutomaticallyCreatedGroup = &v
+	return s
 }
 
 func (s *GetConsumerListResponseBodyConsumerListConsumerVO) SetConsumerId(v string) *GetConsumerListResponseBodyConsumerListConsumerVO {
@@ -2450,9 +2579,12 @@ func (s *GetConsumerListResponse) SetBody(v *GetConsumerListResponseBody) *GetCo
 }
 
 type GetConsumerProgressRequest struct {
+	// The region ID of the instance.
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// The name of the consumer group.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerProgressRequest) String() string {
@@ -2479,11 +2611,16 @@ func (s *GetConsumerProgressRequest) SetRegionId(v string) *GetConsumerProgressR
 }
 
 type GetConsumerProgressResponseBody struct {
-	Code             *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the last message consumed by the consumer group was generated.
 	ConsumerProgress *GetConsumerProgressResponseBodyConsumerProgress `json:"ConsumerProgress,omitempty" xml:"ConsumerProgress,omitempty" type:"Struct"`
-	Message          *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The consumption status of the consumer group.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBody) String() string {
@@ -2520,9 +2657,12 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 }
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
-	LastTimestamp *int64                                                    `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	TopicList     *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	TotalDiff     *int64                                                    `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The number of messages that were not consumed in all topics. This is also known as the number of accumulated messages in all topics.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The number of messages that were not consumed in the topic. This is also known as the number of accumulated messages in the topic.
+	TopicList *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	// The consumption progress of each topic to which the consumer group is subscribed.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgress) String() string {
@@ -2566,10 +2706,14 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopicList(
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
-	LastTimestamp *int64                                                                       `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	OffsetList    *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
-	Topic         *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TotalDiff     *int64                                                                       `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// The name of the topic.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The ID of the partition.
+	OffsetList *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
+	// The information about offsets in the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The time when the last consumed message in the topic was generated.
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) String() string {
@@ -2618,10 +2762,14 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {
-	BrokerOffset   *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	// The consumer offset in the partition of the topic.
+	BrokerOffset *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	// The time when the last consumed message in the partition was generated.
 	ConsumerOffset *int64 `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
-	LastTimestamp  *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Partition      *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// Queries the consumption status of a specified consumer group.
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// The latest offset in the partition of the topic.
+	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) String() string {
@@ -2682,11 +2830,16 @@ func (s *GetConsumerProgressResponse) SetBody(v *GetConsumerProgressResponseBody
 }
 
 type GetInstanceListRequest struct {
-	InstanceId      []*string                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	OrderId         *string                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId        *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*GetInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The IDs of instances.
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	// The ID of the order. You can obtain the order ID on the [Orders](https://usercenter2-intl.aliyun.com/order/list?pageIndex=1\&pageSize=20\&spm=5176.12818093.top-nav.ditem-ord.36f016d0OQFmJa) page in Alibaba Cloud User Center.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group. You can obtain this ID on the Resource Group page in the Resource Management console.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tag []*GetInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceListRequest) String() string {
@@ -2723,7 +2876,15 @@ func (s *GetInstanceListRequest) SetTag(v []*GetInstanceListRequestTag) *GetInst
 }
 
 type GetInstanceListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag that is attached to the resource.
+	//
+	// *   If this parameter is left empty, all tag keys are matched.
+	// *   A tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag that is attached to the resource.
+	//
+	// *   If the Key parameter is left empty, this parameter must be left empty. If this parameter is left empty, all tag values are matched.
+	// *   A tag key can be up to 128 characters in length and cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2746,11 +2907,16 @@ func (s *GetInstanceListRequestTag) SetValue(v string) *GetInstanceListRequestTa
 }
 
 type GetInstanceListResponseBody struct {
-	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the instances.
 	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
-	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the region.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceListResponseBody) String() string {
@@ -2804,39 +2970,109 @@ func (s *GetInstanceListResponseBodyInstanceList) SetInstanceVO(v []*GetInstance
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVO struct {
-	AllConfig                *string                                                                    `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
-	CreateTime               *int64                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployType               *int32                                                                     `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskSize                 *int32                                                                     `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType                 *int32                                                                     `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	DomainEndpoint           *string                                                                    `json:"DomainEndpoint,omitempty" xml:"DomainEndpoint,omitempty"`
-	EipMax                   *int32                                                                     `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	EndPoint                 *string                                                                    `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	ExpiredTime              *int64                                                                     `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceId               *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IoMax                    *int32                                                                     `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	KmsKeyId                 *string                                                                    `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	MsgRetain                *int32                                                                     `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
-	Name                     *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	PaidType                 *int32                                                                     `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	RegionId                 *string                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId          *string                                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SaslDomainEndpoint       *string                                                                    `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
-	SecurityGroup            *string                                                                    `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	ServiceStatus            *int32                                                                     `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	SpecType                 *string                                                                    `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	SslDomainEndpoint        *string                                                                    `json:"SslDomainEndpoint,omitempty" xml:"SslDomainEndpoint,omitempty"`
-	SslEndPoint              *string                                                                    `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
-	StandardZoneId           *string                                                                    `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
-	Tags                     *GetInstanceListResponseBodyInstanceListInstanceVOTags                     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TopicNumLimit            *int32                                                                     `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
+	// The configurations of the instance.
+	AllConfig *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	// The time when the instance was created. Unit: milliseconds.
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The type of the network in which the instance is deployed. Valid values:
+	//
+	// *   **4**: the Internet and virtual private clouds (VPCs).
+	// *   **5**: VPCs.
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The size of the disk.
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The type of the disk. Unit: GB. Valid values:
+	//
+	// *   **0**: ultra disk
+	// *   **1**: standard SSD
+	DiskType *int32 `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The default endpoint of the instance in domain name mode. The default endpoint of an instance can be in domain name mode or IP address mode.
+	//
+	// *   Domain name mode: A default endpoint in this mode consists of a domain name of the instance and a port number. The format of a default endpoint in this mode is `{Instance domain name}:{Port number}`.
+	// *   IP address mode: A default endpoint in this mode consists of the IP address of a broker and a port number. The format of a default endpoint in this mode is `{Broker IP address}:{Port number}`.
+	DomainEndpoint *string `json:"DomainEndpoint,omitempty" xml:"DomainEndpoint,omitempty"`
+	// The peak public traffic allowed for the instance.
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The default endpoint of the instance in IP address mode. The default endpoint of an instance can be in domain name mode or IP address mode.
+	//
+	// *   Domain name mode: A default endpoint in this mode consists of a domain name of the instance and a port number. The format of a default endpoint in this mode is `{Instance domain name}:{Port number}`.
+	// *   IP address mode: A default endpoint in this mode consists of the IP address of a broker and a port number. The format of a default endpoint in this mode is `{Broker IP address}:{Port number}`.
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// The expiration time. Unit: milliseconds.
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The peak traffic allowed for the instance.
+	IoMax     *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The ID of the key that is used for disk encryption in the region where the instance resides.
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The retention period of messages on the instance. Unit: hours.
+	MsgRetain *int32 `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
+	// The name of the instance.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **0**: the subscription billing method
+	// *   **1**: the pay-as-you-go billing method
+	PaidType *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode. The SASL endpoint of an instance can be in domain name mode or IP address mode.
+	//
+	// *   Domain name mode: An SASL endpoint in this mode consists of a domain name of the instance and a port number. The format of an SASL endpoint in this mode is `{Instance domain name}:{Port number}`.
+	// *   IP address mode: An SASL endpoint in this mode consists of the IP address of the broker and a port number. The format of an SASL endpoint in this mode is `{Broker IP address}:{Port number}`.
+	SaslDomainEndpoint *string `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
+	// The security group of the instance.
+	//
+	// *   If the instance is deployed in the Message Queue for Apache Kafka console or by calling the [StartInstance](~~157786~~) operation without configuring a security group, no value is returned for this parameter.
+	// *   If the instance is deployed by calling the [StartInstance](~~157786~~) operation and a security group is configured, the return value is the configured security group.
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   **0**: pending
+	// *   **1**: deploying
+	// *   **5**: running
+	// *   **15**: expired
+	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	// *   **normal**: Standard Edition
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The SSL endpoint of the instance in domain name mode. The SSL endpoint of an instance can be in domain name mode or IP address mode.
+	//
+	// *   Domain name mode: An SSL endpoint in this mode consists of a domain name of the instance and a port number. The format of an SSL endpoint in this mode is `{Instance domain name}:{Port number}`.
+	// *   IP address mode: An SSL endpoint in this mode consists of the IP address of the broker and a port number. The format of an SSL endpoint in this mode is `{Broker IP address}:{Port number}`.
+	SslDomainEndpoint *string `json:"SslDomainEndpoint,omitempty" xml:"SslDomainEndpoint,omitempty"`
+	// The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode. The SSL endpoint of an instance can be in domain name mode or IP address mode.
+	//
+	// *   Domain name mode: An SSL endpoint in this mode consists of a domain name of the instance and a port number. The format of an SSL endpoint in this mode is `{Instance domain name}:{Port number}`.
+	// *   IP address mode: An SSL endpoint in this mode consists of the IP address of the broker and a port number. The format of an SSL endpoint in this mode is `{Broker IP address}:{Port number}`.
+	SslEndPoint *string `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
+	// The ID of the zone.
+	StandardZoneId *string `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
+	// The tags that are attached to the instance.
+	Tags *GetInstanceListResponseBodyInstanceListInstanceVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The maximum number of topics that can be created on the instance.
+	TopicNumLimit *int32 `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
+	// The upgrade information about the instance.
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
-	UsedGroupCount           *int32                                                                     `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
-	UsedPartitionCount       *int32                                                                     `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
-	UsedTopicCount           *int32                                                                     `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
-	VSwitchId                *string                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                    *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                   *string                                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of used groups.
+	UsedGroupCount *int32 `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
+	// The number of used partitions.
+	UsedPartitionCount *int32 `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
+	// The number of used topics.
+	UsedTopicCount *int32 `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the zone.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetInstanceListResponseBodyInstanceListInstanceVO) String() string {
@@ -2899,6 +3135,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetInstanceId(v stri
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMax(v int32) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.IoMax = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetIoMaxSpec(v string) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.IoMaxSpec = &v
 	return s
 }
 
@@ -3030,7 +3271,9 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOTags) SetTagVO(v []*Ge
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3053,6 +3296,7 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) SetValue(v 
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo struct {
+	// The open source Apache Kafka version that corresponds to the instance.
 	Current2OpenSourceVersion *string `json:"Current2OpenSourceVersion,omitempty" xml:"Current2OpenSourceVersion,omitempty"`
 }
 
@@ -3099,8 +3343,10 @@ func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetIn
 }
 
 type GetQuotaTipRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetQuotaTipRequest) String() string {
@@ -3122,11 +3368,16 @@ func (s *GetQuotaTipRequest) SetRegionId(v string) *GetQuotaTipRequest {
 }
 
 type GetQuotaTipResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional message. This message is typically used to describe API call failures for troubleshooting.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The quota.
 	QuotaData *GetQuotaTipResponseBodyQuotaData `json:"QuotaData,omitempty" xml:"QuotaData,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQuotaTipResponseBody) String() string {
@@ -3163,17 +3414,31 @@ func (s *GetQuotaTipResponseBody) SetSuccess(v bool) *GetQuotaTipResponseBody {
 }
 
 type GetQuotaTipResponseBodyQuotaData struct {
-	GroupLeft         *int32 `json:"GroupLeft,omitempty" xml:"GroupLeft,omitempty"`
-	GroupUsed         *int32 `json:"GroupUsed,omitempty" xml:"GroupUsed,omitempty"`
-	IsPartitionBuy    *int32 `json:"IsPartitionBuy,omitempty" xml:"IsPartitionBuy,omitempty"`
-	PartitionLeft     *int32 `json:"PartitionLeft,omitempty" xml:"PartitionLeft,omitempty"`
+	// The number of available groups.
+	GroupLeft *int32 `json:"GroupLeft,omitempty" xml:"GroupLeft,omitempty"`
+	// The number of used groups.
+	GroupUsed *int32 `json:"GroupUsed,omitempty" xml:"GroupUsed,omitempty"`
+	// The method that you use to purchase partitions. Valid values:
+	//
+	// *   0: indicates that the instance is purchased based on topics.
+	// *   1: indicates that the instance is purchased based on partitions.
+	IsPartitionBuy *int32 `json:"IsPartitionBuy,omitempty" xml:"IsPartitionBuy,omitempty"`
+	// The number of available partitions.
+	PartitionLeft *int32 `json:"PartitionLeft,omitempty" xml:"PartitionLeft,omitempty"`
+	// The number of purchased partitions.
 	PartitionNumOfBuy *int32 `json:"PartitionNumOfBuy,omitempty" xml:"PartitionNumOfBuy,omitempty"`
-	PartitionQuata    *int32 `json:"PartitionQuata,omitempty" xml:"PartitionQuata,omitempty"`
-	PartitionUsed     *int32 `json:"PartitionUsed,omitempty" xml:"PartitionUsed,omitempty"`
-	TopicLeft         *int32 `json:"TopicLeft,omitempty" xml:"TopicLeft,omitempty"`
-	TopicNumOfBuy     *int32 `json:"TopicNumOfBuy,omitempty" xml:"TopicNumOfBuy,omitempty"`
-	TopicQuota        *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
-	TopicUsed         *int32 `json:"TopicUsed,omitempty" xml:"TopicUsed,omitempty"`
+	// The quota of partitions.
+	PartitionQuota *int32 `json:"PartitionQuota,omitempty" xml:"PartitionQuota,omitempty"`
+	// The number of used partitions.
+	PartitionUsed *int32 `json:"PartitionUsed,omitempty" xml:"PartitionUsed,omitempty"`
+	// The number of available topics.
+	TopicLeft *int32 `json:"TopicLeft,omitempty" xml:"TopicLeft,omitempty"`
+	// The number of purchased topics.
+	TopicNumOfBuy *int32 `json:"TopicNumOfBuy,omitempty" xml:"TopicNumOfBuy,omitempty"`
+	// The quota of topics.
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	// The number of used topics.
+	TopicUsed *int32 `json:"TopicUsed,omitempty" xml:"TopicUsed,omitempty"`
 }
 
 func (s GetQuotaTipResponseBodyQuotaData) String() string {
@@ -3209,8 +3474,8 @@ func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionNumOfBuy(v int32) *GetQuo
 	return s
 }
 
-func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionQuata(v int32) *GetQuotaTipResponseBodyQuotaData {
-	s.PartitionQuata = &v
+func (s *GetQuotaTipResponseBodyQuotaData) SetPartitionQuota(v int32) *GetQuotaTipResponseBodyQuotaData {
+	s.PartitionQuota = &v
 	return s
 }
 
@@ -3269,11 +3534,16 @@ func (s *GetQuotaTipResponse) SetBody(v *GetQuotaTipResponseBody) *GetQuotaTipRe
 }
 
 type GetTopicListRequest struct {
+	// The name of the topic that you want to query.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic       *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The region ID of the instance whose topics you want to query.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the returned page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the call was successful.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicListRequest) String() string {
@@ -3310,14 +3580,29 @@ func (s *GetTopicListRequest) SetTopic(v string) *GetTopicListRequest {
 }
 
 type GetTopicListResponseBody struct {
-	Code        *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Message     *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	TopicList   *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	Total       *int32                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The number of topics.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The information about the topic.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status of the topic. Valid values:
+	//
+	// **0:** indicates that the topic is running.
+	//
+	// If the topic is deleted, this parameter is not returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The message returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned on each page.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The description. Valid values:
+	//
+	// *   The description contains only letters, digits, hyphens (-), and underscores (\_).
+	// *   The description is 3 to 64 characters in length.
+	TopicList *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	// The number of partitions in the topic.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetTopicListResponseBody) String() string {
@@ -3386,17 +3671,39 @@ func (s *GetTopicListResponseBodyTopicList) SetTopicVO(v []*GetTopicListResponse
 }
 
 type GetTopicListResponseBodyTopicListTopicVO struct {
-	CompactTopic *bool                                         `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	CreateTime   *int64                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId   *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LocalTopic   *bool                                         `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	PartitionNum *int32                                        `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId     *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark       *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status       *int32                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusName   *string                                       `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	Tags         *GetTopicListResponseBodyTopicListTopicVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Topic        *string                                       `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	AutoCreate *bool `json:"AutoCreate,omitempty" xml:"AutoCreate,omitempty"`
+	// The region ID of the instance whose topics were queried.
+	CompactTopic *bool `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
+	// Running
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The tags.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The key of the tag.
+	LocalTopic *bool `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
+	// The name of the topic. Valid values:
+	//
+	// *   The name contains only letters, digits, hyphens (-), and underscores (\_).
+	// *   The name is 3 to 64 characters in length. If the name that you specified contains more than 64 characters, the returned name is automatically truncated.
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The value of the tag.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the topic. Valid values:
+	//
+	// **Running**
+	//
+	// If the topic is deleted, this parameter is not returned.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The timestamp that indicates when the topic was created. Unit: milliseconds.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the instance
+	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	// Indicates whether the topic was automatically created.
+	Tags *GetTopicListResponseBodyTopicListTopicVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The log cleanup policy that is used for the topic. This parameter is returned when the **LocalTopic** parameter is set to **true**. Valid values:
+	//
+	// *   false: The topic uses the delete policy.
+	// *   true: The topic uses the compact policy.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicListResponseBodyTopicListTopicVO) String() string {
@@ -3405,6 +3712,11 @@ func (s GetTopicListResponseBodyTopicListTopicVO) String() string {
 
 func (s GetTopicListResponseBodyTopicListTopicVO) GoString() string {
 	return s.String()
+}
+
+func (s *GetTopicListResponseBodyTopicListTopicVO) SetAutoCreate(v bool) *GetTopicListResponseBodyTopicListTopicVO {
+	s.AutoCreate = &v
+	return s
 }
 
 func (s *GetTopicListResponseBodyTopicListTopicVO) SetCompactTopic(v bool) *GetTopicListResponseBodyTopicListTopicVO {
@@ -3892,9 +4204,15 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyInstanceNameRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the instance. Valid values:
+	//
+	// *   The name can contain only letters, digits, hyphens (-), and underscores (\_).
+	// *   The name must be 3 to 64 characters in length. If the name that you specify contains more than 64 characters, the system automatically truncates the name to 64 characters.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyInstanceNameRequest) String() string {
@@ -3921,10 +4239,14 @@ func (s *ModifyInstanceNameRequest) SetRegionId(v string) *ModifyInstanceNameReq
 }
 
 type ModifyInstanceNameResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Changes the name of a Message Queue for Apache Kafka instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyInstanceNameResponseBody) String() string {
@@ -4084,10 +4406,14 @@ func (s *ModifyPartitionNumResponse) SetBody(v *ModifyPartitionNumResponseBody) 
 }
 
 type ModifyTopicRemarkRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The description of the topic.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The name of the topic.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s ModifyTopicRemarkRequest) String() string {
@@ -4119,10 +4445,14 @@ func (s *ModifyTopicRemarkRequest) SetTopic(v string) *ModifyTopicRemarkRequest 
 }
 
 type ModifyTopicRemarkResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyTopicRemarkResponseBody) String() string {
@@ -4183,9 +4513,15 @@ func (s *ModifyTopicRemarkResponse) SetBody(v *ModifyTopicRemarkResponseBody) *M
 }
 
 type ReleaseInstanceRequest struct {
-	ForceDeleteInstance *bool   `json:"ForceDeleteInstance,omitempty" xml:"ForceDeleteInstance,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The returned message.
+	ForceDeleteInstance *bool `json:"ForceDeleteInstance,omitempty" xml:"ForceDeleteInstance,omitempty"`
+	// Specifies whether to immediately release the physical resources of the instance. Valid values:
+	//
+	// *   **true**: The physical resources of the instance are immediately released.
+	// *   **false**: The physical resources of the instance are retained for a period of time before they are released.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseInstanceRequest) String() string {
@@ -4212,10 +4548,14 @@ func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
 }
 
 type ReleaseInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request is successful.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// You cannot call this operation to release a subscription Message Queue for Apache Kafka instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Releases a pay-as-you-go Message Queue for Apache Kafka instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseInstanceResponseBody) String() string {
@@ -4465,11 +4805,28 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 }
 
 type TagResourcesRequest struct {
-	InstanceId   *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the request.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region in which the resource is deployed.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the resources to which you want to attach tags. Valid values:
+	//
+	// *   **INSTANCE**
+	// *   **TOPIC**
+	// *   **CONSUMERGROUP**
+	//
+	// >  The value of this parameter is not case-sensitive.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The ID of the resource to which you want to attach tags. Take note of the following rules when you specify a resource ID:
+	//
+	// *   The resource ID of an instance is the value of the instanceId parameter.
+	// *   The resource ID of a topic is the value of the Kafka_alikafka_instanceId_topic parameter.
+	// *   The resource ID of a group is the value of the Kafka_alikafka_instanceId_consumerGroup parameter.
+	//
+	// For example, the resources to which you want to attach tags include the alikafka_post-cn-v0h1fgs2xxxx instance, the test-topic topic, and the test-consumer-group group. In this case, their resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4529,6 +4886,11 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The key of the tag that is attached to the resource.
+	//
+	// *   If you want to configure this parameter, specify at least one tag key and at most 20 tag keys.
+	// *   This parameter is required.
+	// *   The tag key can be up to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://或者https://。)
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4575,11 +4937,24 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// *   If you want to configure this parameter, specify at least one tag key and at most 20 tag keys.
+	// *   If this parameter is not configured and the All parameter is set to true, all tag keys are matched.
+	// *   The tag key can be up to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://或者https://。)
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The IDs of the resources from which you want to detach tags.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Take note of the following rules when you specify a resource ID:
+	//
+	// *   The resource ID of an instance is the value of the instanceId parameter.
+	// *   The resource ID of a topic is the value of the Kafka_instanceId_topic parameter.
+	// *   The resource ID of a group is the value of the Kafka_instanceId_consumerGroup parameter.
+	//
+	// For example, the resources from which you want to detach tags include the alikafka_post-cn-v0h1fgs2xxxx instance, the test-topic topic, and the test-consumer-group consumer group. In this case, their resource IDs are alikafka_post-cn-v0h1fgs2xxxx, Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-topic, and Kafka_alikafka_post-cn-v0h1fgs2xxxx_test-consumer-group.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Detaches tags from a specified resource.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4778,10 +5153,206 @@ func (s *UpdateAllowedIpResponse) SetBody(v *UpdateAllowedIpResponseBody) *Updat
 	return s
 }
 
+type UpdateConsumerOffsetRequest struct {
+	ConsumerId *string                               `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	InstanceId *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Offsets    []*UpdateConsumerOffsetRequestOffsets `json:"Offsets,omitempty" xml:"Offsets,omitempty" type:"Repeated"`
+	RegionId   *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetType  *string                               `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	Time       *string                               `json:"Time,omitempty" xml:"Time,omitempty"`
+	Topic      *string                               `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateConsumerOffsetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConsumerOffsetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConsumerOffsetRequest) SetConsumerId(v string) *UpdateConsumerOffsetRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetInstanceId(v string) *UpdateConsumerOffsetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetOffsets(v []*UpdateConsumerOffsetRequestOffsets) *UpdateConsumerOffsetRequest {
+	s.Offsets = v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetRegionId(v string) *UpdateConsumerOffsetRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetResetType(v string) *UpdateConsumerOffsetRequest {
+	s.ResetType = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetTime(v string) *UpdateConsumerOffsetRequest {
+	s.Time = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequest) SetTopic(v string) *UpdateConsumerOffsetRequest {
+	s.Topic = &v
+	return s
+}
+
+type UpdateConsumerOffsetRequestOffsets struct {
+	Offset    *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+}
+
+func (s UpdateConsumerOffsetRequestOffsets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConsumerOffsetRequestOffsets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConsumerOffsetRequestOffsets) SetOffset(v int64) *UpdateConsumerOffsetRequestOffsets {
+	s.Offset = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetRequestOffsets) SetPartition(v int32) *UpdateConsumerOffsetRequestOffsets {
+	s.Partition = &v
+	return s
+}
+
+type UpdateConsumerOffsetShrinkRequest struct {
+	ConsumerId    *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OffsetsShrink *string `json:"Offsets,omitempty" xml:"Offsets,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResetType     *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	Time          *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateConsumerOffsetShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConsumerOffsetShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetConsumerId(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetInstanceId(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetOffsetsShrink(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.OffsetsShrink = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetRegionId(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetResetType(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.ResetType = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetTime(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.Time = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetShrinkRequest) SetTopic(v string) *UpdateConsumerOffsetShrinkRequest {
+	s.Topic = &v
+	return s
+}
+
+type UpdateConsumerOffsetResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateConsumerOffsetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConsumerOffsetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConsumerOffsetResponseBody) SetCode(v int32) *UpdateConsumerOffsetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetResponseBody) SetMessage(v string) *UpdateConsumerOffsetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetResponseBody) SetRequestId(v string) *UpdateConsumerOffsetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetResponseBody) SetSuccess(v bool) *UpdateConsumerOffsetResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateConsumerOffsetResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateConsumerOffsetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateConsumerOffsetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConsumerOffsetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConsumerOffsetResponse) SetHeaders(v map[string]*string) *UpdateConsumerOffsetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConsumerOffsetResponse) SetStatusCode(v int32) *UpdateConsumerOffsetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConsumerOffsetResponse) SetBody(v *UpdateConsumerOffsetResponseBody) *UpdateConsumerOffsetResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceConfigRequest struct {
-	Config     *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the request.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The message returned.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateInstanceConfigRequest) String() string {
@@ -4808,10 +5379,27 @@ func (s *UpdateInstanceConfigRequest) SetRegionId(v string) *UpdateInstanceConfi
 }
 
 type UpdateInstanceConfigResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ## **Permissions**
+	//
+	// If a RAM user wants to call the **UpdateInstanceConfig** operation, the RAM user must be granted the required permissions. For more information about how to grant permissions, see [RAM policies](~~185815~~).
+	//
+	// |API|Action|Resource|
+	// |---|---|---|
+	// |UpdateInstanceConfig|alikafka: UpdateInstance|acs:alikafka:*:*:{instanceId}|
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ### Config parameters
+	//
+	// |Parameter|Type|Valid values|Default value|Description|
+	// |---|---|---|---|---|
+	// |enable.vpc\_sasl\_ssl|Boolean|true/false|false|Specifies whether to enable virtual private cloud (VPC) transmission encryption. If VPC transmission encryption is enabled, you must also enable the access control list (ACL) feature.|
+	// |enable.acl|Boolean|true/false|false|Specifies whether to enable the ACL feature.|
+	// |kafka.log.retention.hours|Integer|24~480|72|The retention period of messages. Unit: hours.|
+	// |kafka.message.max.bytes|Integer|1048576~10485760|1048576|The maximum size of a message. Unit: bytes.|
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Modifies the configuration of a Message Queue for Apache Kafka instance.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceConfigResponseBody) String() string {
@@ -4872,8 +5460,16 @@ func (s *UpdateInstanceConfigResponse) SetBody(v *UpdateInstanceConfigResponseBo
 }
 
 type UpgradeInstanceVersionRequest struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where the instance resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The major version to be upgraded to. Valid values:
+	//
+	// *   **0.10.2**
+	// *   **2.2.0**
+	//
+	// If you set this parameter to the current major version, the system upgrades the instance to the latest minor version.
 	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
 }
 
@@ -4901,10 +5497,14 @@ func (s *UpgradeInstanceVersionRequest) SetTargetVersion(v string) *UpgradeInsta
 }
 
 type UpgradeInstanceVersionResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpgradeInstanceVersionResponseBody) String() string {
@@ -4965,16 +5565,60 @@ func (s *UpgradeInstanceVersionResponse) SetBody(v *UpgradeInstanceVersionRespon
 }
 
 type UpgradePostPayOrderRequest struct {
-	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	EipMax       *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	EipModel     *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IoMax        *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec    *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PartitionNum *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SpecType     *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota   *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	// The disk size. Unit: GB.
+	//
+	// *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	// > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
+	// > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// Specifies whether to enable Internet access for the instance. Valid values:
+	//
+	// *   true: enables Internet access.
+	// *   false: disables Internet access.
+	EipModel *bool `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	//
+	// *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
+	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The traffic specification of the instance. We recommend that you configure this parameter.
+	//
+	// *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
+	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you specify only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The region ID of the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing](~~84737~~).
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing](~~84737~~).
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s UpgradePostPayOrderRequest) String() string {
@@ -5036,10 +5680,14 @@ func (s *UpgradePostPayOrderRequest) SetTopicQuota(v int32) *UpgradePostPayOrder
 }
 
 type UpgradePostPayOrderResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpgradePostPayOrderResponseBody) String() string {
@@ -5100,16 +5748,54 @@ func (s *UpgradePostPayOrderResponse) SetBody(v *UpgradePostPayOrderResponseBody
 }
 
 type UpgradePrePayOrderRequest struct {
-	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	EipMax       *int32  `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	EipModel     *bool   `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IoMax        *int32  `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	IoMaxSpec    *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	PartitionNum *int32  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SpecType     *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	TopicQuota   *int32  `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
+	// The number of topics. We recommend that you do not configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The maximum traffic for the instance. We recommend that you do not configure this parameter.
+	//
+	// *   The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
+	// *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	// The ID of the instance.
+	EipModel *bool `json:"EipModel,omitempty" xml:"EipModel,omitempty"`
+	// The region ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The edition of the instance. Valid values:
+	//
+	// *   **normal**: Standard Edition (High Write)
+	// *   **professional**: Professional Edition (High Write)
+	// *   **professionalForHighRead**: Professional Edition (High Read)
+	//
+	// You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](~~84737~~).
+	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	// The ID of the request.
+	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	// The number of partitions. We recommend that you configure this parameter.
+	//
+	// *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
+	// *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	// The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The error message returned.
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The Internet traffic for the instance.
+	//
+	// *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
+	// *   For more information about the valid values, see [Billing overview](~~84737~~).
+	//
+	// >
+	//
+	// *   If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
+	//
+	// *   If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+	TopicQuota *int32 `json:"TopicQuota,omitempty" xml:"TopicQuota,omitempty"`
 }
 
 func (s UpgradePrePayOrderRequest) String() string {
@@ -5171,7 +5857,9 @@ func (s *UpgradePrePayOrderRequest) SetTopicQuota(v int32) *UpgradePrePayOrderRe
 }
 
 type UpgradePrePayOrderResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Upgrades a Message Queue for Apache Kafka instance that uses the subscription billing method.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 261860
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -5601,6 +6289,15 @@ func (client *Client) CreatePostPayOrder(request *CreatePostPayOrderRequest) (_r
 	return _result, _err
 }
 
+/**
+ * The maximum traffic for the instance. We recommend that you do not configure this parameter.
+ * *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
+ * *   For more information about the valid values, see [Billing](~~84737~~).
+ *
+ * @param request CreatePrePayOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreatePrePayOrderResponse
+ */
 func (client *Client) CreatePrePayOrderWithOptions(request *CreatePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *CreatePrePayOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5678,6 +6375,14 @@ func (client *Client) CreatePrePayOrderWithOptions(request *CreatePrePayOrderReq
 	return _result, _err
 }
 
+/**
+ * The maximum traffic for the instance. We recommend that you do not configure this parameter.
+ * *   You must configure at least one of the **IoMax** and **IoMaxSpec** parameters. If both parameters are configured, the value of the **IoMaxSpec** parameter takes effect. We recommend that you configure only the **IoMaxSpec** parameter.
+ * *   For more information about the valid values, see [Billing](~~84737~~).
+ *
+ * @param request CreatePrePayOrderRequest
+ * @return CreatePrePayOrderResponse
+ */
 func (client *Client) CreatePrePayOrder(request *CreatePrePayOrderRequest) (_result *CreatePrePayOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePrePayOrderResponse{}
@@ -5749,24 +6454,27 @@ func (client *Client) CreateSaslUser(request *CreateSaslUserRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CreateTopicWithOptions(tmpReq *CreateTopicRequest, runtime *util.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+/**
+ * The description of the topic.
+ * *   The description can contain only letters, digits, hyphens (-), and underscores (\\_).
+ * *   The description must be 3 to 64 characters in length.
+ *
+ * @param request CreateTopicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateTopicResponse
+ */
+func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtime *util.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &CreateTopicShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
-		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CompactTopic)) {
 		query["CompactTopic"] = request.CompactTopic
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
-		query["Config"] = request.ConfigShrink
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -5828,6 +6536,14 @@ func (client *Client) CreateTopicWithOptions(tmpReq *CreateTopicRequest, runtime
 	return _result, _err
 }
 
+/**
+ * The description of the topic.
+ * *   The description can contain only letters, digits, hyphens (-), and underscores (\\_).
+ * *   The description must be 3 to 64 characters in length.
+ *
+ * @param request CreateTopicRequest
+ * @return CreateTopicResponse
+ */
 func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTopicResponse{}
@@ -6867,6 +7583,13 @@ func (client *Client) ModifyTopicRemark(request *ModifyTopicRemarkRequest) (_res
 	return _result, _err
 }
 
+/**
+ * The region ID of the instance.
+ *
+ * @param request ReleaseInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReleaseInstanceResponse
+ */
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6908,6 +7631,12 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
+/**
+ * The region ID of the instance.
+ *
+ * @param request ReleaseInstanceRequest
+ * @return ReleaseInstanceResponse
+ */
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -7223,6 +7952,87 @@ func (client *Client) UpdateAllowedIp(request *UpdateAllowedIpRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) UpdateConsumerOffsetWithOptions(tmpReq *UpdateConsumerOffsetRequest, runtime *util.RuntimeOptions) (_result *UpdateConsumerOffsetResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateConsumerOffsetShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Offsets)) {
+		request.OffsetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Offsets, tea.String("Offsets"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OffsetsShrink)) {
+		query["Offsets"] = request.OffsetsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
+		query["ResetType"] = request.ResetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConsumerOffset"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConsumerOffsetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateConsumerOffset(request *UpdateConsumerOffsetRequest) (_result *UpdateConsumerOffsetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateConsumerOffsetResponse{}
+	_body, _err := client.UpdateConsumerOffsetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * The region ID of the instance.
+ *
+ * @param request UpdateInstanceConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateInstanceConfigResponse
+ */
 func (client *Client) UpdateInstanceConfigWithOptions(request *UpdateInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7264,6 +8074,12 @@ func (client *Client) UpdateInstanceConfigWithOptions(request *UpdateInstanceCon
 	return _result, _err
 }
 
+/**
+ * The region ID of the instance.
+ *
+ * @param request UpdateInstanceConfigRequest
+ * @return UpdateInstanceConfigResponse
+ */
 func (client *Client) UpdateInstanceConfig(request *UpdateInstanceConfigRequest) (_result *UpdateInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceConfigResponse{}
@@ -7275,6 +8091,19 @@ func (client *Client) UpdateInstanceConfig(request *UpdateInstanceConfigRequest)
 	return _result, _err
 }
 
+/**
+ * ## **Permissions**
+ * A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+ * |API|Action|Resource|
+ * |---|---|---|
+ * |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
+ * ## **QPS limits**
+ * You can send a maximum of two queries per second (QPS).
+ *
+ * @param request UpgradeInstanceVersionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradeInstanceVersionResponse
+ */
 func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstanceVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeInstanceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7316,6 +8145,18 @@ func (client *Client) UpgradeInstanceVersionWithOptions(request *UpgradeInstance
 	return _result, _err
 }
 
+/**
+ * ## **Permissions**
+ * A RAM user must be granted the required permissions before the RAM user call the **UpgradeInstanceVersion** operation. For information about how to grant permissions, see [RAM policies](~~185815~~).
+ * |API|Action|Resource|
+ * |---|---|---|
+ * |UpgradeInstanceVersion|UpdateInstance|acs:alikafka:*:*:{instanceId}|
+ * ## **QPS limits**
+ * You can send a maximum of two queries per second (QPS).
+ *
+ * @param request UpgradeInstanceVersionRequest
+ * @return UpgradeInstanceVersionResponse
+ */
 func (client *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequest) (_result *UpgradeInstanceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeInstanceVersionResponse{}
@@ -7327,6 +8168,13 @@ func (client *Client) UpgradeInstanceVersion(request *UpgradeInstanceVersionRequ
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](~~84737~~).
+ *
+ * @param request UpgradePostPayOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradePostPayOrderResponse
+ */
 func (client *Client) UpgradePostPayOrderWithOptions(request *UpgradePostPayOrderRequest, runtime *util.RuntimeOptions) (_result *UpgradePostPayOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7396,6 +8244,12 @@ func (client *Client) UpgradePostPayOrderWithOptions(request *UpgradePostPayOrde
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, make sure that you understand the billing method and pricing of pay-as-you-go Message Queue for Apache Kafka instances. For more information, see [Billing](~~84737~~).
+ *
+ * @param request UpgradePostPayOrderRequest
+ * @return UpgradePostPayOrderResponse
+ */
 func (client *Client) UpgradePostPayOrder(request *UpgradePostPayOrderRequest) (_result *UpgradePostPayOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradePostPayOrderResponse{}
@@ -7407,6 +8261,15 @@ func (client *Client) UpgradePostPayOrder(request *UpgradePostPayOrderRequest) (
 	return _result, _err
 }
 
+/**
+ * The size of the disk.
+ * *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
+ * *   For more information about the valid values, see [Billing overview](~~84737~~).
+ *
+ * @param request UpgradePrePayOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpgradePrePayOrderResponse
+ */
 func (client *Client) UpgradePrePayOrderWithOptions(request *UpgradePrePayOrderRequest, runtime *util.RuntimeOptions) (_result *UpgradePrePayOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7476,6 +8339,14 @@ func (client *Client) UpgradePrePayOrderWithOptions(request *UpgradePrePayOrderR
 	return _result, _err
 }
 
+/**
+ * The size of the disk.
+ * *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
+ * *   For more information about the valid values, see [Billing overview](~~84737~~).
+ *
+ * @param request UpgradePrePayOrderRequest
+ * @return UpgradePrePayOrderResponse
+ */
 func (client *Client) UpgradePrePayOrder(request *UpgradePrePayOrderRequest) (_result *UpgradePrePayOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradePrePayOrderResponse{}
