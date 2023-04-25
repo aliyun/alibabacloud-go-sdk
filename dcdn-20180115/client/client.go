@@ -1343,13 +1343,13 @@ type CreateDcdnDeliverTaskRequest struct {
 	Deliver *string `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
 	// The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
 	//
-	// >  If you do not specify a domain name, the custom operations reports are created for all domain names that belong to your Alibaba Cloud account.
+	// > If you do not specify a domain name, the tracking task is created for all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the tracking task.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operations reports that are tracked by the task. The data must be escaped in JSON.
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
-	// The parameters of the tracking task. The settings must be escaped in JSON.
+	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -1387,7 +1387,7 @@ func (s *CreateDcdnDeliverTaskRequest) SetSchedule(v string) *CreateDcdnDeliverT
 }
 
 type CreateDcdnDeliverTaskResponseBody struct {
-	// The ID of the change tracking task.
+	// The ID of the tracking task.
 	DeliverId *string `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3321,7 +3321,7 @@ type DescribeDcdnBgpTrafficDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The data collection interval. Unit: seconds. Valid values: 300 and 3600. Default value: 300. The default value of 300 seconds is equal to 5 minutes. The value of this parameter varies based on the time range from the specified start time to the specified end time.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ISPs. If you need to specify multiple ISPs, separate them with commas (,). If you specify multiple ISPs, the data for the ISPs is aggregated. If you do not specify this parameter, the operation returns the data for all the ISPs.
+	// The ISP. Separate multiple ISPs with commas (,). If you specify multiple ISPs, the data for the ISPs is aggregated. If you do not specify this parameter, the operation returns the data for all the ISPs.
 	//
 	// Valid values:
 	//
@@ -3366,7 +3366,7 @@ func (s *DescribeDcdnBgpTrafficDataRequest) SetStartTime(v string) *DescribeDcdn
 }
 
 type DescribeDcdnBgpTrafficDataResponseBody struct {
-	// The BGP traffic data that is collected for each interval.
+	// The BGP traffic at each time interval.
 	BgpDataInterval []*DescribeDcdnBgpTrafficDataResponseBodyBgpDataInterval `json:"BgpDataInterval,omitempty" xml:"BgpDataInterval,omitempty" type:"Repeated"`
 	// The end of the time range during which data was queried.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -3409,7 +3409,7 @@ type DescribeDcdnBgpTrafficDataResponseBodyBgpDataInterval struct {
 	In *int64 `json:"In,omitempty" xml:"In,omitempty"`
 	// The outbound traffic. Unit: bytes.
 	Out *int64 `json:"Out,omitempty" xml:"Out,omitempty"`
-	// The timestamp of the returned data.
+	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
@@ -4427,6 +4427,10 @@ func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) SetDataMod
 }
 
 type DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
+	DynamicTrafficValue *string `json:"DynamicTrafficValue,omitempty" xml:"DynamicTrafficValue,omitempty"`
+	DynamicValue        *string `json:"DynamicValue,omitempty" xml:"DynamicValue,omitempty"`
+	StaticTrafficValue  *string `json:"StaticTrafficValue,omitempty" xml:"StaticTrafficValue,omitempty"`
+	StaticValue         *string `json:"StaticValue,omitempty" xml:"StaticValue,omitempty"`
 	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The total amount of network traffic. Unit: bytes.
@@ -4441,6 +4445,26 @@ func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) S
 
 func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetDynamicTrafficValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.DynamicTrafficValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetDynamicValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.DynamicValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetStaticTrafficValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.StaticTrafficValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetStaticValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.StaticValue = &v
+	return s
 }
 
 func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetTimeStamp(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
@@ -14082,6 +14106,7 @@ func (s *DescribeDcdnIpaUserDomainsResponse) SetBody(v *DescribeDcdnIpaUserDomai
 }
 
 type DescribeDcdnL2VipsRequest struct {
+	// The domain name. You can specify only one domain name in each request. If you do not specify this parameter, the origin CIDR blocks of all domain names in your account in the whitelist are returned.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -14099,9 +14124,12 @@ func (s *DescribeDcdnL2VipsRequest) SetDomainName(v string) *DescribeDcdnL2VipsR
 }
 
 type DescribeDcdnL2VipsResponseBody struct {
-	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Vips       []*string `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Repeated"`
+	// The accelerated domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The virtual IP addresses (VIPs).
+	Vips []*string `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDcdnL2VipsResponseBody) String() string {
@@ -14305,7 +14333,9 @@ type DescribeDcdnRefreshQuotaResponseBody struct {
 	// The maximum number of directories that can be refreshed each day.
 	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
 	// The remaining number of directories that can be refreshed each day.
-	DirRemain *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	DirRemain          *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	IgnoreParamsQuota  *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	IgnoreParamsRemain *string `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched each day.
 	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
 	// The remaining number of URLs that can be prefetched each day.
@@ -14347,6 +14377,16 @@ func (s *DescribeDcdnRefreshQuotaResponseBody) SetDirQuota(v string) *DescribeDc
 
 func (s *DescribeDcdnRefreshQuotaResponseBody) SetDirRemain(v string) *DescribeDcdnRefreshQuotaResponseBody {
 	s.DirRemain = &v
+	return s
+}
+
+func (s *DescribeDcdnRefreshQuotaResponseBody) SetIgnoreParamsQuota(v string) *DescribeDcdnRefreshQuotaResponseBody {
+	s.IgnoreParamsQuota = &v
+	return s
+}
+
+func (s *DescribeDcdnRefreshQuotaResponseBody) SetIgnoreParamsRemain(v string) *DescribeDcdnRefreshQuotaResponseBody {
+	s.IgnoreParamsRemain = &v
 	return s
 }
 
@@ -17845,7 +17885,9 @@ type DescribeDcdnUserQuotaResponseBody struct {
 	// The remaining number of URLs that can be blocked.
 	BlockRemain *int32 `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
 	// The maximum number of accelerated domains.
-	DomainQuota *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	DomainQuota        *int32 `json:"DomainQuota,omitempty" xml:"DomainQuota,omitempty"`
+	IgnoreParamsQuota  *int32 `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	IgnoreParamsRemain *int32 `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
 	// The maximum number of URLs that can be prefetched.
 	PreloadQuota *int32 `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
 	// The remaining number of URLs that can be prefetched.
@@ -17882,6 +17924,16 @@ func (s *DescribeDcdnUserQuotaResponseBody) SetBlockRemain(v int32) *DescribeDcd
 
 func (s *DescribeDcdnUserQuotaResponseBody) SetDomainQuota(v int32) *DescribeDcdnUserQuotaResponseBody {
 	s.DomainQuota = &v
+	return s
+}
+
+func (s *DescribeDcdnUserQuotaResponseBody) SetIgnoreParamsQuota(v int32) *DescribeDcdnUserQuotaResponseBody {
+	s.IgnoreParamsQuota = &v
+	return s
+}
+
+func (s *DescribeDcdnUserQuotaResponseBody) SetIgnoreParamsRemain(v int32) *DescribeDcdnUserQuotaResponseBody {
+	s.IgnoreParamsRemain = &v
 	return s
 }
 
@@ -22724,6 +22776,85 @@ func (s *EditRoutineConfResponse) SetBody(v *EditRoutineConfResponseBody) *EditR
 	return s
 }
 
+type GetDcdnKvRequest struct {
+	// The name of the key that you want to query.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s GetDcdnKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvRequest) SetKey(v string) *GetDcdnKvRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *GetDcdnKvRequest) SetNamespace(v string) *GetDcdnKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+type GetDcdnKvResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The value of the key.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetDcdnKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvResponseBody) SetRequestId(v string) *GetDcdnKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDcdnKvResponseBody) SetValue(v string) *GetDcdnKvResponseBody {
+	s.Value = &v
+	return s
+}
+
+type GetDcdnKvResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDcdnKvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDcdnKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDcdnKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDcdnKvResponse) SetHeaders(v map[string]*string) *GetDcdnKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDcdnKvResponse) SetStatusCode(v int32) *GetDcdnKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDcdnKvResponse) SetBody(v *GetDcdnKvResponseBody) *GetDcdnKvResponse {
+	s.Body = v
+	return s
+}
+
 type ListDcdnRealTimeDeliveryProjectRequest struct {
 	// The type of the collected logs. Valid values:
 	//
@@ -23281,7 +23412,7 @@ type OpenDcdnServiceRequest struct {
 	BillType      *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The metering method of WebSocket. Default value: off. Valid values:
+	// The metering method of WebSocket. Valid values:
 	//
 	// *   **websockettraffic**: pay-by-data-transfer
 	// *   **websocketbps**: pay-by-bandwidth
@@ -23668,6 +23799,99 @@ func (s *PublishRoutineCodeRevisionResponse) SetStatusCode(v int32) *PublishRout
 }
 
 func (s *PublishRoutineCodeRevisionResponse) SetBody(v *PublishRoutineCodeRevisionResponseBody) *PublishRoutineCodeRevisionResponse {
+	s.Body = v
+	return s
+}
+
+type PutDcdnKvRequest struct {
+	// The name of the key. The name can be up to 512 characters in length, and cannot contain spaces.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The content of the key. The maximum size is 2 MB (2 x 1000 x 1000 bytes).
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutDcdnKvRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvRequest) SetKey(v string) *PutDcdnKvRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *PutDcdnKvRequest) SetNamespace(v string) *PutDcdnKvRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *PutDcdnKvRequest) SetValue(v string) *PutDcdnKvRequest {
+	s.Value = &v
+	return s
+}
+
+type PutDcdnKvResponseBody struct {
+	// The length of the key.
+	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the key. If the value exceeds 256 characters in length, the first 100 characters and the last 100 characters are retained and other characters are discarded.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutDcdnKvResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvResponseBody) SetLength(v int32) *PutDcdnKvResponseBody {
+	s.Length = &v
+	return s
+}
+
+func (s *PutDcdnKvResponseBody) SetRequestId(v string) *PutDcdnKvResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PutDcdnKvResponseBody) SetValue(v string) *PutDcdnKvResponseBody {
+	s.Value = &v
+	return s
+}
+
+type PutDcdnKvResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutDcdnKvResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutDcdnKvResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutDcdnKvResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutDcdnKvResponse) SetHeaders(v map[string]*string) *PutDcdnKvResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutDcdnKvResponse) SetStatusCode(v int32) *PutDcdnKvResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutDcdnKvResponse) SetBody(v *PutDcdnKvResponseBody) *PutDcdnKvResponse {
 	s.Body = v
 	return s
 }
@@ -26805,7 +27029,7 @@ func (client *Client) CommitStagingRoutineCode(request *CommitStagingRoutineCode
 }
 
 /**
- * >  You can call this operation up to three times per second per account.
+ * > You can call this operation up to three times per second per account.
  *
  * @param request CreateDcdnDeliverTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26861,7 +27085,7 @@ func (client *Client) CreateDcdnDeliverTaskWithOptions(request *CreateDcdnDelive
 }
 
 /**
- * >  You can call this operation up to three times per second per account.
+ * > You can call this operation up to three times per second per account.
  *
  * @param request CreateDcdnDeliverTaskRequest
  * @return CreateDcdnDeliverTaskResponse
@@ -28206,10 +28430,10 @@ func (client *Client) DescribeDcdnBgpBpsData(request *DescribeDcdnBgpBpsDataRequ
 }
 
 /**
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both of them empty.
+ * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
  * *   If you specify multiple Internet service providers (ISPs), the data for the ISPs is aggregated.
  * *   You can query data in the last 90 days.
- * *   The maximum time range from the start time to the end time is 31 days. The start time is specified by the StartTime parameter and the end time is specified by the EndTime parameter.
+ * *   The maximum time range that you can specify is 31 days. StartTime specifies the start time and EndTime specifies the end time of the time range.
  * *   If the time range from the start time to the end time is 72 hours or shorter, you can specify the interval as 5 minutes. If the time range is longer than 72 hours, you must specify the interval as 1 hour.
  * *   You can call this operation up to five times per second per account.
  *
@@ -28263,10 +28487,10 @@ func (client *Client) DescribeDcdnBgpTrafficDataWithOptions(request *DescribeDcd
 }
 
 /**
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both of them empty.
+ * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
  * *   If you specify multiple Internet service providers (ISPs), the data for the ISPs is aggregated.
  * *   You can query data in the last 90 days.
- * *   The maximum time range from the start time to the end time is 31 days. The start time is specified by the StartTime parameter and the end time is specified by the EndTime parameter.
+ * *   The maximum time range that you can specify is 31 days. StartTime specifies the start time and EndTime specifies the end time of the time range.
  * *   If the time range from the start time to the end time is 72 hours or shorter, you can specify the interval as 5 minutes. If the time range is longer than 72 hours, you must specify the interval as 1 hour.
  * *   You can call this operation up to five times per second per account.
  *
@@ -36107,6 +36331,46 @@ func (client *Client) EditRoutineConf(request *EditRoutineConfRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetDcdnKvWithOptions(request *GetDcdnKvRequest, runtime *util.RuntimeOptions) (_result *GetDcdnKvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDcdnKv"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDcdnKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDcdnKv(request *GetDcdnKvRequest) (_result *GetDcdnKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDcdnKvResponse{}
+	_body, _err := client.GetDcdnKvWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * >  You can call this operation up to 100 times per second per account.
  *
@@ -36449,9 +36713,8 @@ func (client *Client) ModifyDcdnWafRule(request *ModifyDcdnWafRuleRequest) (_res
 }
 
 /**
- * >
- * *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
- * *   You can call this operation up to five times per second per account.
+ * > *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+ * >*   You can call this operation up to 5 times per second per account.
  *
  * @param request OpenDcdnServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36503,9 +36766,8 @@ func (client *Client) OpenDcdnServiceWithOptions(request *OpenDcdnServiceRequest
 }
 
 /**
- * >
- * *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
- * *   You can call this operation up to five times per second per account.
+ * > *   DCDN can be activated only once per Alibaba Cloud account. The Alibaba Cloud account must pass real-name verification.
+ * >*   You can call this operation up to 5 times per second per account.
  *
  * @param request OpenDcdnServiceRequest
  * @return OpenDcdnServiceResponse
@@ -36743,6 +37005,60 @@ func (client *Client) PublishRoutineCodeRevision(request *PublishRoutineCodeRevi
 	runtime := &util.RuntimeOptions{}
 	_result = &PublishRoutineCodeRevisionResponse{}
 	_body, _err := client.PublishRoutineCodeRevisionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKvWithOptions(request *PutDcdnKvRequest, runtime *util.RuntimeOptions) (_result *PutDcdnKvResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutDcdnKv"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutDcdnKvResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutDcdnKv(request *PutDcdnKvRequest) (_result *PutDcdnKvResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutDcdnKvResponse{}
+	_body, _err := client.PutDcdnKvWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
