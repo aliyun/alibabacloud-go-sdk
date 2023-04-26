@@ -333,7 +333,6 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type ListInstancesRequest struct {
-	RegionId        *string                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string                    `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Tag             []*ListInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
@@ -344,11 +343,6 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListInstancesRequest) SetRegionId(v string) *ListInstancesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesRequest {
@@ -633,23 +627,6 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
-type RestartInstanceRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s RestartInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RestartInstanceRequest) SetRegionId(v string) *RestartInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 type RestartInstanceResponseBody struct {
 	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -727,23 +704,6 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 	return s
 }
 
-type ResumeInstanceRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ResumeInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ResumeInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ResumeInstanceRequest) SetRegionId(v string) *ResumeInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 type ResumeInstanceResponseBody struct {
 	Data           *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -818,23 +778,6 @@ func (s *ResumeInstanceResponse) SetStatusCode(v int32) *ResumeInstanceResponse 
 
 func (s *ResumeInstanceResponse) SetBody(v *ResumeInstanceResponseBody) *ResumeInstanceResponse {
 	s.Body = v
-	return s
-}
-
-type StopInstanceRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s StopInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StopInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *StopInstanceRequest) SetRegionId(v string) *StopInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -916,7 +859,6 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceNameRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 }
 
@@ -926,11 +868,6 @@ func (s UpdateInstanceNameRequest) String() string {
 
 func (s UpdateInstanceNameRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateInstanceNameRequest) SetRegionId(v string) *UpdateInstanceNameRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UpdateInstanceNameRequest) SetInstanceName(v string) *UpdateInstanceNameRequest {
@@ -1016,7 +953,6 @@ func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) 
 }
 
 type UpdateInstanceNetworkTypeRequest struct {
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	AnyTunnelToSingleTunnel *string `json:"anyTunnelToSingleTunnel,omitempty" xml:"anyTunnelToSingleTunnel,omitempty"`
 	NetworkTypes            *string `json:"networkTypes,omitempty" xml:"networkTypes,omitempty"`
 	VSwitchId               *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
@@ -1033,11 +969,6 @@ func (s UpdateInstanceNetworkTypeRequest) String() string {
 
 func (s UpdateInstanceNetworkTypeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateInstanceNetworkTypeRequest) SetRegionId(v string) *UpdateInstanceNetworkTypeRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UpdateInstanceNetworkTypeRequest) SetAnyTunnelToSingleTunnel(v string) *UpdateInstanceNetworkTypeRequest {
@@ -1245,11 +1176,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["resourceGroupId"] = request.ResourceGroupId
@@ -1261,7 +1187,6 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -1296,19 +1221,9 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) RestartInstanceWithOptions(instanceId *string, request *RestartInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
+func (client *Client) RestartInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartInstance"),
@@ -1330,11 +1245,11 @@ func (client *Client) RestartInstanceWithOptions(instanceId *string, request *Re
 	return _result, _err
 }
 
-func (client *Client) RestartInstance(instanceId *string, request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
+func (client *Client) RestartInstance(instanceId *string) (_result *RestartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RestartInstanceResponse{}
-	_body, _err := client.RestartInstanceWithOptions(instanceId, request, headers, runtime)
+	_body, _err := client.RestartInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1342,19 +1257,9 @@ func (client *Client) RestartInstance(instanceId *string, request *RestartInstan
 	return _result, _err
 }
 
-func (client *Client) ResumeInstanceWithOptions(instanceId *string, request *ResumeInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
+func (client *Client) ResumeInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResumeInstance"),
@@ -1376,11 +1281,11 @@ func (client *Client) ResumeInstanceWithOptions(instanceId *string, request *Res
 	return _result, _err
 }
 
-func (client *Client) ResumeInstance(instanceId *string, request *ResumeInstanceRequest) (_result *ResumeInstanceResponse, _err error) {
+func (client *Client) ResumeInstance(instanceId *string) (_result *ResumeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ResumeInstanceResponse{}
-	_body, _err := client.ResumeInstanceWithOptions(instanceId, request, headers, runtime)
+	_body, _err := client.ResumeInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1388,19 +1293,9 @@ func (client *Client) ResumeInstance(instanceId *string, request *ResumeInstance
 	return _result, _err
 }
 
-func (client *Client) StopInstanceWithOptions(instanceId *string, request *StopInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
+func (client *Client) StopInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopInstance"),
@@ -1422,11 +1317,11 @@ func (client *Client) StopInstanceWithOptions(instanceId *string, request *StopI
 	return _result, _err
 }
 
-func (client *Client) StopInstance(instanceId *string, request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
+func (client *Client) StopInstance(instanceId *string) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopInstanceResponse{}
-	_body, _err := client.StopInstanceWithOptions(instanceId, request, headers, runtime)
+	_body, _err := client.StopInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1439,11 +1334,6 @@ func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request 
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["instanceName"] = request.InstanceName
@@ -1451,7 +1341,6 @@ func (client *Client) UpdateInstanceNameWithOptions(instanceId *string, request 
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -1491,11 +1380,6 @@ func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, r
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AnyTunnelToSingleTunnel)) {
 		body["anyTunnelToSingleTunnel"] = request.AnyTunnelToSingleTunnel
@@ -1523,7 +1407,6 @@ func (client *Client) UpdateInstanceNetworkTypeWithOptions(instanceId *string, r
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
