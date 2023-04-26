@@ -219,6 +219,41 @@ func (s *AddressGroup) SetName(v string) *AddressGroup {
 	return s
 }
 
+type BenefitPkgDeliveryInfo struct {
+	Amount      *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	ExpireTime  *string `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	IsPermanent *bool   `json:"is_permanent,omitempty" xml:"is_permanent,omitempty"`
+}
+
+func (s BenefitPkgDeliveryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BenefitPkgDeliveryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BenefitPkgDeliveryInfo) SetAmount(v int64) *BenefitPkgDeliveryInfo {
+	s.Amount = &v
+	return s
+}
+
+func (s *BenefitPkgDeliveryInfo) SetCreatedAt(v string) *BenefitPkgDeliveryInfo {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *BenefitPkgDeliveryInfo) SetExpireTime(v string) *BenefitPkgDeliveryInfo {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *BenefitPkgDeliveryInfo) SetIsPermanent(v bool) *BenefitPkgDeliveryInfo {
+	s.IsPermanent = &v
+	return s
+}
+
 type Domain struct {
 	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
 	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -878,6 +913,83 @@ func (s *Identity) SetIdentityId(v string) *Identity {
 
 func (s *Identity) SetIdentityType(v string) *Identity {
 	s.IdentityType = &v
+	return s
+}
+
+type IdentityToBenefitPkgMapping struct {
+	BenefitPkgComputationRule *string                   `json:"benefit_pkg_computation_rule,omitempty" xml:"benefit_pkg_computation_rule,omitempty"`
+	BenefitPkgId              *string                   `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
+	BenefitPkgName            *string                   `json:"benefit_pkg_name,omitempty" xml:"benefit_pkg_name,omitempty"`
+	BenefitPkgOwnerId         *string                   `json:"benefit_pkg_owner_id,omitempty" xml:"benefit_pkg_owner_id,omitempty"`
+	BenefitPkgPriority        *int64                    `json:"benefit_pkg_priority,omitempty" xml:"benefit_pkg_priority,omitempty"`
+	BenefitPkgType            *string                   `json:"benefit_pkg_type,omitempty" xml:"benefit_pkg_type,omitempty"`
+	CreatedAt                 *string                   `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	DeliveryInfoList          []*BenefitPkgDeliveryInfo `json:"delivery_info_list,omitempty" xml:"delivery_info_list,omitempty" type:"Repeated"`
+	IdentityId                *string                   `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType              *string                   `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+	UpdatedAt                 *string                   `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+}
+
+func (s IdentityToBenefitPkgMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IdentityToBenefitPkgMapping) GoString() string {
+	return s.String()
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgComputationRule(v string) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgComputationRule = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgId(v string) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgId = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgName(v string) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgName = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgOwnerId(v string) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgOwnerId = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgPriority(v int64) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgPriority = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetBenefitPkgType(v string) *IdentityToBenefitPkgMapping {
+	s.BenefitPkgType = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetCreatedAt(v string) *IdentityToBenefitPkgMapping {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetDeliveryInfoList(v []*BenefitPkgDeliveryInfo) *IdentityToBenefitPkgMapping {
+	s.DeliveryInfoList = v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetIdentityId(v string) *IdentityToBenefitPkgMapping {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetIdentityType(v string) *IdentityToBenefitPkgMapping {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *IdentityToBenefitPkgMapping) SetUpdatedAt(v string) *IdentityToBenefitPkgMapping {
+	s.UpdatedAt = &v
 	return s
 }
 
@@ -3055,6 +3167,70 @@ func (s *CreateGroupResponse) SetBody(v *Group) *CreateGroupResponse {
 	return s
 }
 
+type CreateIdentityToBenefitPkgMappingRequest struct {
+	Amount       *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
+	ExpireTime   *int64  `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	IdentityId   *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+}
+
+func (s CreateIdentityToBenefitPkgMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityToBenefitPkgMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetAmount(v int64) *CreateIdentityToBenefitPkgMappingRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+	s.BenefitPkgId = &v
+	return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetExpireTime(v int64) *CreateIdentityToBenefitPkgMappingRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *CreateIdentityToBenefitPkgMappingRequest {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *CreateIdentityToBenefitPkgMappingRequest {
+	s.IdentityType = &v
+	return s
+}
+
+type CreateIdentityToBenefitPkgMappingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateIdentityToBenefitPkgMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIdentityToBenefitPkgMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIdentityToBenefitPkgMappingResponse) SetHeaders(v map[string]*string) *CreateIdentityToBenefitPkgMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *CreateIdentityToBenefitPkgMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateShareLinkRequest struct {
 	Description     *string   `json:"description,omitempty" xml:"description,omitempty"`
 	DisableDownload *bool     `json:"disable_download,omitempty" xml:"disable_download,omitempty"`
@@ -4132,7 +4308,6 @@ func (s *FilePutUserTagsRequestUserTags) SetValue(v string) *FilePutUserTagsRequ
 }
 
 type FilePutUserTagsResponseBody struct {
-	// file id
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
@@ -4179,8 +4354,11 @@ func (s *FilePutUserTagsResponse) SetBody(v *FilePutUserTagsResponseBody) *FileP
 }
 
 type FileRemovePermissionRequest struct {
-	DriveId    *string                                  `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId     *string                                  `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// 空间id
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// 文件id
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// 共享的用户对象集合
 	MemberList []*FileRemovePermissionRequestMemberList `json:"member_list,omitempty" xml:"member_list,omitempty" type:"Repeated"`
 }
 
@@ -4208,8 +4386,36 @@ func (s *FileRemovePermissionRequest) SetMemberList(v []*FileRemovePermissionReq
 }
 
 type FileRemovePermissionRequestMemberList struct {
+	// 可授权对象，表示一个用户或者一个群组
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
-	RoleId   *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+	// 目前支持两种方式设置权限，一种是通过指定角色设置权限，另一种是自定义操作权限，此字段用于指定角色设置权限，与action\_list互斥，当两个字段同时设置时，以此字段为准
+	//
+	// 目前支持：
+	//
+	// SystemFileOwner（文件协同）
+	//
+	// SystemFileDownloader（下载者）
+	//
+	// SystemFileEditor（编辑者）
+	//
+	// SystemFileEditorWithoutDelete（无删除编辑者）
+	//
+	// SystemFileEditorWithoutShareLink（无分享编辑者）
+	//
+	// SystemFileMetaViewer（可见列表）
+	//
+	// SystemFileUploader（上传者）、SystemFileUploaderAndDownloader（上传/下载者）
+	//
+	// SystemFileDownloaderWithShareLink（下载/分享者）
+	//
+	// SystemFileUploaderAndDownloaderWithShareLink（上传/下载/分享者）
+	//
+	// SystemFileUploaderAndViewer（预览/上传者）
+	//
+	// SystemFileUploaderWithShareLink（上传/分享者）
+	//
+	// SystemFileViewer（预览者）
+	RoleId *string `json:"role_id,omitempty" xml:"role_id,omitempty"`
 }
 
 func (s FileRemovePermissionRequestMemberList) String() string {
@@ -4738,6 +4944,64 @@ func (s *GetGroupResponse) SetStatusCode(v int32) *GetGroupResponse {
 }
 
 func (s *GetGroupResponse) SetBody(v *Group) *GetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetIdentityToBenefitPkgMappingRequest struct {
+	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
+	IdentityId   *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+}
+
+func (s GetIdentityToBenefitPkgMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityToBenefitPkgMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *GetIdentityToBenefitPkgMappingRequest {
+	s.BenefitPkgId = &v
+	return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *GetIdentityToBenefitPkgMappingRequest {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *GetIdentityToBenefitPkgMappingRequest {
+	s.IdentityType = &v
+	return s
+}
+
+type GetIdentityToBenefitPkgMappingResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IdentityToBenefitPkgMapping `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetIdentityToBenefitPkgMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIdentityToBenefitPkgMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityToBenefitPkgMappingResponse) SetHeaders(v map[string]*string) *GetIdentityToBenefitPkgMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *GetIdentityToBenefitPkgMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIdentityToBenefitPkgMappingResponse) SetBody(v *IdentityToBenefitPkgMapping) *GetIdentityToBenefitPkgMappingResponse {
 	s.Body = v
 	return s
 }
@@ -5453,7 +5717,9 @@ type GetVideoPreviewPlayInfoRequest struct {
 	GetWithoutUrl *bool   `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
 	ShareId       *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	TemplateId    *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
-	UrlExpireSec  *int64  `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	// url超时时间，单位：秒。
+	// 默认15分钟，最大4小时。
+	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
 }
 
 func (s GetVideoPreviewPlayInfoRequest) String() string {
@@ -6652,6 +6918,81 @@ func (s *ListGroupMemberResponse) SetStatusCode(v int32) *ListGroupMemberRespons
 }
 
 func (s *ListGroupMemberResponse) SetBody(v *ListGroupMemberResponseBody) *ListGroupMemberResponse {
+	s.Body = v
+	return s
+}
+
+type ListIdentityToBenefitPkgMappingRequest struct {
+	IdentityId     *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType   *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+	IncludeExpired *bool   `json:"include_expired,omitempty" xml:"include_expired,omitempty"`
+}
+
+func (s ListIdentityToBenefitPkgMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *ListIdentityToBenefitPkgMappingRequest {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *ListIdentityToBenefitPkgMappingRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingRequest) SetIncludeExpired(v bool) *ListIdentityToBenefitPkgMappingRequest {
+	s.IncludeExpired = &v
+	return s
+}
+
+type ListIdentityToBenefitPkgMappingResponseBody struct {
+	Items []*IdentityToBenefitPkgMapping `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+}
+
+func (s ListIdentityToBenefitPkgMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingResponseBody) SetItems(v []*IdentityToBenefitPkgMapping) *ListIdentityToBenefitPkgMappingResponseBody {
+	s.Items = v
+	return s
+}
+
+type ListIdentityToBenefitPkgMappingResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIdentityToBenefitPkgMappingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIdentityToBenefitPkgMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIdentityToBenefitPkgMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIdentityToBenefitPkgMappingResponse) SetHeaders(v map[string]*string) *ListIdentityToBenefitPkgMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *ListIdentityToBenefitPkgMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIdentityToBenefitPkgMappingResponse) SetBody(v *ListIdentityToBenefitPkgMappingResponseBody) *ListIdentityToBenefitPkgMappingResponse {
 	s.Body = v
 	return s
 }
@@ -8834,9 +9175,11 @@ type UpdateDriveRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DriveId     *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	DriveName   *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
-	Owner       *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	TotalSize   *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	// 归属者
+	// 注意，当前只允许通过 ak 来修改个人 drive 的所有者。
+	Owner     *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	TotalSize *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
 }
 
 func (s UpdateDriveRequest) String() string {
@@ -9148,6 +9491,70 @@ func (s *UpdateGroupResponse) SetStatusCode(v int32) *UpdateGroupResponse {
 
 func (s *UpdateGroupResponse) SetBody(v *Group) *UpdateGroupResponse {
 	s.Body = v
+	return s
+}
+
+type UpdateIdentityToBenefitPkgMappingRequest struct {
+	Amount       *int64  `json:"amount,omitempty" xml:"amount,omitempty"`
+	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
+	ExpireTime   *int64  `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	IdentityId   *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
+	IdentityType *string `json:"identity_type,omitempty" xml:"identity_type,omitempty"`
+}
+
+func (s UpdateIdentityToBenefitPkgMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityToBenefitPkgMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetAmount(v int64) *UpdateIdentityToBenefitPkgMappingRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetBenefitPkgId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+	s.BenefitPkgId = &v
+	return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetExpireTime(v int64) *UpdateIdentityToBenefitPkgMappingRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetIdentityId(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+	s.IdentityId = &v
+	return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingRequest) SetIdentityType(v string) *UpdateIdentityToBenefitPkgMappingRequest {
+	s.IdentityType = &v
+	return s
+}
+
+type UpdateIdentityToBenefitPkgMappingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateIdentityToBenefitPkgMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIdentityToBenefitPkgMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingResponse) SetHeaders(v map[string]*string) *UpdateIdentityToBenefitPkgMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *UpdateIdentityToBenefitPkgMappingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10222,6 +10629,68 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	headers := make(map[string]*string)
 	_result = &CreateGroupResponse{}
 	_body, _err := client.CreateGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIdentityToBenefitPkgMappingWithOptions(request *CreateIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdentityToBenefitPkgMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BenefitPkgId)) {
+		body["benefit_pkg_id"] = request.BenefitPkgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		body["expire_time"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityId)) {
+		body["identity_id"] = request.IdentityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["identity_type"] = request.IdentityType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIdentityToBenefitPkgMapping"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIdentityToBenefitPkgMapping(request *CreateIdentityToBenefitPkgMappingRequest) (_result *CreateIdentityToBenefitPkgMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.CreateIdentityToBenefitPkgMappingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11495,6 +11964,60 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+func (client *Client) GetIdentityToBenefitPkgMappingWithOptions(request *GetIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIdentityToBenefitPkgMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BenefitPkgId)) {
+		body["benefit_pkg_id"] = request.BenefitPkgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityId)) {
+		body["identity_id"] = request.IdentityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["identity_type"] = request.IdentityType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIdentityToBenefitPkgMapping"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/get"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetIdentityToBenefitPkgMapping(request *GetIdentityToBenefitPkgMappingRequest) (_result *GetIdentityToBenefitPkgMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.GetIdentityToBenefitPkgMappingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetLinkInfoWithOptions(request *GetLinkInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLinkInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12697,6 +13220,60 @@ func (client *Client) ListGroupMember(domainId *string, request *ListGroupMember
 	headers := make(map[string]*string)
 	_result = &ListGroupMemberResponse{}
 	_body, _err := client.ListGroupMemberWithOptions(domainId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIdentityToBenefitPkgMappingWithOptions(request *ListIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIdentityToBenefitPkgMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdentityId)) {
+		body["identity_id"] = request.IdentityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["identity_type"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeExpired)) {
+		body["include_expired"] = request.IncludeExpired
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIdentityToBenefitPkgMapping"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIdentityToBenefitPkgMapping(request *ListIdentityToBenefitPkgMappingRequest) (_result *ListIdentityToBenefitPkgMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.ListIdentityToBenefitPkgMappingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14437,6 +15014,68 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	headers := make(map[string]*string)
 	_result = &UpdateGroupResponse{}
 	_body, _err := client.UpdateGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIdentityToBenefitPkgMappingWithOptions(request *UpdateIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIdentityToBenefitPkgMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BenefitPkgId)) {
+		body["benefit_pkg_id"] = request.BenefitPkgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		body["expire_time"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityId)) {
+		body["identity_id"] = request.IdentityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		body["identity_type"] = request.IdentityType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIdentityToBenefitPkgMapping"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/benefit/identity_to_benefit_pkg_mapping/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIdentityToBenefitPkgMapping(request *UpdateIdentityToBenefitPkgMappingRequest) (_result *UpdateIdentityToBenefitPkgMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateIdentityToBenefitPkgMappingResponse{}
+	_body, _err := client.UpdateIdentityToBenefitPkgMappingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
