@@ -991,13 +991,8 @@ func (s *AttachAppPolicyToIdentityResponse) SetBody(v *AttachAppPolicyToIdentity
 }
 
 type BatchSetVodDomainConfigsRequest struct {
-	// The domain name for CDN. Separate multiple domain names with commas (,).
-	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The features to configure.
-	//
-	// *   Set this parameter in the following format: `[{"functionArgs":[{"argName":"domain_name","argValue":"www.example.com"}],"functionName":"set_req_host_header"}]`.
-	// *   Specific features, such as filetype_based_ttl_set, support more than one configuration record. To update one of the configuration records, use the configId field to specify the record. `[{"functionArgs":[{"argName":"file_type","argValue":"jpg"},{"argName":"ttl","argValue":"18"},{"argName":"weight","argValue":"30"}],"functionName":"filetype_based_ttl_set","configId":5068995}]`
-	// *   For more information, see the **Feature description** section.
+	// Configures one or more domain names for CDN.
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	Functions     *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1038,7 +1033,6 @@ func (s *BatchSetVodDomainConfigsRequest) SetSecurityToken(v string) *BatchSetVo
 }
 
 type BatchSetVodDomainConfigsResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1160,7 +1154,6 @@ func (s *BatchStartVodDomainResponse) SetBody(v *BatchStartVodDomainResponseBody
 }
 
 type BatchStopVodDomainRequest struct {
-	// The domain name for CDN. Separate multiple domain names with commas (,).
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1190,7 +1183,6 @@ func (s *BatchStopVodDomainRequest) SetSecurityToken(v string) *BatchStopVodDoma
 }
 
 type BatchStopVodDomainResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1237,14 +1229,9 @@ func (s *BatchStopVodDomainResponse) SetBody(v *BatchStopVodDomainResponseBody) 
 }
 
 type CancelUrlUploadJobsRequest struct {
-	// The IDs of the upload jobs. You can obtain the job IDs in the response parameter PlayInfo of the [GetPlayInfo](~~56124~~) operation.
-	// *   You can specify a maximum of 10 IDs.
-	// *   Separate multiple IDs with commas (,).
-	// > You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+	// The ID of the request.
 	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	// The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
-	// > *   You must encode the URLs before you use the URLs.
-	// > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+	// The operation that you want to perform. Set the value to **CancelUrlUploadJobs**.
 	UploadUrls *string `json:"UploadUrls,omitempty" xml:"UploadUrls,omitempty"`
 }
 
@@ -1267,14 +1254,9 @@ func (s *CancelUrlUploadJobsRequest) SetUploadUrls(v string) *CancelUrlUploadJob
 }
 
 type CancelUrlUploadJobsResponseBody struct {
-	// The IDs of canceled jobs.
 	CanceledJobs []*string `json:"CanceledJobs,omitempty" xml:"CanceledJobs,omitempty" type:"Repeated"`
-	// The job IDs or upload URLs that do not exist.
-	//
-	// If you set the request parameter JobIds, the job IDs that do not exist are returned. If you set the request parameter UploadUrls, the upload URLs that do not exist are returned.
-	NonExists []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NonExists    []*string `json:"NonExists,omitempty" xml:"NonExists,omitempty" type:"Repeated"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelUrlUploadJobsResponseBody) String() string {
@@ -2330,7 +2312,6 @@ func (s *DeleteAttachedMediaResponse) SetBody(v *DeleteAttachedMediaResponseBody
 }
 
 type DeleteCategoryRequest struct {
-	// The ID of the category.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
 }
 
@@ -2348,7 +2329,6 @@ func (s *DeleteCategoryRequest) SetCateId(v int64) *DeleteCategoryRequest {
 }
 
 type DeleteCategoryResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2648,7 +2628,6 @@ func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageRe
 }
 
 type DeleteMessageCallbackRequest struct {
-	// The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
@@ -2672,7 +2651,6 @@ func (s *DeleteMessageCallbackRequest) SetOwnerAccount(v string) *DeleteMessageC
 }
 
 type DeleteMessageCallbackResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2802,12 +2780,8 @@ func (s *DeleteMezzaninesResponse) SetBody(v *DeleteMezzaninesResponseBody) *Del
 }
 
 type DeleteMultipartUploadRequest struct {
-	// The ID of the media file, namely, the audio or video ID. You can use one of the following methods to obtain the audio or video ID:
-	// * Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the audio or video ID. Use this method if the audio or video file is uploaded by using the ApsaraVideo VOD console.
-	// * View the value of the VideoId parameter returned by the [CreateUploadVideo](~~55407~~) operation that you called to obtain an upload URL and credential.
-	// * View the value of the VideoId parameter returned by the [SearchMedia](~~86044~~) operation that you called to query an audio or video ID after the audio or video file is uploaded.
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The type of the media file. Set the value to **video**, which indicates audio and video files.
+	// Deletes the fragments generated during an upload.
+	MediaId      *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
@@ -2836,7 +2810,6 @@ func (s *DeleteMultipartUploadRequest) SetOwnerAccount(v string) *DeleteMultipar
 }
 
 type DeleteMultipartUploadResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2953,18 +2926,10 @@ func (s *DeleteStreamResponse) SetBody(v *DeleteStreamResponseBody) *DeleteStrea
 }
 
 type DeleteTranscodeTemplateGroupRequest struct {
-	// Specifies whether to forcibly delete the entire transcoding template group. Valid values:
-	//
-	// *   **true**: deletes the entire transcoding template group and its transcoding templates.
-	// *   **false**: removes the specified transcoding templates from the transcoding template group. This is the default value.
 	ForceDelGroup *string `json:"ForceDelGroup,omitempty" xml:"ForceDelGroup,omitempty"`
-	// The ID of the transcoding template group.
+	// Removes one or more transcoding templates from a transcoding template group or forcibly deletes the entire transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The IDs of the transcoding templates that you want to remove.
-	//
-	// *   Separate multiple IDs with commas (,).
-	// *   You can specify a maximum of 10 IDs.
-	TranscodeTemplateIds *string `json:"TranscodeTemplateIds,omitempty" xml:"TranscodeTemplateIds,omitempty"`
+	TranscodeTemplateIds     *string `json:"TranscodeTemplateIds,omitempty" xml:"TranscodeTemplateIds,omitempty"`
 }
 
 func (s DeleteTranscodeTemplateGroupRequest) String() string {
@@ -2991,10 +2956,8 @@ func (s *DeleteTranscodeTemplateGroupRequest) SetTranscodeTemplateIds(v string) 
 }
 
 type DeleteTranscodeTemplateGroupResponseBody struct {
-	// The IDs of transcoding templates that were not found when the system removed transcoding templates based on the IDs.
 	NonExistTranscodeTemplateIds []*string `json:"NonExistTranscodeTemplateIds,omitempty" xml:"NonExistTranscodeTemplateIds,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteTranscodeTemplateGroupResponseBody) String() string {
@@ -3045,11 +3008,7 @@ func (s *DeleteTranscodeTemplateGroupResponse) SetBody(v *DeleteTranscodeTemplat
 }
 
 type DeleteVideoRequest struct {
-	// The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
-	//
-	// *   If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files** > **Audio/Video** to view the ID of the video.
-	// *   If the video is uploaded by calling the [CreateUploadVideo](~~55407~~) operation, the video ID is the VideoId value in the response.
-	// *   You can also call the [SearchMedia](~~86044~~) operation to obtain the video ID, which is the VideoId value in the response.
+	// The operation that you want to perform. Set the value to **DeleteVideo**.
 	VideoIds *string `json:"VideoIds,omitempty" xml:"VideoIds,omitempty"`
 }
 
@@ -3067,14 +3026,9 @@ func (s *DeleteVideoRequest) SetVideoIds(v string) *DeleteVideoRequest {
 }
 
 type DeleteVideoResponseBody struct {
-	// The IDs of the videos that cannot be deleted.
-	// > Generally, videos cannot be deleted if you do not have the required [permissions](~~113600~~).
 	ForbiddenVideoIds []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
-	// The IDs of the videos that do not exist.
-	// > If the list of videos to be deleted contains one or more videos that do not exist, the IDs of these non-existing videos are returned. If none of the videos in the list exists, a 404 error is returned.
-	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NonExistVideoIds  []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
+	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVideoResponseBody) String() string {
@@ -3734,7 +3688,7 @@ type DescribePlayUserTotalRequest struct {
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3762,7 +3716,7 @@ func (s *DescribePlayUserTotalRequest) SetStartTime(v string) *DescribePlayUserT
 }
 
 type DescribePlayUserTotalResponseBody struct {
-	// The ID of the request.
+	// The total playback duration. Unit: milliseconds.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The statistics on total playback each day.
 	UserPlayStatisTotals *DescribePlayUserTotalResponseBodyUserPlayStatisTotals `json:"UserPlayStatisTotals,omitempty" xml:"UserPlayStatisTotals,omitempty" type:"Struct"`
@@ -3804,15 +3758,15 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) SetUserPlayStati
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal struct {
-	// The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
+	// The total number of unique visitors who use ApsaraVideo Player SDK for HTML5.
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The total playback duration. Unit: milliseconds.
+	// The operation that you want to perform. Set the value to **DescribePlayUserTotal**.
 	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
-	// The distribution of the playback duration.
+	// The date when the statistics were generated. The date follows the *yyyy-MM-dd* format.
 	PlayRange *string `json:"PlayRange,omitempty" xml:"PlayRange,omitempty"`
-	// The total number of unique visitors.
+	// The ID of the request.
 	UV *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV `json:"UV,omitempty" xml:"UV,omitempty" type:"Struct"`
-	// The total number of video views.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	VV *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV `json:"VV,omitempty" xml:"VV,omitempty" type:"Struct"`
 }
 
@@ -3850,13 +3804,11 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV struct {
-	// The total number of unique visitors who use ApsaraVideo Player SDK for Android.
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for Flash.
+	// The distribution of the playback duration.
 	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for HTML5.
 	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
+	// Queries the statistics on total playback each day in a specified time range.
 	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
 }
 
@@ -3889,13 +3841,13 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV struct {
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Android.
+	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for iOS.
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
 	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for Flash.
 	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
 	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for HTML5.
 	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
-	// The total number of video views that is collected for videos that are played by using ApsaraVideo Player SDK for iOS.
+	// The total number of unique visitors who use ApsaraVideo Player SDK for Android.
 	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
 }
 
@@ -4500,24 +4452,18 @@ func (s *DescribeVodCertificateListResponse) SetBody(v *DescribeVodCertificateLi
 }
 
 type DescribeVodDomainBpsDataRequest struct {
-	// The domain name to be queried. If you do not specify this parameter, the merged data of all your domain names for CDN is returned. You can specify multiple domain names. Separate them with commas (,).
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The query interval. Unit: seconds. Valid values: **300**, **3600**, and **86400**.
-	//
-	// *   If the time range to query is less than 3 days, valid values are **300**, **3600**, and **86400**. The default value is 300.
-	// *   If the time range to query is from 3 to less than 31 days, valid values are **3600** and **86400**. The default value is 3600.
-	// *   If the time range to query is from 31 to 90 days, the valid value is **86400**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the Internet service provider (ISP). If you do not specify this parameter, the data of all ISPs is returned.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region. If you do not specify this parameter, the data in all regions is returned. Only data in the China (Shanghai) region can be queried.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// > The minimum query interval is 5 minutes. If you do not specify this parameter, the data in the last 24 hours is queried.
+	// The operation that you want to perform. Set the value to **DescribeVodDomainBpsData**.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4565,21 +4511,25 @@ func (s *DescribeVodDomainBpsDataRequest) SetStartTime(v string) *DescribeVodDom
 }
 
 type DescribeVodDomainBpsDataResponseBody struct {
-	// The bandwidth data that is collected for each interval.
-	BpsDataPerInterval *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
-	// The time interval between the returned entries. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The domain name for CDN.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the ISP. By default, the data of all ISPs is returned.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region. By default, the data in all regions is returned.
-	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BpsDataPerInterval *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
+	// The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	// The time interval between the returned entries. Unit: seconds.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The bandwidth. Unit: bit/s.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// The query interval. Unit: seconds. Valid values: **300**, **3600**, and **86400**.
+	//
+	// *   If the time range to query is less than 3 days, valid values are **300**, **3600**, and **86400**. The default value is 300.
+	// *   If the time range to query is from 3 to less than 31 days, valid values are **3600** and **86400**. The default value is 3600.
+	// *   If the time range to query is from 31 to 90 days, the valid value is **86400**.
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	// The name of the region. By default, the data in all regions is returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The domain name to be queried. If you do not specify this parameter, the merged data of all your domain names for CDN is returned. You can specify multiple domain names. Separate them with commas (,).
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4649,19 +4599,14 @@ func (s *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval) SetDataModule(v
 }
 
 type DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
 	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
+	// The ID of the request.
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The HTTPS bandwidth on L1 nodes outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The total HTTPS bandwidth on L1 nodes. Unit: bit/s.
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The bandwidth outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth. Unit: bit/s.
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Queries the bandwidth for one or more specified domain names for CDN.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5781,25 +5726,11 @@ func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBps
 }
 
 type DescribeVodDomainSrcTrafficDataRequest struct {
-	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
-	//
-	// If you leave this parameter empty, the origin traffic data for all accelerated domain names is queried by default.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries to return. Unit: seconds. Valid values:
-	//
-	// *   **300**: 5 minutes
-	// *   **3600**: 1 hour
-	// *   **86400**: 1 day
-	//
-	// > The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. For more information, see the **Time granularity** section of this topic.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// If you leave this parameter empty, the origin traffic data that is generated in the last 24 hours is queried by default.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataRequest) String() string {
@@ -5836,20 +5767,13 @@ func (s *DescribeVodDomainSrcTrafficDataRequest) SetStartTime(v string) *Describ
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBody struct {
-	// The time interval between the entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the origin traffic returned at each time interval. Unit: bytes.
+	DataInterval              *string                                                               `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                *string                                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total traffic. Unit: bytes.
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	StartTime                 *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalTraffic              *string                                                               `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBody) String() string {
@@ -5913,12 +5837,9 @@ func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) S
 }
 
 type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
-	// The amount of traffic generated by origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic value at each time interval.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
@@ -6218,7 +6139,12 @@ type DescribeVodDomainUsageDataRequest struct {
 	//
 	// *   **bps**: bandwidth
 	// *   **traf**: traffic
-	Field    *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
+	//
+	// *   If **Interval** is set to **300**, you can query usage data in the last six months. The maximum time range per query that can be specified is three days.
+	// *   If **Interval** is set to **3600** or **86400**, you can query usage data of the previous year.
+	// *   If you do not set the **Interval** parameter, the maximum time range that you can query is one month. If you specify a time range of 1 to 3 days, the time interval between the entries that are returned is 1 hour. If you specify a time range of at least 4 days, the time interval between the entries that are returned is 1 day.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
@@ -6226,7 +6152,7 @@ type DescribeVodDomainUsageDataRequest struct {
 	// The type of content that you want to query. Valid values:
 	//
 	// *   **static**: static content
-	// *   **dynamic**: dynamic content
+	// *   **dynamic**: dynamic requests
 	// *   **all**: all content
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -6290,12 +6216,12 @@ type DescribeVodDomainUsageDataResponseBody struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of content returned. Valid values:
 	//
 	// *   **static**: static content
-	// *   **dynamic**: dynamic content
+	// *   **dynamic**: dynamic requests
 	// *   **all**: all content
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The traffic or bandwidth data returned at each interval.
@@ -6368,7 +6294,7 @@ func (s *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval) SetDataModu
 }
 
 type DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	// The traffic or bandwidth data. Unit: bit/s.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -6445,23 +6371,21 @@ func (s *DescribeVodRefreshQuotaRequest) SetSecurityToken(v string) *DescribeVod
 }
 
 type DescribeVodRefreshQuotaResponseBody struct {
-	// The maximum number of Object Storage Service (OSS) buckets that can be refreshed each day.
-	BlockQuota *string `json:"BlockQuota,omitempty" xml:"BlockQuota,omitempty"`
-	// The maximum number of directories of files that can be refreshed each day.
-	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
 	// The remaining number of directories of files that can be refreshed on the current day.
-	DirRemain *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
-	// The maximum number of URLs of files that can be prefetched each day.
-	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
-	// The remaining number of URLs of files that can be prefetched on the current day.
-	PreloadRemain *string `json:"PreloadRemain,omitempty" xml:"PreloadRemain,omitempty"`
+	BlockQuota *string `json:"BlockQuota,omitempty" xml:"BlockQuota,omitempty"`
+	// Queries the maximum number and remaining number of requests to refresh or prefetch files on the current day. You can prefetch files based on URLs and refresh files based on URLs or directories.
+	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The maximum number of URLs of files that can be refreshed each day.
-	UrlQuota *string `json:"UrlQuota,omitempty" xml:"UrlQuota,omitempty"`
-	// The remaining number of URLs of files that can be refreshed on the current day.
-	UrlRemain *string `json:"UrlRemain,omitempty" xml:"UrlRemain,omitempty"`
+	DirRemain    *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
 	// The remaining number of OSS buckets that can be refreshed on the current day.
+	PreloadRemain *string `json:"PreloadRemain,omitempty" xml:"PreloadRemain,omitempty"`
+	// The maximum number of directories of files that can be refreshed each day.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UrlQuota  *string `json:"UrlQuota,omitempty" xml:"UrlQuota,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeVodRefreshQuota**.
+	UrlRemain *string `json:"UrlRemain,omitempty" xml:"UrlRemain,omitempty"`
+	// The maximum number of URLs of files that can be prefetched each day.
 	BlockRemain *string `json:"blockRemain,omitempty" xml:"blockRemain,omitempty"`
 }
 
@@ -7204,29 +7128,26 @@ func (s *DescribeVodTranscodeDataResponse) SetBody(v *DescribeVodTranscodeDataRe
 }
 
 type DescribeVodUserDomainsRequest struct {
-	// The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The search method. Valid values:
+	//
 	// *   **fuzzy_match**: fuzzy match. This is the default value.
 	// *   **pre_match**: prefix match.
 	// *   **suf_match**: suffix match.
 	// *   **full_match**: exact match.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The remarks.
 	DomainSearchType *string `json:"DomainSearchType,omitempty" xml:"DomainSearchType,omitempty"`
-	// The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
-	// *   **online**: indicates that the domain name is enabled.
-	// *   **offline**: indicates that the domain name is disabled.
-	// *   **configuring**: indicates that the domain name is being configured.
-	// *   **configure_failed**: indicates that the domain name failed to be configured.
-	// *   **checking**: indicates that the domain name is under review.
-	// *   **check_failed**: indicates that the domain name failed the review.
+	// The value of tag N. Valid values of N: **1** to **20**.
+	//
+	// If you do not specify this parameter, all tag values are queried.
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
+	// The operation that you want to perform. Set the value to **DescribeVodUserDomains**.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Tag.
+	// The number of entries to return on each page. Default value: **20**. Maximum value: **50**. Valid values: integers in the range of **1** to **50**.
 	Tag []*DescribeVodUserDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -7279,13 +7200,16 @@ func (s *DescribeVodUserDomainsRequest) SetTag(v []*DescribeVodUserDomainsReques
 }
 
 type DescribeVodUserDomainsRequestTag struct {
-	// The key of tag N. Valid values of N: **1** to **20**.
+	// The status of the domain name for CDN. Valid values:
 	//
-	// If you do not specify this parameter, all tag keys are queried.
+	// *   **online**: indicates that the domain name is enabled.
+	// *   **offline**: indicates that the domain name is disabled.
+	// *   **configuring**: indicates that the domain name is being configured.
+	// *   **configure_failed**: indicates that the domain name failed to be configured.
+	// *   **checking**: indicates that the domain name is under review.
+	// *   **check_failed**: indicates that the domain name failed the review.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N. Valid values of N: **1** to **20**.
-	//
-	// If you do not specify this parameter, all tag values are queried.
+	// The canonical domain name that is assigned to the domain name for CDN.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7308,15 +7232,25 @@ func (s *DescribeVodUserDomainsRequestTag) SetValue(v string) *DescribeVodUserDo
 }
 
 type DescribeVodUserDomainsResponseBody struct {
-	// The detailed information about each domain name for CDN. The returned information is displayed in the format that is specified by the PageData parameter.
+	// The status of the domain name. The value of this parameter is used as a condition to filter domain names. Value values:
+	//
+	// *   **online**: indicates that the domain name is enabled.
+	// *   **offline**: indicates that the domain name is disabled.
+	// *   **configuring**: indicates that the domain name is being configured.
+	// *   **configure_failed**: indicates that the domain name failed to be configured.
+	// *   **checking**: indicates that the domain name is under review.
+	// *   **check_failed**: indicates that the domain name failed the review.
 	Domains *DescribeVodUserDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The domain name. The value of this parameter is used as a filter condition for a fuzzy match.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The number of the page to return.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Indicates whether HTTPS is enabled.
+	//
+	// - **on**: indicates that HTTPS is enabled.
+	// - **off**: indicates that HTTPS is disabled.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7371,33 +7305,21 @@ func (s *DescribeVodUserDomainsResponseBodyDomains) SetPageData(v []*DescribeVod
 }
 
 type DescribeVodUserDomainsResponseBodyDomainsPageData struct {
-	// The canonical domain name that is assigned to the domain name for CDN.
+	// Queries the domain names for CDN within your Alibaba Cloud account. You can filter domain names by name or by state. When you filter domain names by name, a fuzzy match is supported.
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The remarks.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The domain name for CDN.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the domain name for CDN. Valid values:
-	//
-	// *   **online**: indicates that the domain name is enabled.
-	// *   **offline**: indicates that the domain name is disabled.
-	// *   **configuring**: indicates that the domain name is being configured.
-	// *   **configure_failed**: indicates that the domain name failed to be configured.
-	// *   **checking**: indicates that the domain name is under review.
-	// *   **check_failed**: indicates that the domain name failed the review.
+	// The number of entries returned per page.
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The page number of the returned page.
+	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the domain name for CDN is in a sandbox environment.
-	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	// The information about the origin server.
+	// The ID of the request.
+	Sandbox *string                                                   `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
 	Sources *DescribeVodUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	// Indicates whether HTTPS is enabled.
+	// The key of tag N. Valid values of N: **1** to **20**.
 	//
-	// - **on**: indicates that HTTPS is enabled.
-	// - **off**: indicates that HTTPS is disabled.
+	// If you do not specify this parameter, all tag keys are queried.
 	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
@@ -7472,18 +7394,10 @@ func (s *DescribeVodUserDomainsResponseBodyDomainsPageDataSources) SetSource(v [
 }
 
 type DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource struct {
-	// The address of the origin server.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The port number. Valid values: **443** and **80**.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the origin server.
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server. Valid values:
-	//
-	// *   **ipaddr**: a server that you can access by using an IP address.
-	// *   **domain**: a server that you can access by using a domain name.
-	// *   **oss**: an Object Storage Service (OSS) bucket.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeVodUserDomainsResponseBodyDomainsPageDataSourcesSource) String() string {
@@ -13712,7 +13626,10 @@ func (s *GetMediaRefreshJobsResponse) SetBody(v *GetMediaRefreshJobsResponseBody
 }
 
 type GetMessageCallbackRequest struct {
-	// The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
+	// The callback method. Valid values:
+	//
+	// *   **HTTP**
+	// *   **MNS**
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
@@ -13736,9 +13653,9 @@ func (s *GetMessageCallbackRequest) SetOwnerAccount(v string) *GetMessageCallbac
 }
 
 type GetMessageCallbackResponseBody struct {
-	// The configuration of the event notification.
+	// The cryptographic key. This parameter is returned only for HTTP callbacks.
 	MessageCallback *GetMessageCallbackResponseBodyMessageCallback `json:"MessageCallback,omitempty" xml:"MessageCallback,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The name of the MNS queue. This parameter is returned only for MNS callbacks.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13761,27 +13678,22 @@ func (s *GetMessageCallbackResponseBody) SetRequestId(v string) *GetMessageCallb
 }
 
 type GetMessageCallbackResponseBodyMessageCallback struct {
-	// The ID of the application.
+	// The operation that you want to perform. Set the value to **GetMessageCallback**.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The cryptographic key. This parameter is returned only for HTTP callbacks.
-	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// Queries the callback method, callback URL, and event type of an event notification.
+	AuthKey    *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
 	// Indicates whether callback authentication is enabled. This parameter is returned only for HTTP callbacks. Valid values:
 	//
 	// *   **on**: indicates that authentication is enabled.
 	// *   **off**: indicates that authentication is disabled.
-	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
-	// The callback method. Valid values:
-	//
-	// *   **HTTP**
-	// *   **MNS**
 	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
-	// The callback URL. This parameter is returned only for HTTP callbacks.
+	// The ID of the application.
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// The type of the callback event.
+	// The ID of the request.
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// The public endpoint of Message Service (MNS). This parameter is returned only for MNS callbacks.
-	MnsEndpoint *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
-	// The name of the MNS queue. This parameter is returned only for MNS callbacks.
+	MnsEndpoint   *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
+	// The callback URL. This parameter is returned only for HTTP callbacks.
 	MnsQueueName *string `json:"MnsQueueName,omitempty" xml:"MnsQueueName,omitempty"`
 }
 
@@ -16571,32 +16483,40 @@ func (s *GetVideoInfosResponse) SetBody(v *GetVideoInfosResponseBody) *GetVideoI
 }
 
 type GetVideoListRequest struct {
-	// The ID of the video category.
+	// The category ID. You can use one of the following methods to obtain the category ID:
+	//
+	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories** to view the category ID.
+	// *   Obtain the value of CateId from the response to the [AddCategory](~~56401~~) operation.
+	// *   Obtain the value of CateId from the response to the [GetCategories](~~56406~~) operation.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The end of the time range for querying videos based on their creation time. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Optional. The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
+	// The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The method for sorting the results. Valid values:
+	// The sorting method of the results. Valid values:
 	//
 	// *   **CreationTime:Desc** (default): The results are sorted in reverse chronological order based on the creation time.
 	// *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The beginning of the time range for querying videos based on their creation time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the video. By default, you can obtain videos in all states. Separate multiple states with commas (,). Valid values:
+	// The video status. You can specify multiple video statuses and separate them with commas (,). Valid values:
 	//
 	// *   **Uploading**: The video is being uploaded.
-	// *   **UploadFail**: The video fails to be uploaded.
-	// *   **UploadSucc**: The video is uploaded.
+	// *   **UploadFail**: The video failed to be uploaded.
+	// *   **UploadSucc**: The video has been uploaded.
 	// *   **Transcoding**: The video is being transcoded.
-	// *   **TranscodeFail**: The video fails to be transcoded.
+	// *   **TranscodeFail**: The video failed to be transcoded.
+	// *   **checking**: The video is being reviewed.
 	// *   **Blocked**: The video is blocked.
-	// *   **Normal**: The video can be played.
+	// *   **Normal**: The video is normal.
+	// *   **ProduceFail**: The video failed to be produced.
+	//
+	// For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Object Storage Service (OSS) bucket where the video file is stored.
+	// The storage address of the media file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 }
 
@@ -16651,9 +16571,9 @@ func (s *GetVideoListRequest) SetStorageLocation(v string) *GetVideoListRequest 
 type GetVideoListResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of videos.
+	// The total number of media files returned.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The information about the video. The information about a maximum of first 5,000 video records can be obtained in a single request.
+	// The information about the media file. Information about a maximum of 5,000 media files can be returned.
 	VideoList *GetVideoListResponseBodyVideoList `json:"VideoList,omitempty" xml:"VideoList,omitempty" type:"Struct"`
 }
 
@@ -16698,46 +16618,50 @@ func (s *GetVideoListResponseBodyVideoList) SetVideo(v []*GetVideoListResponseBo
 }
 
 type GetVideoListResponseBodyVideoListVideo struct {
-	// The ID of the application. Default value: **app-1000000**.
+	// The application ID. Default value: **app-1000000**.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the video category.
+	// The category ID.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the video category.
+	// The category name.
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The URL of the video thumbnail.
+	// The thumbnail URL of the media file.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the video.
+	// The description of the media file.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video. Unit: seconds.
+	// The duration of the media file. Unit: seconds.
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime  *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
 	RestoreStatus     *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The size of the video mezzanine file. Unit: byte.
+	// The size of the source file. Unit: bytes.
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The URL array of video snapshots.
+	// The video snapshot URLs.
 	Snapshots *GetVideoListResponseBodyVideoListVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the video. By default, videos in all states are returned. Multiple states are separated by commas (,). Valid values:
+	// The video status. Valid values:
 	//
 	// *   **Uploading**: The video is being uploaded.
-	// *   **UploadFail**: The video fails to be uploaded.
-	// *   **UploadSucc**: The video is uploaded.
+	// *   **UploadFail**: The video failed to be uploaded.
+	// *   **UploadSucc**: The video has been uploaded.
 	// *   **Transcoding**: The video is being transcoded.
-	// *   **TranscodeFail**: The video fails to be transcoded.
+	// *   **TranscodeFail**: The video failed to be transcoded.
+	// *   **checking**: The video is being reviewed.
 	// *   **Blocked**: The video is blocked.
-	// *   **Normal**: The video can be played.
+	// *   **Normal**: The video is normal.
+	// *   **ProduceFail**: The video failed to be produced.
+	//
+	// For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The OSS bucket where the video file is stored.
+	// The storage address of the media file.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the video. Multiple tags are separated by commas (,).
+	// The tags of the media file. Multiple tags are separated by commas (,).
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the video.
+	// The title of the media file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the video.
+	// The ID of the media file.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -16886,16 +16810,11 @@ func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoLis
 }
 
 type GetVideoPlayAuthRequest struct {
-	// The API version number. Set the value to **1.0.0**.
+	// The duration of the audio or video file. Unit: seconds.
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	// The time when the playback credential expires. Unit: **seconds**. You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
-	// *   Default value: **100**.
-	// *   Valid values: `100 to 3000`.
+	// The title of the audio or video file.
 	AuthInfoTimeout *int64 `json:"AuthInfoTimeout,omitempty" xml:"AuthInfoTimeout,omitempty"`
-	// The ID of the audio or video file. You can use one of the following methods to obtain the ID of the file:
-	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-	// *   Obtain the value of the VideoId parameter when you call the [CreateUploadVideo](~~55407~~) operation to upload files.
-	// *   Obtain the value of the VideoId parameter by calling the [SearchMedia](~~86044~~) operation. This method is applicable to files that have been uploaded.
+	// The API version number. Set the value to **1.0.0**.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -16923,11 +16842,11 @@ func (s *GetVideoPlayAuthRequest) SetVideoId(v string) *GetVideoPlayAuthRequest 
 }
 
 type GetVideoPlayAuthResponseBody struct {
-	// The credential for video or audio playback.
-	PlayAuth *string `json:"PlayAuth,omitempty" xml:"PlayAuth,omitempty"`
 	// The ID of the request.
+	PlayAuth *string `json:"PlayAuth,omitempty" xml:"PlayAuth,omitempty"`
+	// The operation that you want to perform. Set the value to **GetVideoPlayAuth**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The metadata of the audio or video file.
+	// Queries the credential required for media playback.
 	VideoMeta *GetVideoPlayAuthResponseBodyVideoMeta `json:"VideoMeta,omitempty" xml:"VideoMeta,omitempty" type:"Struct"`
 }
 
@@ -16955,16 +16874,11 @@ func (s *GetVideoPlayAuthResponseBody) SetVideoMeta(v *GetVideoPlayAuthResponseB
 }
 
 type GetVideoPlayAuthResponseBodyVideoMeta struct {
-	// The thumbnail URL of the audio or video file.
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The duration of the audio or video file. Unit: seconds.
+	CoverURL *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The title of the audio or video file.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the audio or video file.
-	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	Status   *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title    *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoId  *string  `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s GetVideoPlayAuthResponseBodyVideoMeta) String() string {
@@ -18386,23 +18300,32 @@ func (s *ListDynamicImageResponse) SetBody(v *ListDynamicImageResponseBody) *Lis
 }
 
 type ListLiveRecordVideoRequest struct {
-	// The name of the application that was used to record the live stream.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name of the recorded live stream.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The sorting rule of results. Valid values:
+	//
 	// *   **CreationTime:Desc**: sorts the results based on the creation time in descending order. This is the default value.
 	// *   **CreationTime:Asc**: sorts the results based on the creation time in ascending order.
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The operation that you want to perform. Set the value to **ListLiveRecordVideo**.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// CreationTime:Desc
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the recorded live stream.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The ID of the transcoding template group.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The duration of the video. Unit: seconds.
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The name of the video category.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the video. Valid values:
+	//
+	// *   **Uploading:**: indicates that the video is being uploaded.
+	// *   **UploadFail**: indicates that the video failed to be uploaded.
+	// *   **UploadSucces**: indicates that the video was uploaded.
+	// *   **Transcoding**: indicates that the video is being transcoded.
+	// *   **TranscodeFail**: indicates that the video failed to be transcoded.
+	// *   **Blocked**: indicates that the video is blocked.
+	// *   **Normal**: indicates that the video is in a normal state.
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
@@ -18455,11 +18378,11 @@ func (s *ListLiveRecordVideoRequest) SetStreamName(v string) *ListLiveRecordVide
 }
 
 type ListLiveRecordVideoResponseBody struct {
-	// The list of videos.
-	LiveRecordVideoList *ListLiveRecordVideoResponseBodyLiveRecordVideoList `json:"LiveRecordVideoList,omitempty" xml:"LiveRecordVideoList,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of videos returned.
+	LiveRecordVideoList *ListLiveRecordVideoResponseBodyLiveRecordVideoList `json:"LiveRecordVideoList,omitempty" xml:"LiveRecordVideoList,omitempty" type:"Struct"`
+	// The description of the video.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The title of the video.
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -18504,19 +18427,19 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoList) SetLiveRecordVideo(
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo struct {
-	// The name of the application.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the playlist.
-	PlaylistId *string `json:"PlaylistId,omitempty" xml:"PlaylistId,omitempty"`
-	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	RecordEndTime *string `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
-	// The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	// The name of the live stream.
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	// The information about the video.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The tags of the video. Separate multiple tags with commas (,).
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	PlaylistId *string `json:"PlaylistId,omitempty" xml:"PlaylistId,omitempty"`
+	// The domain name of the recorded live stream.
+	RecordEndTime *string `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
+	// The array of video snapshot URLs.
+	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
+	// The end of the time range to query. The query is performed based on the time range during which the required live streams were recorded. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	// The name of the application that was used to record the live stream.
 	Video *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -18564,40 +18487,27 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) SetV
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo struct {
-	// The ID of the video category.
-	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the video category.
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the video.
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The time when the video was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The name of the application.
+	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The beginning of the time range to query. The query is performed based on the time range during which the required live streams were recorded. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the video.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video. Unit: seconds.
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The last time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The size of the mezzanine file. Unit: byte.
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The array of video snapshot URLs.
+	// The name of the live stream.
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModifyTime  *string  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// Queries live-to-VOD videos.
+	Size      *int64                                                                           `json:"Size,omitempty" xml:"Size,omitempty"`
 	Snapshots *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the video. Valid values:
-	// *   **Uploading:**: indicates that the video is being uploaded.
-	// *   **UploadFail**: indicates that the video failed to be uploaded.
-	// *   **UploadSucces**: indicates that the video was uploaded.
-	// *   **Transcoding**: indicates that the video is being transcoded.
-	// *   **TranscodeFail**: indicates that the video failed to be transcoded.
-	// *   **Blocked**: indicates that the video is blocked.
-	// *   **Normal**: indicates that the video is in a normal state.
+	// The ID of the playlist.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the video. Separate multiple tags with commas (,).
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the transcoding template group.
+	// 2017-01-11T13:00:00Z
+	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The title of the video.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the video.
+	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// 10
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -18726,25 +18636,15 @@ func (s *ListLiveRecordVideoResponse) SetBody(v *ListLiveRecordVideoResponseBody
 }
 
 type ListSnapshotsRequest struct {
-	// The validity period of the snapshot URL. Unit: seconds. Default value: **3600**. Minimum value: **3600**.
-	//
-	// *   This parameter only takes effect when [URL authentication](~~57007~~) is enabled.
-	// *   If the specified validity period is less than **3600** seconds, the default value is **3600**.
-	// *   If an Object Storage Service (OSS) URL is returned, the maximum validity period is limited to **2592000** seconds (30 days) to reduce security risks of the origin.
+	// The index of the snapshot.
 	AuthTimeout *string `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
-	// The number of the page to turn. Default value: **1**.
-	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of snapshots that are returned. Valid values:
-	//
-	// *   **CoverSnapshot**: thumbnail snapshot
-	// *   **NormalSnapshot**: normal snapshot
-	// *   **SpriteSnapshot**: sprite snapshot
-	// *   **SpriteOriginSnapshot**: sprite source snapshot
-	// *   **WebVttSnapshot**: WebVTT snapshot
-	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The ID of the video.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to turn. Default value: **1**.
+	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// The operation that you want to perform. Set the value to **ListSnapshots**.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -18782,9 +18682,9 @@ func (s *ListSnapshotsRequest) SetVideoId(v string) *ListSnapshotsRequest {
 }
 
 type ListSnapshotsResponseBody struct {
-	// The snapshot data of the media.
+	// The URL of the snapshot.
 	MediaSnapshot *ListSnapshotsResponseBodyMediaSnapshot `json:"MediaSnapshot,omitempty" xml:"MediaSnapshot,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The snapshot data of the media.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18807,13 +18707,12 @@ func (s *ListSnapshotsResponseBody) SetRequestId(v string) *ListSnapshotsRespons
 }
 
 type ListSnapshotsResponseBodyMediaSnapshot struct {
-	// The time when the snapshot job was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The ID of the snapshot job.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// Queries the snapshots that are captured from the specified media.
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The rule for generating snapshot URLs.
-	Regular *string `json:"Regular,omitempty" xml:"Regular,omitempty"`
-	// The snapshot data.
+	// The ID of the request.
+	Regular   *string                                          `json:"Regular,omitempty" xml:"Regular,omitempty"`
 	Snapshots *ListSnapshotsResponseBodyMediaSnapshotSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
@@ -18870,10 +18769,8 @@ func (s *ListSnapshotsResponseBodyMediaSnapshotSnapshots) SetSnapshot(v []*ListS
 }
 
 type ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot struct {
-	// The index of the snapshot.
-	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The URL of the snapshot.
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Index *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot) String() string {
@@ -20167,19 +20064,14 @@ func (s *RefreshVodObjectCachesResponse) SetBody(v *RefreshVodObjectCachesRespon
 }
 
 type RegisterMediaRequest struct {
-	// The metadata of the media file that you want to register. The value is a JSON string. You can specify the metadata for a maximum of 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata** section of this topic.
+	// The URLs of the media files that failed to be registered.
 	RegisterMetadatas *string `json:"RegisterMetadatas,omitempty" xml:"RegisterMetadatas,omitempty"`
-	// The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
-	// *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.
-	// *   View the value of the TranscodeTemplateGroupId parameter returned by the [AddTranscodeTemplateGroup](~~102665~~) operation that you called to create a transcoding template group.
-	// *   View the value of the TranscodeTemplateGroupId parameter returned by the [ListTranscodeTemplateGroup](~~102669~~) operation that you called to query a transcoding template group.
-	// > *   If you do not need to transcode the media file, set the TemplateGroupId parameter to VOD_NO_TRANSCODE. Otherwise, an exception occurs during video playback. If you need to transcode the media file, specify the ID of the transcoding template group.
-	// > *   If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
-	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The custom configurations such as callback configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](~~86952#section\_6fg_qll_v3w~~) topic.
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
 	// > If both the WorkflowId and TemplateGroupId parameters are set, the value of the WorkflowId parameter takes effect. For more information, see [Workflows](~~115347~~).
+	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
+	// The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of the VideoId parameter returned by ApsaraVideo VOD takes effect.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the request.
 	WorkflowId *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
 }
 
@@ -20212,11 +20104,21 @@ func (s *RegisterMediaRequest) SetWorkflowId(v string) *RegisterMediaRequest {
 }
 
 type RegisterMediaResponseBody struct {
-	// The URLs of the media files that failed to be registered.
-	FailedFileURLs []*string `json:"FailedFileURLs,omitempty" xml:"FailedFileURLs,omitempty" type:"Repeated"`
-	// The media files that are registered, including newly registered and repeatedly registered media files.
+	// ## RegisterMetadata
+	//
+	// The following table describes the metadata of the media file that you want to register.
+	//
+	// | Parameter | Type | Required | Description |
+	// | --------- | ---- | -------- | ----------- |
+	// | FileURL | String | Yes | The OSS URL of the source file. You can call the [GetMezzanineInfo](~~GetMezzanineInfo~~) operation to obtain the OSS URL of the source file.  <br>The URL can be up to 1,024 bytes in length. The file name must be globally unique. If the media file that you want to register is registered before, the unique media ID that is associated with the media file is returned. |
+	// | Title | String | Yes | The title of the media file. The title can be up to 128 bytes in length. The value must be encoded in UTF-8. |
+	// | Description | String | No | The description of the media file. The description can be up to 1,024 bytes in length. The value must be encoded in UTF-8. |
+	// | Tags | String | No | The one or more tags of the media file. Each tag can be up to 32 bytes in length. You can specify a maximum of 16 tags. Separate multiple tags with commas (,). The value must be encoded in UTF-8. |
+	// | CoverURL | String | No | The URL of the thumbnail. The URL can be up to 1,024 bytes in length. |
+	// | CateId | Long | No | The category ID of the media file. You can use one of the following methods to obtain the category ID: <br>Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories**. On the Categories page, you can view the category ID of the media file.  <br>View the value of the CateId parameter returned by the [AddCategory](~~AddCategory~~) operation that you called to create a category.  <br>View the value of the CateId parameter returned by the [GetCategories](~~GetCategories~~) operation that you called to query a category. |
+	FailedFileURLs      []*string                                       `json:"FailedFileURLs,omitempty" xml:"FailedFileURLs,omitempty" type:"Repeated"`
 	RegisteredMediaList []*RegisterMediaResponseBodyRegisteredMediaList `json:"RegisteredMediaList,omitempty" xml:"RegisteredMediaList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The OSS URL of the media file.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20244,14 +20146,9 @@ func (s *RegisterMediaResponseBody) SetRequestId(v string) *RegisterMediaRespons
 }
 
 type RegisterMediaResponseBodyRegisteredMediaList struct {
-	// The OSS URL of the media file.
-	FileURL *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
-	// The ID of the media file that is registered with ApsaraVideo VOD. If the registered media file is an audio or video file, the value of the VideoId parameter returned by ApsaraVideo VOD takes effect.
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// Indicates whether the media file is newly registered or repeatedly registered. Valid values:
-	// - **true**: The media file is newly registered.
-	// - **false**: The media file is repeatedly registered.
-	NewRegister *bool `json:"NewRegister,omitempty" xml:"NewRegister,omitempty"`
+	FileURL     *string `json:"FileURL,omitempty" xml:"FileURL,omitempty"`
+	MediaId     *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	NewRegister *bool   `json:"NewRegister,omitempty" xml:"NewRegister,omitempty"`
 }
 
 func (s RegisterMediaResponseBodyRegisteredMediaList) String() string {
@@ -20302,6 +20199,162 @@ func (s *RegisterMediaResponse) SetStatusCode(v int32) *RegisterMediaResponse {
 }
 
 func (s *RegisterMediaResponse) SetBody(v *RegisterMediaResponseBody) *RegisterMediaResponse {
+	s.Body = v
+	return s
+}
+
+type RestoreMediaRequest struct {
+	MediaIds    *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	RestoreDays *string `json:"RestoreDays,omitempty" xml:"RestoreDays,omitempty"`
+	RestoreTier *string `json:"RestoreTier,omitempty" xml:"RestoreTier,omitempty"`
+	Scope       *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s RestoreMediaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaRequest) SetMediaIds(v string) *RestoreMediaRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *RestoreMediaRequest) SetRestoreDays(v string) *RestoreMediaRequest {
+	s.RestoreDays = &v
+	return s
+}
+
+func (s *RestoreMediaRequest) SetRestoreTier(v string) *RestoreMediaRequest {
+	s.RestoreTier = &v
+	return s
+}
+
+func (s *RestoreMediaRequest) SetScope(v string) *RestoreMediaRequest {
+	s.Scope = &v
+	return s
+}
+
+type RestoreMediaResponseBody struct {
+	ForbiddenList *RestoreMediaResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
+	IgnoredList   *RestoreMediaResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
+	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RestoreMediaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaResponseBody) SetForbiddenList(v *RestoreMediaResponseBodyForbiddenList) *RestoreMediaResponseBody {
+	s.ForbiddenList = v
+	return s
+}
+
+func (s *RestoreMediaResponseBody) SetIgnoredList(v *RestoreMediaResponseBodyIgnoredList) *RestoreMediaResponseBody {
+	s.IgnoredList = v
+	return s
+}
+
+func (s *RestoreMediaResponseBody) SetRequestId(v string) *RestoreMediaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RestoreMediaResponseBody) SetSuccess(v bool) *RestoreMediaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RestoreMediaResponseBodyForbiddenList struct {
+	MediaForbiddenReasonDTO []*RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO `json:"MediaForbiddenReasonDTO,omitempty" xml:"MediaForbiddenReasonDTO,omitempty" type:"Repeated"`
+}
+
+func (s RestoreMediaResponseBodyForbiddenList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaResponseBodyForbiddenList) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaResponseBodyForbiddenList) SetMediaForbiddenReasonDTO(v []*RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) *RestoreMediaResponseBodyForbiddenList {
+	s.MediaForbiddenReasonDTO = v
+	return s
+}
+
+type RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO struct {
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) SetMediaId(v string) *RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) SetReason(v string) *RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO {
+	s.Reason = &v
+	return s
+}
+
+type RestoreMediaResponseBodyIgnoredList struct {
+	MediaId []*string `json:"MediaId,omitempty" xml:"MediaId,omitempty" type:"Repeated"`
+}
+
+func (s RestoreMediaResponseBodyIgnoredList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaResponseBodyIgnoredList) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaResponseBodyIgnoredList) SetMediaId(v []*string) *RestoreMediaResponseBodyIgnoredList {
+	s.MediaId = v
+	return s
+}
+
+type RestoreMediaResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestoreMediaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestoreMediaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreMediaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreMediaResponse) SetHeaders(v map[string]*string) *RestoreMediaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestoreMediaResponse) SetStatusCode(v int32) *RestoreMediaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestoreMediaResponse) SetBody(v *RestoreMediaResponseBody) *RestoreMediaResponse {
 	s.Body = v
 	return s
 }
@@ -20561,24 +20614,31 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type SearchMediaRequest struct {
-	// The level of the category.
-	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	// The operation that you want to perform. Set the value to **SearchMedia**.
-	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
 	// Details about media assets.
-	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
 	// The preprocessing status. Only preprocessed videos can be used for live streaming in the production studio. Valid values:
 	//
 	// *   **UnPreprocess**
 	// *   **Preprocessing**
 	// *   **PreprocessSucceed**
 	// *   **PreprocessFailed**
+	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	// The ID of the media asset.
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The type of the media asset that you want to query. Default value: video. Valid values:
+	//
+	// *   **video**
+	// *   **audio**
+	// *   **image**
+	// *   **attached**
+	//
+	// > If this parameter is set to **video** or **audio** and you want to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The size of the video file.
+	// The tags of the image file.
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
-	// The ID of the parent category.
-	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 	// The list of sprite snapshots.
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// The size of the video file.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
@@ -20626,24 +20686,18 @@ func (s *SearchMediaRequest) SetSortBy(v string) *SearchMediaRequest {
 }
 
 type SearchMediaResponseBody struct {
-	// The tags of the audio file.
+	// The status of the audio file. Valid values:
+	//
+	// *   **Uploading**
+	// *   **Normal**
+	// *   **UploadFail**
+	// *   **Deleted**
 	MediaList []*SearchMediaResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
-	// The type of the media asset that you want to query. Default value: video. Valid values:
-	//
-	// *   **video**
-	// *   **audio**
-	// *   **image**
-	// *   **attached**
-	//
-	// > If this parameter is set to **video** or **audio** and you want to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
+	// The tags of the audio file.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding mode. Default value: FastTranscode. Valid values:
-	//
-	// *   **FastTranscode**: The video file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
-	// *   **NoTranscode**: The video file can be played without being transcoded. You can immediately play the file after it is uploaded.
-	// *   **AsyncTranscode**: The video file can be immediately played and asynchronously transcoded after it is uploaded.
+	// The title of the auxiliary media asset.
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
-	// The tags of the image file.
+	// [Details about image files](~~86991~~).
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -20680,29 +20734,22 @@ type SearchMediaResponseBodyMediaList struct {
 	AiData *SearchMediaResponseBodyMediaListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
 	// AI简介数据
 	AiRoughData *SearchMediaResponseBodyMediaListAiRoughData `json:"AiRoughData,omitempty" xml:"AiRoughData,omitempty" type:"Struct"`
-	// The URL of the thumbnail.
+	// Queries the information about media assets such as video, audio, and image files, and auxiliary media assets.
 	AttachedMedia *SearchMediaResponseBodyMediaListAttachedMedia `json:"AttachedMedia,omitempty" xml:"AttachedMedia,omitempty" type:"Struct"`
-	// The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The name of the category.
 	Audio *SearchMediaResponseBodyMediaListAudio `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	// The title of the auxiliary media asset.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The pagination identifier. The identifier can be up to 32 characters in length.
-	//
-	// The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter criteria are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
-	//
-	// *   If SearchType is set to **video** or **audio** and you need to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
-	// *   If the value of the PageNo parameter exceeds **200**, we recommend that you set this parameter to optimize search performance.
-	Image *SearchMediaResponseBodyMediaListImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The description of the video file.
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The status of the audio file. Valid values:
-	//
-	// *   **Uploading**
-	// *   **Normal**
-	// *   **UploadFail**
-	// *   **Deleted**
-	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The list of category IDs.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	Image *SearchMediaResponseBodyMediaListImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
+	// The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// The description of the image file.
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The download switch. The video file can be downloaded offline only when the download switch is turned on. Valid values:
+	//
+	// *   **on**
+	// *   **off**
 	Video *SearchMediaResponseBodyMediaListVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
@@ -20927,21 +20974,18 @@ func (s *SearchMediaResponseBodyMediaListAiRoughData) SetStatus(v string) *Searc
 }
 
 type SearchMediaResponseBodyMediaListAttachedMedia struct {
-	AppId        *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	BusinessType *string                                                    `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Categories   []*SearchMediaResponseBodyMediaListAttachedMediaCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The ID of the request.
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MediaId          *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The endpoint of the OSS bucket in which the audio file is stored.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Queries the information about media assets such as video, audio, and image files, and auxiliary media assets.
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Title           *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	URL             *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	AppId            *string                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BusinessType     *string                                                    `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	Categories       []*SearchMediaResponseBodyMediaListAttachedMediaCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CreationTime     *string                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	MediaId          *string                                                    `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	ModificationTime *string                                                    `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Status           *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageLocation  *string                                                    `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Tags             *string                                                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title            *string                                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	URL              *string                                                    `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s SearchMediaResponseBodyMediaListAttachedMedia) String() string {
@@ -21048,70 +21092,71 @@ func (s *SearchMediaResponseBodyMediaListAttachedMediaCategories) SetParentId(v 
 }
 
 type SearchMediaResponseBodyMediaListAudio struct {
-	// The number of the page to return. Default value: **1**.
-	//
-	// > If the value of this parameter exceeds **200**, we recommend that you set the ScrollToken parameter as well.
+	// The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the category.
+	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	AudioId *string `json:"AudioId,omitempty" xml:"AudioId,omitempty"`
-	// The size of the audio file.
+	// The URL of the auxiliary media asset.
 	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The name of the category.
+	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The status of the auxiliary media asset. Valid values:
 	//
 	// *   **Uploading**: The auxiliary media asset is being uploaded. This is the initial status.
 	// *   **Normal**: The auxiliary media asset is uploaded.
 	// *   **UploadFail**: The auxiliary media asset fails to be uploaded.
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The type of the auxiliary media asset. Valid values:
-	//
-	// *   **watermark**
-	// *   **subtitle**
-	// *   **material**
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The sort field and order. Separate multiple values with commas (,). Default value: CreationTime:Desc. Valid values:
-	//
-	// *   **CreationTime:Desc**: The results are sorted in reverse chronological order based on the creation time.
-	// *   **CreationTime:Asc**: The results are sorted in chronological order based on the creation time.
-	//
-	// > * For more information about the sort field, see "Sort field" in the [Search for media asset information](~~99179~~) topic.
-	// > * To obtain the first 5,000 data records that meet the specified filter criteria, you can specify a maximum of three sort fields.
-	// > * To obtain all the data records that meet the specified filter criteria, you can specify only one sort field.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The tags of the video file.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
-	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
-	// The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The URL of the auxiliary media asset.
-	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
-	// The duration of the audio file.
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The ID of the auxiliary media asset.
-	PreprocessStatus  *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
-	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
-	RestoreStatus     *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The name of the category.
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// [Details about audio files](~~86991~~).
-	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	SpriteSnapshots []*string `json:"SpriteSnapshots,omitempty" xml:"SpriteSnapshots,omitempty" type:"Repeated"`
-	// The endpoint of the OSS bucket in which the auxiliary media asset is stored.
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The name of the category.
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
 	// The source. Valid values:
 	//
 	// *   **general**: The video file is uploaded by using ApsaraVideo VOD.
 	// *   **short_video**: The video file is uploaded by using the short video SDK.
 	// *   **editing**: The video file is produced after online editing.
 	// *   **live**: The video stream is recorded and uploaded as a file.
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The type of the auxiliary media asset. Valid values:
+	//
+	// *   **watermark**
+	// *   **subtitle**
+	// *   **material**
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the auxiliary media asset.
+	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
+	// The time when the image file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	//
+	// > If the value of this parameter exceeds **200**, we recommend that you set the ScrollToken parameter as well.
+	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
+	// The pagination identifier.
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The total number of data records that meet the specified filter criteria.
+	PreprocessStatus  *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
+	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
+	RestoreStatus     *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
+	// The title of the video file.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the video file.
+	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The status of the image file.
+	//
+	// *   **Uploading**: The image file is being uploaded. This is the initial status.
+	// *   **Normal**: The image file is uploaded.
+	// *   **UploadFail**: The image file fails to be uploaded.
+	SpriteSnapshots []*string `json:"SpriteSnapshots,omitempty" xml:"SpriteSnapshots,omitempty" type:"Repeated"`
+	// The size of the audio file.
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	// The duration of the audio file.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The tags of the video file.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The transcoding mode. Default value: FastTranscode. Valid values:
+	//
+	// *   **FastTranscode**: The audio file is immediately transcoded after it is uploaded. You cannot play the file before it is transcoded.
+	// *   **NoTranscode**: The audio file can be played without being transcoded. You can immediately play the file after it is uploaded.
+	// *   **AsyncTranscode**: The audio file can be immediately played and asynchronously transcoded after it is uploaded.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	TranscodeMode *string `json:"TranscodeMode,omitempty" xml:"TranscodeMode,omitempty"`
 }
 
@@ -21239,34 +21284,34 @@ func (s *SearchMediaResponseBodyMediaListAudio) SetTranscodeMode(v string) *Sear
 }
 
 type SearchMediaResponseBodyMediaListImage struct {
-	// The ID of the image file.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the application.
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The duration of the video file. Unit: seconds.
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The category ID of the image file.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The URL of the thumbnail.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the audio file.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The duration of the video file. Unit: seconds.
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The tags of the auxiliary media asset.
+	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// [Details about auxiliary media assets](~~86991~~).
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The endpoint of the OSS bucket in which the audio file is stored.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The URL of the thumbnail.
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The type of the media asset. Valid values:
 	//
 	// *   **video**
 	// *   **audio**
 	// *   **image**
 	// *   **attached**
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the video file.
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// [Details about auxiliary media assets](~~86991~~).
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The category ID of the video file.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The ID of the application.
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The list of automatic snapshots.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the request.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The URL of the thumbnail.
 	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
@@ -21339,25 +21384,11 @@ func (s *SearchMediaResponseBodyMediaListImage) SetURL(v string) *SearchMediaRes
 }
 
 type SearchMediaResponseBodyMediaListVideo struct {
-	// [Details about video files](~~86991~~).
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the application.
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The filter condition. For more information about the syntax, see [Protocol for media asset search](~~86991~~).
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The endpoint of the OSS bucket in which the image file is stored.
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The title of the image file.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The download switch. The audio file can be downloaded offline only when the download switch is turned on. Valid values:
 	//
 	// *   **on**
 	// *   **off**
-	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
-	// The category ID of the audio file.
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The status of the video file. Valid values:
 	//
 	// *   **Uploading**
@@ -21367,36 +21398,45 @@ type SearchMediaResponseBodyMediaListVideo struct {
 	// *   **TranscodeFail**
 	// *   **Blocked**
 	// *   **Normal**
-	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
-	// The time when the audio file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	// The name of the category.
+	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	// The filter condition. For more information about the syntax, see [Protocol for media asset search](~~86991~~).
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// The category ID of the auxiliary media asset.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The endpoint of the OSS bucket in which the image file is stored.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the application.
+	DownloadSwitch *string `json:"DownloadSwitch,omitempty" xml:"DownloadSwitch,omitempty"`
+	// The description of the auxiliary media asset.
+	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// [Details about video files](~~86991~~).
+	MediaSource *string `json:"MediaSource,omitempty" xml:"MediaSource,omitempty"`
+	// The description of the audio file.
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The URL of the image file.
 	PreprocessStatus  *string `json:"PreprocessStatus,omitempty" xml:"PreprocessStatus,omitempty"`
 	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
 	RestoreStatus     *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The name of the category.
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The title of the audio file.
-	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 	// The time when the image file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The endpoint of the OSS bucket in which the auxiliary media asset is stored.
+	Snapshots []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The list of automatic snapshots.
 	SpriteSnapshots []*string `json:"SpriteSnapshots,omitempty" xml:"SpriteSnapshots,omitempty" type:"Repeated"`
-	// The description of the image file.
+	// The ID of the application.
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The download switch. The video file can be downloaded offline only when the download switch is turned on. Valid values:
-	//
-	// *   **on**
-	// *   **off**
+	// The time when the audio file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The category ID of the auxiliary media asset.
+	// The title of the image file.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The URL of the image file.
+	// The title of the audio file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The category ID of the audio file.
 	TranscodeMode *string `json:"TranscodeMode,omitempty" xml:"TranscodeMode,omitempty"`
-	// The media asset fields to return in the query results.
-	//
-	// By default, only the basic media asset fields are returned. You can specify additional media asset fields that need to be returned in the request. For more information, see the "API examples" section of the [Search for media asset information](~~99179~~) topic.
+	// The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
@@ -22024,27 +22064,23 @@ func (s *SetEditingProjectMaterialsResponse) SetBody(v *SetEditingProjectMateria
 }
 
 type SetMessageCallbackRequest struct {
-	// The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The cryptographic key. This parameter only takes effect when the CallbackType parameter is set to HTTP. The key can be up to 32 characters in length and must contain uppercase letters, lowercase letters, and digits.
+	// The operation that you want to perform. Set the value to **SetMessageCallback**.
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// The ID of the request.
+	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
+	// The type of the callback event. If you do not set this parameter, notifications for all types of events are disabled. If you set this parameter to ALL, notifications for all types of events are enabled. You can specify the event types for which notifications are enabled. Separate multiple event types with commas (,). For more information about the valid values of this parameter, see [Event type](~~55627~~).
+	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
+	// The name of the MNS queue. This parameter only takes effect when the CallbackType parameter is set to MNS.
+	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
 	// Specifies whether to enable callback authentication. This parameter only takes effect when the CallbackType parameter is set to HTTP. Valid values:
 	//
 	// *   **on**: enables authentication.
 	// *   **off**: disables authentication.
-	AuthSwitch *string `json:"AuthSwitch,omitempty" xml:"AuthSwitch,omitempty"`
-	// The callback method. Valid values:
-	//
-	// *   **HTTP**
-	// *   **MNS**
-	CallbackType *string `json:"CallbackType,omitempty" xml:"CallbackType,omitempty"`
-	// The callback URL. This parameter only takes effect when the CallbackType parameter is set to HTTP.
-	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// The type of the callback event. If you do not set this parameter, notifications for all types of events are disabled. If you set this parameter to ALL, notifications for all types of events are enabled. You can specify the event types for which notifications are enabled. Separate multiple event types with commas (,). For more information about the valid values of this parameter, see [Event type](~~55627~~).
 	EventTypeList *string `json:"EventTypeList,omitempty" xml:"EventTypeList,omitempty"`
-	// The public endpoint of Message Service (MNS). This parameter only takes effect when the CallbackType parameter is set to MNS. For more information, see [Endpoint](~~27480#concept-2028913~~ "An endpoint is the address that you specify for a subscription to receive messages. When messages are published to a topic, Message Service (MNS) pushes the messages to the specified endpoints. You can specify the same endpoint for multiple subscriptions.").
+	// The cryptographic key. This parameter only takes effect when the CallbackType parameter is set to HTTP. The key can be up to 32 characters in length and must contain uppercase letters, lowercase letters, and digits.
 	MnsEndpoint *string `json:"MnsEndpoint,omitempty" xml:"MnsEndpoint,omitempty"`
-	// The name of the MNS queue. This parameter only takes effect when the CallbackType parameter is set to MNS.
+	// Sets the callback method, callback URL, and event type of an event notification.
 	MnsQueueName *string `json:"MnsQueueName,omitempty" xml:"MnsQueueName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
@@ -22103,7 +22139,6 @@ func (s *SetMessageCallbackRequest) SetOwnerAccount(v string) *SetMessageCallbac
 }
 
 type SetMessageCallbackResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23961,6 +23996,162 @@ func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *Upd
 	return s
 }
 
+type UpdateMediaStorageClassRequest struct {
+	MediaIds     *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	RestoreTier  *string `json:"RestoreTier,omitempty" xml:"RestoreTier,omitempty"`
+	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+}
+
+func (s UpdateMediaStorageClassRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassRequest) SetMediaIds(v string) *UpdateMediaStorageClassRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassRequest) SetRestoreTier(v string) *UpdateMediaStorageClassRequest {
+	s.RestoreTier = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassRequest) SetScope(v string) *UpdateMediaStorageClassRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassRequest) SetStorageClass(v string) *UpdateMediaStorageClassRequest {
+	s.StorageClass = &v
+	return s
+}
+
+type UpdateMediaStorageClassResponseBody struct {
+	ForbiddenList *UpdateMediaStorageClassResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
+	IgnoredList   *UpdateMediaStorageClassResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status        *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateMediaStorageClassResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassResponseBody) SetForbiddenList(v *UpdateMediaStorageClassResponseBodyForbiddenList) *UpdateMediaStorageClassResponseBody {
+	s.ForbiddenList = v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponseBody) SetIgnoredList(v *UpdateMediaStorageClassResponseBodyIgnoredList) *UpdateMediaStorageClassResponseBody {
+	s.IgnoredList = v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponseBody) SetRequestId(v string) *UpdateMediaStorageClassResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponseBody) SetStatus(v string) *UpdateMediaStorageClassResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpdateMediaStorageClassResponseBodyForbiddenList struct {
+	MediaForbiddenReasonDTO []*UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO `json:"MediaForbiddenReasonDTO,omitempty" xml:"MediaForbiddenReasonDTO,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMediaStorageClassResponseBodyForbiddenList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassResponseBodyForbiddenList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassResponseBodyForbiddenList) SetMediaForbiddenReasonDTO(v []*UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) *UpdateMediaStorageClassResponseBodyForbiddenList {
+	s.MediaForbiddenReasonDTO = v
+	return s
+}
+
+type UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO struct {
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) SetMediaId(v string) *UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) SetReason(v string) *UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO {
+	s.Reason = &v
+	return s
+}
+
+type UpdateMediaStorageClassResponseBodyIgnoredList struct {
+	MediaId []*string `json:"MediaId,omitempty" xml:"MediaId,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMediaStorageClassResponseBodyIgnoredList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassResponseBodyIgnoredList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassResponseBodyIgnoredList) SetMediaId(v []*string) *UpdateMediaStorageClassResponseBodyIgnoredList {
+	s.MediaId = v
+	return s
+}
+
+type UpdateMediaStorageClassResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMediaStorageClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMediaStorageClassResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaStorageClassResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaStorageClassResponse) SetHeaders(v map[string]*string) *UpdateMediaStorageClassResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponse) SetStatusCode(v int32) *UpdateMediaStorageClassResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaStorageClassResponse) SetBody(v *UpdateMediaStorageClassResponseBody) *UpdateMediaStorageClassResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTranscodeTemplateGroupRequest struct {
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	// The operation that you want to perform. Set the value to **UpdateTranscodeTemplateGroup**.
@@ -24150,9 +24341,18 @@ func (s *UpdateVideoInfoResponse) SetBody(v *UpdateVideoInfoResponseBody) *Updat
 }
 
 type UpdateVideoInfosRequest struct {
-	// The new information about audios or videos. You can modify the information about up to 20 audios or videos at a time. Separate multiple audios or videos with commas (,). When you modify the information exceed 20 audios or videos at a time, the update will fail with an error code **CountExceededMax**.
+	// ## UpdateContent
 	//
-	// The value is a JSON string. For more information, see the **UpdateContent** section of this topic.
+	// >  You must convert the UpdateContent[] parameter to a string before you pass it in.
+	//
+	// | Parameter | Type | Required | Description |
+	// | --------- | ---- | -------- | ----------- |
+	// | VideoId | String | Yes | The ID of the video. |
+	// | Title | String | No | The title of the video. |
+	// | Description | String | No | The description of the video. |
+	// | Tags | String | No | The tag of the video. |
+	// | CoverURL | String | No | The URL of the video thumbnail. |
+	// | CateId | Long | No | The ID of the category. |
 	UpdateContent *string `json:"UpdateContent,omitempty" xml:"UpdateContent,omitempty"`
 }
 
@@ -24170,12 +24370,9 @@ func (s *UpdateVideoInfosRequest) SetUpdateContent(v string) *UpdateVideoInfosRe
 }
 
 type UpdateVideoInfosResponseBody struct {
-	// The IDs of the videos that cannot be modified. Generally, videos cannot be modified if you do not have required [permissions](~~113600~~).
 	ForbiddenVideoIds []*string `json:"ForbiddenVideoIds,omitempty" xml:"ForbiddenVideoIds,omitempty" type:"Repeated"`
-	// The IDs of the videos that do not exist.
-	NonExistVideoIds []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NonExistVideoIds  []*string `json:"NonExistVideoIds,omitempty" xml:"NonExistVideoIds,omitempty" type:"Repeated"`
+	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateVideoInfosResponseBody) String() string {
@@ -24409,14 +24606,13 @@ func (s *UpdateVodTemplateResponse) SetBody(v *UpdateVodTemplateResponseBody) *U
 }
 
 type UpdateWatermarkRequest struct {
-	// The name of the watermark. Only letters and digits are supported.
-	// *   The name can be up to 128 bytes in length.
-	// *   The value must be encoded in UTF-8.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
-	// > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
-	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
 	// The ID of the watermark.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the watermark.
+	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
+	// The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
+	//
+	// > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
 }
 
@@ -24444,9 +24640,9 @@ func (s *UpdateWatermarkRequest) SetWatermarkId(v string) *UpdateWatermarkReques
 }
 
 type UpdateWatermarkResponseBody struct {
-	// The ID of the request.
+	// The operation that you want to perform. Set the value to **UpdateWatermark**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the watermark.
+	// The ID of the watermark.
 	WatermarkInfo *UpdateWatermarkResponseBodyWatermarkInfo `json:"WatermarkInfo,omitempty" xml:"WatermarkInfo,omitempty" type:"Struct"`
 }
 
@@ -24469,25 +24665,21 @@ func (s *UpdateWatermarkResponseBody) SetWatermarkInfo(v *UpdateWatermarkRespons
 }
 
 type UpdateWatermarkResponseBodyWatermarkInfo struct {
-	// The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The name of the watermark. Only letters and digits are supported.
+	//
+	// *   The name can be up to 128 bytes in length.
+	// *   The value must be encoded in UTF-8.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
+	// The ID of the request.
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// Indicates whether the watermark is the default one. Valid values:
-	// *   **Default**: The watermark is the default one.
-	// *   **NotDefault**: The watermark is not the default one.
+	// The Object Storage Service (OSS) URL or Content Delivery Network (CDN) URL of the watermark file. A text watermark does not have a file URL.
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The name of the watermark.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the watermark. Valid values:
-	// *   **Image**: This is the default value.
-	// *   **Text**
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the watermark was added. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
-	// > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
+	// Modifies a watermark.
 	WatermarkConfig *string `json:"WatermarkConfig,omitempty" xml:"WatermarkConfig,omitempty"`
-	// The ID of the watermark.
-	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
+	WatermarkId     *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
 }
 
 func (s UpdateWatermarkResponseBodyWatermarkInfo) String() string {
@@ -25612,7 +25804,7 @@ func (client *Client) AttachAppPolicyToIdentity(request *AttachAppPolicyToIdenti
 }
 
 /**
- * > This operation is available only in the **China (Shanghai)** region.
+ * The ID of the request.
  *
  * @param request BatchSetVodDomainConfigsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25668,7 +25860,7 @@ func (client *Client) BatchSetVodDomainConfigsWithOptions(request *BatchSetVodDo
 }
 
 /**
- * > This operation is available only in the **China (Shanghai)** region.
+ * The ID of the request.
  *
  * @param request BatchSetVodDomainConfigsRequest
  * @return BatchSetVodDomainConfigsResponse
@@ -25750,8 +25942,7 @@ func (client *Client) BatchStartVodDomain(request *BatchStartVodDomainRequest) (
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   After you disable a domain name for CDN, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name for CDN to the origin server.
+ * The operation that you want to perform. Set the value to **BatchStopVodDomain**.
  *
  * @param request BatchStopVodDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25799,8 +25990,7 @@ func (client *Client) BatchStopVodDomainWithOptions(request *BatchStopVodDomainR
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   After you disable a domain name for CDN, the information about the domain name is retained. The system automatically reroutes all the requests that are destined for the domain name for CDN to the origin server.
+ * The operation that you want to perform. Set the value to **BatchStopVodDomain**.
  *
  * @param request BatchStopVodDomainRequest
  * @return BatchStopVodDomainResponse
@@ -25817,8 +26007,9 @@ func (client *Client) BatchStopVodDomain(request *BatchStopVodDomainRequest) (_r
 }
 
 /**
- * *   You can cancel only a URL-based upload job in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
- * *   You cannot cancel an upload job that already starts.
+ * The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+ * > *   You must encode the URLs before you use the URLs.
+ * > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
  *
  * @param request CancelUrlUploadJobsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25862,8 +26053,9 @@ func (client *Client) CancelUrlUploadJobsWithOptions(request *CancelUrlUploadJob
 }
 
 /**
- * *   You can cancel only a URL-based upload job in the **Pending** state. You can query the status of a URL-based upload job by calling the [GetURLUploadInfos](~~106830~~) operation.
- * *   You cannot cancel an upload job that already starts.
+ * The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+ * > *   You must encode the URLs before you use the URLs.
+ * > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
  *
  * @param request CancelUrlUploadJobsRequest
  * @return CancelUrlUploadJobsResponse
@@ -26590,7 +26782,7 @@ func (client *Client) DeleteAttachedMedia(request *DeleteAttachedMediaRequest) (
 }
 
 /**
- * > If a video category is deleted, its subcategories, including level 2 and level 3 categories, are also deleted. Exercise caution when you call this operation.
+ * The ID of the request.
  *
  * @param request DeleteCategoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26630,7 +26822,7 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 }
 
 /**
- * > If a video category is deleted, its subcategories, including level 2 and level 3 categories, are also deleted. Exercise caution when you call this operation.
+ * The ID of the request.
  *
  * @param request DeleteCategoryRequest
  * @return DeleteCategoryResponse
@@ -26834,7 +27026,7 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * The operation that you want to perform. Set the value to **DeleteMessageCallback**.
  *
  * @param request DeleteMessageCallbackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26878,7 +27070,7 @@ func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCal
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * The operation that you want to perform. Set the value to **DeleteMessageCallback**.
  *
  * @param request DeleteMessageCallbackRequest
  * @return DeleteMessageCallbackResponse
@@ -26956,9 +27148,7 @@ func (client *Client) DeleteMezzanines(request *DeleteMezzaninesRequest) (_resul
 }
 
 /**
- * * In a multipart upload, fragments may be generated if the upload fails. In most cases, the fragments are automatically deleted after seven days. You can call this operation to delete the generated fragments after the upload is successful or fails.
- * * This operation does not delete the source file or transcoded file, but deletes only the fragments generated during the upload.
- * * If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated fragments.
+ * The ID of the request.
  *
  * @param request DeleteMultipartUploadRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27006,9 +27196,7 @@ func (client *Client) DeleteMultipartUploadWithOptions(request *DeleteMultipartU
 }
 
 /**
- * * In a multipart upload, fragments may be generated if the upload fails. In most cases, the fragments are automatically deleted after seven days. You can call this operation to delete the generated fragments after the upload is successful or fails.
- * * This operation does not delete the source file or transcoded file, but deletes only the fragments generated during the upload.
- * * If you call the [DeleteVideo](~~52837~~) operation, the entire video file is deleted, including the generated fragments.
+ * The ID of the request.
  *
  * @param request DeleteMultipartUploadRequest
  * @return DeleteMultipartUploadResponse
@@ -27073,9 +27261,9 @@ func (client *Client) DeleteStream(request *DeleteStreamRequest) (_result *Delet
 }
 
 /**
- * *   You cannot remove the default transcoding template. You can remove it only after it is no longer specified as the default.
- * *   For security purposes, you cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * Specifies whether to forcibly delete the entire transcoding template group. Valid values:
+ * *   **true**: deletes the entire transcoding template group and its transcoding templates.
+ * *   **false**: removes the specified transcoding templates from the transcoding template group. This is the default value.
  *
  * @param request DeleteTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27123,9 +27311,9 @@ func (client *Client) DeleteTranscodeTemplateGroupWithOptions(request *DeleteTra
 }
 
 /**
- * *   You cannot remove the default transcoding template. You can remove it only after it is no longer specified as the default.
- * *   For security purposes, you cannot add, modify, or remove transcoding templates in a transcoding template group that is locked in the ApsaraVideo VOD console. To manage such transcoding template groups, contact the ApsaraVideo VOD technical support.
- * *   You can call the GetTranscodeTemplateGroup operation to query the configurations of a transcoding template group and check whether the transcoding template group is locked by using the response parameter Locked.
+ * Specifies whether to forcibly delete the entire transcoding template group. Valid values:
+ * *   **true**: deletes the entire transcoding template group and its transcoding templates.
+ * *   **false**: removes the specified transcoding templates from the transcoding template group. This is the default value.
  *
  * @param request DeleteTranscodeTemplateGroupRequest
  * @return DeleteTranscodeTemplateGroupResponse
@@ -27142,9 +27330,10 @@ func (client *Client) DeleteTranscodeTemplateGroup(request *DeleteTranscodeTempl
 }
 
 /**
- * *   This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
- * *   You can call this operation to delete multiple videos at a time.
- * *   When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](~~86098~~).
+ * The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
+ * *   If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files** > **Audio/Video** to view the ID of the video.
+ * *   If the video is uploaded by calling the [CreateUploadVideo](~~55407~~) operation, the video ID is the VideoId value in the response.
+ * *   You can also call the [SearchMedia](~~86044~~) operation to obtain the video ID, which is the VideoId value in the response.
  *
  * @param request DeleteVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27184,9 +27373,10 @@ func (client *Client) DeleteVideoWithOptions(request *DeleteVideoRequest, runtim
 }
 
 /**
- * *   This operation physically deletes videos. Deleted videos cannot be recovered. Exercise caution when you call this operation.
- * *   You can call this operation to delete multiple videos at a time.
- * *   When you delete a video, its source file, transcoded stream file, and thumbnail screenshot are also deleted. However, the Alibaba Cloud Content Delivery Network (CDN) cache is not refreshed simultaneously. You can use the refresh feature in the ApsaraVideo VOD console to clear garbage data on CDN nodes. For more information, see [Refresh and prefetch](~~86098~~).
+ * The list of video IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified. You can obtain a video ID in one of the following ways:
+ * *   If the video is uploaded by using the [ApsaraVideo VOD console](https://vod.console.aliyun.com), log on to the console and choose **Media Files** > **Audio/Video** to view the ID of the video.
+ * *   If the video is uploaded by calling the [CreateUploadVideo](~~55407~~) operation, the video ID is the VideoId value in the response.
+ * *   You can also call the [SearchMedia](~~86044~~) operation to obtain the video ID, which is the VideoId value in the response.
  *
  * @param request DeleteVideoRequest
  * @return DeleteVideoResponse
@@ -27576,10 +27766,7 @@ func (client *Client) DescribePlayUserAvg(request *DescribePlayUserAvgRequest) (
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+ * The total number of unique visitors who use ApsaraVideo Player SDK for Flash.
  *
  * @param request DescribePlayUserTotalRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27627,10 +27814,7 @@ func (client *Client) DescribePlayUserTotalWithOptions(request *DescribePlayUser
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call this operation to query only playback statistics collected on videos that are played by using ApsaraVideo Player SDKs.
- * > *   Playback statistics for the previous day are generated at 09:00 on the current day, in UTC+8.
- * > *   You can query data that is generated since January 1, 2018. The maximum time range to query is 180 days.
+ * The total number of unique visitors who use ApsaraVideo Player SDK for Flash.
  *
  * @param request DescribePlayUserTotalRequest
  * @return DescribePlayUserTotalResponse
@@ -27856,7 +28040,7 @@ func (client *Client) DescribeVodCertificateList(request *DescribeVodCertificate
 }
 
 /**
- * If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+ * The domain name for CDN.
  *
  * @param request DescribeVodDomainBpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27920,7 +28104,7 @@ func (client *Client) DescribeVodDomainBpsDataWithOptions(request *DescribeVodDo
 }
 
 /**
- * If you specify neither the StartTime parameter nor the EndTime parameter, the data in the last 24 hours is queried. Alternatively, you can specify both the StartTime and EndTime parameters to query data that is generated in the specified duration. You can query data for the last 90 days at most.
+ * The domain name for CDN.
  *
  * @param request DescribeVodDomainBpsDataRequest
  * @return DescribeVodDomainBpsDataResponse
@@ -28255,23 +28439,6 @@ func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcB
 	return _result, _err
 }
 
-/**
- * * This operation is available only in the **China (Shanghai)** region.
- * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
- * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
- * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
- * ### Time granularity
- * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
- * |---|---|---|---|
- * |5 minutes|(0, 3\\]|93|15 minutes|
- * |1 hour|(3, 31\\]|186|4 hours|
- * |1 day|(31, 366\\]|366|04:00 on the next day|
- *
- * @param request DescribeVodDomainSrcTrafficDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeVodDomainSrcTrafficDataResponse
- */
 func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *DescribeVodDomainSrcTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28321,22 +28488,6 @@ func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *Descri
 	return _result, _err
 }
 
-/**
- * * This operation is available only in the **China (Shanghai)** region.
- * * ApsaraVideo VOD stores the origin traffic data for 90 days before the data is deleted.
- * * If you do not set the `StartTime` or `EndTime` parameter, the request returns the data collected in the last 24 hours. If you set both the `StartTime` and `EndTime` parameters, the request returns the data collected within the specified time range.
- * * You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,). If you specify multiple domain names in a request, aggregation results are returned.
- * ### Time granularity
- * The time granularity supported by the Interval parameter varies based on the time range per query specified by using `StartTime` and `EndTime`. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Time range per query (days)|Historical data available (days)|Data delay|
- * |---|---|---|---|
- * |5 minutes|(0, 3\\]|93|15 minutes|
- * |1 hour|(3, 31\\]|186|4 hours|
- * |1 day|(31, 366\\]|366|04:00 on the next day|
- *
- * @param request DescribeVodDomainSrcTrafficDataRequest
- * @return DescribeVodDomainSrcTrafficDataResponse
- */
 func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomainSrcTrafficDataRequest) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVodDomainSrcTrafficDataResponse{}
@@ -28438,9 +28589,10 @@ func (client *Client) DescribeVodDomainTrafficData(request *DescribeVodDomainTra
 }
 
 /**
- * > -   This operation is available only in the **China (Shanghai)** region.
- * >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
- * >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
+ * >
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+ * *   You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
  *
  * @param request DescribeVodDomainUsageDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28508,9 +28660,10 @@ func (client *Client) DescribeVodDomainUsageDataWithOptions(request *DescribeVod
 }
 
 /**
- * > -   This operation is available only in the **China (Shanghai)** region.
- * >-  You can specify a maximum of 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
- * >-  You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
+ * >
+ * *   This operation is available only in the **China (Shanghai)** region.
+ * *   You can specify up to 100 accelerated domain names in a request. Separate multiple domain names with commas (,). If you do not specify an accelerated domain name, the data of all accelerated domain names within your Alibaba Cloud account is returned.
+ * *   You can query data in the last year. The maximum time range that can be queried is three months. If you specify a time range of one to three days, the system returns data on an hourly basis. If you specify a time range of four days or more, the system returns data on a daily basis.
  *
  * @param request DescribeVodDomainUsageDataRequest
  * @return DescribeVodDomainUsageDataResponse
@@ -28527,8 +28680,7 @@ func (client *Client) DescribeVodDomainUsageData(request *DescribeVodDomainUsage
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+ * The maximum number of URLs of files that can be refreshed each day.
  *
  * @param request DescribeVodRefreshQuotaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28572,8 +28724,7 @@ func (client *Client) DescribeVodRefreshQuotaWithOptions(request *DescribeVodRef
 }
 
 /**
- * > *   This operation is available only in the **China (Shanghai)** region.
- * > *   You can call the [RefreshVodObjectCaches](~~69215~~) operation to refresh content and the [PreloadVodObjectCaches](~~69211~~) operation to prefetch content.
+ * The maximum number of URLs of files that can be refreshed each day.
  *
  * @param request DescribeVodRefreshQuotaRequest
  * @return DescribeVodRefreshQuotaResponse
@@ -30262,7 +30413,7 @@ func (client *Client) GetMediaRefreshJobs(request *GetMediaRefreshJobsRequest) (
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * The type of the callback event.
  *
  * @param request GetMessageCallbackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30306,7 +30457,7 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 }
 
 /**
- * > For more information, see [Overview](~~55627~~).
+ * The type of the callback event.
  *
  * @param request GetMessageCallbackRequest
  * @return GetMessageCallbackResponse
@@ -30958,7 +31109,7 @@ func (client *Client) GetVideoInfos(request *GetVideoInfosRequest) (_result *Get
 }
 
 /**
- * In a single request, you can obtain the information about a maximum of first **5,000** video records that meet the specified filter criteria, such as the video status and category. We recommend that you set the StartTime and EndTime parameters to narrow down the time range for queries and perform multiple queries. For more information about how to query the information about more videos or even all videos, see [SearchMedia](~~86044~~).
+ * You can call this operation to query information about media files based on the filter conditions that you specify, such as video status and category ID. Information about a maximum of **5,000** media files can be returned for each request. We recommend that you set the StartTime and EndTime parameters to specify a time range for each request. For more information about how to query information about more media files or even all media files, see [SearchMedia](~~86044~~).
  *
  * @param request GetVideoListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31026,7 +31177,7 @@ func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runt
 }
 
 /**
- * In a single request, you can obtain the information about a maximum of first **5,000** video records that meet the specified filter criteria, such as the video status and category. We recommend that you set the StartTime and EndTime parameters to narrow down the time range for queries and perform multiple queries. For more information about how to query the information about more videos or even all videos, see [SearchMedia](~~86044~~).
+ * You can call this operation to query information about media files based on the filter conditions that you specify, such as video status and category ID. Information about a maximum of **5,000** media files can be returned for each request. We recommend that you set the StartTime and EndTime parameters to specify a time range for each request. For more information about how to query information about more media files or even all media files, see [SearchMedia](~~86044~~).
  *
  * @param request GetVideoListRequest
  * @return GetVideoListResponse
@@ -31043,8 +31194,7 @@ func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVi
 }
 
 /**
- * *   You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL.
- * *   You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
+ * The thumbnail URL of the audio or video file.
  *
  * @param request GetVideoPlayAuthRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31092,8 +31242,7 @@ func (client *Client) GetVideoPlayAuthWithOptions(request *GetVideoPlayAuthReque
 }
 
 /**
- * *   You can call this operation to obtain a playback credential when you use ApsaraVideo Player SDK to play a media file based on PlayAuth. The credential is used to obtain the playback URL.
- * *   You cannot obtain the playback URL of a video by using a credential that has expired. A new credential is required.
+ * The thumbnail URL of the audio or video file.
  *
  * @param request GetVideoPlayAuthRequest
  * @return GetVideoPlayAuthResponse
@@ -31615,7 +31764,7 @@ func (client *Client) ListDynamicImage(request *ListDynamicImageRequest) (_resul
 }
 
 /**
- * You can query a maximum of 5,000 videos based on the specified filter condition.
+ * The ID of the video category.
  *
  * @param request ListLiveRecordVideoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31683,7 +31832,7 @@ func (client *Client) ListLiveRecordVideoWithOptions(request *ListLiveRecordVide
 }
 
 /**
- * You can query a maximum of 5,000 videos based on the specified filter condition.
+ * The ID of the video category.
  *
  * @param request ListLiveRecordVideoRequest
  * @return ListLiveRecordVideoResponse
@@ -31700,7 +31849,12 @@ func (client *Client) ListLiveRecordVideo(request *ListLiveRecordVideoRequest) (
 }
 
 /**
- * If multiple snapshots of a video exist, the data of the latest snapshot is returned.
+ * The type of snapshots that are returned. Valid values:
+ * *   **CoverSnapshot**: thumbnail snapshot
+ * *   **NormalSnapshot**: normal snapshot
+ * *   **SpriteSnapshot**: sprite snapshot
+ * *   **SpriteOriginSnapshot**: sprite source snapshot
+ * *   **WebVttSnapshot**: WebVTT snapshot
  *
  * @param request ListSnapshotsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31756,7 +31910,12 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 }
 
 /**
- * If multiple snapshots of a video exist, the data of the latest snapshot is returned.
+ * The type of snapshots that are returned. Valid values:
+ * *   **CoverSnapshot**: thumbnail snapshot
+ * *   **NormalSnapshot**: normal snapshot
+ * *   **SpriteSnapshot**: sprite snapshot
+ * *   **SpriteOriginSnapshot**: sprite source snapshot
+ * *   **WebVttSnapshot**: WebVTT snapshot
  *
  * @param request ListSnapshotsRequest
  * @return ListSnapshotsResponse
@@ -32450,10 +32609,7 @@ func (client *Client) RefreshVodObjectCaches(request *RefreshVodObjectCachesRequ
 }
 
 /**
- * After you store an audio or video file in an Object Storage Service (OSS) bucket that is used for ApsaraVideo VOD, you can call the RegisterMedia operation to register the media file. After the media file is registered, you can use the media ID associated with the media file to submit transcoding jobs and snapshot jobs in ApsaraVideo VOD. For more information, see [SubmitTranscodeJobs](~~68570~~) and [SubmitSnapshotJob](~~72213~~).
- * > *   You can register up to 10 OSS media files that have the same storage location at a time.
- * > *   If you use the ApsaraVideo VOD console to upload a media file and do not specify a transcoding template group ID, ApsaraVideo VOD uses the default transcoding template group to transcode the media file. However, if you do not specify a transcoding template group ID when you call the RegisterMedia operation, ApsaraVideo VOD does not automatically transcode the media file after the media file is registered. If you specify a transcoding template group ID, ApsaraVideo VOD uses the specified transcoding template group to transcode the media file.
- * > *   If the media file that you want to register is registered before, this operation returns only the unique media ID that is associated with the media file. No further processing is performed.
+ * The media files that are registered, including newly registered and repeatedly registered media files.
  *
  * @param request RegisterMediaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32505,10 +32661,7 @@ func (client *Client) RegisterMediaWithOptions(request *RegisterMediaRequest, ru
 }
 
 /**
- * After you store an audio or video file in an Object Storage Service (OSS) bucket that is used for ApsaraVideo VOD, you can call the RegisterMedia operation to register the media file. After the media file is registered, you can use the media ID associated with the media file to submit transcoding jobs and snapshot jobs in ApsaraVideo VOD. For more information, see [SubmitTranscodeJobs](~~68570~~) and [SubmitSnapshotJob](~~72213~~).
- * > *   You can register up to 10 OSS media files that have the same storage location at a time.
- * > *   If you use the ApsaraVideo VOD console to upload a media file and do not specify a transcoding template group ID, ApsaraVideo VOD uses the default transcoding template group to transcode the media file. However, if you do not specify a transcoding template group ID when you call the RegisterMedia operation, ApsaraVideo VOD does not automatically transcode the media file after the media file is registered. If you specify a transcoding template group ID, ApsaraVideo VOD uses the specified transcoding template group to transcode the media file.
- * > *   If the media file that you want to register is registered before, this operation returns only the unique media ID that is associated with the media file. No further processing is performed.
+ * The media files that are registered, including newly registered and repeatedly registered media files.
  *
  * @param request RegisterMediaRequest
  * @return RegisterMediaResponse
@@ -32517,6 +32670,62 @@ func (client *Client) RegisterMedia(request *RegisterMediaRequest) (_result *Reg
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterMediaResponse{}
 	_body, _err := client.RegisterMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RestoreMediaWithOptions(request *RestoreMediaRequest, runtime *util.RuntimeOptions) (_result *RestoreMediaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreDays)) {
+		query["RestoreDays"] = request.RestoreDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreTier)) {
+		query["RestoreTier"] = request.RestoreTier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestoreMedia"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestoreMediaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestoreMedia(request *RestoreMediaRequest) (_result *RestoreMediaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestoreMediaResponse{}
+	_body, _err := client.RestoreMediaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32609,11 +32818,7 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 }
 
 /**
- * The preprocessing status. Valid values:
- * *   **UnPreprocess**
- * *   **Preprocessing**
- * *   **PreprocessSucceed**
- * *   **PreprocessFailed**
+ * The ID of the parent category.
  *
  * @param request SearchMediaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32677,11 +32882,7 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 }
 
 /**
- * The preprocessing status. Valid values:
- * *   **UnPreprocess**
- * *   **Preprocessing**
- * *   **PreprocessSucceed**
- * *   **PreprocessFailed**
+ * The ID of the parent category.
  *
  * @param request SearchMediaRequest
  * @return SearchMediaResponse
@@ -33053,8 +33254,7 @@ func (client *Client) SetEditingProjectMaterials(request *SetEditingProjectMater
 }
 
 /**
- * ## Usage note
- * ApsaraVideo VOD supports the HTTP and MNS callback methods. For more information, see [Event notification](~~55627~~).
+ * The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
  *
  * @param request SetMessageCallbackRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33126,8 +33326,7 @@ func (client *Client) SetMessageCallbackWithOptions(request *SetMessageCallbackR
 }
 
 /**
- * ## Usage note
- * ApsaraVideo VOD supports the HTTP and MNS callback methods. For more information, see [Event notification](~~55627~~).
+ * The ID of the application. If you do not set this parameter, the default value **app-1000000** is used.
  *
  * @param request SetMessageCallbackRequest
  * @return SetMessageCallbackResponse
@@ -34304,6 +34503,62 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaStorageClassRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaStorageClassResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreTier)) {
+		query["RestoreTier"] = request.RestoreTier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageClass)) {
+		query["StorageClass"] = request.StorageClass
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaStorageClass"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMediaStorageClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaStorageClass(request *UpdateMediaStorageClassRequest) (_result *UpdateMediaStorageClassResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaStorageClassResponse{}
+	_body, _err := client.UpdateMediaStorageClassWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The ID of the transcoding template group.
  *
@@ -34451,7 +34706,7 @@ func (client *Client) UpdateVideoInfo(request *UpdateVideoInfoRequest) (_result 
 }
 
 /**
- * The specific parameter of a video is updated only when a new value is passed in the parameter.
+ * The IDs of the videos that do not exist.
  *
  * @param request UpdateVideoInfosRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34491,7 +34746,7 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 }
 
 /**
- * The specific parameter of a video is updated only when a new value is passed in the parameter.
+ * The IDs of the videos that do not exist.
  *
  * @param request UpdateVideoInfosRequest
  * @return UpdateVideoInfosResponse
@@ -34633,7 +34888,8 @@ func (client *Client) UpdateVodTemplate(request *UpdateVodTemplateRequest) (_res
 }
 
 /**
- * You can modify only the name and configurations of a watermark.
+ * The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
+ * > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
  *
  * @param request UpdateWatermarkRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34681,7 +34937,8 @@ func (client *Client) UpdateWatermarkWithOptions(request *UpdateWatermarkRequest
 }
 
 /**
- * You can modify only the name and configurations of a watermark.
+ * The configurations such as the position and effect of the text watermark or image watermark. The value is a JSON-formatted string.
+ * > The value of this parameter varies with the watermark type. For more information about the data structure, see the "WatermarkConfig" section of the [Media processing parameters](~~98618~~) topic.
  *
  * @param request UpdateWatermarkRequest
  * @return UpdateWatermarkResponse
