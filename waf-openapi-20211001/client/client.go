@@ -13,9 +13,21 @@ import (
 )
 
 type ClearMajorProtectionBlackIpRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the IP address blacklist rule template for major event protection.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ClearMajorProtectionBlackIpRequest) String() string {
@@ -31,6 +43,16 @@ func (s *ClearMajorProtectionBlackIpRequest) SetInstanceId(v string) *ClearMajor
 	return s
 }
 
+func (s *ClearMajorProtectionBlackIpRequest) SetRegionId(v string) *ClearMajorProtectionBlackIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ClearMajorProtectionBlackIpRequest) SetResourceManagerResourceGroupId(v string) *ClearMajorProtectionBlackIpRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ClearMajorProtectionBlackIpRequest) SetRuleId(v int64) *ClearMajorProtectionBlackIpRequest {
 	s.RuleId = &v
 	return s
@@ -42,6 +64,7 @@ func (s *ClearMajorProtectionBlackIpRequest) SetTemplateId(v int64) *ClearMajorP
 }
 
 type ClearMajorProtectionBlackIpResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,10 +111,23 @@ func (s *ClearMajorProtectionBlackIpResponse) SetBody(v *ClearMajorProtectionBla
 }
 
 type CreateDefenseResourceGroupRequest struct {
-	AddList     *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
+	// The protected objects that you want to add to the protected object group. You can add multiple protected objects to a protected object group at the same time. You can specify multiple protected objects. Separate them with commas (,).
+	AddList *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
+	// The description of the protected object group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the protected object group that you want to create.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s CreateDefenseResourceGroupRequest) String() string {
@@ -122,7 +158,18 @@ func (s *CreateDefenseResourceGroupRequest) SetInstanceId(v string) *CreateDefen
 	return s
 }
 
+func (s *CreateDefenseResourceGroupRequest) SetRegionId(v string) *CreateDefenseResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseResourceGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type CreateDefenseResourceGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -169,10 +216,36 @@ func (s *CreateDefenseResourceGroupResponse) SetBody(v *CreateDefenseResourceGro
 }
 
 type CreateDefenseRuleRequest struct {
+	// The module to which the protection rule that you want to create belongs.
+	//
+	// *   **waf_group:** the basic protection rule module.
+	// *   **antiscan:** the scan protection module.
+	// *   **ip_blacklist:** the IP address blacklist module.
+	// *   **custom_acl:** the custom rule module.
+	// *   **whitelist:** the whitelist module.
+	// *   **region_block:** the region blacklist module.
+	// *   **custom_response:** the custom response module.
+	// *   **cc:** the HTTP flood protection module.
+	// *   **tamperproof:** the website tamper-proofing module.
+	// *   **dlp:** the data leakage prevention module.
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Rules        *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The configurations of the protection rule. Specify a string that contains multiple parameters in the JSON format.
+	//
+	// >  The parameters vary based on the value of the **DefenseScene** parameter.**** For more information, see the "**Protection rule parameters**" section in this topic.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The ID of the protection rule template for which you want to create a protection rule.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateDefenseRuleRequest) String() string {
@@ -193,6 +266,16 @@ func (s *CreateDefenseRuleRequest) SetInstanceId(v string) *CreateDefenseRuleReq
 	return s
 }
 
+func (s *CreateDefenseRuleRequest) SetRegionId(v string) *CreateDefenseRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDefenseRuleRequest) SetRules(v string) *CreateDefenseRuleRequest {
 	s.Rules = &v
 	return s
@@ -204,6 +287,7 @@ func (s *CreateDefenseRuleRequest) SetTemplateId(v int64) *CreateDefenseRuleRequ
 }
 
 type CreateDefenseRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -250,13 +334,35 @@ func (s *CreateDefenseRuleResponse) SetBody(v *CreateDefenseRuleResponseBody) *C
 }
 
 type CreateDefenseTemplateRequest struct {
-	DefenseScene   *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The description of the protection rule template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The name of the protection rule template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
-	TemplateStatus *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The status of the protection rule template. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The type of the protection rule template. Valid values:
+	//
+	// *   **user_default:** default template.
+	// *   **user_custom:** custom template.
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s CreateDefenseTemplateRequest) String() string {
@@ -282,6 +388,16 @@ func (s *CreateDefenseTemplateRequest) SetInstanceId(v string) *CreateDefenseTem
 	return s
 }
 
+func (s *CreateDefenseTemplateRequest) SetRegionId(v string) *CreateDefenseTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseTemplateRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *CreateDefenseTemplateRequest) SetTemplateName(v string) *CreateDefenseTemplateRequest {
 	s.TemplateName = &v
 	return s
@@ -303,8 +419,10 @@ func (s *CreateDefenseTemplateRequest) SetTemplateType(v string) *CreateDefenseT
 }
 
 type CreateDefenseTemplateResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateDefenseTemplateResponseBody) String() string {
@@ -355,12 +473,21 @@ func (s *CreateDefenseTemplateResponse) SetBody(v *CreateDefenseTemplateResponse
 }
 
 type CreateDomainRequest struct {
-	AccessType *string                      `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Domain     *string                      `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Listen     *CreateDomainRequestListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	Redirect   *CreateDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	RegionId   *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// $.parameters[3].schema.properties.ExclusiveIp.description
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// $.parameters[3].schema.properties.Http2Enabled.description
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// $.parameters[3].schema.properties.HttpPorts.enumValueTitles
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// $.parameters[3].schema.properties.Http2Enabled.example
+	Listen *CreateDomainRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// $.parameters[3].schema.properties.CustomCiphers.enumValueTitles
+	Redirect *CreateDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// $.parameters[3].schema.properties.ProtectionResource.enumValueTitles
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// $.parameters[3].schema.properties.ExclusiveIp.example
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s CreateDomainRequest) String() string {
@@ -401,21 +528,48 @@ func (s *CreateDomainRequest) SetRegionId(v string) *CreateDomainRequest {
 	return s
 }
 
+func (s *CreateDomainRequest) SetResourceManagerResourceGroupId(v string) *CreateDomainRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetSourceIp(v string) *CreateDomainRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type CreateDomainRequestListen struct {
-	CertId             *string   `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CipherSuite        *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	CustomCiphers      []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	EnableTLSv3        *bool     `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	ExclusiveIp        *bool     `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	FocusHttps         *bool     `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
-	Http2Enabled       *bool     `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	HttpPorts          []*int32  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	HttpsPorts         []*int32  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
-	IPv6Enabled        *bool     `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
-	ProtectionResource *string   `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	TLSVersion         *string   `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	XffHeaderMode      *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders         []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// $.parameters[3].schema.properties.TLSVersion.example
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// $.parameters[3].schema.properties.EnableTLSv3.example
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// $.parameters[3].schema.properties.EnableTLSv3.enumValueTitles
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// $.parameters[3].schema.properties.EnableTLSv3.description
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// $.parameters[3].schema.properties.CustomCiphers.example
+	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	// $.parameters[3].schema.properties.CipherSuite.example
+	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	// $.parameters[3].schema.properties.TLSVersion.description
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// $.parameters[3].schema.properties.CertId.example
+	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	// $.parameters[3].schema.properties.Http2Enabled.enumValueTitles
+	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	// $.parameters[3].schema.properties.CustomCiphers.items.enumValueTitles
+	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
+	// $.parameters[3].schema.properties.CustomCiphers.description
+	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
+	SM2AccessOnly      *bool   `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
+	SM2CertId          *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
+	SM2Enabled         *bool   `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
+	// $.parameters[3].schema.properties.TLSVersion.enumValueTitles
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	// $.parameters[3].schema.properties.CipherSuite.enumValueTitles
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// $.parameters[3].schema.properties.CustomCiphers.items.description
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
 func (s CreateDomainRequestListen) String() string {
@@ -481,6 +635,21 @@ func (s *CreateDomainRequestListen) SetProtectionResource(v string) *CreateDomai
 	return s
 }
 
+func (s *CreateDomainRequestListen) SetSM2AccessOnly(v bool) *CreateDomainRequestListen {
+	s.SM2AccessOnly = &v
+	return s
+}
+
+func (s *CreateDomainRequestListen) SetSM2CertId(v string) *CreateDomainRequestListen {
+	s.SM2CertId = &v
+	return s
+}
+
+func (s *CreateDomainRequestListen) SetSM2Enabled(v bool) *CreateDomainRequestListen {
+	s.SM2Enabled = &v
+	return s
+}
+
 func (s *CreateDomainRequestListen) SetTLSVersion(v string) *CreateDomainRequestListen {
 	s.TLSVersion = &v
 	return s
@@ -497,21 +666,45 @@ func (s *CreateDomainRequestListen) SetXffHeaders(v []*string) *CreateDomainRequ
 }
 
 type CreateDomainRequestRedirect struct {
-	Backends          []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	CnameEnabled      *bool                                        `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
-	ConnectTimeout    *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FocusHttpBackend  *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	Keepalive         *bool                                        `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	KeepaliveRequests *int32                                       `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	KeepaliveTimeout  *int32                                       `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	Loadbalance       *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ReadTimeout       *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	RequestHeaders    []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	Retry             *bool                                        `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	RoutingRules      *string                                      `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
-	SniEnabled        *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	SniHost           *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	WriteTimeout      *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// $.parameters[3].schema.properties.FocusHttps.description
+	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// 是否开启公共云容灾。取值：
+	//
+	// - **true**：表示开启公共云容灾。
+	//
+	// - **false**（默认）：表示不开启公共云容灾。
+	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaders.example
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaderMode.description
+	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	// $.parameters[3].schema.properties.IPv6Enabled.example
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// $.parameters[3].schema.properties.ProtectionResource.description
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// $.parameters[3].schema.properties.ProtectionResource.example
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// $.parameters[3].schema.properties.FocusHttps.enumValueTitles
+	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaders.enumValueTitles
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaders.items.description
+	RequestHeaders []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// $.parameters[3].schema.properties.IPv6Enabled.enumValueTitles
+	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// 混合云转发规则。使用JSON数组转化的字符串格式表示。JSON数组中的每个元素是一个结构体，包含以下字段：
+	// - **rs**：Array类型 | 表示回源IP地址或者回源CNAME列表
+	//
+	// - **location**：String类型 | 表示防护节点名称
+	//
+	// - **locationId**：Long类型 | 表示防护节点ID
+	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaderMode.example
+	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaderMode.enumValueTitles
+	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// $.parameters[3].schema.properties.IPv6Enabled.description
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
 func (s CreateDomainRequestRedirect) String() string {
@@ -598,7 +791,9 @@ func (s *CreateDomainRequestRedirect) SetWriteTimeout(v int32) *CreateDomainRequ
 }
 
 type CreateDomainRequestRedirectRequestHeaders struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaders.items.enumValueTitles
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// $.parameters[3].schema.properties.XffHeaders.description
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -621,12 +816,21 @@ func (s *CreateDomainRequestRedirectRequestHeaders) SetValue(v string) *CreateDo
 }
 
 type CreateDomainShrinkRequest struct {
-	AccessType     *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ListenShrink   *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// $.parameters[3].schema.properties.ExclusiveIp.description
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// $.parameters[3].schema.properties.Http2Enabled.description
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// $.parameters[3].schema.properties.HttpPorts.enumValueTitles
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// $.parameters[3].schema.properties.Http2Enabled.example
+	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// $.parameters[3].schema.properties.CustomCiphers.enumValueTitles
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// $.parameters[3].schema.properties.ProtectionResource.enumValueTitles
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// $.parameters[3].schema.properties.ExclusiveIp.example
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s CreateDomainShrinkRequest) String() string {
@@ -667,9 +871,21 @@ func (s *CreateDomainShrinkRequest) SetRegionId(v string) *CreateDomainShrinkReq
 	return s
 }
 
+func (s *CreateDomainShrinkRequest) SetResourceManagerResourceGroupId(v string) *CreateDomainShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDomainShrinkRequest) SetSourceIp(v string) *CreateDomainShrinkRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type CreateDomainResponseBody struct {
+	// $.parameters[3].schema.example
 	DomainInfo *CreateDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// $.parameters[3].schema.description
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDomainResponseBody) String() string {
@@ -691,7 +907,9 @@ func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseB
 }
 
 type CreateDomainResponseBodyDomainInfo struct {
-	Cname  *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// $.parameters[3].schema.enumValueTitles
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// $.parameters[4].schema.properties.Backends.items.description
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -743,12 +961,27 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateMajorProtectionBlackIpRequest struct {
+	// The description of the IP address blacklist.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList      *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
+	//
+	// >  If you set the value to **0**, the blacklist is permanently valid.
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the major event protection template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s CreateMajorProtectionBlackIpRequest) String() string {
@@ -779,6 +1012,16 @@ func (s *CreateMajorProtectionBlackIpRequest) SetIpList(v string) *CreateMajorPr
 	return s
 }
 
+func (s *CreateMajorProtectionBlackIpRequest) SetRegionId(v string) *CreateMajorProtectionBlackIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateMajorProtectionBlackIpRequest) SetResourceManagerResourceGroupId(v string) *CreateMajorProtectionBlackIpRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *CreateMajorProtectionBlackIpRequest) SetRuleId(v int64) *CreateMajorProtectionBlackIpRequest {
 	s.RuleId = &v
 	return s
@@ -790,6 +1033,7 @@ func (s *CreateMajorProtectionBlackIpRequest) SetTemplateId(v int64) *CreateMajo
 }
 
 type CreateMajorProtectionBlackIpResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -836,8 +1080,19 @@ func (s *CreateMajorProtectionBlackIpResponse) SetBody(v *CreateMajorProtectionB
 }
 
 type DeleteDefenseResourceGroupRequest struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the protected object group that you want to delete.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s DeleteDefenseResourceGroupRequest) String() string {
@@ -858,7 +1113,18 @@ func (s *DeleteDefenseResourceGroupRequest) SetInstanceId(v string) *DeleteDefen
 	return s
 }
 
+func (s *DeleteDefenseResourceGroupRequest) SetRegionId(v string) *DeleteDefenseResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseResourceGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type DeleteDefenseResourceGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -905,9 +1171,21 @@ func (s *DeleteDefenseResourceGroupResponse) SetBody(v *DeleteDefenseResourceGro
 }
 
 type DeleteDefenseRuleRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleIds    *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The IDs of the protection rules that you want to delete. Separate the IDs with commas (,).
+	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
+	// The ID of the protection rule template to which the protection rule that you want to delete belongs.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DeleteDefenseRuleRequest) String() string {
@@ -923,6 +1201,16 @@ func (s *DeleteDefenseRuleRequest) SetInstanceId(v string) *DeleteDefenseRuleReq
 	return s
 }
 
+func (s *DeleteDefenseRuleRequest) SetRegionId(v string) *DeleteDefenseRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteDefenseRuleRequest) SetRuleIds(v string) *DeleteDefenseRuleRequest {
 	s.RuleIds = &v
 	return s
@@ -934,6 +1222,7 @@ func (s *DeleteDefenseRuleRequest) SetTemplateId(v int64) *DeleteDefenseRuleRequ
 }
 
 type DeleteDefenseRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -980,8 +1269,19 @@ func (s *DeleteDefenseRuleResponse) SetBody(v *DeleteDefenseRuleResponseBody) *D
 }
 
 type DeleteDefenseTemplateRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule template that you want to delete.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DeleteDefenseTemplateRequest) String() string {
@@ -997,12 +1297,23 @@ func (s *DeleteDefenseTemplateRequest) SetInstanceId(v string) *DeleteDefenseTem
 	return s
 }
 
+func (s *DeleteDefenseTemplateRequest) SetRegionId(v string) *DeleteDefenseTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDefenseTemplateRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseTemplateRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteDefenseTemplateRequest) SetTemplateId(v int64) *DeleteDefenseTemplateRequest {
 	s.TemplateId = &v
 	return s
 }
 
 type DeleteDefenseTemplateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1049,10 +1360,26 @@ func (s *DeleteDefenseTemplateResponse) SetBody(v *DeleteDefenseTemplateResponse
 }
 
 type DeleteDomainRequest struct {
+	// The mode in which the domain name is added to WAF. Valid values:
+	//
+	// *   **share:** CNAME record mode. This is the default value.
+	// *   **hybrid_cloud_cname:** hybrid cloud reverse proxy mode.
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The domain name that you want to delete.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The value of this parameter is specified by the system.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DeleteDomainRequest) String() string {
@@ -1073,6 +1400,11 @@ func (s *DeleteDomainRequest) SetDomain(v string) *DeleteDomainRequest {
 	return s
 }
 
+func (s *DeleteDomainRequest) SetDomainId(v string) *DeleteDomainRequest {
+	s.DomainId = &v
+	return s
+}
+
 func (s *DeleteDomainRequest) SetInstanceId(v string) *DeleteDomainRequest {
 	s.InstanceId = &v
 	return s
@@ -1083,7 +1415,13 @@ func (s *DeleteDomainRequest) SetRegionId(v string) *DeleteDomainRequest {
 	return s
 }
 
+func (s *DeleteDomainRequest) SetSourceIp(v string) *DeleteDomainRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type DeleteDomainResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1130,10 +1468,23 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteMajorProtectionBlackIpRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList     *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The IP address blacklist for major event protection that you want to delete. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the IP address blacklist rule template for major event protection.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DeleteMajorProtectionBlackIpRequest) String() string {
@@ -1154,6 +1505,16 @@ func (s *DeleteMajorProtectionBlackIpRequest) SetIpList(v string) *DeleteMajorPr
 	return s
 }
 
+func (s *DeleteMajorProtectionBlackIpRequest) SetRegionId(v string) *DeleteMajorProtectionBlackIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteMajorProtectionBlackIpRequest) SetResourceManagerResourceGroupId(v string) *DeleteMajorProtectionBlackIpRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DeleteMajorProtectionBlackIpRequest) SetRuleId(v int64) *DeleteMajorProtectionBlackIpRequest {
 	s.RuleId = &v
 	return s
@@ -1165,6 +1526,7 @@ func (s *DeleteMajorProtectionBlackIpRequest) SetTemplateId(v int64) *DeleteMajo
 }
 
 type DeleteMajorProtectionBlackIpResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1211,8 +1573,19 @@ func (s *DeleteMajorProtectionBlackIpResponse) SetBody(v *DeleteMajorProtectionB
 }
 
 type DescribeDefenseResourceGroupRequest struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the protected object group whose information you want to query.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s DescribeDefenseResourceGroupRequest) String() string {
@@ -1233,9 +1606,21 @@ func (s *DescribeDefenseResourceGroupRequest) SetInstanceId(v string) *DescribeD
 	return s
 }
 
+func (s *DescribeDefenseResourceGroupRequest) SetRegionId(v string) *DescribeDefenseResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseResourceGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type DescribeDefenseResourceGroupResponseBody struct {
-	Group     *DescribeDefenseResourceGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the protected object group.
+	Group *DescribeDefenseResourceGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDefenseResourceGroupResponseBody) String() string {
@@ -1257,10 +1642,15 @@ func (s *DescribeDefenseResourceGroupResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeDefenseResourceGroupResponseBodyGroup struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The description of the protected object group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the protected object group was created.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The most recent time when the protected object group was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the protected object group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The protected objects in the protected object group. The protected objects are separated with commas (,).
 	ResourceList *string `json:"ResourceList,omitempty" xml:"ResourceList,omitempty"`
 }
 
@@ -1327,10 +1717,28 @@ func (s *DescribeDefenseResourceGroupResponse) SetBody(v *DescribeDefenseResourc
 }
 
 type DescribeDefenseResourcesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query      *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query conditions. Specify the value of this parameter as a string in the JSON format.
+	//
+	// >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The source IP address of the request. The value of this parameter is specified by the system.
+	SourceIp *string                               `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Tag      []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDefenseResourcesRequest) String() string {
@@ -1361,10 +1769,56 @@ func (s *DescribeDefenseResourcesRequest) SetQuery(v string) *DescribeDefenseRes
 	return s
 }
 
+func (s *DescribeDefenseResourcesRequest) SetRegionId(v string) *DescribeDefenseResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesRequest) SetSourceIp(v string) *DescribeDefenseResourcesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesRequest) SetTag(v []*DescribeDefenseResourcesRequestTag) *DescribeDefenseResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDefenseResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDefenseResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefenseResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourcesRequestTag) SetKey(v string) *DescribeDefenseResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesRequestTag) SetValue(v string) *DescribeDefenseResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
 type DescribeDefenseResourcesResponseBody struct {
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	TotalCount *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of protected objects.
+	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The total number of entries that are returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDefenseResourcesResponseBody) String() string {
@@ -1391,17 +1845,30 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
-	CustomHeaders  []*string              `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
-	Description    *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Detail         map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	GmtCreate      *int64                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *int64                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Pattern        *string                `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	Product        *string                `json:"Product,omitempty" xml:"Product,omitempty"`
-	Resource       *string                `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceGroup  *string                `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	ResourceOrigin *string                `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	XffStatus      *int32                 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
+	// An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
+	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
+	// The description of the protected object.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
+	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The creation time of the protected object. Unit: seconds.
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The most recent modification time of the protected object. Unit: seconds.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The protection pattern.
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The name of the cloud service.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The name of the protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The name of the protected object group to which the protected object belongs.
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The origin of the protected object.
+	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
+	// Indicates whether the X-Forwarded-For (XFF) header is used.
+	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
 }
 
 func (s DescribeDefenseResourcesResponseBodyResources) String() string {
@@ -1457,6 +1924,11 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetResourceGroup(v strin
 	return s
 }
 
+func (s *DescribeDefenseResourcesResponseBodyResources) SetResourceManagerResourceGroupId(v string) *DescribeDefenseResourcesResponseBodyResources {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDefenseResourcesResponseBodyResources) SetResourceOrigin(v string) *DescribeDefenseResourcesResponseBodyResources {
 	s.ResourceOrigin = &v
 	return s
@@ -1497,9 +1969,21 @@ func (s *DescribeDefenseResourcesResponse) SetBody(v *DescribeDefenseResourcesRe
 }
 
 type DescribeDefenseRuleRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule that you want to query.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the protection rule template to which the protection rule that you want to query belongs.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeDefenseRuleRequest) String() string {
@@ -1515,6 +1999,16 @@ func (s *DescribeDefenseRuleRequest) SetInstanceId(v string) *DescribeDefenseRul
 	return s
 }
 
+func (s *DescribeDefenseRuleRequest) SetRegionId(v string) *DescribeDefenseRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDefenseRuleRequest) SetRuleId(v int64) *DescribeDefenseRuleRequest {
 	s.RuleId = &v
 	return s
@@ -1526,8 +2020,10 @@ func (s *DescribeDefenseRuleRequest) SetTemplateId(v int64) *DescribeDefenseRule
 }
 
 type DescribeDefenseRuleResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rule      *DescribeDefenseRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the protection rule. The value of this parameter is a string that contains multiple parameters in the JSON format.
+	Rule *DescribeDefenseRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
 }
 
 func (s DescribeDefenseRuleResponseBody) String() string {
@@ -1549,14 +2045,28 @@ func (s *DescribeDefenseRuleResponseBody) SetRule(v *DescribeDefenseRuleResponse
 }
 
 type DescribeDefenseRuleResponseBodyRule struct {
-	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The details of the protection rule. The value of this parameter is a string that contains multiple parameters in the JSON format. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~ID~~) topic.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The origin of the protection rule. Valid values:
+	//
+	// *   **custom:** The protection rule is created by the user.
+	// *   **system:** The protection rule is automatically generated by the system.
 	DefenseOrigin *string `json:"DefenseOrigin,omitempty" xml:"DefenseOrigin,omitempty"`
-	DefenseScene  *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId    *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The scenario in which the protection rule template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~ID~~) topic.
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The most recent time when the protection rule was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the protection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the protection rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the protection rule. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeDefenseRuleResponseBodyRule) String() string {
@@ -1637,11 +2147,30 @@ func (s *DescribeDefenseRuleResponse) SetBody(v *DescribeDefenseRuleResponseBody
 }
 
 type DescribeDefenseRulesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query      *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RuleType   *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query conditions. Specify a string that contains multiple parameters in the JSON format.
+	//
+	// >  The results vary based on the query conditions. For more information, see the "**Query parameters**" section in this topic.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of protection rule that you want to query. Valid values:
+	//
+	// *   **whitelist:** whitelist rule.
+	// *   **defense:** defense rule. This is the default value.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
 func (s DescribeDefenseRulesRequest) String() string {
@@ -1672,15 +2201,28 @@ func (s *DescribeDefenseRulesRequest) SetQuery(v string) *DescribeDefenseRulesRe
 	return s
 }
 
+func (s *DescribeDefenseRulesRequest) SetRegionId(v string) *DescribeDefenseRulesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseRulesRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseRulesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDefenseRulesRequest) SetRuleType(v string) *DescribeDefenseRulesRequest {
 	s.RuleType = &v
 	return s
 }
 
 type DescribeDefenseRulesResponseBody struct {
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules      []*DescribeDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of protection rules.
+	Rules []*DescribeDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDefenseRulesResponseBody) String() string {
@@ -1707,14 +2249,28 @@ func (s *DescribeDefenseRulesResponseBody) SetTotalCount(v int64) *DescribeDefen
 }
 
 type DescribeDefenseRulesResponseBodyRules struct {
-	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The details of the protection rule. The value is a string that contains multiple parameters in the JSON format. For more information, see the "**Rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The origin of the protection rule. Valid values:
+	//
+	// *   **custom:** The protection rule is created by the user.
+	// *   **system:** The protection rule is automatically generated by the system.
 	DefenseOrigin *string `json:"DefenseOrigin,omitempty" xml:"DefenseOrigin,omitempty"`
-	DefenseScene  *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	GmtModified   *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName      *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TemplateId    *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The scenario in which the protection rule is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The most recent time when the protection rule was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the protection rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the protection rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the protection rule. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeDefenseRulesResponseBodyRules) String() string {
@@ -1795,8 +2351,19 @@ func (s *DescribeDefenseRulesResponse) SetBody(v *DescribeDefenseRulesResponseBo
 }
 
 type DescribeDefenseTemplateRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeDefenseTemplateRequest) String() string {
@@ -1812,14 +2379,26 @@ func (s *DescribeDefenseTemplateRequest) SetInstanceId(v string) *DescribeDefens
 	return s
 }
 
+func (s *DescribeDefenseTemplateRequest) SetRegionId(v string) *DescribeDefenseTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefenseTemplateRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefenseTemplateRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeDefenseTemplateRequest) SetTemplateId(v int64) *DescribeDefenseTemplateRequest {
 	s.TemplateId = &v
 	return s
 }
 
 type DescribeDefenseTemplateResponseBody struct {
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Template  *DescribeDefenseTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the protection rule template.
+	Template *DescribeDefenseTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
 func (s DescribeDefenseTemplateResponseBody) String() string {
@@ -1841,14 +2420,28 @@ func (s *DescribeDefenseTemplateResponseBody) SetTemplate(v *DescribeDefenseTemp
 }
 
 type DescribeDefenseTemplateResponseBodyTemplate struct {
-	DefenseScene   *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The scenario in which the protection rule template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~ID~~) topic.
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The description of the protection rule template.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The most recent time when the protection rule template was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the protection rule template.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The origin of the protection rule template. If the value of this parameter is custom, the protection rule template is created by the user.
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
-	TemplateStatus *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The status of the protection rule template. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The type of the protection rule template. Valid values:
+	//
+	// *   **user_default:** default template.
+	// *   **user_custom:** custom template.
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s DescribeDefenseTemplateResponseBodyTemplate) String() string {
@@ -1931,6 +2524,8 @@ func (s *DescribeDefenseTemplateResponse) SetBody(v *DescribeDefenseTemplateResp
 type DescribeDomainDetailRequest struct {
 	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DescribeDomainDetailRequest) String() string {
@@ -1951,13 +2546,26 @@ func (s *DescribeDomainDetailRequest) SetInstanceId(v string) *DescribeDomainDet
 	return s
 }
 
+func (s *DescribeDomainDetailRequest) SetRegionId(v string) *DescribeDomainDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDomainDetailRequest) SetSourceIp(v string) *DescribeDomainDetailRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type DescribeDomainDetailResponseBody struct {
-	Cname     *string                                   `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	Domain    *string                                   `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Listen    *DescribeDomainDetailResponseBodyListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	Redirect  *DescribeDomainDetailResponseBodyRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *int64                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	CertDetail                     *DescribeDomainDetailResponseBodyCertDetail    `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
+	Cname                          *string                                        `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Domain                         *string                                        `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Listen                         *DescribeDomainDetailResponseBodyListen        `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	Redirect                       *DescribeDomainDetailResponseBodyRedirect      `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	RequestId                      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceManagerResourceGroupId *string                                        `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	SM2CertDetail                  *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
+	Status                         *int64                                         `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainDetailResponseBody) String() string {
@@ -1966,6 +2574,11 @@ func (s DescribeDomainDetailResponseBody) String() string {
 
 func (s DescribeDomainDetailResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBody) SetCertDetail(v *DescribeDomainDetailResponseBodyCertDetail) *DescribeDomainDetailResponseBody {
+	s.CertDetail = v
+	return s
 }
 
 func (s *DescribeDomainDetailResponseBody) SetCname(v string) *DescribeDomainDetailResponseBody {
@@ -1993,8 +2606,65 @@ func (s *DescribeDomainDetailResponseBody) SetRequestId(v string) *DescribeDomai
 	return s
 }
 
+func (s *DescribeDomainDetailResponseBody) SetResourceManagerResourceGroupId(v string) *DescribeDomainDetailResponseBody {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBody) SetSM2CertDetail(v *DescribeDomainDetailResponseBodySM2CertDetail) *DescribeDomainDetailResponseBody {
+	s.SM2CertDetail = v
+	return s
+}
+
 func (s *DescribeDomainDetailResponseBody) SetStatus(v int64) *DescribeDomainDetailResponseBody {
 	s.Status = &v
+	return s
+}
+
+type DescribeDomainDetailResponseBodyCertDetail struct {
+	CommonName *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	EndTime    *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id         *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sans       []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+	StartTime  *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainDetailResponseBodyCertDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainDetailResponseBodyCertDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetCommonName(v string) *DescribeDomainDetailResponseBodyCertDetail {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetEndTime(v int64) *DescribeDomainDetailResponseBodyCertDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetId(v string) *DescribeDomainDetailResponseBodyCertDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetName(v string) *DescribeDomainDetailResponseBodyCertDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetSans(v []*string) *DescribeDomainDetailResponseBodyCertDetail {
+	s.Sans = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyCertDetail) SetStartTime(v int64) *DescribeDomainDetailResponseBodyCertDetail {
+	s.StartTime = &v
 	return s
 }
 
@@ -2010,6 +2680,9 @@ type DescribeDomainDetailResponseBodyListen struct {
 	HttpsPorts         []*int64  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	IPv6Enabled        *bool     `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	ProtectionResource *string   `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
+	SM2AccessOnly      *bool     `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
+	SM2CertId          *bool     `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
+	SM2Enabled         *bool     `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	TLSVersion         *string   `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	XffHeaderMode      *int64    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
 	XffHeaders         []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
@@ -2075,6 +2748,21 @@ func (s *DescribeDomainDetailResponseBodyListen) SetIPv6Enabled(v bool) *Describ
 
 func (s *DescribeDomainDetailResponseBodyListen) SetProtectionResource(v string) *DescribeDomainDetailResponseBodyListen {
 	s.ProtectionResource = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetSM2AccessOnly(v bool) *DescribeDomainDetailResponseBodyListen {
+	s.SM2AccessOnly = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetSM2CertId(v bool) *DescribeDomainDetailResponseBodyListen {
+	s.SM2CertId = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyListen) SetSM2Enabled(v bool) *DescribeDomainDetailResponseBodyListen {
+	s.SM2Enabled = &v
 	return s
 }
 
@@ -2222,6 +2910,53 @@ func (s *DescribeDomainDetailResponseBodyRedirectRequestHeaders) SetValue(v stri
 	return s
 }
 
+type DescribeDomainDetailResponseBodySM2CertDetail struct {
+	CommonName *string   `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	EndTime    *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Id         *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Sans       []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
+	StartTime  *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDomainDetailResponseBodySM2CertDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainDetailResponseBodySM2CertDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetCommonName(v string) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetEndTime(v int64) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetId(v string) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetName(v string) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetSans(v []*string) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.Sans = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodySM2CertDetail) SetStartTime(v int64) *DescribeDomainDetailResponseBodySM2CertDetail {
+	s.StartTime = &v
+	return s
+}
+
 type DescribeDomainDetailResponse struct {
 	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2252,11 +2987,22 @@ func (s *DescribeDomainDetailResponse) SetBody(v *DescribeDomainDetailResponseBo
 }
 
 type DescribeDomainsRequest struct {
-	Backend    *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// An array of HTTPS listener ports.
+	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+	// The ID of the request.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The page number of the page to return. Default value: 1.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The HTTPS address of the origin server.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Queries the list of a domain name that is added to Web Application Firewall (WAF).
+	PageSize                       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// 请求源IP。无需填写，系统自动获取。
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// 资源的标签，最多支持20个子项。
+	Tag []*DescribeDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDomainsRequest) String() string {
@@ -2289,6 +3035,51 @@ func (s *DescribeDomainsRequest) SetPageNumber(v int64) *DescribeDomainsRequest 
 
 func (s *DescribeDomainsRequest) SetPageSize(v int64) *DescribeDomainsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDomainsRequest) SetRegionId(v string) *DescribeDomainsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDomainsRequest) SetResourceManagerResourceGroupId(v string) *DescribeDomainsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDomainsRequest) SetSourceIp(v string) *DescribeDomainsRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeDomainsRequest) SetTag(v []*DescribeDomainsRequestTag) *DescribeDomainsRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeDomainsRequestTag struct {
+	// 标签键。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDomainsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDomainsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainsRequestTag) SetKey(v string) *DescribeDomainsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDomainsRequestTag) SetValue(v string) *DescribeDomainsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -2326,7 +3117,9 @@ type DescribeDomainsResponseBodyDomains struct {
 	Cname       *string                                        `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Domain      *string                                        `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ListenPorts *DescribeDomainsResponseBodyDomainsListenPorts `json:"ListenPorts,omitempty" xml:"ListenPorts,omitempty" type:"Struct"`
-	Status      *int32                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 阿里云资源组ID。
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Status                         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainsResponseBodyDomains) String() string {
@@ -2354,6 +3147,11 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v string) *DescribeDomain
 
 func (s *DescribeDomainsResponseBodyDomains) SetListenPorts(v *DescribeDomainsResponseBodyDomainsListenPorts) *DescribeDomainsResponseBodyDomains {
 	s.ListenPorts = v
+	return s
+}
+
+func (s *DescribeDomainsResponseBodyDomains) SetResourceManagerResourceGroupId(v string) *DescribeDomainsResponseBodyDomains {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -2472,10 +3270,24 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 }
 
 type DescribeFlowChartRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -2502,8 +3314,18 @@ func (s *DescribeFlowChartRequest) SetInterval(v string) *DescribeFlowChartReque
 	return s
 }
 
+func (s *DescribeFlowChartRequest) SetRegionId(v string) *DescribeFlowChartRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeFlowChartRequest) SetResource(v string) *DescribeFlowChartRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeFlowChartRequest) SetResourceManagerResourceGroupId(v string) *DescribeFlowChartRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -2513,8 +3335,10 @@ func (s *DescribeFlowChartRequest) SetStartTimestamp(v string) *DescribeFlowChar
 }
 
 type DescribeFlowChartResponseBody struct {
+	// The array of the traffic statistics.
 	FlowChart []*DescribeFlowChartResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFlowChartResponseBody) String() string {
@@ -2536,27 +3360,48 @@ func (s *DescribeFlowChartResponseBody) SetRequestId(v string) *DescribeFlowChar
 }
 
 type DescribeFlowChartResponseBodyFlowChart struct {
-	AclCustomBlockSum     *int64  `json:"AclCustomBlockSum,omitempty" xml:"AclCustomBlockSum,omitempty"`
-	AclCustomReportsSum   *int64  `json:"AclCustomReportsSum,omitempty" xml:"AclCustomReportsSum,omitempty"`
-	AntiScanBlockSum      *int64  `json:"AntiScanBlockSum,omitempty" xml:"AntiScanBlockSum,omitempty"`
-	AntibotBlockSum       *int64  `json:"AntibotBlockSum,omitempty" xml:"AntibotBlockSum,omitempty"`
-	AntibotReportSum      *string `json:"AntibotReportSum,omitempty" xml:"AntibotReportSum,omitempty"`
-	AntiscanReportsSum    *int64  `json:"AntiscanReportsSum,omitempty" xml:"AntiscanReportsSum,omitempty"`
-	BlacklistBlockSum     *string `json:"BlacklistBlockSum,omitempty" xml:"BlacklistBlockSum,omitempty"`
-	BlacklistReportsSum   *int64  `json:"BlacklistReportsSum,omitempty" xml:"BlacklistReportsSum,omitempty"`
-	CcCustomBlockSum      *int64  `json:"CcCustomBlockSum,omitempty" xml:"CcCustomBlockSum,omitempty"`
-	CcCustomReportsSum    *int64  `json:"CcCustomReportsSum,omitempty" xml:"CcCustomReportsSum,omitempty"`
-	CcSystemBlocksSum     *int64  `json:"CcSystemBlocksSum,omitempty" xml:"CcSystemBlocksSum,omitempty"`
-	CcSystemReportsSum    *int64  `json:"CcSystemReportsSum,omitempty" xml:"CcSystemReportsSum,omitempty"`
-	Count                 *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	InBytes               *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	Index                 *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
-	MaxPv                 *int64  `json:"MaxPv,omitempty" xml:"MaxPv,omitempty"`
-	OutBytes              *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	RegionBlockBlocksSum  *int64  `json:"RegionBlockBlocksSum,omitempty" xml:"RegionBlockBlocksSum,omitempty"`
-	RegionBlockReportsSum *int64  `json:"RegionBlockReportsSum,omitempty" xml:"RegionBlockReportsSum,omitempty"`
-	WafBlockSum           *int64  `json:"WafBlockSum,omitempty" xml:"WafBlockSum,omitempty"`
-	WafReportSum          *string `json:"WafReportSum,omitempty" xml:"WafReportSum,omitempty"`
+	// The number of requests that are blocked by custom access control rules.
+	AclCustomBlockSum *int64 `json:"AclCustomBlockSum,omitempty" xml:"AclCustomBlockSum,omitempty"`
+	// The number of requests that are monitored by custom access control rules.
+	AclCustomReportsSum *int64 `json:"AclCustomReportsSum,omitempty" xml:"AclCustomReportsSum,omitempty"`
+	// The number of requests that are blocked by scan protection rules.
+	AntiScanBlockSum *int64 `json:"AntiScanBlockSum,omitempty" xml:"AntiScanBlockSum,omitempty"`
+	// The number of requests that are blocked by bot management rules.
+	AntibotBlockSum *int64 `json:"AntibotBlockSum,omitempty" xml:"AntibotBlockSum,omitempty"`
+	// The number of requests that are monitored by bot management rules.
+	AntibotReportSum *string `json:"AntibotReportSum,omitempty" xml:"AntibotReportSum,omitempty"`
+	// The number of requests that are monitored by scan protection rules.
+	AntiscanReportsSum *int64 `json:"AntiscanReportsSum,omitempty" xml:"AntiscanReportsSum,omitempty"`
+	// The number of requests that are blocked by IP address blacklist rules.
+	BlacklistBlockSum *string `json:"BlacklistBlockSum,omitempty" xml:"BlacklistBlockSum,omitempty"`
+	// The number of requests that are monitored by the IP address blacklist module.
+	BlacklistReportsSum *int64 `json:"BlacklistReportsSum,omitempty" xml:"BlacklistReportsSum,omitempty"`
+	// The number of requests that are blocked by HTTP flood protection rules created by the user.
+	CcCustomBlockSum *int64 `json:"CcCustomBlockSum,omitempty" xml:"CcCustomBlockSum,omitempty"`
+	// The number of requests that are monitored by HTTP flood protection rules created by the user.
+	CcCustomReportsSum *int64 `json:"CcCustomReportsSum,omitempty" xml:"CcCustomReportsSum,omitempty"`
+	// The number of requests that are blocked by HTTP flood protection rules generated by the system.
+	CcSystemBlocksSum *int64 `json:"CcSystemBlocksSum,omitempty" xml:"CcSystemBlocksSum,omitempty"`
+	// The number of requests that are monitored by HTTP flood protection rules generated by the system.
+	CcSystemReportsSum *int64 `json:"CcSystemReportsSum,omitempty" xml:"CcSystemReportsSum,omitempty"`
+	// The total number of requests.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The total number of requests that are forwarded to WAF.
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The maximum number of requests.
+	MaxPv *int64 `json:"MaxPv,omitempty" xml:"MaxPv,omitempty"`
+	// The total number of requests that are sent from WAF.
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The number of requests that are blocked by region blacklist rules.
+	RegionBlockBlocksSum *int64 `json:"RegionBlockBlocksSum,omitempty" xml:"RegionBlockBlocksSum,omitempty"`
+	// The number of requests that are monitored by region blacklist rules.
+	RegionBlockReportsSum *int64 `json:"RegionBlockReportsSum,omitempty" xml:"RegionBlockReportsSum,omitempty"`
+	// The number of requests that are blocked by basic protection rules.
+	WafBlockSum *int64 `json:"WafBlockSum,omitempty" xml:"WafBlockSum,omitempty"`
+	// The number of request that are monitored by basic protection rules.
+	WafReportSum *string `json:"WafReportSum,omitempty" xml:"WafReportSum,omitempty"`
 }
 
 func (s DescribeFlowChartResponseBodyFlowChart) String() string {
@@ -2702,8 +3547,20 @@ func (s *DescribeFlowChartResponse) SetBody(v *DescribeFlowChartResponseBody) *D
 }
 
 type DescribeFlowTopResourceRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -2725,13 +3582,25 @@ func (s *DescribeFlowTopResourceRequest) SetInstanceId(v string) *DescribeFlowTo
 	return s
 }
 
+func (s *DescribeFlowTopResourceRequest) SetRegionId(v string) *DescribeFlowTopResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFlowTopResourceRequest) SetResourceManagerResourceGroupId(v string) *DescribeFlowTopResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeFlowTopResourceRequest) SetStartTimestamp(v string) *DescribeFlowTopResourceRequest {
 	s.StartTimestamp = &v
 	return s
 }
 
 type DescribeFlowTopResourceResponseBody struct {
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 protected objects that receive requests.
 	RuleHitsTopResource []*DescribeFlowTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
 }
 
@@ -2754,7 +3623,9 @@ func (s *DescribeFlowTopResourceResponseBody) SetRuleHitsTopResource(v []*Descri
 }
 
 type DescribeFlowTopResourceResponseBodyRuleHitsTopResource struct {
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The total number of requests received by the protected object in a specified time range.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The protected object.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -2806,9 +3677,22 @@ func (s *DescribeFlowTopResourceResponse) SetBody(v *DescribeFlowTopResourceResp
 }
 
 type DescribeFlowTopUrlRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -2830,8 +3714,18 @@ func (s *DescribeFlowTopUrlRequest) SetInstanceId(v string) *DescribeFlowTopUrlR
 	return s
 }
 
+func (s *DescribeFlowTopUrlRequest) SetRegionId(v string) *DescribeFlowTopUrlRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeFlowTopUrlRequest) SetResource(v string) *DescribeFlowTopUrlRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeFlowTopUrlRequest) SetResourceManagerResourceGroupId(v string) *DescribeFlowTopUrlRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -2841,7 +3735,9 @@ func (s *DescribeFlowTopUrlRequest) SetStartTimestamp(v string) *DescribeFlowTop
 }
 
 type DescribeFlowTopUrlResponseBody struct {
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 URLs that are used to initiate requests.
 	RuleHitsTopUrl []*DescribeFlowTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
 }
 
@@ -2864,8 +3760,10 @@ func (s *DescribeFlowTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeFlowTopU
 }
 
 type DescribeFlowTopUrlResponseBodyRuleHitsTopUrl struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The total number of requests that are initiated by using the URL.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The URL that is used to initiate requests.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeFlowTopUrlResponseBodyRuleHitsTopUrl) String() string {
@@ -2915,9 +3813,719 @@ func (s *DescribeFlowTopUrlResponse) SetBody(v *DescribeFlowTopUrlResponseBody) 
 	return s
 }
 
+type DescribeHybridCloudGroupsRequest struct {
+	ClusterId                      *int64  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterProxyType               *string `json:"ClusterProxyType,omitempty" xml:"ClusterProxyType,omitempty"`
+	GroupName                      *int32  `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType                      *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber                     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeHybridCloudGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetClusterId(v int64) *DescribeHybridCloudGroupsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetClusterProxyType(v string) *DescribeHybridCloudGroupsRequest {
+	s.ClusterProxyType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetGroupName(v int32) *DescribeHybridCloudGroupsRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetGroupType(v string) *DescribeHybridCloudGroupsRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetInstanceId(v string) *DescribeHybridCloudGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetPageNumber(v int32) *DescribeHybridCloudGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetPageSize(v int32) *DescribeHybridCloudGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetRegionId(v string) *DescribeHybridCloudGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudGroupsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeHybridCloudGroupsResponseBody struct {
+	Groups     []*DescribeHybridCloudGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHybridCloudGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudGroupsResponseBody) SetGroups(v []*DescribeHybridCloudGroupsResponseBodyGroups) *DescribeHybridCloudGroupsResponseBody {
+	s.Groups = v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBody) SetRequestId(v string) *DescribeHybridCloudGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBody) SetTotalCount(v int32) *DescribeHybridCloudGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHybridCloudGroupsResponseBodyGroups struct {
+	BackSourceMark  *string `json:"BackSourceMark,omitempty" xml:"BackSourceMark,omitempty"`
+	ContinentsValue *int32  `json:"ContinentsValue,omitempty" xml:"ContinentsValue,omitempty"`
+	GroupId         *int32  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	LoadBalanceIp   *string `json:"LoadBalanceIp,omitempty" xml:"LoadBalanceIp,omitempty"`
+	LocationId      *int64  `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	OperatorValue   *int32  `json:"OperatorValue,omitempty" xml:"OperatorValue,omitempty"`
+	Ports           *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
+	RegionCodeValue *int32  `json:"RegionCodeValue,omitempty" xml:"RegionCodeValue,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s DescribeHybridCloudGroupsResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudGroupsResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetBackSourceMark(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.BackSourceMark = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetContinentsValue(v int32) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.ContinentsValue = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetGroupId(v int32) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetGroupName(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetGroupType(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetLoadBalanceIp(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.LoadBalanceIp = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetLocationId(v int64) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.LocationId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetOperatorValue(v int32) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.OperatorValue = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetPorts(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.Ports = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetRegionCodeValue(v int32) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.RegionCodeValue = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponseBodyGroups) SetRemark(v string) *DescribeHybridCloudGroupsResponseBodyGroups {
+	s.Remark = &v
+	return s
+}
+
+type DescribeHybridCloudGroupsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridCloudGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridCloudGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudGroupsResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponse) SetStatusCode(v int32) *DescribeHybridCloudGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudGroupsResponse) SetBody(v *DescribeHybridCloudGroupsResponseBody) *DescribeHybridCloudGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudResourcesRequest struct {
+	Backend                        *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+	CnameEnabled                   *bool   `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	Domain                         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber                     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	SourceIp                       *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeHybridCloudResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetBackend(v string) *DescribeHybridCloudResourcesRequest {
+	s.Backend = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetCnameEnabled(v bool) *DescribeHybridCloudResourcesRequest {
+	s.CnameEnabled = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetDomain(v string) *DescribeHybridCloudResourcesRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetInstanceId(v string) *DescribeHybridCloudResourcesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetPageNumber(v int64) *DescribeHybridCloudResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetPageSize(v int64) *DescribeHybridCloudResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetRegionId(v string) *DescribeHybridCloudResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesRequest) SetSourceIp(v string) *DescribeHybridCloudResourcesRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponseBody struct {
+	Domains    []*DescribeHybridCloudResourcesResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHybridCloudResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponseBody) SetDomains(v []*DescribeHybridCloudResourcesResponseBodyDomains) *DescribeHybridCloudResourcesResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBody) SetRequestId(v string) *DescribeHybridCloudResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeHybridCloudResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponseBodyDomains struct {
+	Cname                          *string                                                  `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Domain                         *string                                                  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Id                             *int64                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Listen                         *DescribeHybridCloudResourcesResponseBodyDomainsListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	Redirect                       *DescribeHybridCloudResourcesResponseBodyDomainsRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	ResourceManagerResourceGroupId *string                                                  `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	Status                         *int32                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Uid                            *string                                                  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetCname(v string) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Cname = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetDomain(v string) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetId(v int64) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetListen(v *DescribeHybridCloudResourcesResponseBodyDomainsListen) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Listen = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetRedirect(v *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Redirect = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetStatus(v int32) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetUid(v string) *DescribeHybridCloudResourcesResponseBodyDomains {
+	s.Uid = &v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
+	CertId             *string   `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CipherSuite        *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CustomCiphers      []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	EnableTLSv3        *bool     `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	ExclusiveIp        *bool     `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	FocusHttps         *bool     `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	Http2Enabled       *bool     `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	HttpPorts          []*int64  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	HttpsPorts         []*int64  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	Ipv6Enabled        *bool     `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
+	ProtectionResource *string   `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
+	TLSVersion         *string   `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	XffHeaderMode      *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	XffHeaders         []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsListen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsListen) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetCertId(v string) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetCipherSuite(v int32) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetCustomCiphers(v []*string) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.CustomCiphers = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetEnableTLSv3(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetExclusiveIp(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.ExclusiveIp = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetFocusHttps(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.FocusHttps = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetHttp2Enabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.Http2Enabled = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetHttpPorts(v []*int64) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.HttpPorts = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetHttpsPorts(v []*int64) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.HttpsPorts = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetIpv6Enabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.Ipv6Enabled = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetProtectionResource(v string) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.ProtectionResource = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetTLSVersion(v string) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.TLSVersion = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetXffHeaderMode(v int32) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.XffHeaderMode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) SetXffHeaders(v []*string) *DescribeHybridCloudResourcesResponseBodyDomainsListen {
+	s.XffHeaders = v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponseBodyDomainsRedirect struct {
+	Backends          []*string                                                                `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	CnameEnabled      *bool                                                                    `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	ConnectTimeout    *int64                                                                   `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	FocusHttpBackend  *bool                                                                    `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	Keepalive         *bool                                                                    `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	KeepaliveRequests *int64                                                                   `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	KeepaliveTimeout  *int64                                                                   `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	Loadbalance       *string                                                                  `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	ReadTimeout       *int64                                                                   `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders    []*DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	Retry             *bool                                                                    `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	RoutingRules      *string                                                                  `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
+	SniEnabled        *bool                                                                    `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	SniHost           *string                                                                  `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WriteTimeout      *int64                                                                   `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetBackends(v []*string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.Backends = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetCnameEnabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.CnameEnabled = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetConnectTimeout(v int64) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetFocusHttpBackend(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.FocusHttpBackend = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetKeepalive(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetKeepaliveRequests(v int64) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetKeepaliveTimeout(v int64) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetLoadbalance(v string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.Loadbalance = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetReadTimeout(v int64) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.ReadTimeout = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetRequestHeaders(v []*DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetRetry(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.Retry = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetRoutingRules(v string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.RoutingRules = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetSniEnabled(v bool) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.SniEnabled = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetSniHost(v string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.SniHost = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetWriteTimeout(v int64) *DescribeHybridCloudResourcesResponseBodyDomainsRedirect {
+	s.WriteTimeout = &v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders) SetKey(v string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders) SetValue(v string) *DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders {
+	s.Value = &v
+	return s
+}
+
+type DescribeHybridCloudResourcesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridCloudResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridCloudResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudResourcesResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponse) SetStatusCode(v int32) *DescribeHybridCloudResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudResourcesResponse) SetBody(v *DescribeHybridCloudResourcesResponseBody) *DescribeHybridCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudUserRequest struct {
+	InstanceId                     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeHybridCloudUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUserRequest) SetInstanceId(v string) *DescribeHybridCloudUserRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUserRequest) SetRegionId(v string) *DescribeHybridCloudUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUserRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudUserRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeHybridCloudUserResponseBody struct {
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserInfo  *DescribeHybridCloudUserResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s DescribeHybridCloudUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUserResponseBody) SetRequestId(v string) *DescribeHybridCloudUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUserResponseBody) SetUserInfo(v *DescribeHybridCloudUserResponseBodyUserInfo) *DescribeHybridCloudUserResponseBody {
+	s.UserInfo = v
+	return s
+}
+
+type DescribeHybridCloudUserResponseBodyUserInfo struct {
+	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+}
+
+func (s DescribeHybridCloudUserResponseBodyUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUserResponseBodyUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUserResponseBodyUserInfo) SetHttpPorts(v string) *DescribeHybridCloudUserResponseBodyUserInfo {
+	s.HttpPorts = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUserResponseBodyUserInfo) SetHttpsPorts(v string) *DescribeHybridCloudUserResponseBodyUserInfo {
+	s.HttpsPorts = &v
+	return s
+}
+
+type DescribeHybridCloudUserResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridCloudUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridCloudUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUserResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudUserResponse) SetStatusCode(v int32) *DescribeHybridCloudUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUserResponse) SetBody(v *DescribeHybridCloudUserResponseBody) *DescribeHybridCloudUserResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s DescribeInstanceRequest) String() string {
@@ -2933,22 +4541,47 @@ func (s *DescribeInstanceRequest) SetRegionId(v string) *DescribeInstanceRequest
 	return s
 }
 
-func (s *DescribeInstanceRequest) SetResourceGroupId(v string) *DescribeInstanceRequest {
-	s.ResourceGroupId = &v
+func (s *DescribeInstanceRequest) SetResourceManagerResourceGroupId(v string) *DescribeInstanceRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
 type DescribeInstanceResponseBody struct {
-	Details    *DescribeInstanceResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
-	Edition    *string                              `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	EndTime    *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InDebt     *string                              `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
-	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PayType    *string                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime  *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status     *int32                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The details of the WAF instance.
+	Details *DescribeInstanceResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
+	// The edition of the WAF instance.
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The expiration time of the WAF instance.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the WAF instance has overdue payments. Valid values:
+	//
+	// *   **0:** The WAF instance has overdue payments.
+	// *   **1:** The WAF instance does not have overdue payments.
+	//
+	// >  This parameter is returned only when the value of the **PayType** parameter is **POSTPAY**.
+	InDebt *string `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
+	// The ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The billing method of the WAF instance. Valid values:
+	//
+	// *   **POSTPAY:** The WAF instance uses the pay-as-you-go billing method.
+	// *   **PREPAY:** The WAF instance uses the subscription billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The purchase time of the WAF instance. The time is in the UNIX timestamp format. The time is displayed in UTC. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the WAF instance. Valid values:
+	//
+	// *   **1:** The WAF instance is in a normal state.
+	// *   **2:** The WAF instance has expired.
+	// *   **3:** The WAF instance has been released.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -3010,57 +4643,156 @@ func (s *DescribeInstanceResponseBody) SetStatus(v int32) *DescribeInstanceRespo
 }
 
 type DescribeInstanceResponseBodyDetails struct {
-	AclRuleMaxIpCount                    *int64  `json:"AclRuleMaxIpCount,omitempty" xml:"AclRuleMaxIpCount,omitempty"`
-	AntiScan                             *bool   `json:"AntiScan,omitempty" xml:"AntiScan,omitempty"`
-	AntiScanTemplateMaxCount             *int64  `json:"AntiScanTemplateMaxCount,omitempty" xml:"AntiScanTemplateMaxCount,omitempty"`
-	BackendMaxCount                      *int64  `json:"BackendMaxCount,omitempty" xml:"BackendMaxCount,omitempty"`
-	BaseWafGroup                         *bool   `json:"BaseWafGroup,omitempty" xml:"BaseWafGroup,omitempty"`
-	BaseWafGroupRuleInTemplateMaxCount   *int64  `json:"BaseWafGroupRuleInTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleInTemplateMaxCount,omitempty"`
-	BaseWafGroupRuleTemplateMaxCount     *int64  `json:"BaseWafGroupRuleTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleTemplateMaxCount,omitempty"`
-	Bot                                  *bool   `json:"Bot,omitempty" xml:"Bot,omitempty"`
-	BotApp                               *string `json:"BotApp,omitempty" xml:"BotApp,omitempty"`
-	BotTemplateMaxCount                  *int64  `json:"BotTemplateMaxCount,omitempty" xml:"BotTemplateMaxCount,omitempty"`
-	BotWeb                               *string `json:"BotWeb,omitempty" xml:"BotWeb,omitempty"`
-	CnameResourceMaxCount                *int64  `json:"CnameResourceMaxCount,omitempty" xml:"CnameResourceMaxCount,omitempty"`
-	CustomResponse                       *bool   `json:"CustomResponse,omitempty" xml:"CustomResponse,omitempty"`
-	CustomResponseRuleInTemplateMaxCount *int64  `json:"CustomResponseRuleInTemplateMaxCount,omitempty" xml:"CustomResponseRuleInTemplateMaxCount,omitempty"`
-	CustomResponseTemplateMaxCount       *int64  `json:"CustomResponseTemplateMaxCount,omitempty" xml:"CustomResponseTemplateMaxCount,omitempty"`
-	CustomRule                           *bool   `json:"CustomRule,omitempty" xml:"CustomRule,omitempty"`
-	CustomRuleAction                     *string `json:"CustomRuleAction,omitempty" xml:"CustomRuleAction,omitempty"`
-	CustomRuleCondition                  *string `json:"CustomRuleCondition,omitempty" xml:"CustomRuleCondition,omitempty"`
-	CustomRuleInTemplateMaxCount         *int64  `json:"CustomRuleInTemplateMaxCount,omitempty" xml:"CustomRuleInTemplateMaxCount,omitempty"`
-	CustomRuleRatelimitor                *string `json:"CustomRuleRatelimitor,omitempty" xml:"CustomRuleRatelimitor,omitempty"`
-	CustomRuleTemplateMaxCount           *int64  `json:"CustomRuleTemplateMaxCount,omitempty" xml:"CustomRuleTemplateMaxCount,omitempty"`
-	DefenseGroupMaxCount                 *int64  `json:"DefenseGroupMaxCount,omitempty" xml:"DefenseGroupMaxCount,omitempty"`
-	DefenseObjectInGroupMaxCount         *int64  `json:"DefenseObjectInGroupMaxCount,omitempty" xml:"DefenseObjectInGroupMaxCount,omitempty"`
-	DefenseObjectInTemplateMaxCount      *int64  `json:"DefenseObjectInTemplateMaxCount,omitempty" xml:"DefenseObjectInTemplateMaxCount,omitempty"`
-	DefenseObjectMaxCount                *int64  `json:"DefenseObjectMaxCount,omitempty" xml:"DefenseObjectMaxCount,omitempty"`
-	Dlp                                  *bool   `json:"Dlp,omitempty" xml:"Dlp,omitempty"`
-	DlpRuleInTemplateMaxCount            *int64  `json:"DlpRuleInTemplateMaxCount,omitempty" xml:"DlpRuleInTemplateMaxCount,omitempty"`
-	DlpTemplateMaxCount                  *int64  `json:"DlpTemplateMaxCount,omitempty" xml:"DlpTemplateMaxCount,omitempty"`
-	ExclusiveIp                          *bool   `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	Gslb                                 *bool   `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	HttpPorts                            *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	HttpsPorts                           *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	IpBlacklist                          *bool   `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	IpBlacklistIpInRuleMaxCount          *int64  `json:"IpBlacklistIpInRuleMaxCount,omitempty" xml:"IpBlacklistIpInRuleMaxCount,omitempty"`
-	IpBlacklistRuleInTemplateMaxCount    *int64  `json:"IpBlacklistRuleInTemplateMaxCount,omitempty" xml:"IpBlacklistRuleInTemplateMaxCount,omitempty"`
-	IpBlacklistTemplateMaxCount          *int64  `json:"IpBlacklistTemplateMaxCount,omitempty" xml:"IpBlacklistTemplateMaxCount,omitempty"`
-	Ipv6                                 *bool   `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	LogService                           *bool   `json:"LogService,omitempty" xml:"LogService,omitempty"`
-	MajorProtection                      *bool   `json:"MajorProtection,omitempty" xml:"MajorProtection,omitempty"`
-	MajorProtectionTemplateMaxCount      *int64  `json:"MajorProtectionTemplateMaxCount,omitempty" xml:"MajorProtectionTemplateMaxCount,omitempty"`
-	Tamperproof                          *bool   `json:"Tamperproof,omitempty" xml:"Tamperproof,omitempty"`
-	TamperproofRuleInTemplateMaxCount    *int64  `json:"TamperproofRuleInTemplateMaxCount,omitempty" xml:"TamperproofRuleInTemplateMaxCount,omitempty"`
-	TamperproofTemplateMaxCount          *int64  `json:"TamperproofTemplateMaxCount,omitempty" xml:"TamperproofTemplateMaxCount,omitempty"`
-	VastIpBlacklistInFileMaxCount        *int64  `json:"VastIpBlacklistInFileMaxCount,omitempty" xml:"VastIpBlacklistInFileMaxCount,omitempty"`
-	VastIpBlacklistInOperationMaxCount   *int64  `json:"VastIpBlacklistInOperationMaxCount,omitempty" xml:"VastIpBlacklistInOperationMaxCount,omitempty"`
-	VastIpBlacklistMaxCount              *int64  `json:"VastIpBlacklistMaxCount,omitempty" xml:"VastIpBlacklistMaxCount,omitempty"`
-	Whitelist                            *bool   `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
-	WhitelistLogical                     *string `json:"WhitelistLogical,omitempty" xml:"WhitelistLogical,omitempty"`
-	WhitelistRuleCondition               *string `json:"WhitelistRuleCondition,omitempty" xml:"WhitelistRuleCondition,omitempty"`
-	WhitelistRuleInTemplateMaxCount      *int64  `json:"WhitelistRuleInTemplateMaxCount,omitempty" xml:"WhitelistRuleInTemplateMaxCount,omitempty"`
-	WhitelistTemplateMaxCount            *int64  `json:"WhitelistTemplateMaxCount,omitempty" xml:"WhitelistTemplateMaxCount,omitempty"`
+	// The maximum number of IP addresses that can be added to the match content of a match condition. For more information, see [Match conditions](~~374354~~).
+	AclRuleMaxIpCount *int64 `json:"AclRuleMaxIpCount,omitempty" xml:"AclRuleMaxIpCount,omitempty"`
+	// Indicates whether the scan protection module is supported. Valid values:
+	//
+	// *   **true:** The scan protection module is supported.
+	// *   **false:** The scan protection module is not supported.
+	AntiScan *bool `json:"AntiScan,omitempty" xml:"AntiScan,omitempty"`
+	// The maximum number of scan protection rule templates that can be configured.
+	AntiScanTemplateMaxCount *int64 `json:"AntiScanTemplateMaxCount,omitempty" xml:"AntiScanTemplateMaxCount,omitempty"`
+	// The maximum number of back-to-origin IP addresses that can be configured.
+	BackendMaxCount *int64 `json:"BackendMaxCount,omitempty" xml:"BackendMaxCount,omitempty"`
+	// Indicates whether the basic protection rule module is supported. Valid values:
+	//
+	// *   **true:** The basic protection rule module is supported.
+	// *   **false:** The basic protection rule module is not supported.
+	BaseWafGroup *bool `json:"BaseWafGroup,omitempty" xml:"BaseWafGroup,omitempty"`
+	// The maximum number of protection rules that can be included in a basic protection rule template.
+	BaseWafGroupRuleInTemplateMaxCount *int64 `json:"BaseWafGroupRuleInTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of basic protection rule templates that can be configured.
+	BaseWafGroupRuleTemplateMaxCount *int64 `json:"BaseWafGroupRuleTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleTemplateMaxCount,omitempty"`
+	// Indicates whether the bot management module is supported. Valid values:
+	//
+	// *   **true:** The bot management module is supported.
+	// *   **false:** The bot management module is not supported.
+	Bot *bool `json:"Bot,omitempty" xml:"Bot,omitempty"`
+	// Indicates whether bot management for app protection is supported. Valid values:
+	//
+	// *   **true:** Bot management for app protection is supported.
+	// *   **false:** Bot management for app protection is not supported.
+	BotApp *string `json:"BotApp,omitempty" xml:"BotApp,omitempty"`
+	// The maximum number of bot management rule templates that can be configured.
+	BotTemplateMaxCount *int64 `json:"BotTemplateMaxCount,omitempty" xml:"BotTemplateMaxCount,omitempty"`
+	// Indicates whether bot management for website protection is supported. Valid values:
+	//
+	// *   **true:** Bot management for website protection is supported.
+	// *   **false:** Bot management for website protection is not supported.
+	BotWeb *string `json:"BotWeb,omitempty" xml:"BotWeb,omitempty"`
+	// The maximum number of CNAMEs that can be added.
+	CnameResourceMaxCount *int64 `json:"CnameResourceMaxCount,omitempty" xml:"CnameResourceMaxCount,omitempty"`
+	// Indicates whether the custom response module is supported. Valid values:
+	//
+	// *   **true:** The custom response module is supported.
+	// *   **false:** The custom response module is not supported.
+	CustomResponse *bool `json:"CustomResponse,omitempty" xml:"CustomResponse,omitempty"`
+	// The maximum number of rules that can be included in a custom response rule template.
+	CustomResponseRuleInTemplateMaxCount *int64 `json:"CustomResponseRuleInTemplateMaxCount,omitempty" xml:"CustomResponseRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of custom response rule templates that can be configured.
+	CustomResponseTemplateMaxCount *int64 `json:"CustomResponseTemplateMaxCount,omitempty" xml:"CustomResponseTemplateMaxCount,omitempty"`
+	// Indicates whether the custom rule module is supported. Valid values:
+	//
+	// *   **true:** The custom rule module is supported.
+	// *   **false:** The custom rule module is not supported.
+	CustomRule *bool `json:"CustomRule,omitempty" xml:"CustomRule,omitempty"`
+	// The action that can be included in a custom rule.
+	CustomRuleAction *string `json:"CustomRuleAction,omitempty" xml:"CustomRuleAction,omitempty"`
+	// The match conditions that can be used in a custom rule. For more information, see **Match condition parameters** in the "**Parameters of custom rules (custom_acl)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	CustomRuleCondition *string `json:"CustomRuleCondition,omitempty" xml:"CustomRuleCondition,omitempty"`
+	// The maximum number of rules that can be included in a custom rule template.
+	CustomRuleInTemplateMaxCount *int64 `json:"CustomRuleInTemplateMaxCount,omitempty" xml:"CustomRuleInTemplateMaxCount,omitempty"`
+	// The statistical object for rate limiting in a custom rule.
+	CustomRuleRatelimitor *string `json:"CustomRuleRatelimitor,omitempty" xml:"CustomRuleRatelimitor,omitempty"`
+	// The maximum number of custom rule templates that can be configured.
+	CustomRuleTemplateMaxCount *int64 `json:"CustomRuleTemplateMaxCount,omitempty" xml:"CustomRuleTemplateMaxCount,omitempty"`
+	// The maximum number of protected object groups that can be configured.
+	DefenseGroupMaxCount *int64 `json:"DefenseGroupMaxCount,omitempty" xml:"DefenseGroupMaxCount,omitempty"`
+	// The maximum number of protected objects that can be included in a protected object group.
+	DefenseObjectInGroupMaxCount *int64 `json:"DefenseObjectInGroupMaxCount,omitempty" xml:"DefenseObjectInGroupMaxCount,omitempty"`
+	// The maximum number of protected objects to which a protection rule template can be applied.
+	DefenseObjectInTemplateMaxCount *int64 `json:"DefenseObjectInTemplateMaxCount,omitempty" xml:"DefenseObjectInTemplateMaxCount,omitempty"`
+	// The maximum number of protected objects that can be configured.
+	DefenseObjectMaxCount *int64 `json:"DefenseObjectMaxCount,omitempty" xml:"DefenseObjectMaxCount,omitempty"`
+	// Indicates whether the data leakage prevention module is supported. Valid values:
+	//
+	// *   **true:** The data leakage prevention module is supported.
+	// *   **false:** The data leakage prevention module is not supported.
+	Dlp *bool `json:"Dlp,omitempty" xml:"Dlp,omitempty"`
+	// The maximum number of rules that can be included in a data leakage prevention rule template.
+	DlpRuleInTemplateMaxCount *int64 `json:"DlpRuleInTemplateMaxCount,omitempty" xml:"DlpRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of data leakage prevention rule templates that can be configured.
+	DlpTemplateMaxCount *int64 `json:"DlpTemplateMaxCount,omitempty" xml:"DlpTemplateMaxCount,omitempty"`
+	// Indicates whether exclusive IP addresses are supported. Valid values:
+	//
+	// *   **true:** Exclusive IP addresses are supported.
+	// *   **false:** Exclusive IP addresses are not supported.
+	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	// Indicates whether global server load balancing (GSLB) is supported. Valid values:
+	//
+	// *   **true:** GSLB is supported.
+	// *   **false:** GSLB is not supported.
+	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
+	// The HTTP port range that is supported. For more information, see [View supported ports](~~385578~~).
+	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTPS port range that is supported. For more information, see [View supported ports](~~385578~~).
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// Indicates whether the IP address blacklist module is supported. Valid values:
+	//
+	// *   **true:** The IP address blacklist module is supported.
+	// *   **false:** The IP address blacklist module is not supported.
+	IpBlacklist *bool `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
+	// The maximum number of IP addresses that can be added to an IP address blacklist rule.
+	IpBlacklistIpInRuleMaxCount *int64 `json:"IpBlacklistIpInRuleMaxCount,omitempty" xml:"IpBlacklistIpInRuleMaxCount,omitempty"`
+	// The maximum number of rules that can be included in an IP address blacklist rule template.
+	IpBlacklistRuleInTemplateMaxCount *int64 `json:"IpBlacklistRuleInTemplateMaxCount,omitempty" xml:"IpBlacklistRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of IP address blacklist rule templates that can be configured.
+	IpBlacklistTemplateMaxCount *int64 `json:"IpBlacklistTemplateMaxCount,omitempty" xml:"IpBlacklistTemplateMaxCount,omitempty"`
+	// Indicates whether IPv6 is supported. Valid values:
+	//
+	// *   **true:** IPv6 is supported.
+	// *   **false:** IPv6 is not supported.
+	Ipv6 *bool `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// Indicates whether the log collection feature is supported. Valid values:
+	//
+	// *   **true:** The log collection feature is supported.
+	// *   **false:** The log collection feature is not supported.
+	LogService *bool `json:"LogService,omitempty" xml:"LogService,omitempty"`
+	// Indicates whether major event protection is supported. Valid values:
+	//
+	// *   **true:** Major event protection is supported.
+	// *   **false:** Major event protection is not supported.
+	MajorProtection *bool `json:"MajorProtection,omitempty" xml:"MajorProtection,omitempty"`
+	// The maximum number of major event protection rule templates that can be configured.
+	MajorProtectionTemplateMaxCount *int64 `json:"MajorProtectionTemplateMaxCount,omitempty" xml:"MajorProtectionTemplateMaxCount,omitempty"`
+	// Indicates whether the website tamper-proofing module is supported. Valid values:
+	//
+	// *   **true:** The website tamper-proofing module is supported.
+	// *   **false:** The website tamper-proofing module is not supported.
+	Tamperproof *bool `json:"Tamperproof,omitempty" xml:"Tamperproof,omitempty"`
+	// The maximum number of rules that can be included in a website tamper-proofing rule template.
+	TamperproofRuleInTemplateMaxCount *int64 `json:"TamperproofRuleInTemplateMaxCount,omitempty" xml:"TamperproofRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of website tamper-proofing rule templates that can be configured.
+	TamperproofTemplateMaxCount *int64 `json:"TamperproofTemplateMaxCount,omitempty" xml:"TamperproofTemplateMaxCount,omitempty"`
+	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist in a batch.
+	VastIpBlacklistInFileMaxCount *int64 `json:"VastIpBlacklistInFileMaxCount,omitempty" xml:"VastIpBlacklistInFileMaxCount,omitempty"`
+	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist on a page.
+	VastIpBlacklistInOperationMaxCount *int64 `json:"VastIpBlacklistInOperationMaxCount,omitempty" xml:"VastIpBlacklistInOperationMaxCount,omitempty"`
+	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist per Alibaba Cloud account.
+	VastIpBlacklistMaxCount *int64 `json:"VastIpBlacklistMaxCount,omitempty" xml:"VastIpBlacklistMaxCount,omitempty"`
+	// Indicates whether the whitelist module is supported. Valid values:
+	//
+	// *   **true:** The whitelist module is supported.
+	// *   **false:** The whitelist module is not supported.
+	Whitelist *bool `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
+	// The logical operators that can be used in a whitelist rule. For more information, see **Match condition parameters** in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	WhitelistLogical *string `json:"WhitelistLogical,omitempty" xml:"WhitelistLogical,omitempty"`
+	// The match fields that can be used in a whitelist rule. For more information, see **Match condition parameters** in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	WhitelistRuleCondition *string `json:"WhitelistRuleCondition,omitempty" xml:"WhitelistRuleCondition,omitempty"`
+	// The maximum number of rules that can be included in a whitelist rule template.
+	WhitelistRuleInTemplateMaxCount *int64 `json:"WhitelistRuleInTemplateMaxCount,omitempty" xml:"WhitelistRuleInTemplateMaxCount,omitempty"`
+	// The maximum number of whitelist rule templates that can be configured.
+	WhitelistTemplateMaxCount *int64 `json:"WhitelistTemplateMaxCount,omitempty" xml:"WhitelistTemplateMaxCount,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyDetails) String() string {
@@ -3356,13 +5088,34 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeMajorProtectionBlackIpsRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpLike     *string `json:"IpLike,omitempty" xml:"IpLike,omitempty"`
-	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The IP address that you want to query. You can specify this parameter to query an IP address in the IP address blacklist for major event protection by using fuzzy matching.
+	IpLike *string `json:"IpLike,omitempty" xml:"IpLike,omitempty"`
+	// The method that you want to use to sort the IP addresses **in descending order**. Valid values:
+	//
+	// *   **gmtModified:** sorts the IP addresses by most recent modification time.
+	// *   **ip:** sorts the IP addresses by IP address.
+	// *   **templateId:** sorts the IP addresses by template ID.
+	// *   **id:** sorts the IP addresses by primary key.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule template for major event protection.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeMajorProtectionBlackIpsRequest) String() string {
@@ -3398,6 +5151,16 @@ func (s *DescribeMajorProtectionBlackIpsRequest) SetPageSize(v int32) *DescribeM
 	return s
 }
 
+func (s *DescribeMajorProtectionBlackIpsRequest) SetRegionId(v string) *DescribeMajorProtectionBlackIpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMajorProtectionBlackIpsRequest) SetResourceManagerResourceGroupId(v string) *DescribeMajorProtectionBlackIpsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeMajorProtectionBlackIpsRequest) SetRuleId(v int64) *DescribeMajorProtectionBlackIpsRequest {
 	s.RuleId = &v
 	return s
@@ -3409,9 +5172,12 @@ func (s *DescribeMajorProtectionBlackIpsRequest) SetTemplateId(v int64) *Describ
 }
 
 type DescribeMajorProtectionBlackIpsResponseBody struct {
-	IpList     []*DescribeMajorProtectionBlackIpsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array of IP addresses in the IP address blacklist.
+	IpList []*DescribeMajorProtectionBlackIpsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of IP addresses in the blacklist.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeMajorProtectionBlackIpsResponseBody) String() string {
@@ -3438,12 +5204,20 @@ func (s *DescribeMajorProtectionBlackIpsResponseBody) SetTotalCount(v int64) *De
 }
 
 type DescribeMajorProtectionBlackIpsResponseBodyIpList struct {
+	// The description of the IP address in the blacklist.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Ip          *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
+	//
+	// >  If the value of this parameter is **0**, the blacklist is permanently valid.
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The most recent time when the IP address blacklist was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The IP address in the IP address blacklist.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule template for major event protection.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeMajorProtectionBlackIpsResponseBodyIpList) String() string {
@@ -3514,10 +5288,24 @@ func (s *DescribeMajorProtectionBlackIpsResponse) SetBody(v *DescribeMajorProtec
 }
 
 type DescribePeakTrendRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -3544,8 +5332,18 @@ func (s *DescribePeakTrendRequest) SetInterval(v string) *DescribePeakTrendReque
 	return s
 }
 
+func (s *DescribePeakTrendRequest) SetRegionId(v string) *DescribePeakTrendRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribePeakTrendRequest) SetResource(v string) *DescribePeakTrendRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribePeakTrendRequest) SetResourceManagerResourceGroupId(v string) *DescribePeakTrendRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -3555,8 +5353,10 @@ func (s *DescribePeakTrendRequest) SetStartTimestamp(v string) *DescribePeakTren
 }
 
 type DescribePeakTrendResponseBody struct {
+	// An array of the QPS statistics of the WAF instance.
 	FlowChart []*DescribePeakTrendResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePeakTrendResponseBody) String() string {
@@ -3578,12 +5378,18 @@ func (s *DescribePeakTrendResponseBody) SetRequestId(v string) *DescribePeakTren
 }
 
 type DescribePeakTrendResponseBodyFlowChart struct {
-	AclSum      *int64 `json:"AclSum,omitempty" xml:"AclSum,omitempty"`
+	// The number of requests that are monitored or blocked by the custom rule (access control) module.
+	AclSum *int64 `json:"AclSum,omitempty" xml:"AclSum,omitempty"`
+	// The number of requests that are monitored or blocked by the scan protection module.
 	AntiScanSum *int64 `json:"AntiScanSum,omitempty" xml:"AntiScanSum,omitempty"`
-	CcSum       *int64 `json:"CcSum,omitempty" xml:"CcSum,omitempty"`
-	Count       *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Index       *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	WafSum      *int64 `json:"WafSum,omitempty" xml:"WafSum,omitempty"`
+	// The number of requests that are monitored or blocked by the HTTP flood protection module.
+	CcSum *int64 `json:"CcSum,omitempty" xml:"CcSum,omitempty"`
+	// The total number of requests.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The number of requests that are monitored or blocked by the regular expression protection engine.
+	WafSum *int64 `json:"WafSum,omitempty" xml:"WafSum,omitempty"`
 }
 
 func (s DescribePeakTrendResponseBodyFlowChart) String() string {
@@ -3654,8 +5460,19 @@ func (s *DescribePeakTrendResponse) SetBody(v *DescribePeakTrendResponseBody) *D
 }
 
 type DescribeResourceLogStatusRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resources  *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The protected object that you want to query. You can specify multiple protected objects. Separate the protected objects with commas (,).
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
 func (s DescribeResourceLogStatusRequest) String() string {
@@ -3671,14 +5488,26 @@ func (s *DescribeResourceLogStatusRequest) SetInstanceId(v string) *DescribeReso
 	return s
 }
 
+func (s *DescribeResourceLogStatusRequest) SetRegionId(v string) *DescribeResourceLogStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeResourceLogStatusRequest) SetResourceManagerResourceGroupId(v string) *DescribeResourceLogStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeResourceLogStatusRequest) SetResources(v string) *DescribeResourceLogStatusRequest {
 	s.Resources = &v
 	return s
 }
 
 type DescribeResourceLogStatusResponseBody struct {
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*DescribeResourceLogStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*DescribeResourceLogStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceLogStatusResponseBody) String() string {
@@ -3700,8 +5529,13 @@ func (s *DescribeResourceLogStatusResponseBody) SetResult(v []*DescribeResourceL
 }
 
 type DescribeResourceLogStatusResponseBodyResult struct {
+	// The protected object.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Status   *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
+	//
+	// *   **true:** The log collection feature is enabled.
+	// *   **false:** The log collection feature is disabled.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeResourceLogStatusResponseBodyResult) String() string {
@@ -3752,8 +5586,19 @@ func (s *DescribeResourceLogStatusResponse) SetBody(v *DescribeResourceLogStatus
 }
 
 type DescribeResourcePortRequest struct {
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the cloud service instance.
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s DescribeResourcePortRequest) String() string {
@@ -3769,13 +5614,25 @@ func (s *DescribeResourcePortRequest) SetInstanceId(v string) *DescribeResourceP
 	return s
 }
 
+func (s *DescribeResourcePortRequest) SetRegionId(v string) *DescribeResourcePortRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeResourcePortRequest) SetResourceInstanceId(v string) *DescribeResourcePortRequest {
 	s.ResourceInstanceId = &v
 	return s
 }
 
+func (s *DescribeResourcePortRequest) SetResourceManagerResourceGroupId(v string) *DescribeResourcePortRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type DescribeResourcePortResponseBody struct {
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of HTTP and HTTPS listener ports that are added to the WAF instance.
 	ResourcePorts []*string `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
 }
 
@@ -3827,12 +5684,30 @@ func (s *DescribeResourcePortResponse) SetBody(v *DescribeResourcePortResponseBo
 }
 
 type DescribeResponseCodeTrendGraphRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the error codes. Valid values:
+	//
+	// *   **waf:** error codes that are returned to clients from WAF.
+	// *   **upstream:** error codes that are returned to WAF from the origin server.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeResponseCodeTrendGraphRequest) String() string {
@@ -3858,8 +5733,18 @@ func (s *DescribeResponseCodeTrendGraphRequest) SetInterval(v string) *DescribeR
 	return s
 }
 
+func (s *DescribeResponseCodeTrendGraphRequest) SetRegionId(v string) *DescribeResponseCodeTrendGraphRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeResponseCodeTrendGraphRequest) SetResource(v string) *DescribeResponseCodeTrendGraphRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeResponseCodeTrendGraphRequest) SetResourceManagerResourceGroupId(v string) *DescribeResponseCodeTrendGraphRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -3874,7 +5759,9 @@ func (s *DescribeResponseCodeTrendGraphRequest) SetType(v string) *DescribeRespo
 }
 
 type DescribeResponseCodeTrendGraphResponseBody struct {
-	RequestId     *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the statistics of the error codes.
 	ResponseCodes []*DescribeResponseCodeTrendGraphResponseBodyResponseCodes `json:"ResponseCodes,omitempty" xml:"ResponseCodes,omitempty" type:"Repeated"`
 }
 
@@ -3897,11 +5784,16 @@ func (s *DescribeResponseCodeTrendGraphResponseBody) SetResponseCodes(v []*Descr
 }
 
 type DescribeResponseCodeTrendGraphResponseBodyResponseCodes struct {
+	// The number of 302 error codes that are returned.
 	Code302Pv *int64 `json:"302Pv,omitempty" xml:"302Pv,omitempty"`
+	// The number of 405 error codes that are returned.
 	Code405Pv *int64 `json:"405Pv,omitempty" xml:"405Pv,omitempty"`
+	// The number of 499 error codes that are returned.
 	Code499Pv *int64 `json:"499Pv,omitempty" xml:"499Pv,omitempty"`
+	// The number of 5xx error codes that are returned.
 	Code5xxPv *int64 `json:"5xxPv,omitempty" xml:"5xxPv,omitempty"`
-	Index     *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
 func (s DescribeResponseCodeTrendGraphResponseBodyResponseCodes) String() string {
@@ -3967,10 +5859,27 @@ func (s *DescribeResponseCodeTrendGraphResponse) SetBody(v *DescribeResponseCode
 }
 
 type DescribeRuleGroupsRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchType  *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the query condition. Valid values:
+	//
+	// *   **id:** queries regular expression rule groups by ID.
+	// *   **name:** queries regular expression rule groups by name.
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// The query condition.
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
@@ -3997,6 +5906,16 @@ func (s *DescribeRuleGroupsRequest) SetPageSize(v int32) *DescribeRuleGroupsRequ
 	return s
 }
 
+func (s *DescribeRuleGroupsRequest) SetRegionId(v string) *DescribeRuleGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleGroupsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeRuleGroupsRequest) SetSearchType(v string) *DescribeRuleGroupsRequest {
 	s.SearchType = &v
 	return s
@@ -4008,9 +5927,12 @@ func (s *DescribeRuleGroupsRequest) SetSearchValue(v string) *DescribeRuleGroups
 }
 
 type DescribeRuleGroupsResponseBody struct {
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of regular expression rule groups.
 	RuleGroups []*DescribeRuleGroupsResponseBodyRuleGroups `json:"RuleGroups,omitempty" xml:"RuleGroups,omitempty" type:"Repeated"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of entries that are returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRuleGroupsResponseBody) String() string {
@@ -4037,10 +5959,26 @@ func (s *DescribeRuleGroupsResponseBody) SetTotalCount(v int64) *DescribeRuleGro
 }
 
 type DescribeRuleGroupsResponseBodyRuleGroups struct {
-	GmtModified    *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RuleGroupId    *int64  `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
-	RuleGroupName  *string `json:"RuleGroupName,omitempty" xml:"RuleGroupName,omitempty"`
-	RuleTotalCount *int32  `json:"RuleTotalCount,omitempty" xml:"RuleTotalCount,omitempty"`
+	// The most recent time when the rule group was modified.
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Indicates whether the automatic update feature is enabled for the rule group.
+	//
+	// *   1: The automatic update feature is enabled for the rule group.
+	// *   2: The automatic update feature is disabled for the rule group.
+	IsSubscribe *int32 `json:"IsSubscribe,omitempty" xml:"IsSubscribe,omitempty"`
+	// The ID of the rule group.
+	//
+	// *   0: The rule group is created from scratch.
+	// *   1011: The rule group is a strict rule group.
+	// *   1012: The rule group is a medium rule group.
+	// *   1013: The rue group is a loose rule group.
+	ParentRuleGroupId *int64 `json:"ParentRuleGroupId,omitempty" xml:"ParentRuleGroupId,omitempty"`
+	// The ID of the regular expression rule group.
+	RuleGroupId *int64 `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
+	// The name of the rule group.
+	RuleGroupName *string `json:"RuleGroupName,omitempty" xml:"RuleGroupName,omitempty"`
+	// The number of built-in rules in the rule group.
+	RuleTotalCount *int32 `json:"RuleTotalCount,omitempty" xml:"RuleTotalCount,omitempty"`
 }
 
 func (s DescribeRuleGroupsResponseBodyRuleGroups) String() string {
@@ -4053,6 +5991,16 @@ func (s DescribeRuleGroupsResponseBodyRuleGroups) GoString() string {
 
 func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetGmtModified(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetIsSubscribe(v int32) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.IsSubscribe = &v
+	return s
+}
+
+func (s *DescribeRuleGroupsResponseBodyRuleGroups) SetParentRuleGroupId(v int64) *DescribeRuleGroupsResponseBodyRuleGroups {
+	s.ParentRuleGroupId = &v
 	return s
 }
 
@@ -4101,10 +6049,30 @@ func (s *DescribeRuleGroupsResponse) SetBody(v *DescribeRuleGroupsResponseBody) 
 }
 
 type DescribeRuleHitsTopClientIpRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RuleType       *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	//
+	// *   **blacklist:** IP address blacklist rules.
+	// *   **custom:** custom rules.
+	// *   **antiscan:** scan protection rules.
+	// *   **cc_system:** HTTP flood protection rules.
+	// *   **region_block:** region blacklist rules.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4126,8 +6094,18 @@ func (s *DescribeRuleHitsTopClientIpRequest) SetInstanceId(v string) *DescribeRu
 	return s
 }
 
+func (s *DescribeRuleHitsTopClientIpRequest) SetRegionId(v string) *DescribeRuleHitsTopClientIpRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopClientIpRequest) SetResource(v string) *DescribeRuleHitsTopClientIpRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopClientIpRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopClientIpRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -4142,7 +6120,9 @@ func (s *DescribeRuleHitsTopClientIpRequest) SetStartTimestamp(v string) *Descri
 }
 
 type DescribeRuleHitsTopClientIpResponseBody struct {
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 IP addresses from which attacks are initiated.
 	RuleHitsTopClientIp []*DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp `json:"RuleHitsTopClientIp,omitempty" xml:"RuleHitsTopClientIp,omitempty" type:"Repeated"`
 }
 
@@ -4165,8 +6145,10 @@ func (s *DescribeRuleHitsTopClientIpResponseBody) SetRuleHitsTopClientIp(v []*De
 }
 
 type DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp struct {
+	// The IP address of the service client.
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of attacks that are initiated from the IP address.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp) String() string {
@@ -4217,9 +6199,28 @@ func (s *DescribeRuleHitsTopClientIpResponse) SetBody(v *DescribeRuleHitsTopClie
 }
 
 type DescribeRuleHitsTopResourceRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleType       *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	//
+	// *   **blacklist:** IP address blacklist rules.
+	// *   **custom:** custom rules.
+	// *   **antiscan:** scan protection rules.
+	// *   **cc_system:** HTTP flood protection rules.
+	// *   **region_block:** region blacklist rules.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4241,6 +6242,16 @@ func (s *DescribeRuleHitsTopResourceRequest) SetInstanceId(v string) *DescribeRu
 	return s
 }
 
+func (s *DescribeRuleHitsTopResourceRequest) SetRegionId(v string) *DescribeRuleHitsTopResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopResourceRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopResourceRequest) SetRuleType(v string) *DescribeRuleHitsTopResourceRequest {
 	s.RuleType = &v
 	return s
@@ -4252,7 +6263,9 @@ func (s *DescribeRuleHitsTopResourceRequest) SetStartTimestamp(v string) *Descri
 }
 
 type DescribeRuleHitsTopResourceResponseBody struct {
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 protected objects that trigger protection rules.
 	RuleHitsTopResource []*DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
 }
 
@@ -4275,7 +6288,9 @@ func (s *DescribeRuleHitsTopResourceResponseBody) SetRuleHitsTopResource(v []*De
 }
 
 type DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource struct {
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of requests that match protection rules.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The protected object.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -4327,10 +6342,30 @@ func (s *DescribeRuleHitsTopResourceResponse) SetBody(v *DescribeRuleHitsTopReso
 }
 
 type DescribeRuleHitsTopRuleIdRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RuleType       *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	//
+	// *   **blacklist:** IP address blacklist rules.
+	// *   **custom:** custom rules.
+	// *   **antiscan:** scan protection rules.
+	// *   **cc_system:** HTTP flood protection rules.
+	// *   **region_block:** region blacklist rules.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4352,8 +6387,18 @@ func (s *DescribeRuleHitsTopRuleIdRequest) SetInstanceId(v string) *DescribeRule
 	return s
 }
 
+func (s *DescribeRuleHitsTopRuleIdRequest) SetRegionId(v string) *DescribeRuleHitsTopRuleIdRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopRuleIdRequest) SetResource(v string) *DescribeRuleHitsTopRuleIdRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopRuleIdRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopRuleIdRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -4368,7 +6413,9 @@ func (s *DescribeRuleHitsTopRuleIdRequest) SetStartTimestamp(v string) *Describe
 }
 
 type DescribeRuleHitsTopRuleIdResponseBody struct {
-	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the IDs of the top 10 rules that are matched by requests.
 	RuleHitsTopRuleId []*DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId `json:"RuleHitsTopRuleId,omitempty" xml:"RuleHitsTopRuleId,omitempty" type:"Repeated"`
 }
 
@@ -4391,9 +6438,12 @@ func (s *DescribeRuleHitsTopRuleIdResponseBody) SetRuleHitsTopRuleId(v []*Descri
 }
 
 type DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId struct {
-	Count    *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of requests that match the rule.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The protected object.
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId) String() string {
@@ -4449,9 +6499,18 @@ func (s *DescribeRuleHitsTopRuleIdResponse) SetBody(v *DescribeRuleHitsTopRuleId
 }
 
 type DescribeRuleHitsTopTuleTypeRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// cn-hangzhou
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the request.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The array of the top 10 protection modules that are matched.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The result of the request.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou**: the Chinese mainland.
+	// *   **ap-southeast-1**: outside the Chinese mainland.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4473,6 +6532,11 @@ func (s *DescribeRuleHitsTopTuleTypeRequest) SetInstanceId(v string) *DescribeRu
 	return s
 }
 
+func (s *DescribeRuleHitsTopTuleTypeRequest) SetRegionId(v string) *DescribeRuleHitsTopTuleTypeRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopTuleTypeRequest) SetResource(v string) *DescribeRuleHitsTopTuleTypeRequest {
 	s.Resource = &v
 	return s
@@ -4484,7 +6548,9 @@ func (s *DescribeRuleHitsTopTuleTypeRequest) SetStartTimestamp(v string) *Descri
 }
 
 type DescribeRuleHitsTopTuleTypeResponseBody struct {
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of requests that match the rules of the protection module.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of rules. For details, see the description of **RuleType** in [DescribeRuleHitsTopRuleId](~~DescribeRuleHitsTopRuleId~~).
 	RuleHitsTopTuleType []*DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType `json:"RuleHitsTopTuleType,omitempty" xml:"RuleHitsTopTuleType,omitempty" type:"Repeated"`
 }
 
@@ -4559,9 +6625,22 @@ func (s *DescribeRuleHitsTopTuleTypeResponse) SetBody(v *DescribeRuleHitsTopTule
 }
 
 type DescribeRuleHitsTopUaRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4583,8 +6662,18 @@ func (s *DescribeRuleHitsTopUaRequest) SetInstanceId(v string) *DescribeRuleHits
 	return s
 }
 
+func (s *DescribeRuleHitsTopUaRequest) SetRegionId(v string) *DescribeRuleHitsTopUaRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopUaRequest) SetResource(v string) *DescribeRuleHitsTopUaRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopUaRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopUaRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -4594,7 +6683,9 @@ func (s *DescribeRuleHitsTopUaRequest) SetStartTimestamp(v string) *DescribeRule
 }
 
 type DescribeRuleHitsTopUaResponseBody struct {
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 user agents that are used to initiate attacks.
 	RuleHitsTopUa []*DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa `json:"RuleHitsTopUa,omitempty" xml:"RuleHitsTopUa,omitempty" type:"Repeated"`
 }
 
@@ -4617,8 +6708,10 @@ func (s *DescribeRuleHitsTopUaResponseBody) SetRuleHitsTopUa(v []*DescribeRuleHi
 }
 
 type DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Ua    *string `json:"Ua,omitempty" xml:"Ua,omitempty"`
+	// The number of attacks that are initiated from the IP address.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The user agent.
+	Ua *string `json:"Ua,omitempty" xml:"Ua,omitempty"`
 }
 
 func (s DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa) String() string {
@@ -4669,10 +6762,30 @@ func (s *DescribeRuleHitsTopUaResponse) SetBody(v *DescribeRuleHitsTopUaResponse
 }
 
 type DescribeRuleHitsTopUrlRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	RuleType       *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	//
+	// *   **blacklist:** IP address blacklist rules.
+	// *   **custom:** custom rules.
+	// *   **antiscan:** scan protection rules.
+	// *   **cc_system:** HTTP flood protection rules.
+	// *   **region_block:** region blacklist rules.
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4694,8 +6807,18 @@ func (s *DescribeRuleHitsTopUrlRequest) SetInstanceId(v string) *DescribeRuleHit
 	return s
 }
 
+func (s *DescribeRuleHitsTopUrlRequest) SetRegionId(v string) *DescribeRuleHitsTopUrlRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeRuleHitsTopUrlRequest) SetResource(v string) *DescribeRuleHitsTopUrlRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeRuleHitsTopUrlRequest) SetResourceManagerResourceGroupId(v string) *DescribeRuleHitsTopUrlRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -4710,7 +6833,9 @@ func (s *DescribeRuleHitsTopUrlRequest) SetStartTimestamp(v string) *DescribeRul
 }
 
 type DescribeRuleHitsTopUrlResponseBody struct {
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 URLs that trigger protection rules.
 	RuleHitsTopUrl []*DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
 }
 
@@ -4733,8 +6858,10 @@ func (s *DescribeRuleHitsTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeRule
 }
 
 type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The number of requests from the URL that match protection rules.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The request URL.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl) String() string {
@@ -4785,9 +6912,24 @@ func (s *DescribeRuleHitsTopUrlResponse) SetBody(v *DescribeRuleHitsTopUrlRespon
 }
 
 type DescribeTemplateResourcesRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the protected resource. Valid values:
+	//
+	// *   **single:** protected object.
+	// *   **group:** protected object group.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescribeTemplateResourcesRequest) String() string {
@@ -4803,6 +6945,16 @@ func (s *DescribeTemplateResourcesRequest) SetInstanceId(v string) *DescribeTemp
 	return s
 }
 
+func (s *DescribeTemplateResourcesRequest) SetRegionId(v string) *DescribeTemplateResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTemplateResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeTemplateResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *DescribeTemplateResourcesRequest) SetResourceType(v string) *DescribeTemplateResourcesRequest {
 	s.ResourceType = &v
 	return s
@@ -4814,7 +6966,9 @@ func (s *DescribeTemplateResourcesRequest) SetTemplateId(v int64) *DescribeTempl
 }
 
 type DescribeTemplateResourcesResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of protected objects or protected object groups that are associated to the protection rule template.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -4866,9 +7020,22 @@ func (s *DescribeTemplateResourcesResponse) SetBody(v *DescribeTemplateResources
 }
 
 type DescribeVisitTopIpRequest struct {
-	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -4890,8 +7057,18 @@ func (s *DescribeVisitTopIpRequest) SetInstanceId(v string) *DescribeVisitTopIpR
 	return s
 }
 
+func (s *DescribeVisitTopIpRequest) SetRegionId(v string) *DescribeVisitTopIpRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeVisitTopIpRequest) SetResource(v string) *DescribeVisitTopIpRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *DescribeVisitTopIpRequest) SetResourceManagerResourceGroupId(v string) *DescribeVisitTopIpRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -4901,8 +7078,10 @@ func (s *DescribeVisitTopIpRequest) SetStartTimestamp(v string) *DescribeVisitTo
 }
 
 type DescribeVisitTopIpResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TopIp     []*DescribeVisitTopIpResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of the top 10 IP addresses from which requests are sent.
+	TopIp []*DescribeVisitTopIpResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVisitTopIpResponseBody) String() string {
@@ -4924,10 +7103,14 @@ func (s *DescribeVisitTopIpResponseBody) SetTopIp(v []*DescribeVisitTopIpRespons
 }
 
 type DescribeVisitTopIpResponseBodyTopIp struct {
-	Area  *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Isp   *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The ordinal number of the area to which the IP address belongs.
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The total number of requests that are sent from the IP address.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ISP.
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribeVisitTopIpResponseBodyTopIp) String() string {
@@ -4990,6 +7173,7 @@ func (s *DescribeVisitTopIpResponse) SetBody(v *DescribeVisitTopIpResponseBody) 
 type DescribeVisitUasRequest struct {
 	EndTimestamp   *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Resource       *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
@@ -5009,6 +7193,11 @@ func (s *DescribeVisitUasRequest) SetEndTimestamp(v string) *DescribeVisitUasReq
 
 func (s *DescribeVisitUasRequest) SetInstanceId(v string) *DescribeVisitUasRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeVisitUasRequest) SetRegionId(v string) *DescribeVisitUasRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -5098,7 +7287,17 @@ func (s *DescribeVisitUasResponse) SetBody(v *DescribeVisitUasResponseBody) *Des
 }
 
 type DescribeWafSourceIpSegmentRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s DescribeWafSourceIpSegmentRequest) String() string {
@@ -5114,8 +7313,20 @@ func (s *DescribeWafSourceIpSegmentRequest) SetInstanceId(v string) *DescribeWaf
 	return s
 }
 
+func (s *DescribeWafSourceIpSegmentRequest) SetRegionId(v string) *DescribeWafSourceIpSegmentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeWafSourceIpSegmentRequest) SetResourceManagerResourceGroupId(v string) *DescribeWafSourceIpSegmentRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type DescribeWafSourceIpSegmentResponseBody struct {
-	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The back-to-origin CIDR blocks that are used by the protection cluster.
 	WafSourceIp *DescribeWafSourceIpSegmentResponseBodyWafSourceIp `json:"WafSourceIp,omitempty" xml:"WafSourceIp,omitempty" type:"Struct"`
 }
 
@@ -5138,7 +7349,9 @@ func (s *DescribeWafSourceIpSegmentResponseBody) SetWafSourceIp(v *DescribeWafSo
 }
 
 type DescribeWafSourceIpSegmentResponseBodyWafSourceIp struct {
+	// An array of back-to-origin IPv4 CIDR blocks.
 	IPv4 []*string `json:"IPv4,omitempty" xml:"IPv4,omitempty" type:"Repeated"`
+	// An array of back-to-origin IPv6 CIDR blocks.
 	IPv6 []*string `json:"IPv6,omitempty" xml:"IPv6,omitempty" type:"Repeated"`
 }
 
@@ -5190,11 +7403,25 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 }
 
 type ModifyDefenseResourceGroupRequest struct {
-	AddList     *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
-	DeleteList  *string `json:"DeleteList,omitempty" xml:"DeleteList,omitempty"`
+	// The protected objects that you want to add to the protected object group. Separate the protected objects with commas (,). If you leave this parameter empty, no protected objects are added to the protected object group.
+	AddList *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
+	// The protected objects that you want to remove from the protected object group. Separate the protected objects with commas (,). If you leave this parameter empty, no protected objects are removed from the protected object group.
+	DeleteList *string `json:"DeleteList,omitempty" xml:"DeleteList,omitempty"`
+	// The description of the protected object group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the protected object group whose configurations you want to modify.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
 func (s ModifyDefenseResourceGroupRequest) String() string {
@@ -5230,7 +7457,18 @@ func (s *ModifyDefenseResourceGroupRequest) SetInstanceId(v string) *ModifyDefen
 	return s
 }
 
+func (s *ModifyDefenseResourceGroupRequest) SetRegionId(v string) *ModifyDefenseResourceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseResourceGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 type ModifyDefenseResourceGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5277,10 +7515,26 @@ func (s *ModifyDefenseResourceGroupResponse) SetBody(v *ModifyDefenseResourceGro
 }
 
 type ModifyDefenseRuleRequest struct {
+	// The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Rules        *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The details of the protection rule. Specify a string that contains multiple parameters in the JSON format. You must specify the ID and the new configurations of the protection rule.
+	//
+	// *   **id:** The ID of the protection rule. Data type: long. You must specify this parameter.
+	// *   The protection rule configurations: The role of this parameter is the same as that of the **Rules** parameter in the **CreateDefenseRule** topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ModifyDefenseRuleRequest) String() string {
@@ -5301,6 +7555,16 @@ func (s *ModifyDefenseRuleRequest) SetInstanceId(v string) *ModifyDefenseRuleReq
 	return s
 }
 
+func (s *ModifyDefenseRuleRequest) SetRegionId(v string) *ModifyDefenseRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDefenseRuleRequest) SetRules(v string) *ModifyDefenseRuleRequest {
 	s.Rules = &v
 	return s
@@ -5312,6 +7576,7 @@ func (s *ModifyDefenseRuleRequest) SetTemplateId(v int64) *ModifyDefenseRuleRequ
 }
 
 type ModifyDefenseRuleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5358,10 +7623,26 @@ func (s *ModifyDefenseRuleResponse) SetBody(v *ModifyDefenseRuleResponseBody) *M
 }
 
 type ModifyDefenseRuleStatusRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleStatus *int32  `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	TemplateId *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule whose status you want to change.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The new status of the protection rule. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The ID of the protection rule template to which the protection rule whose status you want to change belongs.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ModifyDefenseRuleStatusRequest) String() string {
@@ -5374,6 +7655,16 @@ func (s ModifyDefenseRuleStatusRequest) GoString() string {
 
 func (s *ModifyDefenseRuleStatusRequest) SetInstanceId(v string) *ModifyDefenseRuleStatusRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleStatusRequest) SetRegionId(v string) *ModifyDefenseRuleStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseRuleStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -5393,6 +7684,7 @@ func (s *ModifyDefenseRuleStatusRequest) SetTemplateId(v int64) *ModifyDefenseRu
 }
 
 type ModifyDefenseRuleStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5439,9 +7731,22 @@ func (s *ModifyDefenseRuleStatusResponse) SetBody(v *ModifyDefenseRuleStatusResp
 }
 
 type ModifyDefenseTemplateRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The description of the protection rule template whose configurations you want to modify.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule template whose configurations you want to modify.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the protection rule template whose configurations you want to modify.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -5463,6 +7768,16 @@ func (s *ModifyDefenseTemplateRequest) SetInstanceId(v string) *ModifyDefenseTem
 	return s
 }
 
+func (s *ModifyDefenseTemplateRequest) SetRegionId(v string) *ModifyDefenseTemplateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseTemplateRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseTemplateRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDefenseTemplateRequest) SetTemplateId(v int64) *ModifyDefenseTemplateRequest {
 	s.TemplateId = &v
 	return s
@@ -5474,6 +7789,7 @@ func (s *ModifyDefenseTemplateRequest) SetTemplateName(v string) *ModifyDefenseT
 }
 
 type ModifyDefenseTemplateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5520,9 +7836,24 @@ func (s *ModifyDefenseTemplateResponse) SetBody(v *ModifyDefenseTemplateResponse
 }
 
 type ModifyDefenseTemplateStatusRequest struct {
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateStatus *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule template whose status you want to change.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The new status of the protection rule template. Valid values:
+	//
+	// *   **0:** disabled.
+	// *   **1:** enabled.
+	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 }
 
 func (s ModifyDefenseTemplateStatusRequest) String() string {
@@ -5538,6 +7869,16 @@ func (s *ModifyDefenseTemplateStatusRequest) SetInstanceId(v string) *ModifyDefe
 	return s
 }
 
+func (s *ModifyDefenseTemplateStatusRequest) SetRegionId(v string) *ModifyDefenseTemplateStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefenseTemplateStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseTemplateStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyDefenseTemplateStatusRequest) SetTemplateId(v int64) *ModifyDefenseTemplateStatusRequest {
 	s.TemplateId = &v
 	return s
@@ -5549,6 +7890,7 @@ func (s *ModifyDefenseTemplateStatusRequest) SetTemplateStatus(v int32) *ModifyD
 }
 
 type ModifyDefenseTemplateStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5595,12 +7937,27 @@ func (s *ModifyDefenseTemplateStatusResponse) SetBody(v *ModifyDefenseTemplateSt
 }
 
 type ModifyDomainRequest struct {
-	AccessType *string                      `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Domain     *string                      `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId *string                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Listen     *ModifyDomainRequestListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	Redirect   *ModifyDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	RegionId   *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The mode in which you want to add the domain name to WAF. Set the value to share.
+	//
+	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The domain name whose access configurations you want to modify.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	Listen *ModifyDomainRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// The configurations of the forwarding rule.
+	Redirect *ModifyDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The value of this parameter is specified by the system.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ModifyDomainRequest) String() string {
@@ -5641,21 +7998,75 @@ func (s *ModifyDomainRequest) SetRegionId(v string) *ModifyDomainRequest {
 	return s
 }
 
+func (s *ModifyDomainRequest) SetSourceIp(v string) *ModifyDomainRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type ModifyDomainRequestListen struct {
-	CertId             *string   `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	CipherSuite        *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	CustomCiphers      []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	EnableTLSv3        *bool     `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	ExclusiveIp        *bool     `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	FocusHttps         *bool     `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
-	Http2Enabled       *bool     `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	HttpPorts          []*int32  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	HttpsPorts         []*int32  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
-	IPv6Enabled        *bool     `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
-	ProtectionResource *string   `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	TLSVersion         *string   `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	XffHeaderMode      *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	XffHeaders         []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// The ID of the certificate that you want to add.
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The type of cipher suite that you want to add. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **1:** all cipher suites.
+	// *   **2:** strong cipher suites. You can select this value only when you set the **TLSVersion** parameter to **tlsv1.2**.
+	// *   **99:** custom cipher suites.
+	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// The custom cipher suites that you want to add. This parameter is available only when you set the **CipherSuite** parameter to **99**.
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// Specifies whether to support TLS 1.3. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **true:** supports TLS 1.3.
+	// *   **false:** does not support TLS 1.3.
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Specifies whether to enable an exclusive IP address for the domain name. This parameter is available only when you set the **IPv6Enabled** parameter to false and the **ProtectionResource** parameter to **share**. Valid values:
+	//
+	// *   **true:** enables an exclusive IP address for the domain name.
+	// *   **false:** does not enable an exclusive IP address for the domain name. This is the default value.
+	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
+	// Specifies whether to enable HTTP to HTTPS redirection for the domain name. This parameter is available only when you specify the **HttpsPorts** parameter and leave the **HttpPorts** parameter empty. Valid values:
+	//
+	// *   **true:** enables HTTP to HTTPS redirection.
+	// *   **false:** disables HTTP to HTTPS redirection.
+	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
+	// Specifies whether to enable HTTP/2. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **true:** enables HTTP/2.
+	// *   **false:** disables HTTP/2. This is the default value.
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// An array of HTTP listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	// An array of HTTPS listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	// Specifies whether to enable IPv6. Valid values:
+	//
+	// *   **true:** enables IPv6.
+	// *   **false:** disables IPv6. This is the default value.
+	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
+	// The type of the protection resource that you want to use. Valid values:
+	//
+	// *   **share:** shared cluster. This is the default value.
+	// *   **gslb:** shared cluster-based intelligent load balancing.
+	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
+	SM2AccessOnly      *bool   `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
+	SM2CertId          *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
+	SM2Enabled         *bool   `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
+	// The version of the Transport Layer Security (TLS) protocol. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **tlsv1**
+	// *   **tlsv1.1**
+	// *   **tlsv1.2**
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	// The method that you want WAF to use to obtain the actual IP address of a client. Valid values:
+	//
+	// *   **0:** No Layer 7 proxies are deployed in front of WAF. This is the default value.
+	// *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
+	// *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the \["header1","header2",...] format.
+	//
+	// >  If you set the **XffHeaderMode** parameter to 2, this parameter is required.
+	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
 func (s ModifyDomainRequestListen) String() string {
@@ -5721,6 +8132,21 @@ func (s *ModifyDomainRequestListen) SetProtectionResource(v string) *ModifyDomai
 	return s
 }
 
+func (s *ModifyDomainRequestListen) SetSM2AccessOnly(v bool) *ModifyDomainRequestListen {
+	s.SM2AccessOnly = &v
+	return s
+}
+
+func (s *ModifyDomainRequestListen) SetSM2CertId(v string) *ModifyDomainRequestListen {
+	s.SM2CertId = &v
+	return s
+}
+
+func (s *ModifyDomainRequestListen) SetSM2Enabled(v bool) *ModifyDomainRequestListen {
+	s.SM2Enabled = &v
+	return s
+}
+
 func (s *ModifyDomainRequestListen) SetTLSVersion(v string) *ModifyDomainRequestListen {
 	s.TLSVersion = &v
 	return s
@@ -5737,19 +8163,72 @@ func (s *ModifyDomainRequestListen) SetXffHeaders(v []*string) *ModifyDomainRequ
 }
 
 type ModifyDomainRequestRedirect struct {
-	Backends          []*string                                    `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	ConnectTimeout    *int32                                       `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FocusHttpBackend  *bool                                        `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	Keepalive         *bool                                        `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	KeepaliveRequests *int32                                       `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	KeepaliveTimeout  *int32                                       `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	Loadbalance       *string                                      `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	ReadTimeout       *int32                                       `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	RequestHeaders    []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	Retry             *bool                                        `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	SniEnabled        *bool                                        `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	SniHost           *string                                      `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	WriteTimeout      *int32                                       `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// An array of the IP addresses or domain names of the origin servers. You can specify only one type of address. If you use the domain name type, only IPv4 is supported.
+	//
+	// *   If you use the IP address type, specify the value of this parameter in the \["ip1","ip2",...] format. You can add up to 20 IP addresses.
+	// *   If you use the domain name type, specify the value of this parameter in the \["domain"] format. You can add up to 20 domain names.
+	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// 是否开启公共云容灾。取值：
+	//
+	// - **true**：表示开启公共云容灾。
+	//
+	// - **false**（默认）：表示不开启公共云容灾。
+	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	// The connection timeout period. Unit: seconds. Valid values: 1 to 3600.
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests of the domain name. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **true:** enables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
+	// *   **false:** disables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
+	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
+	// Specifies whether to enable the persistent connection feature. Valid values:
+	//
+	// *   **true:** enables the persistent connection feature. This is the default value.
+	// *   **false:** disables the persistent connection feature.
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// The number of reused persistent connections. Valid values: 60 to 1000.
+	//
+	// >  This parameter specifies the number of reused persistent connections when you enable the persistent connection feature.
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The timeout period of persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
+	//
+	// >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The load balancing algorithm that you want to use when WAF forwards requests to the origin server. Valid values:
+	//
+	// *   **ip_hash:** the IP hash algorithm.
+	// *   **roundRobin:** the round-robin algorithm.
+	// *   **leastTime:** the least response time algorithm. You can select this value only when you set the **ProtectionResource** parameter to **gslb**.
+	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
+	// The read timeout period. Unit: seconds. Valid values: 1 to 3600.
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The key-value pairs that you want to use to mark the requests that pass through the WAF instance.
+	//
+	// WAF automatically adds the key-value pairs to the request headers to identify the requests that pass through WAF.
+	RequestHeaders []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// Specifies whether WAF retries to forward requests when requests fail to be forwarded to the origin server. Valid values:
+	//
+	// *   **true:** WAF retries to forward requests. This is the default value.
+	// *   **false:** WAF does not retry to forward requests.
+	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
+	// 混合云转发规则。使用JSON数组转化的字符串格式表示。JSON数组中的每个元素是一个结构体，包含以下字段：
+	// - **rs**：Array类型 | 表示回源IP地址或者回源CNAME列表
+	//
+	// - **location**：String类型 | 表示防护节点名称
+	//
+	// - **locationId**：Long类型 | 表示防护节点ID
+	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
+	// Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	//
+	// *   **true:** enables origin SNI.
+	// *   **false:** disables origin SNI. This is the default value.
+	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	// The value of the custom SNI field. If you do not specify this parameter, the value of the **Host** field in the request header is automatically used. If you want WAF to use an SNI field value that is different from the value of the Host field in back-to-origin requests, you can specify a custom value for the SNI field.
+	//
+	// >  If you set the **SniEnabled** parameter to true, this parameter is required.
+	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	// The write timeout period. Unit: seconds. Valid values: 1 to 3600.
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
 func (s ModifyDomainRequestRedirect) String() string {
@@ -5762,6 +8241,11 @@ func (s ModifyDomainRequestRedirect) GoString() string {
 
 func (s *ModifyDomainRequestRedirect) SetBackends(v []*string) *ModifyDomainRequestRedirect {
 	s.Backends = v
+	return s
+}
+
+func (s *ModifyDomainRequestRedirect) SetCnameEnabled(v bool) *ModifyDomainRequestRedirect {
+	s.CnameEnabled = &v
 	return s
 }
 
@@ -5810,6 +8294,11 @@ func (s *ModifyDomainRequestRedirect) SetRetry(v bool) *ModifyDomainRequestRedir
 	return s
 }
 
+func (s *ModifyDomainRequestRedirect) SetRoutingRules(v string) *ModifyDomainRequestRedirect {
+	s.RoutingRules = &v
+	return s
+}
+
 func (s *ModifyDomainRequestRedirect) SetSniEnabled(v bool) *ModifyDomainRequestRedirect {
 	s.SniEnabled = &v
 	return s
@@ -5826,7 +8315,9 @@ func (s *ModifyDomainRequestRedirect) SetWriteTimeout(v int32) *ModifyDomainRequ
 }
 
 type ModifyDomainRequestRedirectRequestHeaders struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the custom header field.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom header field.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5849,12 +8340,27 @@ func (s *ModifyDomainRequestRedirectRequestHeaders) SetValue(v string) *ModifyDo
 }
 
 type ModifyDomainShrinkRequest struct {
-	AccessType     *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ListenShrink   *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// The mode in which you want to add the domain name to WAF. Set the value to share.
+	//
+	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The domain name whose access configurations you want to modify.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The configurations of the listeners.
+	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// The configurations of the forwarding rule.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source IP address of the request. The value of this parameter is specified by the system.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s ModifyDomainShrinkRequest) String() string {
@@ -5895,9 +8401,16 @@ func (s *ModifyDomainShrinkRequest) SetRegionId(v string) *ModifyDomainShrinkReq
 	return s
 }
 
+func (s *ModifyDomainShrinkRequest) SetSourceIp(v string) *ModifyDomainShrinkRequest {
+	s.SourceIp = &v
+	return s
+}
+
 type ModifyDomainResponseBody struct {
+	// The information about the domain name.
 	DomainInfo *ModifyDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDomainResponseBody) String() string {
@@ -5919,8 +8432,12 @@ func (s *ModifyDomainResponseBody) SetRequestId(v string) *ModifyDomainResponseB
 }
 
 type ModifyDomainResponseBodyDomainInfo struct {
-	Cname  *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The CNAME that is assigned by WAF to the domain name.
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// The domain name whose access configurations you modified.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The ID of the domain name.
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 }
 
 func (s ModifyDomainResponseBodyDomainInfo) String() string {
@@ -5938,6 +8455,11 @@ func (s *ModifyDomainResponseBodyDomainInfo) SetCname(v string) *ModifyDomainRes
 
 func (s *ModifyDomainResponseBodyDomainInfo) SetDomain(v string) *ModifyDomainResponseBodyDomainInfo {
 	s.Domain = &v
+	return s
+}
+
+func (s *ModifyDomainResponseBodyDomainInfo) SetDomainId(v string) *ModifyDomainResponseBodyDomainInfo {
+	s.DomainId = &v
 	return s
 }
 
@@ -5971,12 +8493,29 @@ func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomai
 }
 
 type ModifyMajorProtectionBlackIpRequest struct {
+	// The description of the IP address blacklist.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExpiredTime *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IpList      *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
+	//
+	// >  If you set this parameter to **0**, the blacklist is permanently valid.
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the IP address blacklist rule for major event protection.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the IP address blacklist rule template for major event protection.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ModifyMajorProtectionBlackIpRequest) String() string {
@@ -6007,6 +8546,16 @@ func (s *ModifyMajorProtectionBlackIpRequest) SetIpList(v string) *ModifyMajorPr
 	return s
 }
 
+func (s *ModifyMajorProtectionBlackIpRequest) SetRegionId(v string) *ModifyMajorProtectionBlackIpRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyMajorProtectionBlackIpRequest) SetResourceManagerResourceGroupId(v string) *ModifyMajorProtectionBlackIpRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyMajorProtectionBlackIpRequest) SetRuleId(v int64) *ModifyMajorProtectionBlackIpRequest {
 	s.RuleId = &v
 	return s
@@ -6018,6 +8567,7 @@ func (s *ModifyMajorProtectionBlackIpRequest) SetTemplateId(v int64) *ModifyMajo
 }
 
 type ModifyMajorProtectionBlackIpResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6064,9 +8614,24 @@ func (s *ModifyMajorProtectionBlackIpResponse) SetBody(v *ModifyMajorProtectionB
 }
 
 type ModifyResourceLogStatusRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	Status     *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object on which you want to manage the log collection feature.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// Specifies whether to enable the log collection feature for the protected object. Valid values:
+	//
+	// *   **true:** enables the log collection feature.
+	// *   **false:** disables the log collection feature.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyResourceLogStatusRequest) String() string {
@@ -6082,8 +8647,18 @@ func (s *ModifyResourceLogStatusRequest) SetInstanceId(v string) *ModifyResource
 	return s
 }
 
+func (s *ModifyResourceLogStatusRequest) SetRegionId(v string) *ModifyResourceLogStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ModifyResourceLogStatusRequest) SetResource(v string) *ModifyResourceLogStatusRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *ModifyResourceLogStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyResourceLogStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
 	return s
 }
 
@@ -6093,8 +8668,13 @@ func (s *ModifyResourceLogStatusRequest) SetStatus(v bool) *ModifyResourceLogSta
 }
 
 type ModifyResourceLogStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
+	//
+	// *   **true:** The log collection feature is enabled.
+	// *   **false:** The log collection feature is disabled.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyResourceLogStatusResponseBody) String() string {
@@ -6145,12 +8725,27 @@ func (s *ModifyResourceLogStatusResponse) SetBody(v *ModifyResourceLogStatusResp
 }
 
 type ModifyTemplateResourcesRequest struct {
-	BindResourceGroups   []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
-	BindResources        []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TemplateId           *int64    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
+	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
+	// The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+	BindResources []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// *   **cn-hangzhou:** the Chinese mainland.
+	// *   **ap-southeast-1:** outside the Chinese mainland.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The ID of the protection rule template.
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	UnbindResources      []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
+	// The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
 func (s ModifyTemplateResourcesRequest) String() string {
@@ -6176,6 +8771,16 @@ func (s *ModifyTemplateResourcesRequest) SetInstanceId(v string) *ModifyTemplate
 	return s
 }
 
+func (s *ModifyTemplateResourcesRequest) SetRegionId(v string) *ModifyTemplateResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyTemplateResourcesRequest) SetResourceManagerResourceGroupId(v string) *ModifyTemplateResourcesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
 func (s *ModifyTemplateResourcesRequest) SetTemplateId(v int64) *ModifyTemplateResourcesRequest {
 	s.TemplateId = &v
 	return s
@@ -6192,6 +8797,7 @@ func (s *ModifyTemplateResourcesRequest) SetUnbindResources(v []*string) *Modify
 }
 
 type ModifyTemplateResourcesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6320,6 +8926,14 @@ func (client *Client) ClearMajorProtectionBlackIpWithOptions(request *ClearMajor
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
 		query["RuleId"] = request.RuleId
 	}
@@ -6384,6 +8998,14 @@ func (client *Client) CreateDefenseResourceGroupWithOptions(request *CreateDefen
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6430,6 +9052,14 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rules)) {
@@ -6490,6 +9120,14 @@ func (client *Client) CreateDefenseTemplateWithOptions(request *CreateDefenseTem
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
@@ -6582,6 +9220,14 @@ func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runti
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6616,6 +9262,13 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+/**
+ * This operation is available only on the China site (aliyun.com).
+ *
+ * @param request CreateMajorProtectionBlackIpRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateMajorProtectionBlackIpResponse
+ */
 func (client *Client) CreateMajorProtectionBlackIpWithOptions(request *CreateMajorProtectionBlackIpRequest, runtime *util.RuntimeOptions) (_result *CreateMajorProtectionBlackIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6636,6 +9289,14 @@ func (client *Client) CreateMajorProtectionBlackIpWithOptions(request *CreateMaj
 
 	if !tea.BoolValue(util.IsUnset(request.IpList)) {
 		query["IpList"] = request.IpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -6669,6 +9330,12 @@ func (client *Client) CreateMajorProtectionBlackIpWithOptions(request *CreateMaj
 	return _result, _err
 }
 
+/**
+ * This operation is available only on the China site (aliyun.com).
+ *
+ * @param request CreateMajorProtectionBlackIpRequest
+ * @return CreateMajorProtectionBlackIpResponse
+ */
 func (client *Client) CreateMajorProtectionBlackIp(request *CreateMajorProtectionBlackIpRequest) (_result *CreateMajorProtectionBlackIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMajorProtectionBlackIpResponse{}
@@ -6692,6 +9359,14 @@ func (client *Client) DeleteDefenseResourceGroupWithOptions(request *DeleteDefen
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6736,6 +9411,14 @@ func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleIds)) {
@@ -6790,6 +9473,14 @@ func (client *Client) DeleteDefenseTemplateWithOptions(request *DeleteDefenseTem
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -6842,12 +9533,20 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		query["Domain"] = request.Domain
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		query["DomainId"] = request.DomainId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6896,6 +9595,14 @@ func (client *Client) DeleteMajorProtectionBlackIpWithOptions(request *DeleteMaj
 
 	if !tea.BoolValue(util.IsUnset(request.IpList)) {
 		query["IpList"] = request.IpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -6954,6 +9661,14 @@ func (client *Client) DescribeDefenseResourceGroupWithOptions(request *DescribeD
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7010,6 +9725,22 @@ func (client *Client) DescribeDefenseResourcesWithOptions(request *DescribeDefen
 		query["Query"] = request.Query
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7052,6 +9783,14 @@ func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRul
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -7118,6 +9857,14 @@ func (client *Client) DescribeDefenseRulesWithOptions(request *DescribeDefenseRu
 		query["Query"] = request.Query
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		query["RuleType"] = request.RuleType
 	}
@@ -7164,6 +9911,14 @@ func (client *Client) DescribeDefenseTemplateWithOptions(request *DescribeDefens
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -7216,6 +9971,14 @@ func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDet
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7278,6 +10041,22 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7330,8 +10109,16 @@ func (client *Client) DescribeFlowChartWithOptions(request *DescribeFlowChartReq
 		query["Interval"] = request.Interval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -7386,6 +10173,14 @@ func (client *Client) DescribeFlowTopResourceWithOptions(request *DescribeFlowTo
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
 		query["StartTimestamp"] = request.StartTimestamp
 	}
@@ -7438,8 +10233,16 @@ func (client *Client) DescribeFlowTopUrlWithOptions(request *DescribeFlowTopUrlR
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -7480,6 +10283,210 @@ func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeHybridCloudGroupsWithOptions(request *DescribeHybridCloudGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterProxyType)) {
+		query["ClusterProxyType"] = request.ClusterProxyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudGroups"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridCloudGroups(request *DescribeHybridCloudGroupsRequest) (_result *DescribeHybridCloudGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudGroupsResponse{}
+	_body, _err := client.DescribeHybridCloudGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridCloudResourcesWithOptions(request *DescribeHybridCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Backend)) {
+		query["Backend"] = request.Backend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CnameEnabled)) {
+		query["CnameEnabled"] = request.CnameEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudResources"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridCloudResources(request *DescribeHybridCloudResourcesRequest) (_result *DescribeHybridCloudResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudResourcesResponse{}
+	_body, _err := client.DescribeHybridCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridCloudUserWithOptions(request *DescribeHybridCloudUserRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudUser"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridCloudUser(request *DescribeHybridCloudUserRequest) (_result *DescribeHybridCloudUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudUserResponse{}
+	_body, _err := client.DescribeHybridCloudUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7490,8 +10497,8 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7554,6 +10561,14 @@ func (client *Client) DescribeMajorProtectionBlackIpsWithOptions(request *Descri
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
 		query["RuleId"] = request.RuleId
 	}
@@ -7614,8 +10629,16 @@ func (client *Client) DescribePeakTrendWithOptions(request *DescribePeakTrendReq
 		query["Interval"] = request.Interval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -7666,6 +10689,14 @@ func (client *Client) DescribeResourceLogStatusWithOptions(request *DescribeReso
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resources)) {
 		query["Resources"] = request.Resources
 	}
@@ -7714,8 +10745,16 @@ func (client *Client) DescribeResourcePortWithOptions(request *DescribeResourceP
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
 		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7770,8 +10809,16 @@ func (client *Client) DescribeResponseCodeTrendGraphWithOptions(request *Describ
 		query["Interval"] = request.Interval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -7834,6 +10881,14 @@ func (client *Client) DescribeRuleGroupsWithOptions(request *DescribeRuleGroupsR
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
 		query["SearchType"] = request.SearchType
 	}
@@ -7890,8 +10945,16 @@ func (client *Client) DescribeRuleHitsTopClientIpWithOptions(request *DescribeRu
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
@@ -7950,6 +11013,14 @@ func (client *Client) DescribeRuleHitsTopResourceWithOptions(request *DescribeRu
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		query["RuleType"] = request.RuleType
 	}
@@ -8006,8 +11077,16 @@ func (client *Client) DescribeRuleHitsTopRuleIdWithOptions(request *DescribeRule
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
@@ -8066,6 +11145,10 @@ func (client *Client) DescribeRuleHitsTopTuleTypeWithOptions(request *DescribeRu
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
 	}
@@ -8122,8 +11205,16 @@ func (client *Client) DescribeRuleHitsTopUaWithOptions(request *DescribeRuleHits
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -8178,8 +11269,16 @@ func (client *Client) DescribeRuleHitsTopUrlWithOptions(request *DescribeRuleHit
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
@@ -8232,6 +11331,14 @@ func (client *Client) DescribeTemplateResourcesWithOptions(request *DescribeTemp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
@@ -8290,8 +11397,16 @@ func (client *Client) DescribeVisitTopIpWithOptions(request *DescribeVisitTopIpR
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
@@ -8346,6 +11461,10 @@ func (client *Client) DescribeVisitUasWithOptions(request *DescribeVisitUasReque
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
 	}
@@ -8396,6 +11515,14 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8458,6 +11585,14 @@ func (client *Client) ModifyDefenseResourceGroupWithOptions(request *ModifyDefen
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8504,6 +11639,14 @@ func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Rules)) {
@@ -8556,6 +11699,14 @@ func (client *Client) ModifyDefenseRuleStatusWithOptions(request *ModifyDefenseR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
@@ -8618,6 +11769,14 @@ func (client *Client) ModifyDefenseTemplateWithOptions(request *ModifyDefenseTem
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -8668,6 +11827,14 @@ func (client *Client) ModifyDefenseTemplateStatusWithOptions(request *ModifyDefe
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -8752,6 +11919,10 @@ func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runti
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8808,6 +11979,14 @@ func (client *Client) ModifyMajorProtectionBlackIpWithOptions(request *ModifyMaj
 		query["IpList"] = request.IpList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
 		query["RuleId"] = request.RuleId
 	}
@@ -8860,8 +12039,16 @@ func (client *Client) ModifyResourceLogStatusWithOptions(request *ModifyResource
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -8918,6 +12105,14 @@ func (client *Client) ModifyTemplateResourcesWithOptions(request *ModifyTemplate
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
