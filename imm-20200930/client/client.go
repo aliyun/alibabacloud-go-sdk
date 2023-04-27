@@ -7031,16 +7031,17 @@ func (s *CreateFileUncompressionTaskResponse) SetBody(v *CreateFileUncompression
 }
 
 type CreateImageModerationTaskRequest struct {
-	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval         *int64                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames        *int64                 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer         *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	Scenes           []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer     *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageModerationTaskRequest) String() string {
@@ -7105,13 +7106,14 @@ type CreateImageModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer               *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	ScenesShrink           *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer           *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageModerationTaskShrinkRequest) String() string {
@@ -7231,21 +7233,22 @@ func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTask
 }
 
 type CreateImageSplicingTaskRequest struct {
-	Align            *int64                                   `json:"Align,omitempty" xml:"Align,omitempty"`
-	BackgroundColor  *string                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	CredentialConfig *CredentialConfig                        `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Direction        *string                                  `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	ImageFormat      *string                                  `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
-	Margin           *int64                                   `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	Notification     *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding          *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName      *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality          *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType        *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	Sources          []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags             map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI        *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Align            *int64            `json:"Align,omitempty" xml:"Align,omitempty"`
+	BackgroundColor  *string           `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Direction        *string           `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ImageFormat      *string           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	Margin           *int64            `json:"Margin,omitempty" xml:"Margin,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification                            `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Padding      *int64                                   `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	ProjectName  *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality      *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType    *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	Sources      []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags         map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI    *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData     *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskRequest) String() string {
@@ -7361,15 +7364,16 @@ type CreateImageSplicingTaskShrinkRequest struct {
 	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
 	Margin                 *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Quality                *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	ScaleType              *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	Padding            *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality            *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType          *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI          *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageSplicingTaskShrinkRequest) String() string {
@@ -7514,13 +7518,14 @@ func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResp
 }
 
 type CreateImageToPDFTaskRequest struct {
-	CredentialConfig *CredentialConfig                     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources          []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags             map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI        *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData         *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification                         `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName  *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources      []*CreateImageToPDFTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags         map[string]interface{}                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI    *string                               `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData     *string                               `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskRequest) String() string {
@@ -7591,12 +7596,13 @@ func (s *CreateImageToPDFTaskRequestSources) SetURI(v string) *CreateImageToPDFT
 
 type CreateImageToPDFTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetURI              *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI          *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateImageToPDFTaskShrinkRequest) String() string {
@@ -7911,13 +7917,14 @@ func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDate
 }
 
 type CreateMediaConvertTaskRequest struct {
-	CredentialConfig *CredentialConfig                       `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sources          []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	Tags             map[string]interface{}                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Targets          []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	UserData         *string                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName  *string                                 `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sources      []*CreateMediaConvertTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags         map[string]interface{}                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Targets      []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	UserData     *string                                 `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateMediaConvertTaskRequest) String() string {
@@ -8123,12 +8130,13 @@ func (s *CreateMediaConvertTaskRequestTargetsSegment) SetStartNumber(v int32) *C
 
 type CreateMediaConvertTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourcesShrink          *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetsShrink          *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourcesShrink      *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetsShrink      *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateMediaConvertTaskShrinkRequest) String() string {
@@ -8948,12 +8956,13 @@ func (s *CreateSimilarImageClusteringTaskResponse) SetBody(v *CreateSimilarImage
 }
 
 type CreateStoryRequest struct {
-	Address         *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
-	CustomId        *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels    map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName     *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxFileCount    *int64                 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
-	MinFileCount    *int64                 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	Address      *AddressForStory       `json:"Address,omitempty" xml:"Address,omitempty"`
+	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxFileCount *int64                 `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
+	MinFileCount *int64                 `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	Notification    *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName *string                `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ObjectId        *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
@@ -9067,6 +9076,7 @@ type CreateStoryShrinkRequest struct {
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	MaxFileCount       *int64  `json:"MaxFileCount,omitempty" xml:"MaxFileCount,omitempty"`
 	MinFileCount       *int64  `json:"MinFileCount,omitempty" xml:"MinFileCount,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
 	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	ObjectId           *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
@@ -9424,12 +9434,13 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 type CreateVideoLabelClassificationTaskRequest struct {
-	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoLabelClassificationTaskRequest) String() string {
@@ -9472,11 +9483,12 @@ func (s *CreateVideoLabelClassificationTaskRequest) SetUserData(v string) *Creat
 
 type CreateVideoLabelClassificationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoLabelClassificationTaskShrinkRequest) String() string {
@@ -9576,16 +9588,17 @@ func (s *CreateVideoLabelClassificationTaskResponse) SetBody(v *CreateVideoLabel
 }
 
 type CreateVideoModerationTaskRequest struct {
-	CredentialConfig *CredentialConfig      `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Interval         *int64                 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	MaxFrames        *int64                 `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	Notification     *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName      *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer         *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	Scenes           []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	SourceURI        *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Tags             map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData         *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification *Notification          `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer     *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	Scenes       []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	SourceURI    *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags         map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData     *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoModerationTaskRequest) String() string {
@@ -9650,13 +9663,14 @@ type CreateVideoModerationTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Reviewer               *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
-	ScenesShrink           *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	TagsShrink             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer           *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	ScenesShrink       *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateVideoModerationTaskShrinkRequest) String() string {
@@ -12099,12 +12113,15 @@ func (s *GenerateVideoPlaylistShrinkRequest) SetTargetsShrink(v string) *Generat
 }
 
 type GenerateVideoPlaylistResponseBody struct {
-	AudioPlaylist    []*GenerateVideoPlaylistResponseBodyAudioPlaylist    `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
-	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 转码文件列表。
+	AudioPlaylist []*GenerateVideoPlaylistResponseBodyAudioPlaylist `json:"AudioPlaylist,omitempty" xml:"AudioPlaylist,omitempty" type:"Repeated"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 转码文件列表。
 	SubtitlePlaylist []*GenerateVideoPlaylistResponseBodySubtitlePlaylist `json:"SubtitlePlaylist,omitempty" xml:"SubtitlePlaylist,omitempty" type:"Repeated"`
 	Token            *string                                              `json:"Token,omitempty" xml:"Token,omitempty"`
 	URI              *string                                              `json:"URI,omitempty" xml:"URI,omitempty"`
-	VideoPlaylist    []*GenerateVideoPlaylistResponseBodyVideoPlaylist    `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
+	// 转码文件列表。
+	VideoPlaylist []*GenerateVideoPlaylistResponseBodyVideoPlaylist `json:"VideoPlaylist,omitempty" xml:"VideoPlaylist,omitempty" type:"Repeated"`
 }
 
 func (s GenerateVideoPlaylistResponseBody) String() string {
@@ -12146,8 +12163,10 @@ func (s *GenerateVideoPlaylistResponseBody) SetVideoPlaylist(v []*GenerateVideoP
 }
 
 type GenerateVideoPlaylistResponseBodyAudioPlaylist struct {
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GenerateVideoPlaylistResponseBodyAudioPlaylist) String() string {
@@ -12169,10 +12188,14 @@ func (s *GenerateVideoPlaylistResponseBodyAudioPlaylist) SetURI(v string) *Gener
 }
 
 type GenerateVideoPlaylistResponseBodySubtitlePlaylist struct {
-	Index    *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 字幕流编号，从0开始。
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 视频源中字幕流的语言。
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Token    *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	URI      *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + “_” + Index + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GenerateVideoPlaylistResponseBodySubtitlePlaylist) String() string {
@@ -12204,8 +12227,10 @@ func (s *GenerateVideoPlaylistResponseBodySubtitlePlaylist) SetURI(v string) *Ge
 }
 
 type GenerateVideoPlaylistResponseBodyVideoPlaylist struct {
+	// 转码生成的Token。用于LiveTranscoding访问的参数。
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	// 输出m3u8的OSS地址。地址规则为 Target.URI + ".m3u8“， 其中Target.URI为输入参数中视频转码输出地址前缀。
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
 func (s GenerateVideoPlaylistResponseBodyVideoPlaylist) String() string {
@@ -12256,22 +12281,23 @@ func (s *GenerateVideoPlaylistResponse) SetBody(v *GenerateVideoPlaylistResponse
 }
 
 type GenerateWebofficeTokenRequest struct {
-	CachePreview     *bool                `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
-	CredentialConfig *CredentialConfig    `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	ExternalUploaded *bool                `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
-	Filename         *string              `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	Hidecmb          *bool                `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	Notification     *Notification        `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName  *string              `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	Password         *string              `json:"Password,omitempty" xml:"Password,omitempty"`
-	Permission       *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	PreviewPages     *int64               `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	ProjectName      *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Referer          *string              `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	SourceURI        *string              `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	User             *WebofficeUser       `json:"User,omitempty" xml:"User,omitempty"`
-	UserData         *string              `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Watermark        *WebofficeWatermark  `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	CachePreview     *bool             `json:"CachePreview,omitempty" xml:"CachePreview,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	ExternalUploaded *bool             `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
+	Filename         *string           `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Hidecmb          *bool             `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	Notification    *Notification        `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName *string              `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password        *string              `json:"Password,omitempty" xml:"Password,omitempty"`
+	Permission      *WebofficePermission `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PreviewPages    *int64               `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	ProjectName     *string              `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Referer         *string              `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	SourceURI       *string              `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	User            *WebofficeUser       `json:"User,omitempty" xml:"User,omitempty"`
+	UserData        *string              `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Watermark       *WebofficeWatermark  `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s GenerateWebofficeTokenRequest) String() string {
@@ -12368,17 +12394,18 @@ type GenerateWebofficeTokenShrinkRequest struct {
 	ExternalUploaded       *bool   `json:"ExternalUploaded,omitempty" xml:"ExternalUploaded,omitempty"`
 	Filename               *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	Hidecmb                *bool   `json:"Hidecmb,omitempty" xml:"Hidecmb,omitempty"`
-	NotificationShrink     *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
-	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
-	Password               *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PermissionShrink       *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	PreviewPages           *int64  `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Referer                *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
-	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	UserShrink             *string `json:"User,omitempty" xml:"User,omitempty"`
-	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	WatermarkShrink        *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
+	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
+	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	NotifyTopicName    *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Password           *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	PermissionShrink   *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PreviewPages       *int64  `json:"PreviewPages,omitempty" xml:"PreviewPages,omitempty"`
+	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Referer            *string `json:"Referer,omitempty" xml:"Referer,omitempty"`
+	SourceURI          *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	UserShrink         *string `json:"User,omitempty" xml:"User,omitempty"`
+	UserData           *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	WatermarkShrink    *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s GenerateWebofficeTokenShrinkRequest) String() string {
@@ -15117,6 +15144,7 @@ type QueryFigureClustersRequest struct {
 	ProjectName     *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sort            *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	UpdateTimeRange *TimeRange `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	WithTotalCount  *bool      `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersRequest) String() string {
@@ -15172,6 +15200,11 @@ func (s *QueryFigureClustersRequest) SetUpdateTimeRange(v *TimeRange) *QueryFigu
 	return s
 }
 
+func (s *QueryFigureClustersRequest) SetWithTotalCount(v bool) *QueryFigureClustersRequest {
+	s.WithTotalCount = &v
+	return s
+}
+
 type QueryFigureClustersShrinkRequest struct {
 	CreateTimeRangeShrink *string `json:"CreateTimeRange,omitempty" xml:"CreateTimeRange,omitempty"`
 	CustomLabels          *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
@@ -15182,6 +15215,7 @@ type QueryFigureClustersShrinkRequest struct {
 	ProjectName           *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	UpdateTimeRangeShrink *string `json:"UpdateTimeRange,omitempty" xml:"UpdateTimeRange,omitempty"`
+	WithTotalCount        *bool   `json:"WithTotalCount,omitempty" xml:"WithTotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersShrinkRequest) String() string {
@@ -15237,10 +15271,16 @@ func (s *QueryFigureClustersShrinkRequest) SetUpdateTimeRangeShrink(v string) *Q
 	return s
 }
 
+func (s *QueryFigureClustersShrinkRequest) SetWithTotalCount(v bool) *QueryFigureClustersShrinkRequest {
+	s.WithTotalCount = &v
+	return s
+}
+
 type QueryFigureClustersResponseBody struct {
 	FigureClusters []*FigureCluster `json:"FigureClusters,omitempty" xml:"FigureClusters,omitempty" type:"Repeated"`
 	NextToken      *string          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int64           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryFigureClustersResponseBody) String() string {
@@ -15263,6 +15303,11 @@ func (s *QueryFigureClustersResponseBody) SetNextToken(v string) *QueryFigureClu
 
 func (s *QueryFigureClustersResponseBody) SetRequestId(v string) *QueryFigureClustersResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryFigureClustersResponseBody) SetTotalCount(v int64) *QueryFigureClustersResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -23716,6 +23761,10 @@ func (client *Client) QueryFigureClustersWithOptions(tmpReq *QueryFigureClusters
 
 	if !tea.BoolValue(util.IsUnset(request.UpdateTimeRangeShrink)) {
 		query["UpdateTimeRange"] = request.UpdateTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithTotalCount)) {
+		query["WithTotalCount"] = request.WithTotalCount
 	}
 
 	req := &openapi.OpenApiRequest{
