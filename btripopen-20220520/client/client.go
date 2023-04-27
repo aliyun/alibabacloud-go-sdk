@@ -8034,7 +8034,8 @@ type CorpTokenResponseBody struct {
 	Message   *string                      `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *CorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                        `json:"success,omitempty" xml:"success,omitempty"`
+	// 是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -10088,8 +10089,9 @@ func (s *EstimatedPriceQueryResponseBody) SetTraceId(v string) *EstimatedPriceQu
 
 type EstimatedPriceQueryResponseBodyModule struct {
 	HotelFeeDetail []*EstimatedPriceQueryResponseBodyModuleHotelFeeDetail `json:"hotel_fee_detail,omitempty" xml:"hotel_fee_detail,omitempty" type:"Repeated"`
-	TotalHotelFee  *int64                                                 `json:"total_hotel_fee,omitempty" xml:"total_hotel_fee,omitempty"`
-	TrafficFee     *EstimatedPriceQueryResponseBodyModuleTrafficFee       `json:"traffic_fee,omitempty" xml:"traffic_fee,omitempty" type:"Struct"`
+	// 酒店费用总额，单位为元
+	TotalHotelFee *int64                                           `json:"total_hotel_fee,omitempty" xml:"total_hotel_fee,omitempty"`
+	TrafficFee    *EstimatedPriceQueryResponseBodyModuleTrafficFee `json:"traffic_fee,omitempty" xml:"traffic_fee,omitempty" type:"Struct"`
 }
 
 func (s EstimatedPriceQueryResponseBodyModule) String() string {
@@ -10198,9 +10200,8 @@ func (s *EstimatedPriceQueryResponseBodyModuleTrafficFee) SetSuccess(v bool) *Es
 }
 
 type EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes struct {
-	ArrCity *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrDate *int64  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	// cheapest
+	ArrCity       *string                                                                  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrDate       *int64                                                                   `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	Cheapest      *EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutesCheapest      `json:"cheapest,omitempty" xml:"cheapest,omitempty" type:"Struct"`
 	DepCity       *string                                                                  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
 	DepDate       *int64                                                                   `json:"dep_date,omitempty" xml:"dep_date,omitempty"`
@@ -12253,30 +12254,37 @@ func (s *FlightItineraryScanQueryResponseBodyModule) SetTotalSize(v int32) *Flig
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItems struct {
-	AgentCode      *string                                                   `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
-	BillDate       *string                                                   `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	Build          *string                                                   `json:"build,omitempty" xml:"build,omitempty"`
-	CostCenter     *string                                                   `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department     *string                                                   `json:"department,omitempty" xml:"department,omitempty"`
-	Flights        []*FlightItineraryScanQueryResponseBodyModuleItemsFlights `json:"flights,omitempty" xml:"flights,omitempty" type:"Repeated"`
-	FuelSurcharge  *string                                                   `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
-	Id             *string                                                   `json:"id,omitempty" xml:"id,omitempty"`
-	Insurance      *string                                                   `json:"insurance,omitempty" xml:"insurance,omitempty"`
-	InvoiceTitle   *string                                                   `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	IssueCompany   *string                                                   `json:"issue_company,omitempty" xml:"issue_company,omitempty"`
-	IssueDate      *string                                                   `json:"issue_date,omitempty" xml:"issue_date,omitempty"`
-	ItineraryNum   *string                                                   `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
-	OrderId        *int64                                                    `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OssUrl         *string                                                   `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	PassengerName  *string                                                   `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
-	Project        *string                                                   `json:"project,omitempty" xml:"project,omitempty"`
-	PromptMessage  *string                                                   `json:"prompt_message,omitempty" xml:"prompt_message,omitempty"`
-	TaxAmount      *string                                                   `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate        *string                                                   `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo       *string                                                   `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice    *string                                                   `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TotalPrice     *string                                                   `json:"total_price,omitempty" xml:"total_price,omitempty"`
-	ValidationCode *string                                                   `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
+	// 销售单位代号
+	AgentCode  *string `json:"agent_code,omitempty" xml:"agent_code,omitempty"`
+	BillDate   *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	Build      *string `json:"build,omitempty" xml:"build,omitempty"`
+	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department *string `json:"department,omitempty" xml:"department,omitempty"`
+	// 机票行程明细
+	Flights       []*FlightItineraryScanQueryResponseBodyModuleItemsFlights `json:"flights,omitempty" xml:"flights,omitempty" type:"Repeated"`
+	FuelSurcharge *string                                                   `json:"fuel_surcharge,omitempty" xml:"fuel_surcharge,omitempty"`
+	// UK
+	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
+	Insurance    *string `json:"insurance,omitempty" xml:"insurance,omitempty"`
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// 填开单位
+	IssueCompany *string `json:"issue_company,omitempty" xml:"issue_company,omitempty"`
+	// 填开日期
+	IssueDate     *string `json:"issue_date,omitempty" xml:"issue_date,omitempty"`
+	ItineraryNum  *string `json:"itinerary_num,omitempty" xml:"itinerary_num,omitempty"`
+	OrderId       *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl        *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PassengerName *string `json:"passenger_name,omitempty" xml:"passenger_name,omitempty"`
+	Project       *string `json:"project,omitempty" xml:"project,omitempty"`
+	// 提示信息
+	PromptMessage *string `json:"prompt_message,omitempty" xml:"prompt_message,omitempty"`
+	TaxAmount     *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketNo      *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice   *string `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TotalPrice    *string `json:"total_price,omitempty" xml:"total_price,omitempty"`
+	// 验证码
+	ValidationCode *string `json:"validation_code,omitempty" xml:"validation_code,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItems) String() string {
@@ -12408,18 +12416,30 @@ func (s *FlightItineraryScanQueryResponseBodyModuleItems) SetValidationCode(v st
 }
 
 type FlightItineraryScanQueryResponseBodyModuleItemsFlights struct {
-	ArrivalStation       *string `json:"arrival_station,omitempty" xml:"arrival_station,omitempty"`
-	CabinClass           *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
-	Carrier              *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
-	DepartureStation     *string `json:"departure_station,omitempty" xml:"departure_station,omitempty"`
-	FlightDate           *string `json:"flight_date,omitempty" xml:"flight_date,omitempty"`
-	FlightNumber         *string `json:"flight_number,omitempty" xml:"flight_number,omitempty"`
-	FlightTime           *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// 航班至
+	ArrivalStation *string `json:"arrival_station,omitempty" xml:"arrival_station,omitempty"`
+	// 座位等级
+	CabinClass *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	// 承运人
+	Carrier *string `json:"carrier,omitempty" xml:"carrier,omitempty"`
+	// 航班从
+	DepartureStation *string `json:"departure_station,omitempty" xml:"departure_station,omitempty"`
+	// 日期
+	FlightDate *string `json:"flight_date,omitempty" xml:"flight_date,omitempty"`
+	// 航班号
+	FlightNumber *string `json:"flight_number,omitempty" xml:"flight_number,omitempty"`
+	// 时间
+	FlightTime *string `json:"flight_time,omitempty" xml:"flight_time,omitempty"`
+	// 免费行李
 	FreeBaggageAllowance *string `json:"free_baggage_allowance,omitempty" xml:"free_baggage_allowance,omitempty"`
-	Index                *string `json:"index,omitempty" xml:"index,omitempty"`
-	SeatClass            *string `json:"seat_class,omitempty" xml:"seat_class,omitempty"`
-	ValidFromDate        *string `json:"valid_from_date,omitempty" xml:"valid_from_date,omitempty"`
-	ValidToDate          *string `json:"valid_to_date,omitempty" xml:"valid_to_date,omitempty"`
+	// 行号
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// 客票级别
+	SeatClass *string `json:"seat_class,omitempty" xml:"seat_class,omitempty"`
+	// 客票生效日期
+	ValidFromDate *string `json:"valid_from_date,omitempty" xml:"valid_from_date,omitempty"`
+	// 有效截止日期
+	ValidToDate *string `json:"valid_to_date,omitempty" xml:"valid_to_date,omitempty"`
 }
 
 func (s FlightItineraryScanQueryResponseBodyModuleItemsFlights) String() string {
@@ -27439,9 +27459,9 @@ func (s *HotelOrderPayHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderPayHea
 }
 
 type HotelOrderPayRequest struct {
+	BtripOrderId    *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
 	BtripUserId     *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	CompanyPayFee   *int64  `json:"company_pay_fee,omitempty" xml:"company_pay_fee,omitempty"`
-	DisOrderId      *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 	PersonPayFee    *int64  `json:"person_pay_fee,omitempty" xml:"person_pay_fee,omitempty"`
 	ThirdPayAccount *string `json:"third_pay_account,omitempty" xml:"third_pay_account,omitempty"`
 	ThirdTradeNo    *string `json:"third_trade_no,omitempty" xml:"third_trade_no,omitempty"`
@@ -27456,6 +27476,11 @@ func (s HotelOrderPayRequest) GoString() string {
 	return s.String()
 }
 
+func (s *HotelOrderPayRequest) SetBtripOrderId(v int64) *HotelOrderPayRequest {
+	s.BtripOrderId = &v
+	return s
+}
+
 func (s *HotelOrderPayRequest) SetBtripUserId(v string) *HotelOrderPayRequest {
 	s.BtripUserId = &v
 	return s
@@ -27463,11 +27488,6 @@ func (s *HotelOrderPayRequest) SetBtripUserId(v string) *HotelOrderPayRequest {
 
 func (s *HotelOrderPayRequest) SetCompanyPayFee(v int64) *HotelOrderPayRequest {
 	s.CompanyPayFee = &v
-	return s
-}
-
-func (s *HotelOrderPayRequest) SetDisOrderId(v string) *HotelOrderPayRequest {
-	s.DisOrderId = &v
 	return s
 }
 
@@ -30966,6 +30986,7 @@ type InsInvoiceScanQueryResponseBodyModuleItems struct {
 	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
 	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
 	InvoiceTitle             *string                                                     `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
 	OrderId                  *int64                                                      `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
 	Passenger                *string                                                     `json:"passenger,omitempty" xml:"passenger,omitempty"`
@@ -31078,6 +31099,11 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceNo(v string) *Ins
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetMachineCode(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.MachineCode = &v
 	return s
 }
 
@@ -33013,7 +33039,8 @@ func (s *MonthBillGetResponseBody) SetTraceId(v string) *MonthBillGetResponseBod
 }
 
 type MonthBillGetResponseBodyModule struct {
-	EndDate                *string                                               `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	EndDate *string `json:"end_date,omitempty" xml:"end_date,omitempty"`
+	// CorpMonthAccountBillFeeDetail
 	MonthAccountBillDetail *MonthBillGetResponseBodyModuleMonthAccountBillDetail `json:"monthAccountBillDetail,omitempty" xml:"monthAccountBillDetail,omitempty" type:"Struct"`
 	StartDate              *string                                               `json:"start_date,omitempty" xml:"start_date,omitempty"`
 	Url                    *string                                               `json:"url,omitempty" xml:"url,omitempty"`
@@ -33048,15 +33075,24 @@ func (s *MonthBillGetResponseBodyModule) SetUrl(v string) *MonthBillGetResponseB
 }
 
 type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {
-	CarAmount      *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
-	DamageAmount   *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
-	FlightAmount   *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
-	FuPoint        *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
-	HotelAmount    *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
+	// 用车金额（单位：元）
+	CarAmount *float64 `json:"carAmount,omitempty" xml:"carAmount,omitempty"`
+	// 违约金金额（单位：元）
+	DamageAmount *float64 `json:"damageAmount,omitempty" xml:"damageAmount,omitempty"`
+	// 机票金额（单位：元）
+	FlightAmount *float64 `json:"flightAmount,omitempty" xml:"flightAmount,omitempty"`
+	// 福豆金额（单位：元）
+	FuPoint *float64 `json:"fuPoint,omitempty" xml:"fuPoint,omitempty"`
+	// 酒店金额（单位：元）
+	HotelAmount *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
+	// 国际机票金额（单位：元）
 	IeFlightAmount *float64 `json:"ieFlightAmount,omitempty" xml:"ieFlightAmount,omitempty"`
-	MailBillDate   *int64   `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
-	ServiceAmount  *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
-	TrainAmount    *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
+	// 账期日：YYYYMMDD
+	MailBillDate *int64 `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
+	// 服务费金额（单位：元）
+	ServiceAmount *float64 `json:"serviceAmount,omitempty" xml:"serviceAmount,omitempty"`
+	// 火车票金额（单位：元）
+	TrainAmount *float64 `json:"trainAmount,omitempty" xml:"trainAmount,omitempty"`
 }
 
 func (s MonthBillGetResponseBodyModuleMonthAccountBillDetail) String() string {
@@ -39067,14 +39103,16 @@ func (s *TrainOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *Train
 }
 
 type TrainOrderQueryResponseBodyModuleOrderBaseInfo struct {
-	ApplyId                *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	ContactName            *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId                 *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName               *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId               *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName             *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExceedApplyId          *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	ApplyId     *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle  *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ContactName *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId      *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 火车票超标审批id
+	ExceedApplyId *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	// 火车票超标审批三方id
 	ExceedThirdPartApplyId *string `json:"exceed_third_part_apply_id,omitempty" xml:"exceed_third_part_apply_id,omitempty"`
 	GmtCreate              *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify              *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
@@ -41381,6 +41419,7 @@ type VatInvoiceScanQueryResponseBodyModuleItems struct {
 	InvoiceSubTaskId         *int64                                                      `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
 	InvoiceType              *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
 	InvoiceTypeDesc          *string                                                     `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
+	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
 	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
 	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
 	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
@@ -41480,6 +41519,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceType(v int32) *Va
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTypeDesc(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.InvoiceTypeDesc = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetMachineCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.MachineCode = &v
 	return s
 }
 
@@ -46661,16 +46705,16 @@ func (client *Client) HotelOrderPayWithOptions(request *HotelOrderPayRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripOrderId)) {
+		body["btrip_order_id"] = request.BtripOrderId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
 		body["btrip_user_id"] = request.BtripUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CompanyPayFee)) {
 		body["company_pay_fee"] = request.CompanyPayFee
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DisOrderId)) {
-		body["dis_order_id"] = request.DisOrderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PersonPayFee)) {
