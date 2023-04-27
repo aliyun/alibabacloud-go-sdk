@@ -217,7 +217,8 @@ func (s *BeginSessionRequest) SetInstanceId(v string) *BeginSessionRequest {
 }
 
 type BeginSessionResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 静默超时时间
 	SilenceReplyTimeout *int32  `json:"SilenceReplyTimeout,omitempty" xml:"SilenceReplyTimeout,omitempty"`
 	WelcomeMessage      *string `json:"WelcomeMessage,omitempty" xml:"WelcomeMessage,omitempty"`
 }
