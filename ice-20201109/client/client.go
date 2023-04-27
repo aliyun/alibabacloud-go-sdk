@@ -13386,8 +13386,10 @@ func (s *GetSmartHandleJobResponseBody) SetUserData(v string) *GetSmartHandleJob
 }
 
 type GetSmartHandleJobResponseBodyJobResult struct {
+	// 智能分析结果
 	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
-	MediaId  *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 媒资Id
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 }
 
 func (s GetSmartHandleJobResponseBodyJobResult) String() string {
@@ -26534,6 +26536,7 @@ func (s *SearchMediaResponseBodyMediaInfoListAiDataOcrInfo) SetTo(v float64) *Se
 }
 
 type SearchMediaResponseBodyMediaInfoListAiRoughData struct {
+	// 电视剧
 	AiCategory *string `json:"AiCategory,omitempty" xml:"AiCategory,omitempty"`
 	AiJobId    *string `json:"AiJobId,omitempty" xml:"AiJobId,omitempty"`
 	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
@@ -30964,6 +30967,7 @@ type SubmitMediaProducingJobRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClipsParam           *string `json:"ClipsParam,omitempty" xml:"ClipsParam,omitempty"`
 	EditingProduceConfig *string `json:"EditingProduceConfig,omitempty" xml:"EditingProduceConfig,omitempty"`
+	MediaMetadata        *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
 	OutputMediaConfig    *string `json:"OutputMediaConfig,omitempty" xml:"OutputMediaConfig,omitempty"`
 	OutputMediaTarget    *string `json:"OutputMediaTarget,omitempty" xml:"OutputMediaTarget,omitempty"`
 	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -30994,6 +30998,11 @@ func (s *SubmitMediaProducingJobRequest) SetClipsParam(v string) *SubmitMediaPro
 
 func (s *SubmitMediaProducingJobRequest) SetEditingProduceConfig(v string) *SubmitMediaProducingJobRequest {
 	s.EditingProduceConfig = &v
+	return s
+}
+
+func (s *SubmitMediaProducingJobRequest) SetMediaMetadata(v string) *SubmitMediaProducingJobRequest {
+	s.MediaMetadata = &v
 	return s
 }
 
@@ -46043,6 +46052,10 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 
 	if !tea.BoolValue(util.IsUnset(request.EditingProduceConfig)) {
 		query["EditingProduceConfig"] = request.EditingProduceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaMetadata)) {
+		query["MediaMetadata"] = request.MediaMetadata
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutputMediaConfig)) {
