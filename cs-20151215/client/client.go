@@ -14139,6 +14139,7 @@ func (s *UpgradeClusterAddonsResponse) SetStatusCode(v int32) *UpgradeClusterAdd
 type UpgradeClusterNodepoolRequest struct {
 	ImageId           *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
 	KubernetesVersion *string `json:"kubernetes_version,omitempty" xml:"kubernetes_version,omitempty"`
+	RuntimeType       *string `json:"runtime_type,omitempty" xml:"runtime_type,omitempty"`
 	RuntimeVersion    *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 }
 
@@ -14157,6 +14158,11 @@ func (s *UpgradeClusterNodepoolRequest) SetImageId(v string) *UpgradeClusterNode
 
 func (s *UpgradeClusterNodepoolRequest) SetKubernetesVersion(v string) *UpgradeClusterNodepoolRequest {
 	s.KubernetesVersion = &v
+	return s
+}
+
+func (s *UpgradeClusterNodepoolRequest) SetRuntimeType(v string) *UpgradeClusterNodepoolRequest {
+	s.RuntimeType = &v
 	return s
 }
 
@@ -20223,6 +20229,10 @@ func (client *Client) UpgradeClusterNodepoolWithOptions(ClusterId *string, Nodep
 
 	if !tea.BoolValue(util.IsUnset(request.KubernetesVersion)) {
 		body["kubernetes_version"] = request.KubernetesVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeType)) {
+		body["runtime_type"] = request.RuntimeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuntimeVersion)) {
