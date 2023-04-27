@@ -2045,24 +2045,26 @@ func (s *DetectLungNoduleResponseBodyDataSeries) SetSpacing(v []*float32) *Detec
 }
 
 type DetectLungNoduleResponseBodyDataSeriesElements struct {
-	Category             *string    `json:"Category,omitempty" xml:"Category,omitempty"`
-	Confidence           *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Diameter             *float32   `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
-	ImageX               *float32   `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
-	ImageY               *float32   `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
-	ImageZ               *float32   `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
-	Lobe                 *string    `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
-	Lung                 *string    `json:"Lung,omitempty" xml:"Lung,omitempty"`
-	MajorAxis            []*float32 `json:"MajorAxis,omitempty" xml:"MajorAxis,omitempty" type:"Repeated"`
-	MeanValue            *float32   `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
-	MinorAxis            []*float32 `json:"MinorAxis,omitempty" xml:"MinorAxis,omitempty" type:"Repeated"`
-	RecistSOPInstanceUID *string    `json:"RecistSOPInstanceUID,omitempty" xml:"RecistSOPInstanceUID,omitempty"`
-	Risk                 *float32   `json:"Risk,omitempty" xml:"Risk,omitempty"`
-	SOPInstanceUID       *string    `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
-	Volume               *float32   `json:"Volume,omitempty" xml:"Volume,omitempty"`
-	X                    *float32   `json:"X,omitempty" xml:"X,omitempty"`
-	Y                    *float32   `json:"Y,omitempty" xml:"Y,omitempty"`
-	Z                    *float32   `json:"Z,omitempty" xml:"Z,omitempty"`
+	Category   *string    `json:"Category,omitempty" xml:"Category,omitempty"`
+	Confidence *float32   `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Diameter   *float32   `json:"Diameter,omitempty" xml:"Diameter,omitempty"`
+	ImageX     *float32   `json:"ImageX,omitempty" xml:"ImageX,omitempty"`
+	ImageY     *float32   `json:"ImageY,omitempty" xml:"ImageY,omitempty"`
+	ImageZ     *float32   `json:"ImageZ,omitempty" xml:"ImageZ,omitempty"`
+	Lobe       *string    `json:"Lobe,omitempty" xml:"Lobe,omitempty"`
+	Lung       *string    `json:"Lung,omitempty" xml:"Lung,omitempty"`
+	MajorAxis  []*float32 `json:"MajorAxis,omitempty" xml:"MajorAxis,omitempty" type:"Repeated"`
+	MeanValue  *float32   `json:"MeanValue,omitempty" xml:"MeanValue,omitempty"`
+	MinorAxis  []*float32 `json:"MinorAxis,omitempty" xml:"MinorAxis,omitempty" type:"Repeated"`
+	// 结节最大径位置所在帧的ID标识。
+	RecistSOPInstanceUID *string `json:"RecistSOPInstanceUID,omitempty" xml:"RecistSOPInstanceUID,omitempty"`
+	// 结节为恶性的置信度。取值范围0~1。
+	Risk           *float32 `json:"Risk,omitempty" xml:"Risk,omitempty"`
+	SOPInstanceUID *string  `json:"SOPInstanceUID,omitempty" xml:"SOPInstanceUID,omitempty"`
+	Volume         *float32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	Z              *float32 `json:"Z,omitempty" xml:"Z,omitempty"`
 }
 
 func (s DetectLungNoduleResponseBodyDataSeriesElements) String() string {
@@ -4141,17 +4143,19 @@ func (s *ScreenChestCTResponseBody) SetRequestId(v string) *ScreenChestCTRespons
 }
 
 type ScreenChestCTResponseBodyData struct {
-	AnalyzeChestVessel *ScreenChestCTResponseBodyDataAnalyzeChestVessel `json:"AnalyzeChestVessel,omitempty" xml:"AnalyzeChestVessel,omitempty" type:"Struct"`
-	CACS               *ScreenChestCTResponseBodyDataCACS               `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
-	Covid              *ScreenChestCTResponseBodyDataCovid              `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
-	DetectLymph        *ScreenChestCTResponseBodyDataDetectLymph        `json:"DetectLymph,omitempty" xml:"DetectLymph,omitempty" type:"Struct"`
-	DetectPdac         *ScreenChestCTResponseBodyDataDetectPdac         `json:"DetectPdac,omitempty" xml:"DetectPdac,omitempty" type:"Struct"`
-	DetectRibFracture  *ScreenChestCTResponseBodyDataDetectRibFracture  `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
-	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
-	NestedUrlList      map[string]interface{}                           `json:"NestedUrlList,omitempty" xml:"NestedUrlList,omitempty"`
-	ScreenEc           *ScreenChestCTResponseBodyDataScreenEc           `json:"ScreenEc,omitempty" xml:"ScreenEc,omitempty" type:"Struct"`
-	URLList            map[string]interface{}                           `json:"URLList,omitempty" xml:"URLList,omitempty"`
+	AnalyzeChestVessel   *ScreenChestCTResponseBodyDataAnalyzeChestVessel   `json:"AnalyzeChestVessel,omitempty" xml:"AnalyzeChestVessel,omitempty" type:"Struct"`
+	CACS                 *ScreenChestCTResponseBodyDataCACS                 `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
+	CalcBMD              *ScreenChestCTResponseBodyDataCalcBMD              `json:"CalcBMD,omitempty" xml:"CalcBMD,omitempty" type:"Struct"`
+	Covid                *ScreenChestCTResponseBodyDataCovid                `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
+	DetectLiverSteatosis *ScreenChestCTResponseBodyDataDetectLiverSteatosis `json:"DetectLiverSteatosis,omitempty" xml:"DetectLiverSteatosis,omitempty" type:"Struct"`
+	DetectLymph          *ScreenChestCTResponseBodyDataDetectLymph          `json:"DetectLymph,omitempty" xml:"DetectLymph,omitempty" type:"Struct"`
+	DetectPdac           *ScreenChestCTResponseBodyDataDetectPdac           `json:"DetectPdac,omitempty" xml:"DetectPdac,omitempty" type:"Struct"`
+	DetectRibFracture    *ScreenChestCTResponseBodyDataDetectRibFracture    `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
+	ErrorMessage         *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LungNodule           *ScreenChestCTResponseBodyDataLungNodule           `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
+	NestedUrlList        map[string]interface{}                             `json:"NestedUrlList,omitempty" xml:"NestedUrlList,omitempty"`
+	ScreenEc             *ScreenChestCTResponseBodyDataScreenEc             `json:"ScreenEc,omitempty" xml:"ScreenEc,omitempty" type:"Struct"`
+	URLList              map[string]interface{}                             `json:"URLList,omitempty" xml:"URLList,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyData) String() string {
@@ -4172,8 +4176,18 @@ func (s *ScreenChestCTResponseBodyData) SetCACS(v *ScreenChestCTResponseBodyData
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyData) SetCalcBMD(v *ScreenChestCTResponseBodyDataCalcBMD) *ScreenChestCTResponseBodyData {
+	s.CalcBMD = v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyData) SetCovid(v *ScreenChestCTResponseBodyDataCovid) *ScreenChestCTResponseBodyData {
 	s.Covid = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetDetectLiverSteatosis(v *ScreenChestCTResponseBodyDataDetectLiverSteatosis) *ScreenChestCTResponseBodyData {
+	s.DetectLiverSteatosis = v
 	return s
 }
 
@@ -4424,6 +4438,82 @@ func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumVolume(v float32
 	return s
 }
 
+type ScreenChestCTResponseBodyDataCalcBMD struct {
+	Detections []*ScreenChestCTResponseBodyDataCalcBMDDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin     []*float32                                        `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	ResultURL  *string                                           `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+	Spacing    []*float32                                        `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataCalcBMD) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataCalcBMD) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMD) SetDetections(v []*ScreenChestCTResponseBodyDataCalcBMDDetections) *ScreenChestCTResponseBodyDataCalcBMD {
+	s.Detections = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMD) SetOrigin(v []*float32) *ScreenChestCTResponseBodyDataCalcBMD {
+	s.Origin = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMD) SetResultURL(v string) *ScreenChestCTResponseBodyDataCalcBMD {
+	s.ResultURL = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMD) SetSpacing(v []*float32) *ScreenChestCTResponseBodyDataCalcBMD {
+	s.Spacing = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataCalcBMDDetections struct {
+	VertBMD      *float32 `json:"VertBMD,omitempty" xml:"VertBMD,omitempty"`
+	VertCategory *float32 `json:"VertCategory,omitempty" xml:"VertCategory,omitempty"`
+	VertId       *string  `json:"VertId,omitempty" xml:"VertId,omitempty"`
+	VertTScore   *float32 `json:"VertTScore,omitempty" xml:"VertTScore,omitempty"`
+	VertZScore   *float32 `json:"VertZScore,omitempty" xml:"VertZScore,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataCalcBMDDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataCalcBMDDetections) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMDDetections) SetVertBMD(v float32) *ScreenChestCTResponseBodyDataCalcBMDDetections {
+	s.VertBMD = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMDDetections) SetVertCategory(v float32) *ScreenChestCTResponseBodyDataCalcBMDDetections {
+	s.VertCategory = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMDDetections) SetVertId(v string) *ScreenChestCTResponseBodyDataCalcBMDDetections {
+	s.VertId = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMDDetections) SetVertTScore(v float32) *ScreenChestCTResponseBodyDataCalcBMDDetections {
+	s.VertTScore = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMDDetections) SetVertZScore(v float32) *ScreenChestCTResponseBodyDataCalcBMDDetections {
+	s.VertZScore = &v
+	return s
+}
+
 type ScreenChestCTResponseBodyDataCovid struct {
 	LesionRatio       *string `json:"LesionRatio,omitempty" xml:"LesionRatio,omitempty"`
 	Mask              *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
@@ -4468,6 +4558,160 @@ func (s *ScreenChestCTResponseBodyDataCovid) SetOtherProbability(v string) *Scre
 
 func (s *ScreenChestCTResponseBodyDataCovid) SetSeriesInstanceUID(v string) *ScreenChestCTResponseBodyDataCovid {
 	s.SeriesInstanceUID = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectLiverSteatosis struct {
+	Detections []*ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin     []*float32                                                     `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	Spacing    []*float32                                                     `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLiverSteatosis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLiverSteatosis) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetDetections(v []*ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) *ScreenChestCTResponseBodyDataDetectLiverSteatosis {
+	s.Detections = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetOrigin(v []*float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosis {
+	s.Origin = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetSpacing(v []*float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosis {
+	s.Spacing = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections struct {
+	LiverHU               *float32 `json:"LiverHU,omitempty" xml:"LiverHU,omitempty"`
+	LiverROI1             *float32 `json:"LiverROI1,omitempty" xml:"LiverROI1,omitempty"`
+	LiverROI2             *float32 `json:"LiverROI2,omitempty" xml:"LiverROI2,omitempty"`
+	LiverROI3             *float32 `json:"LiverROI3,omitempty" xml:"LiverROI3,omitempty"`
+	LiverSlice            *float32 `json:"LiverSlice,omitempty" xml:"LiverSlice,omitempty"`
+	LiverSpleenDifference *float32 `json:"LiverSpleenDifference,omitempty" xml:"LiverSpleenDifference,omitempty"`
+	LiverSpleenRatio      *float32 `json:"LiverSpleenRatio,omitempty" xml:"LiverSpleenRatio,omitempty"`
+	LiverVolume           *float32 `json:"LiverVolume,omitempty" xml:"LiverVolume,omitempty"`
+	Prediction            *string  `json:"Prediction,omitempty" xml:"Prediction,omitempty"`
+	Probability           *float32 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	ROI1Center            []*int64 `json:"ROI1Center,omitempty" xml:"ROI1Center,omitempty" type:"Repeated"`
+	ROI2Center            []*int64 `json:"ROI2Center,omitempty" xml:"ROI2Center,omitempty" type:"Repeated"`
+	ROI3Center            []*int64 `json:"ROI3Center,omitempty" xml:"ROI3Center,omitempty" type:"Repeated"`
+	Radius                *int64   `json:"Radius,omitempty" xml:"Radius,omitempty"`
+	SpleenCenter          []*int64 `json:"SpleenCenter,omitempty" xml:"SpleenCenter,omitempty" type:"Repeated"`
+	SpleenHU              *float32 `json:"SpleenHU,omitempty" xml:"SpleenHU,omitempty"`
+	SpleenROI             *float32 `json:"SpleenROI,omitempty" xml:"SpleenROI,omitempty"`
+	SpleenSlice           *float32 `json:"SpleenSlice,omitempty" xml:"SpleenSlice,omitempty"`
+	SpleenVolume          *float32 `json:"SpleenVolume,omitempty" xml:"SpleenVolume,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverHU(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverHU = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverROI1(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverROI1 = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverROI2(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverROI2 = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverROI3(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverROI3 = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverSlice(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverSlice = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverSpleenDifference(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverSpleenDifference = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverSpleenRatio(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverSpleenRatio = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetLiverVolume(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.LiverVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetPrediction(v string) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.Prediction = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetProbability(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.Probability = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetROI1Center(v []*int64) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.ROI1Center = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetROI2Center(v []*int64) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.ROI2Center = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetROI3Center(v []*int64) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.ROI3Center = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetRadius(v int64) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.Radius = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetSpleenCenter(v []*int64) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.SpleenCenter = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetSpleenHU(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.SpleenHU = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetSpleenROI(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.SpleenROI = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetSpleenSlice(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.SpleenSlice = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections) SetSpleenVolume(v float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections {
+	s.SpleenVolume = &v
 	return s
 }
 
