@@ -139,27 +139,16 @@ func (s *ActiveFlowLogResponse) SetBody(v *ActiveFlowLogResponseBody) *ActiveFlo
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// IllegalParam.DstCidr
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the traffic marking policy.
-	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	// The traffic classification rules.
-	//
-	// You can specify at most 50 traffic classification rules.
-	TrafficMatchRules []*AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
+	// IllegalParam.DstCidr
+	DryRun                 *bool                                                                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount           *string                                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64                                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string                                                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64                                                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficMarkingPolicyId *string                                                              `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	TrafficMatchRules      []*AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
 }
 
 func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequest) String() string {
@@ -211,52 +200,14 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequest) SetTrafficMatchRules(
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules struct {
-	// The destination CIDR block that is used to match packets.
-	//
-	// The traffic classification rule matches the packets whose destination IP addresses fall within the specified destination CIDR block. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
-	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
-	//
-	// The traffic classification rule matches the packets whose destination ports fall within the destination port range. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
-	//
-	// You can specify at most two ports. Take note of the following rules:
-	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose destination port is port 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose destination ports fall between 1 and 200.
-	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the destination port.
-	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The differentiated services code point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
-	//
-	// The traffic classification rule matches the packets that contain the specified DSCP value. If you do not set this parameter, packets are considered a match regardless of the DSCP value.
-	//
-	// >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
-	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The protocol that is used to match packets.
-	//
-	// Valid values: **HTTP**, **HTTPS**, **TCP**, **UDP**, **SSH**, and **Telnet**. For more information, log on to the [Cloud Enterprise Network (CEN) console](https://cen.console.aliyun.com/cen/list).
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block that is used to match packets.
-	//
-	// The traffic classification rule matches the packets whose source IP addresses fall within the specified source CIDR block. If you do not set this parameter, packets are considered a match regardless of the source IP address.
-	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source port range that is used to match packets. Valid values: **-1** and **1** to **65535**.
-	//
-	// The traffic classification rule matches the packets whose source ports fall within the source port range. If you do not set this parameter, packets are considered a match regardless of the source port.
-	//
-	// You can specify at most two ports. Take note of the following rules:
-	//
-	// *   If you enter only one port number such as 1, the system matches the packets whose source port is 1.
-	// *   If you enter two port numbers such as 1 and 200, the system matches the packets whose source ports fall between 1 and 200.
-	// *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
-	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
-	// The description of the traffic classification rule.
-	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
-	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
-	// The name of the traffic classification rule.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
-	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
+	DstCidr                     *string  `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
+	DstPortRange                []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
+	MatchDscp                   *int32   `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
+	Protocol                    *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SrcCidr                     *string  `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
+	SrcPortRange                []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
+	TrafficMatchRuleDescription *string  `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	TrafficMatchRuleName        *string  `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
 }
 
 func (s AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) String() string {
@@ -308,7 +259,6 @@ func (s *AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules) SetT
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -685,14 +635,14 @@ func (s *AssociateCenBandwidthPackageResponse) SetBody(v *AssociateCenBandwidthP
 type AssociateTransitRouterAttachmentWithRouteTableRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
 	//
-	// *   **false** (default): performs a dry run. If the request passes the dry run, the associated forwarding correlation is created.
-	// *   **true**: performs a dry run and sends the request. If you use this value, the system checks whether the required parameters are set, and whether the request syntax is valid. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -938,8 +888,8 @@ type AttachCenChildInstanceRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **VBR**: virtual border router (VBR)
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
 	// *   **CCN**: CCN instance
 	ChildInstanceType    *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -1049,9 +999,6 @@ func (s *AttachCenChildInstanceResponse) SetBody(v *AttachCenChildInstanceRespon
 }
 
 type CheckTransitRouterServiceRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1093,12 +1040,7 @@ func (s *CheckTransitRouterServiceRequest) SetResourceOwnerId(v int64) *CheckTra
 }
 
 type CheckTransitRouterServiceResponseBody struct {
-	// Indicates whether the transit router feature is activated.
-	//
-	// *   **true**: activated
-	// *   If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
-	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the request.
+	Enabled   *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1150,29 +1092,23 @@ func (s *CheckTransitRouterServiceResponse) SetBody(v *CheckTransitRouterService
 }
 
 type CreateCenRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The tag keys of the resources.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// You can specify at most 20 tag keys.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the CEN instance.
-	//
-	// The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+	// The operation that you want to perform. Set the value to **CreateCen**.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CEN instance.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
+	// The ID of the request.
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The level of CIDR block overlapping.
-	//
-	// Set the value to **REDUCED** (default). This value specifies that CIDR blocks can overlap but cannot be the same.
+	// The tags.
 	ProtectionLevel      *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// Creates a Cloud Enterprise Network (CEN) instance.
 	Tag []*CreateCenRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1230,17 +1166,9 @@ func (s *CreateCenRequest) SetTag(v []*CreateCenRequestTag) *CreateCenRequest {
 }
 
 type CreateCenRequestTag struct {
-	// The tag keys of the resources.
-	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
+	// CreateCen
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
-	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// WB656982
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1263,9 +1191,7 @@ func (s *CreateCenRequestTag) SetValue(v string) *CreateCenRequestTag {
 }
 
 type CreateCenResponseBody struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the request.
+	CenId     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1323,16 +1249,23 @@ type CreateCenBandwidthPackageRequest struct {
 	// *   **false** (default): no
 	//
 	// If you set the parameter to false, go to Billing Management to complete the payment after you call this operation. The instance is created only after you complete the payment.
-	AutoPay           *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew         *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable the auto-renewal feature. Valid values:
+	//
+	// *   **true**: enables auto-renewal.
+	// *   **false** (default): disables auto-renewal.
+	//
+	// > Only subscription bandwidth plans support auto-renewal.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal duration. Unit: months. Valid values: **0** to **2147483647**. Default value: **1**.
 	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// The maximum bandwidth value of the bandwidth plan. Unit: Mbit/s. Valid values: **2** to **10000**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method of the bandwidth plan. Valid value: **PREPAY**, which indicates that the billing method is pay-as-you-go.
+	// The billing method of the bandwidth plan. Set the value to **PREPAY**, which indicates that the billing method is pay-as-you-go.
 	BandwidthPackageChargeType *string `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate a token, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the bandwidth plan.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -1363,7 +1296,7 @@ type CreateCenBandwidthPackageRequest struct {
 	// *   If **PricingCycle** is set to **Month**, set **Period** to a value from **1** to **3** or **6**.
 	// *   If **PricingCycle** is set to **Year**, set **Period** to a value from **1** to **3**.
 	//
-	// >  This parameter is required when **BandwidthPackageChargeType** is set to **PREPAY**.
+	// > This parameter is required when **BandwidthPackageChargeType** is set to **PREPAY**.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The billing cycle of the bandwidth plan. Valid values:
 	//
@@ -1372,7 +1305,9 @@ type CreateCenBandwidthPackageRequest struct {
 	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The information about the tags.
+	//
+	// You can specify at most 20 tags in each call.
 	Tag []*CreateCenBandwidthPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -1470,17 +1405,17 @@ func (s *CreateCenBandwidthPackageRequest) SetTag(v []*CreateCenBandwidthPackage
 }
 
 type CreateCenBandwidthPackageRequestTag struct {
-	// The tag keys of the resources.
+	// The tag key.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag keys cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
+	// The tag value.
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1564,20 +1499,20 @@ func (s *CreateCenBandwidthPackageResponse) SetBody(v *CreateCenBandwidthPackage
 }
 
 type CreateCenChildInstanceRouteEntryToAttachmentRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The destination CIDR block of the route.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
 	//
-	// *   **false**: performs a precheck. The route is added to the network instance after the request passes the precheck. This is the default value.
-	// *   **true**: performs a precheck. The route is not added to the network instance. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// *   **false**: performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
 	// >  This parameter is not in use.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -1858,9 +1793,9 @@ type CreateCenInterRegionTrafficQosPolicyRequest struct {
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TrafficQosPolicyName *string `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
-	// A list of QoS queues.
+	// The information about the QoS queue.
 	//
-	// Each QoS policy supports up to three queues.
+	// You can call this operation to create at most three QoS queues. To create more queues, you must call the CreateCenInterRegionTrafficQosQueue operation.
 	TrafficQosQueues []*CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues `json:"TrafficQosQueues,omitempty" xml:"TrafficQosQueues,omitempty" type:"Repeated"`
 	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
@@ -1932,7 +1867,7 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetTransitRouterId(v strin
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
-	// The differentiated services code point (DSCP) value that matches the current queue.
+	// The DSCP value that matches the current queue.
 	//
 	// Each QoS policy supports up to three queues. You can specify at most 60 DSCP values for each queue. Separate DSCP values with commas (,).
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
@@ -1952,7 +1887,7 @@ type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
 	//
 	// Each QoS policy supports up to three queues. You can specify a percentage of bandwidth resources for each queue.
 	//
-	// If you enter **1**, it indicates that the current queue can consume at most 1% of the bandwidth resources.
+	// If you enter **1**, it indicates that the current queue can consume at most \*\*1%\*\* of the bandwidth resources.
 	//
 	// >  The sum of the percentage values of all the queues in a QoS policy cannot exceed 100%.
 	RemainBandwidthPercent *string `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
@@ -2041,40 +1976,17 @@ func (s *CreateCenInterRegionTrafficQosPolicyResponse) SetBody(v *CreateCenInter
 }
 
 type CreateCenInterRegionTrafficQosQueueRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, the request format, and the service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The differentiated services code point (DSCP) value that matches the current queue.
-	//
-	// You can specify at most 20 DSCP values for a queue in each call. Separate DSCP values with commas (,).
-	Dscps        []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The description of the queue.
-	//
-	// The description must be 1 to 256 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
-	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
-	// The name of the queue.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It must start with a letter.
-	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The maximum bandwidth of the queue,
-	//
-	// *   in percentage. For example, a value of 20 specifies that the queue can occupy at most 20% of the bandwidth allocated to the inter-region connection.
-	// *   The sum of percentage values specified for all queues that belong to the same inter-region connection cannot exceed 100%.
-	RemainBandwidthPercent *string `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the QoS policy.
-	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
+	ClientToken            *string  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Dscps                  []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
+	OwnerAccount           *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	QosQueueDescription    *string  `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
+	QosQueueName           *string  `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
+	RemainBandwidthPercent *string  `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
+	ResourceOwnerAccount   *string  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficQosPolicyId     *string  `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
 }
 
 func (s CreateCenInterRegionTrafficQosQueueRequest) String() string {
@@ -2141,10 +2053,8 @@ func (s *CreateCenInterRegionTrafficQosQueueRequest) SetTrafficQosPolicyId(v str
 }
 
 type CreateCenInterRegionTrafficQosQueueResponseBody struct {
-	// The ID of the queue.
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCenInterRegionTrafficQosQueueResponseBody) String() string {
@@ -2195,60 +2105,120 @@ func (s *CreateCenInterRegionTrafficQosQueueResponse) SetBody(v *CreateCenInterR
 }
 
 type CreateCenRouteMapRequest struct {
-	// The match method that is used to match routes against the AS paths. Valid values:
-	//
-	// *   **Include**: fuzzy match. A route meets the match condition if the AS path of the route overlaps with the AS paths specified in the match condition.
-	// *   **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
-	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
 	// The ID of the CEN instance.
+	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
+	// The type of source network instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where the routing policy is applied.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The ID of the source region.
 	CenRegionId *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	// The match method that is used to match routes against the prefix list. Valid values:
-	//
-	// *   **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
-	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is enabled, the route whose prefix is 10.10.1.0/24 is a match.
-	//
-	// *   **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
-	//
-	//     For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
+	// The ID of the source network instance.
 	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The match method that is used to match routes against the community. Valid values:
-	//
-	// *   **Include**: fuzzy match. A route meets the match condition if the community of the route overlaps with the community specified in the match condition.
-	// *   **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
+	// The prefix list.
 	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
+	// The AS path.
+	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
+	// The priority of the routing policy. Valid values: **1** to **100**. A smaller value indicates a higher priority.
+	//
+	// >  You cannot specify the same priority for routing policies that apply in the same region and direction. The system matches routes against the match conditions of routing policies in descending order of priority. A smaller value indicates a higher priority. You must set the priorities to proper values.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The action that is performed on the community. Valid values:
 	//
 	// *   **Additive**: adds the community to the route.
 	// *   **Replace**: replaces the original community of the route.
 	//
 	// This parameter specifies the action to be performed when a route meets the match condition.
-	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
-	// The description of the routing policy.
+	DestinationChildInstanceTypes []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
+	// The ID of the destination route table.
+	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Repeated"`
+	// The new priority of the route.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, hyphens (-), periods (.), and underscores (\_). It must start with a letter and cannot start with `http://` or `https://`.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Valid values: **1** to **100**. The default priority is **50**. A smaller value indicates a higher priority.
+	//
+	// This parameter specifies the action to be performed when a route meets the match condition.
+	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
 	// The types of destination network instance to which the routes belong. The following types of network instances are supported:
 	//
 	// *   **VPC**: VPC
+	//
 	// *   **VBR**: VBR
+	//
 	// *   **CCN**: CCN instance
+	//
 	// *   **VPN**: IPsec connection
 	//
-	//     > This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
+	//     **
+	//
+	//     **Note** This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
 	//
 	// You can specify one or more network instance types.
 	//
 	// >  The destination network instance types are valid only if the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
-	DestinationChildInstanceTypes []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
+	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
 	// The prefix list against which routes are matched.
 	//
 	// You must specify the IP addresses in CIDR notation. You can enter at most 32 CIDR blocks.
-	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Repeated"`
+	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
+	// The types of source network instance to which the routes belong. The following types of network instances are supported:
+	//
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
+	// *   **VPN**: VPN gateway or IPsec connection
+	//     *   If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use BGP dynamic routing. Otherwise, this parameter cannot take effect.
+	//     *   This parameter takes effect if the IPsec connection is directly connected to a transit router.
+	//
+	// You can specify one or more network instance types.
+	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	// Specifies whether to exclude the destination network instance IDs. Valid values:
+	//
+	// *   **false** (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
+	// *   **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
+	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
+	// The IDs of the source network instances to which the routes belong. The following network instance types are supported:
+	//
+	// *   VPC
+	// *   VBR
+	// *   CCN instance
+	// *   SAG instance
+	// *   The ID of the IPsec connection.
+	//
+	// You can enter at most 32 IDs.
+	MatchAsns []*int64 `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
+	// The community.
+	MatchCommunitySet []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
+	// The action to be performed on a route that meets all match conditions. Valid values:
+	//
+	// *   **Permit**: the route is permitted.
+	// *   **Deny**: the route is denied.
+	NextPriority *int32 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
+	// The type of route to be matched against the match condition. The following route types are supported:
+	//
+	// *   **System**: system routes that are automatically generated by the system.
+	// *   **Custom**: custom routes that are manually added.
+	// *   **BGP**: routes that are advertised over BGP.
+	//
+	// You can specify multiple route types.
+	OperateCommunitySet []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
+	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The community against which routes are matched.
+	//
+	// Specify the community in the format of n:m. Valid values of n and m: **1** to **65535**. Each community must comply with the RFC 1997 standard. The RFC 8092 standard that defines Border Gateway Protocol (BGP) large communities is not supported.
+	//
+	// You can specify at most 32 communities.
+	//
+	// >  If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
+	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	// The ID of the source route table.
+	PrependAsPath []*int64 `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
+	// The IDs of the source route tables from which routes are evaluated. You can enter at most 32 route table IDs.
+	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the route table of the transit router.
+	//
+	// If you do not specify a route table ID, the routing policy is automatically associated with the default route table of the transit router.
+	RouteTypes []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
 	// The IDs of the destination network instances to which the routes belong. The following network instance types are supported:
 	//
 	// *   VPC
@@ -2260,48 +2230,9 @@ type CreateCenRouteMapRequest struct {
 	// You can enter at most 32 IDs.
 	//
 	// >  The destination network instance IDs are valid only if the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
-	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude the destination network instance IDs. Valid values:
-	//
-	// *   **false** (default value): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
-	// *   **true**: A route meets the match condition if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the destination route tables to which routes are evaluated. You can enter at most 32 route table IDs.
-	//
-	// >  The destination route table IDs are valid only when the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to route tables in the current region.
-	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
-	// The action to be performed on a route that meets all match conditions. Valid values:
-	//
-	// *   **Permit**: the route is permitted.
-	// *   **Deny**: the route is denied.
-	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
-	// The type of IP address in the match condition. Valid values:
-	//
-	// *   **IPv4**: IPv4 address
-	// *   **IPv6**: IPv6 address
-	//
-	// This parameter can be empty. If no value is specified, all types of IP address are a match.
-	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
-	// The AS paths against which routes are matched.
-	//
-	// You can specify at most 32 AS numbers.
-	//
-	// >  Only the AS-SEQUENCE parameter is supported. The AS-SET, AS-CONFED-SEQUENCE, and AS-CONFED-SET parameters are not supported. In other words, only the AS number list is supported. Sets and sub-lists are not supported.
-	MatchAsns []*int64 `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
-	// The community against which routes are matched.
-	//
-	// Specify the community in the format of n:m. Valid values of n and m: **1** to **65535**. Each community must comply with the RFC 1997 standard. The RFC 8092 standard that defines Border Gateway Protocol (BGP) large communities is not supported.
-	//
-	// You can specify at most 32 communities.
-	//
-	// >  If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
-	MatchCommunitySet []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
-	// The priority of the routing policy that you want to associate with the current one.
-	//
-	// *   This parameter takes effect only when the **MapResult** parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
-	// *   The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
-	// *   The priority of the next routing policy must be lower than the priority of the current routing policy.
-	NextPriority *int32 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
+	SourceChildInstanceTypes []*string `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Repeated"`
+	// The ID of the routing policy.
+	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
 	// The community set on which actions are performed.
 	//
 	// Specify the community in the format of n:m. Valid values of n and m: **1** to **65535**. Each community must comply with RFC 1997. The RFC 8092 standard that defines BGP large communities is not supported.
@@ -2309,83 +2240,20 @@ type CreateCenRouteMapRequest struct {
 	// You can specify at most 32 communities.
 	//
 	// >  If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
-	OperateCommunitySet []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
-	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new priority of the route.
-	//
-	// Valid values: **1** to **100**. The default priority is **50**. A smaller value indicates a higher priority.
-	//
-	// This parameter specifies the action to be performed when a route meets the match condition.
-	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	// The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
-	//
-	// The AS paths vary based on the direction in which the routing policy is applied:
-	//
-	// *   If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied.
-	// *   If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition.
-	//
-	// This parameter specifies the action to be performed when a route meets the match condition. You can specify at most 32 AS numbers.
-	PrependAsPath []*int64 `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
-	// The priority of the routing policy. Valid values: **1** to **100**. A smaller value indicates a higher priority.
-	//
-	// >  You cannot specify the same priority for routing policies that apply in the same region and direction. The system matches routes against the match conditions of routing policies in descending order of priority. A smaller value indicates a higher priority. You must set the priorities to proper values.
-	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of route to be matched against the match condition. The following route types are supported:
-	//
-	// *   **System**: system routes that are automatically generated by the system.
-	// *   **Custom**: custom routes that are manually added.
-	// *   **BGP**: routes that are advertised over BGP.
-	//
-	// You can specify multiple route types.
-	RouteTypes []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
-	// The types of source network instance to which the routes belong. The following types of network instances are supported:
-	//
-	// *   **VPC**: VPC
-	// *   **VBR**: VBR
-	// *   **CCN**: CCN instance
-	// *   **VPN**: VPN gateway or IPsec connection
-	//     *   If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use BGP dynamic routing. Otherwise, this parameter cannot take effect.
-	//     *   This parameter takes effect if the IPsec connection is directly connected to a transit router.
-	//
-	// You can specify one or more network instance types.
-	SourceChildInstanceTypes []*string `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Repeated"`
-	// The IDs of the source network instances to which the routes belong. The following network instance types are supported:
-	//
-	// *   VPC
-	// *   VBR
-	// *   CCN instance
-	// *   SAG instance
-	// *   The ID of the IPsec connection.
-	//
-	// You can enter at most 32 IDs.
-	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude the source network instance IDs. Valid values:
-	//
-	// *   **false** (default value): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
-	// *   **true**: A route is a match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
 	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
+	// The priority of the routing policy that you want to associate with the current one.
+	//
+	// *   This parameter takes effect only when the **MapResult** parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
+	// *   The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
+	// *   The priority of the next routing policy must be lower than the priority of the current routing policy.
+	SourceRegionIds []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
+	// The ID of the region where the routing policy is applied.
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	SourceRegionIds []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
-	// The IDs of the source route tables from which routes are evaluated. You can enter at most 32 route table IDs.
 	SourceRouteTableIds []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
-	// The ID of the route table of the transit router.
-	//
-	// If you do not specify a route table ID, the routing policy is automatically associated with the default route table of the transit router.
+	// The type of destination network instance.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
-	// The direction in which the routing policy is applied. Valid values:
-	//
-	// *   **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
-	//
-	//     For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
-	//
-	// *   **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
-	//
-	//     For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions.
+	// The operation that you want to perform. Set the value to **CreateCenRouteMap**.
 	TransmitDirection *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -2563,9 +2431,7 @@ func (s *CreateCenRouteMapRequest) SetTransmitDirection(v string) *CreateCenRout
 }
 
 type CreateCenRouteMapResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the routing policy.
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -3132,7 +2998,7 @@ func (s *CreateTrafficMarkingPolicyResponse) SetBody(v *CreateTrafficMarkingPoli
 type CreateTransitRouteTableAggregationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -3159,7 +3025,10 @@ type CreateTransitRouteTableAggregationRequest struct {
 	// The name of the aggregate route.
 	//
 	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the name empty.
-	TransitRouteTableAggregationName  *string `json:"TransitRouteTableAggregationName,omitempty" xml:"TransitRouteTableAggregationName,omitempty"`
+	TransitRouteTableAggregationName *string `json:"TransitRouteTableAggregationName,omitempty" xml:"TransitRouteTableAggregationName,omitempty"`
+	// The scope of networks that you want to advertise the aggregate route.
+	//
+	// Set the value to **VPC**, which specified that the aggregate route is advertised to VPCs that are in associated forwarding relationship with a route table of the Enterprise Edition transit router and have route synchronization enabled.
 	TransitRouteTableAggregationScope *string `json:"TransitRouteTableAggregationScope,omitempty" xml:"TransitRouteTableAggregationScope,omitempty"`
 	// The ID of the route table of the Enterprise Edition transit router.
 	TransitRouteTableId *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
@@ -3276,52 +3145,19 @@ func (s *CreateTransitRouteTableAggregationResponse) SetBody(v *CreateTransitRou
 }
 
 type CreateTransitRouterRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
-	//
-	// *   **false** (default): disables multicast
-	// *   **true**: enables multicast
-	//
-	// The multicast feature is supported only in specific regions. You can call the [ListTransitRouterAvailableResource](~~261356~~) operation to query the regions that support multicast.
-	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
-	Tag []*CreateTransitRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The CIDR blocks of the transit router.
-	//
-	// You can add up to five CIDR blocks in each call. For more information about CIDR blocks of transit routers, see [CIDR blocks of transit routers](~~462635~~).
-	//
-	// > Only Enterprise Edition transit routers support CIDR blocks.
-	TransitRouterCidrList []*CreateTransitRouterRequestTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
-	// The description of the Enterprise Edition transit router.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	// The name of the Enterprise Edition transit router.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	CenId                    *string                                            `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken              *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                   *bool                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount             *string                                            `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                  *int64                                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                 *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount     *string                                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64                                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SupportMulticast         *bool                                              `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
+	Tag                      []*CreateTransitRouterRequestTag                   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterCidrList    []*CreateTransitRouterRequestTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
+	TransitRouterDescription *string                                            `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
+	TransitRouterName        *string                                            `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
 func (s CreateTransitRouterRequest) String() string {
@@ -3398,17 +3234,7 @@ func (s *CreateTransitRouterRequest) SetTransitRouterName(v string) *CreateTrans
 }
 
 type CreateTransitRouterRequestTag struct {
-	// The tag key.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3431,28 +3257,10 @@ func (s *CreateTransitRouterRequestTag) SetValue(v string) *CreateTransitRouterR
 }
 
 type CreateTransitRouterRequestTransitRouterCidrList struct {
-	// The CIDR block of the transit router.
-	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The description of the CIDR block.
-	//
-	// The description must be 1 to 256 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CIDR block.
-	//
-	// The name must be 1 to 128 characters in length.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
-	//
-	// *   **true** (default): yes
-	//
-	//         A value of true specifies that after you create a private VPN connection and add a route learning correlation for the private VPN connection, the system automatically adds the following route to the route table of the transit router that is in route learning correlation with the private VPN connection:
-	//
-	//           A blackhole route whose destination CIDR block is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
-	//
-	//           The blackhole route is advertised only to the route tables of the virtual border routers (VBRs) that are connected to the transit router.
-	//
-	// *   **false**: no
-	PublishCidrRoute *bool `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
+	Cidr             *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublishCidrRoute *bool   `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
 }
 
 func (s CreateTransitRouterRequestTransitRouterCidrList) String() string {
@@ -3484,52 +3292,19 @@ func (s *CreateTransitRouterRequestTransitRouterCidrList) SetPublishCidrRoute(v 
 }
 
 type CreateTransitRouterShrinkRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
-	//
-	// *   **false** (default): disables multicast
-	// *   **true**: enables multicast
-	//
-	// The multicast feature is supported only in specific regions. You can call the [ListTransitRouterAvailableResource](~~261356~~) operation to query the regions that support multicast.
-	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
-	Tag []*CreateTransitRouterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The CIDR blocks of the transit router.
-	//
-	// You can add up to five CIDR blocks in each call. For more information about CIDR blocks of transit routers, see [CIDR blocks of transit routers](~~462635~~).
-	//
-	// > Only Enterprise Edition transit routers support CIDR blocks.
-	TransitRouterCidrListShrink *string `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty"`
-	// The description of the Enterprise Edition transit router.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	// The name of the Enterprise Edition transit router.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	CenId                       *string                                `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken                 *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                      *bool                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                *string                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                     *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                    *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount        *string                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId             *int64                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SupportMulticast            *bool                                  `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
+	Tag                         []*CreateTransitRouterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterCidrListShrink *string                                `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty"`
+	TransitRouterDescription    *string                                `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
+	TransitRouterName           *string                                `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
 func (s CreateTransitRouterShrinkRequest) String() string {
@@ -3606,17 +3381,7 @@ func (s *CreateTransitRouterShrinkRequest) SetTransitRouterName(v string) *Creat
 }
 
 type CreateTransitRouterShrinkRequestTag struct {
-	// The tag key.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3639,9 +3404,7 @@ func (s *CreateTransitRouterShrinkRequestTag) SetValue(v string) *CreateTransitR
 }
 
 type CreateTransitRouterResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -4048,11 +3811,56 @@ func (s *CreateTransitRouterMulticastDomainResponse) SetBody(v *CreateTransitRou
 }
 
 type CreateTransitRouterPeerAttachmentRequest struct {
+	// The tags.
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// The tag keys of the resources.
+	//
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// You can specify at most 20 tag keys.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The ID of the request.
+	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// The tag values of the resources.
+	//
+	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
+	// The ID of the peer transit router.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The description of the inter-region connection.
+	//
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the inter-region connection.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
+	//
+	// *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
+	// *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	//
+	// **DataTransfer**: uses pay-by-data-transfer bandwidth.
+	PeerTransitRouterRegionId *string `json:"PeerTransitRouterRegionId,omitempty" xml:"PeerTransitRouterRegionId,omitempty"`
 	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	//
 	// *   **false** (default): no.
 	// *   **true**: yes.
-	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 614519
+	Tag []*CreateTransitRouterPeerAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// >  If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
+	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
 	//
 	// *   If you set **BandwidthType** to **BandwidthPackage**, this parameter specifies the bandwidth that is available for the inter-region connection.
@@ -4060,53 +3868,8 @@ type CreateTransitRouterPeerAttachmentRequest struct {
 	// <!---->
 	//
 	// *   If you set **BandwidthType** to **DataTransfer**, this parameter specifies the bandwidth limit of the inter-region connection.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
-	//
-	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
-	//
-	// **DataTransfer**: uses pay-by-data-transfer bandwidth.
-	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
-	//
-	// >  If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
-	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
-	//
-	// *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
-	// *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the peer transit router.
-	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
-	// The ID of the region where the peer transit router is deployed.
-	PeerTransitRouterRegionId *string `json:"PeerTransitRouterRegionId,omitempty" xml:"PeerTransitRouterRegionId,omitempty"`
-	// The ID of the region where the local Enterprise Edition transit router is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
-	Tag []*CreateTransitRouterPeerAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The description of the inter-region connection.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The name of the inter-region connection.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the local Enterprise Edition transit router.
+	// The ID of the region where the peer transit router is deployed.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -4209,17 +3972,25 @@ func (s *CreateTransitRouterPeerAttachmentRequest) SetTransitRouterId(v string) 
 }
 
 type CreateTransitRouterPeerAttachmentRequestTag struct {
-	// The tag keys of the resources.
-	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
+	// master
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
+	// ## Background information
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
 	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+	//
+	// - **Allocate bandwidth resources from a bandwidth plan**:  You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createcenbandwidthpackage).
+	//
+	// - **Use pay-by-data-transfer bandwidth resources**:  You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Cross-region data transfers](https://www.alibabacloud.com/help/en/cloud-data-transmission/latest/cross-region-data-transfers).
+	//
+	//
+	// ## Usage notes
+	//
+	// **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns the inter-region connection ID but the operation is still being performed in the system background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
+	//
+	// - If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
+	// - If an inter-region connection is in the **Attached** state, the inter-region connection is created.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4242,9 +4013,12 @@ func (s *CreateTransitRouterPeerAttachmentRequestTag) SetValue(v string) *Create
 }
 
 type CreateTransitRouterPeerAttachmentResponseBody struct {
-	// The ID of the request.
+	// The ID of the region where the peer transit router is deployed.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the inter-region connection.
+	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
+	//
+	// *   **false** (default): checks the request. If the request passes the check, the inter-region connection is created.
+	// *   **true**: checks the request but does not perform the operation. The inter-region connection is not created after the request passes the check. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -4298,7 +4072,7 @@ func (s *CreateTransitRouterPeerAttachmentResponse) SetBody(v *CreateTransitRout
 type CreateTransitRouterPrefixListAssociationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -4457,40 +4231,18 @@ func (s *CreateTransitRouterPrefixListAssociationResponse) SetBody(v *CreateTran
 }
 
 type CreateTransitRouterRouteEntryRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The description of the route.
-	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
-	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
-	// The destination CIDR block of the route.
+	ClientToken                                 *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                                      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                                *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount                        *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                             *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterRouteEntryDescription          *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
-	// The name of the route.
-	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
-	TransitRouterRouteEntryName *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
-	// The ID of the network instance connection that you want to specify as the next hop.
-	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
-	// The type of the next hop. Valid values:
-	//
-	// *   **BlackHole**: routes network traffic to a black hole. All packets that match this route are dropped. If you select this option, you do not need to specify the next hop information.
-	// *   **Attachment**: routes network traffic to a network instance connection. If you select this option, you must specify the ID of the network instance connection. All packets that match this route are routed to the specified network instance connection.
-	TransitRouterRouteEntryNextHopType *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
-	// The route table IDs of the Enterprise Edition transit router.
-	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
+	TransitRouterRouteEntryName                 *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
+	TransitRouterRouteEntryNextHopId            *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
+	TransitRouterRouteEntryNextHopType          *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
+	TransitRouterRouteTableId                   *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
 func (s CreateTransitRouterRouteEntryRequest) String() string {
@@ -4562,9 +4314,7 @@ func (s *CreateTransitRouterRouteEntryRequest) SetTransitRouterRouteTableId(v st
 }
 
 type CreateTransitRouterRouteEntryResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route.
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
 }
 
@@ -4616,36 +4366,17 @@ func (s *CreateTransitRouterRouteEntryResponse) SetBody(v *CreateTransitRouterRo
 }
 
 type CreateTransitRouterRouteTableRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
-	DryRun               *bool                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteTableOptions    *CreateTransitRouterRouteTableRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
-	Tag []*CreateTransitRouterRouteTableRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the Enterprise Edition transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The description of the custom route table.
-	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
-	TransitRouterRouteTableDescription *string `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
-	// The name of the custom route table.
-	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
-	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
+	ClientToken                        *string                                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool                                                  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                       *string                                                `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount               *string                                                `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64                                                 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteTableOptions                  *CreateTransitRouterRouteTableRequestRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
+	Tag                                []*CreateTransitRouterRouteTableRequestTag             `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterId                    *string                                                `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterRouteTableDescription *string                                                `json:"TransitRouterRouteTableDescription,omitempty" xml:"TransitRouterRouteTableDescription,omitempty"`
+	TransitRouterRouteTableName        *string                                                `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 }
 
 func (s CreateTransitRouterRouteTableRequest) String() string {
@@ -4729,17 +4460,7 @@ func (s *CreateTransitRouterRouteTableRequestRouteTableOptions) SetMultiRegionEC
 }
 
 type CreateTransitRouterRouteTableRequestTag struct {
-	// The tag key.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4762,9 +4483,7 @@ func (s *CreateTransitRouterRouteTableRequestTag) SetValue(v string) *CreateTran
 }
 
 type CreateTransitRouterRouteTableResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the custom route table.
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
@@ -4829,14 +4548,14 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
+	// Specifies whether to perform a dry run. Default values:
 	//
 	// *   **false** (default): performs a dry run and sends the request.
 	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the VBR.
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5035,52 +4754,38 @@ func (s *CreateTransitRouterVbrAttachmentResponse) SetBody(v *CreateTransitRoute
 }
 
 type CreateTransitRouterVpcAttachmentRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// 是否使企业版转发路由器自动发布路由到VPC实例。
+	//
+	// - **false**（默认值）：否。
+	// - **true**：是。
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// PARAMETER_ILLEGAL_RESOURCE_REGIONID
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method. Valid values: The default value is **POSTPAY**, which specifies the pay-as-you-go billing method.
+	// IllegalParam.ZoneId
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+	// You are not authorized to create the service linked role. Role Name: AliyunServiceRoleForCEN. Service Name: cen.aliyuncs.com. Make sure that the user has been granted the ram:CreateServiceLinkedRole permission.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// The specified ZoneId is illegal.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the VPC is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The Specified Parameter RegionId is illegal
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
+	// InvalidTransitRouterId.NotFound
 	Tag []*CreateTransitRouterVpcAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The description of the VPC connection.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// MissingParam.CenIdOrRegionId
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The name of the VPC connection.
-	//
-	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
+	// MissingParam.CenId or RegionId
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// IllegalParam.RegionId
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VPC.
+	// Either CenId or RegionId must be specified.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs. The default value is the ID of the current Alibaba Cloud account.
-	//
-	// > If the network instance and CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+	// IllegalParam.ZoneId
 	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// A vSwitch in a zone of the Enterprise Edition transit router.
-	//
-	// You can specify at most 10 vSwitches in each call.
+	// IllegalParam.ChargeType
 	ZoneMappings []*CreateTransitRouterVpcAttachmentRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -5090,6 +4795,11 @@ func (s CreateTransitRouterVpcAttachmentRequest) String() string {
 
 func (s CreateTransitRouterVpcAttachmentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTransitRouterVpcAttachmentRequest) SetAutoPublishRouteEnabled(v bool) *CreateTransitRouterVpcAttachmentRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
 }
 
 func (s *CreateTransitRouterVpcAttachmentRequest) SetCenId(v string) *CreateTransitRouterVpcAttachmentRequest {
@@ -5173,17 +4883,9 @@ func (s *CreateTransitRouterVpcAttachmentRequest) SetZoneMappings(v []*CreateTra
 }
 
 type CreateTransitRouterVpcAttachmentRequestTag struct {
-	// The tag key.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
+	// The specified  TransitRouterId is not found.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// INVALID_OPERATION_RESOURCE_ATTACHMENT_STATUS
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5206,15 +4908,9 @@ func (s *CreateTransitRouterVpcAttachmentRequestTag) SetValue(v string) *CreateT
 }
 
 type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
-	// A vSwitch in a zone of the Enterprise Edition transit router.
-	//
-	// You can specify vSwitches for at most 10 zones in each call.
+	// The specified ChargeType is illegal.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone supported by Enterprise Edition transit routers.
-	//
-	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
-	//
-	// You can specify at most 10 zones in each call.
+	// InvalidTransitRouterId.NotFound
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5237,9 +4933,9 @@ func (s *CreateTransitRouterVpcAttachmentRequestZoneMappings) SetZoneId(v string
 }
 
 type CreateTransitRouterVpcAttachmentResponseBody struct {
-	// The ID of the request.
+	// INVALID_VPC_STATUS
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPC connection.
+	// The resource is not in a valid state for the attachment operation.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -5291,10 +4987,10 @@ func (s *CreateTransitRouterVpcAttachmentResponse) SetBody(v *CreateTransitRoute
 }
 
 type CreateTransitRouterVpnAttachmentRequest struct {
-	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN connection. Valid values:
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	//
-	// *   **true** (default): yes.
-	// *   **false**: no.
+	// *   **true** (default): yes
+	// *   **false**: no
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
@@ -5304,7 +5000,7 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -5321,7 +5017,7 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A list of tags.
+	// The tags.
 	//
 	// You can specify at most 20 tags in each call.
 	Tag []*CreateTransitRouterVpnAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -5335,14 +5031,14 @@ type CreateTransitRouterVpnAttachmentRequest struct {
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the IPsec-VPN connection.
+	// The ID of the IPsec-VPN attachment.
 	VpnId *string `json:"VpnId,omitempty" xml:"VpnId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 	//
 	// *   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
 	// *   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId *int64 `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
-	// The ID of a zone in the current region.
+	// The ID of the zone in the current region.
 	//
 	// Resources are deployed in the specified zone.
 	Zone []*CreateTransitRouterVpnAttachmentRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
@@ -5444,7 +5140,7 @@ func (s *CreateTransitRouterVpnAttachmentRequest) SetZone(v []*CreateTransitRout
 type CreateTransitRouterVpnAttachmentRequestTag struct {
 	// The tag key.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag keys cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -5475,7 +5171,7 @@ func (s *CreateTransitRouterVpnAttachmentRequestTag) SetValue(v string) *CreateT
 }
 
 type CreateTransitRouterVpnAttachmentRequestZone struct {
-	// The ID of the zone in which you want to create the instance.
+	// The zone ID of the read-only instance.
 	//
 	// You can call the [ListTransitRouterAvailableResource](~~261356~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -5764,7 +5460,6 @@ func (s *DeleteCenResponse) SetBody(v *DeleteCenResponseBody) *DeleteCenResponse
 }
 
 type DeleteCenBandwidthPackageRequest struct {
-	// The ID of the bandwidth plan that you want to delete.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5806,7 +5501,6 @@ func (s *DeleteCenBandwidthPackageRequest) SetResourceOwnerId(v int64) *DeleteCe
 }
 
 type DeleteCenBandwidthPackageResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5857,16 +5551,16 @@ type DeleteCenChildInstanceRouteEntryToAttachmentRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The destination CIDR block of the route.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// Specifies whether to perform a precheck to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
 	//
-	// *   **false**: performs a precheck. The route is deleted after the request passes the precheck. This is the default value.
-	// *   **true**: performs a precheck. The route is not deleted. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
+	// *   **false**: performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	//
 	// >  This parameter is not in use.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -5986,24 +5680,24 @@ func (s *DeleteCenChildInstanceRouteEntryToAttachmentResponse) SetBody(v *Delete
 }
 
 type DeleteCenChildInstanceRouteEntryToCenRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the network instance belongs.
 	//
-	// > If the network instance belongs to another Alibaba Cloud account, this parameter is required.
+	// > If the network instance and the CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
 	ChildInstanceAliUid *int64 `json:"ChildInstanceAliUid,omitempty" xml:"ChildInstanceAliUid,omitempty"`
 	// The ID of the network instance.
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
 	// *   **VPC**: a virtual private cloud (VPC)
 	// *   **VBR**: a virtual border router (VBR)
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The destination CIDR block of the route entry.
+	// The destination CIDR block of the route.
 	//
 	// Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
@@ -6126,23 +5820,13 @@ func (s *DeleteCenChildInstanceRouteEntryToCenResponse) SetBody(v *DeleteCenChil
 }
 
 type DeleteCenInterRegionTrafficQosPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default value: false. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the QoS policy.
-	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
+	TrafficQosPolicyId   *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
 }
 
 func (s DeleteCenInterRegionTrafficQosPolicyRequest) String() string {
@@ -6189,7 +5873,6 @@ func (s *DeleteCenInterRegionTrafficQosPolicyRequest) SetTrafficQosPolicyId(v st
 }
 
 type DeleteCenInterRegionTrafficQosPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6236,20 +5919,10 @@ func (s *DeleteCenInterRegionTrafficQosPolicyResponse) SetBody(v *DeleteCenInter
 }
 
 type DeleteCenInterRegionTrafficQosQueueRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the queue.
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	QosQueueId           *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6299,7 +5972,6 @@ func (s *DeleteCenInterRegionTrafficQosQueueRequest) SetResourceOwnerId(v int64)
 }
 
 type DeleteCenInterRegionTrafficQosQueueResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6451,21 +6123,16 @@ func (s *DeleteCenRouteMapResponse) SetBody(v *DeleteCenRouteMapResponseBody) *D
 }
 
 type DeleteFlowlogRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// Indicates whether the call is successful.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the flow log.
+	// *   **true**: yes
+	// *   **false**: no
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the flow log is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The ID of the request.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6520,13 +6187,8 @@ func (s *DeleteFlowlogRequest) SetResourceOwnerId(v int64) *DeleteFlowlogRequest
 }
 
 type DeleteFlowlogResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFlowlogResponseBody) String() string {
@@ -6581,7 +6243,7 @@ type DeleteRouteServiceInCenRequest struct {
 	//
 	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The IP addresses or CIDR blocks of the cloud service.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -6806,25 +6468,14 @@ func (s *DeleteTrafficMarkingPolicyResponse) SetBody(v *DeleteTrafficMarkingPoli
 }
 
 type DeleteTransitRouteTableAggregationRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the aggregate route.
+	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount             *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
-	TransitRouteTableId *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
+	TransitRouteTableId              *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
 }
 
 func (s DeleteTransitRouteTableAggregationRequest) String() string {
@@ -6876,7 +6527,6 @@ func (s *DeleteTransitRouteTableAggregationRequest) SetTransitRouteTableId(v str
 }
 
 type DeleteTransitRouteTableAggregationResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6923,23 +6573,13 @@ func (s *DeleteTransitRouteTableAggregationResponse) SetBody(v *DeleteTransitRou
 }
 
 type DeleteTransitRouterRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DeleteTransitRouterRequest) String() string {
@@ -6986,7 +6626,6 @@ func (s *DeleteTransitRouterRequest) SetTransitRouterId(v string) *DeleteTransit
 }
 
 type DeleteTransitRouterResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7033,30 +6672,23 @@ func (s *DeleteTransitRouterResponse) SetBody(v *DeleteTransitRouterResponseBody
 }
 
 type DeleteTransitRouterCidrRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+	// The ID of the transit router.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
-	//
-	// *   **true**: prechecks the request but does not delete the CIDR block. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the precheck, the CIDR block is deleted.
+	// The operation that you want to perform. Set the value to **DeleteTransitRouterCidr**.
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the transit router is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The ID of the request.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the region where the transit router is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
 	// The ID of the transit router CIDR block.
 	//
 	// You can call [ListTransitRouterCidr](~~462772~~) to query the ID of a transit router CIDR block.
-	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
-	// The ID of the transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -7114,7 +6746,6 @@ func (s *DeleteTransitRouterCidrRequest) SetTransitRouterId(v string) *DeleteTra
 }
 
 type DeleteTransitRouterCidrResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7269,23 +6900,14 @@ func (s *DeleteTransitRouterMulticastDomainResponse) SetBody(v *DeleteTransitRou
 }
 
 type DeleteTransitRouterPeerAttachmentRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run to check information such as the permissions and instance status. Valid values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Force                *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the inter-region connection.
+	// Deletes an inter-region connection from an Enterprise Edition transit router.
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Force                     *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -7338,7 +6960,6 @@ func (s *DeleteTransitRouterPeerAttachmentRequest) SetTransitRouterAttachmentId(
 }
 
 type DeleteTransitRouterPeerAttachmentResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7387,25 +7008,25 @@ func (s *DeleteTransitRouterPeerAttachmentResponse) SetBody(v *DeleteTransitRout
 type DeleteTransitRouterPrefixListAssociationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** of each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to check the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: prechecks the request but does not disassociate the route table from the prefix list. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): prechecks the request. If the request passes the check, the route table is disassociated from the prefix list.
+	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the task.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the next hop connection.
+	// The ID of the next hop.
 	//
-	// >  If **NextHopType** is set to **BlackHole**, set this parameter to **BlackHole**.
+	// > If **NextHopType** is set to **BlackHole**, you must set this parameter to **BlackHole**.
 	NextHop *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	// The type of the next hop. Valid values:
 	//
-	// *   **BlackHole**: specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
-	// *   **VPC**: specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
-	// *   **VBR**: specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
-	// *   **TR**: specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
+	// *   **BlackHole**: All the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// *   **VPC**: The next hop of the CIDR blocks in the prefix list is a VPC connection.
+	// *   **VBR**: The next hop of the CIDR blocks in the prefix list is a VBR connection.
+	// *   **TR**: The next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType  *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7682,14 +7303,14 @@ func (s *DeleteTransitRouterRouteEntryResponse) SetBody(v *DeleteTransitRouterRo
 type DeleteTransitRouterRouteTableRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request may be different.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the custom route table is deleted.
-	// *   **true**: performs a dry run. The system checks whether the required parameters are set, and whether the request syntax is valid. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7912,9 +7533,9 @@ func (s *DeleteTransitRouterVbrAttachmentResponse) SetBody(v *DeleteTransitRoute
 type DeleteTransitRouterVpcAttachmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+	// > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Default values:
 	//
@@ -8032,22 +7653,25 @@ func (s *DeleteTransitRouterVpcAttachmentResponse) SetBody(v *DeleteTransitRoute
 type DeleteTransitRouterVpnAttachmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: prechecks the request but does not delete the VPN connection. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. After the request passes the precheck, the VPN connection is deleted.
+	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to force to delete the a VPN connection for the Enterprise Edition transit router.
+	// Specifies whether to forcefully delete the VPN attachment. Valid values:
+	//
+	// *   **false** (default): checks the related resources, such as associated forwarding correlations and route learning policies, before the VPN attachment is deleted. If such a resource exists, the VPN attachment is not deleted and an error message is returned.
+	// *   **true**: deletes the VPN attachment and the related resources.
 	Force                *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPN connection.
+	// The ID of the VPN attachment.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -8276,26 +7900,21 @@ func (s *DeregisterTransitRouterMulticastGroupMembersResponse) SetBody(v *Deregi
 }
 
 type DeregisterTransitRouterMulticastGroupSourcesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether only to check the request. Valid values:
 	//
 	// *   **true**: only prechecks the API request. The multicast source is not deleted. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false** (default): sends the request. After the request passes the precheck, the multicast source is deleted.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the multicast group to which the multicast source belongs.
 	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of the multicast sources. You can create only one multicast source in a multicast group.
-	//
-	// >  This parameter is required.
+	// Deletes a multicast source.
 	NetworkInterfaceIds  []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the multicast group to which the multicast source belongs.
+	// The operation that you want to perform. Set the value to **DeregisterTransitRouterMulticastGroupSources**.
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
 }
 
@@ -8353,7 +7972,6 @@ func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetTransitRouterMu
 }
 
 type DeregisterTransitRouterMulticastGroupSourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8400,24 +8018,14 @@ func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *Deregi
 }
 
 type DescribeCenAttachedChildInstanceAttributeRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance that is attached to the CEN instance.
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: VPC
-	// *   **VBR**: VBR
-	// *   **CCN**: CCN instance
-	ChildInstanceType    *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeRequest) String() string {
@@ -8469,34 +8077,16 @@ func (s *DescribeCenAttachedChildInstanceAttributeRequest) SetResourceOwnerId(v 
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the network instance was attached to the CEN instance.
-	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
-	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
-	// The ID of the network instance.
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The name of the network instance.
-	ChildInstanceName *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
-	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: VPC
-	// *   **VBR**: VBR
-	// *   **CCN**: CCN instance
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the network instance is attached to the CEN instance. Valid values:
-	//
-	// *   **Attaching**: being attached to the CEN instance.
-	// *   **Attached**: attached to the CEN instance.
-	// *   **Detaching**: being detached from the CEN instance.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CenId                   *string                                                                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChildInstanceAttachTime *string                                                                       `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
+	ChildInstanceAttributes *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes `json:"ChildInstanceAttributes,omitempty" xml:"ChildInstanceAttributes,omitempty" type:"Struct"`
+	ChildInstanceId         *string                                                                       `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceName       *string                                                                       `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
+	ChildInstanceOwnerId    *int64                                                                        `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceRegionId   *string                                                                       `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceType       *string                                                                       `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	RequestId               *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status                  *string                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponseBody) String() string {
@@ -8514,6 +8104,11 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetCenId(v strin
 
 func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceAttachTime(v string) *DescribeCenAttachedChildInstanceAttributeResponseBody {
 	s.ChildInstanceAttachTime = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetChildInstanceAttributes(v *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) *DescribeCenAttachedChildInstanceAttributeResponseBody {
+	s.ChildInstanceAttributes = v
 	return s
 }
 
@@ -8552,6 +8147,98 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBody) SetStatus(v stri
 	return s
 }
 
+type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes struct {
+	CidrBlock           *string                                                                                          `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Ipv6CidrBlock       *string                                                                                          `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6CidrBlocks      *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks      `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
+	SecondaryCidrBlocks *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) SetCidrBlock(v string) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) SetIpv6CidrBlock(v string) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) SetIpv6CidrBlocks(v *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes {
+	s.Ipv6CidrBlocks = v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes) SetSecondaryCidrBlocks(v *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes {
+	s.SecondaryCidrBlocks = v
+	return s
+}
+
+type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks struct {
+	Ipv6CidrBlock []*DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock `json:"ipv6CidrBlock,omitempty" xml:"ipv6CidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks) SetIpv6CidrBlock(v []*DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks {
+	s.Ipv6CidrBlock = v
+	return s
+}
+
+type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock struct {
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) SetIpv6CidrBlock(v string) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) SetIpv6Isp(v string) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock {
+	s.Ipv6Isp = &v
+	return s
+}
+
+type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks struct {
+	SecondaryCidrBlock []*string `json:"secondaryCidrBlock,omitempty" xml:"secondaryCidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks) SetSecondaryCidrBlock(v []*string) *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks {
+	s.SecondaryCidrBlock = v
+	return s
+}
+
 type DescribeCenAttachedChildInstanceAttributeResponse struct {
 	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -8582,26 +8269,15 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponse) SetBody(v *DescribeC
 }
 
 type DescribeCenAttachedChildInstancesRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **VBR**: virtual border router (VBR)
-	// *   **CCN**: Cloud Connect Network (CCN) instance
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstancesRequest) String() string {
@@ -8658,16 +8334,11 @@ func (s *DescribeCenAttachedChildInstancesRequest) SetResourceOwnerId(v int64) *
 }
 
 type DescribeCenAttachedChildInstancesResponseBody struct {
-	// The information about the network instances.
 	ChildInstances *DescribeCenAttachedChildInstancesResponseBodyChildInstances `json:"ChildInstances,omitempty" xml:"ChildInstances,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber     *int32                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponseBody) String() string {
@@ -8721,30 +8392,13 @@ func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) SetChildIn
 }
 
 type DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the network instance was attached to the CEN instance.
-	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
-	// The ID of the network instance.
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
-	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: VPC
-	// *   **VBR**: VBR
-	// *   **CCN**: CCN instance
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The status of the network instance. Valid values:
-	//
-	// *   **Attaching**: The network instance is being created on the transit router.
-	// *   **Attached**: The network instance has been created on the transit router.
-	// *   **Detaching**: The network instance is being deleted from the transit router.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceRegionId   *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceType       *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) String() string {
@@ -9377,7 +9031,7 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table of the network instance.
+	// The ID of the route table of the network instance. If you do not specify a route table ID, the system queries the routes in the system route tables of the VPCs by default.
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
@@ -10167,13 +9821,15 @@ func (s *DescribeCenGeographicSpansResponse) SetBody(v *DescribeCenGeographicSpa
 }
 
 type DescribeCenInterRegionBandwidthLimitsRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The operation that you want to perform. Set the value to **DescribeCenInterRegionBandwidthLimits**.
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The connected areas.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: **10**. Valid values: **1** to **50**.
+	// The ID of the local region.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10223,15 +9879,15 @@ func (s *DescribeCenInterRegionBandwidthLimitsRequest) SetResourceOwnerId(v int6
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
-	// The list of cross-region connections.
+	// The ID of the peer region.
 	CenInterRegionBandwidthLimits *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The ID of the CEN instance.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of the page to return. Default value: **1**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The bandwidth limit of the cross-region connection. Unit: Mbit/s.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The list of cross-region connections.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10286,24 +9942,13 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit struct {
-	// The bandwidth limit of the cross-region connection. Unit: Mbit/s.
-	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	// The ID of the bandwidth plan.
+	BandwidthLimit     *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The connected areas.
-	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// The ID of the local region.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The ID of the peer region.
-	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	// The status of the bandwidth of the cross-region connection. Valid values:
-	//
-	// *   **Active**: The bandwidth limit of the cross-region connection is effective.
-	// *   **Modifying**: The bandwidth limit of the cross-region connection is being changed.
+	CenId              *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	GeographicSpanId   *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	LocalRegionId      *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	// Queries the bandwidth limits of cross-region connections.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10448,7 +10093,7 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The IP address of the DNS server used by PrivateZone.
 	PrivateZoneDnsServers *string `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
-	// The configuration details of PrivateZone.
+	// The detailed configuration of PrivateZone.
 	PrivateZoneInfos *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10521,7 +10166,7 @@ type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo str
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
 	// The ID of the region where PrivateZone is deployed.
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the virtual private cloud (VPC) that is associated with PrivateZone.
+	// The ID of the VPC that is associated with PrivateZone.
 	HostVpcId *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	// The status of PrivateZone. Valid values:
 	//
@@ -10589,20 +10234,6 @@ func (s *DescribeCenPrivateZoneRoutesResponse) SetBody(v *DescribeCenPrivateZone
 }
 
 type DescribeCenRegionDomainRouteEntriesRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region that you want to query.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the routes that you want to query. Valid values:
 	//
 	// *   **Active** (default value): active routes
@@ -10610,6 +10241,23 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	// *   **Rejected**: rejected routes
 	// *   **Prohibited**: prohibited routes
 	// *   **All**: all routes
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the CEN instance.
+	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region where the route map is applied.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Whether the route can be advertised to other regions. Valid values:
+	//
+	// - **Active**: The route can be advertised to other regions.
+	// - **Prohibited**: The route cannot be advertised to other regions.
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the region that you want to query.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10667,15 +10315,20 @@ func (s *DescribeCenRegionDomainRouteEntriesRequest) SetStatus(v string) *Descri
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBody struct {
-	// The array of routes.
+	// The status of the route. Valid values:
+	//
+	// - **Active**: The route is active.
+	// - **Candidate**: The route is a standby route.
+	// - **Rejected**: The route is rejected.
+	// - **Prohibited**: The route is prohibited.
 	CenRouteEntries *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The route maps that the routes match in the outbound direction.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The ID of the route map.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The number of the page to return. Default value: **1**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The ID of the instance specified as the next hop in the route.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10730,48 +10383,38 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) SetCenR
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
-	// The AS paths of the routes.
 	AsPaths *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
-	// The route maps that the routes match in the outbound direction.
+	// Queries the routes of a Cloud Enterprise Network (CEN) instance in a specified region.
 	CenOutRouteMapRecords *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords `json:"CenOutRouteMapRecords,omitempty" xml:"CenOutRouteMapRecords,omitempty" type:"Struct"`
-	// The route maps that the routes match in the inbound direction.
+	// The number of entries returned per page.
 	CenRouteMapRecords *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
-	// The community attributes of the routes.
-	Communities *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
-	// The destination CIDR block of the route.
+	Communities        *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities        `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
+	// The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the instance specified as the next hop in the route.
+	// The priority of the route.
+	//
+	// > A smaller value indicates a higher priority.
 	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The ID of the region where the network instance specified as the next hop in the route belongs.
-	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
 	// The type of the network instance specified as the next hop in the route.
 	//
 	// - **VPC**
 	// - **VBR**
 	// - **CCN**
 	// - **local_service**: system route. No next hop is specified.
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The priority of the route.
-	//
-	// > A smaller value indicates a higher priority.
-	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	// The status of the route. Valid values:
-	//
-	// - **Active**: The route is active.
-	// - **Candidate**: The route is a standby route.
-	// - **Rejected**: The route is rejected.
-	// - **Prohibited**: The route is prohibited.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether the route can be advertised to other regions. Valid values:
-	//
-	// - **Active**: The route can be advertised to other regions.
-	// - **Prohibited**: The route cannot be advertised to other regions.
-	ToOtherRegionStatus *string `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
+	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
 	// The type of the route. Valid values:
 	//
 	// - **CEN**: route that is advertised through CEN
 	// - **Custom**: custom route
 	// - **System**: system route
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The page number of the returned page.
+	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	// The AS paths of the routes.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the route map.
+	ToOtherRegionStatus *string `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
+	// The destination CIDR block of the route.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10878,9 +10521,9 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord struct {
-	// The ID of the region where the route map is applied.
+	// 312501
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the route map.
+	// DescribeCenRegionDomainRouteEntries
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -10920,9 +10563,9 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
-	// The ID of the region where the route map is applied.
+	// The ID of the request.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the route map.
+	// The ID of the region where the network instance specified as the next hop in the route belongs.
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -11688,25 +11331,21 @@ func (s *DescribeCenRouteMapsResponse) SetBody(v *DescribeCenRouteMapsResponseBo
 }
 
 type DescribeCenVbrHealthCheckRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the VBR.
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the CEN instance.
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VBR.
+	// The number of the page to return. Default value: **1**.
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR.
-	//
-	// >  The parameter is required if the VBR and the CEN instance belong to different Alibaba Cloud accounts.
-	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
 	// The ID of the region where the VBR is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeCenVbrHealthCheck**.
 	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
 }
 
@@ -11769,15 +11408,25 @@ func (s *DescribeCenVbrHealthCheckRequest) SetVbrInstanceRegionId(v string) *Des
 }
 
 type DescribeCenVbrHealthCheckResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The health check configuration of the VBR.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Indicates whether probing is enabled. Valid values:
+	//
+	// *   **true**: yes
+	//
+	//     If probing is enabled, the system does not switch to another route when the detected route is not reachable.
+	//
+	// *   **false**: no
+	//
+	//     If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the CEN instance.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the VBR.
+	//
+	// >  The parameter is required if the VBR and the CEN instance belong to different Alibaba Cloud accounts.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
 	VbrHealthChecks *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks `json:"VbrHealthChecks,omitempty" xml:"VbrHealthChecks,omitempty" type:"Struct"`
 }
 
@@ -11832,29 +11481,18 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) SetVbrHealthCheck
 }
 
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time interval at which probe packets are sent during the health check. Unit: seconds.
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// Indicates whether probing is enabled. Valid values:
-	//
-	// *   **true**: yes
-	//
-	//     If probing is enabled, the system does not switch to another route when the detected route is not reachable.
-	//
-	// *   **false**: no
-	//
-	//     If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
-	HealthCheckOnly *bool `json:"HealthCheckOnly,omitempty" xml:"HealthCheckOnly,omitempty"`
-	// The source IP address of the health check.
+	// The number of probe packets that are sent during the health check.
+	CenId               *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckOnly     *bool   `json:"HealthCheckOnly,omitempty" xml:"HealthCheckOnly,omitempty"`
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
 	// The destination IP address of the health check.
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	// The number of probe packets that are sent during the health check.
+	// The ID of the request.
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The ID of the VBR.
+	// The source IP address of the health check.
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The number of entries returned per page.
 	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
 }
 
@@ -12877,19 +12515,10 @@ func (s *DescribeFlowlogsResponse) SetBody(v *DescribeFlowlogsResponseBody) *Des
 }
 
 type DescribeGeographicRegionMembershipRequest struct {
-	// The ID of the area that you want to query. Valid values:
-	//
-	// *   **china**: the Chinese mainland
-	// *   **asia-pacific**: Asia Pacific
-	// *   **europe**: Europe
-	// *   **australia**: Australia
-	// *   **north-america**: North America
-	GeographicRegionId *string `json:"GeographicRegionId,omitempty" xml:"GeographicRegionId,omitempty"`
-	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: **10**. Valid values: **1** to **50**.
+	GeographicRegionId   *string `json:"GeographicRegionId,omitempty" xml:"GeographicRegionId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12939,16 +12568,11 @@ func (s *DescribeGeographicRegionMembershipRequest) SetResourceOwnerId(v int64) 
 }
 
 type DescribeGeographicRegionMembershipResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of regions.
-	RegionIds *DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds  *DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeGeographicRegionMembershipResponseBody) String() string {
@@ -13002,9 +12626,6 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) SetRegionId(v 
 }
 
 type DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId struct {
-	// The ID of the region.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13053,28 +12674,25 @@ func (s *DescribeGeographicRegionMembershipResponse) SetBody(v *DescribeGeograph
 type DescribeGrantRulesToCenRequest struct {
 	// The ID of the CEN instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **100**.
+	// The type of the network instance. Valid values:
 	//
-	// - If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** in the response indicates the total number of entries.
-	// - If a value is specified for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
+	// *   **VPN**: IPsec-VPN connection
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The type of the network instance. Valid values:
 	//
-	// - If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// - If a subsequent query is to be sent, set the value to the value of **NextToken** that was returned from the last call.
+	// *   **VPC**: VPC
+	// *   **VBR**: VBR
+	// *   **CCN**: CCN instance
+	// *   **VPN**: IPsec-VPN connection
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// - **VPC**: virtual private cloud (VPC)
-	// - **VBR**: virtual border router (VBR)
-	// - **CCN**: Cloud Connect Network (CCN) instance
-	// - **VPN**: IPsec-VPN connection
+	// The ID of the Alibaba Cloud account to which the network instance belongs.
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// The number of entries returned.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13134,18 +12752,13 @@ func (s *DescribeGrantRulesToCenRequest) SetResourceOwnerId(v int64) *DescribeGr
 }
 
 type DescribeGrantRulesToCenResponseBody struct {
-	// The permissions that are granted to the CEN instance.
+	// The operation that you want to perform. Set the value to **DescribeGrantRulesToCen**.
 	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
-	// The number of entries returned on each page.
-	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
-	//
-	// - If **NextToken** was not returned, it indicates that no additional results exist.
-	// - If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	MaxResults *int64                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the CEN instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// Queries the network instances of other Alibaba Cloud accounts that have granted permissions to a Cloud Enterprise Network (CEN) instance.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13200,22 +12813,25 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRules) SetGrantRule(v []*Descri
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The ID of the network instance.
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
-	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
+	// The number of entries to return on each page. Valid values: **1** to **100**.
 	//
-	// *   **VPC**: VPC
-	// *   **VBR**: VBR
-	// *   **CCN**: CCN instance
-	// *   **VPN**: IPsec-VPN connection
+	// - If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** in the response indicates the total number of entries.
+	// - If a value is specified for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the request.
+	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The ID of the region where the network instance is deployed.
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The ID of the region where the network instance is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	// The token that determines the start point of the query. Valid values:
+	//
+	// - If this is your first query or no subsequent query is to be sent, ignore this parameter.
+	// - If a subsequent query is to be sent, set the value to the value of **NextToken** that was returned from the last call.
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
@@ -13297,8 +12913,7 @@ func (s *DescribeGrantRulesToCenResponse) SetBody(v *DescribeGrantRulesToCenResp
 }
 
 type DescribeGrantRulesToResourceRequest struct {
-	// *   If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** indicates the total number of entries.
-	// *   If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** indicates the number of entries to return in each batch. Valid values: **1** to **100**. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
+	// The operation that you want to perform. Set the value to **DescribeGrantRulesToResource**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that determines the start point of the query. Valid values:
 	//
@@ -13307,17 +12922,15 @@ type DescribeGrantRulesToResourceRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the CEN instance.
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The ID of the network instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
 	// *   **VPC**: virtual private cloud (VPC)
 	// *   **ExpressConnect**: virtual border router (VBR)
 	// *   **VPN**: IPsec-VPN connection
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the network instance.
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13377,19 +12990,21 @@ func (s *DescribeGrantRulesToResourceRequest) SetResourceOwnerId(v int64) *Descr
 }
 
 type DescribeGrantRulesToResourceResponseBody struct {
-	// The permissions that are granted to the CEN instance.
-	GrantRules []*DescribeGrantRulesToResourceResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Repeated"`
-	// *   If no value is specified for **MaxResults**, query results are returned in one batch. The value of **MaxResults** indicates the total number of entries.
-	// *   If a value is specified for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** in the response indicates the number of entries in the current batch.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
-	//
-	// *   If **NextToken** was not returned in the previous query, it indicates that no additional results exist.
-	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	GrantRules []*DescribeGrantRulesToResourceResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Repeated"`
+	// The entity that pays the fees of the network instance. Valid values:
+	//
+	// *   **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
+	// *   **PayByResourceOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the network instance belongs.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region where the network instance is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// *   If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** indicates the total number of entries.
+	// *   If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** indicates the number of entries to return in each batch. Valid values: **1** to **100**. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13427,15 +13042,9 @@ func (s *DescribeGrantRulesToResourceResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeGrantRulesToResourceResponseBodyGrantRules struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
-	//
-	// *   **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
-	// *   **PayByResourceOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the network instance belongs.
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
 func (s DescribeGrantRulesToResourceResponseBodyGrantRules) String() string {
@@ -13837,27 +13446,15 @@ func (s *DescribePublishedRouteEntriesResponse) SetBody(v *DescribePublishedRout
 }
 
 type DescribeRouteConflictRequest struct {
-	// The ID of the network instance that you want to query.
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table that is configured on the network instance.
+	ChildInstanceId           *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceRegionId     *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**
-	// *   **VBR**
-	// *   **CCN**
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The destination CIDR block of the conflicting route.
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+	ChildInstanceType         *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Queries conflicting routes on a network instance.
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13927,16 +13524,11 @@ func (s *DescribeRouteConflictRequest) SetResourceOwnerId(v int64) *DescribeRout
 }
 
 type DescribeRouteConflictResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of conflicting routes.
+	PageNumber     *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteConflicts *DescribeRouteConflictResponseBodyRouteConflicts `json:"RouteConflicts,omitempty" xml:"RouteConflicts,omitempty" type:"Struct"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount     *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRouteConflictResponseBody) String() string {
@@ -13990,23 +13582,11 @@ func (s *DescribeRouteConflictResponseBodyRouteConflicts) SetRouteConflict(v []*
 }
 
 type DescribeRouteConflictResponseBodyRouteConflictsRouteConflict struct {
-	// The destination CIDR block of the conflicting route.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the peer network instance on which conflicting routes are found.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the peer network instance on which conflicting routes are found.
-	//
-	// *   **VPC**
-	// *   **VBR**
-	// *   **CCN**
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The region ID of the peer network instance on which conflicting routes are found is deployed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cause of the route error. Valid values:
-	//
-	// *   **conflict**: Routes have the same destination CIDR block.
-	// *   **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) String() string {
@@ -14528,20 +14108,13 @@ func (s *DescribeTransitRouteTableAggregationResponse) SetBody(v *DescribeTransi
 }
 
 type DescribeTransitRouteTableAggregationDetailRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the aggregate route.
+	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount                     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount             *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
-	TransitRouteTableId *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
+	TransitRouteTableId              *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
 }
 
 func (s DescribeTransitRouteTableAggregationDetailRequest) String() string {
@@ -14588,14 +14161,10 @@ func (s *DescribeTransitRouteTableAggregationDetailRequest) SetTransitRouteTable
 }
 
 type DescribeTransitRouteTableAggregationDetailResponseBody struct {
-	// The number of entries returned on each page.
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The configuration of the aggregate route.
-	Data []*DescribeTransitRouteTableAggregationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	Count     *int32                                                        `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data      []*DescribeTransitRouteTableAggregationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32                                                        `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeTransitRouteTableAggregationDetailResponseBody) String() string {
@@ -14627,18 +14196,9 @@ func (s *DescribeTransitRouteTableAggregationDetailResponseBody) SetTotal(v int3
 }
 
 type DescribeTransitRouteTableAggregationDetailResponseBodyData struct {
-	// The error message returned if the configuration of the aggregate route fails.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the virtual private cloud (VPC) for which the aggregate route is configured.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the aggregate route. Valid values:
-	//
-	// *   **Configured**: The aggregate route is advertised to the VPC.
-	// *   **Configuring**: The aggregate route is being advertised.
-	// *   **ConfigFailed**: The aggregate route failed to be advertised.
-	// *   **PartialConfigured**: Some content of the aggregate route failed to be advertised.
-	// *   **Deleting**: The aggregate route is being deleted.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeTransitRouteTableAggregationDetailResponseBodyData) String() string {
@@ -14694,23 +14254,17 @@ func (s *DescribeTransitRouteTableAggregationDetailResponse) SetBody(v *Describe
 }
 
 type DetachCenChildInstanceRequest struct {
-	// The ID of the CEN instance.
+	// InvalidParameter
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
+	// Unauthorized
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The ID of the network instance that you want to detach from the CEN instance.
+	// InvalidParameter
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
+	// Unauthorized
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// 参数不合法。
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **VBR**: virtual border router (VBR)
-	// *   **CCN**: Cloud Connect Network (CCN) instance
+	// Invalid parameter.
 	ChildInstanceType    *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14777,7 +14331,7 @@ func (s *DetachCenChildInstanceRequest) SetResourceOwnerId(v int64) *DetachCenCh
 }
 
 type DetachCenChildInstanceResponseBody struct {
-	// The ID of the request.
+	// The AccessKeyId is unauthorized.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15055,27 +14609,15 @@ func (s *DisableTransitRouterRouteTablePropagationResponse) SetBody(v *DisableTr
 }
 
 type DisassociateTransitRouterMulticastDomainRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the API request. Valid values:
-	//
-	// *   **true**: prechecks the request but does not disassociate the vSwitch from the multicast domain. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. The vSwitch is disassociated from the multicast domain after the request passes the precheck.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the virtual private cloud (VPC) connection.
-	//
-	// A connection ID is generated after a VPC to which the vSwitch belongs is connected to a transit router.
-	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the multicast domain.
-	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// A list of vSwitch IDs.
-	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId      *string   `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchIds                     []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s DisassociateTransitRouterMulticastDomainRequest) String() string {
@@ -15132,7 +14674,6 @@ func (s *DisassociateTransitRouterMulticastDomainRequest) SetVSwitchIds(v []*str
 }
 
 type DisassociateTransitRouterMulticastDomainResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15181,14 +14722,14 @@ func (s *DisassociateTransitRouterMulticastDomainResponse) SetBody(v *Disassocia
 type DissociateTransitRouterAttachmentFromRouteTableRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
 	//
-	// *   **false** (default): sends the request. If the request passes the precheck, the associated forwarding correlation is deleted.
-	// *   **true**: sends a request for precheck only. The associated forwarding correlation is not deleted after the request passes the precheck. If you use this value, the system checks the required parameters and the request syntax. If the check fails, the corresponding error message is returned. If the request passes the check, the system returns the ID of the request.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15462,14 +15003,14 @@ func (s *EnableCenVbrHealthCheckResponse) SetBody(v *EnableCenVbrHealthCheckResp
 type EnableTransitRouterRouteTablePropagationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request but not perform the operation. The system checks the permissions and the status of the specified instances. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
 	//
-	// *   **false** (default): sends the request. If the request passes the precheck, the route learning correlation is created.
-	// *   **true**: sends a request for precheck only. No route learning correlation is created after the request passes the precheck. If you use this value, the system checks whether the required parameters are set, and whether the request syntax is valid. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the system returns the ID of the request.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15577,28 +15118,19 @@ func (s *EnableTransitRouterRouteTablePropagationResponse) SetBody(v *EnableTran
 }
 
 type GrantInstanceToTransitRouterRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The ID of the network instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: VPC
-	// *   **ExpressConnect**: VBR
-	// *   **VPN**: IPsec-VPN connection
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
-	//
-	// *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-	// *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
-	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the network instance is deployed.
 	//
 	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	CenId      *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	// The ID of the request.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation that you want to perform. Set the value to **GrantInstanceToTransitRouter**.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15663,7 +15195,6 @@ func (s *GrantInstanceToTransitRouterRequest) SetResourceOwnerId(v int64) *Grant
 }
 
 type GrantInstanceToTransitRouterResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15710,17 +15241,27 @@ func (s *GrantInstanceToTransitRouterResponse) SetBody(v *GrantInstanceToTransit
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentRequest struct {
-	CenId                     *string                                                           `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ChildInstanceRouteTableId *string                                                           `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	MaxResults                *int32                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                 *string                                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount              *string                                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                   *int64                                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount      *string                                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId           *int64                                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteFilter               []*ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter `json:"RouteFilter,omitempty" xml:"RouteFilter,omitempty" type:"Repeated"`
-	ServiceType               *string                                                           `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	TransitRouterAttachmentId *string                                                           `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the route table configured on the network instance.
+	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
+	// The number of entries to return on each page. Default value: **20**.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that determines the start point of the query. Valid values:
+	//
+	// *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The filter condition for the destination CIDR block.
+	RouteFilter []*ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter `json:"RouteFilter,omitempty" xml:"RouteFilter,omitempty" type:"Repeated"`
+	// Specifies whether to host the route. If you leave the parameter empty, the route is not hosted. A value of TR specifies that the route is hosted on a transit router.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The ID of the network instance connection.
+	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
 func (s ListCenChildInstanceRouteEntriesToAttachmentRequest) String() string {
@@ -15787,7 +15328,11 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentRequest) SetTransitRouterAt
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter struct {
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The match mode of the route.
+	//
+	// *   **prefix-exact-match**: exact match.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The destination CIDR blocks.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -15810,8 +15355,14 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentRequestRouteFilter) SetValu
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponseBody struct {
-	NextToken  *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token that determines the start point of the next query. Valid values:
+	//
+	// *   If **NextToken** is not returned, it indicates that no additional results exist.
+	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the region.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The detailed information about the route.
 	RouteEntry []*ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry `json:"RouteEntry,omitempty" xml:"RouteEntry,omitempty" type:"Repeated"`
 }
 
@@ -15839,11 +15390,21 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentResponseBody) SetRouteEntry
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry struct {
-	CenId                     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the route table configured on the network instance.
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	DestinationCidrBlock      *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	ServiceType               *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The destination CIDR block of the route.
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// Indicates whether the route is hosted. If the parameter is empty, the route is not hosted. A value of TR indicates that the route is hosted on a transit router.
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The status of the route. Valid values:
+	//
+	// *   **Available**: The route is available.
+	// *   **Pending**: The route is being configured.
+	// *   **Modifying**: the route is being modified.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 }
 
@@ -16434,18 +15995,13 @@ func (s *ListCenInterRegionTrafficQosQueuesResponse) SetBody(v *ListCenInterRegi
 }
 
 type ListGrantVSwitchEnisRequest struct {
-	// The ID of the CEN instance to which the VPC is attached.
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of a vSwitch in the VPC.
-	//
-	// You can specify only one vSwitch in each call.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisRequest) String() string {
@@ -16492,12 +16048,9 @@ func (s *ListGrantVSwitchEnisRequest) SetVpcId(v string) *ListGrantVSwitchEnisRe
 }
 
 type ListGrantVSwitchEnisResponseBody struct {
-	// The list of ENIs.
 	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *string                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponseBody) String() string {
@@ -16524,21 +16077,11 @@ func (s *ListGrantVSwitchEnisResponseBody) SetTotalCount(v string) *ListGrantVSw
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
-	// The description of the ENI.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENI.
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// Indicates whether the ENI is created by a transit router. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	//
-	// ENIs that are created by transit routers cannot be used as multicast sources or members.
-	TransitRouterFlag *bool `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
-	// The ID of the vSwitch.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	TransitRouterFlag  *bool   `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) String() string {
@@ -16604,29 +16147,16 @@ func (s *ListGrantVSwitchEnisResponse) SetBody(v *ListGrantVSwitchEnisResponseBo
 }
 
 type ListGrantVSwitchesToCenRequest struct {
-	// The ID of the CEN instance.
-	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the VPC is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone where the instance resides.
-	//
-	// *   If you specify a zone ID, the system queries the information about the vSwitches in the specified zone.
-	// *   If you do not specify a zone ID, the system queries the information about the vSwitches in all zones.
-	//
-	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListGrantVSwitchesToCenRequest) String() string {
@@ -16688,16 +16218,11 @@ func (s *ListGrantVSwitchesToCenRequest) SetZoneId(v string) *ListGrantVSwitches
 }
 
 type ListGrantVSwitchesToCenResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of vSwitches.
-	VSwitches []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitches  []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
 func (s ListGrantVSwitchesToCenResponseBody) String() string {
@@ -16734,13 +16259,10 @@ func (s *ListGrantVSwitchesToCenResponseBody) SetVSwitches(v []*ListGrantVSwitch
 }
 
 type ListGrantVSwitchesToCenResponseBodyVSwitches struct {
-	// The ID of the vSwitch.
 	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC to which the vSwitch belongs.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone where the vSwitch is deployed.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListGrantVSwitchesToCenResponseBodyVSwitches) String() string {
@@ -17080,29 +16602,16 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTrafficMarkingPoliciesRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
-	//
-	// *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The description of the traffic marking policy.
-	//
-	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+	MaxResults                      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount                    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount            *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                 *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TrafficMarkingPolicyDescription *string `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
-	// The ID of the traffic marking policy.
-	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	// The name of the traffic marking policy.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TrafficMarkingPolicyId          *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	TrafficMarkingPolicyName        *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
+	TransitRouterId                 *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesRequest) String() string {
@@ -17164,18 +16673,10 @@ func (s *ListTrafficMarkingPoliciesRequest) SetTransitRouterId(v string) *ListTr
 }
 
 type ListTrafficMarkingPoliciesResponseBody struct {
-	// The number of entries returned on each page.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
-	//
-	// *   If **NextToken** was not returned in the previous query, it indicates that no additional results exist.
-	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of traffic marking policies.
+	MaxResults             *int32                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount             *int32                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrafficMarkingPolicies []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies `json:"TrafficMarkingPolicies,omitempty" xml:"TrafficMarkingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -17213,30 +16714,14 @@ func (s *ListTrafficMarkingPoliciesResponseBody) SetTrafficMarkingPolicies(v []*
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
-	// The differentiated services code point (DSCP) value of the traffic marking policy.
-	MarkingDscp *int32 `json:"MarkingDscp,omitempty" xml:"MarkingDscp,omitempty"`
-	// The priority of the traffic marking policy.
-	//
-	// A smaller value indicates a higher priority.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The description of the traffic marking policy.
-	TrafficMarkingPolicyDescription *string `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
-	// The ID of the traffic marking policy.
-	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	// The name of the traffic marking policy.
-	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	// The status of the traffic marking policy. Valid values:
-	//
-	// *   **Creating**: The policy is being created.
-	// *   **Active**: The policy is available.
-	// *   **Modifying**: The policy is being modified
-	// *   **Deleting**: The policy is being deleted.
-	// *   **Deleted**: The policy is deleted.
-	TrafficMarkingPolicyStatus *string `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
-	// The list of traffic classification rules.
-	TrafficMatchRules []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	MarkingDscp                     *int32                                                                           `json:"MarkingDscp,omitempty" xml:"MarkingDscp,omitempty"`
+	Priority                        *int32                                                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	TrafficMarkingPolicyDescription *string                                                                          `json:"TrafficMarkingPolicyDescription,omitempty" xml:"TrafficMarkingPolicyDescription,omitempty"`
+	TrafficMarkingPolicyId          *string                                                                          `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	TrafficMarkingPolicyName        *string                                                                          `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
+	TrafficMarkingPolicyStatus      *string                                                                          `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
+	TrafficMatchRules               []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
+	TransitRouterId                 *string                                                                          `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) String() string {
@@ -17288,33 +16773,16 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) SetTransi
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {
-	// The destination CIDR block used to match data packets.
-	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination port range used to match data packets.
-	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The DSCP value used to match data packets.
-	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The protocol used to match data packets.
-	//
-	// > Traffic marking policies support multiple protocols. For more information, see the documentation of CEN.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block used to match data packets.
-	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source port range used to match data packets.
-	SrcPortRange []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
-	// The description of the traffic classification rule.
-	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
-	// The ID of the traffic classification rule.
-	TrafficMatchRuleId *string `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
-	// The name of the traffic classification rule.
-	TrafficMatchRuleName *string `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
-	// The status of the traffic classification rule. Valid values:
-	//
-	// *   **Creating**: The rule is being created.
-	// *   **Active**: The rule is available.
-	// *   **Deleting**: The rule is being deleted.
-	// *   **Deleted**: The rule is deleted.
-	TrafficMatchRuleStatus *string `json:"TrafficMatchRuleStatus,omitempty" xml:"TrafficMatchRuleStatus,omitempty"`
+	DstCidr                     *string  `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
+	DstPortRange                []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
+	MatchDscp                   *int32   `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
+	Protocol                    *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	SrcCidr                     *string  `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
+	SrcPortRange                []*int32 `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty" type:"Repeated"`
+	TrafficMatchRuleDescription *string  `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
+	TrafficMatchRuleId          *string  `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
+	TrafficMatchRuleName        *string  `json:"TrafficMatchRuleName,omitempty" xml:"TrafficMatchRuleName,omitempty"`
+	TrafficMatchRuleStatus      *string  `json:"TrafficMatchRuleStatus,omitempty" xml:"TrafficMatchRuleStatus,omitempty"`
 }
 
 func (s ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules) String() string {
@@ -19051,14 +18519,14 @@ func (s *ListTransitRouterMulticastGroupsResponse) SetBody(v *ListTransitRouterM
 }
 
 type ListTransitRouterPeerAttachmentsRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return per page. The default value is **20**. The maximum value is **100**.
+	// The number of entries returned per page. Default value: **20**. Maximum value: **100**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first query or no next query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19068,9 +18536,11 @@ type ListTransitRouterPeerAttachmentsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The information about the tag.
+	//
+	// You can specify at most 20 tags in each call.
 	Tag []*ListTransitRouterPeerAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the cross-region connection.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -19140,17 +18610,17 @@ func (s *ListTransitRouterPeerAttachmentsRequest) SetTransitRouterId(v string) *
 }
 
 type ListTransitRouterPeerAttachmentsRequestTag struct {
-	// The tag keys of the resources.
+	// The tag key.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
+	// The tag value.
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19175,16 +18645,16 @@ func (s *ListTransitRouterPeerAttachmentsRequestTag) SetValue(v string) *ListTra
 type ListTransitRouterPeerAttachmentsResponseBody struct {
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If the returned value of **NextToken** is empty, it indicates that no next query is to be sent.
-	// *   If the returned value of **NextToken** is not empty, the value indicates the token that is used for the next query.
+	// *   If the **NextToken** parameter is empty, no next page exists.
+	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of cross-region connections.
+	// The queried inter-region connections.
 	TransitRouterAttachments []*ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -19222,28 +18692,29 @@ func (s *ListTransitRouterPeerAttachmentsResponseBody) SetTransitRouterAttachmen
 }
 
 type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the local Enterprise Edition transit router automatically advertises routes of the cross-region connection to the peer transit router. Valid values:
+	// Indicates whether the local Enterprise Edition transit router automatically advertises routes of the inter-region connection to the peer transit router. Valid values:
 	//
 	// *   **false** (default): no
 	// *   **true**: yes
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The bandwidth value of the cross-region connection. Unit: Mbit/s.
+	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
 	//
-	// *   If **BandwidthType** is set to **BandwidthPackage**, this parameter indicates the bandwidth that is available for the cross-region connection.
-	// *   If **BandwidthType** is set to **DataTransfer**, this parameter indicates the bandwidth limit of the cross-region connection.
+	// *   This parameter specifies the maximum bandwidth value for the inter-region connection if you set **BandwidthType** to **BandwidthPackage**.
+	// *   This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set **BandwidthType** to **DataTransfer**.
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The bandwidth allocation method. Valid values:
 	//
 	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
 	//
-	// **DataTransfer**: uses pay-by-data-transfer bandwidth.
+	// **DataTransfer**: bills bandwidth based on the pay-by-data-transfer metering method.
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The ID of the bandwidth plan that is used to allocate bandwidth to the cross-region connection.
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the cross-region connection was created.
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The time when the inter-region connection was created.
 	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The areas that are connected by the bandwidth plan.
 	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
@@ -19251,31 +18722,31 @@ type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments struct
 	PeerTransitRouterId *string `json:"PeerTransitRouterId,omitempty" xml:"PeerTransitRouterId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the peer transit router belongs.
 	PeerTransitRouterOwnerId *int64 `json:"PeerTransitRouterOwnerId,omitempty" xml:"PeerTransitRouterOwnerId,omitempty"`
-	// The ID of the region where the peer transit router is deployed.
+	// The region ID of the peer transit router.
 	PeerTransitRouterRegionId *string `json:"PeerTransitRouterRegionId,omitempty" xml:"PeerTransitRouterRegionId,omitempty"`
-	// The ID of the region where the Enterprise Edition transit router is deployed.
+	// The region ID of the Enterprise Edition transit router.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource to which the transit router is connected. Valid values:
 	//
-	// *   **VPC**: virtual private cloud (VPC)
+	// *   **VPC**: VPC
 	// *   **CCN**: Cloud Connect Network (CCN) instance
 	// *   **VBR**: virtual border router (VBR)
 	// *   **TR**: transit router
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the cross-region connection. Valid values:
+	// The status of the inter-region connection. Valid values:
 	//
-	// *   **Attached**: The local transit router is connected to the peer transit router.
-	// *   **Attaching**: The local transit router is connecting to the peer transit router.
-	// *   **Detaching**: The local transit router is disconnecting from the peer transit router.
-	// *   **Detached**: The local transit router is disconnected from the peer transit router.
+	// *   **Attached**: The inter-region connection is created.
+	// *   **Attaching**: The inter-region connection is being created on the transit router.
+	// *   **Detaching**: The inter-region connection is being deleted from the transit router.
+	// *   **Detached**: The inter-region connection is deleted from the transit router.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tags []*ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The description of the cross-region connection.
+	// The description of the inter-region connection.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the cross-region connection.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the cross-region connection.
+	// The name of the inter-region connection.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
@@ -19380,9 +18851,9 @@ func (s *ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachments) S
 }
 
 type ListTransitRouterPeerAttachmentsResponseBodyTransitRouterAttachmentsTags struct {
-	// The key of tag.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19707,10 +19178,10 @@ func (s *ListTransitRouterPrefixListAssociationResponse) SetBody(v *ListTransitR
 type ListTransitRouterRouteEntriesRequest struct {
 	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// - If a subsequent query is to be sent, set the value to the value of **NextToken** that was returned from the last call.
+	// *   You do not need to specify this parameter for the first request.
+	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
 	NextToken            *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string                                            `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19721,19 +19192,19 @@ type ListTransitRouterRouteEntriesRequest struct {
 	// Deprecated
 	// The destination CIDR block of the route.
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
-	// The IDs of the route entries.
+	// The route entry ID.
 	//
-	// You can query at most 20 route entries in each call.
+	// You can specify at most 20 route IDs in each call.
 	//
-	// >  You can call this operation to query only static routes.
+	// >  You can use only this parameter to query static routes.
 	TransitRouterRouteEntryIds []*string `json:"TransitRouterRouteEntryIds,omitempty" xml:"TransitRouterRouteEntryIds,omitempty" type:"Repeated"`
-	// The names of the routes.
+	// The route name.
 	//
-	// The name must be 1 to 128 characters in length, and can contain letters, digits, and the following special characters: `, . ; / @ \_ -`. You can also leave the name empty.
+	// The name must be 0 to 128 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
 	//
-	// You can query multiple route entries in each call. Maximum value of **N**: **20**.
+	// You can specify at most 20 route names in each call.
 	//
-	// >  You can call this operation to query only static routes.
+	// >  You can use only this parameter to query static routes.
 	TransitRouterRouteEntryNames               []*string `json:"TransitRouterRouteEntryNames,omitempty" xml:"TransitRouterRouteEntryNames,omitempty" type:"Repeated"`
 	TransitRouterRouteEntryNextHopId           *string   `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
 	TransitRouterRouteEntryNextHopResourceId   *string   `json:"TransitRouterRouteEntryNextHopResourceId,omitempty" xml:"TransitRouterRouteEntryNextHopResourceId,omitempty"`
@@ -19741,11 +19212,11 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryNextHopType         *string   `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
 	TransitRouterRouteEntryOriginResourceId    *string   `json:"TransitRouterRouteEntryOriginResourceId,omitempty" xml:"TransitRouterRouteEntryOriginResourceId,omitempty"`
 	TransitRouterRouteEntryOriginResourceType  *string   `json:"TransitRouterRouteEntryOriginResourceType,omitempty" xml:"TransitRouterRouteEntryOriginResourceType,omitempty"`
-	// The status of the route. Valid values: Valid values:
+	// The status of the route. Valid values:
 	//
-	// - **Creating**: The route is being created.
-	// - **Active**: The rule is available.
-	// - **Deleting**: The rule is being deleted.
+	// *   **Creating**: The route is being created.
+	// *   **Active**: The route is available.
+	// *   **Deleting**: The route is being deleted.
 	TransitRouterRouteEntryStatus *string `json:"TransitRouterRouteEntryStatus,omitempty" xml:"TransitRouterRouteEntryStatus,omitempty"`
 	TransitRouterRouteEntryType   *string `json:"TransitRouterRouteEntryType,omitempty" xml:"TransitRouterRouteEntryType,omitempty"`
 	// The ID of the route table of the Enterprise Edition transit router.
@@ -19884,18 +19355,18 @@ func (s *ListTransitRouterRouteEntriesRequestRouteFilter) SetValue(v []*string) 
 }
 
 type ListTransitRouterRouteEntriesResponseBody struct {
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** was not returned in the previous query, it indicates that no additional results exist.
-	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	// *   If the **NextToken** parameter is empty, no next page exists.
+	// *   If a value of **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of routes.
+	// The queried routes.
 	TransitRouterRouteEntries []*ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries `json:"TransitRouterRouteEntries,omitempty" xml:"TransitRouterRouteEntries,omitempty" type:"Repeated"`
 }
 
@@ -19933,7 +19404,7 @@ func (s *ListTransitRouterRouteEntriesResponseBody) SetTransitRouterRouteEntries
 }
 
 type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
-	// The time when the route entry was created.
+	// The time when the route was created.
 	//
 	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
 	//
@@ -19941,15 +19412,15 @@ type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether the route can be managed. Valid values:
 	//
-	// - **true**: The route can be managed. You can delete the route.
-	// - **false**: The route cannot be managed because it is automatically generated by the system.
+	// *   **true**: The route can be managed. You can delete the route.
+	// *   **false**: The route cannot be managed because it is automatically generated by the system.
 	OperationalMode *bool   `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
 	PrefixListId    *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	// The tag of the route.
 	//
-	// Valid value: **PermitVbr**, which indicates that the rote is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
+	// Only **PermitVbr** may be returned, which indicates that the route is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
 	//
-	// >  This parameter is returned only for routes that are automatically generated by the system and use IP addresses from the CIDR block of the transit router.
+	// >  This parameter is returned only for automatically learned routes.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The description of the route.
 	//
@@ -19957,11 +19428,11 @@ type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
 	// The destination CIDR block of the route.
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
-	// The ID of the route entry.
+	// The route ID.
 	//
 	// >  This parameter is returned only for static routes.
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// >  This parameter is returned only for static routes.
 	TransitRouterRouteEntryName *string `json:"TransitRouterRouteEntryName,omitempty" xml:"TransitRouterRouteEntryName,omitempty"`
@@ -19972,20 +19443,20 @@ type ListTransitRouterRouteEntriesResponseBodyTransitRouterRouteEntries struct {
 	// The type of next hop. Valid values:
 	//
 	// *   **BlackHole**: a blackhole route. Packets destined for the destination CIDR block of the route are dropped.
-	// *   **Attachment**: a network instance connection. Packets destined for the destination CIDR block of the route entry are forwarded to the specified network instance connection.
+	// *   **Attachment**: a network instance connection. Packets destined for the destination CIDR block of the route are forwarded to the specified network instance connection.
 	TransitRouterRouteEntryNextHopType        *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
 	TransitRouterRouteEntryOriginResourceId   *string `json:"TransitRouterRouteEntryOriginResourceId,omitempty" xml:"TransitRouterRouteEntryOriginResourceId,omitempty"`
 	TransitRouterRouteEntryOriginResourceType *string `json:"TransitRouterRouteEntryOriginResourceType,omitempty" xml:"TransitRouterRouteEntryOriginResourceType,omitempty"`
 	// The status of the route. Valid values:
 	//
-	// - **Creating**: The route is being created.
-	// - **Active**: The rule is available.
-	// - **Deleting**: The rule is being deleted.
+	// *   **Creating**: The route is being created.
+	// *   **Active**: The route is available.
+	// *   **Deleting**: The route is being deleted.
 	TransitRouterRouteEntryStatus *string `json:"TransitRouterRouteEntryStatus,omitempty" xml:"TransitRouterRouteEntryStatus,omitempty"`
 	// The type of the route. Valid values:
 	//
-	// - **Static**: a static route
-	// - **Propagated**: an automatically learned route
+	// *   **Static**: a static route
+	// *   **Propagated**: an automatically learned route
 	TransitRouterRouteEntryType *string `json:"TransitRouterRouteEntryType,omitempty" xml:"TransitRouterRouteEntryType,omitempty"`
 }
 
@@ -20944,11 +20415,11 @@ func (s *ListTransitRouterRouteTablesResponse) SetBody(v *ListTransitRouterRoute
 }
 
 type ListTransitRouterVbrAttachmentsRequest struct {
-	// The ID of the CEN instance.
+	// The IDs of the CEN instances.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The number of entries to return on each page. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -21065,15 +20536,15 @@ func (s *ListTransitRouterVbrAttachmentsRequestTag) SetValue(v string) *ListTran
 }
 
 type ListTransitRouterVbrAttachmentsResponseBody struct {
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of VBR connections.
+	// The queried VBR connections.
 	TransitRouterAttachments []*ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -21115,16 +20586,17 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// *   **false** (default): no
 	// *   **true**: yes
-	AutoPublishRouteEnabled *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	// The ID of the CEN instance.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the VBR connection was established.
 	//
 	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The type of resource to which the transit router is connected. Valid values:
 	//
-	// *   **VPC**: virtual private cloud (VPC)
-	// *   **CCN**: CCN instance
+	// *   **VPC**: VPC
+	// *   **CCN**: Cloud Connect Network (CCN) instance
 	// *   **VBR**: VBR
 	// *   **TR**: transit router
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -21145,11 +20617,11 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 	// The ID of the Enterprise Edition transit router.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VBR.
+	// The VBR ID.
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
 	// The ID of the account to which the VBR belongs.
 	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the VBR.
 	VbrRegionId *string `json:"VbrRegionId,omitempty" xml:"VbrRegionId,omitempty"`
 }
 
@@ -21281,44 +20753,20 @@ func (s *ListTransitRouterVbrAttachmentsResponse) SetBody(v *ListTransitRouterVb
 }
 
 type ListTransitRouterVpcAttachmentsRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
-	//
-	// *   If this is your first query and no next queries are to be sent, ignore this parameter.
-	// *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
-	//
-	// *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-	// *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
-	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Enterprise Edition transit router.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether the network instance is attached to the CEN instance. Valid values:
-	//
-	// *   **Attaching**: being attached to the transit router.
-	// *   **Attached**: attached to the transit router.
-	// *   **Detaching**: being detached from the transit router.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
-	Tag []*ListTransitRouterVpcAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC connection.
-	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the Enterprise Edition transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	CenId                     *string                                      `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	MaxResults                *int32                                       `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OrderType                 *string                                      `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerAccount              *string                                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64                                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                  *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount      *string                                      `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64                                       `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status                    *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                       []*ListTransitRouterVpcAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterAttachmentId *string                                      `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string                                      `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpcId                     *string                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsRequest) String() string {
@@ -21400,17 +20848,7 @@ func (s *ListTransitRouterVpcAttachmentsRequest) SetVpcId(v string) *ListTransit
 }
 
 type ListTransitRouterVpcAttachmentsRequestTag struct {
-	// The key of the tag that you want to add to the Auto Scaling resource.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21433,18 +20871,10 @@ func (s *ListTransitRouterVpcAttachmentsRequestTag) SetValue(v string) *ListTran
 }
 
 type ListTransitRouterVpcAttachmentsResponseBody struct {
-	// The number of entries returned per page.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
-	//
-	// *   If **NextToken** was not returned, it indicates that no additional results exist.
-	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of VPC connections.
+	MaxResults               *int32                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                *string                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount               *int32                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TransitRouterAttachments []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -21482,49 +20912,26 @@ func (s *ListTransitRouterVpcAttachmentsResponseBody) SetTransitRouterAttachment
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments struct {
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method of the VPC connection.
+	// 企业版转发路由器是否自动发布路由到VPC实例。
 	//
-	// The value is **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the VPC connection is created.
-	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
-	//
-	// *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-	// *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The type of resource to which the transit router is connected.
-	//
-	// The value is set to **VPC**.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the VPC connection. Valid values:
-	//
-	// *   **Attached**: attached to the transit router.
-	// *   **Attaching**: being attached to the transit router.
-	// *   **Detaching**: being detached from the transit router.
-	// *   **Detached**: detached from the transit router.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key.
-	Tags []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The description of the VPC connection.
-	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPC connection.
-	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the VPC connection.
-	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
-	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// The ID of the region where the VPC is deployed.
-	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	// The primary and secondary zones of the VPC connection and the vSwitches and elastic network interfaces (ENIs) of the VPC.
-	ZoneMappings []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	// - **false**（默认值）：否。
+	// - **true**：是。
+	AutoPublishRouteEnabled            *bool                                                                              `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	CenId                              *string                                                                            `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ChargeType                         *string                                                                            `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreationTime                       *string                                                                            `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	OrderType                          *string                                                                            `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ResourceType                       *string                                                                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                             *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                               []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TransitRouterAttachmentDescription *string                                                                            `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
+	TransitRouterAttachmentId          *string                                                                            `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string                                                                            `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterId                    *string                                                                            `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpcId                              *string                                                                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcOwnerId                         *int64                                                                             `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcRegionId                        *string                                                                            `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
+	ZoneMappings                       []*ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) String() string {
@@ -21533,6 +20940,11 @@ func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Str
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) GoString() string {
 	return s.String()
+}
+
+func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetAutoPublishRouteEnabled(v bool) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
+	s.AutoPublishRouteEnabled = &v
+	return s
 }
 
 func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) SetCenId(v string) *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments {
@@ -21611,9 +21023,7 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags struct {
-	// The tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21636,12 +21046,9 @@ func (s *ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsTags
 }
 
 type ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings struct {
-	// The ID of the ENI that is associated with the vSwitch of the Enterprise Edition transit router.
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the vSwitch.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone in which the instance is located.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings) String() string {
@@ -21701,10 +21108,10 @@ type ListTransitRouterVpnAttachmentsRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The number of entries to return on each page. Default value: **20**.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// - If this is your first query or no subsequent query is to be sent, ignore this parameter.
-	// - If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -21714,7 +21121,9 @@ type ListTransitRouterVpnAttachmentsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags of the resources.
+	// The information about the tags that are added to the CEN instance.
+	//
+	// You can query at most 20 tags in each call.
 	Tag []*ListTransitRouterVpnAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPN attachment.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
@@ -21786,17 +21195,17 @@ func (s *ListTransitRouterVpnAttachmentsRequest) SetTransitRouterId(v string) *L
 }
 
 type ListTransitRouterVpnAttachmentsRequestTag struct {
-	// The tag keys of the resources.
+	// The tag key.
 	//
-	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
 	//
 	// You can specify at most 20 tag keys.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag values of the resources.
+	// The tag value.
 	//
-	// The tag values can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each tag key has a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21821,10 +21230,10 @@ func (s *ListTransitRouterVpnAttachmentsRequestTag) SetValue(v string) *ListTran
 type ListTransitRouterVpnAttachmentsResponseBody struct {
 	// The number of entries returned per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the query. Valid values:
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// - If **NextToken** was not returned, it indicates that no additional results exist.
-	// - If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	// *   If **NextToken** is not returned, it indicates that no additional results exist.
+	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -21868,15 +21277,15 @@ func (s *ListTransitRouterVpnAttachmentsResponseBody) SetTransitRouterAttachment
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether to allow the transit router to automatically advertise routes to the IPsec connection. Valid values:
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN connection. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
 	AutoPublishRouteEnabled *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method of the VPC connection.
+	// The billing method of the VPN attachment.
 	//
-	// Valid value: **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+	// The value is POSTPAY, which is the default value and specifies the pay-as-you-go billing method.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The time when the VPN attachment was created.
 	//
@@ -21888,12 +21297,12 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the VPN attachment. Valid values:
 	//
-	// - **Attached**: The VPC attachment has been created on the transit router.
-	// - **Attaching**: The VPC attachment is being created on the transit router.
-	// - **Detaching**: The VPC attachment is being deleted from the transit router.
-	// - **Detached**: The local transit router is disconnected from the peer transit router.
+	// *   **Attached**: The VPC attachment has been created on the transit router.
+	// *   **Attaching**: The VPN attachment is being created on the transit router.
+	// *   **Detaching**: The VPN attachment is being deleted from the transit router.
+	// *   **Detached**: The VPN attachment is deleted from the transit router.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// A list of tags.
 	Tags []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the VPN attachment.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
@@ -21905,11 +21314,11 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The ID of the IPsec-VPN connection.
 	VpnId *string `json:"VpnId,omitempty" xml:"VpnId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the IPsec-VPN connection.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 	VpnOwnerId *int64 `json:"VpnOwnerId,omitempty" xml:"VpnOwnerId,omitempty"`
 	// The ID of the region to which the IPsec-VPN connection belongs.
 	//
-	// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/describeregions) operation to query the most recent region list.
+	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
 	VpnRegionId *string `json:"VpnRegionId,omitempty" xml:"VpnRegionId,omitempty"`
 	// The zones where the VPN attachment is deployed.
 	Zones []*ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -21999,9 +21408,9 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) Se
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags struct {
-	// The key of tag.
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -22024,9 +21433,9 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsTags
 }
 
 type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones struct {
-	// The zone ID.
+	// The ID of the zone.
 	//
-	// You can call [DescribeZones](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/describezones) to query zones by ID.
+	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -22073,45 +21482,20 @@ func (s *ListTransitRouterVpnAttachmentsResponse) SetBody(v *ListTransitRouterVp
 }
 
 type ListTransitRoutersRequest struct {
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The field that is used to enable or disable a feature of the transit router.
-	FeatureFilter []*ListTransitRoutersRequestFeatureFilter `json:"FeatureFilter,omitempty" xml:"FeatureFilter,omitempty" type:"Repeated"`
-	OwnerAccount  *string                                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the transit router is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the transit router. Valid values:
-	//
-	// *   **Creating**: The transit router is being created.
-	// *   **Active**: The transit router is available.
-	// *   **Modifying**: The transit router is being modified
-	// *   **Deleting**: The transit router is being deleted.
-	// *   **Upgrading**: The transit router is being upgraded.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
-	//
-	// You can specify at most 20 tags in each call.
-	Tag []*ListTransitRoutersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the Enterprise Edition transit router.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The edition of the transit router. Valid values:
-	//
-	// *   **Enterprise**: Enhance Edition
-	// *   **Basic**: Basic Edition
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CenId                *string                                   `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	FeatureFilter        []*ListTransitRoutersRequestFeatureFilter `json:"FeatureFilter,omitempty" xml:"FeatureFilter,omitempty" type:"Repeated"`
+	OwnerAccount         *string                                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId             *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status               *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag                  []*ListTransitRoutersRequestTag           `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TransitRouterId      *string                                   `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterName    *string                                   `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	Type                 *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTransitRoutersRequest) String() string {
@@ -22193,14 +21577,7 @@ func (s *ListTransitRoutersRequest) SetType(v string) *ListTransitRoutersRequest
 }
 
 type ListTransitRoutersRequestFeatureFilter struct {
-	// The value of the field that is used to enable or disable a feature of the transit router. Supported fields:
-	//
-	// *   **Multicast**: the multicast feature.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The fields that are used to enable or disable the features of the transit router. The **Multicast** field supports only one value. Valid values:
-	//
-	// *   **Enabled**: enables multicast.
-	// *   **Disabled**: disables multicast.
+	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -22223,17 +21600,7 @@ func (s *ListTransitRoutersRequestFeatureFilter) SetValue(v []*string) *ListTran
 }
 
 type ListTransitRoutersRequestTag struct {
-	// The tag key.
-	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-	//
-	// You can specify at most 20 tag keys.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -22256,15 +21623,10 @@ func (s *ListTransitRoutersRequestTag) SetValue(v string) *ListTransitRoutersReq
 }
 
 type ListTransitRoutersResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of transit routers.
+	PageNumber     *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TransitRouters []*ListTransitRoutersResponseBodyTransitRouters `json:"TransitRouters,omitempty" xml:"TransitRouters,omitempty" type:"Repeated"`
 }
 
@@ -22302,44 +21664,18 @@ func (s *ListTransitRoutersResponseBody) SetTransitRouters(v []*ListTransitRoute
 }
 
 type ListTransitRoutersResponseBodyTransitRouters struct {
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the transit router was created.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the region where the transit router is deployed.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the transit router. Valid values:
-	//
-	// *   **Creating**: The transit router is being created.
-	// *   **Active**: The transit router is available.
-	// *   **Modifying**: The transit router is being modified
-	// *   **Deleting**: The transit router is being deleted.
-	// *   **Upgrading**: The transit router is being upgraded.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether multicast is enabled for the transit router. Valid values:
-	//
-	// *   **true**: enabled
-	// *   **false**: disabled
-	SupportMulticast *bool `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
-	// A list of tags.
-	Tags []*ListTransitRoutersResponseBodyTransitRoutersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The CIDR blocks of the transit router.
-	TransitRouterCidrList []*ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
-	// The description of the transit router.
-	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the transit router.
-	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The edition of the transit router. Valid values:
-	//
-	// *   **Enterprise**: Enhance Edition
-	// *   **Basic**: Basic Edition
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AliUid                   *int64                                                               `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CenId                    *string                                                              `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreationTime             *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	RegionId                 *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                   *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportMulticast         *bool                                                                `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
+	Tags                     []*ListTransitRoutersResponseBodyTransitRoutersTags                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TransitRouterCidrList    []*ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList `json:"TransitRouterCidrList,omitempty" xml:"TransitRouterCidrList,omitempty" type:"Repeated"`
+	TransitRouterDescription *string                                                              `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
+	TransitRouterId          *string                                                              `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterName        *string                                                              `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
+	Type                     *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTransitRoutersResponseBodyTransitRouters) String() string {
@@ -22411,9 +21747,7 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetType(v string) *ListTr
 }
 
 type ListTransitRoutersResponseBodyTransitRoutersTags struct {
-	// The tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -22436,23 +21770,10 @@ func (s *ListTransitRoutersResponseBodyTransitRoutersTags) SetValue(v string) *L
 }
 
 type ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList struct {
-	// The CIDR block of the transit router.
-	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The description of the CIDR block.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CIDR block.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the system is allowed to automatically add a route to the route table of the transit router. Valid values:
-	//
-	// *   **true**: yes
-	//
-	//         A value of **true** indicates that after you create a private VPN connection and create a route learning correlation for the private VPC connection, the system automatically adds the following route to the route table of the transit router that is in route learning correlation with the private VPN connection:
-	//           A blackhole route whose destination CIDR block is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections.
-	//           The blackhole route is advertised only to the route tables of virtual border routers (VBRs) that are connected to the transit router.
-	//
-	// *   **false**: no
-	PublishCidrRoute *bool `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
-	// The ID of the CIDR block.
+	Cidr                *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PublishCidrRoute    *bool   `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
 	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
 }
 
@@ -22519,21 +21840,14 @@ func (s *ListTransitRoutersResponse) SetBody(v *ListTransitRoutersResponseBody) 
 }
 
 type ModifyCenAttributeRequest struct {
-	// The ID of the CEN instance.
+	// Modifies the name and description of a Cloud Enterprise Network (CEN) instance.
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The description of the CEN instance.
-	//
-	// The description must be 2 to 256 characters in length. It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
+	// WB656982
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the CEN instance.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The level of CIDR block overlapping.
-	//
-	// Set the value to **REDUCED** (default). This value specifies that CIDR blocks can overlap but cannot be the same.
+	// ModifyCenAttribute
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProtectionLevel      *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22588,7 +21902,6 @@ func (s *ModifyCenAttributeRequest) SetResourceOwnerId(v int64) *ModifyCenAttrib
 }
 
 type ModifyCenAttributeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23383,29 +22696,10 @@ func (s *ModifyFlowLogAttributeResponse) SetBody(v *ModifyFlowLogAttributeRespon
 }
 
 type ModifyTransitRouterCidrRequest struct {
-	// The new CIDR block of the transit router.
+	// The ID of the region where the transit router is deployed.
+	//
+	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new description of the transit router CIDR block.
-	//
-	// The description must be 1 to 256 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
-	//
-	// *   **true**: checks the request but does not modify the CIDR block. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. If the request passes the precheck, the CIDR block of the transit router is modified.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The new name of the transit router CIDR block.
-	//
-	// The name must be 1 to 128 characters in length.
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to allow the system to automatically add routes that point to the CIDR block to the route table of the transit router.
 	//
 	// *   **true**: yes
@@ -23417,18 +22711,33 @@ type ModifyTransitRouterCidrRequest struct {
 	//     The blackhole route is advertised only to the route table of the virtual border router (VBR) that is connected to the transit router.
 	//
 	// *   **false**: no
-	PublishCidrRoute *bool `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
-	// The ID of the region where the transit router is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The new CIDR block of the transit router.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the transit router CIDR block.
 	//
 	// You can call [ListTransitRouterCidr](~~462772~~) to query the ID of a transit route CIDR block.
-	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyTransitRouterCidr**.
+	PublishCidrRoute *bool `json:"PublishCidrRoute,omitempty" xml:"PublishCidrRoute,omitempty"`
 	// The ID of the transit router.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Specifies whether only to precheck the request. Valid values:
+	//
+	// *   **true**: checks the request but does not modify the CIDR block. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// *   **false**: sends the request. If the request passes the precheck, the CIDR block of the transit router is modified.
+	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	//
+	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
@@ -23506,7 +22815,6 @@ func (s *ModifyTransitRouterCidrRequest) SetTransitRouterId(v string) *ModifyTra
 }
 
 type ModifyTransitRouterCidrResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23553,30 +22861,22 @@ func (s *ModifyTransitRouterCidrResponse) SetBody(v *ModifyTransitRouterCidrResp
 }
 
 type ModifyTransitRouterMulticastDomainRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the request.
+	ClientToken                             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                                  *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount                    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
+	// The operation that you want to perform. Set the value to **ModifyTransitRouterMulticastDomain**.
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
 	// Specifies whether only to precheck the request. Valid values:
 	//
 	// *   **true**: prechecks the request but does not modify the name or description of the multicast domain. The system checks the required parameters, the request format, and the service limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false** (default): sends the request. If the request passes the precheck, the name and description of the multicast domain are modified.
 	//
 	// >  This parameter is not in use.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the multicast domain.
-	//
-	// The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
-	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
-	// The ID of the multicast domain.
-	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The new name of the multicast domain.
-	//
-	// The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	TransitRouterMulticastDomainName *string `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
 }
 
@@ -23634,7 +22934,6 @@ func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDom
 }
 
 type ModifyTransitRouterMulticastDomainResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24023,20 +23322,13 @@ func (s *PublishRouteEntriesResponse) SetBody(v *PublishRouteEntriesResponseBody
 }
 
 type RefreshTransitRouteTableAggregationRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the aggregate route.
+	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	OwnerAccount                     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount             *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
-	TransitRouteTableId *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
+	TransitRouteTableId              *string `json:"TransitRouteTableId,omitempty" xml:"TransitRouteTableId,omitempty"`
 }
 
 func (s RefreshTransitRouteTableAggregationRequest) String() string {
@@ -24083,7 +23375,6 @@ func (s *RefreshTransitRouteTableAggregationRequest) SetTransitRouteTableId(v st
 }
 
 type RefreshTransitRouteTableAggregationResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24130,36 +23421,17 @@ func (s *RefreshTransitRouteTableAggregationResponse) SetBody(v *RefreshTransitR
 }
 
 type RegisterTransitRouterMulticastGroupMembersRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the multicast group to which the multicast members belong. Valid values: **224.0.0.1** to **239.255.255.254**.
-	//
-	// If the multicast group does not exist in the specified multicast domain, the system automatically creates the multicast group in the multicast domain.
-	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of ENIs.
-	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
-	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The IDs of the multicast domains that are in different regions.
+	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	NetworkInterfaceIds               []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
 	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the multicast domain to which the multicast members belong.
-	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The ID of the VPC to which the ENI belongs.
-	//
-	// *   If the ENI belongs to the current Alibaba Cloud account, ignore this parameter.
-	// *   If the ENI belongs to a different Alibaba Cloud account, you must set this parameter.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VpcId                             *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupMembersRequest) String() string {
@@ -24226,7 +23498,6 @@ func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetVpcId(v string) *
 }
 
 type RegisterTransitRouterMulticastGroupMembersResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24273,38 +23544,21 @@ func (s *RegisterTransitRouterMulticastGroupMembersResponse) SetBody(v *Register
 }
 
 type RegisterTransitRouterMulticastGroupSourcesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether only to check the request. Valid values:
 	//
 	// *   **true**: prechecks the request but does not create the multicast source. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	// *   **false** (default): sends the request. After the request passes the precheck, the multicast source is created.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP address of the multicast group to which the multicast source belongs. Valid values: **224.0.0.1** to **239.255.255.254**.
-	//
-	// If the multicast group does not exist in the multicast domain, the system automatically creates the multicast group in the multicast domain.
-	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// The IDs of the ENIs.
-	//
-	// You can create only one multicast source in a multicast group.
-	//
-	// >  This parameter is required.
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress       *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
 	NetworkInterfaceIds  []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the multicast group to which the multicast source belongs.
+	// Creates a multicast source.
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The ID of the VPC to which the ENI belongs.
-	//
-	// *   If the ENI belongs to the current Alibaba Cloud account, ignore this parameter.
-	// *   If the ENI belongs to a different Alibaba Cloud account, you must set this parameter.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId                          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RegisterTransitRouterMulticastGroupSourcesRequest) String() string {
@@ -24366,7 +23620,6 @@ func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetVpcId(v string) *
 }
 
 type RegisterTransitRouterMulticastGroupSourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24413,27 +23666,14 @@ func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *Register
 }
 
 type RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
-	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the traffic classification rule.
-	//
-	// You can specify at most 20 traffic classification rules.
-	TrafficMarkRuleIds []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
-	// The ID of the traffic marking policy.
-	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
+	ClientToken            *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                 *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficMarkRuleIds     []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
+	TrafficMarkingPolicyId *string   `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
 }
 
 func (s RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) String() string {
@@ -24485,7 +23725,6 @@ func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest) SetTrafficMarkin
 }
 
 type RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24532,28 +23771,16 @@ func (s *RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse) SetBody(v *Remo
 }
 
 type RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
-	//
-	// - **true**: prechecks the request but does not delete the traffic classification rules. The system checks the required parameters, the request format, and the service limits. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// - **false** (default): sends the request and deletes the specified traffic classification rules after the request passes the precheck.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the traffic classification rules.
-	//
-	// You can specify at most 20 traffic classification rules.
-	//
-	// You can call the ListTrafficMarkingPolicies operation to query the IDs of traffic classification rules in a specified traffic marking policy.
-	TrafficMarkRuleIds []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
-	// The ID of the traffic marking policy.
+	// The operation that you want to perform. Set the value to **RemoveTraficMatchRuleFromTrafficMarkingPolicy**.
+	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TrafficMarkRuleIds   []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
+	// Deletes specified traffic classification rules from a traffic marking policy.
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
 }
 
@@ -24606,7 +23833,6 @@ func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest) SetTrafficMarking
 }
 
 type RemoveTraficMatchRuleFromTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24653,24 +23879,13 @@ func (s *RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse) SetBody(v *Remov
 }
 
 type ReplaceTransitRouterRouteTableAssociationRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the API request. Valid values:
-	//
-	// *   **true**: prechecks the request but does not associate the network instance connection with another route table. The system checks whether the required parameters are set, whether the formats of the values are valid, and the service limits. If the request fails to pass the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false**: sends the request. After the request passes the authentication, the network instance connection is associated with the specified route table. This is the default value.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the network instance connection.
+	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the route table with which you want to associate the network instance connection.
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 }
 
@@ -24723,7 +23938,6 @@ func (s *ReplaceTransitRouterRouteTableAssociationRequest) SetTransitRouterRoute
 }
 
 type ReplaceTransitRouterRouteTableAssociationResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24778,7 +23992,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -24911,23 +24125,13 @@ func (s *ResolveAndRouteServiceInCenResponse) SetBody(v *ResolveAndRouteServiceI
 }
 
 type RevokeInstanceFromTransitRouterRequest struct {
-	// Enter the ID of the Cloud Enterprise Network (CEN) instance to which the transit router belongs.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The ID of the network instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// *   **VPC**: VPC
-	// *   **ExpressConnect**: VBR
-	// *   **VPN**: IPsec-VPN connection
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+	// Revokes the permissions that a transit router uses to connect to network instances that belong to another Alibaba Cloud account.
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId           *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24987,7 +24191,6 @@ func (s *RevokeInstanceFromTransitRouterRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type RevokeInstanceFromTransitRouterResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25034,17 +24237,9 @@ func (s *RevokeInstanceFromTransitRouterResponse) SetBody(v *RevokeInstanceFromT
 }
 
 type RoutePrivateZoneInCenToVpcRequest struct {
-	// The ID of the region where PrivateZone is accessed.
-	//
-	// This region refers to the region in which PrivateZone is accessed by clients.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where PrivateZone is deployed.
-	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC that is associated with PrivateZone.
+	AccessRegionId       *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	HostRegionId         *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
 	HostVpcId            *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25101,7 +24296,6 @@ func (s *RoutePrivateZoneInCenToVpcRequest) SetResourceOwnerId(v int64) *RoutePr
 }
 
 type RoutePrivateZoneInCenToVpcResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25148,15 +24342,9 @@ func (s *RoutePrivateZoneInCenToVpcResponse) SetBody(v *RoutePrivateZoneInCenToV
 }
 
 type SetCenInterRegionBandwidthLimitRequest struct {
-	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
-	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	// The ID of the CEN instance.
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the local region.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query regions where you can attach network instances to a CEN instance.
-	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The ID of the peer region.
+	BandwidthLimit       *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	LocalRegionId        *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
 	OppositeRegionId     *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25213,7 +24401,6 @@ func (s *SetCenInterRegionBandwidthLimitRequest) SetResourceOwnerId(v int64) *Se
 }
 
 type SetCenInterRegionBandwidthLimitResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25262,15 +24449,14 @@ func (s *SetCenInterRegionBandwidthLimitResponse) SetBody(v *SetCenInterRegionBa
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources. You can enter most at 20 resource IDs.
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Creates tags and adds them to a resource.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+	// $.parameters[2].schema.example
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags that you want to associate with the resources.
+	// 79517
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -25323,17 +24509,7 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key.
-	//
-	// You can enter multiple tag keys. Valid values of **N**: **1** to **20**.
-	//
-	// The key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// Each tag key corresponds to a tag value. Valid values of **N**: **1** to **20**.
-	//
-	// The value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25356,7 +24532,6 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25403,20 +24578,13 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TempUpgradeCenBandwidthPackageSpecRequest struct {
-	// The maximum bandwidth value to which you want to upgrade the bandwidth plan. Unit: Mbit/s.
-	//
-	// Valid values: **2** to **10000**.
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the bandwidth plan.
+	Bandwidth             *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The time when the temporary upgrade ends.
-	//
-	// Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s TempUpgradeCenBandwidthPackageSpecRequest) String() string {
@@ -25463,7 +24631,6 @@ func (s *TempUpgradeCenBandwidthPackageSpecRequest) SetResourceOwnerId(v int64) 
 }
 
 type TempUpgradeCenBandwidthPackageSpecResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25606,11 +24773,7 @@ func (s *UnassociateCenBandwidthPackageResponse) SetBody(v *UnassociateCenBandwi
 }
 
 type UnroutePrivateZoneInCenToVpcRequest struct {
-	// The ID of the region where PrivateZone is accessed.
-	//
-	// You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
-	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	AccessRegionId       *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25657,7 +24820,6 @@ func (s *UnroutePrivateZoneInCenToVpcRequest) SetResourceOwnerId(v int64) *Unrou
 }
 
 type UnroutePrivateZoneInCenToVpcResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25704,51 +24866,15 @@ func (s *UnroutePrivateZoneInCenToVpcResponse) SetBody(v *UnroutePrivateZoneInCe
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false** (default): no
-	//
-	// > This parameter is valid only when the **TagKey.N** parameter is empty.
-	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the resource is deployed.
-	//
-	// You can ignore this parameter if ResourceType is set to Cen or BandwidthPackage.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. Valid values of **N**: **1** to **50**.
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Valid value:
-	//
-	// **Cen**: Cloud Enterprise Network (CEN) instance
-	//
-	// **BandwidthPackage**: bandwidth plan
-	//
-	// **TransitRouter**: transit router
-	//
-	// **TransitRouterVpcAttachment**: virtual private cloud (VPC) connection
-	//
-	// **TransitRouterVbrAttachment**: virtual border router (VBR) connection
-	//
-	// **TransitRouterPeerAttachment**: inter-region connection
-	//
-	// **TransitRouterVpnAttachment**: VPN connection
-	//
-	// **TransitRouterRouteTable**: route table
-	//
-	// **Flowlog**: flow log
-	//
-	// **TransitRouterMulticastDomain**: multicast domain
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
-	//
-	// The tag key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// If multiple tag keys are specified, the logical relation among these tag keys is **AND**. Valid values of **N**: **1** to **20**.
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -25805,7 +24931,6 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25978,18 +25103,12 @@ func (s *UpdateCenInterRegionTrafficQosPolicyAttributeResponse) SetBody(v *Updat
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The new name of the queue.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to check the request without performing the operation. Valid values:
-	//
-	// *   **true**: checks the request but does not modify the queue. The system checks whether the required parameters are set, whether the formats of the values are valid, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): checks the request. If the request passes the check, the queue is modified.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The differentiated services code point (DSCP) value of the packets to be matched by the queue. Valid values: **0** to **63**.
-	//
-	// You can enter up to 20 DSCP values at a time.
+	// The ID of the request.
+	DryRun       *bool    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Dscps        []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
 	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25997,15 +25116,13 @@ type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
 	//
 	// The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
-	// The ID of the queue.
+	// The operation that you want to perform. Set the value to **UpdateCenInterRegionTrafficQosQueueAttribute**.
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
-	// The new name of the queue.
+	// The differentiated services code point (DSCP) value of the packets to be matched by the queue. Valid values: **0** to **63**.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// You can enter up to 20 DSCP values at a time.
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The percentage of the inter-region bandwidth that can be used by the queue.
-	//
-	// Enter a number. You do not need to enter a percent sign (%).
+	// Modifies a queue in a quality of service (QoS) policy.
 	RemainBandwidthPercent *string `json:"RemainBandwidthPercent,omitempty" xml:"RemainBandwidthPercent,omitempty"`
 	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -26075,7 +25192,6 @@ func (s *UpdateCenInterRegionTrafficQosQueueAttributeRequest) SetResourceOwnerId
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26444,34 +25560,22 @@ func (s *UpdateTrafficMarkingPolicyAttributeResponse) SetBody(v *UpdateTrafficMa
 }
 
 type UpdateTransitRouterRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// The operation that you want to perform. Set the value to **UpdateTransitRouter**.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to precheck the request. Check items include permissions and the status of the specified cloud resources. Valid values:
-	//
-	// *   **false**: sends the request. If the request passes the precheck, the information of the transit router is modified.
-	// *   **true**: sends a request for precheck only. The information of the transit router is not modified after the request passes the precheck. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the system returns the ID of the request.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the transit router is deployed.
-	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The description of the transit router.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
-	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
-	// The ID of the transit router.
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The name of the transit router.
 	//
 	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Modifies the name and description of a transit router.
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
+	// UpdateTransitRouter
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// WB656982
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
 
@@ -26534,7 +25638,6 @@ func (s *UpdateTransitRouterRequest) SetTransitRouterName(v string) *UpdateTrans
 }
 
 type UpdateTransitRouterResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26598,17 +25701,15 @@ type UpdateTransitRouterPeerAttachmentAttributeRequest struct {
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
 	//
-	// **
-	//
-	// If you set **BandwidthType** to DataTransfer, you do not need to set this parameter.
+	// > If you set **BandwidthType** to **DataTransfer**, you do not need to set this parameter.
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
+	// Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
 	//
 	// *   **false** (default): performs a dry run and sends the request.
 	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
@@ -26752,14 +25853,14 @@ func (s *UpdateTransitRouterPeerAttachmentAttributeResponse) SetBody(v *UpdateTr
 type UpdateTransitRouterRouteEntryRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a precheck to check information such as the permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run. Default values:
 	//
-	// *   **false** (default): sends the request. If the request passes the precheck, the name and description of the route are modified.
-	// *   **true**: prechecks the request but does not modify the name or description of the transit router. If you use this value, the system checks the required parameters and the request syntax. If the request fails to pass the precheck, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the request.
+	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -26769,7 +25870,7 @@ type UpdateTransitRouterRouteEntryRequest struct {
 	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -. You can also leave the description empty.
 	TransitRouterRouteEntryDescription *string `json:"TransitRouterRouteEntryDescription,omitempty" xml:"TransitRouterRouteEntryDescription,omitempty"`
-	// The ID of the route entry.
+	// The ID of the route.
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
 	// The new name of the route.
 	//
@@ -27167,31 +26268,20 @@ func (s *UpdateTransitRouterVbrAttachmentAttributeResponse) SetBody(v *UpdateTra
 }
 
 type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// 是否允许企业版转发路由器自动发布路由到VPC实例。
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
-	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default values:
-	//
-	// *   **false** (default): performs a dry run and sends the request.
-	// *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The description of the VPC connection.
-	//
-	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+	// - **false**（默认值）：否。
+	// - **true**：是。
+	AutoPublishRouteEnabled            *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
+	ClientToken                        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount               *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPC connection.
-	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the VPC connection.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
-	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
+	TransitRouterAttachmentId          *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterAttachmentName        *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
 }
 
 func (s UpdateTransitRouterVpcAttachmentAttributeRequest) String() string {
@@ -27200,6 +26290,11 @@ func (s UpdateTransitRouterVpcAttachmentAttributeRequest) String() string {
 
 func (s UpdateTransitRouterVpcAttachmentAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetAutoPublishRouteEnabled(v bool) *UpdateTransitRouterVpcAttachmentAttributeRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
 }
 
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetClientToken(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest {
@@ -27248,7 +26343,6 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetTransitRouterAttac
 }
 
 type UpdateTransitRouterVpcAttachmentAttributeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27299,9 +26393,9 @@ type UpdateTransitRouterVpcAttachmentZonesRequest struct {
 	AddZoneMappings []*UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings `json:"AddZoneMappings,omitempty" xml:"AddZoneMappings,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
+	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
@@ -27480,33 +26574,33 @@ func (s *UpdateTransitRouterVpcAttachmentZonesResponse) SetBody(v *UpdateTransit
 }
 
 type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
-	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec connection. Valid values:
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	//
 	// *   **true**: yes
 	// *   **false**: no
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: prechecks the request but does not modify the configurations. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): checks the request. If the request passes the check, the configurations are modified.
+	// *   **true**:performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and sends the request.
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the VPN connection.
+	// The new description of the VPN attachment.
 	//
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPN connection.
+	// The ID of the VPN attachment.
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The name of the VPN connection.
+	// The name of the VPN attachment.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
@@ -27685,7 +26779,7 @@ func (s *WithdrawPublishedRouteEntriesRequest) SetResourceOwnerId(v int64) *With
 }
 
 type WithdrawPublishedRouteEntriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27870,9 +26964,7 @@ func (client *Client) ActiveFlowLog(request *ActiveFlowLogRequest) (_result *Act
 }
 
 /**
- * **AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
- * *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
- * *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
+ * The ID of the request.
  *
  * @param request AddTrafficMatchRuleToTrafficMarkingPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27940,9 +27032,7 @@ func (client *Client) AddTrafficMatchRuleToTrafficMarkingPolicyWithOptions(reque
 }
 
 /**
- * **AddTrafficMatchRuleToTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
- * *   If a traffic classification rule is in the **Creating** state, the traffic classification rule is being created. In this case, you can query the traffic classification rule but cannot perform other operations.
- * *   If a traffic classification rule is in the **Active** state, the traffic classification rule is added to the traffic marking policy.
+ * The ID of the request.
  *
  * @param request AddTrafficMatchRuleToTrafficMarkingPolicyRequest
  * @return AddTrafficMatchRuleToTrafficMarkingPolicyResponse
@@ -28129,9 +27219,9 @@ func (client *Client) AssociateCenBandwidthPackage(request *AssociateCenBandwidt
 }
 
 /**
- * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with a route table. Then, the network instance connection can forward network traffic based on the associated route table. Before you begin, we recommend that you read and understand the following rules:
+ * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with a route table. Then, the network instance connection can forward network traffic based on the associated route table. Before you begin, we recommend that you take note of the following rules:
  * *   Only Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [Transit routers](~~181681~~).
- * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterRouteTableAssociations** to query the status of an associated forwarding correlation.
+ * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
  *     *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
  *     *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
  *
@@ -28201,9 +27291,9 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTableWithOptions(
 }
 
 /**
- * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with a route table. Then, the network instance connection can forward network traffic based on the associated route table. Before you begin, we recommend that you read and understand the following rules:
+ * After you create a network instance connection on a transit router, you can configure an associated forwarding correlation to associate the network instance connection with a route table. Then, the network instance connection can forward network traffic based on the associated route table. Before you begin, we recommend that you take note of the following rules:
  * *   Only Enterprise Edition transit routers support associated forwarding correlations. For more information about the regions and zones that support Enterprise Edition transit routers, see [Transit routers](~~181681~~).
- * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterRouteTableAssociations** to query the status of an associated forwarding correlation.
+ * *   **AssociateTransitRouterAttachmentWithRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query the status of an associated forwarding correlation.
  *     *   If an associated forwarding correlation is in the **Associating** state, the associated forwarding correlation is being created. You can query the associated forwarding correlation but cannot perform other operations.
  *     *   If an associated forwarding correlation is in the **Active** state, the associated forwarding correlation is created.
  *
@@ -28472,9 +27562,8 @@ func (client *Client) CheckTransitRouterService(request *CheckTransitRouterServi
 }
 
 /**
- * **CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
- * * If a CEN instance is in the **Active** state, the CEN instance is created.
+ * The description of the CEN instance.
+ * The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
  *
  * @param request CreateCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28546,9 +27635,8 @@ func (client *Client) CreateCenWithOptions(request *CreateCenRequest, runtime *u
 }
 
 /**
- * **CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
- * * If a CEN instance is in the **Active** state, the CEN instance is created.
+ * The description of the CEN instance.
+ * The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
  *
  * @param request CreateCenRequest
  * @return CreateCenResponse
@@ -28565,10 +27653,9 @@ func (client *Client) CreateCen(request *CreateCenRequest) (_result *CreateCenRe
 }
 
 /**
- * ## Usage notes
  * *   You must specify the areas to be connected when you create a bandwidth plan. An area contains one or more Alibaba Cloud regions. When you select areas for a bandwidth plan, make sure that the areas contain the regions that you want to connect. For more information about the supported areas and regions, see [Purchase a bandwidth plan](~~181560~~).
  * *   For more information about the billing rules, see [Billing](~~189836~~).
- * *   **CreateCenBandwidthPackage** is an asynchronous operation. After you send a request, the system returns the bandwidth plan ID but the operation is still being performed in the system background. You can call **DescribeCenBandwidthPackages** to query the status of a bandwidth plan. If a bandwidth plan is in the **Idle** or **InUse** state, the bandwidth plan is created.
+ * *   **CreateCenBandwidthPackage** is an asynchronous operation. After you send a request, the system returns a bandwidth plan instance ID and runs the task in the background. You can call the **DescribeCenBandwidthPackages** operation to query the status of a bandwidth plan. If a bandwidth plan is in the **Idle** or **InUse** state, the bandwidth plan is created.
  *
  * @param request CreateCenBandwidthPackageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28672,10 +27759,9 @@ func (client *Client) CreateCenBandwidthPackageWithOptions(request *CreateCenBan
 }
 
 /**
- * ## Usage notes
  * *   You must specify the areas to be connected when you create a bandwidth plan. An area contains one or more Alibaba Cloud regions. When you select areas for a bandwidth plan, make sure that the areas contain the regions that you want to connect. For more information about the supported areas and regions, see [Purchase a bandwidth plan](~~181560~~).
  * *   For more information about the billing rules, see [Billing](~~189836~~).
- * *   **CreateCenBandwidthPackage** is an asynchronous operation. After you send a request, the system returns the bandwidth plan ID but the operation is still being performed in the system background. You can call **DescribeCenBandwidthPackages** to query the status of a bandwidth plan. If a bandwidth plan is in the **Idle** or **InUse** state, the bandwidth plan is created.
+ * *   **CreateCenBandwidthPackage** is an asynchronous operation. After you send a request, the system returns a bandwidth plan instance ID and runs the task in the background. You can call the **DescribeCenBandwidthPackages** operation to query the status of a bandwidth plan. If a bandwidth plan is in the **Idle** or **InUse** state, the bandwidth plan is created.
  *
  * @param request CreateCenBandwidthPackageRequest
  * @return CreateCenBandwidthPackageResponse
@@ -28694,8 +27780,8 @@ func (client *Client) CreateCenBandwidthPackage(request *CreateCenBandwidthPacka
 /**
  * *   You can add routes only to virtual private clouds (VPCs) or virtual border routers (VBRs) that are connected to an Enterprise Edition transit router.
  * *   By default, the next hop of the routes is the **transit router connection**, which is the connection between the VBR and the Enterprise Edition transit router. You cannot modify the next hop.
- * *   **CreateCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
- *     *   If a route is in the **Pending** state, the route is being created. In this case, you can query the route but cannot perform other operations.
+ * *   **CreateCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
+ *     *   If a route is in the **Pending** state, the route is being created. You can query the route but cannot perform other operations.
  *     *   If a route is in the **Available** state, the route is created.
  *
  * @param request CreateCenChildInstanceRouteEntryToAttachmentRequest
@@ -28774,8 +27860,8 @@ func (client *Client) CreateCenChildInstanceRouteEntryToAttachmentWithOptions(re
 /**
  * *   You can add routes only to virtual private clouds (VPCs) or virtual border routers (VBRs) that are connected to an Enterprise Edition transit router.
  * *   By default, the next hop of the routes is the **transit router connection**, which is the connection between the VBR and the Enterprise Edition transit router. You cannot modify the next hop.
- * *   **CreateCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, a **request ID** is returned but the operation is still being performed in the system background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
- *     *   If a route is in the **Pending** state, the route is being created. In this case, you can query the route but cannot perform other operations.
+ * *   **CreateCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
+ *     *   If a route is in the **Pending** state, the route is being created. You can query the route but cannot perform other operations.
  *     *   If a route is in the **Available** state, the route is created.
  *
  * @param request CreateCenChildInstanceRouteEntryToAttachmentRequest
@@ -29013,9 +28099,7 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicy(request *CreateCenInt
 }
 
 /**
- * The **CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
- * *   If a QoS policy is in the **Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
- * *   If a QoS policy is in the **Active** state, the queue is created.
+ * The ID of the request.
  *
  * @param request CreateCenInterRegionTrafficQosQueueRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29095,9 +28179,7 @@ func (client *Client) CreateCenInterRegionTrafficQosQueueWithOptions(request *Cr
 }
 
 /**
- * The **CreateCenInterRegionTrafficQosQueue** operation is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of the QoS policy to determine the status of the queue. When you call this operation, you must set the **TrafficQosPolicyId** parameter.
- * *   If a QoS policy is in the **Modifying** state, the queue is being created. In this case, you can query the QoS policy and queue but cannot perform other operations.
- * *   If a QoS policy is in the **Active** state, the queue is created.
+ * The ID of the request.
  *
  * @param request CreateCenInterRegionTrafficQosQueueRequest
  * @return CreateCenInterRegionTrafficQosQueueResponse
@@ -29114,10 +28196,8 @@ func (client *Client) CreateCenInterRegionTrafficQosQueue(request *CreateCenInte
 }
 
 /**
- * Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
- * `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
- * *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
- * *   If a routing policy is in the **Active** state, the routing policy is created.
+ * The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
+ * You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
  *
  * @param request CreateCenRouteMapRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29285,10 +28365,8 @@ func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapReq
 }
 
 /**
- * Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
- * `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
- * *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
- * *   If a routing policy is in the **Active** state, the routing policy is created.
+ * The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
+ * You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
  *
  * @param request CreateCenRouteMapRequest
  * @return CreateCenRouteMapResponse
@@ -29644,10 +28722,7 @@ func (client *Client) CreateTransitRouteTableAggregation(request *CreateTransitR
 }
 
 /**
- * *   You can call the **CreateTransitRouter** operation to create an Enterprise Edition transit router. For more information about the regions that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **CreateTransitRouter** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouters](~~261219~~) operation to query the status of an Enterprise Edition transit router.
- *     *   If an Enterprise Edition transit router is in the **Creating** state, the Enterprise Edition transit router is being created. In this case, you can query the Enterprise Edition transit router but cannot perform other operations.
- *     *   If an Enterprise Edition transit router is in the **Active** state, the Enterprise Edition transit router is created.
+ * The ID of the request.
  *
  * @param tmpReq CreateTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29741,10 +28816,7 @@ func (client *Client) CreateTransitRouterWithOptions(tmpReq *CreateTransitRouter
 }
 
 /**
- * *   You can call the **CreateTransitRouter** operation to create an Enterprise Edition transit router. For more information about the regions that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **CreateTransitRouter** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListTransitRouters](~~261219~~) operation to query the status of an Enterprise Edition transit router.
- *     *   If an Enterprise Edition transit router is in the **Creating** state, the Enterprise Edition transit router is being created. In this case, you can query the Enterprise Edition transit router but cannot perform other operations.
- *     *   If an Enterprise Edition transit router is in the **Active** state, the Enterprise Edition transit router is created.
+ * The ID of the request.
  *
  * @param request CreateTransitRouterRequest
  * @return CreateTransitRouterResponse
@@ -29991,15 +29063,8 @@ func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitR
 }
 
 /**
- * ## Background information
- * By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
- * Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
- * - **Allocate bandwidth resources from a bandwidth plan**:  You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createcenbandwidthpackage).
- * - **Use pay-by-data-transfer bandwidth resources**:  You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Cross-region data transfers](https://www.alibabacloud.com/help/en/cloud-data-transmission/latest/cross-region-data-transfers).
- * ## Usage notes
- * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns the inter-region connection ID but the operation is still being performed in the system background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
- * - If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
- * - If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+ * The name of the inter-region connection.
+ * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). The name must start with a letter.
  *
  * @param request CreateTransitRouterPeerAttachmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30107,15 +29172,8 @@ func (client *Client) CreateTransitRouterPeerAttachmentWithOptions(request *Crea
 }
 
 /**
- * ## Background information
- * By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
- * Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
- * - **Allocate bandwidth resources from a bandwidth plan**:  You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createcenbandwidthpackage).
- * - **Use pay-by-data-transfer bandwidth resources**:  You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Cross-region data transfers](https://www.alibabacloud.com/help/en/cloud-data-transmission/latest/cross-region-data-transfers).
- * ## Usage notes
- * **CreateTransitRouterPeerAttachment** is an asynchronous operation. After you send a request, the system returns the inter-region connection ID but the operation is still being performed in the system background. You can call **ListTransitRouterPeerAttachments** to query the status of an inter-region connection.
- * - If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
- * - If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+ * The name of the inter-region connection.
+ * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). The name must start with a letter.
  *
  * @param request CreateTransitRouterPeerAttachmentRequest
  * @return CreateTransitRouterPeerAttachmentResponse
@@ -30249,9 +29307,7 @@ func (client *Client) CreateTransitRouterPrefixListAssociation(request *CreateTr
 }
 
 /**
- * **CreateTransitRouterRouteEntry** is an asynchronous operation. After you send a request, the system returns a route ID and runs the task in the background. You can call the **ListTransitRouterRouteEntries** operation to query the status of a route.
- * *   If a route is in the **Creating** state, the route is being created. In this case, you can query the route but cannot perform other operations.
- * *   If a route is in the **Active** state, the route is created.
+ * The ID of the request.
  *
  * @param request CreateTransitRouterRouteEntryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30335,9 +29391,7 @@ func (client *Client) CreateTransitRouterRouteEntryWithOptions(request *CreateTr
 }
 
 /**
- * **CreateTransitRouterRouteEntry** is an asynchronous operation. After you send a request, the system returns a route ID and runs the task in the background. You can call the **ListTransitRouterRouteEntries** operation to query the status of a route.
- * *   If a route is in the **Creating** state, the route is being created. In this case, you can query the route but cannot perform other operations.
- * *   If a route is in the **Active** state, the route is created.
+ * The ID of the request.
  *
  * @param request CreateTransitRouterRouteEntryRequest
  * @return CreateTransitRouterRouteEntryResponse
@@ -30354,10 +29408,7 @@ func (client *Client) CreateTransitRouterRouteEntry(request *CreateTransitRouter
 }
 
 /**
- * *   Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the system returns a route table ID and runs the task in the background. You can call the **ListTransitRouterRouteTables** operation to query the status of a route table.
- *     *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
- *     *   If a route table is in the **Active** state, the route table is created.
+ * The ID of the request.
  *
  * @param request CreateTransitRouterRouteTableRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30437,10 +29488,7 @@ func (client *Client) CreateTransitRouterRouteTableWithOptions(request *CreateTr
 }
 
 /**
- * *   Only Enterprise Edition transit routers support custom route tables. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **CreateTransitRouterRouteTable** is an asynchronous operation. After you send a request, the system returns a route table ID and runs the task in the background. You can call the **ListTransitRouterRouteTables** operation to query the status of a route table.
- *     *   If a route table is in the **Creating** state, the route table is being created. In this case, you can query the route table but cannot perform other operations.
- *     *   If a route table is in the **Active** state, the route table is created.
+ * The ID of the request.
  *
  * @param request CreateTransitRouterRouteTableRequest
  * @return CreateTransitRouterRouteTableResponse
@@ -30582,18 +29630,7 @@ func (client *Client) CreateTransitRouterVbrAttachment(request *CreateTransitRou
 }
 
 /**
- * *   You can use the following methods to connect a VPC to an Enterprise Edition transit router:
- *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
- *     *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
- * *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a VPC connection ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
- *     *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
- *     *   If a VPC connection is in the **Attached** state, the VPC connection is created.
- * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
- * ## Prerequisites
- * Before you call this operation, make sure that the following requirements are met:
- * *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
- * *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
- * *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
+ * The ID of the VPC connection.
  *
  * @param request CreateTransitRouterVpcAttachmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30605,6 +29642,10 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *Creat
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CenId)) {
 		query["CenId"] = request.CenId
 	}
@@ -30693,18 +29734,7 @@ func (client *Client) CreateTransitRouterVpcAttachmentWithOptions(request *Creat
 }
 
 /**
- * *   You can use the following methods to connect a VPC to an Enterprise Edition transit router:
- *     *   If an Enterprise Edition transit router is already created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, and **TransitRouterId**.
- *     *   If no Enterprise Edition transit router is created in the region where you want to create a VPC connection, set **VpcId**, **ZoneMappings.N.VSwitchId**, **ZoneMappings.N.ZoneId**, **CenId**, and **RegionId**. When you create a VPC connection, the system automatically creates an Enterprise Edition transit router in the specified region.
- * *   **CreateTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a VPC connection ID and runs the task in the background. You can call the [ListTransitRouterVpcAttachments](~~261222~~) operation to query the status of a VPC connection.
- *     *   If a VPC connection is in the **Attaching** state, the VPC connection is being created. You can query the VPC connection but cannot perform other operations.
- *     *   If a VPC connection is in the **Attached** state, the VPC connection is created.
- * *   By default, route learning and associated forwarding are disabled between transit router route tables and VPC connections.
- * ## Prerequisites
- * Before you call this operation, make sure that the following requirements are met:
- * *   At least one vSwitch is deployed for the VPC in the zones supported by Enterprise Edition transit routers. Each vSwitch must have at least one idle IP address. For more information, see [Regions and zones supported by Enterprise Edition transit routers](~~181681~~).
- * *   To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
- * *   VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](~~189836~~).
+ * The ID of the VPC connection.
  *
  * @param request CreateTransitRouterVpcAttachmentRequest
  * @return CreateTransitRouterVpcAttachmentResponse
@@ -31031,13 +30061,6 @@ func (client *Client) DeleteCen(request *DeleteCenRequest) (_result *DeleteCenRe
 	return _result, _err
 }
 
-/**
- * Before you delete a bandwidth plan, make sure that it is disassociated from all Cloud Enterprise Network (CEN) instances. For more information, see [UnassociateCenBandwidthPackage](~~65935~~).
- *
- * @param request DeleteCenBandwidthPackageRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteCenBandwidthPackageResponse
- */
 func (client *Client) DeleteCenBandwidthPackageWithOptions(request *DeleteCenBandwidthPackageRequest, runtime *util.RuntimeOptions) (_result *DeleteCenBandwidthPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31087,12 +30110,6 @@ func (client *Client) DeleteCenBandwidthPackageWithOptions(request *DeleteCenBan
 	return _result, _err
 }
 
-/**
- * Before you delete a bandwidth plan, make sure that it is disassociated from all Cloud Enterprise Network (CEN) instances. For more information, see [UnassociateCenBandwidthPackage](~~65935~~).
- *
- * @param request DeleteCenBandwidthPackageRequest
- * @return DeleteCenBandwidthPackageResponse
- */
 func (client *Client) DeleteCenBandwidthPackage(request *DeleteCenBandwidthPackageRequest) (_result *DeleteCenBandwidthPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCenBandwidthPackageResponse{}
@@ -31105,9 +30122,8 @@ func (client *Client) DeleteCenBandwidthPackage(request *DeleteCenBandwidthPacka
 }
 
 /**
- * ## Usage notes
  * *   You can delete routes only from virtual private clouds (VPCs) and virtual border routers (VBRs) whose next hop is an **Enterprise Edition transit router connection**, which is the connection to the network instance.
- * *   **DeleteCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeRouteEntryList** to query the status of a route.
+ * *   **DeleteCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
  *     *   If a route is in the **Deleting** state, the route is being deleted. You can query the route but cannot perform other operations.
  *     *   If a route cannot be found, the route is deleted.
  *
@@ -31185,9 +30201,8 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToAttachmentWithOptions(re
 }
 
 /**
- * ## Usage notes
  * *   You can delete routes only from virtual private clouds (VPCs) and virtual border routers (VBRs) whose next hop is an **Enterprise Edition transit router connection**, which is the connection to the network instance.
- * *   **DeleteCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeRouteEntryList** to query the status of a route.
+ * *   **DeleteCenChildInstanceRouteEntryToAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteEntryList** operation to query the status of a route.
  *     *   If a route is in the **Deleting** state, the route is being deleted. You can query the route but cannot perform other operations.
  *     *   If a route cannot be found, the route is deleted.
  *
@@ -31207,7 +30222,7 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToAttachment(request *Dele
 
 /**
  * ## Limits
- * *   By default, the DeleteCenChildInstanceRouteEntryToCen operation is unavailable. To call this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+ * *   By default, the DeleteCenChildInstanceRouteEntryToCen operation is unavailable. To call this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
  * *   You cannot delete a route entry from an Enterprise Edition transit router by calling the DeleteCenChildInstanceRouteEntryToCen operation.
  *
  * @param request DeleteCenChildInstanceRouteEntryToCenRequest
@@ -31289,7 +30304,7 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToCenWithOptions(request *
 
 /**
  * ## Limits
- * *   By default, the DeleteCenChildInstanceRouteEntryToCen operation is unavailable. To call this operation,[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+ * *   By default, the DeleteCenChildInstanceRouteEntryToCen operation is unavailable. To call this operation, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
  * *   You cannot delete a route entry from an Enterprise Edition transit router by calling the DeleteCenChildInstanceRouteEntryToCen operation.
  *
  * @param request DeleteCenChildInstanceRouteEntryToCenRequest
@@ -31307,10 +30322,7 @@ func (client *Client) DeleteCenChildInstanceRouteEntryToCen(request *DeleteCenCh
 }
 
 /**
- * *   Before you delete a QoS policy, you must delete all queues in the QoS policy except the default queue. For more information, see [DeleteCenInterRegionTrafficQosQueue](~~419062~~).
- * *   **DeleteCenInterRegionTrafficQosPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of a QoS policy.
- *     *   If a QoS policy is in the **Deleting** state, the QoS policy is being deleted. You can query the QoS policy but cannot perform other operations.
- *     *   If a QoS policy cannot be found, the QoS policy is deleted.
+ * The ID of the request.
  *
  * @param request DeleteCenInterRegionTrafficQosPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31374,10 +30386,7 @@ func (client *Client) DeleteCenInterRegionTrafficQosPolicyWithOptions(request *D
 }
 
 /**
- * *   Before you delete a QoS policy, you must delete all queues in the QoS policy except the default queue. For more information, see [DeleteCenInterRegionTrafficQosQueue](~~419062~~).
- * *   **DeleteCenInterRegionTrafficQosPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of a QoS policy.
- *     *   If a QoS policy is in the **Deleting** state, the QoS policy is being deleted. You can query the QoS policy but cannot perform other operations.
- *     *   If a QoS policy cannot be found, the QoS policy is deleted.
+ * The ID of the request.
  *
  * @param request DeleteCenInterRegionTrafficQosPolicyRequest
  * @return DeleteCenInterRegionTrafficQosPolicyResponse
@@ -31394,8 +30403,7 @@ func (client *Client) DeleteCenInterRegionTrafficQosPolicy(request *DeleteCenInt
 }
 
 /**
- * *   You cannot delete the default queue.
- * *   **DeleteCenInterRegionTrafficQosQueue** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of a queue. If a queue cannot be found, the queue is deleted.
+ * The ID of the request.
  *
  * @param request DeleteCenInterRegionTrafficQosQueueRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31459,8 +30467,7 @@ func (client *Client) DeleteCenInterRegionTrafficQosQueueWithOptions(request *De
 }
 
 /**
- * *   You cannot delete the default queue.
- * *   **DeleteCenInterRegionTrafficQosQueue** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListCenInterRegionTrafficQosPolicies** operation to query the status of a queue. If a queue cannot be found, the queue is deleted.
+ * The ID of the request.
  *
  * @param request DeleteCenInterRegionTrafficQosQueueRequest
  * @return DeleteCenInterRegionTrafficQosQueueResponse
@@ -31562,9 +30569,7 @@ func (client *Client) DeleteCenRouteMap(request *DeleteCenRouteMapRequest) (_res
 }
 
 /**
- * The `DeleteFlowlog` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
- * *   If a flow log is in the **Deleting** state, the flow log is being deleted. In this case, you can query the flow log but cannot perform other operations.
- * *   If a flow log cannot be found, the flow log is deleted.``
+ * The response.
  *
  * @param request DeleteFlowlogRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31632,9 +30637,7 @@ func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, ru
 }
 
 /**
- * The `DeleteFlowlog` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
- * *   If a flow log is in the **Deleting** state, the flow log is being deleted. In this case, you can query the flow log but cannot perform other operations.
- * *   If a flow log cannot be found, the flow log is deleted.``
+ * The response.
  *
  * @param request DeleteFlowlogRequest
  * @return DeleteFlowlogResponse
@@ -31651,10 +30654,9 @@ func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *Del
 }
 
 /**
- * ## Usage notes
- * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **DescribeRouteServicesInCen** to query the status of the connection to a cloud service.
- * *   If a cloud service is in the **Deleting** state, the connection to the cloud service is being deleted. You can query the connection but you cannot perform other operations.
- * *   If no connection to a cloud service can be found, the connection to the cloud service is deleted.
+ * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of the connection to a cloud service.
+ *     - If a cloud service is in the **Deleting** state, the configuration of the cloud service is being deleted. You can query the configuration but cannot perform other operations.
+ *     - If no configuration of a cloud service can be found, the configuration of the cloud service is deleted.
  *
  * @param request DeleteRouteServiceInCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31726,10 +30728,9 @@ func (client *Client) DeleteRouteServiceInCenWithOptions(request *DeleteRouteSer
 }
 
 /**
- * ## Usage notes
- * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **DescribeRouteServicesInCen** to query the status of the connection to a cloud service.
- * *   If a cloud service is in the **Deleting** state, the connection to the cloud service is being deleted. You can query the connection but you cannot perform other operations.
- * *   If no connection to a cloud service can be found, the connection to the cloud service is deleted.
+ * **DeleteRouteServiceInCen** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeRouteServicesInCen** operation to query the status of the connection to a cloud service.
+ *     - If a cloud service is in the **Deleting** state, the configuration of the cloud service is being deleted. You can query the configuration but cannot perform other operations.
+ *     - If no configuration of a cloud service can be found, the configuration of the cloud service is deleted.
  *
  * @param request DeleteRouteServiceInCenRequest
  * @return DeleteRouteServiceInCenResponse
@@ -31832,14 +30833,6 @@ func (client *Client) DeleteTrafficMarkingPolicy(request *DeleteTrafficMarkingPo
 	return _result, _err
 }
 
-/**
- * *   Before you delete an aggregate route, make sure that your network has a redundant route to prevent service interruptions.
- * *   After an aggregate route is deleted, the aggregate route is automatically withdrawn from virtual private clouds (VPCs). Specific routes that fall within the aggregate route are advertised to the VPCs.
- *
- * @param request DeleteTransitRouteTableAggregationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteTransitRouteTableAggregationResponse
- */
 func (client *Client) DeleteTransitRouteTableAggregationWithOptions(request *DeleteTransitRouteTableAggregationRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouteTableAggregationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31901,13 +30894,6 @@ func (client *Client) DeleteTransitRouteTableAggregationWithOptions(request *Del
 	return _result, _err
 }
 
-/**
- * *   Before you delete an aggregate route, make sure that your network has a redundant route to prevent service interruptions.
- * *   After an aggregate route is deleted, the aggregate route is automatically withdrawn from virtual private clouds (VPCs). Specific routes that fall within the aggregate route are advertised to the VPCs.
- *
- * @param request DeleteTransitRouteTableAggregationRequest
- * @return DeleteTransitRouteTableAggregationResponse
- */
 func (client *Client) DeleteTransitRouteTableAggregation(request *DeleteTransitRouteTableAggregationRequest) (_result *DeleteTransitRouteTableAggregationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTransitRouteTableAggregationResponse{}
@@ -31920,18 +30906,7 @@ func (client *Client) DeleteTransitRouteTableAggregation(request *DeleteTransitR
 }
 
 /**
- * **DeleteTransitRouter** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouters** operation to query the status of a transit router.
- * *   If a transit router is in the **Deleting** state, the transit router is being deleted. In this case, you can query the transit router but cannot perform other operations.
- * *   If a transit router cannot be found, the transit router is deleted.
- * ## Prerequisites
- * Before you delete a transit router, make sure that the following prerequisites are met:
- * *   No network instance connections are created on the transit router.
- *     *   For more information about how to delete a virtual private cloud (VPC) connection, see [DeleteTransitRouterVpcAttachment](~~261220~~).
- *     *   For more information about how to delete a virtual border router (VBR) connection, see [DeleteTransitRouterVbrAttachment](~~261223~~).
- *     *   For more information about how to delete a Cloud Connect Network (CCN) connection, see [DetachCenChildInstance](~~65915~~).
- *     *   For more information about how to delete a VPN connection, see [DeleteTransitRouterVpnAttachment](~~443992~~).
- *     *   For more information about how to delete an inter-region connection, see [DeleteTransitRouterPeerAttachment](~~261227~~).
- * *   No custom route tables are created on the transit router. For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~261235~~).
+ * The ID of the request.
  *
  * @param request DeleteTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31995,18 +30970,7 @@ func (client *Client) DeleteTransitRouterWithOptions(request *DeleteTransitRoute
 }
 
 /**
- * **DeleteTransitRouter** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouters** operation to query the status of a transit router.
- * *   If a transit router is in the **Deleting** state, the transit router is being deleted. In this case, you can query the transit router but cannot perform other operations.
- * *   If a transit router cannot be found, the transit router is deleted.
- * ## Prerequisites
- * Before you delete a transit router, make sure that the following prerequisites are met:
- * *   No network instance connections are created on the transit router.
- *     *   For more information about how to delete a virtual private cloud (VPC) connection, see [DeleteTransitRouterVpcAttachment](~~261220~~).
- *     *   For more information about how to delete a virtual border router (VBR) connection, see [DeleteTransitRouterVbrAttachment](~~261223~~).
- *     *   For more information about how to delete a Cloud Connect Network (CCN) connection, see [DetachCenChildInstance](~~65915~~).
- *     *   For more information about how to delete a VPN connection, see [DeleteTransitRouterVpnAttachment](~~443992~~).
- *     *   For more information about how to delete an inter-region connection, see [DeleteTransitRouterPeerAttachment](~~261227~~).
- * *   No custom route tables are created on the transit router. For more information about how to delete a custom route table, see [DeleteTransitRouterRouteTable](~~261235~~).
+ * The ID of the request.
  *
  * @param request DeleteTransitRouterRequest
  * @return DeleteTransitRouterResponse
@@ -32023,8 +30987,9 @@ func (client *Client) DeleteTransitRouter(request *DeleteTransitRouterRequest) (
 }
 
 /**
- * ## Usage notes
- * If IP addresses within the CIDR block have been allocated to network instances, the CIDR block cannot be deleted.
+ * The client token that is used to ensure the idempotence of the request.
+ * You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+ * >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
  *
  * @param request DeleteTransitRouterCidrRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32096,8 +31061,9 @@ func (client *Client) DeleteTransitRouterCidrWithOptions(request *DeleteTransitR
 }
 
 /**
- * ## Usage notes
- * If IP addresses within the CIDR block have been allocated to network instances, the CIDR block cannot be deleted.
+ * The client token that is used to ensure the idempotence of the request.
+ * You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+ * >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
  *
  * @param request DeleteTransitRouterCidrRequest
  * @return DeleteTransitRouterCidrResponse
@@ -32304,7 +31270,7 @@ func (client *Client) DeleteTransitRouterPeerAttachment(request *DeleteTransitRo
 }
 
 /**
- * ## Usage notes
+ * # Usage notes
  * After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
  *
  * @param request DeleteTransitRouterPrefixListAssociationRequest
@@ -32389,7 +31355,7 @@ func (client *Client) DeleteTransitRouterPrefixListAssociationWithOptions(reques
 }
 
 /**
- * ## Usage notes
+ * # Usage notes
  * After you disassociate a route table of an Enterprise Edition transit router from a prefix list, the routes that point to the CIDR blocks in the prefix list are automatically withdrawn from the route table. Before you disassociate the route table of an Enterprise Edition transit router from a prefix list, you must migrate workloads that use the routes in case services are interrupted.
  *
  * @param request DeleteTransitRouterPrefixListAssociationRequest
@@ -32523,7 +31489,7 @@ func (client *Client) DeleteTransitRouterRouteEntry(request *DeleteTransitRouter
 
 /**
  * *   You cannot delete the default route table of an Enterprise Edition transit router.
- * *   The **DeleteTransitRouterRouteTable** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterRouteTables** to query the status of a custom route table.
+ * *   **DeleteTransitRouterRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTables** operation to query the status of a custom route table.
  *     *   If a custom route table is in the Deleting state, the custom route table is being deleted. In this case, you can query the custom route table but cannot perform other operations.
  *     *   If a custom route table cannot be found, the custom route table is deleted.
  *
@@ -32590,7 +31556,7 @@ func (client *Client) DeleteTransitRouterRouteTableWithOptions(request *DeleteTr
 
 /**
  * *   You cannot delete the default route table of an Enterprise Edition transit router.
- * *   The **DeleteTransitRouterRouteTable** operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call **ListTransitRouterRouteTables** to query the status of a custom route table.
+ * *   **DeleteTransitRouterRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTables** operation to query the status of a custom route table.
  *     *   If a custom route table is in the Deleting state, the custom route table is being deleted. In this case, you can query the custom route table but cannot perform other operations.
  *     *   If a custom route table cannot be found, the custom route table is deleted.
  *
@@ -32711,7 +31677,7 @@ func (client *Client) DeleteTransitRouterVbrAttachment(request *DeleteTransitRou
 
 /**
  * **DeleteTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
- * *   If a VPC is in the **Detaching** state, the VPC connection is being deleted. You can query the VPC connection but cannot perform other operations.
+ * *   If a VPC connection is in the **Detaching** state, the VPC connection is being deleted. You can query the VPC connection but cannot perform other operations.
  * *   If a VPC connection cannot be found, it is deleted.
  * ## Prerequisites
  * Before you delete a VPC connection, make sure that the following requirements are met:
@@ -32788,7 +31754,7 @@ func (client *Client) DeleteTransitRouterVpcAttachmentWithOptions(request *Delet
 
 /**
  * **DeleteTransitRouterVpcAttachment** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
- * *   If a VPC is in the **Detaching** state, the VPC connection is being deleted. You can query the VPC connection but cannot perform other operations.
+ * *   If a VPC connection is in the **Detaching** state, the VPC connection is being deleted. You can query the VPC connection but cannot perform other operations.
  * *   If a VPC connection cannot be found, it is deleted.
  * ## Prerequisites
  * Before you delete a VPC connection, make sure that the following requirements are met:
@@ -32813,11 +31779,10 @@ func (client *Client) DeleteTransitRouterVpcAttachment(request *DeleteTransitRou
 }
 
 /**
- * ## Usage note
- * Before you delete a VPN connection, make sure that the following requirements are met:
- * *   No associated forwarding correlation is established between the VPN connection and the route tables of the Enterprise Edition transit router. For more information about how to delete an associated forwarding correlation, see [DissociateTransitRouterAttachmentFromRouteTable](~~260944~~).
- * *   No route learning correlation is established between the VPN connection and the route tables of the Enterprise Edition transit router. For more information about how to delete a route learning correlation, see [DisableTransitRouterRouteTablePropagation](~~260945~~).
- * *   No route in the route table of the Enterprise Edition transit router points to the VPN connection. For more information, see [DeleteTransitRouterRouteEntry](~~261240~~).
+ * Before you delete a VPN attachment, make sure that the following requirements are met:
+ * *   No associated forwarding correlation is established between the VPN attachment and the route tables of the Enterprise Edition transit router. For more information about how to delete an associated forwarding correlation, see [DissociateTransitRouterAttachmentFromRouteTable](~~260944~~).
+ * *   No route learning correlation is established between the VPn attachment and the route tables of the Enterprise Edition transit router. For more information about how to delete a route learning correlation, see [DisableTransitRouterRouteTablePropagation](~~260945~~).
+ * *   No route in the route table of the Enterprise Edition transit router points to the VPN attachment. For more information, see [DeleteTransitRouterRouteEntry](~~261240~~).
  *
  * @param request DeleteTransitRouterVpnAttachmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32885,11 +31850,10 @@ func (client *Client) DeleteTransitRouterVpnAttachmentWithOptions(request *Delet
 }
 
 /**
- * ## Usage note
- * Before you delete a VPN connection, make sure that the following requirements are met:
- * *   No associated forwarding correlation is established between the VPN connection and the route tables of the Enterprise Edition transit router. For more information about how to delete an associated forwarding correlation, see [DissociateTransitRouterAttachmentFromRouteTable](~~260944~~).
- * *   No route learning correlation is established between the VPN connection and the route tables of the Enterprise Edition transit router. For more information about how to delete a route learning correlation, see [DisableTransitRouterRouteTablePropagation](~~260945~~).
- * *   No route in the route table of the Enterprise Edition transit router points to the VPN connection. For more information, see [DeleteTransitRouterRouteEntry](~~261240~~).
+ * Before you delete a VPN attachment, make sure that the following requirements are met:
+ * *   No associated forwarding correlation is established between the VPN attachment and the route tables of the Enterprise Edition transit router. For more information about how to delete an associated forwarding correlation, see [DissociateTransitRouterAttachmentFromRouteTable](~~260944~~).
+ * *   No route learning correlation is established between the VPn attachment and the route tables of the Enterprise Edition transit router. For more information about how to delete a route learning correlation, see [DisableTransitRouterRouteTablePropagation](~~260945~~).
+ * *   No route in the route table of the Enterprise Edition transit router points to the VPN attachment. For more information, see [DeleteTransitRouterRouteEntry](~~261240~~).
  *
  * @param request DeleteTransitRouterVpnAttachmentRequest
  * @return DeleteTransitRouterVpnAttachmentResponse
@@ -33003,10 +31967,9 @@ func (client *Client) DeregisterTransitRouterMulticastGroupMembers(request *Dere
 }
 
 /**
- * ## Usage notes
- * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
- * *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
- * *   If a multicast source cannot be found, the multicast source is deleted.
+ * The ID of the multicast source.
+ * You can create only one multicast source in a multicast group.
+ * >  This parameter is required.
  *
  * @param request DeregisterTransitRouterMulticastGroupSourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33078,10 +32041,9 @@ func (client *Client) DeregisterTransitRouterMulticastGroupSourcesWithOptions(re
 }
 
 /**
- * ## Usage notes
- * `DeregisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.
- * *   If a multicast source is in the **Deregistering** state, the multicast source is being deleted. You can query the multicast source but cannot perform other operations.
- * *   If a multicast source cannot be found, the multicast source is deleted.
+ * The ID of the multicast source.
+ * You can create only one multicast source in a multicast group.
+ * >  This parameter is required.
  *
  * @param request DeregisterTransitRouterMulticastGroupSourcesRequest
  * @return DeregisterTransitRouterMulticastGroupSourcesResponse
@@ -33170,10 +32132,8 @@ func (client *Client) DescribeCenAttachedChildInstanceAttribute(request *Describ
 }
 
 /**
- * You can use one of the following methods to query the information about the network instances that are attached to a CEN instance:
- * *   You can query all the network instances that are attached to a CEN instance by setting the `CenId` parameter.
- * *   You can query the network instances that are attached to a CEN instance in a specified region by setting the `CenId` and `ChildInstanceRegionId` parameters.
- * *   You can query a specified type of network instances that are attached to a CEN instance by setting the `CenId` and `ChildInstanceType` parameters.
+ * The time when the network instance was attached to the CEN instance.
+ * The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
  *
  * @param request DescribeCenAttachedChildInstancesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33245,10 +32205,8 @@ func (client *Client) DescribeCenAttachedChildInstancesWithOptions(request *Desc
 }
 
 /**
- * You can use one of the following methods to query the information about the network instances that are attached to a CEN instance:
- * *   You can query all the network instances that are attached to a CEN instance by setting the `CenId` parameter.
- * *   You can query the network instances that are attached to a CEN instance in a specified region by setting the `CenId` and `ChildInstanceRegionId` parameters.
- * *   You can query a specified type of network instances that are attached to a CEN instance by setting the `CenId` and `ChildInstanceType` parameters.
+ * The time when the network instance was attached to the CEN instance.
+ * The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
  *
  * @param request DescribeCenAttachedChildInstancesRequest
  * @return DescribeCenAttachedChildInstancesResponse
@@ -35081,16 +34039,6 @@ func (client *Client) DisableTransitRouterRouteTablePropagation(request *Disable
 	return _result, _err
 }
 
-/**
- * *   After a vSwitch is disassociated from a multicast domain, the multicast sources and members on the vSwitch are also removed from the multicast domain.
- * *   **DisassociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
- *     *   The **Dissociating** state indicates that the vSwitch is being disassociated from the multicast domain. You can query the vSwitch but you cannot perform other operations.
- *     *   If the vSwitch cannot be found, the vSwitch is disassociated from the multicast domain.
- *
- * @param request DisassociateTransitRouterMulticastDomainRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisassociateTransitRouterMulticastDomainResponse
- */
 func (client *Client) DisassociateTransitRouterMulticastDomainWithOptions(request *DisassociateTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *DisassociateTransitRouterMulticastDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35156,15 +34104,6 @@ func (client *Client) DisassociateTransitRouterMulticastDomainWithOptions(reques
 	return _result, _err
 }
 
-/**
- * *   After a vSwitch is disassociated from a multicast domain, the multicast sources and members on the vSwitch are also removed from the multicast domain.
- * *   **DisassociateTransitRouterMulticastDomain** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterMulticastDomainAssociations** operation to query the association status between a vSwitch and a multicast domain.
- *     *   The **Dissociating** state indicates that the vSwitch is being disassociated from the multicast domain. You can query the vSwitch but you cannot perform other operations.
- *     *   If the vSwitch cannot be found, the vSwitch is disassociated from the multicast domain.
- *
- * @param request DisassociateTransitRouterMulticastDomainRequest
- * @return DisassociateTransitRouterMulticastDomainResponse
- */
 func (client *Client) DisassociateTransitRouterMulticastDomain(request *DisassociateTransitRouterMulticastDomainRequest) (_result *DisassociateTransitRouterMulticastDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisassociateTransitRouterMulticastDomainResponse{}
@@ -35177,9 +34116,8 @@ func (client *Client) DisassociateTransitRouterMulticastDomain(request *Disassoc
 }
 
 /**
- * # Usage notes
- * **DissociateTransitRouterAttachmentFromRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterRouteTableAssociations** operation to query an associated forwarding correlation between a network instance connection and a route table.
- * *   If an associated forwarding correlation is in the **Dissociating** state, the associated forwarding correlation is being deleted. In this case, you can query the associated forwarding correlation but cannot perform other operations.
+ * **DissociateTransitRouterAttachmentFromRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query an associated forwarding correlation between a network instance connection and a route table.
+ * *   If an associated forwarding correlation is in the **Dissociating** state, the associated forwarding correlation is being deleted. You can query the associated forwarding correlation but cannot perform other operations.
  * *   If an associated forwarding correlation cannot be found, the associated forwarding correlation is deleted.
  *
  * @param request DissociateTransitRouterAttachmentFromRouteTableRequest
@@ -35248,9 +34186,8 @@ func (client *Client) DissociateTransitRouterAttachmentFromRouteTableWithOptions
 }
 
 /**
- * # Usage notes
- * **DissociateTransitRouterAttachmentFromRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterRouteTableAssociations** operation to query an associated forwarding correlation between a network instance connection and a route table.
- * *   If an associated forwarding correlation is in the **Dissociating** state, the associated forwarding correlation is being deleted. In this case, you can query the associated forwarding correlation but cannot perform other operations.
+ * **DissociateTransitRouterAttachmentFromRouteTable** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTableAssociations** operation to query an associated forwarding correlation between a network instance connection and a route table.
+ * *   If an associated forwarding correlation is in the **Dissociating** state, the associated forwarding correlation is being deleted. You can query the associated forwarding correlation but cannot perform other operations.
  * *   If an associated forwarding correlation cannot be found, the associated forwarding correlation is deleted.
  *
  * @param request DissociateTransitRouterAttachmentFromRouteTableRequest
@@ -35381,9 +34318,9 @@ func (client *Client) EnableCenVbrHealthCheck(request *EnableCenVbrHealthCheckRe
 }
 
 /**
- * After you establish a network instance connection on a transit router, you can create a route learning correlation for the network instance connection. Then, the routes of the connected network instance are automatically advertised to the route table of the transit router. Before you begin, we recommend that you read and understand the following rules:
+ * After you establish a network instance connection on a transit router, you can create a route learning correlation for the network instance connection. Then, the routes of the connected network instance are automatically advertised to the route table of the transit router. Before you begin, we recommend that you take note of the following rules:
  * *   You can create route learning correlations only on Enterprise Edition transit routers. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **EnableTransitRouterRouteTablePropagation** is an asynchronous operation. After you send a request, the system returns a **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTablePropagations** to query the route learning status between a network instance connection and a route table.
+ * *   **EnableTransitRouterRouteTablePropagation** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the route learning status between a network instance connection and a route table.
  *     *   **Enabling** indicates that a route learning correlation is being created between the network instance connection and route table. You can query the route learning correlation but cannot perform other operations.
  *     *   **Active** indicates that the route learning correlation is created between the network instance connection and route table.
  *
@@ -35453,9 +34390,9 @@ func (client *Client) EnableTransitRouterRouteTablePropagationWithOptions(reques
 }
 
 /**
- * After you establish a network instance connection on a transit router, you can create a route learning correlation for the network instance connection. Then, the routes of the connected network instance are automatically advertised to the route table of the transit router. Before you begin, we recommend that you read and understand the following rules:
+ * After you establish a network instance connection on a transit router, you can create a route learning correlation for the network instance connection. Then, the routes of the connected network instance are automatically advertised to the route table of the transit router. Before you begin, we recommend that you take note of the following rules:
  * *   You can create route learning correlations only on Enterprise Edition transit routers. For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](~~181681~~)
- * *   **EnableTransitRouterRouteTablePropagation** is an asynchronous operation. After you send a request, the system returns a **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTablePropagations** to query the route learning status between a network instance connection and a route table.
+ * *   **EnableTransitRouterRouteTablePropagation** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterRouteTablePropagations** operation to query the route learning status between a network instance connection and a route table.
  *     *   **Enabling** indicates that a route learning correlation is being created between the network instance connection and route table. You can query the route learning correlation but cannot perform other operations.
  *     *   **Active** indicates that the route learning correlation is created between the network instance connection and route table.
  *
@@ -35474,10 +34411,10 @@ func (client *Client) EnableTransitRouterRouteTablePropagation(request *EnableTr
 }
 
 /**
- * ## Description
- * *   `GrantInstanceToTransitRouter` grants transit routes permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
- *     If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](~~126141~~) operation.
- * *   Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+ * The type of the network instance. Valid values:
+ * *   **VPC**: VPC
+ * *   **ExpressConnect**: VBR
+ * *   **VPN**: IPsec-VPN connection
  *
  * @param request GrantInstanceToTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35553,10 +34490,10 @@ func (client *Client) GrantInstanceToTransitRouterWithOptions(request *GrantInst
 }
 
 /**
- * ## Description
- * *   `GrantInstanceToTransitRouter` grants transit routes permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
- *     If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](~~126141~~) operation.
- * *   Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](~~181553~~).
+ * The type of the network instance. Valid values:
+ * *   **VPC**: VPC
+ * *   **ExpressConnect**: VBR
+ * *   **VPN**: IPsec-VPN connection
  *
  * @param request GrantInstanceToTransitRouterRequest
  * @return GrantInstanceToTransitRouterResponse
@@ -35848,7 +34785,10 @@ func (client *Client) ListCenInterRegionTrafficQosQueues(request *ListCenInterRe
 }
 
 /**
- * Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ * Indicates whether the ENI is created by a transit router. Valid values:
+ * *   **true**: yes
+ * *   **false**: no
+ * ENIs that are created by transit routers cannot be used as multicast sources or members.
  *
  * @param request ListGrantVSwitchEnisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35912,7 +34852,10 @@ func (client *Client) ListGrantVSwitchEnisWithOptions(request *ListGrantVSwitchE
 }
 
 /**
- * Before you call `ListGrantVSwitchEnis`, make sure that the VPC is attached to a Cloud Enterprise Network (CEN) instance. For more information, see [CreateTransitRouterVpcAttachment](~~261358~~).
+ * Indicates whether the ENI is created by a transit router. Valid values:
+ * *   **true**: yes
+ * *   **false**: no
+ * ENIs that are created by transit routers cannot be used as multicast sources or members.
  *
  * @param request ListGrantVSwitchEnisRequest
  * @return ListGrantVSwitchEnisResponse
@@ -35929,11 +34872,7 @@ func (client *Client) ListGrantVSwitchEnis(request *ListGrantVSwitchEnisRequest)
 }
 
 /**
- * Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
- * *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
- * *   The VPC is attached to the CEN instance.
- *     *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
- *     *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
+ * The ID of the VPC to which the vSwitch belongs.
  *
  * @param request ListGrantVSwitchesToCenRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36009,11 +34948,7 @@ func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwit
 }
 
 /**
- * Before you call the `ListGrantVSwitchesToCen` operation, make sure that the following requirements are met:
- * *   The permissions on the VPC are granted to the CEN instance. For more information, see [GrantInstanceToCen](~~126224~~).
- * *   The VPC is attached to the CEN instance.
- *     *   For more information about how to connect an Enterprise Edition transit router to a VPC, see [CreateTransitRouterVpcAttachment](~~261358~~).
- *     *   For more information about how to connect a Basic Edition transit router to a VPC, see [AttachCenChildInstance](~~65902~~).
+ * The ID of the VPC to which the vSwitch belongs.
  *
  * @param request ListGrantVSwitchesToCenRequest
  * @return ListGrantVSwitchesToCenResponse
@@ -36132,16 +35067,6 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * Take note of the following rules when you call the **ListTrafficMarkingPolicies** operation:
- * *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
- * *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
- *     If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
- *
- * @param request ListTrafficMarkingPoliciesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTrafficMarkingPoliciesResponse
- */
 func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTrafficMarkingPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListTrafficMarkingPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36211,15 +35136,6 @@ func (client *Client) ListTrafficMarkingPoliciesWithOptions(request *ListTraffic
 	return _result, _err
 }
 
-/**
- * Take note of the following rules when you call the **ListTrafficMarkingPolicies** operation:
- * *   If you do not specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, the system returns the information about the traffic marking policies based on the **TransitRouterId**, **TrafficMarkingPolicyName**, and **TrafficMarkingPolicyDescription** parameters. The information about the traffic classification rules in the policies is not returned. The **TrafficMatchRules** parameter is not included in the response.
- * *   If you specify a traffic marking policy ID in the **TrafficMarkingPolicyId** parameter, this operation returns the information about the traffic marking policy and the traffic classification rules. The **TrafficMatchRules** parameter is included in the response.
- *     If the **TrafficMatchRules** parameter contains an empty array, it indicates that the traffic marking policy does not contain a traffic classification rule.
- *
- * @param request ListTrafficMarkingPoliciesRequest
- * @return ListTrafficMarkingPoliciesResponse
- */
 func (client *Client) ListTrafficMarkingPolicies(request *ListTrafficMarkingPoliciesRequest) (_result *ListTrafficMarkingPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTrafficMarkingPoliciesResponse{}
@@ -36914,10 +35830,9 @@ func (client *Client) ListTransitRouterMulticastGroups(request *ListTransitRoute
 }
 
 /**
- * ## Description
- * You can use the following methods to query the cross-region connections on an Enterprise Edition transit router:
- * *   Query all cross-region connections on an Enterprise Edition transit router by specifying the ID of the Enterprise Edition transit router.
- * *   Query all cross-region connections on an Enterprise Edition transit router by specifying the ID of the Cloud Enterprise Network (CEN) instance and the ID of the region where the transit router is deployed.
+ * You can use the following methods to query inter-region connections on an Enterprise Edition transit router:
+ * *   Query all inter-region connections on an Enterprise Edition transit router by specifying the ID of the Enterprise Edition transit router.
+ * *   Query all inter-region connections on an Enterprise Edition transit router by specifying the ID of the Cloud Enterprise Network (CEN) instance and the ID of the region where the transit router is deployed.
  *
  * @param request ListTransitRouterPeerAttachmentsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36997,10 +35912,9 @@ func (client *Client) ListTransitRouterPeerAttachmentsWithOptions(request *ListT
 }
 
 /**
- * ## Description
- * You can use the following methods to query the cross-region connections on an Enterprise Edition transit router:
- * *   Query all cross-region connections on an Enterprise Edition transit router by specifying the ID of the Enterprise Edition transit router.
- * *   Query all cross-region connections on an Enterprise Edition transit router by specifying the ID of the Cloud Enterprise Network (CEN) instance and the ID of the region where the transit router is deployed.
+ * You can use the following methods to query inter-region connections on an Enterprise Edition transit router:
+ * *   Query all inter-region connections on an Enterprise Edition transit router by specifying the ID of the Enterprise Edition transit router.
+ * *   Query all inter-region connections on an Enterprise Edition transit router by specifying the ID of the Cloud Enterprise Network (CEN) instance and the ID of the region where the transit router is deployed.
  *
  * @param request ListTransitRouterPeerAttachmentsRequest
  * @return ListTransitRouterPeerAttachmentsResponse
@@ -37620,16 +36534,6 @@ func (client *Client) ListTransitRouterVbrAttachments(request *ListTransitRouter
 	return _result, _err
 }
 
-/**
- * You can use the following methods to query VPC connections on an Enterprise Edition transit router:
- * *   Specify the ID of the Enterprise Edition transit router.
- * *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
- * *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
- *
- * @param request ListTransitRouterVpcAttachmentsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTransitRouterVpcAttachmentsResponse
- */
 func (client *Client) ListTransitRouterVpcAttachmentsWithOptions(request *ListTransitRouterVpcAttachmentsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterVpcAttachmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37715,15 +36619,6 @@ func (client *Client) ListTransitRouterVpcAttachmentsWithOptions(request *ListTr
 	return _result, _err
 }
 
-/**
- * You can use the following methods to query VPC connections on an Enterprise Edition transit router:
- * *   Specify the ID of the Enterprise Edition transit router.
- * *   Specify the ID of the relevant Cloud Enterprise Network (CEN) instance and the region ID of the Enterprise Edition transit router.
- * *   Specify the ID of the region where the Enterprise Edition transit router is deployed.
- *
- * @param request ListTransitRouterVpcAttachmentsRequest
- * @return ListTransitRouterVpcAttachmentsResponse
- */
 func (client *Client) ListTransitRouterVpcAttachments(request *ListTransitRouterVpcAttachmentsRequest) (_result *ListTransitRouterVpcAttachmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTransitRouterVpcAttachmentsResponse{}
@@ -37736,11 +36631,10 @@ func (client *Client) ListTransitRouterVpcAttachments(request *ListTransitRouter
 }
 
 /**
- * ## Usage note
  * When you call the **ListTransitRouterVpnAttachments** operation, take note of the following items:
- * - If you set only **CenId** and **RegionId**, the VPN attachments in the current region are queried.
- * - If you set **CenId**, **RegionId**, and **TransitRouterAttachmentId**, only the specified VPN attachment is queried.
- * - If you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
+ * *   If you set only **CenId** and **RegionId**, the VPN attachments in the current region are queried.
+ * *   If you set **CenId**, **RegionId**, and **TransitRouterAttachmentId**, only the specified VPN attachment is queried.
+ * *   If you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
  *
  * @param request ListTransitRouterVpnAttachmentsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37820,11 +36714,10 @@ func (client *Client) ListTransitRouterVpnAttachmentsWithOptions(request *ListTr
 }
 
 /**
- * ## Usage note
  * When you call the **ListTransitRouterVpnAttachments** operation, take note of the following items:
- * - If you set only **CenId** and **RegionId**, the VPN attachments in the current region are queried.
- * - If you set **CenId**, **RegionId**, and **TransitRouterAttachmentId**, only the specified VPN attachment is queried.
- * - If you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
+ * *   If you set only **CenId** and **RegionId**, the VPN attachments in the current region are queried.
+ * *   If you set **CenId**, **RegionId**, and **TransitRouterAttachmentId**, only the specified VPN attachment is queried.
+ * *   If you set **CenId** and **RegionId**, you do not need to set **TransitRouterId**. If you set **TransitRouterId**, you do not need to set **CenId** or **RegionId**.
  *
  * @param request ListTransitRouterVpnAttachmentsRequest
  * @return ListTransitRouterVpnAttachmentsResponse
@@ -37841,11 +36734,7 @@ func (client *Client) ListTransitRouterVpnAttachments(request *ListTransitRouter
 }
 
 /**
- * You can set the **RegionId** and **TransitRouterId** parameters based on your requirements.
- * *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
- * *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
- * *   If you set only **TransitRouterId**, the system queries the specified transit router.
- * *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
+ * The tag value.
  *
  * @param request ListTransitRoutersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37937,11 +36826,7 @@ func (client *Client) ListTransitRoutersWithOptions(request *ListTransitRoutersR
 }
 
 /**
- * You can set the **RegionId** and **TransitRouterId** parameters based on your requirements.
- * *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
- * *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
- * *   If you set only **TransitRouterId**, the system queries the specified transit router.
- * *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
+ * The tag value.
  *
  * @param request ListTransitRoutersRequest
  * @return ListTransitRoutersResponse
@@ -37958,9 +36843,7 @@ func (client *Client) ListTransitRouters(request *ListTransitRoutersRequest) (_r
 }
 
 /**
- * **ModifyCenAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * *   If a CEN instance is in the **Modifying** state, the CEN instance is being modified. You can query the CEN instance but cannot perform other operations.
- * *   If a CEN instance is in the **Active** state, the CEN instance is modified.
+ * The operation that you want to perform. Set the value to **ModifyCenAttribute**.
  *
  * @param request ModifyCenAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38028,9 +36911,7 @@ func (client *Client) ModifyCenAttributeWithOptions(request *ModifyCenAttributeR
 }
 
 /**
- * **ModifyCenAttribute** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
- * *   If a CEN instance is in the **Modifying** state, the CEN instance is being modified. You can query the CEN instance but cannot perform other operations.
- * *   If a CEN instance is in the **Active** state, the CEN instance is modified.
+ * The operation that you want to perform. Set the value to **ModifyCenAttribute**.
  *
  * @param request ModifyCenAttributeRequest
  * @return ModifyCenAttributeResponse
@@ -38463,13 +37344,8 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 }
 
 /**
- * ## Usage notes
- * *   Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
- * *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
- * *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
- * *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
- *     *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
- *     *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
+ * The new description of the transit router CIDR block.
+ * The description must be 1 to 256 characters in length.
  *
  * @param request ModifyTransitRouterCidrRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38557,13 +37433,8 @@ func (client *Client) ModifyTransitRouterCidrWithOptions(request *ModifyTransitR
 }
 
 /**
- * ## Usage notes
- * *   Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
- * *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
- * *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
- * *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
- *     *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
- *     *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
+ * The new description of the transit router CIDR block.
+ * The description must be 1 to 256 characters in length.
  *
  * @param request ModifyTransitRouterCidrRequest
  * @return ModifyTransitRouterCidrResponse
@@ -38928,18 +37799,6 @@ func (client *Client) PublishRouteEntries(request *PublishRouteEntriesRequest) (
 	return _result, _err
 }
 
-/**
- * If you fail to advertise an aggregate route to a virtual private cloud (VPC), you can call the **RefreshTransitRouteTableAggregation** operation to re-advertise the aggregate route after you troubleshoot the error. If the error is fixed by using one of the following methods, the aggregate route is automatically advertised:
- * *   Delete the associated forwarding correlations
- * *   Disable automatic route synchronization
- * *   Delete the VPC route tables
- * *   Delete the aggregate route
- * You can call the **DescribeTransitRouteTableAggregationDetail** operation to query whether an aggregate route is advertised.
- *
- * @param request RefreshTransitRouteTableAggregationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RefreshTransitRouteTableAggregationResponse
- */
 func (client *Client) RefreshTransitRouteTableAggregationWithOptions(request *RefreshTransitRouteTableAggregationRequest, runtime *util.RuntimeOptions) (_result *RefreshTransitRouteTableAggregationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38997,17 +37856,6 @@ func (client *Client) RefreshTransitRouteTableAggregationWithOptions(request *Re
 	return _result, _err
 }
 
-/**
- * If you fail to advertise an aggregate route to a virtual private cloud (VPC), you can call the **RefreshTransitRouteTableAggregation** operation to re-advertise the aggregate route after you troubleshoot the error. If the error is fixed by using one of the following methods, the aggregate route is automatically advertised:
- * *   Delete the associated forwarding correlations
- * *   Disable automatic route synchronization
- * *   Delete the VPC route tables
- * *   Delete the aggregate route
- * You can call the **DescribeTransitRouteTableAggregationDetail** operation to query whether an aggregate route is advertised.
- *
- * @param request RefreshTransitRouteTableAggregationRequest
- * @return RefreshTransitRouteTableAggregationResponse
- */
 func (client *Client) RefreshTransitRouteTableAggregation(request *RefreshTransitRouteTableAggregationRequest) (_result *RefreshTransitRouteTableAggregationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshTransitRouteTableAggregationResponse{}
@@ -39020,13 +37868,7 @@ func (client *Client) RefreshTransitRouteTableAggregation(request *RefreshTransi
 }
 
 /**
- * Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
- * *   If you set **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
- * *   If you set **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
- *         For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
- * *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
- *     *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
- *     *   If a multicast member is in the **Registered** state, the multicast member is added.
+ * The ID of the request.
  *
  * @param request RegisterTransitRouterMulticastGroupMembersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39106,13 +37948,7 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembersWithOptions(requ
 }
 
 /**
- * Enterprise Edition transit routers allow you to specify elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to add ENIs in the same region or in different regions to a multicast group as multicast members.
- * *   If you set **NetworkInterfaceIds**, ENIs in the current region are specified as multicast members. Make sure that the vSwitches of the ENIs are associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](~~429778~~).
- * *   If you set **PeerTransitRouterMulticastDomains**, multicast members in the multicast group that has the same IP address as the current multicast group but is in a different region are added to the current multicast group. Make sure that an inter-region connection is created. For more information, see [CreateTransitRouterPeerAttachment](~~261363~~).
- *         For example, Alice created a multicast domain (Domain A) in the Australia (Sydney) region and a multicast domain (Domain B) in the UK (London) region. Domain A contains a multicast group (Group A), and Domain B contains a multicast group (Group B). Group A and Group B have the same multicast IP address. Group B in UK (London) contains a multicast member (Member B). When Alice calls the `RegisterTransitRouterMulticastGroupMembers` operation, if she sets **PeerTransitRouterMulticastDomains** to the ID of Member B in Group B that is in the UK (London) region, Member B is added to Group A in the Australia (Sydney) region.
- * *   The `RegisterTransitRouterMulticastGroupMembers` operation is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
- *     *   If a multicast member is in the **Registering** state, the multicast member is being added. You can query the multicast member but cannot perform other operations.
- *     *   If a multicast member is in the **Registered** state, the multicast member is added.
+ * The ID of the request.
  *
  * @param request RegisterTransitRouterMulticastGroupMembersRequest
  * @return RegisterTransitRouterMulticastGroupMembersResponse
@@ -39129,12 +37965,7 @@ func (client *Client) RegisterTransitRouterMulticastGroupMembers(request *Regist
 }
 
 /**
- * ## Usage notes
- * - You can specify only elastic network interfaces (ENIs) as multicast sources.
- * - `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.     - If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
- *   - If a multicast source is in the **Registered** state, the multicast source is created.
- * ## Prerequisites
- * Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/associatetransitroutermulticastdomain).
+ * The ID of the request.
  *
  * @param request RegisterTransitRouterMulticastGroupSourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39210,12 +38041,7 @@ func (client *Client) RegisterTransitRouterMulticastGroupSourcesWithOptions(requ
 }
 
 /**
- * ## Usage notes
- * - You can specify only elastic network interfaces (ENIs) as multicast sources.
- * - `RegisterTransitRouterMulticastGroupSources` is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call `ListTransitRouterMulticastGroups` to query the status of a multicast source.     - If a multicast source is in the **Registering** state, the multicast source is being created. You can query the multicast source but cannot perform other operations.
- *   - If a multicast source is in the **Registered** state, the multicast source is created.
- * ## Prerequisites
- * Before you call `RegisterTransitRouterMulticastGroupSources`, make sure that the vSwitch on which the ENI is created is associated with the multicast domain. For more information, see [AssociateTransitRouterMulticastDomain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/associatetransitroutermulticastdomain).
+ * The ID of the request.
  *
  * @param request RegisterTransitRouterMulticastGroupSourcesRequest
  * @return RegisterTransitRouterMulticastGroupSourcesResponse
@@ -39232,13 +38058,7 @@ func (client *Client) RegisterTransitRouterMulticastGroupSources(request *Regist
 }
 
 /**
- * *   When you call **RemoveTrafficMatchRuleFromTrafficMarkingPolicy**, take note of the following rules:
- *     *   If you specify the ID of a traffic classification rule in the **TrafficMarkRuleIds** parameter, the specified traffic classification rule is deleted.
- *     *   If you do not specify a traffic classification rule ID in the **TrafficMarkRuleIds** parameter, no operation is performed after you call this operation.
- *     If you want to delete a traffic classification rule, you must specify the rule ID before you call this operation.
- * *   **RemoveTrafficMatchRuleFromTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
- *     *   If a traffic classification rule is in the **Deleting** state, the traffic classification rule is being deleted. In this case, you can query the traffic classification rule but cannot perform other operations.
- *     *   If a traffic classification rule cannot be found, the traffic classification rule is deleted.
+ * The ID of the request.
  *
  * @param request RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39306,13 +38126,7 @@ func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicyWithOptions(
 }
 
 /**
- * *   When you call **RemoveTrafficMatchRuleFromTrafficMarkingPolicy**, take note of the following rules:
- *     *   If you specify the ID of a traffic classification rule in the **TrafficMarkRuleIds** parameter, the specified traffic classification rule is deleted.
- *     *   If you do not specify a traffic classification rule ID in the **TrafficMarkRuleIds** parameter, no operation is performed after you call this operation.
- *     If you want to delete a traffic classification rule, you must specify the rule ID before you call this operation.
- * *   **RemoveTrafficMatchRuleFromTrafficMarkingPolicy** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTrafficMarkingPolicies** operation to query the status of a traffic classification rule.
- *     *   If a traffic classification rule is in the **Deleting** state, the traffic classification rule is being deleted. In this case, you can query the traffic classification rule but cannot perform other operations.
- *     *   If a traffic classification rule cannot be found, the traffic classification rule is deleted.
+ * The ID of the request.
  *
  * @param request RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest
  * @return RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponse
@@ -39330,8 +38144,7 @@ func (client *Client) RemoveTrafficMatchRuleFromTrafficMarkingPolicy(request *Re
 
 /**
  * @deprecated : RemoveTraficMatchRuleFromTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::RemoveTrafficMatchRuleFromTrafficMarkingPolicy instead.
- * ## Usage notes
- * The **RemoveTraficMatchRuleFromTrafficMarkingPolicy** is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/removetrafficmatchrulefromtrafficmarkingpolicy) operation.
+ * The ID of the traffic marking policy.
  *
  * @param request RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39401,8 +38214,7 @@ func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicyWithOptions(r
 
 /**
  * @deprecated : RemoveTraficMatchRuleFromTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::RemoveTrafficMatchRuleFromTrafficMarkingPolicy instead.
- * ## Usage notes
- * The **RemoveTraficMatchRuleFromTrafficMarkingPolicy** is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/removetrafficmatchrulefromtrafficmarkingpolicy) operation.
+ * The ID of the traffic marking policy.
  *
  * @param request RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
  * @return RemoveTraficMatchRuleFromTrafficMarkingPolicyResponse
@@ -39419,16 +38231,6 @@ func (client *Client) RemoveTraficMatchRuleFromTrafficMarkingPolicy(request *Rem
 	return _result, _err
 }
 
-/**
- * *   The network instance connection that you want to associate with another route table must be created on an Enterprise Edition transit router.
- * *   **ReplaceTransitRouterRouteTableAssociation** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTableAssociations** to query the associated forwarding status between a network instance connection and transit router route table.
- *     *   The **Replacing** state indicates that the network instance connection is being associated with the specified transit router route table. You can query the associate forwarding correlation between the network instance connection and the transit router route table but cannot perform other operations.
- *     *   The **Active** state indicates that the network instance connection is associated with the specified transit router route table.
- *
- * @param request ReplaceTransitRouterRouteTableAssociationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ReplaceTransitRouterRouteTableAssociationResponse
- */
 func (client *Client) ReplaceTransitRouterRouteTableAssociationWithOptions(request *ReplaceTransitRouterRouteTableAssociationRequest, runtime *util.RuntimeOptions) (_result *ReplaceTransitRouterRouteTableAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39490,15 +38292,6 @@ func (client *Client) ReplaceTransitRouterRouteTableAssociationWithOptions(reque
 	return _result, _err
 }
 
-/**
- * *   The network instance connection that you want to associate with another route table must be created on an Enterprise Edition transit router.
- * *   **ReplaceTransitRouterRouteTableAssociation** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouterRouteTableAssociations** to query the associated forwarding status between a network instance connection and transit router route table.
- *     *   The **Replacing** state indicates that the network instance connection is being associated with the specified transit router route table. You can query the associate forwarding correlation between the network instance connection and the transit router route table but cannot perform other operations.
- *     *   The **Active** state indicates that the network instance connection is associated with the specified transit router route table.
- *
- * @param request ReplaceTransitRouterRouteTableAssociationRequest
- * @return ReplaceTransitRouterRouteTableAssociationResponse
- */
 func (client *Client) ReplaceTransitRouterRouteTableAssociation(request *ReplaceTransitRouterRouteTableAssociationRequest) (_result *ReplaceTransitRouterRouteTableAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReplaceTransitRouterRouteTableAssociationResponse{}
@@ -39628,14 +38421,7 @@ func (client *Client) ResolveAndRouteServiceInCen(request *ResolveAndRouteServic
 }
 
 /**
- * ## Usage notes
- * `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
- * If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/revokeinstancefromcbn) operation.
- * ## Prerequisites
- * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
- * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
- * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
- * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
+ * The operation that you want to perform. Set the value to **RevokeInstanceFromTransitRouter**.
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39707,14 +38493,7 @@ func (client *Client) RevokeInstanceFromTransitRouterWithOptions(request *Revoke
 }
 
 /**
- * ## Usage notes
- * `RevokeInstanceFromTransitRouter` disallows transit routers only from connecting to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections.
- * If you want to disallow transit routers from connecting to Cloud Connect Network (CCN) instances, call the [RevokeInstanceFromCbn](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/revokeinstancefromcbn) operation.
- * ## Prerequisites
- * Before you call `RevokeInstanceFromTransitRouter`, you must detach the network instances from the transit router.
- * - For more information about how to detach VPCs from an Enterprise Edition transit router, see [DeleteTransitRouterVpcAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervpcattachment).
- * - For more information about how to detach VBRs from an Enterprise Edition transit router, see [DeleteTransitRouterVbrAttachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/deletetransitroutervbrattachment).
- * - For more information about how to detach network instances from a Basic Edition transit router, see [DetachCenChildInstance](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/detachcenchildinstance).
+ * The operation that you want to perform. Set the value to **RevokeInstanceFromTransitRouter**.
  *
  * @param request RevokeInstanceFromTransitRouterRequest
  * @return RevokeInstanceFromTransitRouterResponse
@@ -39731,19 +38510,7 @@ func (client *Client) RevokeInstanceFromTransitRouter(request *RevokeInstanceFro
 }
 
 /**
- * # Background information
- * PrivateZone is an Alibaba Cloud private domain name resolution and management service based on Virtual Private Cloud (VPC). After you attach virtual border routers (VBRs) and Cloud Connect Network (CCN) instances to a Cloud Enterprise Network (CEN) instance, you can enable the on-premises networks connected to the VBRs and CCN instances to access PrivateZone through the CEN instance.
- * *   The on-premises networks connected to VBRs or CCN instances must be deployed in the same region as the PrivateZone service.
- *     For example, if the PrivateZone service is deployed in the China (Beijing) region, only on-premises networks connected to VBRs or CCN instances in the China (Beijing) region can access the PrivateZone service.
- * *   **RoutePrivateZoneInCenToVpc** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeCenPrivateZoneRoutes** operation to query the status of PrivateZone.
- *     *   If PrivateZone is in the **Creating** state, access to PrivateZone is being configured. In this case, you can query PrivateZone configurations but cannot perform other operations.
- *     *   If PrivateZone is in the **Active** state, access to PrivateZone is enabled.
- *     *   If PrivateZone is in the **Failed** state, configurations of access to PrivateZone failed.
- * # Prerequisites
- * Before you call **RoutePrivateZoneInCenToVpc**, make sure that the following conditions are met:
- * *   PrivateZone is deployed. For more information, see [PrivateZone quick start](~~64627~~).
- * *   The following network instances are attached to the same CEN instance: the VPC that is associated with the PrivateZone service, and the VBR and CCN instance that want to access the PrivateZone service. For more information, see [AttachCenChildInstance](~~65902~~).
- * *   If your on-premises network uses a CCN instance to connect to Alibaba Cloud and the account that owns the CCN instance is different from the account that owns the VPC or CEN instance, you must grant the CCN instance required permissions. For more information, see [Grant permissions to CCN](~~106674~~).
+ * The ID of the request.
  *
  * @param request RoutePrivateZoneInCenToVpcRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39811,19 +38578,7 @@ func (client *Client) RoutePrivateZoneInCenToVpcWithOptions(request *RoutePrivat
 }
 
 /**
- * # Background information
- * PrivateZone is an Alibaba Cloud private domain name resolution and management service based on Virtual Private Cloud (VPC). After you attach virtual border routers (VBRs) and Cloud Connect Network (CCN) instances to a Cloud Enterprise Network (CEN) instance, you can enable the on-premises networks connected to the VBRs and CCN instances to access PrivateZone through the CEN instance.
- * *   The on-premises networks connected to VBRs or CCN instances must be deployed in the same region as the PrivateZone service.
- *     For example, if the PrivateZone service is deployed in the China (Beijing) region, only on-premises networks connected to VBRs or CCN instances in the China (Beijing) region can access the PrivateZone service.
- * *   **RoutePrivateZoneInCenToVpc** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **DescribeCenPrivateZoneRoutes** operation to query the status of PrivateZone.
- *     *   If PrivateZone is in the **Creating** state, access to PrivateZone is being configured. In this case, you can query PrivateZone configurations but cannot perform other operations.
- *     *   If PrivateZone is in the **Active** state, access to PrivateZone is enabled.
- *     *   If PrivateZone is in the **Failed** state, configurations of access to PrivateZone failed.
- * # Prerequisites
- * Before you call **RoutePrivateZoneInCenToVpc**, make sure that the following conditions are met:
- * *   PrivateZone is deployed. For more information, see [PrivateZone quick start](~~64627~~).
- * *   The following network instances are attached to the same CEN instance: the VPC that is associated with the PrivateZone service, and the VBR and CCN instance that want to access the PrivateZone service. For more information, see [AttachCenChildInstance](~~65902~~).
- * *   If your on-premises network uses a CCN instance to connect to Alibaba Cloud and the account that owns the CCN instance is different from the account that owns the VPC or CEN instance, you must grant the CCN instance required permissions. For more information, see [Grant permissions to CCN](~~106674~~).
+ * The ID of the request.
  *
  * @param request RoutePrivateZoneInCenToVpcRequest
  * @return RoutePrivateZoneInCenToVpcResponse
@@ -39839,23 +38594,6 @@ func (client *Client) RoutePrivateZoneInCenToVpc(request *RoutePrivateZoneInCenT
 	return _result, _err
 }
 
-/**
- * ## Prerequisites
- * The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](~~65919~~) and [AssociateCenBandwidthPackage](~~65934~~) topics.
- * You can call the **SetCenInterRegionBandwidthLimit** operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
- * *   If you set **BandwidthLimit** to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
- * *   If you set **BandwidthLimit** to 0, no bandwidth resource is allocated to the inter-region connection.
- * ## Limits
- * *   The maximum bandwidth value of an inter-region connection cannot exceed that of the associated bandwidth plan.
- * *   The sum of the maximum bandwidth values of all inter-region connections cannot exceed the maximum bandwidth value of the associated bandwidth plan.
- * *   If bandwidth multiplexing is enabled for an inter-region connection, you cannot change the maximum bandwidth value of the inter-region connection.
- * *   You can call the **SetCenInterRegionBandwidthLimit** operation to configure, modify, and remove the maximum bandwidth values of inter-region connections only on Basic Edition transit routers.
- *     For more information about how to configure, modify, and remove the maximum bandwidth values of inter-region connections on Enterprise Edition transit routers, see [CreateTransitRouterPeerAttachment](~~261363~~), [UpdateTransitRouterPeerAttachmentAttribute](~~261229~~), and [DeleteTransitRouterPeerAttachment](~~261227~~).
- *
- * @param request SetCenInterRegionBandwidthLimitRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetCenInterRegionBandwidthLimitResponse
- */
 func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCenInterRegionBandwidthLimitRequest, runtime *util.RuntimeOptions) (_result *SetCenInterRegionBandwidthLimitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39917,22 +38655,6 @@ func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCen
 	return _result, _err
 }
 
-/**
- * ## Prerequisites
- * The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](~~65919~~) and [AssociateCenBandwidthPackage](~~65934~~) topics.
- * You can call the **SetCenInterRegionBandwidthLimit** operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
- * *   If you set **BandwidthLimit** to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
- * *   If you set **BandwidthLimit** to 0, no bandwidth resource is allocated to the inter-region connection.
- * ## Limits
- * *   The maximum bandwidth value of an inter-region connection cannot exceed that of the associated bandwidth plan.
- * *   The sum of the maximum bandwidth values of all inter-region connections cannot exceed the maximum bandwidth value of the associated bandwidth plan.
- * *   If bandwidth multiplexing is enabled for an inter-region connection, you cannot change the maximum bandwidth value of the inter-region connection.
- * *   You can call the **SetCenInterRegionBandwidthLimit** operation to configure, modify, and remove the maximum bandwidth values of inter-region connections only on Basic Edition transit routers.
- *     For more information about how to configure, modify, and remove the maximum bandwidth values of inter-region connections on Enterprise Edition transit routers, see [CreateTransitRouterPeerAttachment](~~261363~~), [UpdateTransitRouterPeerAttachmentAttribute](~~261229~~), and [DeleteTransitRouterPeerAttachment](~~261227~~).
- *
- * @param request SetCenInterRegionBandwidthLimitRequest
- * @return SetCenInterRegionBandwidthLimitResponse
- */
 func (client *Client) SetCenInterRegionBandwidthLimit(request *SetCenInterRegionBandwidthLimitRequest) (_result *SetCenInterRegionBandwidthLimitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetCenInterRegionBandwidthLimitResponse{}
@@ -39945,10 +38667,8 @@ func (client *Client) SetCenInterRegionBandwidthLimit(request *SetCenInterRegion
 }
 
 /**
- * ## Description
- * *   Each tag consists of a tag key and a tag value. When you add a tag, you must specify the tag key and tag value.
- * *   If you want to add multiple tags to a Cloud Enterprise Network (CEN) instance, each tag key must be unique.
- * *   You can add at most 20 tags to a CEN instance.
+ * The ID of the resource.
+ * You can enter multiple resource IDs. Valid values of **N**: **1** to **20**.
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40016,10 +38736,8 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * ## Description
- * *   Each tag consists of a tag key and a tag value. When you add a tag, you must specify the tag key and tag value.
- * *   If you want to add multiple tags to a Cloud Enterprise Network (CEN) instance, each tag key must be unique.
- * *   You can add at most 20 tags to a CEN instance.
+ * The ID of the resource.
+ * You can enter multiple resource IDs. Valid values of **N**: **1** to **20**.
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
@@ -40035,18 +38753,6 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
-/**
- * Subscription bandwidth plans support temporary upgrades. You can increase the bandwidth limit of a bandwidth plan within a specified time window. This way, you can manage your bandwidth to handle traffic spikes in a more efficient manner.
- * The minimum time window for a temporary upgrade is 3 hours. The bandwidth plan is upgraded immediately after you complete the payment. The upgrade process does not interrupt workloads.
- * >  After the specified time window ends, the bandwidth limit of the subscription bandwidth plan is reset to the original value. If the bandwidth required by your workloads is higher than this value, packets may be discarded due to network traffic throttling. We recommend that you set a proper time window for the temporary upgrade and make sure that the bandwidth limit meets your business requirements.
- * *   The temporary upgrade feature is unavailable by default. If you need to use this feature, contact your account manager.
- * *   Expired subscription bandwidth plans and pay-as-you-go bandwidth plans do not support temporary upgrades.
- * *   **TempUpgradeCenBandwidthPackageSpec** is an asynchronous operation. After you send a request, the system returns a **request ID** and performs the operation in the system background. You can call the **DescribeCenBandwidthPackages** operation to query the specification of a bandwidth plan. If the maximum bandwidth value of the bandwidth plan is set to the specified value, the bandwidth plan is upgraded.
- *
- * @param request TempUpgradeCenBandwidthPackageSpecRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TempUpgradeCenBandwidthPackageSpecResponse
- */
 func (client *Client) TempUpgradeCenBandwidthPackageSpecWithOptions(request *TempUpgradeCenBandwidthPackageSpecRequest, runtime *util.RuntimeOptions) (_result *TempUpgradeCenBandwidthPackageSpecResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40104,17 +38810,6 @@ func (client *Client) TempUpgradeCenBandwidthPackageSpecWithOptions(request *Tem
 	return _result, _err
 }
 
-/**
- * Subscription bandwidth plans support temporary upgrades. You can increase the bandwidth limit of a bandwidth plan within a specified time window. This way, you can manage your bandwidth to handle traffic spikes in a more efficient manner.
- * The minimum time window for a temporary upgrade is 3 hours. The bandwidth plan is upgraded immediately after you complete the payment. The upgrade process does not interrupt workloads.
- * >  After the specified time window ends, the bandwidth limit of the subscription bandwidth plan is reset to the original value. If the bandwidth required by your workloads is higher than this value, packets may be discarded due to network traffic throttling. We recommend that you set a proper time window for the temporary upgrade and make sure that the bandwidth limit meets your business requirements.
- * *   The temporary upgrade feature is unavailable by default. If you need to use this feature, contact your account manager.
- * *   Expired subscription bandwidth plans and pay-as-you-go bandwidth plans do not support temporary upgrades.
- * *   **TempUpgradeCenBandwidthPackageSpec** is an asynchronous operation. After you send a request, the system returns a **request ID** and performs the operation in the system background. You can call the **DescribeCenBandwidthPackages** operation to query the specification of a bandwidth plan. If the maximum bandwidth value of the bandwidth plan is set to the specified value, the bandwidth plan is upgraded.
- *
- * @param request TempUpgradeCenBandwidthPackageSpecRequest
- * @return TempUpgradeCenBandwidthPackageSpecResponse
- */
 func (client *Client) TempUpgradeCenBandwidthPackageSpec(request *TempUpgradeCenBandwidthPackageSpecRequest) (_result *TempUpgradeCenBandwidthPackageSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TempUpgradeCenBandwidthPackageSpecResponse{}
@@ -40203,16 +38898,6 @@ func (client *Client) UnassociateCenBandwidthPackage(request *UnassociateCenBand
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * **UnroutePrivateZoneInCenToVpc** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCenPrivateZoneRoutes** to query the status of PrivateZone.
- * *   If PrivateZone is in the **Deleting** state, access to PrivateZone is being disabled. In this case, you can query PrivateZone configurations but cannot perform other operations.
- * *   If configurations of access to PrivateZone cannot be found, access to PrivateZone is disabled.
- *
- * @param request UnroutePrivateZoneInCenToVpcRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UnroutePrivateZoneInCenToVpcResponse
- */
 func (client *Client) UnroutePrivateZoneInCenToVpcWithOptions(request *UnroutePrivateZoneInCenToVpcRequest, runtime *util.RuntimeOptions) (_result *UnroutePrivateZoneInCenToVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40266,15 +38951,6 @@ func (client *Client) UnroutePrivateZoneInCenToVpcWithOptions(request *UnroutePr
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * **UnroutePrivateZoneInCenToVpc** is an asynchronous operation. After you send a request, the **request ID** is returned but the operation is still being performed in the system background. You can call **DescribeCenPrivateZoneRoutes** to query the status of PrivateZone.
- * *   If PrivateZone is in the **Deleting** state, access to PrivateZone is being disabled. In this case, you can query PrivateZone configurations but cannot perform other operations.
- * *   If configurations of access to PrivateZone cannot be found, access to PrivateZone is disabled.
- *
- * @param request UnroutePrivateZoneInCenToVpcRequest
- * @return UnroutePrivateZoneInCenToVpcResponse
- */
 func (client *Client) UnroutePrivateZoneInCenToVpc(request *UnroutePrivateZoneInCenToVpcRequest) (_result *UnroutePrivateZoneInCenToVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnroutePrivateZoneInCenToVpcResponse{}
@@ -40607,9 +39283,7 @@ func (client *Client) UpdateTrafficMarkingPolicyAttribute(request *UpdateTraffic
 }
 
 /**
- * **UpdateTransitRouter** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouters** to query the status of a transit router.
- * *   If a transit router is in the **Modifying** state, the configuration of the transit router is being modified. You can query the transit router but cannot perform other operations.
- * *   If a transit router is in the **Active** state, the configuration of the transit router is modified.
+ * The ID of the transit router.
  *
  * @param request UpdateTransitRouterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40685,9 +39359,7 @@ func (client *Client) UpdateTransitRouterWithOptions(request *UpdateTransitRoute
 }
 
 /**
- * **UpdateTransitRouter** is an asynchronous operation. After you send a request, the system returns the **request ID** but the operation is still being performed in the system background. You can call **ListTransitRouters** to query the status of a transit router.
- * *   If a transit router is in the **Modifying** state, the configuration of the transit router is being modified. You can query the transit router but cannot perform other operations.
- * *   If a transit router is in the **Active** state, the configuration of the transit router is modified.
+ * The ID of the transit router.
  *
  * @param request UpdateTransitRouterRequest
  * @return UpdateTransitRouterResponse
@@ -40704,7 +39376,7 @@ func (client *Client) UpdateTransitRouter(request *UpdateTransitRouterRequest) (
 }
 
 /**
- * **UpdateTransitRouterPeerAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * **UpdateTransitRouterPeerAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Modifying** state, the inter-region connection is being modified. You can query the inter-region connection but cannot perform other operations.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is modified.
  *
@@ -40794,7 +39466,7 @@ func (client *Client) UpdateTransitRouterPeerAttachmentAttributeWithOptions(requ
 }
 
 /**
- * **UpdateTransitRouterPeerAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the system background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+ * **UpdateTransitRouterPeerAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
  * *   If an inter-region connection is in the **Modifying** state, the inter-region connection is being modified. You can query the inter-region connection but cannot perform other operations.
  * *   If an inter-region connection is in the **Attached** state, the inter-region connection is modified.
  *
@@ -41067,21 +39739,16 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttribute(request *UpdateT
 	return _result, _err
 }
 
-/**
- * **UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
- * *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
- * *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
- *
- * @param request UpdateTransitRouterVpcAttachmentAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateTransitRouterVpcAttachmentAttributeResponse
- */
 func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(request *UpdateTransitRouterVpcAttachmentAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateTransitRouterVpcAttachmentAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -41141,14 +39808,6 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithOptions(reque
 	return _result, _err
 }
 
-/**
- * **UpdateTransitRouterVpcAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the **ListTransitRouterVpcAttachments** operation to query the status of a VPC connection.
- * *   If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
- * *   If a VPC connection is in the **Attached** state, the VPC connection is modified.
- *
- * @param request UpdateTransitRouterVpcAttachmentAttributeRequest
- * @return UpdateTransitRouterVpcAttachmentAttributeResponse
- */
 func (client *Client) UpdateTransitRouterVpcAttachmentAttribute(request *UpdateTransitRouterVpcAttachmentAttributeRequest) (_result *UpdateTransitRouterVpcAttachmentAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTransitRouterVpcAttachmentAttributeResponse{}
