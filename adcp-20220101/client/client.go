@@ -113,22 +113,28 @@ func (s *AttachClusterToHubResponse) SetBody(v *AttachClusterToHubResponseBody) 
 }
 
 type CreateHubClusterRequest struct {
-	// Specifies whether to use a public IP address to expose the API server. Valid values: - true: uses a public IP address to expose the API server. - true: uses an internal IP address to expose the API server.
+	// Specifies whether to expose the API server to the Internet. Valid values:
+	//
+	// *   true: exposes the API server to the Internet.
+	// *   false: exposes the API server to the internal network.
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
 	ArgoServerEnabled  *bool `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	// Specifies whether to enable audit logs. Valid values: - true: enables audit logs. - false: disables audit logs.
+	// Specifies whether to enable the audit log feature. Valid values:
+	//
+	// *   true: enables the audit log feature.
+	// *   false: disables the audit log feature.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	// Specifies whether the security group is an advanced security group.
+	// Specifies whether to use an advanced security group.
 	IsEnterpriseSecurityGroup *bool `json:"IsEnterpriseSecurityGroup,omitempty" xml:"IsEnterpriseSecurityGroup,omitempty"`
 	// The name of the master instance.
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	// Scenario-oriented master control type. The value can be:
+	// The type of scenario for which the master instance is suitable. Valid values:
 	//
-	// - `Default`: Standard scenario Master instance.
-	// - `XFlow`: Workflow scenario master instance.
+	// *   `Default`: The master instance is suitable for standard scenarios.
+	// *   `XFlow`: The master instance is suitable for workflow scenarios.
 	//
-	// Default Value: `Default`.
+	// Default value: `Default`.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region. You can call the DescribeRegions operation to query available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -266,8 +272,14 @@ func (s *CreateHubClusterResponse) SetBody(v *CreateHubClusterResponseBody) *Cre
 type DeleteHubClusterRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
-	Force           *bool     `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcefully delete the master instance in ACK One. Valid values:
+	//
+	// *   true: forcefully deletes the master instance in ACK One.
+	// *   false: does not forcibly delete the master instance in ACK One.
+	//
+	// Default value: false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The list of resources to retain.
 	RetainResources []*string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty" type:"Repeated"`
 }
 
@@ -297,8 +309,14 @@ func (s *DeleteHubClusterRequest) SetRetainResources(v []*string) *DeleteHubClus
 type DeleteHubClusterShrinkRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to forcefully delete the master instance. Valid values: - true: forcefully delete the master instance. - false: does not forcefully delete the master instance. Default value: false.
-	Force                 *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcefully delete the master instance in ACK One. Valid values:
+	//
+	// *   true: forcefully deletes the master instance in ACK One.
+	// *   false: does not forcibly delete the master instance in ACK One.
+	//
+	// Default value: false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The list of resources to retain.
 	RetainResourcesShrink *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
 }
 
@@ -326,11 +344,11 @@ func (s *DeleteHubClusterShrinkRequest) SetRetainResourcesShrink(v string) *Dele
 }
 
 type DeleteHubClusterResponseBody struct {
-	// The ID of the master instance.
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the master instance.
+	// The ID of the job.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -386,6 +404,310 @@ func (s *DeleteHubClusterResponse) SetBody(v *DeleteHubClusterResponseBody) *Del
 	return s
 }
 
+type DeletePolicyInstanceRequest struct {
+	ClusterId  *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
+	PolicyName *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DeletePolicyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceRequest) SetClusterId(v string) *DeletePolicyInstanceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeletePolicyInstanceRequest) SetClusterIds(v []*string) *DeletePolicyInstanceRequest {
+	s.ClusterIds = v
+	return s
+}
+
+func (s *DeletePolicyInstanceRequest) SetPolicyName(v string) *DeletePolicyInstanceRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DeletePolicyInstanceShrinkRequest struct {
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DeletePolicyInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceShrinkRequest) SetClusterId(v string) *DeletePolicyInstanceShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeletePolicyInstanceShrinkRequest) SetClusterIdsShrink(v string) *DeletePolicyInstanceShrinkRequest {
+	s.ClusterIdsShrink = &v
+	return s
+}
+
+func (s *DeletePolicyInstanceShrinkRequest) SetPolicyName(v string) *DeletePolicyInstanceShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DeletePolicyInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePolicyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceResponseBody) SetRequestId(v string) *DeletePolicyInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePolicyInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyInstanceResponse) SetHeaders(v map[string]*string) *DeletePolicyInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyInstanceResponse) SetStatusCode(v int32) *DeletePolicyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyInstanceResponse) SetBody(v *DeletePolicyInstanceResponseBody) *DeletePolicyInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUserPermissionRequest struct {
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DeleteUserPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserPermissionRequest) SetClusterId(v string) *DeleteUserPermissionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteUserPermissionRequest) SetUserId(v string) *DeleteUserPermissionRequest {
+	s.UserId = &v
+	return s
+}
+
+type DeleteUserPermissionResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserPermissionResponseBody) SetRequestId(v string) *DeleteUserPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserPermissionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserPermissionResponse) SetHeaders(v map[string]*string) *DeleteUserPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserPermissionResponse) SetStatusCode(v int32) *DeleteUserPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserPermissionResponse) SetBody(v *DeleteUserPermissionResponseBody) *DeleteUserPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type DeployPolicyInstanceRequest struct {
+	ClusterId    *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIds   []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
+	Namespaces   []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	PolicyAction *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	PolicyName   *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DeployPolicyInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployPolicyInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployPolicyInstanceRequest) SetClusterId(v string) *DeployPolicyInstanceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceRequest) SetClusterIds(v []*string) *DeployPolicyInstanceRequest {
+	s.ClusterIds = v
+	return s
+}
+
+func (s *DeployPolicyInstanceRequest) SetNamespaces(v []*string) *DeployPolicyInstanceRequest {
+	s.Namespaces = v
+	return s
+}
+
+func (s *DeployPolicyInstanceRequest) SetPolicyAction(v string) *DeployPolicyInstanceRequest {
+	s.PolicyAction = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceRequest) SetPolicyName(v string) *DeployPolicyInstanceRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DeployPolicyInstanceShrinkRequest struct {
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
+	PolicyAction     *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DeployPolicyInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployPolicyInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployPolicyInstanceShrinkRequest) SetClusterId(v string) *DeployPolicyInstanceShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceShrinkRequest) SetClusterIdsShrink(v string) *DeployPolicyInstanceShrinkRequest {
+	s.ClusterIdsShrink = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceShrinkRequest) SetNamespacesShrink(v string) *DeployPolicyInstanceShrinkRequest {
+	s.NamespacesShrink = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceShrinkRequest) SetPolicyAction(v string) *DeployPolicyInstanceShrinkRequest {
+	s.PolicyAction = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceShrinkRequest) SetPolicyName(v string) *DeployPolicyInstanceShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DeployPolicyInstanceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeployPolicyInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployPolicyInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployPolicyInstanceResponseBody) SetRequestId(v string) *DeployPolicyInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployPolicyInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployPolicyInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeployPolicyInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployPolicyInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployPolicyInstanceResponse) SetHeaders(v map[string]*string) *DeployPolicyInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployPolicyInstanceResponse) SetStatusCode(v int32) *DeployPolicyInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployPolicyInstanceResponse) SetBody(v *DeployPolicyInstanceResponseBody) *DeployPolicyInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHubClusterDetailsRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -405,7 +727,7 @@ func (s *DescribeHubClusterDetailsRequest) SetClusterId(v string) *DescribeHubCl
 }
 
 type DescribeHubClusterDetailsResponseBody struct {
-	// The details about the master instance.
+	// The details of the master instance.
 	Cluster *DescribeHubClusterDetailsResponseBodyCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -430,17 +752,17 @@ func (s *DescribeHubClusterDetailsResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeHubClusterDetailsResponseBodyCluster struct {
-	// Information about the API server of the master instance.
+	// The details of the API server of the master instance.
 	ApiServer *DescribeHubClusterDetailsResponseBodyClusterApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	// The details about the master instance.
+	// The details of the master instance.
 	ClusterInfo *DescribeHubClusterDetailsResponseBodyClusterClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	// The list of the deletion conditions of the master instance.
+	// The deletion conditions of the master instance.
 	Conditions []*DescribeHubClusterDetailsResponseBodyClusterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The endpoint of the master instance.
 	Endpoints *DescribeHubClusterDetailsResponseBodyClusterEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The logging configuration.
 	LogConfig *DescribeHubClusterDetailsResponseBodyClusterLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	// The Service Mesh (ASM) configurations.
+	// The configurations of Alibaba Cloud Service Mesh (ASM).
 	MeshConfig *DescribeHubClusterDetailsResponseBodyClusterMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
 	// The network configurations of the master instance.
 	Network        *DescribeHubClusterDetailsResponseBodyClusterNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
@@ -498,7 +820,10 @@ func (s *DescribeHubClusterDetailsResponseBodyCluster) SetWorkflowConfig(v *Desc
 type DescribeHubClusterDetailsResponseBodyClusterApiServer struct {
 	// The ID of the elastic IP address (EIP).
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	// Indicates whether a public endpoint is used to expose the API server. Valid values: - true: a public endpoint is used to expose the API server. - false: no public endpoint is used to expose the API server.
+	// Indicates whether the API server is accessible over the Internet. Valid values:
+	//
+	// *   true: The API server is accessible over the Internet.
+	// *   false: The API server is inaccessible over the Internet.
 	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	// The ID of the Server Load Balancer (SLB) instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -530,11 +855,13 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterApiServer) SetLoadBalancerI
 type DescribeHubClusterDetailsResponseBodyClusterClusterInfo struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro
+	// The specification of the master instance. Valid value:
+	//
+	// *   ack.pro.small: ACK Pro cluster
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// The time when the master instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The error message that is returned when the system fails to create the master instance.
+	// The error message returned when the master instance failed to be created.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the master instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -542,11 +869,19 @@ type DescribeHubClusterDetailsResponseBodyClusterClusterInfo struct {
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region in which the master instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the master instance. Valid values: - initial: The master instance is being initialized. - failed: The master instance failed to be created. - running: The master instance is running. - inactive: The master instance is inactive. - deleting: The master instance is being deleted. - delete_failed: The master instance failed to be deleted. - deleted: The master instance is deleted.
+	// The status of the master instance. Valid values:
+	//
+	// *   initial: The master instance is being initialized.
+	// *   failed: The master instance failed to be created.
+	// *   running: The master instance is running
+	// *   inactive: The master instance is pending.
+	// *   deleting: The master instance is being deleted.
+	// *   delete_failed: The master instance failed to be deleted.
+	// *   deleted: The master instance is deleted.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the master instance was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The Kubernetes version of the master instance.
+	// The version of the master instance.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -609,14 +944,15 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterClusterInfo) SetVersion(v s
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterConditions struct {
-	// The error message of the deletion condition.
+	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The reason for the deletion condition.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the deletion condition. Valid values:
-	// - True: The master instance cannot be deleted.
-	// - False: The master instance can be deleted.
-	// - Unknow: Whether the master instance can be deleted is unknown.
+	// The status of the master instance that the deletion condition indicates. Valid values:
+	//
+	// *   True: The master instance cannot be deleted.
+	// *   False: The master instance can be deleted.
+	// *   Unknow: Whether the master instance can be deleted is unknown.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of deletion condition.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -651,9 +987,9 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterConditions) SetType(v strin
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterEndpoints struct {
-	// The internal endpoint of the API server of the master instance.
+	// The endpoint that is used to access the API server over the internal network.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	// The public endpoint of the API server of the master instance.
+	// The endpoint that is used to access the API server over the Internet.
 	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
@@ -676,11 +1012,14 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterEndpoints) SetPublicApiServ
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterLogConfig struct {
-	// Indicates whether audit logs are enabled. Valid values: - true: audit logs are enabled. - false: audit logs are disabled.
+	// Indicates whether the audit logging feature is enabled. Valid values:
+	//
+	// *   true: Audit logging is enabled.
+	// *   false: Audit logging is disabled.
 	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	// The name of the Log Service project.
+	// The name of the project of Log Service.
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The retention period of the logs.
+	// The number of days that logs are retained by Log Service.
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -708,9 +1047,12 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterLogConfig) SetLogStoreTTL(v
 }
 
 type DescribeHubClusterDetailsResponseBodyClusterMeshConfig struct {
-	// Indicates whether ASM is enabled. Valid values: - true: ASM is enabled. - false: ASM is disabled.
+	// Indicates whether ASM is enabled. Valid values:
+	//
+	// *   true: ASM is enabled.
+	// *   false: ASM is disabled.
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	// The ID of the ASM instance.
+	// service mesh (ASM) instance ID
 	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
@@ -735,11 +1077,15 @@ func (s *DescribeHubClusterDetailsResponseBodyClusterMeshConfig) SetMeshId(v str
 type DescribeHubClusterDetailsResponseBodyClusterNetwork struct {
 	// The domain name of the master instance.
 	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	// The IP version that is supported by the master instance. Valid values: - ipv4: IPv4. - ipv6: IPv6. - dual: IPv4 and IPv6.
+	// The IP version that is supported by the master instance. Valid values:
+	//
+	// *   ipv4: IPv4.
+	// *   ipv6: IPv6.
+	// *   dual: IPv4 and IPv6.
 	IPStack *string `json:"IPStack,omitempty" xml:"IPStack,omitempty"`
-	// The ID of the associated security group.
+	// The IDs of the associated security groups.
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
-	// A list of the vSwitches that are used by the master instance.
+	// The details of the vSwitches.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which the master instance resides.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -897,7 +1243,12 @@ func (s *DescribeHubClusterDetailsResponse) SetBody(v *DescribeHubClusterDetails
 type DescribeHubClusterKubeconfigRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to obtain the credential that is used to connect to the master instance over the internal network. Valid values: - `true`: obtains only the credential that is used to access the master instance over the internal network. - `false`: obtains only the credential that is used to access the master instance over the Internet. Default value: `false`.
+	// Specifies whether to obtain the kubeconfig file that is used to connect to the cluster over the internal network. Valid values:
+	//
+	// *   `true`: obtains the kubeconfig file that is used to connect to the master instance over the internal network.
+	// *   `false`: obtains the kubeconfig file that is used to connect to the master instance over the Internet.
+	//
+	// Default value: `false`
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -920,7 +1271,7 @@ func (s *DescribeHubClusterKubeconfigRequest) SetPrivateIpAddress(v bool) *Descr
 }
 
 type DescribeHubClusterKubeconfigResponseBody struct {
-	// The content of the kubeconfig file of the master instance.
+	// The content of the kubeconfig file.
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1773,6 +2124,975 @@ func (s *DescribeManagedClustersResponse) SetBody(v *DescribeManagedClustersResp
 	return s
 }
 
+type DescribePoliciesResponseBody struct {
+	Policies  []*DescribePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePoliciesResponseBody) SetPolicies(v []*DescribePoliciesResponseBodyPolicies) *DescribePoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribePoliciesResponseBody) SetRequestId(v string) *DescribePoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePoliciesResponseBodyPolicies struct {
+	Category *string   `json:"Category,omitempty" xml:"Category,omitempty"`
+	Names    []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+}
+
+func (s DescribePoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePoliciesResponseBodyPolicies) SetCategory(v string) *DescribePoliciesResponseBodyPolicies {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePoliciesResponseBodyPolicies) SetNames(v []*string) *DescribePoliciesResponseBodyPolicies {
+	s.Names = v
+	return s
+}
+
+type DescribePoliciesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePoliciesResponse) SetHeaders(v map[string]*string) *DescribePoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePoliciesResponse) SetStatusCode(v int32) *DescribePoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePoliciesResponse) SetBody(v *DescribePoliciesResponseBody) *DescribePoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyDetailsRequest struct {
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DescribePolicyDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyDetailsRequest) SetPolicyName(v string) *DescribePolicyDetailsRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DescribePolicyDetailsResponseBody struct {
+	Policy    *DescribePolicyDetailsResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePolicyDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyDetailsResponseBody) SetPolicy(v *DescribePolicyDetailsResponseBodyPolicy) *DescribePolicyDetailsResponseBody {
+	s.Policy = v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBody) SetRequestId(v string) *DescribePolicyDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePolicyDetailsResponseBodyPolicy struct {
+	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Created     *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NoConfig    *int32  `json:"NoConfig,omitempty" xml:"NoConfig,omitempty"`
+	Severity    *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Template    *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Updated     *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+}
+
+func (s DescribePolicyDetailsResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyDetailsResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetAction(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Action = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetCategory(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetCreated(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetDescription(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetName(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetNoConfig(v int32) *DescribePolicyDetailsResponseBodyPolicy {
+	s.NoConfig = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetSeverity(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetTemplate(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Template = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponseBodyPolicy) SetUpdated(v string) *DescribePolicyDetailsResponseBodyPolicy {
+	s.Updated = &v
+	return s
+}
+
+type DescribePolicyDetailsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyDetailsResponse) SetHeaders(v map[string]*string) *DescribePolicyDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponse) SetStatusCode(v int32) *DescribePolicyDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyDetailsResponse) SetBody(v *DescribePolicyDetailsResponseBody) *DescribePolicyDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterRequest) SetClusterId(v string) *DescribePolicyGovernanceInClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBody struct {
+	PolicyGovernances []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances `json:"PolicyGovernances,omitempty" xml:"PolicyGovernances,omitempty" type:"Repeated"`
+	RequestId         *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBody) SetPolicyGovernances(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) *DescribePolicyGovernanceInClusterResponseBody {
+	s.PolicyGovernances = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBody) SetRequestId(v string) *DescribePolicyGovernanceInClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances struct {
+	Cluster          *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster          `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	PolicyGovernance *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance `json:"PolicyGovernance,omitempty" xml:"PolicyGovernance,omitempty" type:"Struct"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) SetCluster(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances {
+	s.Cluster = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) SetPolicyGovernance(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances {
+	s.PolicyGovernance = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster struct {
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Profile     *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetClusterId(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetClusterSpec(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.ClusterSpec = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetClusterType(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetName(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetProfile(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetRegionId(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) SetState(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster {
+	s.State = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance struct {
+	AdmitLog  *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog  `json:"AdmitLog,omitempty" xml:"AdmitLog,omitempty" type:"Struct"`
+	OnState   []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState `json:"OnState,omitempty" xml:"OnState,omitempty" type:"Repeated"`
+	Violation *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) SetAdmitLog(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance {
+	s.AdmitLog = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) SetOnState(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance {
+	s.OnState = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance) SetViolation(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance {
+	s.Violation = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog struct {
+	Count      *string              `json:"Count,omitempty" xml:"Count,omitempty"`
+	LogProject *string              `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStore   *string              `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	Logs       []map[string]*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	Progress   *string              `json:"Progress,omitempty" xml:"Progress,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) SetCount(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) SetLogProject(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog {
+	s.LogProject = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) SetLogStore(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog {
+	s.LogStore = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) SetLogs(v []map[string]*string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog {
+	s.Logs = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) SetProgress(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog {
+	s.Progress = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState struct {
+	EnabledCount *int64  `json:"EnabledCount,omitempty" xml:"EnabledCount,omitempty"`
+	Severity     *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) SetEnabledCount(v int64) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState {
+	s.EnabledCount = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) SetTotalCount(v int64) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation struct {
+	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty" type:"Struct"`
+	Violations      *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations      `json:"Violations,omitempty" xml:"Violations,omitempty" type:"Struct"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) SetTotalViolations(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation {
+	s.TotalViolations = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) SetViolations(v *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation {
+	s.Violations = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations struct {
+	Deny []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Repeated"`
+	Warn []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations) SetDeny(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations {
+	s.Deny = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations) SetWarn(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations {
+	s.Warn = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny struct {
+	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Violations *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny {
+	s.Violations = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn struct {
+	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Violations *string `json:"Violations,omitempty" xml:"Violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn) SetViolations(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn {
+	s.Violations = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations struct {
+	Deny []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Repeated"`
+	Warn []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations) SetDeny(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations {
+	s.Deny = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations) SetWarn(v []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations {
+	s.Warn = v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny struct {
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Violations        *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny {
+	s.Violations = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn struct {
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	Violations        *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) SetPolicyDescription(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) SetPolicyName(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) SetSeverity(v string) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn {
+	s.Severity = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) SetViolations(v int64) *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn {
+	s.Violations = &v
+	return s
+}
+
+type DescribePolicyGovernanceInClusterResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyGovernanceInClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyGovernanceInClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGovernanceInClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGovernanceInClusterResponse) SetHeaders(v map[string]*string) *DescribePolicyGovernanceInClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponse) SetStatusCode(v int32) *DescribePolicyGovernanceInClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyGovernanceInClusterResponse) SetBody(v *DescribePolicyGovernanceInClusterResponseBody) *DescribePolicyGovernanceInClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyInstancesRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DescribePolicyInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesRequest) SetClusterId(v string) *DescribePolicyInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesRequest) SetPolicyName(v string) *DescribePolicyInstancesRequest {
+	s.PolicyName = &v
+	return s
+}
+
+type DescribePolicyInstancesResponseBody struct {
+	Policies  []*DescribePolicyInstancesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePolicyInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesResponseBody) SetPolicies(v []*DescribePolicyInstancesResponseBodyPolicies) *DescribePolicyInstancesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBody) SetRequestId(v string) *DescribePolicyInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePolicyInstancesResponseBodyPolicies struct {
+	ClusterId         *string            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	InstanceName      *string            `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PolicyAction      *string            `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	PolicyCategory    *string            `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
+	PolicyDescription *string            `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string            `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyParameters  map[string]*string `json:"PolicyParameters,omitempty" xml:"PolicyParameters,omitempty"`
+	PolicyScope       *string            `json:"PolicyScope,omitempty" xml:"PolicyScope,omitempty"`
+	PolicySeverity    *string            `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
+	TotalViolations   *int64             `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty"`
+}
+
+func (s DescribePolicyInstancesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetClusterId(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetInstanceName(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyAction(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyAction = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyCategory(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyCategory = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyDescription(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyName(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyParameters(v map[string]*string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyParameters = v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicyScope(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicyScope = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetPolicySeverity(v string) *DescribePolicyInstancesResponseBodyPolicies {
+	s.PolicySeverity = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponseBodyPolicies) SetTotalViolations(v int64) *DescribePolicyInstancesResponseBodyPolicies {
+	s.TotalViolations = &v
+	return s
+}
+
+type DescribePolicyInstancesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesResponse) SetHeaders(v map[string]*string) *DescribePolicyInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponse) SetStatusCode(v int32) *DescribePolicyInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesResponse) SetBody(v *DescribePolicyInstancesResponseBody) *DescribePolicyInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyInstancesStatusRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DescribePolicyInstancesStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusRequest) SetClusterId(v string) *DescribePolicyInstancesStatusRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponseBody struct {
+	Policies  *DescribePolicyInstancesStatusResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePolicyInstancesStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponseBody) SetPolicies(v *DescribePolicyInstancesStatusResponseBodyPolicies) *DescribePolicyInstancesStatusResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBody) SetRequestId(v string) *DescribePolicyInstancesStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponseBodyPolicies struct {
+	PolicyInstances []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances `json:"PolicyInstances,omitempty" xml:"PolicyInstances,omitempty" type:"Repeated"`
+	SeverityInfo    []*DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo    `json:"SeverityInfo,omitempty" xml:"SeverityInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPolicies) SetPolicyInstances(v []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) *DescribePolicyInstancesStatusResponseBodyPolicies {
+	s.PolicyInstances = v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPolicies) SetSeverityInfo(v []*DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) *DescribePolicyInstancesStatusResponseBodyPolicies {
+	s.SeverityInfo = v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances struct {
+	PolicyCategory       *string                                                                           `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
+	PolicyClusters       []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters `json:"PolicyClusters,omitempty" xml:"PolicyClusters,omitempty" type:"Repeated"`
+	PolicyDescription    *string                                                                           `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyInstancesCount *int64                                                                            `json:"PolicyInstancesCount,omitempty" xml:"PolicyInstancesCount,omitempty"`
+	PolicyName           *string                                                                           `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicySeverity       *string                                                                           `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicyCategory(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicyCategory = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicyClusters(v []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicyClusters = v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicyDescription(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicyInstancesCount(v int64) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicyInstancesCount = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicyName(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPolicySeverity(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances {
+	s.PolicySeverity = &v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) SetClusterId(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) SetStatus(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters {
+	s.Status = &v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo struct {
+	SeverityCount *string `json:"SeverityCount,omitempty" xml:"SeverityCount,omitempty"`
+	SeverityType  *string `json:"SeverityType,omitempty" xml:"SeverityType,omitempty"`
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) SetSeverityCount(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo {
+	s.SeverityCount = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) SetSeverityType(v string) *DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo {
+	s.SeverityType = &v
+	return s
+}
+
+type DescribePolicyInstancesStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyInstancesStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyInstancesStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyInstancesStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyInstancesStatusResponse) SetHeaders(v map[string]*string) *DescribePolicyInstancesStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponse) SetStatusCode(v int32) *DescribePolicyInstancesStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstancesStatusResponseBody) *DescribePolicyInstancesStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The language. Valid values: zh, en, and jp.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -1871,6 +3191,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeUserPermissionsRequest struct {
+	// The ID of the RAM user that you want to query.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -1888,8 +3209,10 @@ func (s *DescribeUserPermissionsRequest) SetUserId(v string) *DescribeUserPermis
 }
 
 type DescribeUserPermissionsResponseBody struct {
+	// The details about the permissions of the RAM user.
 	Permissions []*DescribeUserPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserPermissionsResponseBody) String() string {
@@ -1911,10 +3234,24 @@ func (s *DescribeUserPermissionsResponseBody) SetRequestId(v string) *DescribeUs
 }
 
 type DescribeUserPermissionsResponseBodyPermissions struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The authorization setting. Valid values:
+	//
+	// *   {cluster_id} is returned if the permissions are scoped to a cluster.
+	// *   {cluster_id}/{namespace} is returned if the permissions are scoped to a namespace of a cluster.
+	// *   all-clusters is returned if the permissions are scoped to all clusters.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *   cluster: indicates that the permissions are scoped to a cluster.
+	// *   namespace: indicates that the permissions are scoped to a namespace of a cluster.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RoleName     *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	RoleType     *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The name of the custom role. If a custom role is assigned, the value is the name of the assigned custom role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The type of predefined role. Valid values:
+	//
+	// *   admin: administrator
+	// *   dev: developer
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
 func (s DescribeUserPermissionsResponseBodyPermissions) String() string {
@@ -2074,6 +3411,105 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 	return s
 }
 
+type GrantUserPermissionRequest struct {
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set role_type to cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Specifies the predefined role that you want to assign. Valid values:
+	//
+	// *   admin: the administrator role.
+	// *   dev: the developer role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *   cluster: specifies that the permissions are scoped to a master instance.
+	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GrantUserPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionRequest) SetClusterId(v string) *GrantUserPermissionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetNamespace(v string) *GrantUserPermissionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetRoleName(v string) *GrantUserPermissionRequest {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetRoleType(v string) *GrantUserPermissionRequest {
+	s.RoleType = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetUserId(v string) *GrantUserPermissionRequest {
+	s.UserId = &v
+	return s
+}
+
+type GrantUserPermissionResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GrantUserPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionResponseBody) SetRequestId(v string) *GrantUserPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GrantUserPermissionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GrantUserPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrantUserPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GrantUserPermissionResponse) SetHeaders(v map[string]*string) *GrantUserPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GrantUserPermissionResponse) SetStatusCode(v int32) *GrantUserPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GrantUserPermissionResponse) SetBody(v *GrantUserPermissionResponseBody) *GrantUserPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type GrantUserPermissionsRequest struct {
 	Permissions []*GrantUserPermissionsRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	UserId      *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -2206,18 +3642,30 @@ type UpdateHubClusterFeatureRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
+	// Specifies whether to enable the audit logging feature. Valid values:
+	//
+	// *   true: enables the audit logging feature.
+	// *   false: disables the audit logging feature.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	// The ID of the master instance.
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
+	// Specifies whether to enable deletion protection for the cluster. After you enable deletion protection, you cannot delete the master instance in the console or by calling the DeleteHubCluster operation. Valid values:
+	//
+	// *   true: enables deletion protection for the cluster.
+	// *   false: disables deletion protection for the cluster. This is the default value.
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
+	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
+	//
+	// true: enables ASM. false: disables ASM.
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
+	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
+	//
+	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
+	// *   false: disassociates an EIP from the API server.
 	PublicApiServerEnabled *bool     `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
 	VSwitches              []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	WorkflowScheduleMode   *string   `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
@@ -2296,18 +3744,30 @@ type UpdateHubClusterFeatureShrinkRequest struct {
 	ApiServerEipId    *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	ArgoCDEnabled     *bool   `json:"ArgoCDEnabled,omitempty" xml:"ArgoCDEnabled,omitempty"`
 	ArgoServerEnabled *bool   `json:"ArgoServerEnabled,omitempty" xml:"ArgoServerEnabled,omitempty"`
-	// Specifies whether to enable audit logs. Valid values: - true: enable audit logs. - false: disables audit logs.
+	// Specifies whether to enable the audit logging feature. Valid values:
+	//
+	// *   true: enables the audit logging feature.
+	// *   false: disables the audit logging feature.
 	AuditLogEnabled *bool `json:"AuditLogEnabled,omitempty" xml:"AuditLogEnabled,omitempty"`
-	// The ID of the master instance.
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable deletion protection for the master instance. After you enable deletion protection, you cannot delete the master instance in the console or by calling API operations. Valid values:
+	// Specifies whether to enable deletion protection for the cluster. After you enable deletion protection, you cannot delete the master instance in the console or by calling the DeleteHubCluster operation. Valid values:
+	//
+	// *   true: enables deletion protection for the cluster.
+	// *   false: disables deletion protection for the cluster. This is the default value.
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable Service Mesh (ASM). Valid values: true: enables ASM. false: disables ASM.
+	// Specifies whether to enable Alibaba Cloud Service Mesh (ASM). Valid values:
+	//
+	// true: enables ASM. false: disables ASM.
 	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	// The name of the master instance. The name must be 1 to 63 characters in length, and can contain letters and digits. The name must start with a letter. The name can contain letters, digits, underscores (_), and hyphens (-).
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cluster. The name must be 1 to 63 characters in length. It must start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The limit on the prices of containers in the workflow. This parameter takes effect only if the WorkflowScheduleMode parameter is set to cost-optimized.
 	PriceLimit *string `json:"PriceLimit,omitempty" xml:"PriceLimit,omitempty"`
-	// Specifies whether to associate an elastic IP address (EIP) with the API server. Default value: false. To associate an EIP with the API server, set the value to true. You can use a custom EIP by setting the ApiServerEipId parameter. If you do not set the ApiServerEipId parameter, the system automatically creates an EIP.
+	// Specifies whether to associate an elastic IP address (EIP) with the API server. Valid values:
+	//
+	// *   true: associates an EIP with the API server. You can specify the ApiServerEipId parameter. If you do not specify the ApiServerEipId parameter, the system automatically creates an EIP.
+	// *   false: disassociates an EIP from the API server.
 	PublicApiServerEnabled *bool   `json:"PublicApiServerEnabled,omitempty" xml:"PublicApiServerEnabled,omitempty"`
 	VSwitchesShrink        *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	WorkflowScheduleMode   *string `json:"WorkflowScheduleMode,omitempty" xml:"WorkflowScheduleMode,omitempty"`
@@ -2424,6 +3884,105 @@ func (s *UpdateHubClusterFeatureResponse) SetStatusCode(v int32) *UpdateHubClust
 }
 
 func (s *UpdateHubClusterFeatureResponse) SetBody(v *UpdateHubClusterFeatureResponseBody) *UpdateHubClusterFeatureResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUserPermissionRequest struct {
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Specifies the predefined role that you want to assign. Valid values:
+	//
+	// *   admin: the administrator role.
+	// *   dev: the developer role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The authorization type. Valid values:
+	//
+	// *   cluster: specifies that the permissions are scoped to a master instance.
+	// *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	// The ID of the RAM user.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s UpdateUserPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionRequest) SetClusterId(v string) *UpdateUserPermissionRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateUserPermissionRequest) SetNamespace(v string) *UpdateUserPermissionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateUserPermissionRequest) SetRoleName(v string) *UpdateUserPermissionRequest {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateUserPermissionRequest) SetRoleType(v string) *UpdateUserPermissionRequest {
+	s.RoleType = &v
+	return s
+}
+
+func (s *UpdateUserPermissionRequest) SetUserId(v string) *UpdateUserPermissionRequest {
+	s.UserId = &v
+	return s
+}
+
+type UpdateUserPermissionResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUserPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionResponseBody) SetRequestId(v string) *UpdateUserPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUserPermissionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPermissionResponse) SetHeaders(v map[string]*string) *UpdateUserPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserPermissionResponse) SetStatusCode(v int32) *UpdateUserPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserPermissionResponse) SetBody(v *UpdateUserPermissionResponseBody) *UpdateUserPermissionResponse {
 	s.Body = v
 	return s
 }
@@ -2697,6 +4256,182 @@ func (client *Client) DeleteHubCluster(request *DeleteHubClusterRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeletePolicyInstanceWithOptions(tmpReq *DeletePolicyInstanceRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeletePolicyInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterIds)) {
+		request.ClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterIds, tea.String("ClusterIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterIdsShrink)) {
+		query["ClusterIds"] = request.ClusterIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyInstance"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicyInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePolicyInstance(request *DeletePolicyInstanceRequest) (_result *DeletePolicyInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicyInstanceResponse{}
+	_body, _err := client.DeletePolicyInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteUserPermissionWithOptions(request *DeleteUserPermissionRequest, runtime *util.RuntimeOptions) (_result *DeleteUserPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserPermission"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserPermission(request *DeleteUserPermissionRequest) (_result *DeleteUserPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserPermissionResponse{}
+	_body, _err := client.DeleteUserPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeployPolicyInstanceWithOptions(tmpReq *DeployPolicyInstanceRequest, runtime *util.RuntimeOptions) (_result *DeployPolicyInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeployPolicyInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterIds)) {
+		request.ClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterIds, tea.String("ClusterIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Namespaces)) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, tea.String("Namespaces"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterIdsShrink)) {
+		query["ClusterIds"] = request.ClusterIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacesShrink)) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyAction)) {
+		query["PolicyAction"] = request.PolicyAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployPolicyInstance"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployPolicyInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeployPolicyInstance(request *DeployPolicyInstanceRequest) (_result *DeployPolicyInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployPolicyInstanceResponse{}
+	_body, _err := client.DeployPolicyInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeHubClusterDetailsWithOptions(request *DescribeHubClusterDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeHubClusterDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2921,6 +4656,219 @@ func (client *Client) DescribeManagedClusters(request *DescribeManagedClustersRe
 	return _result, _err
 }
 
+func (client *Client) DescribePoliciesWithOptions(runtime *util.RuntimeOptions) (_result *DescribePoliciesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicies"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicies() (_result *DescribePoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePoliciesResponse{}
+	_body, _err := client.DescribePoliciesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyDetailsWithOptions(request *DescribePolicyDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyDetails"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyDetails(request *DescribePolicyDetailsRequest) (_result *DescribePolicyDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyDetailsResponse{}
+	_body, _err := client.DescribePolicyDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyGovernanceInClusterWithOptions(request *DescribePolicyGovernanceInClusterRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyGovernanceInCluster"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyGovernanceInClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyGovernanceInCluster(request *DescribePolicyGovernanceInClusterRequest) (_result *DescribePolicyGovernanceInClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyGovernanceInClusterResponse{}
+	_body, _err := client.DescribePolicyGovernanceInClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyInstancesWithOptions(request *DescribePolicyInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyInstances"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyInstances(request *DescribePolicyInstancesRequest) (_result *DescribePolicyInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyInstancesResponse{}
+	_body, _err := client.DescribePolicyInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyInstancesStatusWithOptions(request *DescribePolicyInstancesStatusRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyInstancesStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyInstancesStatus"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyInstancesStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyInstancesStatus(request *DescribePolicyInstancesStatusRequest) (_result *DescribePolicyInstancesStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyInstancesStatusResponse{}
+	_body, _err := client.DescribePolicyInstancesStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3052,6 +5000,66 @@ func (client *Client) DetachClusterFromHub(request *DetachClusterFromHubRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachClusterFromHubResponse{}
 	_body, _err := client.DetachClusterFromHubWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissionRequest, runtime *util.RuntimeOptions) (_result *GrantUserPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GrantUserPermission"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GrantUserPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GrantUserPermission(request *GrantUserPermissionRequest) (_result *GrantUserPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GrantUserPermissionResponse{}
+	_body, _err := client.GrantUserPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3200,6 +5208,66 @@ func (client *Client) UpdateHubClusterFeature(request *UpdateHubClusterFeatureRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHubClusterFeatureResponse{}
 	_body, _err := client.UpdateHubClusterFeatureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUserPermissionWithOptions(request *UpdateUserPermissionRequest, runtime *util.RuntimeOptions) (_result *UpdateUserPermissionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserPermission"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserPermission(request *UpdateUserPermissionRequest) (_result *UpdateUserPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserPermissionResponse{}
+	_body, _err := client.UpdateUserPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
