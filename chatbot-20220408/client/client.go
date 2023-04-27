@@ -508,6 +508,7 @@ type ChatRequest struct {
 	IntentName  *string   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	KnowledgeId *string   `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
+	SandBox     *bool     `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
 	SenderId    *string   `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
 	SenderNick  *string   `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 	SessionId   *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -548,6 +549,11 @@ func (s *ChatRequest) SetPerspective(v []*string) *ChatRequest {
 	return s
 }
 
+func (s *ChatRequest) SetSandBox(v bool) *ChatRequest {
+	s.SandBox = &v
+	return s
+}
+
 func (s *ChatRequest) SetSenderId(v string) *ChatRequest {
 	s.SenderId = &v
 	return s
@@ -579,6 +585,7 @@ type ChatShrinkRequest struct {
 	IntentName        *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	KnowledgeId       *string `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	PerspectiveShrink *string `json:"Perspective,omitempty" xml:"Perspective,omitempty"`
+	SandBox           *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
 	SenderId          *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
 	SenderNick        *string `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -616,6 +623,11 @@ func (s *ChatShrinkRequest) SetKnowledgeId(v string) *ChatShrinkRequest {
 
 func (s *ChatShrinkRequest) SetPerspectiveShrink(v string) *ChatShrinkRequest {
 	s.PerspectiveShrink = &v
+	return s
+}
+
+func (s *ChatShrinkRequest) SetSandBox(v bool) *ChatShrinkRequest {
+	s.SandBox = &v
 	return s
 }
 
@@ -9621,6 +9633,10 @@ func (client *Client) ChatWithOptions(tmpReq *ChatRequest, runtime *util.Runtime
 
 	if !tea.BoolValue(util.IsUnset(request.PerspectiveShrink)) {
 		query["Perspective"] = request.PerspectiveShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SandBox)) {
+		query["SandBox"] = request.SandBox
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
