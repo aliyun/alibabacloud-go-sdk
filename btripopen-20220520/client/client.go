@@ -35,7 +35,8 @@ type AccessTokenResponseBody struct {
 	Message   *string                        `json:"message,omitempty" xml:"message,omitempty"`
 	Module    *AccessTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
 	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                          `json:"success,omitempty" xml:"success,omitempty"`
+	// 成功标识
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// traceId
 	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
@@ -906,11 +907,12 @@ func (s *ApplyAddHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyAddHeaders {
 }
 
 type ApplyAddRequest struct {
-	Budget                    *int64                                   `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge               *int32                                   `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName                  *string                                  `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId                  *string                                  `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName                *string                                  `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField               *string                                  `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList      []*ApplyAddRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	ExternalTravelerStandard  *ApplyAddRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
@@ -923,6 +925,7 @@ type ApplyAddRequest struct {
 	ItinerarySetList          []*ApplyAddRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler             *int32                                   `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                    *int32                                   `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                 *string                                  `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId          *string                                  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId       *string                                  `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	ThirdpartDepartId         *string                                  `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
@@ -1030,6 +1033,11 @@ func (s *ApplyAddRequest) SetLimitTraveler(v int32) *ApplyAddRequest {
 
 func (s *ApplyAddRequest) SetStatus(v int32) *ApplyAddRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetSubCorpId(v string) *ApplyAddRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -1550,11 +1558,12 @@ func (s *ApplyAddRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyAddReq
 }
 
 type ApplyAddShrinkRequest struct {
-	Budget                         *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge                    *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName                       *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId                       *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName                     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
 	ExternalTravelerStandardShrink *string `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty"`
@@ -1567,6 +1576,7 @@ type ApplyAddShrinkRequest struct {
 	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                      *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId            *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	ThirdpartDepartId              *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
@@ -1674,6 +1684,11 @@ func (s *ApplyAddShrinkRequest) SetLimitTraveler(v int32) *ApplyAddShrinkRequest
 
 func (s *ApplyAddShrinkRequest) SetStatus(v int32) *ApplyAddShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetSubCorpId(v string) *ApplyAddShrinkRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -1886,6 +1901,7 @@ type ApplyApproveRequest struct {
 	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
@@ -1915,6 +1931,11 @@ func (s *ApplyApproveRequest) SetOperateTime(v string) *ApplyApproveRequest {
 
 func (s *ApplyApproveRequest) SetStatus(v int32) *ApplyApproveRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ApplyApproveRequest) SetSubCorpId(v string) *ApplyApproveRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -2297,6 +2318,7 @@ type ApplyListQueryRequest struct {
 	Page             *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
 	UnionNo          *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
 	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
@@ -2347,6 +2369,11 @@ func (s *ApplyListQueryRequest) SetPageSize(v int32) *ApplyListQueryRequest {
 
 func (s *ApplyListQueryRequest) SetStartTime(v string) *ApplyListQueryRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ApplyListQueryRequest) SetSubCorpId(v string) *ApplyListQueryRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -2873,11 +2900,12 @@ func (s *ApplyModifyHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyModifyHeade
 }
 
 type ApplyModifyRequest struct {
-	Budget                   *int64                                      `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge              *int32                                      `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName                 *string                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId                 *string                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName               *string                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField              *string                                     `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList     []*ApplyModifyRequestExternalTravelerList   `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	ExternalTravelerStandard *ApplyModifyRequestExternalTravelerStandard `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty" type:"Struct"`
@@ -2889,6 +2917,7 @@ type ApplyModifyRequest struct {
 	ItinerarySetList         []*ApplyModifyRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler            *int32                                      `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                   *int32                                      `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                *string                                     `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId         *string                                     `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId      *string                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	ThirdpartDepartId        *string                                     `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
@@ -2993,6 +3022,11 @@ func (s *ApplyModifyRequest) SetStatus(v int32) *ApplyModifyRequest {
 	return s
 }
 
+func (s *ApplyModifyRequest) SetSubCorpId(v string) *ApplyModifyRequest {
+	s.SubCorpId = &v
+	return s
+}
+
 func (s *ApplyModifyRequest) SetThirdpartApplyId(v string) *ApplyModifyRequest {
 	s.ThirdpartApplyId = &v
 	return s
@@ -3081,14 +3115,15 @@ func (s *ApplyModifyRequestExternalTravelerList) SetUserName(v string) *ApplyMod
 }
 
 type ApplyModifyRequestExternalTravelerStandard struct {
-	BusinessDiscount       *int32                                                  `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount        *int32                                                  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                                  `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                                 `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyModifyRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                                  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                                  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                                 `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	BusinessDiscount *int32                                                  `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount  *int32                                                  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount    *int32                                                  `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins     *string                                                 `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys       []*ApplyModifyRequestExternalTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	// 超级经济舱折扣。1到10的整数
+	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
 }
 
 func (s ApplyModifyRequestExternalTravelerStandard) String() string {
@@ -3411,15 +3446,16 @@ func (s *ApplyModifyRequestTravelerList) SetUserName(v string) *ApplyModifyReque
 }
 
 type ApplyModifyRequestTravelerStandard struct {
-	BusinessDiscount       *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
-	EconomyDiscount        *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
-	FirstDiscount          *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
-	FlightCabins           *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
-	HotelCitys             []*ApplyModifyRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
-	PremiumEconomyDiscount *int32                                          `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
-	ReserveType            *int32                                          `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
-	TrainSeats             *string                                         `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
-	UserId                 *string                                         `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BusinessDiscount *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount  *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount    *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins     *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	HotelCitys       []*ApplyModifyRequestTravelerStandardHotelCitys `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	// 超级经济舱折扣。1到10的整数
+	PremiumEconomyDiscount *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainSeats             *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyModifyRequestTravelerStandard) String() string {
@@ -3505,11 +3541,12 @@ func (s *ApplyModifyRequestTravelerStandardHotelCitys) SetFee(v int64) *ApplyMod
 }
 
 type ApplyModifyShrinkRequest struct {
-	Budget                         *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge                    *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpName                       *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId                       *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName                     *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	Budget      *int64  `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpName    *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId    *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName  *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField                    *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerListShrink     *string `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty"`
 	ExternalTravelerStandardShrink *string `json:"external_traveler_standard,omitempty" xml:"external_traveler_standard,omitempty"`
@@ -3521,6 +3558,7 @@ type ApplyModifyShrinkRequest struct {
 	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	SubCorpId                      *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	ThirdpartBusinessId            *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	ThirdpartDepartId              *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
@@ -3622,6 +3660,11 @@ func (s *ApplyModifyShrinkRequest) SetLimitTraveler(v int32) *ApplyModifyShrinkR
 
 func (s *ApplyModifyShrinkRequest) SetStatus(v int32) *ApplyModifyShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetSubCorpId(v string) *ApplyModifyShrinkRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -3827,6 +3870,7 @@ func (s *ApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyQueryHeaders
 type ApplyQueryRequest struct {
 	ApplyId          *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ApplyShowId      *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -3846,6 +3890,11 @@ func (s *ApplyQueryRequest) SetApplyId(v int32) *ApplyQueryRequest {
 
 func (s *ApplyQueryRequest) SetApplyShowId(v string) *ApplyQueryRequest {
 	s.ApplyShowId = &v
+	return s
+}
+
+func (s *ApplyQueryRequest) SetSubCorpId(v string) *ApplyQueryRequest {
+	s.SubCorpId = &v
 	return s
 }
 
@@ -3907,14 +3956,15 @@ func (s *ApplyQueryResponseBody) SetTraceId(v string) *ApplyQueryResponseBody {
 }
 
 type ApplyQueryResponseBodyModule struct {
-	ApplyShowId          *string                                             `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
-	ApproverList         []*ApplyQueryResponseBodyModuleApproverList         `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
-	Budget               *int64                                              `json:"budget,omitempty" xml:"budget,omitempty"`
-	BudgetMerge          *int32                                              `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CorpId               *string                                             `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName             *string                                             `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId             *string                                             `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName           *string                                             `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ApplyShowId  *string                                     `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	ApproverList []*ApplyQueryResponseBodyModuleApproverList `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	Budget       *int64                                      `json:"budget,omitempty" xml:"budget,omitempty"`
+	BudgetMerge  *int32                                      `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CorpId       *string                                     `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName     *string                                     `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId     *string                                     `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName   *string                                     `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// 补充描述，账单中将会体现此字段的值。可以用于企业的统计和对账
 	ExtendField          *string                                             `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
 	ExternalTravelerList []*ApplyQueryResponseBodyModuleExternalTravelerList `json:"external_traveler_list,omitempty" xml:"external_traveler_list,omitempty" type:"Repeated"`
 	FlightBudget         *int64                                              `json:"flight_budget,omitempty" xml:"flight_budget,omitempty"`
@@ -11469,13 +11519,15 @@ func (s *FlightCreateOrderRequestContactInfo) SetContactPhone(v string) *FlightC
 }
 
 type FlightCreateOrderRequestTravelerInfoList struct {
-	Birthday        *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
-	CertNation      *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
-	CertNo          *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
-	CertType        *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
-	CertValidDate   *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	Birthday      *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertNation    *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo        *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType      *string `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	CertValidDate *string `json:"cert_valid_date,omitempty" xml:"cert_valid_date,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 国籍
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// 国籍二字码
 	NationalityCode *string `json:"nationality_code,omitempty" xml:"nationality_code,omitempty"`
 	OutUserId       *string `json:"out_user_id,omitempty" xml:"out_user_id,omitempty"`
 	Phone           *string `json:"phone,omitempty" xml:"phone,omitempty"`
@@ -27459,6 +27511,7 @@ func (s *HotelOrderPayHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderPayHea
 }
 
 type HotelOrderPayRequest struct {
+	// 供应商订单号（取自创单返回的订单号）
 	BtripOrderId    *int64  `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
 	BtripUserId     *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
 	CompanyPayFee   *int64  `json:"company_pay_fee,omitempty" xml:"company_pay_fee,omitempty"`
@@ -30969,44 +31022,61 @@ func (s *InsInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *InsInvoic
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItems struct {
-	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
-	CostCenter               *string                                                     `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	Department               *string                                                     `json:"department,omitempty" xml:"department,omitempty"`
-	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
-	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
-	InsuranceCompany         *string                                                     `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
-	InsuranceOrderId         *string                                                     `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
-	InsuranceType            *string                                                     `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
-	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	InvoiceDetails           []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
-	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
-	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	InvoiceTitle             *string                                                     `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
-	OrderId                  *int64                                                      `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	Passenger                *string                                                     `json:"passenger,omitempty" xml:"passenger,omitempty"`
-	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
-	Project                  *string                                                     `json:"project,omitempty" xml:"project,omitempty"`
-	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
-	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
-	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
-	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
-	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
-	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
-	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
-	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	AmountWithTax    *string `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax *string `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate         *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	// 校验码
+	CheckCode  *string `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	CostCenter *string `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	Department *string `json:"department,omitempty" xml:"department,omitempty"`
+	// 开票人
+	Drawer *string `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	// 应用ID
+	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
+	InsuranceCompany *string `json:"insurance_company,omitempty" xml:"insurance_company,omitempty"`
+	InsuranceOrderId *string `json:"insurance_order_id,omitempty" xml:"insurance_order_id,omitempty"`
+	InsuranceType    *string `json:"insurance_type,omitempty" xml:"insurance_type,omitempty"`
+	InvoiceCode      *string `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay       *string `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	// 发票明细
+	InvoiceDetails []*InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	// 发票地区
+	InvoiceLocation *string `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	InvoiceNo       *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	// 发票抬头
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// 机器码
+	MachineCode *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	OrderId     *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OssUrl      *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	Passenger   *string `json:"passenger,omitempty" xml:"passenger,omitempty"`
+	// 密码区
+	PasswordArea *string `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
+	// 购方银行信息
+	PurchaserBankAccountInfo *string `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	// 购方联系方式
+	PurchaserContactInfo *string `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	PurchaserName        *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo       *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	// 收款人
+	Recipient *string `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	// 备注
+	Remarks *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	// 复核人
+	Reviewer *string `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	// 销售方银行信息
+	SellerBankAccountInfo *string `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	// 销售方联系方式
+	SellerContactInfo *string `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	SellerName        *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo       *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	// 校验码
+	SmartCheckCode *string `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	TaxAmount      *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate        *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// 大写金额
+	TotalAmountInWords *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -31208,15 +31278,24 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v str
 }
 
 type InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
-	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
-	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
-	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
-	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// 金额
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// 行号
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// 货物或应税劳务、服务名称
+	ItemName *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
+	// 数量
+	Quantity *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	// 规格型号
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	Tax           *string `json:"tax,omitempty" xml:"tax,omitempty"`
-	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	Unit          *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	UnitPrice     *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
+	// 税额
+	Tax *string `json:"tax,omitempty" xml:"tax,omitempty"`
+	// 税率
+	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	// 单位
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// 单价
+	UnitPrice *string `json:"unit_price,omitempty" xml:"unit_price,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails) String() string {
@@ -35857,6 +35936,7 @@ func (s *TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOta
 }
 
 type TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItems struct {
+	// attributes
 	Attributes                  map[string]interface{}                                                                                                                       `json:"attributes,omitempty" xml:"attributes,omitempty"`
 	BaggageSubContentVisualizes []*TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItemsBaggageSubContentVisualizes `json:"baggage_sub_content_visualizes,omitempty" xml:"baggage_sub_content_visualizes,omitempty" type:"Repeated"`
 	BaggageSubContents          []*TicketChangingEnquiryResponseBodyModuleFlightInfoListCabinListChangeOtaItemRuleRqBaggageDetailsBaggageSubItemsBaggageSubContents          `json:"baggage_sub_contents,omitempty" xml:"baggage_sub_contents,omitempty" type:"Repeated"`
@@ -40898,8 +40978,10 @@ type TrainTicketScanQueryResponseBodyModuleItems struct {
 	SerialNumber *string `json:"serial_number,omitempty" xml:"serial_number,omitempty"`
 	TaxAmount    *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
 	TaxRate      *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TicketNo     *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TrainNo      *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	// 取票号
+	TicketNo *string `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	// 车次
+	TrainNo *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 }
 
 func (s TrainTicketScanQueryResponseBodyModuleItems) String() string {
@@ -41404,39 +41486,40 @@ func (s *VatInvoiceScanQueryResponseBodyModule) SetTotalSize(v int32) *VatInvoic
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItems struct {
-	AmountWithTax            *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
-	AmountWithoutTax         *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
-	BillDate                 *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
-	CheckCode                *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
-	Drawer                   *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
-	Id                       *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
-	InvoiceCode              *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
-	InvoiceDay               *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
-	InvoiceDetail            *string                                                     `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
-	InvoiceDetails           []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
-	InvoiceLocation          *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
-	InvoiceNo                *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
-	InvoiceSubTaskId         *int64                                                      `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
-	InvoiceType              *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
-	InvoiceTypeDesc          *string                                                     `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
-	MachineCode              *string                                                     `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
-	OssUrl                   *string                                                     `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
-	PasswordArea             *string                                                     `json:"password_area,omitempty" xml:"password_area,omitempty"`
-	PurchaserBankAccountInfo *string                                                     `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
-	PurchaserContactInfo     *string                                                     `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
-	PurchaserName            *string                                                     `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
-	PurchaserTaxNo           *string                                                     `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
-	Recipient                *string                                                     `json:"recipient,omitempty" xml:"recipient,omitempty"`
-	Remarks                  *string                                                     `json:"remarks,omitempty" xml:"remarks,omitempty"`
-	Reviewer                 *string                                                     `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
-	SellerBankAccountInfo    *string                                                     `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
-	SellerContactInfo        *string                                                     `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
-	SellerName               *string                                                     `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
-	SellerTaxNo              *string                                                     `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
-	SmartCheckCode           *string                                                     `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
-	TaxAmount                *string                                                     `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
-	TaxRate                  *string                                                     `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
-	TotalAmountInWords       *string                                                     `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	AmountWithTax    *string                                                     `json:"amount_with_tax,omitempty" xml:"amount_with_tax,omitempty"`
+	AmountWithoutTax *string                                                     `json:"amount_without_tax,omitempty" xml:"amount_without_tax,omitempty"`
+	BillDate         *string                                                     `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	CheckCode        *string                                                     `json:"check_code,omitempty" xml:"check_code,omitempty"`
+	Drawer           *string                                                     `json:"drawer,omitempty" xml:"drawer,omitempty"`
+	Id               *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	InvoiceCode      *string                                                     `json:"invoice_code,omitempty" xml:"invoice_code,omitempty"`
+	InvoiceDay       *string                                                     `json:"invoice_day,omitempty" xml:"invoice_day,omitempty"`
+	InvoiceDetail    *string                                                     `json:"invoice_detail,omitempty" xml:"invoice_detail,omitempty"`
+	InvoiceDetails   []*VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails `json:"invoice_details,omitempty" xml:"invoice_details,omitempty" type:"Repeated"`
+	InvoiceLocation  *string                                                     `json:"invoice_location,omitempty" xml:"invoice_location,omitempty"`
+	InvoiceNo        *string                                                     `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
+	InvoiceSubTaskId *int64                                                      `json:"invoice_sub_task_id,omitempty" xml:"invoice_sub_task_id,omitempty"`
+	InvoiceType      *int32                                                      `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
+	InvoiceTypeDesc  *string                                                     `json:"invoice_type_desc,omitempty" xml:"invoice_type_desc,omitempty"`
+	// 机器码
+	MachineCode              *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	OssUrl                   *string `json:"oss_url,omitempty" xml:"oss_url,omitempty"`
+	PasswordArea             *string `json:"password_area,omitempty" xml:"password_area,omitempty"`
+	PurchaserBankAccountInfo *string `json:"purchaser_bank_account_info,omitempty" xml:"purchaser_bank_account_info,omitempty"`
+	PurchaserContactInfo     *string `json:"purchaser_contact_info,omitempty" xml:"purchaser_contact_info,omitempty"`
+	PurchaserName            *string `json:"purchaser_name,omitempty" xml:"purchaser_name,omitempty"`
+	PurchaserTaxNo           *string `json:"purchaser_tax_no,omitempty" xml:"purchaser_tax_no,omitempty"`
+	Recipient                *string `json:"recipient,omitempty" xml:"recipient,omitempty"`
+	Remarks                  *string `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	Reviewer                 *string `json:"reviewer,omitempty" xml:"reviewer,omitempty"`
+	SellerBankAccountInfo    *string `json:"seller_bank_account_info,omitempty" xml:"seller_bank_account_info,omitempty"`
+	SellerContactInfo        *string `json:"seller_contact_info,omitempty" xml:"seller_contact_info,omitempty"`
+	SellerName               *string `json:"seller_name,omitempty" xml:"seller_name,omitempty"`
+	SellerTaxNo              *string `json:"seller_tax_no,omitempty" xml:"seller_tax_no,omitempty"`
+	SmartCheckCode           *string `json:"smart_check_code,omitempty" xml:"smart_check_code,omitempty"`
+	TaxAmount                *string `json:"tax_amount,omitempty" xml:"tax_amount,omitempty"`
+	TaxRate                  *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TotalAmountInWords       *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
 }
 
 func (s VatInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -41613,7 +41696,8 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v str
 }
 
 type VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails struct {
-	Amount        *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// 行号
 	Index         *string `json:"index,omitempty" xml:"index,omitempty"`
 	ItemName      *string `json:"item_name,omitempty" xml:"item_name,omitempty"`
 	Quantity      *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
@@ -42395,6 +42479,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		body["status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		body["sub_corp_id"] = request.SubCorpId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartApplyId)) {
 		body["thirdpart_apply_id"] = request.ThirdpartApplyId
 	}
@@ -42521,6 +42609,10 @@ func (client *Client) ApplyApproveWithOptions(request *ApplyApproveRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		body["sub_corp_id"] = request.SubCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -42677,6 +42769,10 @@ func (client *Client) ApplyListQueryWithOptions(request *ApplyListQueryRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["start_time"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -42836,6 +42932,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 		body["status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		body["sub_corp_id"] = request.SubCorpId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartApplyId)) {
 		body["thirdpart_apply_id"] = request.ThirdpartApplyId
 	}
@@ -42949,6 +43049,10 @@ func (client *Client) ApplyQueryWithOptions(request *ApplyQueryRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.ApplyShowId)) {
 		query["apply_show_id"] = request.ApplyShowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdpartApplyId)) {
