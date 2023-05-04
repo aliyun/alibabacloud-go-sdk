@@ -13,9 +13,6 @@ import (
 )
 
 type AcceptHandshakeRequest struct {
-	// The ID of the invitation.
-	//
-	// You can call the [ListHandshakesForAccount](~~ListHandshakesForAccount~~) operation to obtain the ID.
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
@@ -33,10 +30,8 @@ func (s *AcceptHandshakeRequest) SetHandshakeId(v string) *AcceptHandshakeReques
 }
 
 type AcceptHandshakeResponseBody struct {
-	// The information of the invitation.
 	Handshake *AcceptHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AcceptHandshakeResponseBody) String() string {
@@ -58,37 +53,17 @@ func (s *AcceptHandshakeResponseBody) SetRequestId(v string) *AcceptHandshakeRes
 }
 
 type AcceptHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the management account of the resource directory.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The description of the invitation.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Declined: The invitation is rejected.
-	// *   Expired: The invitation expires.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited Alibaba Cloud account.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited Alibaba Cloud account. Valid values:
-	//
-	// *   Account: indicates the ID of the Alibaba Cloud account.
-	// *   Email: indicates the logon email address of the Alibaba Cloud account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s AcceptHandshakeResponseBodyHandshake) String() string {
@@ -404,13 +379,7 @@ func (s *AssociateMembersResponse) SetBody(v *AssociateMembersResponseBody) *Ass
 }
 
 type AttachControlPolicyRequest struct {
-	// The ID of the access control policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the object to which you want to attach the access control policy. Access control policies can be attached to the following objects:
-	//
-	// *   Root folder
-	// *   Subfolders of the Root folder
-	// *   Members
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
@@ -433,7 +402,6 @@ func (s *AttachControlPolicyRequest) SetTargetId(v string) *AttachControlPolicyR
 }
 
 type AttachControlPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -480,20 +448,9 @@ func (s *AttachControlPolicyResponse) SetBody(v *AttachControlPolicyResponseBody
 }
 
 type BindSecureMobilePhoneRequest struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The mobile phone number that you want to bind to the member for security purposes.
-	//
-	// The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForBindSecureMobilePhone](~~SendVerificationCodeForBindSecureMobilePhone~~) operation to obtain a verification code.
-	//
-	// Specify the mobile phone number in the \<Country code>-\<Mobile phone number> format.
-	//
-	// > Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+	AccountId         *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	SecureMobilePhone *string `json:"SecureMobilePhone,omitempty" xml:"SecureMobilePhone,omitempty"`
-	// The verification code.
-	//
-	// You can call the [SendVerificationCodeForBindSecureMobilePhone](~~SendVerificationCodeForBindSecureMobilePhone~~) operation to obtain the verification code.
-	VerificationCode *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
+	VerificationCode  *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
 }
 
 func (s BindSecureMobilePhoneRequest) String() string {
@@ -520,7 +477,6 @@ func (s *BindSecureMobilePhoneRequest) SetVerificationCode(v string) *BindSecure
 }
 
 type BindSecureMobilePhoneResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -567,7 +523,6 @@ func (s *BindSecureMobilePhoneResponse) SetBody(v *BindSecureMobilePhoneResponse
 }
 
 type CancelChangeAccountEmailRequest struct {
-	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -585,7 +540,6 @@ func (s *CancelChangeAccountEmailRequest) SetAccountId(v string) *CancelChangeAc
 }
 
 type CancelChangeAccountEmailResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -632,7 +586,6 @@ func (s *CancelChangeAccountEmailResponse) SetBody(v *CancelChangeAccountEmailRe
 }
 
 type CancelHandshakeRequest struct {
-	// The ID of the invitation.
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
@@ -650,10 +603,8 @@ func (s *CancelHandshakeRequest) SetHandshakeId(v string) *CancelHandshakeReques
 }
 
 type CancelHandshakeResponseBody struct {
-	// The information of the invitation.
 	Handshake *CancelHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelHandshakeResponseBody) String() string {
@@ -675,37 +626,17 @@ func (s *CancelHandshakeResponseBody) SetRequestId(v string) *CancelHandshakeRes
 }
 
 type CancelHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the management account of the resource directory.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The description of the invitation.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Declined: The invitation is rejected.
-	// *   Expired: The invitation expires.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited account. Valid values:
-	//
-	// *   Account: indicates the ID of the account.
-	// *   Email: indicates the logon email address of the account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s CancelHandshakeResponseBodyHandshake) String() string {
@@ -876,12 +807,8 @@ func (s *CancelMessageContactUpdateResponse) SetBody(v *CancelMessageContactUpda
 }
 
 type ChangeAccountEmailRequest struct {
-	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The email address to be bound to the member.
-	//
-	// > The system automatically sends a verification email to the email address. After the verification is passed, the email address takes effect, and the system changes both the logon email address and secure email address of the member.
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
 }
 
 func (s ChangeAccountEmailRequest) String() string {
@@ -903,7 +830,6 @@ func (s *ChangeAccountEmailRequest) SetEmail(v string) *ChangeAccountEmailReques
 }
 
 type ChangeAccountEmailResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -950,7 +876,6 @@ func (s *ChangeAccountEmailResponse) SetBody(v *ChangeAccountEmailResponseBody) 
 }
 
 type CheckAccountDeleteRequest struct {
-	// The Alibaba Cloud account ID of the member that you want to delete.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -968,7 +893,6 @@ func (s *CheckAccountDeleteRequest) SetAccountId(v string) *CheckAccountDeleteRe
 }
 
 type CheckAccountDeleteResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1015,26 +939,10 @@ func (s *CheckAccountDeleteResponse) SetBody(v *CheckAccountDeleteResponseBody) 
 }
 
 type CreateControlPolicyRequest struct {
-	// The description of the access control policy.
-	//
-	// The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy.
-	//
-	// The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
-	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The document of the access control policy.
-	//
-	// The document can be a maximum of 4,096 characters in length.
-	//
-	// For more information about the languages of access control policies, see [Languages of access control policies](~~179096~~).
-	//
-	// For more information about the examples of access control policies, see [Examples of custom access control policies](~~181474~~).
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope    *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the access control policy.
-	//
-	// The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s CreateControlPolicyRequest) String() string {
@@ -1066,10 +974,8 @@ func (s *CreateControlPolicyRequest) SetPolicyName(v string) *CreateControlPolic
 }
 
 type CreateControlPolicyResponseBody struct {
-	// The details of the access control policy.
 	ControlPolicy *CreateControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateControlPolicyResponseBody) String() string {
@@ -1091,27 +997,14 @@ func (s *CreateControlPolicyResponseBody) SetRequestId(v string) *CreateControlP
 }
 
 type CreateControlPolicyResponseBodyControlPolicy struct {
-	// The number of times that the access control policy is referenced.
 	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the access control policy was created.
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the access control policy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy.
-	//
-	// The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
-	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The ID of the access control policy.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the access control policy.
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// *   System: system access control policy
-	// *   Custom: custom access control policy
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the access control policy was updated.
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateControlPolicyResponseBodyControlPolicy) String() string {
@@ -1192,11 +1085,7 @@ func (s *CreateControlPolicyResponse) SetBody(v *CreateControlPolicyResponseBody
 }
 
 type CreateFolderRequest struct {
-	// The name of the folder.
-	//
-	// The name must be 1 to 24 characters in length and can contain letters, digits, underscores (\_), periods (.),and hyphens (-).
-	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// The ID of the parent folder.
+	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
@@ -1219,10 +1108,8 @@ func (s *CreateFolderRequest) SetParentFolderId(v string) *CreateFolderRequest {
 }
 
 type CreateFolderResponseBody struct {
-	// The information about the folder.
-	Folder *CreateFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Folder    *CreateFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFolderResponseBody) String() string {
@@ -1244,13 +1131,9 @@ func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseB
 }
 
 type CreateFolderResponseBodyFolder struct {
-	// The time when the folder was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
-	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// The ID of the parent folder.
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FolderId       *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderName     *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
@@ -1312,37 +1195,12 @@ func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolde
 }
 
 type CreateResourceAccountRequest struct {
-	// The prefix for the Alibaba Cloud account name of the member. If you leave this parameter empty, the system randomly generates a prefix.
-	//
-	// The prefix must be 2 to 37 characters in length.
-	//
-	// The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (`_`), periods (.), and hyphens (`-`).
-	//
-	// The complete Alibaba Cloud account name of a member in a resource directory is in the @.aliyunid.com format, such as `alice@rd-3G****.aliyunid.com`.
-	//
-	// Each name must be unique in the resource directory.
-	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
-	// The display name of the member.
-	//
-	// The name must be 2 to 50 characters in length.
-	//
-	// The name can contain letters, digits, underscores (\_), periods (.), hyphens (-), and spaces.
-	//
-	// The name must be unique in the resource directory.
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the parent folder.
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The ID of the billing account. If you leave this parameter empty, the member is used as its own billing account.
-	PayerAccountId *string `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
-	// The identity type of the member. Valid values:
-	//
-	// *   resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
-	// *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
-	//
-	// > This parameter is available only for resellers at the international site (alibabacloud.com).
-	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
-	// The tag of the member.
-	Tag []*CreateResourceAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AccountNamePrefix *string                            `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
+	DisplayName       *string                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ParentFolderId    *string                            `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	PayerAccountId    *string                            `json:"PayerAccountId,omitempty" xml:"PayerAccountId,omitempty"`
+	ResellAccountType *string                            `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	Tag               []*CreateResourceAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateResourceAccountRequest) String() string {
@@ -1384,9 +1242,7 @@ func (s *CreateResourceAccountRequest) SetTag(v []*CreateResourceAccountRequestT
 }
 
 type CreateResourceAccountRequestTag struct {
-	// The key of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1409,10 +1265,8 @@ func (s *CreateResourceAccountRequestTag) SetValue(v string) *CreateResourceAcco
 }
 
 type CreateResourceAccountResponseBody struct {
-	// The information of the member.
-	Account *CreateResourceAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Account   *CreateResourceAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateResourceAccountResponseBody) String() string {
@@ -1434,29 +1288,16 @@ func (s *CreateResourceAccountResponseBody) SetRequestId(v string) *CreateResour
 }
 
 type CreateResourceAccountResponseBodyAccount struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account name of the member.
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member.
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
-	//
-	// *   invited: The member is invited to join the resource directory.
-	// *   created: The member is directly created in the resource directory.
-	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory. The time is displayed in UTC.
-	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the resource directory.
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the member. The value CreateSuccess indicates that the member is created.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the member. The value ResourceAccount indicates that the member is a resource account.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateResourceAccountResponseBodyAccount) String() string {
@@ -1547,7 +1388,6 @@ func (s *CreateResourceAccountResponse) SetBody(v *CreateResourceAccountResponse
 }
 
 type DeclineHandshakeRequest struct {
-	// The ID of the invitation.
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
@@ -1565,10 +1405,8 @@ func (s *DeclineHandshakeRequest) SetHandshakeId(v string) *DeclineHandshakeRequ
 }
 
 type DeclineHandshakeResponseBody struct {
-	// The information of the invitation.
 	Handshake *DeclineHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeclineHandshakeResponseBody) String() string {
@@ -1590,37 +1428,17 @@ func (s *DeclineHandshakeResponseBody) SetRequestId(v string) *DeclineHandshakeR
 }
 
 type DeclineHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the management account of the resource directory.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The description of the invitation.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Declined: The invitation is rejected.
-	// *   Expired: The invitation expires.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited account. Valid values:
-	//
-	// *   Account: indicates the ID of the account.
-	// *   Email: indicates the logon email address of the account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s DeclineHandshakeResponseBodyHandshake) String() string {
@@ -1716,12 +1534,8 @@ func (s *DeclineHandshakeResponse) SetBody(v *DeclineHandshakeResponseBody) *Dec
 }
 
 type DeleteAccountRequest struct {
-	// The IDs of the check items that you can choose to ignore for the member deletion.
-	//
-	// You can obtain the IDs from the response of the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation.
 	AbandonableCheckId []*string `json:"AbandonableCheckId,omitempty" xml:"AbandonableCheckId,omitempty" type:"Repeated"`
-	// The Alibaba Cloud account ID of the member that you want to delete.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId          *string   `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
 func (s DeleteAccountRequest) String() string {
@@ -1743,12 +1557,8 @@ func (s *DeleteAccountRequest) SetAccountId(v string) *DeleteAccountRequest {
 }
 
 type DeleteAccountShrinkRequest struct {
-	// The IDs of the check items that you can choose to ignore for the member deletion.
-	//
-	// You can obtain the IDs from the response of the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation.
 	AbandonableCheckIdShrink *string `json:"AbandonableCheckId,omitempty" xml:"AbandonableCheckId,omitempty"`
-	// The Alibaba Cloud account ID of the member that you want to delete.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
 func (s DeleteAccountShrinkRequest) String() string {
@@ -1770,13 +1580,8 @@ func (s *DeleteAccountShrinkRequest) SetAccountId(v string) *DeleteAccountShrink
 }
 
 type DeleteAccountResponseBody struct {
-	// The type of the deletion. Valid values:
-	//
-	// *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-	// *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
 	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAccountResponseBody) String() string {
@@ -1827,7 +1632,6 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteControlPolicyRequest struct {
-	// The ID of the access control policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -1845,7 +1649,6 @@ func (s *DeleteControlPolicyRequest) SetPolicyId(v string) *DeleteControlPolicyR
 }
 
 type DeleteControlPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1892,7 +1695,6 @@ func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody
 }
 
 type DeleteFolderRequest struct {
-	// The ID of the folder.
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
@@ -1910,7 +1712,6 @@ func (s *DeleteFolderRequest) SetFolderId(v string) *DeleteFolderRequest {
 }
 
 type DeleteFolderResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2032,9 +1833,7 @@ func (s *DeleteMessageContactResponse) SetBody(v *DeleteMessageContactResponseBo
 }
 
 type DeregisterDelegatedAdministratorRequest struct {
-	// The Alibaba Cloud account ID of the member in the resource directory.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The identifier of the trusted service.
+	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
@@ -2057,7 +1856,6 @@ func (s *DeregisterDelegatedAdministratorRequest) SetServicePrincipal(v string) 
 }
 
 type DeregisterDelegatedAdministratorResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2104,7 +1902,6 @@ func (s *DeregisterDelegatedAdministratorResponse) SetBody(v *DeregisterDelegate
 }
 
 type DestroyResourceDirectoryResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2151,13 +1948,7 @@ func (s *DestroyResourceDirectoryResponse) SetBody(v *DestroyResourceDirectoryRe
 }
 
 type DetachControlPolicyRequest struct {
-	// The ID of the access control policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
-	//
-	// *   Root folder
-	// *   Subfolders of the Root folder
-	// *   Members
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 }
 
@@ -2180,7 +1971,6 @@ func (s *DetachControlPolicyRequest) SetTargetId(v string) *DetachControlPolicyR
 }
 
 type DetachControlPolicyResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2227,15 +2017,8 @@ func (s *DetachControlPolicyResponse) SetBody(v *DetachControlPolicyResponseBody
 }
 
 type DisableControlPolicyResponseBody struct {
-	// The status of the Control Policy feature. Valid values:
-	//
-	// *   Enabled: The feature is enabled.
-	// *   PendingEnable: The feature is being enabled.
-	// *   Disabled: The feature is disabled.
-	// *   PendingDisable: The feature is being disabled.
 	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DisableControlPolicyResponseBody) String() string {
@@ -2390,15 +2173,8 @@ func (s *DisassociateMembersResponse) SetBody(v *DisassociateMembersResponseBody
 }
 
 type EnableControlPolicyResponseBody struct {
-	// The status of the Control Policy feature. Valid values:
-	//
-	// *   Enabled: The feature is enabled.
-	// *   PendingEnable: The feature is being enabled.
-	// *   Disabled: The feature is disabled.
-	// *   PendingDisable: The feature is being disabled.
 	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableControlPolicyResponseBody) String() string {
@@ -2449,27 +2225,10 @@ func (s *EnableControlPolicyResponse) SetBody(v *EnableControlPolicyResponseBody
 }
 
 type EnableResourceDirectoryRequest struct {
-	// The mode in which you enable a resource directory. Valid values:
-	//
-	// *   CurrentAccount: The current account is used to enable a resource directory.
-	// *   NewManagementAccount: A newly created account is used to enable a resource directory. If you select this mode, you must configure the `MAName`, `MASecureMobilePhone`, and `VerificationCode` parameters.
-	EnableMode *string `json:"EnableMode,omitempty" xml:"EnableMode,omitempty"`
-	// The name of the newly created account.
-	//
-	// Specify the name in the `<Prefix>@rdadmin.aliyunid.com` format. The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start and end with a letter or digit. Valid special characters include underscores (`_`), periods (.), and hyphens (-). The prefix must be 2 to 50 characters in length.
-	MAName *string `json:"MAName,omitempty" xml:"MAName,omitempty"`
-	// The mobile phone number that is bound to the newly created account.
-	//
-	// If you leave this parameter empty, the mobile phone number that is bound to the current account is used. The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForEnableRD](~~SendVerificationCodeForEnableRD~~) operation to obtain a verification code.
-	//
-	// Specify the mobile phone number in the `<Country code>-<Mobile phone number>` format.
-	//
-	// > Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+	EnableMode          *string `json:"EnableMode,omitempty" xml:"EnableMode,omitempty"`
+	MAName              *string `json:"MAName,omitempty" xml:"MAName,omitempty"`
 	MASecureMobilePhone *string `json:"MASecureMobilePhone,omitempty" xml:"MASecureMobilePhone,omitempty"`
-	// The verification code.
-	//
-	// You can call the [SendVerificationCodeForEnableRD](~~SendVerificationCodeForEnableRD~~) operation to obtain the verification code.
-	VerificationCode *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
+	VerificationCode    *string `json:"VerificationCode,omitempty" xml:"VerificationCode,omitempty"`
 }
 
 func (s EnableResourceDirectoryRequest) String() string {
@@ -2501,9 +2260,7 @@ func (s *EnableResourceDirectoryRequest) SetVerificationCode(v string) *EnableRe
 }
 
 type EnableResourceDirectoryResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resource directory.
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDirectory *EnableResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -2526,16 +2283,11 @@ func (s *EnableResourceDirectoryResponseBody) SetResourceDirectory(v *EnableReso
 }
 
 type EnableResourceDirectoryResponseBodyResourceDirectory struct {
-	// The time when the resource directory was enabled.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the management account.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The ID of the resource directory.
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The ID of the Root folder.
-	RootFolderId *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
+	RootFolderId        *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
 }
 
 func (s EnableResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -2601,13 +2353,8 @@ func (s *EnableResourceDirectoryResponse) SetBody(v *EnableResourceDirectoryResp
 }
 
 type GetAccountRequest struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// Specifies whether to return the information of tags. Valid values:
-	//
-	// *   false (default value)
-	// *   true
-	IncludeTags *bool `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	IncludeTags *bool   `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
 }
 
 func (s GetAccountRequest) String() string {
@@ -2629,10 +2376,8 @@ func (s *GetAccountRequest) SetIncludeTags(v bool) *GetAccountRequest {
 }
 
 type GetAccountResponseBody struct {
-	// The information of the member.
-	Account *GetAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Account   *GetAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountResponseBody) String() string {
@@ -2654,55 +2399,21 @@ func (s *GetAccountResponseBody) SetRequestId(v string) *GetAccountResponseBody 
 }
 
 type GetAccountResponseBodyAccount struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account name of the member.
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member.
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The status of the modification for the email address bound to the member. Valid values:
-	//
-	// *   If the value of this parameter is empty, no modification is performed for the email address.
-	// *   WAIT_MODIFY: The modification is being performed.
-	// *   CANCELLED: The modification is canceled.
-	// *   EXPIRED: The modification expires.
-	EmailStatus *string `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The real-name verification information.
-	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
-	//
-	// *   invited: The member is invited to join the resource directory.
-	// *   created: The member is directly created in the resource directory.
-	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory.
-	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The location of the member in the resource directory.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The time when the member was modified.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the resource directory.
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The path of the member in the resource directory.
-	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
-	// The status of the member. Valid values:
-	//
-	// *   CreateSuccess: The member is created.
-	// *   PromoteVerifying: The upgrade of the member is being confirmed.
-	// *   PromoteFailed: The upgrade of the member fails.
-	// *   PromoteExpired: The upgrade of the member expires.
-	// *   PromoteCancelled: The upgrade of the member is canceled.
-	// *   PromoteSuccess: The member is upgraded.
-	// *   InviteSuccess: The member accepts the invitation.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the member.
-	Tags []*GetAccountResponseBodyAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the member. Valid values:
-	//
-	// *   CloudAccount: cloud account
-	// *   ResourceAccount: resource account
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AccountId             *string                              `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName           *string                              `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DisplayName           *string                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EmailStatus           *string                              `json:"EmailStatus,omitempty" xml:"EmailStatus,omitempty"`
+	FolderId              *string                              `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	IdentityInformation   *string                              `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
+	JoinMethod            *string                              `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime              *string                              `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	Location              *string                              `json:"Location,omitempty" xml:"Location,omitempty"`
+	ModifyTime            *string                              `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ResourceDirectoryId   *string                              `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	ResourceDirectoryPath *string                              `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	Status                *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  []*GetAccountResponseBodyAccountTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type                  *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAccountResponseBodyAccount) String() string {
@@ -2789,9 +2500,7 @@ func (s *GetAccountResponseBodyAccount) SetType(v string) *GetAccountResponseBod
 }
 
 type GetAccountResponseBodyAccountTags struct {
-	// A tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A tag value.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2843,7 +2552,6 @@ func (s *GetAccountResponse) SetBody(v *GetAccountResponseBody) *GetAccountRespo
 }
 
 type GetAccountDeletionCheckResultRequest struct {
-	// The Alibaba Cloud account ID of the member that you want to delete.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -2861,10 +2569,8 @@ func (s *GetAccountDeletionCheckResultRequest) SetAccountId(v string) *GetAccoun
 }
 
 type GetAccountDeletionCheckResultResponseBody struct {
-	// The result of the deletion check for the member.
 	AccountDeletionCheckResultInfo *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo `json:"AccountDeletionCheckResultInfo,omitempty" xml:"AccountDeletionCheckResultInfo,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                      *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountDeletionCheckResultResponseBody) String() string {
@@ -2886,24 +2592,10 @@ func (s *GetAccountDeletionCheckResultResponseBody) SetRequestId(v string) *GetA
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo struct {
-	// The check items that you can choose to ignore for the member deletion.
-	//
-	// > This parameter may be returned if the value of AllowDelete is true.
 	AbandonableChecks []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks `json:"AbandonableChecks,omitempty" xml:"AbandonableChecks,omitempty" type:"Repeated"`
-	// Indicates whether the member can be deleted. Valid values:
-	//
-	// *   true: The member can be deleted.
-	// *   false: The member cannot be deleted.
-	AllowDelete *string `json:"AllowDelete,omitempty" xml:"AllowDelete,omitempty"`
-	// The reasons why the member cannot be deleted.
-	//
-	// > This parameter is returned only if the value of AllowDelete is false.
-	NotAllowReason []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason `json:"NotAllowReason,omitempty" xml:"NotAllowReason,omitempty" type:"Repeated"`
-	// The status of the check. Valid values:
-	//
-	// *   PreCheckComplete: The check is complete.
-	// *   PreChecking: The check is in progress.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AllowDelete       *string                                                                                     `json:"AllowDelete,omitempty" xml:"AllowDelete,omitempty"`
+	NotAllowReason    []*GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason    `json:"NotAllowReason,omitempty" xml:"NotAllowReason,omitempty" type:"Repeated"`
+	Status            *string                                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo) String() string {
@@ -2935,11 +2627,8 @@ func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks struct {
-	// The ID of the check item.
-	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The name of the cloud service to which the check item belongs.
-	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
-	// The description of the check item.
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -2967,11 +2656,8 @@ func (s *GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo
 }
 
 type GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason struct {
-	// The ID of the check item.
-	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The name of the cloud service to which the check item belongs.
-	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
-	// The description of the check item.
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -3028,7 +2714,6 @@ func (s *GetAccountDeletionCheckResultResponse) SetBody(v *GetAccountDeletionChe
 }
 
 type GetAccountDeletionStatusRequest struct {
-	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -3046,10 +2731,8 @@ func (s *GetAccountDeletionStatusRequest) SetAccountId(v string) *GetAccountDele
 }
 
 type GetAccountDeletionStatusResponseBody struct {
-	// The deletion status of the member.
 	RdAccountDeletionStatus *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus `json:"RdAccountDeletionStatus,omitempty" xml:"RdAccountDeletionStatus,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBody) String() string {
@@ -3071,27 +2754,12 @@ func (s *GetAccountDeletionStatusResponseBody) SetRequestId(v string) *GetAccoun
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The start time of the deletion.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time of the deletion.
-	DeletionTime *string `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
-	// The type of the deletion. Valid values:
-	//
-	// *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-	// *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
-	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
-	// The reasons why the member fails to be deleted.
+	AccountId      *string                                                                      `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CreateTime     *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionTime   *string                                                                      `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
+	DeletionType   *string                                                                      `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
 	FailReasonList []*GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList `json:"FailReasonList,omitempty" xml:"FailReasonList,omitempty" type:"Repeated"`
-	// The status. Valid values:
-	//
-	// *   Success: The member is deleted.
-	// *   Checking: A deletion check is being performed for the member.
-	// *   Deleting: The member is being deleted.
-	// *   CheckFailed: The deletion check for the member fails.
-	// *   DeleteFailed: The member fails to be deleted.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) String() string {
@@ -3133,10 +2801,8 @@ func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetStatus(
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList struct {
-	// The description of the check item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the cloud service to which the check item belongs.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) String() string {
@@ -3187,15 +2853,7 @@ func (s *GetAccountDeletionStatusResponse) SetBody(v *GetAccountDeletionStatusRe
 }
 
 type GetControlPolicyRequest struct {
-	// The language in which you want to return the description of the access control policy. Valid values:
-	//
-	// *   zh-CN (default value): Chinese
-	// *   en: English
-	// *   ja: Japanese
-	//
-	// > This parameter is valid only for system access control policies.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The ID of the access control policy.
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
@@ -3218,10 +2876,8 @@ func (s *GetControlPolicyRequest) SetPolicyId(v string) *GetControlPolicyRequest
 }
 
 type GetControlPolicyResponseBody struct {
-	// The details of the access control policy.
 	ControlPolicy *GetControlPolicyResponseBodyControlPolicy `json:"ControlPolicy,omitempty" xml:"ControlPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetControlPolicyResponseBody) String() string {
@@ -3243,30 +2899,15 @@ func (s *GetControlPolicyResponseBody) SetRequestId(v string) *GetControlPolicyR
 }
 
 type GetControlPolicyResponseBodyControlPolicy struct {
-	// The number of times that the access control policy is referenced.
 	AttachmentCount *string `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the access control policy was created.
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the access control policy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The effective scope of the access control policy. Valid values:
-	//
-	// *   All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
-	// *   RAM: The access control policy is in effect only for RAM users and RAM roles.
-	EffectScope *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
-	// The document of the access control policy.
-	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the access control policy.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the access control policy.
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// *   System: system access control policy
-	// *   Custom: custom access control policy
-	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the access control policy was updated.
-	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectScope     *string `json:"EffectScope,omitempty" xml:"EffectScope,omitempty"`
+	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	PolicyId        *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetControlPolicyResponseBodyControlPolicy) String() string {
@@ -3352,15 +2993,8 @@ func (s *GetControlPolicyResponse) SetBody(v *GetControlPolicyResponseBody) *Get
 }
 
 type GetControlPolicyEnablementStatusResponseBody struct {
-	// The status of the Control Policy feature. Valid values:
-	//
-	// *   Enabled: The feature is enabled.
-	// *   PendingEnable: The feature is being enabled.
-	// *   Disabled: The feature is disabled.
-	// *   PendingDisable: The feature is being disabled.
 	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetControlPolicyEnablementStatusResponseBody) String() string {
@@ -3411,7 +3045,6 @@ func (s *GetControlPolicyEnablementStatusResponse) SetBody(v *GetControlPolicyEn
 }
 
 type GetFolderRequest struct {
-	// The ID of the folder.
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 }
 
@@ -3429,10 +3062,8 @@ func (s *GetFolderRequest) SetFolderId(v string) *GetFolderRequest {
 }
 
 type GetFolderResponseBody struct {
-	// The information about the folder.
-	Folder *GetFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Folder    *GetFolderResponseBodyFolder `json:"Folder,omitempty" xml:"Folder,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetFolderResponseBody) String() string {
@@ -3454,15 +3085,10 @@ func (s *GetFolderResponseBody) SetRequestId(v string) *GetFolderResponseBody {
 }
 
 type GetFolderResponseBodyFolder struct {
-	// The time when the folder was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The name of the folder.
-	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// The ID of the parent folder.
-	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	// The path of the folder in the resource directory.
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FolderId              *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderName            *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ParentFolderId        *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 	ResourceDirectoryPath *string `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
 }
 
@@ -3529,7 +3155,6 @@ func (s *GetFolderResponse) SetBody(v *GetFolderResponseBody) *GetFolderResponse
 }
 
 type GetHandshakeRequest struct {
-	// The ID of the invitation.
 	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 }
 
@@ -3547,10 +3172,8 @@ func (s *GetHandshakeRequest) SetHandshakeId(v string) *GetHandshakeRequest {
 }
 
 type GetHandshakeResponseBody struct {
-	// The information of the invitation.
 	Handshake *GetHandshakeResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHandshakeResponseBody) String() string {
@@ -3572,45 +3195,19 @@ func (s *GetHandshakeResponseBody) SetRequestId(v string) *GetHandshakeResponseB
 }
 
 type GetHandshakeResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The real-name verification information of the invitee.
-	//
-	// > This parameter is available only when an invitee calls this operation.
+	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime             *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId            *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
 	InvitedAccountRealName *string `json:"InvitedAccountRealName,omitempty" xml:"InvitedAccountRealName,omitempty"`
-	// The ID of the management account of the resource directory.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The real-name verification information of the management account of the resource directory.
-	//
-	// > This parameter is available only when an invitee calls this operation.
-	MasterAccountRealName *string `json:"MasterAccountRealName,omitempty" xml:"MasterAccountRealName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The description of the invitation.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Declined: The invitation is rejected.
-	// *   Expired: The invitation expires.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited account. Valid values:
-	//
-	// *   Account: indicates the ID of the account.
-	// *   Email: indicates the logon email address of the account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	MasterAccountId        *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName      *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	MasterAccountRealName  *string `json:"MasterAccountRealName,omitempty" xml:"MasterAccountRealName,omitempty"`
+	ModifyTime             *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                   *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryId    *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity           *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType             *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s GetHandshakeResponseBodyHandshake) String() string {
@@ -4050,9 +3647,7 @@ func (s *GetPayerForAccountResponse) SetBody(v *GetPayerForAccountResponseBody) 
 }
 
 type GetResourceDirectoryResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource directory.
+	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceDirectory *GetResourceDirectoryResponseBodyResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -4075,30 +3670,14 @@ func (s *GetResourceDirectoryResponseBody) SetResourceDirectory(v *GetResourceDi
 }
 
 type GetResourceDirectoryResponseBodyResourceDirectory struct {
-	// The status of the Control Policy feature. Valid values:
-	//
-	// *   Enabled: The feature is enabled.
-	// *   PendingEnable: The feature is being enabled.
-	// *   Disabled: The feature is disabled.
-	// *   PendingDisable: The feature is being disabled.
-	ControlPolicyStatus *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
-	// The time when the resource directory was enabled.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The real-name verification information.
-	IdentityInformation *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
-	// The ID of the management account.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The status of the member deletion feature. Valid values:
-	//
-	// *   Enabled: The feature is enabled. You can call the [DeleteAccount](~~DeleteAccount~~) operation to delete members of the resource account type.
-	// *   Disabled: The feature is disabled. You cannot delete members of the resource account type.
+	ControlPolicyStatus  *string `json:"ControlPolicyStatus,omitempty" xml:"ControlPolicyStatus,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IdentityInformation  *string `json:"IdentityInformation,omitempty" xml:"IdentityInformation,omitempty"`
+	MasterAccountId      *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName    *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
 	MemberDeletionStatus *string `json:"MemberDeletionStatus,omitempty" xml:"MemberDeletionStatus,omitempty"`
-	// The ID of the resource directory.
-	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The ID of the Root folder.
-	RootFolderId *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
+	ResourceDirectoryId  *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	RootFolderId         *string `json:"RootFolderId,omitempty" xml:"RootFolderId,omitempty"`
 }
 
 func (s GetResourceDirectoryResponseBodyResourceDirectory) String() string {
@@ -4179,19 +3758,11 @@ func (s *GetResourceDirectoryResponse) SetBody(v *GetResourceDirectoryResponseBo
 }
 
 type InviteAccountToResourceDirectoryRequest struct {
-	// The description of the invitation.
-	//
-	// The description can be up to 1,024 characters in length.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The tags.
-	Tag []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID or logon email address of the account that you want to invite.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the account. Valid values:
-	//
-	// *   Account: indicates the ID of the account.
-	// *   Email: indicates the logon email address of the account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Note           *string                                       `json:"Note,omitempty" xml:"Note,omitempty"`
+	ParentFolderId *string                                       `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	Tag            []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TargetEntity   *string                                       `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType     *string                                       `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryRequest) String() string {
@@ -4204,6 +3775,11 @@ func (s InviteAccountToResourceDirectoryRequest) GoString() string {
 
 func (s *InviteAccountToResourceDirectoryRequest) SetNote(v string) *InviteAccountToResourceDirectoryRequest {
 	s.Note = &v
+	return s
+}
+
+func (s *InviteAccountToResourceDirectoryRequest) SetParentFolderId(v string) *InviteAccountToResourceDirectoryRequest {
+	s.ParentFolderId = &v
 	return s
 }
 
@@ -4223,9 +3799,7 @@ func (s *InviteAccountToResourceDirectoryRequest) SetTargetType(v string) *Invit
 }
 
 type InviteAccountToResourceDirectoryRequestTag struct {
-	// The tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4248,10 +3822,8 @@ func (s *InviteAccountToResourceDirectoryRequestTag) SetValue(v string) *InviteA
 }
 
 type InviteAccountToResourceDirectoryResponseBody struct {
-	// The information of the invitation.
 	Handshake *InviteAccountToResourceDirectoryResponseBodyHandshake `json:"Handshake,omitempty" xml:"Handshake,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryResponseBody) String() string {
@@ -4273,37 +3845,17 @@ func (s *InviteAccountToResourceDirectoryResponseBody) SetRequestId(v string) *I
 }
 
 type InviteAccountToResourceDirectoryResponseBodyHandshake struct {
-	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the invitation expires. The time is displayed in UTC.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the invitation.
-	HandshakeId *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
-	// The ID of the management account of the resource directory.
-	MasterAccountId *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
-	// The name of the management account of the resource directory.
-	MasterAccountName *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
-	// The time when the invitation was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The description of the invitation.
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the resource directory.
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HandshakeId         *string `json:"HandshakeId,omitempty" xml:"HandshakeId,omitempty"`
+	MasterAccountId     *string `json:"MasterAccountId,omitempty" xml:"MasterAccountId,omitempty"`
+	MasterAccountName   *string `json:"MasterAccountName,omitempty" xml:"MasterAccountName,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Note                *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the invitation. Valid values:
-	//
-	// *   Pending: The invitation is waiting for confirmation.
-	// *   Accepted: The invitation is accepted.
-	// *   Cancelled: The invitation is canceled.
-	// *   Declined: The invitation is rejected.
-	// *   Expired: The invitation expires.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID or logon email address of the invited account.
-	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
-	// The type of the invited account. Valid values:
-	//
-	// *   Account: indicates the ID of the account.
-	// *   Email: indicates the logon email address of the account.
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetEntity        *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s InviteAccountToResourceDirectoryResponseBodyHandshake) String() string {
@@ -7111,21 +6663,9 @@ func (s *ListTargetAttachmentsForControlPolicyResponse) SetBody(v *ListTargetAtt
 }
 
 type ListTrustedServiceStatusRequest struct {
-	// The ID of the management account or delegated administrator account.
-	//
-	// *   If you set this parameter to the ID of a management account, the trusted services that are enabled within the management account are queried. The default value of this parameter is the ID of an management account.
-	// *   If you set this parameter to the ID of a delegated administrator account, the trusted services that are enabled within the delegated administrator account are queried.
-	//
-	// For more information about trusted services and delegated administrator accounts, see [Overview of trusted services](~~208133~~) and [Delegated administrator accounts](~~208117~~).
 	AdminAccountId *string `json:"AdminAccountId,omitempty" xml:"AdminAccountId,omitempty"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 100. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListTrustedServiceStatusRequest) String() string {
@@ -7152,16 +6692,11 @@ func (s *ListTrustedServiceStatusRequest) SetPageSize(v int32) *ListTrustedServi
 }
 
 type ListTrustedServiceStatusResponseBody struct {
-	// The information about the trusted services that are enabled.
 	EnabledServicePrincipals *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals `json:"EnabledServicePrincipals,omitempty" xml:"EnabledServicePrincipals,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber               *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                 *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount               *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTrustedServiceStatusResponseBody) String() string {
@@ -7215,9 +6750,7 @@ func (s *ListTrustedServiceStatusResponseBodyEnabledServicePrincipals) SetEnable
 }
 
 type ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal struct {
-	// The time when the trusted service was enabled.
-	EnableTime *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
-	// The identifier of the trusted service.
+	EnableTime       *string `json:"EnableTime,omitempty" xml:"EnableTime,omitempty"`
 	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
@@ -7341,11 +6874,7 @@ func (s *MoveAccountResponse) SetBody(v *MoveAccountResponseBody) *MoveAccountRe
 }
 
 type RegisterDelegatedAdministratorRequest struct {
-	// The Alibaba Cloud account ID of the member in the resource directory.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The identifier of the trusted service.
-	//
-	// For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+	AccountId        *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	ServicePrincipal *string `json:"ServicePrincipal,omitempty" xml:"ServicePrincipal,omitempty"`
 }
 
@@ -7368,7 +6897,6 @@ func (s *RegisterDelegatedAdministratorRequest) SetServicePrincipal(v string) *R
 }
 
 type RegisterDelegatedAdministratorResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8138,18 +7666,8 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAccountRequest struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The new type of the member. Valid values:
-	//
-	// *   ResourceAccount: resource account
-	// *   CloudAccount: cloud account
-	//
-	// > You can specify either `NewDisplayName` or `NewAccountType`.
+	AccountId      *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	NewAccountType *string `json:"NewAccountType,omitempty" xml:"NewAccountType,omitempty"`
-	// The new display name of the member.
-	//
-	// > You can specify either `NewDisplayName` or `NewAccountType`.
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 }
 
@@ -8177,10 +7695,8 @@ func (s *UpdateAccountRequest) SetNewDisplayName(v string) *UpdateAccountRequest
 }
 
 type UpdateAccountResponseBody struct {
-	// The information of the member.
-	Account *UpdateAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Account   *UpdateAccountResponseBodyAccount `json:"Account,omitempty" xml:"Account,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateAccountResponseBody) String() string {
@@ -8202,37 +7718,16 @@ func (s *UpdateAccountResponseBody) SetRequestId(v string) *UpdateAccountRespons
 }
 
 type UpdateAccountResponseBodyAccount struct {
-	// The Alibaba Cloud account ID of the member.
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The Alibaba Cloud account name of the member.
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The display name of the member.
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder.
-	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The way in which the member joins the resource directory. Valid values:
-	//
-	// *   invited: The member is invited to join the resource directory.
-	// *   created: The member is directly created in the resource directory.
-	JoinMethod *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
-	// The time when the member joined the resource directory. The time is displayed in UTC.
-	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The time when the member was modified. The time is displayed in UTC.
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The ID of the resource directory.
+	AccountId           *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	FolderId            *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	JoinMethod          *string `json:"JoinMethod,omitempty" xml:"JoinMethod,omitempty"`
+	JoinTime            *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	ResourceDirectoryId *string `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
-	// The status of the member. Valid values:
-	//
-	// *   CreateSuccess: The member is created.
-	// *   InviteSuccess: The member accepts the invitation.
-	// *   Removed: The member is removed.
-	// *   SwitchSuccess: The type of the member is switched.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the member. Valid values:
-	//
-	// *   CloudAccount: cloud account
-	// *   ResourceAccount: resource account
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateAccountResponseBodyAccount) String() string {
@@ -8758,13 +8253,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
- *
- * @param request AcceptHandshakeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AcceptHandshakeResponse
- */
 func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest, runtime *util.RuntimeOptions) (_result *AcceptHandshakeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8798,12 +8286,6 @@ func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest
 	return _result, _err
 }
 
-/**
- * After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
- *
- * @param request AcceptHandshakeRequest
- * @return AcceptHandshakeResponse
- */
 func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result *AcceptHandshakeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcceptHandshakeResponse{}
@@ -8924,10 +8406,7 @@ func (client *Client) AssociateMembers(request *AssociateMembersRequest) (_resul
 }
 
 /**
- * After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
- * By default, the system access control policy FullAliyunAccess is attached to each folder and member.
- * The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
- * A maximum of 10 access control policies can be attached to a folder or member.
+ * The ID of the request.
  *
  * @param request AttachControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8971,10 +8450,7 @@ func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolic
 }
 
 /**
- * After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
- * By default, the system access control policy FullAliyunAccess is attached to each folder and member.
- * The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
- * A maximum of 10 access control policies can be attached to a folder or member.
+ * The ID of the request.
  *
  * @param request AttachControlPolicyRequest
  * @return AttachControlPolicyResponse
@@ -8991,8 +8467,7 @@ func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (
 }
 
 /**
- * You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
- * To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+ * The ID of the request.
  *
  * @param request BindSecureMobilePhoneRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9040,8 +8515,7 @@ func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobile
 }
 
 /**
- * You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
- * To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+ * The ID of the request.
  *
  * @param request BindSecureMobilePhoneRequest
  * @return BindSecureMobilePhoneResponse
@@ -9246,7 +8720,7 @@ func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_r
 }
 
 /**
- * Before you delete a member, you must call this API operation to check whether the member can be deleted.
+ * The returned result.
  *
  * @param request CheckAccountDeleteRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9286,7 +8760,7 @@ func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteR
 }
 
 /**
- * Before you delete a member, you must call this API operation to check whether the member can be deleted.
+ * The returned result.
  *
  * @param request CheckAccountDeleteRequest
  * @return CheckAccountDeleteResponse
@@ -9359,7 +8833,7 @@ func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (
 }
 
 /**
- * A maximum of five levels of folders can be created under the Root folder.
+ * The name of the folder.
  *
  * @param request CreateFolderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9403,7 +8877,7 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 }
 
 /**
- * A maximum of five levels of folders can be created under the Root folder.
+ * The name of the folder.
  *
  * @param request CreateFolderRequest
  * @return CreateFolderResponse
@@ -9420,8 +8894,7 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 }
 
 /**
- * A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
- * This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+ * The Alibaba Cloud account name of the member.
  *
  * @param request CreateResourceAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9481,8 +8954,7 @@ func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAc
 }
 
 /**
- * A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
- * This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+ * The Alibaba Cloud account name of the member.
  *
  * @param request CreateResourceAccountRequest
  * @return CreateResourceAccountResponse
@@ -9542,15 +9014,6 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 	return _result, _err
 }
 
-/**
- * > The member deletion feature is in invitational preview. You can contact the customer business manager (CBM) of Alibaba Cloud to apply for a trial.
- * Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
- * After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
- *
- * @param tmpReq DeleteAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAccountResponse
- */
 func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9594,14 +9057,6 @@ func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, run
 	return _result, _err
 }
 
-/**
- * > The member deletion feature is in invitational preview. You can contact the customer business manager (CBM) of Alibaba Cloud to apply for a trial.
- * Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
- * After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
- *
- * @param request DeleteAccountRequest
- * @return DeleteAccountResponse
- */
 func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
@@ -9614,7 +9069,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 }
 
 /**
- * If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+ * The ID of the request.
  *
  * @param request DeleteControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9654,7 +9109,7 @@ func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolic
 }
 
 /**
- * If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+ * The ID of the request.
  *
  * @param request DeleteControlPolicyRequest
  * @return DeleteControlPolicyResponse
@@ -9671,7 +9126,7 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 }
 
 /**
- * Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+ * The ID of the request.
  *
  * @param request DeleteFolderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9711,7 +9166,7 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 }
 
 /**
- * Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+ * The ID of the request.
  *
  * @param request DeleteFolderRequest
  * @return DeleteFolderResponse
@@ -9775,13 +9230,6 @@ func (client *Client) DeleteMessageContact(request *DeleteMessageContactRequest)
 	return _result, _err
 }
 
-/**
- * If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
- *
- * @param request DeregisterDelegatedAdministratorRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeregisterDelegatedAdministratorResponse
- */
 func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *DeregisterDelegatedAdministratorRequest, runtime *util.RuntimeOptions) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9819,12 +9267,6 @@ func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *Dereg
 	return _result, _err
 }
 
-/**
- * If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
- *
- * @param request DeregisterDelegatedAdministratorRequest
- * @return DeregisterDelegatedAdministratorResponse
- */
 func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelegatedAdministratorRequest) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeregisterDelegatedAdministratorResponse{}
@@ -9837,9 +9279,7 @@ func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelega
 }
 
 /**
- * Before you disable a resource directory, you must make sure that the following requirements are met:
- * *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
- * *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+ * The ID of the request.
  *
  * @param request DestroyResourceDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9868,9 +9308,7 @@ func (client *Client) DestroyResourceDirectoryWithOptions(runtime *util.RuntimeO
 }
 
 /**
- * Before you disable a resource directory, you must make sure that the following requirements are met:
- * *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
- * *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+ * The ID of the request.
  *
  * @return DestroyResourceDirectoryResponse
  */
@@ -9885,14 +9323,6 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 	return _result, _err
 }
 
-/**
- * After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
- * Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
- *
- * @param request DetachControlPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachControlPolicyResponse
- */
 func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolicyRequest, runtime *util.RuntimeOptions) (_result *DetachControlPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9930,13 +9360,6 @@ func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolic
 	return _result, _err
 }
 
-/**
- * After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
- * Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
- *
- * @param request DetachControlPolicyRequest
- * @return DetachControlPolicyResponse
- */
 func (client *Client) DetachControlPolicy(request *DetachControlPolicyRequest) (_result *DetachControlPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachControlPolicyResponse{}
@@ -9949,8 +9372,7 @@ func (client *Client) DetachControlPolicy(request *DetachControlPolicyRequest) (
 }
 
 /**
- * After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
- * > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
+ * The ID of the request.
  *
  * @param request DisableControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9979,8 +9401,7 @@ func (client *Client) DisableControlPolicyWithOptions(runtime *util.RuntimeOptio
 }
 
 /**
- * After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
- * > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
+ * The ID of the request.
  *
  * @return DisableControlPolicyResponse
  */
@@ -10044,7 +9465,7 @@ func (client *Client) DisassociateMembers(request *DisassociateMembersRequest) (
 }
 
 /**
- * The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+ * The ID of the request.
  *
  * @param request EnableControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10073,7 +9494,7 @@ func (client *Client) EnableControlPolicyWithOptions(runtime *util.RuntimeOption
 }
 
 /**
- * The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+ * The ID of the request.
  *
  * @return EnableControlPolicyResponse
  */
@@ -10089,7 +9510,7 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 }
 
 /**
- * You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+ * The ID of the request.
  *
  * @param request EnableResourceDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10141,7 +9562,7 @@ func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResource
 }
 
 /**
- * You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+ * The ID of the request.
  *
  * @param request EnableResourceDirectoryRequest
  * @return EnableResourceDirectoryResponse
@@ -10206,7 +9627,7 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 }
 
 /**
- * After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+ * Container Service for Kubernetes
  *
  * @param request GetAccountDeletionCheckResultRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10246,7 +9667,7 @@ func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccou
 }
 
 /**
- * After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+ * Container Service for Kubernetes
  *
  * @param request GetAccountDeletionCheckResultRequest
  * @return GetAccountDeletionCheckResultResponse
@@ -10648,6 +10069,10 @@ func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *Invit
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Note)) {
 		query["Note"] = request.Note
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderId)) {
+		query["ParentFolderId"] = request.ParentFolderId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
@@ -11463,7 +10888,7 @@ func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetA
 }
 
 /**
- * Only a management account or delegated administrator account can be used to call this operation.
+ * The time when the trusted service was enabled.
  *
  * @param request ListTrustedServiceStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11511,7 +10936,7 @@ func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedSe
 }
 
 /**
- * Only a management account or delegated administrator account can be used to call this operation.
+ * The time when the trusted service was enabled.
  *
  * @param request ListTrustedServiceStatusRequest
  * @return ListTrustedServiceStatusResponse
@@ -11575,16 +11000,6 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 	return _result, _err
 }
 
-/**
- * The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
- * *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
- * *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
- * *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
- *
- * @param request RegisterDelegatedAdministratorRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RegisterDelegatedAdministratorResponse
- */
 func (client *Client) RegisterDelegatedAdministratorWithOptions(request *RegisterDelegatedAdministratorRequest, runtime *util.RuntimeOptions) (_result *RegisterDelegatedAdministratorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11622,15 +11037,6 @@ func (client *Client) RegisterDelegatedAdministratorWithOptions(request *Registe
 	return _result, _err
 }
 
-/**
- * The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
- * *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
- * *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
- * *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
- *
- * @param request RegisterDelegatedAdministratorRequest
- * @return RegisterDelegatedAdministratorResponse
- */
 func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedAdministratorRequest) (_result *RegisterDelegatedAdministratorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterDelegatedAdministratorResponse{}
@@ -12109,16 +11515,6 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * *   To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
- * *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
- * *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
- *
- * @param request UpdateAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAccountResponse
- */
 func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, runtime *util.RuntimeOptions) (_result *UpdateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12160,15 +11556,6 @@ func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, ru
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * *   To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
- * *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
- * *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
- *
- * @param request UpdateAccountRequest
- * @return UpdateAccountResponse
- */
 func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *UpdateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccountResponse{}
