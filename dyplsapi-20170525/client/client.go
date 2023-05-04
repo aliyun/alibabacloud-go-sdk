@@ -1082,6 +1082,317 @@ func (s *BindAxnExtensionResponse) SetBody(v *BindAxnExtensionResponseBody) *Bin
 	return s
 }
 
+type BindBatchAxgRequest struct {
+	AxgBindList          []*BindBatchAxgRequestAxgBindList `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty" type:"Repeated"`
+	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PoolKey              *string                           `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s BindBatchAxgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgRequest) SetAxgBindList(v []*BindBatchAxgRequestAxgBindList) *BindBatchAxgRequest {
+	s.AxgBindList = v
+	return s
+}
+
+func (s *BindBatchAxgRequest) SetOwnerId(v int64) *BindBatchAxgRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindBatchAxgRequest) SetPoolKey(v string) *BindBatchAxgRequest {
+	s.PoolKey = &v
+	return s
+}
+
+func (s *BindBatchAxgRequest) SetResourceOwnerAccount(v string) *BindBatchAxgRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindBatchAxgRequest) SetResourceOwnerId(v int64) *BindBatchAxgRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type BindBatchAxgRequestAxgBindList struct {
+	ASRModelId         *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	ASRStatus          *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	CallDisplayType    *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	CallRestrict       *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	ExpectCity         *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	Expiration         *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsRecordingEnabled *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	OutId              *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OutOrderId         *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	PhoneNoA           *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	PhoneNoB           *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	PhoneNoX           *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	RingConfig         *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+}
+
+func (s BindBatchAxgRequestAxgBindList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgRequestAxgBindList) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetASRModelId(v string) *BindBatchAxgRequestAxgBindList {
+	s.ASRModelId = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetASRStatus(v bool) *BindBatchAxgRequestAxgBindList {
+	s.ASRStatus = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetCallDisplayType(v int32) *BindBatchAxgRequestAxgBindList {
+	s.CallDisplayType = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetCallRestrict(v string) *BindBatchAxgRequestAxgBindList {
+	s.CallRestrict = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetExpectCity(v string) *BindBatchAxgRequestAxgBindList {
+	s.ExpectCity = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetExpiration(v string) *BindBatchAxgRequestAxgBindList {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetGroupId(v string) *BindBatchAxgRequestAxgBindList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetIsRecordingEnabled(v bool) *BindBatchAxgRequestAxgBindList {
+	s.IsRecordingEnabled = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetOutId(v string) *BindBatchAxgRequestAxgBindList {
+	s.OutId = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetOutOrderId(v string) *BindBatchAxgRequestAxgBindList {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetPhoneNoA(v string) *BindBatchAxgRequestAxgBindList {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetPhoneNoB(v string) *BindBatchAxgRequestAxgBindList {
+	s.PhoneNoB = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetPhoneNoX(v string) *BindBatchAxgRequestAxgBindList {
+	s.PhoneNoX = &v
+	return s
+}
+
+func (s *BindBatchAxgRequestAxgBindList) SetRingConfig(v string) *BindBatchAxgRequestAxgBindList {
+	s.RingConfig = &v
+	return s
+}
+
+type BindBatchAxgShrinkRequest struct {
+	AxgBindListShrink    *string `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s BindBatchAxgShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgShrinkRequest) SetAxgBindListShrink(v string) *BindBatchAxgShrinkRequest {
+	s.AxgBindListShrink = &v
+	return s
+}
+
+func (s *BindBatchAxgShrinkRequest) SetOwnerId(v int64) *BindBatchAxgShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindBatchAxgShrinkRequest) SetPoolKey(v string) *BindBatchAxgShrinkRequest {
+	s.PoolKey = &v
+	return s
+}
+
+func (s *BindBatchAxgShrinkRequest) SetResourceOwnerAccount(v string) *BindBatchAxgShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindBatchAxgShrinkRequest) SetResourceOwnerId(v int64) *BindBatchAxgShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type BindBatchAxgResponseBody struct {
+	Code           *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message        *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretBindList *BindBatchAxgResponseBodySecretBindList `json:"SecretBindList,omitempty" xml:"SecretBindList,omitempty" type:"Struct"`
+}
+
+func (s BindBatchAxgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgResponseBody) SetCode(v string) *BindBatchAxgResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBody) SetMessage(v string) *BindBatchAxgResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBody) SetRequestId(v string) *BindBatchAxgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBody) SetSecretBindList(v *BindBatchAxgResponseBodySecretBindList) *BindBatchAxgResponseBody {
+	s.SecretBindList = v
+	return s
+}
+
+type BindBatchAxgResponseBodySecretBindList struct {
+	SecretBind []*BindBatchAxgResponseBodySecretBindListSecretBind `json:"SecretBind,omitempty" xml:"SecretBind,omitempty" type:"Repeated"`
+}
+
+func (s BindBatchAxgResponseBodySecretBindList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgResponseBodySecretBindList) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgResponseBodySecretBindList) SetSecretBind(v []*BindBatchAxgResponseBodySecretBindListSecretBind) *BindBatchAxgResponseBodySecretBindList {
+	s.SecretBind = v
+	return s
+}
+
+type BindBatchAxgResponseBodySecretBindListSecretBind struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PhoneNoA  *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+}
+
+func (s BindBatchAxgResponseBodySecretBindListSecretBind) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgResponseBodySecretBindListSecretBind) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetCode(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.Code = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetExtension(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.Extension = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetGroupId(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.GroupId = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetMessage(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.Message = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetPhoneNoA(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetSecretNo(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.SecretNo = &v
+	return s
+}
+
+func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetSubsId(v string) *BindBatchAxgResponseBodySecretBindListSecretBind {
+	s.SubsId = &v
+	return s
+}
+
+type BindBatchAxgResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindBatchAxgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindBatchAxgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindBatchAxgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindBatchAxgResponse) SetHeaders(v map[string]*string) *BindBatchAxgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindBatchAxgResponse) SetStatusCode(v int32) *BindBatchAxgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindBatchAxgResponse) SetBody(v *BindBatchAxgResponseBody) *BindBatchAxgResponse {
+	s.Body = v
+	return s
+}
+
 type BuySecretNoRequest struct {
 	City                 *string `json:"City,omitempty" xml:"City,omitempty"`
 	DisplayPool          *bool   `json:"DisplayPool,omitempty" xml:"DisplayPool,omitempty"`
@@ -2378,6 +2689,105 @@ func (s *CreatePickUpWaybillPreQueryResponse) SetStatusCode(v int32) *CreatePick
 }
 
 func (s *CreatePickUpWaybillPreQueryResponse) SetBody(v *CreatePickUpWaybillPreQueryResponseBody) *CreatePickUpWaybillPreQueryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAxgGroupRequest struct {
+	GroupId              *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteAxgGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxgGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxgGroupRequest) SetGroupId(v int64) *DeleteAxgGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteAxgGroupRequest) SetOwnerId(v int64) *DeleteAxgGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAxgGroupRequest) SetPoolKey(v string) *DeleteAxgGroupRequest {
+	s.PoolKey = &v
+	return s
+}
+
+func (s *DeleteAxgGroupRequest) SetResourceOwnerAccount(v string) *DeleteAxgGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAxgGroupRequest) SetResourceOwnerId(v int64) *DeleteAxgGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteAxgGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAxgGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxgGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxgGroupResponseBody) SetCode(v string) *DeleteAxgGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxgGroupResponseBody) SetMessage(v string) *DeleteAxgGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxgGroupResponseBody) SetRequestId(v string) *DeleteAxgGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAxgGroupResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAxgGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxgGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxgGroupResponse) SetHeaders(v map[string]*string) *DeleteAxgGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAxgGroupResponse) SetStatusCode(v int32) *DeleteAxgGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAxgGroupResponse) SetBody(v *DeleteAxgGroupResponseBody) *DeleteAxgGroupResponse {
 	s.Body = v
 	return s
 }
@@ -5177,6 +5587,72 @@ func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) BindBatchAxgWithOptions(tmpReq *BindBatchAxgRequest, runtime *util.RuntimeOptions) (_result *BindBatchAxgResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindBatchAxgShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AxgBindList)) {
+		request.AxgBindListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AxgBindList, tea.String("AxgBindList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AxgBindListShrink)) {
+		query["AxgBindList"] = request.AxgBindListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindBatchAxg"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindBatchAxgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindBatchAxgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindBatchAxgResponse{}
+	_body, _err := client.BindBatchAxgWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtime *util.RuntimeOptions) (_result *BuySecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5562,6 +6038,66 @@ func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPr
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePickUpWaybillPreQueryResponse{}
 	_body, _err := client.CreatePickUpWaybillPreQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAxgGroupWithOptions(request *DeleteAxgGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAxgGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolKey)) {
+		query["PoolKey"] = request.PoolKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAxgGroup"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAxgGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *DeleteAxgGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAxgGroupResponse{}
+	_body, _err := client.DeleteAxgGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
