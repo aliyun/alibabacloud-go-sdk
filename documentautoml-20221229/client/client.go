@@ -214,6 +214,7 @@ func (s *GetModelAsyncPredictResponse) SetBody(v *GetModelAsyncPredictResponseBo
 
 type PredictClassifierModelRequest struct {
 	AutoPrediction *bool   `json:"AutoPrediction,omitempty" xml:"AutoPrediction,omitempty"`
+	BinaryToText   *bool   `json:"BinaryToText,omitempty" xml:"BinaryToText,omitempty"`
 	Body           *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	ClassifierId   *int64  `json:"ClassifierId,omitempty" xml:"ClassifierId,omitempty"`
 	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
@@ -229,6 +230,11 @@ func (s PredictClassifierModelRequest) GoString() string {
 
 func (s *PredictClassifierModelRequest) SetAutoPrediction(v bool) *PredictClassifierModelRequest {
 	s.AutoPrediction = &v
+	return s
+}
+
+func (s *PredictClassifierModelRequest) SetBinaryToText(v bool) *PredictClassifierModelRequest {
+	s.BinaryToText = &v
 	return s
 }
 
@@ -793,6 +799,10 @@ func (client *Client) PredictClassifierModelWithOptions(request *PredictClassifi
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPrediction)) {
 		query["AutoPrediction"] = request.AutoPrediction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BinaryToText)) {
+		query["BinaryToText"] = request.BinaryToText
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClassifierId)) {
