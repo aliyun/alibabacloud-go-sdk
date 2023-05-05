@@ -387,13 +387,14 @@ func (s *AddressGetHeaders) SetXAcsBtripSoCorpToken(v string) *AddressGetHeaders
 }
 
 type AddressGetRequest struct {
-	ActionType    *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
-	CarScenesCode *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
-	ItineraryId   *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	Phone         *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	SubCorpId     *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	Type          *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UserId        *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ActionType        *int32  `json:"action_type,omitempty" xml:"action_type,omitempty"`
+	CarScenesCode     *string `json:"car_scenes_code,omitempty" xml:"car_scenes_code,omitempty"`
+	ItineraryId       *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	Phone             *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	SubCorpId         *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	TaobaoCallbackUrl *string `json:"taobao_callback_url,omitempty" xml:"taobao_callback_url,omitempty"`
+	Type              *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UserId            *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s AddressGetRequest) String() string {
@@ -426,6 +427,11 @@ func (s *AddressGetRequest) SetPhone(v string) *AddressGetRequest {
 
 func (s *AddressGetRequest) SetSubCorpId(v string) *AddressGetRequest {
 	s.SubCorpId = &v
+	return s
+}
+
+func (s *AddressGetRequest) SetTaobaoCallbackUrl(v string) *AddressGetRequest {
+	s.TaobaoCallbackUrl = &v
 	return s
 }
 
@@ -1901,9 +1907,10 @@ type ApplyApproveRequest struct {
 	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	// 子企业Id
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	UserId    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName  *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyApproveRequest) String() string {
@@ -2318,10 +2325,11 @@ type ApplyListQueryRequest struct {
 	Page             *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UnionNo          *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// 子企业Id
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	Type      *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo   *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyListQueryRequest) String() string {
@@ -2917,21 +2925,22 @@ type ApplyModifyRequest struct {
 	ItinerarySetList         []*ApplyModifyRequestItinerarySetList       `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty" type:"Repeated"`
 	LimitTraveler            *int32                                      `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                   *int32                                      `json:"status,omitempty" xml:"status,omitempty"`
-	SubCorpId                *string                                     `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	ThirdpartApplyId         *string                                     `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId      *string                                     `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartDepartId        *string                                     `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	TogetherBookRule         *int32                                      `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	TrainBudget              *int64                                      `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
-	TravelerList             []*ApplyModifyRequestTravelerList           `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
-	TravelerStandard         []*ApplyModifyRequestTravelerStandard       `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
-	TripCause                *string                                     `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripDay                  *int32                                      `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
-	TripTitle                *string                                     `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	UnionNo                  *string                                     `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	UserId                   *string                                     `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                 *string                                     `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	VehicleBudget            *int64                                      `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	// 子企业Id
+	SubCorpId           *string                               `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	ThirdpartApplyId    *string                               `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string                               `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId   *string                               `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	TogetherBookRule    *int32                                `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
+	TrainBudget         *int64                                `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
+	TravelerList        []*ApplyModifyRequestTravelerList     `json:"traveler_list,omitempty" xml:"traveler_list,omitempty" type:"Repeated"`
+	TravelerStandard    []*ApplyModifyRequestTravelerStandard `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty" type:"Repeated"`
+	TripCause           *string                               `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	TripDay             *int32                                `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripTitle           *string                               `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	UnionNo             *string                               `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId              *string                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName            *string                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	VehicleBudget       *int64                                `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyModifyRequest) String() string {
@@ -3558,21 +3567,22 @@ type ApplyModifyShrinkRequest struct {
 	ItinerarySetListShrink         *string `json:"itinerary_set_list,omitempty" xml:"itinerary_set_list,omitempty"`
 	LimitTraveler                  *int32  `json:"limit_traveler,omitempty" xml:"limit_traveler,omitempty"`
 	Status                         *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	SubCorpId                      *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	ThirdpartApplyId               *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartBusinessId            *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
-	ThirdpartDepartId              *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	TogetherBookRule               *int32  `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
-	TrainBudget                    *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
-	TravelerListShrink             *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
-	TravelerStandardShrink         *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
-	TripCause                      *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
-	TripDay                        *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
-	TripTitle                      *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
-	UnionNo                        *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	UserId                         *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName                       *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
-	VehicleBudget                  *int64  `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
+	// 子企业Id
+	SubCorpId              *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId    *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartDepartId      *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	TogetherBookRule       *int32  `json:"together_book_rule,omitempty" xml:"together_book_rule,omitempty"`
+	TrainBudget            *int64  `json:"train_budget,omitempty" xml:"train_budget,omitempty"`
+	TravelerListShrink     *string `json:"traveler_list,omitempty" xml:"traveler_list,omitempty"`
+	TravelerStandardShrink *string `json:"traveler_standard,omitempty" xml:"traveler_standard,omitempty"`
+	TripCause              *string `json:"trip_cause,omitempty" xml:"trip_cause,omitempty"`
+	TripDay                *int32  `json:"trip_day,omitempty" xml:"trip_day,omitempty"`
+	TripTitle              *string `json:"trip_title,omitempty" xml:"trip_title,omitempty"`
+	UnionNo                *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName               *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	VehicleBudget          *int64  `json:"vehicle_budget,omitempty" xml:"vehicle_budget,omitempty"`
 }
 
 func (s ApplyModifyShrinkRequest) String() string {
@@ -3868,8 +3878,9 @@ func (s *ApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyQueryHeaders
 }
 
 type ApplyQueryRequest struct {
-	ApplyId          *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApplyShowId      *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	ApplyId     *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyShowId *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
+	// 子企业Id
 	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
@@ -5659,7 +5670,9 @@ func (s *CarBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *CarBill
 }
 
 type CarBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo         *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// 审批扩展自定义字段
+	ApplyExtendField      *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId               *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrCity               *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	ArrDate               *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
@@ -5728,6 +5741,11 @@ func (s CarBillSettlementQueryResponseBodyModuleDataList) GoString() string {
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
 	return s
 }
 
@@ -10725,10 +10743,12 @@ func (s *FlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Flig
 }
 
 type FlightBillSettlementQueryResponseBodyModuleDataList struct {
-	AdvanceDay             *int32   `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
-	AirlineCorpCode        *string  `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
-	AirlineCorpName        *string  `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
-	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AdvanceDay      *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayTradeNo   *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// 审批扩展自定义字段
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
@@ -10823,6 +10843,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpName
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
 	return s
 }
 
@@ -23658,7 +23683,9 @@ func (s *HotelBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Hotel
 }
 
 type HotelBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo      *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// 审批扩展自定义字段
+	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	BillRecordTime     *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
 	BookTime           *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
@@ -23723,6 +23750,11 @@ func (s HotelBillSettlementQueryResponseBodyModuleDataList) GoString() string {
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
 	return s
 }
 
@@ -30396,10 +30428,12 @@ func (s *IeFlightBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Ie
 }
 
 type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
-	AdvanceDay             *int32   `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
-	AirlineCorpCode        *string  `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
-	AirlineCorpName        *string  `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
-	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AdvanceDay      *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
+	AirlineCorpCode *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
+	AirlineCorpName *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayTradeNo   *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// 审批扩展自定义字段
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
@@ -30495,6 +30529,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpNa
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
 	return s
 }
 
@@ -37642,6 +37681,7 @@ func (s *TrainBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Train
 
 type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	AlipayTradeNo      *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrDate            *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
 	ArrStation         *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
@@ -37702,6 +37742,11 @@ func (s TrainBillSettlementQueryResponseBodyModuleDataList) GoString() string {
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
 	return s
 }
 
@@ -42215,6 +42260,10 @@ func (client *Client) AddressGetWithOptions(request *AddressGetRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
 		query["sub_corp_id"] = request.SubCorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaobaoCallbackUrl)) {
+		query["taobao_callback_url"] = request.TaobaoCallbackUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
