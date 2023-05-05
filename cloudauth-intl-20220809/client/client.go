@@ -54,8 +54,9 @@ func (s *CheckResultRequest) SetTransactionId(v string) *CheckResultRequest {
 }
 
 type CheckResultResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CheckResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -166,6 +167,811 @@ func (s *CheckResultResponse) SetStatusCode(v int32) *CheckResultResponse {
 }
 
 func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAddressLabelsRequest struct {
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+}
+
+func (s DescribeAddressLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressLabelsRequest) SetAddress(v string) *DescribeAddressLabelsRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsRequest) SetCoin(v string) *DescribeAddressLabelsRequest {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsRequest) SetMerchantBizId(v string) *DescribeAddressLabelsRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+type DescribeAddressLabelsResponseBody struct {
+	Code    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *DescribeAddressLabelsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAddressLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressLabelsResponseBody) SetCode(v string) *DescribeAddressLabelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponseBody) SetData(v *DescribeAddressLabelsResponseBodyData) *DescribeAddressLabelsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponseBody) SetMessage(v string) *DescribeAddressLabelsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponseBody) SetRequestId(v string) *DescribeAddressLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponseBody) SetSuccess(v bool) *DescribeAddressLabelsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAddressLabelsResponseBodyData struct {
+	LabelList []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAddressLabelsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressLabelsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressLabelsResponseBodyData) SetLabelList(v []*string) *DescribeAddressLabelsResponseBodyData {
+	s.LabelList = v
+	return s
+}
+
+type DescribeAddressLabelsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAddressLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAddressLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressLabelsResponse) SetHeaders(v map[string]*string) *DescribeAddressLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponse) SetStatusCode(v int32) *DescribeAddressLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAddressLabelsResponse) SetBody(v *DescribeAddressLabelsResponseBody) *DescribeAddressLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAddressOverviewRequest struct {
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+}
+
+func (s DescribeAddressOverviewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressOverviewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressOverviewRequest) SetAddress(v string) *DescribeAddressOverviewRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewRequest) SetCoin(v string) *DescribeAddressOverviewRequest {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewRequest) SetMerchantBizId(v string) *DescribeAddressOverviewRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+type DescribeAddressOverviewResponseBody struct {
+	Code    *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *DescribeAddressOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAddressOverviewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressOverviewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressOverviewResponseBody) SetCode(v string) *DescribeAddressOverviewResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBody) SetData(v *DescribeAddressOverviewResponseBodyData) *DescribeAddressOverviewResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBody) SetMessage(v string) *DescribeAddressOverviewResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBody) SetRequestId(v string) *DescribeAddressOverviewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBody) SetSuccess(v bool) *DescribeAddressOverviewResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAddressOverviewResponseBodyData struct {
+	Balance          *float32 `json:"Balance,omitempty" xml:"Balance,omitempty"`
+	FirstSeen        *int64   `json:"FirstSeen,omitempty" xml:"FirstSeen,omitempty"`
+	LastSeen         *int64   `json:"LastSeen,omitempty" xml:"LastSeen,omitempty"`
+	ReceivedTxsCount *int32   `json:"ReceivedTxsCount,omitempty" xml:"ReceivedTxsCount,omitempty"`
+	SpentTxsCount    *int32   `json:"SpentTxsCount,omitempty" xml:"SpentTxsCount,omitempty"`
+	TotalReceived    *float32 `json:"TotalReceived,omitempty" xml:"TotalReceived,omitempty"`
+	TotalSpent       *float32 `json:"TotalSpent,omitempty" xml:"TotalSpent,omitempty"`
+	TxsCount         *int64   `json:"TxsCount,omitempty" xml:"TxsCount,omitempty"`
+}
+
+func (s DescribeAddressOverviewResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressOverviewResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetBalance(v float32) *DescribeAddressOverviewResponseBodyData {
+	s.Balance = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetFirstSeen(v int64) *DescribeAddressOverviewResponseBodyData {
+	s.FirstSeen = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetLastSeen(v int64) *DescribeAddressOverviewResponseBodyData {
+	s.LastSeen = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetReceivedTxsCount(v int32) *DescribeAddressOverviewResponseBodyData {
+	s.ReceivedTxsCount = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetSpentTxsCount(v int32) *DescribeAddressOverviewResponseBodyData {
+	s.SpentTxsCount = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetTotalReceived(v float32) *DescribeAddressOverviewResponseBodyData {
+	s.TotalReceived = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetTotalSpent(v float32) *DescribeAddressOverviewResponseBodyData {
+	s.TotalSpent = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponseBodyData) SetTxsCount(v int64) *DescribeAddressOverviewResponseBodyData {
+	s.TxsCount = &v
+	return s
+}
+
+type DescribeAddressOverviewResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAddressOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAddressOverviewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddressOverviewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressOverviewResponse) SetHeaders(v map[string]*string) *DescribeAddressOverviewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponse) SetStatusCode(v int32) *DescribeAddressOverviewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAddressOverviewResponse) SetBody(v *DescribeAddressOverviewResponseBody) *DescribeAddressOverviewResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMaliciousAddressRequest struct {
+	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	End           *string `json:"End,omitempty" xml:"End,omitempty"`
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	Start         *string `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s DescribeMaliciousAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaliciousAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaliciousAddressRequest) SetCoin(v string) *DescribeMaliciousAddressRequest {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressRequest) SetEnd(v string) *DescribeMaliciousAddressRequest {
+	s.End = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressRequest) SetMerchantBizId(v string) *DescribeMaliciousAddressRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressRequest) SetStart(v string) *DescribeMaliciousAddressRequest {
+	s.Start = &v
+	return s
+}
+
+type DescribeMaliciousAddressResponseBody struct {
+	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*DescribeMaliciousAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeMaliciousAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaliciousAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaliciousAddressResponseBody) SetCode(v string) *DescribeMaliciousAddressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBody) SetData(v []*DescribeMaliciousAddressResponseBodyData) *DescribeMaliciousAddressResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBody) SetMessage(v string) *DescribeMaliciousAddressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBody) SetRequestId(v string) *DescribeMaliciousAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBody) SetSuccess(v bool) *DescribeMaliciousAddressResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeMaliciousAddressResponseBodyData struct {
+	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Coin    *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	Detail  *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Tag     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s DescribeMaliciousAddressResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaliciousAddressResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaliciousAddressResponseBodyData) SetAddTime(v string) *DescribeMaliciousAddressResponseBodyData {
+	s.AddTime = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBodyData) SetAddress(v string) *DescribeMaliciousAddressResponseBodyData {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBodyData) SetCoin(v string) *DescribeMaliciousAddressResponseBodyData {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBodyData) SetDetail(v string) *DescribeMaliciousAddressResponseBodyData {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponseBodyData) SetTag(v string) *DescribeMaliciousAddressResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type DescribeMaliciousAddressResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMaliciousAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMaliciousAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMaliciousAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMaliciousAddressResponse) SetHeaders(v map[string]*string) *DescribeMaliciousAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponse) SetStatusCode(v int32) *DescribeMaliciousAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMaliciousAddressResponse) SetBody(v *DescribeMaliciousAddressResponseBody) *DescribeMaliciousAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRiskScoreRequest struct {
+	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Coin          *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+}
+
+func (s DescribeRiskScoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskScoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskScoreRequest) SetAddress(v string) *DescribeRiskScoreRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeRiskScoreRequest) SetCoin(v string) *DescribeRiskScoreRequest {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeRiskScoreRequest) SetMerchantBizId(v string) *DescribeRiskScoreRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+type DescribeRiskScoreResponseBody struct {
+	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *DescribeRiskScoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeRiskScoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskScoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskScoreResponseBody) SetCode(v string) *DescribeRiskScoreResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBody) SetData(v *DescribeRiskScoreResponseBodyData) *DescribeRiskScoreResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBody) SetMessage(v string) *DescribeRiskScoreResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBody) SetRequestId(v string) *DescribeRiskScoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBody) SetSuccess(v bool) *DescribeRiskScoreResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeRiskScoreResponseBodyData struct {
+	DetailList   []*string `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Repeated"`
+	HackingEvent *string   `json:"HackingEvent,omitempty" xml:"HackingEvent,omitempty"`
+	RiskLevel    *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Score        *int32    `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s DescribeRiskScoreResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskScoreResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskScoreResponseBodyData) SetDetailList(v []*string) *DescribeRiskScoreResponseBodyData {
+	s.DetailList = v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBodyData) SetHackingEvent(v string) *DescribeRiskScoreResponseBodyData {
+	s.HackingEvent = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBodyData) SetRiskLevel(v string) *DescribeRiskScoreResponseBodyData {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponseBodyData) SetScore(v int32) *DescribeRiskScoreResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+type DescribeRiskScoreResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRiskScoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRiskScoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskScoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskScoreResponse) SetHeaders(v map[string]*string) *DescribeRiskScoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRiskScoreResponse) SetStatusCode(v int32) *DescribeRiskScoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRiskScoreResponse) SetBody(v *DescribeRiskScoreResponseBody) *DescribeRiskScoreResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTransactionsListRequest struct {
+	Address        *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Coin           *string `json:"Coin,omitempty" xml:"Coin,omitempty"`
+	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	MerchantBizId  *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	Page           *int64  `json:"Page,omitempty" xml:"Page,omitempty"`
+	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeTransactionsListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListRequest) SetAddress(v string) *DescribeTransactionsListRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetCoin(v string) *DescribeTransactionsListRequest {
+	s.Coin = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetEndTimestamp(v int64) *DescribeTransactionsListRequest {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetMerchantBizId(v string) *DescribeTransactionsListRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetPage(v int64) *DescribeTransactionsListRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetStartTimestamp(v int64) *DescribeTransactionsListRequest {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *DescribeTransactionsListRequest) SetType(v string) *DescribeTransactionsListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeTransactionsListResponseBody struct {
+	Code    *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *DescribeTransactionsListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeTransactionsListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListResponseBody) SetCode(v string) *DescribeTransactionsListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBody) SetData(v *DescribeTransactionsListResponseBodyData) *DescribeTransactionsListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBody) SetMessage(v string) *DescribeTransactionsListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBody) SetRequestId(v string) *DescribeTransactionsListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBody) SetSuccess(v bool) *DescribeTransactionsListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeTransactionsListResponseBodyData struct {
+	In                 []*DescribeTransactionsListResponseBodyDataIn  `json:"In,omitempty" xml:"In,omitempty" type:"Repeated"`
+	Out                []*DescribeTransactionsListResponseBodyDataOut `json:"Out,omitempty" xml:"Out,omitempty" type:"Repeated"`
+	Page               *int64                                         `json:"Page,omitempty" xml:"Page,omitempty"`
+	TotalPages         *int64                                         `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	TransactionsOnPage *int64                                         `json:"TransactionsOnPage,omitempty" xml:"TransactionsOnPage,omitempty"`
+}
+
+func (s DescribeTransactionsListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListResponseBodyData) SetIn(v []*DescribeTransactionsListResponseBodyDataIn) *DescribeTransactionsListResponseBodyData {
+	s.In = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyData) SetOut(v []*DescribeTransactionsListResponseBodyDataOut) *DescribeTransactionsListResponseBodyData {
+	s.Out = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyData) SetPage(v int64) *DescribeTransactionsListResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyData) SetTotalPages(v int64) *DescribeTransactionsListResponseBodyData {
+	s.TotalPages = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyData) SetTransactionsOnPage(v int64) *DescribeTransactionsListResponseBodyData {
+	s.TransactionsOnPage = &v
+	return s
+}
+
+type DescribeTransactionsListResponseBodyDataIn struct {
+	Address    *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	Amount     *float32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Label      *string   `json:"Label,omitempty" xml:"Label,omitempty"`
+	TxHashList []*string `json:"TxHashList,omitempty" xml:"TxHashList,omitempty" type:"Repeated"`
+	Type       *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeTransactionsListResponseBodyDataIn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListResponseBodyDataIn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListResponseBodyDataIn) SetAddress(v string) *DescribeTransactionsListResponseBodyDataIn {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataIn) SetAmount(v float32) *DescribeTransactionsListResponseBodyDataIn {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataIn) SetLabel(v string) *DescribeTransactionsListResponseBodyDataIn {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataIn) SetTxHashList(v []*string) *DescribeTransactionsListResponseBodyDataIn {
+	s.TxHashList = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataIn) SetType(v int32) *DescribeTransactionsListResponseBodyDataIn {
+	s.Type = &v
+	return s
+}
+
+type DescribeTransactionsListResponseBodyDataOut struct {
+	Address    *string   `json:"Address,omitempty" xml:"Address,omitempty"`
+	Amount     *float32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Label      *string   `json:"Label,omitempty" xml:"Label,omitempty"`
+	TxHashList []*string `json:"TxHashList,omitempty" xml:"TxHashList,omitempty" type:"Repeated"`
+	Type       *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeTransactionsListResponseBodyDataOut) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListResponseBodyDataOut) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListResponseBodyDataOut) SetAddress(v string) *DescribeTransactionsListResponseBodyDataOut {
+	s.Address = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataOut) SetAmount(v float32) *DescribeTransactionsListResponseBodyDataOut {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataOut) SetLabel(v string) *DescribeTransactionsListResponseBodyDataOut {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataOut) SetTxHashList(v []*string) *DescribeTransactionsListResponseBodyDataOut {
+	s.TxHashList = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponseBodyDataOut) SetType(v int32) *DescribeTransactionsListResponseBodyDataOut {
+	s.Type = &v
+	return s
+}
+
+type DescribeTransactionsListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTransactionsListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTransactionsListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTransactionsListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransactionsListResponse) SetHeaders(v map[string]*string) *DescribeTransactionsListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTransactionsListResponse) SetStatusCode(v int32) *DescribeTransactionsListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTransactionsListResponse) SetBody(v *DescribeTransactionsListResponseBody) *DescribeTransactionsListResponse {
 	s.Body = v
 	return s
 }
@@ -316,14 +1122,15 @@ type InitializeRequest struct {
 	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
 	MetaInfo          *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
-	OperationMode     *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	Pages             *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
-	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductConfig     *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
-	ReturnUrl         *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	SceneCode         *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	ServiceLevel      *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
+	// OCR。
+	Ocr           *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	OperationMode *string `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
+	Pages         *string `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductConfig *string `json:"ProductConfig,omitempty" xml:"ProductConfig,omitempty"`
+	ReturnUrl     *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	ServiceLevel  *string `json:"ServiceLevel,omitempty" xml:"ServiceLevel,omitempty"`
 }
 
 func (s InitializeRequest) String() string {
@@ -425,8 +1232,9 @@ func (s *InitializeRequest) SetServiceLevel(v string) *InitializeRequest {
 }
 
 type InitializeResponseBody struct {
-	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *InitializeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -617,6 +1425,286 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckResultResponse{}
 	_body, _err := client.CheckResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAddressLabelsWithOptions(request *DescribeAddressLabelsRequest, runtime *util.RuntimeOptions) (_result *DescribeAddressLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coin)) {
+		query["Coin"] = request.Coin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddressLabels"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAddressLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAddressLabels(request *DescribeAddressLabelsRequest) (_result *DescribeAddressLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAddressLabelsResponse{}
+	_body, _err := client.DescribeAddressLabelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAddressOverviewWithOptions(request *DescribeAddressOverviewRequest, runtime *util.RuntimeOptions) (_result *DescribeAddressOverviewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coin)) {
+		query["Coin"] = request.Coin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddressOverview"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAddressOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAddressOverview(request *DescribeAddressOverviewRequest) (_result *DescribeAddressOverviewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAddressOverviewResponse{}
+	_body, _err := client.DescribeAddressOverviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMaliciousAddressWithOptions(request *DescribeMaliciousAddressRequest, runtime *util.RuntimeOptions) (_result *DescribeMaliciousAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Coin)) {
+		query["Coin"] = request.Coin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["End"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMaliciousAddress"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMaliciousAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMaliciousAddress(request *DescribeMaliciousAddressRequest) (_result *DescribeMaliciousAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMaliciousAddressResponse{}
+	_body, _err := client.DescribeMaliciousAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskScoreWithOptions(request *DescribeRiskScoreRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskScoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coin)) {
+		query["Coin"] = request.Coin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskScore"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRiskScoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskScore(request *DescribeRiskScoreRequest) (_result *DescribeRiskScoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRiskScoreResponse{}
+	_body, _err := client.DescribeRiskScoreWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTransactionsListWithOptions(request *DescribeTransactionsListRequest, runtime *util.RuntimeOptions) (_result *DescribeTransactionsListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Coin)) {
+		query["Coin"] = request.Coin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTransactionsList"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTransactionsListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTransactionsList(request *DescribeTransactionsListRequest) (_result *DescribeTransactionsListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTransactionsListResponse{}
+	_body, _err := client.DescribeTransactionsListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
