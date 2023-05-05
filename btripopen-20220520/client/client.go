@@ -34444,6 +34444,227 @@ func (s *SyncThirdUserMappingResponse) SetBody(v *SyncThirdUserMappingResponseBo
 	return s
 }
 
+type TBAccountInfoQueryHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TBAccountInfoQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountInfoQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountInfoQueryHeaders) SetCommonHeaders(v map[string]*string) *TBAccountInfoQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TBAccountInfoQueryHeaders) SetXAcsBtripCorpToken(v string) *TBAccountInfoQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TBAccountInfoQueryResponseBody struct {
+	Code      *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *TBAccountInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                               `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TBAccountInfoQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountInfoQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetCode(v string) *TBAccountInfoQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetMessage(v string) *TBAccountInfoQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetModule(v *TBAccountInfoQueryResponseBodyModule) *TBAccountInfoQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetRequestId(v string) *TBAccountInfoQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetSuccess(v bool) *TBAccountInfoQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBody) SetTraceId(v string) *TBAccountInfoQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TBAccountInfoQueryResponseBodyModule struct {
+	TbAccount *string `json:"tb_account,omitempty" xml:"tb_account,omitempty"`
+	TbBond    *bool   `json:"tb_bond,omitempty" xml:"tb_bond,omitempty"`
+}
+
+func (s TBAccountInfoQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountInfoQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountInfoQueryResponseBodyModule) SetTbAccount(v string) *TBAccountInfoQueryResponseBodyModule {
+	s.TbAccount = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponseBodyModule) SetTbBond(v bool) *TBAccountInfoQueryResponseBodyModule {
+	s.TbBond = &v
+	return s
+}
+
+type TBAccountInfoQueryResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TBAccountInfoQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TBAccountInfoQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountInfoQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountInfoQueryResponse) SetHeaders(v map[string]*string) *TBAccountInfoQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponse) SetStatusCode(v int32) *TBAccountInfoQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TBAccountInfoQueryResponse) SetBody(v *TBAccountInfoQueryResponseBody) *TBAccountInfoQueryResponse {
+	s.Body = v
+	return s
+}
+
+type TBAccountUnbindHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TBAccountUnbindHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountUnbindHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountUnbindHeaders) SetCommonHeaders(v map[string]*string) *TBAccountUnbindHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TBAccountUnbindHeaders) SetXAcsBtripCorpToken(v string) *TBAccountUnbindHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TBAccountUnbindResponseBody struct {
+	Code      *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *bool   `json:"module,omitempty" xml:"module,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TBAccountUnbindResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountUnbindResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountUnbindResponseBody) SetCode(v string) *TBAccountUnbindResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponseBody) SetMessage(v string) *TBAccountUnbindResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponseBody) SetModule(v bool) *TBAccountUnbindResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponseBody) SetRequestId(v string) *TBAccountUnbindResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponseBody) SetSuccess(v bool) *TBAccountUnbindResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponseBody) SetTraceId(v string) *TBAccountUnbindResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TBAccountUnbindResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TBAccountUnbindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TBAccountUnbindResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TBAccountUnbindResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TBAccountUnbindResponse) SetHeaders(v map[string]*string) *TBAccountUnbindResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TBAccountUnbindResponse) SetStatusCode(v int32) *TBAccountUnbindResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TBAccountUnbindResponse) SetBody(v *TBAccountUnbindResponseBody) *TBAccountUnbindResponse {
+	s.Body = v
+	return s
+}
+
 type TicketChangingApplyHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -37680,7 +37901,8 @@ func (s *TrainBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Train
 }
 
 type TrainBillSettlementQueryResponseBodyModuleDataList struct {
-	AlipayTradeNo      *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AlipayTradeNo *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	// 审批扩展自定义字段
 	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrDate            *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
@@ -48646,6 +48868,96 @@ func (client *Client) SyncThirdUserMapping(request *SyncThirdUserMappingRequest)
 	headers := &SyncThirdUserMappingHeaders{}
 	_result = &SyncThirdUserMappingResponse{}
 	_body, _err := client.SyncThirdUserMappingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TBAccountInfoQueryWithOptions(userId *string, headers *TBAccountInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *TBAccountInfoQueryResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TBAccountInfoQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/account/v1/tb-accounts/" + tea.StringValue(openapiutil.GetEncodeParam(userId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TBAccountInfoQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TBAccountInfoQuery(userId *string) (_result *TBAccountInfoQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TBAccountInfoQueryHeaders{}
+	_result = &TBAccountInfoQueryResponse{}
+	_body, _err := client.TBAccountInfoQueryWithOptions(userId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TBAccountUnbindWithOptions(userId *string, headers *TBAccountUnbindHeaders, runtime *util.RuntimeOptions) (_result *TBAccountUnbindResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TBAccountUnbind"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/account/v1/tb-accounts/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/action/unbind"),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TBAccountUnbindResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TBAccountUnbind(userId *string) (_result *TBAccountUnbindResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TBAccountUnbindHeaders{}
+	_result = &TBAccountUnbindResponse{}
+	_body, _err := client.TBAccountUnbindWithOptions(userId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
