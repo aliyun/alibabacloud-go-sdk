@@ -140,6 +140,7 @@ type GetProductInfoByIdsResponseBodyDataAuctionsResult struct {
 	CouponTotalCount       *string                                                         `json:"CouponTotalCount,omitempty" xml:"CouponTotalCount,omitempty"`
 	DeeplinkCouponShareUrl *string                                                         `json:"DeeplinkCouponShareUrl,omitempty" xml:"DeeplinkCouponShareUrl,omitempty"`
 	DeeplinkUrl            *string                                                         `json:"DeeplinkUrl,omitempty" xml:"DeeplinkUrl,omitempty"`
+	InputItemId            *string                                                         `json:"InputItemId,omitempty" xml:"InputItemId,omitempty"`
 	ItemId                 *string                                                         `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	LevelOneCategoryName   *string                                                         `json:"LevelOneCategoryName,omitempty" xml:"LevelOneCategoryName,omitempty"`
 	MaxCommission          *GetProductInfoByIdsResponseBodyDataAuctionsResultMaxCommission `json:"MaxCommission,omitempty" xml:"MaxCommission,omitempty" type:"Struct"`
@@ -224,6 +225,11 @@ func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetDeeplinkCouponSha
 
 func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetDeeplinkUrl(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
 	s.DeeplinkUrl = &v
+	return s
+}
+
+func (s *GetProductInfoByIdsResponseBodyDataAuctionsResult) SetInputItemId(v string) *GetProductInfoByIdsResponseBodyDataAuctionsResult {
+	s.InputItemId = &v
 	return s
 }
 
