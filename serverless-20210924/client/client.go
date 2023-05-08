@@ -2539,6 +2539,99 @@ func (s *GetTemplateResponse) SetBody(v *Template) *GetTemplateResponse {
 	return s
 }
 
+type ListApplicationsRequest struct {
+	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	FilterName  *string `json:"filterName,omitempty" xml:"filterName,omitempty"`
+	PageSize    *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Template    *string `json:"template,omitempty" xml:"template,omitempty"`
+}
+
+func (s ListApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsRequest) SetCurrentPage(v string) *ListApplicationsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetFilterName(v string) *ListApplicationsRequest {
+	s.FilterName = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetPageSize(v string) *ListApplicationsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApplicationsRequest) SetTemplate(v string) *ListApplicationsRequest {
+	s.Template = &v
+	return s
+}
+
+type ListApplicationsResponseBody struct {
+	CurrentPage *string        `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	Result      []*Application `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	TotalCount  *string        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponseBody) SetCurrentPage(v string) *ListApplicationsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBody) SetResult(v []*Application) *ListApplicationsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListApplicationsResponseBody) SetTotalCount(v string) *ListApplicationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApplicationsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsResponse) SetHeaders(v map[string]*string) *ListApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationsResponse) SetStatusCode(v int32) *ListApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *ListApplicationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListEnvironmentRevisionsRequest struct {
 	EnvironmentName *string `json:"environmentName,omitempty" xml:"environmentName,omitempty"`
 }
@@ -4441,6 +4534,64 @@ func (client *Client) GetTemplate(name *string, request *GetTemplateRequest) (_r
 	headers := make(map[string]*string)
 	_result = &GetTemplateResponse{}
 	_body, _err := client.GetTemplateWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApplicationsWithOptions(request *ListApplicationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["currentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterName)) {
+		query["filterName"] = request.FilterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		query["template"] = request.Template
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplications"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/applications"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
