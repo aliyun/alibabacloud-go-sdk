@@ -23327,7 +23327,6 @@ func (s *GroupUserSaveHeaders) SetXAcsBtripCorpToken(v string) *GroupUserSaveHea
 
 type GroupUserSaveRequest struct {
 	JobNo         *string                              `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	LeaveStatus   *int32                               `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	Phone         *string                              `json:"phone,omitempty" xml:"phone,omitempty"`
 	RealNameEn    *string                              `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	SubCorpIdList []*GroupUserSaveRequestSubCorpIdList `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty" type:"Repeated"`
@@ -23345,11 +23344,6 @@ func (s GroupUserSaveRequest) GoString() string {
 
 func (s *GroupUserSaveRequest) SetJobNo(v string) *GroupUserSaveRequest {
 	s.JobNo = &v
-	return s
-}
-
-func (s *GroupUserSaveRequest) SetLeaveStatus(v int32) *GroupUserSaveRequest {
-	s.LeaveStatus = &v
 	return s
 }
 
@@ -23380,7 +23374,9 @@ func (s *GroupUserSaveRequest) SetUserName(v string) *GroupUserSaveRequest {
 
 type GroupUserSaveRequestSubCorpIdList struct {
 	DepartIds     []*string `json:"depart_ids,omitempty" xml:"depart_ids,omitempty" type:"Repeated"`
+	LeaveStatus   *int32    `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	PositionLevel *string   `json:"position_level,omitempty" xml:"position_level,omitempty"`
 	SubCorpId     *string   `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 }
 
@@ -23397,8 +23393,18 @@ func (s *GroupUserSaveRequestSubCorpIdList) SetDepartIds(v []*string) *GroupUser
 	return s
 }
 
+func (s *GroupUserSaveRequestSubCorpIdList) SetLeaveStatus(v int32) *GroupUserSaveRequestSubCorpIdList {
+	s.LeaveStatus = &v
+	return s
+}
+
 func (s *GroupUserSaveRequestSubCorpIdList) SetManagerUserId(v string) *GroupUserSaveRequestSubCorpIdList {
 	s.ManagerUserId = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestSubCorpIdList) SetPositionLevel(v string) *GroupUserSaveRequestSubCorpIdList {
+	s.PositionLevel = &v
 	return s
 }
 
@@ -23409,7 +23415,6 @@ func (s *GroupUserSaveRequestSubCorpIdList) SetSubCorpId(v string) *GroupUserSav
 
 type GroupUserSaveShrinkRequest struct {
 	JobNo               *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
-	LeaveStatus         *int32  `json:"leave_status,omitempty" xml:"leave_status,omitempty"`
 	Phone               *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	RealNameEn          *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
 	SubCorpIdListShrink *string `json:"sub_corp_id_list,omitempty" xml:"sub_corp_id_list,omitempty"`
@@ -23427,11 +23432,6 @@ func (s GroupUserSaveShrinkRequest) GoString() string {
 
 func (s *GroupUserSaveShrinkRequest) SetJobNo(v string) *GroupUserSaveShrinkRequest {
 	s.JobNo = &v
-	return s
-}
-
-func (s *GroupUserSaveShrinkRequest) SetLeaveStatus(v int32) *GroupUserSaveShrinkRequest {
-	s.LeaveStatus = &v
 	return s
 }
 
@@ -46361,10 +46361,6 @@ func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, hea
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
 		body["job_no"] = request.JobNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LeaveStatus)) {
-		body["leave_status"] = request.LeaveStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Phone)) {
