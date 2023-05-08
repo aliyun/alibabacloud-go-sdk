@@ -1205,6 +1205,7 @@ type GetInstanceResponseBodyData struct {
 	CreateTime      *string                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	ExpireTime      *string                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
 	ExtConfig       *GetInstanceResponseBodyDataExtConfig        `json:"extConfig,omitempty" xml:"extConfig,omitempty" type:"Struct"`
+	GroupCount      *int64                                       `json:"groupCount,omitempty" xml:"groupCount,omitempty"`
 	InstanceId      *string                                      `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	InstanceName    *string                                      `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	InstanceQuotas  []*GetInstanceResponseBodyDataInstanceQuotas `json:"instanceQuotas,omitempty" xml:"instanceQuotas,omitempty" type:"Repeated"`
@@ -1217,9 +1218,11 @@ type GetInstanceResponseBodyData struct {
 	ResourceGroupId *string                                      `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	SeriesCode      *string                                      `json:"seriesCode,omitempty" xml:"seriesCode,omitempty"`
 	ServiceCode     *string                                      `json:"serviceCode,omitempty" xml:"serviceCode,omitempty"`
+	Software        *GetInstanceResponseBodyDataSoftware         `json:"software,omitempty" xml:"software,omitempty" type:"Struct"`
 	StartTime       *string                                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	Status          *string                                      `json:"status,omitempty" xml:"status,omitempty"`
 	SubSeriesCode   *string                                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	TopicCount      *int64                                       `json:"topicCount,omitempty" xml:"topicCount,omitempty"`
 	UpdateTime      *string                                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 	UserId          *string                                      `json:"userId,omitempty" xml:"userId,omitempty"`
 }
@@ -1264,6 +1267,11 @@ func (s *GetInstanceResponseBodyData) SetExpireTime(v string) *GetInstanceRespon
 
 func (s *GetInstanceResponseBodyData) SetExtConfig(v *GetInstanceResponseBodyDataExtConfig) *GetInstanceResponseBodyData {
 	s.ExtConfig = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetGroupCount(v int64) *GetInstanceResponseBodyData {
+	s.GroupCount = &v
 	return s
 }
 
@@ -1327,6 +1335,11 @@ func (s *GetInstanceResponseBodyData) SetServiceCode(v string) *GetInstanceRespo
 	return s
 }
 
+func (s *GetInstanceResponseBodyData) SetSoftware(v *GetInstanceResponseBodyDataSoftware) *GetInstanceResponseBodyData {
+	s.Software = v
+	return s
+}
+
 func (s *GetInstanceResponseBodyData) SetStartTime(v string) *GetInstanceResponseBodyData {
 	s.StartTime = &v
 	return s
@@ -1339,6 +1352,11 @@ func (s *GetInstanceResponseBodyData) SetStatus(v string) *GetInstanceResponseBo
 
 func (s *GetInstanceResponseBodyData) SetSubSeriesCode(v string) *GetInstanceResponseBodyData {
 	s.SubSeriesCode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyData) SetTopicCount(v int64) *GetInstanceResponseBodyData {
+	s.TopicCount = &v
 	return s
 }
 
@@ -1516,9 +1534,9 @@ func (s *GetInstanceResponseBodyDataNetworkInfo) SetVpcInfo(v *GetInstanceRespon
 }
 
 type GetInstanceResponseBodyDataNetworkInfoEndpoints struct {
-	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	EndpointUrl  *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	IpWhitelist  *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	EndpointType *string   `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
+	EndpointUrl  *string   `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	IpWhitelist  []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceResponseBodyDataNetworkInfoEndpoints) String() string {
@@ -1539,8 +1557,8 @@ func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetEndpointUrl(v strin
 	return s
 }
 
-func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetIpWhitelist(v string) *GetInstanceResponseBodyDataNetworkInfoEndpoints {
-	s.IpWhitelist = &v
+func (s *GetInstanceResponseBodyDataNetworkInfoEndpoints) SetIpWhitelist(v []*string) *GetInstanceResponseBodyDataNetworkInfoEndpoints {
+	s.IpWhitelist = v
 	return s
 }
 
@@ -1640,6 +1658,35 @@ func (s *GetInstanceResponseBodyDataProductInfo) SetSendReceiveRatio(v float32) 
 
 func (s *GetInstanceResponseBodyDataProductInfo) SetSupportAutoScaling(v bool) *GetInstanceResponseBodyDataProductInfo {
 	s.SupportAutoScaling = &v
+	return s
+}
+
+type GetInstanceResponseBodyDataSoftware struct {
+	MaintainTime    *string `json:"maintainTime,omitempty" xml:"maintainTime,omitempty"`
+	SoftwareVersion *string `json:"softwareVersion,omitempty" xml:"softwareVersion,omitempty"`
+	UpgradeMethod   *string `json:"upgradeMethod,omitempty" xml:"upgradeMethod,omitempty"`
+}
+
+func (s GetInstanceResponseBodyDataSoftware) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyDataSoftware) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyDataSoftware) SetMaintainTime(v string) *GetInstanceResponseBodyDataSoftware {
+	s.MaintainTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataSoftware) SetSoftwareVersion(v string) *GetInstanceResponseBodyDataSoftware {
+	s.SoftwareVersion = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataSoftware) SetUpgradeMethod(v string) *GetInstanceResponseBodyDataSoftware {
+	s.UpgradeMethod = &v
 	return s
 }
 
