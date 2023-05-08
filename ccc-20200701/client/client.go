@@ -23044,16 +23044,17 @@ func (s *ListMultiChannelRecordingsResponseBody) SetRequestId(v string) *ListMul
 }
 
 type ListMultiChannelRecordingsResponseBodyData struct {
-	AgentChannelId *string `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
-	AgentId        *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName      *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	ContactId      *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	RamId          *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
-	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AgentChannelId   *string                                                       `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
+	AgentId          *string                                                       `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName        *string                                                       `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	ContactId        *string                                                       `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Duration         *string                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName         *string                                                       `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl          *string                                                       `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	HoldTimeSegments []*ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments `json:"HoldTimeSegments,omitempty" xml:"HoldTimeSegments,omitempty" type:"Repeated"`
+	RamId            *string                                                       `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	SkillGroupId     *string                                                       `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StartTime        *int64                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListMultiChannelRecordingsResponseBodyData) String() string {
@@ -23099,6 +23100,11 @@ func (s *ListMultiChannelRecordingsResponseBodyData) SetFileUrl(v string) *ListM
 	return s
 }
 
+func (s *ListMultiChannelRecordingsResponseBodyData) SetHoldTimeSegments(v []*ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments) *ListMultiChannelRecordingsResponseBodyData {
+	s.HoldTimeSegments = v
+	return s
+}
+
 func (s *ListMultiChannelRecordingsResponseBodyData) SetRamId(v string) *ListMultiChannelRecordingsResponseBodyData {
 	s.RamId = &v
 	return s
@@ -23110,6 +23116,29 @@ func (s *ListMultiChannelRecordingsResponseBodyData) SetSkillGroupId(v string) *
 }
 
 func (s *ListMultiChannelRecordingsResponseBodyData) SetStartTime(v int64) *ListMultiChannelRecordingsResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+type ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments struct {
+	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments) SetEndTime(v int64) *ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments) SetStartTime(v int64) *ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments {
 	s.StartTime = &v
 	return s
 }
