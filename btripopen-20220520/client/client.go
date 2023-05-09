@@ -24047,6 +24047,203 @@ func (s *HotelBillSettlementQueryResponse) SetBody(v *HotelBillSettlementQueryRe
 	return s
 }
 
+type HotelCityCodeListHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelCityCodeListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListHeaders) SetCommonHeaders(v map[string]*string) *HotelCityCodeListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelCityCodeListHeaders) SetXAcsBtripCorpToken(v string) *HotelCityCodeListHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelCityCodeListRequest struct {
+	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
+}
+
+func (s HotelCityCodeListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListRequest) SetCountryCode(v string) *HotelCityCodeListRequest {
+	s.CountryCode = &v
+	return s
+}
+
+type HotelCityCodeListResponseBody struct {
+	Code      *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*HotelCityCodeListResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelCityCodeListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListResponseBody) SetCode(v string) *HotelCityCodeListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBody) SetMessage(v string) *HotelCityCodeListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBody) SetModule(v []*HotelCityCodeListResponseBodyModule) *HotelCityCodeListResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBody) SetRequestId(v string) *HotelCityCodeListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBody) SetSuccess(v bool) *HotelCityCodeListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBody) SetTraceId(v string) *HotelCityCodeListResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelCityCodeListResponseBodyModule struct {
+	Citys        []*HotelCityCodeListResponseBodyModuleCitys `json:"citys,omitempty" xml:"citys,omitempty" type:"Repeated"`
+	ProviceCode  *string                                     `json:"provice_code,omitempty" xml:"provice_code,omitempty"`
+	ProvinceName *string                                     `json:"province_name,omitempty" xml:"province_name,omitempty"`
+}
+
+func (s HotelCityCodeListResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListResponseBodyModule) SetCitys(v []*HotelCityCodeListResponseBodyModuleCitys) *HotelCityCodeListResponseBodyModule {
+	s.Citys = v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBodyModule) SetProviceCode(v string) *HotelCityCodeListResponseBodyModule {
+	s.ProviceCode = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBodyModule) SetProvinceName(v string) *HotelCityCodeListResponseBodyModule {
+	s.ProvinceName = &v
+	return s
+}
+
+type HotelCityCodeListResponseBodyModuleCitys struct {
+	CityCode  *string                                              `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName  *string                                              `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Districts []*HotelCityCodeListResponseBodyModuleCitysDistricts `json:"districts,omitempty" xml:"districts,omitempty" type:"Repeated"`
+}
+
+func (s HotelCityCodeListResponseBodyModuleCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListResponseBodyModuleCitys) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListResponseBodyModuleCitys) SetCityCode(v string) *HotelCityCodeListResponseBodyModuleCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBodyModuleCitys) SetCityName(v string) *HotelCityCodeListResponseBodyModuleCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBodyModuleCitys) SetDistricts(v []*HotelCityCodeListResponseBodyModuleCitysDistricts) *HotelCityCodeListResponseBodyModuleCitys {
+	s.Districts = v
+	return s
+}
+
+type HotelCityCodeListResponseBodyModuleCitysDistricts struct {
+	DistrictCode *string `json:"district_code,omitempty" xml:"district_code,omitempty"`
+	DistrictName *string `json:"district_name,omitempty" xml:"district_name,omitempty"`
+}
+
+func (s HotelCityCodeListResponseBodyModuleCitysDistricts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListResponseBodyModuleCitysDistricts) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListResponseBodyModuleCitysDistricts) SetDistrictCode(v string) *HotelCityCodeListResponseBodyModuleCitysDistricts {
+	s.DistrictCode = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponseBodyModuleCitysDistricts) SetDistrictName(v string) *HotelCityCodeListResponseBodyModuleCitysDistricts {
+	s.DistrictName = &v
+	return s
+}
+
+type HotelCityCodeListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HotelCityCodeListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HotelCityCodeListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelCityCodeListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelCityCodeListResponse) SetHeaders(v map[string]*string) *HotelCityCodeListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelCityCodeListResponse) SetStatusCode(v int32) *HotelCityCodeListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelCityCodeListResponse) SetBody(v *HotelCityCodeListResponseBody) *HotelCityCodeListResponse {
+	s.Body = v
+	return s
+}
+
 type HotelExceedApplyQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -46488,6 +46685,61 @@ func (client *Client) HotelBillSettlementQuery(request *HotelBillSettlementQuery
 	headers := &HotelBillSettlementQueryHeaders{}
 	_result = &HotelBillSettlementQueryResponse{}
 	_body, _err := client.HotelBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) HotelCityCodeListWithOptions(request *HotelCityCodeListRequest, headers *HotelCityCodeListHeaders, runtime *util.RuntimeOptions) (_result *HotelCityCodeListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CountryCode)) {
+		query["country_code"] = request.CountryCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelCityCodeList"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/city-codes/action/search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelCityCodeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HotelCityCodeList(request *HotelCityCodeListRequest) (_result *HotelCityCodeListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelCityCodeListHeaders{}
+	_result = &HotelCityCodeListResponse{}
+	_body, _err := client.HotelCityCodeListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
