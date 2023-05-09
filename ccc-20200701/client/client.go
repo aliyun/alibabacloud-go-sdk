@@ -11028,6 +11028,122 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	return s
 }
 
+type GetVideoRequest struct {
+	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetVideoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoRequest) SetContactId(v string) *GetVideoRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *GetVideoRequest) SetInstanceId(v string) *GetVideoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetVideoResponseBody struct {
+	Code           *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVideoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoResponseBody) SetCode(v string) *GetVideoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoResponseBody) SetData(v *GetVideoResponseBodyData) *GetVideoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVideoResponseBody) SetHttpStatusCode(v int32) *GetVideoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetVideoResponseBody) SetMessage(v string) *GetVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVideoResponseBody) SetRequestId(v string) *GetVideoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVideoResponseBodyData struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s GetVideoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoResponseBodyData) SetFileName(v string) *GetVideoResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetVideoResponseBodyData) SetFileUrl(v string) *GetVideoResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+type GetVideoResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoResponse) SetHeaders(v map[string]*string) *GetVideoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoResponse) SetStatusCode(v int32) *GetVideoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoResponse) SetBody(v *GetVideoResponseBody) *GetVideoResponse {
+	s.Body = v
+	return s
+}
+
 type GetVoicemailRecordingRequest struct {
 	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -39573,6 +39689,46 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
 	_body, _err := client.GetUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetVideoWithOptions(request *GetVideoRequest, runtime *util.RuntimeOptions) (_result *GetVideoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideo"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVideo(request *GetVideoRequest) (_result *GetVideoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoResponse{}
+	_body, _err := client.GetVideoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
