@@ -274,24 +274,26 @@ func (s *CancelOtaTaskResponse) SetBody(v *CancelOtaTaskResponseBody) *CancelOta
 }
 
 type CreateAppInstanceGroupRequest struct {
-	AppCenterImageId     *string                                     `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupName *string                                     `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AutoPay              *bool                                       `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew            *bool                                       `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BizRegionId          *string                                     `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeResourceMode   *string                                     `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType           *string                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Network              *CreateAppInstanceGroupRequestNetwork       `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool             *CreateAppInstanceGroupRequestNodePool      `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	Period               *int32                                      `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string                                     `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PreOpenAppId         *string                                     `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	ProductType          *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PromotionId          *string                                     `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RuntimePolicy        *CreateAppInstanceGroupRequestRuntimePolicy `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
-	SessionTimeout       *int32                                      `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	UserInfo             *CreateAppInstanceGroupRequestUserInfo      `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	Users                []*string                                   `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	AppCenterImageId     *string                                      `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	AppInstanceGroupName *string                                      `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AutoPay              *bool                                        `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew            *bool                                        `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BizRegionId          *string                                      `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	ChargeResourceMode   *string                                      `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	ChargeType           *string                                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Network              *CreateAppInstanceGroupRequestNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	NodePool             *CreateAppInstanceGroupRequestNodePool       `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	Period               *int32                                       `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string                                      `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PreOpenAppId         *string                                      `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	ProductType          *string                                      `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	PromotionId          *string                                      `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RuntimePolicy        *CreateAppInstanceGroupRequestRuntimePolicy  `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
+	SecurityPolicy       *CreateAppInstanceGroupRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
+	SessionTimeout       *int32                                       `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicy        *CreateAppInstanceGroupRequestStoragePolicy  `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	UserInfo             *CreateAppInstanceGroupRequestUserInfo       `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	Users                []*string                                    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppInstanceGroupRequest) String() string {
@@ -377,8 +379,18 @@ func (s *CreateAppInstanceGroupRequest) SetRuntimePolicy(v *CreateAppInstanceGro
 	return s
 }
 
+func (s *CreateAppInstanceGroupRequest) SetSecurityPolicy(v *CreateAppInstanceGroupRequestSecurityPolicy) *CreateAppInstanceGroupRequest {
+	s.SecurityPolicy = v
+	return s
+}
+
 func (s *CreateAppInstanceGroupRequest) SetSessionTimeout(v int32) *CreateAppInstanceGroupRequest {
 	s.SessionTimeout = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequest) SetStoragePolicy(v *CreateAppInstanceGroupRequestStoragePolicy) *CreateAppInstanceGroupRequest {
+	s.StoragePolicy = v
 	return s
 }
 
@@ -393,8 +405,9 @@ func (s *CreateAppInstanceGroupRequest) SetUsers(v []*string) *CreateAppInstance
 }
 
 type CreateAppInstanceGroupRequestNetwork struct {
-	Routes       []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
-	StrategyType *string                                       `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	IpExpireMinutes *int32                                        `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
+	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	StrategyType    *string                                       `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestNetwork) String() string {
@@ -403,6 +416,11 @@ func (s CreateAppInstanceGroupRequestNetwork) String() string {
 
 func (s CreateAppInstanceGroupRequestNetwork) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestNetwork) SetIpExpireMinutes(v int32) *CreateAppInstanceGroupRequestNetwork {
+	s.IpExpireMinutes = &v
+	return s
 }
 
 func (s *CreateAppInstanceGroupRequestNetwork) SetRoutes(v []*CreateAppInstanceGroupRequestNetworkRoutes) *CreateAppInstanceGroupRequestNetwork {
@@ -580,6 +598,8 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) S
 }
 
 type CreateAppInstanceGroupRequestRuntimePolicy struct {
+	DebugMode *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	// 会话类型。
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 }
 
@@ -591,8 +611,53 @@ func (s CreateAppInstanceGroupRequestRuntimePolicy) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetDebugMode(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
+	s.DebugMode = &v
+	return s
+}
+
 func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionType(v string) *CreateAppInstanceGroupRequestRuntimePolicy {
 	s.SessionType = &v
+	return s
+}
+
+type CreateAppInstanceGroupRequestSecurityPolicy struct {
+	ResetAfterUnbind  *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestSecurityPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestSecurityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestSecurityPolicy) SetResetAfterUnbind(v bool) *CreateAppInstanceGroupRequestSecurityPolicy {
+	s.ResetAfterUnbind = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestSecurityPolicy) SetSkipUserAuthCheck(v bool) *CreateAppInstanceGroupRequestSecurityPolicy {
+	s.SkipUserAuthCheck = &v
+	return s
+}
+
+type CreateAppInstanceGroupRequestStoragePolicy struct {
+	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppInstanceGroupRequestStoragePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestStoragePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestStoragePolicy) SetStorageTypeList(v []*string) *CreateAppInstanceGroupRequestStoragePolicy {
+	s.StorageTypeList = v
 	return s
 }
 
@@ -629,7 +694,9 @@ type CreateAppInstanceGroupShrinkRequest struct {
 	ProductType          *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	PromotionId          *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	RuntimePolicyShrink  *string   `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
+	SecurityPolicyShrink *string   `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
 	SessionTimeout       *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicyShrink  *string   `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 	UserInfoShrink       *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 	Users                []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -717,8 +784,18 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetRuntimePolicyShrink(v string) *
 	return s
 }
 
+func (s *CreateAppInstanceGroupShrinkRequest) SetSecurityPolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.SecurityPolicyShrink = &v
+	return s
+}
+
 func (s *CreateAppInstanceGroupShrinkRequest) SetSessionTimeout(v int32) *CreateAppInstanceGroupShrinkRequest {
 	s.SessionTimeout = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetStoragePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.StoragePolicyShrink = &v
 	return s
 }
 
@@ -809,6 +886,87 @@ func (s *CreateAppInstanceGroupResponse) SetStatusCode(v int32) *CreateAppInstan
 }
 
 func (s *CreateAppInstanceGroupResponse) SetBody(v *CreateAppInstanceGroupResponseBody) *CreateAppInstanceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateImageFromAppInstanceGroupRequest struct {
+	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s CreateImageFromAppInstanceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageFromAppInstanceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageFromAppInstanceGroupRequest) SetAppCenterImageName(v string) *CreateImageFromAppInstanceGroupRequest {
+	s.AppCenterImageName = &v
+	return s
+}
+
+func (s *CreateImageFromAppInstanceGroupRequest) SetAppInstanceGroupId(v string) *CreateImageFromAppInstanceGroupRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *CreateImageFromAppInstanceGroupRequest) SetProductType(v string) *CreateImageFromAppInstanceGroupRequest {
+	s.ProductType = &v
+	return s
+}
+
+type CreateImageFromAppInstanceGroupResponseBody struct {
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateImageFromAppInstanceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageFromAppInstanceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageFromAppInstanceGroupResponseBody) SetImageId(v string) *CreateImageFromAppInstanceGroupResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateImageFromAppInstanceGroupResponseBody) SetRequestId(v string) *CreateImageFromAppInstanceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateImageFromAppInstanceGroupResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageFromAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateImageFromAppInstanceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageFromAppInstanceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageFromAppInstanceGroupResponse) SetHeaders(v map[string]*string) *CreateImageFromAppInstanceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageFromAppInstanceGroupResponse) SetStatusCode(v int32) *CreateImageFromAppInstanceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageFromAppInstanceGroupResponse) SetBody(v *CreateImageFromAppInstanceGroupResponseBody) *CreateImageFromAppInstanceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1064,6 +1222,7 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	RegionId             *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceStatus       *string                                                          `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	SessionTimeout       *string                                                          `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	SkipUserAuthCheck    *bool                                                            `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
 	SpecId               *string                                                          `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 	Status               *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -1163,6 +1322,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetResourceStatu
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSessionTimeout(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.SessionTimeout = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSkipUserAuthCheck(v bool) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.SkipUserAuthCheck = &v
 	return s
 }
 
@@ -1583,6 +1747,111 @@ func (s *GetConnectionTicketResponse) SetStatusCode(v int32) *GetConnectionTicke
 }
 
 func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody) *GetConnectionTicketResponse {
+	s.Body = v
+	return s
+}
+
+type GetDebugAppInstanceRequest struct {
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s GetDebugAppInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDebugAppInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDebugAppInstanceRequest) SetAppInstanceGroupId(v string) *GetDebugAppInstanceRequest {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceRequest) SetProductType(v string) *GetDebugAppInstanceRequest {
+	s.ProductType = &v
+	return s
+}
+
+type GetDebugAppInstanceResponseBody struct {
+	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AuthCode           *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetDebugAppInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDebugAppInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetAppId(v string) *GetDebugAppInstanceResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetAppInstanceGroupId(v string) *GetDebugAppInstanceResponseBody {
+	s.AppInstanceGroupId = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetAppInstanceId(v string) *GetDebugAppInstanceResponseBody {
+	s.AppInstanceId = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetAppVersion(v string) *GetDebugAppInstanceResponseBody {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetAuthCode(v string) *GetDebugAppInstanceResponseBody {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetRequestId(v string) *GetDebugAppInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponseBody) SetUserId(v string) *GetDebugAppInstanceResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type GetDebugAppInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDebugAppInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDebugAppInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDebugAppInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDebugAppInstanceResponse) SetHeaders(v map[string]*string) *GetDebugAppInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponse) SetStatusCode(v int32) *GetDebugAppInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDebugAppInstanceResponse) SetBody(v *GetDebugAppInstanceResponseBody) *GetDebugAppInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2247,26 +2516,29 @@ func (s *ListAppInstanceGroupResponseBody) SetTotalCount(v int32) *ListAppInstan
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
-	Amount               *int32                                                            `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppCenterImageId     *string                                                           `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupId   *string                                                           `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string                                                           `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppInstanceType      *string                                                           `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	AppPolicyId          *string                                                           `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	Apps                 []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps     `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	ChargeResourceMode   *string                                                           `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType           *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime          *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreate            *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NodePool             []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OsType               *string                                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaInfo              *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
-	ProductType          *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId             *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceStatus       *string                                                           `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	SessionTimeout       *string                                                           `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SpecId               *string                                                           `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Status               *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Amount               *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	AppInstanceType      *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// 策略ID。
+	AppPolicyId *string                                                       `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	Apps        []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// 售卖模式。
+	ChargeResourceMode *string                                                           `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	ChargeType         *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ExpiredTime        *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GmtCreate          *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	NodePool           []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	OsType             *string                                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaInfo            *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	ProductType        *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId           *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceStatus     *string                                                           `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	SessionTimeout     *string                                                           `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	SkipUserAuthCheck  *bool                                                             `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	SpecId             *string                                                           `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	Status             *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -2367,6 +2639,11 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSessionTimeo
 	return s
 }
 
+func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSkipUserAuthCheck(v bool) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.SkipUserAuthCheck = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSpecId(v string) *ListAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.SpecId = &v
 	return s
@@ -2378,10 +2655,13 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v str
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
-	AppIcon        *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// 应用图标。
+	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// 应用版本。
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// 应用版本名称。
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -2656,6 +2936,8 @@ func (s *ListAppInstanceGroupResponse) SetBody(v *ListAppInstanceGroupResponseBo
 type ListAppInstancesRequest struct {
 	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceId      *string   `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceIdList  []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
+	IncludeDeleted     *bool     `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
 	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Status             []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
@@ -2676,6 +2958,16 @@ func (s *ListAppInstancesRequest) SetAppInstanceGroupId(v string) *ListAppInstan
 
 func (s *ListAppInstancesRequest) SetAppInstanceId(v string) *ListAppInstancesRequest {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetAppInstanceIdList(v []*string) *ListAppInstancesRequest {
+	s.AppInstanceIdList = v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetIncludeDeleted(v bool) *ListAppInstancesRequest {
+	s.IncludeDeleted = &v
 	return s
 }
 
@@ -2736,13 +3028,14 @@ func (s *ListAppInstancesResponseBody) SetTotalCount(v int32) *ListAppInstancesR
 }
 
 type ListAppInstancesResponseBodyAppInstanceModels struct {
-	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MainEthPublicIp    *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
-	SessionStatus      *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AppInstanceGroupId *string                                                `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId      *string                                                `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	BindInfo           *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
+	GmtCreate          *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MainEthPublicIp    *string                                                `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	SessionStatus      *string                                                `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	Status             *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInstancesResponseBodyAppInstanceModels) String() string {
@@ -2760,6 +3053,11 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetAppInstanceGroupId(v 
 
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetAppInstanceId(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.AppInstanceId = &v
+	return s
+}
+
+func (s *ListAppInstancesResponseBodyAppInstanceModels) SetBindInfo(v *ListAppInstancesResponseBodyAppInstanceModelsBindInfo) *ListAppInstancesResponseBodyAppInstanceModels {
+	s.BindInfo = v
 	return s
 }
 
@@ -2785,6 +3083,29 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetSessionStatus(v strin
 
 func (s *ListAppInstancesResponseBodyAppInstanceModels) SetStatus(v string) *ListAppInstancesResponseBodyAppInstanceModels {
 	s.Status = &v
+	return s
+}
+
+type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {
+	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	UsageDuration *int64  `json:"UsageDuration,omitempty" xml:"UsageDuration,omitempty"`
+}
+
+func (s ListAppInstancesResponseBodyAppInstanceModelsBindInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAppInstancesResponseBodyAppInstanceModelsBindInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListAppInstancesResponseBodyAppInstanceModelsBindInfo) SetEndUserId(v string) *ListAppInstancesResponseBodyAppInstanceModelsBindInfo {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ListAppInstancesResponseBodyAppInstanceModelsBindInfo) SetUsageDuration(v int64) *ListAppInstancesResponseBodyAppInstanceModelsBindInfo {
+	s.UsageDuration = &v
 	return s
 }
 
@@ -2818,13 +3139,16 @@ func (s *ListAppInstancesResponse) SetBody(v *ListAppInstancesResponseBody) *Lis
 }
 
 type ListNodeInstanceTypeRequest struct {
-	BizRegionId      *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](~~426036~~)。
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// 语言类型。
 	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	OsType           *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 支持的操作系统类型。
+	OsType      *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s ListNodeInstanceTypeRequest) String() string {
@@ -2912,14 +3236,23 @@ func (s *ListNodeInstanceTypeResponseBody) SetTotalCount(v int32) *ListNodeInsta
 }
 
 type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
-	Cpu                    *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Gpu                    *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuMemory              *int64  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// 显卡内存大小，单位为MB。
+	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// 最大并发会话数，即单个资源可同时连接的会话数。如果同时连接的会话数过多，可能导致应用的使用体验下降。取值范围因资源规格不同而不同。各资源规格对应的取值范围分别是：
+	//
+	// - appstreaming.general.4c8g：1\~2；
+	// - appstreaming.general.8c16g：1\~4；
+	// - appstreaming.vgpu.8c16g.4g：1\~4；
+	// - appstreaming.vgpu.8c31g.16g：1\~4；
+	// - appstreaming.vgpu.14c93g.12g：1\~6；
 	MaxCapacity            *int32  `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
 	Memory                 *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
-	NodeTypeName           *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
+	// 资源规格名称。
+	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 
 func (s ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels) String() string {
@@ -3359,11 +3692,13 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetBody(v *LogOffAllSessio
 }
 
 type ModifyAppInstanceGroupAttributeRequest struct {
-	AppInstanceGroupId   *string                                         `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string                                         `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	ProductType          *string                                         `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SessionTimeout       *int32                                          `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	AppInstanceGroupId   *string                                               `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string                                               `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool       `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	ProductType          *string                                               `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SecurityPolicy       *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
+	SessionTimeout       *int32                                                `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicy        *ModifyAppInstanceGroupAttributeRequestStoragePolicy  `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequest) String() string {
@@ -3394,8 +3729,18 @@ func (s *ModifyAppInstanceGroupAttributeRequest) SetProductType(v string) *Modif
 	return s
 }
 
+func (s *ModifyAppInstanceGroupAttributeRequest) SetSecurityPolicy(v *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) *ModifyAppInstanceGroupAttributeRequest {
+	s.SecurityPolicy = v
+	return s
+}
+
 func (s *ModifyAppInstanceGroupAttributeRequest) SetSessionTimeout(v int32) *ModifyAppInstanceGroupAttributeRequest {
 	s.SessionTimeout = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequest) SetStoragePolicy(v *ModifyAppInstanceGroupAttributeRequestStoragePolicy) *ModifyAppInstanceGroupAttributeRequest {
+	s.StoragePolicy = v
 	return s
 }
 
@@ -3422,12 +3767,54 @@ func (s *ModifyAppInstanceGroupAttributeRequestNodePool) SetNodePoolId(v string)
 	return s
 }
 
+type ModifyAppInstanceGroupAttributeRequestSecurityPolicy struct {
+	ResetAfterUnbind  *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestSecurityPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestSecurityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) SetResetAfterUnbind(v bool) *ModifyAppInstanceGroupAttributeRequestSecurityPolicy {
+	s.ResetAfterUnbind = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestSecurityPolicy) SetSkipUserAuthCheck(v bool) *ModifyAppInstanceGroupAttributeRequestSecurityPolicy {
+	s.SkipUserAuthCheck = &v
+	return s
+}
+
+type ModifyAppInstanceGroupAttributeRequestStoragePolicy struct {
+	StorageTypeList []*string `json:"StorageTypeList,omitempty" xml:"StorageTypeList,omitempty" type:"Repeated"`
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestStoragePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppInstanceGroupAttributeRequestStoragePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetStorageTypeList(v []*string) *ModifyAppInstanceGroupAttributeRequestStoragePolicy {
+	s.StorageTypeList = v
+	return s
+}
+
 type ModifyAppInstanceGroupAttributeShrinkRequest struct {
 	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	NodePoolShrink       *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
 	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicyShrink  *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeShrinkRequest) String() string {
@@ -3458,8 +3845,18 @@ func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetProductType(v string) 
 	return s
 }
 
+func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetSecurityPolicyShrink(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
+	s.SecurityPolicyShrink = &v
+	return s
+}
+
 func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetSessionTimeout(v int32) *ModifyAppInstanceGroupAttributeShrinkRequest {
 	s.SessionTimeout = &v
+	return s
+}
+
+func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetStoragePolicyShrink(v string) *ModifyAppInstanceGroupAttributeShrinkRequest {
+	s.StoragePolicyShrink = &v
 	return s
 }
 
@@ -3526,7 +3923,8 @@ type ModifyNodePoolAttributeRequest struct {
 	NodeCapacity     *int32                                          `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
 	NodePoolStrategy *ModifyNodePoolAttributeRequestNodePoolStrategy `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty" type:"Struct"`
 	PoolId           *string                                         `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	ProductType      *string                                         `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 产品类型。
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s ModifyNodePoolAttributeRequest) String() string {
@@ -3563,16 +3961,25 @@ func (s *ModifyNodePoolAttributeRequest) SetProductType(v string) *ModifyNodePoo
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategy struct {
-	MaxScalingAmount            *int32                                                               `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
-	NodeAmount                  *int32                                                               `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	// 购买资源的数量。取值范围：1~100。
+	//
+	// >
+	// - 若为包年包月资源，则该参数不可修改。
+	// - 若为按量付费资源，则当弹性模式（`StrategyType`）为固定数量（`NODE_FIXED`）或自动扩缩容（`NODE_SCALING_BY_USAGE`）时该参数可修改。
+	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// 策略执行周期列表。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
 	RecurrenceSchedules         []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
 	ScalingDownAfterIdleMinutes *int32                                                               `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
 	ScalingStep                 *int32                                                               `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
 	ScalingUsageThreshold       *string                                                              `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	StrategyDisableDate         *string                                                              `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
-	StrategyEnableDate          *string                                                              `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
-	StrategyType                *string                                                              `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	WarmUp                      *bool                                                                `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
+	// 策略失效日期。格式为：yyyy-MM-dd。失效日期与生效日期的间隔必须介于7天到1年之间（含7天和1年）。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	// 策略生效日期。格式为：yyyy-MM-dd。该日期必须大于或等于当前日期。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	StrategyType       *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// 是否开启资源预热策略。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	WarmUp *bool `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
 func (s ModifyNodePoolAttributeRequestNodePoolStrategy) String() string {
@@ -3634,9 +4041,18 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetWarmUp(v bool) *Modi
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules struct {
-	RecurrenceType   *string                                                                          `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	RecurrenceValues []*int32                                                                         `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
-	TimerPeriods     []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
+	// 策略执行周期的类型。必须同时指定`RecurrenceType`和`RecurrenceValues`。
+	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// 策略执行周期的数值列表。
+	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
+	// 策略执行周期的时间段列表。时间段设置要求：
+	//
+	// - 最多可添加3个时间段。
+	// - 时间段之间不重叠。
+	// - 时间段之间的间隔大于或等于5分钟。
+	// - 单个时间段的时长大于或等于15分钟。
+	// - 所有时间段累计不跨天。
+	TimerPeriods []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
 }
 
 func (s ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) String() string {
@@ -3663,8 +4079,11 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetT
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods struct {
-	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 资源数量。
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 结束时间。格式为HH:mm。
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 开始时间。格式为HH:mm。
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3696,7 +4115,8 @@ type ModifyNodePoolAttributeShrinkRequest struct {
 	NodeCapacity           *int32  `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
 	NodePoolStrategyShrink *string `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty"`
 	PoolId                 *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	ProductType            *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// 产品类型。
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s ModifyNodePoolAttributeShrinkRequest) String() string {
@@ -4455,6 +4875,14 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		request.RuntimePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimePolicy, tea.String("RuntimePolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityPolicy)) {
+		request.SecurityPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityPolicy, tea.String("SecurityPolicy"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StoragePolicy)) {
+		request.StoragePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoragePolicy, tea.String("StoragePolicy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
 		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
 	}
@@ -4520,8 +4948,16 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		body["RuntimePolicy"] = request.RuntimePolicyShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyShrink)) {
+		body["SecurityPolicy"] = request.SecurityPolicyShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionTimeout)) {
 		body["SessionTimeout"] = request.SessionTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoragePolicyShrink)) {
+		body["StoragePolicy"] = request.StoragePolicyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserInfoShrink)) {
@@ -4559,6 +4995,58 @@ func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppInstanceGroupResponse{}
 	_body, _err := client.CreateAppInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *CreateImageFromAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCenterImageName)) {
+		body["AppCenterImageName"] = request.AppCenterImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageFromAppInstanceGroup"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateImageFromAppInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAppInstanceGroupRequest) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateImageFromAppInstanceGroupResponse{}
+	_body, _err := client.CreateImageFromAppInstanceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4783,6 +5271,54 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnectionTicketResponse{}
 	_body, _err := client.GetConnectionTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanceRequest, runtime *util.RuntimeOptions) (_result *GetDebugAppInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDebugAppInstance"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDebugAppInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (_result *GetDebugAppInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDebugAppInstanceResponse{}
+	_body, _err := client.GetDebugAppInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5050,6 +5586,10 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 		query["AppInstanceId"] = request.AppInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncludeDeleted)) {
+		query["IncludeDeleted"] = request.IncludeDeleted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -5059,6 +5599,10 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInstanceIdList)) {
+		body["AppInstanceIdList"] = request.AppInstanceIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
 	}
@@ -5347,6 +5891,14 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 		request.NodePoolShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodePool, tea.String("NodePool"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityPolicy)) {
+		request.SecurityPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityPolicy, tea.String("SecurityPolicy"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StoragePolicy)) {
+		request.StoragePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoragePolicy, tea.String("StoragePolicy"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppInstanceGroupId)) {
 		query["AppInstanceGroupId"] = request.AppInstanceGroupId
@@ -5368,8 +5920,18 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 		query["SessionTimeout"] = request.SessionTimeout
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyShrink)) {
+		body["SecurityPolicy"] = request.SecurityPolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoragePolicyShrink)) {
+		body["StoragePolicy"] = request.StoragePolicyShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyAppInstanceGroupAttribute"),
