@@ -7917,6 +7917,7 @@ func (s *CreateLocationDateClusteringTaskResponse) SetBody(v *CreateLocationDate
 }
 
 type CreateMediaConvertTaskRequest struct {
+	AlignmentIndex   *int32            `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	Notification *Notification                           `json:"Notification,omitempty" xml:"Notification,omitempty"`
@@ -7933,6 +7934,11 @@ func (s CreateMediaConvertTaskRequest) String() string {
 
 func (s CreateMediaConvertTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequest) SetAlignmentIndex(v int32) *CreateMediaConvertTaskRequest {
+	s.AlignmentIndex = &v
+	return s
 }
 
 func (s *CreateMediaConvertTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateMediaConvertTaskRequest {
@@ -8129,6 +8135,7 @@ func (s *CreateMediaConvertTaskRequestTargetsSegment) SetStartNumber(v int32) *C
 }
 
 type CreateMediaConvertTaskShrinkRequest struct {
+	AlignmentIndex         *int32  `json:"AlignmentIndex,omitempty" xml:"AlignmentIndex,omitempty"`
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// 消息通知配置，支持使用MNS、RocketMQ接收异步消息通知。
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
@@ -8145,6 +8152,11 @@ func (s CreateMediaConvertTaskShrinkRequest) String() string {
 
 func (s CreateMediaConvertTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMediaConvertTaskShrinkRequest) SetAlignmentIndex(v int32) *CreateMediaConvertTaskShrinkRequest {
+	s.AlignmentIndex = &v
+	return s
 }
 
 func (s *CreateMediaConvertTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateMediaConvertTaskShrinkRequest {
@@ -15016,7 +15028,6 @@ type LiveTranscodingRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	ProjectName      *string           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI        *string           `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Token            *string           `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s LiveTranscodingRequest) String() string {
@@ -15042,16 +15053,10 @@ func (s *LiveTranscodingRequest) SetSourceURI(v string) *LiveTranscodingRequest 
 	return s
 }
 
-func (s *LiveTranscodingRequest) SetToken(v string) *LiveTranscodingRequest {
-	s.Token = &v
-	return s
-}
-
 type LiveTranscodingShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	SourceURI              *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
-	Token                  *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s LiveTranscodingShrinkRequest) String() string {
@@ -15074,11 +15079,6 @@ func (s *LiveTranscodingShrinkRequest) SetProjectName(v string) *LiveTranscoding
 
 func (s *LiveTranscodingShrinkRequest) SetSourceURI(v string) *LiveTranscodingShrinkRequest {
 	s.SourceURI = &v
-	return s
-}
-
-func (s *LiveTranscodingShrinkRequest) SetToken(v string) *LiveTranscodingShrinkRequest {
-	s.Token = &v
 	return s
 }
 
@@ -20258,6 +20258,10 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlignmentIndex)) {
+		query["AlignmentIndex"] = request.AlignmentIndex
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
 		query["CredentialConfig"] = request.CredentialConfigShrink
 	}
@@ -23671,10 +23675,6 @@ func (client *Client) LiveTranscodingWithOptions(tmpReq *LiveTranscodingRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
 		query["SourceURI"] = request.SourceURI
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Token)) {
-		query["Token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
