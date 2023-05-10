@@ -1325,6 +1325,7 @@ func (s *QueryTimedResetOperateStatusResponse) SetBody(v *QueryTimedResetOperate
 }
 
 type SendMessageRequest struct {
+	Feedback    *bool                          `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	SessionId   *string                        `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TenantId    *int64                         `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	TextRequest *SendMessageRequestTextRequest `json:"TextRequest,omitempty" xml:"TextRequest,omitempty" type:"Struct"`
@@ -1337,6 +1338,11 @@ func (s SendMessageRequest) String() string {
 
 func (s SendMessageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendMessageRequest) SetFeedback(v bool) *SendMessageRequest {
+	s.Feedback = &v
+	return s
 }
 
 func (s *SendMessageRequest) SetSessionId(v string) *SendMessageRequest {
@@ -1418,6 +1424,7 @@ func (s *SendMessageRequestVAMLRequest) SetVaml(v string) *SendMessageRequestVAM
 }
 
 type SendMessageShrinkRequest struct {
+	Feedback          *bool   `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
 	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	TenantId          *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	TextRequestShrink *string `json:"TextRequest,omitempty" xml:"TextRequest,omitempty"`
@@ -1430,6 +1437,11 @@ func (s SendMessageShrinkRequest) String() string {
 
 func (s SendMessageShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendMessageShrinkRequest) SetFeedback(v bool) *SendMessageShrinkRequest {
+	s.Feedback = &v
+	return s
 }
 
 func (s *SendMessageShrinkRequest) SetSessionId(v string) *SendMessageShrinkRequest {
@@ -1890,12 +1902,11 @@ func (s *StartTimedResetOperateRequest) SetTenantId(v int64) *StartTimedResetOpe
 }
 
 type StartTimedResetOperateResponseBody struct {
-	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *StartTimedResetOperateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *StartTimedResetOperateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartTimedResetOperateResponseBody) String() string {
@@ -2007,7 +2018,6 @@ func (s *StopInstanceRequest) SetTenantId(v int64) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
-	// Id of the request
 	Code    *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data    *StopInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -3331,6 +3341,10 @@ func (client *Client) SendMessageWithOptions(tmpReq *SendMessageRequest, runtime
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Feedback)) {
+		query["Feedback"] = request.Feedback
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
 	}
