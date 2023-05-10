@@ -1111,6 +1111,193 @@ func (s *FaceCompareResponse) SetBody(v *FaceCompareResponseBody) *FaceCompareRe
 	return s
 }
 
+type FaceLivenessRequest struct {
+	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
+	FacePictureUrl    *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	FaceQuality       *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantUserId    *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	Occlusion         *string `json:"Occlusion,omitempty" xml:"Occlusion,omitempty"`
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s FaceLivenessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceLivenessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FaceLivenessRequest) SetCrop(v string) *FaceLivenessRequest {
+	s.Crop = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetFacePictureBase64(v string) *FaceLivenessRequest {
+	s.FacePictureBase64 = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetFacePictureUrl(v string) *FaceLivenessRequest {
+	s.FacePictureUrl = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetFaceQuality(v string) *FaceLivenessRequest {
+	s.FaceQuality = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetMerchantBizId(v string) *FaceLivenessRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetMerchantUserId(v string) *FaceLivenessRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetOcclusion(v string) *FaceLivenessRequest {
+	s.Occlusion = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetProductCode(v string) *FaceLivenessRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type FaceLivenessResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *FaceLivenessResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s FaceLivenessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceLivenessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FaceLivenessResponseBody) SetCode(v string) *FaceLivenessResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBody) SetMessage(v string) *FaceLivenessResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBody) SetRequestId(v string) *FaceLivenessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBody) SetResult(v *FaceLivenessResponseBodyResult) *FaceLivenessResponseBody {
+	s.Result = v
+	return s
+}
+
+type FaceLivenessResponseBodyResult struct {
+	ExtFaceInfo   *FaceLivenessResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	Passed        *string                                    `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	SubCode       *string                                    `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	TransactionId *string                                    `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s FaceLivenessResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceLivenessResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *FaceLivenessResponseBodyResult) SetExtFaceInfo(v *FaceLivenessResponseBodyResultExtFaceInfo) *FaceLivenessResponseBodyResult {
+	s.ExtFaceInfo = v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResult) SetPassed(v string) *FaceLivenessResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResult) SetSubCode(v string) *FaceLivenessResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResult) SetTransactionId(v string) *FaceLivenessResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type FaceLivenessResponseBodyResultExtFaceInfo struct {
+	FaceAttack       *string  `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	OcclusionResult  *string  `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
+}
+
+func (s FaceLivenessResponseBodyResultExtFaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceLivenessResponseBodyResultExtFaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAttack(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.FaceAttack = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.FaceQualityScore = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetOcclusionResult(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.OcclusionResult = &v
+	return s
+}
+
+type FaceLivenessResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceLivenessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FaceLivenessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FaceLivenessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FaceLivenessResponse) SetHeaders(v map[string]*string) *FaceLivenessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FaceLivenessResponse) SetStatusCode(v int32) *FaceLivenessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FaceLivenessResponse) SetBody(v *FaceLivenessResponseBody) *FaceLivenessResponse {
+	s.Body = v
+	return s
+}
+
 type InitializeRequest struct {
 	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
@@ -1765,6 +1952,78 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 	runtime := &util.RuntimeOptions{}
 	_result = &FaceCompareResponse{}
 	_body, _err := client.FaceCompareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runtime *util.RuntimeOptions) (_result *FaceLivenessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Crop)) {
+		query["Crop"] = request.Crop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureBase64)) {
+		query["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FacePictureUrl)) {
+		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceQuality)) {
+		query["FaceQuality"] = request.FaceQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Occlusion)) {
+		query["Occlusion"] = request.Occlusion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FaceLiveness"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FaceLivenessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceLivenessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FaceLivenessResponse{}
+	_body, _err := client.FaceLivenessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
