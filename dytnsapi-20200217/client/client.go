@@ -446,6 +446,7 @@ func (s *DescribePhoneNumberOnlineTimeResponse) SetBody(v *DescribePhoneNumberOn
 
 type DescribePhoneNumberOperatorAttributeRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -463,6 +464,11 @@ func (s DescribePhoneNumberOperatorAttributeRequest) GoString() string {
 
 func (s *DescribePhoneNumberOperatorAttributeRequest) SetAuthCode(v string) *DescribePhoneNumberOperatorAttributeRequest {
 	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeRequest) SetExtendFunction(v string) *DescribePhoneNumberOperatorAttributeRequest {
+	s.ExtendFunction = &v
 	return s
 }
 
@@ -2427,6 +2433,10 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
 		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
+		query["ExtendFunction"] = request.ExtendFunction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
