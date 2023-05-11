@@ -1,3 +1,6 @@
+2023-05-11 Version: v2.0.4
+- Supported listing PTS reports.
+
 2023-04-19 Version: v2.0.3
 - Support adjust pts scene speed.
 

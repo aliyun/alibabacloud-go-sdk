@@ -5743,6 +5743,194 @@ func (s *ListOpenJMeterScenesResponse) SetBody(v *ListOpenJMeterScenesResponseBo
 	return s
 }
 
+type ListPtsReportsRequest struct {
+	BeginTime  *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReportId   *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s ListPtsReportsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPtsReportsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPtsReportsRequest) SetBeginTime(v int64) *ListPtsReportsRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetEndTime(v int64) *ListPtsReportsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetKeyword(v string) *ListPtsReportsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetPageNumber(v int32) *ListPtsReportsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetPageSize(v int32) *ListPtsReportsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetReportId(v string) *ListPtsReportsRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *ListPtsReportsRequest) SetSceneId(v string) *ListPtsReportsRequest {
+	s.SceneId = &v
+	return s
+}
+
+type ListPtsReportsResponseBody struct {
+	Code           *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber     *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reports        []*ListPtsReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
+	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount     *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPtsReportsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPtsReportsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPtsReportsResponseBody) SetCode(v string) *ListPtsReportsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetHttpStatusCode(v int32) *ListPtsReportsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetMessage(v string) *ListPtsReportsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetPageNumber(v int32) *ListPtsReportsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetPageSize(v int32) *ListPtsReportsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetReports(v []*ListPtsReportsResponseBodyReports) *ListPtsReportsResponseBody {
+	s.Reports = v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetRequestId(v string) *ListPtsReportsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetSuccess(v bool) *ListPtsReportsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBody) SetTotalCount(v int64) *ListPtsReportsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPtsReportsResponseBodyReports struct {
+	ActualStartTime *int64  `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
+	Duration        *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ReportId        *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportName      *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+	Vum             *int64  `json:"Vum,omitempty" xml:"Vum,omitempty"`
+}
+
+func (s ListPtsReportsResponseBodyReports) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPtsReportsResponseBodyReports) GoString() string {
+	return s.String()
+}
+
+func (s *ListPtsReportsResponseBodyReports) SetActualStartTime(v int64) *ListPtsReportsResponseBodyReports {
+	s.ActualStartTime = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBodyReports) SetDuration(v string) *ListPtsReportsResponseBodyReports {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBodyReports) SetReportId(v string) *ListPtsReportsResponseBodyReports {
+	s.ReportId = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBodyReports) SetReportName(v string) *ListPtsReportsResponseBodyReports {
+	s.ReportName = &v
+	return s
+}
+
+func (s *ListPtsReportsResponseBodyReports) SetVum(v int64) *ListPtsReportsResponseBodyReports {
+	s.Vum = &v
+	return s
+}
+
+type ListPtsReportsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPtsReportsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPtsReportsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPtsReportsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPtsReportsResponse) SetHeaders(v map[string]*string) *ListPtsReportsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPtsReportsResponse) SetStatusCode(v int32) *ListPtsReportsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPtsReportsResponse) SetBody(v *ListPtsReportsResponseBody) *ListPtsReportsResponse {
+	s.Body = v
+	return s
+}
+
 type ListPtsSceneRequest struct {
 	KeyWord    *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -9687,6 +9875,74 @@ func (client *Client) ListOpenJMeterScenes(request *ListOpenJMeterScenesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOpenJMeterScenesResponse{}
 	_body, _err := client.ListOpenJMeterScenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPtsReportsWithOptions(request *ListPtsReportsRequest, runtime *util.RuntimeOptions) (_result *ListPtsReportsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		body["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPtsReports"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPtsReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPtsReports(request *ListPtsReportsRequest) (_result *ListPtsReportsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPtsReportsResponse{}
+	_body, _err := client.ListPtsReportsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
