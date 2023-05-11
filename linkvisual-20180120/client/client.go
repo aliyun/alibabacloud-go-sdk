@@ -2806,6 +2806,134 @@ func (s *DeleteLocalFileUploadJobResponse) SetBody(v *DeleteLocalFileUploadJobRe
 	return s
 }
 
+type DeletePictureRequest struct {
+	DeviceName    *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PictureIdList []*string `json:"PictureIdList,omitempty" xml:"PictureIdList,omitempty" type:"Repeated"`
+	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s DeletePictureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureRequest) SetDeviceName(v string) *DeletePictureRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *DeletePictureRequest) SetIotId(v string) *DeletePictureRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *DeletePictureRequest) SetIotInstanceId(v string) *DeletePictureRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeletePictureRequest) SetPictureIdList(v []*string) *DeletePictureRequest {
+	s.PictureIdList = v
+	return s
+}
+
+func (s *DeletePictureRequest) SetProductKey(v string) *DeletePictureRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type DeletePictureResponseBody struct {
+	Code         *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *DeletePictureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeletePictureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponseBody) SetCode(v string) *DeletePictureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetData(v *DeletePictureResponseBodyData) *DeletePictureResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetErrorMessage(v string) *DeletePictureResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetRequestId(v string) *DeletePictureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePictureResponseBody) SetSuccess(v bool) *DeletePictureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePictureResponseBodyData struct {
+	DeletedCount *int32 `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
+}
+
+func (s DeletePictureResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponseBodyData) SetDeletedCount(v int32) *DeletePictureResponseBodyData {
+	s.DeletedCount = &v
+	return s
+}
+
+type DeletePictureResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePictureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePictureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePictureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePictureResponse) SetHeaders(v map[string]*string) *DeletePictureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePictureResponse) SetStatusCode(v int32) *DeletePictureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePictureResponse) SetBody(v *DeletePictureResponseBody) *DeletePictureResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRecordRequest struct {
 	DeviceName    *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	FileNameList  []*string `json:"FileNameList,omitempty" xml:"FileNameList,omitempty" type:"Repeated"`
@@ -5133,6 +5261,7 @@ func (s *QueryDeviceRecordLifeCycleResponse) SetBody(v *QueryDeviceRecordLifeCyc
 
 type QueryDeviceVodUrlRequest struct {
 	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	EnableStun       *bool   `json:"EnableStun,omitempty" xml:"EnableStun,omitempty"`
 	EncryptType      *int32  `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	FileName         *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	IotId            *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -5155,6 +5284,11 @@ func (s QueryDeviceVodUrlRequest) GoString() string {
 
 func (s *QueryDeviceVodUrlRequest) SetDeviceName(v string) *QueryDeviceVodUrlRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceVodUrlRequest) SetEnableStun(v bool) *QueryDeviceVodUrlRequest {
+	s.EnableStun = &v
 	return s
 }
 
@@ -5251,6 +5385,7 @@ func (s *QueryDeviceVodUrlResponseBody) SetSuccess(v bool) *QueryDeviceVodUrlRes
 
 type QueryDeviceVodUrlResponseBodyData struct {
 	DecryptKey *string `json:"DecryptKey,omitempty" xml:"DecryptKey,omitempty"`
+	StunInfo   *string `json:"StunInfo,omitempty" xml:"StunInfo,omitempty"`
 	VodUrl     *string `json:"VodUrl,omitempty" xml:"VodUrl,omitempty"`
 }
 
@@ -5264,6 +5399,11 @@ func (s QueryDeviceVodUrlResponseBodyData) GoString() string {
 
 func (s *QueryDeviceVodUrlResponseBodyData) SetDecryptKey(v string) *QueryDeviceVodUrlResponseBodyData {
 	s.DecryptKey = &v
+	return s
+}
+
+func (s *QueryDeviceVodUrlResponseBodyData) SetStunInfo(v string) *QueryDeviceVodUrlResponseBodyData {
+	s.StunInfo = &v
 	return s
 }
 
@@ -5304,6 +5444,7 @@ func (s *QueryDeviceVodUrlResponse) SetBody(v *QueryDeviceVodUrlResponseBody) *Q
 type QueryDeviceVodUrlByTimeRequest struct {
 	BeginTime        *int32  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	EnableStun       *bool   `json:"EnableStun,omitempty" xml:"EnableStun,omitempty"`
 	EncryptType      *int32  `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	EndTime          *int32  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	IotId            *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -5331,6 +5472,11 @@ func (s *QueryDeviceVodUrlByTimeRequest) SetBeginTime(v int32) *QueryDeviceVodUr
 
 func (s *QueryDeviceVodUrlByTimeRequest) SetDeviceName(v string) *QueryDeviceVodUrlByTimeRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceVodUrlByTimeRequest) SetEnableStun(v bool) *QueryDeviceVodUrlByTimeRequest {
+	s.EnableStun = &v
 	return s
 }
 
@@ -5427,6 +5573,7 @@ func (s *QueryDeviceVodUrlByTimeResponseBody) SetSuccess(v bool) *QueryDeviceVod
 
 type QueryDeviceVodUrlByTimeResponseBodyData struct {
 	DecryptKey *string `json:"DecryptKey,omitempty" xml:"DecryptKey,omitempty"`
+	StunInfo   *string `json:"StunInfo,omitempty" xml:"StunInfo,omitempty"`
 	VodUrl     *string `json:"VodUrl,omitempty" xml:"VodUrl,omitempty"`
 }
 
@@ -5440,6 +5587,11 @@ func (s QueryDeviceVodUrlByTimeResponseBodyData) GoString() string {
 
 func (s *QueryDeviceVodUrlByTimeResponseBodyData) SetDecryptKey(v string) *QueryDeviceVodUrlByTimeResponseBodyData {
 	s.DecryptKey = &v
+	return s
+}
+
+func (s *QueryDeviceVodUrlByTimeResponseBodyData) SetStunInfo(v string) *QueryDeviceVodUrlByTimeResponseBodyData {
+	s.StunInfo = &v
 	return s
 }
 
@@ -8350,6 +8502,7 @@ func (s *QueryFaceUserIdByCustomUserIdResponse) SetBody(v *QueryFaceUserIdByCust
 type QueryLiveStreamingRequest struct {
 	CacheDuration    *int32  `json:"CacheDuration,omitempty" xml:"CacheDuration,omitempty"`
 	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	EnableStun       *bool   `json:"EnableStun,omitempty" xml:"EnableStun,omitempty"`
 	EncryptType      *int32  `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	ForceIFrame      *bool   `json:"ForceIFrame,omitempty" xml:"ForceIFrame,omitempty"`
 	IotId            *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -8377,6 +8530,11 @@ func (s *QueryLiveStreamingRequest) SetCacheDuration(v int32) *QueryLiveStreamin
 
 func (s *QueryLiveStreamingRequest) SetDeviceName(v string) *QueryLiveStreamingRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryLiveStreamingRequest) SetEnableStun(v bool) *QueryLiveStreamingRequest {
+	s.EnableStun = &v
 	return s
 }
 
@@ -8472,8 +8630,9 @@ func (s *QueryLiveStreamingResponseBody) SetSuccess(v bool) *QueryLiveStreamingR
 }
 
 type QueryLiveStreamingResponseBodyData struct {
-	DecryptKey *string `json:"DecryptKey,omitempty" xml:"DecryptKey,omitempty"`
-	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RelayDecryptKey *string `json:"RelayDecryptKey,omitempty" xml:"RelayDecryptKey,omitempty"`
+	StunInfo        *string `json:"StunInfo,omitempty" xml:"StunInfo,omitempty"`
 }
 
 func (s QueryLiveStreamingResponseBodyData) String() string {
@@ -8484,13 +8643,18 @@ func (s QueryLiveStreamingResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *QueryLiveStreamingResponseBodyData) SetDecryptKey(v string) *QueryLiveStreamingResponseBodyData {
-	s.DecryptKey = &v
+func (s *QueryLiveStreamingResponseBodyData) SetPath(v string) *QueryLiveStreamingResponseBodyData {
+	s.Path = &v
 	return s
 }
 
-func (s *QueryLiveStreamingResponseBodyData) SetPath(v string) *QueryLiveStreamingResponseBodyData {
-	s.Path = &v
+func (s *QueryLiveStreamingResponseBodyData) SetRelayDecryptKey(v string) *QueryLiveStreamingResponseBodyData {
+	s.RelayDecryptKey = &v
+	return s
+}
+
+func (s *QueryLiveStreamingResponseBodyData) SetStunInfo(v string) *QueryLiveStreamingResponseBodyData {
+	s.StunInfo = &v
 	return s
 }
 
@@ -13448,6 +13612,99 @@ func (s *UpdateFaceUserGroupAndDeviceGroupRelationResponse) SetBody(v *UpdateFac
 	return s
 }
 
+type UpdateInstanceInternetProtocolRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	IpVersion     *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+}
+
+func (s UpdateInstanceInternetProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceInternetProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceInternetProtocolRequest) SetIotInstanceId(v string) *UpdateInstanceInternetProtocolRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolRequest) SetIpVersion(v string) *UpdateInstanceInternetProtocolRequest {
+	s.IpVersion = &v
+	return s
+}
+
+type UpdateInstanceInternetProtocolResponseBody struct {
+	Code         *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateInstanceInternetProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceInternetProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceInternetProtocolResponseBody) SetCode(v string) *UpdateInstanceInternetProtocolResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponseBody) SetData(v map[string]interface{}) *UpdateInstanceInternetProtocolResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponseBody) SetErrorMessage(v string) *UpdateInstanceInternetProtocolResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponseBody) SetRequestId(v string) *UpdateInstanceInternetProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponseBody) SetSuccess(v bool) *UpdateInstanceInternetProtocolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateInstanceInternetProtocolResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceInternetProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceInternetProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceInternetProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceInternetProtocolResponse) SetHeaders(v map[string]*string) *UpdateInstanceInternetProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponse) SetStatusCode(v int32) *UpdateInstanceInternetProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceInternetProtocolResponse) SetBody(v *UpdateInstanceInternetProtocolResponseBody) *UpdateInstanceInternetProtocolResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePictureSearchAppRequest struct {
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -15263,6 +15520,66 @@ func (client *Client) DeleteLocalFileUploadJob(request *DeleteLocalFileUploadJob
 	return _result, _err
 }
 
+func (client *Client) DeletePictureWithOptions(request *DeletePictureRequest, runtime *util.RuntimeOptions) (_result *DeletePictureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PictureIdList)) {
+		query["PictureIdList"] = request.PictureIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePicture"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePictureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePicture(request *DeletePictureRequest) (_result *DeletePictureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePictureResponse{}
+	_body, _err := client.DeletePictureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteRecordWithOptions(request *DeleteRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16161,6 +16478,10 @@ func (client *Client) QueryDeviceVodUrlWithOptions(request *QueryDeviceVodUrlReq
 		query["DeviceName"] = request.DeviceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableStun)) {
+		query["EnableStun"] = request.EnableStun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
 		query["EncryptType"] = request.EncryptType
 	}
@@ -16247,6 +16568,10 @@ func (client *Client) QueryDeviceVodUrlByTimeWithOptions(request *QueryDeviceVod
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
 		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStun)) {
+		query["EnableStun"] = request.EnableStun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
@@ -17175,6 +17500,10 @@ func (client *Client) QueryLiveStreamingWithOptions(request *QueryLiveStreamingR
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
 		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStun)) {
+		query["EnableStun"] = request.EnableStun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptType)) {
@@ -19164,6 +19493,54 @@ func (client *Client) UpdateFaceUserGroupAndDeviceGroupRelation(request *UpdateF
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFaceUserGroupAndDeviceGroupRelationResponse{}
 	_body, _err := client.UpdateFaceUserGroupAndDeviceGroupRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceInternetProtocolWithOptions(request *UpdateInstanceInternetProtocolRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceInternetProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceInternetProtocol"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceInternetProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceInternetProtocol(request *UpdateInstanceInternetProtocolRequest) (_result *UpdateInstanceInternetProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceInternetProtocolResponse{}
+	_body, _err := client.UpdateInstanceInternetProtocolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
