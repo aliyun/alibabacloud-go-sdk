@@ -88,11 +88,24 @@ func (s *AddDataLevelPermissionRuleUsersResponse) SetBody(v *AddDataLevelPermiss
 }
 
 type AddDataLevelPermissionWhiteListRequest struct {
-	CubeId      *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// Operation Type: You can set this parameter to one of the following values.
+	//
+	// *   ADD: Add a whitelist
+	// *   DELETE: deletes a whitelist.
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	RuleType    *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	TargetIds   *string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty"`
-	TargetType  *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The type of row-level permissions.
+	//
+	// *   ROW_LEVEL: row-level permissions,
+	// *   COLUMN_LEVEL: column-level permissions
+	RuleType  *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	TargetIds *string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty"`
+	// Modify the type of the whitelist:
+	//
+	// *   1: user
+	// *   2: user group
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s AddDataLevelPermissionWhiteListRequest) String() string {
@@ -187,11 +200,27 @@ func (s *AddDataLevelPermissionWhiteListResponse) SetBody(v *AddDataLevelPermiss
 }
 
 type AddShareReportRequest struct {
-	AuthPoint   *int32  `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
-	ExpireDate  *int64  `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ShareToId   *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
-	ShareToType *int32  `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
-	WorksId     *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// The scope of authorization. Valid values:
+	//
+	// *   1: view only
+	// *   3: View and export
+	AuthPoint *int32 `json:"AuthPoint,omitempty" xml:"AuthPoint,omitempty"`
+	// The validity period of the share. The value is a timestamp in milliseconds.
+	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
+	//
+	// *   If ShareToType is 0 (user), ShareTo is the user ID.
+	// *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
+	// *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	ShareToId *string `json:"ShareToId,omitempty" xml:"ShareToId,omitempty"`
+	// The share type of the template. Valid values:
+	//
+	// *   0: user
+	// *   1: user group
+	// *   2: organization
+	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
+	// The ID of the shared work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
 func (s AddShareReportRequest) String() string {
@@ -228,9 +257,18 @@ func (s *AddShareReportRequest) SetWorksId(v string) *AddShareReportRequest {
 }
 
 type AddShareReportResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddShareReportResponseBody) String() string {
@@ -286,7 +324,8 @@ func (s *AddShareReportResponse) SetBody(v *AddShareReportResponseBody) *AddShar
 }
 
 type AddUserRequest struct {
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Add organization members.
 	AdminUser     *bool   `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
 	AuthAdminUser *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
 	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
@@ -432,8 +471,16 @@ func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
 }
 
 type AddUserGroupMemberRequest struct {
+	// The result of adding members to a user group is returned. Valid values:
+	//
+	// *   true: The task is added.
+	// *   false: The tag failed to be added.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserIdList  *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	UserIdList *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
 func (s AddUserGroupMemberRequest) String() string {
@@ -513,8 +560,10 @@ func (s *AddUserGroupMemberResponse) SetBody(v *AddUserGroupMemberResponseBody) 
 }
 
 type AddUserGroupMembersRequest struct {
+	// The IDs of the user groups. Separate the IDs with commas (,). Example: aGroupId,bGroupId,cGroupIds
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID of the Quick BI.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddUserGroupMembersRequest) String() string {
@@ -536,9 +585,18 @@ func (s *AddUserGroupMembersRequest) SetUserId(v string) *AddUserGroupMembersReq
 }
 
 type AddUserGroupMembersResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddUserGroupMembersResponseBody) String() string {
@@ -883,12 +941,103 @@ func (s *AddWorkspaceUsersResponse) SetBody(v *AddWorkspaceUsersResponseBody) *A
 	return s
 }
 
+type AllotDatasetAccelerationTaskRequest struct {
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+}
+
+func (s AllotDatasetAccelerationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllotDatasetAccelerationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AllotDatasetAccelerationTaskRequest) SetCubeId(v string) *AllotDatasetAccelerationTaskRequest {
+	s.CubeId = &v
+	return s
+}
+
+type AllotDatasetAccelerationTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AllotDatasetAccelerationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllotDatasetAccelerationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AllotDatasetAccelerationTaskResponseBody) SetRequestId(v string) *AllotDatasetAccelerationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AllotDatasetAccelerationTaskResponseBody) SetResult(v bool) *AllotDatasetAccelerationTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *AllotDatasetAccelerationTaskResponseBody) SetSuccess(v bool) *AllotDatasetAccelerationTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AllotDatasetAccelerationTaskResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AllotDatasetAccelerationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AllotDatasetAccelerationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllotDatasetAccelerationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AllotDatasetAccelerationTaskResponse) SetHeaders(v map[string]*string) *AllotDatasetAccelerationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AllotDatasetAccelerationTaskResponse) SetStatusCode(v int32) *AllotDatasetAccelerationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AllotDatasetAccelerationTaskResponse) SetBody(v *AllotDatasetAccelerationTaskResponseBody) *AllotDatasetAccelerationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type AuthorizeMenuRequest struct {
-	AuthPointsValue *int32  `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
-	DataPortalId    *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
-	MenuIds         *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
-	UserGroupIds    *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
-	UserIds         *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	// Authorizes the permissions of the menu. Valid values:
+	//
+	// *   1: view
+	// *   3: View + Export (default)
+	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
+	// The ID of the BI portal.
+	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
+	// The menu ID of the BI portal leaf node.
+	//
+	// *   The directory menu cannot be authorized.
+	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
+	MenuIds *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
+	// The IDs of the user groups.
+	//
+	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	// *   UserGroupIds and UserIds cannot be empty at the same time
+	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
+	// The IDs of the end users. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	//
+	// *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 200.
+	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
 func (s AuthorizeMenuRequest) String() string {
@@ -925,9 +1074,15 @@ func (s *AuthorizeMenuRequest) SetUserIds(v string) *AuthorizeMenuRequest {
 }
 
 type AuthorizeMenuResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *int32  `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of authorized menus.
+	Result *int32 `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AuthorizeMenuResponseBody) String() string {
@@ -1331,9 +1486,20 @@ func (s *CancelCollectionResponse) SetBody(v *CancelCollectionResponseBody) *Can
 }
 
 type CancelReportShareRequest struct {
-	ReportId    *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	ShareToIds  *string `json:"ShareToIds,omitempty" xml:"ShareToIds,omitempty"`
-	ShareToType *int32  `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
+	// The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
+	//
+	// *   If ShareToType is 0 (user), ShareTo is the user ID.
+	// *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
+	// *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+	ShareToIds *string `json:"ShareToIds,omitempty" xml:"ShareToIds,omitempty"`
+	// The deletion method. Valid values:
+	//
+	// *   0: Delete by user
+	// *   1: Delete by user group
+	// *   2: Delete by organization
+	ShareToType *int32 `json:"ShareToType,omitempty" xml:"ShareToType,omitempty"`
 }
 
 func (s CancelReportShareRequest) String() string {
@@ -1360,9 +1526,18 @@ func (s *CancelReportShareRequest) SetShareToType(v int32) *CancelReportShareReq
 }
 
 type CancelReportShareResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelReportShareResponseBody) String() string {
@@ -1418,7 +1593,12 @@ func (s *CancelReportShareResponse) SetBody(v *CancelReportShareResponseBody) *C
 }
 
 type ChangeVisibilityModelRequest struct {
-	DataPortalId       *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
+	// The number of menus that are successfully modified.
+	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	MenuIds            *string `json:"MenuIds,omitempty" xml:"MenuIds,omitempty"`
 	ShowOnlyWithAccess *bool   `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
 }
@@ -1709,10 +1889,26 @@ func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicke
 }
 
 type CreateUserGroupRequest struct {
-	ParentUserGroupId    *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	// The ID of the parent user group. You can add new user groups to this group:
+	//
+	// *   If you enter the ID of a parent user group, the new user group is added to the user group with the ID.
+	// *   If you enter -1, the new user group is added to the root directory.
+	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	// The description of the user group.
+	//
+	// *   Format verification: Maximum length 255
+	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
-	UserGroupId          *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserGroupName        *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	// The unique ID of the user group.
+	//
+	// *   If you specify the UserGroupId parameter, the system automatically generates the UserGroupId parameter. If you specify the UserGroupId parameter, the user ID is used as the user group ID. You must ensure that the user ID is unique within the organization.
+	// *   Format verification: Maximum length 64, cannot be -1,
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The name of the RAM user group.
+	//
+	// *   Format verification: Maximum length 255
+	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
 func (s CreateUserGroupRequest) String() string {
@@ -1744,9 +1940,15 @@ func (s *CreateUserGroupRequest) SetUserGroupName(v string) *CreateUserGroupRequ
 }
 
 type CreateUserGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the added user group is returned. An empty string \"\" is returned if the add fails.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateUserGroupResponseBody) String() string {
@@ -1802,8 +2004,13 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 }
 
 type DelayTicketExpireTimeRequest struct {
-	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Ticket     *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// The time to postpone.
+	//
+	// *   Unit: minutes. Valid values: 0 to 240. Unit: minutes. Valid values: 4 hours.
+	// *   Expired bills cannot be extended.
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The value of the third-party embedded ticket, that is, the accessTicket value in the URL.
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s DelayTicketExpireTimeRequest) String() string {
@@ -1825,9 +2032,18 @@ func (s *DelayTicketExpireTimeRequest) SetTicket(v string) *DelayTicketExpireTim
 }
 
 type DelayTicketExpireTimeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the extension is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DelayTicketExpireTimeResponseBody) String() string {
@@ -2039,6 +2255,7 @@ func (s *DeleteDataLevelRuleConfigResponse) SetBody(v *DeleteDataLevelRuleConfig
 }
 
 type DeleteTicketRequest struct {
+	// Deletes a specified ticket from an embedded report.
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -2115,7 +2332,8 @@ func (s *DeleteTicketResponse) SetBody(v *DeleteTicketResponseBody) *DeleteTicke
 
 type DeleteUserRequest struct {
 	TransferUserId *string `json:"TransferUserId,omitempty" xml:"TransferUserId,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Deletes a user from a specified organization.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteUserRequest) String() string {
@@ -2276,6 +2494,7 @@ func (s *DeleteUserFromWorkspaceResponse) SetBody(v *DeleteUserFromWorkspaceResp
 }
 
 type DeleteUserGroupRequest struct {
+	// The ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -2293,9 +2512,18 @@ func (s *DeleteUserGroupRequest) SetUserGroupId(v string) *DeleteUserGroupReques
 }
 
 type DeleteUserGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserGroupResponseBody) String() string {
@@ -2351,8 +2579,10 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 }
 
 type DeleteUserGroupMemberRequest struct {
+	// The ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID of the Quick BI.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeleteUserGroupMemberRequest) String() string {
@@ -2374,9 +2604,18 @@ func (s *DeleteUserGroupMemberRequest) SetUserId(v string) *DeleteUserGroupMembe
 }
 
 type DeleteUserGroupMemberResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Returns the result of deleting a user group member. Valid values:
+	//
+	// *   true: The task is deleted.
+	// *   false: The deletion failed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteUserGroupMemberResponseBody) String() string {
@@ -2588,6 +2827,7 @@ func (s *DeleteUserTagMetaResponse) SetBody(v *DeleteUserTagMetaResponseBody) *D
 }
 
 type GetUserGroupInfoRequest struct {
+	// The ID of the user group.
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 
@@ -2727,7 +2967,207 @@ func (s *GetUserGroupInfoResponse) SetBody(v *GetUserGroupInfoResponseBody) *Get
 	return s
 }
 
+type ListApiDatasourceRequest struct {
+	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	PageNum     *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListApiDatasourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiDatasourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiDatasourceRequest) SetKeyWord(v string) *ListApiDatasourceRequest {
+	s.KeyWord = &v
+	return s
+}
+
+func (s *ListApiDatasourceRequest) SetPageNum(v int32) *ListApiDatasourceRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListApiDatasourceRequest) SetPageSize(v int32) *ListApiDatasourceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApiDatasourceRequest) SetWorkspaceId(v string) *ListApiDatasourceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListApiDatasourceResponseBody struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListApiDatasourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListApiDatasourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiDatasourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiDatasourceResponseBody) SetRequestId(v string) *ListApiDatasourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBody) SetResult(v *ListApiDatasourceResponseBodyResult) *ListApiDatasourceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBody) SetSuccess(v bool) *ListApiDatasourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListApiDatasourceResponseBodyResult struct {
+	Data     []*ListApiDatasourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageNum  *int32                                     `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalNum *int32                                     `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListApiDatasourceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiDatasourceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiDatasourceResponseBodyResult) SetData(v []*ListApiDatasourceResponseBodyResultData) *ListApiDatasourceResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResult) SetPageNum(v int32) *ListApiDatasourceResponseBodyResult {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResult) SetPageSize(v int32) *ListApiDatasourceResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResult) SetTotalNum(v int32) *ListApiDatasourceResponseBodyResult {
+	s.TotalNum = &v
+	return s
+}
+
+type ListApiDatasourceResponseBodyResultData struct {
+	ApiId          *string  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Body           *string  `json:"Body,omitempty" xml:"Body,omitempty"`
+	DataSize       *float32 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DateUpdateTime *string  `json:"DateUpdateTime,omitempty" xml:"DateUpdateTime,omitempty"`
+	GmtCreate      *string  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	JobId          *string  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Parameters     *string  `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ShowName       *string  `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	StatusType     *int32   `json:"StatusType,omitempty" xml:"StatusType,omitempty"`
+}
+
+func (s ListApiDatasourceResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiDatasourceResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetApiId(v string) *ListApiDatasourceResponseBodyResultData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetBody(v string) *ListApiDatasourceResponseBodyResultData {
+	s.Body = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetDataSize(v float32) *ListApiDatasourceResponseBodyResultData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetDateUpdateTime(v string) *ListApiDatasourceResponseBodyResultData {
+	s.DateUpdateTime = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetGmtCreate(v string) *ListApiDatasourceResponseBodyResultData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetGmtModified(v string) *ListApiDatasourceResponseBodyResultData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetJobId(v string) *ListApiDatasourceResponseBodyResultData {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetParameters(v string) *ListApiDatasourceResponseBodyResultData {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetShowName(v string) *ListApiDatasourceResponseBodyResultData {
+	s.ShowName = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponseBodyResultData) SetStatusType(v int32) *ListApiDatasourceResponseBodyResultData {
+	s.StatusType = &v
+	return s
+}
+
+type ListApiDatasourceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApiDatasourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApiDatasourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiDatasourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiDatasourceResponse) SetHeaders(v map[string]*string) *ListApiDatasourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApiDatasourceResponse) SetStatusCode(v int32) *ListApiDatasourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApiDatasourceResponse) SetBody(v *ListApiDatasourceResponseBody) *ListApiDatasourceResponse {
+	s.Body = v
+	return s
+}
+
 type ListByUserGroupIdRequest struct {
+	// The ID of the user group that you want to query. Separate multiple user groups with commas (,).
 	UserGroupIds *string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty"`
 }
 
@@ -2745,9 +3185,15 @@ func (s *ListByUserGroupIdRequest) SetUserGroupIds(v string) *ListByUserGroupIdR
 }
 
 type ListByUserGroupIdResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *ListByUserGroupIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The user group query result is returned.
+	Result *ListByUserGroupIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListByUserGroupIdResponseBody) String() string {
@@ -2774,8 +3220,9 @@ func (s *ListByUserGroupIdResponseBody) SetSuccess(v bool) *ListByUserGroupIdRes
 }
 
 type ListByUserGroupIdResponseBodyResult struct {
-	FailedUserGroupIds []*string                                             `json:"FailedUserGroupIds,omitempty" xml:"FailedUserGroupIds,omitempty" type:"Repeated"`
-	UserGroupModels    []*ListByUserGroupIdResponseBodyResultUserGroupModels `json:"UserGroupModels,omitempty" xml:"UserGroupModels,omitempty" type:"Repeated"`
+	FailedUserGroupIds []*string `json:"FailedUserGroupIds,omitempty" xml:"FailedUserGroupIds,omitempty" type:"Repeated"`
+	// The details of the user group that was queried.
+	UserGroupModels []*ListByUserGroupIdResponseBodyResultUserGroupModels `json:"UserGroupModels,omitempty" xml:"UserGroupModels,omitempty" type:"Repeated"`
 }
 
 func (s ListByUserGroupIdResponseBodyResult) String() string {
@@ -2797,15 +3244,24 @@ func (s *ListByUserGroupIdResponseBodyResult) SetUserGroupModels(v []*ListByUser
 }
 
 type ListByUserGroupIdResponseBodyResultUserGroupModels struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser        *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	IdentifiedPath    *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	ModifiedTime      *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ModifyUser        *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The time when the Secret was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The UserID of the creator in the Quick BI.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The path of the user group.
+	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// The time when the protection policy was last modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The UserID of the modifier in the Quick BI.
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The ID of the parent user group.
 	ParentUsergroupId *string `json:"ParentUsergroupId,omitempty" xml:"ParentUsergroupId,omitempty"`
-	UsergroupDesc     *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
-	UsergroupId       *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
-	UsergroupName     *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
+	// The description of the user group.
+	UsergroupDesc *string `json:"UsergroupDesc,omitempty" xml:"UsergroupDesc,omitempty"`
+	// The ID of the user group.
+	UsergroupId *string `json:"UsergroupId,omitempty" xml:"UsergroupId,omitempty"`
+	// The name of the user group.
+	UsergroupName *string `json:"UsergroupName,omitempty" xml:"UsergroupName,omitempty"`
 }
 
 func (s ListByUserGroupIdResponseBodyResultUserGroupModels) String() string {
@@ -2891,6 +3347,7 @@ func (s *ListByUserGroupIdResponse) SetBody(v *ListByUserGroupIdResponseBody) *L
 }
 
 type ListCollectionsRequest struct {
+	// The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2908,9 +3365,11 @@ func (s *ListCollectionsRequest) SetUserId(v string) *ListCollectionsRequest {
 }
 
 type ListCollectionsResponseBody struct {
+	// The ID of the request.
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListCollectionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The primary key ID of the favorite record.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCollectionsResponseBody) String() string {
@@ -3019,7 +3478,12 @@ func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListC
 }
 
 type ListCubeDataLevelPermissionConfigRequest struct {
-	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	CubeId *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	// The type of the dataset row and column permission. Valid values:
+	//
+	// *   ROW_LEVEL: row-level permissions
+	// *   COLUMN_LEVEL: column-level permissions
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -3042,9 +3506,16 @@ func (s *ListCubeDataLevelPermissionConfigRequest) SetRuleType(v string) *ListCu
 }
 
 type ListCubeDataLevelPermissionConfigResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// { "isOpen": 1, "extraConfigModel": { // Additional configuration information "ruleType": "ROW_LEVEL", // The row-level permission type. "missHitPolicy": "NONE", // The hit rule policy: NONE has no permissions, and ALL has permissions. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }, "ruleType": "ROW_LEVEL", // Row-column permission type\
+	// "ruleModels": \[ { "ruleUsersModel": { // The target population. "userGroups": \[ "0d5fb19b- ****-1248 fc27ca51", // The ID of the user group. "4aa3f089-****-85f0-0e8ac7c2dee9" ], "users": \[ "HuangJia ***2e3fa822", // The ID of the user. "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW_FIELD", // The row-column permission type. "ruleContentJson": "{"conditionNode":{"caption": " Period ","isMeasure":false,"pathId":"7d3b073bc6","relationOperator":"not-null","name":"7d3b073bc6","value":{"value":\[""}UM]," ENueType "} // The JSON string of the row-column permission rule. "ruleOriginConfigJson": "{"operator":"and","operands":\[{"labelName": " Period ","isValid":true,"uniqueId":"5","fieldId":"7d3b073bc6","error":false,"fieldType":"string",": default "" value":{"conditionOp":"not-null","conditionValue":""},"valueType":"ENUM"}}],"isRelation":true}" }, // The fixed-format JSON string required by the frontend "isOpen": 1, // The status of the row-column permission configuration. 1. On. 0. Off. "hitTakeEffect": 1, // Specifies whether the rule takes effect after a column-level permission is hit. 1 takes effect and 0 takes effect. "ruleName": "Test row-level permission_Do not delete", // The name of the row-column permission rule. "ruleLevelType": "ROW_LEVEL", // The row-column permission type. "ruleId": "a5bb24 da-772f-45e8-a43c-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b", // The ID of the dataset. "ruleTargetScope": "OTHERS" rule takes effect: ALL owner and OTHERS designated owner. } ], "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCubeDataLevelPermissionConfigResponseBody) String() string {
@@ -3456,6 +3927,7 @@ func (s *ListFavoriteReportsResponse) SetBody(v *ListFavoriteReportsResponseBody
 }
 
 type ListPortalMenuAuthorizationRequest struct {
+	// The ID of the BI portal.
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
 }
 
@@ -3473,9 +3945,15 @@ func (s *ListPortalMenuAuthorizationRequest) SetDataPortalId(v string) *ListPort
 }
 
 type ListPortalMenuAuthorizationResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListPortalMenuAuthorizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of authorization details of the portal menu.
+	Result []*ListPortalMenuAuthorizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPortalMenuAuthorizationResponseBody) String() string {
@@ -3502,9 +3980,15 @@ func (s *ListPortalMenuAuthorizationResponseBody) SetSuccess(v bool) *ListPortal
 }
 
 type ListPortalMenuAuthorizationResponseBodyResult struct {
-	MenuId             *string                                                   `json:"MenuId,omitempty" xml:"MenuId,omitempty"`
-	Receivers          []*ListPortalMenuAuthorizationResponseBodyResultReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
-	ShowOnlyWithAccess *bool                                                     `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
+	// The menu ID of the BI portal leaf node.
+	MenuId *string `json:"MenuId,omitempty" xml:"MenuId,omitempty"`
+	// The details of the object to which the menu is authorized.
+	Receivers []*ListPortalMenuAuthorizationResponseBodyResultReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
+	// Whether only authorization is visible. Valid values:
+	//
+	// *   true: Only the authorization is visible.
+	// *   false: Both are visible.
+	ShowOnlyWithAccess *bool `json:"ShowOnlyWithAccess,omitempty" xml:"ShowOnlyWithAccess,omitempty"`
 }
 
 func (s ListPortalMenuAuthorizationResponseBodyResult) String() string {
@@ -3531,8 +4015,13 @@ func (s *ListPortalMenuAuthorizationResponseBodyResult) SetShowOnlyWithAccess(v 
 }
 
 type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {
-	ReceiverId   *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
-	ReceiverType *int32  `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The ID of the authorization object.
+	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+	// The type of the authorization object. Valid values:
+	//
+	// *   0: user
+	// *   1: user group
+	ReceiverType *int32 `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
 }
 
 func (s ListPortalMenuAuthorizationResponseBodyResultReceivers) String() string {
@@ -3583,8 +4072,10 @@ func (s *ListPortalMenuAuthorizationResponse) SetBody(v *ListPortalMenuAuthoriza
 }
 
 type ListPortalMenusRequest struct {
+	// The ID of the BI portal.
 	DataPortalId *string `json:"DataPortalId,omitempty" xml:"DataPortalId,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID in the Quick BI. When passed in, the list displays only the menus that the user has permissions on.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListPortalMenusRequest) String() string {
@@ -3606,9 +4097,36 @@ func (s *ListPortalMenusRequest) SetUserId(v string) *ListPortalMenusRequest {
 }
 
 type ListPortalMenusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// A JSON string that levels the details of the portal menu list. Valid values:
+	//
+	// *   menuType: the type of the menu.
+	//
+	//     *   0: dashboard
+	//     *   1: outer chain
+	//     *   2: workbook
+	//     *   4: directory folder
+	//     *   5: form filling
+	//     *   6: self-service data retrieval
+	//
+	// *   menuId: menu ID
+	//
+	// *   uri: ID or URL of the resource associated with the menu
+	//
+	// *   showOnlyWithAccess: Authorized Only Visible
+	//
+	// *   menuName: menu display name
+	//
+	// *   dependentPermisson: whether the report resource associated with the menu has permissions
+	//
+	// *   children: submenu
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPortalMenusResponseBody) String() string {
@@ -3740,6 +4258,7 @@ func (s *ListRecentViewReportsResponseBody) SetSuccess(v bool) *ListRecentViewRe
 }
 
 type ListRecentViewReportsResponseBodyResult struct {
+	Attention  *string                                        `json:"Attention,omitempty" xml:"Attention,omitempty"`
 	Data       []*ListRecentViewReportsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	PageNum    *int32                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3753,6 +4272,11 @@ func (s ListRecentViewReportsResponseBodyResult) String() string {
 
 func (s ListRecentViewReportsResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *ListRecentViewReportsResponseBodyResult) SetAttention(v string) *ListRecentViewReportsResponseBodyResult {
+	s.Attention = &v
+	return s
 }
 
 func (s *ListRecentViewReportsResponseBodyResult) SetData(v []*ListRecentViewReportsResponseBodyResultData) *ListRecentViewReportsResponseBodyResult {
@@ -4134,6 +4658,7 @@ func (s *ListSharedReportsResponse) SetBody(v *ListSharedReportsResponseBody) *L
 }
 
 type ListUserGroupsByUserIdRequest struct {
+	// The ID of the user group.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4153,7 +4678,8 @@ func (s *ListUserGroupsByUserIdRequest) SetUserId(v string) *ListUserGroupsByUse
 type ListUserGroupsByUserIdResponseBody struct {
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ListUserGroupsByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The user group modifier. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListUserGroupsByUserIdResponseBody) String() string {
@@ -4273,9 +4799,122 @@ func (s *ListUserGroupsByUserIdResponse) SetBody(v *ListUserGroupsByUserIdRespon
 	return s
 }
 
+type ModifyApiDatasourceParametersRequest struct {
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Parameters  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ModifyApiDatasourceParametersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiDatasourceParametersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiDatasourceParametersRequest) SetApiId(v string) *ModifyApiDatasourceParametersRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersRequest) SetParameters(v string) *ModifyApiDatasourceParametersRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersRequest) SetWorkspaceId(v string) *ModifyApiDatasourceParametersRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ModifyApiDatasourceParametersResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApiDatasourceParametersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiDatasourceParametersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiDatasourceParametersResponseBody) SetRequestId(v string) *ModifyApiDatasourceParametersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersResponseBody) SetResult(v bool) *ModifyApiDatasourceParametersResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersResponseBody) SetSuccess(v bool) *ModifyApiDatasourceParametersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApiDatasourceParametersResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyApiDatasourceParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyApiDatasourceParametersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiDatasourceParametersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiDatasourceParametersResponse) SetHeaders(v map[string]*string) *ModifyApiDatasourceParametersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersResponse) SetStatusCode(v int32) *ModifyApiDatasourceParametersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourceParametersResponseBody) *ModifyApiDatasourceParametersResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDataServiceRequest struct {
-	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	Conditions   *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	// Call an API that is created in DataService Studio.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// # Prerequisites
+	//
+	// You can use the Quick BI data service to create an API for the data service. For more information, see [Data service](~~144980~~).
+	//
+	// # Limits
+	//
+	// *   The Data Service feature is available only to Professional customers.
+	// *   The timeout period for API calls is 60s. The QPS of a single API is 10 times per second.
+	// *   If row-level permissions are enabled for datasets that are referenced by a Data Service API, the API may be blocked by row-level permission policies.
+	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	// The query conditions of the data service. The query conditions are specified in the form of keys and values. A string of the map type. Key is the name of the request parameters parameter, and Value is the value of the request parameters parameter. Key and Value must appear in pairs.
+	//
+	// **Note:**
+	//
+	// *   If a value contains multiple values, the value is a List in the JSON format. Example: `area=["East China","North China","South China"]`
+	//
+	// *   For dates, different input parameter formats are provided based on different types:
+	//
+	//     *   Year: 2019
+	//     *   Season: 2019Q1
+	//     *   Month: 201901 (carry 0)
+	//     *   Week: 2019-52
+	//     *   Day: 20190101
+	//     *   Hours: 14:00:00 (minutes and seconds are 00)
+	//     *   Minutes: 14:12:00 (seconds are 00)
+	//     *   Seconds: 14:34:34
 	ReturnFields *string `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty"`
 }
 
@@ -4303,9 +4942,15 @@ func (s *QueryDataServiceRequest) SetReturnFields(v string) *QueryDataServiceReq
 }
 
 type QueryDataServiceResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryDataServiceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The list of parameter names of the returned parameters. The value is a string of the List type.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Result *QueryDataServiceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// { "area": \["East China", "North China"], "shopping_date": "2019Q1", }
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDataServiceResponseBody) String() string {
@@ -4332,9 +4977,12 @@ func (s *QueryDataServiceResponseBody) SetSuccess(v bool) *QueryDataServiceRespo
 }
 
 type QueryDataServiceResponseBodyResult struct {
+	// The SQL of the request query.
 	Headers []*QueryDataServiceResponseBodyResultHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
-	Sql     *string                                      `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	Values  []map[string]interface{}                     `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	// The ID of the request.
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// Physical Field Name
+	Values []map[string]interface{} `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s QueryDataServiceResponseBodyResult) String() string {
@@ -4361,12 +5009,21 @@ func (s *QueryDataServiceResponseBodyResult) SetValues(v []map[string]interface{
 }
 
 type QueryDataServiceResponseBodyResultHeaders struct {
-	Aggregator  *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
-	Column      *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The field name, which corresponds to the physical table field name.
+	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
+	// The granularity of the dimension field. This field is returned only when the requested field is a date dimension or a geographical dimension. Valid values:
+	//
+	// *   Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
+	// *   Geographic information granularity: COUNTRY (international level), PROVINCE (provincial level), CITY (municipal level), XIAN (district /county), and REGION (regional level)
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// The column header.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The field type, which is used to distinguish whether the field type is a dimension or a measure.
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The data type of the field. generally have number, string, date, datetime, time, and geographic.
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// SELECT COMPANY_T\_1\_.\"area\" AS D_AREA\_2\_, COMPANY_T\_1\_.\"city\" AS D_CITY\_3\_, SUM(COMPANY_T\_1\_.\"profit_amt\") AS D_PROFIT\_4\_ FROM \"quickbi_test\".\"company_sales_record_copy\" AS COMPANY_T\_1\_ WHERE COMPANY_T\_1\_.\"area\" LIKE \"% China East %\" GROUP BY COMPANY_T\_1\_.\"area\", COMPANY_T\_1\_.\"city\" HAVING SUM(COMPANY_T\_1\_.\"order_amt\") > 1 LIMIT 0,10
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryDataServiceResponseBodyResultHeaders) String() string {
@@ -4512,6 +5169,7 @@ func (s *QueryDatasetDetailInfoResponse) SetBody(v *QueryDatasetDetailInfoRespon
 }
 
 type QueryDatasetInfoRequest struct {
+	// Queries information about a specified dataset.
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 }
 
@@ -4529,9 +5187,15 @@ func (s *QueryDatasetInfoRequest) SetDatasetId(v string) *QueryDatasetInfoReques
 }
 
 type QueryDatasetInfoResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryDatasetInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the operation is successfully returned. Valid values:
+	//
+	// *   true: The call is successful.
+	// *   false: The call fails.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	Result *QueryDatasetInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The unique ID of the dataset.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDatasetInfoResponseBody) String() string {
@@ -4558,23 +5222,51 @@ func (s *QueryDatasetInfoResponseBody) SetSuccess(v bool) *QueryDatasetInfoRespo
 }
 
 type QueryDatasetInfoResponseBodyResult struct {
+	// The unique ID of the dataset.
 	CubeTableList []*QueryDatasetInfoResponseBodyResultCubeTableList `json:"CubeTableList,omitempty" xml:"CubeTableList,omitempty" type:"Repeated"`
-	CustimzeSql   *bool                                              `json:"CustimzeSql,omitempty" xml:"CustimzeSql,omitempty"`
-	DatasetId     *string                                            `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetName   *string                                            `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The unique ID of the workspace to which the dataset belongs.
+	CustimzeSql *bool `json:"CustimzeSql,omitempty" xml:"CustimzeSql,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   mysql
+	// *   odps
+	// *   oracle
+	// *   ... Data source types supported by Quick BI such as
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The user ID of the dataset owner in the Quick BI.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// If it is a custom SQL table, this is the specific SQL.
 	DimensionList []*QueryDatasetInfoResponseBodyResultDimensionList `json:"DimensionList,omitempty" xml:"DimensionList,omitempty" type:"Repeated"`
-	Directory     *QueryDatasetInfoResponseBodyResultDirectory       `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	DsId          *string                                            `json:"DsId,omitempty" xml:"DsId,omitempty"`
-	DsName        *string                                            `json:"DsName,omitempty" xml:"DsName,omitempty"`
-	DsType        *string                                            `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	GmtCreate     *string                                            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModify     *string                                            `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	MeasureList   []*QueryDatasetInfoResponseBodyResultMeasureList   `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
-	OwnerId       *string                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName     *string                                            `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	RowLevel      *bool                                              `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
-	WorkspaceId   *string                                            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string                                            `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The unique ID of the metric.
+	Directory *QueryDatasetInfoResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The name of the data source.
+	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The time when the dataset was last modified.
+	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
+	// The point in time when the training dataset was created.
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// Indicates whether to customize SQL statements. Valid values:
+	//
+	// *   true
+	// *   false
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The information about the dataset.
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+	MeasureList []*QueryDatasetInfoResponseBodyResultMeasureList `json:"MeasureList,omitempty" xml:"MeasureList,omitempty" type:"Repeated"`
+	// Test Space
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The unique ID of the data source.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The name of the training dataset.
+	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
+	// Whether row-level permissions are enabled. Valid values:
+	//
+	// *   true: The VIP Netty channel is enabled.
+	// *   false: The VIP Netty channel is disabled.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Big Baby
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryDatasetInfoResponseBodyResult) String() string {
@@ -4671,14 +5363,33 @@ func (s *QueryDatasetInfoResponseBodyResult) SetWorkspaceName(v string) *QueryDa
 }
 
 type QueryDatasetInfoResponseBodyResultCubeTableList struct {
-	Caption      *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	Customsql    *bool   `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
+	// Indicates whether the data source table is valid. Valid values:
+	//
+	// *   true: data source table
+	// *   false: custom table
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The display name of the table.
+	Customsql *bool `json:"Customsql,omitempty" xml:"Customsql,omitempty"`
+	// The name of the table.
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	DsType       *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	FactTable    *bool   `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
-	Sql          *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UniqueId     *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
+	// The ID of the data source.
+	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	// The unique ID of the table.
+	FactTable *bool `json:"FactTable,omitempty" xml:"FactTable,omitempty"`
+	// Indicates whether the table is a custom SQL table. Valid values:
+	//
+	// *   true: custom SQL table
+	// *   false: non-custom SQL table
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The list of tables used by the dataset.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// *   mysql
+	// *   odps
+	// *   oracle
+	// *   ... and other data source types supported by Quick BI
+	UniqueId *string `json:"UniqueId,omitempty" xml:"UniqueId,omitempty"`
 }
 
 func (s QueryDatasetInfoResponseBodyResultCubeTableList) String() string {
@@ -4730,15 +5441,32 @@ func (s *QueryDatasetInfoResponseBodyResultCubeTableList) SetUniqueId(v string) 
 }
 
 type QueryDatasetInfoResponseBodyResultDimensionList struct {
-	Caption       *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	DataType      *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The unique ID of the field that is referenced by the group measure. Non-NULL if and only if the metric is a grouping metric.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// A list of all dimensions in the dataset.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The actual physical field.
 	DimensionType *string `json:"DimensionType,omitempty" xml:"DimensionType,omitempty"`
-	Expression    *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	FactColumn    *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
-	Granularity   *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	RefUid        *string `json:"RefUid,omitempty" xml:"RefUid,omitempty"`
+	// Data type; value:
+	//
+	// *   string: character
+	// *   number: a number
+	// *   datetime: time
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// Expression for a calculated dimension; valid only for calculated dimensions.
+	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// The type of the dimension. Valid values:
+	//
+	// *   standard_dimension: General Dimension
+	// *   calculate_dimension: calculating dimensions
+	// *   group_dimension: grouping dimensions
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The granularity.
+	RefUid *string `json:"RefUid,omitempty" xml:"RefUid,omitempty"`
+	// The ARN.
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
-	Uid           *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The display name of the dimension.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryDatasetInfoResponseBodyResultDimensionList) String() string {
@@ -4795,9 +5523,13 @@ func (s *QueryDatasetInfoResponseBodyResultDimensionList) SetUid(v string) *Quer
 }
 
 type QueryDatasetInfoResponseBodyResultDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// Test directory
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Test directory
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The information about the directory to which the dataset belongs.
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The path of the directory ID, for example, aa/bb/cc/dd.
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -4830,13 +5562,27 @@ func (s *QueryDatasetInfoResponseBodyResultDirectory) SetPathName(v string) *Que
 }
 
 type QueryDatasetInfoResponseBodyResultMeasureList struct {
-	Caption       *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	DataType      *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Expression    *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	FactColumn    *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
-	MeasureType   *string `json:"MeasureType,omitempty" xml:"MeasureType,omitempty"`
+	// The actual physical field.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// A list of all measures for the dataset.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Data type; value:
+	//
+	// *   string: character
+	// *   number: a number
+	// *   datetime: time
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The type of the measure. Valid values:
+	//
+	// *   standard_measure: General Metrics
+	// *   calculate_measure: Calculating Measures
+	FactColumn *string `json:"FactColumn,omitempty" xml:"FactColumn,omitempty"`
+	// An expression that calculates a measure; valid only for calculated measures.
+	MeasureType *string `json:"MeasureType,omitempty" xml:"MeasureType,omitempty"`
+	// The display name of the metric.
 	TableUniqueId *string `json:"TableUniqueId,omitempty" xml:"TableUniqueId,omitempty"`
-	Uid           *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryDatasetInfoResponseBodyResultMeasureList) String() string {
@@ -4912,12 +5658,20 @@ func (s *QueryDatasetInfoResponse) SetBody(v *QueryDatasetInfoResponseBody) *Que
 }
 
 type QueryDatasetListRequest struct {
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	WithChildren *bool   `json:"WithChildren,omitempty" xml:"WithChildren,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The ID of the request.
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// Information about the directory where the dataset is located
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The ID of the workspace.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Specifies the directory ID.
+	//
+	// *   If this field is not empty, all datasets in the directory are obtained.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages returned.
+	WithChildren *bool `json:"WithChildren,omitempty" xml:"WithChildren,omitempty"`
+	// The name of the data source.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryDatasetListRequest) String() string {
@@ -4959,9 +5713,15 @@ func (s *QueryDatasetListRequest) SetWorkspaceId(v string) *QueryDatasetListRequ
 }
 
 type QueryDatasetListResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryDatasetListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The keyword used to search for the dataset name.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Test dataset
+	Result *QueryDatasetListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Whether to recursively wrap the dataset in the subdirectory. Valid values:
+	//
+	// *   true: returns datasets in all recursive subdirectories in the directoryId directory.
+	// *   false: Only datasets in the directory specified by directoryId are returned, excluding subdirectories.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryDatasetListResponseBody) String() string {
@@ -4988,11 +5748,25 @@ func (s *QueryDatasetListResponseBody) SetSuccess(v bool) *QueryDatasetListRespo
 }
 
 type QueryDatasetListResponseBodyResult struct {
-	Data       []*QueryDatasetListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                    `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                    `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// Returns the pagination results of the dataset list. The detailed information of the dataset list is stored in the response parameter Data.
+	Data []*QueryDatasetListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of rows per page in a paged query.
+	//
+	// *   Default value: 10.
+	// *   Maximum value: 1,000.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Current page number for dataset list:
+	//
+	// *   Pages start from page 1.
+	// *   Default value: 1.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryDatasetListResponseBodyResult) String() string {
@@ -5029,18 +5803,33 @@ func (s *QueryDatasetListResponseBodyResult) SetTotalPages(v int32) *QueryDatase
 }
 
 type QueryDatasetListResponseBodyResultData struct {
-	CreateTime    *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataSource    *QueryDatasetListResponseBodyResultDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	DatasetId     *string                                           `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetName   *string                                           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	Description   *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory     *QueryDatasetListResponseBodyResultDataDirectory  `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	ModifyTime    *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OwnerId       *string                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName     *string                                           `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	RowLevel      *bool                                             `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
-	WorkspaceId   *string                                           `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string                                           `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The details of the dataset list.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Test Space
+	DataSource *QueryDatasetListResponseBodyResultDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	// The name of the workspace.
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// Tom
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// The number of rows per page set when the interface is requested.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about the data source to which the dataset belongs.
+	Directory *QueryDatasetListResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The nickname of the dataset owner.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The creation time.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Whether to enable row-level permissions. Valid values:
+	//
+	// *   true: The VIP Netty channel is enabled.
+	// *   false: The incremental log backup feature is disabled.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The total number of pages returned.
+	RowLevel *bool `json:"RowLevel,omitempty" xml:"RowLevel,omitempty"`
+	// The page number of the returned page.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The description of the dataset.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryDatasetListResponseBodyResultData) String() string {
@@ -5112,8 +5901,11 @@ func (s *QueryDatasetListResponseBodyResultData) SetWorkspaceName(v string) *Que
 }
 
 type QueryDatasetListResponseBodyResultDataDataSource struct {
-	DsId   *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
+	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The time when the scaling group was modified.
 	DsName *string `json:"DsName,omitempty" xml:"DsName,omitempty"`
+	// The user ID of the dataset owner in the Quick BI.
 	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
 }
 
@@ -5141,9 +5933,13 @@ func (s *QueryDatasetListResponseBodyResultDataDataSource) SetDsType(v string) *
 }
 
 type QueryDatasetListResponseBodyResultDataDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The ID of the directory path.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the data source.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the data source.
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The name of the data source.
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -5311,7 +6107,11 @@ func (s *QueryDatasetSwitchInfoResponse) SetBody(v *QueryDatasetSwitchInfoRespon
 type QueryEmbeddedInfoResponseBody struct {
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *QueryEmbeddedInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryEmbeddedInfoResponseBody) String() string {
@@ -5729,6 +6529,7 @@ func (s *QueryOrganizationWorkspaceListResponse) SetBody(v *QueryOrganizationWor
 }
 
 type QueryReadableResourcesListByUserIdRequest struct {
+	// Quick BI the user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5746,9 +6547,15 @@ func (s *QueryReadableResourcesListByUserIdRequest) SetUserId(v string) *QueryRe
 }
 
 type QueryReadableResourcesListByUserIdResponseBody struct {
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryReadableResourcesListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of works that the user has permission to view.
+	Result []*QueryReadableResourcesListByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryReadableResourcesListByUserIdResponseBody) String() string {
@@ -5775,21 +6582,57 @@ func (s *QueryReadableResourcesListByUserIdResponseBody) SetSuccess(v bool) *Que
 }
 
 type QueryReadableResourcesListByUserIdResponseBodyResult struct {
-	CreateTime        *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description       *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory         *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	ModifyName        *string                                                        `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	ModifyTime        *string                                                        `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OwnerId           *string                                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName         *string                                                        `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SecurityLevel     *string                                                        `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	Status            *int32                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThirdPartAuthFlag *int32                                                         `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	WorkName          *string                                                        `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	WorkType          *string                                                        `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	WorksId           *string                                                        `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorkspaceId       *string                                                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName     *string                                                        `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The timestamp of the creation time in milliseconds.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Remarks on the work.
+	Description *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	Directory   *QueryReadableResourcesListByUserIdResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The name of the Alibaba Cloud account to which the modifier belongs.
+	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The Quick BI UserID of the work owner.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Alibaba Cloud account name of the owner.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Security policies for collaborative authorization of works. Valid values:
+	//
+	// *   0: private
+	// *   12: Authorize specified members
+	// *   1 or 11: Authorize all workspace members
+	//
+	// >
+	//
+	// *   If you use legacy permissions, the return value is 1.
+	//
+	// *   If you use the new permissions, the return value is 11.
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The status of the report. Valid values:
+	//
+	// *   0: unpublished
+	// *   1: published
+	// *   2: modified but not published
+	// *   3: unpublished
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Third-party embedding status. Valid values:
+	//
+	// *   0: The embed service is not enabled.
+	// *   1: Embed is enabled.
+	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// The name of the work.
+	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// *   DATAPRODUCT: BI portal
+	// *   PAGE: Dashboard
+	// *   FULLPAGE: full-screen dashboards
+	// *   REPORT: workbook
+	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// The ID of the work.
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryReadableResourcesListByUserIdResponseBodyResult) String() string {
@@ -5940,6 +6783,15 @@ func (s *QueryReadableResourcesListByUserIdResponse) SetBody(v *QueryReadableRes
 }
 
 type QueryShareListRequest struct {
+	// The type of work being shared. Valid values:
+	//
+	// *   product: BI portal
+	// *   dashboard: dashboard
+	// *   worksheet: workbook
+	// *   dashboardOfflineQuery: self-service data retrieval
+	// *   Analysis: Ad hoc analysis
+	// *   DATAFORM
+	// *   SCREEN: Data dashboard
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 }
 
@@ -6074,6 +6926,7 @@ func (s *QueryShareListResponse) SetBody(v *QueryShareListResponseBody) *QuerySh
 }
 
 type QuerySharesToUserListRequest struct {
+	// The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6091,9 +6944,15 @@ func (s *QuerySharesToUserListRequest) SetUserId(v string) *QuerySharesToUserLis
 }
 
 type QuerySharesToUserListResponseBody struct {
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QuerySharesToUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns a list of works authorized to the user.
+	Result []*QuerySharesToUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySharesToUserListResponseBody) String() string {
@@ -6120,21 +6979,60 @@ func (s *QuerySharesToUserListResponseBody) SetSuccess(v bool) *QuerySharesToUse
 }
 
 type QuerySharesToUserListResponseBodyResult struct {
-	CreateTime        *string                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description       *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory         *QuerySharesToUserListResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	ModifyName        *string                                           `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	ModifyTime        *string                                           `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	OwnerId           *string                                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName         *string                                           `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SecurityLevel     *string                                           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	Status            *int32                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThirdPartAuthFlag *int32                                            `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	WorkName          *string                                           `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	WorkType          *string                                           `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	WorksId           *string                                           `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorkspaceId       *string                                           `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName     *string                                           `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The timestamp of the creation time in milliseconds.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Remarks on the work.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Information about the directory where the work is located.
+	Directory *QuerySharesToUserListResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The name of the Alibaba Cloud account to which the modifier belongs.
+	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// The timestamp of the modification time in milliseconds.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The UserID of the work owner in Quickbi.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Alibaba Cloud account name of the work owner.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Security policies for collaborative authorization of works. Valid values:
+	//
+	// *   0: private
+	// *   12: Authorize specified members
+	// *   1 or 11: Authorize all workspace members
+	//
+	// >
+	//
+	// *   If you use legacy permissions, the return value is 1.
+	//
+	// *   If you use the new permissions, the return value is 11.
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The publishing status of the report. Valid values:
+	//
+	// *   0: unpublished
+	// *   1: published
+	// *   2: modified but not published
+	// *   3: unpublished
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Third-party embedding status. Valid values:
+	//
+	// *   0: No embedding is enabled.
+	// *   1: Embed is enabled.
+	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// The name of the report.
+	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// *   DATAPRODUCT: BI portal
+	// *   PAGE: Dashboard
+	// *   FULLPAGE: full-screen dashboards
+	// *   REPORT: workbook
+	// *   dashboardOfflineQuery: self-service data retrieval
+	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// The ID of the operations report.
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// The ID of the workspace to which the report belongs.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the report belongs.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QuerySharesToUserListResponseBodyResult) String() string {
@@ -6221,9 +7119,13 @@ func (s *QuerySharesToUserListResponseBodyResult) SetWorkspaceName(v string) *Qu
 }
 
 type QuerySharesToUserListResponseBodyResultDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The ID of the directory where the resource is located.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the resource.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The path ID of the directory where the resource is located.
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The path name of the directory where the resource is located.
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -6285,6 +7187,7 @@ func (s *QuerySharesToUserListResponse) SetBody(v *QuerySharesToUserListResponse
 }
 
 type QueryTicketInfoRequest struct {
+	// Obtains the details of a specified ticket for a report that is not embedded in the report.
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -6437,6 +7340,10 @@ func (s *QueryTicketInfoResponse) SetBody(v *QueryTicketInfoResponseBody) *Query
 }
 
 type QueryUserGroupListByParentIdRequest struct {
+	// The ID of the parent user group.
+	//
+	// *   If you enter the ID of the parent user group, you can obtain the information of the child user group under this ID.
+	// *   If you enter -1, you can obtain the sub-user group information under the root directory.
 	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
 }
 
@@ -6454,9 +7361,15 @@ func (s *QueryUserGroupListByParentIdRequest) SetParentUserGroupId(v string) *Qu
 }
 
 type QueryUserGroupListByParentIdResponseBody struct {
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryUserGroupListByParentIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the sub-user group.
+	Result []*QueryUserGroupListByParentIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserGroupListByParentIdResponseBody) String() string {
@@ -6483,15 +7396,24 @@ func (s *QueryUserGroupListByParentIdResponseBody) SetSuccess(v bool) *QueryUser
 }
 
 type QueryUserGroupListByParentIdResponseBodyResult struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser           *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	IdentifiedPath       *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
-	ModifiedTime         *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	ModifyUser           *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	ParentUserGroupId    *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	// The time when the sub-user group was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the sub-user group. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// Directory level of the sub-user group.
+	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
+	// The time when the sub-user group was last modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The user who modified the subgroup. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The ID of the parent user group.
+	ParentUserGroupId *string `json:"ParentUserGroupId,omitempty" xml:"ParentUserGroupId,omitempty"`
+	// The description of the sub-user group.
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
-	UserGroupId          *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserGroupName        *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	// The ID of the sub-user group.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The name of the sub-user group.
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
 func (s QueryUserGroupListByParentIdResponseBodyResult) String() string {
@@ -6699,6 +7621,16 @@ func (s *QueryUserGroupMemberResponse) SetBody(v *QueryUserGroupMemberResponseBo
 }
 
 type QueryUserInfoByAccountRequest struct {
+	// Enter the name or ID of the Alibaba Cloud account that you want to query.
+	//
+	// *   When you enter an account name:
+	//
+	//     *   If the organization user is a master account, such as main_account, the query account format is master account. That is, the main account main_account to be entered.
+	//     *   If the organization user is a RAM user, such as a <zhangsan@test.onaliyun.com>, the query account format is the head of the RAM user, that is, the RAM user to be entered is zhangsan.
+	//
+	// *   ID：
+	//
+	//     *   Enter the UID of the account to query the account information.
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 }
 
@@ -6716,9 +7648,15 @@ func (s *QueryUserInfoByAccountRequest) SetAccount(v string) *QueryUserInfoByAcc
 }
 
 type QueryUserInfoByAccountResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserInfoByAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned organization user information.
+	Result *QueryUserInfoByAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserInfoByAccountResponseBody) String() string {
@@ -6745,15 +7683,34 @@ func (s *QueryUserInfoByAccountResponseBody) SetSuccess(v bool) *QueryUserInfoBy
 }
 
 type QueryUserInfoByAccountResponseBodyResult struct {
-	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AdminUser     *bool   `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	AuthAdminUser *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType      *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the Alibaba Cloud account that corresponds to the member. (If you use a RAM user, the domain name information that follows @ is removed. For example, if you use a <test@test.com>, test is returned.)
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Whether you are an administrator of the organization. Valid values:
+	//
+	// *   true
+	// *   false
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Whether you are a permission administrator. Valid values:
+	//
+	// *   true
+	// *   false
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The nickname of the account.
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The phone number of the alert contact.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The UserID in the Quick BI.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The role type of the organization member. Valid values:
+	//
+	// *   1 : developer
+	// *   2 : visitors
+	// *   3 : Analyst
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s QueryUserInfoByAccountResponseBodyResult) String() string {
@@ -6839,6 +7796,7 @@ func (s *QueryUserInfoByAccountResponse) SetBody(v *QueryUserInfoByAccountRespon
 }
 
 type QueryUserInfoByUserIdRequest struct {
+	// The ID of the user. The UserID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6856,9 +7814,15 @@ func (s *QueryUserInfoByUserIdRequest) SetUserId(v string) *QueryUserInfoByUserI
 }
 
 type QueryUserInfoByUserIdResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryUserInfoByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned organization user information.
+	Result *QueryUserInfoByUserIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserInfoByUserIdResponseBody) String() string {
@@ -6885,15 +7849,34 @@ func (s *QueryUserInfoByUserIdResponseBody) SetSuccess(v bool) *QueryUserInfoByU
 }
 
 type QueryUserInfoByUserIdResponseBodyResult struct {
-	AccountId     *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AdminUser     *bool   `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	AuthAdminUser *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType      *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The name of the Alibaba Cloud account that corresponds to the member.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Whether you are an administrator of the organization. Valid values:
+	//
+	// *   true
+	// *   false
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Whether you are a permission administrator. Valid values:
+	//
+	// *   true
+	// *   false
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The email address of the user.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The nickname of the account.
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The phone number of the alert contact.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The UserID in the Quick BI.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The role type of the organization member. Valid values:
+	//
+	// *   1 : developer
+	// *   2 : visitors
+	// *   3 : Analyst
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s QueryUserInfoByUserIdResponseBodyResult) String() string {
@@ -7272,7 +8255,8 @@ func (s *QueryUserRoleInfoInWorkspaceResponse) SetBody(v *QueryUserRoleInfoInWor
 type QueryUserTagMetaListResponseBody struct {
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*QueryUserTagMetaListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Queries the metadata list of member tags in an organization.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserTagMetaListResponseBody) String() string {
@@ -7672,6 +8656,7 @@ func (s *QueryWorksResponse) SetBody(v *QueryWorksResponseBody) *QueryWorksRespo
 }
 
 type QueryWorksBloodRelationshipRequest struct {
+	// Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
 }
 
@@ -7689,9 +8674,15 @@ func (s *QueryWorksBloodRelationshipRequest) SetWorksId(v string) *QueryWorksBlo
 }
 
 type QueryWorksBloodRelationshipResponseBody struct {
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*QueryWorksBloodRelationshipResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	Result []*QueryWorksBloodRelationshipResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The response.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorksBloodRelationshipResponseBody) String() string {
@@ -7718,12 +8709,18 @@ func (s *QueryWorksBloodRelationshipResponseBody) SetSuccess(v bool) *QueryWorks
 }
 
 type QueryWorksBloodRelationshipResponseBodyResult struct {
-	ComponentId       *string                                                     `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	ComponentName     *string                                                     `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	ComponentType     *int32                                                      `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	ComponentTypeName *string                                                     `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
-	DatasetId         *string                                                     `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	QueryParams       []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
+	// List of work blood information.
+	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
+	// The ID of the component that you want to modify.
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// Line
+	ComponentType *int32 `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	// The type of the image component.
+	ComponentTypeName *string `json:"ComponentTypeName,omitempty" xml:"ComponentTypeName,omitempty"`
+	// Column (Measure)
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The name of the component type.
+	QueryParams []*QueryWorksBloodRelationshipResponseBodyResultQueryParams `json:"QueryParams,omitempty" xml:"QueryParams,omitempty" type:"Repeated"`
 }
 
 func (s QueryWorksBloodRelationshipResponseBodyResult) String() string {
@@ -7765,13 +8762,33 @@ func (s *QueryWorksBloodRelationshipResponseBodyResult) SetQueryParams(v []*Quer
 }
 
 type QueryWorksBloodRelationshipResponseBodyResultQueryParams struct {
-	AreaId    *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	AreaName  *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	Caption   *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	IsMeasure *bool   `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
-	PathId    *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// Indices whether the metric. Valid values:
+	//
+	// true false
+	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The ID of the owning location.
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The globally unique PathId.
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// The display name of the field.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The type of the field. Valid values:
+	//
+	// *   string: string type
+	// *   date: a date type that contains only the year, month, and day parts
+	// *   datetime: a common date type
+	// *   time: a date type that contains only hours, minutes, and seconds.
+	// *   number: numeric
+	// *   boolean: Boolean type
+	// *   geographical: geographical location
+	// *   url: string type
+	// *   imageUrl: the type of the image link.
+	// *   multivalue: a multi-value column
+	IsMeasure *bool `json:"IsMeasure,omitempty" xml:"IsMeasure,omitempty"`
+	// The unique ID of the field.
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// A list of query parameter reference columns.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s QueryWorksBloodRelationshipResponseBodyResultQueryParams) String() string {
@@ -7847,11 +8864,16 @@ func (s *QueryWorksBloodRelationshipResponse) SetBody(v *QueryWorksBloodRelation
 }
 
 type QueryWorksByOrganizationRequest struct {
-	PageNum           *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThirdPartAuthFlag *int32  `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	WorksType         *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// The page number of the returned page.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page set when the interface is requested.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Returns a list of all works in the organization that meet the requested criteria.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of pages returned.
+	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// The ID of the request.
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
 }
 
 func (s QueryWorksByOrganizationRequest) String() string {
@@ -7888,9 +8910,17 @@ func (s *QueryWorksByOrganizationRequest) SetWorksType(v string) *QueryWorksByOr
 }
 
 type QueryWorksByOrganizationResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryWorksByOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The details of the list of works.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the report. Valid values:
+	//
+	// *   0: unpublished
+	// *   1: published
+	// *   2: modified but not published
+	// *   3: unpublished
+	Result *QueryWorksByOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The total number of rows in the table.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorksByOrganizationResponseBody) String() string {
@@ -7917,11 +8947,24 @@ func (s *QueryWorksByOrganizationResponseBody) SetSuccess(v bool) *QueryWorksByO
 }
 
 type QueryWorksByOrganizationResponseBodyResult struct {
-	Data       []*QueryWorksByOrganizationResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                            `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                            `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The Alibaba Cloud account name of the work owner.
+	Data []*QueryWorksByOrganizationResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The timestamp of the modification of the work in milliseconds.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The ID of the work.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// *   DATAPRODUCT: BI portal
+	// *   PAGE: Dashboard
+	// *   FULLPAGE: full-screen dashboards
+	// *   REPORT: workbook
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Third-party embedding status. Valid values:
+	//
+	// *   0: The embed service is not enabled.
+	// *   1: Embed is enabled.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryWorksByOrganizationResponseBodyResult) String() string {
@@ -7958,21 +9001,46 @@ func (s *QueryWorksByOrganizationResponseBodyResult) SetTotalPages(v int32) *Que
 }
 
 type QueryWorksByOrganizationResponseBodyResultData struct {
-	Auth3rdFlag   *int32                                                   `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	Description   *string                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory     *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	GmtCreate     *string                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModify     *string                                                  `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	ModifyName    *string                                                  `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	OwnerId       *string                                                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName     *string                                                  `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SecurityLevel *string                                                  `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	Status        *int32                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkName      *string                                                  `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	WorkType      *string                                                  `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	WorksId       *string                                                  `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorkspaceId   *string                                                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string                                                  `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The name of the workspace to which the work belongs.
+	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
+	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the directory.
+	Directory *QueryWorksByOrganizationResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// Test directory
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Test Workspace
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// Description
+	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// Security policies for collaborative authorization of works. Valid values:
+	//
+	// *   0: private
+	// *   12: Authorize specified members
+	// *   1 or 11: Authorize all workspace members
+	//
+	// >
+	//
+	// *   If you use legacy permissions, the return value is 1.
+	//
+	// *   If you use the new permissions, the return value is 11.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The Alibaba Cloud account name of the person who modified the work.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The directory to which the work belongs.
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// Li Si
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Test directory
+	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// The name of the workspace to which the work belongs.
+	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// The user ID of the work owner in the Quick BI.
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// Test report
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryWorksByOrganizationResponseBodyResultData) String() string {
@@ -8123,12 +9191,35 @@ func (s *QueryWorksByOrganizationResponse) SetBody(v *QueryWorksByOrganizationRe
 }
 
 type QueryWorksByWorkspaceRequest struct {
-	PageNum           *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThirdPartAuthFlag *int32  `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
-	WorksType         *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
-	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The page number of the returned page.
+	//
+	// *   Default value: 1.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	//
+	// *   Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the work. Valid values:
+	//
+	// *   0: unpublished
+	// *   1: published
+	// *   2: modified but not published
+	// *   3: unpublished
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Third-party embedding status. Valid values:
+	//
+	// *   0: The embed service is not enabled.
+	// *   1: Embed is enabled.
+	ThirdPartAuthFlag *int32 `json:"ThirdPartAuthFlag,omitempty" xml:"ThirdPartAuthFlag,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// *   DATAPRODUCT: BI portal
+	// *   PAGE: Dashboard
+	// *   FULLPAGE: full-screen dashboards
+	// *   REPORT: workbook
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+	// The ID of the workspace.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryWorksByWorkspaceRequest) String() string {
@@ -8170,9 +9261,15 @@ func (s *QueryWorksByWorkspaceRequest) SetWorkspaceId(v string) *QueryWorksByWor
 }
 
 type QueryWorksByWorkspaceResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *QueryWorksByWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returns a list of all works in the organization workspace that meet the requested criteria.
+	Result *QueryWorksByWorkspaceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWorksByWorkspaceResponseBody) String() string {
@@ -8199,11 +9296,16 @@ func (s *QueryWorksByWorkspaceResponseBody) SetSuccess(v bool) *QueryWorksByWork
 }
 
 type QueryWorksByWorkspaceResponseBodyResult struct {
-	Data       []*QueryWorksByWorkspaceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum    *int32                                         `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalNum   *int32                                         `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	TotalPages *int32                                         `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The details of the list of works.
+	Data []*QueryWorksByWorkspaceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of rows per page set when the interface is requested.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of rows in the table.
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s QueryWorksByWorkspaceResponseBodyResult) String() string {
@@ -8240,21 +9342,62 @@ func (s *QueryWorksByWorkspaceResponseBodyResult) SetTotalPages(v int32) *QueryW
 }
 
 type QueryWorksByWorkspaceResponseBodyResultData struct {
-	Auth3rdFlag   *int32                                                `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
-	Description   *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	Directory     *QueryWorksByWorkspaceResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
-	GmtCreate     *string                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModify     *string                                               `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	ModifyName    *string                                               `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
-	OwnerId       *string                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName     *string                                               `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	SecurityLevel *string                                               `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	Status        *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkName      *string                                               `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
-	WorkType      *string                                               `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
-	WorksId       *string                                               `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
-	WorkspaceId   *string                                               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName *string                                               `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// Third-party embedding status. Valid values:
+	//
+	// *   0: The embed service is not enabled.
+	// *   1: Embed is enabled.
+	Auth3rdFlag *int32 `json:"Auth3rdFlag,omitempty" xml:"Auth3rdFlag,omitempty"`
+	// Remarks on the work.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The directory to which the work belongs.
+	Directory *QueryWorksByWorkspaceResponseBodyResultDataDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The timestamp of the creation of the work in milliseconds.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The timestamp of the modification of the work in milliseconds.
+	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	// Nickname of the work modifier.
+	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
+	// The user ID of the work owner in the Quick BI.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The nickname of the work owner.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// Security policies for collaborative authorization of works. Valid values:
+	//
+	// *   0: private
+	// *   12: Authorize specified members
+	// *   1 or 11: Authorize all workspace members
+	//
+	// >
+	//
+	// *   If you use legacy permissions, the return value is 1.
+	//
+	// *   If you use the new permissions, the return value is 11.
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// Status of dashboards, full-screen dashboards, spreadsheets. The default value of other work types is 1. Valid values:
+	//
+	// *   0: unpublished
+	// *   1: published
+	// *   2: modified but not published
+	// *   3: unpublished
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the work.
+	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
+	// The type of the work. Valid values:
+	//
+	// *   DATAPRODUCT: BI portal
+	// *   PAGE: Dashboard
+	// *   FULLPAGE: full-screen dashboards
+	// *   REPORT: workbook
+	// *   dashboardOfflineQuery: self-service data retrieval
+	// *   Analysis: Ad hoc analysis
+	// *   DATAFORM: form filling
+	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// The ID of the work.
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// The ID of the workspace to which the work belongs.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the work belongs.
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s QueryWorksByWorkspaceResponseBodyResultData) String() string {
@@ -8341,9 +9484,11 @@ func (s *QueryWorksByWorkspaceResponseBodyResultData) SetWorkspaceName(v string)
 }
 
 type QueryWorksByWorkspaceResponseBodyResultDataDirectory struct {
-	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PathId   *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
+	// The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -8939,6 +10084,7 @@ func (s *SetDataLevelPermissionRuleConfigResponse) SetBody(v *SetDataLevelPermis
 }
 
 type SetDataLevelPermissionWhiteListRequest struct {
+	// { "ruleType": "ROW_LEVEL", // The row-level permission type. "usersModel": { "userGroups": \[ "0d5fb19b- ***-1248 fc27ca51", // The ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": \[ "4334 ***358", // Quick BI the UserID of the user. "Huang***3fa822" ] }, "cubeId": "7c7223ae-31d1-4d2f-b11f-3c744528014b" }
 	WhiteListModel *string `json:"WhiteListModel,omitempty" xml:"WhiteListModel,omitempty"`
 }
 
@@ -8956,9 +10102,18 @@ func (s *SetDataLevelPermissionWhiteListRequest) SetWhiteListModel(v string) *Se
 }
 
 type SetDataLevelPermissionWhiteListResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetDataLevelPermissionWhiteListResponseBody) String() string {
@@ -9014,6 +10169,7 @@ func (s *SetDataLevelPermissionWhiteListResponse) SetBody(v *SetDataLevelPermiss
 }
 
 type UpdateDataLevelPermissionStatusRequest struct {
+	// The ID of the training dataset that you want to remove from the specified custom linguistic model.
 	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
 	IsOpen   *int32  `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
@@ -9263,11 +10419,29 @@ func (s *UpdateTicketNumResponse) SetBody(v *UpdateTicketNumResponseBody) *Updat
 }
 
 type UpdateUserRequest struct {
-	AdminUser     *bool   `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	AuthAdminUser *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
-	NickName      *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType      *int32  `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// Indicates whether the organization administrator. Valid values:
+	//
+	// *   true
+	// *   false
+	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Indicate whether the RAM user is a permission administrator. Valid values:
+	//
+	// *   true
+	// *   false
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The nickname of the account.
+	//
+	// *   Format check: The value can be up to 50 characters in length.
+	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	// The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The role type of the organization member. Valid values:
+	//
+	// *   1 : developer
+	// *   2 : visitors
+	// *   3 : Analyst
+	UserType *int32 `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -9304,9 +10478,18 @@ func (s *UpdateUserRequest) SetUserType(v int32) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -9362,9 +10545,18 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 }
 
 type UpdateUserGroupRequest struct {
+	// The description of the user group.
+	//
+	// *   Format verification: Maximum length 255
+	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
 	UserGroupDescription *string `json:"UserGroupDescription,omitempty" xml:"UserGroupDescription,omitempty"`
-	UserGroupId          *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	UserGroupName        *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	// The ID of the user group.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The name of the user group.
+	//
+	// *   Format verification: Maximum length 255
+	// *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
 func (s UpdateUserGroupRequest) String() string {
@@ -9391,9 +10583,18 @@ func (s *UpdateUserGroupRequest) SetUserGroupName(v string) *UpdateUserGroupRequ
 }
 
 type UpdateUserGroupResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the interface is successfully executed. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateUserGroupResponseBody) String() string {
@@ -9832,6 +11033,7 @@ func (s *UpdateWorkspaceUsersRoleResponse) SetBody(v *UpdateWorkspaceUsersRoleRe
 }
 
 type WithdrawAllUserGroupsRequest struct {
+	// The ID of the user. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9849,9 +11051,18 @@ func (s *WithdrawAllUserGroupsRequest) SetUserId(v string) *WithdrawAllUserGroup
 }
 
 type WithdrawAllUserGroupsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The execution result of the interface is returned. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request fails.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s WithdrawAllUserGroupsResponseBody) String() string {
@@ -9953,6 +11164,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * Indicates whether the request is successful. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request AddDataLevelPermissionRuleUsersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddDataLevelPermissionRuleUsersResponse
+ */
 func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDataLevelPermissionRuleUsersRequest, runtime *util.RuntimeOptions) (_result *AddDataLevelPermissionRuleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9986,6 +11206,14 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithOptions(request *AddDat
 	return _result, _err
 }
 
+/**
+ * Indicates whether the request is successful. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request AddDataLevelPermissionRuleUsersRequest
+ * @return AddDataLevelPermissionRuleUsersResponse
+ */
 func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermissionRuleUsersRequest) (_result *AddDataLevelPermissionRuleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataLevelPermissionRuleUsersResponse{}
@@ -9997,6 +11225,13 @@ func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermi
 	return _result, _err
 }
 
+/**
+ * ROW_LEVEL
+ *
+ * @param request AddDataLevelPermissionWhiteListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddDataLevelPermissionWhiteListResponse
+ */
 func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDataLevelPermissionWhiteListRequest, runtime *util.RuntimeOptions) (_result *AddDataLevelPermissionWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10046,6 +11281,12 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 	return _result, _err
 }
 
+/**
+ * ROW_LEVEL
+ *
+ * @param request AddDataLevelPermissionWhiteListRequest
+ * @return AddDataLevelPermissionWhiteListResponse
+ */
 func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermissionWhiteListRequest) (_result *AddDataLevelPermissionWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataLevelPermissionWhiteListResponse{}
@@ -10418,6 +11659,50 @@ func (client *Client) AddWorkspaceUsers(request *AddWorkspaceUsersRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &AddWorkspaceUsersResponse{}
 	_body, _err := client.AddWorkspaceUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AllotDatasetAccelerationTaskWithOptions(request *AllotDatasetAccelerationTaskRequest, runtime *util.RuntimeOptions) (_result *AllotDatasetAccelerationTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CubeId)) {
+		query["CubeId"] = request.CubeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AllotDatasetAccelerationTask"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AllotDatasetAccelerationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AllotDatasetAccelerationTask(request *AllotDatasetAccelerationTaskRequest) (_result *AllotDatasetAccelerationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AllotDatasetAccelerationTaskResponse{}
+	_body, _err := client.AllotDatasetAccelerationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10981,6 +12266,13 @@ func (client *Client) DelayTicketExpireTime(request *DelayTicketExpireTimeReques
 	return _result, _err
 }
 
+/**
+ * {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+ *
+ * @param request DeleteDataLevelPermissionRuleUsersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDataLevelPermissionRuleUsersResponse
+ */
 func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *DeleteDataLevelPermissionRuleUsersRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLevelPermissionRuleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11014,6 +12306,12 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *Del
 	return _result, _err
 }
 
+/**
+ * {"ruleId":"a5bb24da-***-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+ *
+ * @param request DeleteDataLevelPermissionRuleUsersRequest
+ * @return DeleteDataLevelPermissionRuleUsersResponse
+ */
 func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLevelPermissionRuleUsersRequest) (_result *DeleteDataLevelPermissionRuleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLevelPermissionRuleUsersResponse{}
@@ -11025,6 +12323,13 @@ func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLeve
 	return _result, _err
 }
 
+/**
+ * The ID of the training dataset that you want to remove from the specified custom linguistic model.
+ *
+ * @param request DeleteDataLevelRuleConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDataLevelRuleConfigResponse
+ */
 func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLevelRuleConfigRequest, runtime *util.RuntimeOptions) (_result *DeleteDataLevelRuleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11062,6 +12367,12 @@ func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLe
 	return _result, _err
 }
 
+/**
+ * The ID of the training dataset that you want to remove from the specified custom linguistic model.
+ *
+ * @param request DeleteDataLevelRuleConfigRequest
+ * @return DeleteDataLevelRuleConfigResponse
+ */
 func (client *Client) DeleteDataLevelRuleConfig(request *DeleteDataLevelRuleConfigRequest) (_result *DeleteDataLevelRuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataLevelRuleConfigResponse{}
@@ -11441,6 +12752,62 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ListApiDatasourceWithOptions(request *ListApiDatasourceRequest, runtime *util.RuntimeOptions) (_result *ListApiDatasourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyWord)) {
+		query["KeyWord"] = request.KeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApiDatasource"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApiDatasourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApiDatasource(request *ListApiDatasourceRequest) (_result *ListApiDatasourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApiDatasourceResponse{}
+	_body, _err := client.ListApiDatasourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListByUserGroupIdWithOptions(request *ListByUserGroupIdRequest, runtime *util.RuntimeOptions) (_result *ListByUserGroupIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11529,6 +12896,13 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+ *
+ * @param request ListCubeDataLevelPermissionConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCubeDataLevelPermissionConfigResponse
+ */
 func (client *Client) ListCubeDataLevelPermissionConfigWithOptions(request *ListCubeDataLevelPermissionConfigRequest, runtime *util.RuntimeOptions) (_result *ListCubeDataLevelPermissionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11566,6 +12940,12 @@ func (client *Client) ListCubeDataLevelPermissionConfigWithOptions(request *List
 	return _result, _err
 }
 
+/**
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+ *
+ * @param request ListCubeDataLevelPermissionConfigRequest
+ * @return ListCubeDataLevelPermissionConfigResponse
+ */
 func (client *Client) ListCubeDataLevelPermissionConfig(request *ListCubeDataLevelPermissionConfigRequest) (_result *ListCubeDataLevelPermissionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCubeDataLevelPermissionConfigResponse{}
@@ -11937,6 +13317,65 @@ func (client *Client) ListUserGroupsByUserId(request *ListUserGroupsByUserIdRequ
 	return _result, _err
 }
 
+func (client *Client) ModifyApiDatasourceParametersWithOptions(request *ModifyApiDatasourceParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyApiDatasourceParametersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApiDatasourceParameters"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApiDatasourceParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasourceParametersRequest) (_result *ModifyApiDatasourceParametersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApiDatasourceParametersResponse{}
+	_body, _err := client.ModifyApiDatasourceParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * f4cc43bc3***
+ *
+ * @param request QueryDataServiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryDataServiceResponse
+ */
 func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceRequest, runtime *util.RuntimeOptions) (_result *QueryDataServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11978,6 +13417,12 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 	return _result, _err
 }
 
+/**
+ * f4cc43bc3***
+ *
+ * @param request QueryDataServiceRequest
+ * @return QueryDataServiceResponse
+ */
 func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_result *QueryDataServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDataServiceResponse{}
@@ -11989,6 +13434,15 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * The execution result of the interface is returned. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request fails.
+ *
+ * @param request QueryDatasetDetailInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryDatasetDetailInfoResponse
+ */
 func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDetailInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetDetailInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12022,6 +13476,14 @@ func (client *Client) QueryDatasetDetailInfoWithOptions(request *QueryDatasetDet
 	return _result, _err
 }
 
+/**
+ * The execution result of the interface is returned. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request fails.
+ *
+ * @param request QueryDatasetDetailInfoRequest
+ * @return QueryDatasetDetailInfoResponse
+ */
 func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequest) (_result *QueryDatasetDetailInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDatasetDetailInfoResponse{}
@@ -13255,6 +14717,15 @@ func (client *Client) SetDataLevelPermissionExtraConfig(request *SetDataLevelPer
 	return _result, _err
 }
 
+/**
+ * Indicates whether the request is successful. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request SetDataLevelPermissionRuleConfigRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDataLevelPermissionRuleConfigResponse
+ */
 func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDataLevelPermissionRuleConfigRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13288,6 +14759,14 @@ func (client *Client) SetDataLevelPermissionRuleConfigWithOptions(request *SetDa
 	return _result, _err
 }
 
+/**
+ * Indicates whether the request is successful. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request SetDataLevelPermissionRuleConfigRequest
+ * @return SetDataLevelPermissionRuleConfigResponse
+ */
 func (client *Client) SetDataLevelPermissionRuleConfig(request *SetDataLevelPermissionRuleConfigRequest) (_result *SetDataLevelPermissionRuleConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionRuleConfigResponse{}
@@ -13299,6 +14778,13 @@ func (client *Client) SetDataLevelPermissionRuleConfig(request *SetDataLevelPerm
 	return _result, _err
 }
 
+/**
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+ *
+ * @param request SetDataLevelPermissionWhiteListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetDataLevelPermissionWhiteListResponse
+ */
 func (client *Client) SetDataLevelPermissionWhiteListWithOptions(request *SetDataLevelPermissionWhiteListRequest, runtime *util.RuntimeOptions) (_result *SetDataLevelPermissionWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13332,6 +14818,12 @@ func (client *Client) SetDataLevelPermissionWhiteListWithOptions(request *SetDat
 	return _result, _err
 }
 
+/**
+ * > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click **Upgrade**.
+ *
+ * @param request SetDataLevelPermissionWhiteListRequest
+ * @return SetDataLevelPermissionWhiteListResponse
+ */
 func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermissionWhiteListRequest) (_result *SetDataLevelPermissionWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDataLevelPermissionWhiteListResponse{}
@@ -13343,6 +14835,15 @@ func (client *Client) SetDataLevelPermissionWhiteList(request *SetDataLevelPermi
 	return _result, _err
 }
 
+/**
+ * The execution result of the interface. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request UpdateDataLevelPermissionStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDataLevelPermissionStatusResponse
+ */
 func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *UpdateDataLevelPermissionStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateDataLevelPermissionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13384,6 +14885,14 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 	return _result, _err
 }
 
+/**
+ * The execution result of the interface. Valid values:
+ * *   true: The request was successful.
+ * *   false: The request failed.
+ *
+ * @param request UpdateDataLevelPermissionStatusRequest
+ * @return UpdateDataLevelPermissionStatusResponse
+ */
 func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPermissionStatusRequest) (_result *UpdateDataLevelPermissionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDataLevelPermissionStatusResponse{}
