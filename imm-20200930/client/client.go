@@ -2164,7 +2164,6 @@ func (s *LocationDateCluster) SetUpdateTime(v string) *LocationDateCluster {
 }
 
 type MNS struct {
-	Endpoint  *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 
@@ -2174,11 +2173,6 @@ func (s MNS) String() string {
 
 func (s MNS) GoString() string {
 	return s.String()
-}
-
-func (s *MNS) SetEndpoint(v string) *MNS {
-	s.Endpoint = &v
-	return s
 }
 
 func (s *MNS) SetTopicName(v string) *MNS {
@@ -2439,7 +2433,6 @@ func (s *RegionType) SetRegionId(v string) *RegionType {
 }
 
 type RocketMQ struct {
-	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TopicName  *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
@@ -2450,11 +2443,6 @@ func (s RocketMQ) String() string {
 
 func (s RocketMQ) GoString() string {
 	return s.String()
-}
-
-func (s *RocketMQ) SetEndpoint(v string) *RocketMQ {
-	s.Endpoint = &v
-	return s
 }
 
 func (s *RocketMQ) SetInstanceId(v string) *RocketMQ {
@@ -2928,13 +2916,13 @@ func (s *TargetImage) SetSprites(v []*TargetImageSprites) *TargetImage {
 type TargetImageAnimations struct {
 	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	FrameRate *float64 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
 	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width     *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s TargetImageAnimations) String() string {
@@ -2955,7 +2943,7 @@ func (s *TargetImageAnimations) SetFrameRate(v float64) *TargetImageAnimations {
 	return s
 }
 
-func (s *TargetImageAnimations) SetHeight(v int32) *TargetImageAnimations {
+func (s *TargetImageAnimations) SetHeight(v float64) *TargetImageAnimations {
 	s.Height = &v
 	return s
 }
@@ -2985,20 +2973,20 @@ func (s *TargetImageAnimations) SetURI(v string) *TargetImageAnimations {
 	return s
 }
 
-func (s *TargetImageAnimations) SetWidth(v int32) *TargetImageAnimations {
+func (s *TargetImageAnimations) SetWidth(v float64) *TargetImageAnimations {
 	s.Width = &v
 	return s
 }
 
 type TargetImageSnapshots struct {
 	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	Height    *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
 	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
-	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+	Width     *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s TargetImageSnapshots) String() string {
@@ -3014,7 +3002,7 @@ func (s *TargetImageSnapshots) SetFormat(v string) *TargetImageSnapshots {
 	return s
 }
 
-func (s *TargetImageSnapshots) SetHeight(v int32) *TargetImageSnapshots {
+func (s *TargetImageSnapshots) SetHeight(v float64) *TargetImageSnapshots {
 	s.Height = &v
 	return s
 }
@@ -3044,7 +3032,7 @@ func (s *TargetImageSnapshots) SetURI(v string) *TargetImageSnapshots {
 	return s
 }
 
-func (s *TargetImageSnapshots) SetWidth(v int32) *TargetImageSnapshots {
+func (s *TargetImageSnapshots) SetWidth(v float64) *TargetImageSnapshots {
 	s.Width = &v
 	return s
 }
@@ -3516,15 +3504,17 @@ func (s *TargetVideoTranscodeVideo) SetScaleType(v string) *TargetVideoTranscode
 }
 
 type TaskInfo struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime   *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	StartTime *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags      map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TaskId    *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType  *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData  *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Code                  *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	EndTime               *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message               *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Progress              *int32                 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartTime             *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TaskId                *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskRequestDefinition *string                `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
+	TaskType              *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserData              *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s TaskInfo) String() string {
@@ -3550,6 +3540,11 @@ func (s *TaskInfo) SetMessage(v string) *TaskInfo {
 	return s
 }
 
+func (s *TaskInfo) SetProgress(v int32) *TaskInfo {
+	s.Progress = &v
+	return s
+}
+
 func (s *TaskInfo) SetStartTime(v string) *TaskInfo {
 	s.StartTime = &v
 	return s
@@ -3567,6 +3562,11 @@ func (s *TaskInfo) SetTags(v map[string]interface{}) *TaskInfo {
 
 func (s *TaskInfo) SetTaskId(v string) *TaskInfo {
 	s.TaskId = &v
+	return s
+}
+
+func (s *TaskInfo) SetTaskRequestDefinition(v string) *TaskInfo {
+	s.TaskRequestDefinition = &v
 	return s
 }
 
@@ -13542,9 +13542,10 @@ func (s *GetStoryResponse) SetBody(v *GetStoryResponseBody) *GetStoryResponse {
 }
 
 type GetTaskRequest struct {
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RequestDefinition *bool   `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s GetTaskRequest) String() string {
@@ -13560,6 +13561,11 @@ func (s *GetTaskRequest) SetProjectName(v string) *GetTaskRequest {
 	return s
 }
 
+func (s *GetTaskRequest) SetRequestDefinition(v bool) *GetTaskRequest {
+	s.RequestDefinition = &v
+	return s
+}
+
 func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
 	s.TaskId = &v
 	return s
@@ -13571,18 +13577,20 @@ func (s *GetTaskRequest) SetTaskType(v string) *GetTaskRequest {
 }
 
 type GetTaskResponseBody struct {
-	Code        *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	EndTime     *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventId     *string                `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Message     *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime   *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TaskId      *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType    *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Code                  *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	EndTime               *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventId               *string                `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Message               *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Progress              *int32                 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ProjectName           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RequestId             *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime             *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TaskId                *string                `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskRequestDefinition *string                `json:"TaskRequestDefinition,omitempty" xml:"TaskRequestDefinition,omitempty"`
+	TaskType              *string                `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserData              *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -13613,6 +13621,11 @@ func (s *GetTaskResponseBody) SetMessage(v string) *GetTaskResponseBody {
 	return s
 }
 
+func (s *GetTaskResponseBody) SetProgress(v int32) *GetTaskResponseBody {
+	s.Progress = &v
+	return s
+}
+
 func (s *GetTaskResponseBody) SetProjectName(v string) *GetTaskResponseBody {
 	s.ProjectName = &v
 	return s
@@ -13640,6 +13653,11 @@ func (s *GetTaskResponseBody) SetTags(v map[string]interface{}) *GetTaskResponse
 
 func (s *GetTaskResponseBody) SetTaskId(v string) *GetTaskResponseBody {
 	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTaskRequestDefinition(v string) *GetTaskResponseBody {
+	s.TaskRequestDefinition = &v
 	return s
 }
 
@@ -14702,16 +14720,17 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListTasksRequest struct {
-	EndTimeRange   *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
-	MaxResults     *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order          *string    `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName    *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort           *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	StartTimeRange *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
-	Status         *string    `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagSelector    *string    `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypes      []*string  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+	EndTimeRange      *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
+	MaxResults        *int64     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order             *string    `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName       *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RequestDefinition *bool      `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
+	Sort              *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTimeRange    *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	Status            *string    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagSelector       *string    `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TaskTypes         []*string  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -14747,6 +14766,11 @@ func (s *ListTasksRequest) SetProjectName(v string) *ListTasksRequest {
 	return s
 }
 
+func (s *ListTasksRequest) SetRequestDefinition(v bool) *ListTasksRequest {
+	s.RequestDefinition = &v
+	return s
+}
+
 func (s *ListTasksRequest) SetSort(v string) *ListTasksRequest {
 	s.Sort = &v
 	return s
@@ -14778,6 +14802,7 @@ type ListTasksShrinkRequest struct {
 	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RequestDefinition    *bool   `json:"RequestDefinition,omitempty" xml:"RequestDefinition,omitempty"`
 	Sort                 *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	StartTimeRangeShrink *string `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -14815,6 +14840,11 @@ func (s *ListTasksShrinkRequest) SetOrder(v string) *ListTasksShrinkRequest {
 
 func (s *ListTasksShrinkRequest) SetProjectName(v string) *ListTasksShrinkRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetRequestDefinition(v bool) *ListTasksShrinkRequest {
+	s.RequestDefinition = &v
 	return s
 }
 
@@ -22955,6 +22985,10 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 		query["ProjectName"] = request.ProjectName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RequestDefinition)) {
+		query["RequestDefinition"] = request.RequestDefinition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
 	}
@@ -23529,6 +23563,10 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestDefinition)) {
+		query["RequestDefinition"] = request.RequestDefinition
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
