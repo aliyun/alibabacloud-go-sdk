@@ -34884,7 +34884,8 @@ type PubRequest struct {
 	// The body of the message that you want to publish.
 	//
 	// To generate a message body, you must convert the raw message into binary data and perform Base64 encoding.
-	MessageContent *string `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	MessageContent        *string `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	MessageExpiryInterval *int64  `json:"MessageExpiryInterval,omitempty" xml:"MessageExpiryInterval,omitempty"`
 	// The payload identifier of the message when you use MQTT 5.0 for communication. Valid values:
 	//
 	// *   **0**: The message is unknown byte data.
@@ -34903,6 +34904,7 @@ type PubRequest struct {
 	Qos *int32 `json:"Qos,omitempty" xml:"Qos,omitempty"`
 	// The response topic in the request/response communication mode when you use MQTT 5.0. For more information, see [MQTT 5.0](~~30540~~).
 	ResponseTopic *string `json:"ResponseTopic,omitempty" xml:"ResponseTopic,omitempty"`
+	Retained      *bool   `json:"Retained,omitempty" xml:"Retained,omitempty"`
 	// The custom topic for the device that receives the message.
 	//
 	// *   Topic format: `/${productKey}/${deviceName}/user/${TopicShortName}`.
@@ -34948,6 +34950,11 @@ func (s *PubRequest) SetMessageContent(v string) *PubRequest {
 	return s
 }
 
+func (s *PubRequest) SetMessageExpiryInterval(v int64) *PubRequest {
+	s.MessageExpiryInterval = &v
+	return s
+}
+
 func (s *PubRequest) SetPayloadFormatIndicator(v int32) *PubRequest {
 	s.PayloadFormatIndicator = &v
 	return s
@@ -34965,6 +34972,11 @@ func (s *PubRequest) SetQos(v int32) *PubRequest {
 
 func (s *PubRequest) SetResponseTopic(v string) *PubRequest {
 	s.ResponseTopic = &v
+	return s
+}
+
+func (s *PubRequest) SetRetained(v bool) *PubRequest {
+	s.Retained = &v
 	return s
 }
 
@@ -81339,6 +81351,10 @@ func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeO
 		query["IotInstanceId"] = request.IotInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MessageExpiryInterval)) {
+		query["MessageExpiryInterval"] = request.MessageExpiryInterval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PayloadFormatIndicator)) {
 		query["PayloadFormatIndicator"] = request.PayloadFormatIndicator
 	}
@@ -81353,6 +81369,10 @@ func (client *Client) PubWithOptions(request *PubRequest, runtime *util.RuntimeO
 
 	if !tea.BoolValue(util.IsUnset(request.ResponseTopic)) {
 		query["ResponseTopic"] = request.ResponseTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Retained)) {
+		query["Retained"] = request.Retained
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopicFullName)) {
