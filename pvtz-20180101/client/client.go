@@ -399,8 +399,9 @@ func (s *AddZoneRequest) SetZoneType(v string) *AddZoneRequest {
 type AddZoneResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName  *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// zone ID。
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s AddZoneResponseBody) String() string {
@@ -469,7 +470,8 @@ type AddZoneRecordRequest struct {
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Zone ID。
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s AddZoneRecordRequest) String() string {
@@ -614,7 +616,9 @@ func (s *BindResolverRuleVpcRequest) SetVpc(v []*BindResolverRuleVpcRequestVpc) 
 
 type BindResolverRuleVpcRequestVpc struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// vpcID
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s BindResolverRuleVpcRequestVpc) String() string {
@@ -632,6 +636,11 @@ func (s *BindResolverRuleVpcRequestVpc) SetRegionId(v string) *BindResolverRuleV
 
 func (s *BindResolverRuleVpcRequestVpc) SetVpcId(v string) *BindResolverRuleVpcRequestVpc {
 	s.VpcId = &v
+	return s
+}
+
+func (s *BindResolverRuleVpcRequestVpc) SetVpcType(v string) *BindResolverRuleVpcRequestVpc {
+	s.VpcType = &v
 	return s
 }
 
@@ -719,6 +728,7 @@ func (s *BindZoneVpcRequest) SetZoneId(v string) *BindZoneVpcRequest {
 type BindZoneVpcRequestVpcs struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcType  *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s BindZoneVpcRequestVpcs) String() string {
@@ -736,6 +746,11 @@ func (s *BindZoneVpcRequestVpcs) SetRegionId(v string) *BindZoneVpcRequestVpcs {
 
 func (s *BindZoneVpcRequestVpcs) SetVpcId(v string) *BindZoneVpcRequestVpcs {
 	s.VpcId = &v
+	return s
+}
+
+func (s *BindZoneVpcRequestVpcs) SetVpcType(v string) *BindZoneVpcRequestVpcs {
+	s.VpcType = &v
 	return s
 }
 
@@ -1082,7 +1097,8 @@ func (s *DeleteUserVpcAuthorizationResponse) SetBody(v *DeleteUserVpcAuthorizati
 type DeleteZoneRequest struct {
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// zone ID
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DeleteZoneRequest) String() string {
@@ -1110,7 +1126,8 @@ func (s *DeleteZoneRequest) SetZoneId(v string) *DeleteZoneRequest {
 
 type DeleteZoneResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// zone ID
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DeleteZoneResponseBody) String() string {
@@ -1469,6 +1486,7 @@ type DescribeRegionsRequest struct {
 	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	VpcType          *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -1496,6 +1514,11 @@ func (s *DescribeRegionsRequest) SetLang(v string) *DescribeRegionsRequest {
 
 func (s *DescribeRegionsRequest) SetUserClientIp(v string) *DescribeRegionsRequest {
 	s.UserClientIp = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetVpcType(v string) *DescribeRegionsRequest {
+	s.VpcType = &v
 	return s
 }
 
@@ -1610,8 +1633,10 @@ type DescribeRequestGraphRequest struct {
 	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	UserClientIp   *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// zone ID
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRequestGraphRequest) String() string {
@@ -2402,8 +2427,10 @@ func (s *DescribeResolverRuleResponseBody) SetZoneName(v string) *DescribeResolv
 type DescribeResolverRuleResponseBodyBindVpcs struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// Vpc ID
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeResolverRuleResponseBodyBindVpcs) String() string {
@@ -2431,6 +2458,11 @@ func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcId(v string) *DescribeR
 
 func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcName(v string) *DescribeResolverRuleResponseBodyBindVpcs {
 	s.VpcName = &v
+	return s
+}
+
+func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcType(v string) *DescribeResolverRuleResponseBodyBindVpcs {
+	s.VpcType = &v
 	return s
 }
 
@@ -2666,8 +2698,10 @@ func (s *DescribeResolverRulesResponseBodyRules) SetZoneName(v string) *Describe
 type DescribeResolverRulesResponseBodyRulesBindVpcs struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// VPC ID
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeResolverRulesResponseBodyRulesBindVpcs) String() string {
@@ -2695,6 +2729,11 @@ func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcId(v string) *Des
 
 func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcName(v string) *DescribeResolverRulesResponseBodyRulesBindVpcs {
 	s.VpcName = &v
+	return s
+}
+
+func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcType(v string) *DescribeResolverRulesResponseBodyRulesBindVpcs {
+	s.VpcType = &v
 	return s
 }
 
@@ -2830,7 +2869,9 @@ type DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop struct {
 	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
 	TunnelId     *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop) String() string {
@@ -2863,6 +2904,11 @@ func (s *DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop) SetTun
 
 func (s *DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop) SetVpcId(v string) *DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop) SetVpcType(v string) *DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop {
+	s.VpcType = &v
 	return s
 }
 
@@ -3383,7 +3429,8 @@ func (s *DescribeUserVpcAuthorizationsResponse) SetBody(v *DescribeUserVpcAuthor
 }
 
 type DescribeZoneInfoRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Zone ID。
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3418,10 +3465,11 @@ type DescribeZoneInfoResponseBody struct {
 	SlaveDns        *bool                                 `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
 	UpdateTime      *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	UpdateTimestamp *int64                                `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	ZoneId          *string                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName        *string                               `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag         *string                               `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	ZoneType        *string                               `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// Zone ID。
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZoneInfoResponseBody) String() string {
@@ -3532,9 +3580,11 @@ func (s *DescribeZoneInfoResponseBodyBindVpcs) SetVpc(v []*DescribeZoneInfoRespo
 type DescribeZoneInfoResponseBodyBindVpcsVpc struct {
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcUserId  *int64  `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
+	// Vpc ID。
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcUserId *int64  `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
 func (s DescribeZoneInfoResponseBodyBindVpcsVpc) String() string {
@@ -3562,6 +3612,11 @@ func (s *DescribeZoneInfoResponseBodyBindVpcsVpc) SetVpcId(v string) *DescribeZo
 
 func (s *DescribeZoneInfoResponseBodyBindVpcsVpc) SetVpcName(v string) *DescribeZoneInfoResponseBodyBindVpcsVpc {
 	s.VpcName = &v
+	return s
+}
+
+func (s *DescribeZoneInfoResponseBodyBindVpcsVpc) SetVpcType(v string) *DescribeZoneInfoResponseBodyBindVpcsVpc {
+	s.VpcType = &v
 	return s
 }
 
@@ -3607,7 +3662,8 @@ type DescribeZoneRecordsRequest struct {
 	SearchMode   *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
 	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Zone ID。
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZoneRecordsRequest) String() string {
@@ -3882,10 +3938,11 @@ type DescribeZoneVpcTreeResponseBodyZonesZone struct {
 	UpdateTime      *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	UpdateTimestamp *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 	Vpcs            *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
-	ZoneId          *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName        *string                                       `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag         *string                                       `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	ZoneType        *string                                       `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// Zone id
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZoneVpcTreeResponseBodyZonesZone) String() string {
@@ -3974,10 +4031,13 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs) SetVpc(v []*DescribeZoneV
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc struct {
+	// region Id
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// vpc id
+	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc) String() string {
@@ -4005,6 +4065,11 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc) SetVpcId(v string) *De
 
 func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc) SetVpcName(v string) *DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc {
 	s.VpcName = &v
+	return s
+}
+
+func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc) SetVpcType(v string) *DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc {
+	s.VpcType = &v
 	return s
 }
 
@@ -4038,11 +4103,12 @@ func (s *DescribeZoneVpcTreeResponse) SetBody(v *DescribeZoneVpcTreeResponseBody
 }
 
 type DescribeZonesRequest struct {
-	Keyword         *string                            `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang            *string                            `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber      *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryRegionId   *string                            `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
+	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryRegionId *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
+	// VPC ID。
 	QueryVpcId      *string                            `json:"QueryVpcId,omitempty" xml:"QueryVpcId,omitempty"`
 	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceTag     []*DescribeZonesRequestResourceTag `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty" type:"Repeated"`
@@ -4212,10 +4278,11 @@ type DescribeZonesResponseBodyZonesZone struct {
 	ResourceTags    *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
 	UpdateTime      *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	UpdateTimestamp *int64                                          `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	ZoneId          *string                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneName        *string                                         `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag         *string                                         `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	ZoneType        *string                                         `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// zone ID。
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {
@@ -4531,7 +4598,8 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type MoveResourceGroupRequest struct {
 	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Zone Id。
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -5506,7 +5574,8 @@ type UpdateZoneRemarkRequest struct {
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Zone ID。
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateZoneRemarkRequest) String() string {
@@ -5539,7 +5608,8 @@ func (s *UpdateZoneRemarkRequest) SetZoneId(v string) *UpdateZoneRemarkRequest {
 
 type UpdateZoneRemarkResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Zone ID。
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateZoneRemarkResponseBody) String() string {
@@ -6464,6 +6534,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
 		query["UserClientIp"] = request.UserClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcType)) {
+		query["VpcType"] = request.VpcType
 	}
 
 	req := &openapi.OpenApiRequest{
