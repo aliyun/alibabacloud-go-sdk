@@ -23115,6 +23115,159 @@ func (s *FlightSearchListResponse) SetBody(v *FlightSearchListResponseBody) *Fli
 	return s
 }
 
+type GroupCorpTokenHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
+}
+
+func (s GroupCorpTokenHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupCorpTokenHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GroupCorpTokenHeaders) SetCommonHeaders(v map[string]*string) *GroupCorpTokenHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GroupCorpTokenHeaders) SetXAcsBtripAccessToken(v string) *GroupCorpTokenHeaders {
+	s.XAcsBtripAccessToken = &v
+	return s
+}
+
+type GroupCorpTokenRequest struct {
+	AppSecret *string `json:"app_secret,omitempty" xml:"app_secret,omitempty"`
+	CorpId    *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+}
+
+func (s GroupCorpTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupCorpTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GroupCorpTokenRequest) SetAppSecret(v string) *GroupCorpTokenRequest {
+	s.AppSecret = &v
+	return s
+}
+
+func (s *GroupCorpTokenRequest) SetCorpId(v string) *GroupCorpTokenRequest {
+	s.CorpId = &v
+	return s
+}
+
+func (s *GroupCorpTokenRequest) SetSubCorpId(v string) *GroupCorpTokenRequest {
+	s.SubCorpId = &v
+	return s
+}
+
+type GroupCorpTokenResponseBody struct {
+	Code    *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *GroupCorpTokenResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s GroupCorpTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupCorpTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GroupCorpTokenResponseBody) SetCode(v string) *GroupCorpTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBody) SetMessage(v string) *GroupCorpTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBody) SetModule(v *GroupCorpTokenResponseBodyModule) *GroupCorpTokenResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBody) SetRequestId(v string) *GroupCorpTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBody) SetTraceId(v string) *GroupCorpTokenResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type GroupCorpTokenResponseBodyModule struct {
+	Expire *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
+	Start  *int64  `json:"start,omitempty" xml:"start,omitempty"`
+	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s GroupCorpTokenResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupCorpTokenResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *GroupCorpTokenResponseBodyModule) SetExpire(v int64) *GroupCorpTokenResponseBodyModule {
+	s.Expire = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBodyModule) SetStart(v int64) *GroupCorpTokenResponseBodyModule {
+	s.Start = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponseBodyModule) SetToken(v string) *GroupCorpTokenResponseBodyModule {
+	s.Token = &v
+	return s
+}
+
+type GroupCorpTokenResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GroupCorpTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GroupCorpTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupCorpTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GroupCorpTokenResponse) SetHeaders(v map[string]*string) *GroupCorpTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GroupCorpTokenResponse) SetStatusCode(v int32) *GroupCorpTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GroupCorpTokenResponse) SetBody(v *GroupCorpTokenResponseBody) *GroupCorpTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GroupDepartSaveHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -46456,6 +46609,69 @@ func (client *Client) FlightSearchList(request *FlightSearchListRequest) (_resul
 	headers := &FlightSearchListHeaders{}
 	_result = &FlightSearchListResponse{}
 	_body, _err := client.FlightSearchListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GroupCorpTokenWithOptions(request *GroupCorpTokenRequest, headers *GroupCorpTokenHeaders, runtime *util.RuntimeOptions) (_result *GroupCorpTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppSecret)) {
+		query["app_secret"] = request.AppSecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpId)) {
+		query["corp_id"] = request.CorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubCorpId)) {
+		query["sub_corp_id"] = request.SubCorpId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripAccessToken)) {
+		realHeaders["x-acs-btrip-access-token"] = util.ToJSONString(headers.XAcsBtripAccessToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GroupCorpToken"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/btrip-open-auth/v1/group-corp-token/action/take"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GroupCorpTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GroupCorpToken(request *GroupCorpTokenRequest) (_result *GroupCorpTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GroupCorpTokenHeaders{}
+	_result = &GroupCorpTokenResponse{}
+	_body, _err := client.GroupCorpTokenWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
