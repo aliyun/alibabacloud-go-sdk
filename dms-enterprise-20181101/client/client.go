@@ -8378,8 +8378,12 @@ func (s *ExecuteScriptResponse) SetBody(v *ExecuteScriptResponseBody) *ExecuteSc
 }
 
 type ExecuteStructSyncRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ExecuteStructSyncRequest) String() string {
@@ -8401,10 +8405,14 @@ func (s *ExecuteStructSyncRequest) SetTid(v int64) *ExecuteStructSyncRequest {
 }
 
 type ExecuteStructSyncResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ExecuteStructSyncResponseBody) String() string {
@@ -16615,9 +16623,11 @@ func (s *GetStructSyncJobAnalyzeResultResponse) SetBody(v *GetStructSyncJobAnaly
 }
 
 type GetStructSyncJobDetailRequest struct {
-	// The total number of tables.
+	// The ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The error message that is returned.
+	// The tenant ID.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -16640,25 +16650,15 @@ func (s *GetStructSyncJobDetailRequest) SetTid(v int64) *GetStructSyncJobDetailR
 }
 
 type GetStructSyncJobDetailResponseBody struct {
-	// The description of the task.
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the ticket.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// *   **NEW**: The task was created.
-	// *   **COMPARING**: The schemas of tables were being compared.
-	// *   **COMPARE_BREAK**: The schema comparison was interrupted.
-	// *   **COMPARE_FINISH**: The schema comparison was complete.
-	// *   **NOT_SCRIPTS**: The schema comparison was complete. No scripts were available.
-	// *   **SUBMITED_DBTASK**: The task was submitted.
-	// *   **DBTASK_SUCCESS**: The task was complete.
-	// *   **SUBMITED_WORKFLOW**: The ticket was submitted for approval.
-	// *   **WORKFLOW_SUCCESS**: The ticket was approved.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 1
+	// The details of the schema synchronization task.
 	StructSyncJobDetail *GetStructSyncJobDetailResponseBodyStructSyncJobDetail `json:"StructSyncJobDetail,omitempty" xml:"StructSyncJobDetail,omitempty" type:"Struct"`
-	// The total number of SQL statements.
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16696,22 +16696,35 @@ func (s *GetStructSyncJobDetailResponseBody) SetSuccess(v bool) *GetStructSyncJo
 }
 
 type GetStructSyncJobDetailResponseBodyStructSyncJobDetail struct {
+	// The ID of the SQL task group.
 	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
-	ExecuteCount  *int64 `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
 	// The number of SQL statements that have been executed.
+	ExecuteCount *int64 `json:"ExecuteCount,omitempty" xml:"ExecuteCount,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **NEW**: The task was created.
+	// *   **COMPARING**: The schemas of tables were being compared.
+	// *   **COMPARE_BREAK**: The schema comparison was interrupted.
+	// *   **COMPARE_FINISH**: The comparison was finished.
+	// *   **NOT_SCRIPTS**: The comparison was finished but no executable script was available.
+	// *   **SUBMITED_DBTASK**: The task was submitted.
+	// *   **DBTASK_SUCCESS**: The task was complete.
+	// *   **SUBMITED_WORKFLOW**: The ticket was submitted.
+	// *   **WORKFLOW_SUCCESS**: The ticket was approved.
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The details of the schema synchronization task.
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	SecurityRule *string `json:"SecurityRule,omitempty" xml:"SecurityRule,omitempty"`
-	// The number of tables that have been analyzed.
-	SqlCount *int64 `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
+	// The description of the task.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The type of security rule. Valid values:
 	//
-	// *   **CANNOT_SYNC**: The schema synchronization is not allowed.
+	// *   **CANNOT_SYNC**: Synchronization cannot be performed.
 	// *   **WITH_APPROVE**: The schema synchronization can be performed after the ticket is approved. You can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
 	// *   **WITHOUT_APPROVE**: The schema synchronization can be performed without approval.
+	SecurityRule *string `json:"SecurityRule,omitempty" xml:"SecurityRule,omitempty"`
+	// The total number of SQL statements.
+	SqlCount *int64 `json:"SqlCount,omitempty" xml:"SqlCount,omitempty"`
+	// The number of tables that have been analyzed.
 	TableAnalyzed *int64 `json:"TableAnalyzed,omitempty" xml:"TableAnalyzed,omitempty"`
-	// The ID of the request.
+	// The total number of tables.
 	TableCount *int64 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
 }
 
@@ -33813,6 +33826,99 @@ func (s *SetOwnersResponse) SetBody(v *SetOwnersResponseBody) *SetOwnersResponse
 	return s
 }
 
+type SkipDataCorrectRowCheckRequest struct {
+	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Tid     *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s SkipDataCorrectRowCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipDataCorrectRowCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SkipDataCorrectRowCheckRequest) SetOrderId(v int64) *SkipDataCorrectRowCheckRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckRequest) SetReason(v string) *SkipDataCorrectRowCheckRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckRequest) SetTid(v int64) *SkipDataCorrectRowCheckRequest {
+	s.Tid = &v
+	return s
+}
+
+type SkipDataCorrectRowCheckResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SkipDataCorrectRowCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipDataCorrectRowCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SkipDataCorrectRowCheckResponseBody) SetErrorCode(v string) *SkipDataCorrectRowCheckResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckResponseBody) SetErrorMessage(v string) *SkipDataCorrectRowCheckResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckResponseBody) SetRequestId(v string) *SkipDataCorrectRowCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckResponseBody) SetSuccess(v bool) *SkipDataCorrectRowCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SkipDataCorrectRowCheckResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SkipDataCorrectRowCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SkipDataCorrectRowCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SkipDataCorrectRowCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SkipDataCorrectRowCheckResponse) SetHeaders(v map[string]*string) *SkipDataCorrectRowCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckResponse) SetStatusCode(v int32) *SkipDataCorrectRowCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SkipDataCorrectRowCheckResponse) SetBody(v *SkipDataCorrectRowCheckResponseBody) *SkipDataCorrectRowCheckResponse {
+	s.Body = v
+	return s
+}
+
 type StopTaskFlowInstanceRequest struct {
 	// The ID of the task flow. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
@@ -35530,11 +35636,13 @@ func (s *UpdateTaskFlowCooperatorsResponse) SetBody(v *UpdateTaskFlowCooperators
 }
 
 type UpdateTaskFlowEdgesRequest struct {
-	// $.parameters[3].schema.example
+	// The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// $.parameters[3].schema.enumValueTitles
+	// The list of updated task flow edges.
 	Edges []*UpdateTaskFlowEdgesRequestEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Repeated"`
-	// $.parameters[3].schema.description
+	// The tenant ID.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -35562,11 +35670,11 @@ func (s *UpdateTaskFlowEdgesRequest) SetTid(v int64) *UpdateTaskFlowEdgesRequest
 }
 
 type UpdateTaskFlowEdgesRequestEdges struct {
-	// $.parameters[2].schema.description
+	// The ID of the task flow edge.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// $.parameters[2].schema.example
+	// The ID of the end node of the edge.
 	NodeEnd *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
-	// $.parameters[2].schema.enumValueTitles
+	// The ID of the start node of the edge.
 	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
 }
 
@@ -35594,11 +35702,13 @@ func (s *UpdateTaskFlowEdgesRequestEdges) SetNodeFrom(v int64) *UpdateTaskFlowEd
 }
 
 type UpdateTaskFlowEdgesShrinkRequest struct {
-	// $.parameters[3].schema.example
+	// The task flow ID. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// $.parameters[3].schema.enumValueTitles
+	// The list of updated task flow edges.
 	EdgesShrink *string `json:"Edges,omitempty" xml:"Edges,omitempty"`
-	// $.parameters[3].schema.description
+	// The tenant ID.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -35626,13 +35736,17 @@ func (s *UpdateTaskFlowEdgesShrinkRequest) SetTid(v int64) *UpdateTaskFlowEdgesS
 }
 
 type UpdateTaskFlowEdgesResponseBody struct {
-	// UpdateTaskFlowEdges
+	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// WB01220505
+	// The error message returned if the request failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Updates the start and end nodes of specified edges of a specified task flow at a time.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTaskFlowEdgesResponseBody) String() string {
@@ -40204,6 +40318,14 @@ func (client *Client) ExecuteScript(request *ExecuteScriptRequest) (_result *Exe
 	return _result, _err
 }
 
+/**
+ * If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+ * >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+ *
+ * @param request ExecuteStructSyncRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ExecuteStructSyncResponse
+ */
 func (client *Client) ExecuteStructSyncWithOptions(request *ExecuteStructSyncRequest, runtime *util.RuntimeOptions) (_result *ExecuteStructSyncResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40241,6 +40363,13 @@ func (client *Client) ExecuteStructSyncWithOptions(request *ExecuteStructSyncReq
 	return _result, _err
 }
 
+/**
+ * If the security rules of an instance indicate that a ticket must be approved before you perform schema synchronization, you can call the [SubmitStructSyncOrderApproval](~~206166~~) operation to submit the ticket for approval.
+ * >  You can call the [GetStructSyncJobDetail](~~206160~~) operation to query whether you need to submit a ticket for approval.
+ *
+ * @param request ExecuteStructSyncRequest
+ * @return ExecuteStructSyncResponse
+ */
 func (client *Client) ExecuteStructSync(request *ExecuteStructSyncRequest) (_result *ExecuteStructSyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteStructSyncResponse{}
@@ -47477,6 +47606,58 @@ func (client *Client) SetOwners(request *SetOwnersRequest) (_result *SetOwnersRe
 	return _result, _err
 }
 
+func (client *Client) SkipDataCorrectRowCheckWithOptions(request *SkipDataCorrectRowCheckRequest, runtime *util.RuntimeOptions) (_result *SkipDataCorrectRowCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SkipDataCorrectRowCheck"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SkipDataCorrectRowCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SkipDataCorrectRowCheck(request *SkipDataCorrectRowCheckRequest) (_result *SkipDataCorrectRowCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SkipDataCorrectRowCheckResponse{}
+	_body, _err := client.SkipDataCorrectRowCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopTaskFlowInstanceWithOptions(request *StopTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *StopTaskFlowInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48351,9 +48532,11 @@ func (client *Client) UpdateTaskFlowCooperators(request *UpdateTaskFlowCooperato
 }
 
 /**
- * Indicates whether the request was successful. Valid values:
- * *   **true**: The request was successful.
- * *   **false**: The request failed.
+ * ###
+ * The edges can be updated only when the following conditions are met:
+ * 1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+ * 2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+ * 3.  After the update, rings do not exist in the DAG.
  *
  * @param tmpReq UpdateTaskFlowEdgesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -48407,9 +48590,11 @@ func (client *Client) UpdateTaskFlowEdgesWithOptions(tmpReq *UpdateTaskFlowEdges
 }
 
 /**
- * Indicates whether the request was successful. Valid values:
- * *   **true**: The request was successful.
- * *   **false**: The request failed.
+ * ###
+ * The edges can be updated only when the following conditions are met:
+ * 1.  The specified edge exists in the directed acyclic graph (DAG) of the task flow specified by DagId.
+ * 2.  The specified edge nodes exist in the DAG of the task flow specified by DagId.
+ * 3.  After the update, rings do not exist in the DAG.
  *
  * @param request UpdateTaskFlowEdgesRequest
  * @return UpdateTaskFlowEdgesResponse
