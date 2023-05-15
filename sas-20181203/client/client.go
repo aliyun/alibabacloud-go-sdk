@@ -21174,49 +21174,78 @@ func (s *DescribeGroupedTagsResponse) SetBody(v *DescribeGroupedTagsResponseBody
 }
 
 type DescribeGroupedVulRequest struct {
-	// $.parameters[10].schema.example
+	// The alias of the vulnerability.
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The type of the asset on which the vulnerability is detected. Separate multiple types with commas (,). Valid values:
+	//
+	// *   **ECS**: Elastic Compute Service (ECS) instance
+	// *   **CONTAINER**: container
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The type of the vulnerability. This parameter is valid only for application vulnerabilities. Valid values:
+	//
+	// *   **sca**: vulnerability that is detected based on software component analysis
+	// *   **app**: application vulnerability
+	AttachTypes *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
+	// The key of the condition that is used to query containers. Valid values:
+	//
+	// *   **instanceId**: the ID of the asset
+	// *   **appName**: the name of the application
+	// *   **clusterId**: the ID of the cluster
+	// *   **regionId**: the ID of the region
+	// *   **nodeName**: the name of the node
+	// *   **namespace**: the namespace
+	// *   **clusterName**: the name of the cluster
+	// *   **image**: the name of the image
+	// *   **imageRepoName**: the name of the image repository
+	// *   **imageRepoNamespace**: the namespace to which the image repository belongs
+	// *   **imageRepoTag**: the tag that is added to the image
+	// *   **imageDigest**: the digest of the image
+	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// Specifies whether the vulnerability is handled. Valid values:
 	//
-	// **y**: handled **n**: The vulnerability is not handled.
-	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// **y**: yes **n**: no
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// The ID of the asset group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The priorities to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
 	//
 	// *   **asap**: high
 	// *   **later**: medium
 	// *   **nntf**: low
-	AttachTypes *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
-	// The type of the vulnerability. Valid values:
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag that is used to filter vulnerabilities. Valid values:
+	//
+	// *   Restart required
+	// *   Remote utilization
+	// *   EXP exists
+	// *   Available
+	// *   Elevation of Privilege
+	// *   Code Execution
+	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
+	// The query type for containers. Valid values:
+	//
+	// *   **containerId**: the ID of the container
+	// *   **uuid**: the ID of the asset
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The type of the vulnerabilities. Valid values:
 	//
 	// *   **cve**: Linux software vulnerability
 	// *   **sys**: Windows system vulnerability
 	// *   **cms**: Web-CMS vulnerability
 	// *   **app**: application vulnerability
-	// *   **emg**: urgent vulnerability
+	// *   **emg**: urgent vulnerabilities
 	// *   **sca**: vulnerability that is detected based on software component analysis
-	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	// $.parameters[11].schema.example
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// $.parameters[11].schema.description
-	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
-	//
-	// *   **zh**: Chinese
-	// *   **en**: English
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Code Execution
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// $.parameters[10].schema.enumValueTitles
-	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// $.parameters[11].schema.enumValueTitles
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The alias of the vulnerability.
-	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
-	// The UUID of the server. Separate multiple UUIDs with commas (,).
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// Queries vulnerabilities by group.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// $.parameters[10].schema.description
+	// The UUID of the server. Separate multiple UUIDs with commas (,).
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -21299,24 +21328,15 @@ func (s *DescribeGroupedVulRequest) SetUuids(v string) *DescribeGroupedVulReques
 }
 
 type DescribeGroupedVulResponseBody struct {
-	// The number of entries to return on each page. Default value: 10.
+	// The page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The data returned.
+	// An array that consists of the details of the vulnerability.
 	GroupedVulItems []*DescribeGroupedVulResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
-	// The tag that is used to search for the vulnerabilities. Valid values:
-	//
-	// *   Restart required
-	// *   Remote exploitation
-	// *   Exploit exists
-	// *   Exploitable
-	// *   Privilege escalation
-	// *   Code execution
+	// The number of entries per page. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the asset group.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The types of the vulnerabilities.
-	//
-	// > This parameter is valid only for application vulnerabilities and vulnerabilities that are detected based on software component analysis.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21354,41 +21374,46 @@ func (s *DescribeGroupedVulResponseBody) SetTotalCount(v int32) *DescribeGrouped
 }
 
 type DescribeGroupedVulResponseBodyGroupedVulItems struct {
-	// The number of handled vulnerabilities.
+	// The alias of the vulnerability.
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The number of vulnerabilities that have the **high** priority.
+	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	GmtLast *int64 `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
+	// The number of handled vulnerabilities.
+	HandledCount *int32 `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
+	// The number of vulnerabilities that have the **medium** priority.
+	LaterCount *int32 `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
+	// The name of the vulnerability.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of vulnerabilities that have the **low** priority.
+	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	// Indicates whether the application protection feature is supported.
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	//
+	// > If this parameter is not returned, the application protection feature is not supported.
+	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
 	// The tag that is added to the vulnerability. Valid values:
 	//
 	// *   Restart required
-	// *   Remote exploitation
-	// *   Exploit exists
-	// *   Exploitable
-	// *   Privilege escalation
-	// *   Code execution
-	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	// An array that consists of the details about the vulnerability.
-	GmtLast *int64 `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
-	// The total number of entries returned.
-	HandledCount *int32 `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
-	// The number of vulnerabilities that have the **low** priority.
-	LaterCount *int32 `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	// The number of entries returned per page. Default value: 10.
-	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+	// *   Remote utilization
+	// *   EXP exists
+	// *   Available
+	// *   Elevation of Privilege
+	// *   Code Execution
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The total number of fixed vulnerabilities.
+	TotalFixCount *int64 `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
 	// The type of the vulnerability. Valid values:
 	//
 	// *   **cve**: Linux software vulnerability
 	// *   **sys**: Windows system vulnerability
 	// *   **cms**: Web-CMS vulnerability
-	// *   **app**: application vulnerability
-	// *   **emg**: urgent vulnerability
+	// *   **app**: application vulnerabilitiy
+	// *   **emg**: urgent vulnerabilities
 	// *   **sca**: vulnerability that is detected based on software component analysis
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// gmtLast
-	TotalFixCount *int64 `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
-	// The page number of the returned page.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -46645,7 +46670,7 @@ type DescribeVulListRequest struct {
 	// *   **later**: medium
 	// *   **nntf**: low
 	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page. Default value: **10**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The remarks for the asset affected by the vulnerability. The value can be the private IP address, public IP address, or name of the asset.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
@@ -46653,14 +46678,14 @@ type DescribeVulListRequest struct {
 	//
 	// *   **cve**: Linux software vulnerability
 	// *   **sys**: Windows system vulnerability
-	// *   **cms**: Web-CMS vulnerability
+	// *   **cms**: Web-CMS vulnerability.
 	// *   **app**: application vulnerability that is detected by using web scanner
-	// *   **emg**: urgent vulnerability
+	// *   **emg**: urgent vulnerability.
 	// *   **sca**: application vulnerability that is detected by using software component analysis
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The UUIDs of the servers on which you want to query the vulnerabilities. Separate multiple UUIDs with commas (,).
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
-	// The IDs of the virtual private clouds (VPCs) in which the vulnerability is detected. Separate multiple IDs with commas (,).
+	// The ID of the virtual private cloud (VPC) in which the vulnerabilities are detected. Separate multiple IDs with commas (,).
 	VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
 }
 
@@ -46740,7 +46765,7 @@ func (s *DescribeVulListRequest) SetVpcInstanceIds(v string) *DescribeVulListReq
 type DescribeVulListResponseBody struct {
 	// The page number of the returned page.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -46784,55 +46809,8 @@ func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponse
 }
 
 type DescribeVulListResponseBodyVulRecords struct {
-	// The status of the vulnerability. Valid values:
-	//
-	// *   **1**: unfixed
-	// *   **2**: fix failed
-	// *   3: rollback failed
-	// *   **4**: fixing
-	// *   **5**: being rolled back
-	// *   **6**: being verified
-	// *   **7**: fixed
-	// *   **8**: fixed and to be restarted
-	// *   **9**: rolled back
-	// *   **10**: ignored
-	// *   **11**: rolled back and to be restarted
-	// *   **12**: not found
-	// *   **20**: expired
-	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	// CentOS 7.2 64-bit
-	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
-	// The public IP address of the asset that is associated with the vulnerability.
-	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	// The priority to fix the vulnerability. Valid values:
-	//
-	// *   **asap**: high
-	// *   **later**: medium
-	// *   **nntf**: low
-	//
-	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
-	FirstTs *int64 `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
-	// The name of the vulnerability.
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The private IP address of the asset.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the operating system for your asset.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The tag that is added to the vulnerability.
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The ID of the region in which the server resides.
-	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	// The ID of the vulnerability.
-	ModifyTs *int64 `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
-	// The instance ID of the asset.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The UUID of the asset.
-	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// The name of the vulnerability.
-	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The alias of the vulnerability.
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The edition of Security Center that is authorized to protect the asset. Valid values:
 	//
 	// *   **1**: Basic edition
@@ -46841,31 +46819,74 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// *   **3**: Enterprise edition
 	// *   **7**: Ultimate edition
 	// *   **10**: Value-added Plan edition
-	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	// The code that indicates the vulnerability fixing result.
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The name of the asset.
-	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	// The type of the vulnerability. Valid values:
+	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// Indicates whether Security Center is authorized to protect the asset. Valid values:
 	//
-	// *   **cve**: Linux software vulnerability
-	// *   **sys**: Windows system vulnerability
-	// *   **cms**: Web-CMS vulnerability
-	// *   **emg**: urgent vulnerability
-	// *   **app**: application vulnerability
-	// *   **sca**: application vulnerability that is detected by using software component analysis
-	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
-	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
-	RaspStatus *int32 `json:"RaspStatus,omitempty" xml:"RaspStatus,omitempty"`
-	// The timestamp when the vulnerability was fixed. Unit: milliseconds.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
-	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The ID of the asset group.
-	RepairTs *int64 `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
-	// The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// *   **true**
+	// *   **false**
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
 	// The extended information about the vulnerability.
+	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
+	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
+	FirstTs *int64 `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
+	// The ID of the asset group.
+	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The instance ID of the asset.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the asset.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The public IP address of the asset.
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The private IP address of the asset.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
+	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
+	ModifyTs *int64 `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
+	// The name of the vulnerability.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The priority to fix the vulnerability. Valid values:
+	//
+	// *   **asap**: high
+	// *   **later**: medium
+	// *   **nntf**: low
+	//
+	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// Indicates whether the Security Center agent on the asset is online. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// The name of the operating system for your asset.
+	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// The name of the operating system for your asset.
+	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	// The ID of the vulnerability.
+	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	// Indicates whether the application protection feature is supported.
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	//
+	// > If this parameter is not returned, the application protection feature is not supported.
+	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+	// The protection mode of the application protection feature. Valid values:
+	//
+	// *   **0**: unprotected
+	// *   **1**: the Monitor mode
+	// *   **2**: the Block mode
+	// *   **3**: disabled
+	RaspStatus *int32 `json:"RaspStatus,omitempty" xml:"RaspStatus,omitempty"`
+	// The ID of the region in which the server resides.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
+	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
+	// The timestamp when the vulnerability was fixed. Unit: milliseconds.
+	RepairTs *int64 `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
+	// The code that indicates the vulnerability fixing result.
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The message that indicates the vulnerability fixing result.
 	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 	// The status of the vulnerability. Valid values:
 	//
@@ -46883,14 +46904,18 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// *   **12**: not found
 	// *   **20**: expired
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the Security Center agent on the asset is online. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
+	// The tag that is added to the vulnerability.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The public IP address of the asset.
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **app**: application vulnerability
+	// *   **sca**: application vulnerability that is detected by using software component analysis
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The message that indicates the vulnerability fixing result.
+	// The UUID of the asset.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -47048,31 +47073,45 @@ func (s *DescribeVulListResponseBodyVulRecords) SetUuid(v string) *DescribeVulLi
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJson struct {
-	// The complete version number.
-	AbsolutePath *string `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
-	// The RPM Package Manager (RPM) packages.
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The alias of the vulnerability.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the operating system.
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The release of the operating system.
-	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	// The time score.
-	Necessity *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
 	// The package path of the software that has the vulnerability.
-	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	// The tag that is added to the vulnerability.
-	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	// The package version number of the software that has the vulnerability.
-	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
-	// The ID of the vulnerability.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AbsolutePath *string `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
+	// The alias of the vulnerability.
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The description of the vulnerability.
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The public IP address of the asset that is associated with the vulnerability.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
 	// Indicates whether the vulnerability needs to be fixed.
+	Necessity *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
+	// The name of the operating system for your asset.
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The release of the operating system.
+	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
+	// The ID of the vulnerability.
+	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	// The RPM Package Manager (RPM) packages.
+	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
+	// The status of the vulnerability. Valid values:
+	//
+	// *   **1**: unfixed
+	// *   **2**: fix failed
+	// *   3: rollback failed
+	// *   **4**: fixing
+	// *   **5**: being rolled back
+	// *   **6**: being verified
+	// *   **7**: fixed
+	// *   **8**: fixed and to be restarted
+	// *   **9**: rolled back
+	// *   **10**: ignored
+	// *   **11**: rolled back and to be restarted
+	// *   **12**: not found
+	// *   **20**: expired
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tag that is added to the vulnerability.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The CVE list.
 	CveList []*string `json:"cveList,omitempty" xml:"cveList,omitempty" type:"Repeated"`
 }
 
@@ -47150,13 +47189,29 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetCveList(v []
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity struct {
-	// The name of the operating system for your asset.
-	AssetsFactor *string `json:"Assets_factor,omitempty" xml:"Assets_factor,omitempty"`
-	// Indicates whether Security Center is authorized to protect the asset. Valid values:
+	// The asset importance score. Valid values:
 	//
-	// *   **true**: yes
-	// *   **false**: no
+	// *   **2**: an important asset
+	// *   **1**: a common asset
+	// *   **0**: a test asset
+	AssetsFactor *string `json:"Assets_factor,omitempty" xml:"Assets_factor,omitempty"`
+	// The Common Vulnerability Scoring System (CVSS) score.
 	CvssFactor *string `json:"Cvss_factor,omitempty" xml:"Cvss_factor,omitempty"`
+	// The environment score.
+	EnviromentFactor *string `json:"Enviroment_factor,omitempty" xml:"Enviroment_factor,omitempty"`
+	// Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	IsCalc *string `json:"Is_calc,omitempty" xml:"Is_calc,omitempty"`
+	// The status of the score of urgency to fix a vulnerability. Valid values:
+	//
+	// *   **none**: No score is generated.
+	// *   **pending**: The score is pending calculation.
+	// *   **normal**: The calculation is normal.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time score.
+	TimeFactor *string `json:"Time_factor,omitempty" xml:"Time_factor,omitempty"`
 	// The score of urgency to fix a vulnerability.
 	//
 	// The following list describes scores and related fixing suggestions:
@@ -47164,21 +47219,6 @@ type DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity struct {
 	// *   If the score is from **13.5 to 15**, the vulnerability is a high-risk vulnerability. You must fix the vulnerability at the earliest opportunity.
 	// *   If the score is **greater than or equal to 7 but less than 13.5**, the vulnerability is a medium-risk vulnerability. You can fix the vulnerability at your convenience.
 	// *   If the score is **less than 7**, the vulnerability is a low-risk vulnerability. You can ignore the vulnerability.
-	EnviromentFactor *string `json:"Enviroment_factor,omitempty" xml:"Enviroment_factor,omitempty"`
-	// The Common Vulnerability Scoring System (CVSS) score.
-	IsCalc *string `json:"Is_calc,omitempty" xml:"Is_calc,omitempty"`
-	// The environment score.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
-	//
-	// *   **0**: no
-	// *   **1**: yes
-	TimeFactor *string `json:"Time_factor,omitempty" xml:"Time_factor,omitempty"`
-	// The asset importance score. Valid values:
-	//
-	// *   **2**: an important asset
-	// *   **1**: a common asset
-	// *   **0**: a test asset
 	TotalScore *string `json:"Total_score,omitempty" xml:"Total_score,omitempty"`
 }
 
@@ -47226,25 +47266,25 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity) SetTot
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
-	// The command that is used to fix the vulnerability.
+	// The name of the init container.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The reason why the vulnerability is detected.
+	// The full version number.
 	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
-	// The name of the container.
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The path of the software that has the vulnerability.
-	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	// The process ID.
-	MatchList []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
-	// The rule that is used to detect the vulnerability.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the RPM package.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The CVE list.
-	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The rule that is used to detect the vulnerability.
-	UpdateCmd *string `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
 	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The reason why the vulnerability is detected.
+	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	// The rule that is used to detect the vulnerability.
+	MatchList []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
+	// The name of the RPM package.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The path of the software that has the vulnerability.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The process ID.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The command that is used to fix the vulnerability.
+	UpdateCmd *string `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
+	// The package version number of the software that has the vulnerability.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
