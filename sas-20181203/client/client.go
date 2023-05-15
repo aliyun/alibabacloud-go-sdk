@@ -2905,10 +2905,11 @@ func (s *CreateCycleTaskResponse) SetBody(v *CreateCycleTaskResponseBody) *Creat
 }
 
 type CreateFileDetectRequest struct {
-	HashKey  *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	OssKey   *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	HashKey     *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	OssKey      *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type        *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFileDetectRequest) String() string {
@@ -2917,6 +2918,11 @@ func (s CreateFileDetectRequest) String() string {
 
 func (s CreateFileDetectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFileDetectRequest) SetDownloadUrl(v string) *CreateFileDetectRequest {
+	s.DownloadUrl = &v
+	return s
 }
 
 func (s *CreateFileDetectRequest) SetHashKey(v string) *CreateFileDetectRequest {
@@ -4727,6 +4733,105 @@ func (s *CreateOrUpdateAssetGroupResponse) SetStatusCode(v int32) *CreateOrUpdat
 }
 
 func (s *CreateOrUpdateAssetGroupResponse) SetBody(v *CreateOrUpdateAssetGroupResponseBody) *CreateOrUpdateAssetGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrUpdateDingTalkRequest struct {
+	ConfigList     *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
+	DingTalkLang   *string `json:"DingTalkLang,omitempty" xml:"DingTalkLang,omitempty"`
+	GroupIdList    *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IntervalTime   *int64  `json:"IntervalTime,omitempty" xml:"IntervalTime,omitempty"`
+	RuleActionName *string `json:"RuleActionName,omitempty" xml:"RuleActionName,omitempty"`
+	SendUrl        *string `json:"SendUrl,omitempty" xml:"SendUrl,omitempty"`
+}
+
+func (s CreateOrUpdateDingTalkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateDingTalkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetConfigList(v string) *CreateOrUpdateDingTalkRequest {
+	s.ConfigList = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetDingTalkLang(v string) *CreateOrUpdateDingTalkRequest {
+	s.DingTalkLang = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetGroupIdList(v string) *CreateOrUpdateDingTalkRequest {
+	s.GroupIdList = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetId(v int64) *CreateOrUpdateDingTalkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetIntervalTime(v int64) *CreateOrUpdateDingTalkRequest {
+	s.IntervalTime = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetRuleActionName(v string) *CreateOrUpdateDingTalkRequest {
+	s.RuleActionName = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkRequest) SetSendUrl(v string) *CreateOrUpdateDingTalkRequest {
+	s.SendUrl = &v
+	return s
+}
+
+type CreateOrUpdateDingTalkResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOrUpdateDingTalkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateDingTalkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateDingTalkResponseBody) SetRequestId(v string) *CreateOrUpdateDingTalkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOrUpdateDingTalkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrUpdateDingTalkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateDingTalkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateDingTalkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateDingTalkResponse) SetHeaders(v map[string]*string) *CreateOrUpdateDingTalkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkResponse) SetStatusCode(v int32) *CreateOrUpdateDingTalkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateDingTalkResponse) SetBody(v *CreateOrUpdateDingTalkResponseBody) *CreateOrUpdateDingTalkResponse {
 	s.Body = v
 	return s
 }
@@ -21069,22 +21174,49 @@ func (s *DescribeGroupedTagsResponse) SetBody(v *DescribeGroupedTagsResponseBody
 }
 
 type DescribeGroupedVulRequest struct {
-	AliasName          *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AssetType          *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	AttachTypes        *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
+	// $.parameters[10].schema.example
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// Specifies whether the vulnerability is handled. Valid values:
+	//
+	// **y**: handled **n**: The vulnerability is not handled.
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The priorities to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
+	//
+	// *   **asap**: high
+	// *   **later**: medium
+	// *   **nntf**: low
+	AttachTypes *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **app**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **sca**: vulnerability that is detected based on software component analysis
 	ContainerFieldName *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
-	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Dealed             *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
-	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the vulnerability.
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Necessity  *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// $.parameters[11].schema.example
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// $.parameters[11].schema.description
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Code Execution
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// $.parameters[10].schema.enumValueTitles
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// $.parameters[11].schema.enumValueTitles
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The alias of the vulnerability.
 	SearchTags *string `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
+	// The UUID of the server. Separate multiple UUIDs with commas (,).
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The total number of fixed vulnerabilities.
+	// Queries vulnerabilities by group.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The number of vulnerabilities that have the **high** priority.
+	// $.parameters[10].schema.description
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
@@ -21167,11 +21299,25 @@ func (s *DescribeGroupedVulRequest) SetUuids(v string) *DescribeGroupedVulReques
 }
 
 type DescribeGroupedVulResponseBody struct {
-	CurrentPage     *int32                                           `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of entries to return on each page. Default value: 10.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The data returned.
 	GroupedVulItems []*DescribeGroupedVulResponseBodyGroupedVulItems `json:"GroupedVulItems,omitempty" xml:"GroupedVulItems,omitempty" type:"Repeated"`
-	PageSize        *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The tag that is used to search for the vulnerabilities. Valid values:
+	//
+	// *   Restart required
+	// *   Remote exploitation
+	// *   Exploit exists
+	// *   Exploitable
+	// *   Privilege escalation
+	// *   Code execution
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the asset group.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The types of the vulnerabilities.
+	//
+	// > This parameter is valid only for application vulnerabilities and vulnerabilities that are detected based on software component analysis.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeGroupedVulResponseBody) String() string {
@@ -21208,21 +21354,42 @@ func (s *DescribeGroupedVulResponseBody) SetTotalCount(v int32) *DescribeGrouped
 }
 
 type DescribeGroupedVulResponseBodyGroupedVulItems struct {
-	AliasName    *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AsapCount    *int32  `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
-	GmtLast      *int64  `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
-	HandledCount *int32  `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
-	LaterCount   *int32  `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NntfCount    *int32  `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
-	// 支持RASP实时防护，取值：
-	// - **0**：不支持
-	// - **1**：支持
-	// > 无该属性也表示不支持。
-	RaspDefend    *int32  `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
-	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TotalFixCount *int64  `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The number of handled vulnerabilities.
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The tag that is added to the vulnerability. Valid values:
+	//
+	// *   Restart required
+	// *   Remote exploitation
+	// *   Exploit exists
+	// *   Exploitable
+	// *   Privilege escalation
+	// *   Code execution
+	AsapCount *int32 `json:"AsapCount,omitempty" xml:"AsapCount,omitempty"`
+	// An array that consists of the details about the vulnerability.
+	GmtLast *int64 `json:"GmtLast,omitempty" xml:"GmtLast,omitempty"`
+	// The total number of entries returned.
+	HandledCount *int32 `json:"HandledCount,omitempty" xml:"HandledCount,omitempty"`
+	// The number of vulnerabilities that have the **low** priority.
+	LaterCount *int32 `json:"LaterCount,omitempty" xml:"LaterCount,omitempty"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	NntfCount *int32 `json:"NntfCount,omitempty" xml:"NntfCount,omitempty"`
+	// The number of entries returned per page. Default value: 10.
+	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **app**: application vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **sca**: vulnerability that is detected based on software component analysis
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// gmtLast
+	TotalFixCount *int64 `json:"TotalFixCount,omitempty" xml:"TotalFixCount,omitempty"`
+	// The page number of the returned page.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeGroupedVulResponseBodyGroupedVulItems) String() string {
@@ -26172,219 +26339,22 @@ func (s *DescribeImageScanAuthorizationResponse) SetBody(v *DescribeImageScanAut
 }
 
 type DescribeImageSensitiveFileByKeyRequest struct {
-	// The key of the last data entry.
+	// The number of the page to return. Default value: **1**.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The error message returned.
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The HTTP status code returned.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
-	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
-	// The digest of the image layer.
-	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
-}
-
-func (s DescribeImageSensitiveFileByKeyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageSensitiveFileByKeyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyRequest {
-	s.ImageUuid = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetScanRange(v []*string) *DescribeImageSensitiveFileByKeyRequest {
-	s.ScanRange = v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyRequest {
-	s.SensitiveFileKey = &v
-	return s
-}
-
-type DescribeImageSensitiveFileByKeyShrinkRequest struct {
-	// The key of the last data entry.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The error message returned.
-	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The timestamp when the last scan was performed. Unit: milliseconds.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The HTTP status code returned.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
-	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
-	// The digest of the image layer.
-	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
-}
-
-func (s DescribeImageSensitiveFileByKeyShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageSensitiveFileByKeyShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.ImageUuid = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetScanRangeShrink(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.ScanRangeShrink = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
-	s.SensitiveFileKey = &v
-	return s
-}
-
-type DescribeImageSensitiveFileByKeyResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The risk level of the sensitive file. Valid values:
-	//
-	// *   **high**
-	// *   **medium**
-	// *   **low**
-	PageInfo  *DescribeImageSensitiveFileByKeyResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the sensitive files.
-	SensitiveFileList []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList `json:"SensitiveFileList,omitempty" xml:"SensitiveFileList,omitempty" type:"Repeated"`
-	Success           *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DescribeImageSensitiveFileByKeyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageSensitiveFileByKeyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetCode(v string) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetHttpStatusCode(v int32) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetMessage(v string) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetPageInfo(v *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.PageInfo = v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetRequestId(v string) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSensitiveFileList(v []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.SensitiveFileList = v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSuccess(v bool) *DescribeImageSensitiveFileByKeyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DescribeImageSensitiveFileByKeyResponseBodyPageInfo struct {
-	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	LastRowKey  *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
-	// Queries the sensitive files in an image.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// DescribeImageSensitiveFileByKey
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetLastRowKey(v string) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
-	s.LastRowKey = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList struct {
-	// The timestamp when the first scan was performed. Unit: milliseconds.
-	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
 	// The UUID of the image.
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// *   **zh**: Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the asset that you want to scan. Valid values:
+	//
+	// *   **image**
+	// *   **container**
+	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
 	// The alert type of the sensitive file. Valid values:
 	//
 	// *   **npm_token**: NPM Token
@@ -26442,7 +26412,7 @@ type DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList struct {
 	// *   **github_oauth_token**: Github OAuth Token
 	// *   **pulumi_token**: Pulumi Token
 	// *   **ventrilo_voip**: Ventrilo VoIP Server Config
-	// *   **macos_keychain**: MacOS Keychain
+	// *   **macos_keychain**: macOS Keychain
 	// *   **amazon_mws_token**: Amazon MWS Token
 	// *   **dynatrace_token**: Dynatrace Token
 	// *   **java_keystore**: Java Keystore
@@ -26499,22 +26469,461 @@ type DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList struct {
 	// *   **newrelic_api_key**: New Relic User API Key
 	// *   **github_hub**: Github Token
 	// *   **rubygem**: Rubygem Token
-	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetScanRange(v []*string) *DescribeImageSensitiveFileByKeyRequest {
+	s.ScanRange = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyShrinkRequest struct {
+	// The number of the page to return. Default value: **1**.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the image.
+	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// *   **zh**: Chinese
 	// *   **en**: English
-	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries to return on each page. Default value: **20**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the asset that you want to scan. Valid values:
 	//
 	// *   **image**
 	// *   **container**
-	LayerDigest *string `json:"LayerDigest,omitempty" xml:"LayerDigest,omitempty"`
-	// The number of entries returned on the current page.
-	Promt *string `json:"Promt,omitempty" xml:"Promt,omitempty"`
-	// The suggestion.
-	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	ScanRangeShrink *string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty"`
+	// The alert type of the sensitive file. Valid values:
+	//
+	// *   **npm_token**: NPM Token
+	// *   **ftp_cfg**: FTP Config
+	// *   **google_oauth_key**: Google OAuth Key
+	// *   **planetscale_passwd**: Planetscale password
+	// *   **github_ssh_key**: Github SSH Key
+	// *   **msbuild_publish_profile**: MSBuild publish profile
+	// *   **fastly_cdn_token**: Fastly CDN Token
+	// *   **ssh_private_key**: SSH Private Key
+	// *   **aws_cli**: AWS CLI Credentials
+	// *   **cpanel_proftpd**: cPanel ProFTPd Credential
+	// *   **postgresql_passwd**: PostgreSQl Passwd
+	// *   **discord_client_cred**: Discord Client Credential
+	// *   **rails_database**: Rails Database Config
+	// *   **aws_access_key**: AWS Access Key
+	// *   **esmtp_cfg**: ESMTP Config
+	// *   **docker_registry_cfg**: Docker Registry Config
+	// *   **pem**: PEM
+	// *   **common_cred**: Common Credential
+	// *   **sftp_cfg**: SFTP Config
+	// *   **grafana_token**: Grafana Token
+	// *   **slack_token**: Slack Token
+	// *   **ec_private_key**: EC Private Key
+	// *   **pypi_token**: PyPI Token
+	// *   **finicity_token**: Finicity Token
+	// *   **k8s_client_key**: Kubernetes Client Key
+	// *   **git_cfg**: Git Config
+	// *   **django_key**: Django Key
+	// *   **jenkins_ssh**: Jenkins SSH Config
+	// *   **openssh_private_key**: OPENSSH Private Key
+	// *   **square_oauth**: Square OAuth Token
+	// *   **typeform_token**: Typeform Token
+	// *   **common_database_cfg**: Common Database Config
+	// *   **wordpress_database_cfg**: Wordpress Database Config
+	// *   **googlecloud_api_key**: Google Cloud API Key
+	// *   **vscode_sftp**: VSCode SFTP Config
+	// *   **apache_htpasswd**: Apache htpasswd
+	// *   **planetscale_token**: Planetscale Token
+	// *   **contentful_preview_token**: Contentful Preview Token
+	// *   **php_database_cfg**: PHP Database Config
+	// *   **atom_remote_sync**: Atom Remote Sync Config
+	// *   **aws_session_token**: AWS Session Token
+	// *   **atom_sftp_cfg**: Atom SFTP Config
+	// *   **asana_client_private_key**: Asana Client Private Key
+	// *   **tencentcloud_ak**: Tencent Cloud SecretId
+	// *   **rsa_private_key**: RSA Private Key
+	// *   **github_personal_token**: Github Personal Token
+	// *   **pgp**: PGP
+	// *   **stripe_skpk**: Stripe Secret Key
+	// *   **square_token**: Square Token
+	// *   **rails_carrierwave**: Rails Carrierwave Credential
+	// *   **dbeaver_database_cfg**: DBeaver Database Config
+	// *   **robomongo_cred**: Robomongo Credential
+	// *   **github_oauth_token**: Github OAuth Token
+	// *   **pulumi_token**: Pulumi Token
+	// *   **ventrilo_voip**: Ventrilo VoIP Server Config
+	// *   **macos_keychain**: macOS Keychain
+	// *   **amazon_mws_token**: Amazon MWS Token
+	// *   **dynatrace_token**: Dynatrace Token
+	// *   **java_keystore**: Java Keystore
+	// *   **microsoft_sdf**: Microsoft SDF
+	// *   **kubernetes_dashboard_cred**: Kubernetes Dashboard User Credential
+	// *   **atlassian_token**: Atlassian Token
+	// *   **rdp**: RDP
+	// *   **mailgun_key**: Mailgun Webhook Signing Key
+	// *   **mailchimp_api_key**: Mailchimp API Key
+	// *   **netrc_cfg**: .netrc config
+	// *   **openvpn_cfg**: OpenVPN Config
+	// *   **github_refresh_token**: Github Refresh Token
+	// *   **salesforce**: Salesforce Credential
+	// *   **sendinblue**: Sendinblue Token
+	// *   **pkcs_private_key**: PKCS Private Key
+	// *   **rubyonrails_passwd**: Ruby on Rails Passwd
+	// *   **filezilla_ftp**: FileZilla FTP Config
+	// *   **databricks_token**: Databricks Token
+	// *   **gitLab_personal_token**: GitLab Personal Token
+	// *   **rails_master_key**: Rails Master Key
+	// *   **sqlite**: SQLite3/SQLite Database
+	// *   **firefox_logins**: Firefox Login Config
+	// *   **mailgun_private_token**: Mailgun Private Token
+	// *   **joomla_cfg**: Joomla Config
+	// *   **hashicorp_terraform_token**: Hashicorp Terraform Token
+	// *   **jetbrains_ides**: Jetbrains IDEs Config
+	// *   **heroku_api_key**: Heroku API key
+	// *   **messagebird_token**: MessageBird Token
+	// *   **github_app_token**: Github App Token
+	// *   **hashicorp_vault_token**: Hashicorp Vault Token
+	// *   **pgp_private_key**: PGP Private Key
+	// *   **sshpasswd**: SSH password
+	// *   **huaweicloud_ak**: Huaei Cloud Access Key
+	// *   **aws_s3cmd**: AWS S3cmd Config
+	// *   **php_config**: php Config
+	// *   **common_private_key**: Common Private Key Type
+	// *   **microsoft_mdf**: Microsoft MDF
+	// *   **mediawiki_cfg**: MediaWiki Config
+	// *   **jenkins_cred**: Jenkins Credential
+	// *   **rubygems_cred**: Rubygems Credential
+	// *   **clojars_token**: Clojars Token
+	// *   **phoenix_web_passwd**: Phoenix Web Credential
+	// *   **puttygen_private_key**: PuTTYgen Private Key
+	// *   **google_oauth_token**: Google Oauth Token
+	// *   **rubyonrails_cfg**: Ruby On Rails Database Config
+	// *   **lob_api_key**: Lob API Key
+	// *   **pkcs_cred**: PKCS#12
+	// *   **otr_private_key**: OTR Private Key
+	// *   **contentful_delivery_token**: Contentful Delivery Token
+	// *   **digital_ocean_tugboat**: Digital Ocean Tugboat Config
+	// *   **dsa_private_key**: DSA Private Key
+	// *   **rails_app_token**: Rails App Token
+	// *   **git_cred**: Git User Credential
+	// *   **newrelic_api_key**: New Relic User API Key
+	// *   **github_hub**: Github Token
+	// *   **rubygem**: Rubygem Token
+	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetImageUuid(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.ImageUuid = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetLang(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetScanRangeShrink(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.ScanRangeShrink = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyShrinkRequest) SetSensitiveFileKey(v string) *DescribeImageSensitiveFileByKeyShrinkRequest {
+	s.SensitiveFileKey = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBody struct {
+	// The status code returned. If the 200 status code is returned, the request was successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The pagination information.
+	PageInfo *DescribeImageSensitiveFileByKeyResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array that consists of the sensitive files.
+	SensitiveFileList []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList `json:"SensitiveFileList,omitempty" xml:"SensitiveFileList,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetCode(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetHttpStatusCode(v int32) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetMessage(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetPageInfo(v *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetRequestId(v string) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSensitiveFileList(v []*DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.SensitiveFileList = v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBody) SetSuccess(v bool) *DescribeImageSensitiveFileByKeyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBodyPageInfo struct {
+	// The number of entries returned on the current page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The key of the last data entry.
+	LastRowKey *string `json:"LastRowKey,omitempty" xml:"LastRowKey,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageSensitiveFileByKeyResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetLastRowKey(v string) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.LastRowKey = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetPageSize(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeImageSensitiveFileByKeyResponseBodyPageInfo) SetTotalCount(v int32) *DescribeImageSensitiveFileByKeyResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageSensitiveFileByKeyResponseBodySensitiveFileList struct {
+	// The suggestion.
+	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	// The file path.
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The timestamp when the first scan was performed. Unit: milliseconds.
+	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
+	// The timestamp when the last scan was performed. Unit: milliseconds.
+	LastScanTime *int64 `json:"LastScanTime,omitempty" xml:"LastScanTime,omitempty"`
+	// The digest of the image layer.
+	LayerDigest *string `json:"LayerDigest,omitempty" xml:"LayerDigest,omitempty"`
+	// The sensitive content.
+	Promt *string `json:"Promt,omitempty" xml:"Promt,omitempty"`
+	// The risk level of the sensitive file. Valid values:
+	//
+	// *   **high**
+	// *   **medium**
+	// *   **low**
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The alert type of the sensitive file. Valid values:
+	//
+	// *   **npm_token**: NPM Token
+	// *   **ftp_cfg**: FTP Config
+	// *   **google_oauth_key**: Google OAuth Key
+	// *   **planetscale_passwd**: Planetscale password
+	// *   **github_ssh_key**: Github SSH Key
+	// *   **msbuild_publish_profile**: MSBuild publish profile
+	// *   **fastly_cdn_token**: Fastly CDN Token
+	// *   **ssh_private_key**: SSH Private Key
+	// *   **aws_cli**: AWS CLI Credentials
+	// *   **cpanel_proftpd**: cPanel ProFTPd Credential
+	// *   **postgresql_passwd**: PostgreSQl Passwd
+	// *   **discord_client_cred**: Discord Client Credential
+	// *   **rails_database**: Rails Database Config
+	// *   **aws_access_key**: AWS Access Key
+	// *   **esmtp_cfg**: ESMTP Config
+	// *   **docker_registry_cfg**: Docker Registry Config
+	// *   **pem**: PEM
+	// *   **common_cred**: Common Credential
+	// *   **sftp_cfg**: SFTP Config
+	// *   **grafana_token**: Grafana Token
+	// *   **slack_token**: Slack Token
+	// *   **ec_private_key**: EC Private Key
+	// *   **pypi_token**: PyPI Token
+	// *   **finicity_token**: Finicity Token
+	// *   **k8s_client_key**: Kubernetes Client Key
+	// *   **git_cfg**: Git Config
+	// *   **django_key**: Django Key
+	// *   **jenkins_ssh**: Jenkins SSH Config
+	// *   **openssh_private_key**: OPENSSH Private Key
+	// *   **square_oauth**: Square OAuth Token
+	// *   **typeform_token**: Typeform Token
+	// *   **common_database_cfg**: Common Database Config
+	// *   **wordpress_database_cfg**: Wordpress Database Config
+	// *   **googlecloud_api_key**: Google Cloud API Key
+	// *   **vscode_sftp**: VSCode SFTP Config
+	// *   **apache_htpasswd**: Apache htpasswd
+	// *   **planetscale_token**: Planetscale Token
+	// *   **contentful_preview_token**: Contentful Preview Token
+	// *   **php_database_cfg**: PHP Database Config
+	// *   **atom_remote_sync**: Atom Remote Sync Config
+	// *   **aws_session_token**: AWS Session Token
+	// *   **atom_sftp_cfg**: Atom SFTP Config
+	// *   **asana_client_private_key**: Asana Client Private Key
+	// *   **tencentcloud_ak**: Tencent Cloud SecretId
+	// *   **rsa_private_key**: RSA Private Key
+	// *   **github_personal_token**: Github Personal Token
+	// *   **pgp**: PGP
+	// *   **stripe_skpk**: Stripe Secret Key
+	// *   **square_token**: Square Token
+	// *   **rails_carrierwave**: Rails Carrierwave Credential
+	// *   **dbeaver_database_cfg**: DBeaver Database Config
+	// *   **robomongo_cred**: Robomongo Credential
+	// *   **github_oauth_token**: Github OAuth Token
+	// *   **pulumi_token**: Pulumi Token
+	// *   **ventrilo_voip**: Ventrilo VoIP Server Config
+	// *   **macos_keychain**: macOS Keychain
+	// *   **amazon_mws_token**: Amazon MWS Token
+	// *   **dynatrace_token**: Dynatrace Token
+	// *   **java_keystore**: Java Keystore
+	// *   **microsoft_sdf**: Microsoft SDF
+	// *   **kubernetes_dashboard_cred**: Kubernetes Dashboard User Credential
+	// *   **atlassian_token**: Atlassian Token
+	// *   **rdp**: RDP
+	// *   **mailgun_key**: Mailgun Webhook Signing Key
+	// *   **mailchimp_api_key**: Mailchimp API Key
+	// *   **netrc_cfg**: .netrc config
+	// *   **openvpn_cfg**: OpenVPN Config
+	// *   **github_refresh_token**: Github Refresh Token
+	// *   **salesforce**: Salesforce Credential
+	// *   **sendinblue**: Sendinblue Token
+	// *   **pkcs_private_key**: PKCS Private Key
+	// *   **rubyonrails_passwd**: Ruby on Rails Passwd
+	// *   **filezilla_ftp**: FileZilla FTP Config
+	// *   **databricks_token**: Databricks Token
+	// *   **gitLab_personal_token**: GitLab Personal Token
+	// *   **rails_master_key**: Rails Master Key
+	// *   **sqlite**: SQLite3/SQLite Database
+	// *   **firefox_logins**: Firefox Login Config
+	// *   **mailgun_private_token**: Mailgun Private Token
+	// *   **joomla_cfg**: Joomla Config
+	// *   **hashicorp_terraform_token**: Hashicorp Terraform Token
+	// *   **jetbrains_ides**: Jetbrains IDEs Config
+	// *   **heroku_api_key**: Heroku API key
+	// *   **messagebird_token**: MessageBird Token
+	// *   **github_app_token**: Github App Token
+	// *   **hashicorp_vault_token**: Hashicorp Vault Token
+	// *   **pgp_private_key**: PGP Private Key
+	// *   **sshpasswd**: SSH password
+	// *   **huaweicloud_ak**: Huaei Cloud Access Key
+	// *   **aws_s3cmd**: AWS S3cmd Config
+	// *   **php_config**: php Config
+	// *   **common_private_key**: Common Private Key Type
+	// *   **microsoft_mdf**: Microsoft MDF
+	// *   **mediawiki_cfg**: MediaWiki Config
+	// *   **jenkins_cred**: Jenkins Credential
+	// *   **rubygems_cred**: Rubygems Credential
+	// *   **clojars_token**: Clojars Token
+	// *   **phoenix_web_passwd**: Phoenix Web Credential
+	// *   **puttygen_private_key**: PuTTYgen Private Key
+	// *   **google_oauth_token**: Google Oauth Token
+	// *   **rubyonrails_cfg**: Ruby On Rails Database Config
+	// *   **lob_api_key**: Lob API Key
+	// *   **pkcs_cred**: PKCS#12
+	// *   **otr_private_key**: OTR Private Key
+	// *   **contentful_delivery_token**: Contentful Delivery Token
+	// *   **digital_ocean_tugboat**: Digital Ocean Tugboat Config
+	// *   **dsa_private_key**: DSA Private Key
+	// *   **rails_app_token**: Rails App Token
+	// *   **git_cred**: Git User Credential
+	// *   **newrelic_api_key**: New Relic User API Key
+	// *   **github_hub**: Github Token
+	// *   **rubygem**: Rubygem Token
 	SensitiveFileKey *string `json:"SensitiveFileKey,omitempty" xml:"SensitiveFileKey,omitempty"`
 	// The alert type name of the sensitive file.
 	SensitiveFileName *string `json:"SensitiveFileName,omitempty" xml:"SensitiveFileName,omitempty"`
@@ -46375,8 +46784,55 @@ func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponse
 }
 
 type DescribeVulListResponseBodyVulRecords struct {
+	// The status of the vulnerability. Valid values:
+	//
+	// *   **1**: unfixed
+	// *   **2**: fix failed
+	// *   3: rollback failed
+	// *   **4**: fixing
+	// *   **5**: being rolled back
+	// *   **6**: being verified
+	// *   **7**: fixed
+	// *   **8**: fixed and to be restarted
+	// *   **9**: rolled back
+	// *   **10**: ignored
+	// *   **11**: rolled back and to be restarted
+	// *   **12**: not found
+	// *   **20**: expired
+	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	// CentOS 7.2 64-bit
+	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
+	// The public IP address of the asset that is associated with the vulnerability.
+	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
+	// The priority to fix the vulnerability. Valid values:
+	//
+	// *   **asap**: high
+	// *   **later**: medium
+	// *   **nntf**: low
+	//
+	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
+	FirstTs *int64 `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
 	// The name of the vulnerability.
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The private IP address of the asset.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the operating system for your asset.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The tag that is added to the vulnerability.
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The ID of the region in which the server resides.
+	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
+	// The ID of the vulnerability.
+	ModifyTs *int64 `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
+	// The instance ID of the asset.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The UUID of the asset.
+	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	// The name of the vulnerability.
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
 	// The edition of Security Center that is authorized to protect the asset. Valid values:
 	//
 	// *   **1**: Basic edition
@@ -46385,62 +46841,31 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// *   **3**: Enterprise edition
 	// *   **7**: Ultimate edition
 	// *   **10**: Value-added Plan edition
-	AuthVersion *string `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
-	// Indicates whether Security Center is authorized to protect the asset. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Bind *bool `json:"Bind,omitempty" xml:"Bind,omitempty"`
-	// The extended information about the vulnerability.
-	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
-	FirstTs *int64 `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
-	// The ID of the asset group.
-	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The instance ID of the asset.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the asset.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The public IP address of the asset.
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The private IP address of the asset.
-	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
-	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
-	ModifyTs *int64 `json:"ModifyTs,omitempty" xml:"ModifyTs,omitempty"`
-	// The name of the vulnerability.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority to fix the vulnerability. Valid values:
-	//
-	// *   **asap**: high
-	// *   **later**: medium
-	// *   **nntf**: low
-	//
-	// > We recommend that you fix the vulnerabilities that have the **high** priority at the earliest opportunity.
-	Necessity *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
-	// Indicates whether the Security Center agent on the asset is online. Valid values:
-	//
-	// *   **true**: yes
-	// *   **false**: no
-	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The name of the operating system for your asset.
 	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	// The name of the operating system for your asset.
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The ID of the vulnerability.
-	PrimaryId  *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
-	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
-	RaspStatus *int32 `json:"RaspStatus,omitempty" xml:"RaspStatus,omitempty"`
-	// The ID of the region in which the server resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
-	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The timestamp when the vulnerability was fixed. Unit: milliseconds.
-	RepairTs *int64 `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
 	// The code that indicates the vulnerability fixing result.
+	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	// The name of the asset.
+	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	// The type of the vulnerability. Valid values:
+	//
+	// *   **cve**: Linux software vulnerability
+	// *   **sys**: Windows system vulnerability
+	// *   **cms**: Web-CMS vulnerability
+	// *   **emg**: urgent vulnerability
+	// *   **app**: application vulnerability
+	// *   **sca**: application vulnerability that is detected by using software component analysis
+	RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
+	RaspStatus *int32 `json:"RaspStatus,omitempty" xml:"RaspStatus,omitempty"`
+	// The timestamp when the vulnerability was fixed. Unit: milliseconds.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	Related *string `json:"Related,omitempty" xml:"Related,omitempty"`
+	// The ID of the asset group.
+	RepairTs *int64 `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
+	// The Common Vulnerabilities and Exposures (CVE) IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// The message that indicates the vulnerability fixing result.
+	// The extended information about the vulnerability.
 	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
 	// The status of the vulnerability. Valid values:
 	//
@@ -46458,18 +46883,14 @@ type DescribeVulListResponseBodyVulRecords struct {
 	// *   **12**: not found
 	// *   **20**: expired
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the vulnerability.
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// Indicates whether the Security Center agent on the asset is online. Valid values:
 	//
-	// *   **cve**: Linux software vulnerability
-	// *   **sys**: Windows system vulnerability
-	// *   **cms**: Web-CMS vulnerability
-	// *   **emg**: urgent vulnerability
-	// *   **app**: application vulnerability
-	// *   **sca**: application vulnerability that is detected by using software component analysis
+	// *   **true**: yes
+	// *   **false**: no
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The public IP address of the asset.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The UUID of the asset.
+	// The message that indicates the vulnerability fixing result.
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -46627,45 +47048,31 @@ func (s *DescribeVulListResponseBodyVulRecords) SetUuid(v string) *DescribeVulLi
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJson struct {
-	// The package path of the software that has the vulnerability.
+	// The complete version number.
 	AbsolutePath *string `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
-	// The alias of the vulnerability.
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The description of the vulnerability.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The public IP address of the asset that is associated with the vulnerability.
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
-	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
-	// Indicates whether the vulnerability needs to be fixed.
-	Necessity *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
-	// The name of the operating system.
-	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The release of the operating system.
-	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
-	// The ID of the vulnerability.
-	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
 	// The RPM Package Manager (RPM) packages.
-	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
-	// The status of the vulnerability. Valid values:
-	//
-	// *   **1**: unfixed
-	// *   **2**: fix failed
-	// *   3: rollback failed
-	// *   **4**: fixing
-	// *   **5**: being rolled back
-	// *   **6**: being verified
-	// *   **7**: fixed
-	// *   **8**: fixed and to be restarted
-	// *   **9**: rolled back
-	// *   **10**: ignored
-	// *   **11**: rolled back and to be restarted
-	// *   **12**: not found
-	// *   **20**: expired
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// The alias of the vulnerability.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the operating system.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The release of the operating system.
+	LastTs *int64 `json:"LastTs,omitempty" xml:"LastTs,omitempty"`
+	// The time score.
+	Necessity *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity `json:"Necessity,omitempty" xml:"Necessity,omitempty" type:"Struct"`
+	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The package path of the software that has the vulnerability.
+	OsRelease *string `json:"OsRelease,omitempty" xml:"OsRelease,omitempty"`
 	// The tag that is added to the vulnerability.
+	PrimaryId *int64 `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
+	// The package version number of the software that has the vulnerability.
+	RpmEntityList []*DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList `json:"RpmEntityList,omitempty" xml:"RpmEntityList,omitempty" type:"Repeated"`
+	// The ID of the vulnerability.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the vulnerability.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The CVE list.
+	// Indicates whether the vulnerability needs to be fixed.
 	CveList []*string `json:"cveList,omitempty" xml:"cveList,omitempty" type:"Repeated"`
 }
 
@@ -46743,29 +47150,13 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJson) SetCveList(v []
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity struct {
-	// The asset importance score. Valid values:
-	//
-	// *   **2**: an important asset
-	// *   **1**: a common asset
-	// *   **0**: a test asset
+	// The name of the operating system for your asset.
 	AssetsFactor *string `json:"Assets_factor,omitempty" xml:"Assets_factor,omitempty"`
-	// The Common Vulnerability Scoring System (CVSS) score.
+	// Indicates whether Security Center is authorized to protect the asset. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
 	CvssFactor *string `json:"Cvss_factor,omitempty" xml:"Cvss_factor,omitempty"`
-	// The environment score.
-	EnviromentFactor *string `json:"Enviroment_factor,omitempty" xml:"Enviroment_factor,omitempty"`
-	// Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
-	//
-	// *   **0**: no
-	// *   **1**: yes
-	IsCalc *string `json:"Is_calc,omitempty" xml:"Is_calc,omitempty"`
-	// The status of the score of urgency to fix a vulnerability. Valid values:
-	//
-	// *   **none**: No score is generated.
-	// *   **pending**: The score is pending calculation.
-	// *   **normal**: The calculation is normal.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time score.
-	TimeFactor *string `json:"Time_factor,omitempty" xml:"Time_factor,omitempty"`
 	// The score of urgency to fix a vulnerability.
 	//
 	// The following list describes scores and related fixing suggestions:
@@ -46773,6 +47164,21 @@ type DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity struct {
 	// *   If the score is from **13.5 to 15**, the vulnerability is a high-risk vulnerability. You must fix the vulnerability at the earliest opportunity.
 	// *   If the score is **greater than or equal to 7 but less than 13.5**, the vulnerability is a medium-risk vulnerability. You can fix the vulnerability at your convenience.
 	// *   If the score is **less than 7**, the vulnerability is a low-risk vulnerability. You can ignore the vulnerability.
+	EnviromentFactor *string `json:"Enviroment_factor,omitempty" xml:"Enviroment_factor,omitempty"`
+	// The Common Vulnerability Scoring System (CVSS) score.
+	IsCalc *string `json:"Is_calc,omitempty" xml:"Is_calc,omitempty"`
+	// The environment score.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the score of urgency to fix a vulnerability is calculated. Valid values:
+	//
+	// *   **0**: no
+	// *   **1**: yes
+	TimeFactor *string `json:"Time_factor,omitempty" xml:"Time_factor,omitempty"`
+	// The asset importance score. Valid values:
+	//
+	// *   **2**: an important asset
+	// *   **1**: a common asset
+	// *   **0**: a test asset
 	TotalScore *string `json:"Total_score,omitempty" xml:"Total_score,omitempty"`
 }
 
@@ -46820,25 +47226,25 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity) SetTot
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
-	// The name of the container.
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The complete version number.
-	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
-	// The name of the image.
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The reason why the vulnerability is detected.
-	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	// The rule that is used to detect the vulnerability.
-	MatchList []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
-	// The name of the RPM package.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The path of the software that has the vulnerability.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The process ID.
-	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The command that is used to fix the vulnerability.
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// The reason why the vulnerability is detected.
+	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
+	// The name of the container.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The path of the software that has the vulnerability.
+	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	// The process ID.
+	MatchList []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
+	// The rule that is used to detect the vulnerability.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the RPM package.
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The CVE list.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The rule that is used to detect the vulnerability.
 	UpdateCmd *string `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
-	// The package version number of the software that has the vulnerability.
+	// The name of the image.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -47348,12 +47754,7 @@ func (s *DescribeVulTargetConfigResponse) SetBody(v *DescribeVulTargetConfigResp
 }
 
 type DescribeVulTargetStatisticsRequest struct {
-	// The type of the vulnerabilities. Valid values:
-	//
-	// *   **cve**: Linux software vulnerabilities
-	// *   **sys**: Windows system vulnerabilities
-	// *   **cms**: Web-CMS vulnerabilities
-	// *   **emg**: urgent vulnerabilities
+	// The data returned.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -47371,15 +47772,15 @@ func (s *DescribeVulTargetStatisticsRequest) SetType(v string) *DescribeVulTarge
 }
 
 type DescribeVulTargetStatisticsResponseBody struct {
-	// The page number of the returned page.
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the configurations of the vulnerability scan feature.
-	TargetStats []*DescribeVulTargetStatisticsResponseBodyTargetStats `json:"TargetStats,omitempty" xml:"TargetStats,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The total number of entries returned.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries returned per page.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the vulnerability scan feature.
+	TargetStats []*DescribeVulTargetStatisticsResponseBodyTargetStats `json:"TargetStats,omitempty" xml:"TargetStats,omitempty" type:"Repeated"`
+	// An array that consists of the configurations of the vulnerability scan feature.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -47417,18 +47818,13 @@ func (s *DescribeVulTargetStatisticsResponseBody) SetTotalCount(v int32) *Descri
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStats struct {
-	// An array that consists of available servers.
+	// The information about the server.
 	Targets []*DescribeVulTargetStatisticsResponseBodyTargetStatsTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The total number of servers.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The number of servers to which the configurations are applied.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array that consists of available servers.
 	UuidCount *int32 `json:"UuidCount,omitempty" xml:"UuidCount,omitempty"`
-	// The type of the vulnerabilities. Valid values:
-	//
-	// *   cve: Linux software vulnerabilities
-	// *   sys: Windows system vulnerabilities
-	// *   cms: Web-CMS vulnerabilities
-	// *   emg: urgent vulnerabilities
+	// The total number of servers.
 	VulType *string `json:"VulType,omitempty" xml:"VulType,omitempty"`
 }
 
@@ -47461,17 +47857,13 @@ func (s *DescribeVulTargetStatisticsResponseBodyTargetStats) SetVulType(v string
 }
 
 type DescribeVulTargetStatisticsResponseBodyTargetStatsTargets struct {
-	// Indicates whether the configurations are applied to the server. Valid values:
-	//
-	// *   **add**: yes
-	// *   **del**: no
-	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
 	// The group ID or UUID of the server to which the configurations are applied.
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Flag *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
 	// The condition by which the configurations are applied to the server. Valid values:
 	//
 	// *   **uuid**: the UUID of the server
 	// *   **groupId**: the ID of the server group
+	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -78054,6 +78446,10 @@ func (client *Client) CreateFileDetectWithOptions(request *CreateFileDetectReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DownloadUrl)) {
+		query["DownloadUrl"] = request.DownloadUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.HashKey)) {
 		query["HashKey"] = request.HashKey
 	}
@@ -78761,6 +79157,74 @@ func (client *Client) CreateOrUpdateAssetGroup(request *CreateOrUpdateAssetGroup
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateAssetGroupResponse{}
 	_body, _err := client.CreateOrUpdateAssetGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateDingTalkWithOptions(request *CreateOrUpdateDingTalkRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateDingTalkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigList)) {
+		query["ConfigList"] = request.ConfigList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DingTalkLang)) {
+		query["DingTalkLang"] = request.DingTalkLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIdList)) {
+		query["GroupIdList"] = request.GroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntervalTime)) {
+		query["IntervalTime"] = request.IntervalTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleActionName)) {
+		query["RuleActionName"] = request.RuleActionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendUrl)) {
+		query["SendUrl"] = request.SendUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateDingTalk"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateDingTalkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateDingTalk(request *CreateOrUpdateDingTalkRequest) (_result *CreateOrUpdateDingTalkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrUpdateDingTalkResponse{}
+	_body, _err := client.CreateOrUpdateDingTalkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
