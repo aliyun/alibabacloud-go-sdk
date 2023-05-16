@@ -611,6 +611,87 @@ func (s *DeleteArtifactResponse) SetBody(v *DeleteArtifactResponseBody) *DeleteA
 	return s
 }
 
+type DeleteServiceRequest struct {
+	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId      *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s DeleteServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceRequest) SetClientToken(v string) *DeleteServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteServiceRequest) SetRegionId(v string) *DeleteServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteServiceRequest) SetServiceId(v string) *DeleteServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DeleteServiceRequest) SetServiceVersion(v string) *DeleteServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type DeleteServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteServiceResponse {
+	s.Body = v
+	return s
+}
+
 type GetArtifactRequest struct {
 	ArtifactId      *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
@@ -905,6 +986,437 @@ func (s *GetArtifactRepositoryCredentialsResponse) SetStatusCode(v int32) *GetAr
 }
 
 func (s *GetArtifactRepositoryCredentialsResponse) SetBody(v *GetArtifactRepositoryCredentialsResponseBody) *GetArtifactRepositoryCredentialsResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId      *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s GetServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceRequest) SetRegionId(v string) *GetServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceId(v string) *GetServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceRequest) SetServiceVersion(v string) *GetServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type GetServiceResponseBody struct {
+	AlarmMetadata           *string                                          `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	ApprovalType            *string                                          `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	CommodityCode           *string                                          `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityEntities       []*GetServiceResponseBodyCommodityEntities       `json:"CommodityEntities,omitempty" xml:"CommodityEntities,omitempty" type:"Repeated"`
+	CommoditySpecifications []*GetServiceResponseBodyCommoditySpecifications `json:"CommoditySpecifications,omitempty" xml:"CommoditySpecifications,omitempty" type:"Repeated"`
+	CreateTime              *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultLicenseDays      *int64                                           `json:"DefaultLicenseDays,omitempty" xml:"DefaultLicenseDays,omitempty"`
+	DeployMetadata          *string                                          `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	DeployType              *string                                          `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	Duration                *int64                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsSupportOperated       *bool                                            `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	LicenseMetadata         *string                                          `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	OperationMetadata       *string                                          `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	PayFromType             *string                                          `json:"PayFromType,omitempty" xml:"PayFromType,omitempty"`
+	PayType                 *string                                          `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Permission              *string                                          `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	PolicyNames             *string                                          `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	Progress                *int64                                           `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	PublishTime             *string                                          `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	RegistrationId          *string                                          `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	RequestId               *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId         *string                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceDocUrl           *string                                          `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
+	ServiceId               *string                                          `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInfos            []*GetServiceResponseBodyServiceInfos            `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceProductUrl       *string                                          `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
+	ServiceType             *string                                          `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ShareType               *string                                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Status                  *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDetail            *string                                          `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	SupplierName            *string                                          `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	SupplierUrl             *string                                          `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	Tags                    []*GetServiceResponseBodyTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TenantType              *string                                          `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	TestStatus              *string                                          `json:"TestStatus,omitempty" xml:"TestStatus,omitempty"`
+	TrialDuration           *int64                                           `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	TrialType               *string                                          `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	UpdateTime              *string                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpgradeMetadata         *string                                          `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	Version                 *string                                          `json:"Version,omitempty" xml:"Version,omitempty"`
+	VersionName             *string                                          `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s GetServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBody) SetAlarmMetadata(v string) *GetServiceResponseBody {
+	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetApprovalType(v string) *GetServiceResponseBody {
+	s.ApprovalType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCommodityCode(v string) *GetServiceResponseBody {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCommodityEntities(v []*GetServiceResponseBodyCommodityEntities) *GetServiceResponseBody {
+	s.CommodityEntities = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCommoditySpecifications(v []*GetServiceResponseBodyCommoditySpecifications) *GetServiceResponseBody {
+	s.CommoditySpecifications = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetCreateTime(v string) *GetServiceResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDefaultLicenseDays(v int64) *GetServiceResponseBody {
+	s.DefaultLicenseDays = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDeployMetadata(v string) *GetServiceResponseBody {
+	s.DeployMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDeployType(v string) *GetServiceResponseBody {
+	s.DeployType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetDuration(v int64) *GetServiceResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetIsSupportOperated(v bool) *GetServiceResponseBody {
+	s.IsSupportOperated = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetLicenseMetadata(v string) *GetServiceResponseBody {
+	s.LicenseMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetOperationMetadata(v string) *GetServiceResponseBody {
+	s.OperationMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPayFromType(v string) *GetServiceResponseBody {
+	s.PayFromType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPayType(v string) *GetServiceResponseBody {
+	s.PayType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPermission(v string) *GetServiceResponseBody {
+	s.Permission = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPolicyNames(v string) *GetServiceResponseBody {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetProgress(v int64) *GetServiceResponseBody {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetPublishTime(v string) *GetServiceResponseBody {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetRegistrationId(v string) *GetServiceResponseBody {
+	s.RegistrationId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetRequestId(v string) *GetServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetResourceGroupId(v string) *GetServiceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceDocUrl(v string) *GetServiceResponseBody {
+	s.ServiceDocUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceId(v string) *GetServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceInfos(v []*GetServiceResponseBodyServiceInfos) *GetServiceResponseBody {
+	s.ServiceInfos = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceProductUrl(v string) *GetServiceResponseBody {
+	s.ServiceProductUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceType(v string) *GetServiceResponseBody {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetShareType(v string) *GetServiceResponseBody {
+	s.ShareType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetStatus(v string) *GetServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetStatusDetail(v string) *GetServiceResponseBody {
+	s.StatusDetail = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierName(v string) *GetServiceResponseBody {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetSupplierUrl(v string) *GetServiceResponseBody {
+	s.SupplierUrl = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTags(v []*GetServiceResponseBodyTags) *GetServiceResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTenantType(v string) *GetServiceResponseBody {
+	s.TenantType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTestStatus(v string) *GetServiceResponseBody {
+	s.TestStatus = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTrialDuration(v int64) *GetServiceResponseBody {
+	s.TrialDuration = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetTrialType(v string) *GetServiceResponseBody {
+	s.TrialType = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetUpdateTime(v string) *GetServiceResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetUpgradeMetadata(v string) *GetServiceResponseBody {
+	s.UpgradeMetadata = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetVersion(v string) *GetServiceResponseBody {
+	s.Version = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetVersionName(v string) *GetServiceResponseBody {
+	s.VersionName = &v
+	return s
+}
+
+type GetServiceResponseBodyCommodityEntities struct {
+	EntityIds               []*string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty" type:"Repeated"`
+	PredefinedParameterName *string   `json:"PredefinedParameterName,omitempty" xml:"PredefinedParameterName,omitempty"`
+	TemplateName            *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyCommodityEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommodityEntities) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommodityEntities) SetEntityIds(v []*string) *GetServiceResponseBodyCommodityEntities {
+	s.EntityIds = v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodityEntities) SetPredefinedParameterName(v string) *GetServiceResponseBodyCommodityEntities {
+	s.PredefinedParameterName = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommodityEntities) SetTemplateName(v string) *GetServiceResponseBodyCommodityEntities {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyCommoditySpecifications struct {
+	PredefinedParameterName *string `json:"PredefinedParameterName,omitempty" xml:"PredefinedParameterName,omitempty"`
+	SpecificationCode       *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
+	TemplateName            *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s GetServiceResponseBodyCommoditySpecifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyCommoditySpecifications) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetPredefinedParameterName(v string) *GetServiceResponseBodyCommoditySpecifications {
+	s.PredefinedParameterName = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetSpecificationCode(v string) *GetServiceResponseBodyCommoditySpecifications {
+	s.SpecificationCode = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyCommoditySpecifications) SetTemplateName(v string) *GetServiceResponseBodyCommoditySpecifications {
+	s.TemplateName = &v
+	return s
+}
+
+type GetServiceResponseBodyServiceInfos struct {
+	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetImage(v string) *GetServiceResponseBodyServiceInfos {
+	s.Image = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetLocale(v string) *GetServiceResponseBodyServiceInfos {
+	s.Locale = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetName(v string) *GetServiceResponseBodyServiceInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceInfos) SetShortDescription(v string) *GetServiceResponseBodyServiceInfos {
+	s.ShortDescription = &v
+	return s
+}
+
+type GetServiceResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetServiceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyTags) SetKey(v string) *GetServiceResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyTags) SetValue(v string) *GetServiceResponseBodyTags {
+	s.Value = &v
+	return s
+}
+
+type GetServiceResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponse) SetHeaders(v map[string]*string) *GetServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceResponse) SetStatusCode(v int32) *GetServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceResponse {
 	s.Body = v
 	return s
 }
@@ -3387,6 +3899,206 @@ func (s *UpdateArtifactResponse) SetBody(v *UpdateArtifactResponseBody) *UpdateA
 	return s
 }
 
+type UpdateServiceRequest struct {
+	AlarmMetadata     *string                            `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	ClientToken       *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DeployMetadata    *string                            `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	DeployType        *string                            `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	Duration          *int64                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IsSupportOperated *bool                              `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	LicenseMetadata   *string                            `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	OperationMetadata *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	PolicyNames       *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId         *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceInfo       []*UpdateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceType       *string                            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceVersion    *string                            `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	TenantType        *string                            `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	TrialDuration     *int32                             `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	UpgradeMetadata   *string                            `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	VersionName       *string                            `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+}
+
+func (s UpdateServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequest) SetAlarmMetadata(v string) *UpdateServiceRequest {
+	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetClientToken(v string) *UpdateServiceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetDeployMetadata(v string) *UpdateServiceRequest {
+	s.DeployMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetDeployType(v string) *UpdateServiceRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetDuration(v int64) *UpdateServiceRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetIsSupportOperated(v bool) *UpdateServiceRequest {
+	s.IsSupportOperated = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetLicenseMetadata(v string) *UpdateServiceRequest {
+	s.LicenseMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetOperationMetadata(v string) *UpdateServiceRequest {
+	s.OperationMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetPolicyNames(v string) *UpdateServiceRequest {
+	s.PolicyNames = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetRegionId(v string) *UpdateServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceId(v string) *UpdateServiceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceInfo(v []*UpdateServiceRequestServiceInfo) *UpdateServiceRequest {
+	s.ServiceInfo = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceType(v string) *UpdateServiceRequest {
+	s.ServiceType = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceVersion(v string) *UpdateServiceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetTenantType(v string) *UpdateServiceRequest {
+	s.TenantType = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetTrialDuration(v int32) *UpdateServiceRequest {
+	s.TrialDuration = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetUpgradeMetadata(v string) *UpdateServiceRequest {
+	s.UpgradeMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetVersionName(v string) *UpdateServiceRequest {
+	s.VersionName = &v
+	return s
+}
+
+type UpdateServiceRequestServiceInfo struct {
+	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+}
+
+func (s UpdateServiceRequestServiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestServiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestServiceInfo) SetImage(v string) *UpdateServiceRequestServiceInfo {
+	s.Image = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceInfo) SetLocale(v string) *UpdateServiceRequestServiceInfo {
+	s.Locale = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceInfo) SetName(v string) *UpdateServiceRequestServiceInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceInfo) SetShortDescription(v string) *UpdateServiceRequestServiceInfo {
+	s.ShortDescription = &v
+	return s
+}
+
+type UpdateServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceResponse) SetHeaders(v map[string]*string) *UpdateServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceResponse) SetStatusCode(v int32) *UpdateServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateServiceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3680,6 +4392,62 @@ func (client *Client) DeleteArtifact(request *DeleteArtifactRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *DeleteServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceResponse{}
+	_body, _err := client.DeleteServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtime *util.RuntimeOptions) (_result *GetArtifactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3769,6 +4537,58 @@ func (client *Client) GetArtifactRepositoryCredentials(request *GetArtifactRepos
 	runtime := &util.RuntimeOptions{}
 	_result = &GetArtifactRepositoryCredentialsResponse{}
 	_body, _err := client.GetArtifactRepositoryCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime *util.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetService(request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceResponse{}
+	_body, _err := client.GetServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4289,6 +5109,118 @@ func (client *Client) UpdateArtifact(request *UpdateArtifactRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateArtifactResponse{}
 	_body, _err := client.UpdateArtifactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceWithOptions(request *UpdateServiceRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmMetadata)) {
+		query["AlarmMetadata"] = request.AlarmMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeployMetadata)) {
+		query["DeployMetadata"] = request.DeployMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
+		query["DeployType"] = request.DeployType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSupportOperated)) {
+		query["IsSupportOperated"] = request.IsSupportOperated
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseMetadata)) {
+		query["LicenseMetadata"] = request.LicenseMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationMetadata)) {
+		query["OperationMetadata"] = request.OperationMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyNames)) {
+		query["PolicyNames"] = request.PolicyNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInfo)) {
+		query["ServiceInfo"] = request.ServiceInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantType)) {
+		query["TenantType"] = request.TenantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrialDuration)) {
+		query["TrialDuration"] = request.TrialDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeMetadata)) {
+		query["UpgradeMetadata"] = request.UpgradeMetadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateService"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateService(request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceResponse{}
+	_body, _err := client.UpdateServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
