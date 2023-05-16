@@ -12,6 +12,69 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddUserToOrganizationalUnitsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s AddUserToOrganizationalUnitsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserToOrganizationalUnitsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserToOrganizationalUnitsHeaders) SetCommonHeaders(v map[string]*string) *AddUserToOrganizationalUnitsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddUserToOrganizationalUnitsHeaders) SetAuthorization(v string) *AddUserToOrganizationalUnitsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type AddUserToOrganizationalUnitsRequest struct {
+	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
+}
+
+func (s AddUserToOrganizationalUnitsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserToOrganizationalUnitsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserToOrganizationalUnitsRequest) SetOrganizationalUnitIds(v []*string) *AddUserToOrganizationalUnitsRequest {
+	s.OrganizationalUnitIds = v
+	return s
+}
+
+type AddUserToOrganizationalUnitsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s AddUserToOrganizationalUnitsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserToOrganizationalUnitsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserToOrganizationalUnitsResponse) SetHeaders(v map[string]*string) *AddUserToOrganizationalUnitsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddUserToOrganizationalUnitsResponse) SetStatusCode(v int32) *AddUserToOrganizationalUnitsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateOrganizationalUnitHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
@@ -699,10 +762,13 @@ func (s *GenerateTokenRequest) SetUsername(v string) *GenerateTokenRequest {
 }
 
 type GenerateTokenResponseBody struct {
-	AccessToken  *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
-	ExpiresAt    *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
-	ExpiresIn    *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
-	IdToken      *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
+	// access_token。
+	AccessToken *string `json:"access_token,omitempty" xml:"access_token,omitempty"`
+	ExpiresAt   *int64  `json:"expires_at,omitempty" xml:"expires_at,omitempty"`
+	ExpiresIn   *int64  `json:"expires_in,omitempty" xml:"expires_in,omitempty"`
+	// id_token。
+	IdToken *string `json:"id_token,omitempty" xml:"id_token,omitempty"`
+	// refresh_token。
 	RefreshToken *string `json:"refresh_token,omitempty" xml:"refresh_token,omitempty"`
 	TokenType    *string `json:"token_type,omitempty" xml:"token_type,omitempty"`
 }
@@ -1095,6 +1161,7 @@ type GetUserResponseBody struct {
 	DisplayName                 *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	Email                       *string                                   `json:"email,omitempty" xml:"email,omitempty"`
 	EmailVerified               *bool                                     `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	Groups                      []*GetUserResponseBodyGroups              `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	InstanceId                  *string                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	LockExpireTime              *int64                                    `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
 	OrganizationalUnits         []*GetUserResponseBodyOrganizationalUnits `json:"organizationalUnits,omitempty" xml:"organizationalUnits,omitempty" type:"Repeated"`
@@ -1153,6 +1220,11 @@ func (s *GetUserResponseBody) SetEmail(v string) *GetUserResponseBody {
 
 func (s *GetUserResponseBody) SetEmailVerified(v bool) *GetUserResponseBody {
 	s.EmailVerified = &v
+	return s
+}
+
+func (s *GetUserResponseBody) SetGroups(v []*GetUserResponseBodyGroups) *GetUserResponseBody {
+	s.Groups = v
 	return s
 }
 
@@ -1256,6 +1328,35 @@ func (s *GetUserResponseBodyCustomFields) SetFieldName(v string) *GetUserRespons
 
 func (s *GetUserResponseBodyCustomFields) SetFieldValue(v string) *GetUserResponseBodyCustomFields {
 	s.FieldValue = &v
+	return s
+}
+
+type GetUserResponseBodyGroups struct {
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	GroupId     *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	GroupName   *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+}
+
+func (s GetUserResponseBodyGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserResponseBodyGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserResponseBodyGroups) SetDescription(v string) *GetUserResponseBodyGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserResponseBodyGroups) SetGroupId(v string) *GetUserResponseBodyGroups {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetUserResponseBodyGroups) SetGroupName(v string) *GetUserResponseBodyGroups {
+	s.GroupName = &v
 	return s
 }
 
@@ -2045,14 +2146,15 @@ func (s *ListUsersResponseBody) SetTotalCount(v int64) *ListUsersResponseBody {
 }
 
 type ListUsersResponseBodyData struct {
-	AccountExpireTime   *int64  `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
-	CreateTime          *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description         *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayName         *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Email               *string `json:"email,omitempty" xml:"email,omitempty"`
-	EmailVerified       *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
-	InstanceId          *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	LockExpireTime      *int64  `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	AccountExpireTime *int64  `json:"accountExpireTime,omitempty" xml:"accountExpireTime,omitempty"`
+	CreateTime        *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisplayName       *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Email             *string `json:"email,omitempty" xml:"email,omitempty"`
+	EmailVerified     *bool   `json:"emailVerified,omitempty" xml:"emailVerified,omitempty"`
+	InstanceId        *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	LockExpireTime    *int64  `json:"lockExpireTime,omitempty" xml:"lockExpireTime,omitempty"`
+	// 密码是否已设置
 	PasswordSet         *bool   `json:"passwordSet,omitempty" xml:"passwordSet,omitempty"`
 	PhoneNumber         *string `json:"phoneNumber,omitempty" xml:"phoneNumber,omitempty"`
 	PhoneNumberVerified *bool   `json:"phoneNumberVerified,omitempty" xml:"phoneNumberVerified,omitempty"`
@@ -2358,7 +2460,13 @@ func (s *PatchUserRequest) SetUsername(v string) *PatchUserRequest {
 type PatchUserRequestCustomFields struct {
 	FieldName  *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
 	FieldValue *string `json:"fieldValue,omitempty" xml:"fieldValue,omitempty"`
-	Operator   *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// 字段操作类型，取值可选范围：
+	// - add：添加。
+	// - replace：替换。若对应扩展字段无设置值，会转换为add操作。
+	// - remove：移除。
+	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
+	// Deprecated
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 }
 
 func (s PatchUserRequestCustomFields) String() string {
@@ -2376,6 +2484,11 @@ func (s *PatchUserRequestCustomFields) SetFieldName(v string) *PatchUserRequestC
 
 func (s *PatchUserRequestCustomFields) SetFieldValue(v string) *PatchUserRequestCustomFields {
 	s.FieldValue = &v
+	return s
+}
+
+func (s *PatchUserRequestCustomFields) SetOperation(v string) *PatchUserRequestCustomFields {
+	s.Operation = &v
 	return s
 }
 
@@ -2403,6 +2516,69 @@ func (s *PatchUserResponse) SetHeaders(v map[string]*string) *PatchUserResponse 
 }
 
 func (s *PatchUserResponse) SetStatusCode(v int32) *PatchUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type RemoveUserFromOrganizationalUnitsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s RemoveUserFromOrganizationalUnitsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserFromOrganizationalUnitsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserFromOrganizationalUnitsHeaders) SetCommonHeaders(v map[string]*string) *RemoveUserFromOrganizationalUnitsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *RemoveUserFromOrganizationalUnitsHeaders) SetAuthorization(v string) *RemoveUserFromOrganizationalUnitsHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type RemoveUserFromOrganizationalUnitsRequest struct {
+	OrganizationalUnitIds []*string `json:"organizationalUnitIds,omitempty" xml:"organizationalUnitIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveUserFromOrganizationalUnitsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserFromOrganizationalUnitsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserFromOrganizationalUnitsRequest) SetOrganizationalUnitIds(v []*string) *RemoveUserFromOrganizationalUnitsRequest {
+	s.OrganizationalUnitIds = v
+	return s
+}
+
+type RemoveUserFromOrganizationalUnitsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s RemoveUserFromOrganizationalUnitsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveUserFromOrganizationalUnitsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveUserFromOrganizationalUnitsResponse) SetHeaders(v map[string]*string) *RemoveUserFromOrganizationalUnitsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveUserFromOrganizationalUnitsResponse) SetStatusCode(v int32) *RemoveUserFromOrganizationalUnitsResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2471,6 +2647,132 @@ func (s *RevokeTokenResponse) SetBody(v map[string]interface{}) *RevokeTokenResp
 	return s
 }
 
+type SetUserPrimaryOrganizationalUnitHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s SetUserPrimaryOrganizationalUnitHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserPrimaryOrganizationalUnitHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserPrimaryOrganizationalUnitHeaders) SetCommonHeaders(v map[string]*string) *SetUserPrimaryOrganizationalUnitHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SetUserPrimaryOrganizationalUnitHeaders) SetAuthorization(v string) *SetUserPrimaryOrganizationalUnitHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type SetUserPrimaryOrganizationalUnitRequest struct {
+	OrganizationalUnitId *string `json:"organizationalUnitId,omitempty" xml:"organizationalUnitId,omitempty"`
+}
+
+func (s SetUserPrimaryOrganizationalUnitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserPrimaryOrganizationalUnitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserPrimaryOrganizationalUnitRequest) SetOrganizationalUnitId(v string) *SetUserPrimaryOrganizationalUnitRequest {
+	s.OrganizationalUnitId = &v
+	return s
+}
+
+type SetUserPrimaryOrganizationalUnitResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s SetUserPrimaryOrganizationalUnitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserPrimaryOrganizationalUnitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserPrimaryOrganizationalUnitResponse) SetHeaders(v map[string]*string) *SetUserPrimaryOrganizationalUnitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetUserPrimaryOrganizationalUnitResponse) SetStatusCode(v int32) *SetUserPrimaryOrganizationalUnitResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateUserPasswordHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Authorization *string            `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+}
+
+func (s UpdateUserPasswordHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPasswordHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPasswordHeaders) SetCommonHeaders(v map[string]*string) *UpdateUserPasswordHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateUserPasswordHeaders) SetAuthorization(v string) *UpdateUserPasswordHeaders {
+	s.Authorization = &v
+	return s
+}
+
+type UpdateUserPasswordRequest struct {
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+}
+
+func (s UpdateUserPasswordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPasswordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPasswordRequest) SetPassword(v string) *UpdateUserPasswordRequest {
+	s.Password = &v
+	return s
+}
+
+type UpdateUserPasswordResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateUserPasswordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserPasswordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserPasswordResponse) SetHeaders(v map[string]*string) *UpdateUserPasswordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserPasswordResponse) SetStatusCode(v int32) *UpdateUserPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2519,11 +2821,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreateOrganizationalUnit(instanceId *string, applicationId *string, request *CreateOrganizationalUnitRequest) (_result *CreateOrganizationalUnitResponse, _err error) {
+func (client *Client) AddUserToOrganizationalUnitsWithOptions(instanceId *string, applicationId *string, userId *string, request *AddUserToOrganizationalUnitsRequest, headers *AddUserToOrganizationalUnitsHeaders, runtime *util.RuntimeOptions) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitIds)) {
+		body["organizationalUnitIds"] = request.OrganizationalUnitIds
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUserToOrganizationalUnits"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/addUserToOrganizationalUnits"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &AddUserToOrganizationalUnitsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddUserToOrganizationalUnits(instanceId *string, applicationId *string, userId *string, request *AddUserToOrganizationalUnitsRequest) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateOrganizationalUnitHeaders{}
-	_result = &CreateOrganizationalUnitResponse{}
-	_body, _err := client.CreateOrganizationalUnitWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &AddUserToOrganizationalUnitsHeaders{}
+	_result = &AddUserToOrganizationalUnitsResponse{}
+	_body, _err := client.AddUserToOrganizationalUnitsWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2586,11 +2931,11 @@ func (client *Client) CreateOrganizationalUnitWithOptions(instanceId *string, ap
 	return _result, _err
 }
 
-func (client *Client) CreateUser(instanceId *string, applicationId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
+func (client *Client) CreateOrganizationalUnit(instanceId *string, applicationId *string, request *CreateOrganizationalUnitRequest) (_result *CreateOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &CreateUserHeaders{}
-	_result = &CreateUserResponse{}
-	_body, _err := client.CreateUserWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &CreateOrganizationalUnitHeaders{}
+	_result = &CreateOrganizationalUnitResponse{}
+	_body, _err := client.CreateOrganizationalUnitWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2689,11 +3034,11 @@ func (client *Client) CreateUserWithOptions(instanceId *string, applicationId *s
 	return _result, _err
 }
 
-func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *DeleteOrganizationalUnitResponse, _err error) {
+func (client *Client) CreateUser(instanceId *string, applicationId *string, request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteOrganizationalUnitHeaders{}
-	_result = &DeleteOrganizationalUnitResponse{}
-	_body, _err := client.DeleteOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	headers := &CreateUserHeaders{}
+	_result = &CreateUserResponse{}
+	_body, _err := client.CreateUserWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2734,11 +3079,11 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, ap
 	return _result, _err
 }
 
-func (client *Client) DeleteUser(instanceId *string, applicationId *string, userId *string) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DeleteUserHeaders{}
-	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	headers := &DeleteOrganizationalUnitHeaders{}
+	_result = &DeleteOrganizationalUnitResponse{}
+	_body, _err := client.DeleteOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2779,11 +3124,11 @@ func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *s
 	return _result, _err
 }
 
-func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string) (_result *DisableUserResponse, _err error) {
+func (client *Client) DeleteUser(instanceId *string, applicationId *string, userId *string) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &DisableUserHeaders{}
-	_result = &DisableUserResponse{}
-	_body, _err := client.DisableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	headers := &DeleteUserHeaders{}
+	_result = &DeleteUserResponse{}
+	_body, _err := client.DeleteUserWithOptions(instanceId, applicationId, userId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2824,11 +3169,11 @@ func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *
 	return _result, _err
 }
 
-func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string) (_result *EnableUserResponse, _err error) {
+func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string) (_result *DisableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &EnableUserHeaders{}
-	_result = &EnableUserResponse{}
-	_body, _err := client.EnableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	headers := &DisableUserHeaders{}
+	_result = &DisableUserResponse{}
+	_body, _err := client.DisableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2869,11 +3214,11 @@ func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *s
 	return _result, _err
 }
 
-func (client *Client) GenerateDeviceCode(instanceId *string, applicationId *string, request *GenerateDeviceCodeRequest) (_result *GenerateDeviceCodeResponse, _err error) {
+func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string) (_result *EnableUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GenerateDeviceCodeResponse{}
-	_body, _err := client.GenerateDeviceCodeWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &EnableUserHeaders{}
+	_result = &EnableUserResponse{}
+	_body, _err := client.EnableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2915,11 +3260,11 @@ func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicat
 	return _result, _err
 }
 
-func (client *Client) GenerateToken(instanceId *string, applicationId *string, request *GenerateTokenRequest) (_result *GenerateTokenResponse, _err error) {
+func (client *Client) GenerateDeviceCode(instanceId *string, applicationId *string, request *GenerateDeviceCodeRequest) (_result *GenerateDeviceCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GenerateTokenResponse{}
-	_body, _err := client.GenerateTokenWithOptions(instanceId, applicationId, request, headers, runtime)
+	_result = &GenerateDeviceCodeResponse{}
+	_body, _err := client.GenerateDeviceCodeWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3005,11 +3350,11 @@ func (client *Client) GenerateTokenWithOptions(instanceId *string, applicationId
 	return _result, _err
 }
 
-func (client *Client) GetApplicationProvisioningScope(instanceId *string, applicationId *string) (_result *GetApplicationProvisioningScopeResponse, _err error) {
+func (client *Client) GenerateToken(instanceId *string, applicationId *string, request *GenerateTokenRequest) (_result *GenerateTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetApplicationProvisioningScopeHeaders{}
-	_result = &GetApplicationProvisioningScopeResponse{}
-	_body, _err := client.GetApplicationProvisioningScopeWithOptions(instanceId, applicationId, headers, runtime)
+	headers := make(map[string]*string)
+	_result = &GenerateTokenResponse{}
+	_body, _err := client.GenerateTokenWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3050,11 +3395,11 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *str
 	return _result, _err
 }
 
-func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *GetOrganizationalUnitResponse, _err error) {
+func (client *Client) GetApplicationProvisioningScope(instanceId *string, applicationId *string) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetOrganizationalUnitHeaders{}
-	_result = &GetOrganizationalUnitResponse{}
-	_body, _err := client.GetOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	headers := &GetApplicationProvisioningScopeHeaders{}
+	_result = &GetApplicationProvisioningScopeResponse{}
+	_body, _err := client.GetApplicationProvisioningScopeWithOptions(instanceId, applicationId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3095,11 +3440,11 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 	return _result, _err
 }
 
-func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
+func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *GetOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetOrganizationalUnitIdByExternalIdHeaders{}
-	_result = &GetOrganizationalUnitIdByExternalIdResponse{}
-	_body, _err := client.GetOrganizationalUnitIdByExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &GetOrganizationalUnitHeaders{}
+	_result = &GetOrganizationalUnitResponse{}
+	_body, _err := client.GetOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3158,11 +3503,11 @@ func (client *Client) GetOrganizationalUnitIdByExternalIdWithOptions(instanceId 
 	return _result, _err
 }
 
-func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string) (_result *GetUserResponse, _err error) {
+func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, applicationId *string, request *GetOrganizationalUnitIdByExternalIdRequest) (_result *GetOrganizationalUnitIdByExternalIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserHeaders{}
-	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	headers := &GetOrganizationalUnitIdByExternalIdHeaders{}
+	_result = &GetOrganizationalUnitIdByExternalIdResponse{}
+	_body, _err := client.GetOrganizationalUnitIdByExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3203,11 +3548,11 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 	return _result, _err
 }
 
-func (client *Client) GetUserIdByEmail(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest) (_result *GetUserIdByEmailResponse, _err error) {
+func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserIdByEmailHeaders{}
-	_result = &GetUserIdByEmailResponse{}
-	_body, _err := client.GetUserIdByEmailWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &GetUserHeaders{}
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(instanceId, applicationId, userId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3258,11 +3603,11 @@ func (client *Client) GetUserIdByEmailWithOptions(instanceId *string, applicatio
 	return _result, _err
 }
 
-func (client *Client) GetUserIdByPhoneNumber(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest) (_result *GetUserIdByPhoneNumberResponse, _err error) {
+func (client *Client) GetUserIdByEmail(instanceId *string, applicationId *string, request *GetUserIdByEmailRequest) (_result *GetUserIdByEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserIdByPhoneNumberHeaders{}
-	_result = &GetUserIdByPhoneNumberResponse{}
-	_body, _err := client.GetUserIdByPhoneNumberWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &GetUserIdByEmailHeaders{}
+	_result = &GetUserIdByEmailResponse{}
+	_body, _err := client.GetUserIdByEmailWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3313,11 +3658,11 @@ func (client *Client) GetUserIdByPhoneNumberWithOptions(instanceId *string, appl
 	return _result, _err
 }
 
-func (client *Client) GetUserIdByUserExternalId(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest) (_result *GetUserIdByUserExternalIdResponse, _err error) {
+func (client *Client) GetUserIdByPhoneNumber(instanceId *string, applicationId *string, request *GetUserIdByPhoneNumberRequest) (_result *GetUserIdByPhoneNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserIdByUserExternalIdHeaders{}
-	_result = &GetUserIdByUserExternalIdResponse{}
-	_body, _err := client.GetUserIdByUserExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &GetUserIdByPhoneNumberHeaders{}
+	_result = &GetUserIdByPhoneNumberResponse{}
+	_body, _err := client.GetUserIdByPhoneNumberWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3376,11 +3721,11 @@ func (client *Client) GetUserIdByUserExternalIdWithOptions(instanceId *string, a
 	return _result, _err
 }
 
-func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest) (_result *GetUserIdByUsernameResponse, _err error) {
+func (client *Client) GetUserIdByUserExternalId(instanceId *string, applicationId *string, request *GetUserIdByUserExternalIdRequest) (_result *GetUserIdByUserExternalIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserIdByUsernameHeaders{}
-	_result = &GetUserIdByUsernameResponse{}
-	_body, _err := client.GetUserIdByUsernameWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &GetUserIdByUserExternalIdHeaders{}
+	_result = &GetUserIdByUserExternalIdResponse{}
+	_body, _err := client.GetUserIdByUserExternalIdWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3431,11 +3776,11 @@ func (client *Client) GetUserIdByUsernameWithOptions(instanceId *string, applica
 	return _result, _err
 }
 
-func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_result *GetUserInfoResponse, _err error) {
+func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *string, request *GetUserIdByUsernameRequest) (_result *GetUserIdByUsernameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &GetUserInfoHeaders{}
-	_result = &GetUserInfoResponse{}
-	_body, _err := client.GetUserInfoWithOptions(instanceId, applicationId, headers, runtime)
+	headers := &GetUserIdByUsernameHeaders{}
+	_result = &GetUserIdByUsernameResponse{}
+	_body, _err := client.GetUserIdByUsernameWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3476,11 +3821,11 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 	return _result, _err
 }
 
-func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
+func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_result *GetUserInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListOrganizationalUnitParentIdsHeaders{}
-	_result = &ListOrganizationalUnitParentIdsResponse{}
-	_body, _err := client.ListOrganizationalUnitParentIdsWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	headers := &GetUserInfoHeaders{}
+	_result = &GetUserInfoResponse{}
+	_body, _err := client.GetUserInfoWithOptions(instanceId, applicationId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3521,11 +3866,11 @@ func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *str
 	return _result, _err
 }
 
-func (client *Client) ListOrganizationalUnits(instanceId *string, applicationId *string, request *ListOrganizationalUnitsRequest) (_result *ListOrganizationalUnitsResponse, _err error) {
+func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListOrganizationalUnitsHeaders{}
-	_result = &ListOrganizationalUnitsResponse{}
-	_body, _err := client.ListOrganizationalUnitsWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &ListOrganizationalUnitParentIdsHeaders{}
+	_result = &ListOrganizationalUnitParentIdsResponse{}
+	_body, _err := client.ListOrganizationalUnitParentIdsWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3584,11 +3929,11 @@ func (client *Client) ListOrganizationalUnitsWithOptions(instanceId *string, app
 	return _result, _err
 }
 
-func (client *Client) ListUsers(instanceId *string, applicationId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
+func (client *Client) ListOrganizationalUnits(instanceId *string, applicationId *string, request *ListOrganizationalUnitsRequest) (_result *ListOrganizationalUnitsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ListUsersHeaders{}
-	_result = &ListUsersResponse{}
-	_body, _err := client.ListUsersWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &ListOrganizationalUnitsHeaders{}
+	_result = &ListOrganizationalUnitsResponse{}
+	_body, _err := client.ListOrganizationalUnitsWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3647,11 +3992,11 @@ func (client *Client) ListUsersWithOptions(instanceId *string, applicationId *st
 	return _result, _err
 }
 
-func (client *Client) PatchOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitRequest) (_result *PatchOrganizationalUnitResponse, _err error) {
+func (client *Client) ListUsers(instanceId *string, applicationId *string, request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PatchOrganizationalUnitHeaders{}
-	_result = &PatchOrganizationalUnitResponse{}
-	_body, _err := client.PatchOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
+	headers := &ListUsersHeaders{}
+	_result = &ListUsersResponse{}
+	_body, _err := client.ListUsersWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3706,11 +4051,11 @@ func (client *Client) PatchOrganizationalUnitWithOptions(instanceId *string, app
 	return _result, _err
 }
 
-func (client *Client) PatchUser(instanceId *string, applicationId *string, userId *string, request *PatchUserRequest) (_result *PatchUserResponse, _err error) {
+func (client *Client) PatchOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string, request *PatchOrganizationalUnitRequest) (_result *PatchOrganizationalUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &PatchUserHeaders{}
-	_result = &PatchUserResponse{}
-	_body, _err := client.PatchUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
+	headers := &PatchOrganizationalUnitHeaders{}
+	_result = &PatchOrganizationalUnitResponse{}
+	_body, _err := client.PatchOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3789,11 +4134,66 @@ func (client *Client) PatchUserWithOptions(instanceId *string, applicationId *st
 	return _result, _err
 }
 
-func (client *Client) RevokeToken(instanceId *string, applicationId *string, request *RevokeTokenRequest) (_result *RevokeTokenResponse, _err error) {
+func (client *Client) PatchUser(instanceId *string, applicationId *string, userId *string, request *PatchUserRequest) (_result *PatchUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RevokeTokenResponse{}
-	_body, _err := client.RevokeTokenWithOptions(instanceId, applicationId, request, headers, runtime)
+	headers := &PatchUserHeaders{}
+	_result = &PatchUserResponse{}
+	_body, _err := client.PatchUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(instanceId *string, applicationId *string, userId *string, request *RemoveUserFromOrganizationalUnitsRequest, headers *RemoveUserFromOrganizationalUnitsHeaders, runtime *util.RuntimeOptions) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitIds)) {
+		body["organizationalUnitIds"] = request.OrganizationalUnitIds
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUserFromOrganizationalUnits"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/removeUserFromOrganizationalUnits"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &RemoveUserFromOrganizationalUnitsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveUserFromOrganizationalUnits(instanceId *string, applicationId *string, userId *string, request *RemoveUserFromOrganizationalUnitsRequest) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &RemoveUserFromOrganizationalUnitsHeaders{}
+	_result = &RemoveUserFromOrganizationalUnitsResponse{}
+	_body, _err := client.RemoveUserFromOrganizationalUnitsWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3844,5 +4244,127 @@ func (client *Client) RevokeTokenWithOptions(instanceId *string, applicationId *
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RevokeToken(instanceId *string, applicationId *string, request *RevokeTokenRequest) (_result *RevokeTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RevokeTokenResponse{}
+	_body, _err := client.RevokeTokenWithOptions(instanceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(instanceId *string, applicationId *string, userId *string, request *SetUserPrimaryOrganizationalUnitRequest, headers *SetUserPrimaryOrganizationalUnitHeaders, runtime *util.RuntimeOptions) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationalUnitId)) {
+		body["organizationalUnitId"] = request.OrganizationalUnitId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetUserPrimaryOrganizationalUnit"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/setUserPrimaryOrganizationalUnit"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &SetUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetUserPrimaryOrganizationalUnit(instanceId *string, applicationId *string, userId *string, request *SetUserPrimaryOrganizationalUnitRequest) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SetUserPrimaryOrganizationalUnitHeaders{}
+	_result = &SetUserPrimaryOrganizationalUnitResponse{}
+	_body, _err := client.SetUserPrimaryOrganizationalUnitWithOptions(instanceId, applicationId, userId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUserPasswordWithOptions(instanceId *string, applicationId *string, userId *string, request *UpdateUserPasswordRequest, headers *UpdateUserPasswordHeaders, runtime *util.RuntimeOptions) (_result *UpdateUserPasswordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["password"] = request.Password
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Authorization)) {
+		realHeaders["Authorization"] = util.ToJSONString(headers.Authorization)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserPassword"),
+		Version:     tea.String("2022-02-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(applicationId)) + "/users/" + tea.StringValue(openapiutil.GetEncodeParam(userId)) + "/actions/updateUserPassword"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserPassword(instanceId *string, applicationId *string, userId *string, request *UpdateUserPasswordRequest) (_result *UpdateUserPasswordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateUserPasswordHeaders{}
+	_result = &UpdateUserPasswordResponse{}
+	_body, _err := client.UpdateUserPasswordWithOptions(instanceId, applicationId, userId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
