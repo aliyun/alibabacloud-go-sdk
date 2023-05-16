@@ -295,6 +295,7 @@ type CreateServiceRequest struct {
 	OperationMetadata *string                            `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
 	PolicyNames       *string                            `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
 	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId         *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfo       []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
 	ServiceType       *string                            `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -366,6 +367,11 @@ func (s *CreateServiceRequest) SetPolicyNames(v string) *CreateServiceRequest {
 
 func (s *CreateServiceRequest) SetRegionId(v string) *CreateServiceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceRequest) SetResourceGroupId(v string) *CreateServiceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1340,6 +1346,7 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) SetPr
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs struct {
+	ConnectBandwidth      *int32    `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
 	DomainName            *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndpointIps           []*string `json:"EndpointIps,omitempty" xml:"EndpointIps,omitempty" type:"Repeated"`
 	IngressEndpointStatus *string   `json:"IngressEndpointStatus,omitempty" xml:"IngressEndpointStatus,omitempty"`
@@ -1355,6 +1362,11 @@ func (s GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnecti
 
 func (s GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs) SetConnectBandwidth(v int32) *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs {
+	s.ConnectBandwidth = &v
+	return s
 }
 
 func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs) SetDomainName(v string) *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs {
@@ -2648,12 +2660,13 @@ func (s *ListServiceUsagesResponse) SetBody(v *ListServiceUsagesResponseBody) *L
 }
 
 type ListServicesRequest struct {
-	AllVersions *bool                        `json:"AllVersions,omitempty" xml:"AllVersions,omitempty"`
-	Filter      []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults  *string                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag         []*ListServicesRequestTag    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AllVersions     *bool                        `json:"AllVersions,omitempty" xml:"AllVersions,omitempty"`
+	Filter          []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults      *string                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListServicesRequestTag    `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -2686,6 +2699,11 @@ func (s *ListServicesRequest) SetNextToken(v string) *ListServicesRequest {
 
 func (s *ListServicesRequest) SetRegionId(v string) *ListServicesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetResourceGroupId(v string) *ListServicesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2791,6 +2809,7 @@ type ListServicesResponseBodyServices struct {
 	DeployType      *string                                         `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
 	PublishTime     *string                                         `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
 	RelationType    *string                                         `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceId       *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceInfos    []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
 	ServiceType     *string                                         `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
@@ -2857,6 +2876,11 @@ func (s *ListServicesResponseBodyServices) SetPublishTime(v string) *ListService
 
 func (s *ListServicesResponseBodyServices) SetRelationType(v string) *ListServicesResponseBodyServices {
 	s.RelationType = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetResourceGroupId(v string) *ListServicesResponseBodyServices {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3534,6 +3558,10 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
 	}
@@ -4114,6 +4142,10 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
