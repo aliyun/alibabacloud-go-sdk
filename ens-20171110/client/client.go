@@ -2169,6 +2169,209 @@ func (s *CreateEnsRouteEntryResponse) SetBody(v *CreateEnsRouteEntryResponseBody
 	return s
 }
 
+type CreateEnsSaleControlRequest struct {
+	AliUidAccount *string                                    `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string                                    `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControls  []*CreateEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
+}
+
+func (s CreateEnsSaleControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlRequest) SetAliUidAccount(v string) *CreateEnsSaleControlRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequest) SetCommodityCode(v string) *CreateEnsSaleControlRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequest) SetSaleControls(v []*CreateEnsSaleControlRequestSaleControls) *CreateEnsSaleControlRequest {
+	s.SaleControls = v
+	return s
+}
+
+type CreateEnsSaleControlRequestSaleControls struct {
+	ConditionControls []*CreateEnsSaleControlRequestSaleControlsConditionControls `json:"ConditionControls,omitempty" xml:"ConditionControls,omitempty" type:"Repeated"`
+	Description       *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModuleCode        *string                                                     `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleValue       *CreateEnsSaleControlRequestSaleControlsModuleValue         `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	Operator          *string                                                     `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderType         *string                                                     `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s CreateEnsSaleControlRequestSaleControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlRequestSaleControls) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetConditionControls(v []*CreateEnsSaleControlRequestSaleControlsConditionControls) *CreateEnsSaleControlRequestSaleControls {
+	s.ConditionControls = v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetDescription(v string) *CreateEnsSaleControlRequestSaleControls {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetModuleCode(v string) *CreateEnsSaleControlRequestSaleControls {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetModuleValue(v *CreateEnsSaleControlRequestSaleControlsModuleValue) *CreateEnsSaleControlRequestSaleControls {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetOperator(v string) *CreateEnsSaleControlRequestSaleControls {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControls) SetOrderType(v string) *CreateEnsSaleControlRequestSaleControls {
+	s.OrderType = &v
+	return s
+}
+
+type CreateEnsSaleControlRequestSaleControlsConditionControls struct {
+	ConditionControlModuleCode  *string `json:"ConditionControlModuleCode,omitempty" xml:"ConditionControlModuleCode,omitempty"`
+	ConditionControlModuleValue *string `json:"ConditionControlModuleValue,omitempty" xml:"ConditionControlModuleValue,omitempty"`
+}
+
+func (s CreateEnsSaleControlRequestSaleControlsConditionControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlRequestSaleControlsConditionControls) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlRequestSaleControlsConditionControls) SetConditionControlModuleCode(v string) *CreateEnsSaleControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControlsConditionControls) SetConditionControlModuleValue(v string) *CreateEnsSaleControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleValue = &v
+	return s
+}
+
+type CreateEnsSaleControlRequestSaleControlsModuleValue struct {
+	ModuleMaxValue *string   `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string   `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+	ModuleValue    []*string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Repeated"`
+}
+
+func (s CreateEnsSaleControlRequestSaleControlsModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlRequestSaleControlsModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlRequestSaleControlsModuleValue) SetModuleMaxValue(v string) *CreateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControlsModuleValue) SetModuleMinValue(v string) *CreateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequestSaleControlsModuleValue) SetModuleValue(v []*string) *CreateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleValue = v
+	return s
+}
+
+type CreateEnsSaleControlShrinkRequest struct {
+	AliUidAccount      *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
+}
+
+func (s CreateEnsSaleControlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *CreateEnsSaleControlShrinkRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlShrinkRequest) SetCommodityCode(v string) *CreateEnsSaleControlShrinkRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlShrinkRequest) SetSaleControlsShrink(v string) *CreateEnsSaleControlShrinkRequest {
+	s.SaleControlsShrink = &v
+	return s
+}
+
+type CreateEnsSaleControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEnsSaleControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlResponseBody) SetRequestId(v string) *CreateEnsSaleControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEnsSaleControlResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateEnsSaleControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnsSaleControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsSaleControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsSaleControlResponse) SetHeaders(v map[string]*string) *CreateEnsSaleControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnsSaleControlResponse) SetStatusCode(v int32) *CreateEnsSaleControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlResponse) SetBody(v *CreateEnsSaleControlResponseBody) *CreateEnsSaleControlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEnsServiceRequest struct {
 	EnsServiceId *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
@@ -4929,6 +5132,289 @@ func (s *DeleteEnsRouteEntryResponse) SetBody(v *DeleteEnsRouteEntryResponseBody
 	return s
 }
 
+type DeleteEnsSaleConditionControlRequest struct {
+	AliUidAccount *string                                             `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string                                             `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControls  []*DeleteEnsSaleConditionControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
+}
+
+func (s DeleteEnsSaleConditionControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlRequest) SetAliUidAccount(v string) *DeleteEnsSaleConditionControlRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequest) SetCommodityCode(v string) *DeleteEnsSaleConditionControlRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequest) SetSaleControls(v []*DeleteEnsSaleConditionControlRequestSaleControls) *DeleteEnsSaleConditionControlRequest {
+	s.SaleControls = v
+	return s
+}
+
+type DeleteEnsSaleConditionControlRequestSaleControls struct {
+	ConditionControls []*DeleteEnsSaleConditionControlRequestSaleControlsConditionControls `json:"ConditionControls,omitempty" xml:"ConditionControls,omitempty" type:"Repeated"`
+	ModuleCode        *string                                                              `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OrderType         *string                                                              `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DeleteEnsSaleConditionControlRequestSaleControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlRequestSaleControls) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlRequestSaleControls) SetConditionControls(v []*DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) *DeleteEnsSaleConditionControlRequestSaleControls {
+	s.ConditionControls = v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequestSaleControls) SetModuleCode(v string) *DeleteEnsSaleConditionControlRequestSaleControls {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequestSaleControls) SetOrderType(v string) *DeleteEnsSaleConditionControlRequestSaleControls {
+	s.OrderType = &v
+	return s
+}
+
+type DeleteEnsSaleConditionControlRequestSaleControlsConditionControls struct {
+	ConditionControlModuleCode  *string `json:"ConditionControlModuleCode,omitempty" xml:"ConditionControlModuleCode,omitempty"`
+	ConditionControlModuleValue *string `json:"ConditionControlModuleValue,omitempty" xml:"ConditionControlModuleValue,omitempty"`
+}
+
+func (s DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) SetConditionControlModuleCode(v string) *DeleteEnsSaleConditionControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) SetConditionControlModuleValue(v string) *DeleteEnsSaleConditionControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleValue = &v
+	return s
+}
+
+type DeleteEnsSaleConditionControlShrinkRequest struct {
+	AliUidAccount      *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
+}
+
+func (s DeleteEnsSaleConditionControlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlShrinkRequest) SetAliUidAccount(v string) *DeleteEnsSaleConditionControlShrinkRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlShrinkRequest) SetCommodityCode(v string) *DeleteEnsSaleConditionControlShrinkRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlShrinkRequest) SetSaleControlsShrink(v string) *DeleteEnsSaleConditionControlShrinkRequest {
+	s.SaleControlsShrink = &v
+	return s
+}
+
+type DeleteEnsSaleConditionControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnsSaleConditionControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlResponseBody) SetRequestId(v string) *DeleteEnsSaleConditionControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnsSaleConditionControlResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnsSaleConditionControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnsSaleConditionControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleConditionControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleConditionControlResponse) SetHeaders(v map[string]*string) *DeleteEnsSaleConditionControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlResponse) SetStatusCode(v int32) *DeleteEnsSaleConditionControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlResponse) SetBody(v *DeleteEnsSaleConditionControlResponseBody) *DeleteEnsSaleConditionControlResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEnsSaleControlRequest struct {
+	AliUidAccount *string                                    `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string                                    `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControls  []*DeleteEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
+}
+
+func (s DeleteEnsSaleControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleControlRequest) SetAliUidAccount(v string) *DeleteEnsSaleControlRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlRequest) SetCommodityCode(v string) *DeleteEnsSaleControlRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlRequest) SetSaleControls(v []*DeleteEnsSaleControlRequestSaleControls) *DeleteEnsSaleControlRequest {
+	s.SaleControls = v
+	return s
+}
+
+type DeleteEnsSaleControlRequestSaleControls struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DeleteEnsSaleControlRequestSaleControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleControlRequestSaleControls) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleControlRequestSaleControls) SetModuleCode(v string) *DeleteEnsSaleControlRequestSaleControls {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlRequestSaleControls) SetOrderType(v string) *DeleteEnsSaleControlRequestSaleControls {
+	s.OrderType = &v
+	return s
+}
+
+type DeleteEnsSaleControlShrinkRequest struct {
+	AliUidAccount      *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
+}
+
+func (s DeleteEnsSaleControlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleControlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *DeleteEnsSaleControlShrinkRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlShrinkRequest) SetCommodityCode(v string) *DeleteEnsSaleControlShrinkRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlShrinkRequest) SetSaleControlsShrink(v string) *DeleteEnsSaleControlShrinkRequest {
+	s.SaleControlsShrink = &v
+	return s
+}
+
+type DeleteEnsSaleControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnsSaleControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleControlResponseBody) SetRequestId(v string) *DeleteEnsSaleControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnsSaleControlResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnsSaleControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnsSaleControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsSaleControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsSaleControlResponse) SetHeaders(v map[string]*string) *DeleteEnsSaleControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnsSaleControlResponse) SetStatusCode(v int32) *DeleteEnsSaleControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlResponse) SetBody(v *DeleteEnsSaleControlResponseBody) *DeleteEnsSaleControlResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEpnInstanceRequest struct {
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
 }
@@ -5866,10 +6352,15 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 }
 
 type DescribeAICImagesRequest struct {
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	MaxDate     *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	MinDate     *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAICImagesRequest) String() string {
@@ -5880,13 +6371,33 @@ func (s DescribeAICImagesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAICImagesRequest) SetDescription(v string) *DescribeAICImagesRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *DescribeAICImagesRequest) SetImageId(v string) *DescribeAICImagesRequest {
 	s.ImageId = &v
 	return s
 }
 
+func (s *DescribeAICImagesRequest) SetImageType(v string) *DescribeAICImagesRequest {
+	s.ImageType = &v
+	return s
+}
+
 func (s *DescribeAICImagesRequest) SetImageUrl(v string) *DescribeAICImagesRequest {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeAICImagesRequest) SetMaxDate(v string) *DescribeAICImagesRequest {
+	s.MaxDate = &v
+	return s
+}
+
+func (s *DescribeAICImagesRequest) SetMinDate(v string) *DescribeAICImagesRequest {
+	s.MinDate = &v
 	return s
 }
 
@@ -5900,9 +6411,17 @@ func (s *DescribeAICImagesRequest) SetPageSize(v string) *DescribeAICImagesReque
 	return s
 }
 
+func (s *DescribeAICImagesRequest) SetStatus(v string) *DescribeAICImagesRequest {
+	s.Status = &v
+	return s
+}
+
 type DescribeAICImagesResponseBody struct {
-	Images    []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Images     []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAICImagesResponseBody) String() string {
@@ -5918,13 +6437,29 @@ func (s *DescribeAICImagesResponseBody) SetImages(v []*DescribeAICImagesResponse
 	return s
 }
 
+func (s *DescribeAICImagesResponseBody) SetPageNumber(v int32) *DescribeAICImagesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBody) SetPageSize(v int32) *DescribeAICImagesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeAICImagesResponseBody) SetRequestId(v string) *DescribeAICImagesResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeAICImagesResponseBody) SetTotalCount(v int32) *DescribeAICImagesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type DescribeAICImagesResponseBodyImages struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -5941,6 +6476,11 @@ func (s DescribeAICImagesResponseBodyImages) GoString() string {
 
 func (s *DescribeAICImagesResponseBodyImages) SetCreationTime(v string) *DescribeAICImagesResponseBodyImages {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeAICImagesResponseBodyImages) SetDescription(v string) *DescribeAICImagesResponseBodyImages {
+	s.Description = &v
 	return s
 }
 
@@ -5994,10 +6534,20 @@ func (s *DescribeAICImagesResponse) SetBody(v *DescribeAICImagesResponseBody) *D
 }
 
 type DescribeARMServerInstancesRequest struct {
-	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServerIds    []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	AICSpecs             []*string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty" type:"Repeated"`
+	DescribeAICInstances *bool     `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
+	EnsRegionIds         []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	LatestAction         *string   `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	MaxDate              *string   `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	MinDate              *string   `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace            *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OrderByParams        *string   `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServerIds            []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	ServerSpecs          []*string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty" type:"Repeated"`
+	States               []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesRequest) String() string {
@@ -6008,8 +6558,48 @@ func (s DescribeARMServerInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeARMServerInstancesRequest) SetAICSpecs(v []*string) *DescribeARMServerInstancesRequest {
+	s.AICSpecs = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetDescribeAICInstances(v bool) *DescribeARMServerInstancesRequest {
+	s.DescribeAICInstances = &v
+	return s
+}
+
 func (s *DescribeARMServerInstancesRequest) SetEnsRegionIds(v []*string) *DescribeARMServerInstancesRequest {
 	s.EnsRegionIds = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetLatestAction(v string) *DescribeARMServerInstancesRequest {
+	s.LatestAction = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetMaxDate(v string) *DescribeARMServerInstancesRequest {
+	s.MaxDate = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetMinDate(v string) *DescribeARMServerInstancesRequest {
+	s.MinDate = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetName(v string) *DescribeARMServerInstancesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetNamespace(v string) *DescribeARMServerInstancesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetOrderByParams(v string) *DescribeARMServerInstancesRequest {
+	s.OrderByParams = &v
 	return s
 }
 
@@ -6028,11 +6618,31 @@ func (s *DescribeARMServerInstancesRequest) SetServerIds(v []*string) *DescribeA
 	return s
 }
 
+func (s *DescribeARMServerInstancesRequest) SetServerSpecs(v []*string) *DescribeARMServerInstancesRequest {
+	s.ServerSpecs = v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequest) SetStates(v []*string) *DescribeARMServerInstancesRequest {
+	s.States = v
+	return s
+}
+
 type DescribeARMServerInstancesShrinkRequest struct {
-	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServerIdsShrink    *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+	AICSpecsShrink       *string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty"`
+	DescribeAICInstances *bool   `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
+	EnsRegionIdsShrink   *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	LatestAction         *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	MaxDate              *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	MinDate              *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OrderByParams        *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServerIdsShrink      *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+	ServerSpecsShrink    *string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty"`
+	StatesShrink         *string `json:"States,omitempty" xml:"States,omitempty"`
 }
 
 func (s DescribeARMServerInstancesShrinkRequest) String() string {
@@ -6043,8 +6653,48 @@ func (s DescribeARMServerInstancesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeARMServerInstancesShrinkRequest) SetAICSpecsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.AICSpecsShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetDescribeAICInstances(v bool) *DescribeARMServerInstancesShrinkRequest {
+	s.DescribeAICInstances = &v
+	return s
+}
+
 func (s *DescribeARMServerInstancesShrinkRequest) SetEnsRegionIdsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
 	s.EnsRegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetLatestAction(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.LatestAction = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetMaxDate(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.MaxDate = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetMinDate(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.MinDate = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetName(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetNamespace(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetOrderByParams(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.OrderByParams = &v
 	return s
 }
 
@@ -6060,6 +6710,16 @@ func (s *DescribeARMServerInstancesShrinkRequest) SetPageSize(v int32) *Describe
 
 func (s *DescribeARMServerInstancesShrinkRequest) SetServerIdsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
 	s.ServerIdsShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetServerSpecsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.ServerSpecsShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetStatesShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.StatesShrink = &v
 	return s
 }
 
@@ -6109,7 +6769,10 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	CreationTime *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	EnsRegionId  *string                                                      `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	ExpiredTime  *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	LatestAction *string                                                      `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	Name         *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
 	Namespace    *string                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PayType      *string                                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	ServerId     *string                                                      `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	SpecName     *string                                                      `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 	State        *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
@@ -6144,8 +6807,23 @@ func (s *DescribeARMServerInstancesResponseBodyServers) SetExpiredTime(v string)
 	return s
 }
 
+func (s *DescribeARMServerInstancesResponseBodyServers) SetLatestAction(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.LatestAction = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetName(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeARMServerInstancesResponseBodyServers) SetNamespace(v string) *DescribeARMServerInstancesResponseBodyServers {
 	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetPayType(v string) *DescribeARMServerInstancesResponseBodyServers {
+	s.PayType = &v
 	return s
 }
 
@@ -6173,6 +6851,8 @@ type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
 	Frequency         *int64                                                                      `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	ImageId           *string                                                                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceId        *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LatestAction      *string                                                                     `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	Name              *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	NetworkAttributes *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
 	Resolution        *string                                                                     `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
 	Spec              *string                                                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
@@ -6200,6 +6880,16 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetImageId(v
 
 func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetInstanceId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetLatestAction(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.LatestAction = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetName(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.Name = &v
 	return s
 }
 
@@ -9175,6 +9865,219 @@ func (s *DescribeElbAvailableResourceInfoResponse) SetBody(v *DescribeElbAvailab
 	return s
 }
 
+type DescribeEnsCommodityCodeRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+}
+
+func (s DescribeEnsCommodityCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityCodeRequest) SetCommodityCode(v string) *DescribeEnsCommodityCodeRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+type DescribeEnsCommodityCodeResponseBody struct {
+	CommodityCodeInfo []*DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo `json:"CommodityCodeInfo,omitempty" xml:"CommodityCodeInfo,omitempty" type:"Repeated"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnsCommodityCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityCodeResponseBody) SetCommodityCodeInfo(v []*DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo) *DescribeEnsCommodityCodeResponseBody {
+	s.CommodityCodeInfo = v
+	return s
+}
+
+func (s *DescribeEnsCommodityCodeResponseBody) SetRequestId(v string) *DescribeEnsCommodityCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+}
+
+func (s DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo) SetCommodityCode(v string) *DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo) SetCommodityName(v string) *DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo {
+	s.CommodityName = &v
+	return s
+}
+
+type DescribeEnsCommodityCodeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnsCommodityCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsCommodityCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityCodeResponse) SetHeaders(v map[string]*string) *DescribeEnsCommodityCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsCommodityCodeResponse) SetStatusCode(v int32) *DescribeEnsCommodityCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityCodeResponse) SetBody(v *DescribeEnsCommodityCodeResponseBody) *DescribeEnsCommodityCodeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnsCommodityModuleCodeRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+}
+
+func (s DescribeEnsCommodityModuleCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityModuleCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityModuleCodeRequest) SetCommodityCode(v string) *DescribeEnsCommodityModuleCodeRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeRequest) SetModuleCode(v string) *DescribeEnsCommodityModuleCodeRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+type DescribeEnsCommodityModuleCodeResponseBody struct {
+	CommodityCodesInfo []*DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo `json:"CommodityCodesInfo,omitempty" xml:"CommodityCodesInfo,omitempty" type:"Repeated"`
+	RequestId          *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBody) SetCommodityCodesInfo(v []*DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) *DescribeEnsCommodityModuleCodeResponseBody {
+	s.CommodityCodesInfo = v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBody) SetRequestId(v string) *DescribeEnsCommodityModuleCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo struct {
+	CommodityCode   *string                                                                        `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCodesInfo []*DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo `json:"ModuleCodesInfo,omitempty" xml:"ModuleCodesInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) SetCommodityCode(v string) *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) SetModuleCodesInfo(v []*DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo) *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo {
+	s.ModuleCodesInfo = v
+	return s
+}
+
+type DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo) SetModuleCode(v string) *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo) SetModuleName(v string) *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo {
+	s.ModuleName = &v
+	return s
+}
+
+type DescribeEnsCommodityModuleCodeResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnsCommodityModuleCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsCommodityModuleCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsCommodityModuleCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponse) SetHeaders(v map[string]*string) *DescribeEnsCommodityModuleCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponse) SetStatusCode(v int32) *DescribeEnsCommodityModuleCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsCommodityModuleCodeResponse) SetBody(v *DescribeEnsCommodityModuleCodeResponseBody) *DescribeEnsCommodityModuleCodeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEnsEipAddressesRequest struct {
 	AllocationId           *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	AssociatedInstanceId   *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
@@ -10624,6 +11527,886 @@ func (s *DescribeEnsRouteEntryListResponse) SetStatusCode(v int32) *DescribeEnsR
 }
 
 func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryListResponseBody) *DescribeEnsRouteEntryListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnsSaleControlRequest struct {
+	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlRequest) SetAliUidAccount(v string) *DescribeEnsSaleControlRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlRequest) SetCommodityCode(v string) *DescribeEnsSaleControlRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlRequest) SetModuleCode(v string) *DescribeEnsSaleControlRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlRequest) SetOrderType(v string) *DescribeEnsSaleControlRequest {
+	s.OrderType = &v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBody struct {
+	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SaleControl []*DescribeEnsSaleControlResponseBodySaleControl `json:"SaleControl,omitempty" xml:"SaleControl,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBody) SetRequestId(v string) *DescribeEnsSaleControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBody) SetSaleControl(v []*DescribeEnsSaleControlResponseBodySaleControl) *DescribeEnsSaleControlResponseBody {
+	s.SaleControl = v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControl struct {
+	CommodityCode    *string                                                          `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	OrderType        *string                                                          `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	SaleControlItems []*DescribeEnsSaleControlResponseBodySaleControlSaleControlItems `json:"SaleControlItems,omitempty" xml:"SaleControlItems,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControl) SetCommodityCode(v string) *DescribeEnsSaleControlResponseBodySaleControl {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControl) SetOrderType(v string) *DescribeEnsSaleControlResponseBodySaleControl {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControl) SetSaleControlItems(v []*DescribeEnsSaleControlResponseBodySaleControlSaleControlItems) *DescribeEnsSaleControlResponseBodySaleControl {
+	s.SaleControlItems = v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItems struct {
+	ModuleCode      *string                                                                       `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	SaleControlItem *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem `json:"SaleControlItem,omitempty" xml:"SaleControlItem,omitempty" type:"Struct"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItems) SetModuleCode(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItems {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItems) SetSaleControlItem(v *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItems {
+	s.SaleControlItem = v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem struct {
+	BasicSaleControl     *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl       `json:"BasicSaleControl,omitempty" xml:"BasicSaleControl,omitempty" type:"Struct"`
+	ConditionSaleControl []*DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl `json:"ConditionSaleControl,omitempty" xml:"ConditionSaleControl,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem) SetBasicSaleControl(v *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem {
+	s.BasicSaleControl = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem) SetConditionSaleControl(v []*DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItem {
+	s.ConditionSaleControl = v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl struct {
+	Description *string                                                                                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModuleValue *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	Operator    *string                                                                                                  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) SetDescription(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) SetModuleValue(v *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) SetOperator(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl {
+	s.Operator = &v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue struct {
+	ModuleMaxValue *string   `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string   `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+	ModuleValue    []*string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) SetModuleMaxValue(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) SetModuleMinValue(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) SetModuleValue(v []*string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue {
+	s.ModuleValue = v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl struct {
+	ConditionControl *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl `json:"ConditionControl,omitempty" xml:"ConditionControl,omitempty" type:"Struct"`
+	Description      *string                                                                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModuleValue      *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue      `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	Operator         *string                                                                                                           `json:"Operator,omitempty" xml:"Operator,omitempty"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetConditionControl(v *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.ConditionControl = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetDescription(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetModuleValue(v *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetOperator(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.Operator = &v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl struct {
+	ConditionControlModuleCode  *string `json:"ConditionControlModuleCode,omitempty" xml:"ConditionControlModuleCode,omitempty"`
+	ConditionControlModuleValue *string `json:"ConditionControlModuleValue,omitempty" xml:"ConditionControlModuleValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) SetConditionControlModuleCode(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl {
+	s.ConditionControlModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) SetConditionControlModuleValue(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl {
+	s.ConditionControlModuleValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue struct {
+	ModuleMaxValue *string   `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string   `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+	ModuleValue    []*string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) SetModuleMaxValue(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) SetModuleMinValue(v string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) SetModuleValue(v []*string) *DescribeEnsSaleControlResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue {
+	s.ModuleValue = v
+	return s
+}
+
+type DescribeEnsSaleControlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnsSaleControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsSaleControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlResponse) SetHeaders(v map[string]*string) *DescribeEnsSaleControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponse) SetStatusCode(v int32) *DescribeEnsSaleControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlResponse) SetBody(v *DescribeEnsSaleControlResponseBody) *DescribeEnsSaleControlResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceRequest) SetCommodityCode(v string) *DescribeEnsSaleControlAvailableResourceRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceRequest) SetOrderType(v string) *DescribeEnsSaleControlAvailableResourceRequest {
+	s.OrderType = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBody struct {
+	RequestId                    *string                                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SaleControlAvailableResource []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource `json:"SaleControlAvailableResource,omitempty" xml:"SaleControlAvailableResource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBody) SetRequestId(v string) *DescribeEnsSaleControlAvailableResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBody) SetSaleControlAvailableResource(v []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) *DescribeEnsSaleControlAvailableResourceResponseBody {
+	s.SaleControlAvailableResource = v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource struct {
+	AvailableDiskType    []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType  `json:"AvailableDiskType,omitempty" xml:"AvailableDiskType,omitempty" type:"Repeated"`
+	AvailableRegion      []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion    `json:"AvailableRegion,omitempty" xml:"AvailableRegion,omitempty" type:"Repeated"`
+	AvailableSpec        []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec      `json:"AvailableSpec,omitempty" xml:"AvailableSpec,omitempty" type:"Repeated"`
+	AvailableStorageType *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType `json:"AvailableStorageType,omitempty" xml:"AvailableStorageType,omitempty" type:"Struct"`
+	CommodityCode        *string                                                                                              `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	OrderType            *string                                                                                              `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetAvailableDiskType(v []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.AvailableDiskType = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetAvailableRegion(v []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.AvailableRegion = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetAvailableSpec(v []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.AvailableSpec = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetAvailableStorageType(v *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.AvailableStorageType = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetCommodityCode(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) SetOrderType(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource {
+	s.OrderType = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType struct {
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType) SetDiskName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType) SetDiskType(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType {
+	s.DiskType = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion struct {
+	Area          *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	EnsRegionId   *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
+	Province      *string `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetArea(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.Area = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetEnsRegionId(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetEnsRegionName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.EnsRegionName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion) SetProvince(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableRegion {
+	s.Province = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec struct {
+	Cores     *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Memory    *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	SpecName  *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	SpecValue *string `json:"SpecValue,omitempty" xml:"SpecValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) SetCores(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec {
+	s.Cores = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) SetMemory(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) SetSpecName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec {
+	s.SpecName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec) SetSpecValue(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableSpec {
+	s.SpecValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType struct {
+	AvailableDefaultStorageType []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType   `json:"AvailableDefaultStorageType,omitempty" xml:"AvailableDefaultStorageType,omitempty" type:"Repeated"`
+	AvailableSpecialStorageType [][]*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType `json:"AvailableSpecialStorageType,omitempty" xml:"AvailableSpecialStorageType,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) SetAvailableDefaultStorageType(v []*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType {
+	s.AvailableDefaultStorageType = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) SetAvailableSpecialStorageType(v [][]*DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType {
+	s.AvailableSpecialStorageType = v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType struct {
+	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType) SetStorageName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType {
+	s.StorageName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType) SetStorageType(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType {
+	s.StorageType = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType struct {
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) SetStorageType(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) SetStorageName(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType {
+	s.StorageName = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType) SetEnsRegionId(v string) *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableSpecialStorageType {
+	s.EnsRegionId = &v
+	return s
+}
+
+type DescribeEnsSaleControlAvailableResourceResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnsSaleControlAvailableResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlAvailableResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponse) SetHeaders(v map[string]*string) *DescribeEnsSaleControlAvailableResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponse) SetStatusCode(v int32) *DescribeEnsSaleControlAvailableResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlAvailableResourceResponse) SetBody(v *DescribeEnsSaleControlAvailableResourceResponseBody) *DescribeEnsSaleControlAvailableResourceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnsSaleControlStockRequest struct {
+	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockRequest) SetAliUidAccount(v string) *DescribeEnsSaleControlStockRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockRequest) SetCommodityCode(v string) *DescribeEnsSaleControlStockRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockRequest) SetModuleCode(v string) *DescribeEnsSaleControlStockRequest {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockRequest) SetOrderType(v string) *DescribeEnsSaleControlStockRequest {
+	s.OrderType = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBody struct {
+	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SaleControl []*DescribeEnsSaleControlStockResponseBodySaleControl `json:"SaleControl,omitempty" xml:"SaleControl,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBody) SetRequestId(v string) *DescribeEnsSaleControlStockResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBody) SetSaleControl(v []*DescribeEnsSaleControlStockResponseBodySaleControl) *DescribeEnsSaleControlStockResponseBody {
+	s.SaleControl = v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControl struct {
+	CommodityCode    *string                                                               `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	OrderType        *string                                                               `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	SaleControlItems []*DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems `json:"SaleControlItems,omitempty" xml:"SaleControlItems,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControl) SetCommodityCode(v string) *DescribeEnsSaleControlStockResponseBodySaleControl {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControl) SetOrderType(v string) *DescribeEnsSaleControlStockResponseBodySaleControl {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControl) SetSaleControlItems(v []*DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) *DescribeEnsSaleControlStockResponseBodySaleControl {
+	s.SaleControlItems = v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems struct {
+	ModuleCode      *string                                                                            `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	SaleControlItem *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem `json:"SaleControlItem,omitempty" xml:"SaleControlItem,omitempty" type:"Struct"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) SetModuleCode(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) SetSaleControlItem(v *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems {
+	s.SaleControlItem = v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem struct {
+	BasicSaleControl     *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl       `json:"BasicSaleControl,omitempty" xml:"BasicSaleControl,omitempty" type:"Struct"`
+	ConditionSaleControl []*DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl `json:"ConditionSaleControl,omitempty" xml:"ConditionSaleControl,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) SetBasicSaleControl(v *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem {
+	s.BasicSaleControl = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) SetConditionSaleControl(v []*DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem {
+	s.ConditionSaleControl = v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl struct {
+	ModuleValue *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	StockValue  *string                                                                                                       `json:"StockValue,omitempty" xml:"StockValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) SetModuleValue(v *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) SetStockValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl {
+	s.StockValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue struct {
+	ModuleMaxValue *string `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) SetModuleMaxValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue) SetModuleMinValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl struct {
+	ConditionControl *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl `json:"ConditionControl,omitempty" xml:"ConditionControl,omitempty" type:"Struct"`
+	ModuleValue      *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue      `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	StockValue       *string                                                                                                                `json:"StockValue,omitempty" xml:"StockValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetConditionControl(v *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.ConditionControl = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetModuleValue(v *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) SetStockValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl {
+	s.StockValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl struct {
+	ConditionControlModuleCode  *string `json:"ConditionControlModuleCode,omitempty" xml:"ConditionControlModuleCode,omitempty"`
+	ConditionControlModuleValue *string `json:"ConditionControlModuleValue,omitempty" xml:"ConditionControlModuleValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) SetConditionControlModuleCode(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl {
+	s.ConditionControlModuleCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl) SetConditionControlModuleValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl {
+	s.ConditionControlModuleValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue struct {
+	ModuleMaxValue *string `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) SetModuleMaxValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue) SetModuleMinValue(v string) *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+type DescribeEnsSaleControlStockResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnsSaleControlStockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsSaleControlStockResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsSaleControlStockResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsSaleControlStockResponse) SetHeaders(v map[string]*string) *DescribeEnsSaleControlStockResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponse) SetStatusCode(v int32) *DescribeEnsSaleControlStockResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnsSaleControlStockResponse) SetBody(v *DescribeEnsSaleControlStockResponseBody) *DescribeEnsSaleControlStockResponse {
 	s.Body = v
 	return s
 }
@@ -18253,6 +20036,168 @@ func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribeP
 	return s
 }
 
+type DescribeRegionBandwidthQuotaRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionBandwidthQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaRequest) SetRegionId(v string) *DescribeRegionBandwidthQuotaRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionBandwidthQuotaResponseBody struct {
+	BandwidthQuota []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota `json:"BandwidthQuota,omitempty" xml:"BandwidthQuota,omitempty" type:"Repeated"`
+	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBody) SetBandwidthQuota(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) *DescribeRegionBandwidthQuotaResponseBody {
+	s.BandwidthQuota = v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBody) SetRequestId(v string) *DescribeRegionBandwidthQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota struct {
+	BandwidthInfo *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo  `json:"BandwidthInfo,omitempty" xml:"BandwidthInfo,omitempty" type:"Struct"`
+	Date          *string                                                               `json:"Date,omitempty" xml:"Date,omitempty"`
+	InstanceInfo  []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
+	RegionId      *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetBandwidthInfo(v *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
+	s.BandwidthInfo = v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetDate(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetInstanceInfo(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
+	s.InstanceInfo = v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetRegionId(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo struct {
+	MonthAverageQuota *int64 `json:"MonthAverageQuota,omitempty" xml:"MonthAverageQuota,omitempty"`
+	MonthMax          *int64 `json:"MonthMax,omitempty" xml:"MonthMax,omitempty"`
+	WeekAverageQuota  *int64 `json:"WeekAverageQuota,omitempty" xml:"WeekAverageQuota,omitempty"`
+	WeekMax           *int64 `json:"WeekMax,omitempty" xml:"WeekMax,omitempty"`
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetMonthAverageQuota(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
+	s.MonthAverageQuota = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetMonthMax(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
+	s.MonthMax = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetWeekAverageQuota(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
+	s.WeekAverageQuota = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetWeekMax(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
+	s.WeekMax = &v
+	return s
+}
+
+type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo struct {
+	InstanceNumber *int64  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) SetInstanceNumber(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo {
+	s.InstanceNumber = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) SetInstanceSpec(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo {
+	s.InstanceSpec = &v
+	return s
+}
+
+type DescribeRegionBandwidthQuotaResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionBandwidthQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRegionBandwidthQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionBandwidthQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionBandwidthQuotaResponse) SetHeaders(v map[string]*string) *DescribeRegionBandwidthQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponse) SetStatusCode(v int32) *DescribeRegionBandwidthQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionBandwidthQuotaResponse) SetBody(v *DescribeRegionBandwidthQuotaResponseBody) *DescribeRegionBandwidthQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionIspsRequest struct {
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
@@ -24289,8 +26234,9 @@ func (s *ReInitDiskResponse) SetBody(v *ReInitDiskResponseBody) *ReInitDiskRespo
 }
 
 type RebootAICInstanceRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	ServerId    *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s RebootAICInstanceRequest) String() string {
@@ -24306,7 +26252,41 @@ func (s *RebootAICInstanceRequest) SetInstanceId(v string) *RebootAICInstanceReq
 	return s
 }
 
+func (s *RebootAICInstanceRequest) SetInstanceIds(v []*string) *RebootAICInstanceRequest {
+	s.InstanceIds = v
+	return s
+}
+
 func (s *RebootAICInstanceRequest) SetServerId(v string) *RebootAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type RebootAICInstanceShrinkRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ServerId          *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s RebootAICInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAICInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAICInstanceShrinkRequest) SetInstanceId(v string) *RebootAICInstanceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RebootAICInstanceShrinkRequest) SetInstanceIdsShrink(v string) *RebootAICInstanceShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *RebootAICInstanceShrinkRequest) SetServerId(v string) *RebootAICInstanceShrinkRequest {
 	s.ServerId = &v
 	return s
 }
@@ -24358,7 +26338,8 @@ func (s *RebootAICInstanceResponse) SetBody(v *RebootAICInstanceResponseBody) *R
 }
 
 type RebootARMServerInstanceRequest struct {
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerId  *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
 }
 
 func (s RebootARMServerInstanceRequest) String() string {
@@ -24371,6 +26352,34 @@ func (s RebootARMServerInstanceRequest) GoString() string {
 
 func (s *RebootARMServerInstanceRequest) SetServerId(v string) *RebootARMServerInstanceRequest {
 	s.ServerId = &v
+	return s
+}
+
+func (s *RebootARMServerInstanceRequest) SetServerIds(v []*string) *RebootARMServerInstanceRequest {
+	s.ServerIds = v
+	return s
+}
+
+type RebootARMServerInstanceShrinkRequest struct {
+	ServerId        *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIdsShrink *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+}
+
+func (s RebootARMServerInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootARMServerInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootARMServerInstanceShrinkRequest) SetServerId(v string) *RebootARMServerInstanceShrinkRequest {
+	s.ServerId = &v
+	return s
+}
+
+func (s *RebootARMServerInstanceShrinkRequest) SetServerIdsShrink(v string) *RebootARMServerInstanceShrinkRequest {
+	s.ServerIdsShrink = &v
 	return s
 }
 
@@ -25912,8 +27921,9 @@ func (s *RescaleDeviceServiceResponse) SetBody(v *RescaleDeviceServiceResponseBo
 }
 
 type ResetAICInstanceRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ServerId   *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	ServerId    *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s ResetAICInstanceRequest) String() string {
@@ -25929,7 +27939,41 @@ func (s *ResetAICInstanceRequest) SetInstanceId(v string) *ResetAICInstanceReque
 	return s
 }
 
+func (s *ResetAICInstanceRequest) SetInstanceIds(v []*string) *ResetAICInstanceRequest {
+	s.InstanceIds = v
+	return s
+}
+
 func (s *ResetAICInstanceRequest) SetServerId(v string) *ResetAICInstanceRequest {
+	s.ServerId = &v
+	return s
+}
+
+type ResetAICInstanceShrinkRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	ServerId          *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+}
+
+func (s ResetAICInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetAICInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetAICInstanceShrinkRequest) SetInstanceId(v string) *ResetAICInstanceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResetAICInstanceShrinkRequest) SetInstanceIdsShrink(v string) *ResetAICInstanceShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *ResetAICInstanceShrinkRequest) SetServerId(v string) *ResetAICInstanceShrinkRequest {
 	s.ServerId = &v
 	return s
 }
@@ -26568,6 +28612,7 @@ type RunInstancesRequest struct {
 	EnsRegionId             *string                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	HostName                *string                        `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	ImageId                 *string                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeStrategy  *string                        `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
 	InstanceChargeType      *string                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceName            *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType            *string                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -26632,6 +28677,11 @@ func (s *RunInstancesRequest) SetHostName(v string) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetImageId(v string) *RunInstancesRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetInstanceChargeStrategy(v string) *RunInstancesRequest {
+	s.InstanceChargeStrategy = &v
 	return s
 }
 
@@ -26793,6 +28843,7 @@ type RunInstancesShrinkRequest struct {
 	EnsRegionId             *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeStrategy  *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
 	InstanceChargeType      *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceName            *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
@@ -26857,6 +28908,11 @@ func (s *RunInstancesShrinkRequest) SetHostName(v string) *RunInstancesShrinkReq
 
 func (s *RunInstancesShrinkRequest) SetImageId(v string) *RunInstancesShrinkRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetInstanceChargeStrategy(v string) *RunInstancesShrinkRequest {
+	s.InstanceChargeStrategy = &v
 	return s
 }
 
@@ -28898,6 +30954,209 @@ func (s *UnassociateNetworkAclResponse) SetBody(v *UnassociateNetworkAclResponse
 	return s
 }
 
+type UpdateEnsSaleControlRequest struct {
+	AliUidAccount *string                                    `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode *string                                    `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControls  []*UpdateEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
+}
+
+func (s UpdateEnsSaleControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlRequest) SetAliUidAccount(v string) *UpdateEnsSaleControlRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequest) SetCommodityCode(v string) *UpdateEnsSaleControlRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequest) SetSaleControls(v []*UpdateEnsSaleControlRequestSaleControls) *UpdateEnsSaleControlRequest {
+	s.SaleControls = v
+	return s
+}
+
+type UpdateEnsSaleControlRequestSaleControls struct {
+	ConditionControls []*UpdateEnsSaleControlRequestSaleControlsConditionControls `json:"ConditionControls,omitempty" xml:"ConditionControls,omitempty" type:"Repeated"`
+	Description       *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModuleCode        *string                                                     `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleValue       *UpdateEnsSaleControlRequestSaleControlsModuleValue         `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Struct"`
+	Operator          *string                                                     `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OrderType         *string                                                     `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+}
+
+func (s UpdateEnsSaleControlRequestSaleControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlRequestSaleControls) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetConditionControls(v []*UpdateEnsSaleControlRequestSaleControlsConditionControls) *UpdateEnsSaleControlRequestSaleControls {
+	s.ConditionControls = v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetDescription(v string) *UpdateEnsSaleControlRequestSaleControls {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetModuleCode(v string) *UpdateEnsSaleControlRequestSaleControls {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetModuleValue(v *UpdateEnsSaleControlRequestSaleControlsModuleValue) *UpdateEnsSaleControlRequestSaleControls {
+	s.ModuleValue = v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetOperator(v string) *UpdateEnsSaleControlRequestSaleControls {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControls) SetOrderType(v string) *UpdateEnsSaleControlRequestSaleControls {
+	s.OrderType = &v
+	return s
+}
+
+type UpdateEnsSaleControlRequestSaleControlsConditionControls struct {
+	ConditionControlModuleCode  *string `json:"ConditionControlModuleCode,omitempty" xml:"ConditionControlModuleCode,omitempty"`
+	ConditionControlModuleValue *string `json:"ConditionControlModuleValue,omitempty" xml:"ConditionControlModuleValue,omitempty"`
+}
+
+func (s UpdateEnsSaleControlRequestSaleControlsConditionControls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlRequestSaleControlsConditionControls) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControlsConditionControls) SetConditionControlModuleCode(v string) *UpdateEnsSaleControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControlsConditionControls) SetConditionControlModuleValue(v string) *UpdateEnsSaleControlRequestSaleControlsConditionControls {
+	s.ConditionControlModuleValue = &v
+	return s
+}
+
+type UpdateEnsSaleControlRequestSaleControlsModuleValue struct {
+	ModuleMaxValue *string   `json:"ModuleMaxValue,omitempty" xml:"ModuleMaxValue,omitempty"`
+	ModuleMinValue *string   `json:"ModuleMinValue,omitempty" xml:"ModuleMinValue,omitempty"`
+	ModuleValue    []*string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty" type:"Repeated"`
+}
+
+func (s UpdateEnsSaleControlRequestSaleControlsModuleValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlRequestSaleControlsModuleValue) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControlsModuleValue) SetModuleMaxValue(v string) *UpdateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleMaxValue = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControlsModuleValue) SetModuleMinValue(v string) *UpdateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleMinValue = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequestSaleControlsModuleValue) SetModuleValue(v []*string) *UpdateEnsSaleControlRequestSaleControlsModuleValue {
+	s.ModuleValue = v
+	return s
+}
+
+type UpdateEnsSaleControlShrinkRequest struct {
+	AliUidAccount      *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
+	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
+}
+
+func (s UpdateEnsSaleControlShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *UpdateEnsSaleControlShrinkRequest {
+	s.AliUidAccount = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlShrinkRequest) SetCommodityCode(v string) *UpdateEnsSaleControlShrinkRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlShrinkRequest) SetSaleControlsShrink(v string) *UpdateEnsSaleControlShrinkRequest {
+	s.SaleControlsShrink = &v
+	return s
+}
+
+type UpdateEnsSaleControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEnsSaleControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlResponseBody) SetRequestId(v string) *UpdateEnsSaleControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEnsSaleControlResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateEnsSaleControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateEnsSaleControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEnsSaleControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEnsSaleControlResponse) SetHeaders(v map[string]*string) *UpdateEnsSaleControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEnsSaleControlResponse) SetStatusCode(v int32) *UpdateEnsSaleControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlResponse) SetBody(v *UpdateEnsSaleControlResponseBody) *UpdateEnsSaleControlResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeAICInstanceImageRequest struct {
 	ImageId   *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
@@ -30095,6 +32354,64 @@ func (client *Client) CreateEnsRouteEntry(request *CreateEnsRouteEntryRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEnsRouteEntryResponse{}
 	_body, _err := client.CreateEnsRouteEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEnsSaleControlWithOptions(tmpReq *CreateEnsSaleControlRequest, runtime *util.RuntimeOptions) (_result *CreateEnsSaleControlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateEnsSaleControlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SaleControls)) {
+		request.SaleControlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaleControls, tea.String("SaleControls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
+		query["SaleControls"] = request.SaleControlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnsSaleControl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnsSaleControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnsSaleControl(request *CreateEnsSaleControlRequest) (_result *CreateEnsSaleControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnsSaleControlResponse{}
+	_body, _err := client.CreateEnsSaleControlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31774,6 +34091,122 @@ func (client *Client) DeleteEnsRouteEntry(request *DeleteEnsRouteEntryRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteEnsSaleConditionControlWithOptions(tmpReq *DeleteEnsSaleConditionControlRequest, runtime *util.RuntimeOptions) (_result *DeleteEnsSaleConditionControlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteEnsSaleConditionControlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SaleControls)) {
+		request.SaleControlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaleControls, tea.String("SaleControls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
+		query["SaleControls"] = request.SaleControlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnsSaleConditionControl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnsSaleConditionControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnsSaleConditionControl(request *DeleteEnsSaleConditionControlRequest) (_result *DeleteEnsSaleConditionControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnsSaleConditionControlResponse{}
+	_body, _err := client.DeleteEnsSaleConditionControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEnsSaleControlWithOptions(tmpReq *DeleteEnsSaleControlRequest, runtime *util.RuntimeOptions) (_result *DeleteEnsSaleControlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteEnsSaleControlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SaleControls)) {
+		request.SaleControlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaleControls, tea.String("SaleControls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
+		query["SaleControls"] = request.SaleControlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnsSaleControl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnsSaleControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnsSaleControl(request *DeleteEnsSaleControlRequest) (_result *DeleteEnsSaleControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnsSaleControlResponse{}
+	_body, _err := client.DeleteEnsSaleControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteEpnInstanceWithOptions(request *DeleteEpnInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteEpnInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32420,12 +34853,28 @@ func (client *Client) DescribeAICImagesWithOptions(request *DescribeAICImagesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		query["ImageType"] = request.ImageType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
 		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxDate)) {
+		query["MaxDate"] = request.MaxDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinDate)) {
+		query["MinDate"] = request.MinDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -32434,6 +34883,10 @@ func (client *Client) DescribeAICImagesWithOptions(request *DescribeAICImagesReq
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32477,12 +34930,24 @@ func (client *Client) DescribeARMServerInstancesWithOptions(tmpReq *DescribeARMS
 	}
 	request := &DescribeARMServerInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AICSpecs)) {
+		request.AICSpecsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AICSpecs, tea.String("AICSpecs"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.EnsRegionIds)) {
 		request.EnsRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnsRegionIds, tea.String("EnsRegionIds"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.ServerIds)) {
 		request.ServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerIds, tea.String("ServerIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerSpecs)) {
+		request.ServerSpecsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerSpecs, tea.String("ServerSpecs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.States)) {
+		request.StatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.States, tea.String("States"), tea.String("json"))
 	}
 
 	query := openapiutil.Query(util.ToMap(request))
@@ -33345,6 +35810,98 @@ func (client *Client) DescribeElbAvailableResourceInfo() (_result *DescribeElbAv
 	return _result, _err
 }
 
+func (client *Client) DescribeEnsCommodityCodeWithOptions(request *DescribeEnsCommodityCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsCommodityCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsCommodityCode"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsCommodityCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsCommodityCode(request *DescribeEnsCommodityCodeRequest) (_result *DescribeEnsCommodityCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsCommodityCodeResponse{}
+	_body, _err := client.DescribeEnsCommodityCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsCommodityModuleCodeWithOptions(request *DescribeEnsCommodityModuleCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsCommodityModuleCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		query["ModuleCode"] = request.ModuleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsCommodityModuleCode"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsCommodityModuleCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsCommodityModuleCode(request *DescribeEnsCommodityModuleCodeRequest) (_result *DescribeEnsCommodityModuleCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsCommodityModuleCodeResponse{}
+	_body, _err := client.DescribeEnsCommodityModuleCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEipAddressesRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsEipAddressesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33843,6 +36400,166 @@ func (client *Client) DescribeEnsRouteEntryList(request *DescribeEnsRouteEntryLi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnsRouteEntryListResponse{}
 	_body, _err := client.DescribeEnsRouteEntryListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControlWithOptions(request *DescribeEnsSaleControlRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsSaleControlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		query["ModuleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsSaleControl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsSaleControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControl(request *DescribeEnsSaleControlRequest) (_result *DescribeEnsSaleControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsSaleControlResponse{}
+	_body, _err := client.DescribeEnsSaleControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControlAvailableResourceWithOptions(request *DescribeEnsSaleControlAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsSaleControlAvailableResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsSaleControlAvailableResource"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsSaleControlAvailableResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControlAvailableResource(request *DescribeEnsSaleControlAvailableResourceRequest) (_result *DescribeEnsSaleControlAvailableResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsSaleControlAvailableResourceResponse{}
+	_body, _err := client.DescribeEnsSaleControlAvailableResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControlStockWithOptions(request *DescribeEnsSaleControlStockRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsSaleControlStockResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleCode)) {
+		query["ModuleCode"] = request.ModuleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsSaleControlStock"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsSaleControlStockResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsSaleControlStock(request *DescribeEnsSaleControlStockRequest) (_result *DescribeEnsSaleControlStockResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsSaleControlStockResponse{}
+	_body, _err := client.DescribeEnsSaleControlStockWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35781,6 +38498,46 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePriceResponse{}
 	_body, _err := client.DescribePriceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRegionBandwidthQuotaWithOptions(request *DescribeRegionBandwidthQuotaRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionBandwidthQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegionBandwidthQuota"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRegionBandwidthQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRegionBandwidthQuota(request *DescribeRegionBandwidthQuotaRequest) (_result *DescribeRegionBandwidthQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRegionBandwidthQuotaResponse{}
+	_body, _err := client.DescribeRegionBandwidthQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37844,11 +40601,17 @@ func (client *Client) ReInitDisk(request *ReInitDiskRequest) (_result *ReInitDis
 	return _result, _err
 }
 
-func (client *Client) RebootAICInstanceWithOptions(request *RebootAICInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootAICInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RebootAICInstanceWithOptions(tmpReq *RebootAICInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &RebootAICInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -37884,11 +40647,17 @@ func (client *Client) RebootAICInstance(request *RebootAICInstanceRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) RebootARMServerInstanceWithOptions(request *RebootARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootARMServerInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) RebootARMServerInstanceWithOptions(tmpReq *RebootARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootARMServerInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &RebootARMServerInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServerIds)) {
+		request.ServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerIds, tea.String("ServerIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -38780,11 +41549,17 @@ func (client *Client) RescaleDeviceService(request *RescaleDeviceServiceRequest)
 	return _result, _err
 }
 
-func (client *Client) ResetAICInstanceWithOptions(request *ResetAICInstanceRequest, runtime *util.RuntimeOptions) (_result *ResetAICInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ResetAICInstanceWithOptions(tmpReq *ResetAICInstanceRequest, runtime *util.RuntimeOptions) (_result *ResetAICInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ResetAICInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -39238,6 +42013,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceChargeStrategy)) {
+		query["InstanceChargeStrategy"] = request.InstanceChargeStrategy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
@@ -40480,6 +43259,64 @@ func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UnassociateNetworkAclResponse{}
 	_body, _err := client.UnassociateNetworkAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEnsSaleControlWithOptions(tmpReq *UpdateEnsSaleControlRequest, runtime *util.RuntimeOptions) (_result *UpdateEnsSaleControlResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateEnsSaleControlShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SaleControls)) {
+		request.SaleControlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaleControls, tea.String("SaleControls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUidAccount)) {
+		query["AliUidAccount"] = request.AliUidAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
+		query["SaleControls"] = request.SaleControlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEnsSaleControl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEnsSaleControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateEnsSaleControl(request *UpdateEnsSaleControlRequest) (_result *UpdateEnsSaleControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateEnsSaleControlResponse{}
+	_body, _err := client.UpdateEnsSaleControlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
