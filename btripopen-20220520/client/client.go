@@ -1907,10 +1907,9 @@ type ApplyApproveRequest struct {
 	Note        *string `json:"note,omitempty" xml:"note,omitempty"`
 	OperateTime *string `json:"operate_time,omitempty" xml:"operate_time,omitempty"`
 	Status      *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	// 子企业Id
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	UserId    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName  *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	SubCorpId   *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName    *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s ApplyApproveRequest) String() string {
@@ -2325,11 +2324,10 @@ type ApplyListQueryRequest struct {
 	Page             *int32  `json:"page,omitempty" xml:"page,omitempty"`
 	PageSize         *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	StartTime        *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
-	// 子企业Id
-	SubCorpId *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
-	Type      *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	UnionNo   *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
-	UserId    *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
+	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	UnionNo          *string `json:"union_no,omitempty" xml:"union_no,omitempty"`
+	UserId           *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ApplyListQueryRequest) String() string {
@@ -3878,9 +3876,8 @@ func (s *ApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyQueryHeaders
 }
 
 type ApplyQueryRequest struct {
-	ApplyId     *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ApplyShowId *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
-	// 子企业Id
+	ApplyId          *int32  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyShowId      *string `json:"apply_show_id,omitempty" xml:"apply_show_id,omitempty"`
 	SubCorpId        *string `json:"sub_corp_id,omitempty" xml:"sub_corp_id,omitempty"`
 	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
 	Type             *int32  `json:"type,omitempty" xml:"type,omitempty"`
@@ -5724,11 +5721,13 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	SpecialReason         *string  `json:"special_reason,omitempty" xml:"special_reason,omitempty"`
 	Status                *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	SubOrderId            *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
-	TravelerId            *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo         *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName          *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UserConfirmDesc       *string  `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
-	VoucherType           *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// 税率
+	TaxRate         *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TravelerId      *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo   *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName    *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UserConfirmDesc *string `json:"user_confirm_desc,omitempty" xml:"user_confirm_desc,omitempty"`
+	VoucherType     *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s CarBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -6001,6 +6000,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *C
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetSubOrderId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.SubOrderId = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
 	return s
 }
 
@@ -10810,12 +10814,14 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
-	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	UpgradeCost            *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
-	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// 税率
+	TaxRate       *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketId      *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	TravelerId    *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName  *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	UpgradeCost   *float64 `json:"upgrade_cost,omitempty" xml:"upgrade_cost,omitempty"`
+	VoucherType   *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s FlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -11153,6 +11159,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
 	return s
 }
 
@@ -23886,11 +23897,13 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementTime     *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
-	TotalNights        *int32   `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
-	TravelerId         *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo      *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName       *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType        *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// 税率
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TotalNights   *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
+	TravelerId    *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName  *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType   *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s HotelBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -24143,6 +24156,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
 	return s
 }
 
@@ -30846,12 +30864,14 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
 	TaxFee                 *float64 `json:"tax_fee,omitempty" xml:"tax_fee,omitempty"`
-	TicketId               *string  `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
-	Trade                  *string  `json:"trade,omitempty" xml:"trade,omitempty"`
-	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// 税率
+	TaxRate       *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketId      *string `json:"ticket_id,omitempty" xml:"ticket_id,omitempty"`
+	Trade         *string `json:"trade,omitempty" xml:"trade,omitempty"`
+	TravelerId    *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName  *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType   *int32  `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s IeFlightBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -31194,6 +31214,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSubOrderId(v 
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTaxFee(v float64) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TaxFee = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
 	return s
 }
 
@@ -38294,14 +38319,16 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	SettlementTime     *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
-	TicketNo           *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
-	TicketPrice        *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
-	TrainNo            *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
-	TrainType          *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
-	TravelerId         *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
-	TravelerJobNo      *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
-	TravelerName       *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
-	VoucherType        *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+	// 税率
+	TaxRate       *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	TicketNo      *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketPrice   *float64 `json:"ticket_price,omitempty" xml:"ticket_price,omitempty"`
+	TrainNo       *string  `json:"train_no,omitempty" xml:"train_no,omitempty"`
+	TrainType     *string  `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	TravelerId    *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerName  *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType   *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
 }
 
 func (s TrainBillSettlementQueryResponseBodyModuleDataList) String() string {
@@ -38519,6 +38546,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
 	return s
 }
 
