@@ -12,6 +12,83 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ContainerInfo struct {
+	CurrentReaon     *string `json:"CurrentReaon,omitempty" xml:"CurrentReaon,omitempty"`
+	CurrentStatus    *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
+	CurrentTimestamp *string `json:"CurrentTimestamp,omitempty" xml:"CurrentTimestamp,omitempty"`
+	Image            *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	LastReason       *string `json:"LastReason,omitempty" xml:"LastReason,omitempty"`
+	LastStatus       *string `json:"LastStatus,omitempty" xml:"LastStatus,omitempty"`
+	LastTimestamp    *string `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Ready            *bool   `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	RestartCount     *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+}
+
+func (s ContainerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContainerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ContainerInfo) SetCurrentReaon(v string) *ContainerInfo {
+	s.CurrentReaon = &v
+	return s
+}
+
+func (s *ContainerInfo) SetCurrentStatus(v string) *ContainerInfo {
+	s.CurrentStatus = &v
+	return s
+}
+
+func (s *ContainerInfo) SetCurrentTimestamp(v string) *ContainerInfo {
+	s.CurrentTimestamp = &v
+	return s
+}
+
+func (s *ContainerInfo) SetImage(v string) *ContainerInfo {
+	s.Image = &v
+	return s
+}
+
+func (s *ContainerInfo) SetLastReason(v string) *ContainerInfo {
+	s.LastReason = &v
+	return s
+}
+
+func (s *ContainerInfo) SetLastStatus(v string) *ContainerInfo {
+	s.LastStatus = &v
+	return s
+}
+
+func (s *ContainerInfo) SetLastTimestamp(v string) *ContainerInfo {
+	s.LastTimestamp = &v
+	return s
+}
+
+func (s *ContainerInfo) SetName(v string) *ContainerInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ContainerInfo) SetPort(v int32) *ContainerInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *ContainerInfo) SetReady(v bool) *ContainerInfo {
+	s.Ready = &v
+	return s
+}
+
+func (s *ContainerInfo) SetRestartCount(v int32) *ContainerInfo {
+	s.RestartCount = &v
+	return s
+}
+
 type Group struct {
 	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -72,13 +149,16 @@ func (s *Group) SetUpdateTime(v string) *Group {
 }
 
 type Instance struct {
+	CurrentAmount    *float32                 `json:"CurrentAmount,omitempty" xml:"CurrentAmount,omitempty"`
 	HostIP           *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
 	HostName         *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	InnerIP          *string                  `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
 	InstanceName     *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstancePort     *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	IsSpot           *bool                    `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
 	LastState        []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
 	Namespace        *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OriginalAmount   *float32                 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	ReadyProcesses   *int32                   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
 	Reason           *string                  `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	ResourceType     *string                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -97,6 +177,11 @@ func (s Instance) String() string {
 
 func (s Instance) GoString() string {
 	return s.String()
+}
+
+func (s *Instance) SetCurrentAmount(v float32) *Instance {
+	s.CurrentAmount = &v
+	return s
 }
 
 func (s *Instance) SetHostIP(v string) *Instance {
@@ -124,6 +209,11 @@ func (s *Instance) SetInstancePort(v int32) *Instance {
 	return s
 }
 
+func (s *Instance) SetIsSpot(v bool) *Instance {
+	s.IsSpot = &v
+	return s
+}
+
 func (s *Instance) SetLastState(v []map[string]interface{}) *Instance {
 	s.LastState = v
 	return s
@@ -131,6 +221,11 @@ func (s *Instance) SetLastState(v []map[string]interface{}) *Instance {
 
 func (s *Instance) SetNamespace(v string) *Instance {
 	s.Namespace = &v
+	return s
+}
+
+func (s *Instance) SetOriginalAmount(v float32) *Instance {
+	s.OriginalAmount = &v
 	return s
 }
 
@@ -274,27 +369,29 @@ func (s *Resource) SetUpdateTime(v string) *Resource {
 }
 
 type ResourceInstance struct {
-	Arch                  *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	AutoRenewal           *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType            *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime            *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime           *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceCpuCount      *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
-	InstanceGpuCount      *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	InstanceGpuMemory     *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
-	InstanceId            *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp            *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstanceMemory        *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
-	InstanceName          *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus        *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceTenantIp      *string  `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
-	InstanceType          *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsedCpu       *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	InstanceUsedGpu       *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	InstanceUsedGpuMemory *string  `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
-	InstanceUsedMemory    *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
-	Region                *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	Zone                  *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	Arch                   *string  `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	AutoRenewal            *bool    `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType             *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreateTime             *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime            *string  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceCpuCount       *int32   `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
+	InstanceGpuCount       *int32   `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	InstanceGpuMemory      *string  `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
+	InstanceId             *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIp             *string  `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceMemory         *string  `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	InstanceName           *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus         *string  `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceSystemDiskSize *int32   `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
+	InstanceTenantIp       *string  `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
+	InstanceType           *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceUsedCpu        *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	InstanceUsedGpu        *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	InstanceUsedGpuMemory  *string  `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
+	InstanceUsedMemory     *string  `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	Region                 *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceId             *string  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Zone                   *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -370,6 +467,11 @@ func (s *ResourceInstance) SetInstanceStatus(v string) *ResourceInstance {
 	return s
 }
 
+func (s *ResourceInstance) SetInstanceSystemDiskSize(v int32) *ResourceInstance {
+	s.InstanceSystemDiskSize = &v
+	return s
+}
+
 func (s *ResourceInstance) SetInstanceTenantIp(v string) *ResourceInstance {
 	s.InstanceTenantIp = &v
 	return s
@@ -402,6 +504,11 @@ func (s *ResourceInstance) SetInstanceUsedMemory(v string) *ResourceInstance {
 
 func (s *ResourceInstance) SetRegion(v string) *ResourceInstance {
 	s.Region = &v
+	return s
+}
+
+func (s *ResourceInstance) SetResourceId(v string) *ResourceInstance {
+	s.ResourceId = &v
 	return s
 }
 
@@ -744,8 +851,7 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 }
 
 type CommitServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -882,6 +988,8 @@ type CreateResourceRequest struct {
 	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
 	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	SystemDiskSize   *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Zone             *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -912,12 +1020,23 @@ func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequ
 	return s
 }
 
+func (s *CreateResourceRequest) SetSystemDiskSize(v int32) *CreateResourceRequest {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
+	s.Zone = &v
+	return s
+}
+
 type CreateResourceResponseBody struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OwnerUid     *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ClusterId    *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OwnerUid     *string   `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId   *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s CreateResourceResponseBody) String() string {
@@ -930,6 +1049,11 @@ func (s CreateResourceResponseBody) GoString() string {
 
 func (s *CreateResourceResponseBody) SetClusterId(v string) *CreateResourceResponseBody {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateResourceResponseBody) SetInstanceIds(v []*string) *CreateResourceResponseBody {
+	s.InstanceIds = v
 	return s
 }
 
@@ -987,7 +1111,9 @@ type CreateResourceInstancesRequest struct {
 	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
 	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	SystemDiskSize   *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	UserData         *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Zone             *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s CreateResourceInstancesRequest) String() string {
@@ -1018,14 +1144,25 @@ func (s *CreateResourceInstancesRequest) SetEcsInstanceType(v string) *CreateRes
 	return s
 }
 
+func (s *CreateResourceInstancesRequest) SetSystemDiskSize(v int32) *CreateResourceInstancesRequest {
+	s.SystemDiskSize = &v
+	return s
+}
+
 func (s *CreateResourceInstancesRequest) SetUserData(v string) *CreateResourceInstancesRequest {
 	s.UserData = &v
 	return s
 }
 
+func (s *CreateResourceInstancesRequest) SetZone(v string) *CreateResourceInstancesRequest {
+	s.Zone = &v
+	return s
+}
+
 type CreateResourceInstancesResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	Message     *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateResourceInstancesResponseBody) String() string {
@@ -1034,6 +1171,11 @@ func (s CreateResourceInstancesResponseBody) String() string {
 
 func (s CreateResourceInstancesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateResourceInstancesResponseBody) SetInstanceIds(v []*string) *CreateResourceInstancesResponseBody {
+	s.InstanceIds = v
+	return s
 }
 
 func (s *CreateResourceInstancesResponseBody) SetMessage(v string) *CreateResourceInstancesResponseBody {
@@ -1291,6 +1433,7 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceAutoScalerRequest struct {
+	Behavior        *CreateServiceAutoScalerRequestBehavior          `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
 	Max             *int32                                           `json:"max,omitempty" xml:"max,omitempty"`
 	Min             *int32                                           `json:"min,omitempty" xml:"min,omitempty"`
 	ScaleStrategies []*CreateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
@@ -1302,6 +1445,11 @@ func (s CreateServiceAutoScalerRequest) String() string {
 
 func (s CreateServiceAutoScalerRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateServiceAutoScalerRequest) SetBehavior(v *CreateServiceAutoScalerRequestBehavior) *CreateServiceAutoScalerRequest {
+	s.Behavior = v
+	return s
 }
 
 func (s *CreateServiceAutoScalerRequest) SetMax(v int32) *CreateServiceAutoScalerRequest {
@@ -1316,6 +1464,92 @@ func (s *CreateServiceAutoScalerRequest) SetMin(v int32) *CreateServiceAutoScale
 
 func (s *CreateServiceAutoScalerRequest) SetScaleStrategies(v []*CreateServiceAutoScalerRequestScaleStrategies) *CreateServiceAutoScalerRequest {
 	s.ScaleStrategies = v
+	return s
+}
+
+type CreateServiceAutoScalerRequestBehavior struct {
+	OnZero    *CreateServiceAutoScalerRequestBehaviorOnZero    `json:"onZero,omitempty" xml:"onZero,omitempty" type:"Struct"`
+	ScaleDown *CreateServiceAutoScalerRequestBehaviorScaleDown `json:"scaleDown,omitempty" xml:"scaleDown,omitempty" type:"Struct"`
+	ScaleUp   *CreateServiceAutoScalerRequestBehaviorScaleUp   `json:"scaleUp,omitempty" xml:"scaleUp,omitempty" type:"Struct"`
+}
+
+func (s CreateServiceAutoScalerRequestBehavior) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAutoScalerRequestBehavior) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAutoScalerRequestBehavior) SetOnZero(v *CreateServiceAutoScalerRequestBehaviorOnZero) *CreateServiceAutoScalerRequestBehavior {
+	s.OnZero = v
+	return s
+}
+
+func (s *CreateServiceAutoScalerRequestBehavior) SetScaleDown(v *CreateServiceAutoScalerRequestBehaviorScaleDown) *CreateServiceAutoScalerRequestBehavior {
+	s.ScaleDown = v
+	return s
+}
+
+func (s *CreateServiceAutoScalerRequestBehavior) SetScaleUp(v *CreateServiceAutoScalerRequestBehaviorScaleUp) *CreateServiceAutoScalerRequestBehavior {
+	s.ScaleUp = v
+	return s
+}
+
+type CreateServiceAutoScalerRequestBehaviorOnZero struct {
+	ScaleDownGracePeriodSeconds *int32 `json:"scaleDownGracePeriodSeconds,omitempty" xml:"scaleDownGracePeriodSeconds,omitempty"`
+	ScaleUpActivationReplicas   *int32 `json:"scaleUpActivationReplicas,omitempty" xml:"scaleUpActivationReplicas,omitempty"`
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorOnZero) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorOnZero) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAutoScalerRequestBehaviorOnZero) SetScaleDownGracePeriodSeconds(v int32) *CreateServiceAutoScalerRequestBehaviorOnZero {
+	s.ScaleDownGracePeriodSeconds = &v
+	return s
+}
+
+func (s *CreateServiceAutoScalerRequestBehaviorOnZero) SetScaleUpActivationReplicas(v int32) *CreateServiceAutoScalerRequestBehaviorOnZero {
+	s.ScaleUpActivationReplicas = &v
+	return s
+}
+
+type CreateServiceAutoScalerRequestBehaviorScaleDown struct {
+	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorScaleDown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorScaleDown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAutoScalerRequestBehaviorScaleDown) SetStabilizationWindowSeconds(v int32) *CreateServiceAutoScalerRequestBehaviorScaleDown {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type CreateServiceAutoScalerRequestBehaviorScaleUp struct {
+	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorScaleUp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceAutoScalerRequestBehaviorScaleUp) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceAutoScalerRequestBehaviorScaleUp) SetStabilizationWindowSeconds(v int32) *CreateServiceAutoScalerRequestBehaviorScaleUp {
+	s.StabilizationWindowSeconds = &v
 	return s
 }
 
@@ -2226,31 +2460,25 @@ func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody
 }
 
 type DescribeBenchmarkTaskResponseBody struct {
-	// 实际可用的压测实例个数。
 	AvailableAgent *int64 `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	// 调用者的UID。
+	// 压测任务的状态。
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// 预期的压测实例个数。
-	DesiredAgent *int64 `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
-	// 服务对外公开的访问路径。
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// 当前压测任务的运行进度信息。
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 资源拥有者的UID。
-	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 当前压测任务状态产生的原因。
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	DesiredAgent *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
+	Endpoint     *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ParentUid    *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 压测的eas服务名。
+	// 访问eas服务的鉴权token。
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// 压测任务的状态。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 压测任务ID。
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 压测任务名字。
+	// 当前压测任务状态产生的原因。
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// 访问eas服务的鉴权token。
+	// 资源拥有者的UID。
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -3023,10 +3251,12 @@ func (s *DescribeServiceCronScalerResponse) SetBody(v *DescribeServiceCronScaler
 }
 
 type DescribeServiceEventRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNum   *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventType    *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	PageNum      *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeServiceEventRequest) String() string {
@@ -3039,6 +3269,16 @@ func (s DescribeServiceEventRequest) GoString() string {
 
 func (s *DescribeServiceEventRequest) SetEndTime(v string) *DescribeServiceEventRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeServiceEventRequest) SetEventType(v string) *DescribeServiceEventRequest {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeServiceEventRequest) SetInstanceName(v string) *DescribeServiceEventRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -3163,12 +3403,16 @@ func (s *DescribeServiceEventResponse) SetBody(v *DescribeServiceEventResponseBo
 }
 
 type DescribeServiceLogRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum   *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 服务实例的容器名称。
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNum       *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Previous      *bool   `json:"Previous,omitempty" xml:"Previous,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeServiceLogRequest) String() string {
@@ -3179,8 +3423,18 @@ func (s DescribeServiceLogRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeServiceLogRequest) SetContainerName(v string) *DescribeServiceLogRequest {
+	s.ContainerName = &v
+	return s
+}
+
 func (s *DescribeServiceLogRequest) SetEndTime(v string) *DescribeServiceLogRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeServiceLogRequest) SetInstanceName(v string) *DescribeServiceLogRequest {
+	s.InstanceName = &v
 	return s
 }
 
@@ -3201,6 +3455,11 @@ func (s *DescribeServiceLogRequest) SetPageNum(v int64) *DescribeServiceLogReque
 
 func (s *DescribeServiceLogRequest) SetPageSize(v int64) *DescribeServiceLogRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeServiceLogRequest) SetPrevious(v bool) *DescribeServiceLogRequest {
+	s.Previous = &v
 	return s
 }
 
@@ -3361,8 +3620,7 @@ func (s *DevelopServiceRequest) SetExit(v string) *DevelopServiceRequest {
 }
 
 type DevelopServiceResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3616,9 +3874,8 @@ type ListGroupsResponseBody struct {
 	Groups     []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	PageNumber *int64   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3777,11 +4034,16 @@ func (s *ListResourceInstanceWorkerResponse) SetBody(v *ListResourceInstanceWork
 }
 
 type ListResourceInstancesRequest struct {
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	InstanceIP     *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Sort           *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListResourceInstancesRequest) String() string {
@@ -3797,6 +4059,16 @@ func (s *ListResourceInstancesRequest) SetChargeType(v string) *ListResourceInst
 	return s
 }
 
+func (s *ListResourceInstancesRequest) SetFilter(v string) *ListResourceInstancesRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetInstanceIP(v string) *ListResourceInstancesRequest {
+	s.InstanceIP = &v
+	return s
+}
+
 func (s *ListResourceInstancesRequest) SetInstanceId(v string) *ListResourceInstancesRequest {
 	s.InstanceId = &v
 	return s
@@ -3807,6 +4079,16 @@ func (s *ListResourceInstancesRequest) SetInstanceName(v string) *ListResourceIn
 	return s
 }
 
+func (s *ListResourceInstancesRequest) SetInstanceStatus(v string) *ListResourceInstancesRequest {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetOrder(v string) *ListResourceInstancesRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *ListResourceInstancesRequest) SetPageNumber(v int32) *ListResourceInstancesRequest {
 	s.PageNumber = &v
 	return s
@@ -3814,6 +4096,11 @@ func (s *ListResourceInstancesRequest) SetPageNumber(v int32) *ListResourceInsta
 
 func (s *ListResourceInstancesRequest) SetPageSize(v int32) *ListResourceInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListResourceInstancesRequest) SetSort(v string) *ListResourceInstancesRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -4086,8 +4373,19 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListServiceInstancesRequest struct {
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HostIP         *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
+	InstanceIP     *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
+	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IsSpot         *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceType   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Sort           *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListServiceInstancesRequest) String() string {
@@ -4098,6 +4396,46 @@ func (s ListServiceInstancesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServiceInstancesRequest) SetFilter(v string) *ListServiceInstancesRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetHostIP(v string) *ListServiceInstancesRequest {
+	s.HostIP = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetInstanceIP(v string) *ListServiceInstancesRequest {
+	s.InstanceIP = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetInstanceName(v string) *ListServiceInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetInstanceStatus(v string) *ListServiceInstancesRequest {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetInstanceType(v string) *ListServiceInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetIsSpot(v bool) *ListServiceInstancesRequest {
+	s.IsSpot = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetOrder(v string) *ListServiceInstancesRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *ListServiceInstancesRequest) SetPageNumber(v int32) *ListServiceInstancesRequest {
 	s.PageNumber = &v
 	return s
@@ -4105,6 +4443,21 @@ func (s *ListServiceInstancesRequest) SetPageNumber(v int32) *ListServiceInstanc
 
 func (s *ListServiceInstancesRequest) SetPageSize(v int32) *ListServiceInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetResourceType(v string) *ListServiceInstancesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetRole(v string) *ListServiceInstancesRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetSort(v string) *ListServiceInstancesRequest {
+	s.Sort = &v
 	return s
 }
 
@@ -4313,22 +4666,79 @@ func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody
 }
 
 type ListServicesRequest struct {
-	// 关键字搜索。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 所属的group。
+	// {
+	//   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
+	//   "Services": [
+	//     {
+	//       "ServiceId": "200516454695942578",
+	//       "ServiceName": "vipserver",
+	//       "ParentUid": "1628454689805075",
+	//       "CallerUid": "eas",
+	//       "CurrentVersion": 1,
+	//       "Cpu": 1,
+	//       "Gpu": 0,
+	//       "Memory": 900,
+	//       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
+	//       "Resource": "seccontent_inner_2080ti_5",
+	//       "Namespace": "vipserver",
+	//       "CreateTime": "2019-10-25T10:37:53Z",
+	//       "UpdateTime": "2019-10-30T16:50:59Z",
+	//       "TotalInstance": 1,
+	//       "RunningInstance": 1,
+	//       "PendingInstance": 0,
+	//       "LatestVersion": 1,
+	//       "Status": "Running",
+	//       "Reason": "RUNNING",
+	//       "Message": "Service is now scaling",
+	//       "AccessToken": "",
+	//       "Weight": 0
+	//     },
+	//     {
+	//       "ServiceId": 97097,
+	//       "ServiceName": "a1",
+	//       "CallerUid": "eas",
+	//       "CurrentVersion": 1,
+	//       "Cpu": 1,
+	//       "Gpu": 0,
+	//       "Memory": 900,
+	//       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
+	//       "Resource": "seccontent_inner_b",
+	//       "Namespace": "a1",
+	//       "CreateTime": "2020-05-26T18:03:11Z",
+	//       "UpdateTime": "2020-05-26T18:03:11Z",
+	//       "TotalInstance": 1,
+	//       "RunningInstance": 0,
+	//       "PendingInstance": 1,
+	//       "LatestVersion": 1,
+	//       "Status": "Failed",
+	//       "Reason": "FAILED",
+	//       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
+	//       "AccessToken": "regression_test_token",
+	//       "Weight": 0
+	//     }
+	//   ],
+	//   "PageNumber": 1,
+	//   "PageSize": 2,
+	//   "TotalCount": 2
+	// }
+	Filter    *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	GroupName *string            `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	Label     map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 排序顺序，支持升序或将序。
+	// 所属的group。
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 页号。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页大小。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Band类型服务主服务的UID
+	// 376577
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
-	// 服务的类型，例如Async, OfflineTask和Standard等
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// 排序字段。
+	// 服务所属的资源组名称或ID。
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// 服务名。
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// 服务运行的状态。
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	// 服务的类型定义。
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
@@ -4375,8 +4785,28 @@ func (s *ListServicesRequest) SetParentServiceUid(v string) *ListServicesRequest
 	return s
 }
 
+func (s *ListServicesRequest) SetResourceName(v string) *ListServicesRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetServiceName(v string) *ListServicesRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetServiceStatus(v string) *ListServicesRequest {
+	s.ServiceStatus = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetServiceType(v string) *ListServicesRequest {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetServiceUid(v string) *ListServicesRequest {
+	s.ServiceUid = &v
 	return s
 }
 
@@ -4386,22 +4816,79 @@ func (s *ListServicesRequest) SetSort(v string) *ListServicesRequest {
 }
 
 type ListServicesShrinkRequest struct {
-	// 关键字搜索。
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// 所属的group。
+	// {
+	//   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
+	//   "Services": [
+	//     {
+	//       "ServiceId": "200516454695942578",
+	//       "ServiceName": "vipserver",
+	//       "ParentUid": "1628454689805075",
+	//       "CallerUid": "eas",
+	//       "CurrentVersion": 1,
+	//       "Cpu": 1,
+	//       "Gpu": 0,
+	//       "Memory": 900,
+	//       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
+	//       "Resource": "seccontent_inner_2080ti_5",
+	//       "Namespace": "vipserver",
+	//       "CreateTime": "2019-10-25T10:37:53Z",
+	//       "UpdateTime": "2019-10-30T16:50:59Z",
+	//       "TotalInstance": 1,
+	//       "RunningInstance": 1,
+	//       "PendingInstance": 0,
+	//       "LatestVersion": 1,
+	//       "Status": "Running",
+	//       "Reason": "RUNNING",
+	//       "Message": "Service is now scaling",
+	//       "AccessToken": "",
+	//       "Weight": 0
+	//     },
+	//     {
+	//       "ServiceId": 97097,
+	//       "ServiceName": "a1",
+	//       "CallerUid": "eas",
+	//       "CurrentVersion": 1,
+	//       "Cpu": 1,
+	//       "Gpu": 0,
+	//       "Memory": 900,
+	//       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
+	//       "Resource": "seccontent_inner_b",
+	//       "Namespace": "a1",
+	//       "CreateTime": "2020-05-26T18:03:11Z",
+	//       "UpdateTime": "2020-05-26T18:03:11Z",
+	//       "TotalInstance": 1,
+	//       "RunningInstance": 0,
+	//       "PendingInstance": 1,
+	//       "LatestVersion": 1,
+	//       "Status": "Failed",
+	//       "Reason": "FAILED",
+	//       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
+	//       "AccessToken": "regression_test_token",
+	//       "Weight": 0
+	//     }
+	//   ],
+	//   "PageNumber": 1,
+	//   "PageSize": 2,
+	//   "TotalCount": 2
+	// }
+	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 排序顺序，支持升序或将序。
+	// 所属的group。
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 页号。
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页大小。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Band类型服务主服务的UID
+	// 376577
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
-	// 服务的类型，例如Async, OfflineTask和Standard等
-	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// 排序字段。
+	// 服务所属的资源组名称或ID。
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// 服务名。
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// 服务运行的状态。
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	// 服务的类型定义。
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
@@ -4448,8 +4935,28 @@ func (s *ListServicesShrinkRequest) SetParentServiceUid(v string) *ListServicesS
 	return s
 }
 
+func (s *ListServicesShrinkRequest) SetResourceName(v string) *ListServicesShrinkRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetServiceName(v string) *ListServicesShrinkRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetServiceStatus(v string) *ListServicesShrinkRequest {
+	s.ServiceStatus = &v
+	return s
+}
+
 func (s *ListServicesShrinkRequest) SetServiceType(v string) *ListServicesShrinkRequest {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetServiceUid(v string) *ListServicesShrinkRequest {
+	s.ServiceUid = &v
 	return s
 }
 
@@ -4459,10 +4966,8 @@ func (s *ListServicesShrinkRequest) SetSort(v string) *ListServicesShrinkRequest
 }
 
 type ListServicesResponseBody struct {
-	// 页码。
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页显示的服务数。
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// 请求ID。
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 服务列表。
@@ -5192,6 +5697,7 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceAutoScalerRequest struct {
+	Behavior        *UpdateServiceAutoScalerRequestBehavior          `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
 	Max             *int32                                           `json:"max,omitempty" xml:"max,omitempty"`
 	Min             *int32                                           `json:"min,omitempty" xml:"min,omitempty"`
 	ScaleStrategies []*UpdateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
@@ -5203,6 +5709,11 @@ func (s UpdateServiceAutoScalerRequest) String() string {
 
 func (s UpdateServiceAutoScalerRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateServiceAutoScalerRequest) SetBehavior(v *UpdateServiceAutoScalerRequestBehavior) *UpdateServiceAutoScalerRequest {
+	s.Behavior = v
+	return s
 }
 
 func (s *UpdateServiceAutoScalerRequest) SetMax(v int32) *UpdateServiceAutoScalerRequest {
@@ -5217,6 +5728,92 @@ func (s *UpdateServiceAutoScalerRequest) SetMin(v int32) *UpdateServiceAutoScale
 
 func (s *UpdateServiceAutoScalerRequest) SetScaleStrategies(v []*UpdateServiceAutoScalerRequestScaleStrategies) *UpdateServiceAutoScalerRequest {
 	s.ScaleStrategies = v
+	return s
+}
+
+type UpdateServiceAutoScalerRequestBehavior struct {
+	OnZero    *UpdateServiceAutoScalerRequestBehaviorOnZero    `json:"onZero,omitempty" xml:"onZero,omitempty" type:"Struct"`
+	ScaleDown *UpdateServiceAutoScalerRequestBehaviorScaleDown `json:"scaleDown,omitempty" xml:"scaleDown,omitempty" type:"Struct"`
+	ScaleUp   *UpdateServiceAutoScalerRequestBehaviorScaleUp   `json:"scaleUp,omitempty" xml:"scaleUp,omitempty" type:"Struct"`
+}
+
+func (s UpdateServiceAutoScalerRequestBehavior) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceAutoScalerRequestBehavior) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceAutoScalerRequestBehavior) SetOnZero(v *UpdateServiceAutoScalerRequestBehaviorOnZero) *UpdateServiceAutoScalerRequestBehavior {
+	s.OnZero = v
+	return s
+}
+
+func (s *UpdateServiceAutoScalerRequestBehavior) SetScaleDown(v *UpdateServiceAutoScalerRequestBehaviorScaleDown) *UpdateServiceAutoScalerRequestBehavior {
+	s.ScaleDown = v
+	return s
+}
+
+func (s *UpdateServiceAutoScalerRequestBehavior) SetScaleUp(v *UpdateServiceAutoScalerRequestBehaviorScaleUp) *UpdateServiceAutoScalerRequestBehavior {
+	s.ScaleUp = v
+	return s
+}
+
+type UpdateServiceAutoScalerRequestBehaviorOnZero struct {
+	ScaleDownGracePeriodSeconds *int32 `json:"scaleDownGracePeriodSeconds,omitempty" xml:"scaleDownGracePeriodSeconds,omitempty"`
+	ScaleUpActivationReplicas   *int32 `json:"scaleUpActivationReplicas,omitempty" xml:"scaleUpActivationReplicas,omitempty"`
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorOnZero) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorOnZero) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceAutoScalerRequestBehaviorOnZero) SetScaleDownGracePeriodSeconds(v int32) *UpdateServiceAutoScalerRequestBehaviorOnZero {
+	s.ScaleDownGracePeriodSeconds = &v
+	return s
+}
+
+func (s *UpdateServiceAutoScalerRequestBehaviorOnZero) SetScaleUpActivationReplicas(v int32) *UpdateServiceAutoScalerRequestBehaviorOnZero {
+	s.ScaleUpActivationReplicas = &v
+	return s
+}
+
+type UpdateServiceAutoScalerRequestBehaviorScaleDown struct {
+	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorScaleDown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorScaleDown) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceAutoScalerRequestBehaviorScaleDown) SetStabilizationWindowSeconds(v int32) *UpdateServiceAutoScalerRequestBehaviorScaleDown {
+	s.StabilizationWindowSeconds = &v
+	return s
+}
+
+type UpdateServiceAutoScalerRequestBehaviorScaleUp struct {
+	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorScaleUp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceAutoScalerRequestBehaviorScaleUp) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceAutoScalerRequestBehaviorScaleUp) SetStabilizationWindowSeconds(v int32) *UpdateServiceAutoScalerRequestBehaviorScaleUp {
+	s.StabilizationWindowSeconds = &v
 	return s
 }
 
@@ -5850,6 +6447,14 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 		body["EcsInstanceType"] = request.EcsInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		body["Zone"] = request.Zone
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -5908,8 +6513,16 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 		body["EcsInstanceType"] = request.EcsInstanceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		body["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Zone)) {
+		body["Zone"] = request.Zone
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6061,6 +6674,10 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Behavior)) {
+		body["behavior"] = request.Behavior
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
 		body["max"] = request.Max
 	}
@@ -6989,6 +7606,14 @@ func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, Service
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["PageNum"] = request.PageNum
 	}
@@ -7043,8 +7668,16 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContainerName)) {
+		query["ContainerName"] = request.ContainerName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
@@ -7061,6 +7694,10 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Previous)) {
+		query["Previous"] = request.Previous
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -7357,6 +7994,14 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 		query["ChargeType"] = request.ChargeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIP)) {
+		query["InstanceIP"] = request.InstanceIP
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -7365,12 +8010,24 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 		query["InstanceName"] = request.InstanceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceStatus)) {
+		query["InstanceStatus"] = request.InstanceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7523,12 +8180,56 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostIP)) {
+		query["HostIP"] = request.HostIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIP)) {
+		query["InstanceIP"] = request.InstanceIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceStatus)) {
+		query["InstanceStatus"] = request.InstanceStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSpot)) {
+		query["IsSpot"] = request.IsSpot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		query["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7657,8 +8358,24 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 		query["ParentServiceUid"] = request.ParentServiceUid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceStatus)) {
+		query["ServiceStatus"] = request.ServiceStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
 		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceUid)) {
+		query["ServiceUid"] = request.ServiceUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
@@ -8133,6 +8850,10 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Behavior)) {
+		body["behavior"] = request.Behavior
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Max)) {
 		body["max"] = request.Max
 	}
