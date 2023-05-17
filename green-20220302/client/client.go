@@ -12,6 +12,189 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeImageResultExtRequest struct {
+	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	ReqId    *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s DescribeImageResultExtRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtRequest) SetInfoType(v string) *DescribeImageResultExtRequest {
+	s.InfoType = &v
+	return s
+}
+
+func (s *DescribeImageResultExtRequest) SetReqId(v string) *DescribeImageResultExtRequest {
+	s.ReqId = &v
+	return s
+}
+
+type DescribeImageResultExtResponseBody struct {
+	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeImageResultExtResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeImageResultExtResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBody) SetCode(v int32) *DescribeImageResultExtResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBody) SetData(v *DescribeImageResultExtResponseBodyData) *DescribeImageResultExtResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBody) SetMsg(v string) *DescribeImageResultExtResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBody) SetRequestId(v string) *DescribeImageResultExtResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeImageResultExtResponseBodyData struct {
+	CustomImage  []*DescribeImageResultExtResponseBodyDataCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	PublicFigure []*DescribeImageResultExtResponseBodyDataPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
+	TextInImage  *DescribeImageResultExtResponseBodyDataTextInImage    `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
+}
+
+func (s DescribeImageResultExtResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBodyData) SetCustomImage(v []*DescribeImageResultExtResponseBodyDataCustomImage) *DescribeImageResultExtResponseBodyData {
+	s.CustomImage = v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyData) SetPublicFigure(v []*DescribeImageResultExtResponseBodyDataPublicFigure) *DescribeImageResultExtResponseBodyData {
+	s.PublicFigure = v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyData) SetTextInImage(v *DescribeImageResultExtResponseBodyDataTextInImage) *DescribeImageResultExtResponseBodyData {
+	s.TextInImage = v
+	return s
+}
+
+type DescribeImageResultExtResponseBodyDataCustomImage struct {
+	// 图片ID。
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 图库ID。
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// 图库名。
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s DescribeImageResultExtResponseBodyDataCustomImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBodyDataCustomImage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBodyDataCustomImage) SetImageId(v string) *DescribeImageResultExtResponseBodyDataCustomImage {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyDataCustomImage) SetLibId(v string) *DescribeImageResultExtResponseBodyDataCustomImage {
+	s.LibId = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponseBodyDataCustomImage) SetLibName(v string) *DescribeImageResultExtResponseBodyDataCustomImage {
+	s.LibName = &v
+	return s
+}
+
+type DescribeImageResultExtResponseBodyDataPublicFigure struct {
+	// 人物ID。
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+}
+
+func (s DescribeImageResultExtResponseBodyDataPublicFigure) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBodyDataPublicFigure) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBodyDataPublicFigure) SetFigureId(v string) *DescribeImageResultExtResponseBodyDataPublicFigure {
+	s.FigureId = &v
+	return s
+}
+
+type DescribeImageResultExtResponseBodyDataTextInImage struct {
+	OcrDatas []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageResultExtResponseBodyDataTextInImage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponseBodyDataTextInImage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetOcrDatas(v []*string) *DescribeImageResultExtResponseBodyDataTextInImage {
+	s.OcrDatas = v
+	return s
+}
+
+type DescribeImageResultExtResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageResultExtResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageResultExtResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageResultExtResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageResultExtResponse) SetHeaders(v map[string]*string) *DescribeImageResultExtResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageResultExtResponse) SetStatusCode(v int32) *DescribeImageResultExtResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageResultExtResponse) SetBody(v *DescribeImageResultExtResponseBody) *DescribeImageResultExtResponse {
+	s.Body = v
+	return s
+}
+
 type ImageModerationRequest struct {
 	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
@@ -720,6 +903,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageResultExtRequest, runtime *util.RuntimeOptions) (_result *DescribeImageResultExtResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InfoType)) {
+		body["InfoType"] = request.InfoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		body["ReqId"] = request.ReqId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageResultExt"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageResultExtResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageResultExt(request *DescribeImageResultExtRequest) (_result *DescribeImageResultExtResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageResultExtResponse{}
+	_body, _err := client.DescribeImageResultExtWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
