@@ -12,23 +12,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type GetInstanceRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetInstanceRequest) SetRegionId(v string) *GetInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
 type GetInstanceResponseBody struct {
 	ErrorCode      *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage   *string                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
@@ -88,6 +71,9 @@ type GetInstanceResponseBodyInstance struct {
 	EnableHiveAccess   *string                                     `json:"EnableHiveAccess,omitempty" xml:"EnableHiveAccess,omitempty"`
 	Endpoints          []*GetInstanceResponseBodyInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	ExpirationTime     *string                                     `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	GatewayCount       *int64                                      `json:"GatewayCount,omitempty" xml:"GatewayCount,omitempty"`
+	GatewayCpu         *int64                                      `json:"GatewayCpu,omitempty" xml:"GatewayCpu,omitempty"`
+	GatewayMemory      *int64                                      `json:"GatewayMemory,omitempty" xml:"GatewayMemory,omitempty"`
 	InstanceChargeType *string                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InstanceId         *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName       *string                                     `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -158,6 +144,21 @@ func (s *GetInstanceResponseBodyInstance) SetEndpoints(v []*GetInstanceResponseB
 
 func (s *GetInstanceResponseBodyInstance) SetExpirationTime(v string) *GetInstanceResponseBodyInstance {
 	s.ExpirationTime = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetGatewayCount(v int64) *GetInstanceResponseBodyInstance {
+	s.GatewayCount = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetGatewayCpu(v int64) *GetInstanceResponseBodyInstance {
+	s.GatewayCpu = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetGatewayMemory(v int64) *GetInstanceResponseBodyInstance {
+	s.GatewayMemory = &v
 	return s
 }
 
@@ -1125,19 +1126,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) GetInstanceWithOptions(instanceId *string, request *GetInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
+func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstance"),
@@ -1159,11 +1150,11 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, request *GetIns
 	return _result, _err
 }
 
-func (client *Client) GetInstance(instanceId *string, request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(instanceId, request, headers, runtime)
+	_body, _err := client.GetInstanceWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
