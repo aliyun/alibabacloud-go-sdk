@@ -14,7 +14,6 @@ import (
 
 type DescribeEmptyNumberRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -32,11 +31,6 @@ func (s DescribeEmptyNumberRequest) GoString() string {
 
 func (s *DescribeEmptyNumberRequest) SetAuthCode(v string) *DescribeEmptyNumberRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *DescribeEmptyNumberRequest) SetExtendFunction(v string) *DescribeEmptyNumberRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -301,7 +295,6 @@ func (s *DescribePhoneNumberAnalysisResponse) SetBody(v *DescribePhoneNumberAnal
 type DescribePhoneNumberOnlineTimeRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	Carrier              *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -324,11 +317,6 @@ func (s *DescribePhoneNumberOnlineTimeRequest) SetAuthCode(v string) *DescribePh
 
 func (s *DescribePhoneNumberOnlineTimeRequest) SetCarrier(v string) *DescribePhoneNumberOnlineTimeRequest {
 	s.Carrier = &v
-	return s
-}
-
-func (s *DescribePhoneNumberOnlineTimeRequest) SetExtendFunction(v string) *DescribePhoneNumberOnlineTimeRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -446,7 +434,6 @@ func (s *DescribePhoneNumberOnlineTimeResponse) SetBody(v *DescribePhoneNumberOn
 
 type DescribePhoneNumberOperatorAttributeRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -464,11 +451,6 @@ func (s DescribePhoneNumberOperatorAttributeRequest) GoString() string {
 
 func (s *DescribePhoneNumberOperatorAttributeRequest) SetAuthCode(v string) *DescribePhoneNumberOperatorAttributeRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *DescribePhoneNumberOperatorAttributeRequest) SetExtendFunction(v string) *DescribePhoneNumberOperatorAttributeRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -610,7 +592,6 @@ func (s *DescribePhoneNumberOperatorAttributeResponse) SetBody(v *DescribePhoneN
 
 type DescribePhoneTwiceTelVerifyRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -629,11 +610,6 @@ func (s DescribePhoneTwiceTelVerifyRequest) GoString() string {
 
 func (s *DescribePhoneTwiceTelVerifyRequest) SetAuthCode(v string) *DescribePhoneTwiceTelVerifyRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *DescribePhoneTwiceTelVerifyRequest) SetExtendFunction(v string) *DescribePhoneTwiceTelVerifyRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1042,7 +1018,6 @@ func (s *PhoneNumberEncryptResponse) SetBody(v *PhoneNumberEncryptResponseBody) 
 
 type PhoneNumberStatusForAccountRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1060,11 +1035,6 @@ func (s PhoneNumberStatusForAccountRequest) GoString() string {
 
 func (s *PhoneNumberStatusForAccountRequest) SetAuthCode(v string) *PhoneNumberStatusForAccountRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForAccountRequest) SetExtendFunction(v string) *PhoneNumberStatusForAccountRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1316,7 +1286,6 @@ func (s *PhoneNumberStatusForPublicResponse) SetBody(v *PhoneNumberStatusForPubl
 
 type PhoneNumberStatusForRealRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1334,11 +1303,6 @@ func (s PhoneNumberStatusForRealRequest) GoString() string {
 
 func (s *PhoneNumberStatusForRealRequest) SetAuthCode(v string) *PhoneNumberStatusForRealRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForRealRequest) SetExtendFunction(v string) *PhoneNumberStatusForRealRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1456,7 +1420,6 @@ func (s *PhoneNumberStatusForRealResponse) SetBody(v *PhoneNumberStatusForRealRe
 
 type PhoneNumberStatusForSmsRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1474,11 +1437,6 @@ func (s PhoneNumberStatusForSmsRequest) GoString() string {
 
 func (s *PhoneNumberStatusForSmsRequest) SetAuthCode(v string) *PhoneNumberStatusForSmsRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForSmsRequest) SetExtendFunction(v string) *PhoneNumberStatusForSmsRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1596,7 +1554,6 @@ func (s *PhoneNumberStatusForSmsResponse) SetBody(v *PhoneNumberStatusForSmsResp
 
 type PhoneNumberStatusForVirtualRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1614,11 +1571,6 @@ func (s PhoneNumberStatusForVirtualRequest) GoString() string {
 
 func (s *PhoneNumberStatusForVirtualRequest) SetAuthCode(v string) *PhoneNumberStatusForVirtualRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetExtendFunction(v string) *PhoneNumberStatusForVirtualRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1730,7 +1682,6 @@ func (s *PhoneNumberStatusForVirtualResponse) SetBody(v *PhoneNumberStatusForVir
 
 type PhoneNumberStatusForVoiceRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1748,11 +1699,6 @@ func (s PhoneNumberStatusForVoiceRequest) GoString() string {
 
 func (s *PhoneNumberStatusForVoiceRequest) SetAuthCode(v string) *PhoneNumberStatusForVoiceRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVoiceRequest) SetExtendFunction(v string) *PhoneNumberStatusForVoiceRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -1871,7 +1817,6 @@ func (s *PhoneNumberStatusForVoiceResponse) SetBody(v *PhoneNumberStatusForVoice
 type ThreeElementsVerificationRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	CertCode             *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1895,11 +1840,6 @@ func (s *ThreeElementsVerificationRequest) SetAuthCode(v string) *ThreeElementsV
 
 func (s *ThreeElementsVerificationRequest) SetCertCode(v string) *ThreeElementsVerificationRequest {
 	s.CertCode = &v
-	return s
-}
-
-func (s *ThreeElementsVerificationRequest) SetExtendFunction(v string) *ThreeElementsVerificationRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -2022,7 +1962,6 @@ func (s *ThreeElementsVerificationResponse) SetBody(v *ThreeElementsVerification
 
 type TwoElementsVerificationRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	ExtendFunction       *string `json:"ExtendFunction,omitempty" xml:"ExtendFunction,omitempty"`
 	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2041,11 +1980,6 @@ func (s TwoElementsVerificationRequest) GoString() string {
 
 func (s *TwoElementsVerificationRequest) SetAuthCode(v string) *TwoElementsVerificationRequest {
 	s.AuthCode = &v
-	return s
-}
-
-func (s *TwoElementsVerificationRequest) SetExtendFunction(v string) *TwoElementsVerificationRequest {
-	s.ExtendFunction = &v
 	return s
 }
 
@@ -2223,10 +2157,6 @@ func (client *Client) DescribeEmptyNumberWithOptions(request *DescribeEmptyNumbe
 		query["AuthCode"] = request.AuthCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -2367,10 +2297,6 @@ func (client *Client) DescribePhoneNumberOnlineTimeWithOptions(request *Describe
 		query["Carrier"] = request.Carrier
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -2435,10 +2361,6 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 		query["AuthCode"] = request.AuthCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -2501,10 +2423,6 @@ func (client *Client) DescribePhoneTwiceTelVerifyWithOptions(request *DescribePh
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
 		query["AuthCode"] = request.AuthCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
@@ -2703,10 +2621,6 @@ func (client *Client) PhoneNumberStatusForAccountWithOptions(request *PhoneNumbe
 		query["AuthCode"] = request.AuthCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -2835,10 +2749,6 @@ func (client *Client) PhoneNumberStatusForRealWithOptions(request *PhoneNumberSt
 		query["AuthCode"] = request.AuthCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -2901,10 +2811,6 @@ func (client *Client) PhoneNumberStatusForSmsWithOptions(request *PhoneNumberSta
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
 		query["AuthCode"] = request.AuthCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
@@ -2971,10 +2877,6 @@ func (client *Client) PhoneNumberStatusForVirtualWithOptions(request *PhoneNumbe
 		query["AuthCode"] = request.AuthCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -3037,10 +2939,6 @@ func (client *Client) PhoneNumberStatusForVoiceWithOptions(request *PhoneNumberS
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
 		query["AuthCode"] = request.AuthCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
@@ -3111,10 +3009,6 @@ func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElement
 		query["CertCode"] = request.CertCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -3181,10 +3075,6 @@ func (client *Client) TwoElementsVerificationWithOptions(request *TwoElementsVer
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
 		query["AuthCode"] = request.AuthCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExtendFunction)) {
-		query["ExtendFunction"] = request.ExtendFunction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
