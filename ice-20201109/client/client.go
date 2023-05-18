@@ -15096,10 +15096,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Video     *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	MuxConfig   *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	TransConfig *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video       *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -15122,6 +15123,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) SetTransConfig(v *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams {
+	s.TransConfig = v
 	return s
 }
 
@@ -15272,6 +15278,65 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTr
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment) SetForceSegTime(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment {
 	s.ForceSegTime = &v
+	return s
+}
+
+type GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetAdjDarMethod(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrate(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrateFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckReso(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckResoFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrate(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrateFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetTransMode(v string) *GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.TransMode = &v
 	return s
 }
 
@@ -16376,11 +16441,12 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 }
 
 type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	Audio     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags      map[string]*string                                                                                           `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Video     *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	MuxConfig   *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags        map[string]*string                                                                                             `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TransConfig *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video       *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -16408,6 +16474,11 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
 	s.Tags = v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTransConfig(v *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
+	s.TransConfig = v
 	return s
 }
 
@@ -16558,6 +16629,65 @@ func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
 
 func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment) SetForceSegTime(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment {
 	s.ForceSegTime = &v
+	return s
+}
+
+type GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetAdjDarMethod(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrate(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrateFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckReso(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckResoFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrate(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrateFail(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetTransMode(v string) *GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.TransMode = &v
 	return s
 }
 
@@ -33273,11 +33403,12 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode) SetTemplate
 }
 
 type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags      map[string]*string                                                                  `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Video     *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	MuxConfig   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags        map[string]*string                                                                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TransConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -33305,6 +33436,11 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.Tags = v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetTransConfig(v *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
+	s.TransConfig = v
 	return s
 }
 
@@ -33455,6 +33591,65 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment) SetForceSegTime(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment {
 	s.ForceSegTime = &v
+	return s
+}
+
+type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetAdjDarMethod(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrate(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckReso(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckResoFail(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrate(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetTransMode(v string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.TransMode = &v
 	return s
 }
 
@@ -34261,10 +34456,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams struct {
-	Audio     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Video     *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	MuxConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	TransConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video       *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) String() string {
@@ -34287,6 +34483,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams) SetTransConfig(v *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParams {
+	s.TransConfig = v
 	return s
 }
 
@@ -34437,6 +34638,65 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfi
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment) SetForceSegTime(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfigSegment {
 	s.ForceSegTime = &v
+	return s
+}
+
+type SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetAdjDarMethod(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrate(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckReso(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckResoFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrate(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig) SetTransMode(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.TransMode = &v
 	return s
 }
 
@@ -35541,11 +35801,12 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 }
 
 type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams struct {
-	Audio     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio     `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
-	Container *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
-	MuxConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags      map[string]interface{}                                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Video     *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo     `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	Audio       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
+	Container   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
+	MuxConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
+	Tags        map[string]interface{}                                                                                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TransConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
+	Video       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) String() string {
@@ -35573,6 +35834,11 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTags(v map[string]interface{}) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
 	s.Tags = v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTransConfig(v *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
+	s.TransConfig = v
 	return s
 }
 
@@ -35723,6 +35989,65 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment) SetForceSegTime(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfigSegment {
 	s.ForceSegTime = &v
+	return s
+}
+
+type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig struct {
+	AdjDarMethod            *string `json:"AdjDarMethod,omitempty" xml:"AdjDarMethod,omitempty"`
+	IsCheckAudioBitrate     *string `json:"IsCheckAudioBitrate,omitempty" xml:"IsCheckAudioBitrate,omitempty"`
+	IsCheckAudioBitrateFail *string `json:"IsCheckAudioBitrateFail,omitempty" xml:"IsCheckAudioBitrateFail,omitempty"`
+	IsCheckReso             *string `json:"IsCheckReso,omitempty" xml:"IsCheckReso,omitempty"`
+	IsCheckResoFail         *string `json:"IsCheckResoFail,omitempty" xml:"IsCheckResoFail,omitempty"`
+	IsCheckVideoBitrate     *string `json:"IsCheckVideoBitrate,omitempty" xml:"IsCheckVideoBitrate,omitempty"`
+	IsCheckVideoBitrateFail *string `json:"IsCheckVideoBitrateFail,omitempty" xml:"IsCheckVideoBitrateFail,omitempty"`
+	TransMode               *string `json:"TransMode,omitempty" xml:"TransMode,omitempty"`
+}
+
+func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetAdjDarMethod(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.AdjDarMethod = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrate(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckAudioBitrateFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckAudioBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckReso(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckReso = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckResoFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckResoFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrate(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrate = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetIsCheckVideoBitrateFail(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.IsCheckVideoBitrateFail = &v
+	return s
+}
+
+func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig) SetTransMode(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig {
+	s.TransMode = &v
 	return s
 }
 
