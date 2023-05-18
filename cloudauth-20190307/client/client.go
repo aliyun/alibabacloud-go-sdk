@@ -2156,9 +2156,11 @@ type InitFaceVerifyRequest struct {
 	OssBucketName              *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssObjectName              *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
 	OuterOrderNo               *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	ProcedurePriority          *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
 	ProductCode                *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ReturnUrl                  *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
 	SceneId                    *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SuitableType               *string `json:"SuitableType,omitempty" xml:"SuitableType,omitempty"`
 	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
 }
@@ -2266,6 +2268,11 @@ func (s *InitFaceVerifyRequest) SetOuterOrderNo(v string) *InitFaceVerifyRequest
 	return s
 }
 
+func (s *InitFaceVerifyRequest) SetProcedurePriority(v string) *InitFaceVerifyRequest {
+	s.ProcedurePriority = &v
+	return s
+}
+
 func (s *InitFaceVerifyRequest) SetProductCode(v string) *InitFaceVerifyRequest {
 	s.ProductCode = &v
 	return s
@@ -2278,6 +2285,11 @@ func (s *InitFaceVerifyRequest) SetReturnUrl(v string) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetSceneId(v int64) *InitFaceVerifyRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetSuitableType(v string) *InitFaceVerifyRequest {
+	s.SuitableType = &v
 	return s
 }
 
@@ -3950,6 +3962,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		query["OuterOrderNo"] = request.OuterOrderNo
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProcedurePriority)) {
+		query["ProcedurePriority"] = request.ProcedurePriority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["ProductCode"] = request.ProductCode
 	}
@@ -3960,6 +3976,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SuitableType)) {
+		query["SuitableType"] = request.SuitableType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
