@@ -13,6 +13,7 @@ import (
 )
 
 type AcceptResourceShareInvitationRequest struct {
+	// The ID of the invitation.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
 }
 
@@ -30,7 +31,9 @@ func (s *AcceptResourceShareInvitationRequest) SetResourceShareInvitationId(v st
 }
 
 type AcceptResourceShareInvitationResponseBody struct {
-	RequestId               *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource share.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the resource share.
 	ResourceShareInvitation *AcceptResourceShareInvitationResponseBodyResourceShareInvitation `json:"ResourceShareInvitation,omitempty" xml:"ResourceShareInvitation,omitempty" type:"Struct"`
 }
 
@@ -53,13 +56,23 @@ func (s *AcceptResourceShareInvitationResponseBody) SetResourceShareInvitation(v
 }
 
 type AcceptResourceShareInvitationResponseBodyResourceShareInvitation struct {
-	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ReceiverAccountId         *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
-	ResourceShareId           *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
+	// The Alibaba Cloud account ID of the invitee.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The Alibaba Cloud account ID of the inviter.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
-	ResourceShareName         *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	SenderAccountId           *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the invitation was created. The time is displayed in UTC.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The status of the invitation. Valid values:
+	//
+	// *   Pending: The invitation is waiting for confirmation.
+	// *   Accepted: The invitation is accepted.
+	// *   Cancelled: The invitation is canceled.
+	// *   Rejected: The invitation is rejected.
+	// *   Expired: The invitation has expired.
+	SenderAccountId *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s AcceptResourceShareInvitationResponseBodyResourceShareInvitation) String() string {
@@ -135,7 +148,12 @@ func (s *AcceptResourceShareInvitationResponse) SetBody(v *AcceptResourceShareIn
 }
 
 type AssociateResourceShareRequest struct {
-	PermissionNames []*string                                 `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
+	PermissionNames []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
+	// The ID of a shared resource.
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
+	//
+	// >  Resources.N.ResourceId and Resources.N.ResourceType must be used in pairs.
 	ResourceShareId *string                                   `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	Resources       []*AssociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	Targets         []*string                                 `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -170,7 +188,16 @@ func (s *AssociateResourceShareRequest) SetTargets(v []*string) *AssociateResour
 }
 
 type AssociateResourceShareRequestResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of a principal.
+	//
+	// *   If the value of `AllowExternalTargets` for the resource share is `false` in the response of the ListResourceShares operation, the resource share supports only resource sharing within a resource directory. In this case, you can set this parameter to the ID of the resource directory, ID of a folder in the resource directory, or ID of a member in the resource directory.
+	// *   If the value of `AllowExternalTargets` for the resource share is `true` in the response of the ListResourceShares operation, the resource share supports both resource sharing within a resource directory and resource sharing outside a resource directory. In this case, you can set this parameter to the ID of an independent Alibaba Cloud account, ID of the resource directory, ID of a folder in the resource directory, or ID of a member in the resource directory.
+	//
+	// For more information, see [Resource sharing modes](~~160622~~), [View the ID of a resource directory](~~111217~~), [View the ID of a folder](~~111223~~), or [View the ID of a member](~~111624~~).
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five principals can be specified at a time.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -193,7 +220,15 @@ func (s *AssociateResourceShareRequestResources) SetResourceType(v string) *Asso
 }
 
 type AssociateResourceShareResponseBody struct {
-	RequestId                 *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the association of the principal was updated.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the shared resource.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the principal.
 	ResourceShareAssociations []*AssociateResourceShareResponseBodyResourceShareAssociations `json:"ResourceShareAssociations,omitempty" xml:"ResourceShareAssociations,omitempty" type:"Repeated"`
 }
 
@@ -216,15 +251,39 @@ func (s *AssociateResourceShareResponseBody) SetResourceShareAssociations(v []*A
 }
 
 type AssociateResourceShareResponseBodyResourceShareAssociations struct {
-	AssociationStatus        *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	AssociationStatus *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	// The association status. Valid values:
+	//
+	// *   Associating: The entity is being associated.
+	// *   Associated: The entity is associated.
+	// *   Failed: The entity fails to be associated.
+	// *   Disassociating: The entity is being disassociated.
+	// *   Disassociated: The entity is disassociated.
+	//
+	// >  The system deletes the records of entities in the `Failed` or `Disassociated` state within 48 hours to 96 hours.
 	AssociationStatusMessage *string `json:"AssociationStatusMessage,omitempty" xml:"AssociationStatusMessage,omitempty"`
 	AssociationType          *string `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EntityId                 *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType               *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ResourceShareId          *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName        *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	UpdateTime               *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the resource share.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the association of the entity was created. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the shared resource was associated with the resource share.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the principal was associated with the resource share.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The cause of the association failure.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The association type. Valid values:
+	//
+	// *   Resource
+	// *   Target
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of AssociationType is Resource, the value of this parameter is the type of the shared resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	// *   If the value of AssociationType is Target, the value of this parameter is `Account`.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The name of the resource share.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s AssociateResourceShareResponseBodyResourceShareAssociations) String() string {
@@ -385,11 +444,17 @@ func (s *AssociateResourceSharePermissionResponse) SetBody(v *AssociateResourceS
 }
 
 type CreateResourceShareRequest struct {
-	AllowExternalTargets *bool                                  `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	PermissionNames      []*string                              `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
-	ResourceShareName    *string                                `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	Resources            []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Targets              []*string                              `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The information of the resource share.
+	AllowExternalTargets *bool     `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	PermissionNames      []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
+	// The ID of a shared resource.
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
+	//
+	// >  `Resources.N.ResourceId` and `Resources.N.ResourceType` must be used in pairs.
+	ResourceShareName *string                                `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	Resources         []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	Targets           []*string                              `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s CreateResourceShareRequest) String() string {
@@ -426,7 +491,16 @@ func (s *CreateResourceShareRequest) SetTargets(v []*string) *CreateResourceShar
 }
 
 type CreateResourceShareRequestResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of a permission. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of a principal. Valid values:
+	//
+	// *   If you set `AllowExternalTargets` to `false`, set this parameter to the ID of a resource directory, ID of a folder in a resource directory, or ID of a member in a resource directory.
+	// *   If you set `AllowExternalTargets` to `true`, set this parameter to the ID of an independent Alibaba Cloud account, ID of a resource directory, ID of a folder in a resource directory, or ID of a member in a resource directory.
+	//
+	// For more information, see [Resource sharing modes](~~160622~~), [View the ID of a resource directory](~~111217~~), [View the ID of a folder](~~111223~~), or [View the ID of a member](~~111624~~).
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five principals can be specified at a time.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -449,7 +523,9 @@ func (s *CreateResourceShareRequestResources) SetResourceType(v string) *CreateR
 }
 
 type CreateResourceShareResponseBody struct {
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the resource share was updated.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the resource share.
 	ResourceShare *CreateResourceShareResponseBodyResourceShare `json:"ResourceShare,omitempty" xml:"ResourceShare,omitempty" type:"Struct"`
 }
 
@@ -472,13 +548,28 @@ func (s *CreateResourceShareResponseBody) SetResourceShare(v *CreateResourceShar
 }
 
 type CreateResourceShareResponseBodyResourceShare struct {
-	AllowExternalTargets *bool   `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ResourceShareId      *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName    *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	ResourceShareOwner   *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
-	ResourceShareStatus  *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllowExternalTargets *bool `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	// The status of the resource share. Valid values:
+	//
+	// *   Active: The resource share is enabled.
+	// *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
+	// *   Deleting: The resource share is being deleted.
+	// *   Deleted: The resource share is deleted.
+	//
+	// >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
+	//
+	// *   false: Resources in the resource share can be shared only with accounts in the resource directory.
+	// *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The time when the resource share was created.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The ID of the resource share.
+	ResourceShareOwner  *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
+	ResourceShareStatus *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
+	// The owner of the resource share.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateResourceShareResponseBodyResourceShare) String() string {
@@ -617,6 +708,10 @@ func (s *DeleteResourceShareResponse) SetBody(v *DeleteResourceShareResponseBody
 }
 
 type DescribeRegionsRequest struct {
+	// The supported natural language. Valid values:
+	//
+	// *   zh-CN: Chinese
+	// *   en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -634,8 +729,10 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the regions.
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -657,9 +754,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the Resource Sharing service in the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -715,7 +815,13 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DisassociateResourceShareRequest struct {
-	ResourceOwner   *string                                      `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The information of the entities that are associated with the resource share.
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of a shared resource.
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five shared resources can be specified at a time.
+	//
+	// >  Resources.N.ResourceId and Resources.N.ResourceType must be used in pairs.
 	ResourceShareId *string                                      `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	Resources       []*DisassociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	Targets         []*string                                    `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
@@ -750,7 +856,14 @@ func (s *DisassociateResourceShareRequest) SetTargets(v []*string) *Disassociate
 }
 
 type DisassociateResourceShareRequestResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The owner of the resource share. Valid values:
+	//
+	// *   Self: The resource share belongs to the current account. This is the default value. If you are the management account or a member of a resource directory and you want to remove resources or principals from a resource share, set this parameter to Self.
+	// *   OtherAccounts: The resource share belongs to another account. If you are not the management account or a member of a resource directory and you want to exit a resource share, set this parameter to OtherAccounts.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of a principal.
+	//
+	// Valid values of N: 1 to 5. This indicates that a maximum of five principals can be specified at a time.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -773,7 +886,15 @@ func (s *DisassociateResourceShareRequestResources) SetResourceType(v string) *D
 }
 
 type DisassociateResourceShareResponseBody struct {
-	RequestId                 *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the disassociation of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the disassociation of the resource was updated.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the disassociation of the principal was updated.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the resource.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the resource directory, folder, or member.
 	ResourceShareAssociations []*DisassociateResourceShareResponseBodyResourceShareAssociations `json:"ResourceShareAssociations,omitempty" xml:"ResourceShareAssociations,omitempty" type:"Repeated"`
 }
 
@@ -796,15 +917,39 @@ func (s *DisassociateResourceShareResponseBody) SetResourceShareAssociations(v [
 }
 
 type DisassociateResourceShareResponseBodyResourceShareAssociations struct {
-	AssociationStatus        *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	AssociationStatus *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	// The association status. Valid values:
+	//
+	// *   Associating: The entity is being associated.
+	// *   Associated: The entity is associated.
+	// *   Failed: The entity fails to be associated.
+	// *   Disassociating: The entity is being disassociated.
+	// *   Disassociated: The entity is disassociated.
+	//
+	// >  The system deletes the records of entities in the `Failed` or `Disassociated` state within 48 hours to 96 hours.
 	AssociationStatusMessage *string `json:"AssociationStatusMessage,omitempty" xml:"AssociationStatusMessage,omitempty"`
 	AssociationType          *string `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EntityId                 *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType               *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ResourceShareId          *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName        *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	UpdateTime               *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the resource share.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the disassociation of the entity was performed. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the resource was disassociated from the resource share.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the principal was disassociated from the resource share.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The cause of the disassociation failure.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The association type. Valid values:
+	//
+	// *   Resource
+	// *   Target
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	// *   If the value of AssociationType is Target, the value of this parameter is Account.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The name of the resource share.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DisassociateResourceShareResponseBodyResourceShareAssociations) String() string {
@@ -890,7 +1035,9 @@ func (s *DisassociateResourceShareResponse) SetBody(v *DisassociateResourceShare
 }
 
 type DisassociateResourceSharePermissionRequest struct {
-	PermissionName  *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The ID of the request.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The name of the permission. For more information, see [Permission library](~~465474~~).
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 }
 
@@ -1005,7 +1152,9 @@ func (s *EnableSharingWithResourceDirectoryResponse) SetBody(v *EnableSharingWit
 }
 
 type GetPermissionRequest struct {
-	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The name of the permission.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The version of the permission.
 	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
 }
 
@@ -1028,8 +1177,12 @@ func (s *GetPermissionRequest) SetPermissionVersion(v string) *GetPermissionRequ
 }
 
 type GetPermissionResponseBody struct {
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
 	Permission *GetPermissionResponseBodyPermission `json:"Permission,omitempty" xml:"Permission,omitempty" type:"Struct"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The document of the policy related to the permission.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPermissionResponseBody) String() string {
@@ -1054,11 +1207,21 @@ type GetPermissionResponseBodyPermission struct {
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
 	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Permission        *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The update time.
+	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   false: The version is not the default version.
+	// *   true: The version is the default version.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The creation time.
 	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
-	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Indicates whether the permission is the default permission. Valid values:
+	//
+	// *   false: The permission is not the default permission.
+	// *   true: The permission is the default permission.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetPermissionResponseBodyPermission) String() string {
@@ -1139,8 +1302,11 @@ func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermis
 }
 
 type ListPermissionVersionsRequest struct {
-	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The information about the permission.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the permission.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
 }
 
@@ -1168,9 +1334,15 @@ func (s *ListPermissionVersionsRequest) SetPermissionName(v string) *ListPermiss
 }
 
 type ListPermissionVersionsResponseBody struct {
-	NextToken   *string                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The version of the permission.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The creation time.
 	Permissions []*ListPermissionVersionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId   *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   false: The version is not the default version.
+	// *   true: The version is the default version.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPermissionVersionsResponseBody) String() string {
@@ -1199,8 +1371,16 @@ func (s *ListPermissionVersionsResponseBody) SetRequestId(v string) *ListPermiss
 type ListPermissionVersionsResponseBodyPermissions struct {
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
-	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// Indicates whether the permission is the default permission. Valid values:
+	//
+	// *   false: The permission is not the default permission.
+	// *   true: The permission is the default permission.
+	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The update time.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
 	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
 	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -1279,8 +1459,11 @@ func (s *ListPermissionVersionsResponse) SetBody(v *ListPermissionVersionsRespon
 }
 
 type ListPermissionsRequest struct {
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The information about the permission.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the permission.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1308,9 +1491,15 @@ func (s *ListPermissionsRequest) SetResourceType(v string) *ListPermissionsReque
 }
 
 type ListPermissionsResponseBody struct {
-	NextToken   *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The version of the permission.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The creation time.
 	Permissions []*ListPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   false: The version is not the default version.
+	// *   true: The version is the default version.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPermissionsResponseBody) String() string {
@@ -1339,8 +1528,16 @@ func (s *ListPermissionsResponseBody) SetRequestId(v string) *ListPermissionsRes
 type ListPermissionsResponseBodyPermissions struct {
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
-	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// Indicates whether the permission is the default permission. Valid values:
+	//
+	// *   false: The permission is not the default permission.
+	// *   true: The permission is the default permission.
+	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The update time.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
 	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
 	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -1419,13 +1616,36 @@ func (s *ListPermissionsResponse) SetBody(v *ListPermissionsResponseBody) *ListP
 }
 
 type ListResourceShareAssociationsRequest struct {
-	AssociationStatus *string   `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
-	AssociationType   *string   `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
-	MaxResults        *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId        *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceShareIds  []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
-	Target            *string   `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The association status. Valid values:
+	//
+	// *   Associating: The entity is being associated.
+	// *   Associated: The entity is associated.
+	// *   Failed: The entity fails to be associated.
+	// *   Disassociating: The entity is being disassociated.
+	// *   Disassociated: The entity is disassociated.
+	//
+	// >  The system deletes the records of entities in the `Failed` or `Disassociated` state within 48 hours to 96 hours.
+	AssociationStatus *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	// The association type. Valid values:
+	//
+	// *   Resource
+	// *   Target
+	AssociationType *string `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource.
+	//
+	// >  This parameter is unavailable if you set the `AssociationType` parameter to `Target`.
+	ResourceId       *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
+	// The ID of the principal.
+	//
+	// >  This parameter is unavailable if you set the `AssociationType` parameter to `Resource`.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s ListResourceShareAssociationsRequest) String() string {
@@ -1472,8 +1692,11 @@ func (s *ListResourceShareAssociationsRequest) SetTarget(v string) *ListResource
 }
 
 type ListResourceShareAssociationsResponseBody struct {
-	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the entities.
 	ResourceShareAssociations []*ListResourceShareAssociationsResponseBodyResourceShareAssociations `json:"ResourceShareAssociations,omitempty" xml:"ResourceShareAssociations,omitempty" type:"Repeated"`
 }
 
@@ -1501,16 +1724,52 @@ func (s *ListResourceShareAssociationsResponseBody) SetResourceShareAssociations
 }
 
 type ListResourceShareAssociationsResponseBodyResourceShareAssociations struct {
-	AssociationStatus        *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	// The association status. Valid values:
+	//
+	// *   Associating: The entity is being associated.
+	// *   Associated: The entity is associated.
+	// *   Failed: The entity fails to be associated.
+	// *   Disassociating: The entity is being disassociated.
+	// *   Disassociated: The entity is disassociated.
+	//
+	// >  The system deletes the records of entities in the `Failed` or `Disassociated` state within 48 hours to 96 hours.
+	AssociationStatus *string `json:"AssociationStatus,omitempty" xml:"AssociationStatus,omitempty"`
+	// The cause of the association failure.
 	AssociationStatusMessage *string `json:"AssociationStatusMessage,omitempty" xml:"AssociationStatusMessage,omitempty"`
-	AssociationType          *string `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EntityId                 *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType               *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	External                 *bool   `json:"External,omitempty" xml:"External,omitempty"`
-	ResourceShareId          *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName        *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	UpdateTime               *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The association type. Valid values:
+	//
+	// *   Resource
+	// *   Target
+	AssociationType *string `json:"AssociationType,omitempty" xml:"AssociationType,omitempty"`
+	// The time when the association of the entity was created. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the shared resource was associated with or disassociated from the resource share.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the principal was associated with or disassociated from the resource share.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the ID of the shared resource.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the ID of the principal.
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The type of the entity. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of AssociationType is Resource, the value of this parameter is the type of the resource. For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	// *   If the value of AssociationType is Target, the value of this parameter is `Account`.
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Indicates whether the principal is outside the resource directory. Valid values:
+	//
+	// *   true: The principal is outside the resource directory.
+	// *   false: The principal is in the resource directory.
+	External *bool `json:"External,omitempty" xml:"External,omitempty"`
+	// The ID of the resource share.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The name of the resource share.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
+	//
+	// *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
+	// *   If the value of `AssociationType` is `Target`, the value of this parameter is the time when the association of the principal was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListResourceShareAssociationsResponseBodyResourceShareAssociations) String() string {
@@ -1601,7 +1860,9 @@ func (s *ListResourceShareAssociationsResponse) SetBody(v *ListResourceShareAsso
 }
 
 type ListResourceShareInvitationsRequest struct {
-	MaxResults                 *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The IDs of the resource sharing invitations.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
 	NextToken                  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	ResourceShareIds           []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	ResourceShareInvitationIds []*string `json:"ResourceShareInvitationIds,omitempty" xml:"ResourceShareInvitationIds,omitempty" type:"Repeated"`
@@ -1636,8 +1897,17 @@ func (s *ListResourceShareInvitationsRequest) SetResourceShareInvitationIds(v []
 }
 
 type ListResourceShareInvitationsResponseBody struct {
-	NextToken                *string                                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the invitation. Valid values:
+	//
+	// *   Pending: The invitation is waiting for confirmation.
+	// *   Accepted: The invitation is accepted.
+	// *   Cancelled: The invitation is canceled.
+	// *   Rejected: The invitation is rejected.
+	// *   Expired: The invitation has expired.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The time when the invitation was created. The time is displayed in UTC.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource share.
 	ResourceShareInvitations []*ListResourceShareInvitationsResponseBodyResourceShareInvitations `json:"ResourceShareInvitations,omitempty" xml:"ResourceShareInvitations,omitempty" type:"Repeated"`
 }
 
@@ -1665,13 +1935,17 @@ func (s *ListResourceShareInvitationsResponseBody) SetResourceShareInvitations(v
 }
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitations struct {
-	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ReceiverAccountId         *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
+	// The Alibaba Cloud account ID of the inviter.
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
+	// The Alibaba Cloud account ID of the invitee.
 	ResourceShareId           *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
-	ResourceShareName         *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	SenderAccountId           *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the invitation.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	SenderAccountId   *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
+	// The name of the resource share.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListResourceShareInvitationsResponseBodyResourceShareInvitations) String() string {
@@ -1747,9 +2021,13 @@ func (s *ListResourceShareInvitationsResponse) SetBody(v *ListResourceShareInvit
 }
 
 type ListResourceSharePermissionsRequest struct {
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceOwner   *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of the request.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The information about the permissions.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the permission.
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
 }
 
@@ -1782,9 +2060,15 @@ func (s *ListResourceSharePermissionsRequest) SetResourceShareId(v string) *List
 }
 
 type ListResourceSharePermissionsResponseBody struct {
-	NextToken   *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The version of the permission.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The creation time.
 	Permissions []*ListResourceSharePermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId   *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// *   false: The version is not the default version.
+	// *   true: The version is the default version.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListResourceSharePermissionsResponseBody) String() string {
@@ -1813,8 +2097,16 @@ func (s *ListResourceSharePermissionsResponseBody) SetRequestId(v string) *ListR
 type ListResourceSharePermissionsResponseBodyPermissions struct {
 	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultPermission *bool   `json:"DefaultPermission,omitempty" xml:"DefaultPermission,omitempty"`
-	DefaultVersion    *bool   `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	PermissionName    *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// Indicates whether the permission is the default permission. Valid values:
+	//
+	// *   false: The permission is not the default permission.
+	// *   true: The permission is the default permission.
+	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The update time.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
 	PermissionVersion *string `json:"PermissionVersion,omitempty" xml:"PermissionVersion,omitempty"`
 	ResourceType      *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -1893,13 +2185,28 @@ func (s *ListResourceSharePermissionsResponse) SetBody(v *ListResourceSharePermi
 }
 
 type ListResourceSharesRequest struct {
-	MaxResults          *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PermissionName      *string   `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
-	ResourceOwner       *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	ResourceShareIds    []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
-	ResourceShareName   *string   `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	ResourceShareStatus *string   `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
+	// The ID of a resource share.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the permission. For more information, see [Permission library](~~465474~~).
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
+	// The status of the resource share. Valid values:
+	//
+	// *   Active: The resource share is enabled.
+	// *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
+	// *   Deleting: The resource share is being deleted.
+	// *   Deleted: The resource share is deleted.
+	//
+	// >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 20.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	ResourceShareStatus *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
 }
 
 func (s ListResourceSharesRequest) String() string {
@@ -1946,8 +2253,11 @@ func (s *ListResourceSharesRequest) SetResourceShareStatus(v string) *ListResour
 }
 
 type ListResourceSharesResponseBody struct {
-	NextToken      *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the resource shares.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The time when the resource share was updated.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the resource share.
 	ResourceShares []*ListResourceSharesResponseBodyResourceShares `json:"ResourceShares,omitempty" xml:"ResourceShares,omitempty" type:"Repeated"`
 }
 
@@ -1975,13 +2285,28 @@ func (s *ListResourceSharesResponseBody) SetResourceShares(v []*ListResourceShar
 }
 
 type ListResourceSharesResponseBodyResourceShares struct {
-	AllowExternalTargets *bool   `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ResourceShareId      *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName    *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	ResourceShareOwner   *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
-	ResourceShareStatus  *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllowExternalTargets *bool `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	// The status of the resource share. Valid values:
+	//
+	// *   Active: The resource share is enabled.
+	// *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
+	// *   Deleting: The resource share is being deleted.
+	// *   Deleted: The resource share is deleted.
+	//
+	// >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
+	//
+	// *   false: Resources in the resource share can be shared only with accounts in the resource directory.
+	// *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The time when the resource share was created.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The ID of the resource share.
+	ResourceShareOwner  *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
+	ResourceShareStatus *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
+	// The owner of the resource share.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListResourceSharesResponseBodyResourceShares) String() string {
@@ -2057,13 +2382,28 @@ func (s *ListResourceSharesResponse) SetBody(v *ListResourceSharesResponseBody) 
 }
 
 type ListSharedResourcesRequest struct {
-	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceIds      []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The owner of the resource shares. Valid values:
+	//
+	// *   Self: your account. If you set the value to Self, the resources you share with other accounts are queried.
+	// *   OtherAccounts: another account. If you set the value to OtherAccounts, the resources other accounts share with you are queried.
 	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
-	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Target           *string   `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of the principal or resource owner.
+	//
+	// *   If the value of `ResourceOwner` is `Self`, set this parameter to the ID of a principal.
+	// *   If the value of `ResourceOwner` is `OtherAccounts`, set this parameter to the ID of a resource owner.
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s ListSharedResourcesRequest) String() string {
@@ -2110,8 +2450,11 @@ func (s *ListSharedResourcesRequest) SetTarget(v string) *ListSharedResourcesReq
 }
 
 type ListSharedResourcesResponseBody struct {
-	NextToken       *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the shared resources.
 	SharedResources []*ListSharedResourcesResponseBodySharedResources `json:"SharedResources,omitempty" xml:"SharedResources,omitempty" type:"Repeated"`
 }
 
@@ -2139,13 +2482,29 @@ func (s *ListSharedResourcesResponseBody) SetSharedResources(v []*ListSharedReso
 }
 
 type ListSharedResourcesResponseBodySharedResources struct {
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceShareId       *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceStatus        *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The time when the shared resource was associated with the resource share.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the shared resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource share.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The status of the shared resource. This parameter is returned only when you query the resources that other accounts share with you.
+	//
+	// Valid values:
+	//
+	// *   Available: The resource is available.
+	// *   ZonalResourceInaccessible: The resource is unavailable in the current zone.
+	// *   LimitExceeded: The resource is unavailable because the maximum number of resources that other accounts can share with you exceeds the upper limit.
+	// *   Unavailable: The resource is unavailable.
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// The cause of the association failure.
 	ResourceStatusMessage *string `json:"ResourceStatusMessage,omitempty" xml:"ResourceStatusMessage,omitempty"`
-	ResourceType          *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The type of the shared resource.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The time when the association of the shared resource was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSharedResourcesResponseBodySharedResources) String() string {
@@ -2221,13 +2580,25 @@ func (s *ListSharedResourcesResponse) SetBody(v *ListSharedResourcesResponseBody
 }
 
 type ListSharedTargetsRequest struct {
-	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId       *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The maximum number of entries to return for a single request.
+	//
+	// Valid values: 1 to 100. Default value: 20.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the shared resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The owner of the resource share.
+	//
+	// *   Self: your account. If you set the value to Self, the principals that are associated with your resource shares are queried.
+	// *   OtherAccounts: another account. If you set the value to OtherAccounts, the resource shares with which your account is associated and the owners of the resource shares are queried.
 	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
-	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Targets          []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The type of the shared resources.
+	//
+	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Targets      []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s ListSharedTargetsRequest) String() string {
@@ -2274,8 +2645,11 @@ func (s *ListSharedTargetsRequest) SetTargets(v []*string) *ListSharedTargetsReq
 }
 
 type ListSharedTargetsResponseBody struct {
-	NextToken     *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the principals.
 	SharedTargets []*ListSharedTargetsResponseBodySharedTargets `json:"SharedTargets,omitempty" xml:"SharedTargets,omitempty" type:"Repeated"`
 }
 
@@ -2303,11 +2677,22 @@ func (s *ListSharedTargetsResponseBody) SetSharedTargets(v []*ListSharedTargetsR
 }
 
 type ListSharedTargetsResponseBodySharedTargets struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	External        *bool   `json:"External,omitempty" xml:"External,omitempty"`
+	// The time when the principal was associated with the resource share.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the principal is outside the resource directory. Valid values:
+	//
+	// *   true: The principal is outside the resource directory.
+	// *   false: The principal is in the resource directory.
+	External *bool `json:"External,omitempty" xml:"External,omitempty"`
+	// The ID of the resource share.
 	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	TargetId        *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the principal or resource owner.
+	//
+	// *   If the value of `ResourceOwner` is `Self`, the value of this parameter is the ID of a principal.
+	// *   If the value of `ResourceOwner` is `OtherAccounts`, the value of this parameter is the ID of a resource owner.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The time when the association of the principal was updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSharedTargetsResponseBodySharedTargets) String() string {
@@ -2373,6 +2758,7 @@ func (s *ListSharedTargetsResponse) SetBody(v *ListSharedTargetsResponseBody) *L
 }
 
 type RejectResourceShareInvitationRequest struct {
+	// The ID of the invitation.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
 }
 
@@ -2390,7 +2776,9 @@ func (s *RejectResourceShareInvitationRequest) SetResourceShareInvitationId(v st
 }
 
 type RejectResourceShareInvitationResponseBody struct {
-	RequestId               *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource share.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the resource share.
 	ResourceShareInvitation *RejectResourceShareInvitationResponseBodyResourceShareInvitation `json:"ResourceShareInvitation,omitempty" xml:"ResourceShareInvitation,omitempty" type:"Struct"`
 }
 
@@ -2413,13 +2801,23 @@ func (s *RejectResourceShareInvitationResponseBody) SetResourceShareInvitation(v
 }
 
 type RejectResourceShareInvitationResponseBodyResourceShareInvitation struct {
-	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ReceiverAccountId         *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
-	ResourceShareId           *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
+	// The Alibaba Cloud account ID of the invitee.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The Alibaba Cloud account ID of the inviter.
 	ResourceShareInvitationId *string `json:"ResourceShareInvitationId,omitempty" xml:"ResourceShareInvitationId,omitempty"`
-	ResourceShareName         *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	SenderAccountId           *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the invitation was created. The time is displayed in UTC.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The status of the invitation. Valid values:
+	//
+	// *   Pending: The invitation is waiting for confirmation.
+	// *   Accepted: The invitation is accepted.
+	// *   Cancelled: The invitation is canceled.
+	// *   Rejected: The invitation is rejected.
+	// *   Expired: The invitation has expired.
+	SenderAccountId *string `json:"SenderAccountId,omitempty" xml:"SenderAccountId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s RejectResourceShareInvitationResponseBodyResourceShareInvitation) String() string {
@@ -2495,9 +2893,15 @@ func (s *RejectResourceShareInvitationResponse) SetBody(v *RejectResourceShareIn
 }
 
 type UpdateResourceShareRequest struct {
-	AllowExternalTargets *bool   `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	ResourceShareId      *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName    *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The information of the resource share.
+	AllowExternalTargets *bool `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	// Specifies whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
+	//
+	// *   false: Resources in the resource share can be shared only with accounts in the resource directory.
+	// *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The ID of the request.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
 }
 
 func (s UpdateResourceShareRequest) String() string {
@@ -2524,7 +2928,9 @@ func (s *UpdateResourceShareRequest) SetResourceShareName(v string) *UpdateResou
 }
 
 type UpdateResourceShareResponseBody struct {
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the resource share was updated.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the resource share.
 	ResourceShare *UpdateResourceShareResponseBodyResourceShare `json:"ResourceShare,omitempty" xml:"ResourceShare,omitempty" type:"Struct"`
 }
 
@@ -2547,13 +2953,28 @@ func (s *UpdateResourceShareResponseBody) SetResourceShare(v *UpdateResourceShar
 }
 
 type UpdateResourceShareResponseBodyResourceShare struct {
-	AllowExternalTargets *bool   `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ResourceShareId      *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	ResourceShareName    *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	ResourceShareOwner   *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
-	ResourceShareStatus  *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AllowExternalTargets *bool `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	// The status of the resource share. Valid values:
+	//
+	// *   Active: The resource share is enabled.
+	// *   Pending: The resource share is associated with one or more resource sharing invitations that are waiting for confirmation.
+	// *   Deleting: The resource share is being deleted.
+	// *   Deleted: The resource share is deleted.
+	//
+	// >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
+	//
+	// *   false: Resources in the resource share can be shared only with accounts in the resource directory.
+	// *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The time when the resource share was created.
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The ID of the resource share.
+	ResourceShareOwner  *string `json:"ResourceShareOwner,omitempty" xml:"ResourceShareOwner,omitempty"`
+	ResourceShareStatus *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
+	// The owner of the resource share.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s UpdateResourceShareResponseBodyResourceShare) String() string {
@@ -2675,6 +3096,14 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * The ID of the resource sharing invitation.
+ * You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+ *
+ * @param request AcceptResourceShareInvitationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AcceptResourceShareInvitationResponse
+ */
 func (client *Client) AcceptResourceShareInvitationWithOptions(request *AcceptResourceShareInvitationRequest, runtime *util.RuntimeOptions) (_result *AcceptResourceShareInvitationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2708,6 +3137,13 @@ func (client *Client) AcceptResourceShareInvitationWithOptions(request *AcceptRe
 	return _result, _err
 }
 
+/**
+ * The ID of the resource sharing invitation.
+ * You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+ *
+ * @param request AcceptResourceShareInvitationRequest
+ * @return AcceptResourceShareInvitationResponse
+ */
 func (client *Client) AcceptResourceShareInvitation(request *AcceptResourceShareInvitationRequest) (_result *AcceptResourceShareInvitationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcceptResourceShareInvitationResponse{}
@@ -2719,6 +3155,13 @@ func (client *Client) AcceptResourceShareInvitation(request *AcceptResourceShare
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to AssociateResourceShare.
+ *
+ * @param request AssociateResourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AssociateResourceShareResponse
+ */
 func (client *Client) AssociateResourceShareWithOptions(request *AssociateResourceShareRequest, runtime *util.RuntimeOptions) (_result *AssociateResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2764,6 +3207,12 @@ func (client *Client) AssociateResourceShareWithOptions(request *AssociateResour
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to AssociateResourceShare.
+ *
+ * @param request AssociateResourceShareRequest
+ * @return AssociateResourceShareResponse
+ */
 func (client *Client) AssociateResourceShare(request *AssociateResourceShareRequest) (_result *AssociateResourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateResourceShareResponse{}
@@ -2775,6 +3224,13 @@ func (client *Client) AssociateResourceShare(request *AssociateResourceShareRequ
 	return _result, _err
 }
 
+/**
+ * The name of the permission.
+ *
+ * @param request AssociateResourceSharePermissionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AssociateResourceSharePermissionResponse
+ */
 func (client *Client) AssociateResourceSharePermissionWithOptions(request *AssociateResourceSharePermissionRequest, runtime *util.RuntimeOptions) (_result *AssociateResourceSharePermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2816,6 +3272,12 @@ func (client *Client) AssociateResourceSharePermissionWithOptions(request *Assoc
 	return _result, _err
 }
 
+/**
+ * The name of the permission.
+ *
+ * @param request AssociateResourceSharePermissionRequest
+ * @return AssociateResourceSharePermissionResponse
+ */
 func (client *Client) AssociateResourceSharePermission(request *AssociateResourceSharePermissionRequest) (_result *AssociateResourceSharePermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateResourceSharePermissionResponse{}
@@ -2827,6 +3289,13 @@ func (client *Client) AssociateResourceSharePermission(request *AssociateResourc
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to CreateResourceShare.
+ *
+ * @param request CreateResourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateResourceShareResponse
+ */
 func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShareRequest, runtime *util.RuntimeOptions) (_result *CreateResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2876,6 +3345,12 @@ func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShar
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to CreateResourceShare.
+ *
+ * @param request CreateResourceShareRequest
+ * @return CreateResourceShareResponse
+ */
 func (client *Client) CreateResourceShare(request *CreateResourceShareRequest) (_result *CreateResourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateResourceShareResponse{}
@@ -2887,6 +3362,13 @@ func (client *Client) CreateResourceShare(request *CreateResourceShareRequest) (
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to DeleteResourceShare.
+ *
+ * @param request DeleteResourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteResourceShareResponse
+ */
 func (client *Client) DeleteResourceShareWithOptions(request *DeleteResourceShareRequest, runtime *util.RuntimeOptions) (_result *DeleteResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2920,6 +3402,12 @@ func (client *Client) DeleteResourceShareWithOptions(request *DeleteResourceShar
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to DeleteResourceShare.
+ *
+ * @param request DeleteResourceShareRequest
+ * @return DeleteResourceShareResponse
+ */
 func (client *Client) DeleteResourceShare(request *DeleteResourceShareRequest) (_result *DeleteResourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteResourceShareResponse{}
@@ -2975,6 +3463,13 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to DisassociateResourceShare.
+ *
+ * @param request DisassociateResourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DisassociateResourceShareResponse
+ */
 func (client *Client) DisassociateResourceShareWithOptions(request *DisassociateResourceShareRequest, runtime *util.RuntimeOptions) (_result *DisassociateResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3020,6 +3515,12 @@ func (client *Client) DisassociateResourceShareWithOptions(request *Disassociate
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to DisassociateResourceShare.
+ *
+ * @param request DisassociateResourceShareRequest
+ * @return DisassociateResourceShareResponse
+ */
 func (client *Client) DisassociateResourceShare(request *DisassociateResourceShareRequest) (_result *DisassociateResourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisassociateResourceShareResponse{}
@@ -3031,6 +3532,15 @@ func (client *Client) DisassociateResourceShare(request *DisassociateResourceSha
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DisassociateResourceSharePermissionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DisassociateResourceSharePermissionResponse
+ */
 func (client *Client) DisassociateResourceSharePermissionWithOptions(request *DisassociateResourceSharePermissionRequest, runtime *util.RuntimeOptions) (_result *DisassociateResourceSharePermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3068,6 +3578,14 @@ func (client *Client) DisassociateResourceSharePermissionWithOptions(request *Di
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request DisassociateResourceSharePermissionRequest
+ * @return DisassociateResourceSharePermissionResponse
+ */
 func (client *Client) DisassociateResourceSharePermission(request *DisassociateResourceSharePermissionRequest) (_result *DisassociateResourceSharePermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisassociateResourceSharePermissionResponse{}
@@ -3079,6 +3597,13 @@ func (client *Client) DisassociateResourceSharePermission(request *DisassociateR
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+ *
+ * @param request EnableSharingWithResourceDirectoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return EnableSharingWithResourceDirectoryResponse
+ */
 func (client *Client) EnableSharingWithResourceDirectoryWithOptions(runtime *util.RuntimeOptions) (_result *EnableSharingWithResourceDirectoryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3101,6 +3626,11 @@ func (client *Client) EnableSharingWithResourceDirectoryWithOptions(runtime *uti
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to EnableSharingWithResourceDirectory.
+ *
+ * @return EnableSharingWithResourceDirectoryResponse
+ */
 func (client *Client) EnableSharingWithResourceDirectory() (_result *EnableSharingWithResourceDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSharingWithResourceDirectoryResponse{}
@@ -3112,6 +3642,13 @@ func (client *Client) EnableSharingWithResourceDirectory() (_result *EnableShari
 	return _result, _err
 }
 
+/**
+ * The version of the permission.
+ *
+ * @param request GetPermissionRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPermissionResponse
+ */
 func (client *Client) GetPermissionWithOptions(request *GetPermissionRequest, runtime *util.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3149,6 +3686,12 @@ func (client *Client) GetPermissionWithOptions(request *GetPermissionRequest, ru
 	return _result, _err
 }
 
+/**
+ * The version of the permission.
+ *
+ * @param request GetPermissionRequest
+ * @return GetPermissionResponse
+ */
 func (client *Client) GetPermission(request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPermissionResponse{}
@@ -3160,6 +3703,14 @@ func (client *Client) GetPermission(request *GetPermissionRequest) (_result *Get
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListPermissionVersionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPermissionVersionsResponse
+ */
 func (client *Client) ListPermissionVersionsWithOptions(request *ListPermissionVersionsRequest, runtime *util.RuntimeOptions) (_result *ListPermissionVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3201,6 +3752,13 @@ func (client *Client) ListPermissionVersionsWithOptions(request *ListPermissionV
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListPermissionVersionsRequest
+ * @return ListPermissionVersionsResponse
+ */
 func (client *Client) ListPermissionVersions(request *ListPermissionVersionsRequest) (_result *ListPermissionVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPermissionVersionsResponse{}
@@ -3212,6 +3770,14 @@ func (client *Client) ListPermissionVersions(request *ListPermissionVersionsRequ
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListPermissionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListPermissionsResponse
+ */
 func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest, runtime *util.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3253,6 +3819,13 @@ func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListPermissionsRequest
+ * @return ListPermissionsResponse
+ */
 func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result *ListPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPermissionsResponse{}
@@ -3264,6 +3837,17 @@ func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+ * *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+ * *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListResourceShareAssociationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceShareAssociationsResponse
+ */
 func (client *Client) ListResourceShareAssociationsWithOptions(request *ListResourceShareAssociationsRequest, runtime *util.RuntimeOptions) (_result *ListResourceShareAssociationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3321,6 +3905,16 @@ func (client *Client) ListResourceShareAssociationsWithOptions(request *ListReso
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
+ * *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
+ * *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListResourceShareAssociationsRequest
+ * @return ListResourceShareAssociationsResponse
+ */
 func (client *Client) ListResourceShareAssociations(request *ListResourceShareAssociationsRequest) (_result *ListResourceShareAssociationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceShareAssociationsResponse{}
@@ -3332,6 +3926,14 @@ func (client *Client) ListResourceShareAssociations(request *ListResourceShareAs
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListResourceShareInvitationsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceShareInvitationsResponse
+ */
 func (client *Client) ListResourceShareInvitationsWithOptions(request *ListResourceShareInvitationsRequest, runtime *util.RuntimeOptions) (_result *ListResourceShareInvitationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3377,6 +3979,13 @@ func (client *Client) ListResourceShareInvitationsWithOptions(request *ListResou
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListResourceShareInvitationsRequest
+ * @return ListResourceShareInvitationsResponse
+ */
 func (client *Client) ListResourceShareInvitations(request *ListResourceShareInvitationsRequest) (_result *ListResourceShareInvitationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceShareInvitationsResponse{}
@@ -3388,6 +3997,14 @@ func (client *Client) ListResourceShareInvitations(request *ListResourceShareInv
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListResourceSharePermissionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceSharePermissionsResponse
+ */
 func (client *Client) ListResourceSharePermissionsWithOptions(request *ListResourceSharePermissionsRequest, runtime *util.RuntimeOptions) (_result *ListResourceSharePermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3433,6 +4050,13 @@ func (client *Client) ListResourceSharePermissionsWithOptions(request *ListResou
 	return _result, _err
 }
 
+/**
+ * The maximum number of entries to return for a single request.
+ * Valid values: 1 to 100. Default value: 20.
+ *
+ * @param request ListResourceSharePermissionsRequest
+ * @return ListResourceSharePermissionsResponse
+ */
 func (client *Client) ListResourceSharePermissions(request *ListResourceSharePermissionsRequest) (_result *ListResourceSharePermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceSharePermissionsResponse{}
@@ -3444,6 +4068,13 @@ func (client *Client) ListResourceSharePermissions(request *ListResourceSharePer
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to ListResourceShares.
+ *
+ * @param request ListResourceSharesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListResourceSharesResponse
+ */
 func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesRequest, runtime *util.RuntimeOptions) (_result *ListResourceSharesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3501,6 +4132,12 @@ func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesR
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to ListResourceShares.
+ *
+ * @param request ListResourceSharesRequest
+ * @return ListResourceSharesResponse
+ */
 func (client *Client) ListResourceShares(request *ListResourceSharesRequest) (_result *ListResourceSharesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceSharesResponse{}
@@ -3512,6 +4149,15 @@ func (client *Client) ListResourceShares(request *ListResourceSharesRequest) (_r
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X****`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSharedResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSharedResourcesResponse
+ */
 func (client *Client) ListSharedResourcesWithOptions(request *ListSharedResourcesRequest, runtime *util.RuntimeOptions) (_result *ListSharedResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3569,6 +4215,14 @@ func (client *Client) ListSharedResourcesWithOptions(request *ListSharedResource
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X****`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSharedResourcesRequest
+ * @return ListSharedResourcesResponse
+ */
 func (client *Client) ListSharedResources(request *ListSharedResourcesRequest) (_result *ListSharedResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSharedResourcesResponse{}
@@ -3580,6 +4234,17 @@ func (client *Client) ListSharedResources(request *ListSharedResourcesRequest) (
 	return _result, _err
 }
 
+/**
+ * If you are a resource owner, you can query the principals with which you share your resources.
+ * If you are a principal, you can query the resources that are shared with you.
+ * This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSharedTargetsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSharedTargetsResponse
+ */
 func (client *Client) ListSharedTargetsWithOptions(request *ListSharedTargetsRequest, runtime *util.RuntimeOptions) (_result *ListSharedTargetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3637,6 +4302,16 @@ func (client *Client) ListSharedTargetsWithOptions(request *ListSharedTargetsReq
 	return _result, _err
 }
 
+/**
+ * If you are a resource owner, you can query the principals with which you share your resources.
+ * If you are a principal, you can query the resources that are shared with you.
+ * This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
+ * ## Limits
+ * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+ *
+ * @param request ListSharedTargetsRequest
+ * @return ListSharedTargetsResponse
+ */
 func (client *Client) ListSharedTargets(request *ListSharedTargetsRequest) (_result *ListSharedTargetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSharedTargetsResponse{}
@@ -3648,6 +4323,14 @@ func (client *Client) ListSharedTargets(request *ListSharedTargetsRequest) (_res
 	return _result, _err
 }
 
+/**
+ * The ID of the resource sharing invitation.
+ * You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+ *
+ * @param request RejectResourceShareInvitationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RejectResourceShareInvitationResponse
+ */
 func (client *Client) RejectResourceShareInvitationWithOptions(request *RejectResourceShareInvitationRequest, runtime *util.RuntimeOptions) (_result *RejectResourceShareInvitationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3681,6 +4364,13 @@ func (client *Client) RejectResourceShareInvitationWithOptions(request *RejectRe
 	return _result, _err
 }
 
+/**
+ * The ID of the resource sharing invitation.
+ * You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+ *
+ * @param request RejectResourceShareInvitationRequest
+ * @return RejectResourceShareInvitationResponse
+ */
 func (client *Client) RejectResourceShareInvitation(request *RejectResourceShareInvitationRequest) (_result *RejectResourceShareInvitationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectResourceShareInvitationResponse{}
@@ -3692,6 +4382,13 @@ func (client *Client) RejectResourceShareInvitation(request *RejectResourceShare
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to UpdateResourceShare.
+ *
+ * @param request UpdateResourceShareRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateResourceShareResponse
+ */
 func (client *Client) UpdateResourceShareWithOptions(request *UpdateResourceShareRequest, runtime *util.RuntimeOptions) (_result *UpdateResourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3733,6 +4430,12 @@ func (client *Client) UpdateResourceShareWithOptions(request *UpdateResourceShar
 	return _result, _err
 }
 
+/**
+ * The operation that you want to perform. Set the value to UpdateResourceShare.
+ *
+ * @param request UpdateResourceShareRequest
+ * @return UpdateResourceShareResponse
+ */
 func (client *Client) UpdateResourceShare(request *UpdateResourceShareRequest) (_result *UpdateResourceShareResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateResourceShareResponse{}
