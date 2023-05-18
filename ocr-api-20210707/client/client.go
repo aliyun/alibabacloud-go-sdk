@@ -4747,8 +4747,9 @@ func (s *RecognizePaymentRecordResponse) SetBody(v *RecognizePaymentRecordRespon
 }
 
 type RecognizePurchaseRecordRequest struct {
-	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	OutputMultiOrders *bool     `json:"OutputMultiOrders,omitempty" xml:"OutputMultiOrders,omitempty"`
+	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePurchaseRecordRequest) String() string {
@@ -4757,6 +4758,11 @@ func (s RecognizePurchaseRecordRequest) String() string {
 
 func (s RecognizePurchaseRecordRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizePurchaseRecordRequest) SetOutputMultiOrders(v bool) *RecognizePurchaseRecordRequest {
+	s.OutputMultiOrders = &v
+	return s
 }
 
 func (s *RecognizePurchaseRecordRequest) SetUrl(v string) *RecognizePurchaseRecordRequest {
@@ -9299,6 +9305,10 @@ func (client *Client) RecognizePurchaseRecordWithOptions(request *RecognizePurch
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputMultiOrders)) {
+		query["OutputMultiOrders"] = request.OutputMultiOrders
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
