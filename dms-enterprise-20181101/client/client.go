@@ -10865,8 +10865,12 @@ func (s *GetDataExportDownloadURLResponse) SetBody(v *GetDataExportDownloadURLRe
 }
 
 type GetDataExportOrderDetailRequest struct {
+	// The ticket ID. You can call the [ListOrders](~~465867~~) operation to query the ticket ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetDataExportOrderDetailRequest) String() string {
@@ -10888,11 +10892,19 @@ func (s *GetDataExportOrderDetailRequest) SetTid(v int64) *GetDataExportOrderDet
 }
 
 type GetDataExportOrderDetailResponseBody struct {
+	// The information about the data export ticket.
 	DataExportOrderDetail *GetDataExportOrderDetailResponseBodyDataExportOrderDetail `json:"DataExportOrderDetail,omitempty" xml:"DataExportOrderDetail,omitempty" type:"Struct"`
-	ErrorCode             *string                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string                                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values: Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBody) String() string {
@@ -10929,7 +10941,9 @@ func (s *GetDataExportOrderDetailResponseBody) SetSuccess(v bool) *GetDataExport
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetail struct {
-	KeyInfo     *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo     `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	// The information about the ticket.
+	KeyInfo *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo `json:"KeyInfo,omitempty" xml:"KeyInfo,omitempty" type:"Struct"`
+	// The details of the ticket.
 	OrderDetail *GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
 }
 
@@ -10952,8 +10966,21 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetail) SetOrderDeta
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo struct {
-	JobStatus  *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	PreCheckId *int64  `json:"PreCheckId,omitempty" xml:"PreCheckId,omitempty"`
+	// The state of the data export ticket. Valid values:
+	//
+	// *   **PRE_CHECKING**: The ticket was being prechecked.
+	// *   **PRE_CHECK_SUCCESS**: The ticket passed the precheck.
+	// *   **PRE_CHECK_FAIL**: The ticket failed to pass the prechecked.
+	// *   **WAITING_APPLY_AUDIT**: The ticket was to be submitted for approval.
+	// *   **APPLY_AUDIT_SUCCESS**: The ticket was submitted for approval.
+	// *   **ENABLE_EXPORT**: The ticket was approved. Data can be exported.
+	// *   **WAITING_EXPORT**: Data was to be scheduled for export.
+	// *   **DOING_EXPORT**: Data was being exported.
+	// *   **EXPORT_FAIL**: Data failed to be exported.
+	// *   **EXPORT_SUCCESS**: Data was exported.
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The precheck ID.
+	PreCheckId *int64 `json:"PreCheckId,omitempty" xml:"PreCheckId,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) String() string {
@@ -10975,15 +11002,24 @@ func (s *GetDataExportOrderDetailResponseBodyDataExportOrderDetailKeyInfo) SetPr
 }
 
 type GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail struct {
-	ActualAffectRows       *int64  `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
-	Classify               *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	Database               *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	DbId                   *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	EnvType                *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	ExeSQL                 *string `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
-	IgnoreAffectRows       *bool   `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	// The number of rows that were affected by the SQL statement.
+	ActualAffectRows *int64 `json:"ActualAffectRows,omitempty" xml:"ActualAffectRows,omitempty"`
+	// The category of the reason for the data export.
+	Classify *string `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	// The name of the database from which data was exported.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the database from which data was exported.
+	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the environment to which the database belongs.
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The SQL statement that was executed to export data.
+	ExeSQL *string `json:"ExeSQL,omitempty" xml:"ExeSQL,omitempty"`
+	// Indicates whether the affected rows are skipped.
+	IgnoreAffectRows *bool `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
+	// The reason why the affected rows are skipped.
 	IgnoreAffectRowsReason *string `json:"IgnoreAffectRowsReason,omitempty" xml:"IgnoreAffectRowsReason,omitempty"`
-	Logic                  *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// Indicates whether the database is a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
 }
 
 func (s GetDataExportOrderDetailResponseBodyDataExportOrderDetailOrderDetail) String() string {
@@ -11908,7 +11944,8 @@ type GetDatabaseResponseBodyDatabase struct {
 	// The endpoint that is used to connect to the database.
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The IDs of the owners of the database.
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The status of the database. Valid values:
 	//
 	// *   **NORMAL**: The database is running as expected.
@@ -11977,6 +12014,11 @@ func (s *GetDatabaseResponseBodyDatabase) SetEnvType(v string) *GetDatabaseRespo
 
 func (s *GetDatabaseResponseBodyDatabase) SetHost(v string) *GetDatabaseResponseBodyDatabase {
 	s.Host = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBodyDatabase) SetInstanceAlias(v string) *GetDatabaseResponseBodyDatabase {
+	s.InstanceAlias = &v
 	return s
 }
 
@@ -14746,8 +14788,12 @@ func (s *GetOwnerApplyOrderDetailResponse) SetBody(v *GetOwnerApplyOrderDetailRe
 }
 
 type GetPermApplyOrderDetailRequest struct {
+	// The ID of the ticket.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// The ID of the tenant.
+	//
+	// > To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](~~181330~~).
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailRequest) String() string {
@@ -14769,11 +14815,16 @@ func (s *GetPermApplyOrderDetailRequest) SetTid(v int64) *GetPermApplyOrderDetai
 }
 
 type GetPermApplyOrderDetailResponseBody struct {
-	ErrorCode            *string                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage         *string                                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The details of the permission application ticket.
 	PermApplyOrderDetail *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail `json:"PermApplyOrderDetail,omitempty" xml:"PermApplyOrderDetail,omitempty" type:"Struct"`
-	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBody) String() string {
@@ -14810,10 +14861,27 @@ func (s *GetPermApplyOrderDetailResponseBody) SetSuccess(v bool) *GetPermApplyOr
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail struct {
-	ApplyType *string                                                             `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	PermType  *int64                                                              `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The type of objects on which you apply for permissions. Valid values:
+	//
+	// *   **DB**: database
+	// *   **TAB**: table
+	// *   **COL**: column
+	// *   **INSTANT**: instance
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// The type of permissions that you apply for. Valid values:
+	//
+	// *   **1**: the permissions to query information
+	// *   **2**: the permissions to export information
+	// *   **3**: the permissions to query and export information
+	// *   **4**: the permissions to modify information
+	// *   **5**: the permissions to query and modify information
+	// *   **6**: the permissions to export and modify information
+	// *   **7**: the permissions to query, export, and modify information
+	PermType *int64 `json:"PermType,omitempty" xml:"PermType,omitempty"`
+	// The list of resources.
 	Resources []*GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Seconds   *int64                                                              `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
+	// The validity duration of the permissions. Unit: seconds.
+	Seconds *int64 `json:"Seconds,omitempty" xml:"Seconds,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) String() string {
@@ -14845,10 +14913,14 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetail) SetSeconds(v i
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
-	ColumnInfo   *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo   `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
+	// The information about the column.
+	ColumnInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo `json:"ColumnInfo,omitempty" xml:"ColumnInfo,omitempty" type:"Struct"`
+	// The information about the database.
 	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
+	// The information about the instance.
 	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
-	TableInfo    *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo    `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
+	// The information about the table.
+	TableInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) String() string {
@@ -14880,8 +14952,10 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetTa
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo struct {
+	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnInfo) String() string {
@@ -14903,13 +14977,23 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesColumnI
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo struct {
-	DbId           *int64    `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbType         *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	EnvType        *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Logic          *bool     `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The ID of the database.
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// *   **true**: The database is a logical database.
+	// *   **false**: The database is not a logical database.
+	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The IDs of the owners of the database.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners of the database.
 	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
-	SearchName     *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The name that is used to search for the database.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo) String() string {
@@ -14956,16 +15040,26 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabas
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo struct {
-	DbType        *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbaId         *int64    `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	DbaNickName   *string   `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
-	EnvType       *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Host          *string   `json:"Host,omitempty" xml:"Host,omitempty"`
-	InstanceId    *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerIds      []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The type of the database engine.
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The ID of the database administrator (DBA) of the instance.
+	DbaId *int64 `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	// The nickname of the DBA of the instance.
+	DbaNickName *string `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
+	// The type of the environment to which the instance belongs. For more information, see [Change the environment type of an instance](~~163309~~).
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The endpoint of the instance.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the owners of the instance.
+	OwnerIds []*int64 `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	// The nicknames of the owners of the instance.
 	OwnerNickName []*string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty" type:"Repeated"`
-	Port          *int64    `json:"Port,omitempty" xml:"Port,omitempty"`
-	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The port that is used to connect to the instance.
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name that is used to search for the instance.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) String() string {
@@ -15027,6 +15121,7 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanc
 }
 
 type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo struct {
+	// The name of the table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -15073,10 +15168,8 @@ func (s *GetPermApplyOrderDetailResponse) SetBody(v *GetPermApplyOrderDetailResp
 }
 
 type GetPhysicalDatabaseRequest struct {
-	// The ID of the physical database. You can call the [SearchDatabase](~~141876~~) operation to obtain the ID.
 	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the ID of the tenant.
-	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid  *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s GetPhysicalDatabaseRequest) String() string {
@@ -15098,16 +15191,11 @@ func (s *GetPhysicalDatabaseRequest) SetTid(v int64) *GetPhysicalDatabaseRequest
 }
 
 type GetPhysicalDatabaseResponseBody struct {
-	// The information about the physical database.
-	Database *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request failed.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Database     *GetPhysicalDatabaseResponseBodyDatabase `json:"Database,omitempty" xml:"Database,omitempty" type:"Struct"`
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPhysicalDatabaseResponseBody) String() string {
@@ -15144,49 +15232,23 @@ func (s *GetPhysicalDatabaseResponseBody) SetSuccess(v bool) *GetPhysicalDatabas
 }
 
 type GetPhysicalDatabaseResponseBodyDatabase struct {
-	// The name of the catalog to which the database belongs.
-	//
-	// > : If the database is a PostgreSQL database, the name of the database is displayed.
-	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The ID of the physical database.
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The type of the database engine.
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The user ID of the DBA in the destination database.
-	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	// The nickname of the database administrator (DBA) in the destination database.
-	DbaName *string `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	// The encoding format of the database.
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The type of the environment to which the database belongs. For more information, see [Change the environment type of an instance](~~163309~~).
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The endpoint that is used to connect to the database.
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The instance ID of the destination database.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The user IDs of the database owners.
-	OwnerIdList *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the database owners.
+	CatalogName   *string                                               `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DatabaseId    *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DbType        *string                                               `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbaId         *string                                               `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DbaName       *string                                               `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	Encoding      *string                                               `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	EnvType       *string                                               `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Host          *string                                               `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceAlias *string                                               `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The port that is used to connect to the database.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the database.
-	//
-	// > : If the database is a PostgreSQL database, the name of the mode is displayed.
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used for searching the database.
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The system ID (SID) of the database.
-	//
-	// > : The value of the parameter is returned only for Oracle databases.
-	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The state of the database. Valid values:
-	//
-	// *   **NORMAL**: The database is normal.
-	// *   **DISABLE**: The database is disabled.
-	// *   **OFFLINE**: The database is unpublished.
-	// *   **NOT_EXIST**: The database does not exist.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	Port          *int32                                                `json:"Port,omitempty" xml:"Port,omitempty"`
+	SchemaName    *string                                               `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName    *string                                               `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Sid           *string                                               `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	State         *string                                               `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetPhysicalDatabaseResponseBodyDatabase) String() string {
@@ -15234,6 +15296,11 @@ func (s *GetPhysicalDatabaseResponseBodyDatabase) SetEnvType(v string) *GetPhysi
 
 func (s *GetPhysicalDatabaseResponseBodyDatabase) SetHost(v string) *GetPhysicalDatabaseResponseBodyDatabase {
 	s.Host = &v
+	return s
+}
+
+func (s *GetPhysicalDatabaseResponseBodyDatabase) SetInstanceAlias(v string) *GetPhysicalDatabaseResponseBodyDatabase {
+	s.InstanceAlias = &v
 	return s
 }
 
@@ -22808,21 +22875,25 @@ func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesRe
 }
 
 type ListInstanceLoginAuditLogRequest struct {
-	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
+	// The end of the time range to query.
+	//
+	// >  The end time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format. We recommend that you use the StartTime and EndTime parameters to specify a time range that does not exceed one day. This way, the returned entries can be displayed by page to increase query efficiency.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code returned.
-	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
-	// The logon records of the instance.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The alias of the user.
+	OpUserName *string `json:"OpUserName,omitempty" xml:"OpUserName,omitempty"`
+	// The number of the page to return.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the instance.
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 	// The name of the database or instance whose logon records you want to query.
 	//
 	// >  If SQL statements are executed at the instance level, you can set this parameter to an instance name. If SQL statements are executed at the database level, you can set this parameter to a database name.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The operation that you want to perform. Set the value to **ListInstanceLoginAuditLog**.
+	// The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to query the tenant ID.
 	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
@@ -22870,19 +22941,20 @@ func (s *ListInstanceLoginAuditLogRequest) SetTid(v int64) *ListInstanceLoginAud
 }
 
 type ListInstanceLoginAuditLogResponseBody struct {
-	// The ID of the user.
+	// The error code returned.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The number of the page to return.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The database account that is used to log on to the instance.
-	InstanceLoginAuditLogList *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList `json:"InstanceLoginAuditLogList,omitempty" xml:"InstanceLoginAuditLogList,omitempty" type:"Struct"`
 	// The error message returned.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The logon records of the instance.
+	InstanceLoginAuditLogList *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList `json:"InstanceLoginAuditLogList,omitempty" xml:"InstanceLoginAuditLogList,omitempty" type:"Struct"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query.
+	// Indicates whether the request was successful. Valid values:
 	//
-	// >  The start time supports fuzzy match. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+	// *   **true**: The request was successful.
+	// *   **false**: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100.
+	// The number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22942,14 +23014,17 @@ func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) SetInst
 }
 
 type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog struct {
-	DbUser     *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	InstanceId *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The database account that is used to log on to the instance.
+	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	// The ID of the instance.
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the instance.
-	OpTime    *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
-	RequestIp *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The time when the user performed an operation on the instance.
+	OpTime *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
 	// The source IP address of the request.
+	RequestIp *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	// The ID of the user.
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The alias of the user.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
@@ -42091,6 +42166,13 @@ func (client *Client) GetOwnerApplyOrderDetail(request *GetOwnerApplyOrderDetail
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+ *
+ * @param request GetPermApplyOrderDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetPermApplyOrderDetailResponse
+ */
 func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetPermApplyOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42128,6 +42210,12 @@ func (client *Client) GetPermApplyOrderDetailWithOptions(request *GetPermApplyOr
 	return _result, _err
 }
 
+/**
+ * You can call this operation to query the information about tickets that apply for permissions on databases, tables, and sensitive columns.
+ *
+ * @param request GetPermApplyOrderDetailRequest
+ * @return GetPermApplyOrderDetailResponse
+ */
 func (client *Client) GetPermApplyOrderDetail(request *GetPermApplyOrderDetailRequest) (_result *GetPermApplyOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPermApplyOrderDetailResponse{}
