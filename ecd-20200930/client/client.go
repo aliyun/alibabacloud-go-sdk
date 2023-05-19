@@ -1927,11 +1927,16 @@ func (s *ClonePolicyGroupResponse) SetBody(v *ClonePolicyGroupResponseBody) *Clo
 }
 
 type CompleteCdsFileRequest struct {
-	CdsId     *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The name of the end user.
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UploadId  *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
+	// The file ID. An ID is the unique identifier of a file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the file uploading task.
+	UploadId *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
 }
 
 func (s CompleteCdsFileRequest) String() string {
@@ -1968,6 +1973,7 @@ func (s *CompleteCdsFileRequest) SetUploadId(v string) *CompleteCdsFileRequest {
 }
 
 type CompleteCdsFileResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3458,6 +3464,92 @@ func (s *CreateCdsFileShareLinkResponse) SetStatusCode(v int32) *CreateCdsFileSh
 }
 
 func (s *CreateCdsFileShareLinkResponse) SetBody(v *CreateCdsFileShareLinkResponseBody) *CreateCdsFileShareLinkResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCloudDriveUsersRequest struct {
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The IDs of the end users.
+	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The maximum storage space of an end user. Unit: bytes.
+	UserMaxSize *int64 `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
+}
+
+func (s CreateCloudDriveUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudDriveUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudDriveUsersRequest) SetCdsId(v string) *CreateCloudDriveUsersRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *CreateCloudDriveUsersRequest) SetEndUserId(v []*string) *CreateCloudDriveUsersRequest {
+	s.EndUserId = v
+	return s
+}
+
+func (s *CreateCloudDriveUsersRequest) SetRegionId(v string) *CreateCloudDriveUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCloudDriveUsersRequest) SetUserMaxSize(v int64) *CreateCloudDriveUsersRequest {
+	s.UserMaxSize = &v
+	return s
+}
+
+type CreateCloudDriveUsersResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCloudDriveUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudDriveUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudDriveUsersResponseBody) SetRequestId(v string) *CreateCloudDriveUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCloudDriveUsersResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCloudDriveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCloudDriveUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudDriveUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudDriveUsersResponse) SetHeaders(v map[string]*string) *CreateCloudDriveUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudDriveUsersResponse) SetStatusCode(v int32) *CreateCloudDriveUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudDriveUsersResponse) SetBody(v *CreateCloudDriveUsersResponseBody) *CreateCloudDriveUsersResponse {
 	s.Body = v
 	return s
 }
@@ -7099,8 +7191,10 @@ func (s *DeleteImagesResponse) SetBody(v *DeleteImagesResponseBody) *DeleteImage
 }
 
 type DeleteNASFileSystemsRequest struct {
+	// The IDs of the NAS file systems that you want to delete.
 	FileSystemId []*string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty" type:"Repeated"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the NAS file system that you want to delete.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteNASFileSystemsRequest) String() string {
@@ -7122,6 +7216,7 @@ func (s *DeleteNASFileSystemsRequest) SetRegionId(v string) *DeleteNASFileSystem
 }
 
 type DeleteNASFileSystemsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7238,8 +7333,10 @@ func (s *DeleteNetworkPackagesResponse) SetBody(v *DeleteNetworkPackagesResponse
 }
 
 type DeleteOfficeSitesRequest struct {
+	// The ID of the workspace that you want to delete. You can specify 1 to 100 IDs of workspaces.
 	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the workspace that you want to delete. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteOfficeSitesRequest) String() string {
@@ -7261,6 +7358,7 @@ func (s *DeleteOfficeSitesRequest) SetRegionId(v string) *DeleteOfficeSitesReque
 }
 
 type DeleteOfficeSitesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9257,6 +9355,152 @@ func (s *DescribeCloudDrivePermissionsResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeCloudDrivePermissionsResponse) SetBody(v *DescribeCloudDrivePermissionsResponseBody) *DescribeCloudDrivePermissionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudDriveUsersRequest struct {
+	CdsId      *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	EndUserId  *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeCloudDriveUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDriveUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDriveUsersRequest) SetCdsId(v string) *DescribeCloudDriveUsersRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersRequest) SetEndUserId(v string) *DescribeCloudDriveUsersRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersRequest) SetMaxResults(v int32) *DescribeCloudDriveUsersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersRequest) SetNextToken(v string) *DescribeCloudDriveUsersRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersRequest) SetRegionId(v string) *DescribeCloudDriveUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeCloudDriveUsersResponseBody struct {
+	CloudDriveUsers []*DescribeCloudDriveUsersResponseBodyCloudDriveUsers `json:"CloudDriveUsers,omitempty" xml:"CloudDriveUsers,omitempty" type:"Repeated"`
+	NextToken       *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudDriveUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDriveUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDriveUsersResponseBody) SetCloudDriveUsers(v []*DescribeCloudDriveUsersResponseBodyCloudDriveUsers) *DescribeCloudDriveUsersResponseBody {
+	s.CloudDriveUsers = v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBody) SetNextToken(v string) *DescribeCloudDriveUsersResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBody) SetRequestId(v string) *DescribeCloudDriveUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudDriveUsersResponseBodyCloudDriveUsers struct {
+	DriveId   *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSize *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	UsedSize  *int64  `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeCloudDriveUsersResponseBodyCloudDriveUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDriveUsersResponseBodyCloudDriveUsers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetDriveId(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.DriveId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetStatus(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetTotalSize(v int64) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetUsedSize(v int64) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.UsedSize = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetUserId(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponseBodyCloudDriveUsers) SetUserName(v string) *DescribeCloudDriveUsersResponseBodyCloudDriveUsers {
+	s.UserName = &v
+	return s
+}
+
+type DescribeCloudDriveUsersResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCloudDriveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCloudDriveUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudDriveUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudDriveUsersResponse) SetHeaders(v map[string]*string) *DescribeCloudDriveUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponse) SetStatusCode(v int32) *DescribeCloudDriveUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudDriveUsersResponse) SetBody(v *DescribeCloudDriveUsersResponseBody) *DescribeCloudDriveUsersResponse {
 	s.Body = v
 	return s
 }
@@ -12958,12 +13202,47 @@ func (s *DescribeFotaPendingDesktopsResponse) SetBody(v *DescribeFotaPendingDesk
 }
 
 type DescribeFotaTasksRequest struct {
-	FotaStatus *string   `json:"FotaStatus,omitempty" xml:"FotaStatus,omitempty"`
-	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskUid    []*string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty" type:"Repeated"`
-	UserStatus *string   `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
+	// This parameter is not available.
+	FotaStatus *string `json:"FotaStatus,omitempty" xml:"FotaStatus,omitempty"`
+	// The number of entries per page.
+	//
+	// *   Valid values: 1 to 100
+	// *   Default value: 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the image update tasks. You can call the DescribeFotaTasks operation to obtain the value of this parameter.
+	TaskUid []*string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty" type:"Repeated"`
+	// Specifies whether to automatically push the image update task.
+	//
+	// Valid values:
+	//
+	// *   Running
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     automatically pushes the image update task.
+	//
+	//     <!-- -->
+	//
+	// *   Pending
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     does not automatically push the image update task.
+	//
+	//     <!-- -->
+	UserStatus *string `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
 }
 
 func (s DescribeFotaTasksRequest) String() string {
@@ -13005,8 +13284,10 @@ func (s *DescribeFotaTasksRequest) SetUserStatus(v string) *DescribeFotaTasksReq
 }
 
 type DescribeFotaTasksResponseBody struct {
+	// Details about the image update task.
 	FotaTasks []*DescribeFotaTasksResponseBodyFotaTasks `json:"FotaTasks,omitempty" xml:"FotaTasks,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFotaTasksResponseBody) String() string {
@@ -13028,15 +13309,50 @@ func (s *DescribeFotaTasksResponseBody) SetRequestId(v string) *DescribeFotaTask
 }
 
 type DescribeFotaTasksResponseBodyFotaTasks struct {
-	AppVersion              *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	FotaProject             *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
-	PendingCustomImageCount *int32  `json:"PendingCustomImageCount,omitempty" xml:"PendingCustomImageCount,omitempty"`
-	PendingDesktopCount     *int32  `json:"PendingDesktopCount,omitempty" xml:"PendingDesktopCount,omitempty"`
-	PublishTime             *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	ReleaseNote             *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	Size                    *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskUid                 *string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty"`
+	// The image version. You can call the [DescribeImages](~~188895~~) operation to obtain the value of this parameter.
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// This parameter is not available.
+	FotaProject *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
+	// The number of custom images that can be updated to this version.
+	PendingCustomImageCount *int32 `json:"PendingCustomImageCount,omitempty" xml:"PendingCustomImageCount,omitempty"`
+	// The number of cloud desktops for which the images can be updated to this version.
+	PendingDesktopCount *int32 `json:"PendingDesktopCount,omitempty" xml:"PendingDesktopCount,omitempty"`
+	// The time when the image version available for update was published.
+	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The description of the image version available for update.
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The size of the image update package. Unit: KB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether an end user can update the image of the cloud desktop.
+	//
+	// Valid values:
+	//
+	// *   valid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The end user can update the image of the cloud desktop.
+	//
+	//     <!-- -->
+	//
+	// *   invalid
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The end user cannot update the image of the cloud desktop.
+	//
+	//     <!-- -->
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the image update task.
+	TaskUid *string `json:"TaskUid,omitempty" xml:"TaskUid,omitempty"`
 }
 
 func (s DescribeFotaTasksResponseBodyFotaTasks) String() string {
@@ -14068,52 +14384,17 @@ func (s *DescribeImagesResponse) SetBody(v *DescribeImagesResponseBody) *Describ
 }
 
 type DescribeInvocationsRequest struct {
-	// The type of the command. Valid values:
-	//
-	// *   RunBatScript
-	// *   RunPowerShellScript
-	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The encoding method of the command content and outputs. Valid values:
-	//
-	// *   PlainText
-	// *   Base64
-	//
-	// Default value: Base64.
-	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The ID of the cloud desktop. If you specify a cloud desktop, all execution records of Cloud Assistant commands on the cloud desktop are queried.
-	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IDs of the cloud desktops. The DesktopId parameter will be discontinued. We recommend that you use the DesktopIds parameter to specify the IDs of cloud desktops.
-	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The ID of the end user.
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Specifies whether to return command outputs in the response. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	// The ID of the execution.
-	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The overall execution status of the command. The overall execution status is determined by the execution status of the command on one or more cloud desktops. Valid values:
-	//
-	// *   Running: The execution is in progress on one or more cloud desktops.
-	// *   Finished: The execution is complete on all cloud desktops, or the execution is manually stopped on specific cloud desktops and the execution is complete on other cloud desktops.
-	// *   Failed: The execution failed on all cloud desktops.
-	// *   PartialFailed: The execution failed on specific cloud desktops.
-	// *   Stopped: The execution is stopped.
-	//
-	// Default value: Running.
-	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// *   Maximum value: 100.
-	// *   Default value: 10.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Set the value to the NextToken value that is returned from the last call.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CommandType     *string   `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	ContentEncoding *string   `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	DesktopId       *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopIds      []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
+	EndUserId       *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	IncludeOutput   *bool     `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
+	InvokeId        *string   `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	InvokeStatus    *string   `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
+	MaxResults      *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInvocationsRequest) String() string {
@@ -14180,12 +14461,9 @@ func (s *DescribeInvocationsRequest) SetRegionId(v string) *DescribeInvocationsR
 }
 
 type DescribeInvocationsResponseBody struct {
-	// The command execution records.
 	Invocations []*DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Repeated"`
-	// The query token that is returned in this call.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBody) String() string {
@@ -14212,43 +14490,13 @@ func (s *DescribeInvocationsResponseBody) SetRequestId(v string) *DescribeInvoca
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
-	// The command content that is encoded in Base64.
-	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The type of the command.
-	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The time when the task was created.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the end user.
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The overall execution status of the command. The overall execution status is determined by the execution status of the command on all related cloud desktops. Valid values:
-	//
-	// *   Pending: The system is verifying or sending the command. If the execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
-	//
-	// *   Running: The execution is in progress on cloud desktops. If the execution status on at least one cloud desktop is Running, the overall execution status is Running.
-	//
-	// *   Success: If the execution status on at least one cloud desktop is Success, and the execution status on other cloud desktops is Success or Stopped, the overall execution status is Success.
-	//
-	// *   Failed: If the execution status on all cloud desktops is Stopped or Failed, the overall execution status is Failed. If one or more execution status on a cloud desktop is one of the following values, Failed is returned:
-	//
-	//     *   Invalid: The command is invalid.
-	//     *   Aborted: The command failed to be sent.
-	//     *   Failed: The execution is complete, but the exit code is not 0.
-	//     *   Timeout: The execution times out.
-	//     *   Error: An error occurs when the execution is in progress.
-	//
-	// *   Stopping: The execution is being stopped. If the execution status on at least one cloud desktop is Stopping, the overall execution status is Stopping.
-	//
-	// *   Stopped: The execution is stopped. If the execution status on all cloud desktops is Stopped, the overall execution status is Stopped. If the execution status on a cloud desktop is one of the following values, Stopped is returned:
-	//
-	//     *   Cancelled: The execution is canceled.
-	//     *   Terminated: The execution is terminated.
-	//
-	// *   PartialFailed: The execution is successful on specific cloud desktops and failed on other cloud desktops. If the execution status on different cloud desktops includes Success, Failed, and Stopped, the overall execution status is PartialFailed.
-	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The cloud desktops on which the command is run.
-	InvokeDesktops []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
-	// The ID of the execution.
-	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	CommandContent   *string                                                     `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	CommandType      *string                                                     `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
+	CreationTime     *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EndUserId        *string                                                     `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	InvocationStatus *string                                                     `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
+	InvokeDesktops   []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
+	InvokeId         *string                                                     `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBodyInvocations) String() string {
@@ -14295,66 +14543,20 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetInvokeId(v string) *Desc
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
-	// The time when the command execution was created.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the cloud desktop.
-	DesktopId   *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The size of the text that is truncated and discarded when the value of the Output parameter exceeds 24 KB in size.
-	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The error code that is returned if the command failed to be sent or run.
-	//
-	// *   If null is returned, the command is run normally.
-	// *   If InstanceNotExists is returned, the specified cloud desktop does not exist or is released.
-	// *   If InstanceReleased is returned, the specified cloud desktop is released during the command execution.
-	// *   If InstanceNotRunning is returned, the specified cloud desktop is not in the Running state when the execution is created.
-	// *   If CommandNotApplicable is returned, the command cannot be run on the specified cloud desktop.
-	// *   If ClientNotRunning is returned, Cloud Assistant is not running.
-	// *   If ClientNotResponse is returned, Cloud Assistant does not respond to your request.
-	// *   If ClientIsUpgrading is returned, Cloud Assistant is being upgraded.
-	// *   If ClientNeedUpgrade is returned, you must upgrade Cloud Assistant.
-	// *   If DeliveryTimeout is returned, the operation to send the command times out.
-	// *   If ExecutionTimeout is returned, the command execution times out.
-	// *   If ExecutionException is returned, an execution occurs during the command execution.
-	// *   If ExecutionInterrupted is returned, the command execution is interrupted.
-	// *   If ExitCodeNonzero is returned, the command execution is complete, but the exit code is not 0.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message that is returned if the command failed to be sent or run.
-	//
-	// *   If null is returned, the command is run normally.
-	// *   If "the specified instance does not exist" is returned, the specified cloud desktop does not exist or is released.
-	// *   If "the instance has released when create task" is returned, the specified cloud desktop is released during the command execution.
-	// *   If "the instance is not running when create task" is returned, the specified cloud desktop is not in the Running state when the execution is created.
-	// *   If "the command is not applicable" is returned, the command cannot be run on the specified cloud desktop.
-	// *   If "the aliyun service is not running on the instance" is returned, Cloud Assistant is not running.
-	// *   If "the aliyun service in the instance does not response" is returned, Cloud Assistant does not respond to your request.
-	// *   If "the aliyun service in the instance is upgrading now" is returned, Cloud Assistant is being upgraded.
-	// *   If "the aliyun service in the instance need upgrade" is returned, you must upgrade Cloud Assistant.
-	// *   If "the command delivery has been timeout" is returned, the operation to send the command times out.
-	// *   If "the command execution has been timeout" is returned, the command execution times out.
-	// *   If "the command execution got an exception" is returned, an exception occurs during the command execution.
-	// *   If "the command execution has been interrupted" is returned, the command execution is interrupted.
-	// *   If "the command execution exit code is not zero" is returned, the command execution is complete, but the exit code is not 0.
-	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
-	// The exit code of the execution.
-	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
-	// The end time of the command execution.
-	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The execution status on a cloud desktop.
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DesktopId        *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopName      *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	Dropped          *int32  `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
+	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo        *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	ExitCode         *int64  `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The command output.
-	//
-	// *   If the IncludeOutput parameter is set to false, no value of the Output parameter is returned.
-	// *   If the ContentEncoding parameter is set to Base64, the value of the Output parameter is encoded in Base64.
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The number of times that the command is run on the cloud desktop.
-	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// The start time of the command execution on the cloud desktop.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// If you called the [stopInvocation](~~196957~~) operation, the value of this parameter indicates the time when you made the call.
-	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
-	// The time when the execution status was last updated.
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Output           *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	Repeats          *int32  `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StopTime         *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeInvocationsResponseBodyInvocationsInvokeDesktops) String() string {
@@ -24661,6 +24863,93 @@ func (s *ModifyCloudDrivePermissionResponse) SetBody(v *ModifyCloudDrivePermissi
 	return s
 }
 
+type ModifyCloudDriveUsersRequest struct {
+	CdsId       *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	EndUserId   []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserMaxSize *int64    `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
+}
+
+func (s ModifyCloudDriveUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDriveUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDriveUsersRequest) SetCdsId(v string) *ModifyCloudDriveUsersRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersRequest) SetEndUserId(v []*string) *ModifyCloudDriveUsersRequest {
+	s.EndUserId = v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersRequest) SetRegionId(v string) *ModifyCloudDriveUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersRequest) SetStatus(v string) *ModifyCloudDriveUsersRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersRequest) SetUserMaxSize(v int64) *ModifyCloudDriveUsersRequest {
+	s.UserMaxSize = &v
+	return s
+}
+
+type ModifyCloudDriveUsersResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCloudDriveUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDriveUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDriveUsersResponseBody) SetRequestId(v string) *ModifyCloudDriveUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCloudDriveUsersResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyCloudDriveUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyCloudDriveUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudDriveUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudDriveUsersResponse) SetHeaders(v map[string]*string) *ModifyCloudDriveUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersResponse) SetStatusCode(v int32) *ModifyCloudDriveUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCloudDriveUsersResponse) SetBody(v *ModifyCloudDriveUsersResponseBody) *ModifyCloudDriveUsersResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyCustomizedListHeadersRequest struct {
 	Headers  []*ModifyCustomizedListHeadersRequestHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
 	ListType *string                                      `json:"ListType,omitempty" xml:"ListType,omitempty"`
@@ -27242,12 +27531,60 @@ func (s *ModifyUserToDesktopGroupResponse) SetBody(v *ModifyUserToDesktopGroupRe
 }
 
 type MoveCdsFileRequest struct {
-	CdsId          *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The processing mode of files that have the same name.
+	//
+	// Valid values:
+	//
+	// *   <!-- -->
+	//
+	//     refuse
+	//
+	//     <!-- -->
+	//
+	//     : If you want to create a file that uses the same name as an existing file in the cloud, the system denies your request and returns the details of the existing file.
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     auto_rename
+	//
+	//     <!-- -->
+	//
+	//     : If you want to create a file that uses the same name as an existing file in the cloud, the system renames the file that you want to create by appending the current time point.
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     ignore
+	//
+	//     <!-- -->
+	//
+	//     : The system allows you to create a file that uses the same name as an existing file in the cloud.
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     over_write
+	//
+	//     <!-- -->
+	//
+	//     : After you create a file that uses the same name as an existing file in the cloud, the new file overwrites the existing file.
+	//
+	//     <!-- -->
 	ConflictPolicy *string `json:"ConflictPolicy,omitempty" xml:"ConflictPolicy,omitempty"`
-	EndUserId      *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The user ID that you want to use to access the cloud disk.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the parent folder that you want to move. If you want to remove the root folder, set the value to root.
 	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s MoveCdsFileRequest) String() string {
@@ -27289,11 +27626,34 @@ func (s *MoveCdsFileRequest) SetRegionId(v string) *MoveCdsFileRequest {
 }
 
 type MoveCdsFileResponseBody struct {
-	Code             *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The result of the modification. A value of success indicates that the modification is successful. If the modification failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message that is returned. This parameter is not returned if the value of Code is success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response object when you move a file.
 	MoveCdsFileModel *MoveCdsFileResponseBodyMoveCdsFileModel `json:"MoveCdsFileModel,omitempty" xml:"MoveCdsFileModel,omitempty" type:"Struct"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// *   <!-- -->
+	//
+	//     true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MoveCdsFileResponseBody) String() string {
@@ -27330,9 +27690,30 @@ func (s *MoveCdsFileResponseBody) SetSuccess(v bool) *MoveCdsFileResponseBody {
 }
 
 type MoveCdsFileResponseBodyMoveCdsFileModel struct {
+	// The ID of the asynchronous task. This parameter is not returned if you copy files. This parameter is returned if you copy folders in the backend in an asynchronous manner. You can call the GetAsyncTask operation to obtain the ID and details of an asynchronous task.
 	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
-	Exist       *bool   `json:"Exist,omitempty" xml:"Exist,omitempty"`
-	FileId      *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Indicates whether the file exists.
+	//
+	// Valid values:
+	//
+	// *   <!-- -->
+	//
+	//     true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
+	// The ID of the file.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 
 func (s MoveCdsFileResponseBodyMoveCdsFileModel) String() string {
@@ -28310,7 +28691,9 @@ func (s *ResetNASDefaultMountTargetResponse) SetBody(v *ResetNASDefaultMountTarg
 }
 
 type ResetSnapshotRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the snapshot.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -28333,6 +28716,7 @@ func (s *ResetSnapshotRequest) SetSnapshotId(v string) *ResetSnapshotRequest {
 }
 
 type ResetSnapshotResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28680,8 +29064,16 @@ func (s *RunCommandResponse) SetBody(v *RunCommandResponseBody) *RunCommandRespo
 }
 
 type SendVerifyCodeRequest struct {
-	ExtraInfo        *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information in JSON format that is required for sending the verification code. To verify the security of CEN, you must provide the ID of the CEN instance and the ID of the Alibaba Cloud account to which the instance belongs.
+	//
+	// *   CenId: the ID of the CEN instance
+	// *   CenOwnerId: the ID of the Alibaba Cloud account to which the CEN instance belongs.
+	//
+	// Note: If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to the Alibaba Cloud account, skip this parameter. If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the exact Alibaba Cloud account. Example: {"cenOwnerId": 1234567890\*\*\*\*\*\*,"cenId": "cen-3weq30r6t0s7t4\*\*\*\*"}.
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The action that indicates what the verification code is used for. The parameter is only used to verify the security of CEN. Valid value: eds_cenID_securityverification.
 	VerifyCodeAction *string `json:"VerifyCodeAction,omitempty" xml:"VerifyCodeAction,omitempty"`
 }
 
@@ -28709,6 +29101,7 @@ func (s *SendVerifyCodeRequest) SetVerifyCodeAction(v string) *SendVerifyCodeReq
 }
 
 type SendVerifyCodeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32558,6 +32951,62 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 	return _result, _err
 }
 
+func (client *Client) CreateCloudDriveUsersWithOptions(request *CreateCloudDriveUsersRequest, runtime *util.RuntimeOptions) (_result *CreateCloudDriveUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMaxSize)) {
+		query["UserMaxSize"] = request.UserMaxSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudDriveUsers"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudDriveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCloudDriveUsers(request *CreateCloudDriveUsersRequest) (_result *CreateCloudDriveUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudDriveUsersResponse{}
+	_body, _err := client.CreateCloudDriveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * # Description
  * Before you call this operation to create a desktop group, make sure that the following operations are complete:
@@ -34227,7 +34676,9 @@ func (client *Client) DeleteImages(request *DeleteImagesRequest) (_result *Delet
 }
 
 /**
- * The operation that you want to perform. Set the value to DeleteNASFileSystems.
+ * Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+ * **
+ * **Warning** If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
  *
  * @param request DeleteNASFileSystemsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34271,7 +34722,9 @@ func (client *Client) DeleteNASFileSystemsWithOptions(request *DeleteNASFileSyst
 }
 
 /**
- * The operation that you want to perform. Set the value to DeleteNASFileSystems.
+ * Before you delete an Apsara File Storage NAS (NAS) file system, make sure that the data you want to retain is backed up.
+ * **
+ * **Warning** If a NAS file system is deleted, data stored in the NAS file system cannot be restored. Proceed with caution when you delete NAS file systems.
  *
  * @param request DeleteNASFileSystemsRequest
  * @return DeleteNASFileSystemsResponse
@@ -34336,7 +34789,11 @@ func (client *Client) DeleteNetworkPackages(request *DeleteNetworkPackagesReques
 }
 
 /**
- * The operation that you want to perform. Set the value to **DeleteOfficeSites**.
+ * Before you delete a workspace, make sure that the following requirements are met:
+ * *   All cloud desktops in the workspace are released.
+ * *   The data that you want to retain is backed up.
+ * **
+ * **Warning** After you delete a workspace, the resources and data of the workspace cannot be recovered. Exercise with caution.
  *
  * @param request DeleteOfficeSitesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34380,7 +34837,11 @@ func (client *Client) DeleteOfficeSitesWithOptions(request *DeleteOfficeSitesReq
 }
 
 /**
- * The operation that you want to perform. Set the value to **DeleteOfficeSites**.
+ * Before you delete a workspace, make sure that the following requirements are met:
+ * *   All cloud desktops in the workspace are released.
+ * *   The data that you want to retain is backed up.
+ * **
+ * **Warning** After you delete a workspace, the resources and data of the workspace cannot be recovered. Exercise with caution.
  *
  * @param request DeleteOfficeSitesRequest
  * @return DeleteOfficeSitesResponse
@@ -35173,6 +35634,66 @@ func (client *Client) DescribeCloudDrivePermissions(request *DescribeCloudDriveP
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudDrivePermissionsResponse{}
 	_body, _err := client.DescribeCloudDrivePermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudDriveUsersWithOptions(request *DescribeCloudDriveUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudDriveUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudDriveUsers"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudDriveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCloudDriveUsers(request *DescribeCloudDriveUsersRequest) (_result *DescribeCloudDriveUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudDriveUsersResponse{}
+	_body, _err := client.DescribeCloudDriveUsersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36406,8 +36927,21 @@ func (client *Client) DescribeImages(request *DescribeImagesRequest) (_result *D
 }
 
 /**
- * *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution result.
- * *   You can query the execution information in the previous two weeks. Up to 100,000 lines of execution information can be retained.
+ * The error message that is returned if the command failed to be sent or run.
+ * *   If null is returned, the command is run normally.
+ * *   If "the specified instance does not exist" is returned, the specified cloud desktop does not exist or is released.
+ * *   If "the instance has released when create task" is returned, the specified cloud desktop is released during the command execution.
+ * *   If "the instance is not running when create task" is returned, the specified cloud desktop is not in the Running state when the execution is created.
+ * *   If "the command is not applicable" is returned, the command cannot be run on the specified cloud desktop.
+ * *   If "the aliyun service is not running on the instance" is returned, Cloud Assistant is not running.
+ * *   If "the aliyun service in the instance does not response" is returned, Cloud Assistant does not respond to your request.
+ * *   If "the aliyun service in the instance is upgrading now" is returned, Cloud Assistant is being upgraded.
+ * *   If "the aliyun service in the instance need upgrade" is returned, you must upgrade Cloud Assistant.
+ * *   If "the command delivery has been timeout" is returned, the operation to send the command times out.
+ * *   If "the command execution has been timeout" is returned, the command execution times out.
+ * *   If "the command execution got an exception" is returned, an exception occurs during the command execution.
+ * *   If "the command execution has been interrupted" is returned, the command execution is interrupted.
+ * *   If "the command execution exit code is not zero" is returned, the command execution is complete, but the exit code is not 0.
  *
  * @param request DescribeInvocationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36487,8 +37021,21 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 }
 
 /**
- * *   After you run a command, the command may not succeed or return the expected results. You can call this operation to query the execution result.
- * *   You can query the execution information in the previous two weeks. Up to 100,000 lines of execution information can be retained.
+ * The error message that is returned if the command failed to be sent or run.
+ * *   If null is returned, the command is run normally.
+ * *   If "the specified instance does not exist" is returned, the specified cloud desktop does not exist or is released.
+ * *   If "the instance has released when create task" is returned, the specified cloud desktop is released during the command execution.
+ * *   If "the instance is not running when create task" is returned, the specified cloud desktop is not in the Running state when the execution is created.
+ * *   If "the command is not applicable" is returned, the command cannot be run on the specified cloud desktop.
+ * *   If "the aliyun service is not running on the instance" is returned, Cloud Assistant is not running.
+ * *   If "the aliyun service in the instance does not response" is returned, Cloud Assistant does not respond to your request.
+ * *   If "the aliyun service in the instance is upgrading now" is returned, Cloud Assistant is being upgraded.
+ * *   If "the aliyun service in the instance need upgrade" is returned, you must upgrade Cloud Assistant.
+ * *   If "the command delivery has been timeout" is returned, the operation to send the command times out.
+ * *   If "the command execution has been timeout" is returned, the command execution times out.
+ * *   If "the command execution got an exception" is returned, an exception occurs during the command execution.
+ * *   If "the command execution has been interrupted" is returned, the command execution is interrupted.
+ * *   If "the command execution exit code is not zero" is returned, the command execution is complete, but the exit code is not 0.
  *
  * @param request DescribeInvocationsRequest
  * @return DescribeInvocationsResponse
@@ -39851,6 +40398,66 @@ func (client *Client) ModifyCloudDrivePermission(request *ModifyCloudDrivePermis
 	return _result, _err
 }
 
+func (client *Client) ModifyCloudDriveUsersWithOptions(request *ModifyCloudDriveUsersRequest, runtime *util.RuntimeOptions) (_result *ModifyCloudDriveUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserMaxSize)) {
+		query["UserMaxSize"] = request.UserMaxSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCloudDriveUsers"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCloudDriveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyCloudDriveUsers(request *ModifyCloudDriveUsersRequest) (_result *ModifyCloudDriveUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCloudDriveUsersResponse{}
+	_body, _err := client.ModifyCloudDriveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyCustomizedListHeadersWithOptions(request *ModifyCustomizedListHeadersRequest, runtime *util.RuntimeOptions) (_result *ModifyCustomizedListHeadersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42096,7 +42703,11 @@ func (client *Client) ResetNASDefaultMountTarget(request *ResetNASDefaultMountTa
 }
 
 /**
- * The ID of the request.
+ * Before you call this operation, make sure that the following operations are performed:
+ * *   The data that you want to retain in the disk is backed up.
+ *     **
+ *     **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+ * *   The cloud desktop whose disk you want to restore is stopped.
  *
  * @param request ResetSnapshotRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42140,7 +42751,11 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 }
 
 /**
- * The ID of the request.
+ * Before you call this operation, make sure that the following operations are performed:
+ * *   The data that you want to retain in the disk is backed up.
+ *     **
+ *     **Note**The disk restoration operation is irreversible. After you restore data on a disk, the disk is restored to the status at the point in time when the snapshot was created. Data that is generated between the snapshot creation time and the current time is lost. Before you restore a disk from a snapshot, make sure that you back up important data.
+ * *   The cloud desktop whose disk you want to restore is stopped.
  *
  * @param request ResetSnapshotRequest
  * @return ResetSnapshotResponse
@@ -42349,6 +42964,14 @@ func (client *Client) RunCommand(request *RunCommandRequest) (_result *RunComman
 	return _result, _err
 }
 
+/**
+ * ## Description
+ * When you attach your workspace network to a Cloud Enterprise Network (CEN) instance in another Alibaba Cloud account, you need to call this operation to obtain a verification code. After the call is successful, the system sends a verification code to the email address associated with the Alibaba Cloud account.
+ *
+ * @param request SendVerifyCodeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SendVerifyCodeResponse
+ */
 func (client *Client) SendVerifyCodeWithOptions(request *SendVerifyCodeRequest, runtime *util.RuntimeOptions) (_result *SendVerifyCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42390,6 +43013,13 @@ func (client *Client) SendVerifyCodeWithOptions(request *SendVerifyCodeRequest, 
 	return _result, _err
 }
 
+/**
+ * ## Description
+ * When you attach your workspace network to a Cloud Enterprise Network (CEN) instance in another Alibaba Cloud account, you need to call this operation to obtain a verification code. After the call is successful, the system sends a verification code to the email address associated with the Alibaba Cloud account.
+ *
+ * @param request SendVerifyCodeRequest
+ * @return SendVerifyCodeResponse
+ */
 func (client *Client) SendVerifyCode(request *SendVerifyCodeRequest) (_result *SendVerifyCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendVerifyCodeResponse{}
