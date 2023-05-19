@@ -383,9 +383,9 @@ func (s *BatchAddCdnDomainResponse) SetBody(v *BatchAddCdnDomainResponseBody) *B
 }
 
 type BatchDeleteCdnDomainConfigRequest struct {
-	// The accelerated domain names whose configurations you want to delete. Separate multiple accelerated domain names with commas (,).
+	// The operation that you want to perform. Set the value to **BatchDeleteCdnDomainConfig**.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The names of the features that you want to delete. Separate multiple feature names with commas (,). For more information about feature names, see [Parameters for configuring features for domain names](~~388460~~).
+	// The names of the features that you want to manage. Separate feature names with commas (,).
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -426,7 +426,7 @@ func (s *BatchDeleteCdnDomainConfigRequest) SetSecurityToken(v string) *BatchDel
 }
 
 type BatchDeleteCdnDomainConfigResponseBody struct {
-	// The ID of the request.
+	// Deletes configurations of multiple accelerated domain names at a time.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -473,9 +473,9 @@ func (s *BatchDeleteCdnDomainConfigResponse) SetBody(v *BatchDeleteCdnDomainConf
 }
 
 type BatchSetCdnDomainConfigRequest struct {
-	// The ID of the request.
+	// The ID of the configuration.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The list of domain configurations.
+	// The domain name.
 	Functions     *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -516,9 +516,11 @@ func (s *BatchSetCdnDomainConfigRequest) SetSecurityToken(v string) *BatchSetCdn
 }
 
 type BatchSetCdnDomainConfigResponseBody struct {
-	// The domain name.
+	// > *   You can call this operation up to 30 times per second per account.
+	// *   You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
+	// *   If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](~~388994~~).
 	DomainConfigList *BatchSetCdnDomainConfigResponseBodyDomainConfigList `json:"DomainConfigList,omitempty" xml:"DomainConfigList,omitempty" type:"Struct"`
-	// The ID of the configuration.
+	// The name of the feature.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -558,13 +560,11 @@ func (s *BatchSetCdnDomainConfigResponseBodyDomainConfigList) SetDomainConfigMod
 }
 
 type BatchSetCdnDomainConfigResponseBodyDomainConfigListDomainConfigModel struct {
-	// The name of the feature.
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// > *   You can call this operation up to 30 times per second per account.
-	// *   You can specify multiple domain names and must separate them with commas (,). You can specify up to 50 domain names in each call.
-	// *   If the BatchSetCdnDomainConfig operation is successful, a unique configuration ID (ConfigId) is generated. You can use configuration IDs to update or delete configurations. For more information, see [Usage notes on ConfigId](~~388994~~).
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The list of domain configurations.
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The domain name.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -623,23 +623,24 @@ func (s *BatchSetCdnDomainConfigResponse) SetBody(v *BatchSetCdnDomainConfigResp
 type BatchSetCdnDomainServerCertificateRequest struct {
 	// The region.
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The private key. Specify the private key only if you enable the SSL certificate.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information about the existing certificate that uses the same name.
-	ForceSet *string `json:"ForceSet,omitempty" xml:"ForceSet,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The accelerated domain name to which the SSL certificate belongs. The type of request supported by the accelerated domain name must be HTTPS. You can specify multiple accelerated domain names and separate them with commas (,).
+	// Specifies whether to enable the SSL certificate. Valid values:
 	//
-	// >  You can manage the SSL certificates of up to 50 accelerated domain names in each call.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The private key. Specify the private key only if you enable the SSL certificate.
+	// *   **on**: enables the SSL certificate.
+	// *   **off**: disables the SSL certificate. This is the default value.
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The type of the SSL certificate. Valid values:
+	//
+	// *   **upload**: a user-uploaded SSL certificate.
+	// *   **cas**: a certificate that is issued by SSL Certificates Service.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ForceSet   *string `json:"ForceSet,omitempty" xml:"ForceSet,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
 	// The ID of the request.
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// > *   The maximum number of times that each user can call this operation per second is 10.
-	// *   You can specify multiple domain names (no more than 50) and separate them with commas (,).
+	// The operation that you want to perform. Set the value to **BatchSetCdnDomainServerCertificate**.
 	SSLPub        *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -703,7 +704,6 @@ func (s *BatchSetCdnDomainServerCertificateRequest) SetSecurityToken(v string) *
 }
 
 type BatchSetCdnDomainServerCertificateResponseBody struct {
-	// The name of the certificate.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -827,7 +827,10 @@ func (s *BatchStartCdnDomainResponse) SetBody(v *BatchStartCdnDomainResponseBody
 }
 
 type BatchStopCdnDomainRequest struct {
-	// The names of the accelerated domain names. You can specify one or more domain names in each request. Separate multiple domain names with commas (,).
+	// *   After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
+	// *   If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
+	// *   You can call this operation up to 30 times per second per account.
+	// *   You can specify up to 50 domain names in each request.
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -857,7 +860,7 @@ func (s *BatchStopCdnDomainRequest) SetSecurityToken(v string) *BatchStopCdnDoma
 }
 
 type BatchStopCdnDomainResponseBody struct {
-	// The ID of the request.
+	// The names of the accelerated domain names. You can specify one or more domain names in each request. Separate multiple domain names with commas (,).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1280,25 +1283,8 @@ func (s *CreateCdnDeliverTaskResponse) SetBody(v *CreateCdnDeliverTaskResponseBo
 }
 
 type CreateCdnSubTaskRequest struct {
-	// The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
-	//
-	// > If you do not specify a domain name, the custom operations report is created for all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IDs of the metrics that you want to include in the report. Separate multiple IDs with commas (,). Valid values:
-	//
-	// *   **1**: frequently requested URLs (ranked by the number of requests)
-	// *   **3**: frequently requested URLs (ranked by the amount of network traffic)
-	// *   **5**: frequently used Referer headers (ranked by the number of requests)
-	// *   **7**: frequently used Referer headers (ranked by the amount of network traffic)
-	// *   **9**: frequently requested URLs that are redirected to the origin (ranked by the number of requests)
-	// *   **11**: frequently requested URLs that are redirected to the origin (ranked by the amount of network traffic)
-	// *   **13**: top client IP addresses (ranked by the number of requests)
-	// *   **15**: top client IP addresses (ranked by the amount of network traffic)
-	// *   **17**: domain names ranked by the amount of network traffic
-	// *   **19**: page views and unique visitors
-	// *   **21**: regions from which requests are initiated
-	// *   **23**: Internet service providers (ISPs)
-	ReportIds *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
+	ReportIds  *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
 }
 
 func (s CreateCdnSubTaskRequest) String() string {
@@ -1320,7 +1306,6 @@ func (s *CreateCdnSubTaskRequest) SetReportIds(v string) *CreateCdnSubTaskReques
 }
 
 type CreateCdnSubTaskResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1362,85 +1347,6 @@ func (s *CreateCdnSubTaskResponse) SetStatusCode(v int32) *CreateCdnSubTaskRespo
 }
 
 func (s *CreateCdnSubTaskResponse) SetBody(v *CreateCdnSubTaskResponseBody) *CreateCdnSubTaskResponse {
-	s.Body = v
-	return s
-}
-
-type CreateIllegalUrlExportTaskRequest struct {
-	// The name of the export task.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The minimum time granularity is 1 day.
-	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-}
-
-func (s CreateIllegalUrlExportTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateIllegalUrlExportTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateIllegalUrlExportTaskRequest) SetTaskName(v string) *CreateIllegalUrlExportTaskRequest {
-	s.TaskName = &v
-	return s
-}
-
-func (s *CreateIllegalUrlExportTaskRequest) SetTimePoint(v string) *CreateIllegalUrlExportTaskRequest {
-	s.TimePoint = &v
-	return s
-}
-
-type CreateIllegalUrlExportTaskResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the export task. You can use task IDs to query tasks.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateIllegalUrlExportTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateIllegalUrlExportTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateIllegalUrlExportTaskResponseBody) SetRequestId(v string) *CreateIllegalUrlExportTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateIllegalUrlExportTaskResponseBody) SetTaskId(v string) *CreateIllegalUrlExportTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-type CreateIllegalUrlExportTaskResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateIllegalUrlExportTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateIllegalUrlExportTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateIllegalUrlExportTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateIllegalUrlExportTaskResponse) SetHeaders(v map[string]*string) *CreateIllegalUrlExportTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateIllegalUrlExportTaskResponse) SetStatusCode(v int32) *CreateIllegalUrlExportTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateIllegalUrlExportTaskResponse) SetBody(v *CreateIllegalUrlExportTaskResponseBody) *CreateIllegalUrlExportTaskResponse {
 	s.Body = v
 	return s
 }
@@ -1532,34 +1438,13 @@ func (s *CreateRealTimeLogDeliveryResponse) SetBody(v *CreateRealTimeLogDelivery
 }
 
 type CreateUsageDetailDataExportTaskRequest struct {
-	// The domain names. If you do not specify the Group parameter, resource usage details of these domain names are exported.
-	//
-	// If you do not specify this parameter, resource usage details are exported based on accounts.
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The domain name group. If you specify this parameter, the **DomainNames** parameter is ignored.
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The language in which you want to export the file. Valid values:
-	//
-	// *   **zh-cn**: Chinese. This is the default value.
-	// *   **en-us**: English
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the task.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of resource usage data to query. Valid values:
-	//
-	// *   **flow**: traffic and bandwidth
-	// *   **vas**: requests
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateUsageDetailDataExportTaskRequest) String() string {
@@ -1606,14 +1491,10 @@ func (s *CreateUsageDetailDataExportTaskRequest) SetType(v string) *CreateUsageD
 }
 
 type CreateUsageDetailDataExportTaskResponseBody struct {
-	// The end of the time range for which the data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the task.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateUsageDetailDataExportTaskResponseBody) String() string {
@@ -1674,21 +1555,10 @@ func (s *CreateUsageDetailDataExportTaskResponse) SetBody(v *CreateUsageDetailDa
 }
 
 type CreateUserUsageDataExportTaskRequest struct {
-	// The end of the time range to query. The end time must be later than the start time.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language in which you want to export the file. Default value: zh-cn. Valid values:
-	//
-	// *   **zh-cn**: Chinese
-	// *   **en-us**: English
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The start of the time range to query. The data is collected every 5 minutes.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the task.
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskName  *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateUserUsageDataExportTaskRequest) String() string {
@@ -1720,14 +1590,10 @@ func (s *CreateUserUsageDataExportTaskRequest) SetTaskName(v string) *CreateUser
 }
 
 type CreateUserUsageDataExportTaskResponseBody struct {
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the task.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateUserUsageDataExportTaskResponseBody) String() string {
@@ -2208,9 +2074,9 @@ func (s *DeleteRealtimeLogDeliveryResponse) SetBody(v *DeleteRealtimeLogDelivery
 }
 
 type DeleteSpecificConfigRequest struct {
-	// The ID of the configuration. Separate multiple configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
+	// The configuration IDs. Separate configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The accelerated domain name. You can specify only one domain name.
+	// The operation that you want to perform. Set the value to **DeleteSpecificConfig**.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2245,7 +2111,6 @@ func (s *DeleteSpecificConfigRequest) SetSecurityToken(v string) *DeleteSpecific
 }
 
 type DeleteSpecificConfigResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2292,9 +2157,9 @@ func (s *DeleteSpecificConfigResponse) SetBody(v *DeleteSpecificConfigResponseBo
 }
 
 type DeleteSpecificStagingConfigRequest struct {
-	// The ID of the request.
+	// The configuration IDs. Separate configuration IDs with commas (,). For more information about ConfigId, see [Usage notes on ConfigId](~~388994~~).
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The accelerated domain names (no more than 50). Separate domain names with commas (,).
+	// The operation that you want to perform. Set the value to **DeleteSpecificStagingConfig**.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -2329,7 +2194,6 @@ func (s *DeleteSpecificStagingConfigRequest) SetSecurityToken(v string) *DeleteS
 }
 
 type DeleteSpecificStagingConfigResponseBody struct {
-	// The operation that you want to perform. Set the value to **DeleteSpecificStagingConfig**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3794,22 +3658,11 @@ func (s *DescribeCdnDomainDetailResponse) SetBody(v *DescribeCdnDomainDetailResp
 }
 
 type DescribeCdnDomainLogsRequest struct {
-	// The domain name. You can specify only one domain name.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Pages start from page **1**.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **300**. Maximum value: **1000**. Valid values: **1** to **1000**.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeCdnDomainLogsRequest) String() string {
@@ -3846,10 +3699,8 @@ func (s *DescribeCdnDomainLogsRequest) SetStartTime(v string) *DescribeCdnDomain
 }
 
 type DescribeCdnDomainLogsResponseBody struct {
-	// A set of DomainLogDetail data.
 	DomainLogDetails *DescribeCdnDomainLogsResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCdnDomainLogsResponseBody) String() string {
@@ -3888,14 +3739,10 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetails) SetDomainLogDetail(v
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetail struct {
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The total number of entries returned on the current page.
-	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// A set of LogInfoDetail data.
-	LogInfos *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// A set of PageInfoDetail data.
-	PageInfos *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	DomainName *string                                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                     `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetail) String() string {
@@ -3944,15 +3791,10 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfo
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the log file.
-	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The path of the log file.
-	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// The size of the log file.
-	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The start of the time range during which data was queried.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3990,12 +3832,9 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfo
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// The page number of the returned page.
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {
@@ -4651,33 +4490,13 @@ func (s *DescribeCdnRegionAndIspResponse) SetBody(v *DescribeCdnRegionAndIspResp
 }
 
 type DescribeCdnReportRequest struct {
-	// The region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
-	//
-	// *   If you do not specify a region, data in all regions is queried.
-	// *   If you specify a region, data in the specified region is queried. You can specify one or more regions. If you specify multiple regions, separate the regions with commas (,).
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The domain name that you want to query. Separate domain names with commas (,).
+	Area       *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The HTTP status code. Valid values:
-	//
-	// *   **2xx**
-	// *   **3xx**
-	// *   **4xx**
-	// *   **5xx**
-	//
-	// If you do not specify this parameter, all HTTP status codes are queried.
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// Specifies whether the region is outside the Chinese mainland. Valid values:
-	//
-	// *   **1**: outside the Chinese mainland
-	// *   **0**: inside the Chinese mainland
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HttpCode   *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	IsOverseas *string `json:"IsOverseas,omitempty" xml:"IsOverseas,omitempty"`
-	// The ID of the operations report that you want to query. You can specify only one ID in each request. You can call the [DescribeCdnSubList](~~271655~~) operation to query report IDs.
-	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ReportId   *int64  `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeCdnReportRequest) String() string {
@@ -4724,10 +4543,8 @@ func (s *DescribeCdnReportRequest) SetStartTime(v string) *DescribeCdnReportRequ
 }
 
 type DescribeCdnReportResponseBody struct {
-	// The content of the operations report.
-	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCdnReportResponseBody) String() string {
@@ -5353,13 +5170,9 @@ func (s *DescribeCdnSubListResponse) SetBody(v *DescribeCdnSubListResponseBody) 
 }
 
 type DescribeCdnUserBillHistoryRequest struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
+	// InvalidParameterAliUid
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The minimum data granularity is 5 minutes.
+	// InvalidParameter.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5382,9 +5195,9 @@ func (s *DescribeCdnUserBillHistoryRequest) SetStartTime(v string) *DescribeCdnU
 }
 
 type DescribeCdnUserBillHistoryResponseBody struct {
-	// The billing history returned.
+	// Invalid Parameter StartTime.
 	BillHistoryData *DescribeCdnUserBillHistoryResponseBodyBillHistoryData `json:"BillHistoryData,omitempty" xml:"BillHistoryData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Invalid Parameter AliUid.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5424,13 +5237,10 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryData) SetBillHistoryDa
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItem struct {
-	// The beginning of the time range that was queried.
-	BillTime *string `json:"BillTime,omitempty" xml:"BillTime,omitempty"`
-	// The metering method.
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The billable items.
+	BillTime    *string                                                                              `json:"BillTime,omitempty" xml:"BillTime,omitempty"`
+	BillType    *string                                                                              `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	BillingData *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingData `json:"BillingData,omitempty" xml:"BillingData,omitempty" type:"Struct"`
-	// The dimension.
+	// Invalid Parameter EndTime.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 }
 
@@ -5480,30 +5290,11 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataIte
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem struct {
-	// The bandwidth. Unit: bit/s.
-	Bandwidth *float32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billable region. Valid values:
-	//
-	// *   **CN**: Chinese mainland
-	// *   **OverSeas**: outside the Chinese mainland
-	// *   **AP1**: Asia Pacific 1
-	// *   **AP2**: Asia Pacific 2
-	// *   **AP3**: Asia Pacific 3
-	// *   **NA**: North America
-	// *   **SA**: South America
-	// *   **EU**: Europe
-	// *   **MEAA**: Middle East and Africa
-	CdnRegion *string `json:"CdnRegion,omitempty" xml:"CdnRegion,omitempty"`
-	// The billing method. Valid values:
-	//
-	// *   **StaticHttp**: static HTTP requests
-	// *   **DynamicHttp**: dynamic HTTP requests
-	// *   **DynamicHttps**: dynamic HTTPS requests
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of requests.
-	Count *float32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	Flow *float32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Bandwidth  *float32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CdnRegion  *string  `json:"CdnRegion,omitempty" xml:"CdnRegion,omitempty"`
+	ChargeType *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Count      *float32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Flow       *float32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
 }
 
 func (s DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem) String() string {
@@ -5569,29 +5360,9 @@ func (s *DescribeCdnUserBillHistoryResponse) SetBody(v *DescribeCdnUserBillHisto
 }
 
 type DescribeCdnUserBillPredictionRequest struct {
-	// The billable region. Valid values:
-	//
-	// *   **CN**: the Chinese mainland
-	// *   **OverSeas**: outside the Chinese mainland
-	// *   **AP1**: Asia Pacific 1
-	// *   **AP2**: Asia Pacific 2
-	// *   **AP3**: Asia Pacific 3
-	// *   **NA**: North America
-	// *   **SA**: South America
-	// *   **EU**: Europe
-	// *   **MEAA**: Middle East and Africa
-	//
-	// By default, the value of this parameter is determined by the metering method that is currently used. Regions inside and outside the Chinese mainland are classified into the **CN** and **OverSeas** billable regions. Billable regions inside the Chinese mainland include **CN**. Billable regions outside the Chinese mainland include **AP1**, **AP2**, **AP3**, **NA**, **SA**, **EU**, and **MEAA**.
-	//
-	// > For more information about billable regions, see [Billable regions](~~142221~~).
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The billable item. A value of flow specifies bandwidth.
+	Area      *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The end time of the estimation. The default value is the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the estimation. The default value is 00:00 on the first day of the current month. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5624,30 +5395,11 @@ func (s *DescribeCdnUserBillPredictionRequest) SetStartTime(v string) *DescribeC
 }
 
 type DescribeCdnUserBillPredictionResponseBody struct {
-	// The estimated bill data.
 	BillPredictionData *DescribeCdnUserBillPredictionResponseBodyBillPredictionData `json:"BillPredictionData,omitempty" xml:"BillPredictionData,omitempty" type:"Struct"`
-	// The metering method.
-	//
-	// > If the metering method ends with \_overseas, the billable region is outside the Chinese mainland. For example, BillType": "month_avg_day_bandwidth_overseas specifies a billable region outside the Chinese mainland and that the metering method is pay by daily peak bandwidth per month.
-	//
-	// Valid values:
-	//
-	// *   hour_flow: pay by hourly data transfer
-	// *   day_bandwidth: pay by daily bandwidth
-	// *   month\_95: pay by monthly 95th percentile bandwidth.
-	// *   month_avg_day_bandwidth: pay by average daily peak bandwidth per month
-	// *   month\_4th_day_bandwidth: pay by monthly 4th peak bandwidth
-	// *   month_avg_day\_95: pay by average daily 95th percentile bandwidth per month
-	// *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00.
-	// *   hour_vas: pay by value-added services per hour
-	// *   day_count: pay by daily requests
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The end time of the estimation.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the estimation.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	BillType           *string                                                      `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	EndTime            *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId          *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime          *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeCdnUserBillPredictionResponseBody) String() string {
@@ -5701,12 +5453,9 @@ func (s *DescribeCdnUserBillPredictionResponseBodyBillPredictionData) SetBillPre
 }
 
 type DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem struct {
-	// The billable region.
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
-	TimeStp *string `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
-	// The estimated value.
-	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Area    *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	TimeStp *string  `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
+	Value   *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem) String() string {
@@ -5762,13 +5511,7 @@ func (s *DescribeCdnUserBillPredictionResponse) SetBody(v *DescribeCdnUserBillPr
 }
 
 type DescribeCdnUserBillTypeRequest struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The minimum data granularity is 5 minutes.
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5791,10 +5534,8 @@ func (s *DescribeCdnUserBillTypeRequest) SetStartTime(v string) *DescribeCdnUser
 }
 
 type DescribeCdnUserBillTypeResponseBody struct {
-	// Details about the metering methods returned.
 	BillTypeData *DescribeCdnUserBillTypeResponseBodyBillTypeData `json:"BillTypeData,omitempty" xml:"BillTypeData,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCdnUserBillTypeResponseBody) String() string {
@@ -5833,42 +5574,12 @@ func (s *DescribeCdnUserBillTypeResponseBodyBillTypeData) SetBillTypeDataItem(v 
 }
 
 type DescribeCdnUserBillTypeResponseBodyBillTypeDataBillTypeDataItem struct {
-	// The metering method.
-	//
-	// > If the metering method is suffixed with \*\*\_overseas\*\*, the billable region is outside the Chinese mainland. For example, "BillType": "month_avg_day_bandwidth_overseas" indicates that the metering method is pay by average daily peak bandwidth per month in a billable region outside the Chinese mainland.
-	//
-	// Valid values:
-	//
-	// *   hour_flow: pay by hourly data transfer
-	// *   day_bandwidth: pay by daily bandwidth
-	// *   month\_95: pay by monthly 95th percentile bandwidth
-	// *   month_avg_day_bandwidth: pay by average daily peak bandwidth per month
-	// *   month\_4th_day_bandwidth: pay by monthly 4th peak bandwidth
-	// *   month_avg_day\_95: pay by average daily 95th percentile bandwidth per month
-	// *   month\_95\_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00
-	// *   hour_vas: pay by value-added services per hour
-	// *   quic_hour_count: pay by hourly QUIC requests
-	// *   day_count: pay by daily requests
-	// *   hour_count: pay by hourly requests
-	// *   day\_95: pay by daily 95th percentile bandwidth
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The billing cycle.
+	BillType     *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The dimension. Valid values:
-	//
-	// *   flow: traffic and bandwidth
-	// *   vas: value-added services (HTTPS and requests for dynamic content)
-	// *   quic: the number of QUIC requests
-	// *   websocket: the WebSocket communications protocol
-	// *   rtlog2sls: log entries delivered to Log Service in real time
-	// *   stationflow: traffic over the internal network
-	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The time when the metering method ended.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the product.
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The time when the metering method started.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Dimension    *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Product      *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeCdnUserBillTypeResponseBodyBillTypeDataBillTypeDataItem) String() string {
@@ -6952,7 +6663,7 @@ func (s *DescribeCertificateInfoByIDResponse) SetBody(v *DescribeCertificateInfo
 }
 
 type DescribeCustomLogConfigRequest struct {
-	// The ID of the custom configuration.
+	// A sample log configuration.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 }
 
@@ -6970,13 +6681,13 @@ func (s *DescribeCustomLogConfigRequest) SetConfigId(v string) *DescribeCustomLo
 }
 
 type DescribeCustomLogConfigResponseBody struct {
-	// The operation that you want to perform. Set the value to **DescribeCustomLogConfig**.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A sample log configuration.
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
 	// The format of the log configuration.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the custom configuration.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// >  The maximum number of times that each user can call this operation per second is 100.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -7038,27 +6749,29 @@ func (s *DescribeCustomLogConfigResponse) SetBody(v *DescribeCustomLogConfigResp
 }
 
 type DescribeDomainAverageResponseTimeRequest struct {
-	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
+	// The operation that you want to perform. Set the value to **DescribeDomainAverageResponseTime**.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The end of the time range during which data was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time interval between the data entries. Unit: seconds. The value varies based on the values of the **StartTime** and **EndTime** parameters. Valid values:
 	//
 	// *   If the time span between StartTime and EndTime is less than 3 days (3 days excluded), valid values are **300**, **3600**, and **86400**. Default value: **300**.
 	// *   If the time span between StartTime and EndTime is from 3 to 31 days (31 days excluded), valid values are **3600** and **86400**. Default value: **3600**.
 	// *   If the time range between StartTime and EndTime is 31 days or longer, the valid value is **86400**. Default value: **86400**.
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range during which data was queried.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The ID of the request.
+	// Specifies whether to automatically set the interval. If you set the value to 1, the value of the Interval parameter is automatically assigned based on the StartTime and EndTime parameters. You can set this parameter or the Interval parameter.
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The accelerated domain name.
+	// The average response time.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The end of the time range queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// The end time must be later than the start time.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	//
+	// By default, this operation queries the bandwidth values during back-to-origin routing for all accelerated domain names that belong to your Alibaba Cloud account.
 	TimeMerge *string `json:"TimeMerge,omitempty" xml:"TimeMerge,omitempty"`
 }
 
@@ -7111,21 +6824,17 @@ func (s *DescribeDomainAverageResponseTimeRequest) SetTimeMerge(v string) *Descr
 }
 
 type DescribeDomainAverageResponseTimeResponseBody struct {
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
-	AvgRTPerInterval *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval `json:"AvgRTPerInterval,omitempty" xml:"AvgRTPerInterval,omitempty" type:"Struct"`
-	// The statistical analytics feature of Alibaba Cloud CDN is discontinued. The API operations related to the statistical analytics feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
-	//
-	// > - If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data collected within the specified time range is queried.
-	// - You can call this operation up to 100 times per second per account.
-	// - You can specify multiple domain names and separate them with commas (,). You can specify at most 50 domain names in each call.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	// The timestamp of the returned data.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time interval between the data entries returned.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The average response time.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AvgRTPerInterval *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval `json:"AvgRTPerInterval,omitempty" xml:"AvgRTPerInterval,omitempty" type:"Struct"`
+	// The ID of the request.
+	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	// The average response time collected at each time interval.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The beginning of the time range during which data was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries returned.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -7185,9 +6894,8 @@ func (s *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval) SetDataM
 }
 
 type DescribeDomainAverageResponseTimeResponseBodyAvgRTPerIntervalDataModule struct {
-	// The accelerated domain name.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The type of the query condition. Valid values: When you set the value to dynamic, this operation queries the average response time of dynamic resources and static resources. If you do not set this parameter, this operation queries the average response time of only static resources. By default, this parameter is not set.
+	// Queries the average response time of one or more accelerated domain names. You can query data collected within the last 90 days.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7444,36 +7152,13 @@ func (s *DescribeDomainBpsDataResponse) SetBody(v *DescribeDomainBpsDataResponse
 }
 
 type DescribeDomainBpsDataByLayerRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// > If you do not specify this parameter, the bandwidth data about all accelerated domain names that belong to your Alibaba Cloud account is queried.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~DescribeCdnRegionAndIsp~~) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The layer at which you want to query the bandwidth data. Valid values:
-	//
-	// *   Network layer: **IPv4** and **IPv6**.
-	// *   Application layer: **http**, **https**, and **quic**.
-	// *   **all**: specifies that both the network and application layers are included.
-	//
-	// Default value: **all**.
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~DescribeCdnRegionAndIsp~~) operation to query regions. If you do not specify a region, data in all regions is queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByLayerRequest) String() string {
@@ -7520,12 +7205,9 @@ func (s *DescribeDomainBpsDataByLayerRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainBpsDataByLayerResponseBody struct {
-	// The data returned at each time interval.
 	BpsDataInterval *DescribeDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
-	// The time interval between the data entries. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DataInterval    *string                                                  `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByLayerResponseBody) String() string {
@@ -7569,12 +7251,9 @@ func (s *DescribeDomainBpsDataByLayerResponseBodyBpsDataInterval) SetDataModule(
 }
 
 type DescribeDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total amount of network traffic. Unit: bytes.
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
-	// The peak bandwidth value. Unit: bit/s.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) String() string {
@@ -7630,20 +7309,10 @@ func (s *DescribeDomainBpsDataByLayerResponse) SetBody(v *DescribeDomainBpsDataB
 }
 
 type DescribeDomainBpsDataByTimeStampRequest struct {
-	// The accelerated domain name. You can specify only one domain name in each request.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The names of the Internet service providers (ISPs). Separate multiple ISPs with commas (,).
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
-	IspNames *string `json:"IspNames,omitempty" xml:"IspNames,omitempty"`
-	// The regions. Separate multiple regions with commas (,).
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	IspNames      *string `json:"IspNames,omitempty" xml:"IspNames,omitempty"`
 	LocationNames *string `json:"LocationNames,omitempty" xml:"LocationNames,omitempty"`
-	// The point in time to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The data is collected every 5 minutes.
-	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	TimePoint     *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByTimeStampRequest) String() string {
@@ -7675,14 +7344,10 @@ func (s *DescribeDomainBpsDataByTimeStampRequest) SetTimePoint(v string) *Descri
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBody struct {
-	// A list of bandwidth values by ISP and region.
 	BpsDataList *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList `json:"BpsDataList,omitempty" xml:"BpsDataList,omitempty" type:"Struct"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The point in time.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	DomainName  *string                                                  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId   *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TimeStamp   *string                                                  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByTimeStampResponseBody) String() string {
@@ -7731,14 +7396,10 @@ func (s *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList) SetBpsDataMode
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel struct {
-	// The bandwidth value.
-	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The name of the ISP.
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The name of the region.
+	Bps          *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	IspName      *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// The timestamp of the data returned.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) String() string {
@@ -7799,38 +7460,27 @@ func (s *DescribeDomainBpsDataByTimeStampResponse) SetBody(v *DescribeDomainBpsD
 }
 
 type DescribeDomainCcActivityLogRequest struct {
-	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,).
-	//
-	// If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+	// The object that triggered rate limiting.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The number of the page to return. Default value: **1**.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of entries to return on each page. Default value: **30**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
 	// The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number of the page to return. Default value: **1**.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **30**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A custom rule name. Valid values:
-	//
-	// *   default_normal: rule for the normal mode
-	// *   default_attack: rule for the emergency mode
-	//
-	// If you leave this parameter empty, events that triggered rate limiting based on all rules are queried.
+	// The accelerated domain name.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The minimum time granularity of data collection is 5 minutes.
-	//
-	// If you leave this parameter empty, the data collected over the last 24 hours is queried.
+	// The value of the object that triggered rate limiting.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The trigger of rate limiting by which you want to query data.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
-	// If you leave this parameter empty, all events that triggered rate limiting are queried.
+	// Data is collected every 5 minutes.
+	//
+	// If you do not set this parameter, data within the last 24 hours is queried.
 	TriggerObject *string `json:"TriggerObject,omitempty" xml:"TriggerObject,omitempty"`
-	// The value of the trigger.
-	//
-	// If you leave this parameter empty, all events recorded for the trigger are queried.
+	// The page number of the returned page.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7883,15 +7533,22 @@ func (s *DescribeDomainCcActivityLogRequest) SetValue(v string) *DescribeDomainC
 }
 
 type DescribeDomainCcActivityLogResponseBody struct {
-	// The list of rate limiting logs.
+	// A custom rule name. Valid values:
+	//
+	// *   Default mode: default_normal.
+	// *   Emergency mode: default_attack.
+	//
+	// If you do not set this parameter, all events that triggered rate limiting are queried.
 	ActivityLog []*DescribeDomainCcActivityLogResponseBodyActivityLog `json:"ActivityLog,omitempty" xml:"ActivityLog,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The period of time that rate limiting remains effective.
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries returned per page.
+	// Set the value to **DescribeDomainCcActivityLog**.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The name of the rule that was triggered
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The value of the object that triggered rate limiting.
+	//
+	// If you do not set this parameter, the values of all events that triggered rate limiting are queried.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -7929,19 +7586,22 @@ func (s *DescribeDomainCcActivityLogResponseBody) SetTotal(v int64) *DescribeDom
 }
 
 type DescribeDomainCcActivityLogResponseBodyActivityLog struct {
-	// The action that was triggered.
+	// The object that triggered rate limiting.
+	//
+	// If you do not set this parameter, all events that triggered rate limiting are queried.
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The accelerated domain name.
+	// The ID of the request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the rule based on which rate limiting was triggered.
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The timestamp of the data returned.
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The log entry of the event that triggered rate limiting.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The trigger of rate limiting.
+	// The number of entries returned per page.
 	TriggerObject *string `json:"TriggerObject,omitempty" xml:"TriggerObject,omitempty"`
-	// The period of time during which rate limiting remains effective.
+	// The action that was triggered.
 	Ttl *int64 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The value of the trigger for rate limiting.
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,).
+	//
+	// If you do not specify a domain name, data of all domain names is queried.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8470,27 +8130,21 @@ func (s *DescribeDomainCustomLogConfigResponse) SetBody(v *DescribeDomainCustomL
 }
 
 type DescribeDomainDetailDataByLayerRequest struct {
-	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
-	//
-	// If you do not specify an ISP, data of all ISPs is queried.
+	// The bandwidth. Unit: bit/s.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The protocol by which you want to query data. Valid values: **http**, **https**, **quic**, and **all**.
 	//
 	// The default value is **all**.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
+	// The number of queries per second.
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The ID of the request.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The amount of network traffic. Unit: bytes.
+	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeDomainDetailDataByLayer**.
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The detailed data of the accelerated domain names.
+	// The number of IPv6 requests per second.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
-	//
-	// If you do not specify a region, data in all regions is queried.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -8538,9 +8192,11 @@ func (s *DescribeDomainDetailDataByLayerRequest) SetStartTime(v string) *Describ
 }
 
 type DescribeDomainDetailDataByLayerResponseBody struct {
-	// The number of IPv6 requests per second.
+	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
+	//
+	// If you do not specify an ISP, data of all ISPs is queried.
 	Data *DescribeDomainDetailDataByLayerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of queries per second.
+	// The timestamp of the data returned.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8580,38 +8236,31 @@ func (s *DescribeDomainDetailDataByLayerResponseBodyData) SetDataModule(v []*Des
 }
 
 type DescribeDomainDetailDataByLayerResponseBodyDataDataModule struct {
-	// The timestamp of the data returned.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
 	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The bandwidth of IPv6 requests. Unit: bit/s.
+	// Queries the detailed data of one or more accelerated domain names by protocol. Data is collected by domain name.
 	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The number of requests.
+	// DescribeDomainDetailDataByLayer
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// - You can call this operation up to 20 times per second per account.
-	// - If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
-	//
-	// **Time granularity**
-	//
-	// The following table describes the time granularity, the time period within which historical data is available, and the data delay, which vary with the maximum time range per query.
-	//
-	// | Time granularity | Maximum time range per query | Historical data available | Data delay |
-	// | ---------------- | ---------------------------- | ------------------------- | ---------- |
-	// | 5 minutes | 3 days | 93 days | 15 minutes |
-	// | 1 hour | 31 days | 186 days | 4 hours |
-	// | 1 days | 366 days | 366 days | 04:00 on the next day |
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	Ipv6Acc *int64 `json:"Ipv6Acc,omitempty" xml:"Ipv6Acc,omitempty"`
-	// The number of IPv6 requests.
-	Ipv6Bps *float32 `json:"Ipv6Bps,omitempty" xml:"Ipv6Bps,omitempty"`
-	// The amount of network traffic generated by IPv6 requests. Unit: bytes.
-	Ipv6Qps *float32 `json:"Ipv6Qps,omitempty" xml:"Ipv6Qps,omitempty"`
-	// The proportions of HTTP status codes.
-	Ipv6Traf *int64 `json:"Ipv6Traf,omitempty" xml:"Ipv6Traf,omitempty"`
-	// The number of requests.
-	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	// The domain name.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The detailed data of the accelerated domain names.
+	Ipv6Acc *int64 `json:"Ipv6Acc,omitempty" xml:"Ipv6Acc,omitempty"`
+	// The metric that you want to query. You can specify one or more metrics and separate them with commas (,). Valid values: **bps**, **qps**, **traf**, **acc**, **ipv6\_traf**, **ipv6\_bps**, **ipv6\_acc**, **ipv6\_qps**, and **http_code**.
+	Ipv6Bps *float32 `json:"Ipv6Bps,omitempty" xml:"Ipv6Bps,omitempty"`
+	// The proportions of HTTP status codes.
+	Ipv6Qps *float32 `json:"Ipv6Qps,omitempty" xml:"Ipv6Qps,omitempty"`
+	// The amount of network traffic generated by IPv6 requests. Unit: bytes.
+	Ipv6Traf *int64 `json:"Ipv6Traf,omitempty" xml:"Ipv6Traf,omitempty"`
+	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+	//
+	// If you do not specify a region, data in all regions is queried.
+	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The ID of the request.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth of IPv6 requests. Unit: bit/s.
+	// The number of IPv6 requests.
 	Traf *int64 `json:"Traf,omitempty" xml:"Traf,omitempty"`
 }
 
@@ -8865,24 +8514,12 @@ func (s *DescribeDomainHitRateDataResponse) SetBody(v *DescribeDomainHitRateData
 }
 
 type DescribeDomainHttpCodeDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the number and proportions of HTTP status codes for all accelerated domain names that belong to your Alibaba Cloud account.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the region. You can call the DescribeCdnRegionAndIsp operation to query regions. If you do not specify this parameter, data in all regions is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the DescribeCdnRegionAndIsp operation to query ISPs. If you do not specify this parameter, data of all ISPs is queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataRequest) String() string {
@@ -8924,18 +8561,12 @@ func (s *DescribeDomainHttpCodeDataRequest) SetStartTime(v string) *DescribeDoma
 }
 
 type DescribeDomainHttpCodeDataResponseBody struct {
-	// The time interval.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of HTTP status codes at each time interval.
+	DataInterval *string                                             `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName   *string                                             `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HttpCodeData *DescribeDomainHttpCodeDataResponseBodyHttpCodeData `json:"HttpCodeData,omitempty" xml:"HttpCodeData,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId    *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataResponseBody) String() string {
@@ -8994,10 +8625,8 @@ func (s *DescribeDomainHttpCodeDataResponseBodyHttpCodeData) SetUsageData(v []*D
 }
 
 type DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageData struct {
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The information about the HTTP status codes.
-	Value *DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	TimeStamp *string                                                           `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageData) String() string {
@@ -9036,11 +8665,8 @@ func (s *DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageDataValue) SetCo
 }
 
 type DescribeDomainHttpCodeDataResponseBodyHttpCodeDataUsageDataValueCodeProportionData struct {
-	// The HTTP status code returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The count of each HTTP status code.
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The proportion of the HTTP status code.
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
 }
 
@@ -9097,32 +8723,13 @@ func (s *DescribeDomainHttpCodeDataResponse) SetBody(v *DescribeDomainHttpCodeDa
 }
 
 type DescribeDomainHttpCodeDataByLayerRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// If you do not specify this parameter, data of all accelerated domain names under your account is queried.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
-	//
-	// If you do not specify an ISP, data of all ISPs is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The protocol by which you want to query HTTP status codes. The network layer supports **IPv4** and **IPv6**. The application layer supports **http**, **https**, and **quic**. You can also set the value to **all**.
-	//
-	// Default value: **all**
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
-	//
-	// If you do not specify a region, data in all regions is queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataByLayerRequest) String() string {
@@ -9169,12 +8776,9 @@ func (s *DescribeDomainHttpCodeDataByLayerRequest) SetStartTime(v string) *Descr
 }
 
 type DescribeDomainHttpCodeDataByLayerResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The statistics of HTTP status codes returned at each time interval.
+	DataInterval         *string                                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	HttpCodeDataInterval *DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval `json:"HttpCodeDataInterval,omitempty" xml:"HttpCodeDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataByLayerResponseBody) String() string {
@@ -9218,12 +8822,9 @@ func (s *DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) SetD
 }
 
 type DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule struct {
-	// The timestamp of the data returned.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total number of times that HTTP status codes were returned.
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TotalValue *string `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
-	// The number of times that the HTTP status code was returned.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) String() string {
@@ -9279,11 +8880,13 @@ func (s *DescribeDomainHttpCodeDataByLayerResponse) SetBody(v *DescribeDomainHtt
 }
 
 type DescribeDomainISPDataRequest struct {
-	// The beginning of the time range that was queried.
+	// The request error rate.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The accelerated domain name.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The accelerated domain name.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9311,17 +8914,19 @@ func (s *DescribeDomainISPDataRequest) SetStartTime(v string) *DescribeDomainISP
 }
 
 type DescribeDomainISPDataResponseBody struct {
-	// The average response speed. Unit: byte/ms.
+	// The accelerated domain name. You can specify only one domain name in each call.
+	//
+	// By default, this operation queries the proportions of data usage for all accelerated domain names.
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The total amount of network traffic.
+	// The end of the time range that was queried.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time interval between the data entries. Unit: seconds.
+	// The operation that you want to perform. Set the value to **DescribeDomainISPData**.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The total number of requests.
+	// The number of queries per second.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The access statistics by ISP.
+	// The proportion of network traffic.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The average response time. Unit: milliseconds.
+	// The proportion of the HTTP status code.
 	Value *DescribeDomainISPDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -9381,33 +8986,28 @@ func (s *DescribeDomainISPDataResponseBodyValue) SetISPProportionData(v []*Descr
 }
 
 type DescribeDomainISPDataResponseBodyValueISPProportionData struct {
-	// The name of the ISP.
+	// The average response time. Unit: milliseconds.
 	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	// The bandwidth value.
+	// The access statistics by ISP.
 	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	// The number of queries per second.
+	// The total number of requests.
 	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	// The information about the ISP.
-	Bps *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The total amount of network traffic.
+	// The time interval between the data entries. Unit: seconds.
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	// The name of the ISP.
+	// Queries the proportions of data usage of different Internet service providers (ISPs). Data is collected every day. You can query data collected within the last 90 days.
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The statistical analytics feature of Alibaba Cloud CDN is discontinued. The API operations related to the statistical analytics feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
-	//
-	// > - If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data collected within the specified time range is queried.
-	// - This operation queries proportions of data usage of different ISPs only for a specific accelerated domain name, or for all accelerated domain names that belong your Alibaba Cloud account.
-	// - You can call this operation up to 100 times per second per account.
+	// The ID of the request.
 	IspEname *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
-	// The proportion of network traffic.
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// chinanet
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The proportion of the HTTP status code.
-	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
 	// The average response size. Unit: bytes.
+	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	// The bandwidth value.
+	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The beginning of the time range that was queried.
+	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	// The information about the ISP.
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The request error rate.
+	// The average response speed. Unit: byte/ms.
 	TotalQuery *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
 }
 
@@ -9509,28 +9109,15 @@ func (s *DescribeDomainISPDataResponse) SetBody(v *DescribeDomainISPDataResponse
 }
 
 type DescribeDomainMax95BpsDataRequest struct {
-	// The cycle to query the 95th percentile bandwidth data. Default value: **day**. Valid values:
-	//
-	// *   **day**: queries the 95th percentile bandwidth data by day.
-	// *   **month**: queries the 95th percentile bandwidth data by month.
+	// 1001
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	// The accelerated domain name. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
-	//
-	// > You cannot specify multiple domain names at a time.
+	// data.content.domesticMax95Bps
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
+	// The 95th percentile bandwidth.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// data.content.overseasMax95Bps
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// data.content.max95Bps
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
 }
 
@@ -9569,19 +9156,16 @@ func (s *DescribeDomainMax95BpsDataRequest) SetTimePoint(v string) *DescribeDoma
 
 type DescribeDomainMax95BpsDataResponseBody struct {
 	DetailData *DescribeDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The 95th percentile bandwidth in the Chinese mainland.
+	// http://inner.jing.alibaba-inc.com:1160/v2/api/rtlog/max95BpsData
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomesticMax95Bps *string `json:"DomesticMax95Bps,omitempty" xml:"DomesticMax95Bps,omitempty"`
-	// The end of the time range for which the data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The 95th percentile bandwidth.
-	Max95Bps *string `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
-	// The 95th percentile bandwidth outside the Chinese mainland.
+	// domainName
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Max95Bps         *string `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
 	OverseasMax95Bps *string `json:"OverseasMax95Bps,omitempty" xml:"OverseasMax95Bps,omitempty"`
-	// The ID of the request.
+	// Specified EndTime does not math the specified StartTime.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// http://inner.jing.alibaba-inc.com:1160/v2/api/rtlog/max95BpsData
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9715,11 +9299,11 @@ func (s *DescribeDomainMax95BpsDataResponse) SetBody(v *DescribeDomainMax95BpsDa
 }
 
 type DescribeDomainMultiUsageDataRequest struct {
-	// The beginning of the time range that was queried.
+	// The operation that you want to perform. Set the value to **DescribeDomainMultiUsageData**.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The information about requests collected every 5 minutes.
+	// The number of requests.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The information about requests collected every 5 minutes.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9747,17 +9331,19 @@ func (s *DescribeDomainMultiUsageDataRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainMultiUsageDataResponseBody struct {
+	// The end of the time range that was queried.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of data returned.
 	//
 	// >  For Alibaba Cloud CDN, the valid value is Simple.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The information about the accelerated domain name.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of requests.
+	// The ID of the request.
 	RequestPerInterval *DescribeDomainMultiUsageDataResponseBodyRequestPerInterval `json:"RequestPerInterval,omitempty" xml:"RequestPerInterval,omitempty" type:"Struct"`
-	// The timestamp of the data returned.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the district.
+	// The accelerated domain names. You can specify multiple accelerated domain names and separate domain names with commas (,).
+	//
+	// > *   You can specify at most 30 accelerated domain names.
+	// *   If you do not set this parameter, the data of all accelerated domain names that belong to your Alibaba Cloud account is queried.
+	StartTime          *string                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficPerInterval *DescribeDomainMultiUsageDataResponseBodyTrafficPerInterval `json:"TrafficPerInterval,omitempty" xml:"TrafficPerInterval,omitempty" type:"Struct"`
 }
 
@@ -9812,19 +9398,12 @@ func (s *DescribeDomainMultiUsageDataResponseBodyRequestPerInterval) SetRequestD
 }
 
 type DescribeDomainMultiUsageDataResponseBodyRequestPerIntervalRequestDataModule struct {
-	// The accelerated domain name.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The timestamp of the data returned.
-	Request *int64 `json:"Request,omitempty" xml:"Request,omitempty"`
-	// The type of data returned. Valid values:
-	//
-	// - **StaticHttps**: the number of HTTPS requests for static content.
-	// - **DynamicHttps**: the number of HTTPS requests for dynamic content.
-	// - **DynamicHttp**: the number of HTTP requests for dynamic content.
-	// - **StaticQuic**: the number of QUIC requests for static content.
-	// - **DynamicQuic**: the number of QUIC requests for dynamic content.
+	// DescribeDomainMultiUsageData
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Request *int64  `json:"Request,omitempty" xml:"Request,omitempty"`
+	// Queries the amount of data transfer and the number of requests for one or more accelerated domain names at a time. Data is collected every 5 minutes.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The statistics about data transfer collected every 5 minutes.
+	// The information about the accelerated domain name.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9874,22 +9453,11 @@ func (s *DescribeDomainMultiUsageDataResponseBodyTrafficPerInterval) SetTrafficD
 }
 
 type DescribeDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  The end time must be later than the start time.
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The timestamp of the data returned.
-	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// > *   If you do not set StartTime or EndTime, data collected within the last 10 minutes is queried.
-	// *   The maximum time range between StartTime and EndTime can be 1 hour.
-	// *   You can query data within the last 90 days.
-	// *   You can query the amount of data transfer and the number of requests for accelerated domain names that have been already removed from Alibaba Cloud CDN.
-	// *   The maximum number of times that each user can call this operation per second is 50.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Area      *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Domain    *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Type      *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) String() string {
@@ -9955,22 +9523,12 @@ func (s *DescribeDomainMultiUsageDataResponse) SetBody(v *DescribeDomainMultiUsa
 }
 
 type DescribeDomainPathDataRequest struct {
-	// The accelerated domain name.
-	//
-	// > You can specify only one domain name in each call.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The interval between the start time and end time must be less than 30 days. Example: 2016-10-21T04:00:00Z.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Pages start from page **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: integers from **1** to **1000**.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The paths that you want to query. Separate paths with forward slashes (/). If you do not set this parameter, all paths are queried. If you set the value to a directory, it must end with a forward slash (/).
-	//
-	// > Fuzzy match is not supported. If you want data to be collected based on a directory, you can specify a specific directory, for example, directory/path/. In this case, bandwidth data is collected based on directory/path/.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-10-20T04:00:00Z.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainPathDataRequest) String() string {
@@ -10012,22 +9570,14 @@ func (s *DescribeDomainPathDataRequest) SetStartTime(v string) *DescribeDomainPa
 }
 
 type DescribeDomainPathDataResponseBody struct {
-	// The time interval. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number of the returned page. Pages start from page **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of bandwidth values collected at each time interval.
+	DataInterval        *string                                                `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName          *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime             *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber          *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PathDataPerInterval *DescribeDomainPathDataResponseBodyPathDataPerInterval `json:"PathDataPerInterval,omitempty" xml:"PathDataPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	StartTime           *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalCount          *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDomainPathDataResponseBody) String() string {
@@ -10096,14 +9646,10 @@ func (s *DescribeDomainPathDataResponseBodyPathDataPerInterval) SetUsageData(v [
 }
 
 type DescribeDomainPathDataResponseBodyPathDataPerIntervalUsageData struct {
-	// The number of visits to the URL.
-	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The path.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The point in time.
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	Traffic *int32 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	Acc     *int32  `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Traffic *int32  `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 
 func (s DescribeDomainPathDataResponseBodyPathDataPerIntervalUsageData) String() string {
@@ -10164,11 +9710,11 @@ func (s *DescribeDomainPathDataResponse) SetBody(v *DescribeDomainPathDataRespon
 }
 
 type DescribeDomainPvDataRequest struct {
-	// The beginning of the time range during which data was queried.
+	// The timestamp of the returned data.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The accelerated domain name.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The number of PVs at each interval.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10196,20 +9742,19 @@ func (s *DescribeDomainPvDataRequest) SetStartTime(v string) *DescribeDomainPvDa
 }
 
 type DescribeDomainPvDataResponseBody struct {
-	// The statistical analytics feature of Alibaba Cloud CDN is discontinued. The API operations related to the statistical analytics feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
-	//
-	// > - If you do not set StartTime or EndTime, monitoring data within the last 24 hours is queried. If you set both StartTime and EndTime, monitoring data within the specified time range is queried.
-	// - You can call this operation up to 50 times per second per account.
+	// The ID of the request.
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The timestamp of the returned data.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The time interval between the data entries. Unit: seconds.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The accelerated domain name.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end of the time range during which data was queried.
+	// The operation that you want to perform. Set the value to **DescribeDomainPvData**.
 	PvDataInterval *DescribeDomainPvDataResponseBodyPvDataInterval `json:"PvDataInterval,omitempty" xml:"PvDataInterval,omitempty" type:"Struct"`
-	// The number of PVs.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// The end time must be later than the start time.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of PVs at each interval.
+	// The beginning of the time range during which data was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10269,9 +9814,8 @@ func (s *DescribeDomainPvDataResponseBodyPvDataInterval) SetUsageData(v []*Descr
 }
 
 type DescribeDomainPvDataResponseBodyPvDataIntervalUsageData struct {
-	// The accelerated domain name. You can specify only one domain name.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The number of PVs.
+	// Queries the page view (PV) data of an accelerated domain name. The data is collected at an interval of 1 hour. You can query data within the last 90 days.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10323,24 +9867,12 @@ func (s *DescribeDomainPvDataResponse) SetBody(v *DescribeDomainPvDataResponseBo
 }
 
 type DescribeDomainQpsDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries QPS data for all accelerated domain names that belong to your Alibaba Cloud account.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not specify an ISP, data of all ISPs is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not specify a region, data in all regions is queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainQpsDataRequest) String() string {
@@ -10382,18 +9914,12 @@ func (s *DescribeDomainQpsDataRequest) SetStartTime(v string) *DescribeDomainQps
 }
 
 type DescribeDomainQpsDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of QPS records at each interval.
+	DataInterval    *string                                           `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName      *string                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime         *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	QpsDataInterval *DescribeDomainQpsDataResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainQpsDataResponseBody) String() string {
@@ -10452,32 +9978,19 @@ func (s *DescribeDomainQpsDataResponseBodyQpsDataInterval) SetDataModule(v []*De
 }
 
 type DescribeDomainQpsDataResponseBodyQpsDataIntervalDataModule struct {
-	// The number of requests in the Chinese mainland.
-	AccDomesticValue *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
-	// The number of requests outside the Chinese mainland.
-	AccOverseasValue *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
-	// The total number of requests.
-	AccValue *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
-	// The number of queries per second in the Chinese mainland.
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The number of HTTPS requests sent to POPs in the Chinese mainland.
+	AccDomesticValue      *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
+	AccOverseasValue      *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
+	AccValue              *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	DomesticValue         *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsAccDomesticValue *string `json:"HttpsAccDomesticValue,omitempty" xml:"HttpsAccDomesticValue,omitempty"`
-	// The number of HTTPS requests sent to POPs outside the Chinese mainland.
 	HttpsAccOverseasValue *string `json:"HttpsAccOverseasValue,omitempty" xml:"HttpsAccOverseasValue,omitempty"`
-	// The number of HTTPS requests sent to POPs.
-	HttpsAccValue *string `json:"HttpsAccValue,omitempty" xml:"HttpsAccValue,omitempty"`
-	// The number of queries per second that is calculated based on the HTTPS requests sent to POPs in the Chinese mainland.
-	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The number of queries per second that is calculated based on the HTTPS requests sent to POPs outside the Chinese mainland.
-	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The number of queries per second that is calculated based on the HTTPS requests sent to points of presence (POPs).
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The number of queries per second outside the Chinese mainland.
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the data returned.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total QPS.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsAccValue         *string `json:"HttpsAccValue,omitempty" xml:"HttpsAccValue,omitempty"`
+	HttpsDomesticValue    *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
+	HttpsOverseasValue    *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
+	HttpsValue            *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue         *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp             *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value                 *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainQpsDataResponseBodyQpsDataIntervalDataModule) String() string {
@@ -10583,30 +10096,13 @@ func (s *DescribeDomainQpsDataResponse) SetBody(v *DescribeDomainQpsDataResponse
 }
 
 type DescribeDomainQpsDataByLayerRequest struct {
-	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the QPS of all accelerated domain names that belong to your Alibaba Cloud account.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard. The time is displayed in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries to return. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Description**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP) for your Alibaba Cloud CDN service. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The layers at which you want to query the number of queries per second. Valid values:
-	//
-	// *   **Network layer**: **IPv4**and **IPv6**.
-	// *   **Application layer**: **http**, **https**, and **quic**.
-	// *   **all**: The default value. Both the network and application layers are included.
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard. The time is displayed in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainQpsDataByLayerRequest) String() string {
@@ -10653,20 +10149,13 @@ func (s *DescribeDomainQpsDataByLayerRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainQpsDataByLayerResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The layer at which the data was collected.
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The number of queries per second at each interval.
+	DataInterval    *string                                                  `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName      *string                                                  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime         *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Layer           *string                                                  `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	QpsDataInterval *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId       *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainQpsDataByLayerResponseBody) String() string {
@@ -10730,20 +10219,13 @@ func (s *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval) SetDataModule(
 }
 
 type DescribeDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule struct {
-	// The number of requests in the Chinese mainland.
 	AccDomesticValue *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
-	// The number of requests outside the Chinese mainland.
 	AccOverseasValue *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
-	// The total number of requests.
-	AccValue *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
-	// The number of queries per second in the Chinese mainland.
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The number of queries per second outside the Chinese mainland.
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total number of queries per second.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	AccValue         *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	DomesticValue    *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
+	OverseasValue    *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value            *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) String() string {
@@ -10819,28 +10301,11 @@ func (s *DescribeDomainQpsDataByLayerResponse) SetBody(v *DescribeDomainQpsDataB
 }
 
 type DescribeDomainRealTimeBpsDataRequest struct {
-	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
-	//
-	// > You can specify up to 500 domain names in each request.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the Internet service provider (ISP).
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs. If you do not set this parameter, all ISPs are queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region.
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions. If you do not set this parameter, all regions are queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeBpsDataRequest) String() string {
@@ -10877,10 +10342,8 @@ func (s *DescribeDomainRealTimeBpsDataRequest) SetStartTime(v string) *DescribeD
 }
 
 type DescribeDomainRealTimeBpsDataResponseBody struct {
-	// The data returned.
-	Data *DescribeDomainRealTimeBpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeDomainRealTimeBpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainRealTimeBpsDataResponseBody) String() string {
@@ -10919,10 +10382,8 @@ func (s *DescribeDomainRealTimeBpsDataResponseBodyData) SetBpsModel(v []*Describ
 }
 
 type DescribeDomainRealTimeBpsDataResponseBodyDataBpsModel struct {
-	// The bandwidth. Unit: bit/s.
-	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeBpsDataResponseBodyDataBpsModel) String() string {
@@ -10973,18 +10434,9 @@ func (s *DescribeDomainRealTimeBpsDataResponse) SetBody(v *DescribeDomainRealTim
 }
 
 type DescribeDomainRealTimeByteHitRateDataRequest struct {
-	// The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeByteHitRateDataRequest) String() string {
@@ -11011,10 +10463,8 @@ func (s *DescribeDomainRealTimeByteHitRateDataRequest) SetStartTime(v string) *D
 }
 
 type DescribeDomainRealTimeByteHitRateDataResponseBody struct {
-	// The data returned.
-	Data *DescribeDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainRealTimeByteHitRateDataResponseBody) String() string {
@@ -11053,10 +10503,8 @@ func (s *DescribeDomainRealTimeByteHitRateDataResponseBodyData) SetByteHitRateDa
 }
 
 type DescribeDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel struct {
-	// The byte hit ratio. The byte hit ratio is measured in percentage.
 	ByteHitRate *float32 `json:"ByteHitRate,omitempty" xml:"ByteHitRate,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp   *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) String() string {
@@ -11107,36 +10555,34 @@ func (s *DescribeDomainRealTimeByteHitRateDataResponse) SetBody(v *DescribeDomai
 }
 
 type DescribeDomainRealTimeDetailDataRequest struct {
+	// The end of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:40:00Z.
+	//
+	// >  The end time must be later than the start time. The time range between the end time and the start time cannot exceed 10 minutes.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The metrics that you want to query. You can specify multiple metrics and separate them with commas (,). Valid values:
 	//
 	// *   **qps**: the number of queries per second
 	// *   **bps**: bandwidth values
 	// *   **http_code**: HTTP status codes
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the Internet service provider. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The data usage of each ISP and the number of visits in each region.
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeDomainRealTimeDetailData**.
+	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	// The ID of the request.
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
+	Merge *string `json:"Merge,omitempty" xml:"Merge,omitempty"`
+	// Queries detailed monitoring data of one or more accelerated domain names at a time.
+	MergeLocIsp *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
 	// Specifies whether to merge the results. Valid values:
 	//
 	// *   **true**: merges the results.
 	// *   **false**: does not merge the results. This is the default value.
 	//
 	// Default value: **false**.
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The data usage of each ISP and the number of visits in each region.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// Specifies whether to merge the results. Valid values:
-	//
-	// *   **true**: groups the results by domain name and merges the results by region and ISP.
-	// *   **false**: groups the results by domain name.
-	//
-	// Default value: **false**.
-	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The ID of the request.
-	Merge *string `json:"Merge,omitempty" xml:"Merge,omitempty"`
-	// - You can query data within the last seven days. Data is collected every minute.
-	// - The maximum number of times that each user can call this operation per second is 10.
-	MergeLocIsp *string `json:"MergeLocIsp,omitempty" xml:"MergeLocIsp,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11189,9 +10635,8 @@ func (s *DescribeDomainRealTimeDetailDataRequest) SetStartTime(v string) *Descri
 }
 
 type DescribeDomainRealTimeDetailDataResponseBody struct {
-	// The name of the Internet service provider. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The accelerated domain name for which you want to query data. You can specify multiple accelerated domain names and separate them with commas (,).
+	// DescribeDomainRealTimeDetailData
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11446,28 +10891,11 @@ func (s *DescribeDomainRealTimeHttpCodeDataResponse) SetBody(v *DescribeDomainRe
 }
 
 type DescribeDomainRealTimeQpsDataRequest struct {
-	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
-	//
-	// > You can specify up to 500 domain names in each request.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the Internet service provider (ISP).
-	//
-	// If you do not set this parameter, data of all ISPs is queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISP names.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region.
-	//
-	// If you do not set this parameter, data in all regions is queried. You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeQpsDataRequest) String() string {
@@ -11504,10 +10932,8 @@ func (s *DescribeDomainRealTimeQpsDataRequest) SetStartTime(v string) *DescribeD
 }
 
 type DescribeDomainRealTimeQpsDataResponseBody struct {
-	// The data entries returned.
-	Data *DescribeDomainRealTimeQpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DescribeDomainRealTimeQpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDomainRealTimeQpsDataResponseBody) String() string {
@@ -11546,10 +10972,8 @@ func (s *DescribeDomainRealTimeQpsDataResponseBodyData) SetQpsModel(v []*Describ
 }
 
 type DescribeDomainRealTimeQpsDataResponseBodyDataQpsModel struct {
-	// The number of queries per second.
-	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The timestamp of the data returned. The time follows the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard and is in UTC.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Qps       *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeQpsDataResponseBodyDataQpsModel) String() string {
@@ -11600,11 +11024,13 @@ func (s *DescribeDomainRealTimeQpsDataResponse) SetBody(v *DescribeDomainRealTim
 }
 
 type DescribeDomainRealTimeReqHitRateDataRequest struct {
-	// The response parameters.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The timestamp. The time follows the ISO 8601 standard. The time is displayed in UTC.
+	// The response parameters.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The request hit ratio.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11632,22 +11058,9 @@ func (s *DescribeDomainRealTimeReqHitRateDataRequest) SetStartTime(v string) *De
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBody struct {
-	// - The maximum number of times that each user can call this operation per second is 10.
-	// - If you do not set StartTime or EndTime, data collected within the last hour is queried. If you set both StartTime and EndTime, data collected within the specified time range is queried.
-	// - By default, requests in the Go programming language use the POST request method. You must manually change the request method to GET by declaring: request.Method="GET".
-	// - The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the request hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
-	//
-	// **Time granularity**
-	//
-	// The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
-	//
-	// | Time granularity | Time range to query | Historical data available | Data delay |
-	// | ---------------- | ------------------- | ------------------------- | ---------- |
-	// | 1 minute | 1 hour | 7 days | 5 minutes |
-	// | 5 minutes | 3 Days | 93 days | 15 minutes |
-	// | 1 hour | 31 days | 186 days | 4 hours |
+	// The operation that you want to perform. Set the value to **DescribeDomainRealTimeReqHitRateData**.
 	Data *DescribeDomainRealTimeReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 624461
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11687,9 +11100,9 @@ func (s *DescribeDomainRealTimeReqHitRateDataResponseBodyData) SetReqHitRateData
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel struct {
-	// You can specify multiple domain names and separate them with commas (,). You can specify at most 100 domain names in each call.
+	// The timestamp. The time follows the ISO 8601 standard. The time is displayed in UTC.
 	ReqHitRate *float32 `json:"ReqHitRate,omitempty" xml:"ReqHitRate,omitempty"`
-	// The request hit ratio.
+	// Queries the request hit ratios for one or more accelerated domain names.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
@@ -12089,18 +11502,9 @@ func (s *DescribeDomainRealTimeSrcHttpCodeDataResponse) SetBody(v *DescribeDomai
 }
 
 type DescribeDomainRealTimeSrcTrafficDataRequest struct {
-	// The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeSrcTrafficDataRequest) String() string {
@@ -12127,20 +11531,12 @@ func (s *DescribeDomainRealTimeSrcTrafficDataRequest) SetStartTime(v string) *De
 }
 
 type DescribeDomainRealTimeSrcTrafficDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	//
-	// Depending on the maximum time range per query, the value is 60 (1 minute), 300 (5 minutes), or 3600 (1 hour). For more information, see the "Time granularity" section in Usage notes.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for which the data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The amount of back-to-origin traffic returned at each interval.
+	DataInterval                      *string                                                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                        *string                                                                            `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                           *string                                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeSrcTrafficDataPerInterval *DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerInterval `json:"RealTimeSrcTrafficDataPerInterval,omitempty" xml:"RealTimeSrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range for which the data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId                         *string                                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime                         *string                                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeSrcTrafficDataResponseBody) String() string {
@@ -12199,10 +11595,8 @@ func (s *DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataP
 }
 
 type DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerIntervalDataModule struct {
-	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The amount of traffic.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerIntervalDataModule) String() string {
@@ -12253,26 +11647,11 @@ func (s *DescribeDomainRealTimeSrcTrafficDataResponse) SetBody(v *DescribeDomain
 }
 
 type DescribeDomainRealTimeTrafficDataRequest struct {
-	// The accelerated domain name. You can specify up to 100 domain names in each call. Separate multiple domain names with commas (,).
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the Internet service provider (ISP).
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region.
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list. If you do not set this parameter, all regions are queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeTrafficDataRequest) String() string {
@@ -12309,20 +11688,12 @@ func (s *DescribeDomainRealTimeTrafficDataRequest) SetStartTime(v string) *Descr
 }
 
 type DescribeDomainRealTimeTrafficDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	//
-	// Depending on the maximum time range per query, the value is 60 (1 minute), 300 (5 minutes), or 3600 (1 hour). For more information, see the "Time granularity" section in Usage notes.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The network traffic returned at each time interval. Unit: bytes.
+	DataInterval                   *string                                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                     *string                                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                        *string                                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeTrafficDataPerInterval *DescribeDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInterval `json:"RealTimeTrafficDataPerInterval,omitempty" xml:"RealTimeTrafficDataPerInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId                      *string                                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime                      *string                                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainRealTimeTrafficDataResponseBody) String() string {
@@ -12381,10 +11752,8 @@ func (s *DescribeDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInte
 }
 
 type DescribeDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule struct {
-	// The timestamp of the returned data.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic value at each time interval.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerIntervalDataModule) String() string {
@@ -12524,11 +11893,13 @@ func (s *DescribeDomainRealtimeLogDeliveryResponse) SetBody(v *DescribeDomainRea
 }
 
 type DescribeDomainRegionDataRequest struct {
-	// The ID of the request.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// The end time must be later than the start time.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time interval between the data entries returned. Unit: seconds.
+	// The proportion of bytes transferred from each region. For example, a value of 90 indicates that 90% of the bytes are transferred from the specified area.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The accelerated domain name.
+	// The information of the regions.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12556,17 +11927,19 @@ func (s *DescribeDomainRegionDataRequest) SetStartTime(v string) *DescribeDomain
 }
 
 type DescribeDomainRegionDataResponseBody struct {
-	// The average response time. Unit: milliseconds.
+	// The proportion of visits from each region. For example, a value of 90 indicates that 90% of the visits are from the specified area.
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The average response speed. Unit: bit/s.
+	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	//
+	// By default, this operation queries the geographic distribution of users for all accelerated domain names.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The proportions of requests initiated from each area.
+	// The number of queries per second.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The total traffic. Unit: bytes.
+	// The name of the region.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of requests.
+	// The end of the time range that was queried.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The request error rate. A value of 90 indicates that 90% of the requests encountered errors.
+	// The average response speed. Unit: bit/s.
 	Value *DescribeDomainRegionDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -12626,33 +11999,27 @@ func (s *DescribeDomainRegionDataResponseBodyValue) SetRegionProportionData(v []
 }
 
 type DescribeDomainRegionDataResponseBodyValueRegionProportionData struct {
-	// cn-shenzhen
-	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	// The number of queries per second.
-	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	// The name of the region.
-	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	// The proportion of visits from each region. For example, a value of 90 indicates that 90% of the visits are from the specified area.
-	Bps *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The accelerated domain name.
-	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	// The request error rate. A value of 90 indicates that 90% of the requests encountered errors.
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// The proportion of bytes transferred from each region. For example, a value of 90 indicates that 90% of the bytes are transferred from the specified area.
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The start of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The statistical analytics feature of Alibaba Cloud CDN is discontinued. The API operations related to the statistical analytics feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
-	//
-	// > - If you do not set **StartTime** or **EndTime**, data collected within the last **24** hours is queried. If you set both **StartTime** and **EndTime**, data collected within the specified time range is queried.
-	// - You may fail to query the latest data. If you need to query data collected within the last day, we recommend that you query the data on the next day.
-	// - You can call this operation up to 100 times per second per account.
-	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
-	// The information of the regions.
-	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
 	// The bandwidth.
-	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
+	// The beginning of the time range that was queried.
+	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
+	// The average response time. Unit: milliseconds.
+	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
 	// The average response size. Unit: bytes.
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
+	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	// The ID of the request.
+	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// DescribeDomainRegionData
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Queries the geographic distribution of users. The data is collected at an interval of 1 day. You can query data collected within the last 90 days.
+	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
+	// The time interval between the data entries returned. Unit: seconds.
+	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	// The total number of requests.
+	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The proportions of requests initiated from each area.
 	TotalQuery *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
 }
 
@@ -12754,24 +12121,10 @@ func (s *DescribeDomainRegionDataResponse) SetBody(v *DescribeDomainRegionDataRe
 }
 
 type DescribeDomainReqHitRateDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the request hit ratio for all accelerated domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainReqHitRateDataRequest) String() string {
@@ -12803,18 +12156,12 @@ func (s *DescribeDomainReqHitRateDataRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainReqHitRateDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The request hit ratio data at each time interval. The hit ratio is measured in percentage.
+	DataInterval       *string                                                     `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName         *string                                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime            *string                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ReqHitRateInterval *DescribeDomainReqHitRateDataResponseBodyReqHitRateInterval `json:"ReqHitRateInterval,omitempty" xml:"ReqHitRateInterval,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime          *string                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainReqHitRateDataResponseBody) String() string {
@@ -12873,12 +12220,9 @@ func (s *DescribeDomainReqHitRateDataResponseBodyReqHitRateInterval) SetDataModu
 }
 
 type DescribeDomainReqHitRateDataResponseBodyReqHitRateIntervalDataModule struct {
-	// The hit ratio of HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The request hit ratio.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainReqHitRateDataResponseBodyReqHitRateIntervalDataModule) String() string {
@@ -12934,24 +12278,10 @@ func (s *DescribeDomainReqHitRateDataResponse) SetBody(v *DescribeDomainReqHitRa
 }
 
 type DescribeDomainSrcBpsDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each call. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the geographic distribution of users for all accelerated domain names.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Description**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcBpsDataRequest) String() string {
@@ -12983,18 +12313,12 @@ func (s *DescribeDomainSrcBpsDataRequest) SetStartTime(v string) *DescribeDomain
 }
 
 type DescribeDomainSrcBpsDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The origin bandwidth data at each time interval. Unit: bit/s.
+	DataInterval          *string                                                    `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName            *string                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime               *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcBpsDataPerInterval *DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime             *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcBpsDataResponseBody) String() string {
@@ -13053,12 +12377,9 @@ func (s *DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) SetDataModul
 }
 
 type DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
-	// The bandwidth values of origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic value at each time interval.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {
@@ -13114,18 +12435,10 @@ func (s *DescribeDomainSrcBpsDataResponse) SetBody(v *DescribeDomainSrcBpsDataRe
 }
 
 type DescribeDomainSrcHttpCodeDataRequest struct {
-	// The accelerated domain name. You can specify a maximum of 500 domain names in a request. Separate multiple domain names with commas (,).
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard. The time is displayed in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries to return. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Description**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcHttpCodeDataRequest) String() string {
@@ -13157,18 +12470,12 @@ func (s *DescribeDomainSrcHttpCodeDataRequest) SetStartTime(v string) *DescribeD
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of HTTP status codes at each time interval.
+	DataInterval *string                                                `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName   *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HttpCodeData *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData `json:"HttpCodeData,omitempty" xml:"HttpCodeData,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcHttpCodeDataResponseBody) String() string {
@@ -13227,10 +12534,8 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData) SetUsageData(v [
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData struct {
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The proportions of the HTTP status codes.
-	Value *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	TimeStamp *string                                                              `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData) String() string {
@@ -13269,11 +12574,8 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue) Se
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValueCodeProportionData struct {
-	// The HTTP status code returned.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of entries.
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The proportion of the HTTP status code.
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
 }
 
@@ -13330,22 +12632,10 @@ func (s *DescribeDomainSrcHttpCodeDataResponse) SetBody(v *DescribeDomainSrcHttp
 }
 
 type DescribeDomainSrcQpsDataRequest struct {
-	// The accelerated domain name. You can specify multiple domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries QPS data for all accelerated domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time interval between the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// If you leave this parameter empty, data collected in the last 24 hours is queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcQpsDataRequest) String() string {
@@ -13377,18 +12667,12 @@ func (s *DescribeDomainSrcQpsDataRequest) SetStartTime(v string) *DescribeDomain
 }
 
 type DescribeDomainSrcQpsDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The back-to-origin bandwidth information at each interval.
+	DataInterval          *string                                                    `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName            *string                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime               *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcQpsDataPerInterval *DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerInterval `json:"SrcQpsDataPerInterval,omitempty" xml:"SrcQpsDataPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime             *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcQpsDataResponseBody) String() string {
@@ -13447,10 +12731,8 @@ func (s *DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerInterval) SetDataModul
 }
 
 type DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerIntervalDataModule struct {
-	// The timestamp of the data returned.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The QPS value.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerIntervalDataModule) String() string {
@@ -13501,13 +12783,15 @@ func (s *DescribeDomainSrcQpsDataResponse) SetBody(v *DescribeDomainSrcQpsDataRe
 }
 
 type DescribeDomainSrcTopUrlVisitRequest struct {
-	// The number of visits to the URL.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The proportion of visits to the URL.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A list of frequently requested URLs.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  If you do not set the StartTime parameter, the data within the previous day is queried.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeDomainSrcTopUrlVisit**.
+	// A list of frequently requested URLs.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -13540,19 +12824,16 @@ func (s *DescribeDomainSrcTopUrlVisitRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainSrcTopUrlVisitResponseBody struct {
+	// The amount of network traffic. Unit: bytes.
+	AllUrlList *DescribeDomainSrcTopUrlVisitResponseBodyAllUrlList `json:"AllUrlList,omitempty" xml:"AllUrlList,omitempty" type:"Struct"`
+	// The proportion of network traffic consumed to access the URL.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// >  The end time must be later than the start time. The difference between the end time and the start time cannot exceed seven days.
-	AllUrlList *DescribeDomainSrcTopUrlVisitResponseBodyAllUrlList `json:"AllUrlList,omitempty" xml:"AllUrlList,omitempty" type:"Struct"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// >  If you do not set the StartTime parameter, the data within the previous day is queried.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The proportion of visits to the URL.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the request.
+	// The accelerated domain name.
+	StartTime  *string                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Url200List *DescribeDomainSrcTopUrlVisitResponseBodyUrl200List `json:"Url200List,omitempty" xml:"Url200List,omitempty" type:"Struct"`
 	Url300List *DescribeDomainSrcTopUrlVisitResponseBodyUrl300List `json:"Url300List,omitempty" xml:"Url300List,omitempty" type:"Struct"`
 	Url400List *DescribeDomainSrcTopUrlVisitResponseBodyUrl400List `json:"Url400List,omitempty" xml:"Url400List,omitempty" type:"Struct"`
@@ -13625,18 +12906,18 @@ func (s *DescribeDomainSrcTopUrlVisitResponseBodyAllUrlList) SetUrlList(v []*Des
 }
 
 type DescribeDomainSrcTopUrlVisitResponseBodyAllUrlListUrlList struct {
-	// The proportion of network traffic consumed to access the URL.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The complete URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The beginning of the time range that was queried.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
+	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	// The method that is used to sort the returned URLs.**** Valid values:
 	//
 	// *   **traf**: by network traffic.
 	// *   **pv**: by the number of page views. This is the default value.
+	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	// The beginning of the time range that was queried.
+	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	// The ID of the request.
+	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
+	// Queries frequently requested back-to-origin URLs of one or more accelerated domain names.
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -13691,7 +12972,6 @@ func (s *DescribeDomainSrcTopUrlVisitResponseBodyUrl200List) SetUrlList(v []*Des
 }
 
 type DescribeDomainSrcTopUrlVisitResponseBodyUrl200ListUrlList struct {
-	// Queries frequently requested back-to-origin URLs of one or more accelerated domain names.
 	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
 	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
 	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
@@ -13936,24 +13216,10 @@ func (s *DescribeDomainSrcTopUrlVisitResponse) SetBody(v *DescribeDomainSrcTopUr
 }
 
 type DescribeDomainSrcTrafficDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the origin traffic for all accelerated domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcTrafficDataRequest) String() string {
@@ -13985,18 +13251,12 @@ func (s *DescribeDomainSrcTrafficDataRequest) SetStartTime(v string) *DescribeDo
 }
 
 type DescribeDomainSrcTrafficDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The amount of origin traffic returned at each time interval. Unit: bytes.
+	DataInterval              *string                                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName                *string                                                            `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                   *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcTrafficDataPerInterval *DescribeDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime                 *string                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainSrcTrafficDataResponseBody) String() string {
@@ -14055,12 +13315,9 @@ func (s *DescribeDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) SetD
 }
 
 type DescribeDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
-	// The amount of traffic generated by origin HTTPS requests.
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic value at each time interval.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
@@ -14116,24 +13373,22 @@ func (s *DescribeDomainSrcTrafficDataResponse) SetBody(v *DescribeDomainSrcTraff
 }
 
 type DescribeDomainTopClientIpVisitRequest struct {
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The ranking of the client IP address returned.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// A list of client IP addresses.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The maximum number of entries to return. Maximum value: 100.
 	//
 	// Default value: 20. The default value 20 specifies that the top 20 data entries are returned.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A list of client IP addresses.
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
+	// The client IP address returned. Only IPv4 addressed are supported.
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The ID of the request.
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The method that is used to sort the client IP addresses. Valid values:
 	//
 	// *   **traf**: by network traffic. This is the default value.
 	// *   **acc**: by the number of requests.
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The operation that you want to perform. Set the value to **DescribeDomainTopClientIpVisit**.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14176,9 +13431,13 @@ func (s *DescribeDomainTopClientIpVisitRequest) SetStartTime(v string) *Describe
 }
 
 type DescribeDomainTopClientIpVisitResponseBody struct {
-	// The client IP address returned. Only IPv4 addressed are supported.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// The end time must be later than the start time.
 	ClientIpList []*DescribeDomainTopClientIpVisitResponseBodyClientIpList `json:"ClientIpList,omitempty" xml:"ClientIpList,omitempty" type:"Repeated"`
-	// The ranking of the client IP address returned.
+	// The accelerated domain name. Separate multiple accelerated domain names with commas (,).
+	//
+	// By default, this operation queries client IP addresses for all accelerated domain names.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14201,17 +13460,12 @@ func (s *DescribeDomainTopClientIpVisitResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeDomainTopClientIpVisitResponseBodyClientIpList struct {
-	// The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
-	//
-	// > - If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data collected within the specified time range is queried.
-	// - Data is collected every hour.
-	// - You can call this operation up to 10 times per second per account.
+	// Queries client IP addresses that are ranked by the number of requests or the amount of network traffic within a specific time range for one or more accelerated domain names. You can query data collected within the last 90 days.
 	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The total amount of network traffic consumed. Unit: bytes.
+	// The ID of the request.
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The total number of requests.
-	Rank *int32 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The total number of requests.
+	// The total amount of network traffic consumed. Unit: bytes.
+	Rank    *int32 `json:"Rank,omitempty" xml:"Rank,omitempty"`
 	Traffic *int64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 
@@ -14273,13 +13527,13 @@ func (s *DescribeDomainTopClientIpVisitResponse) SetBody(v *DescribeDomainTopCli
 }
 
 type DescribeDomainTopReferVisitRequest struct {
-	// The beginning of the time range that was queried.
+	// The operation that you want to perform. Set the value to **DescribeDomainTopReferVisit**.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The accelerated domain name.
+	// The accelerated domain names. Separate multiple accelerated domain names with commas (,).
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The most frequently requested web pages.
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the request.
+	// The number of visits to the web page.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -14312,13 +13566,16 @@ func (s *DescribeDomainTopReferVisitRequest) SetStartTime(v string) *DescribeDom
 }
 
 type DescribeDomainTopReferVisitResponseBody struct {
-	// The number of visits to the web page.
+	// The sorting method. Valid values:
+	//
+	// *   **traf**: by network traffic.
+	// *   **pv**: by the number of page views. This is the default value.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The proportion of the amount of network traffic consumed for visiting the web page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The URLs to the most frequently requested web pages.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range that was queried.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The amount of network traffic. Unit: bytes.
 	TopReferList *DescribeDomainTopReferVisitResponseBodyTopReferList `json:"TopReferList,omitempty" xml:"TopReferList,omitempty" type:"Struct"`
 }
 
@@ -14368,21 +13625,14 @@ func (s *DescribeDomainTopReferVisitResponseBodyTopReferList) SetReferList(v []*
 }
 
 type DescribeDomainTopReferVisitResponseBodyTopReferListReferList struct {
-	// The proportion of visits to the web page.
+	// The ID of the request.
 	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to analyze data.
-	//
-	// > - If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
-	// - Data is collected at an interval of five minutes.
-	// - You can call this operation up to 10 times per second per account.
+	// The proportion of the amount of network traffic consumed for visiting the web page.
 	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The accelerated domain name.
+	// Queries frequently requested web pages of one or more accelerated domain names on a specified day and sorts the web pages. You can query data collected within the last 90 days.
 	ReferDetail *string `json:"ReferDetail,omitempty" xml:"ReferDetail,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// The end time must be later than the start time.
+	// The proportion of visits to the web page.
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14449,25 +13699,10 @@ func (s *DescribeDomainTopReferVisitResponse) SetBody(v *DescribeDomainTopReferV
 }
 
 type DescribeDomainTopUrlVisitRequest struct {
-	// The accelerated domain name that you want to query.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The method that is used to sort the returned URLs. Default value: **pv**. Valid values:
-	//
-	// *   **traf**: by network traffic
-	// *   **pv**: by the number of page views
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// If you want to query data of a specific day, we recommend that you set the value in the yyyy-MM-ddT16:00:00Z format.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainTopUrlVisitRequest) String() string {
@@ -14499,21 +13734,13 @@ func (s *DescribeDomainTopUrlVisitRequest) SetStartTime(v string) *DescribeDomai
 }
 
 type DescribeDomainTopUrlVisitResponseBody struct {
-	// A list of frequently requested URLs.
 	AllUrlList *DescribeDomainTopUrlVisitResponseBodyAllUrlList `json:"AllUrlList,omitempty" xml:"AllUrlList,omitempty" type:"Struct"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// A list of URLs for which 2xx status codes were returned.
+	DomainName *string                                          `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime  *string                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Url200List *DescribeDomainTopUrlVisitResponseBodyUrl200List `json:"Url200List,omitempty" xml:"Url200List,omitempty" type:"Struct"`
-	// A list of URLs for which 3xx status codes were returned.
 	Url300List *DescribeDomainTopUrlVisitResponseBodyUrl300List `json:"Url300List,omitempty" xml:"Url300List,omitempty" type:"Struct"`
-	// A list of URLs for which 4xx status codes were returned.
 	Url400List *DescribeDomainTopUrlVisitResponseBodyUrl400List `json:"Url400List,omitempty" xml:"Url400List,omitempty" type:"Struct"`
-	// A list of URLs for which 5xx status codes were returned.
 	Url500List *DescribeDomainTopUrlVisitResponseBodyUrl500List `json:"Url500List,omitempty" xml:"Url500List,omitempty" type:"Struct"`
 }
 
@@ -14583,15 +13810,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyAllUrlList) SetUrlList(v []*Descri
 }
 
 type DescribeDomainTopUrlVisitResponseBodyAllUrlListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14646,15 +13868,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl200List) SetUrlList(v []*Descri
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl200ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14709,15 +13926,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl300List) SetUrlList(v []*Descri
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl300ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14772,15 +13984,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl400List) SetUrlList(v []*Descri
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl400ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14835,15 +14042,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl500List) SetUrlList(v []*Descri
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl500ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -14910,28 +14112,12 @@ func (s *DescribeDomainTopUrlVisitResponse) SetBody(v *DescribeDomainTopUrlVisit
 }
 
 type DescribeDomainTrafficDataRequest struct {
-	// The accelerated domain name. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// By default, this operation queries the network traffic for all accelerated domain names that belong to your Alibaba Cloud account.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds.
-	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](~~DescribeCdnRegionAndIsp~~) operation to query ISPs.
-	//
-	// If you do not specify an ISP, data of all ISPs is queried.
-	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](~~DescribeCdnRegionAndIsp~~) operation to query regions.
-	//
-	// If you do not specify a region, data in all regions is queried.
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainTrafficDataRequest) String() string {
@@ -14973,17 +14159,11 @@ func (s *DescribeDomainTrafficDataRequest) SetStartTime(v string) *DescribeDomai
 }
 
 type DescribeDomainTrafficDataResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The amount of network traffic at each time interval. Unit: bytes.
+	DataInterval           *string                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName             *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime                *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId              *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime              *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficDataPerInterval *DescribeDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -15043,20 +14223,13 @@ func (s *DescribeDomainTrafficDataResponseBodyTrafficDataPerInterval) SetDataMod
 }
 
 type DescribeDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// The amount of network traffic in the Chinese mainland.
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The amount of HTTPS traffic on points of presence (POPs) in the Chinese mainland.
+	DomesticValue      *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The amount of HTTPS traffic on POPs outside the Chinese mainland.
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The total amount of HTTPS traffic on POPs.
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The amount of network traffic outside the Chinese mainland.
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total volume of traffic.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule) String() string {
@@ -15132,61 +14305,23 @@ func (s *DescribeDomainTrafficDataResponse) SetBody(v *DescribeDomainTrafficData
 }
 
 type DescribeDomainUsageDataRequest struct {
-	// The ID of the billable region. Valid values:
-	//
-	// *   **CN** (default): inside the Chinese mainland
-	// *   **OverSeas**: outside the Chinese mainland
-	// *   **AP1**: Asia Pacific 1
-	// *   **AP2**: Asia Pacific 2
-	// *   **AP3**: Asia Pacific 3
-	// *   **NA**: North America
-	// *   **SA**: South America
-	// *   **EU**: Europe
-	// *   **MEAA**: Middle East and Africa
-	// *   **all**: all the preceding billable regions
+	// The amount of resource usage.
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The protocol of the data that you want to query. Valid values:
-	//
-	// *   **http**: HTTP
-	// *   **https**: HTTPS
-	// *   **quic**: QUIC
-	// *   **all** (default): HTTP, HTTPS, and QUIC
+	// The information about resource usage that was collected at each interval.
 	DataProtocol *string `json:"DataProtocol,omitempty" xml:"DataProtocol,omitempty"`
-	// The accelerated domain name. You can specify up to 100 domain names in each request. Separate multiple domain names with commas (,).
-	//
-	// > If you leave this parameter empty, the usage data of all accelerated domain names in your Alibaba Cloud account is returned.
+	// The type of content.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is 31 days.
+	// The ID of the billable region where the data was collected.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the data that you want to query. Valid values:
-	//
-	// *   **bps**: bandwidth
-	// *   **traf**: traffic
-	// *   **acc**: requests
-	//
-	// > If you set this parameter to **acc**, the **Area** parameter is not supported.
+	// The time interval between the data entries returned. Unit: seconds.
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The time granularity of the data entries. Unit: seconds. Valid values: **300** (5 minutes), **3600** (1 hour), and **86400** (1 day).
+	// The timestamp of the data returned.
 	//
-	// *   If **Interval** is set to **300**, you can query usage data in the last 6 months. The maximum time range per query that can be specified is 3 days.
-	// *   If **Interval** is set to **3600** or **86400**, you can query usage data of the previous year.
-	// *   If you leave the **Interval** parameter empty, the maximum time range that you can query is 1 month. If you specify a time range of 1 to 3 days, the time interval between the entries that are returned is 1 hour. If you specify a time range of at least 4 days, the time interval between the entries that are returned is 1 day.
+	// > **TimeStamp** indicates the timestamp of the data returned at each interval.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > Data is collected every 5 minutes.
+	// static
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of content that you want to query. Valid values:
-	//
-	// *   **static**: static content
-	// *   **dynamic**: dynamic content
-	// *   **all** (default): both static and dynamic content
+	// The resource usage that was collected at each interval.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -15239,21 +14374,16 @@ func (s *DescribeDomainUsageDataRequest) SetType(v string) *DescribeDomainUsageD
 }
 
 type DescribeDomainUsageDataResponseBody struct {
-	// The ID of the billable region where the data was collected.
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time interval between the data entries returned. Unit: seconds.
+	Area         *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of content.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The resource usage that was collected at each interval.
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The resource usage in a specific scenario.
+	//
+	// > SpecialValue indicates the data usage in a specific scenario. If no special billable item is specified, ignore this parameter.
+	RequestId            *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime            *string                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type                 *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsageDataPerInterval *DescribeDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -15323,18 +14453,10 @@ func (s *DescribeDomainUsageDataResponseBodyUsageDataPerInterval) SetDataModule(
 }
 
 type DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {
-	// The time of the peak bandwidth value if the **Field** parameter in the request is set to **bps**. Otherwise, this parameter returns the same value as the **TimeStamp** parameter.
-	PeakTime *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	// The resource usage in a specific scenario.
-	//
-	// > SpecialValue indicates the data usage in a specific scenario. If no special billable item is specified, ignore this parameter.
+	PeakTime     *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	SpecialValue *string `json:"SpecialValue,omitempty" xml:"SpecialValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// > **TimeStamp** indicates the timestamp of the data returned at each interval.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The amount of resource usage.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule) String() string {
@@ -15791,20 +14913,9 @@ func (s *DescribeDomainsBySourceResponse) SetBody(v *DescribeDomainsBySourceResp
 }
 
 type DescribeDomainsUsageByDayRequest struct {
-	// The accelerated domain name. You can specify only one domain name.
-	//
-	// If you do not specify an accelerated domain name, the data of all accelerated domain names that belong to your account is queried.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDomainsUsageByDayRequest) String() string {
@@ -15831,20 +14942,13 @@ func (s *DescribeDomainsUsageByDayRequest) SetStartTime(v string) *DescribeDomai
 }
 
 type DescribeDomainsUsageByDayResponseBody struct {
-	// The time interval between the data entries returned. Unit: seconds.
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The accelerated domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The monitoring data collected at each time interval.
-	UsageByDays *DescribeDomainsUsageByDayResponseBodyUsageByDays `json:"UsageByDays,omitempty" xml:"UsageByDays,omitempty" type:"Struct"`
-	// The summarized monitoring data.
-	UsageTotal *DescribeDomainsUsageByDayResponseBodyUsageTotal `json:"UsageTotal,omitempty" xml:"UsageTotal,omitempty" type:"Struct"`
+	DataInterval *string                                           `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName   *string                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime      *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UsageByDays  *DescribeDomainsUsageByDayResponseBodyUsageByDays `json:"UsageByDays,omitempty" xml:"UsageByDays,omitempty" type:"Struct"`
+	UsageTotal   *DescribeDomainsUsageByDayResponseBodyUsageTotal  `json:"UsageTotal,omitempty" xml:"UsageTotal,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainsUsageByDayResponseBody) String() string {
@@ -15908,26 +15012,16 @@ func (s *DescribeDomainsUsageByDayResponseBodyUsageByDays) SetUsageByDay(v []*De
 }
 
 type DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay struct {
-	// The byte hit ratio. The byte hit ratio is measured in percentage.
-	BytesHitRate *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
-	// The peak bandwidth value. Unit: bit/s.
-	MaxBps *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The peak bandwidth value during back-to-origin routing. Unit: bit/s.
-	MaxSrcBps *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
-	// The time when the bandwidth during back-to-origin routing reached the peak value.
-	MaxSrcBpsTime *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
-	// The number of queries per second (QPS).
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The cache hit ratio that is calculated based on requests. The cache hit ratio is measured in percentage.
+	BytesHitRate   *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
+	MaxBps         *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	MaxSrcBps      *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
+	MaxSrcBpsTime  *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
+	Qps            *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	RequestHitRate *string `json:"RequestHitRate,omitempty" xml:"RequestHitRate,omitempty"`
-	// The timestamp of the data returned.
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total amount of requests.
-	TotalAccess *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total amount of network traffic. Unit: bytes.
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	TimeStamp      *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalAccess    *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay) String() string {
@@ -15989,22 +15083,14 @@ func (s *DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay) SetTotalTra
 }
 
 type DescribeDomainsUsageByDayResponseBodyUsageTotal struct {
-	// The byte hit ratio. The byte hit ratio is measured in percentage.
-	BytesHitRate *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
-	// The peak bandwidth value. Unit: bit/s.
-	MaxBps *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The peak bandwidth value during back-to-origin routing. Unit: bit/s.
-	MaxSrcBps *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
-	// The time when the bandwidth during back-to-origin routing reached the peak value.
-	MaxSrcBpsTime *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
-	// The cache hit ratio that is calculated based on requests. The cache hit ratio is measured in percentage.
+	BytesHitRate   *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
+	MaxBps         *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	MaxSrcBps      *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
+	MaxSrcBpsTime  *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
 	RequestHitRate *string `json:"RequestHitRate,omitempty" xml:"RequestHitRate,omitempty"`
-	// The total amount of requests.
-	TotalAccess *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total amount of network traffic. Unit: bytes.
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	TotalAccess    *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeDomainsUsageByDayResponseBodyUsageTotal) String() string {
@@ -16085,17 +15171,11 @@ func (s *DescribeDomainsUsageByDayResponse) SetBody(v *DescribeDomainsUsageByDay
 }
 
 type DescribeEsExceptionDataRequest struct {
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
+	// The ID of the request.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The script ID. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
+	// The operation that you want to perform. Set the value to **DescribeEsExceptionData**.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The value of each time and the column of each data entry.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16123,9 +15203,9 @@ func (s *DescribeEsExceptionDataRequest) SetStartTime(v string) *DescribeEsExcep
 }
 
 type DescribeEsExceptionDataResponseBody struct {
-	// The content of the script for which an error was reported.
+	// Queries the executions errors of scripts in EdgeScript (ES).
 	Contents []*DescribeEsExceptionDataResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The content of the script.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16148,12 +15228,9 @@ func (s *DescribeEsExceptionDataResponseBody) SetRequestId(v string) *DescribeEs
 }
 
 type DescribeEsExceptionDataResponseBodyContents struct {
-	// Information about the time column and the error column name.
-	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The name of the table that shows the errors of the script.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time columns and error column names.
-	Points []*DescribeEsExceptionDataResponseBodyContentsPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	Columns []*string                                            `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	Name    *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Points  []*DescribeEsExceptionDataResponseBodyContentsPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEsExceptionDataResponseBodyContents) String() string {
@@ -16180,7 +15257,6 @@ func (s *DescribeEsExceptionDataResponseBodyContents) SetPoints(v []*DescribeEsE
 }
 
 type DescribeEsExceptionDataResponseBodyContentsPoints struct {
-	// The data points.
 	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 
@@ -16227,13 +15303,11 @@ func (s *DescribeEsExceptionDataResponse) SetBody(v *DescribeEsExceptionDataResp
 }
 
 type DescribeEsExecuteDataRequest struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time.
+	// The name of the chart that shows the status of the script.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the rule. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
+	// The value of each time and the column of each data entry.
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The column names of the chart that shows the status of the script and the time of each data entry.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16261,7 +15335,7 @@ func (s *DescribeEsExecuteDataRequest) SetStartTime(v string) *DescribeEsExecute
 }
 
 type DescribeEsExecuteDataResponseBody struct {
-	// The content of the script.
+	// The operation that you want to perform. Set the value to **DescribeEsExecuteData**.
 	Contents []*DescribeEsExecuteDataResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -16286,11 +15360,10 @@ func (s *DescribeEsExecuteDataResponseBody) SetRequestId(v string) *DescribeEsEx
 }
 
 type DescribeEsExecuteDataResponseBodyContents struct {
-	// The time and column names in the table that shows the status of the script.
 	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The name of the table that shows the status of the script.
+	// The content of the script.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of timestamps and values in the corresponding columns of the table that shows the status of the script.
+	// Queries the execution status of scripts in EdgeScript (ES).
 	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 
@@ -16467,85 +15540,6 @@ func (s *DescribeFCTriggerResponse) SetStatusCode(v int32) *DescribeFCTriggerRes
 }
 
 func (s *DescribeFCTriggerResponse) SetBody(v *DescribeFCTriggerResponseBody) *DescribeFCTriggerResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeIllegalUrlExportTaskRequest struct {
-	// The ID of the task. You can call the [CreateIllegalUrlExportTask](~~156492~~) operation to query task IDs.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DescribeIllegalUrlExportTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIllegalUrlExportTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIllegalUrlExportTaskRequest) SetTaskId(v string) *DescribeIllegalUrlExportTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type DescribeIllegalUrlExportTaskResponseBody struct {
-	// The URL where you can download the file that contains invalid URLs. This parameter is valid only if the export task is successful.
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeIllegalUrlExportTask**.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeIllegalUrlExportTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIllegalUrlExportTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIllegalUrlExportTaskResponseBody) SetDownloadUrl(v string) *DescribeIllegalUrlExportTaskResponseBody {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *DescribeIllegalUrlExportTaskResponseBody) SetRequestId(v string) *DescribeIllegalUrlExportTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeIllegalUrlExportTaskResponseBody) SetStatus(v string) *DescribeIllegalUrlExportTaskResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DescribeIllegalUrlExportTaskResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeIllegalUrlExportTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeIllegalUrlExportTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIllegalUrlExportTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIllegalUrlExportTaskResponse) SetHeaders(v map[string]*string) *DescribeIllegalUrlExportTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeIllegalUrlExportTaskResponse) SetStatusCode(v int32) *DescribeIllegalUrlExportTaskResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeIllegalUrlExportTaskResponse) SetBody(v *DescribeIllegalUrlExportTaskResponseBody) *DescribeIllegalUrlExportTaskResponse {
 	s.Body = v
 	return s
 }
@@ -17026,26 +16020,11 @@ func (s *DescribePreloadDetailByIdResponse) SetBody(v *DescribePreloadDetailById
 }
 
 type DescribeRangeDataByLocateAndIspServiceRequest struct {
-	// The accelerated domain name.
-	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
-	// The end of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is 1 hour.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the ISP. You can specify only one ISP name in each call.
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query ISPs.
-	IspNames *string `json:"IspNames,omitempty" xml:"IspNames,omitempty"`
-	// The names of the regions. Separate multiple region names with commas (,).
-	//
-	// You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query the most recent region list.
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IspNames      *string `json:"IspNames,omitempty" xml:"IspNames,omitempty"`
 	LocationNames *string `json:"LocationNames,omitempty" xml:"LocationNames,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRangeDataByLocateAndIspServiceRequest) String() string {
@@ -17082,10 +16061,8 @@ func (s *DescribeRangeDataByLocateAndIspServiceRequest) SetStartTime(v string) *
 }
 
 type DescribeRangeDataByLocateAndIspServiceResponseBody struct {
-	// The response parameters in the JSON format. These parameters indicate the following information in sequence: UNIX time, region, ISP, distribution of HTTP status codes, response time, bandwidth (bit/s), average response rate, page views, cache hit ratio, and request hit ratio.
 	JsonResult *string `json:"JsonResult,omitempty" xml:"JsonResult,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRangeDataByLocateAndIspServiceResponseBody) String() string {
@@ -17136,21 +16113,21 @@ func (s *DescribeRangeDataByLocateAndIspServiceResponse) SetBody(v *DescribeRang
 }
 
 type DescribeRealtimeDeliveryAccRequest struct {
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
 	//
-	// The end time must be later than the start time.
+	// The end of the time range to query. The end time must be later than the start time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the data entries. Unit: seconds. The value varies based on the values of the **StartTime** and **EndTime** parameters. Valid values:
+	// The time interval between the data entries. Unit: seconds. The value varies based on the values of the **StartTime** and **EndTime** parameters. Valid values:
 	//
 	// *   If the time span between StartTime and EndTime is less than 3 days, valid values are **300**, **3600**, and **86400**. Default value: **300**.
-	// *   If the time span between StartTime and EndTime is greater than or equal to 3 days and less than 31 days, valid values are **3600** and **86400**. Default value: **3600**.
+	// *   If the time span between StartTime and EndTime is from 3 to 31 days (31 days excluded), valid values are **3600** and **86400**. Default value: **3600**.
 	// *   If the time span between StartTime and EndTime is 31 days or longer, the valid value is **86400**. Default value: **86400**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Logstore that stores log data. If you do leave this parameter empty, real-time log deliveries of all Logstores are queried.
+	// The timestamp of the data.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery. If you do leave this parameter empty, real-time log deliveries of all projects are queried.
+	// The name of the Log Service project that is used for real-time log delivery. By default, all projects are queried.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The information about real-time log delivery.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -17188,9 +16165,9 @@ func (s *DescribeRealtimeDeliveryAccRequest) SetStartTime(v string) *DescribeRea
 }
 
 type DescribeRealtimeDeliveryAccResponseBody struct {
-	// The statistics about real-time log deliveries.
+	// The operation that you want to perform. Set the value to **DescribeRealtimeDeliveryAcc**.
 	ReatTimeDeliveryAccData *DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccData `json:"ReatTimeDeliveryAccData,omitempty" xml:"ReatTimeDeliveryAccData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The number of failed attempts to deliver log data to Log Service.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17230,11 +16207,10 @@ func (s *DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccData) SetAccD
 }
 
 type DescribeRealtimeDeliveryAccResponseBodyReatTimeDeliveryAccDataAccData struct {
-	// The number of failed attempts to deliver log data to Log Service.
-	FailedNum *int32 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
-	// The number of successful deliveries of log data to Log Service.
+	// Queries the number of real-time log deliveries.
+	FailedNum  *int32 `json:"FailedNum,omitempty" xml:"FailedNum,omitempty"`
 	SuccessNum *int32 `json:"SuccessNum,omitempty" xml:"SuccessNum,omitempty"`
-	// The timestamp of the data returned.
+	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time. By default, all Logstores are queried.
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
@@ -17314,33 +16290,35 @@ func (s *DescribeRefreshQuotaRequest) SetSecurityToken(v string) *DescribeRefres
 }
 
 type DescribeRefreshQuotaResponseBody struct {
-	// The maximum number of URLs and directories that can be blocked on the current day.
-	BlockQuota *string `json:"BlockQuota,omitempty" xml:"BlockQuota,omitempty"`
-	// The remaining number of URLs that can be blocked on the current day.
-	BlockRemain *string `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
-	// The maximum number of directories that can be refreshed on the current day.
-	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
-	// The remaining number of directories that can be refreshed on the current day.
-	DirRemain          *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
-	IgnoreParamsQuota  *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
-	IgnoreParamsRemain *string `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
-	// The maximum number of times that you can prefetch content to L1 POPs on the current day.
-	PreloadEdgeQuota *string `json:"PreloadEdgeQuota,omitempty" xml:"PreloadEdgeQuota,omitempty"`
-	// The remaining number of times that you can prefetch content to L1 POPs on the current day.
-	PreloadEdgeRemain *string `json:"PreloadEdgeRemain,omitempty" xml:"PreloadEdgeRemain,omitempty"`
-	// The maximum number of times that you can prefetch content to L2 POPs on the current day.
-	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
-	// The remaining number of times that you can prefetch content to L2 points of presence (POPs) on the current day.
-	PreloadRemain *string `json:"PreloadRemain,omitempty" xml:"PreloadRemain,omitempty"`
-	// The maximum number of URLs or directories that can be refreshed by using regular expressions on the current day.
-	RegexQuota *string `json:"RegexQuota,omitempty" xml:"RegexQuota,omitempty"`
-	// The remaining number of URLs or directories that can be refreshed by using regular expressions on the current day.
-	RegexRemain *string `json:"RegexRemain,omitempty" xml:"RegexRemain,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The maximum number of URLs that can be refreshed on the current day.
-	UrlQuota *string `json:"UrlQuota,omitempty" xml:"UrlQuota,omitempty"`
+	BlockQuota *string `json:"BlockQuota,omitempty" xml:"BlockQuota,omitempty"`
+	// The remaining number of times that you can prefetch content to L1 nodes on the current day.
+	BlockRemain *string `json:"BlockRemain,omitempty" xml:"BlockRemain,omitempty"`
+	// The remaining number of directories that can be refreshed on the current day.
+	DirQuota *string `json:"DirQuota,omitempty" xml:"DirQuota,omitempty"`
+	// The operation that you want to perform. Set this parameter to **DescribeRefreshQuota**.
+	DirRemain *string `json:"DirRemain,omitempty" xml:"DirRemain,omitempty"`
+	// 当天忽略参数刷新数量上限。
+	IgnoreParamsQuota *string `json:"IgnoreParamsQuota,omitempty" xml:"IgnoreParamsQuota,omitempty"`
+	// 当天剩余忽略参数刷新数量。
+	IgnoreParamsRemain *string `json:"IgnoreParamsRemain,omitempty" xml:"IgnoreParamsRemain,omitempty"`
+	// The maximum number of directories that can be refreshed on the current day.
+	PreloadEdgeQuota *string `json:"PreloadEdgeQuota,omitempty" xml:"PreloadEdgeQuota,omitempty"`
+	// The maximum number of times that you can prefetch content to L2 nodes on the current day.
+	PreloadEdgeRemain *string `json:"PreloadEdgeRemain,omitempty" xml:"PreloadEdgeRemain,omitempty"`
+	// The remaining number of times that you can use regular expressions to refresh directories or URLs on the current day.
+	PreloadQuota *string `json:"PreloadQuota,omitempty" xml:"PreloadQuota,omitempty"`
+	// The maximum number of URLs and directories that can be blocked on the current day.
+	PreloadRemain *string `json:"PreloadRemain,omitempty" xml:"PreloadRemain,omitempty"`
+	// The ID of the request
+	RegexQuota *string `json:"RegexQuota,omitempty" xml:"RegexQuota,omitempty"`
+	// The remaining number of times that you can prefetch content to L2 nodes on the current day.
+	RegexRemain *string `json:"RegexRemain,omitempty" xml:"RegexRemain,omitempty"`
 	// The remaining number of URLs that can be refreshed on the current day.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of times that you can prefetch content to L1 nodes on the current day.
+	UrlQuota *string `json:"UrlQuota,omitempty" xml:"UrlQuota,omitempty"`
+	// The maximum number of times that you can use regular expressions to refresh directories or URLs on the current day.
 	UrlRemain *string `json:"UrlRemain,omitempty" xml:"UrlRemain,omitempty"`
 }
 
@@ -17457,12 +16435,7 @@ func (s *DescribeRefreshQuotaResponse) SetBody(v *DescribeRefreshQuotaResponseBo
 }
 
 type DescribeRefreshTaskByIdRequest struct {
-	// The status of the task. Valid values:
-	//
-	// *   **Complete**: The task is complete.
-	// *   **Pending**: The task is pending.
-	// *   **Refreshing**: The task is running.
-	// *   **Failed**: The task failed.
+	// The path of the object refreshed by the refresh task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -17480,16 +16453,19 @@ func (s *DescribeRefreshTaskByIdRequest) SetTaskId(v string) *DescribeRefreshTas
 }
 
 type DescribeRefreshTaskByIdResponseBody struct {
-	// The type of the task. Valid values:
+	// The ID of the task that you want to query.
 	//
-	// *   **file**: refreshes an individual file.
-	// *   **directory**: refreshes files under the specified directory.
-	// *   **preload**: prefetches an individual file.
-	// *   **regex**: refreshes content based on a regular expression.
+	// You can call the [RefreshObjectCaches](~~91164~~) operation to query task IDs. Then, you can use the task IDs to query task status.
+	//
+	// You can specify up to 10 task IDs. Separate task IDs with commas (,).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The progress of the task, in percentage.
+	// The error returned when the refresh or prefetch task failed. Valid values:
+	//
+	// *   **Internal Error**: An internal error occurred.
+	// *   **Origin Timeout**: The response from the origin server timed out.
+	// *   **Origin Return StatusCode 5XX**: The origin server returned a 5XX error.
 	Tasks []*DescribeRefreshTaskByIdResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The time when the task was created. The time is displayed in UTC.
+	// The total number of tasks.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -17517,34 +16493,18 @@ func (s *DescribeRefreshTaskByIdResponseBody) SetTotalCount(v int64) *DescribeRe
 }
 
 type DescribeRefreshTaskByIdResponseBodyTasks struct {
-	// The path of the object refreshed by the refresh task.
+	// The progress of the task, in percentage.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The tasks.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the task. Valid values:
-	//
-	// *   **file**: refreshes an individual file.
-	// *   **directory**: refreshes files under the specified directory.
-	// *   **preload**: prefetches an individual file.
-	// *   **regex**: refreshes content based on a regular expression.
-	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	// The ID of the task.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Queries the status of refresh or prefetch tasks by ID for an accelerated domain name.
+	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
+	// The ID of the request.
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// > - You can query data within the last three days.
-	// - You can call this operation up to 30 times per second per account.
+	// The operation that you want to perform. Set the value to **DescribeRefreshTaskById**.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The error returned when the refresh or prefetch task failed. Valid values:
-	//
-	// *   **Internal Error**: An internal error occurred.
-	// *   **Origin Timeout**: The response from the origin server timed out.
-	// *   **Origin Return StatusCode 5XX**: The origin server returned a 5XX error.
+	// The time when the task was created. The time is displayed in UTC.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// *   **Complete**: The task is complete.
-	// *   **Pending**: The task is pending.
-	// *   **Refreshing**: The task is running.
-	// *   **Failed**: The task failed.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -17844,9 +16804,8 @@ func (s *DescribeRefreshTasksResponse) SetBody(v *DescribeRefreshTasksResponseBo
 }
 
 type DescribeStagingIpResponseBody struct {
-	// The ID of the request.
 	IPV4s *DescribeStagingIpResponseBodyIPV4s `json:"IPV4s,omitempty" xml:"IPV4s,omitempty" type:"Struct"`
-	// The IPv4 addresses of the nodes.
+	// Queries node IP addresses in the staging environment.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18065,15 +17024,13 @@ func (s *DescribeTagResourcesResponse) SetBody(v *DescribeTagResourcesResponseBo
 }
 
 type DescribeTopDomainsByFlowRequest struct {
+	// The maximum number of domain names to query. Valid values: **1** to **100**. Default value: **20**.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The total number of accelerated domain names that are in the **Enabled** state within the current Alibaba Cloud account.
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > The end time must be later than the start time.
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of domain names to query. Valid values: **1** to **100**. Default value: **20**.
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	//
-	// > The value of StartTime must be in UTC. For example, if the local time is 00:00 on June 1, 2021, set StartTime to 2021-05-31T16:00:00Z.
+	// >  The end time must be later than the start time.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -18101,17 +17058,17 @@ func (s *DescribeTopDomainsByFlowRequest) SetStartTime(v string) *DescribeTopDom
 }
 
 type DescribeTopDomainsByFlowResponseBody struct {
-	// The total number of accelerated domain names that belong to the current Alibaba Cloud account.
+	// The number of visits to the accelerated domain name.
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The total number of accelerated domain names that are in the **Enabled** state within the current Alibaba Cloud account.
+	// The ranking of the accelerated domain name.
 	DomainOnlineCount *int64 `json:"DomainOnlineCount,omitempty" xml:"DomainOnlineCount,omitempty"`
-	// The end of the time range during which data was queried.
+	// The operation that you want to perform. Set the value to **DescribeTopDomainsByFlow**.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The proportion of the amount of network traffic consumed for visiting the web page.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range during which data was queried.
+	// The total amount of network traffic.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The top N domain names ranked by network traffic.
+	// The end of the time range during which data was queried.
 	TopDomains *DescribeTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
 }
 
@@ -18171,19 +17128,21 @@ func (s *DescribeTopDomainsByFlowResponseBodyTopDomains) SetTopDomain(v []*Descr
 }
 
 type DescribeTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
-	// The accelerated domain name.
+	// The total number of accelerated domain names that belong to the current Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The peak bandwidth value.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  Set StartTime to UTC time in the yyyy-MM-ddTHH:mm:ssZ format. For example, if the local time is 00:00, June 1, 2021, set StartTime to 2021-05-31T16:00:00Z.
 	MaxBps *float32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
+	// Queries the top N domain names ranked by network traffic. You can query data collected within the last 30 days.
 	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The ranking of the accelerated domain name.
+	// The time when the bandwidth reached the peak value.
 	Rank *int64 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The number of visits to the domain name.
+	// The top N domain names ranked by network traffic.
 	TotalAccess *int64 `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total volume of traffic.
+	// The ID of the request.
 	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	// The proportion of network traffic consumed to access the domain name.
+	// The beginning of the time range during which data was queried.
 	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
 }
 
@@ -19761,7 +18720,7 @@ func (s *EnableRealtimeLogDeliveryResponse) SetBody(v *EnableRealtimeLogDelivery
 }
 
 type ListDomainsByLogConfigIdRequest struct {
-	// The ID of the custom configuration.
+	// >  The maximum number of times that each user can call this operation per second is 100.
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 }
 
@@ -19779,9 +18738,9 @@ func (s *ListDomainsByLogConfigIdRequest) SetConfigId(v string) *ListDomainsByLo
 }
 
 type ListDomainsByLogConfigIdResponseBody struct {
-	// The domain names.
-	Domains *ListDomainsByLogConfigIdResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The ID of the request.
+	Domains *ListDomainsByLogConfigIdResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	// The ID of the custom configuration.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20816,17 +19775,7 @@ func (s *PushObjectCacheResponse) SetBody(v *PushObjectCacheResponseBody) *PushO
 }
 
 type RefreshObjectCachesRequest struct {
-	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the object that you want to refresh. Valid values:
-	//
-	// *   **File** (default): refreshes one or more files.
-	// *   **Directory**: refreshes the files in one or more directories.
-	// *   **Regex**: refreshes content based on regular expressions.
-	// *   **ExQuery**: omits parameters after the question mark in the URL and refreshes content.
-	//
-	// If you set the ObjectType parameter to File or Directory, you can view [Refresh and prefetch resources](~~27140~~) to obtain more information. If you set the ObjectType parameter to Regex, you can view [Configure URL refresh rules that contain regular expressions](~~146195~~) to obtain more information.
-	//
-	// If you set the ObjectType parameter to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources on POPs that are marked as expired, Alibaba Cloud CDN checks whether the resources on your origin server are updated. If resources are updated, Alibaba Cloud CDN retrieves the latest version of the resources and returns the resources to the clients. Otherwise, the origin server returns the 304 status code.
+	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	ObjectType    *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -20861,13 +19810,8 @@ func (s *RefreshObjectCachesRequest) SetSecurityToken(v string) *RefreshObjectCa
 }
 
 type RefreshObjectCachesResponseBody struct {
-	// The refresh task ID. If multiple tasks are returned, the IDs are separated by commas (,). The task IDs are merged based on the following rules:
-	//
-	// *   If the tasks are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories, the task IDs are merged into one task ID.
-	// *   If the number of tasks that are specified for the same accelerated domain name, submitted within the same second, and run to refresh content based on URLs instead of directories exceeds 2,000, every 2,000 task IDs are merged into one task ID.
 	RefreshTaskId *string `json:"RefreshTaskId,omitempty" xml:"RefreshTaskId,omitempty"`
-	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshObjectCachesResponseBody) String() string {
@@ -20918,7 +19862,7 @@ func (s *RefreshObjectCachesResponse) SetBody(v *RefreshObjectCachesResponseBody
 }
 
 type RollbackStagingConfigRequest struct {
-	// The accelerated domain name. You can specify only one domain name in each request.
+	// The ID of the request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -20936,7 +19880,7 @@ func (s *RollbackStagingConfigRequest) SetDomainName(v string) *RollbackStagingC
 }
 
 type RollbackStagingConfigResponseBody struct {
-	// The ID of the request.
+	// The operation that you want to perform. Set the value to **RollbackStagingConfig**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21956,19 +20900,13 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags. Valid values:
-	//
-	// *   **true**: yes.
-	// *   **false**: no.
-	//
-	// Default value: **false**.
+	// The operation that you want to perform. Set the value to **UntagResources**.
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The list of resource IDs. You can specify up to 50 resource IDs in the list.
+	// Removes tags from a resource.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resources from which you want to remove tags. Set this parameter to **DOMAIN**.
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tag keys. You can specify up to 20 tag keys in the list.
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The ID of the request.
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -22000,7 +20938,6 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22047,17 +20984,59 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateCdnDeliverTaskRequest struct {
-	// The method that is used to send operations reports. Operations reports are sent to you only by email. The settings must be escaped in JSON.
+	// \[{\\"reportId\\":1,\\"conditions\\":\[{\\"field\\":\\"prov\\",\\"op\\":\\"in\\",\\"value\\":\[\\"Heilongjiang\\",\\"Beijing\\"]}]}]
 	Deliver *string `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
-	// The ID of the tracking task that you want to update.
+	// > You can call this operation up to three times per second per account.
 	DeliverId *int64 `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
-	// The domain name that you want to track. You can specify up to 500 domain names in each request. Separate multiple domain names with commas (,). If you do not specify a domain name, the task collects data from all domain names that belong to your Alibaba Cloud account.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the tracking task.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operations reports that are tracked by the task. The data must be escaped in JSON.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// **Fields in the ReDatas parameter**
+	//
+	// |Field|Type|Required|Description|
+	// |---|---|---|---|
+	// |reportId|String|Yes|The ID of the report.|
+	// |conditions|ConDatas\[\]|No|The filter conditions for the report.|
+	//
+	// **Fields in the ConDatas parameter**
+	//
+	// |Field|Type|Required|Description|
+	// |---|---|---|---|
+	// |field|String|No|The filter field.|
+	// |op|String|No|The filter operation.|
+	// |value|String\[\]|No|The array of field values.|
+	//
+	//
+	// **Fields in the email parameter**
+	//
+	// |Field|Type|Required|Description|
+	// |---|---|---|---|
+	// |subject|String|Yes|The email subject.|
+	// |to|String\[\]|Yes|The email addresses to which operations reports are sent.|
+	//
+	//
+	// **Fields in the Deliver parameter**
+	//
+	// |Field|Type|Required|Description|
+	// |---|---|---|---|
+	// |subject|String|No|The email subject.|
+	// |to|String\[\]|Yes|The email addresses to which operations reports are sent.|
+	//
+	//
+	// **Fields in the Schedule parameter**
+	//
+	// |Field|Type|Required|Description|
+	// |---|---|---|---|
+	// |schedName|String|No|The name of the tracking task.|
+	// |description|String|No|The description of the tracking task.|
+	// |crontab|String|Yes|Specifies the cycle in which the tracking task is scheduled to run.|
+	// |frequency|String|Yes|The interval at which the reports are sent. Valid values:<br />**h**: by hour<br />**d**: by day<br />**w**: by week|
+	// |status|String|No|The status of the tracking task. Valid values:<br />**enable**<br />**disable**|
+	// |effectiveFrom|String|No|The start time of the tracking task.|
+	// |effectiveEnd|String|No|The end time of the tracking task.|
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the tracking task.
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
-	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+	// The method that is used to send operations reports. Operations reports are sent to you only by email. The settings must be escaped in JSON.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -22100,7 +21079,7 @@ func (s *UpdateCdnDeliverTaskRequest) SetSchedule(v string) *UpdateCdnDeliverTas
 }
 
 type UpdateCdnDeliverTaskResponseBody struct {
-	// The ID of the request.
+	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22147,13 +21126,15 @@ func (s *UpdateCdnDeliverTaskResponse) SetBody(v *UpdateCdnDeliverTaskResponseBo
 }
 
 type UpdateCdnSubTaskRequest struct {
-	// The domain name that you want to track. You can specify up to 500 domain names in each request. If you specify multiple domain names, separate them with commas (,). If you do not specify a domain name, operations reports are updated for all domain names in your Alibaba Cloud account.
+	// The ID of the request.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The domain names that you want to track. You can specify multiple domain names and separate them with commas (,). You can specify at most 500 domain names in each call.
+	//
+	// If you do not specify a domain name, the task collects data from all domain names that belong to your Alibaba Cloud account.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IDs of operations reports that you want to update. Separate IDs with commas (,).
 	ReportIds *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
-	// The start time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The operation that you want to perform. Set the value to **UpdateCdnSubTask**.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -22186,7 +21167,6 @@ func (s *UpdateCdnSubTaskRequest) SetStartTime(v string) *UpdateCdnSubTaskReques
 }
 
 type UpdateCdnSubTaskResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22326,13 +21306,9 @@ func (s *UpdateFCTriggerResponse) SetBody(v *UpdateFCTriggerResponseBody) *Updat
 }
 
 type VerifyDomainOwnerRequest struct {
-	// The domain name of which you want to verify the ownership. You can specify only one domain name.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The verification method. Valid values:
-	//
-	// *   **dnsCheck**: by DNS record
-	// *   **fileCheck**: by verification file
-	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GlobalResourcePlan *string `json:"GlobalResourcePlan,omitempty" xml:"GlobalResourcePlan,omitempty"`
+	VerifyType         *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s VerifyDomainOwnerRequest) String() string {
@@ -22348,17 +21324,18 @@ func (s *VerifyDomainOwnerRequest) SetDomainName(v string) *VerifyDomainOwnerReq
 	return s
 }
 
+func (s *VerifyDomainOwnerRequest) SetGlobalResourcePlan(v string) *VerifyDomainOwnerRequest {
+	s.GlobalResourcePlan = &v
+	return s
+}
+
 func (s *VerifyDomainOwnerRequest) SetVerifyType(v string) *VerifyDomainOwnerRequest {
 	s.VerifyType = &v
 	return s
 }
 
 type VerifyDomainOwnerResponseBody struct {
-	// The verification result.
-	//
-	// > This parameter is returned only if the operation fails.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The request ID.
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22717,8 +21694,7 @@ func (client *Client) BatchAddCdnDomain(request *BatchAddCdnDomainRequest) (_res
 }
 
 /**
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * The ID of the request.
  *
  * @param request BatchDeleteCdnDomainConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22774,8 +21750,7 @@ func (client *Client) BatchDeleteCdnDomainConfigWithOptions(request *BatchDelete
 }
 
 /**
- * *   You can specify up to 50 domain names in each request.
- * *   You can call this operation up to 30 times per second per account.
+ * The ID of the request.
  *
  * @param request BatchDeleteCdnDomainConfigRequest
  * @return BatchDeleteCdnDomainConfigResponse
@@ -22792,61 +21767,7 @@ func (client *Client) BatchDeleteCdnDomainConfig(request *BatchDeleteCdnDomainCo
 }
 
 /**
- * The features that you want to configure. Format:
- * *   **functionName**: the name of the feature. This parameter is required. Separate multiple values with commas (,). For more information, see [A list of features](~~388460~~).
- * *   **argName**: the feature parameter for **functionName**. This parameter is required. You can specify multiple feature parameters.
- * *   **argValue**: the parameter value that is specified for **functionName**. This parameter is required.
- * *   **parentid**: the rule condition ID. This parameter is optional. You can use the **condition** rule engine to create a rule condition. For information, see [BatchSetCdnDomainConfig and SetCdnDomainStagingConfig](~~388460~~). A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. After you create a rule condition, a [configid](~~388994~~) is generated. configid can be used as parentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
- * If you set **parentId** to **-1**, the existing rule conditions in the configurations are deleted.
- *     [{
- *        "functionArgs": [{
- *          "argName": "Parameter A",
- *          "argValue": Value of parameter A"
- *         },
- *       {
- *         "argName": "Parameter B",
- *         "argValue": "Value of parameter B"
- *          }],
- *      "functionName": "Feature name"
- *      "parentId": "Optional, which corresponds to configid of the referenced rule condition"
- *     }]
- * The following code shows a sample configuration if **parentId** is not used.
- * In this example, the **origin_request_header** feature is used to add back-to-origin HTTP headers, and the rule condition whose configuration ID is **222728944812032** is referenced.
- *     [{
- *             "functionArgs": [{
- *                 "argName": "header_operation_type",
- *                 "argValue": "add"
- *             }, {
- *                 "argName": "header_name",
- *                 "argValue": "Accept-Encoding"
- *             }, {
- *                 "argName": "header_value",
- *                 "argValue": "gzip"
- *             }, {
- *                 "argName": "duplicate",
- *                 "argValue": "off"
- *             }],
- *             "functionName": "origin_request_header"
- *     }]
- * The following code shows a sample configuration if **parentId** is used.
- * In this example, the **origin_request_header** feature is used to add back-to-origin HTTP headers, and the rule condition whose configuration ID is **222728944812032** is referenced.
- *     [{
- *             "functionArgs": [{
- *                 "argName": "header_operation_type",
- *                 "argValue": "add"
- *             }, {
- *                 "argName": "header_name",
- *                 "argValue": "Accept-Encoding"
- *             }, {
- *                 "argName": "header_value",
- *                 "argValue": "gzip"
- *             }, {
- *                 "argName": "duplicate",
- *                 "argValue": "off"
- *             }],
- *             "functionName": "origin_request_header",
- *             "parentId": "222728944812032"
- *     }]
+ * The list of domain configurations.
  *
  * @param request BatchSetCdnDomainConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22902,61 +21823,7 @@ func (client *Client) BatchSetCdnDomainConfigWithOptions(request *BatchSetCdnDom
 }
 
 /**
- * The features that you want to configure. Format:
- * *   **functionName**: the name of the feature. This parameter is required. Separate multiple values with commas (,). For more information, see [A list of features](~~388460~~).
- * *   **argName**: the feature parameter for **functionName**. This parameter is required. You can specify multiple feature parameters.
- * *   **argValue**: the parameter value that is specified for **functionName**. This parameter is required.
- * *   **parentid**: the rule condition ID. This parameter is optional. You can use the **condition** rule engine to create a rule condition. For information, see [BatchSetCdnDomainConfig and SetCdnDomainStagingConfig](~~388460~~). A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. After you create a rule condition, a [configid](~~388994~~) is generated. configid can be used as parentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
- * If you set **parentId** to **-1**, the existing rule conditions in the configurations are deleted.
- *     [{
- *        "functionArgs": [{
- *          "argName": "Parameter A",
- *          "argValue": Value of parameter A"
- *         },
- *       {
- *         "argName": "Parameter B",
- *         "argValue": "Value of parameter B"
- *          }],
- *      "functionName": "Feature name"
- *      "parentId": "Optional, which corresponds to configid of the referenced rule condition"
- *     }]
- * The following code shows a sample configuration if **parentId** is not used.
- * In this example, the **origin_request_header** feature is used to add back-to-origin HTTP headers, and the rule condition whose configuration ID is **222728944812032** is referenced.
- *     [{
- *             "functionArgs": [{
- *                 "argName": "header_operation_type",
- *                 "argValue": "add"
- *             }, {
- *                 "argName": "header_name",
- *                 "argValue": "Accept-Encoding"
- *             }, {
- *                 "argName": "header_value",
- *                 "argValue": "gzip"
- *             }, {
- *                 "argName": "duplicate",
- *                 "argValue": "off"
- *             }],
- *             "functionName": "origin_request_header"
- *     }]
- * The following code shows a sample configuration if **parentId** is used.
- * In this example, the **origin_request_header** feature is used to add back-to-origin HTTP headers, and the rule condition whose configuration ID is **222728944812032** is referenced.
- *     [{
- *             "functionArgs": [{
- *                 "argName": "header_operation_type",
- *                 "argValue": "add"
- *             }, {
- *                 "argName": "header_name",
- *                 "argValue": "Accept-Encoding"
- *             }, {
- *                 "argName": "header_value",
- *                 "argValue": "gzip"
- *             }, {
- *                 "argName": "duplicate",
- *                 "argValue": "off"
- *             }],
- *             "functionName": "origin_request_header",
- *             "parentId": "222728944812032"
- *     }]
+ * The list of domain configurations.
  *
  * @param request BatchSetCdnDomainConfigRequest
  * @return BatchSetCdnDomainConfigResponse
@@ -22973,7 +21840,7 @@ func (client *Client) BatchSetCdnDomainConfig(request *BatchSetCdnDomainConfigRe
 }
 
 /**
- * The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
+ * The name of the certificate.
  *
  * @param request BatchSetCdnDomainServerCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23049,7 +21916,7 @@ func (client *Client) BatchSetCdnDomainServerCertificateWithOptions(request *Bat
 }
 
 /**
- * The content of the SSL certificate. Specify the content of the certificate only if you want to enable the SSL certificate.
+ * The name of the certificate.
  *
  * @param request BatchSetCdnDomainServerCertificateRequest
  * @return BatchSetCdnDomainServerCertificateResponse
@@ -23131,10 +21998,7 @@ func (client *Client) BatchStartCdnDomain(request *BatchStartCdnDomainRequest) (
 }
 
 /**
- * *   After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
- * *   If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
- * *   You can call this operation up to 30 times per second per account.
- * *   You can specify up to 50 domain names in each request.
+ * Disables one or more accelerated domain names at a time. After an accelerated domain name is disabled, the value of the DomainStatus parameter is changed to Offline.
  *
  * @param request BatchStopCdnDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23182,10 +22046,7 @@ func (client *Client) BatchStopCdnDomainWithOptions(request *BatchStopCdnDomainR
 }
 
 /**
- * *   After an accelerated domain name is disabled, Alibaba Cloud CDN retains its information and reroutes all the requests that are destined for the accelerated domain name to the origin.
- * *   If you need to temporarily disable CDN acceleration for a domain name, we recommend that you call the StopDomain operation.
- * *   You can call this operation up to 30 times per second per account.
- * *   You can specify up to 50 domain names in each request.
+ * Disables one or more accelerated domain names at a time. After an accelerated domain name is disabled, the value of the DomainStatus parameter is changed to Offline.
  *
  * @param request BatchStopCdnDomainRequest
  * @return BatchStopCdnDomainResponse
@@ -23439,8 +22300,7 @@ func (client *Client) CreateCdnDeliverTask(request *CreateCdnDeliverTaskRequest)
 }
 
 /**
- * *   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
- * *   You can call this operation up to three times per second per account.
+ * The ID of the request.
  *
  * @param request CreateCdnSubTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23484,8 +22344,7 @@ func (client *Client) CreateCdnSubTaskWithOptions(request *CreateCdnSubTaskReque
 }
 
 /**
- * *   This operation allows you to create a custom operations report for a specific domain name. You can view the statistics about the domain name in the report.
- * *   You can call this operation up to three times per second per account.
+ * The ID of the request.
  *
  * @param request CreateCdnSubTaskRequest
  * @return CreateCdnSubTaskResponse
@@ -23494,71 +22353,6 @@ func (client *Client) CreateCdnSubTask(request *CreateCdnSubTaskRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCdnSubTaskResponse{}
 	_body, _err := client.CreateCdnSubTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * *   You can query data only by day. You can query data within the last 31 days.
- * *   Typically, a file that contains invalid URLs is generated five minutes after you create an export task. You can call the [DescribeIllegalUrlExportTask](~~156506~~) operation to query the URL from which you can download the file.
- * *   You can call this operation only once per second per account.
- *
- * @param request CreateIllegalUrlExportTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateIllegalUrlExportTaskResponse
- */
-func (client *Client) CreateIllegalUrlExportTaskWithOptions(request *CreateIllegalUrlExportTaskRequest, runtime *util.RuntimeOptions) (_result *CreateIllegalUrlExportTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
-		query["TaskName"] = request.TaskName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimePoint)) {
-		query["TimePoint"] = request.TimePoint
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateIllegalUrlExportTask"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateIllegalUrlExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * *   You can query data only by day. You can query data within the last 31 days.
- * *   Typically, a file that contains invalid URLs is generated five minutes after you create an export task. You can call the [DescribeIllegalUrlExportTask](~~156506~~) operation to query the URL from which you can download the file.
- * *   You can call this operation only once per second per account.
- *
- * @param request CreateIllegalUrlExportTaskRequest
- * @return CreateIllegalUrlExportTaskResponse
- */
-func (client *Client) CreateIllegalUrlExportTask(request *CreateIllegalUrlExportTaskRequest) (_result *CreateIllegalUrlExportTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateIllegalUrlExportTaskResponse{}
-	_body, _err := client.CreateIllegalUrlExportTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23620,8 +22414,7 @@ func (client *Client) CreateRealTimeLogDelivery(request *CreateRealTimeLogDelive
 }
 
 /**
- * *   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The ID of the task.
  *
  * @param request CreateUsageDetailDataExportTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23685,8 +22478,7 @@ func (client *Client) CreateUsageDetailDataExportTaskWithOptions(request *Create
 }
 
 /**
- * *   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The ID of the task.
  *
  * @param request CreateUsageDetailDataExportTaskRequest
  * @return CreateUsageDetailDataExportTaskResponse
@@ -23703,8 +22495,7 @@ func (client *Client) CreateUsageDetailDataExportTask(request *CreateUsageDetail
 }
 
 /**
- * *   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The ID of the task.
  *
  * @param request CreateUserUsageDataExportTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23756,8 +22547,7 @@ func (client *Client) CreateUserUsageDataExportTaskWithOptions(request *CreateUs
 }
 
 /**
- * *   You can create a task to query data in the last year. The maximum time range that can be queried is one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The ID of the task.
  *
  * @param request CreateUserUsageDataExportTaskRequest
  * @return CreateUserUsageDataExportTaskResponse
@@ -24091,7 +22881,7 @@ func (client *Client) DeleteRealtimeLogDelivery(request *DeleteRealtimeLogDelive
 }
 
 /**
- * > You can call this operation up to 30 times per second per account.
+ * The ID of the request.
  *
  * @param request DeleteSpecificConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24143,7 +22933,7 @@ func (client *Client) DeleteSpecificConfigWithOptions(request *DeleteSpecificCon
 }
 
 /**
- * > You can call this operation up to 30 times per second per account.
+ * The ID of the request.
  *
  * @param request DeleteSpecificConfigRequest
  * @return DeleteSpecificConfigResponse
@@ -24160,7 +22950,7 @@ func (client *Client) DeleteSpecificConfig(request *DeleteSpecificConfigRequest)
 }
 
 /**
- * > The maximum number of times that each user can call this operation per second is 20.
+ * The ID of the request.
  *
  * @param request DeleteSpecificStagingConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24212,7 +23002,7 @@ func (client *Client) DeleteSpecificStagingConfigWithOptions(request *DeleteSpec
 }
 
 /**
- * > The maximum number of times that each user can call this operation per second is 20.
+ * The ID of the request.
  *
  * @param request DeleteSpecificStagingConfigRequest
  * @return DeleteSpecificStagingConfigResponse
@@ -24843,10 +23633,7 @@ func (client *Client) DescribeCdnDomainDetail(request *DescribeCdnDomainDetailRe
 }
 
 /**
- * *   If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
- * *   The log data is collected every hour.
- * *   You can call this operation up to 100 times per second per account.
- * *   You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
+ * The total number of entries returned.
  *
  * @param request DescribeCdnDomainLogsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24902,10 +23689,7 @@ func (client *Client) DescribeCdnDomainLogsWithOptions(request *DescribeCdnDomai
 }
 
 /**
- * *   If you do not set **StartTime** or **EndTime**, the request returns the data collected in the last 24 hours. If you set both **StartTime** and **EndTime**, the request returns the data collected within the specified time range.
- * *   The log data is collected every hour.
- * *   You can call this operation up to 100 times per second per account.
- * *   You can query only logs in the last month. The start time and the current time cannot exceed 31 days.
+ * The total number of entries returned.
  *
  * @param request DescribeCdnDomainLogsRequest
  * @return DescribeCdnDomainLogsResponse
@@ -25163,7 +23947,7 @@ func (client *Client) DescribeCdnRegionAndIsp(request *DescribeCdnRegionAndIspRe
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
  *
  * @param request DescribeCdnReportRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25227,7 +24011,7 @@ func (client *Client) DescribeCdnReportWithOptions(request *DescribeCdnReportReq
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
  *
  * @param request DescribeCdnReportRequest
  * @return DescribeCdnReportResponse
@@ -25539,8 +24323,10 @@ func (client *Client) DescribeCdnSubList() (_result *DescribeCdnSubListResponse,
 }
 
 /**
- * *   You can query billing history up to the last one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The billing method. Valid values:
+ * *   **StaticHttp**: static HTTP requests
+ * *   **DynamicHttp**: dynamic HTTP requests
+ * *   **DynamicHttps**: dynamic HTTPS requests
  *
  * @param request DescribeCdnUserBillHistoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25584,8 +24370,10 @@ func (client *Client) DescribeCdnUserBillHistoryWithOptions(request *DescribeCdn
 }
 
 /**
- * *   You can query billing history up to the last one month.
- * *   You can call this operation up to 100 times per second per account.
+ * The billing method. Valid values:
+ * *   **StaticHttp**: static HTTP requests
+ * *   **DynamicHttp**: dynamic HTTP requests
+ * *   **DynamicHttps**: dynamic HTTPS requests
  *
  * @param request DescribeCdnUserBillHistoryRequest
  * @return DescribeCdnUserBillHistoryResponse
@@ -25601,19 +24389,6 @@ func (client *Client) DescribeCdnUserBillHistory(request *DescribeCdnUserBillHis
 	return _result, _err
 }
 
-/**
- * You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
- * *   Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
- * *   Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
- * *   Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
- * *   Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
- * *   Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
- * > You can call this operation only once per second per account.
- *
- * @param request DescribeCdnUserBillPredictionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCdnUserBillPredictionResponse
- */
 func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *DescribeCdnUserBillPredictionRequest, runtime *util.RuntimeOptions) (_result *DescribeCdnUserBillPredictionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25659,18 +24434,6 @@ func (client *Client) DescribeCdnUserBillPredictionWithOptions(request *Describe
 	return _result, _err
 }
 
-/**
- * You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the current month. You can call this operation to estimate resource usage only of the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the current month and ends 2 hours earlier than the current time.
- * *   Pay by monthly 95th percentile: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
- * *   Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
- * *   Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
- * *   Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
- * *   Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The estimated value is the highest value among the remaining values.
- * > You can call this operation only once per second per account.
- *
- * @param request DescribeCdnUserBillPredictionRequest
- * @return DescribeCdnUserBillPredictionResponse
- */
 func (client *Client) DescribeCdnUserBillPrediction(request *DescribeCdnUserBillPredictionRequest) (_result *DescribeCdnUserBillPredictionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCdnUserBillPredictionResponse{}
@@ -25683,7 +24446,13 @@ func (client *Client) DescribeCdnUserBillPrediction(request *DescribeCdnUserBill
 }
 
 /**
- * *   You can call this operation up to 100 times per second per account.
+ * The dimension. Valid values:
+ * *   flow: traffic and bandwidth
+ * *   vas: value-added services (HTTPS and requests for dynamic content)
+ * *   quic: the number of QUIC requests
+ * *   websocket: the WebSocket communications protocol
+ * *   rtlog2sls: log entries delivered to Log Service in real time
+ * *   stationflow: traffic over the internal network
  *
  * @param request DescribeCdnUserBillTypeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -25727,7 +24496,13 @@ func (client *Client) DescribeCdnUserBillTypeWithOptions(request *DescribeCdnUse
 }
 
 /**
- * *   You can call this operation up to 100 times per second per account.
+ * The dimension. Valid values:
+ * *   flow: traffic and bandwidth
+ * *   vas: value-added services (HTTPS and requests for dynamic content)
+ * *   quic: the number of QUIC requests
+ * *   websocket: the WebSocket communications protocol
+ * *   rtlog2sls: log entries delivered to Log Service in real time
+ * *   stationflow: traffic over the internal network
  *
  * @param request DescribeCdnUserBillTypeRequest
  * @return DescribeCdnUserBillTypeResponse
@@ -26117,7 +24892,7 @@ func (client *Client) DescribeCertificateInfoByID(request *DescribeCertificateIn
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * The format of the log configuration.
  *
  * @param request DescribeCustomLogConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26153,7 +24928,7 @@ func (client *Client) DescribeCustomLogConfigWithOptions(request *DescribeCustom
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 100.
+ * The format of the log configuration.
  *
  * @param request DescribeCustomLogConfigRequest
  * @return DescribeCustomLogConfigResponse
@@ -26170,7 +24945,7 @@ func (client *Client) DescribeCustomLogConfig(request *DescribeCustomLogConfigRe
 }
 
 /**
- * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The accelerated domain name.
  *
  * @param request DescribeDomainAverageResponseTimeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26238,7 +25013,7 @@ func (client *Client) DescribeDomainAverageResponseTimeWithOptions(request *Desc
 }
 
 /**
- * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The accelerated domain name.
  *
  * @param request DescribeDomainAverageResponseTimeRequest
  * @return DescribeDomainAverageResponseTimeResponse
@@ -26332,15 +25107,7 @@ func (client *Client) DescribeDomainBpsData(request *DescribeDomainBpsDataReques
 }
 
 /**
- * * You can call this operation up to 20 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The timestamp of the returned data.
  *
  * @param request DescribeDomainBpsDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26404,15 +25171,7 @@ func (client *Client) DescribeDomainBpsDataByLayerWithOptions(request *DescribeD
 }
 
 /**
- * * You can call this operation up to 20 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The timestamp of the returned data.
  *
  * @param request DescribeDomainBpsDataByLayerRequest
  * @return DescribeDomainBpsDataByLayerResponse
@@ -26429,10 +25188,7 @@ func (client *Client) DescribeDomainBpsDataByLayer(request *DescribeDomainBpsDat
 }
 
 /**
- * *   The bandwidth is measured in bit/s.
- * *   You can specify only one accelerated domain name in each request.
- * *   The data is collected every 5 minutes.
- * *   You can call this operation up to 20 times per second per account.
+ * The bandwidth value.
  *
  * @param request DescribeDomainBpsDataByTimeStampRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26484,10 +25240,7 @@ func (client *Client) DescribeDomainBpsDataByTimeStampWithOptions(request *Descr
 }
 
 /**
- * *   The bandwidth is measured in bit/s.
- * *   You can specify only one accelerated domain name in each request.
- * *   The data is collected every 5 minutes.
- * *   You can call this operation up to 20 times per second per account.
+ * The bandwidth value.
  *
  * @param request DescribeDomainBpsDataByTimeStampRequest
  * @return DescribeDomainBpsDataByTimeStampResponse
@@ -26504,10 +25257,7 @@ func (client *Client) DescribeDomainBpsDataByTimeStamp(request *DescribeDomainBp
 }
 
 /**
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
- * *   You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
- * *   You can query data collected over the last 30 days.
- * *   You can call this operation up to 50 times per second per account.
+ * The timestamp of the data.
  *
  * @param request DescribeDomainCcActivityLogRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26575,10 +25325,7 @@ func (client *Client) DescribeDomainCcActivityLogWithOptions(request *DescribeDo
 }
 
 /**
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range. You must set both parameters or leave both parameters empty.
- * *   You can specify up to 20 domain names in reach request. If you specify multiple domain names, separate them with commas (,).
- * *   You can query data collected over the last 30 days.
- * *   You can call this operation up to 50 times per second per account.
+ * The timestamp of the data.
  *
  * @param request DescribeDomainCcActivityLogRequest
  * @return DescribeDomainCcActivityLogResponse
@@ -26749,7 +25496,7 @@ func (client *Client) DescribeDomainCustomLogConfig(request *DescribeDomainCusto
 }
 
 /**
- * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The domain name that you want to query. You can specify multiple domain names and separate them with commas (,). You can specify at most 30 domain names in each call.
  *
  * @param request DescribeDomainDetailDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26785,7 +25532,7 @@ func (client *Client) DescribeDomainDetailDataByLayerWithOptions(request *Descri
 }
 
 /**
- * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The domain name that you want to query. You can specify multiple domain names and separate them with commas (,). You can specify at most 30 domain names in each call.
  *
  * @param request DescribeDomainDetailDataByLayerRequest
  * @return DescribeDomainDetailDataByLayerResponse
@@ -26870,21 +25617,6 @@ func (client *Client) DescribeDomainHitRateData(request *DescribeDomainHitRateDa
 	return _result, _err
 }
 
-/**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
- *
- * @param request DescribeDomainHttpCodeDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDomainHttpCodeDataResponse
- */
 func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDomainHttpCodeDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainHttpCodeDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26938,20 +25670,6 @@ func (client *Client) DescribeDomainHttpCodeDataWithOptions(request *DescribeDom
 	return _result, _err
 }
 
-/**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
- *
- * @param request DescribeDomainHttpCodeDataRequest
- * @return DescribeDomainHttpCodeDataResponse
- */
 func (client *Client) DescribeDomainHttpCodeData(request *DescribeDomainHttpCodeDataRequest) (_result *DescribeDomainHttpCodeDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainHttpCodeDataResponse{}
@@ -26964,15 +25682,7 @@ func (client *Client) DescribeDomainHttpCodeData(request *DescribeDomainHttpCode
 }
 
 /**
- * * You can call this operation up to 20 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * ### Time granularity
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The total number of times that HTTP status codes were returned.
  *
  * @param request DescribeDomainHttpCodeDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27036,15 +25746,7 @@ func (client *Client) DescribeDomainHttpCodeDataByLayerWithOptions(request *Desc
 }
 
 /**
- * * You can call this operation up to 20 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * ### Time granularity
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The total number of times that HTTP status codes were returned.
  *
  * @param request DescribeDomainHttpCodeDataByLayerRequest
  * @return DescribeDomainHttpCodeDataByLayerResponse
@@ -27061,7 +25763,7 @@ func (client *Client) DescribeDomainHttpCodeDataByLayer(request *DescribeDomainH
 }
 
 /**
- * The end of the time range that was queried.
+ * The total amount of network traffic.
  *
  * @param request DescribeDomainISPDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27109,7 +25811,7 @@ func (client *Client) DescribeDomainISPDataWithOptions(request *DescribeDomainIS
 }
 
 /**
- * The end of the time range that was queried.
+ * The total amount of network traffic.
  *
  * @param request DescribeDomainISPDataRequest
  * @return DescribeDomainISPDataResponse
@@ -27126,11 +25828,7 @@ func (client *Client) DescribeDomainISPData(request *DescribeDomainISPDataReques
 }
 
 /**
- * *   The unit of the bandwidth is bit/s.
- * *   The time granularity of the queried data is 5 minutes.
- * *   You can query data in the last 90 days.
- * *   You can specify the StartTime and EndTime parameters, or the TimePoint and Cycle parameters to query the 95th percentile bandwidth data. If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned. If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned. If you do not specify parameters as previously mentioned, the 95th percentile bandwidth data in the last 24 hours is returned.
- * *   You can call this operation up to 100 times per second per account.
+ * The 95th percentile bandwidth in the Chinese mainland.
  *
  * @param request DescribeDomainMax95BpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27186,11 +25884,7 @@ func (client *Client) DescribeDomainMax95BpsDataWithOptions(request *DescribeDom
 }
 
 /**
- * *   The unit of the bandwidth is bit/s.
- * *   The time granularity of the queried data is 5 minutes.
- * *   You can query data in the last 90 days.
- * *   You can specify the StartTime and EndTime parameters, or the TimePoint and Cycle parameters to query the 95th percentile bandwidth data. If you specify the StartTime and EndTime parameters and the time range that is specified by these parameters is less than or equal to 24 hours, the 95th percentile bandwidth data on the day of the start time is returned. If the time range that is specified by these parameters is more than 24 hours, the 95th percentile bandwidth data in the month of the start time is returned. If you specify the TimePoint and Cycle parameters, the 95th percentile bandwidth data of the cycle is returned. If you do not specify parameters as previously mentioned, the 95th percentile bandwidth data in the last 24 hours is returned.
- * *   You can call this operation up to 100 times per second per account.
+ * The 95th percentile bandwidth in the Chinese mainland.
  *
  * @param request DescribeDomainMax95BpsDataRequest
  * @return DescribeDomainMax95BpsDataResponse
@@ -27207,7 +25901,7 @@ func (client *Client) DescribeDomainMax95BpsData(request *DescribeDomainMax95Bps
 }
 
 /**
- * The end of the time range that was queried.
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainMultiUsageDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27255,7 +25949,7 @@ func (client *Client) DescribeDomainMultiUsageDataWithOptions(request *DescribeD
 }
 
 /**
- * The end of the time range that was queried.
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainMultiUsageDataRequest
  * @return DescribeDomainMultiUsageDataResponse
@@ -27272,13 +25966,7 @@ func (client *Client) DescribeDomainMultiUsageData(request *DescribeDomainMultiU
 }
 
 /**
- * *   This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
- * *   You can call this API operation up to 6,000 times per second per account.
- * *   Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
- * *   The average size of the files that belong to the domain name must be larger than 1 MB.
- * *   The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
- * *   If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
- * *   You can query data collected within the last 30 days.
+ * The amount of network traffic. Unit: bytes.
  *
  * @param request DescribeDomainPathDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27314,13 +26002,7 @@ func (client *Client) DescribeDomainPathDataWithOptions(request *DescribeDomainP
 }
 
 /**
- * *   This operation is available only to users that are on the whitelist. If the daily peak bandwidth value of your workloads reaches 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex) to apply to be included in the whitelist.
- * *   You can call this API operation up to 6,000 times per second per account.
- * *   Data collection by directory is available only to specified domain names within your Alibaba Cloud account. It cannot be enabled for all domain names within your Alibaba Cloud account.
- * *   The average size of the files that belong to the domain name must be larger than 1 MB.
- * *   The number of directories specified for a single domain name cannot exceed 100. If the number of directories exceeds 100, the data accuracy reduces.
- * *   If you do not set StartTime or EndTime, data collected within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
- * *   You can query data collected within the last 30 days.
+ * The amount of network traffic. Unit: bytes.
  *
  * @param request DescribeDomainPathDataRequest
  * @return DescribeDomainPathDataResponse
@@ -27337,7 +26019,7 @@ func (client *Client) DescribeDomainPathData(request *DescribeDomainPathDataRequ
 }
 
 /**
- * The end of the time range during which data was queried.
+ * The accelerated domain name. You can specify only one domain name.
  *
  * @param request DescribeDomainPvDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27385,7 +26067,7 @@ func (client *Client) DescribeDomainPvDataWithOptions(request *DescribeDomainPvD
 }
 
 /**
- * The end of the time range during which data was queried.
+ * The accelerated domain name. You can specify only one domain name.
  *
  * @param request DescribeDomainPvDataRequest
  * @return DescribeDomainPvDataResponse
@@ -27402,15 +26084,7 @@ func (client *Client) DescribeDomainPvData(request *DescribeDomainPvDataRequest)
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The number of HTTPS requests sent to POPs in the Chinese mainland.
  *
  * @param request DescribeDomainQpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27470,15 +26144,7 @@ func (client *Client) DescribeDomainQpsDataWithOptions(request *DescribeDomainQp
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The number of HTTPS requests sent to POPs in the Chinese mainland.
  *
  * @param request DescribeDomainQpsDataRequest
  * @return DescribeDomainQpsDataResponse
@@ -27495,15 +26161,7 @@ func (client *Client) DescribeDomainQpsData(request *DescribeDomainQpsDataReques
 }
 
 /**
- * * You can call this operation up to 20 times per second per user.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The number of queries per second in the Chinese mainland.
  *
  * @param request DescribeDomainQpsDataByLayerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27567,15 +26225,7 @@ func (client *Client) DescribeDomainQpsDataByLayerWithOptions(request *DescribeD
 }
 
 /**
- * * You can call this operation up to 20 times per second per user.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The number of queries per second in the Chinese mainland.
  *
  * @param request DescribeDomainQpsDataByLayerRequest
  * @return DescribeDomainQpsDataByLayerResponse
@@ -27592,14 +26242,7 @@ func (client *Client) DescribeDomainQpsDataByLayer(request *DescribeDomainQpsDat
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
  *
  * @param request DescribeDomainRealTimeBpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27635,14 +26278,7 @@ func (client *Client) DescribeDomainRealTimeBpsDataWithOptions(request *Describe
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity** The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
  *
  * @param request DescribeDomainRealTimeBpsDataRequest
  * @return DescribeDomainRealTimeBpsDataResponse
@@ -27659,16 +26295,7 @@ func (client *Client) DescribeDomainRealTimeBpsData(request *DescribeDomainRealT
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
  *
  * @param request DescribeDomainRealTimeByteHitRateDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27704,16 +26331,7 @@ func (client *Client) DescribeDomainRealTimeByteHitRateDataWithOptions(request *
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * * The network traffic destined for different domain names may be redirected to the same origin server. Therefore, the byte hit ratios may be inaccurate. The accuracy of query results is based on the actual configurations.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
  *
  * @param request DescribeDomainRealTimeByteHitRateDataRequest
  * @return DescribeDomainRealTimeByteHitRateDataResponse
@@ -27730,8 +26348,10 @@ func (client *Client) DescribeDomainRealTimeByteHitRateData(request *DescribeDom
 }
 
 /**
- * The beginning of the time range to query.
- * Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
+ * Specifies whether to merge the results. Valid values:
+ * *   **true**: groups the results by domain name and merges the results by region and ISP.
+ * *   **false**: groups the results by domain name.
+ * Default value: **false**.
  *
  * @param request DescribeDomainRealTimeDetailDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27767,8 +26387,10 @@ func (client *Client) DescribeDomainRealTimeDetailDataWithOptions(request *Descr
 }
 
 /**
- * The beginning of the time range to query.
- * Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2019-11-30T05:33:00Z.
+ * Specifies whether to merge the results. Valid values:
+ * *   **true**: groups the results by domain name and merges the results by region and ISP.
+ * *   **false**: groups the results by domain name.
+ * Default value: **false**.
  *
  * @param request DescribeDomainRealTimeDetailDataRequest
  * @return DescribeDomainRealTimeDetailDataResponse
@@ -27784,13 +26406,6 @@ func (client *Client) DescribeDomainRealTimeDetailData(request *DescribeDomainRe
 	return _result, _err
 }
 
-/**
- * The total number of entries.
- *
- * @param request DescribeDomainRealTimeHttpCodeDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDomainRealTimeHttpCodeDataResponse
- */
 func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *DescribeDomainRealTimeHttpCodeDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainRealTimeHttpCodeDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27840,12 +26455,6 @@ func (client *Client) DescribeDomainRealTimeHttpCodeDataWithOptions(request *Des
 	return _result, _err
 }
 
-/**
- * The total number of entries.
- *
- * @param request DescribeDomainRealTimeHttpCodeDataRequest
- * @return DescribeDomainRealTimeHttpCodeDataResponse
- */
 func (client *Client) DescribeDomainRealTimeHttpCodeData(request *DescribeDomainRealTimeHttpCodeDataRequest) (_result *DescribeDomainRealTimeHttpCodeDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainRealTimeHttpCodeDataResponse{}
@@ -27858,15 +26467,7 @@ func (client *Client) DescribeDomainRealTimeHttpCodeData(request *DescribeDomain
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard and is in UTC.
  *
  * @param request DescribeDomainRealTimeQpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27902,15 +26503,7 @@ func (client *Client) DescribeDomainRealTimeQpsDataWithOptions(request *Describe
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned. The time follows the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard and is in UTC.
  *
  * @param request DescribeDomainRealTimeQpsDataRequest
  * @return DescribeDomainRealTimeQpsDataResponse
@@ -27927,7 +26520,7 @@ func (client *Client) DescribeDomainRealTimeQpsData(request *DescribeDomainRealT
 }
 
 /**
- * The ID of the request.
+ * The request hit ratio.
  *
  * @param request DescribeDomainRealTimeReqHitRateDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27963,7 +26556,7 @@ func (client *Client) DescribeDomainRealTimeReqHitRateDataWithOptions(request *D
 }
 
 /**
- * The ID of the request.
+ * The request hit ratio.
  *
  * @param request DescribeDomainRealTimeReqHitRateDataRequest
  * @return DescribeDomainRealTimeReqHitRateDataResponse
@@ -28118,15 +26711,7 @@ func (client *Client) DescribeDomainRealTimeSrcHttpCodeData(request *DescribeDom
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainRealTimeSrcTrafficDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28174,15 +26759,7 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficDataWithOptions(request *D
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour by default. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainRealTimeSrcTrafficDataRequest
  * @return DescribeDomainRealTimeSrcTrafficDataResponse
@@ -28199,15 +26776,7 @@ func (client *Client) DescribeDomainRealTimeSrcTrafficData(request *DescribeDoma
 }
 
 /**
- * * You can call this operation up to 50 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the returned data.
  *
  * @param request DescribeDomainRealTimeTrafficDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28263,15 +26832,7 @@ func (client *Client) DescribeDomainRealTimeTrafficDataWithOptions(request *Desc
 }
 
 /**
- * * You can call this operation up to 50 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last hour. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity varies with the time range specified by the StartTime and EndTime parameters. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |1 minute|1 hour|7 days|5 minutes|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
+ * The timestamp of the returned data.
  *
  * @param request DescribeDomainRealTimeTrafficDataRequest
  * @return DescribeDomainRealTimeTrafficDataResponse
@@ -28341,7 +26902,7 @@ func (client *Client) DescribeDomainRealtimeLogDelivery(request *DescribeDomainR
 }
 
 /**
- * The beginning of the time range that was queried.
+ * The accelerated domain name.
  *
  * @param request DescribeDomainRegionDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28389,7 +26950,7 @@ func (client *Client) DescribeDomainRegionDataWithOptions(request *DescribeDomai
 }
 
 /**
- * The beginning of the time range that was queried.
+ * The accelerated domain name.
  *
  * @param request DescribeDomainRegionDataRequest
  * @return DescribeDomainRegionDataResponse
@@ -28405,21 +26966,6 @@ func (client *Client) DescribeDomainRegionData(request *DescribeDomainRegionData
 	return _result, _err
 }
 
-/**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
- *
- * @param request DescribeDomainReqHitRateDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDomainReqHitRateDataResponse
- */
 func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeDomainReqHitRateDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainReqHitRateDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28465,20 +27011,6 @@ func (client *Client) DescribeDomainReqHitRateDataWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
- *
- * @param request DescribeDomainReqHitRateDataRequest
- * @return DescribeDomainReqHitRateDataResponse
- */
 func (client *Client) DescribeDomainReqHitRateData(request *DescribeDomainReqHitRateDataRequest) (_result *DescribeDomainReqHitRateDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainReqHitRateDataResponse{}
@@ -28491,15 +27023,7 @@ func (client *Client) DescribeDomainReqHitRateData(request *DescribeDomainReqHit
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The bandwidth values of origin HTTPS requests.
  *
  * @param request DescribeDomainSrcBpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28551,15 +27075,7 @@ func (client *Client) DescribeDomainSrcBpsDataWithOptions(request *DescribeDomai
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you specify both the StartTime and EndTime parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the time range to query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The bandwidth values of origin HTTPS requests.
  *
  * @param request DescribeDomainSrcBpsDataRequest
  * @return DescribeDomainSrcBpsDataResponse
@@ -28576,15 +27092,7 @@ func (client *Client) DescribeDomainSrcBpsData(request *DescribeDomainSrcBpsData
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The total number of entries.
  *
  * @param request DescribeDomainSrcHttpCodeDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28636,15 +27144,7 @@ func (client *Client) DescribeDomainSrcHttpCodeDataWithOptions(request *Describe
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter varies with the maximum time range per query. The following table describes the time period within which historical data is available and the data delay.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The total number of entries.
  *
  * @param request DescribeDomainSrcHttpCodeDataRequest
  * @return DescribeDomainSrcHttpCodeDataResponse
@@ -28661,15 +27161,7 @@ func (client *Client) DescribeDomainSrcHttpCodeData(request *DescribeDomainSrcHt
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * ### Time granularity
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainSrcQpsDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28721,15 +27213,7 @@ func (client *Client) DescribeDomainSrcQpsDataWithOptions(request *DescribeDomai
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * ### Time granularity
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The timestamp of the data returned.
  *
  * @param request DescribeDomainSrcQpsDataRequest
  * @return DescribeDomainSrcQpsDataResponse
@@ -28746,9 +27230,7 @@ func (client *Client) DescribeDomainSrcQpsData(request *DescribeDomainSrcQpsData
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
- * > - The data is collected at an interval of 5 minutes.
- * - You can call this operation up to 10 times per second per account.
+ * The operation that you want to perform. Set the value to **DescribeDomainSrcTopUrlVisit**.
  *
  * @param request DescribeDomainSrcTopUrlVisitRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28800,9 +27282,7 @@ func (client *Client) DescribeDomainSrcTopUrlVisitWithOptions(request *DescribeD
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/customize-an-operations-report-template-and-create-a-tracking-task) feature to for data analysis.
- * > - The data is collected at an interval of 5 minutes.
- * - You can call this operation up to 10 times per second per account.
+ * The operation that you want to perform. Set the value to **DescribeDomainSrcTopUrlVisit**.
  *
  * @param request DescribeDomainSrcTopUrlVisitRequest
  * @return DescribeDomainSrcTopUrlVisitResponse
@@ -28819,15 +27299,7 @@ func (client *Client) DescribeDomainSrcTopUrlVisit(request *DescribeDomainSrcTop
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The amount of traffic generated by origin HTTPS requests.
  *
  * @param request DescribeDomainSrcTrafficDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28879,15 +27351,7 @@ func (client *Client) DescribeDomainSrcTrafficDataWithOptions(request *DescribeD
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366 days|04:00 on the next day|
+ * The amount of traffic generated by origin HTTPS requests.
  *
  * @param request DescribeDomainSrcTrafficDataRequest
  * @return DescribeDomainSrcTrafficDataResponse
@@ -28904,8 +27368,7 @@ func (client *Client) DescribeDomainSrcTrafficData(request *DescribeDomainSrcTra
 }
 
 /**
- * The name of the region. Separate multiple region names with commas (,).
- * You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+ * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
  *
  * @param request DescribeDomainTopClientIpVisitRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -28965,8 +27428,7 @@ func (client *Client) DescribeDomainTopClientIpVisitWithOptions(request *Describ
 }
 
 /**
- * The name of the region. Separate multiple region names with commas (,).
- * You can call the [DescribeCdnRegionAndIsp](~~91077~~) operation to query regions.
+ * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
  *
  * @param request DescribeDomainTopClientIpVisitRequest
  * @return DescribeDomainTopClientIpVisitResponse
@@ -28983,9 +27445,8 @@ func (client *Client) DescribeDomainTopClientIpVisit(request *DescribeDomainTopC
 }
 
 /**
- * The sorting method. Valid values:
- * *   **traf**: by network traffic.
- * *   **pv**: by the number of page views. This is the default value.
+ * The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The end time must be later than the start time.
  *
  * @param request DescribeDomainTopReferVisitRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29037,9 +27498,8 @@ func (client *Client) DescribeDomainTopReferVisitWithOptions(request *DescribeDo
 }
 
 /**
- * The sorting method. Valid values:
- * *   **traf**: by network traffic.
- * *   **pv**: by the number of page views. This is the default value.
+ * The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+ * The end time must be later than the start time.
  *
  * @param request DescribeDomainTopReferVisitRequest
  * @return DescribeDomainTopReferVisitResponse
@@ -29056,12 +27516,7 @@ func (client *Client) DescribeDomainTopReferVisit(request *DescribeDomainTopRefe
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](~~279577~~) feature for data analysis.
- * >
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * *   You can query data collected in the last 90 days.
- * *   You can specify only one domain name in each call.
- * *   You can call this operation up to 10 times per second per account.
+ * The proportion of visits to the URL.
  *
  * @param request DescribeDomainTopUrlVisitRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29113,12 +27568,7 @@ func (client *Client) DescribeDomainTopUrlVisitWithOptions(request *DescribeDoma
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](~~279577~~) feature for data analysis.
- * >
- * *   If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * *   You can query data collected in the last 90 days.
- * *   You can specify only one domain name in each call.
- * *   You can call this operation up to 10 times per second per account.
+ * The proportion of visits to the URL.
  *
  * @param request DescribeDomainTopUrlVisitRequest
  * @return DescribeDomainTopUrlVisitResponse
@@ -29135,15 +27585,7 @@ func (client *Client) DescribeDomainTopUrlVisit(request *DescribeDomainTopUrlVis
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366|04:00 on the next day|
+ * The amount of network traffic in the Chinese mainland.
  *
  * @param request DescribeDomainTrafficDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29203,15 +27645,7 @@ func (client *Client) DescribeDomainTrafficDataWithOptions(request *DescribeDoma
 }
 
 /**
- * * You can call this operation up to 100 times per second per account.
- * * If you do not set the StartTime or EndTime parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.
- * **Time granularity**
- * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|366 days|366|04:00 on the next day|
+ * The amount of network traffic in the Chinese mainland.
  *
  * @param request DescribeDomainTrafficDataRequest
  * @return DescribeDomainTrafficDataResponse
@@ -29228,13 +27662,7 @@ func (client *Client) DescribeDomainTrafficData(request *DescribeDomainTrafficDa
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|90 days|366 days|04:00 on the next day|
+ * $.parameters[2].schema.enumValueTitles
  *
  * @param request DescribeDomainUsageDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29302,13 +27730,7 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 }
 
 /**
- * * You can call this operation up to 10 times per second per account.
- * * The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
- * |Time granularity|Maximum time range per query|Historical data available|Data delay|
- * |---|---|---|---|
- * |5 minutes|3 days|93 days|15 minutes|
- * |1 hour|31 days|186 days|4 hours|
- * |1 day|90 days|366 days|04:00 on the next day|
+ * $.parameters[2].schema.enumValueTitles
  *
  * @param request DescribeDomainUsageDataRequest
  * @return DescribeDomainUsageDataResponse
@@ -29463,9 +27885,7 @@ func (client *Client) DescribeDomainsBySource(request *DescribeDomainsBySourceRe
 }
 
 /**
- * *   You can call this operation up to 10 times per second per account.
- * *   If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
- * *   You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
+ * The time when the bandwidth reached the peak value.
  *
  * @param request DescribeDomainsUsageByDayRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29513,9 +27933,7 @@ func (client *Client) DescribeDomainsUsageByDayWithOptions(request *DescribeDoma
 }
 
 /**
- * *   You can call this operation up to 10 times per second per account.
- * *   If you do not set StartTime or EndTime, data within the last 24 hours is queried. If you set both StartTime and EndTime, data within the specified time range is queried.
- * *   You can query the monitoring data of a specific accelerated domain name or all accelerated domain names that belong to your Alibaba Cloud account.
+ * The time when the bandwidth reached the peak value.
  *
  * @param request DescribeDomainsUsageByDayRequest
  * @return DescribeDomainsUsageByDayResponse
@@ -29532,7 +27950,7 @@ func (client *Client) DescribeDomainsUsageByDay(request *DescribeDomainsUsageByD
 }
 
 /**
- * *   You can call this operation up to 30 times per second per account.
+ * The name of the chart that shows the errors of the script.
  *
  * @param request DescribeEsExceptionDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29580,7 +27998,7 @@ func (client *Client) DescribeEsExceptionDataWithOptions(request *DescribeEsExce
 }
 
 /**
- * *   You can call this operation up to 30 times per second per account.
+ * The name of the chart that shows the errors of the script.
  *
  * @param request DescribeEsExceptionDataRequest
  * @return DescribeEsExceptionDataResponse
@@ -29597,7 +28015,7 @@ func (client *Client) DescribeEsExceptionData(request *DescribeEsExceptionDataRe
 }
 
 /**
- * *   You can call this operation up to 30 times per second per account.
+ * The ID of the script that you want to query. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
  *
  * @param request DescribeEsExecuteDataRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -29645,7 +28063,7 @@ func (client *Client) DescribeEsExecuteDataWithOptions(request *DescribeEsExecut
 }
 
 /**
- * *   You can call this operation up to 30 times per second per account.
+ * The ID of the script that you want to query. You can call the [DescribeCdnDomainConfigs](~~90924~~) operation to query script IDs.
  *
  * @param request DescribeEsExecuteDataRequest
  * @return DescribeEsExecuteDataResponse
@@ -29694,63 +28112,6 @@ func (client *Client) DescribeFCTrigger(request *DescribeFCTriggerRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFCTriggerResponse{}
 	_body, _err := client.DescribeFCTriggerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * The URL where you can download the file that contains invalid URLs. This parameter is valid only if the export task is successful.
- *
- * @param request DescribeIllegalUrlExportTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeIllegalUrlExportTaskResponse
- */
-func (client *Client) DescribeIllegalUrlExportTaskWithOptions(request *DescribeIllegalUrlExportTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeIllegalUrlExportTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeIllegalUrlExportTask"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeIllegalUrlExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * The URL where you can download the file that contains invalid URLs. This parameter is valid only if the export task is successful.
- *
- * @param request DescribeIllegalUrlExportTaskRequest
- * @return DescribeIllegalUrlExportTaskResponse
- */
-func (client *Client) DescribeIllegalUrlExportTask(request *DescribeIllegalUrlExportTaskRequest) (_result *DescribeIllegalUrlExportTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeIllegalUrlExportTaskResponse{}
-	_body, _err := client.DescribeIllegalUrlExportTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29980,8 +28341,7 @@ func (client *Client) DescribePreloadDetailById(request *DescribePreloadDetailBy
 }
 
 /**
- * *   The data is collected every 5 minutes.
- * *   You can call this operation up to 20 times per second per account.
+ * The ID of the request.
  *
  * @param request DescribeRangeDataByLocateAndIspServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30037,8 +28397,7 @@ func (client *Client) DescribeRangeDataByLocateAndIspServiceWithOptions(request 
 }
 
 /**
- * *   The data is collected every 5 minutes.
- * *   You can call this operation up to 20 times per second per account.
+ * The ID of the request.
  *
  * @param request DescribeRangeDataByLocateAndIspServiceRequest
  * @return DescribeRangeDataByLocateAndIspServiceResponse
@@ -30055,7 +28414,7 @@ func (client *Client) DescribeRangeDataByLocateAndIspService(request *DescribeRa
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
  *
  * @param request DescribeRealtimeDeliveryAccRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30111,7 +28470,7 @@ func (client *Client) DescribeRealtimeDeliveryAccWithOptions(request *DescribeRe
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
  *
  * @param request DescribeRealtimeDeliveryAccRequest
  * @return DescribeRealtimeDeliveryAccResponse
@@ -30128,8 +28487,7 @@ func (client *Client) DescribeRealtimeDeliveryAcc(request *DescribeRealtimeDeliv
 }
 
 /**
- * *   You can call the [RefreshObjectCaches](~~448057~~) operation to refresh content and call the [PushObjectCache](~~448058~~) operation to prefetch content.
- * *   You can call this operation up to 20 times per second per account.
+ * The remaining number of URLs and directories that can be blocked on the current day.
  *
  * @param request DescribeRefreshQuotaRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30173,8 +28531,7 @@ func (client *Client) DescribeRefreshQuotaWithOptions(request *DescribeRefreshQu
 }
 
 /**
- * *   You can call the [RefreshObjectCaches](~~448057~~) operation to refresh content and call the [PushObjectCache](~~448058~~) operation to prefetch content.
- * *   You can call this operation up to 20 times per second per account.
+ * The remaining number of URLs and directories that can be blocked on the current day.
  *
  * @param request DescribeRefreshQuotaRequest
  * @return DescribeRefreshQuotaResponse
@@ -30191,7 +28548,11 @@ func (client *Client) DescribeRefreshQuota(request *DescribeRefreshQuotaRequest)
 }
 
 /**
- * The tasks.
+ * The status of the task. Valid values:
+ * *   **Complete**: The task is complete.
+ * *   **Pending**: The task is pending.
+ * *   **Refreshing**: The task is running.
+ * *   **Failed**: The task failed.
  *
  * @param request DescribeRefreshTaskByIdRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30231,7 +28592,11 @@ func (client *Client) DescribeRefreshTaskByIdWithOptions(request *DescribeRefres
 }
 
 /**
- * The tasks.
+ * The status of the task. Valid values:
+ * *   **Complete**: The task is complete.
+ * *   **Pending**: The task is pending.
+ * *   **Refreshing**: The task is running.
+ * *   **Failed**: The task failed.
  *
  * @param request DescribeRefreshTaskByIdRequest
  * @return DescribeRefreshTaskByIdResponse
@@ -30247,13 +28612,6 @@ func (client *Client) DescribeRefreshTaskById(request *DescribeRefreshTaskByIdRe
 	return _result, _err
 }
 
-/**
- * The ID of the task.
- *
- * @param request DescribeRefreshTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRefreshTasksResponse
- */
 func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeRefreshTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30331,12 +28689,6 @@ func (client *Client) DescribeRefreshTasksWithOptions(request *DescribeRefreshTa
 	return _result, _err
 }
 
-/**
- * The ID of the task.
- *
- * @param request DescribeRefreshTasksRequest
- * @return DescribeRefreshTasksResponse
- */
 func (client *Client) DescribeRefreshTasks(request *DescribeRefreshTasksRequest) (_result *DescribeRefreshTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRefreshTasksResponse{}
@@ -30349,7 +28701,7 @@ func (client *Client) DescribeRefreshTasks(request *DescribeRefreshTasksRequest)
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 30.
+ * The operation that you want to perform. Set the value to **DescribeStagingIp**.
  *
  * @param request DescribeStagingIpRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30378,7 +28730,7 @@ func (client *Client) DescribeStagingIpWithOptions(runtime *util.RuntimeOptions)
 }
 
 /**
- * >  The maximum number of times that each user can call this operation per second is 30.
+ * The operation that you want to perform. Set the value to **DescribeStagingIp**.
  *
  * @return DescribeStagingIpResponse
  */
@@ -30446,10 +28798,7 @@ func (client *Client) DescribeTagResources(request *DescribeTagResourcesRequest)
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](~~279577~~) feature for data analysis.
- * >
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the current month. If you set both these parameters, the request returns the data collected within the specified time range.********
- * *   You can call this operation up to 100 times per second per account.
+ * The peak bandwidth value.
  *
  * @param request DescribeTopDomainsByFlowRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30497,10 +28846,7 @@ func (client *Client) DescribeTopDomainsByFlowWithOptions(request *DescribeTopDo
 }
 
 /**
- * The statistical analysis feature of Alibaba Cloud CDN is no longer available. The API operations related to the statistical analysis feature are no longer maintained. We recommend that you do not use the API operations because data may be missing or inaccurate. You can use the [operations report](~~279577~~) feature for data analysis.
- * >
- * *   If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the current month. If you set both these parameters, the request returns the data collected within the specified time range.********
- * *   You can call this operation up to 100 times per second per account.
+ * The peak bandwidth value.
  *
  * @param request DescribeTopDomainsByFlowRequest
  * @return DescribeTopDomainsByFlowResponse
@@ -31116,7 +29462,7 @@ func (client *Client) EnableRealtimeLogDelivery(request *EnableRealtimeLogDelive
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The domain name.
  *
  * @param request ListDomainsByLogConfigIdRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31152,7 +29498,7 @@ func (client *Client) ListDomainsByLogConfigIdWithOptions(request *ListDomainsBy
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The domain name.
  *
  * @param request ListDomainsByLogConfigIdRequest
  * @return ListDomainsByLogConfigIdResponse
@@ -31777,19 +30123,7 @@ func (client *Client) PushObjectCache(request *PushObjectCacheRequest) (_result 
 }
 
 /**
- * *   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
- * *   You can call the [RefreshObjectCaches](~~91164~~) operation to refresh content and call the [PushObjectCache](~~91161~~) operation to prefetch content.
- * *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
- * *   For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](~~151829~~).
- * ## Precautions
- * *   After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
- * *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
- * *   If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~260300~~).
- * ### Refresh quota
- * *   By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
- * *   By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
- * *   You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
- * *   You can refresh up to 1,000 URLs per minute for each domain name.
+ * The request ID.
  *
  * @param request RefreshObjectCachesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31841,19 +30175,7 @@ func (client *Client) RefreshObjectCachesWithOptions(request *RefreshObjectCache
 }
 
 /**
- * *   Alibaba Cloud CDN supports POST requests in which parameters are sent as a form.
- * *   You can call the [RefreshObjectCaches](~~91164~~) operation to refresh content and call the [PushObjectCache](~~91161~~) operation to prefetch content.
- * *   You can call the RefreshObjectCaches operation up to 50 times per second per account.
- * *   For more information about how to automatically refresh or prefetch tasks, see [Run scripts to refresh and prefetch content](~~151829~~).
- * ## Precautions
- * *   After a refresh task is submitted and completed, specific resources are removed from POPs. When a POP receives a request for the removed resources, the POP forwards the request to the origin server to retrieve the resources. The retrieved resources are returned to the client and cached on the POP. Multiple refresh tasks may cause a large number of resources to be removed from the POPs. This increases the number of requests that are forwarded to the origin server. The back-to-origin routing process consumes more bandwidth resources and the origin server may be overwhelmed.
- * *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
- * *   If you want to use RAM users to refresh or prefetch resources, you must obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~260300~~).
- * ### Refresh quota
- * *   By default, each Alibaba Cloud account can refresh content from up to 10,000 URLs and 100 directories per day. The directories include subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. Alibaba Cloud CDN evaluates your application based on your workloads.
- * *   By default, each Alibaba Cloud account can submit up to 20 refresh rules that contain regular expressions per day. If the daily peak bandwidth of your Alibaba Cloud account exceeds 10 Gbit/s, you can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to request a quota increase.
- * *   You can specify up to 1,000 URL refresh rules, 100 directory refresh rules, or 1 refresh rule that contains regular expressions in each call.
- * *   You can refresh up to 1,000 URLs per minute for each domain name.
+ * The request ID.
  *
  * @param request RefreshObjectCachesRequest
  * @return RefreshObjectCachesResponse
@@ -31870,7 +30192,7 @@ func (client *Client) RefreshObjectCaches(request *RefreshObjectCachesRequest) (
 }
 
 /**
- * > You can call this operation up to 30 times per second per account.
+ * The accelerated domain name. You can specify only one domain name in each call.
  *
  * @param request RollbackStagingConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31910,7 +30232,7 @@ func (client *Client) RollbackStagingConfigWithOptions(request *RollbackStagingC
 }
 
 /**
- * > You can call this operation up to 30 times per second per account.
+ * The accelerated domain name. You can specify only one domain name in each call.
  *
  * @param request RollbackStagingConfigRequest
  * @return RollbackStagingConfigResponse
@@ -32140,33 +30462,6 @@ func (client *Client) SetCdnDomainSSLCertificate(request *SetCdnDomainSSLCertifi
 	return _result, _err
 }
 
-/**
- * The features that you want to configure. Format:
- * > - **functionName**: The name of the feature. Separate multiple values with commas (,).
- * > - **argName**: The feature parameters for **functionName**.
- * > - **argValue**: The parameter values set for **functionName**.
- * ```
- *         [
- *          {
- *            "functionArgs": [
- *             {
- *              "argName": "Parameter A",
- *              "argValue": "Parameter value"
- *             },
- *           {
- *             "argName": "Parameter B",
- *             "argValue": "Parameter value"
- *              }
- *          ],
- *          "functionName": "Feature name"
- *             }
- *         ]
- *  ```
- *
- * @param request SetCdnDomainStagingConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetCdnDomainStagingConfigResponse
- */
 func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomainStagingConfigRequest, runtime *util.RuntimeOptions) (_result *SetCdnDomainStagingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32204,32 +30499,6 @@ func (client *Client) SetCdnDomainStagingConfigWithOptions(request *SetCdnDomain
 	return _result, _err
 }
 
-/**
- * The features that you want to configure. Format:
- * > - **functionName**: The name of the feature. Separate multiple values with commas (,).
- * > - **argName**: The feature parameters for **functionName**.
- * > - **argValue**: The parameter values set for **functionName**.
- * ```
- *         [
- *          {
- *            "functionArgs": [
- *             {
- *              "argName": "Parameter A",
- *              "argValue": "Parameter value"
- *             },
- *           {
- *             "argName": "Parameter B",
- *             "argValue": "Parameter value"
- *              }
- *          ],
- *          "functionName": "Feature name"
- *             }
- *         ]
- *  ```
- *
- * @param request SetCdnDomainStagingConfigRequest
- * @return SetCdnDomainStagingConfigResponse
- */
 func (client *Client) SetCdnDomainStagingConfig(request *SetCdnDomainStagingConfigRequest) (_result *SetCdnDomainStagingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetCdnDomainStagingConfigResponse{}
@@ -32671,7 +30940,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The key of the tag. Valid values of N: **1** to **20**.
  *
  * @param request UntagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32723,7 +30992,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 }
 
 /**
- * > You can call this operation up to 100 times per second per account.
+ * The key of the tag. Valid values of N: **1** to **20**.
  *
  * @param request UntagResourcesRequest
  * @return UntagResourcesResponse
@@ -32740,7 +31009,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * UpdateCdnDeliverTask
  *
  * @param request UpdateCdnDeliverTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32800,7 +31069,7 @@ func (client *Client) UpdateCdnDeliverTaskWithOptions(request *UpdateCdnDeliverT
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * UpdateCdnDeliverTask
  *
  * @param request UpdateCdnDeliverTaskRequest
  * @return UpdateCdnDeliverTaskResponse
@@ -32817,7 +31086,7 @@ func (client *Client) UpdateCdnDeliverTask(request *UpdateCdnDeliverTaskRequest)
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * The end time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
  *
  * @param request UpdateCdnSubTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32869,7 +31138,7 @@ func (client *Client) UpdateCdnSubTaskWithOptions(request *UpdateCdnSubTaskReque
 }
 
 /**
- * > You can call this operation up to three times per second per account.
+ * The end time of the operations report. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
  *
  * @param request UpdateCdnSubTaskRequest
  * @return UpdateCdnSubTaskResponse
@@ -32947,13 +31216,6 @@ func (client *Client) UpdateFCTrigger(request *UpdateFCTriggerRequest) (_result 
 	return _result, _err
 }
 
-/**
- * > You can call this operation up to 100 times per second per account.
- *
- * @param request VerifyDomainOwnerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return VerifyDomainOwnerResponse
- */
 func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyDomainOwnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32962,6 +31224,10 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GlobalResourcePlan)) {
+		query["GlobalResourcePlan"] = request.GlobalResourcePlan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
@@ -32991,12 +31257,6 @@ func (client *Client) VerifyDomainOwnerWithOptions(request *VerifyDomainOwnerReq
 	return _result, _err
 }
 
-/**
- * > You can call this operation up to 100 times per second per account.
- *
- * @param request VerifyDomainOwnerRequest
- * @return VerifyDomainOwnerResponse
- */
 func (client *Client) VerifyDomainOwner(request *VerifyDomainOwnerRequest) (_result *VerifyDomainOwnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyDomainOwnerResponse{}
