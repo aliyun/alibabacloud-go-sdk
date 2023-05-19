@@ -120,6 +120,7 @@ type Dataset struct {
 	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
 	OwnerId         *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Property        *string  `json:"Property,omitempty" xml:"Property,omitempty"`
+	ProviderType    *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	SourceId        *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType      *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Uri             *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
@@ -192,6 +193,11 @@ func (s *Dataset) SetOwnerId(v string) *Dataset {
 
 func (s *Dataset) SetProperty(v string) *Dataset {
 	s.Property = &v
+	return s
+}
+
+func (s *Dataset) SetProviderType(v string) *Dataset {
+	s.ProviderType = &v
 	return s
 }
 
@@ -268,14 +274,19 @@ func (s *Label) SetValue(v string) *Label {
 
 type Model struct {
 	Accessibility    *string       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string       `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	GmtCreateTime    *string       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string       `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Origin           *string       `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider         *string       `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Task             *string       `json:"Task,omitempty" xml:"Task,omitempty"`
 	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -290,6 +301,11 @@ func (s Model) GoString() string {
 
 func (s *Model) SetAccessibility(v string) *Model {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *Model) SetDomain(v string) *Model {
+	s.Domain = &v
 	return s
 }
 
@@ -318,6 +334,11 @@ func (s *Model) SetModelDescription(v string) *Model {
 	return s
 }
 
+func (s *Model) SetModelDoc(v string) *Model {
+	s.ModelDoc = &v
+	return s
+}
+
 func (s *Model) SetModelId(v string) *Model {
 	s.ModelId = &v
 	return s
@@ -328,8 +349,23 @@ func (s *Model) SetModelName(v string) *Model {
 	return s
 }
 
+func (s *Model) SetOrigin(v string) *Model {
+	s.Origin = &v
+	return s
+}
+
 func (s *Model) SetOwnerId(v string) *Model {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *Model) SetProvider(v string) *Model {
+	s.Provider = &v
+	return s
+}
+
+func (s *Model) SetTask(v string) *Model {
+	s.Task = &v
 	return s
 }
 
@@ -344,16 +380,19 @@ func (s *Model) SetWorkspaceId(v string) *Model {
 }
 
 type ModelVersion struct {
+	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime    *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
 	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
 	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
 	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
 	UserId             *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
@@ -366,6 +405,11 @@ func (s ModelVersion) String() string {
 
 func (s ModelVersion) GoString() string {
 	return s.String()
+}
+
+func (s *ModelVersion) SetApprovalStatus(v string) *ModelVersion {
+	s.ApprovalStatus = &v
+	return s
 }
 
 func (s *ModelVersion) SetFormatType(v string) *ModelVersion {
@@ -398,6 +442,11 @@ func (s *ModelVersion) SetLabels(v []*Label) *ModelVersion {
 	return s
 }
 
+func (s *ModelVersion) SetMetrics(v map[string]interface{}) *ModelVersion {
+	s.Metrics = v
+	return s
+}
+
 func (s *ModelVersion) SetOptions(v string) *ModelVersion {
 	s.Options = &v
 	return s
@@ -418,6 +467,11 @@ func (s *ModelVersion) SetSourceType(v string) *ModelVersion {
 	return s
 }
 
+func (s *ModelVersion) SetTrainingSpec(v map[string]interface{}) *ModelVersion {
+	s.TrainingSpec = v
+	return s
+}
+
 func (s *ModelVersion) SetUri(v string) *ModelVersion {
 	s.Uri = &v
 	return s
@@ -435,6 +489,23 @@ func (s *ModelVersion) SetVersionDescription(v string) *ModelVersion {
 
 func (s *ModelVersion) SetVersionName(v string) *ModelVersion {
 	s.VersionName = &v
+	return s
+}
+
+type ResourcesExecutorValue struct {
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ResourcesExecutorValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourcesExecutorValue) GoString() string {
+	return s.String()
+}
+
+func (s *ResourcesExecutorValue) SetOwnerId(v string) *ResourcesExecutorValue {
+	s.OwnerId = &v
 	return s
 }
 
@@ -818,6 +889,7 @@ type CreateDatasetRequest struct {
 	Name           *string  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Options        *string  `json:"Options,omitempty" xml:"Options,omitempty"`
 	Property       *string  `json:"Property,omitempty" xml:"Property,omitempty"`
+	ProviderType   *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	SourceId       *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType     *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	Uri            *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
@@ -869,6 +941,11 @@ func (s *CreateDatasetRequest) SetOptions(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetProperty(v string) *CreateDatasetRequest {
 	s.Property = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetProviderType(v string) *CreateDatasetRequest {
+	s.ProviderType = &v
 	return s
 }
 
@@ -1136,9 +1213,13 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 
 type CreateModelRequest struct {
 	Accessibility    *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Labels           []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	ModelDescription *string  `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string  `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelName        *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Origin           *string  `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Task             *string  `json:"Task,omitempty" xml:"Task,omitempty"`
 	WorkspaceId      *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -1155,6 +1236,11 @@ func (s *CreateModelRequest) SetAccessibility(v string) *CreateModelRequest {
 	return s
 }
 
+func (s *CreateModelRequest) SetDomain(v string) *CreateModelRequest {
+	s.Domain = &v
+	return s
+}
+
 func (s *CreateModelRequest) SetLabels(v []*Label) *CreateModelRequest {
 	s.Labels = v
 	return s
@@ -1165,8 +1251,23 @@ func (s *CreateModelRequest) SetModelDescription(v string) *CreateModelRequest {
 	return s
 }
 
+func (s *CreateModelRequest) SetModelDoc(v string) *CreateModelRequest {
+	s.ModelDoc = &v
+	return s
+}
+
 func (s *CreateModelRequest) SetModelName(v string) *CreateModelRequest {
 	s.ModelName = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetOrigin(v string) *CreateModelRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetTask(v string) *CreateModelRequest {
+	s.Task = &v
 	return s
 }
 
@@ -1291,13 +1392,16 @@ func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *C
 }
 
 type CreateModelVersionRequest struct {
+	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
 	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
 	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
 	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
 	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
@@ -1309,6 +1413,11 @@ func (s CreateModelVersionRequest) String() string {
 
 func (s CreateModelVersionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateModelVersionRequest) SetApprovalStatus(v string) *CreateModelVersionRequest {
+	s.ApprovalStatus = &v
+	return s
 }
 
 func (s *CreateModelVersionRequest) SetFormatType(v string) *CreateModelVersionRequest {
@@ -1331,6 +1440,11 @@ func (s *CreateModelVersionRequest) SetLabels(v []*Label) *CreateModelVersionReq
 	return s
 }
 
+func (s *CreateModelVersionRequest) SetMetrics(v map[string]interface{}) *CreateModelVersionRequest {
+	s.Metrics = v
+	return s
+}
+
 func (s *CreateModelVersionRequest) SetOptions(v string) *CreateModelVersionRequest {
 	s.Options = &v
 	return s
@@ -1343,6 +1457,11 @@ func (s *CreateModelVersionRequest) SetSourceId(v string) *CreateModelVersionReq
 
 func (s *CreateModelVersionRequest) SetSourceType(v string) *CreateModelVersionRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetTrainingSpec(v map[string]interface{}) *CreateModelVersionRequest {
+	s.TrainingSpec = v
 	return s
 }
 
@@ -1477,8 +1596,8 @@ func (s *CreateModelVersionLabelsResponse) SetBody(v *CreateModelVersionLabelsRe
 }
 
 type CreateProductOrdersRequest struct {
-	AutoPay  *bool                               `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Products *CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Struct"`
+	AutoPay  *bool                                 `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	Products []*CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 }
 
 func (s CreateProductOrdersRequest) String() string {
@@ -1494,7 +1613,7 @@ func (s *CreateProductOrdersRequest) SetAutoPay(v bool) *CreateProductOrdersRequ
 	return s
 }
 
-func (s *CreateProductOrdersRequest) SetProducts(v *CreateProductOrdersRequestProducts) *CreateProductOrdersRequest {
+func (s *CreateProductOrdersRequest) SetProducts(v []*CreateProductOrdersRequestProducts) *CreateProductOrdersRequest {
 	s.Products = v
 	return s
 }
@@ -1756,14 +1875,15 @@ func (s *CreateWorkspaceResourceRequest) SetResources(v []*CreateWorkspaceResour
 }
 
 type CreateWorkspaceResourceRequestResources struct {
-	EnvType     *string                                          `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	GroupName   *string                                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault   *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Name        *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductType *string                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Quotas      []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	Spec        *string                                          `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	WorkspaceId *string                                          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	EnvType      *string                                          `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	GroupName    *string                                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault    *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductType  *string                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quotas       []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	ResourceType *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Spec         map[string]interface{}                           `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	WorkspaceId  *string                                          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateWorkspaceResourceRequestResources) String() string {
@@ -1804,8 +1924,13 @@ func (s *CreateWorkspaceResourceRequestResources) SetQuotas(v []*CreateWorkspace
 	return s
 }
 
-func (s *CreateWorkspaceResourceRequestResources) SetSpec(v string) *CreateWorkspaceResourceRequestResources {
-	s.Spec = &v
+func (s *CreateWorkspaceResourceRequestResources) SetResourceType(v string) *CreateWorkspaceResourceRequestResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateWorkspaceResourceRequestResources) SetSpec(v map[string]interface{}) *CreateWorkspaceResourceRequestResources {
+	s.Spec = v
 	return s
 }
 
@@ -2395,9 +2520,10 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 }
 
 type DeleteWorkspaceResourceRequest struct {
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Option      *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DeleteWorkspaceResourceRequest) String() string {
@@ -2420,6 +2546,11 @@ func (s *DeleteWorkspaceResourceRequest) SetOption(v string) *DeleteWorkspaceRes
 
 func (s *DeleteWorkspaceResourceRequest) SetProductType(v string) *DeleteWorkspaceResourceRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *DeleteWorkspaceResourceRequest) SetResourceType(v string) *DeleteWorkspaceResourceRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -2612,6 +2743,7 @@ type GetDatasetResponseBody struct {
 	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
 	OwnerId         *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Property        *string  `json:"Property,omitempty" xml:"Property,omitempty"`
+	ProviderType    *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SourceId        *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType      *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
@@ -2685,6 +2817,11 @@ func (s *GetDatasetResponseBody) SetOwnerId(v string) *GetDatasetResponseBody {
 
 func (s *GetDatasetResponseBody) SetProperty(v string) *GetDatasetResponseBody {
 	s.Property = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetProviderType(v string) *GetDatasetResponseBody {
+	s.ProviderType = &v
 	return s
 }
 
@@ -3181,15 +3318,20 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 
 type GetModelResponseBody struct {
 	Accessibility    *string       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string       `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	GmtCreateTime    *string       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string       `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Origin           *string       `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider         *string       `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	RequestId        *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Task             *string       `json:"Task,omitempty" xml:"Task,omitempty"`
 	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -3204,6 +3346,11 @@ func (s GetModelResponseBody) GoString() string {
 
 func (s *GetModelResponseBody) SetAccessibility(v string) *GetModelResponseBody {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetDomain(v string) *GetModelResponseBody {
+	s.Domain = &v
 	return s
 }
 
@@ -3232,6 +3379,11 @@ func (s *GetModelResponseBody) SetModelDescription(v string) *GetModelResponseBo
 	return s
 }
 
+func (s *GetModelResponseBody) SetModelDoc(v string) *GetModelResponseBody {
+	s.ModelDoc = &v
+	return s
+}
+
 func (s *GetModelResponseBody) SetModelId(v string) *GetModelResponseBody {
 	s.ModelId = &v
 	return s
@@ -3242,13 +3394,28 @@ func (s *GetModelResponseBody) SetModelName(v string) *GetModelResponseBody {
 	return s
 }
 
+func (s *GetModelResponseBody) SetOrigin(v string) *GetModelResponseBody {
+	s.Origin = &v
+	return s
+}
+
 func (s *GetModelResponseBody) SetOwnerId(v string) *GetModelResponseBody {
 	s.OwnerId = &v
 	return s
 }
 
+func (s *GetModelResponseBody) SetProvider(v string) *GetModelResponseBody {
+	s.Provider = &v
+	return s
+}
+
 func (s *GetModelResponseBody) SetRequestId(v string) *GetModelResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetTask(v string) *GetModelResponseBody {
+	s.Task = &v
 	return s
 }
 
@@ -3292,6 +3459,7 @@ func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
 }
 
 type GetModelVersionResponseBody struct {
+	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -3303,6 +3471,7 @@ type GetModelVersionResponseBody struct {
 	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
 	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
 	UserId             *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
@@ -3315,6 +3484,11 @@ func (s GetModelVersionResponseBody) String() string {
 
 func (s GetModelVersionResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetModelVersionResponseBody) SetApprovalStatus(v string) *GetModelVersionResponseBody {
+	s.ApprovalStatus = &v
+	return s
 }
 
 func (s *GetModelVersionResponseBody) SetFormatType(v string) *GetModelVersionResponseBody {
@@ -3369,6 +3543,11 @@ func (s *GetModelVersionResponseBody) SetSourceId(v string) *GetModelVersionResp
 
 func (s *GetModelVersionResponseBody) SetSourceType(v string) *GetModelVersionResponseBody {
 	s.SourceType = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetTrainingSpec(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.TrainingSpec = v
 	return s
 }
 
@@ -3815,6 +3994,7 @@ type ListDatasetsRequest struct {
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceTypes     *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
 	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -3864,6 +4044,11 @@ func (s *ListDatasetsRequest) SetPageSize(v int32) *ListDatasetsRequest {
 
 func (s *ListDatasetsRequest) SetProperties(v string) *ListDatasetsRequest {
 	s.Properties = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetSourceId(v string) *ListDatasetsRequest {
+	s.SourceId = &v
 	return s
 }
 
@@ -4064,6 +4249,7 @@ type ListImagesRequest struct {
 	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	Query        *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
@@ -4105,6 +4291,11 @@ func (s *ListImagesRequest) SetPageSize(v int32) *ListImagesRequest {
 
 func (s *ListImagesRequest) SetParentUserId(v string) *ListImagesRequest {
 	s.ParentUserId = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetQuery(v string) *ListImagesRequest {
+	s.Query = &v
 	return s
 }
 
@@ -4427,16 +4618,17 @@ func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersRe
 }
 
 type ListModelVersionsRequest struct {
-	FormatType    *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	VersionName   *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	FrameworkType  *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	Label          *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId       *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	VersionName    *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListModelVersionsRequest) String() string {
@@ -4445,6 +4637,11 @@ func (s ListModelVersionsRequest) String() string {
 
 func (s ListModelVersionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListModelVersionsRequest) SetApprovalStatus(v string) *ListModelVersionsRequest {
+	s.ApprovalStatus = &v
+	return s
 }
 
 func (s *ListModelVersionsRequest) SetFormatType(v string) *ListModelVersionsRequest {
@@ -4556,12 +4753,17 @@ func (s *ListModelVersionsResponse) SetBody(v *ListModelVersionsResponseBody) *L
 }
 
 type ListModelsRequest struct {
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Origin      *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Provider    *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4571,6 +4773,11 @@ func (s ListModelsRequest) String() string {
 
 func (s ListModelsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListModelsRequest) SetDomain(v string) *ListModelsRequest {
+	s.Domain = &v
+	return s
 }
 
 func (s *ListModelsRequest) SetLabel(v string) *ListModelsRequest {
@@ -4588,6 +4795,11 @@ func (s *ListModelsRequest) SetOrder(v string) *ListModelsRequest {
 	return s
 }
 
+func (s *ListModelsRequest) SetOrigin(v string) *ListModelsRequest {
+	s.Origin = &v
+	return s
+}
+
 func (s *ListModelsRequest) SetPageNumber(v int32) *ListModelsRequest {
 	s.PageNumber = &v
 	return s
@@ -4598,8 +4810,23 @@ func (s *ListModelsRequest) SetPageSize(v int32) *ListModelsRequest {
 	return s
 }
 
+func (s *ListModelsRequest) SetProvider(v string) *ListModelsRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetQuery(v string) *ListModelsRequest {
+	s.Query = &v
+	return s
+}
+
 func (s *ListModelsRequest) SetSortBy(v string) *ListModelsRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetTask(v string) *ListModelsRequest {
+	s.Task = &v
 	return s
 }
 
@@ -5085,14 +5312,15 @@ func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasRespo
 }
 
 type ListResourcesRequest struct {
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductTypes *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductTypes  *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
+	ResourceName  *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -5130,6 +5358,11 @@ func (s *ListResourcesRequest) SetProductTypes(v string) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetResourceName(v string) *ListResourcesRequest {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetResourceTypes(v string) *ListResourcesRequest {
+	s.ResourceTypes = &v
 	return s
 }
 
@@ -5173,16 +5406,19 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int64) *ListResourcesRespons
 }
 
 type ListResourcesResponseBodyResources struct {
-	EnvType       *string                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	GmtCreateTime *string                                     `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GroupName     *string                                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Id            *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsDefault     *bool                                       `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Name          *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductType   *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Quotas        []*ListResourcesResponseBodyResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	Spec          map[string]interface{}                      `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	WorkspaceId   *string                                     `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Encryption    *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	EnvType       *string                                       `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Executor      map[string]*ResourcesExecutorValue            `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	GmtCreateTime *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GroupName     *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Id            *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDefault     *bool                                         `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Name          *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProductType   *string                                       `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quotas        []*ListResourcesResponseBodyResourcesQuotas   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	ResourceType  *string                                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Spec          map[string]interface{}                        `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	WorkspaceId   *string                                       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListResourcesResponseBodyResources) String() string {
@@ -5193,8 +5429,18 @@ func (s ListResourcesResponseBodyResources) GoString() string {
 	return s.String()
 }
 
+func (s *ListResourcesResponseBodyResources) SetEncryption(v *ListResourcesResponseBodyResourcesEncryption) *ListResourcesResponseBodyResources {
+	s.Encryption = v
+	return s
+}
+
 func (s *ListResourcesResponseBodyResources) SetEnvType(v string) *ListResourcesResponseBodyResources {
 	s.EnvType = &v
+	return s
+}
+
+func (s *ListResourcesResponseBodyResources) SetExecutor(v map[string]*ResourcesExecutorValue) *ListResourcesResponseBodyResources {
+	s.Executor = v
 	return s
 }
 
@@ -5233,6 +5479,11 @@ func (s *ListResourcesResponseBodyResources) SetQuotas(v []*ListResourcesRespons
 	return s
 }
 
+func (s *ListResourcesResponseBodyResources) SetResourceType(v string) *ListResourcesResponseBodyResources {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *ListResourcesResponseBodyResources) SetSpec(v map[string]interface{}) *ListResourcesResponseBodyResources {
 	s.Spec = v
 	return s
@@ -5240,6 +5491,35 @@ func (s *ListResourcesResponseBodyResources) SetSpec(v map[string]interface{}) *
 
 func (s *ListResourcesResponseBodyResources) SetWorkspaceId(v string) *ListResourcesResponseBodyResources {
 	s.WorkspaceId = &v
+	return s
+}
+
+type ListResourcesResponseBodyResourcesEncryption struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s ListResourcesResponseBodyResourcesEncryption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourcesResponseBodyResourcesEncryption) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourcesResponseBodyResourcesEncryption) SetAlgorithm(v string) *ListResourcesResponseBodyResourcesEncryption {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListResourcesResponseBodyResourcesEncryption) SetEnabled(v bool) *ListResourcesResponseBodyResourcesEncryption {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListResourcesResponseBodyResourcesEncryption) SetKey(v string) *ListResourcesResponseBodyResourcesEncryption {
+	s.Key = &v
 	return s
 }
 
@@ -6081,8 +6361,12 @@ func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceRespon
 
 type UpdateModelRequest struct {
 	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
 	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Origin           *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Task             *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s UpdateModelRequest) String() string {
@@ -6098,13 +6382,33 @@ func (s *UpdateModelRequest) SetAccessibility(v string) *UpdateModelRequest {
 	return s
 }
 
+func (s *UpdateModelRequest) SetDomain(v string) *UpdateModelRequest {
+	s.Domain = &v
+	return s
+}
+
 func (s *UpdateModelRequest) SetModelDescription(v string) *UpdateModelRequest {
 	s.ModelDescription = &v
 	return s
 }
 
+func (s *UpdateModelRequest) SetModelDoc(v string) *UpdateModelRequest {
+	s.ModelDoc = &v
+	return s
+}
+
 func (s *UpdateModelRequest) SetModelName(v string) *UpdateModelRequest {
 	s.ModelName = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetOrigin(v string) *UpdateModelRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *UpdateModelRequest) SetTask(v string) *UpdateModelRequest {
+	s.Task = &v
 	return s
 }
 
@@ -6155,10 +6459,13 @@ func (s *UpdateModelResponse) SetBody(v *UpdateModelResponseBody) *UpdateModelRe
 }
 
 type UpdateModelVersionRequest struct {
+	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
 	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
 	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 }
 
@@ -6170,8 +6477,18 @@ func (s UpdateModelVersionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateModelVersionRequest) SetApprovalStatus(v string) *UpdateModelVersionRequest {
+	s.ApprovalStatus = &v
+	return s
+}
+
 func (s *UpdateModelVersionRequest) SetInferenceSpec(v map[string]interface{}) *UpdateModelVersionRequest {
 	s.InferenceSpec = v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetMetrics(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.Metrics = v
 	return s
 }
 
@@ -6187,6 +6504,11 @@ func (s *UpdateModelVersionRequest) SetSourceId(v string) *UpdateModelVersionReq
 
 func (s *UpdateModelVersionRequest) SetSourceType(v string) *UpdateModelVersionRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetTrainingSpec(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.TrainingSpec = v
 	return s
 }
 
@@ -6311,9 +6633,10 @@ func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *Updat
 }
 
 type UpdateWorkspaceResourceRequest struct {
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s UpdateWorkspaceResourceRequest) String() string {
@@ -6336,6 +6659,11 @@ func (s *UpdateWorkspaceResourceRequest) SetIsDefault(v bool) *UpdateWorkspaceRe
 
 func (s *UpdateWorkspaceResourceRequest) SetProductType(v string) *UpdateWorkspaceResourceRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResourceRequest) SetResourceType(v string) *UpdateWorkspaceResourceRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6432,18 +6760,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddImageResponse{}
-	_body, _err := client.AddImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6498,11 +6814,11 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 	return _result, _err
 }
 
-func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsRequest) (_result *AddImageLabelsResponse, _err error) {
+func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddImageLabelsResponse{}
-	_body, _err := client.AddImageLabelsWithOptions(ImageId, request, headers, runtime)
+	_result = &AddImageResponse{}
+	_body, _err := client.AddImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6544,11 +6860,11 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 	return _result, _err
 }
 
-func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *AddMemberRoleResponse, _err error) {
+func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsRequest) (_result *AddImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &AddMemberRoleResponse{}
-	_body, _err := client.AddMemberRoleWithOptions(WorkspaceId, MemberId, RoleName, headers, runtime)
+	_result = &AddImageLabelsResponse{}
+	_body, _err := client.AddImageLabelsWithOptions(ImageId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6580,11 +6896,11 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 	return _result, _err
 }
 
-func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_result *CreateCodeSourceResponse, _err error) {
+func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *AddMemberRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateCodeSourceResponse{}
-	_body, _err := client.CreateCodeSourceWithOptions(request, headers, runtime)
+	_result = &AddMemberRoleResponse{}
+	_body, _err := client.AddMemberRoleWithOptions(WorkspaceId, MemberId, RoleName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6658,11 +6974,11 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 	return _result, _err
 }
 
-func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_result *CreateCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDatasetResponse{}
-	_body, _err := client.CreateDatasetWithOptions(request, headers, runtime)
+	_result = &CreateCodeSourceResponse{}
+	_body, _err := client.CreateCodeSourceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6708,6 +7024,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["Property"] = request.Property
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProviderType)) {
+		body["ProviderType"] = request.ProviderType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
 		body["SourceId"] = request.SourceId
 	}
@@ -6748,11 +7068,11 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 	return _result, _err
 }
 
-func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateDatasetLabelsRequest) (_result *CreateDatasetLabelsResponse, _err error) {
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateDatasetLabelsResponse{}
-	_body, _err := client.CreateDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6794,11 +7114,11 @@ func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request 
 	return _result, _err
 }
 
-func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
+func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateDatasetLabelsRequest) (_result *CreateDatasetLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateMemberResponse{}
-	_body, _err := client.CreateMemberWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &CreateDatasetLabelsResponse{}
+	_body, _err := client.CreateDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6840,11 +7160,11 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 	return _result, _err
 }
 
-func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
+func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateModelResponse{}
-	_body, _err := client.CreateModelWithOptions(request, headers, runtime)
+	_result = &CreateMemberResponse{}
+	_body, _err := client.CreateMemberWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6862,6 +7182,10 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["Domain"] = request.Domain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
 	}
@@ -6870,8 +7194,20 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		body["ModelDescription"] = request.ModelDescription
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelDoc)) {
+		body["ModelDoc"] = request.ModelDoc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
 		body["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		body["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["Task"] = request.Task
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -6902,11 +7238,11 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 	return _result, _err
 }
 
-func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLabelsRequest) (_result *CreateModelLabelsResponse, _err error) {
+func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateModelLabelsResponse{}
-	_body, _err := client.CreateModelLabelsWithOptions(ModelId, request, headers, runtime)
+	_result = &CreateModelResponse{}
+	_body, _err := client.CreateModelWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6948,11 +7284,11 @@ func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVersionRequest) (_result *CreateModelVersionResponse, _err error) {
+func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLabelsRequest) (_result *CreateModelLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateModelVersionResponse{}
-	_body, _err := client.CreateModelVersionWithOptions(ModelId, request, headers, runtime)
+	_result = &CreateModelLabelsResponse{}
+	_body, _err := client.CreateModelLabelsWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6966,6 +7302,10 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
+		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
 		body["FormatType"] = request.FormatType
 	}
@@ -6982,6 +7322,10 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 		body["Labels"] = request.Labels
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		body["Metrics"] = request.Metrics
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
 		body["Options"] = request.Options
 	}
@@ -6992,6 +7336,10 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingSpec)) {
+		body["TrainingSpec"] = request.TrainingSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uri)) {
@@ -7030,11 +7378,11 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 	return _result, _err
 }
 
-func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest) (_result *CreateModelVersionLabelsResponse, _err error) {
+func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVersionRequest) (_result *CreateModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateModelVersionLabelsResponse{}
-	_body, _err := client.CreateModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
+	_result = &CreateModelVersionResponse{}
+	_body, _err := client.CreateModelVersionWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7076,11 +7424,11 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 	return _result, _err
 }
 
-func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (_result *CreateProductOrdersResponse, _err error) {
+func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest) (_result *CreateModelVersionLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateProductOrdersResponse{}
-	_body, _err := client.CreateProductOrdersWithOptions(request, headers, runtime)
+	_result = &CreateModelVersionLabelsResponse{}
+	_body, _err := client.CreateModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7126,11 +7474,11 @@ func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrder
 	return _result, _err
 }
 
-func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
+func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (_result *CreateProductOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkspaceResponse{}
-	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
+	_result = &CreateProductOrdersResponse{}
+	_body, _err := client.CreateProductOrdersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7184,11 +7532,11 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 	return _result, _err
 }
 
-func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *CreateWorkspaceResourceRequest) (_result *CreateWorkspaceResourceResponse, _err error) {
+func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateWorkspaceResourceResponse{}
-	_body, _err := client.CreateWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CreateWorkspaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7234,11 +7582,11 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
-func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
+func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *CreateWorkspaceResourceRequest) (_result *CreateWorkspaceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteCodeSourceResponse{}
-	_body, _err := client.DeleteCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	_result = &CreateWorkspaceResourceResponse{}
+	_body, _err := client.CreateWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7270,11 +7618,11 @@ func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers 
 	return _result, _err
 }
 
-func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetResponse, _err error) {
+func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDatasetResponse{}
-	_body, _err := client.DeleteDatasetWithOptions(DatasetId, headers, runtime)
+	_result = &DeleteCodeSourceResponse{}
+	_body, _err := client.DeleteCodeSourceWithOptions(CodeSourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7306,11 +7654,11 @@ func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[st
 	return _result, _err
 }
 
-func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteDatasetLabelsRequest) (_result *DeleteDatasetLabelsResponse, _err error) {
+func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteDatasetLabelsResponse{}
-	_body, _err := client.DeleteDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(DatasetId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7352,11 +7700,11 @@ func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request 
 	return _result, _err
 }
 
-func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersRequest) (_result *DeleteMembersResponse, _err error) {
+func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteDatasetLabelsRequest) (_result *DeleteDatasetLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteMembersResponse{}
-	_body, _err := client.DeleteMembersWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &DeleteDatasetLabelsResponse{}
+	_body, _err := client.DeleteDatasetLabelsWithOptions(DatasetId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7398,11 +7746,11 @@ func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse, _err error) {
+func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersRequest) (_result *DeleteMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteModelResponse{}
-	_body, _err := client.DeleteModelWithOptions(ModelId, headers, runtime)
+	_result = &DeleteMembersResponse{}
+	_body, _err := client.DeleteMembersWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7434,11 +7782,11 @@ func (client *Client) DeleteModelWithOptions(ModelId *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLabelsRequest) (_result *DeleteModelLabelsResponse, _err error) {
+func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteModelLabelsResponse{}
-	_body, _err := client.DeleteModelLabelsWithOptions(ModelId, request, headers, runtime)
+	_result = &DeleteModelResponse{}
+	_body, _err := client.DeleteModelWithOptions(ModelId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7480,11 +7828,11 @@ func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *Del
 	return _result, _err
 }
 
-func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (_result *DeleteModelVersionResponse, _err error) {
+func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLabelsRequest) (_result *DeleteModelLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteModelVersionResponse{}
-	_body, _err := client.DeleteModelVersionWithOptions(ModelId, VersionName, headers, runtime)
+	_result = &DeleteModelLabelsResponse{}
+	_body, _err := client.DeleteModelLabelsWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7516,11 +7864,11 @@ func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName
 	return _result, _err
 }
 
-func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest) (_result *DeleteModelVersionLabelsResponse, _err error) {
+func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (_result *DeleteModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteModelVersionLabelsResponse{}
-	_body, _err := client.DeleteModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
+	_result = &DeleteModelVersionResponse{}
+	_body, _err := client.DeleteModelVersionWithOptions(ModelId, VersionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7562,11 +7910,11 @@ func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, Versi
 	return _result, _err
 }
 
-func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
+func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest) (_result *DeleteModelVersionLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteWorkspaceResponse{}
-	_body, _err := client.DeleteWorkspaceWithOptions(WorkspaceId, headers, runtime)
+	_result = &DeleteModelVersionLabelsResponse{}
+	_body, _err := client.DeleteModelVersionLabelsWithOptions(ModelId, VersionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7598,11 +7946,11 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *DeleteWorkspaceResourceRequest) (_result *DeleteWorkspaceResourceResponse, _err error) {
+func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteWorkspaceResourceResponse{}
-	_body, _err := client.DeleteWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &DeleteWorkspaceResponse{}
+	_body, _err := client.DeleteWorkspaceWithOptions(WorkspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7626,6 +7974,10 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7652,11 +8004,11 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
-func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
+func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *DeleteWorkspaceResourceRequest) (_result *DeleteWorkspaceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetCodeSourceResponse{}
-	_body, _err := client.GetCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.DeleteWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7688,11 +8040,11 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map
 	return _result, _err
 }
 
-func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse, _err error) {
+func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDatasetResponse{}
-	_body, _err := client.GetDatasetWithOptions(DatasetId, headers, runtime)
+	_result = &GetCodeSourceResponse{}
+	_body, _err := client.GetCodeSourceWithOptions(CodeSourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7724,11 +8076,11 @@ func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (_result *GetDefaultWorkspaceResponse, _err error) {
+func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetDefaultWorkspaceResponse{}
-	_body, _err := client.GetDefaultWorkspaceWithOptions(request, headers, runtime)
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(DatasetId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7770,11 +8122,11 @@ func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspac
 	return _result, _err
 }
 
-func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_result *GetImageResponse, _err error) {
+func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (_result *GetDefaultWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetImageResponse{}
-	_body, _err := client.GetImageWithOptions(ImageId, request, headers, runtime)
+	_result = &GetDefaultWorkspaceResponse{}
+	_body, _err := client.GetDefaultWorkspaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7816,11 +8168,11 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 	return _result, _err
 }
 
-func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) (_result *GetMemberResponse, _err error) {
+func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_result *GetImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetMemberResponse{}
-	_body, _err := client.GetMemberWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &GetImageResponse{}
+	_body, _err := client.GetImageWithOptions(ImageId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7862,11 +8214,11 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 	return _result, _err
 }
 
-func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err error) {
+func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) (_result *GetMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetModelResponse{}
-	_body, _err := client.GetModelWithOptions(ModelId, headers, runtime)
+	_result = &GetMemberResponse{}
+	_body, _err := client.GetMemberWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7898,11 +8250,11 @@ func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*s
 	return _result, _err
 }
 
-func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_result *GetModelVersionResponse, _err error) {
+func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetModelVersionResponse{}
-	_body, _err := client.GetModelVersionWithOptions(ModelId, VersionName, headers, runtime)
+	_result = &GetModelResponse{}
+	_body, _err := client.GetModelWithOptions(ModelId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7934,11 +8286,11 @@ func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *s
 	return _result, _err
 }
 
-func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
+func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_result *GetModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetPermissionResponse{}
-	_body, _err := client.GetPermissionWithOptions(WorkspaceId, PermissionCode, request, headers, runtime)
+	_result = &GetModelVersionResponse{}
+	_body, _err := client.GetModelVersionWithOptions(ModelId, VersionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7984,11 +8336,11 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 	return _result, _err
 }
 
-func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetWorkspaceResponse{}
-	_body, _err := client.GetWorkspaceWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &GetPermissionResponse{}
+	_body, _err := client.GetPermissionWithOptions(WorkspaceId, PermissionCode, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8030,11 +8382,11 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 	return _result, _err
 }
 
-func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result *ListCodeSourcesResponse, _err error) {
+func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListCodeSourcesResponse{}
-	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.GetWorkspaceWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8096,11 +8448,11 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 	return _result, _err
 }
 
-func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result *ListCodeSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListDatasetsResponse{}
-	_body, _err := client.ListDatasetsWithOptions(request, headers, runtime)
+	_result = &ListCodeSourcesResponse{}
+	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8146,6 +8498,10 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 		query["Properties"] = request.Properties
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceTypes)) {
 		query["SourceTypes"] = request.SourceTypes
 	}
@@ -8178,11 +8534,11 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
+func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListImageLabelsResponse{}
-	_body, _err := client.ListImageLabelsWithOptions(request, headers, runtime)
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8240,11 +8596,11 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 	return _result, _err
 }
 
-func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
+func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListImagesResponse{}
-	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
+	_result = &ListImageLabelsResponse{}
+	_body, _err := client.ListImageLabelsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8280,6 +8636,10 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.ParentUserId)) {
 		query["ParentUserId"] = request.ParentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -8322,11 +8682,11 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
+func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListMembersResponse{}
-	_body, _err := client.ListMembersWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &ListImagesResponse{}
+	_body, _err := client.ListImagesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8380,11 +8740,11 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 	return _result, _err
 }
 
-func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersionsRequest) (_result *ListModelVersionsResponse, _err error) {
+func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListModelVersionsResponse{}
-	_body, _err := client.ListModelVersionsWithOptions(ModelId, request, headers, runtime)
+	_result = &ListMembersResponse{}
+	_body, _err := client.ListMembersWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8398,6 +8758,10 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
+		query["ApprovalStatus"] = request.ApprovalStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
 		query["FormatType"] = request.FormatType
 	}
@@ -8462,11 +8826,11 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 	return _result, _err
 }
 
-func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
+func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersionsRequest) (_result *ListModelVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListModelsResponse{}
-	_body, _err := client.ListModelsWithOptions(request, headers, runtime)
+	_result = &ListModelVersionsResponse{}
+	_body, _err := client.ListModelVersionsWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8480,6 +8844,10 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Label)) {
 		query["Label"] = request.Label
 	}
@@ -8492,6 +8860,10 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		query["Order"] = request.Order
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -8500,8 +8872,20 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Provider)) {
+		query["Provider"] = request.Provider
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		query["Task"] = request.Task
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -8532,11 +8916,11 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermissionsResponse, _err error) {
+func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPermissionsResponse{}
-	_body, _err := client.ListPermissionsWithOptions(WorkspaceId, headers, runtime)
+	_result = &ListModelsResponse{}
+	_body, _err := client.ListModelsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8568,11 +8952,11 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers ma
 	return _result, _err
 }
 
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
+	_result = &ListPermissionsResponse{}
+	_body, _err := client.ListPermissionsWithOptions(WorkspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8622,11 +9006,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 	return _result, _err
 }
 
-func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuotasResponse, _err error) {
+func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListQuotasResponse{}
-	_body, _err := client.ListQuotasWithOptions(request, headers, runtime)
+	_result = &ListProductsResponse{}
+	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8668,11 +9052,11 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 	return _result, _err
 }
 
-func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
+func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuotasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListResourcesResponse{}
-	_body, _err := client.ListResourcesWithOptions(request, headers, runtime)
+	_result = &ListQuotasResponse{}
+	_body, _err := client.ListQuotasWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8710,6 +9094,10 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 		query["ResourceName"] = request.ResourceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
 		query["Verbose"] = request.Verbose
 	}
@@ -8742,11 +9130,11 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 	return _result, _err
 }
 
-func (client *Client) ListWorkspaceUsers(WorkspaceId *string) (_result *ListWorkspaceUsersResponse, _err error) {
+func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkspaceUsersResponse{}
-	_body, _err := client.ListWorkspaceUsersWithOptions(WorkspaceId, headers, runtime)
+	_result = &ListResourcesResponse{}
+	_body, _err := client.ListResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8778,11 +9166,11 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, headers
 	return _result, _err
 }
 
-func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
+func (client *Client) ListWorkspaceUsers(WorkspaceId *string) (_result *ListWorkspaceUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListWorkspacesResponse{}
-	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
+	_result = &ListWorkspaceUsersResponse{}
+	_body, _err := client.ListWorkspaceUsersWithOptions(WorkspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8864,11 +9252,11 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 	return _result, _err
 }
 
-func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishCodeSourceResponse, _err error) {
+func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PublishCodeSourceResponse{}
-	_body, _err := client.PublishCodeSourceWithOptions(CodeSourceId, headers, runtime)
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.ListWorkspacesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8900,11 +9288,11 @@ func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers
 	return _result, _err
 }
 
-func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDatasetResponse, _err error) {
+func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PublishDatasetResponse{}
-	_body, _err := client.PublishDatasetWithOptions(DatasetId, headers, runtime)
+	_result = &PublishCodeSourceResponse{}
+	_body, _err := client.PublishCodeSourceWithOptions(CodeSourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8936,11 +9324,11 @@ func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[s
 	return _result, _err
 }
 
-func (client *Client) PublishImage(ImageId *string) (_result *PublishImageResponse, _err error) {
+func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &PublishImageResponse{}
-	_body, _err := client.PublishImageWithOptions(ImageId, headers, runtime)
+	_result = &PublishDatasetResponse{}
+	_body, _err := client.PublishDatasetWithOptions(DatasetId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8972,11 +9360,11 @@ func (client *Client) PublishImageWithOptions(ImageId *string, headers map[strin
 	return _result, _err
 }
 
-func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse, _err error) {
+func (client *Client) PublishImage(ImageId *string) (_result *PublishImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveImageResponse{}
-	_body, _err := client.RemoveImageWithOptions(ImageId, headers, runtime)
+	_result = &PublishImageResponse{}
+	_body, _err := client.PublishImageWithOptions(ImageId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9008,11 +9396,11 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string
 	return _result, _err
 }
 
-func (client *Client) RemoveImageLabels(ImageId *string, LabelKeys *string) (_result *RemoveImageLabelsResponse, _err error) {
+func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveImageLabelsResponse{}
-	_body, _err := client.RemoveImageLabelsWithOptions(ImageId, LabelKeys, headers, runtime)
+	_result = &RemoveImageResponse{}
+	_body, _err := client.RemoveImageWithOptions(ImageId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9044,11 +9432,11 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKeys *s
 	return _result, _err
 }
 
-func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *RemoveMemberRoleResponse, _err error) {
+func (client *Client) RemoveImageLabels(ImageId *string, LabelKeys *string) (_result *RemoveImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &RemoveMemberRoleResponse{}
-	_body, _err := client.RemoveMemberRoleWithOptions(WorkspaceId, MemberId, RoleName, headers, runtime)
+	_result = &RemoveImageLabelsResponse{}
+	_body, _err := client.RemoveImageLabelsWithOptions(ImageId, LabelKeys, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9080,11 +9468,11 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 	return _result, _err
 }
 
-func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *RemoveMemberRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDatasetResponse{}
-	_body, _err := client.UpdateDatasetWithOptions(DatasetId, request, headers, runtime)
+	_result = &RemoveMemberRoleResponse{}
+	_body, _err := client.RemoveMemberRoleWithOptions(WorkspaceId, MemberId, RoleName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9134,11 +9522,11 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 	return _result, _err
 }
 
-func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequest) (_result *UpdateDefaultWorkspaceResponse, _err error) {
+func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateDefaultWorkspaceResponse{}
-	_body, _err := client.UpdateDefaultWorkspaceWithOptions(request, headers, runtime)
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(DatasetId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9180,11 +9568,11 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 	return _result, _err
 }
 
-func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) (_result *UpdateModelResponse, _err error) {
+func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequest) (_result *UpdateDefaultWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateModelResponse{}
-	_body, _err := client.UpdateModelWithOptions(ModelId, request, headers, runtime)
+	_result = &UpdateDefaultWorkspaceResponse{}
+	_body, _err := client.UpdateDefaultWorkspaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9202,12 +9590,28 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["Domain"] = request.Domain
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelDescription)) {
 		body["ModelDescription"] = request.ModelDescription
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelDoc)) {
+		body["ModelDoc"] = request.ModelDoc
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
 		body["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		body["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["Task"] = request.Task
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9234,11 +9638,11 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 	return _result, _err
 }
 
-func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, request *UpdateModelVersionRequest) (_result *UpdateModelVersionResponse, _err error) {
+func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) (_result *UpdateModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateModelVersionResponse{}
-	_body, _err := client.UpdateModelVersionWithOptions(ModelId, VersionName, request, headers, runtime)
+	_result = &UpdateModelResponse{}
+	_body, _err := client.UpdateModelWithOptions(ModelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9252,8 +9656,16 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
+		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InferenceSpec)) {
 		body["InferenceSpec"] = request.InferenceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		body["Metrics"] = request.Metrics
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
@@ -9266,6 +9678,10 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrainingSpec)) {
+		body["TrainingSpec"] = request.TrainingSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
@@ -9296,11 +9712,11 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 	return _result, _err
 }
 
-func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorkspaceRequest) (_result *UpdateWorkspaceResponse, _err error) {
+func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, request *UpdateModelVersionRequest) (_result *UpdateModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateWorkspaceResponse{}
-	_body, _err := client.UpdateWorkspaceWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &UpdateModelVersionResponse{}
+	_body, _err := client.UpdateModelVersionWithOptions(ModelId, VersionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9346,11 +9762,11 @@ func (client *Client) UpdateWorkspaceWithOptions(WorkspaceId *string, request *U
 	return _result, _err
 }
 
-func (client *Client) UpdateWorkspaceResource(WorkspaceId *string, request *UpdateWorkspaceResourceRequest) (_result *UpdateWorkspaceResourceResponse, _err error) {
+func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorkspaceRequest) (_result *UpdateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateWorkspaceResourceResponse{}
-	_body, _err := client.UpdateWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
+	_result = &UpdateWorkspaceResponse{}
+	_body, _err := client.UpdateWorkspaceWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9363,12 +9779,11 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
-		query["GroupName"] = request.GroupName
+		body["GroupName"] = request.GroupName
 	}
 
-	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
 		body["IsDefault"] = request.IsDefault
 	}
@@ -9377,9 +9792,12 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		body["ProductType"] = request.ProductType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -9399,5 +9817,17 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkspaceResource(WorkspaceId *string, request *UpdateWorkspaceResourceRequest) (_result *UpdateWorkspaceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkspaceResourceResponse{}
+	_body, _err := client.UpdateWorkspaceResourceWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
