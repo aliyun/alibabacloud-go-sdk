@@ -13,11 +13,11 @@ import (
 )
 
 type AttachClusterToHubRequest struct {
-	// Specifies whether to associate the clusters with Service Mesh (ASM) instances. Valid values:
+	// The operation that you want to perform. Set the value to **AttachClusterToHub**.
 	AttachToMesh *bool `json:"AttachToMesh,omitempty" xml:"AttachToMesh,omitempty"`
-	// The ID of the master instance.
+	// The ID of the task.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A JSON string that can be parsed into a string array. The string specifies the clusters that you want to associate with the master instance.
+	// The ID of the request.
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
 }
 
@@ -45,14 +45,13 @@ func (s *AttachClusterToHubRequest) SetClusterIds(v string) *AttachClusterToHubR
 }
 
 type AttachClusterToHubResponseBody struct {
-	// The ID of the master instance.
+	// You can call the AttachClusterToHub operation to associate an Container Service for Kubernetes (ACK) cluster with a master instance of ACK One.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A list of the IDs of the clusters that you want to associate with the master instance.
+	// Zhishi
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Example 1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachClusterToHubResponseBody) String() string {
@@ -405,9 +404,12 @@ func (s *DeleteHubClusterResponse) SetBody(v *DeleteHubClusterResponseBody) *Del
 }
 
 type DeletePolicyInstanceRequest struct {
-	ClusterId  *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters for which the policy is deleted.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
-	PolicyName *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s DeletePolicyInstanceRequest) String() string {
@@ -434,9 +436,12 @@ func (s *DeletePolicyInstanceRequest) SetPolicyName(v string) *DeletePolicyInsta
 }
 
 type DeletePolicyInstanceShrinkRequest struct {
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// A array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters for which the policy is deleted.
 	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
-	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s DeletePolicyInstanceShrinkRequest) String() string {
@@ -463,6 +468,7 @@ func (s *DeletePolicyInstanceShrinkRequest) SetPolicyName(v string) *DeletePolic
 }
 
 type DeletePolicyInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -581,11 +587,19 @@ func (s *DeleteUserPermissionResponse) SetBody(v *DeleteUserPermissionResponseBo
 }
 
 type DeployPolicyInstanceRequest struct {
-	ClusterId    *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterIds   []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
-	Namespaces   []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	PolicyAction *string   `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyName   *string   `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// An array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters in which the policy instance is deployed.
+	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
+	// A list of namespaces.
+	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// The action of the policy. Valid values:
+	//
+	// *   deny: blocks deployments that match the policy.
+	// *   warn: generates alerts for deployments that match the policy.
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s DeployPolicyInstanceRequest) String() string {
@@ -622,11 +636,19 @@ func (s *DeployPolicyInstanceRequest) SetPolicyName(v string) *DeployPolicyInsta
 }
 
 type DeployPolicyInstanceShrinkRequest struct {
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// An array of JSON strings. The JSON strings in the array indicate the IDs of the associated clusters in which the policy instance is deployed.
 	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// A list of namespaces.
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
-	PolicyAction     *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyName       *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The action of the policy. Valid values:
+	//
+	// *   deny: blocks deployments that match the policy.
+	// *   warn: generates alerts for deployments that match the policy.
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s DeployPolicyInstanceShrinkRequest) String() string {
@@ -663,6 +685,7 @@ func (s *DeployPolicyInstanceShrinkRequest) SetPolicyName(v string) *DeployPolic
 }
 
 type DeployPolicyInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1436,12 +1459,6 @@ func (s *DescribeHubClusterLogsResponse) SetBody(v *DescribeHubClusterLogsRespon
 }
 
 type DescribeHubClustersRequest struct {
-	// The scenario where master instances are used. Valid values:
-	//
-	// *   `Default`: standard scenarios.
-	// *   `XFlow`: workflow scenarios.
-	//
-	// Default value: `Default`.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 
@@ -1459,10 +1476,8 @@ func (s *DescribeHubClustersRequest) SetProfile(v string) *DescribeHubClustersRe
 }
 
 type DescribeHubClustersResponseBody struct {
-	// The list of the master instances returned.
-	Clusters []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Clusters  []*DescribeHubClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBody) String() string {
@@ -1484,20 +1499,13 @@ func (s *DescribeHubClustersResponseBody) SetRequestId(v string) *DescribeHubClu
 }
 
 type DescribeHubClustersResponseBodyClusters struct {
-	// The details of the Kubernetes API server.
-	ApiServer *DescribeHubClustersResponseBodyClustersApiServer `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
-	// The details of the master instance.
-	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
-	// The list of the deletion conditions of the master instance.
-	Conditions []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The endpoint of the master instance.
-	Endpoints *DescribeHubClustersResponseBodyClustersEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
-	// The logging configurations.
-	LogConfig *DescribeHubClustersResponseBodyClustersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	// The configurations of Alibaba Cloud Service Mesh (ASM).
-	MeshConfig *DescribeHubClustersResponseBodyClustersMeshConfig `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
-	// The network configurations of the master instance.
-	Network *DescribeHubClustersResponseBodyClustersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ApiServer   *DescribeHubClustersResponseBodyClustersApiServer    `json:"ApiServer,omitempty" xml:"ApiServer,omitempty" type:"Struct"`
+	ClusterInfo *DescribeHubClustersResponseBodyClustersClusterInfo  `json:"ClusterInfo,omitempty" xml:"ClusterInfo,omitempty" type:"Struct"`
+	Conditions  []*DescribeHubClustersResponseBodyClustersConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	Endpoints   *DescribeHubClustersResponseBodyClustersEndpoints    `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
+	LogConfig   *DescribeHubClustersResponseBodyClustersLogConfig    `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
+	MeshConfig  *DescribeHubClustersResponseBodyClustersMeshConfig   `json:"MeshConfig,omitempty" xml:"MeshConfig,omitempty" type:"Struct"`
+	Network     *DescribeHubClustersResponseBodyClustersNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 }
 
 func (s DescribeHubClustersResponseBodyClusters) String() string {
@@ -1544,14 +1552,8 @@ func (s *DescribeHubClustersResponseBodyClusters) SetNetwork(v *DescribeHubClust
 }
 
 type DescribeHubClustersResponseBodyClustersApiServer struct {
-	// The ID of the elastic IP address (EIP).
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
-	// Indicates whether the API server is accessible over the Internet. Valid values:
-	//
-	// *   true: The API server is accessible over the Internet.
-	// *   false: The API server is inaccessible over the Internet.
-	EnabledPublic *bool `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
-	// The ID of the Server Load Balancer (SLB) instance that is associated with the Kubernetes API server.
+	EnabledPublic  *bool   `json:"EnabledPublic,omitempty" xml:"EnabledPublic,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -1579,36 +1581,16 @@ func (s *DescribeHubClustersResponseBodyClustersApiServer) SetLoadBalancerId(v s
 }
 
 type DescribeHubClustersResponseBodyClustersClusterInfo struct {
-	// The ID of the master instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The specification of the master instance.
-	//
-	// *   ack.pro.small: ACK Pro cluster
-	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The time when the master instance was created.
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterSpec  *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The error message returned when the master instance failed to be created.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the master instance.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of the master instance.
-	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The ID of the region in which the master instance resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the master instance. Valid values:
-	//
-	// *   initial: The master instance is being initialized.
-	// *   failed: The master instance failed to be created.
-	// *   running: The master instance is running
-	// *   inactive: The master instance is pending.
-	// *   deleting: The master instance is being deleted.
-	// *   delete_failed: The master instance failed to be deleted.
-	// *   deleted: The master instance is deleted.
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The last time when the master instance was updated.
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The Kubernetes version of the master instance.
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Profile      *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State        *string `json:"State,omitempty" xml:"State,omitempty"`
+	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersClusterInfo) String() string {
@@ -1670,18 +1652,10 @@ func (s *DescribeHubClustersResponseBodyClustersClusterInfo) SetVersion(v string
 }
 
 type DescribeHubClustersResponseBodyClustersConditions struct {
-	// The error message of the deletion condition.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The reason for the deletion condition.
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the deletion condition. Valid values:
-	//
-	// *   True: The master instance cannot be deleted.
-	// *   False: The master instance can be deleted.
-	// *   Unknow: Whether the master instance can be deleted is unknown.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of deletion condition.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersConditions) String() string {
@@ -1713,10 +1687,8 @@ func (s *DescribeHubClustersResponseBodyClustersConditions) SetType(v string) *D
 }
 
 type DescribeHubClustersResponseBodyClustersEndpoints struct {
-	// The internal endpoint of the API server.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
-	// The public endpoint of the API server.
-	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
+	PublicApiServerEndpoint   *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersEndpoints) String() string {
@@ -1738,14 +1710,8 @@ func (s *DescribeHubClustersResponseBodyClustersEndpoints) SetPublicApiServerEnd
 }
 
 type DescribeHubClustersResponseBodyClustersLogConfig struct {
-	// Indicates whether audit logging is enabled. Valid values:
-	//
-	// *   true: Audit logging is enabled.
-	// *   false: Audit logging is disabled.
-	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
-	// The name of the project of Log Service.
-	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The number of days that logs are retained by Log Service.
+	EnableLog   *bool   `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	LogProject  *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	LogStoreTTL *string `json:"LogStoreTTL,omitempty" xml:"LogStoreTTL,omitempty"`
 }
 
@@ -1773,13 +1739,8 @@ func (s *DescribeHubClustersResponseBodyClustersLogConfig) SetLogStoreTTL(v stri
 }
 
 type DescribeHubClustersResponseBodyClustersMeshConfig struct {
-	// Indicates whether ASM is enabled. Valid values:
-	//
-	// *   true: ASM is enabled.
-	// *   false: ASM is disabled.
-	EnableMesh *bool `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
-	// The ID of the ASM instance.
-	MeshId *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
+	EnableMesh *bool   `json:"EnableMesh,omitempty" xml:"EnableMesh,omitempty"`
+	MeshId     *string `json:"MeshId,omitempty" xml:"MeshId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersMeshConfig) String() string {
@@ -1801,14 +1762,10 @@ func (s *DescribeHubClustersResponseBodyClustersMeshConfig) SetMeshId(v string) 
 }
 
 type DescribeHubClustersResponseBodyClustersNetwork struct {
-	// The domain name of the master instance.
-	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	// The security group IDs of the master instance.
+	ClusterDomain    *string   `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitempty" xml:"SecurityGroupIDs,omitempty" type:"Repeated"`
-	// The IDs of the vSwitches to which the master instance is connected.
-	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) to which the master instance belongs.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitches        []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeHubClustersResponseBodyClustersNetwork) String() string {
@@ -1869,7 +1826,7 @@ func (s *DescribeHubClustersResponse) SetBody(v *DescribeHubClustersResponseBody
 }
 
 type DescribeManagedClustersRequest struct {
-	// The ID of the master instance.
+	// The status of the association between the clusters and Service Mesh (ASM).
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -1887,9 +1844,9 @@ func (s *DescribeManagedClustersRequest) SetClusterId(v string) *DescribeManaged
 }
 
 type DescribeManagedClustersResponseBody struct {
-	// Information about the master instance.
+	// The status of the associated clusters. Valid values: - initial: The associated clusters are being initialized. - failed: The associated clustersfailed to be created. - running: The associated clusters are running. - inactive: The associated clusters are inactive. - deleting: The associated clusters are being deleted. - deleted: The associated clusters are deleted.
 	Clusters []*DescribeManagedClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// VPC ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1914,9 +1871,9 @@ func (s *DescribeManagedClustersResponseBody) SetRequestId(v string) *DescribeMa
 type DescribeManagedClustersResponseBodyClusters struct {
 	// The name of the master instance.
 	Cluster *DescribeManagedClustersResponseBodyClustersCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
-	// The status of the association between the clusters and Service Mesh (ASM).
+	// Zhishi
 	MeshStatus *DescribeManagedClustersResponseBodyClustersMeshStatus `json:"MeshStatus,omitempty" xml:"MeshStatus,omitempty" type:"Struct"`
-	// The status of the association between the clusters and the master instance.
+	// Example 1
 	Status *DescribeManagedClustersResponseBodyClustersStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
@@ -1944,33 +1901,33 @@ func (s *DescribeManagedClustersResponseBodyClusters) SetStatus(v *DescribeManag
 }
 
 type DescribeManagedClustersResponseBodyClustersCluster struct {
-	// The ID of the master instance.
+	// Information about the master instance.
 	ClusterID *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro.
+	// The ID of the master instance.
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The type of the master instance.
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The time when the master instance was created.
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// The ID of the master instance.
 	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The current Kubernetes version of the master instance.
+	// The name of the master instance.
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The original Kubernetes version of the master instance.
+	// The specification of the master instance. Valid values: - ack.pro.small: ACK Pro.
 	InitVersion *string `json:"InitVersion,omitempty" xml:"InitVersion,omitempty"`
-	// The name of the master instance.
+	// The status information.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the master instance.
+	// The ID of the request.
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The region in which the master instance resides.
+	// The ID of the master instance.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource group.
+	// The name of the master instance.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the associated clusters. Valid values: - initial: The associated clusters are being initialized. - failed: The associated clustersfailed to be created. - running: The associated clusters are running. - inactive: The associated clusters are inactive. - deleting: The associated clusters are being deleted. - deleted: The associated clusters are deleted.
+	// The current Kubernetes version of the master instance.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the master instance was updated.
-	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 	// The ID of the vSwitch.
+	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	// The original Kubernetes version of the master instance.
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
-	// VPC ID.
+	// The status of the association between the clusters and the master instance. Valid values: - Installing: The clusters are being associated with the master instance. - Successed: The clusters are associated with the master instance. - Failed: The clusters failed to be associated with the master instance. - Deleting: The clusters are being disassociated from the master instance. - Deleted: The clusters are disassociated from the master instance.
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
 }
 
@@ -2053,7 +2010,6 @@ func (s *DescribeManagedClustersResponseBodyClustersCluster) SetVpcID(v string) 
 }
 
 type DescribeManagedClustersResponseBodyClustersMeshStatus struct {
-	// Indicates whether the clusters are associated with ASM instances. Valid values: - true: The clusters are associated with ASM instances. - false: The clusters are not associated with ASM instances.
 	InMesh *bool `json:"InMesh,omitempty" xml:"InMesh,omitempty"`
 }
 
@@ -2071,9 +2027,9 @@ func (s *DescribeManagedClustersResponseBodyClustersMeshStatus) SetInMesh(v bool
 }
 
 type DescribeManagedClustersResponseBodyClustersStatus struct {
-	// The status information.
+	// Query the clusters that are associated with a master instance.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The status of the association between the clusters and the master instance. Valid values: - Installing: The clusters are being associated with the master instance. - Successed: The clusters are associated with the master instance. - Failed: The clusters failed to be associated with the master instance. - Deleting: The clusters are being disassociated from the master instance. - Deleted: The clusters are disassociated from the master instance.
+	// You can call the DescribeManagedClusters operation to query the clusters that are associated with a master instance.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -2125,8 +2081,10 @@ func (s *DescribeManagedClustersResponse) SetBody(v *DescribeManagedClustersResp
 }
 
 type DescribePoliciesResponseBody struct {
-	Policies  []*DescribePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of policies.
+	Policies []*DescribePoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePoliciesResponseBody) String() string {
@@ -2148,8 +2106,10 @@ func (s *DescribePoliciesResponseBody) SetRequestId(v string) *DescribePoliciesR
 }
 
 type DescribePoliciesResponseBodyPolicies struct {
-	Category *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	Names    []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// The policy type.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The names of the policies of each policy type.
+	Names []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
 }
 
 func (s DescribePoliciesResponseBodyPolicies) String() string {
@@ -2200,6 +2160,7 @@ func (s *DescribePoliciesResponse) SetBody(v *DescribePoliciesResponseBody) *Des
 }
 
 type DescribePolicyDetailsRequest struct {
+	// The name of the policy.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -2217,8 +2178,10 @@ func (s *DescribePolicyDetailsRequest) SetPolicyName(v string) *DescribePolicyDe
 }
 
 type DescribePolicyDetailsResponseBody struct {
-	Policy    *DescribePolicyDetailsResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Detailed information about the policy.
+	Policy *DescribePolicyDetailsResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePolicyDetailsResponseBody) String() string {
@@ -2240,15 +2203,30 @@ func (s *DescribePolicyDetailsResponseBody) SetRequestId(v string) *DescribePoli
 }
 
 type DescribePolicyDetailsResponseBodyPolicy struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Created     *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The action of the policy. Valid values:
+	//
+	// *   enforce: blocks deployments that match the policy.
+	// *   inform: generates alerts for deployments that match the policy.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The type of the policy.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the policy was created.
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The description of the policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NoConfig    *int32  `json:"NoConfig,omitempty" xml:"NoConfig,omitempty"`
-	Severity    *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Template    *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Updated     *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
+	// The name of the policy.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether parameters are required. Valid values:
+	//
+	// *   0: Parameters are required.
+	// *   1: Parameters are optional.
+	NoConfig *int32 `json:"NoConfig,omitempty" xml:"NoConfig,omitempty"`
+	// The severity level of the policy.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The content of the policy.
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The time when the policy was last updated.
+	Updated *string `json:"Updated,omitempty" xml:"Updated,omitempty"`
 }
 
 func (s DescribePolicyDetailsResponseBodyPolicy) String() string {
@@ -2334,6 +2312,7 @@ func (s *DescribePolicyDetailsResponse) SetBody(v *DescribePolicyDetailsResponse
 }
 
 type DescribePolicyGovernanceInClusterRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2351,8 +2330,10 @@ func (s *DescribePolicyGovernanceInClusterRequest) SetClusterId(v string) *Descr
 }
 
 type DescribePolicyGovernanceInClusterResponseBody struct {
+	// The detailed information about the policies.
 	PolicyGovernances []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances `json:"PolicyGovernances,omitempty" xml:"PolicyGovernances,omitempty" type:"Repeated"`
-	RequestId         *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBody) String() string {
@@ -2374,7 +2355,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBody) SetRequestId(v string) *
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances struct {
-	Cluster          *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster          `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The information about the associated clusters in which the policies are deployed.
+	Cluster *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Struct"`
+	// The detailed policy information.
 	PolicyGovernance *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance `json:"PolicyGovernance,omitempty" xml:"PolicyGovernance,omitempty" type:"Struct"`
 }
 
@@ -2397,13 +2380,20 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernances) SetPoli
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the associated cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The specifications of the associated cluster.
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// The type of the associated cluster.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Profile     *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The name of the associated cluster.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The identifier of the associated cluster.
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID of the associated cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The status of the associated cluster.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) String() string {
@@ -2450,8 +2440,11 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesCluster) 
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernance struct {
-	AdmitLog  *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog  `json:"AdmitLog,omitempty" xml:"AdmitLog,omitempty" type:"Struct"`
-	OnState   []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState `json:"OnState,omitempty" xml:"OnState,omitempty" type:"Repeated"`
+	// The audit log generated by the associated cluster.
+	AdmitLog *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog `json:"AdmitLog,omitempty" xml:"AdmitLog,omitempty" type:"Struct"`
+	// The number of policies of each severity level enabled in the associated cluster.
+	OnState []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState `json:"OnState,omitempty" xml:"OnState,omitempty" type:"Repeated"`
+	// The number of deployments that match the policies in the associated cluster, including deployments that are blocked and deployments that have triggered alerting.
 	Violation *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
 }
 
@@ -2479,11 +2472,19 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog struct {
-	Count      *string              `json:"Count,omitempty" xml:"Count,omitempty"`
-	LogProject *string              `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	LogStore   *string              `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	Logs       []map[string]*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Progress   *string              `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The number of log entries in the query result.
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The name of the Log Service project.
+	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The name of the Logstore.
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The content of the audit log.
+	Logs []map[string]*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The status of the query. Valid values:
+	//
+	// *   Complete: The query is successful, and the complete result is returned.
+	// *   Incomplete: The query is successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceAdmitLog) String() string {
@@ -2520,9 +2521,12 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState struct {
-	EnabledCount *int64  `json:"EnabledCount,omitempty" xml:"EnabledCount,omitempty"`
-	Severity     *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	TotalCount   *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The types of policies that are enabled in the associated cluster.
+	EnabledCount *int64 `json:"EnabledCount,omitempty" xml:"EnabledCount,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The types of policies of each severity level.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceOnState) String() string {
@@ -2549,8 +2553,10 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation struct {
+	// The number of deployments that match the policies in the associated cluster, including deployments that are blocked and deployments that have triggered alerting. The deployments are classified by severity level.
 	TotalViolations *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty" type:"Struct"`
-	Violations      *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations      `json:"Violations,omitempty" xml:"Violations,omitempty" type:"Struct"`
+	// The number of deployments that match the policies in the associated cluster, including deployments that are blocked and deployments that have triggered alerting. The deployments are classified by policy type.
+	Violations *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations `json:"Violations,omitempty" xml:"Violations,omitempty" type:"Struct"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolation) String() string {
@@ -2572,7 +2578,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolations struct {
+	// The information about the deployments that are blocked.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Repeated"`
+	// The information about the deployments that have triggered alerting.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Repeated"`
 }
 
@@ -2595,8 +2603,10 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny struct {
-	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Violations *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The number of deployments that are blocked.
+	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsDeny) String() string {
@@ -2618,7 +2628,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationTotalViolationsWarn struct {
-	Severity   *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The severity level.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The number of deployments that have triggered alerting.
 	Violations *string `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
@@ -2641,7 +2653,9 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolations struct {
+	// The information about the deployments that are blocked.
 	Deny []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny `json:"Deny,omitempty" xml:"Deny,omitempty" type:"Repeated"`
+	// The information about the deployments that have triggered alerting.
 	Warn []*DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn `json:"Warn,omitempty" xml:"Warn,omitempty" type:"Repeated"`
 }
 
@@ -2664,10 +2678,14 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny struct {
+	// The description of the policy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Violations        *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The severity level of the policy.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The number of times that the policy blocks deployments.
+	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsDeny) String() string {
@@ -2699,10 +2717,14 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGov
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn struct {
+	// The description of the policy.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Violations        *int64  `json:"Violations,omitempty" xml:"Violations,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The severity level of the policy.
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// The number of times that the policy generates alerts.
+	Violations *int64 `json:"Violations,omitempty" xml:"Violations,omitempty"`
 }
 
 func (s DescribePolicyGovernanceInClusterResponseBodyPolicyGovernancesPolicyGovernanceViolationViolationsWarn) String() string {
@@ -2763,7 +2785,9 @@ func (s *DescribePolicyGovernanceInClusterResponse) SetBody(v *DescribePolicyGov
 }
 
 type DescribePolicyInstancesRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the master instance.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the policy.
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -2786,8 +2810,10 @@ func (s *DescribePolicyInstancesRequest) SetPolicyName(v string) *DescribePolicy
 }
 
 type DescribePolicyInstancesResponseBody struct {
-	Policies  []*DescribePolicyInstancesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of policy instances.
+	Policies []*DescribePolicyInstancesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePolicyInstancesResponseBody) String() string {
@@ -2809,16 +2835,33 @@ func (s *DescribePolicyInstancesResponseBody) SetRequestId(v string) *DescribePo
 }
 
 type DescribePolicyInstancesResponseBodyPolicies struct {
-	ClusterId         *string            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceName      *string            `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PolicyAction      *string            `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
-	PolicyCategory    *string            `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
-	PolicyDescription *string            `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyName        *string            `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyParameters  map[string]*string `json:"PolicyParameters,omitempty" xml:"PolicyParameters,omitempty"`
-	PolicyScope       *string            `json:"PolicyScope,omitempty" xml:"PolicyScope,omitempty"`
-	PolicySeverity    *string            `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
-	TotalViolations   *int64             `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty"`
+	// The ID of the associated cluster.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the policy instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The action of the policy. Valid values:
+	//
+	// *   deny: blocks deployments that match the policy.
+	// *   warn: generates alerts for deployments that match the policy.
+	PolicyAction *string `json:"PolicyAction,omitempty" xml:"PolicyAction,omitempty"`
+	// The type of the policy.
+	PolicyCategory *string `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
+	// The description of the policy.
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The parameters of the policy instance.
+	PolicyParameters map[string]*string `json:"PolicyParameters,omitempty" xml:"PolicyParameters,omitempty"`
+	// The applicable scope of the policy instance.
+	//
+	// A value of \* indicates all namespaces. This is the default value.
+	//
+	// Multiple namespaces are separated by commas (,).
+	PolicyScope *string `json:"PolicyScope,omitempty" xml:"PolicyScope,omitempty"`
+	// The severity level of the policy.
+	PolicySeverity *string `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
+	// The total number of deployments that match the policy in the associated cluster, including the deployments that are blocked and the deployments that have triggered alerting.
+	TotalViolations *int64 `json:"TotalViolations,omitempty" xml:"TotalViolations,omitempty"`
 }
 
 func (s DescribePolicyInstancesResponseBodyPolicies) String() string {
@@ -2909,6 +2952,7 @@ func (s *DescribePolicyInstancesResponse) SetBody(v *DescribePolicyInstancesResp
 }
 
 type DescribePolicyInstancesStatusRequest struct {
+	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2926,8 +2970,10 @@ func (s *DescribePolicyInstancesStatusRequest) SetClusterId(v string) *DescribeP
 }
 
 type DescribePolicyInstancesStatusResponseBody struct {
-	Policies  *DescribePolicyInstancesStatusResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of policy instances of each policy type.
+	Policies *DescribePolicyInstancesStatusResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePolicyInstancesStatusResponseBody) String() string {
@@ -2949,8 +2995,10 @@ func (s *DescribePolicyInstancesStatusResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribePolicyInstancesStatusResponseBodyPolicies struct {
+	// The number of policy instances of each policy type.
 	PolicyInstances []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances `json:"PolicyInstances,omitempty" xml:"PolicyInstances,omitempty" type:"Repeated"`
-	SeverityInfo    []*DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo    `json:"SeverityInfo,omitempty" xml:"SeverityInfo,omitempty" type:"Repeated"`
+	// The number of policy instances that are deployed in the cluster.
+	SeverityInfo []*DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo `json:"SeverityInfo,omitempty" xml:"SeverityInfo,omitempty" type:"Repeated"`
 }
 
 func (s DescribePolicyInstancesStatusResponseBodyPolicies) String() string {
@@ -2972,12 +3020,18 @@ func (s *DescribePolicyInstancesStatusResponseBodyPolicies) SetSeverityInfo(v []
 }
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances struct {
-	PolicyCategory       *string                                                                           `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
-	PolicyClusters       []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters `json:"PolicyClusters,omitempty" xml:"PolicyClusters,omitempty" type:"Repeated"`
-	PolicyDescription    *string                                                                           `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyInstancesCount *int64                                                                            `json:"PolicyInstancesCount,omitempty" xml:"PolicyInstancesCount,omitempty"`
-	PolicyName           *string                                                                           `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicySeverity       *string                                                                           `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
+	// The type of the policy.
+	PolicyCategory *string `json:"PolicyCategory,omitempty" xml:"PolicyCategory,omitempty"`
+	// The associated clusters in which the policy instances are deployed.
+	PolicyClusters []*DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters `json:"PolicyClusters,omitempty" xml:"PolicyClusters,omitempty" type:"Repeated"`
+	// The description of the policy.
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+	PolicyInstancesCount *int64 `json:"PolicyInstancesCount,omitempty" xml:"PolicyInstancesCount,omitempty"`
+	// The name of the policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The severity level of the policy.
+	PolicySeverity *string `json:"PolicySeverity,omitempty" xml:"PolicySeverity,omitempty"`
 }
 
 func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) String() string {
@@ -3019,8 +3073,10 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances) SetPo
 }
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters struct {
+	// The ID of the associated cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the deployment.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClusters) String() string {
@@ -3042,8 +3098,10 @@ func (s *DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyC
 }
 
 type DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo struct {
+	// The number of policy instances.
 	SeverityCount *string `json:"SeverityCount,omitempty" xml:"SeverityCount,omitempty"`
-	SeverityType  *string `json:"SeverityType,omitempty" xml:"SeverityType,omitempty"`
+	// The severity level.
+	SeverityType *string `json:"SeverityType,omitempty" xml:"SeverityType,omitempty"`
 }
 
 func (s DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo) String() string {
@@ -3094,7 +3152,7 @@ func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstanc
 }
 
 type DescribeRegionsRequest struct {
-	// The language. Valid values: zh, en, and jp.
+	// The ID of the request.
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -3112,9 +3170,9 @@ func (s *DescribeRegionsRequest) SetLanguage(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// A list of available regions that are returned.
+	// Example 1
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The name of the region.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3137,9 +3195,8 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region.
+	// You can call the DescribeRegions operation to query available regions.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3312,11 +3369,11 @@ func (s *DescribeUserPermissionsResponse) SetBody(v *DescribeUserPermissionsResp
 }
 
 type DetachClusterFromHubRequest struct {
-	// The ID of the master instance.
+	// The ID of the request.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A JSON string that can be parsed into a string array. The string specifies the clusters that you want to disassociate from the master instance.
+	// The operation that you want to perform. Set the value to **DetachClusterFromHub**.
 	ClusterIds *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
-	// Specifies whether to only disassociate the clusters from Service Mesh (ASM) instances. Valid values: - true: only disassociates the clusters from ASM instances. - false: disassociates the clusters from the master instance and ASM instances.
+	// Example 1
 	DetachFromMesh *bool `json:"DetachFromMesh,omitempty" xml:"DetachFromMesh,omitempty"`
 }
 
@@ -3344,14 +3401,12 @@ func (s *DetachClusterFromHubRequest) SetDetachFromMesh(v bool) *DetachClusterFr
 }
 
 type DetachClusterFromHubResponseBody struct {
-	// The ID of the master instance.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the clusters that are disassociated from the master instance.
+	// Zhishi
+	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ManagedClusterIds []*string `json:"ManagedClusterIds,omitempty" xml:"ManagedClusterIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// You can call the DetachClusterFromHub operation to disassociate clusters from a master instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DetachClusterFromHubResponseBody) String() string {
@@ -3414,6 +3469,7 @@ func (s *DetachClusterFromHubResponse) SetBody(v *DetachClusterFromHubResponseBo
 type GrantUserPermissionRequest struct {
 	// The ID of the master instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	// The namespace to which the permissions are scoped. By default, this parameter is empty when you set role_type to cluster.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Specifies the predefined role that you want to assign. Valid values:
@@ -3440,6 +3496,11 @@ func (s GrantUserPermissionRequest) GoString() string {
 
 func (s *GrantUserPermissionRequest) SetClusterId(v string) *GrantUserPermissionRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *GrantUserPermissionRequest) SetIsRamRole(v bool) *GrantUserPermissionRequest {
+	s.IsRamRole = &v
 	return s
 }
 
@@ -3535,6 +3596,7 @@ func (s *GrantUserPermissionsRequest) SetUserId(v string) *GrantUserPermissionsR
 
 type GrantUserPermissionsRequestPermissions struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	IsRamRole *bool   `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	RoleType  *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
@@ -3550,6 +3612,11 @@ func (s GrantUserPermissionsRequestPermissions) GoString() string {
 
 func (s *GrantUserPermissionsRequestPermissions) SetClusterId(v string) *GrantUserPermissionsRequestPermissions {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *GrantUserPermissionsRequestPermissions) SetIsRamRole(v bool) *GrantUserPermissionsRequestPermissions {
+	s.IsRamRole = &v
 	return s
 }
 
@@ -5015,6 +5082,10 @@ func (client *Client) GrantUserPermissionWithOptions(request *GrantUserPermissio
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRamRole)) {
+		query["IsRamRole"] = request.IsRamRole
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
