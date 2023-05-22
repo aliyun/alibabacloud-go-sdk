@@ -401,13 +401,16 @@ func (s *CreateEndpointResponse) SetBody(v *CreateEndpointResponseBody) *CreateE
 }
 
 type CreateInstanceRequest struct {
-	Capacity    *string                      `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Description *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSlot     *string                      `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
-	Name        *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	PaymentType *string                      `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Tags        []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type        *string                      `json:"Type,omitempty" xml:"Type,omitempty"`
+	Capacity     *string                      `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Description  *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxEndpoint  *string                      `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
+	MaxSlot      *string                      `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
+	Name         *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	PaymentType  *string                      `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ProviderType *string                      `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	StorageType  *string                      `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags         []*CreateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type         *string                      `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -428,6 +431,11 @@ func (s *CreateInstanceRequest) SetDescription(v string) *CreateInstanceRequest 
 	return s
 }
 
+func (s *CreateInstanceRequest) SetMaxEndpoint(v string) *CreateInstanceRequest {
+	s.MaxEndpoint = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetMaxSlot(v string) *CreateInstanceRequest {
 	s.MaxSlot = &v
 	return s
@@ -440,6 +448,16 @@ func (s *CreateInstanceRequest) SetName(v string) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetProviderType(v string) *CreateInstanceRequest {
+	s.ProviderType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetStorageType(v string) *CreateInstanceRequest {
+	s.StorageType = &v
 	return s
 }
 
@@ -1306,12 +1324,15 @@ type DescribeInstanceResponseBody struct {
 	Description     *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreateTime   *string                             `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string                             `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	MaxEndpoint     *int32                              `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
 	MaxSlot         *int32                              `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
 	Name            *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId         *string                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PaymentType     *string                             `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ProviderType    *string                             `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	RequestId       *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Status          *InstanceStatus                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType     *string                             `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Tags            []*DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Type            *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserId          *string                             `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -1346,6 +1367,11 @@ func (s *DescribeInstanceResponseBody) SetGmtModifiedTime(v string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetMaxEndpoint(v int32) *DescribeInstanceResponseBody {
+	s.MaxEndpoint = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetMaxSlot(v int32) *DescribeInstanceResponseBody {
 	s.MaxSlot = &v
 	return s
@@ -1366,6 +1392,11 @@ func (s *DescribeInstanceResponseBody) SetPaymentType(v string) *DescribeInstanc
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetProviderType(v string) *DescribeInstanceResponseBody {
+	s.ProviderType = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
 	s.RequestId = &v
 	return s
@@ -1373,6 +1404,11 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 
 func (s *DescribeInstanceResponseBody) SetStatus(v *InstanceStatus) *DescribeInstanceResponseBody {
 	s.Status = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetStorageType(v string) *DescribeInstanceResponseBody {
+	s.StorageType = &v
 	return s
 }
 
@@ -1449,21 +1485,23 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeSlotResponseBody struct {
-	Capacity        *string                         `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Description     *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                         `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId      *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LifeCycle       *SlotLifeCycle                  `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	Name            *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RequestId       *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *SlotStatus                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageType     *string                         `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUri      *string                         `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
-	Tags            []*DescribeSlotResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserId          *string                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid            *string                         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 数据集加速槽的读写类型。
+	IoType      *string                         `json:"IoType,omitempty" xml:"IoType,omitempty"`
+	LifeCycle   *SlotLifeCycle                  `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId     *string                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status      *SlotStatus                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string                         `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUri  *string                         `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
+	Tags        []*DescribeSlotResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserId      *string                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid        *string                         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSlotResponseBody) String() string {
@@ -1496,6 +1534,11 @@ func (s *DescribeSlotResponseBody) SetGmtModifiedTime(v string) *DescribeSlotRes
 
 func (s *DescribeSlotResponseBody) SetInstanceId(v string) *DescribeSlotResponseBody {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSlotResponseBody) SetIoType(v string) *DescribeSlotResponseBody {
+	s.IoType = &v
 	return s
 }
 
@@ -1796,6 +1839,7 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 
 type ListEndpointsRequest struct {
 	EndpointIds *string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty"`
+	// 所属加速实例的ID。
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -1889,17 +1933,18 @@ func (s *ListEndpointsResponseBody) SetTotalCount(v int32) *ListEndpointsRespons
 }
 
 type ListEndpointsResponseBodyEndpoints struct {
-	GmtCreateTime   *string         `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId      *string         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name            *string         `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Status          *EndpointStatus `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string         `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId          *string         `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid            *string         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	VpcId           *string         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId       *string         `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 所属加速实例的ID。
+	InstanceId *string         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string         `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId    *string         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Status     *EndpointStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string         `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId     *string         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid       *string         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	VpcId      *string         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId  *string         `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s ListEndpointsResponseBodyEndpoints) String() string {
@@ -2089,19 +2134,25 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	Capacity        *string                                   `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                                   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	MaxSlot         *int32                                    `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
-	Name            *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PaymentType     *string                                   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Status          *InstanceStatus                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type            *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId          *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid            *string                                   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Capacity        *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 数据集加速实例的最大挂载点个数。
+	MaxEndpoint *int32  `json:"MaxEndpoint,omitempty" xml:"MaxEndpoint,omitempty"`
+	MaxSlot     *int32  `json:"MaxSlot,omitempty" xml:"MaxSlot,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 数据集加速实例的资源提供者类型。
+	ProviderType *string         `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	Status       *InstanceStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 数据集加速实例的存储类型。
+	StorageType *string                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags        []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Type        *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId      *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid        *string                                   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -2132,6 +2183,11 @@ func (s *ListInstancesResponseBodyInstances) SetGmtModifiedTime(v string) *ListI
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetMaxEndpoint(v int32) *ListInstancesResponseBodyInstances {
+	s.MaxEndpoint = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetMaxSlot(v int32) *ListInstancesResponseBodyInstances {
 	s.MaxSlot = &v
 	return s
@@ -2152,8 +2208,18 @@ func (s *ListInstancesResponseBodyInstances) SetPaymentType(v string) *ListInsta
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstances) SetProviderType(v string) *ListInstancesResponseBodyInstances {
+	s.ProviderType = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyInstances) SetStatus(v *InstanceStatus) *ListInstancesResponseBodyInstances {
 	s.Status = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetStorageType(v string) *ListInstancesResponseBodyInstances {
+	s.StorageType = &v
 	return s
 }
 
@@ -2344,15 +2410,17 @@ type ListSlotsResponseBodySlots struct {
 	GmtCreateTime   *string                                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string                                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	InstanceId      *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LifeCycle       *SlotLifeCycle                         `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
-	Name            *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Status          *SlotStatus                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageType     *string                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUri      *string                                `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
-	Tags            []*ListSlotsResponseBodySlotsTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserId          *string                                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Uuid            *string                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// 数据集加速槽的读写类型。
+	IoType      *string                           `json:"IoType,omitempty" xml:"IoType,omitempty"`
+	LifeCycle   *SlotLifeCycle                    `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	Name        *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId     *string                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Status      *SlotStatus                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageType *string                           `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageUri  *string                           `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
+	Tags        []*ListSlotsResponseBodySlotsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserId      *string                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Uuid        *string                           `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListSlotsResponseBodySlots) String() string {
@@ -2390,6 +2458,11 @@ func (s *ListSlotsResponseBodySlots) SetGmtModifiedTime(v string) *ListSlotsResp
 
 func (s *ListSlotsResponseBodySlots) SetInstanceId(v string) *ListSlotsResponseBodySlots {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSlotsResponseBodySlots) SetIoType(v string) *ListSlotsResponseBodySlots {
+	s.IoType = &v
 	return s
 }
 
@@ -3558,6 +3631,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MaxEndpoint)) {
+		body["MaxEndpoint"] = request.MaxEndpoint
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxSlot)) {
 		body["MaxSlot"] = request.MaxSlot
 	}
@@ -3568,6 +3645,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
 		body["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProviderType)) {
+		body["ProviderType"] = request.ProviderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		body["StorageType"] = request.StorageType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
