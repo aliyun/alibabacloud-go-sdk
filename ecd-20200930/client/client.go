@@ -3469,14 +3469,10 @@ func (s *CreateCdsFileShareLinkResponse) SetBody(v *CreateCdsFileShareLinkRespon
 }
 
 type CreateCloudDriveUsersRequest struct {
-	// The ID of the cloud disk.
-	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The IDs of the end users.
-	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The region ID.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum storage space of an end user. Unit: bytes.
-	UserMaxSize *int64 `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
+	CdsId       *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	EndUserId   []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserMaxSize *int64    `json:"UserMaxSize,omitempty" xml:"UserMaxSize,omitempty"`
 }
 
 func (s CreateCloudDriveUsersRequest) String() string {
@@ -3508,7 +3504,6 @@ func (s *CreateCloudDriveUsersRequest) SetUserMaxSize(v int64) *CreateCloudDrive
 }
 
 type CreateCloudDriveUsersResponseBody struct {
-	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21054,6 +21049,146 @@ func (s *ExportDesktopListInfoResponse) SetBody(v *ExportDesktopListInfoResponse
 	return s
 }
 
+type GetAsyncTaskRequest struct {
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	CdsId       *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+}
+
+func (s GetAsyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskRequest) SetAsyncTaskId(v string) *GetAsyncTaskRequest {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *GetAsyncTaskRequest) SetCdsId(v string) *GetAsyncTaskRequest {
+	s.CdsId = &v
+	return s
+}
+
+type GetAsyncTaskResponseBody struct {
+	Code      *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAsyncTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAsyncTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskResponseBody) SetCode(v string) *GetAsyncTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetData(v *GetAsyncTaskResponseBodyData) *GetAsyncTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetRequestId(v string) *GetAsyncTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBody) SetSuccess(v string) *GetAsyncTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAsyncTaskResponseBodyData struct {
+	AsyncTaskId     *string `json:"AsyncTaskId,omitempty" xml:"AsyncTaskId,omitempty"`
+	ConsumedProcess *string `json:"ConsumedProcess,omitempty" xml:"ConsumedProcess,omitempty"`
+	ErrCode         *int64  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalProcess    *int64  `json:"TotalProcess,omitempty" xml:"TotalProcess,omitempty"`
+	Url             *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetAsyncTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetAsyncTaskId(v string) *GetAsyncTaskResponseBodyData {
+	s.AsyncTaskId = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetConsumedProcess(v string) *GetAsyncTaskResponseBodyData {
+	s.ConsumedProcess = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetErrCode(v int64) *GetAsyncTaskResponseBodyData {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetMessage(v string) *GetAsyncTaskResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetStatus(v string) *GetAsyncTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetTotalProcess(v int64) *GetAsyncTaskResponseBodyData {
+	s.TotalProcess = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponseBodyData) SetUrl(v string) *GetAsyncTaskResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type GetAsyncTaskResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAsyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncTaskResponse) SetHeaders(v map[string]*string) *GetAsyncTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncTaskResponse) SetStatusCode(v int32) *GetAsyncTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAsyncTaskResponse) SetBody(v *GetAsyncTaskResponseBody) *GetAsyncTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetConnectionTicketRequest struct {
 	// The command that you want to run to configure a custom application in user mode. After you obtain the credentials, the application automatically starts.
 	//
@@ -22511,15 +22646,148 @@ func (s *HibernateDesktopsResponse) SetBody(v *HibernateDesktopsResponseBody) *H
 }
 
 type ListCdsFilesRequest struct {
-	CdsId        *string   `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId    *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	FileIds      []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
-	MaxResults   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderType    *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ParentFileId *string   `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the user to whom the cloud disk is allocated.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The IDs of the files to be queried.
+	FileIds []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	// The number of entries to return on each page. Default value: 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used for the next query. If this parameter is empty, all results are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting method of the files.
+	//
+	// Valid values:
+	//
+	// *   CreateTimeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on the time when they are created.
+	//
+	//     <!-- -->
+	//
+	// *   ModifiedTimeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on the time when they are modified.
+	//
+	//     <!-- -->
+	//
+	// *   NameDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on their names.
+	//
+	//     <!-- -->
+	//
+	// *   SizeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on their sizes.
+	//
+	//     <!-- -->
+	//
+	// *   ModifiedTimeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on the time when they are modified.
+	//
+	//     <!-- -->
+	//
+	// *   CreateTimeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on the time when they are created.
+	//
+	//     <!-- -->
+	//
+	// *   SizeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on their sizes.
+	//
+	//     <!-- -->
+	//
+	// *   NameAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on their names.
+	//
+	//     <!-- -->
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the parent file.
+	ParentFileId *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file status.
+	//
+	// Valid values:
+	//
+	// *   available
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     returns only normal files.
+	//
+	//     <!-- -->
+	//
+	// *   uploading
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     returns only the files that are being uploaded.
+	//
+	//     <!-- -->
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCdsFilesRequest) String() string {
@@ -22576,15 +22844,148 @@ func (s *ListCdsFilesRequest) SetStatus(v string) *ListCdsFilesRequest {
 }
 
 type ListCdsFilesShrinkRequest struct {
-	CdsId         *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The ID of the cloud disk.
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// The ID of the user to whom the cloud disk is allocated.
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The IDs of the files to be queried.
 	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
-	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderType     *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	ParentFileId  *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of entries to return on each page. Default value: 100.
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token used for the next query. If this parameter is empty, all results are returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The sorting method of the files.
+	//
+	// Valid values:
+	//
+	// *   CreateTimeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on the time when they are created.
+	//
+	//     <!-- -->
+	//
+	// *   ModifiedTimeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on the time when they are modified.
+	//
+	//     <!-- -->
+	//
+	// *   NameDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on their names.
+	//
+	//     <!-- -->
+	//
+	// *   SizeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on their sizes.
+	//
+	//     <!-- -->
+	//
+	// *   ModifiedTimeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on the time when they are modified.
+	//
+	//     <!-- -->
+	//
+	// *   CreateTimeAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on the time when they are created.
+	//
+	//     <!-- -->
+	//
+	// *   SizeDesc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in descending order based on their sizes.
+	//
+	//     <!-- -->
+	//
+	// *   NameAsc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     sorts files in ascending order based on their names.
+	//
+	//     <!-- -->
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the parent file.
+	ParentFileId *string `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file status.
+	//
+	// Valid values:
+	//
+	// *   available
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     returns only normal files.
+	//
+	//     <!-- -->
+	//
+	// *   uploading
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     returns only the files that are being uploaded.
+	//
+	//     <!-- -->
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCdsFilesShrinkRequest) String() string {
@@ -22641,13 +23042,38 @@ func (s *ListCdsFilesShrinkRequest) SetStatus(v string) *ListCdsFilesShrinkReque
 }
 
 type ListCdsFilesResponseBody struct {
-	Code       *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count      *string                               `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The total number of entries.
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The files.
 	FileModels []*ListCdsFilesResponseBodyFileModels `json:"FileModels,omitempty" xml:"FileModels,omitempty" type:"Repeated"`
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error message returned if the request failed. This parameter is empty if the value of Code is success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token used for the next query. If this parameter is empty, all results have been returned.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID. An ID is the unique identifier of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// *   true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   <!-- -->
+	//
+	//     false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCdsFilesResponseBody) String() string {
@@ -22694,27 +23120,48 @@ func (s *ListCdsFilesResponseBody) SetSuccess(v bool) *ListCdsFilesResponseBody 
 }
 
 type ListCdsFilesResponseBodyFileModels struct {
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ContentType   *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DownloadUrl   *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The file category. PDS categorizes files based on their suffixes and MIME types. The following major categories are included: doc, image, audio, and video.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The content type of the file.
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The time when the file was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The file creator.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The file description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The URL that is used to download the file. The download URL is valid for only 15 minutes. If the URL is expired, you can call the GetFile operation to obtain the file.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The filename extension.
 	FileExtension *string `json:"FileExtension,omitempty" xml:"FileExtension,omitempty"`
-	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	FilePath      *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	FileType      *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	Md5           *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Modifier      *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpenTime      *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	OpenTimeStamp *int64  `json:"OpenTimeStamp,omitempty" xml:"OpenTimeStamp,omitempty"`
-	ParentId      *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sha1          *string `json:"Sha1,omitempty" xml:"Sha1,omitempty"`
-	Size          *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Thumbnail     *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	// The file ID.
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file path.
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The file type.
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The MD5 value of the file.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The time when the file was last modified.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The user who modified the file.
+	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// The file name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the file was last opened.
+	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	// The timestamp that indicates the time when the file was last opened.
+	OpenTimeStamp *int64 `json:"OpenTimeStamp,omitempty" xml:"OpenTimeStamp,omitempty"`
+	// The ID of the parent folder.
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The region ID You can call the [DescribeRegions](~~196646~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The SHA 1 file.
+	Sha1 *string `json:"Sha1,omitempty" xml:"Sha1,omitempty"`
+	// The file size. Unit: bits.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The URL of the thumbnail.
+	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
 }
 
 func (s ListCdsFilesResponseBodyFileModels) String() string {
@@ -38861,6 +39308,54 @@ func (client *Client) ExportDesktopListInfo(request *ExportDesktopListInfoReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportDesktopListInfoResponse{}
 	_body, _err := client.ExportDesktopListInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, runtime *util.RuntimeOptions) (_result *GetAsyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AsyncTaskId)) {
+		query["AsyncTaskId"] = request.AsyncTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAsyncTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAsyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAsyncTaskResponse{}
+	_body, _err := client.GetAsyncTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
