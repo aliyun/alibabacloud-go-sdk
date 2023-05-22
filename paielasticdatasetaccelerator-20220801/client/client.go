@@ -308,10 +308,11 @@ func (s *BindEndpointResponse) SetBody(v *BindEndpointResponseBody) *BindEndpoin
 }
 
 type CreateEndpointRequest struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId  *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s CreateEndpointRequest) String() string {
@@ -320,6 +321,11 @@ func (s CreateEndpointRequest) String() string {
 
 func (s CreateEndpointRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEndpointRequest) SetInstanceId(v string) *CreateEndpointRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *CreateEndpointRequest) SetName(v string) *CreateEndpointRequest {
@@ -786,6 +792,52 @@ func (s *CreateTagResponse) SetStatusCode(v int32) *CreateTagResponse {
 }
 
 func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEndpointResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEndpointResponseBody) SetRequestId(v string) *DeleteEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEndpointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEndpointResponse) SetHeaders(v map[string]*string) *DeleteEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEndpointResponse) SetStatusCode(v int32) *DeleteEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEndpointResponse) SetBody(v *DeleteEndpointResponseBody) *DeleteEndpointResponse {
 	s.Body = v
 	return s
 }
@@ -1744,6 +1796,7 @@ func (s *ListComponentsResponse) SetBody(v *ListComponentsResponseBody) *ListCom
 
 type ListEndpointsRequest struct {
 	EndpointIds *string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty"`
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -1763,6 +1816,11 @@ func (s ListEndpointsRequest) GoString() string {
 
 func (s *ListEndpointsRequest) SetEndpointIds(v string) *ListEndpointsRequest {
 	s.EndpointIds = &v
+	return s
+}
+
+func (s *ListEndpointsRequest) SetInstanceIds(v string) *ListEndpointsRequest {
+	s.InstanceIds = &v
 	return s
 }
 
@@ -1833,6 +1891,7 @@ func (s *ListEndpointsResponseBody) SetTotalCount(v int32) *ListEndpointsRespons
 type ListEndpointsResponseBodyEndpoints struct {
 	GmtCreateTime   *string         `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InstanceId      *string         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name            *string         `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId         *string         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Status          *EndpointStatus `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -1858,6 +1917,11 @@ func (s *ListEndpointsResponseBodyEndpoints) SetGmtCreateTime(v string) *ListEnd
 
 func (s *ListEndpointsResponseBodyEndpoints) SetGmtModifiedTime(v string) *ListEndpointsResponseBodyEndpoints {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyEndpoints) SetInstanceId(v string) *ListEndpointsResponseBodyEndpoints {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2166,6 +2230,8 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListSlotsRequest struct {
+	// 加速槽所对应的数据集加速挂载点的唯一标识符。
+	EndpointIds *string `json:"EndpointIds,omitempty" xml:"EndpointIds,omitempty"`
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -2175,6 +2241,8 @@ type ListSlotsRequest struct {
 	SlotIds     *string `json:"SlotIds,omitempty" xml:"SlotIds,omitempty"`
 	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// 数据集加速槽的数据存储路径（URI）。
+	StorageUri *string `json:"StorageUri,omitempty" xml:"StorageUri,omitempty"`
 }
 
 func (s ListSlotsRequest) String() string {
@@ -2183,6 +2251,11 @@ func (s ListSlotsRequest) String() string {
 
 func (s ListSlotsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListSlotsRequest) SetEndpointIds(v string) *ListSlotsRequest {
+	s.EndpointIds = &v
+	return s
 }
 
 func (s *ListSlotsRequest) SetInstanceIds(v string) *ListSlotsRequest {
@@ -2227,6 +2300,11 @@ func (s *ListSlotsRequest) SetSortBy(v string) *ListSlotsRequest {
 
 func (s *ListSlotsRequest) SetStorageType(v string) *ListSlotsRequest {
 	s.StorageType = &v
+	return s
+}
+
+func (s *ListSlotsRequest) SetStorageUri(v string) *ListSlotsRequest {
+	s.StorageUri = &v
 	return s
 }
 
@@ -3410,6 +3488,10 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
 	}
@@ -3665,6 +3747,42 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 	headers := make(map[string]*string)
 	_result = &CreateTagResponse{}
 	_body, _err := client.CreateTagWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEndpointWithOptions(EndpointId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpoint"),
+		Version:     tea.String("2022-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/endpoints/" + tea.StringValue(openapiutil.GetEncodeParam(EndpointId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEndpoint(EndpointId *string) (_result *DeleteEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEndpointResponse{}
+	_body, _err := client.DeleteEndpointWithOptions(EndpointId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4052,6 +4170,10 @@ func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, he
 		query["EndpointIds"] = request.EndpointIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -4200,6 +4322,10 @@ func (client *Client) ListSlotsWithOptions(request *ListSlotsRequest, headers ma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointIds)) {
+		query["EndpointIds"] = request.EndpointIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		query["InstanceIds"] = request.InstanceIds
 	}
@@ -4234,6 +4360,10 @@ func (client *Client) ListSlotsWithOptions(request *ListSlotsRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
 		query["StorageType"] = request.StorageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageUri)) {
+		query["StorageUri"] = request.StorageUri
 	}
 
 	req := &openapi.OpenApiRequest{
