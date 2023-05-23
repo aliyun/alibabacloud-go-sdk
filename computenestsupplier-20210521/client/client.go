@@ -694,6 +694,7 @@ func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteSer
 
 type GetArtifactRequest struct {
 	ArtifactId      *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactName    *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
 }
 
@@ -707,6 +708,11 @@ func (s GetArtifactRequest) GoString() string {
 
 func (s *GetArtifactRequest) SetArtifactId(v string) *GetArtifactRequest {
 	s.ArtifactId = &v
+	return s
+}
+
+func (s *GetArtifactRequest) SetArtifactName(v string) *GetArtifactRequest {
+	s.ArtifactName = &v
 	return s
 }
 
@@ -2117,6 +2123,152 @@ func (s *GetServiceInstanceResponse) SetStatusCode(v int32) *GetServiceInstanceR
 }
 
 func (s *GetServiceInstanceResponse) SetBody(v *GetServiceInstanceResponseBody) *GetServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetUploadCredentialsRequest struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+}
+
+func (s GetUploadCredentialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadCredentialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadCredentialsRequest) SetFileName(v string) *GetUploadCredentialsRequest {
+	s.FileName = &v
+	return s
+}
+
+type GetUploadCredentialsResponseBody struct {
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetUploadCredentialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetUploadCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadCredentialsResponseBody) SetCode(v string) *GetUploadCredentialsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBody) SetData(v *GetUploadCredentialsResponseBodyData) *GetUploadCredentialsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBody) SetHttpStatusCode(v int32) *GetUploadCredentialsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBody) SetMessage(v string) *GetUploadCredentialsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBody) SetRequestId(v string) *GetUploadCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBody) SetSuccess(v bool) *GetUploadCredentialsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUploadCredentialsResponseBodyData struct {
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	BucketName      *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	ExpireDate      *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetUploadCredentialsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadCredentialsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetAccessKeyId(v string) *GetUploadCredentialsResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetAccessKeySecret(v string) *GetUploadCredentialsResponseBodyData {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetBucketName(v string) *GetUploadCredentialsResponseBodyData {
+	s.BucketName = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetExpireDate(v string) *GetUploadCredentialsResponseBodyData {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetKey(v string) *GetUploadCredentialsResponseBodyData {
+	s.Key = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetRegionId(v string) *GetUploadCredentialsResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponseBodyData) SetSecurityToken(v string) *GetUploadCredentialsResponseBodyData {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetUploadCredentialsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUploadCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUploadCredentialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadCredentialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadCredentialsResponse) SetHeaders(v map[string]*string) *GetUploadCredentialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUploadCredentialsResponse) SetStatusCode(v int32) *GetUploadCredentialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUploadCredentialsResponse) SetBody(v *GetUploadCredentialsResponseBody) *GetUploadCredentialsResponse {
 	s.Body = v
 	return s
 }
@@ -4458,6 +4610,10 @@ func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtim
 		query["ArtifactId"] = request.ArtifactId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ArtifactName)) {
+		query["ArtifactName"] = request.ArtifactName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ArtifactVersion)) {
 		query["ArtifactVersion"] = request.ArtifactVersion
 	}
@@ -4711,6 +4867,50 @@ func (client *Client) GetServiceInstance(request *GetServiceInstanceRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceInstanceResponse{}
 	_body, _err := client.GetServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUploadCredentialsWithOptions(request *GetUploadCredentialsRequest, runtime *util.RuntimeOptions) (_result *GetUploadCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUploadCredentials"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUploadCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUploadCredentials(request *GetUploadCredentialsRequest) (_result *GetUploadCredentialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUploadCredentialsResponse{}
+	_body, _err := client.GetUploadCredentialsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
