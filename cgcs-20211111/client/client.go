@@ -336,8 +336,10 @@ func (s *CreateAdaptationResponse) SetBody(v *CreateAdaptationResponseBody) *Cre
 }
 
 type CreateAppRequest struct {
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	StreamingAppId    *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	StreamingSolution *string `json:"StreamingSolution,omitempty" xml:"StreamingSolution,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -355,6 +357,16 @@ func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetAppType(v string) *CreateAppRequest {
 	s.AppType = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetStreamingAppId(v string) *CreateAppRequest {
+	s.StreamingAppId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetStreamingSolution(v string) *CreateAppRequest {
+	s.StreamingSolution = &v
 	return s
 }
 
@@ -417,6 +429,7 @@ type CreateAppSessionRequest struct {
 	ClientIp        *string                                   `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	CustomSessionId *string                                   `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	CustomUserId    *string                                   `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	DistrictId      *string                                   `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
 	EnablePostpaid  *bool                                     `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
 	ProjectId       *string                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
@@ -459,6 +472,11 @@ func (s *CreateAppSessionRequest) SetCustomSessionId(v string) *CreateAppSession
 
 func (s *CreateAppSessionRequest) SetCustomUserId(v string) *CreateAppSessionRequest {
 	s.CustomUserId = &v
+	return s
+}
+
+func (s *CreateAppSessionRequest) SetDistrictId(v string) *CreateAppSessionRequest {
+	s.DistrictId = &v
 	return s
 }
 
@@ -599,6 +617,303 @@ func (s *CreateAppSessionResponse) SetStatusCode(v int32) *CreateAppSessionRespo
 }
 
 func (s *CreateAppSessionResponse) SetBody(v *CreateAppSessionResponseBody) *CreateAppSessionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAppSessionBatchRequest struct {
+	AppInfos     []*CreateAppSessionBatchRequestAppInfos `json:"AppInfos,omitempty" xml:"AppInfos,omitempty" type:"Repeated"`
+	CustomTaskId *string                                 `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	Timeout      *int32                                  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateAppSessionBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequest) SetAppInfos(v []*CreateAppSessionBatchRequestAppInfos) *CreateAppSessionBatchRequest {
+	s.AppInfos = v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequest) SetCustomTaskId(v string) *CreateAppSessionBatchRequest {
+	s.CustomTaskId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequest) SetTimeout(v int32) *CreateAppSessionBatchRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateAppSessionBatchRequestAppInfos struct {
+	AdapterFileId     *string                                                `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	AppId             *string                                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion        *string                                                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientIp          *string                                                `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CustomUserId      *string                                                `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	CustomerSessionId *string                                                `json:"CustomerSessionId,omitempty" xml:"CustomerSessionId,omitempty"`
+	DatasetId         *string                                                `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DistrictId        *string                                                `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	ProjectId         *string                                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ResultStore       *CreateAppSessionBatchRequestAppInfosResultStore       `json:"ResultStore,omitempty" xml:"ResultStore,omitempty" type:"Struct"`
+	StartParameters   []*CreateAppSessionBatchRequestAppInfosStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
+	SystemInfo        []*CreateAppSessionBatchRequestAppInfosSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
+}
+
+func (s CreateAppSessionBatchRequestAppInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequestAppInfos) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetAdapterFileId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.AdapterFileId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetAppId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetAppVersion(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetClientIp(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetCustomUserId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.CustomUserId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetCustomerSessionId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.CustomerSessionId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetDatasetId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetDistrictId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetProjectId(v string) *CreateAppSessionBatchRequestAppInfos {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetResultStore(v *CreateAppSessionBatchRequestAppInfosResultStore) *CreateAppSessionBatchRequestAppInfos {
+	s.ResultStore = v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetStartParameters(v []*CreateAppSessionBatchRequestAppInfosStartParameters) *CreateAppSessionBatchRequestAppInfos {
+	s.StartParameters = v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfos) SetSystemInfo(v []*CreateAppSessionBatchRequestAppInfosSystemInfo) *CreateAppSessionBatchRequestAppInfos {
+	s.SystemInfo = v
+	return s
+}
+
+type CreateAppSessionBatchRequestAppInfosResultStore struct {
+	Need      *bool                                                       `json:"Need,omitempty" xml:"Need,omitempty"`
+	StoreInfo []*CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo `json:"StoreInfo,omitempty" xml:"StoreInfo,omitempty" type:"Repeated"`
+	Type      *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAppSessionBatchRequestAppInfosResultStore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequestAppInfosResultStore) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosResultStore) SetNeed(v bool) *CreateAppSessionBatchRequestAppInfosResultStore {
+	s.Need = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosResultStore) SetStoreInfo(v []*CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo) *CreateAppSessionBatchRequestAppInfosResultStore {
+	s.StoreInfo = v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosResultStore) SetType(v string) *CreateAppSessionBatchRequestAppInfosResultStore {
+	s.Type = &v
+	return s
+}
+
+type CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo) SetKey(v string) *CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo) SetValue(v string) *CreateAppSessionBatchRequestAppInfosResultStoreStoreInfo {
+	s.Value = &v
+	return s
+}
+
+type CreateAppSessionBatchRequestAppInfosStartParameters struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAppSessionBatchRequestAppInfosStartParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequestAppInfosStartParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosStartParameters) SetKey(v string) *CreateAppSessionBatchRequestAppInfosStartParameters {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosStartParameters) SetValue(v string) *CreateAppSessionBatchRequestAppInfosStartParameters {
+	s.Value = &v
+	return s
+}
+
+type CreateAppSessionBatchRequestAppInfosSystemInfo struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateAppSessionBatchRequestAppInfosSystemInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchRequestAppInfosSystemInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosSystemInfo) SetKey(v string) *CreateAppSessionBatchRequestAppInfosSystemInfo {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchRequestAppInfosSystemInfo) SetValue(v string) *CreateAppSessionBatchRequestAppInfosSystemInfo {
+	s.Value = &v
+	return s
+}
+
+type CreateAppSessionBatchShrinkRequest struct {
+	AppInfosShrink *string `json:"AppInfos,omitempty" xml:"AppInfos,omitempty"`
+	CustomTaskId   *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	Timeout        *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateAppSessionBatchShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchShrinkRequest) SetAppInfosShrink(v string) *CreateAppSessionBatchShrinkRequest {
+	s.AppInfosShrink = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchShrinkRequest) SetCustomTaskId(v string) *CreateAppSessionBatchShrinkRequest {
+	s.CustomTaskId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchShrinkRequest) SetTimeout(v int32) *CreateAppSessionBatchShrinkRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateAppSessionBatchResponseBody struct {
+	CustomTaskId   *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	PlatformTaskId *string `json:"PlatformTaskId,omitempty" xml:"PlatformTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppSessionBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchResponseBody) SetCustomTaskId(v string) *CreateAppSessionBatchResponseBody {
+	s.CustomTaskId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchResponseBody) SetPlatformTaskId(v string) *CreateAppSessionBatchResponseBody {
+	s.PlatformTaskId = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchResponseBody) SetRequestId(v string) *CreateAppSessionBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppSessionBatchResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAppSessionBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAppSessionBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppSessionBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppSessionBatchResponse) SetHeaders(v map[string]*string) *CreateAppSessionBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppSessionBatchResponse) SetStatusCode(v int32) *CreateAppSessionBatchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppSessionBatchResponse) SetBody(v *CreateAppSessionBatchResponseBody) *CreateAppSessionBatchResponse {
 	s.Body = v
 	return s
 }
@@ -1460,10 +1775,11 @@ func (s *CreateAppVersionResponse) SetBody(v *CreateAppVersionResponseBody) *Cre
 }
 
 type CreateCapacityReservationRequest struct {
-	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion              *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DistrictId              *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion  *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DistrictId  *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// Deprecated
 	ExpectResourceReadyTime *string `json:"ExpectResourceReadyTime,omitempty" xml:"ExpectResourceReadyTime,omitempty"`
 	ExpectSessionCapacity   *int32  `json:"ExpectSessionCapacity,omitempty" xml:"ExpectSessionCapacity,omitempty"`
 	ProjectId               *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -1866,14 +2182,16 @@ func (s *GetAppRequest) SetAppId(v string) *GetAppRequest {
 }
 
 type GetAppResponseBody struct {
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppType         *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VersionAdaptNum *int64  `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
-	VersionTotalNum *int64  `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
+	AppId             *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType           *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	GmtCreate         *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StreamingAppId    *string `json:"StreamingAppId,omitempty" xml:"StreamingAppId,omitempty"`
+	StreamingSolution *string `json:"StreamingSolution,omitempty" xml:"StreamingSolution,omitempty"`
+	VersionAdaptNum   *int64  `json:"VersionAdaptNum,omitempty" xml:"VersionAdaptNum,omitempty"`
+	VersionTotalNum   *int64  `json:"VersionTotalNum,omitempty" xml:"VersionTotalNum,omitempty"`
 }
 
 func (s GetAppResponseBody) String() string {
@@ -1911,6 +2229,16 @@ func (s *GetAppResponseBody) SetGmtModified(v string) *GetAppResponseBody {
 
 func (s *GetAppResponseBody) SetRequestId(v string) *GetAppResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetStreamingAppId(v string) *GetAppResponseBody {
+	s.StreamingAppId = &v
+	return s
+}
+
+func (s *GetAppResponseBody) SetStreamingSolution(v string) *GetAppResponseBody {
+	s.StreamingSolution = &v
 	return s
 }
 
@@ -2105,8 +2433,9 @@ func (s *GetAppSessionRequest) SetPlatformSessionId(v string) *GetAppSessionRequ
 }
 
 type GetAppSessionResponseBody struct {
-	AppId             *string                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                           `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// 业务特定的信息，如会话启动/停止时间。
 	BizInfo           *GetAppSessionResponseBodyBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
 	CustomSessionId   *string                           `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string                           `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
@@ -2158,8 +2487,10 @@ func (s *GetAppSessionResponseBody) SetStatus(v string) *GetAppSessionResponseBo
 }
 
 type GetAppSessionResponseBodyBizInfo struct {
+	// 会话启动时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StopTime  *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// 会话停止时间
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 }
 
 func (s GetAppSessionResponseBodyBizInfo) String() string {
@@ -2340,145 +2671,6 @@ func (s *GetAppVersionResponse) SetStatusCode(v int32) *GetAppVersionResponse {
 }
 
 func (s *GetAppVersionResponse) SetBody(v *GetAppVersionResponseBody) *GetAppVersionResponse {
-	s.Body = v
-	return s
-}
-
-type GetAutoPickPicRequest struct {
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetAutoPickPicRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoPickPicRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoPickPicRequest) SetTaskId(v int64) *GetAutoPickPicRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetAutoPickPicResponseBody struct {
-	Data         *GetAutoPickPicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *string                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpCode     *int32                          `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetAutoPickPicResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoPickPicResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoPickPicResponseBody) SetData(v *GetAutoPickPicResponseBodyData) *GetAutoPickPicResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBody) SetErrorCode(v string) *GetAutoPickPicResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBody) SetErrorMessage(v string) *GetAutoPickPicResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBody) SetHttpCode(v int32) *GetAutoPickPicResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBody) SetRequestId(v string) *GetAutoPickPicResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBody) SetSuccess(v bool) *GetAutoPickPicResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetAutoPickPicResponseBodyData struct {
-	DtoList []*GetAutoPickPicResponseBodyDataDtoList `json:"DtoList,omitempty" xml:"DtoList,omitempty" type:"Repeated"`
-	Url     *string                                  `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s GetAutoPickPicResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoPickPicResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoPickPicResponseBodyData) SetDtoList(v []*GetAutoPickPicResponseBodyDataDtoList) *GetAutoPickPicResponseBodyData {
-	s.DtoList = v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBodyData) SetUrl(v string) *GetAutoPickPicResponseBodyData {
-	s.Url = &v
-	return s
-}
-
-type GetAutoPickPicResponseBodyDataDtoList struct {
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s GetAutoPickPicResponseBodyDataDtoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoPickPicResponseBodyDataDtoList) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoPickPicResponseBodyDataDtoList) SetKey(v string) *GetAutoPickPicResponseBodyDataDtoList {
-	s.Key = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponseBodyDataDtoList) SetUrl(v string) *GetAutoPickPicResponseBodyDataDtoList {
-	s.Url = &v
-	return s
-}
-
-type GetAutoPickPicResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoPickPicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAutoPickPicResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoPickPicResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoPickPicResponse) SetHeaders(v map[string]*string) *GetAutoPickPicResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAutoPickPicResponse) SetStatusCode(v int32) *GetAutoPickPicResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAutoPickPicResponse) SetBody(v *GetAutoPickPicResponseBody) *GetAutoPickPicResponse {
 	s.Body = v
 	return s
 }
@@ -3055,6 +3247,7 @@ type ListAppSessionsRequest struct {
 	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PlatformSessionIds []*string `json:"PlatformSessionIds,omitempty" xml:"PlatformSessionIds,omitempty" type:"Repeated"`
+	ProjectId          *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListAppSessionsRequest) String() string {
@@ -3087,6 +3280,11 @@ func (s *ListAppSessionsRequest) SetPageSize(v int32) *ListAppSessionsRequest {
 
 func (s *ListAppSessionsRequest) SetPlatformSessionIds(v []*string) *ListAppSessionsRequest {
 	s.PlatformSessionIds = v
+	return s
+}
+
+func (s *ListAppSessionsRequest) SetProjectId(v string) *ListAppSessionsRequest {
+	s.ProjectId = &v
 	return s
 }
 
@@ -3137,6 +3335,7 @@ type ListAppSessionsResponseBodyAppSessions struct {
 	BizInfo           *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
 	CustomSessionId   *string                                        `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string                                        `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	ProjectId         *string                                        `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	Status            *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3170,6 +3369,11 @@ func (s *ListAppSessionsResponseBodyAppSessions) SetCustomSessionId(v string) *L
 
 func (s *ListAppSessionsResponseBodyAppSessions) SetPlatformSessionId(v string) *ListAppSessionsResponseBodyAppSessions {
 	s.PlatformSessionId = &v
+	return s
+}
+
+func (s *ListAppSessionsResponseBodyAppSessions) SetProjectId(v string) *ListAppSessionsResponseBodyAppSessions {
+	s.ProjectId = &v
 	return s
 }
 
@@ -4084,6 +4288,122 @@ func (s *StopAppSessionBatchResponse) SetBody(v *StopAppSessionBatchResponseBody
 	return s
 }
 
+type UpdateSessionBizStatusRequest struct {
+	BizStatus         *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+}
+
+func (s UpdateSessionBizStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionBizStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionBizStatusRequest) SetBizStatus(v string) *UpdateSessionBizStatusRequest {
+	s.BizStatus = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusRequest) SetPlatformSessionId(v string) *UpdateSessionBizStatusRequest {
+	s.PlatformSessionId = &v
+	return s
+}
+
+type UpdateSessionBizStatusResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateSessionBizStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSessionBizStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionBizStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionBizStatusResponseBody) SetCode(v string) *UpdateSessionBizStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponseBody) SetData(v *UpdateSessionBizStatusResponseBodyData) *UpdateSessionBizStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponseBody) SetMessage(v string) *UpdateSessionBizStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponseBody) SetRequestId(v string) *UpdateSessionBizStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponseBody) SetSuccess(v bool) *UpdateSessionBizStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSessionBizStatusResponseBodyData struct {
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+}
+
+func (s UpdateSessionBizStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionBizStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionBizStatusResponseBodyData) SetCustomSessionId(v string) *UpdateSessionBizStatusResponseBodyData {
+	s.CustomSessionId = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponseBodyData) SetPlatformSessionId(v string) *UpdateSessionBizStatusResponseBodyData {
+	s.PlatformSessionId = &v
+	return s
+}
+
+type UpdateSessionBizStatusResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSessionBizStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSessionBizStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSessionBizStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSessionBizStatusResponse) SetHeaders(v map[string]*string) *UpdateSessionBizStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponse) SetStatusCode(v int32) *UpdateSessionBizStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSessionBizStatusResponse) SetBody(v *UpdateSessionBizStatusResponseBody) *UpdateSessionBizStatusResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4297,6 +4617,14 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		body["AppType"] = request.AppType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StreamingAppId)) {
+		body["StreamingAppId"] = request.StreamingAppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamingSolution)) {
+		body["StreamingSolution"] = request.StreamingSolution
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -4361,6 +4689,10 @@ func (client *Client) CreateAppSessionWithOptions(request *CreateAppSessionReque
 		query["CustomUserId"] = request.CustomUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DistrictId)) {
+		query["DistrictId"] = request.DistrictId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnablePostpaid)) {
 		query["EnablePostpaid"] = request.EnablePostpaid
 	}
@@ -4408,6 +4740,64 @@ func (client *Client) CreateAppSession(request *CreateAppSessionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppSessionResponse{}
 	_body, _err := client.CreateAppSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAppSessionBatchWithOptions(tmpReq *CreateAppSessionBatchRequest, runtime *util.RuntimeOptions) (_result *CreateAppSessionBatchResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppSessionBatchShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppInfos)) {
+		request.AppInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppInfos, tea.String("AppInfos"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppInfosShrink)) {
+		query["AppInfos"] = request.AppInfosShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomTaskId)) {
+		query["CustomTaskId"] = request.CustomTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		query["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppSessionBatch"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppSessionBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAppSessionBatch(request *CreateAppSessionBatchRequest) (_result *CreateAppSessionBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppSessionBatchResponse{}
+	_body, _err := client.CreateAppSessionBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4985,50 +5375,6 @@ func (client *Client) GetAppVersion(request *GetAppVersionRequest) (_result *Get
 	return _result, _err
 }
 
-func (client *Client) GetAutoPickPicWithOptions(request *GetAutoPickPicRequest, runtime *util.RuntimeOptions) (_result *GetAutoPickPicResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAutoPickPic"),
-		Version:     tea.String("2021-11-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAutoPickPicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAutoPickPic(request *GetAutoPickPicRequest) (_result *GetAutoPickPicResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAutoPickPicResponse{}
-	_body, _err := client.GetAutoPickPicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetCapacityWithOptions(request *GetCapacityRequest, runtime *util.RuntimeOptions) (_result *GetCapacityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5265,6 +5611,10 @@ func (client *Client) ListAppSessionsWithOptions(request *ListAppSessionsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.PlatformSessionIds)) {
 		query["PlatformSessionIds"] = request.PlatformSessionIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -5674,6 +6024,54 @@ func (client *Client) StopAppSessionBatch(request *StopAppSessionBatchRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppSessionBatchResponse{}
 	_body, _err := client.StopAppSessionBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSessionBizStatusWithOptions(request *UpdateSessionBizStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSessionBizStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizStatus)) {
+		query["BizStatus"] = request.BizStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformSessionId)) {
+		query["PlatformSessionId"] = request.PlatformSessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSessionBizStatus"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSessionBizStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSessionBizStatus(request *UpdateSessionBizStatusRequest) (_result *UpdateSessionBizStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSessionBizStatusResponse{}
+	_body, _err := client.UpdateSessionBizStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
