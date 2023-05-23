@@ -6248,6 +6248,146 @@ func (s *ListAddressGroupsResponse) SetBody(v *ListAddressGroupsResponseBody) *L
 	return s
 }
 
+type ListAssignmentRequest struct {
+	Limit              *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
+	ManageResourceId   *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
+	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	Marker             *string `json:"marker,omitempty" xml:"marker,omitempty"`
+}
+
+func (s ListAssignmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssignmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssignmentRequest) SetLimit(v int32) *ListAssignmentRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListAssignmentRequest) SetManageResourceId(v string) *ListAssignmentRequest {
+	s.ManageResourceId = &v
+	return s
+}
+
+func (s *ListAssignmentRequest) SetManageResourceType(v string) *ListAssignmentRequest {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *ListAssignmentRequest) SetMarker(v string) *ListAssignmentRequest {
+	s.Marker = &v
+	return s
+}
+
+type ListAssignmentResponseBody struct {
+	AssignmentList []*ListAssignmentResponseBodyAssignmentList `json:"assignment_list,omitempty" xml:"assignment_list,omitempty" type:"Repeated"`
+	NextMarker     *string                                     `json:"next_marker,omitempty" xml:"next_marker,omitempty"`
+}
+
+func (s ListAssignmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssignmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssignmentResponseBody) SetAssignmentList(v []*ListAssignmentResponseBodyAssignmentList) *ListAssignmentResponseBody {
+	s.AssignmentList = v
+	return s
+}
+
+func (s *ListAssignmentResponseBody) SetNextMarker(v string) *ListAssignmentResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+type ListAssignmentResponseBodyAssignmentList struct {
+	CreatedAt          *int64    `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator            *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	DomainId           *string   `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
+	Identity           *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
+	ManageResourceId   *string   `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
+	ManageResourceType *string   `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
+	RoleId             *string   `json:"role_id,omitempty" xml:"role_id,omitempty"`
+}
+
+func (s ListAssignmentResponseBodyAssignmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssignmentResponseBodyAssignmentList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetCreatedAt(v int64) *ListAssignmentResponseBodyAssignmentList {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetCreator(v string) *ListAssignmentResponseBodyAssignmentList {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetDomainId(v string) *ListAssignmentResponseBodyAssignmentList {
+	s.DomainId = &v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetIdentity(v *Identity) *ListAssignmentResponseBodyAssignmentList {
+	s.Identity = v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetManageResourceId(v string) *ListAssignmentResponseBodyAssignmentList {
+	s.ManageResourceId = &v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetManageResourceType(v string) *ListAssignmentResponseBodyAssignmentList {
+	s.ManageResourceType = &v
+	return s
+}
+
+func (s *ListAssignmentResponseBodyAssignmentList) SetRoleId(v string) *ListAssignmentResponseBodyAssignmentList {
+	s.RoleId = &v
+	return s
+}
+
+type ListAssignmentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAssignmentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAssignmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAssignmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAssignmentResponse) SetHeaders(v map[string]*string) *ListAssignmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAssignmentResponse) SetStatusCode(v int32) *ListAssignmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAssignmentResponse) SetBody(v *ListAssignmentResponseBody) *ListAssignmentResponse {
+	s.Body = v
+	return s
+}
+
 type ListDeltaRequest struct {
 	Cursor     *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
@@ -12795,6 +12935,67 @@ func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_res
 	headers := make(map[string]*string)
 	_result = &ListAddressGroupsResponse{}
 	_body, _err := client.ListAddressGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAssignmentWithOptions(domainId *string, request *ListAssignmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAssignmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["domain_id"] = domainId
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceId)) {
+		body["manage_resource_id"] = request.ManageResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManageResourceType)) {
+		body["manage_resource_type"] = request.ManageResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["marker"] = request.Marker
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAssignment"),
+		Version:     tea.String("2022-03-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v2/role/list_assignment"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAssignmentResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAssignment(domainId *string, request *ListAssignmentRequest) (_result *ListAssignmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAssignmentResponse{}
+	_body, _err := client.ListAssignmentWithOptions(domainId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
