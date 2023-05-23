@@ -748,10 +748,11 @@ func (s *GetVideoTaskInfoResponseBodyData) SetType(v string) *GetVideoTaskInfoRe
 }
 
 type GetVideoTaskInfoResponseBodyDataTaskResult struct {
-	FailCode         *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	FailReason       *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	SubtitlesUrl     *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
-	VideoUrl         *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	FailCode     *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	FailReason   *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
+	SubtitlesUrl *string `json:"SubtitlesUrl,omitempty" xml:"SubtitlesUrl,omitempty"`
+	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// 字粒度的时间戳文件，特定任务支持
 	WordSubtitlesUrl *string `json:"WordSubtitlesUrl,omitempty" xml:"WordSubtitlesUrl,omitempty"`
 }
 
