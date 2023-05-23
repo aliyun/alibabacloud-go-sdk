@@ -2989,6 +2989,93 @@ func (s *RecognizeGeneralResponse) SetBody(v *RecognizeGeneralResponseBody) *Rec
 	return s
 }
 
+type RecognizeHKIdcardRequest struct {
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeHKIdcardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHKIdcardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHKIdcardRequest) SetUrl(v string) *RecognizeHKIdcardRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeHKIdcardRequest) SetBody(v io.Reader) *RecognizeHKIdcardRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeHKIdcardResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeHKIdcardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHKIdcardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHKIdcardResponseBody) SetCode(v string) *RecognizeHKIdcardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeHKIdcardResponseBody) SetData(v string) *RecognizeHKIdcardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeHKIdcardResponseBody) SetMessage(v string) *RecognizeHKIdcardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeHKIdcardResponseBody) SetRequestId(v string) *RecognizeHKIdcardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeHKIdcardResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeHKIdcardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeHKIdcardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHKIdcardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHKIdcardResponse) SetHeaders(v map[string]*string) *RecognizeHKIdcardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeHKIdcardResponse) SetStatusCode(v int32) *RecognizeHKIdcardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeHKIdcardResponse) SetBody(v *RecognizeHKIdcardResponseBody) *RecognizeHKIdcardResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeHandwritingRequest struct {
 	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
 	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
@@ -8366,6 +8453,52 @@ func (client *Client) RecognizeGeneral(request *RecognizeGeneralRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeGeneralResponse{}
 	_body, _err := client.RecognizeGeneralWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeHKIdcardWithOptions(request *RecognizeHKIdcardRequest, runtime *util.RuntimeOptions) (_result *RecognizeHKIdcardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeHKIdcard"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeHKIdcardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeHKIdcard(request *RecognizeHKIdcardRequest) (_result *RecognizeHKIdcardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeHKIdcardResponse{}
+	_body, _err := client.RecognizeHKIdcardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
