@@ -23694,6 +23694,341 @@ func (s *GroupUserSaveResponse) SetBody(v *GroupUserSaveResponseBody) *GroupUser
 	return s
 }
 
+type HotelAskingPriceHeaders struct {
+	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelAskingPriceHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceHeaders) SetCommonHeaders(v map[string]*string) *HotelAskingPriceHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelAskingPriceHeaders) SetXAcsBtripCorpToken(v string) *HotelAskingPriceHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelAskingPriceRequest struct {
+	AdultNum     *string  `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
+	BtripUserId  *string  `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CheckInDate  *string  `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	CheckOutDate *string  `json:"check_out_date,omitempty" xml:"check_out_date,omitempty"`
+	CityCode     *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName     *string  `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Dir          *int32   `json:"dir,omitempty" xml:"dir,omitempty"`
+	HotelStar    *string  `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	IsProtocol   *bool    `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	PaymentType  *int32   `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	Shids        []*int64 `json:"shids,omitempty" xml:"shids,omitempty" type:"Repeated"`
+	SortCode     *int32   `json:"sort_code,omitempty" xml:"sort_code,omitempty"`
+}
+
+func (s HotelAskingPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceRequest) SetAdultNum(v string) *HotelAskingPriceRequest {
+	s.AdultNum = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetBtripUserId(v string) *HotelAskingPriceRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetCheckInDate(v string) *HotelAskingPriceRequest {
+	s.CheckInDate = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetCheckOutDate(v string) *HotelAskingPriceRequest {
+	s.CheckOutDate = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetCityCode(v string) *HotelAskingPriceRequest {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetCityName(v string) *HotelAskingPriceRequest {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetDir(v int32) *HotelAskingPriceRequest {
+	s.Dir = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetHotelStar(v string) *HotelAskingPriceRequest {
+	s.HotelStar = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetIsProtocol(v bool) *HotelAskingPriceRequest {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetPaymentType(v int32) *HotelAskingPriceRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetShids(v []*int64) *HotelAskingPriceRequest {
+	s.Shids = v
+	return s
+}
+
+func (s *HotelAskingPriceRequest) SetSortCode(v int32) *HotelAskingPriceRequest {
+	s.SortCode = &v
+	return s
+}
+
+type HotelAskingPriceShrinkRequest struct {
+	AdultNum     *string `json:"adult_num,omitempty" xml:"adult_num,omitempty"`
+	BtripUserId  *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	CheckInDate  *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	CheckOutDate *string `json:"check_out_date,omitempty" xml:"check_out_date,omitempty"`
+	CityCode     *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName     *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Dir          *int32  `json:"dir,omitempty" xml:"dir,omitempty"`
+	HotelStar    *string `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	IsProtocol   *bool   `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	PaymentType  *int32  `json:"payment_type,omitempty" xml:"payment_type,omitempty"`
+	ShidsShrink  *string `json:"shids,omitempty" xml:"shids,omitempty"`
+	SortCode     *int32  `json:"sort_code,omitempty" xml:"sort_code,omitempty"`
+}
+
+func (s HotelAskingPriceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetAdultNum(v string) *HotelAskingPriceShrinkRequest {
+	s.AdultNum = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetBtripUserId(v string) *HotelAskingPriceShrinkRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetCheckInDate(v string) *HotelAskingPriceShrinkRequest {
+	s.CheckInDate = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetCheckOutDate(v string) *HotelAskingPriceShrinkRequest {
+	s.CheckOutDate = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetCityCode(v string) *HotelAskingPriceShrinkRequest {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetCityName(v string) *HotelAskingPriceShrinkRequest {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetDir(v int32) *HotelAskingPriceShrinkRequest {
+	s.Dir = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetHotelStar(v string) *HotelAskingPriceShrinkRequest {
+	s.HotelStar = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetIsProtocol(v bool) *HotelAskingPriceShrinkRequest {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetPaymentType(v int32) *HotelAskingPriceShrinkRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetShidsShrink(v string) *HotelAskingPriceShrinkRequest {
+	s.ShidsShrink = &v
+	return s
+}
+
+func (s *HotelAskingPriceShrinkRequest) SetSortCode(v int32) *HotelAskingPriceShrinkRequest {
+	s.SortCode = &v
+	return s
+}
+
+type HotelAskingPriceResponseBody struct {
+	Code      *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Module    *HotelAskingPriceResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                             `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelAskingPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceResponseBody) SetCode(v string) *HotelAskingPriceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBody) SetMessage(v string) *HotelAskingPriceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBody) SetModule(v *HotelAskingPriceResponseBodyModule) *HotelAskingPriceResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBody) SetRequestId(v string) *HotelAskingPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBody) SetSuccess(v bool) *HotelAskingPriceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBody) SetTraceId(v string) *HotelAskingPriceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelAskingPriceResponseBodyModule struct {
+	HotelAskingPriceDetails []*HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails `json:"hotel_asking_price_details,omitempty" xml:"hotel_asking_price_details,omitempty" type:"Repeated"`
+}
+
+func (s HotelAskingPriceResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceResponseBodyModule) SetHotelAskingPriceDetails(v []*HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) *HotelAskingPriceResponseBodyModule {
+	s.HotelAskingPriceDetails = v
+	return s
+}
+
+type HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails struct {
+	CityCode         *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	HotelAddress     *string  `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	HotelCode        *string  `json:"hotel_code,omitempty" xml:"hotel_code,omitempty"`
+	HotelName        *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	IsProtocol       *bool    `json:"is_protocol,omitempty" xml:"is_protocol,omitempty"`
+	MinPrice         *float64 `json:"min_price,omitempty" xml:"min_price,omitempty"`
+	OriginalMinPrice *float64 `json:"original_min_price,omitempty" xml:"original_min_price,omitempty"`
+}
+
+func (s HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetCityCode(v string) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetHotelAddress(v string) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetHotelCode(v string) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.HotelCode = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetHotelName(v string) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.HotelName = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetIsProtocol(v bool) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.IsProtocol = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetMinPrice(v float64) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.MinPrice = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails) SetOriginalMinPrice(v float64) *HotelAskingPriceResponseBodyModuleHotelAskingPriceDetails {
+	s.OriginalMinPrice = &v
+	return s
+}
+
+type HotelAskingPriceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HotelAskingPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HotelAskingPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelAskingPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelAskingPriceResponse) SetHeaders(v map[string]*string) *HotelAskingPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelAskingPriceResponse) SetStatusCode(v int32) *HotelAskingPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelAskingPriceResponse) SetBody(v *HotelAskingPriceResponseBody) *HotelAskingPriceResponse {
+	s.Body = v
+	return s
+}
+
 type HotelBillSettlementQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -46866,6 +47201,111 @@ func (client *Client) GroupUserSave(request *GroupUserSaveRequest) (_result *Gro
 	headers := &GroupUserSaveHeaders{}
 	_result = &GroupUserSaveResponse{}
 	_body, _err := client.GroupUserSaveWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) HotelAskingPriceWithOptions(tmpReq *HotelAskingPriceRequest, headers *HotelAskingPriceHeaders, runtime *util.RuntimeOptions) (_result *HotelAskingPriceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &HotelAskingPriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Shids)) {
+		request.ShidsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Shids, tea.String("shids"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdultNum)) {
+		query["adult_num"] = request.AdultNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckInDate)) {
+		query["check_in_date"] = request.CheckInDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckOutDate)) {
+		query["check_out_date"] = request.CheckOutDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityCode)) {
+		query["city_code"] = request.CityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityName)) {
+		query["city_name"] = request.CityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dir)) {
+		query["dir"] = request.Dir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HotelStar)) {
+		query["hotel_star"] = request.HotelStar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsProtocol)) {
+		query["is_protocol"] = request.IsProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["payment_type"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShidsShrink)) {
+		query["shids"] = request.ShidsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortCode)) {
+		query["sort_code"] = request.SortCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelAskingPrice"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/hotels/action/asking-price"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelAskingPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HotelAskingPrice(request *HotelAskingPriceRequest) (_result *HotelAskingPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelAskingPriceHeaders{}
+	_result = &HotelAskingPriceResponse{}
+	_body, _err := client.HotelAskingPriceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
