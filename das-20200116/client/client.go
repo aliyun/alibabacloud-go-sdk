@@ -7450,6 +7450,422 @@ func (s *GetDasProServiceUsageResponse) SetBody(v *GetDasProServiceUsageResponse
 	return s
 }
 
+type GetDasSQLLogHotDataRequest struct {
+	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ChildDBInstanceIDs *string `json:"ChildDBInstanceIDs,omitempty" xml:"ChildDBInstanceIDs,omitempty"`
+	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	End                *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Fail               *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	HostAddress        *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LogicalOperator    *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
+	MaxLatancy         *int64  `json:"MaxLatancy,omitempty" xml:"MaxLatancy,omitempty"`
+	MaxRecordsPerPage  *int64  `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	MaxRows            *int64  `json:"MaxRows,omitempty" xml:"MaxRows,omitempty"`
+	MaxScanRows        *int64  `json:"MaxScanRows,omitempty" xml:"MaxScanRows,omitempty"`
+	MaxSpillCnt        *int64  `json:"MaxSpillCnt,omitempty" xml:"MaxSpillCnt,omitempty"`
+	MinLatancy         *int64  `json:"MinLatancy,omitempty" xml:"MinLatancy,omitempty"`
+	MinRows            *int64  `json:"MinRows,omitempty" xml:"MinRows,omitempty"`
+	MinScanRows        *int64  `json:"MinScanRows,omitempty" xml:"MinScanRows,omitempty"`
+	MinSpillCnt        *int64  `json:"MinSpillCnt,omitempty" xml:"MinSpillCnt,omitempty"`
+	PageNumbers        *int64  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	QueryKeyword       *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
+	Role               *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	SortKey            *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	SortMethod         *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
+	SqlType            *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	Start              *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	State              *string `json:"State,omitempty" xml:"State,omitempty"`
+	ThreadID           *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
+	TraceId            *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TransactionId      *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s GetDasSQLLogHotDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasSQLLogHotDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetAccountName(v string) *GetDasSQLLogHotDataRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetChildDBInstanceIDs(v string) *GetDasSQLLogHotDataRequest {
+	s.ChildDBInstanceIDs = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetDBName(v string) *GetDasSQLLogHotDataRequest {
+	s.DBName = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetEnd(v int64) *GetDasSQLLogHotDataRequest {
+	s.End = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetFail(v string) *GetDasSQLLogHotDataRequest {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetHostAddress(v string) *GetDasSQLLogHotDataRequest {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetInstanceId(v string) *GetDasSQLLogHotDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetLogicalOperator(v string) *GetDasSQLLogHotDataRequest {
+	s.LogicalOperator = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMaxLatancy(v int64) *GetDasSQLLogHotDataRequest {
+	s.MaxLatancy = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMaxRecordsPerPage(v int64) *GetDasSQLLogHotDataRequest {
+	s.MaxRecordsPerPage = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMaxRows(v int64) *GetDasSQLLogHotDataRequest {
+	s.MaxRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMaxScanRows(v int64) *GetDasSQLLogHotDataRequest {
+	s.MaxScanRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMaxSpillCnt(v int64) *GetDasSQLLogHotDataRequest {
+	s.MaxSpillCnt = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMinLatancy(v int64) *GetDasSQLLogHotDataRequest {
+	s.MinLatancy = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMinRows(v int64) *GetDasSQLLogHotDataRequest {
+	s.MinRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMinScanRows(v int64) *GetDasSQLLogHotDataRequest {
+	s.MinScanRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetMinSpillCnt(v int64) *GetDasSQLLogHotDataRequest {
+	s.MinSpillCnt = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetPageNumbers(v int64) *GetDasSQLLogHotDataRequest {
+	s.PageNumbers = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetQueryKeyword(v string) *GetDasSQLLogHotDataRequest {
+	s.QueryKeyword = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetRole(v string) *GetDasSQLLogHotDataRequest {
+	s.Role = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetSortKey(v string) *GetDasSQLLogHotDataRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetSortMethod(v string) *GetDasSQLLogHotDataRequest {
+	s.SortMethod = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetSqlType(v string) *GetDasSQLLogHotDataRequest {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetStart(v int64) *GetDasSQLLogHotDataRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetState(v string) *GetDasSQLLogHotDataRequest {
+	s.State = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetThreadID(v string) *GetDasSQLLogHotDataRequest {
+	s.ThreadID = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetTraceId(v string) *GetDasSQLLogHotDataRequest {
+	s.TraceId = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataRequest) SetTransactionId(v string) *GetDasSQLLogHotDataRequest {
+	s.TransactionId = &v
+	return s
+}
+
+type GetDasSQLLogHotDataResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ListResult<Map<String, Object>>
+	Data      *GetDasSQLLogHotDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDasSQLLogHotDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasSQLLogHotDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasSQLLogHotDataResponseBody) SetCode(v string) *GetDasSQLLogHotDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBody) SetData(v *GetDasSQLLogHotDataResponseBodyData) *GetDasSQLLogHotDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBody) SetMessage(v string) *GetDasSQLLogHotDataResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBody) SetRequestId(v string) *GetDasSQLLogHotDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBody) SetSuccess(v string) *GetDasSQLLogHotDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDasSQLLogHotDataResponseBodyData struct {
+	Extra    interface{}                                `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	List     []*GetDasSQLLogHotDataResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetDasSQLLogHotDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasSQLLogHotDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyData) SetExtra(v interface{}) *GetDasSQLLogHotDataResponseBodyData {
+	s.Extra = v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyData) SetList(v []*GetDasSQLLogHotDataResponseBodyDataList) *GetDasSQLLogHotDataResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyData) SetPageNo(v int64) *GetDasSQLLogHotDataResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyData) SetPageSize(v int64) *GetDasSQLLogHotDataResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyData) SetTotal(v int64) *GetDasSQLLogHotDataResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetDasSQLLogHotDataResponseBodyDataList struct {
+	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DBName          *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExecuteTime     *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Ext             *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	HostAddress     *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	Latancy         *int64  `json:"Latancy,omitempty" xml:"Latancy,omitempty"`
+	LockTime        *int64  `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
+	LogicRead       *int64  `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
+	OriginTime      *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
+	PhysicAsyncRead *int64  `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
+	PhysicSyncRead  *int64  `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	ReturnRows      *int64  `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	SQLText         *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	ScanRows        *int64  `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	SqlType         *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	State           *string `json:"State,omitempty" xml:"State,omitempty"`
+	ThreadID        *int64  `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
+	TransactionId   *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	UpdateRows      *int64  `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
+}
+
+func (s GetDasSQLLogHotDataResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasSQLLogHotDataResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetAccountName(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.AccountName = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetDBName(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.DBName = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetExecuteTime(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetExt(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.Ext = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetHostAddress(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.HostAddress = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetLatancy(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.Latancy = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetLockTime(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.LockTime = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetLogicRead(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.LogicRead = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetOriginTime(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.OriginTime = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetPhysicAsyncRead(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.PhysicAsyncRead = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetPhysicSyncRead(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.PhysicSyncRead = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetReturnRows(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.ReturnRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetSQLText(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.SQLText = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetScanRows(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetSqlType(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetState(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.State = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetThreadID(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.ThreadID = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetTransactionId(v string) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.TransactionId = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponseBodyDataList) SetUpdateRows(v int64) *GetDasSQLLogHotDataResponseBodyDataList {
+	s.UpdateRows = &v
+	return s
+}
+
+type GetDasSQLLogHotDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDasSQLLogHotDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDasSQLLogHotDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasSQLLogHotDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasSQLLogHotDataResponse) SetHeaders(v map[string]*string) *GetDasSQLLogHotDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponse) SetStatusCode(v int32) *GetDasSQLLogHotDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDasSQLLogHotDataResponse) SetBody(v *GetDasSQLLogHotDataResponseBody) *GetDasSQLLogHotDataResponse {
+	s.Body = v
+	return s
+}
+
 type GetEndpointSwitchTaskRequest struct {
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -19198,6 +19614,158 @@ func (client *Client) GetDasProServiceUsage(request *GetDasProServiceUsageReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDasProServiceUsageResponse{}
 	_body, _err := client.GetDasProServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDasSQLLogHotDataWithOptions(request *GetDasSQLLogHotDataRequest, runtime *util.RuntimeOptions) (_result *GetDasSQLLogHotDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		body["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildDBInstanceIDs)) {
+		body["ChildDBInstanceIDs"] = request.ChildDBInstanceIDs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBName)) {
+		body["DBName"] = request.DBName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		body["End"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fail)) {
+		body["Fail"] = request.Fail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostAddress)) {
+		body["HostAddress"] = request.HostAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalOperator)) {
+		body["LogicalOperator"] = request.LogicalOperator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxLatancy)) {
+		body["MaxLatancy"] = request.MaxLatancy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxRecordsPerPage)) {
+		body["MaxRecordsPerPage"] = request.MaxRecordsPerPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxRows)) {
+		body["MaxRows"] = request.MaxRows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxScanRows)) {
+		body["MaxScanRows"] = request.MaxScanRows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxSpillCnt)) {
+		body["MaxSpillCnt"] = request.MaxSpillCnt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinLatancy)) {
+		body["MinLatancy"] = request.MinLatancy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinRows)) {
+		body["MinRows"] = request.MinRows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinScanRows)) {
+		body["MinScanRows"] = request.MinScanRows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinSpillCnt)) {
+		body["MinSpillCnt"] = request.MinSpillCnt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumbers)) {
+		body["PageNumbers"] = request.PageNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeyword)) {
+		body["QueryKeyword"] = request.QueryKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Role)) {
+		body["Role"] = request.Role
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortKey)) {
+		body["SortKey"] = request.SortKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortMethod)) {
+		body["SortMethod"] = request.SortMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlType)) {
+		body["SqlType"] = request.SqlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		body["Start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadID)) {
+		body["ThreadID"] = request.ThreadID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
+		body["TraceId"] = request.TraceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
+		body["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDasSQLLogHotData"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDasSQLLogHotDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (_result *GetDasSQLLogHotDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDasSQLLogHotDataResponse{}
+	_body, _err := client.GetDasSQLLogHotDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
