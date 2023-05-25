@@ -13,16 +13,10 @@ import (
 )
 
 type AbolishApiRequest struct {
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the specified API.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s AbolishApiRequest) String() string {
@@ -54,7 +48,6 @@ func (s *AbolishApiRequest) SetStageName(v string) *AbolishApiRequest {
 }
 
 type AbolishApiResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -101,14 +94,7 @@ func (s *AbolishApiResponse) SetBody(v *AbolishApiResponseBody) *AbolishApiRespo
 }
 
 type AddAccessControlListEntryRequest struct {
-	// The ACL settings.
-	//
-	// *   entry: the entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
-	// *   comment: the description of the ACL.
-	//
-	// > You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks.
-	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
-	// The ID of the access control list (ACL).
+	AclEntrys     *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
 	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -137,7 +123,6 @@ func (s *AddAccessControlListEntryRequest) SetSecurityToken(v string) *AddAccess
 }
 
 type AddAccessControlListEntryResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -184,17 +169,11 @@ func (s *AddAccessControlListEntryResponse) SetBody(v *AddAccessControlListEntry
 }
 
 type AddIpControlPolicyItemRequest struct {
-	// The restriction policy on app IDs for a specific policy. You can restrict app IDs only for whitelists. The IpControlType values of whitelists are ALLOW.
-	//
-	// *   You can add only one app ID restriction policy at a time.
-	// *   If this parameter is empty, no restriction is imposed on the app IDs.
-	// *   If this parameter is not empty, there is restriction not only on IP addresses, but also on apps.
-	// *   Please note that if this parameter is not empty and the security authentication method of the API is No Authentication, all API calls are restricted.
-	// *   If this parameter is not empty for a blacklist, API Gateway automatically skips this parameter and sets only restriction on IP addresses. The IpControlType value of a blacklist is REFUSE.
+	// The ID of the policy. The ID is unique.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IP addresses or CIDR blocks involved in the policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can specify a maximum of 10 IP addresses or CIDR blocks.
+	// The ID of the request.
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The ID of the ACL. The ID is unique.
+	// The IP addresses or CIDR blocks involved in the policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can specify a maximum of 10 IP addresses or CIDR blocks.
 	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -228,9 +207,13 @@ func (s *AddIpControlPolicyItemRequest) SetSecurityToken(v string) *AddIpControl
 }
 
 type AddIpControlPolicyItemResponseBody struct {
-	// The ID of the policy. The ID is unique.
+	// When you call this operation, note that:
+	//
+	// *   This operation is intended for API providers.
+	// *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+	// *   A maximum of 100 policies can be added to an ACL.
 	PolicyItemId *string `json:"PolicyItemId,omitempty" xml:"PolicyItemId,omitempty"`
-	// The ID of the request.
+	// Adds a policy to an existing ACL.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -283,16 +266,15 @@ func (s *AddIpControlPolicyItemResponse) SetBody(v *AddIpControlPolicyItemRespon
 
 type AddTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the app or Alibaba Cloud account. Specify this parameter based on the value of the **SpecialType** parameter. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.3f053654YpMPwo#/secure) page.
+	// The ID of the request.
 	SpecialKey *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
-	// The type of the special throttling policy. Valid values:
-	//
-	// *   **APP**
-	// *   **USER**
-	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
-	// The ID of the specified throttling policy.
-	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	// The special throttling value.
+	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
+	// The ID of the app or Alibaba Cloud account. Specify this parameter based on the value of the **SpecialType** parameter. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.3f053654YpMPwo#/secure) page.
+	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
+	// *   This API is intended for API providers.
+	// *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+	// *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
 	TrafficValue *int32 `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 
@@ -330,7 +312,7 @@ func (s *AddTrafficSpecialControlRequest) SetTrafficValue(v int32) *AddTrafficSp
 }
 
 type AddTrafficSpecialControlResponseBody struct {
-	// The ID of the request.
+	// Adds a custom special policy to a specified throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -377,21 +359,12 @@ func (s *AddTrafficSpecialControlResponse) SetBody(v *AddTrafficSpecialControlRe
 }
 
 type AttachPluginRequest struct {
-	// The number of the API to be bound.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The number of the API to be operated. Separate multiple numbers with commas (,). A maximum of 100 numbers can be entered.
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group that contains the API to which the plug-in is to be bound.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the plug-in to be bound.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiIds        *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE: the pre-release environment**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s AttachPluginRequest) String() string {
@@ -433,7 +406,6 @@ func (s *AttachPluginRequest) SetStageName(v string) *AttachPluginRequest {
 }
 
 type AttachPluginResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -480,7 +452,6 @@ func (s *AttachPluginResponse) SetBody(v *AttachPluginResponseBody) *AttachPlugi
 }
 
 type BatchAbolishApisRequest struct {
-	// The ID of the environment.
 	Api           []*BatchAbolishApisRequestApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Repeated"`
 	SecurityToken *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -504,13 +475,9 @@ func (s *BatchAbolishApisRequest) SetSecurityToken(v string) *BatchAbolishApisRe
 }
 
 type BatchAbolishApisRequestApi struct {
-	// The name of the environment.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The ID of the API.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The ID of the operation.
+	ApiUid    *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageId   *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -543,10 +510,8 @@ func (s *BatchAbolishApisRequestApi) SetStageName(v string) *BatchAbolishApisReq
 }
 
 type BatchAbolishApisResponseBody struct {
-	// The ID of the request.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchAbolishApisResponseBody) String() string {
@@ -597,16 +562,12 @@ func (s *BatchAbolishApisResponse) SetBody(v *BatchAbolishApisResponseBody) *Bat
 }
 
 type BatchDeployApisRequest struct {
-	// The APIs that you want to operate.
+	// b4f5c342b8bc4ef88ccda0332402e0fa
 	Api []*BatchDeployApisRequestApi `json:"Api,omitempty" xml:"Api,omitempty" type:"Repeated"`
-	// The description.
+	// 2b35dd68345b472f8051647306a16415
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	// *   PRE: the pre-release environment
+	// The description.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -639,9 +600,9 @@ func (s *BatchDeployApisRequest) SetStageName(v string) *BatchDeployApisRequest 
 }
 
 type BatchDeployApisRequestApi struct {
-	// The ID of the API.
+	// Publishes multiple APIs at a time.
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The ID of the API group.
+	// The APIs that you want to operate.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -664,10 +625,8 @@ func (s *BatchDeployApisRequestApi) SetGroupId(v string) *BatchDeployApisRequest
 }
 
 type BatchDeployApisResponseBody struct {
-	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BatchDeployApisResponseBody) String() string {
@@ -802,9 +761,9 @@ type CreateApiRequest struct {
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
 	// The name of the API that you want to create. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// If **AuthType** is set to **APP**, the valid values are:
+	// If the **AuthType** parameter is set to **APP**, the valid values are:
 	//
-	// *   **DEFAULT**: The default value that is used if no other values are passed. This value means that the setting of the group is used.
+	// *   **DEFAULT**: The default value that is used if no other values are passed. This value indicates that the settings of the group are used.
 	// *   **DISABLE**: The authentication is disabled.
 	// *   **HEADER**: AppCode can be placed in the Header parameter for authentication.
 	// *   **HEADER_QUERY**: AppCode can be placed in the Header or Query parameter for authentication.
@@ -877,10 +836,10 @@ type CreateApiRequest struct {
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 	// The type of the two-way communication API.
 	//
-	// *   **COMMON**: normal APIs
-	// *   **REGISTER**: registered APIs
-	// *   **UNREGISTER**: unregistered APIs
-	// *   **NOTIFY**: downstream notification APIs
+	// *   **COMMON**: common API
+	// *   **REGISTER**: registered API
+	// *   **UNREGISTER**: unregistered API
+	// *   **NOTIFY**: downstream notification API
 	WebSocketApiType *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
 }
 
@@ -1082,17 +1041,12 @@ func (s *CreateApiResponse) SetBody(v *CreateApiResponseBody) *CreateApiResponse
 }
 
 type CreateApiGroupRequest struct {
-	// The root path of the API.
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// The description of the API group. The description can be up to 180 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the API group. The name must be globally unique. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the instance.
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the lifecycle rule. You can specify multiple tags.
-	Tag []*CreateApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	BasePath      *string                     `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
+	Description   *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupName     *string                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId    *string                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string                     `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*CreateApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateApiGroupRequest) String() string {
@@ -1134,9 +1088,7 @@ func (s *CreateApiGroupRequest) SetTag(v []*CreateApiGroupRequestTag) *CreateApi
 }
 
 type CreateApiGroupRequestTag struct {
-	// The key of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1159,28 +1111,15 @@ func (s *CreateApiGroupRequestTag) SetValue(v string) *CreateApiGroupRequestTag 
 }
 
 type CreateApiGroupResponseBody struct {
-	// The root path of the API.
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// The description of the API group.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group to which the domain name to be deleted is bound. This ID is generated by the system and globally unique.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which an API belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance.
-	//
-	// *   CLASSIC_SHARED: shared instance that uses the classic network configuration
-	// *   VPC_SHARED: shared instance that uses VPC
-	// *   VPC_DEDICATED: dedicated instance that uses VPC
+	BasePath     *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The second-level domain name bound to the API group. This domain name is used to test API calls.
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// Indicates whether the tag exists. If the value is **true**, the tag exists. If the value is **false**, the tag does not exist.
-	TagStatus *bool `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubDomain    *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	TagStatus    *bool   `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
 }
 
 func (s CreateApiGroupResponseBody) String() string {
@@ -1266,18 +1205,13 @@ func (s *CreateApiGroupResponse) SetBody(v *CreateApiGroupResponseBody) *CreateA
 }
 
 type CreateApiStageVariableRequest struct {
-	// The ID of the runtime environment.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the variable to be added. This parameter is case-sensitive.
+	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageId         *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 	StageRouteModel *string `json:"StageRouteModel,omitempty" xml:"StageRouteModel,omitempty"`
-	// The value of the variable.
-	SupportRoute *bool `json:"SupportRoute,omitempty" xml:"SupportRoute,omitempty"`
-	// Specifies whether routing is supported.
-	VariableName *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
-	// The ID of the request.
-	VariableValue *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
+	SupportRoute    *bool   `json:"SupportRoute,omitempty" xml:"SupportRoute,omitempty"`
+	VariableName    *string `json:"VariableName,omitempty" xml:"VariableName,omitempty"`
+	VariableValue   *string `json:"VariableValue,omitempty" xml:"VariableValue,omitempty"`
 }
 
 func (s CreateApiStageVariableRequest) String() string {
@@ -1324,7 +1258,6 @@ func (s *CreateApiStageVariableRequest) SetVariableValue(v string) *CreateApiSta
 }
 
 type CreateApiStageVariableResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1371,19 +1304,13 @@ func (s *CreateApiStageVariableResponse) SetBody(v *CreateApiStageVariableRespon
 }
 
 type CreateAppRequest struct {
-	// The AppCode of the app.
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// The app key that is used for calling an API.
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The name of the app. The name must be 4 to 26 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The password of the app.
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The description of the app. The description can contain a maximum of 180 characters in length.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*CreateAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AppCode       *string                `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppKey        *string                `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName       *string                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSecret     *string                `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string                `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*CreateAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -1430,13 +1357,7 @@ func (s *CreateAppRequest) SetTag(v []*CreateAppRequestTag) *CreateAppRequest {
 }
 
 type CreateAppRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.`` If the parameter has a value, you must specify a value for the tag key with the same N as tag.N.Key. Otherwise, an error is reported.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1459,12 +1380,9 @@ func (s *CreateAppRequestTag) SetValue(v string) *CreateAppRequestTag {
 }
 
 type CreateAppResponseBody struct {
-	// The unique ID of the application.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	AppId     *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the tag exists. If the value is **true**, the tag exists. If the value is **false**, the tag does not exist.
-	TagStatus *bool `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+	TagStatus *bool   `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
 }
 
 func (s CreateAppResponseBody) String() string {
@@ -1520,15 +1438,11 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateBackendRequest struct {
-	// The name of the backend service.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The type of the backend service. Valid values: `HTTP, VPC, FC_EVENT, FC_HTTP, OSS, and MOCK`.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// Specifies whether to create a role associated with EventBridge.
-	CreateEventBridgeServiceLinkedRole *bool `json:"CreateEventBridgeServiceLinkedRole,omitempty" xml:"CreateEventBridgeServiceLinkedRole,omitempty"`
-	// The description of the backend service.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	BackendName                        *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType                        *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreateEventBridgeServiceLinkedRole *bool   `json:"CreateEventBridgeServiceLinkedRole,omitempty" xml:"CreateEventBridgeServiceLinkedRole,omitempty"`
+	Description                        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken                      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateBackendRequest) String() string {
@@ -1565,9 +1479,7 @@ func (s *CreateBackendRequest) SetSecurityToken(v string) *CreateBackendRequest 
 }
 
 type CreateBackendResponseBody struct {
-	// The ID of the backend service.
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1619,20 +1531,12 @@ func (s *CreateBackendResponse) SetBody(v *CreateBackendResponseBody) *CreateBac
 }
 
 type CreateBackendModelRequest struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The information about the backend model.
+	BackendId        *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The description of the backend model.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	BackendType      *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s CreateBackendModelRequest) String() string {
@@ -1674,10 +1578,8 @@ func (s *CreateBackendModelRequest) SetStageName(v string) *CreateBackendModelRe
 }
 
 type CreateBackendModelResponseBody struct {
-	// The ID of the backend model.
 	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateBackendModelResponseBody) String() string {
@@ -1728,13 +1630,7 @@ func (s *CreateBackendModelResponse) SetBody(v *CreateBackendModelResponseBody) 
 }
 
 type CreateDatasetRequest struct {
-	// Dataset Name
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The type of the dataset. Valid values:
-	//
-	// *   JWT_BLOCKING: a JSON Web Token (JWT) blacklist
-	// *   IP_WHITELIST_CIDR : an IP address whitelist
-	// *   PARAMETER_ACCESS : parameter-based access control
+	DatasetName   *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	DatasetType   *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -1763,9 +1659,7 @@ func (s *CreateDatasetRequest) SetSecurityToken(v string) *CreateDatasetRequest 
 }
 
 type CreateDatasetResponseBody struct {
-	// The ID of the dataset.
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1817,15 +1711,11 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDatasetItemRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The description of the data entry. The description cannot be more than 180 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time in UTC when the data entry expires. The time is in the **yyyy-MM-ddTHH:mm:ssZ** format. If this parameter is empty, the data entry does not expire.
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The value of the data entry. The value corresponds to the dataset type.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateDatasetItemRequest) String() string {
@@ -1862,10 +1752,8 @@ func (s *CreateDatasetItemRequest) SetValue(v string) *CreateDatasetItemRequest 
 }
 
 type CreateDatasetItemResponseBody struct {
-	// The ID of the data entry.
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDatasetItemResponseBody) String() string {
@@ -1916,30 +1804,18 @@ func (s *CreateDatasetItemResponse) SetBody(v *CreateDatasetItemResponseBody) *C
 }
 
 type CreateInstanceRequest struct {
-	// Specifies whether payment is automatically made during renewal. Valid values:
-	//
-	// *   **True**: Automatic payment is enabled. Make sure that your Alibaba Cloud account has adequate balance.
-	// *   **False**: Automatic payment is disabled. You have to manually pay in the console. Log on to the console. In the upper-right corner, choose **Expenses > User Center**. In the left-side navigation pane, click **Orders**. On the page that appears, find your order and complete the payment.
-	//
-	// Default value: **False**.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The billing method of the instance.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration   *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The HTTPS policy.
-	HttpsPolicy  *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
-	InstanceCidr *string `json:"InstanceCidr,omitempty" xml:"InstanceCidr,omitempty"`
-	// The name of the instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The specifications of the instance.
-	InstanceSpec *string                     `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	InstanceType *string                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PricingCycle *string                     `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Tag          []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The password.
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
-	// The zone.
+	AutoPay                  *bool                                            `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	ChargeType               *string                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Duration                 *int32                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	HttpsPolicy              *string                                          `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	InstanceCidr             *string                                          `json:"InstanceCidr,omitempty" xml:"InstanceCidr,omitempty"`
+	InstanceName             *string                                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceSpec             *string                                          `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceType             *string                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PricingCycle             *string                                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Tag                      []*CreateInstanceRequestTag                      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Token                    *string                                          `json:"Token,omitempty" xml:"Token,omitempty"`
+	UserVpcId                *string                                          `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
 	ZoneId                   *string                                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ZoneVSwitchSecurityGroup []*CreateInstanceRequestZoneVSwitchSecurityGroup `json:"ZoneVSwitchSecurityGroup,omitempty" xml:"ZoneVSwitchSecurityGroup,omitempty" type:"Repeated"`
 }
@@ -2081,11 +1957,9 @@ func (s *CreateInstanceRequestZoneVSwitchSecurityGroup) SetZoneId(v string) *Cre
 }
 
 type CreateInstanceResponseBody struct {
-	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagStatus *bool   `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagStatus  *bool   `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -2219,18 +2093,11 @@ func (s *CreateIntranetDomainResponse) SetBody(v *CreateIntranetDomainResponseBo
 }
 
 type CreateIpControlRequest struct {
-	// The description. The description can be up to 200 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\_). The name cannot start with an underscore (\_).``
-	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
-	// The information about the policies. The information is an array of ipcontrolpolicys data.
+	Description      *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpControlName    *string                                   `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
 	IpControlPolicys []*CreateIpControlRequestIpControlPolicys `json:"IpControlPolicys,omitempty" xml:"IpControlPolicys,omitempty" type:"Repeated"`
-	// The type of the ACL. Valid values:
-	//
-	// *   **ALLOW**: an IP address whitelist
-	// *   **REFUSE**: an IP address blacklist
-	IpControlType *string `json:"IpControlType,omitempty" xml:"IpControlType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	IpControlType    *string                                   `json:"IpControlType,omitempty" xml:"IpControlType,omitempty"`
+	SecurityToken    *string                                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateIpControlRequest) String() string {
@@ -2267,20 +2134,7 @@ func (s *CreateIpControlRequest) SetSecurityToken(v string) *CreateIpControlRequ
 }
 
 type CreateIpControlRequestIpControlPolicys struct {
-	// The ID of the application that is restricted by the policy. You can configure the AppId parameter only when the value of the IpControlType parameter is ALLOW.
-	//
-	// *   You can add only one application ID at a time.
-	// *   If this parameter is empty, no applications are restricted.
-	// *   If this parameter is not empty, not only IP addresses but also applications are restricted.
-	// *   If this parameter is not empty and no security authentication method is specified for the API, all API calls are restricted.
-	// *   If the value of the IpControlType parameter is REFUSE and the AppId parameter is not empty, API Gateway automatically ignores the AppId parameter and restricts only the IP addresses.
-	// *   Valid values of N in IpControlPolicys.N: `[1,100]`.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IP address or CIDR block involved in a policy.
-	//
-	// *   If you want to specify a policy when you create an ACL, this parameter is required.
-	// *   The IP address or CIDR block that is defined in each policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can add a maximum of 10 IP addresses or CIDR blocks.
-	// *   Valid values of N in IpControlPolicys.N: `[1,100]`.
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
 }
 
@@ -2303,10 +2157,8 @@ func (s *CreateIpControlRequestIpControlPolicys) SetCidrIp(v string) *CreateIpCo
 }
 
 type CreateIpControlResponseBody struct {
-	// The ID of the ACL.
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateIpControlResponseBody) String() string {
@@ -2357,13 +2209,11 @@ func (s *CreateIpControlResponse) SetBody(v *CreateIpControlResponseBody) *Creat
 }
 
 type CreateLogConfigRequest struct {
-	// The log type.
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// slslogstore
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The name of the Log Service project.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	SlsProject  *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 }
 
 func (s CreateLogConfigRequest) String() string {
@@ -2395,7 +2245,6 @@ func (s *CreateLogConfigRequest) SetSlsProject(v string) *CreateLogConfigRequest
 }
 
 type CreateLogConfigResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2591,11 +2440,8 @@ func (s *CreateModelResponse) SetBody(v *CreateModelResponseBody) *CreateModelRe
 }
 
 type CreateMonitorGroupRequest struct {
-	// The ID of the API group. This ID is generated by the system and is unique globally.
-	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
-	// The ID of the monitoring group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The caller authentication status of the API. Valid values: **ok**: The authentication is successful. **mismatch**: The request is redirected. **servicenotfound**: A request error occurred. **Unknown**: An unknown error occurred.
+	Auth              *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RawMonitorGroupId *int64  `json:"RawMonitorGroupId,omitempty" xml:"RawMonitorGroupId,omitempty"`
 	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -2629,10 +2475,8 @@ func (s *CreateMonitorGroupRequest) SetSecurityToken(v string) *CreateMonitorGro
 }
 
 type CreateMonitorGroupResponseBody struct {
-	// The ID of the request.
-	MonitorGroupId *int64 `json:"MonitorGroupId,omitempty" xml:"MonitorGroupId,omitempty"`
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	MonitorGroupId *int64  `json:"MonitorGroupId,omitempty" xml:"MonitorGroupId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateMonitorGroupResponseBody) String() string {
@@ -2683,24 +2527,12 @@ func (s *CreateMonitorGroupResponse) SetBody(v *CreateMonitorGroupResponseBody) 
 }
 
 type CreatePluginRequest struct {
-	// The description of the plug-in. The description can contain a maximum of 200 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The plug-in definition statement, which can be in JSON or YAML format.
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). However, it cannot start with an underscore.
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The type of the plug-in. Valid values:
-	//
-	// *   **ipControl: IP address-based access control**
-	// *   **trafficControl: throttling**
-	// *   **backendSignature: backend signature**
-	// *   **jwtAuth** :JWT (OpenId Connect) authentication
-	// *   **cors** :cross-origin resource sharing (CORS)
-	// *   **caching**
-	PluginType    *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*CreatePluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Description   *string                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	PluginData    *string                   `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginName    *string                   `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType    *string                   `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*CreatePluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreatePluginRequest) String() string {
@@ -2742,13 +2574,7 @@ func (s *CreatePluginRequest) SetTag(v []*CreatePluginRequestTag) *CreatePluginR
 }
 
 type CreatePluginRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2771,12 +2597,9 @@ func (s *CreatePluginRequestTag) SetValue(v string) *CreatePluginRequestTag {
 }
 
 type CreatePluginResponseBody struct {
-	// The ID of the plug-in.
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The ID of the request.
+	PluginId  *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the plug-in is successfully marked.
-	TagStatus *bool `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
+	TagStatus *bool   `json:"TagStatus,omitempty" xml:"TagStatus,omitempty"`
 }
 
 func (s CreatePluginResponseBody) String() string {
@@ -2833,11 +2656,11 @@ func (s *CreatePluginResponse) SetBody(v *CreatePluginResponseBody) *CreatePlugi
 
 type CreateSignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	// The ID of the request.
 	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The displayed name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
-	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 	// The Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (\_), at signs (@), number signs (#), exclamation points (!), and asterisks (\*). The value must start with a letter.
+	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
+	// The ID of the back-end signature key.
 	SignatureSecret *string `json:"SignatureSecret,omitempty" xml:"SignatureSecret,omitempty"`
 }
 
@@ -2870,11 +2693,14 @@ func (s *CreateSignatureRequest) SetSignatureSecret(v string) *CreateSignatureRe
 }
 
 type CreateSignatureResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the back-end signature key.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// The name of the back-end signature key.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// *   This API is intended for API providers.
+	// *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+	// *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+	// *   The QPS limit on this operation is 50 per user.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// Creates a backend signature key.
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 
@@ -2931,23 +2757,23 @@ func (s *CreateSignatureResponse) SetBody(v *CreateSignatureResponseBody) *Creat
 }
 
 type CreateTrafficControlRequest struct {
-	// The default throttling value for each API.
-	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
 	// The default throttling value for each app.
+	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
+	// ThrottlingTestDescription
 	AppDefault *int32 `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
-	// The description of the throttling policy.
+	// The ID of the throttling policy.
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the throttling policy. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It cannot start with an underscore.
-	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	// The unit to be used in the throttling policy. Valid values:
 	//
 	// *   **SECOND**
 	// *   **MINUTE**
 	// *   **HOUR**
 	// *   **DAY**
-	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
+	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	// The default throttling value for each user.
+	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
+	// The description of the throttling policy.
 	UserDefault *int32 `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
 }
 
@@ -2995,9 +2821,11 @@ func (s *CreateTrafficControlRequest) SetUserDefault(v int32) *CreateTrafficCont
 }
 
 type CreateTrafficControlResponseBody struct {
-	// The ID of the request.
+	// Creates a custom throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the throttling policy.
+	// *   This API is intended for API providers.
+	// *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+	// *   The QPS limit on this operation is 50 per user.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -3049,7 +2877,6 @@ func (s *CreateTrafficControlResponse) SetBody(v *CreateTrafficControlResponseBo
 }
 
 type DeleteAccessControlListRequest struct {
-	// The ID of the access control policy.
 	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3073,7 +2900,6 @@ func (s *DeleteAccessControlListRequest) SetSecurityToken(v string) *DeleteAcces
 }
 
 type DeleteAccessControlListResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3121,7 +2947,7 @@ func (s *DeleteAccessControlListResponse) SetBody(v *DeleteAccessControlListResp
 
 type DeleteAllTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the throttling policy.
+	// *   This API is intended for API providers.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -3144,7 +2970,7 @@ func (s *DeleteAllTrafficSpecialControlRequest) SetTrafficControlId(v string) *D
 }
 
 type DeleteAllTrafficSpecialControlResponseBody struct {
-	// The ID of the request.
+	// Deletes all custom special policies of a specified throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3191,9 +3017,7 @@ func (s *DeleteAllTrafficSpecialControlResponse) SetBody(v *DeleteAllTrafficSpec
 }
 
 type DeleteApiRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3222,7 +3046,6 @@ func (s *DeleteApiRequest) SetSecurityToken(v string) *DeleteApiRequest {
 }
 
 type DeleteApiResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3269,11 +3092,9 @@ func (s *DeleteApiResponse) SetBody(v *DeleteApiResponseBody) *DeleteApiResponse
 }
 
 type DeleteApiGroupRequest struct {
-	// The object tags that match the lifecycle rule. You can specify multiple tags.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The key of the tag.
-	Tag []*DeleteApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	GroupId       *string                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string                     `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DeleteApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DeleteApiGroupRequest) String() string {
@@ -3300,9 +3121,7 @@ func (s *DeleteApiGroupRequest) SetTag(v []*DeleteApiGroupRequestTag) *DeleteApi
 }
 
 type DeleteApiGroupRequestTag struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the request.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3325,7 +3144,6 @@ func (s *DeleteApiGroupRequestTag) SetValue(v string) *DeleteApiGroupRequestTag 
 }
 
 type DeleteApiGroupResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3457,11 +3275,9 @@ func (s *DeleteApiStageVariableResponse) SetBody(v *DeleteApiStageVariableRespon
 }
 
 type DeleteAppRequest struct {
-	// The ID of the application.
-	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags. Up to 20 elements are allowed.
-	Tag []*DeleteAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AppId         *int64                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string                `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DeleteAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAppRequest) String() string {
@@ -3488,9 +3304,7 @@ func (s *DeleteAppRequest) SetTag(v []*DeleteAppRequestTag) *DeleteAppRequest {
 }
 
 type DeleteAppRequestTag struct {
-	// The key of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3513,7 +3327,6 @@ func (s *DeleteAppRequestTag) SetValue(v string) *DeleteAppRequestTag {
 }
 
 type DeleteAppResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3560,7 +3373,6 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 }
 
 type DeleteBackendRequest struct {
-	// The ID of the backend service.
 	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3584,7 +3396,6 @@ func (s *DeleteBackendRequest) SetSecurityToken(v string) *DeleteBackendRequest 
 }
 
 type DeleteBackendResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3631,17 +3442,10 @@ func (s *DeleteBackendResponse) SetBody(v *DeleteBackendResponseBody) *DeleteBac
 }
 
 type DeleteBackendModelRequest struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The ID of the backend model.
+	BackendId      *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DeleteBackendModelRequest) String() string {
@@ -3673,10 +3477,8 @@ func (s *DeleteBackendModelRequest) SetStageName(v string) *DeleteBackendModelRe
 }
 
 type DeleteBackendModelResponseBody struct {
-	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteBackendModelResponseBody) String() string {
@@ -3727,7 +3529,6 @@ func (s *DeleteBackendModelResponse) SetBody(v *DeleteBackendModelResponseBody) 
 }
 
 type DeleteDatasetRequest struct {
-	// The ID of the dataset.
 	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3751,7 +3552,6 @@ func (s *DeleteDatasetRequest) SetSecurityToken(v string) *DeleteDatasetRequest 
 }
 
 type DeleteDatasetResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3798,9 +3598,7 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteDatasetItemRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry.
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3829,7 +3627,6 @@ func (s *DeleteDatasetItemRequest) SetSecurityToken(v string) *DeleteDatasetItem
 }
 
 type DeleteDatasetItemResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3876,9 +3673,11 @@ func (s *DeleteDatasetItemResponse) SetBody(v *DeleteDatasetItemResponseBody) *D
 }
 
 type DeleteDomainRequest struct {
-	// The custom domain name.
+	// *   This operation is intended for API providers.
+	// *   If the specified domain name does not exist, a successful response will still appear.
+	// *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the API group to which the domain name to be unbound is bound. This ID is generated by the system and globally unique.
+	// The ID of the request.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3907,7 +3706,7 @@ func (s *DeleteDomainRequest) SetSecurityToken(v string) *DeleteDomainRequest {
 }
 
 type DeleteDomainResponseBody struct {
-	// The ID of the request.
+	// Unbinds a custom domain name from a specified API group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3954,11 +3753,8 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteDomainCertificateRequest struct {
-	// The ID of the request.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The ID of the SSL certificate that you want to delete. It is automatically generated by the system and globally unique.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3992,7 +3788,6 @@ func (s *DeleteDomainCertificateRequest) SetSecurityToken(v string) *DeleteDomai
 }
 
 type DeleteDomainCertificateResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4039,10 +3834,8 @@ func (s *DeleteDomainCertificateResponse) SetBody(v *DeleteDomainCertificateResp
 }
 
 type DeleteInstanceRequest struct {
-	// The tag of objects that match the lifecycle rule. You can specify multiple tags.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The key of the tag.
-	Tag []*DeleteInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	InstanceId *string                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Tag        []*DeleteInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -4064,9 +3857,7 @@ func (s *DeleteInstanceRequest) SetTag(v []*DeleteInstanceRequestTag) *DeleteIns
 }
 
 type DeleteInstanceRequestTag struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the request.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4089,7 +3880,6 @@ func (s *DeleteInstanceRequestTag) SetValue(v string) *DeleteInstanceRequestTag 
 }
 
 type DeleteInstanceResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4136,7 +3926,9 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteIpControlRequest struct {
-	// The ID of the ACL. The ID is unique.
+	// *   This operation is intended for API providers.
+	// *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+	// *   If you call this operation on an ACL that does not exist, a success message is returned.
 	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -4160,7 +3952,7 @@ func (s *DeleteIpControlRequest) SetSecurityToken(v string) *DeleteIpControlRequ
 }
 
 type DeleteIpControlResponseBody struct {
-	// The ID of the request.
+	// Deletes an access control list (ACL).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4207,7 +3999,6 @@ func (s *DeleteIpControlResponse) SetBody(v *DeleteIpControlResponseBody) *Delet
 }
 
 type DeleteLogConfigRequest struct {
-	// The log type. Valid values: **log** and **survey**.
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -4231,7 +4022,6 @@ func (s *DeleteLogConfigRequest) SetSecurityToken(v string) *DeleteLogConfigRequ
 }
 
 type DeleteLogConfigResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4278,9 +4068,9 @@ func (s *DeleteLogConfigResponse) SetBody(v *DeleteLogConfigResponseBody) *Delet
 }
 
 type DeleteModelRequest struct {
-	// The ID of the API group to which the model belongs.
+	// The ID of the request.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
+	// The ID of the API group to which the model belongs.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -4303,7 +4093,7 @@ func (s *DeleteModelRequest) SetModelName(v string) *DeleteModelRequest {
 }
 
 type DeleteModelResponseBody struct {
-	// The ID of the request.
+	// Deletes a model from Model Management for an API group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4350,9 +4140,7 @@ func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelRe
 }
 
 type DeleteMonitorGroupRequest struct {
-	// The ID of the monitoring group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the request.
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	RawMonitorGroupId *int64  `json:"RawMonitorGroupId,omitempty" xml:"RawMonitorGroupId,omitempty"`
 	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -4381,7 +4169,6 @@ func (s *DeleteMonitorGroupRequest) SetSecurityToken(v string) *DeleteMonitorGro
 }
 
 type DeleteMonitorGroupResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4428,11 +4215,9 @@ func (s *DeleteMonitorGroupResponse) SetBody(v *DeleteMonitorGroupResponseBody) 
 }
 
 type DeletePluginRequest struct {
-	// The ID of the plug-in to be deleted.
-	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*DeletePluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PluginId      *string                   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DeletePluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DeletePluginRequest) String() string {
@@ -4459,13 +4244,7 @@ func (s *DeletePluginRequest) SetTag(v []*DeletePluginRequestTag) *DeletePluginR
 }
 
 type DeletePluginRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4488,7 +4267,6 @@ func (s *DeletePluginRequestTag) SetValue(v string) *DeletePluginRequestTag {
 }
 
 type DeletePluginResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4536,7 +4314,10 @@ func (s *DeletePluginResponse) SetBody(v *DeletePluginResponseBody) *DeletePlugi
 
 type DeleteSignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the key to be deleted.
+	// *   This API is intended for API providers.
+	// *   This API operation deletes an existing backend signature key.
+	// *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+	// *   The QPS limit on this operation is 50 per user.
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 }
 
@@ -4559,7 +4340,7 @@ func (s *DeleteSignatureRequest) SetSignatureId(v string) *DeleteSignatureReques
 }
 
 type DeleteSignatureResponseBody struct {
-	// The ID of the request.
+	// Deletes a backend signature key.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4606,8 +4387,7 @@ func (s *DeleteSignatureResponse) SetBody(v *DeleteSignatureResponseBody) *Delet
 }
 
 type DeleteTrafficControlRequest struct {
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the throttling policy.
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -4630,7 +4410,6 @@ func (s *DeleteTrafficControlRequest) SetTrafficControlId(v string) *DeleteTraff
 }
 
 type DeleteTrafficControlResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4678,14 +4457,12 @@ func (s *DeleteTrafficControlResponse) SetBody(v *DeleteTrafficControlResponseBo
 
 type DeleteTrafficSpecialControlRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the app or Alibaba Cloud account. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.343130a8sDi8cO#/secure) page.
+	// *   This API is intended for API providers.
+	// *   You can obtain the input parameters required in this operation by calling other APIs.
 	SpecialKey *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
-	// The type of the special throttling policy. Valid values:
-	//
-	// *   **APP**
-	// *   **USER**
+	// The ID of the request.
 	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
-	// The ID of the throttling policy.
+	// The ID of the app or Alibaba Cloud account. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.343130a8sDi8cO#/secure) page.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -4718,7 +4495,7 @@ func (s *DeleteTrafficSpecialControlRequest) SetTrafficControlId(v string) *Dele
 }
 
 type DeleteTrafficSpecialControlResponseBody struct {
-	// The ID of the request.
+	// Deletes a custom special throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4765,18 +4542,20 @@ func (s *DeleteTrafficSpecialControlResponse) SetBody(v *DeleteTrafficSpecialCon
 }
 
 type DeployApiRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The publishing remarks.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// *   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+	// *   An API is published to a cluster in less than 5 seconds.
+	// *   The QPS limit on this operation is 50 per user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **PRE: the pre-release environment**
 	// *   **TEST: the test environment**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the request.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -4814,7 +4593,7 @@ func (s *DeployApiRequest) SetStageName(v string) *DeployApiRequest {
 }
 
 type DeployApiResponseBody struct {
-	// The ID of the request.
+	// Publishes an API to a specified environment.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4861,7 +4640,6 @@ func (s *DeployApiResponse) SetBody(v *DeployApiResponseBody) *DeployApiResponse
 }
 
 type DescribeAbolishApiTaskRequest struct {
-	// The ID of the request.
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -4885,10 +4663,8 @@ func (s *DescribeAbolishApiTaskRequest) SetSecurityToken(v string) *DescribeAbol
 }
 
 type DescribeAbolishApiTaskResponseBody struct {
-	// The result returned.
 	ApiAbolishResults *DescribeAbolishApiTaskResponseBodyApiAbolishResults `json:"ApiAbolishResults,omitempty" xml:"ApiAbolishResults,omitempty" type:"Struct"`
-	// The result returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAbolishApiTaskResponseBody) String() string {
@@ -4927,25 +4703,14 @@ func (s *DescribeAbolishApiTaskResponseBodyApiAbolishResults) SetApiAbolishResul
 }
 
 type DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult struct {
-	// The ID of the API group.
 	AbolishStatus *string `json:"AbolishStatus,omitempty" xml:"AbolishStatus,omitempty"`
-	// auditing
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The error message.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The name of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The unpublishing status.
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the API.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid        *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	ErrorMsg      *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId       *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult) String() string {
@@ -5026,7 +4791,6 @@ func (s *DescribeAbolishApiTaskResponse) SetBody(v *DescribeAbolishApiTaskRespon
 }
 
 type DescribeAccessControlListAttributeRequest struct {
-	// The ID of the access control policy.
 	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -5050,16 +4814,11 @@ func (s *DescribeAccessControlListAttributeRequest) SetSecurityToken(v string) *
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	// The information about the access control policy.
 	AclEntrys *DescribeAccessControlListAttributeResponseBodyAclEntrys `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
-	// The ID of the access control policy.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the access control policy.
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// Indicates whether the policy was used.
-	IsUsed *string `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AclId     *string                                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName   *string                                                  `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	IsUsed    *string                                                  `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBody) String() string {
@@ -5113,10 +4872,8 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v 
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
-	// The description of an entry.
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The entries of the access control policy.
-	AclEntryIp *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
+	AclEntryIp      *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {
@@ -5167,14 +4924,11 @@ func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessCo
 }
 
 type DescribeAccessControlListsRequest struct {
-	// The name of the access control policy.
 	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The page number of the current page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeAccessControlListsRequest) String() string {
@@ -5211,16 +4965,11 @@ func (s *DescribeAccessControlListsRequest) SetSecurityToken(v string) *Describe
 }
 
 type DescribeAccessControlListsResponseBody struct {
-	// The ACLs.
-	Acls *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
-	// The page number of the current page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Acls       *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAccessControlListsResponseBody) String() string {
@@ -5274,9 +5023,7 @@ func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessC
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
-	// The ID of the access control policy.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the access control policy.
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
@@ -5334,9 +5081,9 @@ func (s *DescribeAccessControlListsResponse) SetBody(v *DescribeAccessControlLis
 }
 
 type DescribeApiRequest struct {
-	// The ID of the API.
+	// Description
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API.
+	// System parameters sent by API Gateway to the backend service
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -5365,114 +5112,88 @@ func (s *DescribeApiRequest) SetSecurityToken(v string) *DescribeApiRequest {
 }
 
 type DescribeApiResponseBody struct {
-	// The region ID of the API.
+	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
-	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// Specifies whether to enable backend services.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// If **AuthType** is set to **APP**, this value must be passed to specify the signature algorithm. If you do not specify a value, HmacSHA256 is used by default. Valid values:
-	//
-	// *   HmacSHA256
-	// *   HmacSHA1,HmacSHA256
-	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
-	// The last modification time of the API.
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The ID of the backend service.
-	BackendConfig *DescribeApiResponseBodyBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
-	// Backend configurations
-	BackendEnable *bool `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
 	// Description
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The minimum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The request mode. Valid values: MAPPING and PASSTHROUGH.
+	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
+	// The sample error codes returned by the backend service.
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The timeout period of the backend service. Unit: milliseconds.
+	BackendConfig *DescribeApiResponseBodyBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
+	// The corresponding frontend parameter name. It must be included in RequestParametersObject and matches ApiParameterName in RequestParameter data.
+	BackendEnable *bool `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
+	// The name of the backend service parameter.
 	ConstantParameters *DescribeApiResponseBodyConstantParameters `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
-	// The name of the API, which is unique in the group.
+	// The type of the Function Compute instance.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Examples
+	// The name of the HTTP header.
 	CustomSystemParameters *DescribeApiResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
-	// The name of the runtime environment. Valid values: RELEASE and TEST.
+	// DescribeApi
 	DeployedInfos *DescribeApiResponseBodyDeployedInfos `json:"DeployedInfos,omitempty" xml:"DeployedInfos,omitempty" type:"Struct"`
-	// The name of the API group.
+	// Specifies whether to enable the VPC channel. Valid values:
+	//
+	// *   **TRUE**: The VPC channel is enabled. You must create the corresponding VPC access authorization before you can enable a VPC channel.
+	// *   **FALSE**: The VPC channel is not enabled.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The returned description of the API.
+	// The API request path. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the API request path is ` /object/add  `.
 	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// Error codes
+	// The name of the VPC access authorization.
 	ErrorCodeSamples *DescribeApiResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
-	// The security authentication method of the API. Valid values:
-	//
-	// *   **APP**: Only authorized applications can call the API.
-	//
-	// *   **ANONYMOUS**: The API can be anonymously called. In this mode, you must take note of the following rules:
-	//
-	//     *   All users who have obtained the API service information can call this API. API Gateway does not authenticate callers and cannot set user-specific throttling policies. If you make this API public, set API-specific throttling policies.
-	//     *   We recommend that you do not make the API whose security authentication method is ANONYMOUS available in Alibaba Cloud Marketplace because API Gateway cannot meter calls on the caller or limit the number of calls on the API. If you want to make the API group to which the API belongs available in Alibaba Cloud Marketplace, we recommend that you move the API to another group, set its type to PRIVATE, or set its security authentication method to APP.
-	//
-	// *   **APPOPENID**: The OpenID Connect account authentication method is used. Only applications authorized by OpenID Connect can call the API. If this method is selected, the OpenIdConnectConfig parameter is required.
+	// The maximum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// Specifies whether to make the API public. Valid values:
-	//
-	// *   **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
-	// *   **PRIVATE**: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	// The ID of the result.
 	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
-	// Specifies whether to enable the Mock mode. Valid values:
-	//
-	// *   OPEN: The Mock mode is enabled.
-	// *   CLOSED: The Mock mode is not enabled.
+	// The path used to call the back-end service. If the complete back-end service path is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, **ServicePath** is `/object/add`.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
+	// The ID of the parent node.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The result returned for service mocking.
+	// The ID of the API.
 	Mock *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
-	// The creation time of the API.
+	// The ID of the API group.
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
-	// The ID of the request.
+	// Backend configuration items when the backend service is Function Compute
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The OpenID Connect mode. Valid values:
-	//
-	// *   **IDTOKEN**: indicates the APIs that are called by clients to obtain tokens. If you specify this value, the PublicKeyId parameter and the PublicKey parameter are required.
-	// *   **BUSINESS**: indicates business APIs. Tokens are used to call the business APIs. If you specify this value, the IdTokenParamName parameter is required.
-	OpenIdConnectConfig *DescribeApiResponseBodyOpenIdConnectConfig `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty" type:"Struct"`
-	// Specifies whether to carry the header : X-Ca-Nonce when calling an API. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent reply attacks. Valid values:
-	//
-	// *   **true**: This field is forcibly checked when an API is requested to prevent replay attacks.
-	// *   **false**: This field is not checked.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The body model.
-	RequestConfig *DescribeApiResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
 	// The description of the API.
+	OpenIdConnectConfig *DescribeApiResponseBodyOpenIdConnectConfig `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty" type:"Struct"`
+	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Age
+	RequestConfig *DescribeApiResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
+	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The JSON Schema used for JSON validation when **ParameterType** is set to String.
+	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
 	RequestParameters *DescribeApiResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
-	// The sample response from the backend service.
+	// The ID of the API group.
 	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
-	// The returned description of the API.
+	// The last modification time of the API.
 	ResultDescriptions *DescribeApiResponseBodyResultDescriptions `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty" type:"Struct"`
+	// The ID of the ECS or SLB instance in the VPC.
+	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role to be assumed by API Gateway to access Function Compute.
+	ServiceConfig *DescribeApiResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
+	// The Arn that is authorized by a RAM user to EventBridge.
+	ServiceParameters *DescribeApiResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
+	// Error codes
+	ServiceParametersMap *DescribeApiResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
 	// If **AuthType** is set to **APP**, the valid values are:
 	//
 	// *   **DEFAULT**: The default value that is used if no other values are passed. This value means that the setting of the group is used.
 	// *   **DISABLE**: The authentication is disabled.
 	// *   **HEADER**: AppCode can be placed in the Header parameter for authentication.
 	// *   **HEADER_QUERY**: AppCode can be placed in the Header or Query parameter for authentication.
-	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
-	// The type of the two-way communication API. Valid values:
-	//
-	// *   **COMMON**: general APIs
-	// *   **REGISTER**: registered APIs
-	// *   **UNREGISTER**: unregistered APIs
-	// *   **NOTIFY**: downstream notification
-	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	// The application name in AONE.
-	ServiceConfig *DescribeApiResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	ServiceParameters *DescribeApiResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
-	// The corresponding frontend parameter name. It must be included in RequestParametersObject and matches ApiParameterName in RequestParameter data.
-	ServiceParametersMap *DescribeApiResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
-	// Examples
 	SystemParameters *DescribeApiResponseBodySystemParameters `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty" type:"Struct"`
-	// The sample error response from the backend service.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 	// Specifies whether to limit API calls to within the VPC. Valid values:
 	//
 	// *   **true**: Only API calls from the VPC are supported.
 	// *   **false**: API calls from the VPC and Internet are both supported.
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	// The ID of the region where the OSS instance is located.
 	WebSocketApiType *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
 }
 
@@ -5665,11 +5386,11 @@ func (s *DescribeApiResponseBody) SetWebSocketApiType(v string) *DescribeApiResp
 }
 
 type DescribeApiResponseBodyBackendConfig struct {
-	// Backend service type
+	// The function name defined in Function Compute.
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The configuration items of API requests sent by the consumer to API Gateway.
+	// The protocol type supported by the API. Valid values: HTTP and HTTPS. Separate multiple values with commas (,), such as "HTTP,HTTPS".
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The name of the backend service.
+	// The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
 	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
 }
 
@@ -5714,13 +5435,13 @@ func (s *DescribeApiResponseBodyConstantParameters) SetConstantParameter(v []*De
 }
 
 type DescribeApiResponseBodyConstantParametersConstantParameter struct {
-	// The parameters of API requests sent by the consumer to API Gateway.
+	// The data type of the back-end service parameter.
 	ConstantValue *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The API request path.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the backend service parameter.
+	// The value of the ContentType header when the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The value of the parameter.
+	// The name of the parameter that corresponds to the token.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -5770,15 +5491,15 @@ func (s *DescribeApiResponseBodyCustomSystemParameters) SetCustomSystemParameter
 }
 
 type DescribeApiResponseBodyCustomSystemParametersCustomSystemParameter struct {
-	// Description
+	// The ID of the region where the EventBridge instance is located.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// Client IP Address
+	// The effective version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the corresponding backend parameter.
+	// The ID of the request.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The default value.
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// System parameters sent by API Gateway to the backend service
+	// Client IP Address
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -5833,11 +5554,9 @@ func (s *DescribeApiResponseBodyDeployedInfos) SetDeployedInfo(v []*DescribeApiR
 }
 
 type DescribeApiResponseBodyDeployedInfosDeployedInfo struct {
-	// auditing
-	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
-	// The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
+	DeployedStatus   *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
 	EffectiveVersion *string `json:"EffectiveVersion,omitempty" xml:"EffectiveVersion,omitempty"`
-	// The effective version.
+	// 382271
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -5882,13 +5601,13 @@ func (s *DescribeApiResponseBodyErrorCodeSamples) SetErrorCodeSample(v []*Descri
 }
 
 type DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// Model
+	// The protocol used by the backend service. Valid values: HTTP and HTTPS.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The UserId parameter is missing from the request.
+	// The description of the request body.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Description
+	// Configuration items related to VPC channels
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Error message
+	// The status code returned for service mocking.
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 }
 
@@ -5921,13 +5640,20 @@ func (s *DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample) SetModel(v stri
 }
 
 type DescribeApiResponseBodyOpenIdConnectConfig struct {
-	// The ID of the public key.
+	// The type of the two-way communication API. Valid values:
+	//
+	// *   **COMMON**: general APIs
+	// *   **REGISTER**: registered APIs
+	// *   **UNREGISTER**: unregistered APIs
+	// *   **NOTIFY**: downstream notification
+	//
+	// For more information, see [Two-way communication](~~66031~~).
 	IdTokenParamName *string `json:"IdTokenParamName,omitempty" xml:"IdTokenParamName,omitempty"`
-	// The name of the parameter that corresponds to the token.
+	// Backend configurations
 	OpenIdApiType *string `json:"OpenIdApiType,omitempty" xml:"OpenIdApiType,omitempty"`
-	// The sample error codes returned by the backend service.
+	// The HTTP method used to call a backend service. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	// The public key.
+	// The port number that corresponds to the instance.
 	PublicKeyId *string `json:"PublicKeyId,omitempty" xml:"PublicKeyId,omitempty"`
 }
 
@@ -5960,21 +5686,19 @@ func (s *DescribeApiResponseBodyOpenIdConnectConfig) SetPublicKeyId(v string) *D
 }
 
 type DescribeApiResponseBodyRequestConfig struct {
-	// The request mode. Valid values: MAPPING and PASSTHROUGH.
+	// The JSON Schema used for JSON validation when **ParameterType** is set to String.
 	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
-	// The API request path. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the API request path is ` /object/add  `.
+	// The minimum parameter length when **ParameterType** is set to String.
 	BodyModel *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
-	// The protocol type supported by the API. Valid values: HTTP and HTTPS. Separate multiple values with commas (,), such as "HTTP,HTTPS".
+	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML.
 	PostBodyDescription *string `json:"PostBodyDescription,omitempty" xml:"PostBodyDescription,omitempty"`
-	// This parameter takes effect only when the RequestMode parameter is set to MAPPING.********
-	//
-	// The server data transmission method used for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data in key-value pairs is transmitted as forms. STREAM indicates that data is transmitted as byte streams.
+	// The type of a request parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
 	RequestHttpMethod *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
-	// The description of the request body.
+	// The name of the API group.
 	RequestMode *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
-	// The HTTP method used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
+	// The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
 	RequestPath *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
-	// The configuration items of API requests sent by API Gateway to the backend service.
+	// Examples
 	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
 }
 
@@ -6039,39 +5763,51 @@ func (s *DescribeApiResponseBodyRequestParameters) SetRequestParameter(v []*Desc
 }
 
 type DescribeApiResponseBodyRequestParametersRequestParameter struct {
-	// The hash values that can be entered when **ParameterType** is set to Int, Long, Float, Double, or String. Separate different values with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
+	// Indicates whether a subnode exists.
 	ApiParameterName *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
-	// The minimum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
+	// The security authentication method of the API. Valid values:
+	//
+	// *   **APP**: Only authorized applications can call the API.
+	//
+	// *   **ANONYMOUS**: The API can be anonymously called. In this mode, you must take note of the following rules:
+	//
+	//     *   All users who have obtained the API service information can call this API. API Gateway does not authenticate callers and cannot set user-specific throttling policies. If you make this API public, set API-specific throttling policies.
+	//     *   We recommend that you do not make the API whose security authentication method is ANONYMOUS available in Alibaba Cloud Marketplace because API Gateway cannot meter calls on the caller or limit the number of calls on the API. If you want to make the API group to which the API belongs available in Alibaba Cloud Marketplace, we recommend that you move the API to another group, set its type to PRIVATE, or set its security authentication method to APP.
+	//
+	// *   **APPOPENID**: The OpenID Connect account authentication method is used. Only applications authorized by OpenID Connect can call the API. If this method is selected, the OpenIdConnectConfig parameter is required.
 	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
-	// The name of the parameter.
+	// The configuration items of API requests sent by API Gateway to the backend service.
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Indicates whether the parameter is required. Valid values: **REQUIRED** and **OPTIONAL**.
+	// The OpenID Connect mode. Valid values:
+	//
+	// *   **IDTOKEN**: indicates the APIs that are called by clients to obtain tokens. If you specify this value, the PublicKeyId parameter and the PublicKey parameter are required.
+	// *   **BUSINESS**: indicates business APIs. Tokens are used to call the business APIs. If you specify this value, the IdTokenParamName parameter is required.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// Age
+	// The returned description of the API.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The event bus.
 	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// The maximum parameter length when **ParameterType** is set to String.
+	// The sample response from the backend service.
 	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// Examples
+	// The name of the parameter.
 	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
-	// The maximum parameter value when **ParameterType** is set to Int, Long, Float, or Double.
-	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
-	// The parameters of API requests sent by API Gateway to the backend service.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The default value.
-	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The type of the array element.
-	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The order in the document.
-	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
-	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
 	// The regular expression used for parameter validation when **ParameterType** is set to String.
+	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
+	// The ID of the VPC.
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Backend service type
+	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// Specifies whether to enable backend services.
+	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The name of the backend service parameter.
+	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
+	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// The region where the Function Compute instance is located.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The minimum parameter length when **ParameterType** is set to String.
+	// Configuration items of EventBridge
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Description
+	// The UserId parameter is missing from the request.
 	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
@@ -6186,17 +5922,21 @@ func (s *DescribeApiResponseBodyResultDescriptions) SetResultDescription(v []*De
 }
 
 type DescribeApiResponseBodyResultDescriptionsResultDescription struct {
-	// The ID of the parent node.
+	// The ContentType header type used when you call the backend service over HTTP.
+	//
+	// *   **DEFAULT**: the default header type in API Gateway
+	// *   **CUSTOM**: a custom header type
+	// *   **CLIENT**: the ContentType header type of the client
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description.
+	// Client IP Address
 	HasChild *bool `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
-	// System parameters sent by API Gateway to the backend service
+	// The result returned when the Mock mode is enabled.
 	Id  *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the result.
+	// The creation time of the API.
 	Mandatory *bool   `json:"Mandatory,omitempty" xml:"Mandatory,omitempty"`
 	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the request parameter is required.
+	// The OSS bucket.
 	Pid  *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -6250,49 +5990,42 @@ func (s *DescribeApiResponseBodyResultDescriptionsResultDescription) SetType(v s
 }
 
 type DescribeApiResponseBodyServiceConfig struct {
-	// The status code returned for service mocking.
+	// auditing
 	AoneAppName *string `json:"AoneAppName,omitempty" xml:"AoneAppName,omitempty"`
-	// The URL used to call the back-end service. If the complete back-end service URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of **ServiceAddress** is `http://api.a.com:8080`.
+	// The HTTP method used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
-	// The protocol used by the backend service. Valid values: HTTP and HTTPS.
+	// The API publishing status.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
-	// The event bus.
+	// Indicates whether the request parameter is required.
 	EventBridgeConfig *DescribeApiResponseBodyServiceConfigEventBridgeConfig `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
-	// The type of the Function Compute instance.
+	// Examples
 	FunctionComputeConfig *DescribeApiResponseBodyServiceConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable the VPC channel. Valid values:
-	//
-	// *   **TRUE**: The VPC channel is enabled. You must create the corresponding VPC access authorization before you can enable a VPC channel.
-	// *   **FALSE**: The VPC channel is not enabled.
+	// The returned description of the API.
 	Mock *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
-	// The value of the HTTP header.
+	// The value of the ContentType header when the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
 	MockHeaders *DescribeApiResponseBodyServiceConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
-	// The HTTP method used to call a backend service. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
+	// The service name defined in Function Compute.
 	MockResult *string `json:"MockResult,omitempty" xml:"MockResult,omitempty"`
-	// The value of the ContentType header when the ServiceProtocol parameter is set to HTTP and the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
+	// Indicates whether the parameter is required. Valid values: **REQUIRED** and **OPTIONAL**.
 	MockStatusCode *int32 `json:"MockStatusCode,omitempty" xml:"MockStatusCode,omitempty"`
-	// The ID of the region where the OSS instance is located.
+	// sex
 	OssConfig *DescribeApiResponseBodyServiceConfigOssConfig `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable the Mock mode. Valid values:
 	//
-	// *   **TRUE**: The Mock mode is enabled.
-	// *   **FALSE**: The Mock mode is not enabled.
+	// *   OPEN: The Mock mode is enabled.
+	// *   CLOSED: The Mock mode is not enabled.
 	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
-	// The timeout period of the backend service. Unit: milliseconds.
+	// Error message
 	ServiceHttpMethod *string `json:"ServiceHttpMethod,omitempty" xml:"ServiceHttpMethod,omitempty"`
-	// The ContentType header type used when you call the backend service over HTTP.
-	//
-	// *   **DEFAULT**: the default header type in API Gateway
-	// *   **CUSTOM**: a custom header type
-	// *   **CLIENT**: the ContentType header type of the client
+	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
 	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	// The path used to call the back-end service. If the complete back-end service path is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, **ServicePath** is `/object/add`.
+	// The sample error response from the backend service.
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The simulated headers.
+	// Information when the backend service is OSS
 	ServiceTimeout *int32 `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
-	// The result returned when the Mock mode is enabled.
+	// The configuration items of API requests sent by the consumer to API Gateway.
 	ServiceVpcEnable *string `json:"ServiceVpcEnable,omitempty" xml:"ServiceVpcEnable,omitempty"`
-	// The ID of the VPC.
+	// The backend only receives the service path.
 	VpcConfig *DescribeApiResponseBodyServiceConfigVpcConfig `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
 }
 
@@ -6390,13 +6123,13 @@ func (s *DescribeApiResponseBodyServiceConfig) SetVpcConfig(v *DescribeApiRespon
 }
 
 type DescribeApiResponseBodyServiceConfigEventBridgeConfig struct {
-	// The Arn that is authorized by a RAM user to EventBridge.
+	// The URL used to call the back-end service. If the complete back-end service URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the value of **ServiceAddress** is `http://api.a.com:8080`.
 	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
-	// The event source.
+	// The region ID of the API.
 	EventBus *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
-	// The ID of the region where the EventBridge instance is located.
+	// The name of the corresponding backend parameter.
 	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// Configuration items of the third-party OpenID Connect authentication method
+	// The public key.
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
@@ -6429,33 +6162,35 @@ func (s *DescribeApiResponseBodyServiceConfigEventBridgeConfig) SetRoleArn(v str
 }
 
 type DescribeApiResponseBodyServiceConfigFunctionComputeConfig struct {
-	// The API request path.
+	// The name of the backend service.
 	ContentTypeCatagory *string `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
-	// The region where the Function Compute instance is located.
+	// The value of the parameter.
 	ContentTypeValue *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
-	// The value of the ContentType header when the ContentTypeCatagory parameter is set to DEFAULT or CUSTOM.
+	// The result returned for service mocking.
 	FcBaseUrl *string `json:"FcBaseUrl,omitempty" xml:"FcBaseUrl,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role to be assumed by API Gateway to access Function Compute.
+	// The parameters of API requests sent by API Gateway to the backend service.
 	FcType *string `json:"FcType,omitempty" xml:"FcType,omitempty"`
-	// The ContentType header type used when you call the backend service over HTTP.
+	// Specifies whether to carry the header : X-Ca-Nonce when calling an API. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent reply attacks. Valid values:
 	//
-	// *   **DEFAULT**: the default header type in API Gateway
-	// *   **CUSTOM**: a custom header type
-	// *   **CLIENT**: the ContentType header type of the client
+	// *   **true**: This field is forcibly checked when an API is requested to prevent replay attacks.
+	// *   **false**: This field is not checked.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The root path of Function Compute.
+	// Specifies whether to enable the Mock mode. Valid values:
+	//
+	// *   **TRUE**: The Mock mode is enabled.
+	// *   **FALSE**: The Mock mode is not enabled.
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The function name defined in Function Compute.
+	// The type of the array element.
 	OnlyBusinessPath *bool `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
-	// The service name defined in Function Compute.
+	// The application name in AONE.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Information when the backend service is OSS
+	// The maximum parameter length when **ParameterType** is set to String.
 	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
-	// The backend only receives the service path.
+	// The parameters of API requests sent by the consumer to API Gateway.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request method.
+	// The description.
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The alias of the function.
+	// The event source.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -6545,9 +6280,13 @@ func (s *DescribeApiResponseBodyServiceConfigMockHeaders) SetMockHeader(v []*Des
 }
 
 type DescribeApiResponseBodyServiceConfigMockHeadersMockHeader struct {
-	// Configuration items related to VPC channels
+	// The ContentType header type used when you call the backend service over HTTP.
+	//
+	// *   **DEFAULT**: the default header type in API Gateway
+	// *   **CUSTOM**: a custom header type
+	// *   **CLIENT**: the ContentType header type of the client
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The name of the HTTP header.
+	// The order in the document.
 	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
@@ -6571,10 +6310,10 @@ func (s *DescribeApiResponseBodyServiceConfigMockHeadersMockHeader) SetHeaderVal
 
 type DescribeApiResponseBodyServiceConfigOssConfig struct {
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Configuration items of EventBridge
+	// Examples
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The OSS bucket.
+	// The ID of the backend service.
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
 }
 
@@ -6607,15 +6346,17 @@ func (s *DescribeApiResponseBodyServiceConfigOssConfig) SetOssRegionId(v string)
 }
 
 type DescribeApiResponseBodyServiceConfigVpcConfig struct {
-	// The port number that corresponds to the instance.
+	// This parameter takes effect only when the RequestMode parameter is set to MAPPING.********
+	//
+	// The server data transmission method used for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data in key-value pairs is transmitted as forms. STREAM indicates that data is transmitted as byte streams.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Backend configuration items when the backend service is Function Compute
+	// Model
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the VPC access authorization.
+	// Configuration items of the third-party OpenID Connect authentication method
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The VPC protocol.
+	// The value of the HTTP header.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the ECS or SLB instance in the VPC.
+	// System parameters sent by API Gateway to the backend service
 	VpcScheme *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
 }
 
@@ -6670,11 +6411,11 @@ func (s *DescribeApiResponseBodyServiceParameters) SetServiceParameter(v []*Desc
 }
 
 type DescribeApiResponseBodyServiceParametersServiceParameter struct {
-	// The data type of the back-end service parameter.
+	// The name of the runtime environment. Valid values: RELEASE and TEST.
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the backend service parameter.
+	// The hash values that can be entered when **ParameterType** is set to Int, Long, Float, Double, or String. Separate different values with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
+	// Description
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -6721,7 +6462,7 @@ func (s *DescribeApiResponseBodyServiceParametersMap) SetServiceParameterMap(v [
 type DescribeApiResponseBodyServiceParametersMapServiceParameterMap struct {
 	// The name of the backend service parameter.
 	RequestParameterName *string `json:"RequestParameterName,omitempty" xml:"RequestParameterName,omitempty"`
-	// The API publishing status.
+	// The body model.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -6761,15 +6502,15 @@ func (s *DescribeApiResponseBodySystemParameters) SetSystemParameter(v []*Descri
 }
 
 type DescribeApiResponseBodySystemParametersSystemParameter struct {
-	// Description
+	// The root path of Function Compute.
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// Client IP Address
+	// The name of the API, which is unique in the group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the corresponding backend parameter.
+	// sex
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
+	// The request method.
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// Custom system parameters
+	// Indicates whether the document is public. Valid values: **PUBLIC** and **PRIVATE**.
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -6836,18 +6577,10 @@ func (s *DescribeApiResponse) SetBody(v *DescribeApiResponseBody) *DescribeApiRe
 }
 
 type DescribeApiDocRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	//
-	// If this parameter is not specified, the default value is used, which is RELEASE.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiDocRequest) String() string {
@@ -6879,51 +6612,26 @@ func (s *DescribeApiDocRequest) SetStageName(v string) *DescribeApiDocRequest {
 }
 
 type DescribeApiDocResponseBody struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API operation.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The authentication method. Valid values: APP and ANONYMOUS. APP indicates that only Alibaba Cloud applications can call the API. ANONYMOUS indicates that anonymous users can call the API.
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The publishing time.
-	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// *   If the value of **DisableInternet** is set to **true**, API calls are limited within the VPC.
-	// *   If the value of **DisableInternet** is set to **false**, the limit is lifted. The default value is false when you create an API.
-	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The sample error codes returned by the backend service.
-	ErrorCodeSamples *DescribeApiDocResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
-	// The sample error response from the backend service.
-	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// *   If the value of **ForceNonceCheck** is set to **true**, X-Ca-Nonce must be checked during the request. This is the unique identifier of the request and is identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
-	// *   If the value of **ForceNonceCheck** is set to **false**, the X-Ca-Nonce is not checked. The default value is false when you create an API.
-	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which the API belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region ID of the API group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The returned API frontend definition information. It is an array consisting of RequestConfig data.
-	RequestConfig *DescribeApiDocResponseBodyRequestConfig `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned frontend request parameters.
-	RequestParameters *DescribeApiDocResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
-	// The return descriptions of the API.
+	ApiId              *string                                       `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName            *string                                       `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AuthType           *string                                       `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	DeployedTime       *string                                       `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
+	Description        *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisableInternet    *bool                                         `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	ErrorCodeSamples   *DescribeApiDocResponseBodyErrorCodeSamples   `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
+	FailResultSample   *string                                       `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
+	ForceNonceCheck    *bool                                         `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
+	GroupId            *string                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName          *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RegionId           *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestConfig      *DescribeApiDocResponseBodyRequestConfig      `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty" type:"Struct"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestParameters  *DescribeApiDocResponseBodyRequestParameters  `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	ResultDescriptions *DescribeApiDocResponseBodyResultDescriptions `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty" type:"Struct"`
-	// The sample response.
-	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
-	// The format of the return value.
-	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether the API is public. Valid values: PUBLIC and PRIVATE.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	ResultSample       *string                                       `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	ResultType         *string                                       `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	StageName          *string                                       `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility         *string                                       `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeApiDocResponseBody) String() string {
@@ -7052,12 +6760,9 @@ func (s *DescribeApiDocResponseBodyErrorCodeSamples) SetErrorCodeSample(v []*Des
 }
 
 type DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// The error code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the error code.
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The error message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample) String() string {
@@ -7084,24 +6789,12 @@ func (s *DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample) SetMessage(v
 }
 
 type DescribeApiDocResponseBodyRequestConfig struct {
-	// This parameter takes effect only when the RequestMode parameter is set to MAPPING.********
-	//
-	// The format in which data is transmitted to the server for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data is transmitted in the key-value pair format. STREAM indicates that data is transmitted as byte streams.
-	BodyFormat *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
-	// The description of the request body.
+	BodyFormat          *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
 	PostBodyDescription *string `json:"PostBodyDescription,omitempty" xml:"PostBodyDescription,omitempty"`
-	// The HTTP method that was used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
-	RequestHttpMethod *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
-	// The request mode. Valid values:
-	//
-	// *   MAPPING: Parameters are mapped. Unknown parameters are filtered out.
-	// *   PASSTHROUGH: Parameters are passed through.
-	// *   MAPPING_PASSTHROUGH: Parameters are mapped. Unknown parameters are passed through.
-	RequestMode *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
-	// The API request path. If the complete API URL is `http://api.a.com:8080/object/add?key1=value1&key2=value2`, the API request path is ` /object/add  `.
-	RequestPath *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
-	// The protocol types supported by the API. Valid values: HTTP and HTTPS. Separate multiple values with commas (,), such as "HTTP,HTTPS".
-	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
+	RequestHttpMethod   *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
+	RequestMode         *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
+	RequestPath         *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
+	RequestProtocol     *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyRequestConfig) String() string {
@@ -7160,40 +6853,24 @@ func (s *DescribeApiDocResponseBodyRequestParameters) SetRequestParameter(v []*D
 }
 
 type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {
-	// The name of the API parameter.
 	ApiParameterName *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
-	// The type of the array element.
-	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
-	// The default value.
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The example value.
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The order in the document.
-	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Indicates whether the document is public. Valid values: PUBLIC and PRIVATE.
-	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that can be entered when ParameterType is set to Int, Long, Float, Double, or String. Different values are separated with commas (,), such as 1,2,3,4,9 or A,B,C,E,F.
-	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+	ArrayItemsType   *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
+	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	DemoValue        *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocOrder         *int32  `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
+	DocShow          *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
+	EnumValue        *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
 	// JSON scheme
-	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum length.
-	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum value.
-	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum length.
-	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum value.
-	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The type of the parameter.
-	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression used for parameter validation when ParameterType is set to String.
+	JsonScheme        *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
+	Location          *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxLength         *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	MaxValue          *int64  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinLength         *int64  `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	MinValue          *int64  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ParameterType     *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required.
-	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
+	Required          *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyRequestParametersRequestParameter) String() string {
@@ -7307,16 +6984,14 @@ func (s *DescribeApiDocResponseBodyResultDescriptions) SetResultDescription(v []
 }
 
 type DescribeApiDocResponseBodyResultDescriptionsResultDescription struct {
-	// The description of the API.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	HasChild    *bool   `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
 	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Key         *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Indicates whether the parameter is required.
-	Mandatory *bool   `json:"Mandatory,omitempty" xml:"Mandatory,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Pid       *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Mandatory   *bool   `json:"Mandatory,omitempty" xml:"Mandatory,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Pid         *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyResultDescriptionsResultDescription) String() string {
@@ -7729,7 +7404,9 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	// The unique ID of the SSL certificate, which is automatically generated by the system.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The name of the SSL certificate.
-	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CertificateName       *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	CertificateValidEnd   *int64  `json:"CertificateValidEnd,omitempty" xml:"CertificateValidEnd,omitempty"`
+	CertificateValidStart *int64  `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
 	// The type of the custom domain name.
 	CustomDomainType *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
 	// The binding status of the custom domain name. Valid values:
@@ -7780,6 +7457,16 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateId(v
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateName(v string) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
 	s.CertificateName = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateValidEnd(v int64) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.CertificateValidEnd = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetCertificateValidStart(v int64) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.CertificateValidStart = &v
 	return s
 }
 
@@ -7912,7 +7599,6 @@ func (s *DescribeApiGroupResponse) SetBody(v *DescribeApiGroupResponseBody) *Des
 }
 
 type DescribeApiGroupVpcWhitelistRequest struct {
-	// The ID of the API group.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -7936,10 +7622,8 @@ func (s *DescribeApiGroupVpcWhitelistRequest) SetSecurityToken(v string) *Descri
 }
 
 type DescribeApiGroupVpcWhitelistResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the VPC.
-	VpcIds *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
+	VpcIds    *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
 }
 
 func (s DescribeApiGroupVpcWhitelistResponseBody) String() string {
@@ -7990,26 +7674,15 @@ func (s *DescribeApiGroupVpcWhitelistResponse) SetBody(v *DescribeApiGroupVpcWhi
 }
 
 type DescribeApiGroupsRequest struct {
-	// The ID of the instance.
-	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	// The keyword that can be specified in the name of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The order. Valid values: asc and desc. Default value: desc.
-	//
-	// *   asc: The API groups are displayed in ascending order of modification time.
-	// *   desc: The API groups are displayed in descending order of modification time.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Specifies whether to enable tag verification.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The list of tags.
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The key of the tag.
-	Tag []*DescribeApiGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	EnableTagAuth *bool                          `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
+	GroupId       *string                        `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string                        `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId    *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber    *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Sort          *string                        `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Tag           []*DescribeApiGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApiGroupsRequest) String() string {
@@ -8066,9 +7739,7 @@ func (s *DescribeApiGroupsRequest) SetTag(v []*DescribeApiGroupsRequestTag) *Des
 }
 
 type DescribeApiGroupsRequestTag struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The number of pages to return the results on.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8091,16 +7762,11 @@ func (s *DescribeApiGroupsRequestTag) SetValue(v string) *DescribeApiGroupsReque
 }
 
 type DescribeApiGroupsResponseBody struct {
-	// The basepath.
 	ApiGroupAttributes *DescribeApiGroupsResponseBodyApiGroupAttributes `json:"ApiGroupAttributes,omitempty" xml:"ApiGroupAttributes,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned group set.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber         *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount         *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeApiGroupsResponseBody) String() string {
@@ -8154,42 +7820,21 @@ func (s *DescribeApiGroupsResponseBodyApiGroupAttributes) SetApiGroupAttribute(v
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute struct {
-	// The billing status of the API group. Valid values:
-	//
-	// *   **NORMAL**: The instance is normal.
-	// *   **LOCKED**: The API group is locked due to overdue payments.
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// The upper QPS limit of the API group. The default value is 500. You can increase the upper limit by submitting an application.
-	BillingStatus *string `json:"BillingStatus,omitempty" xml:"BillingStatus,omitempty"`
-	// The list of tags.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The validity status of the API group. Valid values:
-	//
-	// *   **NORMAL**: The instance is normal.
-	// *   **LOCKED**: The API group is locked because it is not valid.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Group Description
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The second-level domain name that corresponds to the API group and is used by the CNAME of the custom domain name.
-	HttpsPolicy *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
-	// The HTTPS security policy
-	IllegalStatus *string `json:"IllegalStatus,omitempty" xml:"IllegalStatus,omitempty"`
-	// The type of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region to which the API group belongs.
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The last modification time (UTC) of the API group.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The creation time (UTC) of the API group.
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The key of the tag.
-	Tags *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the instance.
-	TrafficLimit *int32 `json:"TrafficLimit,omitempty" xml:"TrafficLimit,omitempty"`
+	BasePath      *string                                                               `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
+	BillingStatus *string                                                               `json:"BillingStatus,omitempty" xml:"BillingStatus,omitempty"`
+	CreatedTime   *string                                                               `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description   *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string                                                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string                                                               `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HttpsPolicy   *string                                                               `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	IllegalStatus *string                                                               `json:"IllegalStatus,omitempty" xml:"IllegalStatus,omitempty"`
+	InstanceId    *string                                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType  *string                                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ModifiedTime  *string                                                               `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RegionId      *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubDomain     *string                                                               `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	Tags          *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TrafficLimit  *int32                                                                `json:"TrafficLimit,omitempty" xml:"TrafficLimit,omitempty"`
 }
 
 func (s DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute) String() string {
@@ -8293,9 +7938,7 @@ func (s *DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags) S
 }
 
 type DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTagsTagInfo struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// auditing
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8347,21 +7990,18 @@ func (s *DescribeApiGroupsResponse) SetBody(v *DescribeApiGroupsResponseBody) *D
 }
 
 type DescribeApiHistoriesRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API. The name is used for fuzzy match.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The ID of the API.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the request.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page number of the returned page.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST: the test environment**
+	// The name of the API. The name is used for fuzzy match.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -8409,15 +8049,15 @@ func (s *DescribeApiHistoriesRequest) SetStageName(v string) *DescribeApiHistori
 }
 
 type DescribeApiHistoriesResponseBody struct {
-	// The returned API information. It is an array consisting of ApiHisItem data.
+	// The ID of the API.
 	ApiHisItems *DescribeApiHistoriesResponseBodyApiHisItems `json:"ApiHisItems,omitempty" xml:"ApiHisItems,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The returned API information. It is an array consisting of ApiHisItem data.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an API version is effective. Valid values: ONLINE and OFFLINE.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8472,28 +8112,28 @@ func (s *DescribeApiHistoriesResponseBodyApiHisItems) SetApiHisItem(v []*Describ
 }
 
 type DescribeApiHistoriesResponseBodyApiHisItemsApiHisItem struct {
-	// The ID of the API.
+	// Creates an object
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The publishing time (UTC) of the API.
-	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which an API belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The historical version of the API.
-	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
 	// The region where the API is located.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The historical version of the API.
+	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
+	// The name of the group to which an API belongs.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The publishing time (UTC) of the API.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// CreateObject
+	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	// Queries the historical versions of a specified API.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the API.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether an API version is effective. Valid values: ONLINE and OFFLINE.
+	// The description of the API.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10050,19 +9690,16 @@ func (s *DescribeApiHistoryResponse) SetBody(v *DescribeApiHistoryResponseBody) 
 }
 
 type DescribeApiIpControlsRequest struct {
-	// The IDs of APIs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
+	// The IDs of APIs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -10105,15 +9742,15 @@ func (s *DescribeApiIpControlsRequest) SetStageName(v string) *DescribeApiIpCont
 }
 
 type DescribeApiIpControlsResponseBody struct {
-	// The information about the ACLs. The information is an array of ApiIpControlItem data.
+	// The ID of the API.
 	ApiIpControls *DescribeApiIpControlsResponseBodyApiIpControls `json:"ApiIpControls,omitempty" xml:"ApiIpControls,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The information about the ACLs. The information is an array of ApiIpControlItem data.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time of binding.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10168,15 +9805,18 @@ func (s *DescribeApiIpControlsResponseBodyApiIpControls) SetApiIpControlItem(v [
 }
 
 type DescribeApiIpControlsResponseBodyApiIpControlsApiIpControlItem struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The time of binding.
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the ACL.
-	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	// The name of the ACL.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// Queries the access control lists (ACLs) that are bound to all the APIs in an API group in a specified environment.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The ID of the ACL.
+	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	// The name of the API.
+	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
+	// *   This operation is intended for API callers.
+	// *   If an optional parameter is not specified, all results are returned on separate pages.
+	//
+	// ·
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
 }
 
@@ -10243,21 +9883,12 @@ func (s *DescribeApiIpControlsResponse) SetBody(v *DescribeApiIpControlsResponse
 }
 
 type DescribeApiLatencyDataRequest struct {
-	// The ID of the API group.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**: the pre-release environment
-	// *   **TEST**
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiLatencyDataRequest) String() string {
@@ -10299,10 +9930,8 @@ func (s *DescribeApiLatencyDataRequest) SetStartTime(v string) *DescribeApiLaten
 }
 
 type DescribeApiLatencyDataResponseBody struct {
-	// The value corresponding to the monitoring metric.
 	CallLatencys *DescribeApiLatencyDataResponseBodyCallLatencys `json:"CallLatencys,omitempty" xml:"CallLatencys,omitempty" type:"Struct"`
-	// The returned information about API call latency. It is an array consisting of MonitorItem data.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApiLatencyDataResponseBody) String() string {
@@ -10341,9 +9970,7 @@ func (s *DescribeApiLatencyDataResponseBodyCallLatencys) SetMonitorItem(v []*Des
 }
 
 type DescribeApiLatencyDataResponseBodyCallLatencysMonitorItem struct {
-	// auditing
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -10395,9 +10022,7 @@ func (s *DescribeApiLatencyDataResponse) SetBody(v *DescribeApiLatencyDataRespon
 }
 
 type DescribeApiMarketAttributesRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -10426,14 +10051,10 @@ func (s *DescribeApiMarketAttributesRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeApiMarketAttributesResponseBody struct {
-	// The ID of the request.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// Indicates whether fees are charged.
+	ApiId              *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	MarketChargingMode *string `json:"MarketChargingMode,omitempty" xml:"MarketChargingMode,omitempty"`
-	// auditing
-	NeedCharging *string `json:"NeedCharging,omitempty" xml:"NeedCharging,omitempty"`
-	// The billing mode used by the Alibaba Cloud Marketplace.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NeedCharging       *string `json:"NeedCharging,omitempty" xml:"NeedCharging,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApiMarketAttributesResponseBody) String() string {
@@ -10494,21 +10115,12 @@ func (s *DescribeApiMarketAttributesResponse) SetBody(v *DescribeApiMarketAttrib
 }
 
 type DescribeApiQpsDataRequest struct {
-	// The ID of the API group.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**: the pre-release environment
-	// *   **TEST**
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiQpsDataRequest) String() string {
@@ -10550,12 +10162,9 @@ func (s *DescribeApiQpsDataRequest) SetStartTime(v string) *DescribeApiQpsDataRe
 }
 
 type DescribeApiQpsDataResponseBody struct {
-	// The value corresponding to the monitoring metric.
-	CallFails *DescribeApiQpsDataResponseBodyCallFails `json:"CallFails,omitempty" xml:"CallFails,omitempty" type:"Struct"`
-	// The value corresponding to the monitoring metric.
+	CallFails     *DescribeApiQpsDataResponseBodyCallFails     `json:"CallFails,omitempty" xml:"CallFails,omitempty" type:"Struct"`
 	CallSuccesses *DescribeApiQpsDataResponseBodyCallSuccesses `json:"CallSuccesses,omitempty" xml:"CallSuccesses,omitempty" type:"Struct"`
-	// The returned information about successful API calls. It is an array consisting of MonitorItem data.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApiQpsDataResponseBody) String() string {
@@ -10599,9 +10208,7 @@ func (s *DescribeApiQpsDataResponseBodyCallFails) SetMonitorItem(v []*DescribeAp
 }
 
 type DescribeApiQpsDataResponseBodyCallFailsMonitorItem struct {
-	// auditing
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -10641,9 +10248,7 @@ func (s *DescribeApiQpsDataResponseBodyCallSuccesses) SetMonitorItem(v []*Descri
 }
 
 type DescribeApiQpsDataResponseBodyCallSuccessesMonitorItem struct {
-	// The returned information about failed API calls. It is an array consisting of MonitorItem data.
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -10695,16 +10300,16 @@ func (s *DescribeApiQpsDataResponse) SetBody(v *DescribeApiQpsDataResponseBody) 
 }
 
 type DescribeApiSignaturesRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The IDs of the APIs that you want to query. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API group.
+	// The IDs of the APIs that you want to query. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -10747,15 +10352,15 @@ func (s *DescribeApiSignaturesRequest) SetStageName(v string) *DescribeApiSignat
 }
 
 type DescribeApiSignaturesResponseBody struct {
-	// The time when the backend signature key was bound.
+	// The ID of the API.
 	ApiSignatures *DescribeApiSignaturesResponseBodyApiSignatures `json:"ApiSignatures,omitempty" xml:"ApiSignatures,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned signature key information. It is an array consisting of ApiSignatureItem data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the backend signature key was bound.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10810,16 +10415,16 @@ func (s *DescribeApiSignaturesResponseBodyApiSignatures) SetApiSignatureItem(v [
 }
 
 type DescribeApiSignaturesResponseBodyApiSignaturesApiSignatureItem struct {
-	// The ID of the backend signature key.
+	// The name of the backend signature key.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The ID of the backend signature key.
+	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	// The name of the API.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// *   This API is intended for API providers.
 	// *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API.
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The name of the backend signature key.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The name of the API.
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 
@@ -10886,16 +10491,16 @@ func (s *DescribeApiSignaturesResponse) SetBody(v *DescribeApiSignaturesResponse
 }
 
 type DescribeApiTrafficControlsRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The IDs of APIs that you want to query. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API group that you want to query.
+	// The IDs of APIs that you want to query. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -10938,15 +10543,15 @@ func (s *DescribeApiTrafficControlsRequest) SetStageName(v string) *DescribeApiT
 }
 
 type DescribeApiTrafficControlsResponseBody struct {
-	// The binding time of the throttling policy.
+	// The ID of the API.
 	ApiTrafficControls *DescribeApiTrafficControlsResponseBodyApiTrafficControls `json:"ApiTrafficControls,omitempty" xml:"ApiTrafficControls,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned throttling policy information. It is an array consisting of ApiTrafficControlItem data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The binding time of the throttling policy.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11001,16 +10606,16 @@ func (s *DescribeApiTrafficControlsResponseBodyApiTrafficControls) SetApiTraffic
 }
 
 type DescribeApiTrafficControlsResponseBodyApiTrafficControlsApiTrafficControlItem struct {
-	// The ID of the throttling policy.
+	// The name of the throttling policy.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// Queries the throttling policies bound to all members of an API group in a specified environment.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The ID of the throttling policy.
+	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	// API operation
+	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	// *   This API is intended for API providers.
 	// *   The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API.
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The name of the throttling policy.
-	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// API operation
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 }
 
@@ -11077,21 +10682,12 @@ func (s *DescribeApiTrafficControlsResponse) SetBody(v *DescribeApiTrafficContro
 }
 
 type DescribeApiTrafficDataRequest struct {
-	// The ID of the API group.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**: the test environment
-	// *   PRE: the pre-release environment
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The end time in UTC. Format: YYYY-MM-DDThh:mm:ssZ
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApiTrafficDataRequest) String() string {
@@ -11133,12 +10729,9 @@ func (s *DescribeApiTrafficDataRequest) SetStartTime(v string) *DescribeApiTraff
 }
 
 type DescribeApiTrafficDataResponseBody struct {
-	// The value corresponding to the monitoring metric.
 	CallDownloads *DescribeApiTrafficDataResponseBodyCallDownloads `json:"CallDownloads,omitempty" xml:"CallDownloads,omitempty" type:"Struct"`
-	// The value corresponding to the monitoring metric.
-	CallUploads *DescribeApiTrafficDataResponseBodyCallUploads `json:"CallUploads,omitempty" xml:"CallUploads,omitempty" type:"Struct"`
-	// The returned uplink traffic data of API calls. It is an array consisting of MonitorItem data.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CallUploads   *DescribeApiTrafficDataResponseBodyCallUploads   `json:"CallUploads,omitempty" xml:"CallUploads,omitempty" type:"Struct"`
+	RequestId     *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApiTrafficDataResponseBody) String() string {
@@ -11182,9 +10775,7 @@ func (s *DescribeApiTrafficDataResponseBodyCallDownloads) SetMonitorItem(v []*De
 }
 
 type DescribeApiTrafficDataResponseBodyCallDownloadsMonitorItem struct {
-	// auditing
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -11224,9 +10815,7 @@ func (s *DescribeApiTrafficDataResponseBodyCallUploads) SetMonitorItem(v []*Desc
 }
 
 type DescribeApiTrafficDataResponseBodyCallUploadsMonitorItem struct {
-	// The returned downlink traffic data of API calls. It is an array consisting of MonitorItem data.
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -11278,31 +10867,34 @@ func (s *DescribeApiTrafficDataResponse) SetBody(v *DescribeApiTrafficDataRespon
 }
 
 type DescribeApisRequest struct {
-	// The ID of the API.
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API ID.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The HTTP method of the API request.
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The name of the API operation. The name is used for fuzzy match.
+	// The API name. The name is used for fuzzy match.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The request path of the API.
 	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The ID of the category.
+	// The category ID.
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	// Specifies whether to enable tag verification.
 	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	// The ID of the API group.
+	// The API group ID.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag        []*DescribeApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UnDeployed *bool                     `json:"UnDeployed,omitempty" xml:"UnDeployed,omitempty"`
-	// Specifies whether to make the API public. Valid values:
+	// The tags of objects that match the rule.
+	Tag []*DescribeApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Specifies whether to filter unpublished APIs.
+	UnDeployed *bool `json:"UnDeployed,omitempty" xml:"UnDeployed,omitempty"`
+	// Specifies whether the API is public. Valid values:
 	//
-	// *   **PUBLIC: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.**
-	// *   **PRIVATE: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
+	// *   **PUBLIC**: The API is public. If you publish the definition of a public API to the production environment, the definition is displayed on the APIs page for all users.
+	// *   **PRIVATE**: The API is private. If you publish an API group that contains a private API in Alibaba Cloud Marketplace, the API is not displayed in Alibaba Cloud Marketplace.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -11387,7 +10979,7 @@ func (s *DescribeApisRequest) SetVisibility(v string) *DescribeApisRequest {
 type DescribeApisRequestTag struct {
 	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11410,13 +11002,13 @@ func (s *DescribeApisRequestTag) SetValue(v string) *DescribeApisRequestTag {
 }
 
 type DescribeApisResponseBody struct {
-	// The returned API definition. It is an array that consists of ApiSummary data.
+	// The queried API definitions.
 	ApiSummarys *DescribeApisResponseBodyApiSummarys `json:"ApiSummarys,omitempty" xml:"ApiSummarys,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -11473,30 +11065,34 @@ func (s *DescribeApisResponseBodyApiSummarys) SetApiSummary(v []*DescribeApisRes
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummary struct {
-	// The ID of the API.
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API ID.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The HTTP method of the API request.
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The name of the API operation.
+	// The API name.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The request path of the API.
 	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The creation time (UTC) of the query task.
-	CreatedTime   *string                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The time when the API was created. The time is displayed in UTC.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The API publishing statuses.
 	DeployedInfos *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos `json:"DeployedInfos,omitempty" xml:"DeployedInfos,omitempty" type:"Struct"`
-	// The description of the API.
+	// The API description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
+	// The API group ID.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which the API belongs.
+	// The name of the API group to which the API belongs.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification time (UTC) of the API.
+	// The time when the API was modified. The time is displayed in UTC.
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the region in which the API resides.
-	RegionId *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TagList  *DescribeApisResponseBodyApiSummarysApiSummaryTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
+	// The ID of the region to which the API belongs.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tags that are added to the APIs.
+	TagList *DescribeApisResponseBodyApiSummarysApiSummaryTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
 	// Indicates whether the API is public. Valid values:
 	//
-	// *   **PUBLIC**
-	// *   **PRIVATE**
+	// *   **PUBLIC**: The API is public.
+	// *   **PRIVATE**: The API is private.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -11591,9 +11187,16 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos) SetDeployed
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo struct {
-	DeployedStatus   *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
+	// The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
+	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
+	// The deployed version.
 	EffectiveVersion *string `json:"EffectiveVersion,omitempty" xml:"EffectiveVersion,omitempty"`
-	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// Stage Name:
+	//
+	// *   **RELEASE**: production environment
+	// *   **PRE**: staging environment
+	// *   **TEST**: test environment
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo) String() string {
@@ -11637,7 +11240,9 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagList) SetTag(v []*Descr
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryTagListTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -11689,21 +11294,13 @@ func (s *DescribeApisResponse) SetBody(v *DescribeApisResponseBody) *DescribeApi
 }
 
 type DescribeApisByAppRequest struct {
-	// The name of the API operation.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API operation.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The ID of the application.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The request HTTP method for the API.
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The page number of the page to return.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The API request path.
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid        *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Method        *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -11762,16 +11359,11 @@ func (s *DescribeApisByAppRequest) SetSecurityToken(v string) *DescribeApisByApp
 }
 
 type DescribeApisByAppResponseBody struct {
-	// The authorization information of the API.
 	AppApiRelationInfos *DescribeApisByAppResponseBodyAppApiRelationInfos `json:"AppApiRelationInfos,omitempty" xml:"AppApiRelationInfos,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber          *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeApisByAppResponseBody) String() string {
@@ -11825,35 +11417,19 @@ func (s *DescribeApisByAppResponseBodyAppApiRelationInfos) SetAppApiRelationInfo
 }
 
 type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
-	// The ID of the API operation.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API operation.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The validity period of the authorization.
-	AuthVaildTime *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
-	// The source of the authorization.
+	ApiId               *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName             *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AuthVaildTime       *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
 	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// The time when the authorization was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of authorization.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The request HTTP method for the API.
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The authorizer. Valid values:
-	//
-	// *   **PROVIDER:** the API owner
-	// *   **CONSUMER:** the API caller
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The API request path.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the environment.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	CreatedTime         *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method              *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Path                *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName           *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo) String() string {
@@ -11959,21 +11535,11 @@ func (s *DescribeApisByAppResponse) SetBody(v *DescribeApisByAppResponseBody) *D
 }
 
 type DescribeApisByBackendRequest struct {
-	// The environment to which the API is published.
-	//
-	// *   **RELEASE**
-	// *   **PRE**: the pre-release environment
-	// *   **TEST**
-	//
-	// If you do not specify this parameter, APIs in the draft state are returned.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The number of the current page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the current page.
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of entries to return on each page.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisByBackendRequest) String() string {
@@ -12010,16 +11576,11 @@ func (s *DescribeApisByBackendRequest) SetStageName(v string) *DescribeApisByBac
 }
 
 type DescribeApisByBackendResponseBody struct {
-	// The ID of API.
 	ApiInfoList *DescribeApisByBackendResponseBodyApiInfoList `json:"ApiInfoList,omitempty" xml:"ApiInfoList,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of entries returned.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the returned API list.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeApisByBackendResponseBody) String() string {
@@ -12073,20 +11634,13 @@ func (s *DescribeApisByBackendResponseBodyApiInfoList) SetApiInfo(v []*DescribeA
 }
 
 type DescribeApisByBackendResponseBodyApiInfoListApiInfo struct {
-	// The description of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// auditing
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The name of the API group.
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The request path of the API.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of the API.
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request method of the API.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeApisByBackendResponseBodyApiInfoListApiInfo) String() string {
@@ -12162,11 +11716,11 @@ func (s *DescribeApisByBackendResponse) SetBody(v *DescribeApisByBackendResponse
 }
 
 type DescribeApisByIpControlRequest struct {
-	// The ID of the ACL.
-	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
+	// The ID of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The page number of the returned page.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -12200,15 +11754,18 @@ func (s *DescribeApisByIpControlRequest) SetSecurityToken(v string) *DescribeApi
 }
 
 type DescribeApisByIpControlResponseBody struct {
-	// The returned API information. It is an array consisting of ApiInfo data.
+	// Indicates whether the API is public. Valid values:
+	//
+	// *   **PUBLIC**
+	// *   **PRIVATE**
 	ApiInfos *DescribeApisByIpControlResponseBodyApiInfos `json:"ApiInfos,omitempty" xml:"ApiInfos,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The returned API information. It is an array consisting of ApiInfo data.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The binding time of the API.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12263,29 +11820,27 @@ func (s *DescribeApisByIpControlResponseBodyApiInfos) SetApiInfo(v []*DescribeAp
 }
 
 type DescribeApisByIpControlResponseBodyApiInfosApiInfo struct {
-	// The ID of the API.
+	// Description
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API operation.
+	// *   This API is intended for API providers.
+	// *   You can specify PageNumber to obtain the result on the specified page.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The binding time of the API.
+	// The ID of the API.
 	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region where the API is located.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The API operation.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Queries the APIs that are bound to an access control list (ACL).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the API is located.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether the API is public. Valid values:
-	//
-	// *   **PUBLIC**
-	// *   **PRIVATE**
+	// The description of the API.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -12372,12 +11927,12 @@ func (s *DescribeApisByIpControlResponse) SetBody(v *DescribeApisByIpControlResp
 }
 
 type DescribeApisBySignatureRequest struct {
-	// The page number of the returned page.
+	// The ID of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number of the returned page.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of the page to return. Pages start from page 1. Default value: 1.
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 }
 
@@ -12410,15 +11965,18 @@ func (s *DescribeApisBySignatureRequest) SetSignatureId(v string) *DescribeApisB
 }
 
 type DescribeApisBySignatureResponseBody struct {
-	// The binding time of the API.
+	// Indicates whether the API is public. Valid values:
+	//
+	// *   **PUBLIC**
+	// *   **PRIVATE**
 	ApiInfos *DescribeApisBySignatureResponseBodyApiInfos `json:"ApiInfos,omitempty" xml:"ApiInfos,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned API information. It is an array consisting of ApiInfo data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The binding time of the API.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12473,30 +12031,27 @@ func (s *DescribeApisBySignatureResponseBodyApiInfos) SetApiInfo(v []*DescribeAp
 }
 
 type DescribeApisBySignatureResponseBodyApiInfosApiInfo struct {
-	// The description of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The region where the API is located.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Indicates whether the API is public. Valid values:
-	//
-	// *   **PUBLIC**
-	// *   **PRIVATE**
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
 	// Description
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// *   This API is intended for API providers.
+	// *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The ID of the API.
+	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	// The name of the group to which the API belongs.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the API.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// *   This API is intended for API providers.
-	// *   The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+	// Queries the APIs to which a specified backend signature key is bound.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the API.
+	// The region where the API is located.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The ID of the API.
+	// The description of the API.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -12583,12 +12138,12 @@ func (s *DescribeApisBySignatureResponse) SetBody(v *DescribeApisBySignatureResp
 }
 
 type DescribeApisByTrafficControlRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The ID of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The page number of the returned page.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the throttling policy that you want to query.
+	// The number of the page to return. Pages start from page 1. Default value: 1.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -12621,15 +12176,18 @@ func (s *DescribeApisByTrafficControlRequest) SetTrafficControlId(v string) *Des
 }
 
 type DescribeApisByTrafficControlResponseBody struct {
-	// The returned API information. It is an array consisting of ApiInfo data.
+	// Indicates whether the API is public. Valid values:
+	//
+	// *   **PUBLIC**
+	// *   **PRIVATE**
 	ApiInfos *DescribeApisByTrafficControlResponseBodyApiInfos `json:"ApiInfos,omitempty" xml:"ApiInfos,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The returned API information. It is an array consisting of ApiInfo data.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The binding time of the API.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12684,29 +12242,27 @@ func (s *DescribeApisByTrafficControlResponseBodyApiInfos) SetApiInfo(v []*Descr
 }
 
 type DescribeApisByTrafficControlResponseBodyApiInfosApiInfo struct {
-	// The ID of the API.
+	// Description
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API
+	// *   This API is intended for API providers.
+	// *   You can specify PageNumber to obtain the result on the specified page.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The binding time of the API.
+	// The ID of the API.
 	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group to which an API belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region where the API is located.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the API
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Queries the APIs to which a specified throttling policy is bound.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region where the API is located.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether the API is public. Valid values:
-	//
-	// *   **PUBLIC**
-	// *   **PRIVATE**
+	// The description of the API.
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -12793,7 +12349,6 @@ func (s *DescribeApisByTrafficControlResponse) SetBody(v *DescribeApisByTrafficC
 }
 
 type DescribeAppRequest struct {
-	// The ID of the app. The ID is generated by the system and globally unique.
 	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -12817,18 +12372,12 @@ func (s *DescribeAppRequest) SetSecurityToken(v string) *DescribeAppRequest {
 }
 
 type DescribeAppResponseBody struct {
-	// The ID of the app.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the app.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the app was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the app.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the app was modified.
+	AppId        *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAppResponseBody) String() string {
@@ -12899,30 +12448,16 @@ func (s *DescribeAppResponse) SetBody(v *DescribeAppResponseBody) *DescribeAppRe
 }
 
 type DescribeAppAttributesRequest struct {
-	// The app key that is used to make an API call.
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// The name of the app.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The order. Valid values: asc and desc. Default value: desc.
-	//
-	// *   asc: The apps are displayed in ascending order of modification time.
-	// *   desc: The apps are displayed in descending order of modification time.
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The AppCode of the app.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to enable tag verification.
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Tag []*DescribeAppAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AppCode       *string                            `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppId         *int64                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppKey        *string                            `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName       *string                            `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	EnableTagAuth *bool                              `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
+	PageNumber    *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string                            `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Sort          *string                            `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Tag           []*DescribeAppAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAppAttributesRequest) String() string {
@@ -12984,11 +12519,7 @@ func (s *DescribeAppAttributesRequest) SetTag(v []*DescribeAppAttributesRequestT
 }
 
 type DescribeAppAttributesRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number of the returned page.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13011,16 +12542,11 @@ func (s *DescribeAppAttributesRequestTag) SetValue(v string) *DescribeAppAttribu
 }
 
 type DescribeAppAttributesResponseBody struct {
-	// The name of the app.
-	Apps *DescribeAppAttributesResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned application information. It is an array that consists of AppAttribute data.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Apps       *DescribeAppAttributesResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAppAttributesResponseBody) String() string {
@@ -13074,18 +12600,12 @@ func (s *DescribeAppAttributesResponseBodyApps) SetAppAttribute(v []*DescribeApp
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
-	// The tags.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The modification time (UTC) of the app.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the app.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The creation time (UTC) of the app.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the app.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The key of the tag.
-	Tags *DescribeAppAttributesResponseBodyAppsAppAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AppId        *int64                                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string                                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Tags         *DescribeAppAttributesResponseBodyAppsAppAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeAppAttributesResponseBodyAppsAppAttribute) String() string {
@@ -13144,9 +12664,7 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttributeTags) SetTagInfo(v []*
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttributeTagsTagInfo struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// auditing
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13198,11 +12716,9 @@ func (s *DescribeAppAttributesResponse) SetBody(v *DescribeAppAttributesResponse
 }
 
 type DescribeAppSecurityRequest struct {
-	// The tag of objects that match the rule. You can specify multiple tags.
-	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The key of the tag.
-	Tag []*DescribeAppSecurityRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AppId         *int64                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	SecurityToken *string                          `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DescribeAppSecurityRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAppSecurityRequest) String() string {
@@ -13229,9 +12745,7 @@ func (s *DescribeAppSecurityRequest) SetTag(v []*DescribeAppSecurityRequestTag) 
 }
 
 type DescribeAppSecurityRequestTag struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The password of the app.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13254,18 +12768,12 @@ func (s *DescribeAppSecurityRequestTag) SetValue(v string) *DescribeAppSecurityR
 }
 
 type DescribeAppSecurityResponseBody struct {
-	// The creation time (UTC) of the key, which is the same as the app creation time.
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// The modification time (UTC) of the key.
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The ID of the request.
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// auditing
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The AppCode of the app.
+	AppCode      *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppSecret    *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The key of the app.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAppSecurityResponseBody) String() string {
@@ -13336,13 +12844,13 @@ func (s *DescribeAppSecurityResponse) SetBody(v *DescribeAppSecurityResponseBody
 }
 
 type DescribeAppsRequest struct {
-	// The Alibaba Cloud account of the app owner. For more information, see [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.3a8c196eVWxvQB#/secure).
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
-	AppOwner *int64 `json:"AppOwner,omitempty" xml:"AppOwner,omitempty"`
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	AppOwner *int64 `json:"AppOwner,omitempty" xml:"AppOwner,omitempty"`
 	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -13381,15 +12889,15 @@ func (s *DescribeAppsRequest) SetSecurityToken(v string) *DescribeAppsRequest {
 }
 
 type DescribeAppsResponseBody struct {
-	// The name of the app.
+	// The description of the app.
 	Apps *DescribeAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned app information. It is an array consisting of AppItem data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the app.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13444,13 +12952,13 @@ func (s *DescribeAppsResponseBodyApps) SetAppItem(v []*DescribeAppsResponseBodyA
 }
 
 type DescribeAppsResponseBodyAppsAppItem struct {
+	// Queries the apps. App information is returned only to the app owner.
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the app.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// *   This API is intended for API providers.
 	// *   API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
 	// *   Each provider can call this operation for a maximum of 200 times every day in a region.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The description of the app.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the app.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -13507,11 +13015,11 @@ func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeApp
 }
 
 type DescribeAuthorizedApisRequest struct {
-	// The application ID, which is generated by the system and globally unique.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -13545,15 +13053,18 @@ func (s *DescribeAuthorizedApisRequest) SetSecurityToken(v string) *DescribeAuth
 }
 
 type DescribeAuthorizedApisResponseBody struct {
-	// The authorized API set.
+	// The authorization source. Valid values:
+	//
+	// *   **CONSOLE**
+	// *   **API**
 	AuthorizedApis *DescribeAuthorizedApisResponseBodyAuthorizedApis `json:"AuthorizedApis,omitempty" xml:"AuthorizedApis,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The authorized API set.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The unique identifier of the API, which is generated by the system.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13608,36 +13119,34 @@ func (s *DescribeAuthorizedApisResponseBodyAuthorizedApis) SetAuthorizedApi(v []
 }
 
 type DescribeAuthorizedApisResponseBodyAuthorizedApisAuthorizedApi struct {
-	// The unique identifier of the API, which is generated by the system.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API operation.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The expiration time of the authorization in UTC.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// *   This operation is intended for API callers.
+	// *   The specified application can call all APIs included in the responses.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// Queries weather based on the region name
 	AuthVaildTime *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
-	// The authorization source. Valid values:
-	//
-	// *   **CONSOLE**
-	// *   **API**
-	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// The authorization time in UTC.
-	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
 	// The description of the authorization.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The authorizer. Valid values:
-	//
-	// *   **PROVIDER:** the API owner
-	// *   **CONSUMER:** the API caller
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The region to which the API belongs.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
+	// The name of the API group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The authorizer. Valid values:
+	//
+	// *   **PROVIDER:** the API owner
+	// *   **CONSUMER:** the API caller
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The authorization time in UTC.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the API operation.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Queries the authorized APIs of a specified application.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region to which the API belongs.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -13734,26 +13243,15 @@ func (s *DescribeAuthorizedApisResponse) SetBody(v *DescribeAuthorizedApisRespon
 }
 
 type DescribeAuthorizedAppsRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the app.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The Alibaba Cloud account of the app owner.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The page number of the returned page.
-	AppOwnerId *int64 `json:"AppOwnerId,omitempty" xml:"AppOwnerId,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The ID of the app.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppOwnerId    *int64  `json:"AppOwnerId,omitempty" xml:"AppOwnerId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API. This ID is generated by the system and globally unique.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeAuthorizedAppsRequest) String() string {
@@ -13810,16 +13308,11 @@ func (s *DescribeAuthorizedAppsRequest) SetStageName(v string) *DescribeAuthoriz
 }
 
 type DescribeAuthorizedAppsResponseBody struct {
-	// The name of the app.
 	AuthorizedApps *DescribeAuthorizedAppsResponseBodyAuthorizedApps `json:"AuthorizedApps,omitempty" xml:"AuthorizedApps,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned group set.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber     *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAuthorizedAppsResponseBody) String() string {
@@ -13873,28 +13366,14 @@ func (s *DescribeAuthorizedAppsResponseBodyAuthorizedApps) SetAuthorizedApp(v []
 }
 
 type DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp struct {
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Weather
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the authorization.
-	AuthVaildTime *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
-	// The name of the app.
+	AppId               *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AuthVaildTime       *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
 	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// The ID, which is generated by the system and globally unique.
-	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
-	// Queries weather based on the region name
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// auditing
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The authorizer. Valid values:
-	//
-	// *   **PROVIDER: API owner**
-	// *   **CONSUMER: API caller**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	AuthorizedTime      *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	StageName           *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeAuthorizedAppsResponseBodyAuthorizedAppsAuthorizedApp) String() string {
@@ -13975,7 +13454,6 @@ func (s *DescribeAuthorizedAppsResponse) SetBody(v *DescribeAuthorizedAppsRespon
 }
 
 type DescribeBackendInfoRequest struct {
-	// The ID of the backend service.
 	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -13999,10 +13477,8 @@ func (s *DescribeBackendInfoRequest) SetSecurityToken(v string) *DescribeBackend
 }
 
 type DescribeBackendInfoResponseBody struct {
-	// The information about the backend service.
 	BackendInfo *DescribeBackendInfoResponseBodyBackendInfo `json:"BackendInfo,omitempty" xml:"BackendInfo,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBody) String() string {
@@ -14024,20 +13500,13 @@ func (s *DescribeBackendInfoResponseBody) SetRequestId(v string) *DescribeBacken
 }
 
 type DescribeBackendInfoResponseBodyBackendInfo struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The time when the backend service was created.
+	BackendId     *string                                                    `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	BackendModels []*DescribeBackendInfoResponseBodyBackendInfoBackendModels `json:"BackendModels,omitempty" xml:"BackendModels,omitempty" type:"Repeated"`
-	// The name of the backend service.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The time when the backend service was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the backend service.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backend service was modified.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	BackendName   *string                                                    `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string                                                    `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreatedTime   *string                                                    `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description   *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime  *string                                                    `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfo) String() string {
@@ -14084,20 +13553,13 @@ func (s *DescribeBackendInfoResponseBodyBackendInfo) SetModifiedTime(v string) *
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModels struct {
-	// The backend configurations.
-	BackendConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
-	// The ID of the backend service in the environment.
-	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
-	// The description of the backend service.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backend service was created.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the backend service was modified.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the environment.
-	StageModeId *string `json:"StageModeId,omitempty" xml:"StageModeId,omitempty"`
-	// The name of the environment.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	BackendConfig  *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Struct"`
+	BackendModelId *string                                                               `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	Description    *string                                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate      *string                                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified    *string                                                               `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	StageModeId    *string                                                               `json:"StageModeId,omitempty" xml:"StageModeId,omitempty"`
+	StageName      *string                                                               `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModels) String() string {
@@ -14144,19 +13606,14 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
-	// The information about the backend service that is EventBridge.
-	EventBridgeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
-	// The information about the backend service whose type is FC_EVENT or FC_HTTP.
+	EventBridgeConfig     *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
+	HttpTargetHostName    *string                                                                                    `json:"HttpTargetHostName,omitempty" xml:"HttpTargetHostName,omitempty"`
 	MockConfig            *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMockConfig            `json:"MockConfig,omitempty" xml:"MockConfig,omitempty" type:"Struct"`
-	// The information about the backend service whose type is OSS.
-	OssConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
-	// The URL of the backend service.
-	ServiceAddress *string `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
-	// The type of the backend service.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The information about the virtual private cloud (VPC). This parameter is available only for backend services whose type is VPC.
-	VpcConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
+	OssConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig             `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
+	ServiceAddress        *string                                                                                    `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
+	Type                  *string                                                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpcConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig             `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty" type:"Struct"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) String() string {
@@ -14174,6 +13631,11 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetFunctionComputeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
 	s.FunctionComputeConfig = v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetHttpTargetHostName(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.HttpTargetHostName = &v
 	return s
 }
 
@@ -14203,14 +13665,10 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig struct {
-	// The region ID of the event bus in EventBridge.
 	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
-	// The name of the event bus.
-	EventBus *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
-	// The event source.
-	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
-	// The ARN of the RAM role to be assumed by API Gateway to access EventBridge.
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	EventBus            *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
+	EventSource         *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	RoleArn             *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) String() string {
@@ -14242,22 +13700,14 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEve
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig struct {
-	// The root path of the Function Compute service.
-	FcBaseUrl *string `json:"FcBaseUrl,omitempty" xml:"FcBaseUrl,omitempty"`
-	// The region ID of the Function Compute service.
-	FcRegionId *string `json:"FcRegionId,omitempty" xml:"FcRegionId,omitempty"`
-	// The type of the Function Compute service.
-	FcType *string `json:"FcType,omitempty" xml:"FcType,omitempty"`
-	// The function name defined in Function Compute.
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The backend service path.
-	OnlyBusinessPath *bool `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
-	// The alias of the function.
-	Qualifier *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role to be assumed by API Gateway to access Function Compute.
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The service name defined in Function Compute.
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	FcBaseUrl        *string `json:"FcBaseUrl,omitempty" xml:"FcBaseUrl,omitempty"`
+	FcRegionId       *string `json:"FcRegionId,omitempty" xml:"FcRegionId,omitempty"`
+	FcType           *string `json:"FcType,omitempty" xml:"FcType,omitempty"`
+	FunctionName     *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	OnlyBusinessPath *bool   `json:"OnlyBusinessPath,omitempty" xml:"OnlyBusinessPath,omitempty"`
+	Qualifier        *string `json:"Qualifier,omitempty" xml:"Qualifier,omitempty"`
+	RoleArn          *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) String() string {
@@ -14361,9 +13811,7 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigMoc
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig struct {
-	// The name of the OSS bucket.
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The region ID of the Object Storage Service (OSS) bucket.
+	BucketName  *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
 }
 
@@ -14386,17 +13834,11 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOss
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig struct {
-	// The ID of the Elastic Compute Service (ECS) or Server Load Balancer (SLB) instance in the VPC.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the VPC Configuration.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port number that corresponds to the instance.
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the VPC access authorization.
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// http/https
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	VpcAccessId       *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcScheme         *string `json:"VpcScheme,omitempty" xml:"VpcScheme,omitempty"`
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
@@ -14474,13 +13916,9 @@ func (s *DescribeBackendInfoResponse) SetBody(v *DescribeBackendInfoResponseBody
 }
 
 type DescribeBackendListRequest struct {
-	// The name of the backend service. You can use \* to perform fuzzy queries.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The number of the current page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -14519,16 +13957,11 @@ func (s *DescribeBackendListRequest) SetSecurityToken(v string) *DescribeBackend
 }
 
 type DescribeBackendListResponseBody struct {
-	// The backend services.
 	BackendInfoList []*DescribeBackendListResponseBodyBackendInfoList `json:"BackendInfoList,omitempty" xml:"BackendInfoList,omitempty" type:"Repeated"`
-	// The number of the current page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber      *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackendListResponseBody) String() string {
@@ -14565,17 +13998,11 @@ func (s *DescribeBackendListResponseBody) SetTotalCount(v int32) *DescribeBacken
 }
 
 type DescribeBackendListResponseBodyBackendInfoList struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The name of the backend service.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The time when the backend service was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the backend service.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the backend service was modified.
+	BackendId    *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName  *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType  *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 }
 
@@ -14647,7 +14074,6 @@ func (s *DescribeBackendListResponse) SetBody(v *DescribeBackendListResponseBody
 }
 
 type DescribeDatasetInfoRequest struct {
-	// The ID of the dataset.
 	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -14672,8 +14098,7 @@ func (s *DescribeDatasetInfoRequest) SetSecurityToken(v string) *DescribeDataset
 
 type DescribeDatasetInfoResponseBody struct {
 	DatasetInfo *DescribeDatasetInfoResponseBodyDatasetInfo `json:"DatasetInfo,omitempty" xml:"DatasetInfo,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDatasetInfoResponseBody) String() string {
@@ -14695,19 +14120,10 @@ func (s *DescribeDatasetInfoResponseBody) SetRequestId(v string) *DescribeDatase
 }
 
 type DescribeDatasetInfoResponseBodyDatasetInfo struct {
-	// The creation time (UTC) of the dataset.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The name of the dataset.
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The type of the dataset. Valid values:
-	//
-	// *   JWT_BLOCKING: a JSON Web Token (JWT) blacklist
-	// *   IP_WHITELIST_CIDR : an IP address whitelist
-	// *   PARAMETER_ACCESS : parameter-based access control
-	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	// The last modification time (UTC) of the dataset.
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId    *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 }
 
@@ -14774,13 +14190,10 @@ func (s *DescribeDatasetInfoResponse) SetBody(v *DescribeDatasetInfoResponseBody
 }
 
 type DescribeDatasetItemInfoRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry.
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The value of the data entry.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDatasetItemInfoRequest) String() string {
@@ -14813,8 +14226,7 @@ func (s *DescribeDatasetItemInfoRequest) SetValue(v string) *DescribeDatasetItem
 
 type DescribeDatasetItemInfoResponseBody struct {
 	DatasetItemInfo *DescribeDatasetItemInfoResponseBodyDatasetItemInfo `json:"DatasetItemInfo,omitempty" xml:"DatasetItemInfo,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDatasetItemInfoResponseBody) String() string {
@@ -14836,20 +14248,13 @@ func (s *DescribeDatasetItemInfoResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 type DescribeDatasetItemInfoResponseBodyDatasetItemInfo struct {
-	// The creation time (UTC) of the data entry.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry.
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
-	// The description of the data entry.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time in UTC when the data entry expires. The time is in the **yyyy-MM-ddTHH:mm:ssZ** format. If this parameter is empty, the data entry does not expire.
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The last modification time (UTC) of the data entry.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The value of the data entry.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDatasetItemInfoResponseBodyDatasetItemInfo) String() string {
@@ -14925,15 +14330,11 @@ func (s *DescribeDatasetItemInfoResponse) SetBody(v *DescribeDatasetItemInfoResp
 }
 
 type DescribeDatasetItemListRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry. You can enter multiple IDs. Separate them with commas (,).
+	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemIds *string `json:"DatasetItemIds,omitempty" xml:"DatasetItemIds,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeDatasetItemListRequest) String() string {
@@ -14971,14 +14372,10 @@ func (s *DescribeDatasetItemListRequest) SetSecurityToken(v string) *DescribeDat
 
 type DescribeDatasetItemListResponseBody struct {
 	DatasetItemInfoList []*DescribeDatasetItemListResponseBodyDatasetItemInfoList `json:"DatasetItemInfoList,omitempty" xml:"DatasetItemInfoList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber          *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDatasetItemListResponseBody) String() string {
@@ -15015,20 +14412,13 @@ func (s *DescribeDatasetItemListResponseBody) SetTotalCount(v int32) *DescribeDa
 }
 
 type DescribeDatasetItemListResponseBodyDatasetItemInfoList struct {
-	// The time when the data entry was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry.
+	CreatedTime   *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
-	// The description of the data entry.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time in UTC when the data entry expires. The time is in the **yyyy-MM-ddTHH:mm:ssZ** format. If this parameter is empty, the data entry does not expire.
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The last modification time (UTC) of the data entry.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The value of the data entry.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDatasetItemListResponseBodyDatasetItemInfoList) String() string {
@@ -15104,11 +14494,8 @@ func (s *DescribeDatasetItemListResponse) SetBody(v *DescribeDatasetItemListResp
 }
 
 type DescribeDatasetListRequest struct {
-	// The ID of the dataset. You can enter multiple dataset IDs. Separate the IDs with commas (,).
-	DatasetIds *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	DatasetIds    *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -15143,14 +14530,10 @@ func (s *DescribeDatasetListRequest) SetSecurityToken(v string) *DescribeDataset
 
 type DescribeDatasetListResponseBody struct {
 	DatasetInfoList []*DescribeDatasetListResponseBodyDatasetInfoList `json:"DatasetInfoList,omitempty" xml:"DatasetInfoList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber      *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDatasetListResponseBody) String() string {
@@ -15187,19 +14570,10 @@ func (s *DescribeDatasetListResponseBody) SetTotalCount(v int32) *DescribeDatase
 }
 
 type DescribeDatasetListResponseBodyDatasetInfoList struct {
-	// The creation time (UTC) of the dataset.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The name of the dataset.
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The type of the dataset. Valid values:
-	//
-	// *   JWT_BLOCKING: a JSON Web Token (JWT) blacklist
-	// *   IP_WHITELIST_CIDR : an IP address whitelist
-	// *   PARAMETER_ACCESS : parameter-based access control
-	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
-	// The last modification time (UTC) of the dataset.
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DatasetId    *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetName  *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	DatasetType  *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 }
 
@@ -15266,7 +14640,6 @@ func (s *DescribeDatasetListResponse) SetBody(v *DescribeDatasetListResponseBody
 }
 
 type DescribeDeployApiTaskRequest struct {
-	// The ID of the request.
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -15290,10 +14663,8 @@ func (s *DescribeDeployApiTaskRequest) SetSecurityToken(v string) *DescribeDeplo
 }
 
 type DescribeDeployApiTaskResponseBody struct {
-	// The result returned.
 	DeployedResults *DescribeDeployApiTaskResponseBodyDeployedResults `json:"DeployedResults,omitempty" xml:"DeployedResults,omitempty" type:"Struct"`
-	// The result returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDeployApiTaskResponseBody) String() string {
@@ -15332,19 +14703,11 @@ func (s *DescribeDeployApiTaskResponseBodyDeployedResults) SetDeployedResult(v [
 }
 
 type DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult struct {
-	// The deployment status of the API.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// auditing
+	ApiUid         *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
-	// The runtime environment of the API. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ErrorMsg       *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult) String() string {
@@ -16670,28 +16033,17 @@ func (s *DescribeDeployedApiResponse) SetBody(v *DescribeDeployedApiResponseBody
 }
 
 type DescribeDeployedApisRequest struct {
-	// The name of the API. The name is used for fuzzy match.
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The list of tags.
-	EnableTagAuth *bool `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Specifies whether to enable tag verification.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The tag key.
-	Tag []*DescribeDeployedApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ApiId         *string                           `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod     *string                           `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
+	ApiName       *string                           `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath       *string                           `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	EnableTagAuth *bool                             `json:"EnableTagAuth,omitempty" xml:"EnableTagAuth,omitempty"`
+	GroupId       *string                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string                           `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string                           `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Tag           []*DescribeDeployedApisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDeployedApisRequest) String() string {
@@ -16758,9 +16110,7 @@ func (s *DescribeDeployedApisRequest) SetTag(v []*DescribeDeployedApisRequestTag
 }
 
 type DescribeDeployedApisRequestTag struct {
-	// The tag value.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The page number of the returned page.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16783,19 +16133,11 @@ func (s *DescribeDeployedApisRequestTag) SetValue(v string) *DescribeDeployedApi
 }
 
 type DescribeDeployedApisResponseBody struct {
-	// Indicates whether the API is public. Valid values:
-	//
-	// *   **PUBLIC**
-	// *   **PRIVATE**
 	DeployedApis *DescribeDeployedApisResponseBodyDeployedApis `json:"DeployedApis,omitempty" xml:"DeployedApis,omitempty" type:"Struct"`
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned API information. It is an array consisting of DeployedApiItem data.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber   *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDeployedApisResponseBody) String() string {
@@ -16849,29 +16191,17 @@ func (s *DescribeDeployedApisResponseBodyDeployedApis) SetDeployedApiItem(v []*D
 }
 
 type DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem struct {
-	// The description of the API.
-	ApiId     *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// DescribeObjects
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
+	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod    *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath      *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
 	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// Queries objects by page
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The publishing time (UTC) of the API.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// auditing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the API.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The ID of the API.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility   *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeDeployedApisResponseBodyDeployedApisDeployedApiItem) String() string {
@@ -16967,9 +16297,9 @@ func (s *DescribeDeployedApisResponse) SetBody(v *DescribeDeployedApisResponseBo
 }
 
 type DescribeDomainRequest struct {
-	// The private key of the SSL certificate.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The custom domain name.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The private key of the SSL certificate.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -16998,42 +16328,42 @@ func (s *DescribeDomainRequest) SetSecurityToken(v string) *DescribeDomainReques
 }
 
 type DescribeDomainResponseBody struct {
-	// The second-level domain name that is automatically assigned to the API group.
-	CertificateBody *string `json:"CertificateBody,omitempty" xml:"CertificateBody,omitempty"`
-	// The status of the domain name that uses WebSocket.
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The validity status of the domain name. Valid values:
-	//
-	// *   NORMAL
-	// *   ABNORMAL: This status affects API calls and must be resolved as soon as possible.
-	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The custom domain name.
-	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
-	CertificateValidEnd   *int64  `json:"CertificateValidEnd,omitempty" xml:"CertificateValidEnd,omitempty"`
-	CertificateValidStart *int64  `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
-	// Remarks about the domain name, such as the cause of an exception.
-	DomainBindingStatus *string `json:"DomainBindingStatus,omitempty" xml:"DomainBindingStatus,omitempty"`
-	// *   This operation is intended for API providers.
-	DomainCNAMEStatus *string `json:"DomainCNAMEStatus,omitempty" xml:"DomainCNAMEStatus,omitempty"`
-	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
-	DomainLegalStatus *string `json:"DomainLegalStatus,omitempty" xml:"DomainLegalStatus,omitempty"`
-	// The binding status of the custom domain name. Valid values:
-	//
-	// *   BINDING: The domain name has been bound.
-	// *   BOUND: The domain name has not been bound.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain name does not have an ICP filing.
-	DomainRemark *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
-	// The ID of the request.
-	DomainWebSocketStatus *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
-	// The content of the certificate.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the SSL certificate.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The domain name resolution status. Valid values:
 	//
 	// *   RESOLVED: The domain name has been resolved.
 	// *   UNRESOLVED: The domain name has not been resolved.
+	CertificateBody *string `json:"CertificateBody,omitempty" xml:"CertificateBody,omitempty"`
+	// The ID of the request.
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
+	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	// The binding status of the custom domain name. Valid values:
+	//
+	// *   BINDING: The domain name has been bound.
+	// *   BOUND: The domain name has not been bound.
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
+	CertificateValidEnd   *int64  `json:"CertificateValidEnd,omitempty" xml:"CertificateValidEnd,omitempty"`
+	CertificateValidStart *int64  `json:"CertificateValidStart,omitempty" xml:"CertificateValidStart,omitempty"`
+	// The domain name does not have an ICP filing.
+	DomainBindingStatus *string `json:"DomainBindingStatus,omitempty" xml:"DomainBindingStatus,omitempty"`
+	// Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+	DomainCNAMEStatus *string `json:"DomainCNAMEStatus,omitempty" xml:"DomainCNAMEStatus,omitempty"`
+	// The content of the certificate.
+	DomainLegalStatus *string `json:"DomainLegalStatus,omitempty" xml:"DomainLegalStatus,omitempty"`
+	// Remarks about the domain name, such as the cause of an exception.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The unique ID of the SSL certificate, which is automatically generated by the system.
+	DomainRemark *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
+	// The name of the SSL certificate.
+	DomainWebSocketStatus *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
+	// The second-level domain name that is automatically assigned to the API group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The validity status of the domain name. Valid values:
+	//
+	// *   NORMAL
+	// *   ABNORMAL: This status affects API calls and must be resolved as soon as possible.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// *   This operation is intended for API providers.
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
@@ -17150,22 +16480,13 @@ func (s *DescribeDomainResponse) SetBody(v *DescribeDomainResponseBody) *Describ
 }
 
 type DescribeHistoryApisRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API. The name is used for fuzzy match.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The page number of the current page.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeHistoryApisRequest) String() string {
@@ -17212,16 +16533,11 @@ func (s *DescribeHistoryApisRequest) SetStageName(v string) *DescribeHistoryApis
 }
 
 type DescribeHistoryApisResponseBody struct {
-	// The returned API information. It is an array consisting of ApiHisItem data.
 	ApiHisItems *DescribeHistoryApisResponseBodyApiHisItems `json:"ApiHisItems,omitempty" xml:"ApiHisItems,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHistoryApisResponseBody) String() string {
@@ -17275,29 +16591,16 @@ func (s *DescribeHistoryApisResponseBodyApiHisItems) SetApiHisItem(v []*Describe
 }
 
 type DescribeHistoryApisResponseBodyApiHisItemsApiHisItem struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The publising time (UTC) of the API.
-	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The description of the API.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group to which the API belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The historical version of the API definition.
+	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName        *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	DeployedTime   *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **TEST.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether an API version is effective. Valid values: ONLINE and OFFLINE.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeHistoryApisResponseBodyApiHisItemsApiHisItem) String() string {
@@ -18965,19 +18268,11 @@ func (s *DescribeInstanceTrafficResponse) SetBody(v *DescribeInstanceTrafficResp
 }
 
 type DescribeInstancesRequest struct {
-	// Specifies whether tag authorization is enabled.
-	EnableTagAuthorization *bool `json:"EnableTagAuthorization,omitempty" xml:"EnableTagAuthorization,omitempty"`
-	// The ID of the instance. If you do not specify this parameter, all instances are queried.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language that is used to return the description of the system policy. Valid values:
-	//
-	// *   en: English
-	// *   zh: Chinese
-	// *   ja: Japanese
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags that are bound to the instance.
-	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	EnableTagAuthorization *bool                          `json:"EnableTagAuthorization,omitempty" xml:"EnableTagAuthorization,omitempty"`
+	InstanceId             *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Language               *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
+	SecurityToken          *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                    []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -19014,9 +18309,7 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
-	// The key of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the tag.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19039,16 +18332,11 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 }
 
 type DescribeInstancesResponseBody struct {
-	// The details of the instances.
-	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances  *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -19102,84 +18390,53 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*Descr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
-	// The ID of the access control policy.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the access control policy.
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// Indicates whether access control is enabled. Valid values:
-	//
-	// *   **on**: yes
-	// *   **off**: no
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// *   black: blacklist
-	// *   white: whitelist
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The outbound IP address.
+	AclId                *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName              *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus            *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclType              *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	ClassicEgressAddress *string `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
-	ConnectVpcId         *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
-	// The time when the instance was created.
-	CreatedTime           *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// VPC融合类型专享实例联通的用户VPC ID
+	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// 专享实例类型
+	// - vpc_connect：VPC融合类型专享实例
+	// - normal：传统类型专享实例
 	DedicatedInstanceType *string `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
-	// Indicates whether outbound IPv6 is supported.
-	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
-	// The time when the instance expires.
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The HTTPS security policy.
-	HttpsPolicies *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
-	IPV6AclId     *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
-	IPV6AclName   *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
-	IPV6AclStatus *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
-	IPV6AclType   *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// *   PrePaid: subscription
-	// *   PayAsYouGo: pay-as-you-go
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceCidrBlock  *string `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The records per second (RPS) limit on the instance.
-	InstanceRpsLimit *int32 `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
-	// The specifications of the instance.
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The specifications of the instance.
+	EgressIpv6Enable      *bool   `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	ExpiredTime           *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HttpsPolicies         *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	IPV6AclId             *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	IPV6AclName           *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	IPV6AclStatus         *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	IPV6AclType           *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
+	InstanceChargeType    *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// 专享实例所在网段
+	// - 172.16.0.0/12
+	// - 192.168.0.0/16
+	InstanceCidrBlock      *string                                                                        `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
+	InstanceClusterId      *string                                                                        `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	InstanceId             *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName           *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRpsLimit       *int32                                                                         `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
+	InstanceSpec           *string                                                                        `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
-	// The instance type.
-	//
-	// *   VPC_SHARED: shared instance (VPC)
-	// *   VPC_DEDICATED: dedicated instance (VPC)
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The outbound public IP address.
-	InternetEgressAddress      *string                                                                            `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
-	IntranetSegments           *string                                                                            `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	InstanceType           *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetEgressAddress  *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	IntranetSegments       *string                                                                        `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// VPC融合类型专享实例连通的用户VPC内的网络信息
 	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
-	// The region where the instance is located.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance status.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether IPv6 is supported.
-	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
-	// The ID of the user\"s VPC.
-	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
-	// The ID of the user interaction machine.
-	UserVswitchId *string `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
-	VipTypeList   *string `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
-	// The outbound CIDR block of the VPC.
-	VpcEgressAddress *string `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
-	// Indicates whether VPC is enabled.
-	VpcIntranetEnable *bool `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
-	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// Indicates whether VPC SLB is enabled.
-	VpcSlbIntranetEnable *bool `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
-	// The zone ID.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone.
-	ZoneLocalName *string `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
+	RegionId                   *string                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                     *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportIpv6                *bool                                                                              `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	UserVpcId                  *string                                                                            `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVswitchId              *string                                                                            `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	VipTypeList                *string                                                                            `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
+	VpcEgressAddress           *string                                                                            `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
+	VpcIntranetEnable          *bool                                                                              `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcOwnerId                 *int64                                                                             `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcSlbIntranetEnable       *bool                                                                              `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+	ZoneId                     *string                                                                            `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneLocalName              *string                                                                            `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) String() string {
@@ -19272,6 +18529,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceCha
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceCidrBlock(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
 	s.InstanceCidrBlock = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceClusterId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceClusterId = &v
 	return s
 }
 
@@ -19398,10 +18660,8 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
-	// The variable name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The variable value.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) String() string {
@@ -19440,11 +18700,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterface
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute struct {
-	CidrBlock          *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// vSwitch的网段。
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// 弹性网卡ID
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	SecurityGroupId    *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// 安全组的ID，同一个安全组内的服务可以互相访问。
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// 虚拟交换机ID
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// 可用区ID
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) String() string {
@@ -19510,13 +18775,9 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeIpControlPolicyItemsRequest struct {
-	// The ID of the ACL. The ID is unique.
-	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the policy.
+	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PolicyItemId  *string `json:"PolicyItemId,omitempty" xml:"PolicyItemId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -19555,16 +18816,11 @@ func (s *DescribeIpControlPolicyItemsRequest) SetSecurityToken(v string) *Descri
 }
 
 type DescribeIpControlPolicyItemsResponseBody struct {
-	// The information about policies. The information is an array of IpControlPolicyItem data.
 	IpControlPolicyItems *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems `json:"IpControlPolicyItems,omitempty" xml:"IpControlPolicyItems,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber           *int32                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount           *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeIpControlPolicyItemsResponseBody) String() string {
@@ -19618,15 +18874,10 @@ func (s *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems) SetIpCont
 }
 
 type DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItemsIpControlPolicyItem struct {
-	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IP addresses or CIDR blocks.
-	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The time when the policy was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the policy was modified. The time is displayed in UTC.
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CidrIp       *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the policy.
 	PolicyItemId *string `json:"PolicyItemId,omitempty" xml:"PolicyItemId,omitempty"`
 }
 
@@ -19900,7 +19151,6 @@ func (s *DescribeIpControlsResponse) SetBody(v *DescribeIpControlsResponseBody) 
 }
 
 type DescribeLogConfigRequest struct {
-	// The log type.
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -19924,10 +19174,8 @@ func (s *DescribeLogConfigRequest) SetSecurityToken(v string) *DescribeLogConfig
 }
 
 type DescribeLogConfigResponseBody struct {
-	// The log data.
-	LogInfos *DescribeLogConfigResponseBodyLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	LogInfos  *DescribeLogConfigResponseBodyLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLogConfigResponseBody) String() string {
@@ -19966,14 +19214,10 @@ func (s *DescribeLogConfigResponseBodyLogInfos) SetLogInfo(v []*DescribeLogConfi
 }
 
 type DescribeLogConfigResponseBodyLogInfosLogInfo struct {
-	// The log type.
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The region ID of Log Service.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The log store value of Log Service (SLS).
+	LogType     *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The SLS project.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	SlsProject  *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 }
 
 func (s DescribeLogConfigResponseBodyLogInfosLogInfo) String() string {
@@ -20034,7 +19278,6 @@ func (s *DescribeLogConfigResponse) SetBody(v *DescribeLogConfigResponseBody) *D
 }
 
 type DescribeMarketRemainsQuotaRequest struct {
-	// The remaining quota.
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -20058,10 +19301,8 @@ func (s *DescribeMarketRemainsQuotaRequest) SetSecurityToken(v string) *Describe
 }
 
 type DescribeMarketRemainsQuotaResponseBody struct {
-	// The ID of the request.
-	RemainsQuota *int64 `json:"RemainsQuota,omitempty" xml:"RemainsQuota,omitempty"`
-	// auditing
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RemainsQuota *int64  `json:"RemainsQuota,omitempty" xml:"RemainsQuota,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMarketRemainsQuotaResponseBody) String() string {
@@ -20112,15 +19353,15 @@ func (s *DescribeMarketRemainsQuotaResponse) SetBody(v *DescribeMarketRemainsQuo
 }
 
 type DescribeModelsRequest struct {
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the model.
-	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the model.
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the request.
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the model.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -20158,15 +19399,15 @@ func (s *DescribeModelsRequest) SetPageSize(v int32) *DescribeModelsRequest {
 }
 
 type DescribeModelsResponseBody struct {
-	// The returned information about models. It is an array consisting of ModelDetail data.
+	// The ID of the API group to which the model belongs.
 	ModelDetails *DescribeModelsResponseBodyModelDetails `json:"ModelDetails,omitempty" xml:"ModelDetails,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The returned information about models. It is an array consisting of ModelDetail data.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The last modification time of the model.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20221,21 +19462,21 @@ func (s *DescribeModelsResponseBodyModelDetails) SetModelDetail(v []*DescribeMod
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetail struct {
-	// The time when the model was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The definition of the model description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group to which the model belongs.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the model.
-	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the model.
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The URI of the model.
-	ModelRef *string `json:"ModelRef,omitempty" xml:"ModelRef,omitempty"`
-	// The last modification time of the model.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The name of the model.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The definition of the model.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// *   Fuzzy queries are supported.
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The ID of the model.
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// Obtains the created models of an API group.
+	ModelRef *string `json:"ModelRef,omitempty" xml:"ModelRef,omitempty"`
+	// The definition of the model description.
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The time when the model was created.
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
@@ -20540,11 +19781,6 @@ func (s *DescribePluginApisResponse) SetBody(v *DescribePluginApisResponseBody) 
 }
 
 type DescribePluginSchemasRequest struct {
-	// The language that is used to return the descriptions of the access control policies. Default value: zh-CN. Valid values:
-	//
-	// *   zh-CN (default value): Chinese
-	// *   en: English
-	// *   ja: Japanese
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -20568,10 +19804,8 @@ func (s *DescribePluginSchemasRequest) SetSecurityToken(v string) *DescribePlugi
 }
 
 type DescribePluginSchemasResponseBody struct {
-	// The plug-in modes.
 	PluginSchemas *DescribePluginSchemasResponseBodyPluginSchemas `json:"PluginSchemas,omitempty" xml:"PluginSchemas,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePluginSchemasResponseBody) String() string {
@@ -20610,16 +19844,11 @@ func (s *DescribePluginSchemasResponseBodyPluginSchemas) SetPluginSchema(v []*De
 }
 
 type DescribePluginSchemasResponseBodyPluginSchemasPluginSchema struct {
-	// The plug-in description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the document.
-	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
-	// The name of the plug-in.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether classification is supported.
-	SupportClassic *bool `json:"SupportClassic,omitempty" xml:"SupportClassic,omitempty"`
-	// The plug-in title.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentId     *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SupportClassic *bool   `json:"SupportClassic,omitempty" xml:"SupportClassic,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribePluginSchemasResponseBodyPluginSchemasPluginSchema) String() string {
@@ -20685,13 +19914,7 @@ func (s *DescribePluginSchemasResponse) SetBody(v *DescribePluginSchemasResponse
 }
 
 type DescribePluginTemplatesRequest struct {
-	// The language that is used to return the description of the system policy. Valid values:
-	//
-	// *   en: English
-	// *   zh-CN: Chinese.
-	// *   ja: Japanese
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The name of the plug-in.
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	PluginName    *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -20720,9 +19943,7 @@ func (s *DescribePluginTemplatesRequest) SetSecurityToken(v string) *DescribePlu
 }
 
 type DescribePluginTemplatesResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The templates.
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates *DescribePluginTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
 }
 
@@ -20762,16 +19983,11 @@ func (s *DescribePluginTemplatesResponseBodyTemplates) SetTemplate(v []*Describe
 }
 
 type DescribePluginTemplatesResponseBodyTemplatesTemplate struct {
-	// The description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The document anchor point.
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DocumentAnchor *string `json:"DocumentAnchor,omitempty" xml:"DocumentAnchor,omitempty"`
-	// The ID of the document.
-	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
-	// The sample.
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// The title of the plug-in template title.
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	DocumentId     *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	Sample         *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribePluginTemplatesResponseBodyTemplatesTemplate) String() string {
@@ -20837,19 +20053,13 @@ func (s *DescribePluginTemplatesResponse) SetBody(v *DescribePluginTemplatesResp
 }
 
 type DescribePluginsRequest struct {
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the plug-in.
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The name of the plug-in.
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The business type of the plug-in.
-	PluginType    *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the lifecycle rule. You can specify multiple tags.
-	Tag []*DescribePluginsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageNumber    *int32                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PluginId      *string                      `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName    *string                      `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType    *string                      `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	SecurityToken *string                      `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*DescribePluginsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribePluginsRequest) String() string {
@@ -20896,13 +20106,7 @@ func (s *DescribePluginsRequest) SetTag(v []*DescribePluginsRequestTag) *Describ
 }
 
 type DescribePluginsRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20925,16 +20129,11 @@ func (s *DescribePluginsRequestTag) SetValue(v string) *DescribePluginsRequestTa
 }
 
 type DescribePluginsResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned information about the plug-in. It is an array consisting of PluginAttribute data.
-	Plugins *DescribePluginsResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Plugins    *DescribePluginsResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePluginsResponseBody) String() string {
@@ -20988,24 +20187,15 @@ func (s *DescribePluginsResponseBodyPlugins) SetPluginAttribute(v []*DescribePlu
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttribute struct {
-	// The creation time (UTC) of the plug-in.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The plug-in description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time (UTC) of the plug-in.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The definition statement of the plug-in.
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The ID of the plug-in.
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The name of the plug-in.
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The type of the plug-in.
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The region where the plug-in is located.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
-	Tags *DescribePluginsResponseBodyPluginsPluginAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	PluginData   *string                                                `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginId     *string                                                `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName   *string                                                `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType   *string                                                `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RegionId     *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags         *DescribePluginsResponseBodyPluginsPluginAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribePluginsResponseBodyPluginsPluginAttribute) String() string {
@@ -21079,9 +20269,7 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttributeTags) SetTagInfo(v []*
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttributeTagsTagInfo struct {
-	// The key of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21346,10 +20534,6 @@ func (s *DescribePluginsByApiResponse) SetBody(v *DescribePluginsByApiResponseBo
 }
 
 type DescribePurchasedApiGroupRequest struct {
-	// The status of the API group.
-	//
-	// *   **NORMAL**: The API group is normal.
-	// *   **DELETE**: The API group is deleted.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -21373,22 +20557,14 @@ func (s *DescribePurchasedApiGroupRequest) SetSecurityToken(v string) *DescribeP
 }
 
 type DescribePurchasedApiGroupResponseBody struct {
-	// The region where the API group is located.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of domain names.
-	Domains *DescribePurchasedApiGroupResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The name of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The description of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the request.
-	PurchasedTime *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
-	// The list of domain names.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the API group.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the API group was purchased.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Description   *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domains       *DescribePurchasedApiGroupResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	GroupId       *string                                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PurchasedTime *string                                       `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
+	RegionId      *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status        *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupResponseBody) String() string {
@@ -21457,7 +20633,6 @@ func (s *DescribePurchasedApiGroupResponseBodyDomains) SetDomainItem(v []*Descri
 }
 
 type DescribePurchasedApiGroupResponseBodyDomainsDomainItem struct {
-	// auditing
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -21504,9 +20679,7 @@ func (s *DescribePurchasedApiGroupResponse) SetBody(v *DescribePurchasedApiGroup
 }
 
 type DescribePurchasedApiGroupsRequest struct {
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the returned page.
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -21535,16 +20708,11 @@ func (s *DescribePurchasedApiGroupsRequest) SetSecurityToken(v string) *Describe
 }
 
 type DescribePurchasedApiGroupsResponseBody struct {
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of entries returned.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The attributes of the API group.
+	PageNumber                  *int32                                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                    *int32                                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PurchasedApiGroupAttributes *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes `json:"PurchasedApiGroupAttributes,omitempty" xml:"PurchasedApiGroupAttributes,omitempty" type:"Struct"`
-	// The number of entries returned on each page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The attributes of the API group.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId                   *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                  *int32                                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupsResponseBody) String() string {
@@ -21598,26 +20766,16 @@ func (s *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes) SetP
 }
 
 type DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchasedApiGroupAttribute struct {
-	// The ID of the region where the API group is located.
-	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// The name of the API group.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the API group.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The maximum number of calls.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The current number of calls.
-	InvokeTimesMax *int64 `json:"InvokeTimesMax,omitempty" xml:"InvokeTimesMax,omitempty"`
-	// The billing method.
-	InvokeTimesNow *int64 `json:"InvokeTimesNow,omitempty" xml:"InvokeTimesNow,omitempty"`
-	// The time when the API group expires.
-	PurchasedTime *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
-	// auditing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the API group was purchased.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BillingType    *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InvokeTimesMax *int64  `json:"InvokeTimesMax,omitempty" xml:"InvokeTimesMax,omitempty"`
+	InvokeTimesNow *int64  `json:"InvokeTimesNow,omitempty" xml:"InvokeTimesNow,omitempty"`
+	PurchasedTime  *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchasedApiGroupAttribute) String() string {
@@ -21708,25 +20866,14 @@ func (s *DescribePurchasedApiGroupsResponse) SetBody(v *DescribePurchasedApiGrou
 }
 
 type DescribePurchasedApisRequest struct {
-	// The name of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// Cz88IpQuery
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**
-	// *   **TEST**
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the page to return.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The number of entries to return on each page.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility    *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribePurchasedApisRequest) String() string {
@@ -21778,16 +20925,11 @@ func (s *DescribePurchasedApisRequest) SetVisibility(v string) *DescribePurchase
 }
 
 type DescribePurchasedApisResponseBody struct {
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The monitoring information about API call delays. The returned information is an array consisting of purchased APIs.
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PurchasedApis *DescribePurchasedApisResponseBodyPurchasedApis `json:"PurchasedApis,omitempty" xml:"PurchasedApis,omitempty" type:"Struct"`
-	// The number of entries returned on each page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The monitoring information about API call delays. The returned information is an array consisting of purchased APIs.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribePurchasedApisResponseBody) String() string {
@@ -21841,32 +20983,17 @@ func (s *DescribePurchasedApisResponseBodyPurchasedApis) SetPurchasedApi(v []*De
 }
 
 type DescribePurchasedApisResponseBodyPurchasedApisPurchasedApi struct {
-	// The last modification time (UTC) of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the region in which the API is located.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**
-	// *   **TEST**
-	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The deployment time. Format: yyyy-mm-ddhh:mm:ss.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the API group to which the API belongs. This ID is generated by the system and globally unique.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The description of the API.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the API.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	DeployedTime  *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	PurchasedTime *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
-	// auditing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the API.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The time when the API was purchased.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility    *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribePurchasedApisResponseBodyPurchasedApisPurchasedApi) String() string {
@@ -21962,11 +21089,6 @@ func (s *DescribePurchasedApisResponse) SetBody(v *DescribePurchasedApisResponse
 }
 
 type DescribeRegionsRequest struct {
-	// The language in which you want to return the descriptions of the access control policies. Valid values:
-	//
-	// *   zh-CN (default value): Chinese
-	// *   en: English
-	// *   ja: Japanese
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -21990,10 +21112,8 @@ func (s *DescribeRegionsRequest) SetSecurityToken(v string) *DescribeRegionsRequ
 }
 
 type DescribeRegionsResponseBody struct {
-	// The returned region information. It is an array that consists of Region data.
-	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -22032,12 +21152,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The name of the region.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the service for the region.
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -22093,14 +21210,14 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSignaturesRequest struct {
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The names of the keys to query.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 
@@ -22138,15 +21255,15 @@ func (s *DescribeSignaturesRequest) SetSignatureName(v string) *DescribeSignatur
 }
 
 type DescribeSignaturesResponseBody struct {
-	// The ID of the request.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of returned entries.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The number of entries returned per page.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The last modification time of the key.
-	SignatureInfos *DescribeSignaturesResponseBodySignatureInfos `json:"SignatureInfos,omitempty" xml:"SignatureInfos,omitempty" type:"Struct"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned signature information. It is an array consisting of SignatureInfo data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the backend signature key.
+	SignatureInfos *DescribeSignaturesResponseBodySignatureInfos `json:"SignatureInfos,omitempty" xml:"SignatureInfos,omitempty" type:"Struct"`
+	// The last modification time of the key.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22201,20 +21318,20 @@ func (s *DescribeSignaturesResponseBodySignatureInfos) SetSignatureInfo(v []*Des
 }
 
 type DescribeSignaturesResponseBodySignatureInfosSignatureInfo struct {
-	// The region where the key is located.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the backend signature key.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// *   This API is intended for API providers.
 	// *   This operation is used to query the backend signature keys in a Region. Region is a system parameter.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The Secret value of the backend signature key.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The creation time of the key.
-	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The Key value of the backend signature key.
-	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Queries backend signature keys.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the backend signature key.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// The region where the key is located.
+	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
+	// The creation time of the key.
+	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
+	// The Key value of the backend signature key.
 	SignatureSecret *string `json:"SignatureSecret,omitempty" xml:"SignatureSecret,omitempty"`
 }
 
@@ -22291,15 +21408,15 @@ func (s *DescribeSignaturesResponse) SetBody(v *DescribeSignaturesResponseBody) 
 }
 
 type DescribeSignaturesByApiRequest struct {
+	// The ID of the request.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
+	// The returned signature key information. It is an array consisting of SignatureItem data.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -22332,9 +21449,9 @@ func (s *DescribeSignaturesByApiRequest) SetStageName(v string) *DescribeSignatu
 }
 
 type DescribeSignaturesByApiResponseBody struct {
-	// The returned signature key information. It is an array consisting of SignatureItem data.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the key was bound.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the backend signature key.
 	Signatures *DescribeSignaturesByApiResponseBodySignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Struct"`
 }
 
@@ -22374,11 +21491,11 @@ func (s *DescribeSignaturesByApiResponseBodySignatures) SetSignatureItem(v []*De
 }
 
 type DescribeSignaturesByApiResponseBodySignaturesSignatureItem struct {
-	// The ID of the backend signature key.
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
 	// The name of the backend signature key.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
 	// *   This API is intended for API providers.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// Queries the backend signature keys that are bound to a specified API.
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 
@@ -22452,9 +21569,9 @@ func (s *DescribeSystemParametersRequest) SetSecurityToken(v string) *DescribeSy
 }
 
 type DescribeSystemParametersResponseBody struct {
-	// The ID of the request.
+	// Examples
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned information about system parameters. It is an array that consists of SystemParam data.
+	// The description of a parameter.
 	SystemParams *DescribeSystemParametersResponseBodySystemParams `json:"SystemParams,omitempty" xml:"SystemParams,omitempty" type:"Struct"`
 }
 
@@ -22494,13 +21611,14 @@ func (s *DescribeSystemParametersResponseBodySystemParams) SetSystemParamItem(v 
 }
 
 type DescribeSystemParametersResponseBodySystemParamsSystemParamItem struct {
-	// Examples
+	// Client IP Address
 	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description of a parameter.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// *   This API is intended for API callers.
+	// *   The response of this API contains the system parameters that are optional in API definitions.
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The type of the parameter.
+	// Queries the common parameters supported by the system.
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
@@ -22562,23 +21680,23 @@ func (s *DescribeSystemParametersResponse) SetBody(v *DescribeSystemParametersRe
 }
 
 type DescribeTrafficControlsRequest struct {
-	// The specified API ID. This parameter must be specified together with GroupId and StageName.
+	// The name of the throttling policy.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The specified group ID. This parameter must be specified together with ApiId and StageName.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The environment name. This parameter must be specified together with GroupId and ApiId. Valid values:********
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The ID of the request.
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// ThrottlingTest
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The ID of the throttling policy.
+	// The specified API ID. This parameter must be specified together with GroupId and StageName.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// The name of the throttling policy.
+	// The number of the page to return. Pages start from page 1. Default value: 1.
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 }
 
@@ -22631,15 +21749,15 @@ func (s *DescribeTrafficControlsRequest) SetTrafficControlName(v string) *Descri
 }
 
 type DescribeTrafficControlsResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The returned throttling policy information. It is an array consisting of TrafficControl data.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The default throttling value for each user.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The default throttling value for each API.
 	TrafficControls *DescribeTrafficControlsResponseBodyTrafficControls `json:"TrafficControls,omitempty" xml:"TrafficControls,omitempty" type:"Struct"`
 }
 
@@ -22694,29 +21812,32 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControls) SetTrafficControl(v
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl struct {
-	// The default throttling value for each API.
-	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
-	// The default throttling value for each app.
-	AppDefault *int32 `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
-	// The creation time (UTC) of the throttling policy.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The description of the throttling policy.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time (UTC) of the throttling policy.
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The returned information about a special throttling policy. It is an array consisting of SpecialPolicy data.
-	SpecialPolicies *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies `json:"SpecialPolicies,omitempty" xml:"SpecialPolicies,omitempty" type:"Struct"`
-	// The ID of the throttling policy.
-	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
+	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
+	// The creation time (UTC) of the throttling policy.
+	AppDefault *int32 `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
+	// The type of the special throttling policy. Valid values:
+	//
+	// *   **APP**
+	// *   **USER**
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The name of the throttling policy.
-	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The unit to be used in the throttling policy. Valid values:
 	//
 	// *   MINUTE
 	// *   HOUR
 	// *   DAY
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The returned information about a special throttling policy. It is an array consisting of Special data.
+	SpecialPolicies *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies `json:"SpecialPolicies,omitempty" xml:"SpecialPolicies,omitempty" type:"Struct"`
+	// The returned information about a special throttling policy. It is an array consisting of SpecialPolicy data.
+	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
+	// The ID of the throttling policy.
+	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
+	// The default throttling value for each app.
 	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
-	// The default throttling value for each user.
+	// The last modification time (UTC) of the throttling policy.
 	UserDefault *int32 `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
 }
 
@@ -22796,12 +21917,9 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicy struct {
-	// The type of the special throttling policy. Valid values:
-	//
-	// *   **APP**
-	// *   **USER**
+	// The throttling value.
 	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
-	// The returned information about a special throttling policy. It is an array consisting of Special data.
+	// The AppId or user account corresponding to SpecialType.
 	Specials *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials `json:"Specials,omitempty" xml:"Specials,omitempty" type:"Struct"`
 }
 
@@ -22841,9 +21959,11 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial struct {
-	// The AppId or user account corresponding to SpecialType.
+	// Queries custom throttling policies and their details. Conditional queries are supported.
 	SpecialKey *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
-	// The throttling value.
+	// *   This API is intended for API providers.
+	// *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+	// *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
 	TrafficValue *int32 `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 
@@ -22895,15 +22015,15 @@ func (s *DescribeTrafficControlsResponse) SetBody(v *DescribeTrafficControlsResp
 }
 
 type DescribeTrafficControlsByApiRequest struct {
-	// The ID of the API.
+	// The ID of the request.
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the group to which the API to be queried belongs.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The runtime environment of the API. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The returned throttling policy information. It is an array consisting of TrafficControlItem data.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -22936,9 +22056,9 @@ func (s *DescribeTrafficControlsByApiRequest) SetStageName(v string) *DescribeTr
 }
 
 type DescribeTrafficControlsByApiResponseBody struct {
-	// The ID of the request.
+	// The ID of the throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned throttling policy information. It is an array consisting of TrafficControlItem data.
+	// The binding time of the policy.
 	TrafficControlItems *DescribeTrafficControlsByApiResponseBodyTrafficControlItems `json:"TrafficControlItems,omitempty" xml:"TrafficControlItems,omitempty" type:"Struct"`
 }
 
@@ -22978,11 +22098,11 @@ func (s *DescribeTrafficControlsByApiResponseBodyTrafficControlItems) SetTraffic
 }
 
 type DescribeTrafficControlsByApiResponseBodyTrafficControlItemsTrafficControlItem struct {
-	// The binding time of the policy.
+	// *   This API is intended for API providers.
 	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the throttling policy.
-	TrafficControlItemId *string `json:"TrafficControlItemId,omitempty" xml:"TrafficControlItemId,omitempty"`
 	// The name of the throttling policy.
+	TrafficControlItemId *string `json:"TrafficControlItemId,omitempty" xml:"TrafficControlItemId,omitempty"`
+	// Queries the throttling policy that is bound to a specific API.
 	TrafficControlItemName *string `json:"TrafficControlItemName,omitempty" xml:"TrafficControlItemName,omitempty"`
 }
 
@@ -23039,7 +22159,6 @@ func (s *DescribeTrafficControlsByApiResponse) SetBody(v *DescribeTrafficControl
 }
 
 type DescribeUpdateBackendTaskRequest struct {
-	// The ID of the task.
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -23063,10 +22182,8 @@ func (s *DescribeUpdateBackendTaskRequest) SetSecurityToken(v string) *DescribeU
 }
 
 type DescribeUpdateBackendTaskResponseBody struct {
-	// The update result of the API.
 	ApiUpdateBackendResults *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults `json:"ApiUpdateBackendResults,omitempty" xml:"ApiUpdateBackendResults,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId               *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUpdateBackendTaskResponseBody) String() string {
@@ -23105,23 +22222,14 @@ func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) SetApiUpd
 }
 
 type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult struct {
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The information about the rows that fail to be updated.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the runtime environment.
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the environment.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The update result of the API.
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	BackendId    *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 
@@ -23208,7 +22316,6 @@ func (s *DescribeUpdateBackendTaskResponse) SetBody(v *DescribeUpdateBackendTask
 }
 
 type DescribeUpdateVpcInfoTaskRequest struct {
-	// The ID of the task.
 	OperationUid  *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -23232,10 +22339,8 @@ func (s *DescribeUpdateVpcInfoTaskRequest) SetSecurityToken(v string) *DescribeU
 }
 
 type DescribeUpdateVpcInfoTaskResponseBody struct {
-	// The result of the task.
 	ApiUpdateVpcInfoResults *DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults `json:"ApiUpdateVpcInfoResults,omitempty" xml:"ApiUpdateVpcInfoResults,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId               *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUpdateVpcInfoTaskResponseBody) String() string {
@@ -23274,21 +22379,13 @@ func (s *DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults) SetApiUpd
 }
 
 type DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResultsApiUpdateVpcInfoResult struct {
-	// The name of the API.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The error message.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the stage.
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The environment to which the API is published.
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The update status.
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 
@@ -23370,21 +22467,14 @@ func (s *DescribeUpdateVpcInfoTaskResponse) SetBody(v *DescribeUpdateVpcInfoTask
 }
 
 type DescribeVpcAccessesRequest struct {
-	// The ID of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique custom name for authorization.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The service port.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC authorization.
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcAccessId   *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVpcAccessesRequest) String() string {
@@ -23436,15 +22526,10 @@ func (s *DescribeVpcAccessesRequest) SetVpcId(v string) *DescribeVpcAccessesRequ
 }
 
 type DescribeVpcAccessesResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the VPC authorization. The information is an array consisting of VpcAccessAttribute data.
+	PageNumber          *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VpcAccessAttributes *DescribeVpcAccessesResponseBodyVpcAccessAttributes `json:"VpcAccessAttributes,omitempty" xml:"VpcAccessAttributes,omitempty" type:"Struct"`
 }
 
@@ -23499,23 +22584,14 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributes) SetVpcAccessAttribu
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute struct {
-	// The time when the authorization was created.
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the VPC authorization.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of an ECS or SLB instance in the VPC.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the authorization.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port number that corresponds to the instance.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the VPC authorization.
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The host of the backend service.
+	CreatedTime       *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcAccessId       *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
@@ -23602,11 +22678,6 @@ func (s *DescribeVpcAccessesResponse) SetBody(v *DescribeVpcAccessesResponseBody
 }
 
 type DescribeZonesRequest struct {
-	// The language in which you want to use to return the description of the system policy. Valid values:
-	//
-	// *   en: English
-	// *   zh-CN: Chinese
-	// *   ja: Japanese
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -23630,10 +22701,8 @@ func (s *DescribeZonesRequest) SetSecurityToken(v string) *DescribeZonesRequest 
 }
 
 type DescribeZonesResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones available in the current region.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -23672,10 +22741,8 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The name of the zone.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the zone.
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {
@@ -23726,19 +22793,11 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type DetachPluginRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group to which the API belongs.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the plug-in.
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE: the pre-release environment**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DetachPluginRequest) String() string {
@@ -23775,7 +22834,6 @@ func (s *DetachPluginRequest) SetStageName(v string) *DetachPluginRequest {
 }
 
 type DetachPluginResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23822,13 +22880,10 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 }
 
 type DisableInstanceAccessControlRequest struct {
-	// The ID of the access control policy.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The IP version. Valid values: **ipv4** and **ipv6**.
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The ID of the instance.
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DisableInstanceAccessControlRequest) String() string {
@@ -23860,7 +22915,6 @@ func (s *DisableInstanceAccessControlRequest) SetSecurityToken(v string) *Disabl
 }
 
 type DisableInstanceAccessControlResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23907,22 +22961,12 @@ func (s *DisableInstanceAccessControlResponse) SetBody(v *DisableInstanceAccessC
 }
 
 type DryRunSwaggerRequest struct {
-	// The Swagger text content.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The Swagger text format:
-	//
-	// *   json
-	// *   yaml
-	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	// The global condition.
+	Data            *string                `json:"Data,omitempty" xml:"Data,omitempty"`
+	DataFormat      *string                `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	GlobalCondition map[string]interface{} `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to overwrite the existing API.
-	//
-	// APIs with the same HTTP request type and backend request path are considered the same.
-	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	GroupId         *string                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Overwrite       *bool                  `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	SecurityToken   *string                `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DryRunSwaggerRequest) String() string {
@@ -23964,22 +23008,12 @@ func (s *DryRunSwaggerRequest) SetSecurityToken(v string) *DryRunSwaggerRequest 
 }
 
 type DryRunSwaggerShrinkRequest struct {
-	// The Swagger text content.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The Swagger text format:
-	//
-	// *   json
-	// *   yaml
-	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	// The global condition.
+	Data                  *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	DataFormat            *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	GlobalConditionShrink *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to overwrite the existing API.
-	//
-	// APIs with the same HTTP request type and backend request path are considered the same.
-	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Overwrite             *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DryRunSwaggerShrinkRequest) String() string {
@@ -24021,18 +23055,12 @@ func (s *DryRunSwaggerShrinkRequest) SetSecurityToken(v string) *DryRunSwaggerSh
 }
 
 type DryRunSwaggerResponseBody struct {
-	// The APIs that failed to be created based on the Swagger-compliant data imported this time.
-	Failed *DryRunSwaggerResponseBodyFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
-	// The global condition.
-	GlobalCondition *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The models that failed to be imported through the Swagger-compliant data this time.
-	ModelFailed *DryRunSwaggerResponseBodyModelFailed `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
-	// The models that failed to be imported through the Swagger-compliant data this time.
-	ModelSuccess *DryRunSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The APIs that are created based on the Swagger-compliant data imported this time.
-	Success *DryRunSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
+	Failed          *DryRunSwaggerResponseBodyFailed       `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
+	GlobalCondition *string                                `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
+	ModelFailed     *DryRunSwaggerResponseBodyModelFailed  `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
+	ModelSuccess    *DryRunSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
+	RequestId       *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *DryRunSwaggerResponseBodySuccess      `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
 }
 
 func (s DryRunSwaggerResponseBody) String() string {
@@ -24091,12 +23119,9 @@ func (s *DryRunSwaggerResponseBodyFailed) SetApiImportSwaggerFailed(v []*DryRunS
 }
 
 type DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
-	// The error message returned when the API is created.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method configured when the API is created.
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed) String() string {
@@ -24140,11 +23165,8 @@ func (s *DryRunSwaggerResponseBodyModelFailed) SetApiImportModelFailed(v []*DryR
 }
 
 type DryRunSwaggerResponseBodyModelFailedApiImportModelFailed struct {
-	// The error message.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -24189,13 +23211,10 @@ func (s *DryRunSwaggerResponseBodyModelSuccess) SetApiImportModelSuccess(v []*Dr
 }
 
 type DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess) String() string {
@@ -24244,16 +23263,11 @@ func (s *DryRunSwaggerResponseBodySuccess) SetApiDryRunSwaggerSuccess(v []*DryRu
 }
 
 type DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess struct {
-	// Specifies whether the operation is CREATE or MODIFY.
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The API definition that complies with the Swagger specification.
-	ApiSwagger *string `json:"ApiSwagger,omitempty" xml:"ApiSwagger,omitempty"`
-	// The UID of the successfully imported API.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The HTTP method configured when the API is created.
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ApiSwagger   *string `json:"ApiSwagger,omitempty" xml:"ApiSwagger,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess) String() string {
@@ -24319,17 +23333,11 @@ func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwa
 }
 
 type EnableInstanceAccessControlRequest struct {
-	// The ID of the access control policy.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The type of the access control policy. Valid values:
-	//
-	// *   black: blacklist
-	// *   white: whitelist
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclType          *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The ID of the instance.
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s EnableInstanceAccessControlRequest) String() string {
@@ -24366,7 +23374,6 @@ func (s *EnableInstanceAccessControlRequest) SetSecurityToken(v string) *EnableI
 }
 
 type EnableInstanceAccessControlResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24418,29 +23425,16 @@ type ImportOASRequest struct {
 	// - **APP**：只允许已授权的APP调用
 	// - **ANONYMOUS**：允许匿名调用，设置为允许匿名调用需要注意：
 	//      - 任何能够获取该API服务信息的人，都将能够调用该API。网关不会对调用者做身份认证，也无法设置按用户的流量控制，若开放该API请设置好按API的流量控制。
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The name of the backend service.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The OAS-compliant text file or OSS object URL.
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to ignore alerts.
-	IgnoreWarning *bool `json:"IgnoreWarning,omitempty" xml:"IgnoreWarning,omitempty"`
-	// The OAS version.
-	OASVersion *string `json:"OASVersion,omitempty" xml:"OASVersion,omitempty"`
-	// Specifies whether to overwrite an existing API.
-	//
-	// If an existing API has the same HTTP request type and backend request path as the API to be imported, the existing API is overwritten.
-	Overwrite *bool `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	// The request mode. Valid values:
-	//
-	// *   MAPPING: Parameters are mapped. Unknown parameters are filtered out.
-	// *   PASSTHROUGH: Parameters are passed through.
+	AuthType      *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IgnoreWarning *bool   `json:"IgnoreWarning,omitempty" xml:"IgnoreWarning,omitempty"`
+	OASVersion    *string `json:"OASVersion,omitempty" xml:"OASVersion,omitempty"`
+	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	RequestMode   *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to directly import the API without performing a precheck.
-	SkipDryRun *bool `json:"SkipDryRun,omitempty" xml:"SkipDryRun,omitempty"`
+	SkipDryRun    *bool   `json:"SkipDryRun,omitempty" xml:"SkipDryRun,omitempty"`
 }
 
 func (s ImportOASRequest) String() string {
@@ -24502,21 +23496,13 @@ func (s *ImportOASRequest) SetSkipDryRun(v bool) *ImportOASRequest {
 }
 
 type ImportOASResponseBody struct {
-	// The error messages that appear due to the invalid data in the imported file.
-	ErrorMessages *ImportOASResponseBodyErrorMessages `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Struct"`
-	// The APIs that failed to pass the precheck.
-	FailedApis *ImportOASResponseBodyFailedApis `json:"FailedApis,omitempty" xml:"FailedApis,omitempty" type:"Struct"`
-	// The information about the models that failed to pass the precheck.
-	FailedModels *ImportOASResponseBodyFailedModels `json:"FailedModels,omitempty" xml:"FailedModels,omitempty" type:"Struct"`
-	// The ID of the asynchronous API import task that was generated during the import operation. This ID is used to query the execution status of the API import task.
-	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the APIs that have passed the precheck.
-	SuccessApis *ImportOASResponseBodySuccessApis `json:"SuccessApis,omitempty" xml:"SuccessApis,omitempty" type:"Struct"`
-	// The information about the models that have passed the precheck.
-	SuccessModels *ImportOASResponseBodySuccessModels `json:"SuccessModels,omitempty" xml:"SuccessModels,omitempty" type:"Struct"`
-	// The warning messages that appear due to the invalid data in the imported file.
+	ErrorMessages   *ImportOASResponseBodyErrorMessages   `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Struct"`
+	FailedApis      *ImportOASResponseBodyFailedApis      `json:"FailedApis,omitempty" xml:"FailedApis,omitempty" type:"Struct"`
+	FailedModels    *ImportOASResponseBodyFailedModels    `json:"FailedModels,omitempty" xml:"FailedModels,omitempty" type:"Struct"`
+	OperationId     *string                               `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessApis     *ImportOASResponseBodySuccessApis     `json:"SuccessApis,omitempty" xml:"SuccessApis,omitempty" type:"Struct"`
+	SuccessModels   *ImportOASResponseBodySuccessModels   `json:"SuccessModels,omitempty" xml:"SuccessModels,omitempty" type:"Struct"`
 	WarningMessages *ImportOASResponseBodyWarningMessages `json:"WarningMessages,omitempty" xml:"WarningMessages,omitempty" type:"Struct"`
 }
 
@@ -24603,12 +23589,9 @@ func (s *ImportOASResponseBodyFailedApis) SetFailedApi(v []*ImportOASResponseBod
 }
 
 type ImportOASResponseBodyFailedApisFailedApi struct {
-	// The error message.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method configured when you created the API.
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when you created the API.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportOASResponseBodyFailedApisFailedApi) String() string {
@@ -24652,11 +23635,8 @@ func (s *ImportOASResponseBodyFailedModels) SetFailedModel(v []*ImportOASRespons
 }
 
 type ImportOASResponseBodyFailedModelsFailedModel struct {
-	// The error message.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -24701,14 +23681,10 @@ func (s *ImportOASResponseBodySuccessApis) SetSuccessApi(v []*ImportOASResponseB
 }
 
 type ImportOASResponseBodySuccessApisSuccessApi struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// Indicates that the operation is CREATE or MODIFY.
+	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The HTTP method configured when you created the API.
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when you created the API.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportOASResponseBodySuccessApisSuccessApi) String() string {
@@ -24757,14 +23733,10 @@ func (s *ImportOASResponseBodySuccessModels) SetSuccessModel(v []*ImportOASRespo
 }
 
 type ImportOASResponseBodySuccessModelsSuccessModel struct {
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The operation of the model. Valid values: CREATE and MODIFY.
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s ImportOASResponseBodySuccessModelsSuccessModel) String() string {
@@ -24842,22 +23814,14 @@ func (s *ImportOASResponse) SetBody(v *ImportOASResponseBody) *ImportOASResponse
 }
 
 type ImportSwaggerRequest struct {
-	// The Swagger text content.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The Swagger text format:
-	//
-	// *   json
-	// *   yaml
+	// 382271
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	// The pre-inspection.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The global conditions.
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Creates an API by importing Swagger-compliant data.
 	GlobalCondition map[string]interface{} `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The ID of the API group to which the Swagger is imported.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to overwrite the existing API.
-	//
-	// APIs with the same HTTP request type and backend request path are considered the same.
+	GroupId         *string                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 8e274ec61cf6468e83b68371956831cb
 	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -24906,22 +23870,14 @@ func (s *ImportSwaggerRequest) SetSecurityToken(v string) *ImportSwaggerRequest 
 }
 
 type ImportSwaggerShrinkRequest struct {
-	// The Swagger text content.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The Swagger text format:
-	//
-	// *   json
-	// *   yaml
+	// 382271
 	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
-	// The pre-inspection.
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The global conditions.
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Creates an API by importing Swagger-compliant data.
 	GlobalConditionShrink *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The ID of the API group to which the Swagger is imported.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to overwrite the existing API.
-	//
-	// APIs with the same HTTP request type and backend request path are considered the same.
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 8e274ec61cf6468e83b68371956831cb
 	Overwrite     *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -24970,16 +23926,11 @@ func (s *ImportSwaggerShrinkRequest) SetSecurityToken(v string) *ImportSwaggerSh
 }
 
 type ImportSwaggerResponseBody struct {
-	// The APIs that failed to be created based on the Swagger-compliant data imported this time.
-	Failed *ImportSwaggerResponseBodyFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
-	// The models that failed to be imported based on the Swagger-compliant data imported this time.
-	ModelFailed *ImportSwaggerResponseBodyModelFailed `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
-	// The models that were imported based on the Swagger-compliant data imported this time.
+	Failed       *ImportSwaggerResponseBodyFailed       `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
+	ModelFailed  *ImportSwaggerResponseBodyModelFailed  `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
 	ModelSuccess *ImportSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The APIs that were created based on the Swagger-compliant data imported this time.
-	Success *ImportSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *ImportSwaggerResponseBodySuccess      `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
 }
 
 func (s ImportSwaggerResponseBody) String() string {
@@ -25033,12 +23984,9 @@ func (s *ImportSwaggerResponseBodyFailed) SetApiImportSwaggerFailed(v []*ImportS
 }
 
 type ImportSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
-	// The error message returned.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method of the API.
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path of the API.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodyFailedApiImportSwaggerFailed) String() string {
@@ -25082,11 +24030,8 @@ func (s *ImportSwaggerResponseBodyModelFailed) SetApiImportModelFailed(v []*Impo
 }
 
 type ImportSwaggerResponseBodyModelFailedApiImportModelFailed struct {
-	// The error message.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -25131,14 +24076,10 @@ func (s *ImportSwaggerResponseBodyModelSuccess) SetApiImportModelSuccess(v []*Im
 }
 
 type ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model operation.
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess) String() string {
@@ -25187,14 +24128,10 @@ func (s *ImportSwaggerResponseBodySuccess) SetApiImportSwaggerSuccess(v []*Impor
 }
 
 type ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess struct {
-	// Specifies that the operation is CREATE or MODIFY.
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The UID of the imported API.
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The HTTP method of the API.
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path of the API.
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess) String() string {
@@ -25255,23 +24192,10 @@ func (s *ImportSwaggerResponse) SetBody(v *ImportSwaggerResponseBody) *ImportSwa
 }
 
 type ListTagResourcesRequest struct {
-	// The token that determines the start point of the query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource.
-	//
-	// Valid values of N: `[1, 50]`.
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
-	//
-	// Tags are supported for API groups, plug-ins, and apps. Operations performed on APIs are based on the tags of API groups.
-	//
-	// *   **apiGroup**
-	// *   **plugin**
-	// *   **app**
-	// *   **api**
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -25303,13 +24227,7 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag.
-	//
-	// Valid values of N: `[1, 20]`.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. If the parameter has a value, you must specify a value for the tag key with the same N as **tag.N.Key**. Otherwise, an error is reported.
-	//
-	// Valid values of N: `[1, 20]`.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25332,13 +24250,8 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that determines the start point of the next query.
-	//
-	// A NextToken value of \*\*-1\*\* indicates that a next query does not exist.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource list.
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -25383,14 +24296,10 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the resource.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -25451,81 +24360,34 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyApiRequest struct {
-	// The returned description of the API.
 	AllowSignatureMethod *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
-	// The name of the API. The name must be unique within the API group. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_).
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The description of the API. The description can be up to 180 characters in length.
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// Specifies whether to enable backend services.
-	AppCodeAuthType *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
-	// The configuration items of API requests sent by API Gateway to the backend service.
-	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// auditing
-	BackendEnable *bool `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
-	// The ID of the request.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
-	ConstantParameters *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
-	// Specifies whether the API is public. Valid values:
-	//
-	// *   **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
-	// *   **PRIVATE**: Make the API private. Private APIs are not displayed in the Alibaba Cloud Marketplace after the API group to which they belong is made available.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the backend service.
-	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The configuration items of the third-party OpenID Connect authentication method.
-	ErrorCodeSamples *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
-	// The returned description of the API.
-	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
-	// The AppCode authentication type supported. Valid values:
-	//
-	// *   DEFAULT: supported after being made available in Alibaba Cloud Marketplace
-	// *   DISABLE: not supported
-	// *   HEADER : supported only in the Header parameter
-	// *   HEADER_QUERY: supported in the Header or Query parameter
-	ForceNonceCheck *bool `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
-	// The ID of the API.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The type of the two-way communication API. Valid values:
-	//
-	// *   **COMMON**: general APIs
-	// *   **REGISTER**: registered APIs
-	// *   **UNREGISTER**: unregistered APIs
-	// *   **NOTIFY**: downstream notification
-	OpenIdConnectConfig *string `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty"`
-	// The parameters of API requests sent by the consumer to API Gateway.
-	RequestConfig *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
-	// System parameter
-	RequestParameters *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
-	// *   Specifies whether to set DisableInternet to **true** to limit API calls to within the VPC.
-	// *   If you set DisableInternet to **false**, the limit if lifted.
-	//
-	// >  If you do not set this parameter, the original value is used.
-	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
-	// The client-side request signature method of the API. Valid values:
-	//
-	// *   HmacSHA256
-	// *   HmacSHA1,HmacSHA256
-	ResultDescriptions *string `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty"`
-	// The sample error codes returned by the backend service.
-	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
-	// The sample error response from the backend service.
-	ResultType    *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// \[{"ParameterType":"Number","Required":"OPTIONAL","isHide":false,"ApiParameterName":"age","DefaultValue":"20","DemoValue":"20","Description":"age","MinValue":18,"MaxValue":100,"Location":"Head"},{"ParameterType":"String","Required":"OPTIONAL","isHide":false,"ApiParameterName":"sex","DefaultValue":"boy","DemoValue":"boy","Description":"gender","EnumValue":"boy,girl","Location":"Query"},{"ParameterType":"Number","Required":"REQUIRED","isHide":false,"ApiParameterName":"userId","MaxLength":10,"MinValue":10000000,"MaxValue":100000000,"Location":"Path"},{"ApiParameterName":"CaClientIp","ParameterLocation":{"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIRED","Description":"Client IP"},{"ApiParameterName":"constance","ParameterLocation":{"name":"Head","orderNumber":0},"Location":"Head","ParameterType":"String","Required":"REQUIRED","DefaultValue":"constance","Description":"constance"}]
-	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. This value is used only to generate documents. It does not affect the returned results.
-	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
-	// The sample response from the backend service.
+	ApiId                *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName              *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AppCodeAuthType      *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
+	AuthType             *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendEnable        *bool   `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
+	BackendId            *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	ConstantParameters   *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisableInternet      *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	ErrorCodeSamples     *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
+	FailResultSample     *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
+	ForceNonceCheck      *bool   `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OpenIdConnectConfig  *string `json:"OpenIdConnectConfig,omitempty" xml:"OpenIdConnectConfig,omitempty"`
+	RequestConfig        *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
+	RequestParameters    *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
+	ResultBodyModel      *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
+	ResultDescriptions   *string `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty"`
+	ResultSample         *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	ResultType           *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
-	// The parameters of API requests sent by API Gateway to the backend service.
-	SystemParameters *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
-	// The configuration items of API requests sent by the consumer to API Gateway.
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// *   Specifies whether to set **ForceNonceCheck** to **true** to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
-	// *   If you set **ForceNonceCheck** to **false**, the check is not performed. If you do not set this parameter, the original value is used.
-	WebSocketApiType *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
+	SystemParameters     *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
+	Visibility           *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	WebSocketApiType     *string `json:"WebSocketApiType,omitempty" xml:"WebSocketApiType,omitempty"`
 }
 
 func (s ModifyApiRequest) String() string {
@@ -25677,7 +24539,6 @@ func (s *ModifyApiRequest) SetWebSocketApiType(v string) *ModifyApiRequest {
 }
 
 type ModifyApiResponseBody struct {
-	// ModifyApi
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26080,31 +24941,19 @@ func (s *ModifyApiConfigurationResponse) SetBody(v *ModifyApiConfigurationRespon
 }
 
 type ModifyApiGroupRequest struct {
-	// The API group description that you want to specify, which cannot exceed 180 characters. If this parameter is not specified, the group description is not modified.
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// The data of custom configuration items.
-	CompatibleFlags *string `json:"CompatibleFlags,omitempty" xml:"CompatibleFlags,omitempty"`
-	// The list of associated tags. Separate multiple tags with commas (,).
-	CustomTraceConfig *string `json:"CustomTraceConfig,omitempty" xml:"CustomTraceConfig,omitempty"`
-	// Specifies whether to pass headers.
-	CustomerConfigs *string `json:"CustomerConfigs,omitempty" xml:"CustomerConfigs,omitempty"`
-	// The RPC mode.
-	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// The user log configuration.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The API group name must be globally unique. The name must be 4 to 50 characters in length. It must start with a letter and can contain letters, digits, and underscores (\_). If this parameter is not specified, the group name is not modified.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The root path of the API.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The default domain name.
-	PassthroughHeaders *string `json:"PassthroughHeaders,omitempty" xml:"PassthroughHeaders,omitempty"`
-	// The object tags that match the lifecycle rule. You can specify multiple tags.
-	RpcPattern    *string `json:"RpcPattern,omitempty" xml:"RpcPattern,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tags that are attached to the resources.
-	Tag []*ModifyApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The custom trace configuration.
-	UserLogConfig *string `json:"UserLogConfig,omitempty" xml:"UserLogConfig,omitempty"`
+	BasePath           *string                     `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
+	CompatibleFlags    *string                     `json:"CompatibleFlags,omitempty" xml:"CompatibleFlags,omitempty"`
+	CustomTraceConfig  *string                     `json:"CustomTraceConfig,omitempty" xml:"CustomTraceConfig,omitempty"`
+	CustomerConfigs    *string                     `json:"CustomerConfigs,omitempty" xml:"CustomerConfigs,omitempty"`
+	DefaultDomain      *string                     `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
+	Description        *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId            *string                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName          *string                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PassthroughHeaders *string                     `json:"PassthroughHeaders,omitempty" xml:"PassthroughHeaders,omitempty"`
+	RpcPattern         *string                     `json:"RpcPattern,omitempty" xml:"RpcPattern,omitempty"`
+	SecurityToken      *string                     `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                []*ModifyApiGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserLogConfig      *string                     `json:"UserLogConfig,omitempty" xml:"UserLogConfig,omitempty"`
 }
 
 func (s ModifyApiGroupRequest) String() string {
@@ -26181,9 +25030,7 @@ func (s *ModifyApiGroupRequest) SetUserLogConfig(v string) *ModifyApiGroupReques
 }
 
 type ModifyApiGroupRequestTag struct {
-	// The value of the tag.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the request.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26206,18 +25053,12 @@ func (s *ModifyApiGroupRequestTag) SetValue(v string) *ModifyApiGroupRequestTag 
 }
 
 type ModifyApiGroupResponseBody struct {
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// The second-level domain name automatically assigned to the API group.
+	BasePath    *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the group to which an API belongs.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The description of the API group.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The root path of the API.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// auditing
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubDomain   *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s ModifyApiGroupResponseBody) String() string {
@@ -26288,11 +25129,9 @@ func (s *ModifyApiGroupResponse) SetBody(v *ModifyApiGroupResponseBody) *ModifyA
 }
 
 type ModifyApiGroupVpcWhitelistRequest struct {
-	// The ID of the API group.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC instance.
-	VpcIds *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
+	VpcIds        *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
 }
 
 func (s ModifyApiGroupVpcWhitelistRequest) String() string {
@@ -26319,7 +25158,6 @@ func (s *ModifyApiGroupVpcWhitelistRequest) SetVpcIds(v string) *ModifyApiGroupV
 }
 
 type ModifyApiGroupVpcWhitelistResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26366,19 +25204,11 @@ func (s *ModifyApiGroupVpcWhitelistResponse) SetBody(v *ModifyApiGroupVpcWhiteli
 }
 
 type ModifyAppRequest struct {
-	// The ID of the app.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The value must be 4 to 26 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
-	//
-	// This parameter is required only when you want to modify the value.
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the app. The description can contain a maximum of 180 characters in length.
-	//
-	// This parameter is required only when you want to modify the value.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*ModifyAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	AppId         *int64                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName       *string                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string                `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*ModifyAppRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ModifyAppRequest) String() string {
@@ -26415,13 +25245,7 @@ func (s *ModifyAppRequest) SetTag(v []*ModifyAppRequestTag) *ModifyAppRequest {
 }
 
 type ModifyAppRequestTag struct {
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26444,7 +25268,6 @@ func (s *ModifyAppRequestTag) SetValue(v string) *ModifyAppRequestTag {
 }
 
 type ModifyAppResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26491,13 +25314,9 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 }
 
 type ModifyBackendRequest struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The name of the backend service.
-	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The description of the backend service.
+	BackendId     *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -26536,7 +25355,6 @@ func (s *ModifyBackendRequest) SetSecurityToken(v string) *ModifyBackendRequest 
 }
 
 type ModifyBackendResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26583,23 +25401,13 @@ func (s *ModifyBackendResponse) SetBody(v *ModifyBackendResponseBody) *ModifyBac
 }
 
 type ModifyBackendModelRequest struct {
-	// The ID of the backend service.
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The information about the backend model.
+	BackendId        *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	BackendModelData *string `json:"BackendModelData,omitempty" xml:"BackendModelData,omitempty"`
-	// The ID of the backend model.
-	BackendModelId *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
-	// The type of the backend service.
-	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	// The definition of the backend model.
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// *   **RELEASE**
-	// *   **PRE**
-	// *   **TEST**
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	BackendModelId   *string `json:"BackendModelId,omitempty" xml:"BackendModelId,omitempty"`
+	BackendType      *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s ModifyBackendModelRequest) String() string {
@@ -26646,10 +25454,8 @@ func (s *ModifyBackendModelRequest) SetStageName(v string) *ModifyBackendModelRe
 }
 
 type ModifyBackendModelResponseBody struct {
-	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyBackendModelResponseBody) String() string {
@@ -26700,9 +25506,7 @@ func (s *ModifyBackendModelResponse) SetBody(v *ModifyBackendModelResponseBody) 
 }
 
 type ModifyDatasetRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The name of the dataset.
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetName   *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -26731,7 +25535,6 @@ func (s *ModifyDatasetRequest) SetSecurityToken(v string) *ModifyDatasetRequest 
 }
 
 type ModifyDatasetResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26778,13 +25581,9 @@ func (s *ModifyDatasetResponse) SetBody(v *ModifyDatasetResponseBody) *ModifyDat
 }
 
 type ModifyDatasetItemRequest struct {
-	// The ID of the dataset.
-	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the data entry.
+	DatasetId     *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetItemId *string `json:"DatasetItemId,omitempty" xml:"DatasetItemId,omitempty"`
-	// The description of the data entry. The description cannot exceed 180 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time in UTC when the data entry expires. The time is in the **yyyy-MM-ddTHH:mm:ssZ** format.
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -26823,7 +25622,6 @@ func (s *ModifyDatasetItemRequest) SetSecurityToken(v string) *ModifyDatasetItem
 }
 
 type ModifyDatasetItemResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26870,28 +25668,12 @@ func (s *ModifyDatasetItemResponse) SetBody(v *ModifyDatasetItemResponseBody) *M
 }
 
 type ModifyInstanceSpecRequest struct {
-	// The password.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The specifications of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether payment is automatically made during renewal. Valid values:
-	//
-	// *   **True**: Automatic payment is enabled. Make sure that your Alibaba Cloud account has adequate balance.
-	// *   **False**: Automatic payment is disabled. You have to manually pay in the console. Log on to the console. In the upper-right corner, choose **Expenses > User Center**. In the left-side navigation pane, click **Orders**. On the page that appears, find your order and complete the payment.
-	//
-	// Default value: **False**.
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// Specifies whether to skip the Waiting for Traffic Switchover state. During the upgrade or downgrade, a new outbound IP address may be added to the API Gateway instance. The Waiting for Traffic Switchover state is used to remind users of adding the new outbound IP address to the whitelist. If you set the SkipWaitSwitch parameter to true, the instance does not enter the Waiting for Traffic Switchover state when a new outbound IP address is available. Instead, the system sends internal messages to the user.
-	ModifyAction *string `json:"ModifyAction,omitempty" xml:"ModifyAction,omitempty"`
-	// The ID of the request.
-	SkipWaitSwitch *bool `json:"SkipWaitSwitch,omitempty" xml:"SkipWaitSwitch,omitempty"`
-	// Specifies whether to upgrade or downgrade the instance. Valid values:
-	//
-	// *   **UPGRADE**
-	// *   **DOWNGRADE**
-	//
-	// Default value: **UPGRADE**.
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	ModifyAction   *string `json:"ModifyAction,omitempty" xml:"ModifyAction,omitempty"`
+	SkipWaitSwitch *bool   `json:"SkipWaitSwitch,omitempty" xml:"SkipWaitSwitch,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s ModifyInstanceSpecRequest) String() string {
@@ -26933,7 +25715,6 @@ func (s *ModifyInstanceSpecRequest) SetToken(v string) *ModifyInstanceSpecReques
 }
 
 type ModifyInstanceSpecResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26980,11 +25761,12 @@ func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) 
 }
 
 type ModifyIpControlRequest struct {
-	// The description. The description can be up to 200 characters in length.
+	// *   This operation is intended for API providers.
+	// *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ACL. The ID is unique.
+	// The description. The description can be up to 200 characters in length.
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\_). The name cannot start with an underscore (\_).
+	// The ID of the request.
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -27018,7 +25800,7 @@ func (s *ModifyIpControlRequest) SetSecurityToken(v string) *ModifyIpControlRequ
 }
 
 type ModifyIpControlResponseBody struct {
-	// The ID of the request.
+	// Modifies an access control list (ACL).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27065,6 +25847,12 @@ func (s *ModifyIpControlResponse) SetBody(v *ModifyIpControlResponseBody) *Modif
 }
 
 type ModifyIpControlPolicyItemRequest struct {
+	// The ID of the request.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// *   This operation is intended for API providers.
+	// *   The modification immediately takes effect on all the APIs that are bound to the policy.
+	// *   This operation causes a full modification of the content of a policy.
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
 	// The ID of the application that is restricted by the policy. You can configure the AppId parameter only when the value of the IpControlType parameter is ALLOW.
 	//
 	// *   You can add only one application ID at a time.
@@ -27072,12 +25860,8 @@ type ModifyIpControlPolicyItemRequest struct {
 	// *   If this parameter is not empty, not only IP addresses but also applications are restricted.
 	// *   If this parameter is not empty and no security authentication method is specified for the API, all API calls are restricted.
 	// *   If the value of the IpControlType parameter is REFUSE and the AppId parameter is not empty, API Gateway automatically ignores the AppId parameter and restricts only the IP addresses.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IP address or CIDR block that is defined in a policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can add a maximum of 10 IP addresses or CIDR blocks.
-	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The ID of the ACL. The ID is unique.
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The ID of the policy.
+	// The IP address or CIDR block that is defined in a policy. Separate multiple IP addresses or CIDR blocks with semicolons (;). You can add a maximum of 10 IP addresses or CIDR blocks.
 	PolicyItemId  *string `json:"PolicyItemId,omitempty" xml:"PolicyItemId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -27116,7 +25900,7 @@ func (s *ModifyIpControlPolicyItemRequest) SetSecurityToken(v string) *ModifyIpC
 }
 
 type ModifyIpControlPolicyItemResponseBody struct {
-	// The ID of the request.
+	// Modifies a policy in an access control list (ACL).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27163,13 +25947,10 @@ func (s *ModifyIpControlPolicyItemResponse) SetBody(v *ModifyIpControlPolicyItem
 }
 
 type ModifyLogConfigRequest struct {
-	// The log type. Valid values: **log** and **survey**.
 	LogType       *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the Logstore in Log Service.
-	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The name of the Log Service project.
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	SlsLogStore   *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
+	SlsProject    *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 }
 
 func (s ModifyLogConfigRequest) String() string {
@@ -27201,7 +25982,6 @@ func (s *ModifyLogConfigRequest) SetSlsProject(v string) *ModifyLogConfigRequest
 }
 
 type ModifyLogConfigResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27248,15 +26028,15 @@ func (s *ModifyLogConfigResponse) SetBody(v *ModifyLogConfigResponseBody) *Modif
 }
 
 type ModifyModelRequest struct {
-	// The description of the new model definition.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group to which the model belongs.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The new name of the model.
-	NewModelName *string `json:"NewModelName,omitempty" xml:"NewModelName,omitempty"`
 	// The new definition of the model.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new name of the model.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The description of the new model definition.
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The ID of the request.
+	NewModelName *string `json:"NewModelName,omitempty" xml:"NewModelName,omitempty"`
+	// The ID of the API group to which the model belongs.
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
@@ -27294,7 +26074,7 @@ func (s *ModifyModelRequest) SetSchema(v string) *ModifyModelRequest {
 }
 
 type ModifyModelResponseBody struct {
-	// The ID of the request.
+	// Updates the model of an API group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27341,17 +26121,12 @@ func (s *ModifyModelResponse) SetBody(v *ModifyModelResponseBody) *ModifyModelRe
 }
 
 type ModifyPluginRequest struct {
-	// The description of the plug-in. The description can contain a maximum of 200 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The statement that is used to modify the plug-in definition.
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The ID of the plug-in whose information you want to modify.
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The name of the plug-in. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). However, it cannot start with an underscore.
-	PluginName    *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The tag of objects that match the rule. You can specify multiple tags.
-	Tag []*ModifyPluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Description   *string                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	PluginData    *string                   `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginId      *string                   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName    *string                   `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag           []*ModifyPluginRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ModifyPluginRequest) String() string {
@@ -27393,13 +26168,7 @@ func (s *ModifyPluginRequest) SetTag(v []*ModifyPluginRequestTag) *ModifyPluginR
 }
 
 type ModifyPluginRequestTag struct {
-	// The key of the tag.
-	//
-	// N can be an integer from 1 to 20.``
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// N can be an integer from 1 to 20.``
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -27422,7 +26191,6 @@ func (s *ModifyPluginRequestTag) SetValue(v string) *ModifyPluginRequestTag {
 }
 
 type ModifyPluginResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27470,13 +26238,13 @@ func (s *ModifyPluginResponse) SetBody(v *ModifyPluginResponseBody) *ModifyPlugi
 
 type ModifySignatureRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the signature key that you want to manage.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// The new Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// The ID of the request.
 	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The new name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It must start with a letter.
-	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 	// The new Secret value of the key. The value must be 6 to 30 characters in length and can contain letters, digits, and special characters. Special characters include underscores (\_), at signs (@), number signs (#), exclamation points (!), and asterisks (\*). The value must start with a letter.
+	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
+	// The ID of the key.
 	SignatureSecret *string `json:"SignatureSecret,omitempty" xml:"SignatureSecret,omitempty"`
 }
 
@@ -27514,11 +26282,14 @@ func (s *ModifySignatureRequest) SetSignatureSecret(v string) *ModifySignatureRe
 }
 
 type ModifySignatureResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the key.
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// The name of the key.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// *   This API is intended for API providers.
+	// *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
+	// *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+	// *   The QPS limit on this operation is 50 per user.
+	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	// Modifies a backend signature key.
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 
@@ -27575,25 +26346,25 @@ func (s *ModifySignatureResponse) SetBody(v *ModifySignatureResponseBody) *Modif
 }
 
 type ModifyTrafficControlRequest struct {
-	// The default throttling value for each API.
-	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
 	// The default throttling value for each app.
+	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
+	// ThrottlingTestDescription
 	AppDefault *int32 `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
-	// The description of the throttling policy.
+	// The ID of the request.
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the throttling policy.
+	// ThrottlingTest
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// The throttling policy name. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\_). It cannot start with an underscore.
-	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	// The unit to be used in the throttling policy. Valid values:
 	//
 	// *   **SECOND**
 	// *   **MINUTE**
 	// *   **HOUR**
 	// *   **DAY**
-	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
+	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 	// The default throttling value for each user.
+	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
+	// The description of the throttling policy.
 	UserDefault *int32 `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
 }
 
@@ -27646,7 +26417,7 @@ func (s *ModifyTrafficControlRequest) SetUserDefault(v int32) *ModifyTrafficCont
 }
 
 type ModifyTrafficControlResponseBody struct {
-	// The ID of the request.
+	// Modifies the settings of a custom throttling policy.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27838,9 +26609,7 @@ func (s *ModifyVpcAccessAndUpdateApisResponse) SetBody(v *ModifyVpcAccessAndUpda
 }
 
 type OpenApiGatewayServiceResponseBody struct {
-	// The ID of the order.
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28297,9 +27066,12 @@ func (s *QueryRequestLogsResponse) SetBody(v *QueryRequestLogsResponseBody) *Que
 }
 
 type ReactivateDomainRequest struct {
-	// The ID of the request.
+	// *   This operation is intended for API providers.
+	// *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+	// *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+	// *   You can call this operation to reactivate the domain name to resume normal access.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
+	// The ID of the request.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -28328,10 +27100,7 @@ func (s *ReactivateDomainRequest) SetSecurityToken(v string) *ReactivateDomainRe
 }
 
 type ReactivateDomainResponseBody struct {
-	// *   This operation is intended for API providers.
-	// *   You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-	// *   A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
-	// *   You can call this operation to reactivate the domain name to resume normal access.
+	// Reactivates a custom domain name whose validity status is Abnormal.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28378,14 +27147,7 @@ func (s *ReactivateDomainResponse) SetBody(v *ReactivateDomainResponseBody) *Rea
 }
 
 type RemoveAccessControlListEntryRequest struct {
-	// Sets the access control list (ACL).
-	//
-	// *   entry: the IP addresses or CIDR blocks that you want to add to the ACL. Separate multiple IP addresses or CIDR blocks with commas (,).
-	// *   comment: the description of the ACL.
-	//
-	// > If the ACL is associated with a listener, you cannot remove all IP addresses from the ACL.
-	AclEntrys *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
-	// The ID of the access control policy.
+	AclEntrys     *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
 	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -28414,7 +27176,6 @@ func (s *RemoveAccessControlListEntryRequest) SetSecurityToken(v string) *Remove
 }
 
 type RemoveAccessControlListEntryResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28461,19 +27222,19 @@ func (s *RemoveAccessControlListEntryResponse) SetBody(v *RemoveAccessControlLis
 }
 
 type RemoveApisAuthoritiesRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// Queries weather based on the region name
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the app. The ID is generated by the system and globally unique.
+	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The description of the authorization.
+	// The ID of the request.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The description of the authorization.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -28516,7 +27277,7 @@ func (s *RemoveApisAuthoritiesRequest) SetStageName(v string) *RemoveApisAuthori
 }
 
 type RemoveApisAuthoritiesResponseBody struct {
-	// The ID of the request.
+	// Revokes the access permissions on multiple APIs from a specified app.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28563,17 +27324,18 @@ func (s *RemoveApisAuthoritiesResponse) SetBody(v *RemoveApisAuthoritiesResponse
 }
 
 type RemoveAppsAuthoritiesRequest struct {
-	// The ID of the API. This ID is generated by the system and globally unique.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The IDs of applications. Separate multiple application IDs with commas (,). A maximum of 100 applications IDs can be entered.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// *   This operation is intended for API providers and callers.
+	// *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The ID of the request.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -28611,7 +27373,7 @@ func (s *RemoveAppsAuthoritiesRequest) SetStageName(v string) *RemoveAppsAuthori
 }
 
 type RemoveAppsAuthoritiesResponseBody struct {
-	// The ID of the request.
+	// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28658,20 +27420,21 @@ func (s *RemoveAppsAuthoritiesResponse) SetBody(v *RemoveAppsAuthoritiesResponse
 }
 
 type RemoveIpControlApisRequest struct {
-	// The ID of the API to be managed.
-	//
-	// *   If this parameter is not specified, all APIs of the API group are unbound in the specified environment by default.
-	// *   The IDs of the APIs that you want to query. Separate multiple IDs with commas (,). A maximum of 100 IDs can be entered.
+	// The ID of the request.
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group containing the API to be managed.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the ACL.
-	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the API to be managed.
+	//
+	// *   If this parameter is not specified, all APIs of the API group are unbound in the specified environment by default.
+	// *   The IDs of the APIs that you want to query. Separate multiple IDs with commas (,). A maximum of 100 IDs can be entered.
+	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// *   This API is intended for API providers.
+	// *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -28709,7 +27472,7 @@ func (s *RemoveIpControlApisRequest) SetStageName(v string) *RemoveIpControlApis
 }
 
 type RemoveIpControlApisResponseBody struct {
-	// The ID of the request.
+	// Unbinds an API from an access control list (ACL).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28756,9 +27519,9 @@ func (s *RemoveIpControlApisResponse) SetBody(v *RemoveIpControlApisResponseBody
 }
 
 type RemoveIpControlPolicyItemRequest struct {
-	// The ID of the ACL. The ID is unique.
+	// The ID of the request.
 	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The ID of a policy. Separate multiple IDs with semicolons (;). A maximum of 100 IDs can be entered.
+	// *   This operation is intended for API providers.
 	PolicyItemIds *string `json:"PolicyItemIds,omitempty" xml:"PolicyItemIds,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -28787,7 +27550,7 @@ func (s *RemoveIpControlPolicyItemRequest) SetSecurityToken(v string) *RemoveIpC
 }
 
 type RemoveIpControlPolicyItemResponseBody struct {
-	// The ID of the request.
+	// Removes one or more policies from an access control list (ACL).
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28834,20 +27597,21 @@ func (s *RemoveIpControlPolicyItemResponse) SetBody(v *RemoveIpControlPolicyItem
 }
 
 type RemoveSignatureApisRequest struct {
+	// The ID of the request.
+	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The IDs of the APIs from which you want to unbind the signature key.
 	//
 	// *   If this parameter is not specified, the signature key is unbound from all the APIs in the specified environment of the API group.
 	// *   The IDs of the APIs that you want to manage. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API group to which the API that you want to manage belongs.
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The ID of the request.
+	// *   This API is intended for API providers.
+	// *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -28885,8 +27649,7 @@ func (s *RemoveSignatureApisRequest) SetStageName(v string) *RemoveSignatureApis
 }
 
 type RemoveSignatureApisResponseBody struct {
-	// *   This API is intended for API providers.
-	// *   The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+	// Unbinds a backend signature key from APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28933,20 +27696,21 @@ func (s *RemoveSignatureApisResponse) SetBody(v *RemoveSignatureApisResponseBody
 }
 
 type RemoveTrafficControlApisRequest struct {
-	// The IDs of the APIs from which you want to unbind a specified throttling policy.
-	//
-	// *   If this parameter is not specified, the throttling policy is unbound from all the APIs in the specified environment of the API group.
-	// *   Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The ID of the request.
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group containing the APIs from which you want to unbind a specified throttling policy.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// *   This API is intended for API providers.
+	// *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The ID of the throttling policy that you want to unbind from APIs.
+	// The IDs of the APIs from which you want to unbind a specified throttling policy.
+	//
+	// *   If this parameter is not specified, the throttling policy is unbound from all the APIs in the specified environment of the API group.
+	// *   Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -28984,7 +27748,7 @@ func (s *RemoveTrafficControlApisRequest) SetTrafficControlId(v string) *RemoveT
 }
 
 type RemoveTrafficControlApisResponseBody struct {
-	// The ID of the request.
+	// Unbinds a specified throttling policy from APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29031,15 +27795,11 @@ func (s *RemoveTrafficControlApisResponse) SetBody(v *RemoveTrafficControlApisRe
 }
 
 type RemoveVpcAccessRequest struct {
-	// The ID of an ECS or SLB instance in the VPC.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether batch work is required.
-	NeedBatchWork *bool `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
-	// The port number that corresponds to the instance.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NeedBatchWork *bool   `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
 	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RemoveVpcAccessRequest) String() string {
@@ -29076,10 +27836,8 @@ func (s *RemoveVpcAccessRequest) SetVpcId(v string) *RemoveVpcAccessRequest {
 }
 
 type RemoveVpcAccessResponseBody struct {
-	// API operations
-	Apis *RemoveVpcAccessResponseBodyApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Apis      *RemoveVpcAccessResponseBodyApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveVpcAccessResponseBody) String() string {
@@ -29119,10 +27877,8 @@ func (s *RemoveVpcAccessResponseBodyApis) SetApi(v []*RemoveVpcAccessResponseBod
 
 type RemoveVpcAccessResponseBodyApisApi struct {
 	// API Id
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API group.
+	ApiId   *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the runtime environment.
 	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
 }
 
@@ -29179,15 +27935,11 @@ func (s *RemoveVpcAccessResponse) SetBody(v *RemoveVpcAccessResponseBody) *Remov
 }
 
 type RemoveVpcAccessAndAbolishApisRequest struct {
-	// The ID of the ECS or SLB instance in the VPC.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether batch work is required.
-	NeedBatchWork *bool `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
-	// The service port.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NeedBatchWork *bool   `json:"NeedBatchWork,omitempty" xml:"NeedBatchWork,omitempty"`
 	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC to be operated.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s RemoveVpcAccessAndAbolishApisRequest) String() string {
@@ -29224,10 +27976,8 @@ func (s *RemoveVpcAccessAndAbolishApisRequest) SetVpcId(v string) *RemoveVpcAcce
 }
 
 type RemoveVpcAccessAndAbolishApisResponseBody struct {
-	// The ID of the operation.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveVpcAccessAndAbolishApisResponseBody) String() string {
@@ -29309,7 +28059,7 @@ func (s *ResetAppCodeRequest) SetSecurityToken(v string) *ResetAppCodeRequest {
 }
 
 type ResetAppCodeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29357,7 +28107,8 @@ func (s *ResetAppCodeResponse) SetBody(v *ResetAppCodeResponseBody) *ResetAppCod
 
 type ResetAppSecretRequest struct {
 	// The key of the application that is used to make an API call.
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	NewAppKey *string `json:"NewAppKey,omitempty" xml:"NewAppKey,omitempty"`
 	// The new key of the application. To improve compatibility, we recommend that you use other parameters.
 	NewAppSecret  *string `json:"NewAppSecret,omitempty" xml:"NewAppSecret,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -29373,6 +28124,11 @@ func (s ResetAppSecretRequest) GoString() string {
 
 func (s *ResetAppSecretRequest) SetAppKey(v string) *ResetAppSecretRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ResetAppSecretRequest) SetNewAppKey(v string) *ResetAppSecretRequest {
+	s.NewAppKey = &v
 	return s
 }
 
@@ -29434,9 +28190,7 @@ func (s *ResetAppSecretResponse) SetBody(v *ResetAppSecretResponseBody) *ResetAp
 }
 
 type SdkGenerateByAppRequest struct {
-	// The ID of the app. This ID is unique.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The programming language in which the SDK is generated.
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -29465,10 +28219,8 @@ func (s *SdkGenerateByAppRequest) SetSecurityToken(v string) *SdkGenerateByAppRe
 }
 
 type SdkGenerateByAppResponseBody struct {
-	// The code of the SDK by using the Base64 scheme. You can obtain the file by using the Base64 decoding scheme.
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SdkGenerateByAppResponseBody) String() string {
@@ -29519,9 +28271,7 @@ func (s *SdkGenerateByAppResponse) SetBody(v *SdkGenerateByAppResponseBody) *Sdk
 }
 
 type SdkGenerateByAppForRegionRequest struct {
-	// The ID of the app. This ID is generated by the system and globally unique.
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The programming language in which the SDK is generated.
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -29550,10 +28300,8 @@ func (s *SdkGenerateByAppForRegionRequest) SetSecurityToken(v string) *SdkGenera
 }
 
 type SdkGenerateByAppForRegionResponseBody struct {
-	// The code of the SDK by using the Base64 scheme. You can obtain the file by using the Base64 decoding scheme.
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SdkGenerateByAppForRegionResponseBody) String() string {
@@ -29604,9 +28352,7 @@ func (s *SdkGenerateByAppForRegionResponse) SetBody(v *SdkGenerateByAppForRegion
 }
 
 type SdkGenerateByGroupRequest struct {
-	// The ID of the API group. This ID is generated by the system and is globally unique.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The language in which the result is returned. Valid values: **zh-cn** (Chinese) and **en-us** (English). The default value is zh-cn.
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -29635,10 +28381,8 @@ func (s *SdkGenerateByGroupRequest) SetSecurityToken(v string) *SdkGenerateByGro
 }
 
 type SdkGenerateByGroupResponseBody struct {
-	// The download link of the SDK.
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SdkGenerateByGroupResponseBody) String() string {
@@ -29689,9 +28433,7 @@ func (s *SdkGenerateByGroupResponse) SetBody(v *SdkGenerateByGroupResponseBody) 
 }
 
 type SetAccessControlListAttributeRequest struct {
-	// The ID of the ACL.
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the ACL.
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -29720,7 +28462,6 @@ func (s *SetAccessControlListAttributeRequest) SetSecurityToken(v string) *SetAc
 }
 
 type SetAccessControlListAttributeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29767,21 +28508,23 @@ func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListA
 }
 
 type SetApisAuthoritiesRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// Queries weather based on the region name
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the app. This ID is generated by the system and globally unique.
+	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
+	// *   This operation is intended for API providers and callers.
+	// *   API providers can authorize any apps to call their APIs.
+	// *   API callers can authorize their own apps to call the APIs that they have purchased.
 	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
-	// The description of the authorization.
+	// The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The description of the authorization.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -29829,7 +28572,7 @@ func (s *SetApisAuthoritiesRequest) SetStageName(v string) *SetApisAuthoritiesRe
 }
 
 type SetApisAuthoritiesResponseBody struct {
-	// The ID of the request.
+	// Authorizes a specified app to call multiple APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29876,21 +28619,23 @@ func (s *SetApisAuthoritiesResponse) SetBody(v *SetApisAuthoritiesResponseBody) 
 }
 
 type SetAppsAuthoritiesRequest struct {
-	// The ID of the API. This ID is generated by the system and globally unique.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// Queries weather based on the region name
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
+	// *   This operation is intended for API providers and callers.
+	// *   API providers can authorize any apps to call their APIs.
+	// *   API callers can authorize their own apps to call the APIs that they have purchased.
 	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
-	// The description of the authorization.
+	// The time (UTC) when the authorization expires. If this parameter is empty, the authorization does not expire.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group. This ID is generated by the system and globally unique.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The description of the authorization.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -29938,7 +28683,7 @@ func (s *SetAppsAuthoritiesRequest) SetStageName(v string) *SetAppsAuthoritiesRe
 }
 
 type SetAppsAuthoritiesResponseBody struct {
-	// The ID of the request.
+	// Grants access permissions on a specified API to multiple apps.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29985,29 +28730,12 @@ func (s *SetAppsAuthoritiesResponse) SetBody(v *SetAppsAuthoritiesResponseBody) 
 }
 
 type SetDomainRequest struct {
-	// The network type of the domain name to be bound. Default value: INTERNET. Valid values:
-	//
-	// *   INTERNET
-	// *   INTRANET. If you set this parameter to this value, the domain name cannot be used on the Internet.
-	BindStageName *string `json:"BindStageName,omitempty" xml:"BindStageName,omitempty"`
-	// Specifies whether this binding relationship takes precedence over the binding relationships between the domain name and other API groups. If you set this parameter to true, this binding relationship takes precedence, and the domain name is automatically unbound from other API groups. This operation brings risks. Proceed with caution.
-	CustomDomainType *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
-	// The environment which you can access by using the domain name. If you do not specify this parameter, the domain name can be used to access all environments.
-	//
-	// If you specify an environment, the domain name can be used to access only the specified environment. Valid values:
-	//
-	// *   TEST
-	// *   PRE
-	// *   RELEASE
-	//
-	// If you want to use the domain name to access all environments, set this parameter to an empty string ("").
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Specifies whether to redirect HTTP requests to HTTPS requests.
-	IsForce *bool `json:"IsForce,omitempty" xml:"IsForce,omitempty"`
-	// The ID of the request.
-	IsHttpRedirectToHttps *bool `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
+	BindStageName         *string `json:"BindStageName,omitempty" xml:"BindStageName,omitempty"`
+	CustomDomainType      *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsForce               *bool   `json:"IsForce,omitempty" xml:"IsForce,omitempty"`
+	IsHttpRedirectToHttps *bool   `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
 }
 
 func (s SetDomainRequest) String() string {
@@ -30049,28 +28777,14 @@ func (s *SetDomainRequest) SetIsHttpRedirectToHttps(v bool) *SetDomainRequest {
 }
 
 type SetDomainResponseBody struct {
-	// The remarks on the domain name, such as the cause of an exception.
-	DomainBindingStatus *string `json:"DomainBindingStatus,omitempty" xml:"DomainBindingStatus,omitempty"`
-	// The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
-	DomainLegalStatus *string `json:"DomainLegalStatus,omitempty" xml:"DomainLegalStatus,omitempty"`
-	// The binding status of the custom domain name. Valid values:
-	//
-	// *   **BINDING: The domain name has been bound.**
-	// *   **BOUND: The domain name has not been bound.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// None
-	DomainRemark *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
-	// auditing
+	DomainBindingStatus   *string `json:"DomainBindingStatus,omitempty" xml:"DomainBindingStatus,omitempty"`
+	DomainLegalStatus     *string `json:"DomainLegalStatus,omitempty" xml:"DomainLegalStatus,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainRemark          *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
 	DomainWebSocketStatus *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
-	// The second-level domain name bound to the API group. This domain name is used to test API calls.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The validity status of the domain name. Valid values:
-	//
-	// *   **NORMAL**: The domain name is valid.
-	// *   **ABNORMAL**: The domain name is invalid. This status affects API calls and must be resolved as soon as possible.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The custom domain name.
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubDomain             *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s SetDomainResponseBody) String() string {
@@ -30151,21 +28865,14 @@ func (s *SetDomainResponse) SetBody(v *SetDomainResponseBody) *SetDomainResponse
 }
 
 type SetDomainCertificateRequest struct {
-	// Content of the CA certificate
-	CaCertificateBody *string `json:"CaCertificateBody,omitempty" xml:"CaCertificateBody,omitempty"`
-	// For more information, see the following request examples
-	CertificateBody *string `json:"CertificateBody,omitempty" xml:"CertificateBody,omitempty"`
-	// The content of the certificate.
-	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// For more information, see the following request examples
+	CaCertificateBody     *string `json:"CaCertificateBody,omitempty" xml:"CaCertificateBody,omitempty"`
+	CertificateBody       *string `json:"CertificateBody,omitempty" xml:"CertificateBody,omitempty"`
+	CertificateName       *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" xml:"CertificatePrivateKey,omitempty"`
-	// The name of the SSL certificate.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
-	SslVerifyDepth *string `json:"SslVerifyDepth,omitempty" xml:"SslVerifyDepth,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SslVerifyDepth        *string `json:"SslVerifyDepth,omitempty" xml:"SslVerifyDepth,omitempty"`
 }
 
 func (s SetDomainCertificateRequest) String() string {
@@ -30217,7 +28924,6 @@ func (s *SetDomainCertificateRequest) SetSslVerifyDepth(v string) *SetDomainCert
 }
 
 type SetDomainCertificateResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30264,11 +28970,8 @@ func (s *SetDomainCertificateResponse) SetBody(v *SetDomainCertificateResponseBo
 }
 
 type SetDomainWebSocketStatusRequest struct {
-	// The ID of the request.
-	ActionValue *string `json:"ActionValue,omitempty" xml:"ActionValue,omitempty"`
-	// The action.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
+	ActionValue   *string `json:"ActionValue,omitempty" xml:"ActionValue,omitempty"`
+	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	WSSEnable     *string `json:"WSSEnable,omitempty" xml:"WSSEnable,omitempty"`
@@ -30308,7 +29011,6 @@ func (s *SetDomainWebSocketStatusRequest) SetWSSEnable(v string) *SetDomainWebSo
 }
 
 type SetDomainWebSocketStatusResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30430,18 +29132,19 @@ func (s *SetGroupAuthAppCodeResponse) SetBody(v *SetGroupAuthAppCodeResponseBody
 }
 
 type SetIpControlApisRequest struct {
-	// The API IDs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The ID of the request.
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the ACL.
-	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **PRE**
 	// *   **TEST**
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The API IDs. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// *   This operation is intended for API callers.
+	// *   A maximum of 100 APIs can be bound at a time.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -30479,7 +29182,7 @@ func (s *SetIpControlApisRequest) SetStageName(v string) *SetIpControlApisReques
 }
 
 type SetIpControlApisResponseBody struct {
-	// The ID of the request.
+	// Creates a binding relationship between specified access control lists (ACLs) and APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30526,18 +29229,19 @@ func (s *SetIpControlApisResponse) SetBody(v *SetIpControlApisResponseBody) *Set
 }
 
 type SetSignatureApisRequest struct {
+	// The ID of the request.
+	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **PRE**
 	// *   **TEST**
-	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the API group to which the API that you want to manage belongs.
+	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The ID of the request.
+	// *   This API is intended for API providers.
+	// *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -30575,8 +29279,7 @@ func (s *SetSignatureApisRequest) SetStageName(v string) *SetSignatureApisReques
 }
 
 type SetSignatureApisResponseBody struct {
-	// *   This API is intended for API providers.
-	// *   This operation allows you to bind a signature key to an API. You can bind signature keys for up to 100 APIs at a time.
+	// Binds a signature key to APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30623,17 +29326,18 @@ func (s *SetSignatureApisResponse) SetBody(v *SetSignatureApisResponseBody) *Set
 }
 
 type SetTrafficControlApisRequest struct {
-	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
+	// The ID of the request.
 	ApiIds *string `json:"ApiIds,omitempty" xml:"ApiIds,omitempty"`
-	// The ID of the API group containing the APIs to which you want to bind a specified throttling policy.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// *   This API is intended for API providers.
+	// *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The ID of the throttling policy.
+	// The API ID for the specified operation. Separate multiple API IDs with commas (,). A maximum of 100 API IDs can be entered.
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 }
 
@@ -30671,7 +29375,7 @@ func (s *SetTrafficControlApisRequest) SetTrafficControlId(v string) *SetTraffic
 }
 
 type SetTrafficControlApisResponseBody struct {
-	// The ID of the request.
+	// Binds a throttling policy to APIs.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30718,18 +29422,12 @@ func (s *SetTrafficControlApisResponse) SetBody(v *SetTrafficControlApisResponse
 }
 
 type SetVpcAccessRequest struct {
-	// The description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of an ECS or SLB instance in the VPC.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The unique custom name for authorization.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port number that corresponds to the instance.
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The host of the backend service.
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
@@ -30777,7 +29475,6 @@ func (s *SetVpcAccessRequest) SetVpcTargetHostName(v string) *SetVpcAccessReques
 }
 
 type SetVpcAccessResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30824,12 +29521,9 @@ func (s *SetVpcAccessResponse) SetBody(v *SetVpcAccessResponseBody) *SetVpcAcces
 }
 
 type SetWildcardDomainPatternsRequest struct {
-	// The wildcard domain name mode.
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom domain name.
-	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the request.
+	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	SecurityToken          *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
 }
 
@@ -30862,7 +29556,6 @@ func (s *SetWildcardDomainPatternsRequest) SetWildcardDomainPatterns(v string) *
 }
 
 type SetWildcardDomainPatternsResponseBody struct {
-	// auditing
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30909,19 +29602,23 @@ func (s *SetWildcardDomainPatternsResponse) SetBody(v *SetWildcardDomainPatterns
 }
 
 type SwitchApiRequest struct {
-	// The ID of the API.
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The description of the switch operation.
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The ID of the request.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The historical version you want to switch to.
-	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
-	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//
 	// *   **RELEASE**
 	// *   **TEST**
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// *   This API is intended for API providers.
+	// *   The historical version can be obtained through the DescribeHistoryApis API.****
+	// *   Only APIs that have been published more than once have historical versions to switch to.
+	// *   This operation can only be performed on running APIs. Use caution when performing this operation because the operation cannot be undone after it has been completed and takes effect within 5 seconds.
+	// *   The switch operation is in essence a publish operation, and the reason for this operation must be provided.
+	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
+	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The historical version you want to switch to.
 	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
@@ -30964,7 +29661,7 @@ func (s *SwitchApiRequest) SetStageName(v string) *SwitchApiRequest {
 }
 
 type SwitchApiResponseBody struct {
-	// The ID of the request.
+	// Switches the definition of an API in a specified runtime environment to a historical version.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31012,11 +29709,7 @@ func (s *SwitchApiResponse) SetBody(v *SwitchApiResponseBody) *SwitchApiResponse
 
 type TagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Tags are bound to API groups, plug-ins, and applications. You can use tags to manage cloud resources by group. Valid values:
-	//
-	// *   **apiGroup**
-	// *   **plugin**
-	// *   **app**
+	// The operation that you want to perform. Set the value to **TagResources**.
 	ResourceType  *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	Tag           []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -31051,13 +29744,9 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N.
-	//
-	// Valid values of N: `1 to 20.`
+	// Adds tags to resources.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
-	//
-	// Valid values of N: `1 to 20.`
+	// TagResources
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -31080,7 +29769,6 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31127,17 +29815,12 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to delete all tags. This parameter is valid only when the **TagKey.N**parameter is not specified. Default value: false. Valid values:
-	//
-	// *   **true**
-	// *   **false**
+	// The ID of the request.
 	All        *bool     `json:"All,omitempty" xml:"All,omitempty"`
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Tags are bound to API groups, plug-ins, and applications. You can use tags to manage cloud resources by group. Valid values:
+	// The key of tag N.
 	//
-	// *   **apiGroup**
-	// *   **plugin**
-	// *   **app**
+	// Valid values of N: `1 to 20.`
 	ResourceType  *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TagKey        []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -31177,7 +29860,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The ID of the request.
+	// UntagResources
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31219,6 +29902,93 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ValidateVpcConnectivityRequest struct {
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcAccessId   *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+}
+
+func (s ValidateVpcConnectivityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateVpcConnectivityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateVpcConnectivityRequest) SetInstanceId(v string) *ValidateVpcConnectivityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ValidateVpcConnectivityRequest) SetSecurityToken(v string) *ValidateVpcConnectivityRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ValidateVpcConnectivityRequest) SetVpcAccessId(v string) *ValidateVpcConnectivityRequest {
+	s.VpcAccessId = &v
+	return s
+}
+
+type ValidateVpcConnectivityResponseBody struct {
+	Connected *bool   `json:"Connected,omitempty" xml:"Connected,omitempty"`
+	IpType    *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ValidateVpcConnectivityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateVpcConnectivityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateVpcConnectivityResponseBody) SetConnected(v bool) *ValidateVpcConnectivityResponseBody {
+	s.Connected = &v
+	return s
+}
+
+func (s *ValidateVpcConnectivityResponseBody) SetIpType(v string) *ValidateVpcConnectivityResponseBody {
+	s.IpType = &v
+	return s
+}
+
+func (s *ValidateVpcConnectivityResponseBody) SetRequestId(v string) *ValidateVpcConnectivityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ValidateVpcConnectivityResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateVpcConnectivityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ValidateVpcConnectivityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateVpcConnectivityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateVpcConnectivityResponse) SetHeaders(v map[string]*string) *ValidateVpcConnectivityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidateVpcConnectivityResponse) SetStatusCode(v int32) *ValidateVpcConnectivityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidateVpcConnectivityResponse) SetBody(v *ValidateVpcConnectivityResponseBody) *ValidateVpcConnectivityResponse {
 	s.Body = v
 	return s
 }
@@ -31296,13 +30066,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * Unpublishes a specified API from a specified runtime environment.
- *
- * @param request AbolishApiRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AbolishApiResponse
- */
 func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime *util.RuntimeOptions) (_result *AbolishApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31348,12 +30111,6 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 	return _result, _err
 }
 
-/**
- * Unpublishes a specified API from a specified runtime environment.
- *
- * @param request AbolishApiRequest
- * @return AbolishApiResponse
- */
 func (client *Client) AbolishApi(request *AbolishApiRequest) (_result *AbolishApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AbolishApiResponse{}
@@ -31418,10 +30175,12 @@ func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEnt
 }
 
 /**
- * When you call this operation, note that:
- * *   This operation is intended for API providers.
- * *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
- * *   A maximum of 100 policies can be added to an ACL.
+ * The restriction policy on app IDs for a specific policy. You can restrict app IDs only for whitelists. The IpControlType values of whitelists are ALLOW.
+ * *   You can add only one app ID restriction policy at a time.
+ * *   If this parameter is empty, no restriction is imposed on the app IDs.
+ * *   If this parameter is not empty, there is restriction not only on IP addresses, but also on apps.
+ * *   Please note that if this parameter is not empty and the security authentication method of the API is No Authentication, all API calls are restricted.
+ * *   If this parameter is not empty for a blacklist, API Gateway automatically skips this parameter and sets only restriction on IP addresses. The IpControlType value of a blacklist is REFUSE.
  *
  * @param request AddIpControlPolicyItemRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31473,10 +30232,12 @@ func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPol
 }
 
 /**
- * When you call this operation, note that:
- * *   This operation is intended for API providers.
- * *   An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
- * *   A maximum of 100 policies can be added to an ACL.
+ * The restriction policy on app IDs for a specific policy. You can restrict app IDs only for whitelists. The IpControlType values of whitelists are ALLOW.
+ * *   You can add only one app ID restriction policy at a time.
+ * *   If this parameter is empty, no restriction is imposed on the app IDs.
+ * *   If this parameter is not empty, there is restriction not only on IP addresses, but also on apps.
+ * *   Please note that if this parameter is not empty and the security authentication method of the API is No Authentication, all API calls are restricted.
+ * *   If this parameter is not empty for a blacklist, API Gateway automatically skips this parameter and sets only restriction on IP addresses. The IpControlType value of a blacklist is REFUSE.
  *
  * @param request AddIpControlPolicyItemRequest
  * @return AddIpControlPolicyItemResponse
@@ -31493,9 +30254,9 @@ func (client *Client) AddIpControlPolicyItem(request *AddIpControlPolicyItemRequ
 }
 
 /**
- * *   This API is intended for API providers.
- * *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
- * *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+ * The type of the special throttling policy. Valid values:
+ * *   **APP**
+ * *   **USER**
  *
  * @param request AddTrafficSpecialControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31551,9 +30312,9 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 }
 
 /**
- * *   This API is intended for API providers.
- * *   If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
- * *   Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+ * The type of the special throttling policy. Valid values:
+ * *   **APP**
+ * *   **USER**
  *
  * @param request AddTrafficSpecialControlRequest
  * @return AddTrafficSpecialControlResponse
@@ -31569,16 +30330,6 @@ func (client *Client) AddTrafficSpecialControl(request *AddTrafficSpecialControl
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You can only bind plug-ins to published APIs.
- * *   The plug-in takes effect immediately after it is bound to an API.
- * *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
- *
- * @param request AttachPluginRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachPluginResponse
- */
 func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runtime *util.RuntimeOptions) (_result *AttachPluginResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31632,15 +30383,6 @@ func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runt
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You can only bind plug-ins to published APIs.
- * *   The plug-in takes effect immediately after it is bound to an API.
- * *   If you bind a different plug-in to an API, this plug-in takes effect immediately.
- *
- * @param request AttachPluginRequest
- * @return AttachPluginResponse
- */
 func (client *Client) AttachPlugin(request *AttachPluginRequest) (_result *AttachPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachPluginResponse{}
@@ -31975,19 +30717,6 @@ func (client *Client) CreateApi(request *CreateApiRequest) (_result *CreateApiRe
 	return _result, _err
 }
 
-/**
- * You can call this operation to create an API group. You must create an API group before you create an API. An API group is a basic attribute of an API.
- * *   This operation is intended for API providers.
- * *   Each user can create a maximum of 100 API groups in a region.
- * *   A second-level domain name is automatically allocated to the API group for testing purposes.
- * *   An API group has a region attribute. After you create an API and select a group for the API, the region is also selected. We recommend that you select the same region to which your backend services belong to reduce network latency.
- * *   After you create an API group, you can bind a custom domain name to the group.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request CreateApiGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateApiGroupResponse
- */
 func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, runtime *util.RuntimeOptions) (_result *CreateApiGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32041,18 +30770,6 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 	return _result, _err
 }
 
-/**
- * You can call this operation to create an API group. You must create an API group before you create an API. An API group is a basic attribute of an API.
- * *   This operation is intended for API providers.
- * *   Each user can create a maximum of 100 API groups in a region.
- * *   A second-level domain name is automatically allocated to the API group for testing purposes.
- * *   An API group has a region attribute. After you create an API and select a group for the API, the region is also selected. We recommend that you select the same region to which your backend services belong to reduce network latency.
- * *   After you create an API group, you can bind a custom domain name to the group.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request CreateApiGroupRequest
- * @return CreateApiGroupResponse
- */
 func (client *Client) CreateApiGroup(request *CreateApiGroupRequest) (_result *CreateApiGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApiGroupResponse{}
@@ -32064,13 +30781,6 @@ func (client *Client) CreateApiGroup(request *CreateApiGroupRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- *
- * @param request CreateApiStageVariableRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateApiStageVariableResponse
- */
 func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageVariableRequest, runtime *util.RuntimeOptions) (_result *CreateApiStageVariableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32128,12 +30838,6 @@ func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageV
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- *
- * @param request CreateApiStageVariableRequest
- * @return CreateApiStageVariableResponse
- */
 func (client *Client) CreateApiStageVariable(request *CreateApiStageVariableRequest) (_result *CreateApiStageVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApiStageVariableResponse{}
@@ -32145,18 +30849,6 @@ func (client *Client) CreateApiStageVariable(request *CreateApiStageVariableRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   Each application has a key-secret pair which is used for identity verification when calling an API.
- * *   An application must be authorized to call an API.
- * *   Each application has only one key-secret pair which can be reset if it is leaked.
- * *   A maximum of 1,000 applications can be created for each Apsara Stack tenant account.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request CreateAppRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAppResponse
- */
 func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32214,17 +30906,6 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   Each application has a key-secret pair which is used for identity verification when calling an API.
- * *   An application must be authorized to call an API.
- * *   Each application has only one key-secret pair which can be reset if it is leaked.
- * *   A maximum of 1,000 applications can be created for each Apsara Stack tenant account.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request CreateAppRequest
- * @return CreateAppResponse
- */
 func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppResponse{}
@@ -32616,16 +31297,6 @@ func (client *Client) CreateIntranetDomain(request *CreateIntranetDomainRequest)
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
- * *   You can add policies to an ACL when you create the ACL.
- * *   If an ACL does not have any policy, the ACL is ineffective.
- *
- * @param request CreateIpControlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateIpControlResponse
- */
 func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest, runtime *util.RuntimeOptions) (_result *CreateIpControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32675,15 +31346,6 @@ func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
- * *   You can add policies to an ACL when you create the ACL.
- * *   If an ACL does not have any policy, the ACL is ineffective.
- *
- * @param request CreateIpControlRequest
- * @return CreateIpControlResponse
- */
 func (client *Client) CreateIpControl(request *CreateIpControlRequest) (_result *CreateIpControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateIpControlResponse{}
@@ -32878,16 +31540,6 @@ func (client *Client) CreateMonitorGroup(request *CreateMonitorGroupRequest) (_r
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
- * *   The plug-in definitions for advanced features are restricted.
- * *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
- *
- * @param request CreatePluginRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreatePluginResponse
- */
 func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runtime *util.RuntimeOptions) (_result *CreatePluginResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32941,15 +31593,6 @@ func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runt
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
- * *   The plug-in definitions for advanced features are restricted.
- * *   Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
- *
- * @param request CreatePluginRequest
- * @return CreatePluginResponse
- */
 func (client *Client) CreatePlugin(request *CreatePluginRequest) (_result *CreatePluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePluginResponse{}
@@ -32962,10 +31605,7 @@ func (client *Client) CreatePlugin(request *CreatePluginRequest) (_result *Creat
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
- * *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
- * *   The QPS limit on this operation is 50 per user.
+ * The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\\_). It must start with a letter.
  *
  * @param request CreateSignatureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33017,10 +31657,7 @@ func (client *Client) CreateSignatureWithOptions(request *CreateSignatureRequest
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
- * *   After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
- * *   The QPS limit on this operation is 50 per user.
+ * The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (\\_). It must start with a letter.
  *
  * @param request CreateSignatureRequest
  * @return CreateSignatureResponse
@@ -33037,9 +31674,7 @@ func (client *Client) CreateSignature(request *CreateSignatureRequest) (_result 
 }
 
 /**
- * *   This API is intended for API providers.
- * *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
- * *   The QPS limit on this operation is 50 per user.
+ * ThrottlingTest
  *
  * @param request CreateTrafficControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33103,9 +31738,7 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 }
 
 /**
- * *   This API is intended for API providers.
- * *   Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
- * *   The QPS limit on this operation is 50 per user.
+ * ThrottlingTest
  *
  * @param request CreateTrafficControlRequest
  * @return CreateTrafficControlResponse
@@ -33170,7 +31803,7 @@ func (client *Client) DeleteAccessControlList(request *DeleteAccessControlListRe
 }
 
 /**
- * *   This API is intended for API providers.
+ * The ID of the request.
  *
  * @param request DeleteAllTrafficSpecialControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33214,7 +31847,7 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 }
 
 /**
- * *   This API is intended for API providers.
+ * The ID of the request.
  *
  * @param request DeleteAllTrafficSpecialControlRequest
  * @return DeleteAllTrafficSpecialControlResponse
@@ -33230,15 +31863,6 @@ func (client *Client) DeleteAllTrafficSpecialControl(request *DeleteAllTrafficSp
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers and cannot be undone after it is complete.
- * *   An API that is running in the runtime environment must be unpublished before you can delete the API.****
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteApiRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteApiResponse
- */
 func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *util.RuntimeOptions) (_result *DeleteApiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33280,14 +31904,6 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers and cannot be undone after it is complete.
- * *   An API that is running in the runtime environment must be unpublished before you can delete the API.****
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteApiRequest
- * @return DeleteApiResponse
- */
 func (client *Client) DeleteApi(request *DeleteApiRequest) (_result *DeleteApiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApiResponse{}
@@ -33299,17 +31915,6 @@ func (client *Client) DeleteApi(request *DeleteApiRequest) (_result *DeleteApiRe
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
- * *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
- * *   If the specified API group does not exist, a success response is returned.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteApiGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteApiGroupResponse
- */
 func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteApiGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33351,16 +31956,6 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
- * *   After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
- * *   If the specified API group does not exist, a success response is returned.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteApiGroupRequest
- * @return DeleteApiGroupResponse
- */
 func (client *Client) DeleteApiGroup(request *DeleteApiGroupRequest) (_result *DeleteApiGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApiGroupResponse{}
@@ -33428,15 +32023,6 @@ func (client *Client) DeleteApiStageVariable(request *DeleteApiStageVariableRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   After an application is deleted, the application and its API authorization cannot be restored.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteAppRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAppResponse
- */
 func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *util.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33478,14 +32064,6 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   After an application is deleted, the application and its API authorization cannot be restored.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteAppRequest
- * @return DeleteAppResponse
- */
 func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppResponse{}
@@ -33702,9 +32280,7 @@ func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_res
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   If the specified domain name does not exist, a successful response will still appear.
- * *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+ * The custom domain name.
  *
  * @param request DeleteDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33752,9 +32328,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   If the specified domain name does not exist, a successful response will still appear.
- * *   Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+ * The custom domain name.
  *
  * @param request DeleteDomainRequest
  * @return DeleteDomainResponse
@@ -33875,9 +32449,7 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
- * *   If you call this operation on an ACL that does not exist, a success message is returned.
+ * The ID of the request.
  *
  * @param request DeleteIpControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33921,9 +32493,7 @@ func (client *Client) DeleteIpControlWithOptions(request *DeleteIpControlRequest
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
- * *   If you call this operation on an ACL that does not exist, a success message is returned.
+ * The ID of the request.
  *
  * @param request DeleteIpControlRequest
  * @return DeleteIpControlResponse
@@ -34087,14 +32657,6 @@ func (client *Client) DeleteMonitorGroup(request *DeleteMonitorGroupRequest) (_r
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
- *
- * @param request DeletePluginRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeletePluginResponse
- */
 func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runtime *util.RuntimeOptions) (_result *DeletePluginResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34136,13 +32698,6 @@ func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runt
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
- *
- * @param request DeletePluginRequest
- * @return DeletePluginResponse
- */
 func (client *Client) DeletePlugin(request *DeletePluginRequest) (_result *DeletePluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePluginResponse{}
@@ -34155,10 +32710,7 @@ func (client *Client) DeletePlugin(request *DeletePluginRequest) (_result *Delet
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API operation deletes an existing backend signature key.
- * *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
- * *   The QPS limit on this operation is 50 per user.
+ * The ID of the request.
  *
  * @param request DeleteSignatureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34202,10 +32754,7 @@ func (client *Client) DeleteSignatureWithOptions(request *DeleteSignatureRequest
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API operation deletes an existing backend signature key.
- * *   You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
- * *   The QPS limit on this operation is 50 per user.
+ * The ID of the request.
  *
  * @param request DeleteSignatureRequest
  * @return DeleteSignatureResponse
@@ -34221,15 +32770,6 @@ func (client *Client) DeleteSignature(request *DeleteSignatureRequest) (_result 
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteTrafficControlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteTrafficControlResponse
- */
 func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficControlRequest, runtime *util.RuntimeOptions) (_result *DeleteTrafficControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34267,14 +32807,6 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request DeleteTrafficControlRequest
- * @return DeleteTrafficControlResponse
- */
 func (client *Client) DeleteTrafficControl(request *DeleteTrafficControlRequest) (_result *DeleteTrafficControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTrafficControlResponse{}
@@ -34287,8 +32819,9 @@ func (client *Client) DeleteTrafficControl(request *DeleteTrafficControlRequest)
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can obtain the input parameters required in this operation by calling other APIs.
+ * The type of the special throttling policy. Valid values:
+ * *   **APP**
+ * *   **USER**
  *
  * @param request DeleteTrafficSpecialControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34340,8 +32873,9 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can obtain the input parameters required in this operation by calling other APIs.
+ * The type of the special throttling policy. Valid values:
+ * *   **APP**
+ * *   **USER**
  *
  * @param request DeleteTrafficSpecialControlRequest
  * @return DeleteTrafficSpecialControlResponse
@@ -34358,9 +32892,7 @@ func (client *Client) DeleteTrafficSpecialControl(request *DeleteTrafficSpecialC
 }
 
 /**
- * *   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
- * *   An API is published to a cluster in less than 5 seconds.
- * *   The QPS limit on this operation is 50 per user.
+ * The ID of the API.
  *
  * @param request DeployApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34416,9 +32948,7 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 }
 
 /**
- * *   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
- * *   An API is published to a cluster in less than 5 seconds.
- * *   The QPS limit on this operation is 50 per user.
+ * The ID of the API.
  *
  * @param request DeployApiRequest
  * @return DeployApiResponse
@@ -34591,7 +33121,7 @@ func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlL
 }
 
 /**
- * *   This operation is intended for API providers.
+ * The ID of the public key.
  *
  * @param request DescribeApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34639,7 +33169,7 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 }
 
 /**
- * *   This operation is intended for API providers.
+ * The ID of the public key.
  *
  * @param request DescribeApiRequest
  * @return DescribeApiResponse
@@ -34655,16 +33185,6 @@ func (client *Client) DescribeApi(request *DescribeApiRequest) (_result *Describ
 	return _result, _err
 }
 
-/**
- * *   For API callers, they can only query documentation of a public API or an authorized private API that has been published to a runtime environment.****************
- * *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
- * *   When you call this operation as an API provider, the definition of the specified API in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
- * *   The API callers must be authenticated before they can query the documentation of a specified API. This requires the API provider to ensure that the API to be queried by the API caller is a public one or that the application that provides the API to be queried is authorized.
- *
- * @param request DescribeApiDocRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeApiDocResponse
- */
 func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, runtime *util.RuntimeOptions) (_result *DescribeApiDocResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34710,15 +33230,6 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 	return _result, _err
 }
 
-/**
- * *   For API callers, they can only query documentation of a public API or an authorized private API that has been published to a runtime environment.****************
- * *   When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
- * *   When you call this operation as an API provider, the definition of the specified API in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
- * *   The API callers must be authenticated before they can query the documentation of a specified API. This requires the API provider to ensure that the API to be queried by the API caller is a public one or that the application that provides the API to be queried is authorized.
- *
- * @param request DescribeApiDocRequest
- * @return DescribeApiDocResponse
- */
 func (client *Client) DescribeApiDoc(request *DescribeApiDocRequest) (_result *DescribeApiDocResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiDocResponse{}
@@ -34843,13 +33354,6 @@ func (client *Client) DescribeApiGroupVpcWhitelist(request *DescribeApiGroupVpcW
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- *
- * @param request DescribeApiGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeApiGroupsResponse
- */
 func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeApiGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34915,12 +33419,6 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- *
- * @param request DescribeApiGroupsRequest
- * @return DescribeApiGroupsResponse
- */
 func (client *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (_result *DescribeApiGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiGroupsResponse{}
@@ -34933,8 +33431,9 @@ func (client *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (_res
 }
 
 /**
- * *   This operation is intended for API providers. Only APIs which have been published have a historical version record.
- * *   This operation allows you to obtain the API historical versions which can be used to call other APIs.
+ * The name of the runtime environment. Valid values:
+ * *   **RELEASE**
+ * *   **TEST: the test environment**
  *
  * @param request DescribeApiHistoriesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -34998,8 +33497,9 @@ func (client *Client) DescribeApiHistoriesWithOptions(request *DescribeApiHistor
 }
 
 /**
- * *   This operation is intended for API providers. Only APIs which have been published have a historical version record.
- * *   This operation allows you to obtain the API historical versions which can be used to call other APIs.
+ * The name of the runtime environment. Valid values:
+ * *   **RELEASE**
+ * *   **TEST: the test environment**
  *
  * @param request DescribeApiHistoriesRequest
  * @return DescribeApiHistoriesResponse
@@ -35093,9 +33593,7 @@ func (client *Client) DescribeApiHistory(request *DescribeApiHistoryRequest) (_r
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   If an optional parameter is not specified, all results are returned on separate pages.
- * ·
+ * The ID of the API group.
  *
  * @param request DescribeApiIpControlsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35155,9 +33653,7 @@ func (client *Client) DescribeApiIpControlsWithOptions(request *DescribeApiIpCon
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   If an optional parameter is not specified, all results are returned on separate pages.
- * ·
+ * The ID of the API group.
  *
  * @param request DescribeApiIpControlsRequest
  * @return DescribeApiIpControlsResponse
@@ -35173,15 +33669,6 @@ func (client *Client) DescribeApiIpControls(request *DescribeApiIpControlsReques
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the latency metrics in milliseconds for a specified API.
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiLatencyDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeApiLatencyDataResponse
- */
 func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLatencyDataRequest, runtime *util.RuntimeOptions) (_result *DescribeApiLatencyDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35235,14 +33722,6 @@ func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLate
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the latency metrics in milliseconds for a specified API.
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiLatencyDataRequest
- * @return DescribeApiLatencyDataResponse
- */
 func (client *Client) DescribeApiLatencyData(request *DescribeApiLatencyDataRequest) (_result *DescribeApiLatencyDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiLatencyDataResponse{}
@@ -35306,14 +33785,6 @@ func (client *Client) DescribeApiMarketAttributes(request *DescribeApiMarketAttr
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiQpsDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeApiQpsDataResponse
- */
 func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeApiQpsDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35367,13 +33838,6 @@ func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataR
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiQpsDataRequest
- * @return DescribeApiQpsDataResponse
- */
 func (client *Client) DescribeApiQpsData(request *DescribeApiQpsDataRequest) (_result *DescribeApiQpsDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiQpsDataResponse{}
@@ -35386,7 +33850,9 @@ func (client *Client) DescribeApiQpsData(request *DescribeApiQpsDataRequest) (_r
 }
 
 /**
- * Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+ * The runtime environment. Valid values:
+ * *   **RELEASE**
+ * *   **TEST**
  *
  * @param request DescribeApiSignaturesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35446,7 +33912,9 @@ func (client *Client) DescribeApiSignaturesWithOptions(request *DescribeApiSigna
 }
 
 /**
- * Queries the backend signature keys that are bound to the APIs of a specified API group in a specified environment.
+ * The runtime environment. Valid values:
+ * *   **RELEASE**
+ * *   **TEST**
  *
  * @param request DescribeApiSignaturesRequest
  * @return DescribeApiSignaturesResponse
@@ -35463,7 +33931,9 @@ func (client *Client) DescribeApiSignatures(request *DescribeApiSignaturesReques
 }
 
 /**
- * Queries the throttling policies bound to all members of an API group in a specified environment.
+ * The runtime environment of the API. Valid values:
+ * *   **RELEASE**
+ * *   **TEST**: the test environment
  *
  * @param request DescribeApiTrafficControlsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35523,7 +33993,9 @@ func (client *Client) DescribeApiTrafficControlsWithOptions(request *DescribeApi
 }
 
 /**
- * Queries the throttling policies bound to all members of an API group in a specified environment.
+ * The runtime environment of the API. Valid values:
+ * *   **RELEASE**
+ * *   **TEST**: the test environment
  *
  * @param request DescribeApiTrafficControlsRequest
  * @return DescribeApiTrafficControlsResponse
@@ -35539,14 +34011,6 @@ func (client *Client) DescribeApiTrafficControls(request *DescribeApiTrafficCont
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiTrafficDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeApiTrafficDataResponse
- */
 func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeApiTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35600,13 +34064,6 @@ func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTraf
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Only statistics for API calls made in the release environment are collected by default.
- *
- * @param request DescribeApiTrafficDataRequest
- * @return DescribeApiTrafficDataResponse
- */
 func (client *Client) DescribeApiTrafficData(request *DescribeApiTrafficDataRequest) (_result *DescribeApiTrafficDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiTrafficDataResponse{}
@@ -35619,9 +34076,9 @@ func (client *Client) DescribeApiTrafficData(request *DescribeApiTrafficDataRequ
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The list of all APIs that belong to the definition and their brief information are returned.
- * *   This API returns the most recently edited API definitions. These may be different from the definitions of those APIs currently published to the runtime environment.
+ * *   This operation is intended for API callers.
+ * *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+ * *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
  *
  * @param request DescribeApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35713,9 +34170,9 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The list of all APIs that belong to the definition and their brief information are returned.
- * *   This API returns the most recently edited API definitions. These may be different from the definitions of those APIs currently published to the runtime environment.
+ * *   This operation is intended for API callers.
+ * *   This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+ * *   This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
  *
  * @param request DescribeApisRequest
  * @return DescribeApisResponse
@@ -35868,8 +34325,7 @@ func (client *Client) DescribeApisByBackend(request *DescribeApisByBackendReques
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can specify PageNumber to obtain the result on the specified page.
+ * The number of entries to return on each page. Maximum value: 100. Default value: 10.
  *
  * @param request DescribeApisByIpControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35921,8 +34377,7 @@ func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisBy
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can specify PageNumber to obtain the result on the specified page.
+ * The number of entries to return on each page. Maximum value: 100. Default value: 10.
  *
  * @param request DescribeApisByIpControlRequest
  * @return DescribeApisByIpControlResponse
@@ -35939,7 +34394,7 @@ func (client *Client) DescribeApisByIpControl(request *DescribeApisByIpControlRe
 }
 
 /**
- * Queries the APIs to which a specified backend signature key is bound.
+ * The ID of the signature key.
  *
  * @param request DescribeApisBySignatureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -35991,7 +34446,7 @@ func (client *Client) DescribeApisBySignatureWithOptions(request *DescribeApisBy
 }
 
 /**
- * Queries the APIs to which a specified backend signature key is bound.
+ * The ID of the signature key.
  *
  * @param request DescribeApisBySignatureRequest
  * @return DescribeApisBySignatureResponse
@@ -36008,8 +34463,7 @@ func (client *Client) DescribeApisBySignature(request *DescribeApisBySignatureRe
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can specify PageNumber to obtain the result on the specified page.
+ * The number of entries to return on each page. Maximum value: 100. Default value: 10.
  *
  * @param request DescribeApisByTrafficControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36061,8 +34515,7 @@ func (client *Client) DescribeApisByTrafficControlWithOptions(request *DescribeA
 }
 
 /**
- * *   This API is intended for API providers.
- * *   You can specify PageNumber to obtain the result on the specified page.
+ * The number of entries to return on each page. Maximum value: 100. Default value: 10.
  *
  * @param request DescribeApisByTrafficControlRequest
  * @return DescribeApisByTrafficControlResponse
@@ -36126,14 +34579,6 @@ func (client *Client) DescribeApp(request *DescribeAppRequest) (_result *Describ
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   AppId is optional.
- *
- * @param request DescribeAppAttributesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAppAttributesResponse
- */
 func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttributesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppAttributesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36203,13 +34648,6 @@ func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttri
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   AppId is optional.
- *
- * @param request DescribeAppAttributesRequest
- * @return DescribeAppAttributesResponse
- */
 func (client *Client) DescribeAppAttributes(request *DescribeAppAttributesRequest) (_result *DescribeAppAttributesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppAttributesResponse{}
@@ -36221,13 +34659,6 @@ func (client *Client) DescribeAppAttributes(request *DescribeAppAttributesReques
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- *
- * @param request DescribeAppSecurityRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAppSecurityResponse
- */
 func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurityRequest, runtime *util.RuntimeOptions) (_result *DescribeAppSecurityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36269,12 +34700,6 @@ func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurit
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- *
- * @param request DescribeAppSecurityRequest
- * @return DescribeAppSecurityResponse
- */
 func (client *Client) DescribeAppSecurity(request *DescribeAppSecurityRequest) (_result *DescribeAppSecurityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppSecurityResponse{}
@@ -36287,7 +34712,7 @@ func (client *Client) DescribeAppSecurity(request *DescribeAppSecurityRequest) (
 }
 
 /**
- * Queries the apps. App information is returned only to the app owner.
+ * The ID of the app.
  *
  * @param request DescribeAppsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36343,7 +34768,7 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 }
 
 /**
- * Queries the apps. App information is returned only to the app owner.
+ * The ID of the app.
  *
  * @param request DescribeAppsRequest
  * @return DescribeAppsResponse
@@ -36360,8 +34785,7 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   The specified application can call all APIs included in the responses.
+ * The number of the page to return. Pages start from page 1. Default value: 1.
  *
  * @param request DescribeAuthorizedApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -36413,8 +34837,7 @@ func (client *Client) DescribeAuthorizedApisWithOptions(request *DescribeAuthori
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   The specified application can call all APIs included in the responses.
+ * The number of the page to return. Pages start from page 1. Default value: 1.
  *
  * @param request DescribeAuthorizedApisRequest
  * @return DescribeAuthorizedApisResponse
@@ -36430,14 +34853,6 @@ func (client *Client) DescribeAuthorizedApis(request *DescribeAuthorizedApisRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   All applications included in the responses have access to the specified API.
- *
- * @param request DescribeAuthorizedAppsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeAuthorizedAppsResponse
- */
 func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthorizedAppsRequest, runtime *util.RuntimeOptions) (_result *DescribeAuthorizedAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36503,13 +34918,6 @@ func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthori
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   All applications included in the responses have access to the specified API.
- *
- * @param request DescribeAuthorizedAppsRequest
- * @return DescribeAuthorizedAppsResponse
- */
 func (client *Client) DescribeAuthorizedApps(request *DescribeAuthorizedAppsRequest) (_result *DescribeAuthorizedAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuthorizedAppsResponse{}
@@ -36953,13 +35361,6 @@ func (client *Client) DescribeDeployedApi(request *DescribeDeployedApiRequest) (
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- *
- * @param request DescribeDeployedApisRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDeployedApisResponse
- */
 func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedApisRequest, runtime *util.RuntimeOptions) (_result *DescribeDeployedApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37033,12 +35434,6 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- *
- * @param request DescribeDeployedApisRequest
- * @return DescribeDeployedApisResponse
- */
 func (client *Client) DescribeDeployedApis(request *DescribeDeployedApisRequest) (_result *DescribeDeployedApisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeployedApisResponse{}
@@ -37051,7 +35446,7 @@ func (client *Client) DescribeDeployedApis(request *DescribeDeployedApisRequest)
 }
 
 /**
- * Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+ * The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
  *
  * @param request DescribeDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -37099,7 +35494,7 @@ func (client *Client) DescribeDomainWithOptions(request *DescribeDomainRequest, 
 }
 
 /**
- * Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
+ * The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
  *
  * @param request DescribeDomainRequest
  * @return DescribeDomainResponse
@@ -37831,14 +36226,6 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You can filter the query results by policy ID.
- *
- * @param request DescribeIpControlPolicyItemsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeIpControlPolicyItemsResponse
- */
 func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeIpControlPolicyItemsRequest, runtime *util.RuntimeOptions) (_result *DescribeIpControlPolicyItemsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37888,13 +36275,6 @@ func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeI
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   You can filter the query results by policy ID.
- *
- * @param request DescribeIpControlPolicyItemsRequest
- * @return DescribeIpControlPolicyItemsResponse
- */
 func (client *Client) DescribeIpControlPolicyItems(request *DescribeIpControlPolicyItemsRequest) (_result *DescribeIpControlPolicyItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpControlPolicyItemsResponse{}
@@ -38086,7 +36466,7 @@ func (client *Client) DescribeMarketRemainsQuota(request *DescribeMarketRemainsQ
 }
 
 /**
- * *   Fuzzy queries are supported.
+ * The name of the model.
  *
  * @param request DescribeModelsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38142,7 +36522,7 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 }
 
 /**
- * *   Fuzzy queries are supported.
+ * The name of the model.
  *
  * @param request DescribeModelsRequest
  * @return DescribeModelsResponse
@@ -38338,16 +36718,6 @@ func (client *Client) DescribePluginTemplates(request *DescribePluginTemplatesRe
 	return _result, _err
 }
 
-/**
- * *   This operation supports pagination.
- * *   This operation allows you to query plug-ins by business type.
- * *   This operation allows you to query plug-ins by ID.
- * *   This operation allows you to query plug-ins by name.
- *
- * @param request DescribePluginsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribePluginsResponse
- */
 func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest, runtime *util.RuntimeOptions) (_result *DescribePluginsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38405,15 +36775,6 @@ func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest
 	return _result, _err
 }
 
-/**
- * *   This operation supports pagination.
- * *   This operation allows you to query plug-ins by business type.
- * *   This operation allows you to query plug-ins by ID.
- * *   This operation allows you to query plug-ins by name.
- *
- * @param request DescribePluginsRequest
- * @return DescribePluginsResponse
- */
 func (client *Client) DescribePlugins(request *DescribePluginsRequest) (_result *DescribePluginsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePluginsResponse{}
@@ -38676,14 +37037,6 @@ func (client *Client) DescribePurchasedApis(request *DescribePurchasedApisReques
 	return _result, _err
 }
 
-/**
- * This operation queries regions in which API Gateway is available.
- * *   This operation is intended for API providers and callers.
- *
- * @param request DescribeRegionsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeRegionsResponse
- */
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38721,13 +37074,6 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
-/**
- * This operation queries regions in which API Gateway is available.
- * *   This operation is intended for API providers and callers.
- *
- * @param request DescribeRegionsRequest
- * @return DescribeRegionsResponse
- */
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -38740,7 +37086,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 }
 
 /**
- * Queries backend signature keys.
+ * The IDs of the keys to query.
  *
  * @param request DescribeSignaturesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38796,7 +37142,7 @@ func (client *Client) DescribeSignaturesWithOptions(request *DescribeSignaturesR
 }
 
 /**
- * Queries backend signature keys.
+ * The IDs of the keys to query.
  *
  * @param request DescribeSignaturesRequest
  * @return DescribeSignaturesResponse
@@ -38813,7 +37159,7 @@ func (client *Client) DescribeSignatures(request *DescribeSignaturesRequest) (_r
 }
 
 /**
- * Queries the backend signature keys that are bound to a specified API.
+ * The ID of the group to which the API belongs.
  *
  * @param request DescribeSignaturesByApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38865,7 +37211,7 @@ func (client *Client) DescribeSignaturesByApiWithOptions(request *DescribeSignat
 }
 
 /**
- * Queries the backend signature keys that are bound to a specified API.
+ * The ID of the group to which the API belongs.
  *
  * @param request DescribeSignaturesByApiRequest
  * @return DescribeSignaturesByApiResponse
@@ -38882,8 +37228,7 @@ func (client *Client) DescribeSignaturesByApi(request *DescribeSignaturesByApiRe
 }
 
 /**
- * *   This API is intended for API callers.
- * *   The response of this API contains the system parameters that are optional in API definitions.
+ * The returned information about system parameters. It is an array that consists of SystemParam data.
  *
  * @param request DescribeSystemParametersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -38923,8 +37268,7 @@ func (client *Client) DescribeSystemParametersWithOptions(request *DescribeSyste
 }
 
 /**
- * *   This API is intended for API callers.
- * *   The response of this API contains the system parameters that are optional in API definitions.
+ * The returned information about system parameters. It is an array that consists of SystemParam data.
  *
  * @param request DescribeSystemParametersRequest
  * @return DescribeSystemParametersResponse
@@ -38941,9 +37285,7 @@ func (client *Client) DescribeSystemParameters(request *DescribeSystemParameters
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
- * *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+ * The specified group ID. This parameter must be specified together with ApiId and StageName.
  *
  * @param request DescribeTrafficControlsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39011,9 +37353,7 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API can be used to query all existing throttling policies (including special throttling policies) and their details.
- * *   You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+ * The specified group ID. This parameter must be specified together with ApiId and StageName.
  *
  * @param request DescribeTrafficControlsRequest
  * @return DescribeTrafficControlsResponse
@@ -39030,7 +37370,7 @@ func (client *Client) DescribeTrafficControls(request *DescribeTrafficControlsRe
 }
 
 /**
- * *   This API is intended for API providers.
+ * The ID of the API.
  *
  * @param request DescribeTrafficControlsByApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39082,7 +37422,7 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 }
 
 /**
- * *   This API is intended for API providers.
+ * The ID of the API.
  *
  * @param request DescribeTrafficControlsByApiRequest
  * @return DescribeTrafficControlsByApiResponse
@@ -39645,8 +37985,7 @@ func (client *Client) ImportOAS(request *ImportOASRequest) (_result *ImportOASRe
 }
 
 /**
- * *   Alibaba Cloud supports extensions based on Swagger 2.0.
- * *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+ * 0009db9c828549768a200320714b8930
  *
  * @param tmpReq ImportSwaggerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39718,8 +38057,7 @@ func (client *Client) ImportSwaggerWithOptions(tmpReq *ImportSwaggerRequest, run
 }
 
 /**
- * *   Alibaba Cloud supports extensions based on Swagger 2.0.
- * *   Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+ * 0009db9c828549768a200320714b8930
  *
  * @param request ImportSwaggerRequest
  * @return ImportSwaggerResponse
@@ -39735,21 +38073,6 @@ func (client *Client) ImportSwagger(request *ImportSwaggerRequest) (_result *Imp
 	return _result, _err
 }
 
-/**
- * *   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
- * *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
- * *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
- * *   You can query both user tags and visible system tags.
- * *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
- * *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
- * *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
- * *   You can query tags of the same type or different types in a single operation.
- * *   You can query all your user tags and visible system tags.
- *
- * @param request ListTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagResourcesResponse
- */
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39795,20 +38118,6 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-/**
- * *   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
- * *   ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
- * *   This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
- * *   You can query both user tags and visible system tags.
- * *   In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
- * *   You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
- * *   At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
- * *   You can query tags of the same type or different types in a single operation.
- * *   You can query all your user tags and visible system tags.
- *
- * @param request ListTagResourcesRequest
- * @return ListTagResourcesResponse
- */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -39821,7 +38130,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 }
 
 /**
- * Modifies the definition of an API.
+ * 58928
  *
  * @param request ModifyApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -39969,7 +38278,7 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 }
 
 /**
- * Modifies the definition of an API.
+ * 58928
  *
  * @param request ModifyApiRequest
  * @return ModifyApiResponse
@@ -40169,14 +38478,6 @@ func (client *Client) ModifyApiConfiguration(request *ModifyApiConfigurationRequ
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request ModifyApiGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyApiGroupResponse
- */
 func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40258,13 +38559,6 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request ModifyApiGroupRequest
- * @return ModifyApiGroupResponse
- */
 func (client *Client) ModifyApiGroup(request *ModifyApiGroupRequest) (_result *ModifyApiGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiGroupResponse{}
@@ -40328,15 +38622,6 @@ func (client *Client) ModifyApiGroupVpcWhitelist(request *ModifyApiGroupVpcWhite
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request ModifyAppRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyAppResponse
- */
 func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40386,14 +38671,6 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API callers.
- * *   AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
- * *   The QPS limit on this operation is 50 per user.
- *
- * @param request ModifyAppRequest
- * @return ModifyAppResponse
- */
 func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppResponse{}
@@ -40710,8 +38987,7 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+ * The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\\_). The name cannot start with an underscore (\\_).
  *
  * @param request ModifyIpControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40763,8 +39039,7 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+ * The name of the ACL. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (\\_). The name cannot start with an underscore (\\_).
  *
  * @param request ModifyIpControlRequest
  * @return ModifyIpControlResponse
@@ -40781,9 +39056,7 @@ func (client *Client) ModifyIpControl(request *ModifyIpControlRequest) (_result 
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   The modification immediately takes effect on all the APIs that are bound to the policy.
- * *   This operation causes a full modification of the content of a policy.
+ * The ID of the policy.
  *
  * @param request ModifyIpControlPolicyItemRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40839,9 +39112,7 @@ func (client *Client) ModifyIpControlPolicyItemWithOptions(request *ModifyIpCont
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   The modification immediately takes effect on all the APIs that are bound to the policy.
- * *   This operation causes a full modification of the content of a policy.
+ * The ID of the policy.
  *
  * @param request ModifyIpControlPolicyItemRequest
  * @return ModifyIpControlPolicyItemResponse
@@ -40973,14 +39244,6 @@ func (client *Client) ModifyModel(request *ModifyModelRequest) (_result *ModifyM
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The name of the plug-in must be unique.
- *
- * @param request ModifyPluginRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyPluginResponse
- */
 func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runtime *util.RuntimeOptions) (_result *ModifyPluginResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41034,13 +39297,6 @@ func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runt
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   The name of the plug-in must be unique.
- *
- * @param request ModifyPluginRequest
- * @return ModifyPluginResponse
- */
 func (client *Client) ModifyPlugin(request *ModifyPluginRequest) (_result *ModifyPluginResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPluginResponse{}
@@ -41053,10 +39309,7 @@ func (client *Client) ModifyPlugin(request *ModifyPluginRequest) (_result *Modif
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
- * *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
- * *   The QPS limit on this operation is 50 per user.
+ * The new name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\\_). It must start with a letter.
  *
  * @param request ModifySignatureRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41112,10 +39365,7 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API operation modifies the name, Key value, and Secret value of an existing signature key.
- * *   Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
- * *   The QPS limit on this operation is 50 per user.
+ * The new name of the key. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\\_). It must start with a letter.
  *
  * @param request ModifySignatureRequest
  * @return ModifySignatureResponse
@@ -41132,9 +39382,7 @@ func (client *Client) ModifySignature(request *ModifySignatureRequest) (_result 
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The modifications take effect on the bound APIs instantly.
- * *   The QPS limit on this operation is 50 per user.
+ * The throttling policy name. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\\_). It cannot start with an underscore.
  *
  * @param request ModifyTrafficControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41202,9 +39450,7 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The modifications take effect on the bound APIs instantly.
- * *   The QPS limit on this operation is 50 per user.
+ * The throttling policy name. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (\\_). It cannot start with an underscore.
  *
  * @param request ModifyTrafficControlRequest
  * @return ModifyTrafficControlResponse
@@ -41378,7 +39624,7 @@ func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_resul
 }
 
 /**
- * Reactivates a custom domain name whose validity status is Abnormal.
+ * The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
  *
  * @param request ReactivateDomainRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41426,7 +39672,7 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 }
 
 /**
- * Reactivates a custom domain name whose validity status is Abnormal.
+ * The ID of the API group to which the domain name is bound. This ID is generated by the system and globally unique.
  *
  * @param request ReactivateDomainRequest
  * @return ReactivateDomainResponse
@@ -41495,8 +39741,7 @@ func (client *Client) RemoveAccessControlListEntry(request *RemoveAccessControlL
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+ * The ID of the app. The ID is generated by the system and globally unique.
  *
  * @param request RemoveApisAuthoritiesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41556,8 +39801,7 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+ * The ID of the app. The ID is generated by the system and globally unique.
  *
  * @param request RemoveApisAuthoritiesRequest
  * @return RemoveApisAuthoritiesResponse
@@ -41574,8 +39818,7 @@ func (client *Client) RemoveApisAuthorities(request *RemoveApisAuthoritiesReques
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+ * The ID of the API. This ID is generated by the system and globally unique.
  *
  * @param request RemoveAppsAuthoritiesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41631,8 +39874,7 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+ * The ID of the API. This ID is generated by the system and globally unique.
  *
  * @param request RemoveAppsAuthoritiesRequest
  * @return RemoveAppsAuthoritiesResponse
@@ -41649,8 +39891,7 @@ func (client *Client) RemoveAppsAuthorities(request *RemoveAppsAuthoritiesReques
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+ * The ID of the API group containing the API to be managed.
  *
  * @param request RemoveIpControlApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41706,8 +39947,7 @@ func (client *Client) RemoveIpControlApisWithOptions(request *RemoveIpControlApi
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+ * The ID of the API group containing the API to be managed.
  *
  * @param request RemoveIpControlApisRequest
  * @return RemoveIpControlApisResponse
@@ -41724,7 +39964,7 @@ func (client *Client) RemoveIpControlApis(request *RemoveIpControlApisRequest) (
 }
 
 /**
- * *   This operation is intended for API providers.
+ * The ID of a policy. Separate multiple IDs with semicolons (;). A maximum of 100 IDs can be entered.
  *
  * @param request RemoveIpControlPolicyItemRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41772,7 +40012,7 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 }
 
 /**
- * *   This operation is intended for API providers.
+ * The ID of a policy. Separate multiple IDs with semicolons (;). A maximum of 100 IDs can be entered.
  *
  * @param request RemoveIpControlPolicyItemRequest
  * @return RemoveIpControlPolicyItemResponse
@@ -41789,7 +40029,7 @@ func (client *Client) RemoveIpControlPolicyItem(request *RemoveIpControlPolicyIt
 }
 
 /**
- * Unbinds a backend signature key from APIs.
+ * The ID of the signature key.
  *
  * @param request RemoveSignatureApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41845,7 +40085,7 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 }
 
 /**
- * Unbinds a backend signature key from APIs.
+ * The ID of the signature key.
  *
  * @param request RemoveSignatureApisRequest
  * @return RemoveSignatureApisResponse
@@ -41862,8 +40102,7 @@ func (client *Client) RemoveSignatureApis(request *RemoveSignatureApisRequest) (
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+ * The ID of the API group containing the APIs from which you want to unbind a specified throttling policy.
  *
  * @param request RemoveTrafficControlApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -41919,8 +40158,7 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+ * The ID of the API group containing the APIs from which you want to unbind a specified throttling policy.
  *
  * @param request RemoveTrafficControlApisRequest
  * @return RemoveTrafficControlApisResponse
@@ -41936,15 +40174,6 @@ func (client *Client) RemoveTrafficControlApis(request *RemoveTrafficControlApis
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Revokes the permissions of API Gateway to access your VPC instance.
- * >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
- *
- * @param request RemoveVpcAccessRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveVpcAccessResponse
- */
 func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest, runtime *util.RuntimeOptions) (_result *RemoveVpcAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41994,14 +40223,6 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 	return _result, _err
 }
 
-/**
- * *   This API is intended for API providers.
- * *   Revokes the permissions of API Gateway to access your VPC instance.
- * >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
- *
- * @param request RemoveVpcAccessRequest
- * @return RemoveVpcAccessResponse
- */
 func (client *Client) RemoveVpcAccess(request *RemoveVpcAccessRequest) (_result *RemoveVpcAccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveVpcAccessResponse{}
@@ -42155,6 +40376,10 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
 		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewAppKey)) {
+		query["NewAppKey"] = request.NewAppKey
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NewAppSecret)) {
@@ -42416,9 +40641,7 @@ func (client *Client) SetAccessControlListAttribute(request *SetAccessControlLis
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   API providers can authorize any apps to call their APIs.
- * *   API callers can authorize their own apps to call the APIs that they have purchased.
+ * The ID of the app. This ID is generated by the system and globally unique.
  *
  * @param request SetApisAuthoritiesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42482,9 +40705,7 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   API providers can authorize any apps to call their APIs.
- * *   API callers can authorize their own apps to call the APIs that they have purchased.
+ * The ID of the app. This ID is generated by the system and globally unique.
  *
  * @param request SetApisAuthoritiesRequest
  * @return SetApisAuthoritiesResponse
@@ -42501,9 +40722,7 @@ func (client *Client) SetApisAuthorities(request *SetApisAuthoritiesRequest) (_r
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   API providers can authorize any apps to call their APIs.
- * *   API callers can authorize their own apps to call the APIs that they have purchased.
+ * The ID of the API. This ID is generated by the system and globally unique.
  *
  * @param request SetAppsAuthoritiesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42567,9 +40786,7 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 }
 
 /**
- * *   This operation is intended for API providers and callers.
- * *   API providers can authorize any apps to call their APIs.
- * *   API callers can authorize their own apps to call the APIs that they have purchased.
+ * The ID of the API. This ID is generated by the system and globally unique.
  *
  * @param request SetAppsAuthoritiesRequest
  * @return SetAppsAuthoritiesResponse
@@ -42650,9 +40867,7 @@ func (client *Client) SetDomain(request *SetDomainRequest) (_result *SetDomainRe
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   The SSL certificate must match the custom domain name.
- * *   After the SSL certificate is bound, HTTPS-based API services become available.
+ * 382271
  *
  * @param request SetDomainCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42720,9 +40935,7 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 }
 
 /**
- * *   This operation is intended for API providers.
- * *   The SSL certificate must match the custom domain name.
- * *   After the SSL certificate is bound, HTTPS-based API services become available.
+ * 382271
  *
  * @param request SetDomainCertificateRequest
  * @return SetDomainCertificateResponse
@@ -42851,8 +41064,7 @@ func (client *Client) SetGroupAuthAppCode(request *SetGroupAuthAppCodeRequest) (
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   A maximum of 100 APIs can be bound at a time.
+ * The ID of the API group.
  *
  * @param request SetIpControlApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42908,8 +41120,7 @@ func (client *Client) SetIpControlApisWithOptions(request *SetIpControlApisReque
 }
 
 /**
- * *   This operation is intended for API callers.
- * *   A maximum of 100 APIs can be bound at a time.
+ * The ID of the API group.
  *
  * @param request SetIpControlApisRequest
  * @return SetIpControlApisResponse
@@ -42926,7 +41137,7 @@ func (client *Client) SetIpControlApis(request *SetIpControlApisRequest) (_resul
 }
 
 /**
- * Binds a signature key to APIs.
+ * The ID of the signature key.
  *
  * @param request SetSignatureApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -42982,7 +41193,7 @@ func (client *Client) SetSignatureApisWithOptions(request *SetSignatureApisReque
 }
 
 /**
- * Binds a signature key to APIs.
+ * The ID of the signature key.
  *
  * @param request SetSignatureApisRequest
  * @return SetSignatureApisResponse
@@ -42999,8 +41210,7 @@ func (client *Client) SetSignatureApis(request *SetSignatureApisRequest) (_resul
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+ * The ID of the API group containing the APIs to which you want to bind a specified throttling policy.
  *
  * @param request SetTrafficControlApisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43056,8 +41266,7 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 }
 
 /**
- * *   This API is intended for API providers.
- * *   This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+ * The ID of the API group containing the APIs to which you want to bind a specified throttling policy.
  *
  * @param request SetTrafficControlApisRequest
  * @return SetTrafficControlApisResponse
@@ -43073,14 +41282,6 @@ func (client *Client) SetTrafficControlApis(request *SetTrafficControlApisReques
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   This operation is used to authorize API Gateway to access your VPC instance.
- *
- * @param request SetVpcAccessRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetVpcAccessResponse
- */
 func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runtime *util.RuntimeOptions) (_result *SetVpcAccessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43138,13 +41339,6 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 	return _result, _err
 }
 
-/**
- * *   This operation is intended for API providers.
- * *   This operation is used to authorize API Gateway to access your VPC instance.
- *
- * @param request SetVpcAccessRequest
- * @return SetVpcAccessResponse
- */
 func (client *Client) SetVpcAccess(request *SetVpcAccessRequest) (_result *SetVpcAccessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetVpcAccessResponse{}
@@ -43213,11 +41407,7 @@ func (client *Client) SetWildcardDomainPatterns(request *SetWildcardDomainPatter
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The historical version can be obtained through the DescribeHistoryApis API.****
- * *   Only APIs that have been published more than once have historical versions to switch to.
- * *   This operation can only be performed on running APIs. Use caution when performing this operation because the operation cannot be undone after it has been completed and takes effect within 5 seconds.
- * *   The switch operation is in essence a publish operation, and the reason for this operation must be provided.
+ * The ID of the API.
  *
  * @param request SwitchApiRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43277,11 +41467,7 @@ func (client *Client) SwitchApiWithOptions(request *SwitchApiRequest, runtime *u
 }
 
 /**
- * *   This API is intended for API providers.
- * *   The historical version can be obtained through the DescribeHistoryApis API.****
- * *   Only APIs that have been published more than once have historical versions to switch to.
- * *   This operation can only be performed on running APIs. Use caution when performing this operation because the operation cannot be undone after it has been completed and takes effect within 5 seconds.
- * *   The switch operation is in essence a publish operation, and the reason for this operation must be provided.
+ * The ID of the API.
  *
  * @param request SwitchApiRequest
  * @return SwitchApiResponse
@@ -43298,11 +41484,8 @@ func (client *Client) SwitchApi(request *SwitchApiRequest) (_result *SwitchApiRe
 }
 
 /**
- * *   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
- * *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
- * *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
- * *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
- * *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+ * The key of tag N.
+ * Valid values of N: `1 to 20.`
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43354,11 +41537,8 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 }
 
 /**
- * *   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
- * *   Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
- * *   If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
- * *   If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
- * *   If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+ * The key of tag N.
+ * Valid values of N: `1 to 20.`
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
@@ -43375,11 +41555,9 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * *   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
- * *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
- * *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
- * *   When tag keys are specified, the All parameter is invalid.
- * *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+ * Specifies whether to delete all tags. This parameter is valid only when the **TagKey.N**parameter is not specified. Default value: false. Valid values:
+ * *   **true**
+ * *   **false**
  *
  * @param request UntagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43435,11 +41613,9 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 }
 
 /**
- * *   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
- * *   If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
- * *   If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
- * *   When tag keys are specified, the All parameter is invalid.
- * *   When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+ * Specifies whether to delete all tags. This parameter is valid only when the **TagKey.N**parameter is not specified. Default value: false. Valid values:
+ * *   **true**
+ * *   **false**
  *
  * @param request UntagResourcesRequest
  * @return UntagResourcesResponse
@@ -43448,6 +41624,58 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ValidateVpcConnectivityWithOptions(request *ValidateVpcConnectivityRequest, runtime *util.RuntimeOptions) (_result *ValidateVpcConnectivityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcAccessId)) {
+		query["VpcAccessId"] = request.VpcAccessId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateVpcConnectivity"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidateVpcConnectivityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValidateVpcConnectivity(request *ValidateVpcConnectivityRequest) (_result *ValidateVpcConnectivityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidateVpcConnectivityResponse{}
+	_body, _err := client.ValidateVpcConnectivityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
