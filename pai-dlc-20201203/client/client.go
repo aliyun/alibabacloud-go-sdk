@@ -921,11 +921,19 @@ func (s *JobDebuggerConfig) SetJobId(v string) *JobDebuggerConfig {
 type JobElasticSpec struct {
 	AIMasterDockerImage      *string `json:"AIMasterDockerImage,omitempty" xml:"AIMasterDockerImage,omitempty"`
 	AIMasterType             *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	EDPMaxParallelism        *int32  `json:"EDPMaxParallelism,omitempty" xml:"EDPMaxParallelism,omitempty"`
+	EDPMinParallelism        *int32  `json:"EDPMinParallelism,omitempty" xml:"EDPMinParallelism,omitempty"`
+	ElasticStrategy          *string `json:"ElasticStrategy,omitempty" xml:"ElasticStrategy,omitempty"`
 	EnableAIMaster           *bool   `json:"EnableAIMaster,omitempty" xml:"EnableAIMaster,omitempty"`
+	EnableEDP                *bool   `json:"EnableEDP,omitempty" xml:"EnableEDP,omitempty"`
 	EnableElasticTraining    *bool   `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
+	EnablePsJobElasticPS     *bool   `json:"EnablePsJobElasticPS,omitempty" xml:"EnablePsJobElasticPS,omitempty"`
 	EnablePsJobElasticWorker *bool   `json:"EnablePsJobElasticWorker,omitempty" xml:"EnablePsJobElasticWorker,omitempty"`
+	EnablePsResourceEstimate *bool   `json:"EnablePsResourceEstimate,omitempty" xml:"EnablePsResourceEstimate,omitempty"`
 	MaxParallelism           *int32  `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
 	MinParallelism           *int32  `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
+	PSMaxParallelism         *int32  `json:"PSMaxParallelism,omitempty" xml:"PSMaxParallelism,omitempty"`
+	PSMinParallelism         *int32  `json:"PSMinParallelism,omitempty" xml:"PSMinParallelism,omitempty"`
 }
 
 func (s JobElasticSpec) String() string {
@@ -946,8 +954,28 @@ func (s *JobElasticSpec) SetAIMasterType(v string) *JobElasticSpec {
 	return s
 }
 
+func (s *JobElasticSpec) SetEDPMaxParallelism(v int32) *JobElasticSpec {
+	s.EDPMaxParallelism = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetEDPMinParallelism(v int32) *JobElasticSpec {
+	s.EDPMinParallelism = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetElasticStrategy(v string) *JobElasticSpec {
+	s.ElasticStrategy = &v
+	return s
+}
+
 func (s *JobElasticSpec) SetEnableAIMaster(v bool) *JobElasticSpec {
 	s.EnableAIMaster = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetEnableEDP(v bool) *JobElasticSpec {
+	s.EnableEDP = &v
 	return s
 }
 
@@ -956,8 +984,18 @@ func (s *JobElasticSpec) SetEnableElasticTraining(v bool) *JobElasticSpec {
 	return s
 }
 
+func (s *JobElasticSpec) SetEnablePsJobElasticPS(v bool) *JobElasticSpec {
+	s.EnablePsJobElasticPS = &v
+	return s
+}
+
 func (s *JobElasticSpec) SetEnablePsJobElasticWorker(v bool) *JobElasticSpec {
 	s.EnablePsJobElasticWorker = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetEnablePsResourceEstimate(v bool) *JobElasticSpec {
+	s.EnablePsResourceEstimate = &v
 	return s
 }
 
@@ -968,6 +1006,16 @@ func (s *JobElasticSpec) SetMaxParallelism(v int32) *JobElasticSpec {
 
 func (s *JobElasticSpec) SetMinParallelism(v int32) *JobElasticSpec {
 	s.MinParallelism = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetPSMaxParallelism(v int32) *JobElasticSpec {
+	s.PSMaxParallelism = &v
+	return s
+}
+
+func (s *JobElasticSpec) SetPSMinParallelism(v int32) *JobElasticSpec {
+	s.PSMinParallelism = &v
 	return s
 }
 
@@ -1428,6 +1476,71 @@ func (s *NodeMetric) SetMetrics(v []*Metric) *NodeMetric {
 
 func (s *NodeMetric) SetNodeName(v string) *NodeMetric {
 	s.NodeName = &v
+	return s
+}
+
+type PodItem struct {
+	GmtCreateTime *string    `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtFinishTime *string    `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	GmtStartTime  *string    `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	HistoryPods   []*PodItem `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	Ip            *string    `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodId         *string    `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid        *string    `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Status        *string    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type          *string    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s PodItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PodItem) GoString() string {
+	return s.String()
+}
+
+func (s *PodItem) SetGmtCreateTime(v string) *PodItem {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *PodItem) SetGmtFinishTime(v string) *PodItem {
+	s.GmtFinishTime = &v
+	return s
+}
+
+func (s *PodItem) SetGmtStartTime(v string) *PodItem {
+	s.GmtStartTime = &v
+	return s
+}
+
+func (s *PodItem) SetHistoryPods(v []*PodItem) *PodItem {
+	s.HistoryPods = v
+	return s
+}
+
+func (s *PodItem) SetIp(v string) *PodItem {
+	s.Ip = &v
+	return s
+}
+
+func (s *PodItem) SetPodId(v string) *PodItem {
+	s.PodId = &v
+	return s
+}
+
+func (s *PodItem) SetPodUid(v string) *PodItem {
+	s.PodUid = &v
+	return s
+}
+
+func (s *PodItem) SetStatus(v string) *PodItem {
+	s.Status = &v
+	return s
+}
+
+func (s *PodItem) SetType(v string) *PodItem {
+	s.Type = &v
 	return s
 }
 
@@ -2345,11 +2458,9 @@ func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRe
 }
 
 type CreateTensorboardResponseBody struct {
-	// DataSourceId
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboard id
+	DataSourceId  *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2480,8 +2591,7 @@ func (s *DeleteTensorboardRequest) SetWorkspaceId(v string) *DeleteTensorboardRe
 }
 
 type DeleteTensorboardResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2529,6 +2639,23 @@ func (s *DeleteTensorboardResponse) SetStatusCode(v int32) *DeleteTensorboardRes
 
 func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *DeleteTensorboardResponse {
 	s.Body = v
+	return s
+}
+
+type GetJobRequest struct {
+	NeedDetail *bool `json:"NeedDetail,omitempty" xml:"NeedDetail,omitempty"`
+}
+
+func (s GetJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobRequest) SetNeedDetail(v bool) *GetJobRequest {
+	s.NeedDetail = &v
 	return s
 }
 
@@ -2818,12 +2945,11 @@ type GetJobResponseBodyPods struct {
 	HistoryPods   []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
 	Ip            *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	PodId         *string                              `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// Pod UId
-	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus    *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PodUid        *string                              `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	ResourceType  *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus     *string                              `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Type          *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -2893,16 +3019,13 @@ type GetJobResponseBodyPodsHistoryPods struct {
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
 	GmtStartTime  *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	// Pod Ip
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Pod Id
-	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	// Pod UId
-	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus    *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	PodId         *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid        *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus     *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -3395,7 +3518,6 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetTensorboardRequest struct {
-	// JodId
 	JodId       *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -3843,19 +3965,17 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// JobId
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// TensorboardId
+	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
@@ -4015,8 +4135,7 @@ func (s *StartTensorboardRequest) SetWorkspaceId(v string) *StartTensorboardRequ
 }
 
 type StartTensorboardResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -4137,8 +4256,7 @@ func (s *StopTensorboardRequest) SetWorkspaceId(v string) *StopTensorboardReques
 }
 
 type StopTensorboardResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -4282,8 +4400,7 @@ func (s *UpdateTensorboardRequest) SetWorkspaceId(v string) *UpdateTensorboardRe
 }
 
 type UpdateTensorboardResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tensorboad Id
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -4735,9 +4852,19 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 	return _result, _err
 }
 
-func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NeedDetail)) {
+		query["NeedDetail"] = request.NeedDetail
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetJob"),
@@ -4759,11 +4886,11 @@ func (client *Client) GetJobWithOptions(JobId *string, headers map[string]*strin
 	return _result, _err
 }
 
-func (client *Client) GetJob(JobId *string) (_result *GetJobResponse, _err error) {
+func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(JobId, headers, runtime)
+	_body, _err := client.GetJobWithOptions(JobId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
