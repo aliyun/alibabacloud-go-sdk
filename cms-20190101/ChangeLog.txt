@@ -1,3 +1,6 @@
+2023-05-30 Version: v8.0.1
+- Add batch create once task.
+
 2022-09-23 Version: v8.0.0
 - Generated golang 2019-01-01 for Cms.
 
