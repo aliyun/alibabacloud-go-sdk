@@ -17,9 +17,8 @@ type AsymmetricDecryptRequest struct {
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ciphertext that you want to decrypt.
 	//
-	// >
-	// *   The value is encoded in Base64.
-	// *   You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
+	// > * The value is encoded in Base64.
+	// > * You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
@@ -241,19 +240,15 @@ func (s *AsymmetricEncryptResponse) SetBody(v *AsymmetricEncryptResponseBody) *A
 }
 
 type AsymmetricSignRequest struct {
-	// The signature algorithm.
+	// The version ID of the CMK. The ID must be globally unique.
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
-	//
-	// >
-	// *   The value is encoded in Base64.
-	// *   For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
+	// The signature algorithm.
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// The operation that you want to perform. Set the value to **AsymmetricSign**.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
 	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The version ID of the CMK. The ID must be globally unique.
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 
@@ -286,17 +281,20 @@ func (s *AsymmetricSignRequest) SetKeyVersionId(v string) *AsymmetricSignRequest
 }
 
 type AsymmetricSignResponseBody struct {
-	// The ID of the CMK. The ID must be globally unique.
-	//
-	// >  If you set the KeyId parameter in the request to an alias, the ID of the CMK to which the alias is bound is returned.
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The version ID of the CMK. The ID must be globally unique.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The digest that is generated for the original message by using a hash algorithm. The hash algorithm is specified by the Algorithm parameter.
+	//
+	// > * The value is encoded in Base64.
+	// > * For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest** section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The calculated signature.
 	//
 	// >  The value is encoded in Base64.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the CMK. The ID must be globally unique.
+	//
+	// >  If you set the KeyId parameter in the request to an alias, the ID of the CMK to which the alias is bound is returned.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1289,21 +1287,6 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 }
 
 type CreateKeyRequest struct {
-	// The ID of the dedicated KMS instance.
-	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The description of the CMK.
-	//
-	// The description can be 0 to 8,192 characters in length.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable automatic key rotation. Valid values:
-	//
-	// *   true
-	// *   false
-	//
-	// Default value: false.
-	//
-	// >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
-	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// The type of the CMK. Valid values:
 	//
 	// *   Aliyun_AES\_256
@@ -1316,27 +1299,11 @@ type CreateKeyRequest struct {
 	// *   EC_P256K
 	// *   EC_SM2
 	//
-	// >
-	// *   The default type of the CMK is Aliyun_AES\_256.
-	// *   Only Dedicated KMS supports Aliyun_AES\_128 and Aliyun_AES\_192.
-	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The usage of the CMK. Valid values:
-	//
-	// *   ENCRYPT/DECRYPT: encrypts or decrypts data.
-	// *   SIGN/VERIFY: generates or verifies a digital signature.
-	//
-	// If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The source of key material. Valid values:
-	//
-	// *   Aliyun_KMS (default value)
-	// *   EXTERNAL
-	//
-	// >
-	// *   The value of this parameter is case-sensitive.
-	// *   If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
-	// *   If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// > * The default type of the CMK is Aliyun\_AES\_256.
+	// > * Only Dedicated KMS supports Aliyun\_AES\_128 and Aliyun\_AES\_192.
+	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
+	// The operation that you want to perform. Set the value to **CreateKey**.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The protection level of the CMK. Valid values:
 	//
 	// *   SOFTWARE
@@ -1344,14 +1311,43 @@ type CreateKeyRequest struct {
 	//
 	// Default value: SOFTWARE.
 	//
-	// >
-	// *   The value of this parameter is case-sensitive.
-	// *   Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// > * The value of this parameter is case-sensitive.
+	// > * Assume that you set this parameter to HSM. If you set the Origin parameter to Aliyun_KMS, the CMK is created in a managed HSM. If you set the Origin parameter to EXTERNAL, you can import an external key into the managed HSM.
+	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// The period of automatic key rotation. Specify the value in the integer\[unit] format. Unit: d (day), h (hour), m (minute), or s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
 	//
 	// >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
+	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
+	// The description of the CMK.
+	//
+	// The description can be 0 to 8,192 characters in length.
+	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	// The usage of the CMK. Valid values:
+	//
+	// *   ENCRYPT/DECRYPT: encrypts or decrypts data.
+	// *   SIGN/VERIFY: generates or verifies a digital signature.
+	//
+	// If the CMK supports signature verification, the default value is SIGN/VERIFY. If the CMK does not support signature verification, the default value is ENCRYPT/DECRYPT.
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The source of key material. Valid values:
+	//
+	// *   Aliyun_KMS (default value)
+	// *   EXTERNAL
+	//
+	// > * The value of this parameter is case-sensitive.
+	// > * If you set the KeySpec parameter to an asymmetric CMK type, you are not allowed to set the Origin parameter to EXTERNAL.
+	// > * If you set the Origin parameter to EXTERNAL, you must import key material. For more information, see [Import key material](~~68523~~).
+	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// Specifies whether to enable automatic key rotation. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	//
+	// >  If the Origin parameter is set to EXTERNAL or the KeySpec parameter is set to an asymmetric CMK type, automatic key rotation is not supported.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateKeyRequest) String() string {
@@ -1402,10 +1398,15 @@ func (s *CreateKeyRequest) SetRotationInterval(v string) *CreateKeyRequest {
 	return s
 }
 
+func (s *CreateKeyRequest) SetTags(v string) *CreateKeyRequest {
+	s.Tags = &v
+	return s
+}
+
 type CreateKeyResponseBody struct {
-	// The metadata of the CMK.
-	KeyMetadata *CreateKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
+	KeyMetadata *CreateKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
+	// The ID of the dedicated KMS instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1428,8 +1429,51 @@ func (s *CreateKeyResponseBody) SetRequestId(v string) *CreateKeyResponseBody {
 }
 
 type CreateKeyResponseBodyKeyMetadata struct {
-	// The Alibaba Cloud Resource Name (ARN) of the CMK.
+	// The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The time when the key material expires. The time is displayed in UTC.
+	//
+	// If this parameter value is empty, the key material does not expire.
+	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	// The usage of the CMK.
+	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the CMK.
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The date and time when the CMK was created. The time is displayed in UTC.
+	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
+	// The time when the last rotation was performed. The time is displayed in UTC.
+	//
+	// For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The ID of the current primary key version of the symmetric CMK.
+	//
+	// > * The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
+	// > * This parameter is unavailable for asymmetric CMKs.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The metadata of the CMK.
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The description of the CMK.
+	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
+	// The time when the next rotation will be performed.
+	//
+	// >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
+	KeyState *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
+	// The protection level of the CMK.
+	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	// The creator of the CMK.
+	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	// The source of the key material for the CMK.
+	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	// The ID of the CMK. The ID must be globally unique.
+	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	// The type of the CMK.
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The time when the CMK is scheduled for deletion.
+	//
+	// For more information, see [ScheduleKeyDeletion](~~44196~~).
+	//
+	// >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
+	PrimaryKeyVersion *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
 	// Indicates whether automatic key rotation is enabled. Valid values:
 	//
 	// *   Enabled: Automatic key rotation is enabled.
@@ -1437,54 +1481,10 @@ type CreateKeyResponseBodyKeyMetadata struct {
 	// *   Suspended: Automatic key rotation is suspended. For more information, see [Automatic key rotation](~~134270~~).
 	//
 	// >  Automatic key rotation is available only for symmetric CMKs.
-	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	// The date and time when the CMK was created. The time is displayed in UTC.
-	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	// The creator of the CMK.
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The ID of the dedicated KMS instance.
-	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The time when the CMK is scheduled for deletion.
-	//
-	// For more information, see [ScheduleKeyDeletion](~~44196~~).
-	//
-	// >  This value is returned only when the value of the KeyState parameter is PendingDeletion.
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the CMK.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the CMK. The ID must be globally unique.
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The type of the CMK.
-	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
+	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The status of the CMK.
 	//
 	// For more information, see [Impact of CMK status on API operations](~~44211~~).
-	KeyState *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
-	// The usage of the CMK.
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The time when the last rotation was performed. The time is displayed in UTC.
-	//
-	// For a new CMK, this parameter value is the time when the initial version of the CMK was generated.
-	LastRotationDate *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
-	// The time when the key material expires. The time is displayed in UTC.
-	//
-	// If this parameter value is empty, the key material does not expire.
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The time when the next rotation will be performed.
-	//
-	// >  This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
-	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	// The source of the key material for the CMK.
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the current primary key version of the symmetric CMK.
-	//
-	// >
-	// *   The primary key version of a symmetric CMK is an active encryption key. KMS uses the primary key version of a specified CMK to encrypt data.
-	// *   This parameter is unavailable for asymmetric CMKs.
-	PrimaryKeyVersion *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
-	// The protection level of the CMK.
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The period of automatic key rotation. Unit: seconds. The value is in the format of an integer followed by the letter s. For example, if the rotation period is seven days, this parameter is set to 604800s. This value is returned only when the value of the AutomaticRotation parameter is Enabled or Suspended.
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
@@ -1722,23 +1722,31 @@ func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *Cre
 }
 
 type CreateSecretRequest struct {
-	// The ID of the dedicated KMS instance.
+	// The version number of the secret.
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The description of the secret.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable automatic rotation. Valid values:
 	//
 	// *   true: specifies to enable automatic rotation.
 	// *   false: specifies to disable automatic rotation. This is the default value.
 	//
 	// >  This parameter is valid if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether automatic rotation is enabled. Valid values:
+	//
+	// *   Enabled: indicates that automatic rotation is enabled.
+	// *   Disabled: indicates that automatic rotation is disabled.
+	// *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
+	//
+	// >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	// The ID of the CMK that is used to encrypt the secret value.
-	//
-	// If the DKMSInstanceId parameter is empty, Secrets Manager uses a CMK that is created by Dedicated KMS to encrypt and protect secrets. If the DKMSInstanceId parameter is not empty, specify the CMK of the dedicated KMS instance to encrypt and protect secrets.
-	//
-	// >  The CMK must be a symmetric CMK.
+	// The description of the secret.
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	ExtendedConfig map[string]interface{} `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// The name of the secret.
+	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	// The tags of the secret.
+	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
 	//
 	// *   If you set the SecretType parameter to Generic, you do not need to configure this parameter.
@@ -1774,15 +1782,7 @@ type CreateSecretRequest struct {
 	//     *   CustomData: optional. The custom data. The value is a collection of key-value pairs in the JSON format. Up to 10 key-value pairs can be specified. Separate multiple key-value pairs with commas (,). The default value is a pair of empty braces (`{}`).
 	//
 	// >  This parameter is required if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-	ExtendedConfig map[string]interface{} `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	// The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
-	//
-	// The value is in the `integer[unit]` format.
-	//
-	// The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
-	//
-	// >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
-	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores the encrypted value in the initial version.
 	//
 	// *   If you set the SecretType parameter to Generic that indicates a generic secret, you can customize the secret value.
@@ -1795,32 +1795,23 @@ type CreateSecretRequest struct {
 	//
 	//     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
 	//     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
-	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The ID of the dedicated KMS instance.
+	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	// The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
+	//
+	// The value is in the `integer[unit]` format.
+	//
+	// The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
+	//
+	// >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the secret value. Valid values:
 	//
 	// *   text
 	// *   binary
 	//
 	// >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
-	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	// The name of the secret.
-	//
-	// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
-	//
-	// *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
-	// *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
-	// *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The type of the secret. Valid values:
-	//
-	// *   Generic: specifies a generic secret.
-	// *   Rds: specifies a managed ApsaraDB RDS secret.
-	// *   RAMCredentials: specifies a managed RAM secret.
-	// *   ECS: specifies a managed ECS secret.
-	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The tags of the secret.
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The initial version number. Version numbers are unique in each secret.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -1893,23 +1884,31 @@ func (s *CreateSecretRequest) SetVersionId(v string) *CreateSecretRequest {
 }
 
 type CreateSecretShrinkRequest struct {
-	// The ID of the dedicated KMS instance.
+	// The version number of the secret.
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The description of the secret.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable automatic rotation. Valid values:
 	//
 	// *   true: specifies to enable automatic rotation.
 	// *   false: specifies to disable automatic rotation. This is the default value.
 	//
 	// >  This parameter is valid if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether automatic rotation is enabled. Valid values:
+	//
+	// *   Enabled: indicates that automatic rotation is enabled.
+	// *   Disabled: indicates that automatic rotation is disabled.
+	// *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
+	//
+	// >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	// The ID of the CMK that is used to encrypt the secret value.
-	//
-	// If the DKMSInstanceId parameter is empty, Secrets Manager uses a CMK that is created by Dedicated KMS to encrypt and protect secrets. If the DKMSInstanceId parameter is not empty, specify the CMK of the dedicated KMS instance to encrypt and protect secrets.
-	//
-	// >  The CMK must be a symmetric CMK.
+	// The description of the secret.
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	ExtendedConfigShrink *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// The name of the secret.
+	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	// The tags of the secret.
+	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length.
 	//
 	// *   If you set the SecretType parameter to Generic, you do not need to configure this parameter.
@@ -1945,15 +1944,7 @@ type CreateSecretShrinkRequest struct {
 	//     *   CustomData: optional. The custom data. The value is a collection of key-value pairs in the JSON format. Up to 10 key-value pairs can be specified. Separate multiple key-value pairs with commas (,). The default value is a pair of empty braces (`{}`).
 	//
 	// >  This parameter is required if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-	ExtendedConfigShrink *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	// The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
-	//
-	// The value is in the `integer[unit]` format.
-	//
-	// The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
-	//
-	// >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
-	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
 	// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores the encrypted value in the initial version.
 	//
 	// *   If you set the SecretType parameter to Generic that indicates a generic secret, you can customize the secret value.
@@ -1966,32 +1957,23 @@ type CreateSecretShrinkRequest struct {
 	//
 	//     *   `{"UserName":"","Password": ""}`: In the format, `UserName` specifies the username that is used to log on to the ECS instance, and `Password` specifies the password that is used to log on to the ECS instance.
 	//     *   `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
-	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The ID of the dedicated KMS instance.
+	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	// The interval for automatic rotation. Valid values: 6 hours to 8,760 hours (365 days).
+	//
+	// The value is in the `integer[unit]` format.
+	//
+	// The unit can be d (day), h (hour), m (minute), or s (second). For example, both 7d and 604800s indicate a seven-day interval.
+	//
+	// >  This parameter is required if you set the EnableAutomaticRotation parameter to true. This parameter is ignored if you set the EnableAutomaticRotation parameter to false or if the EnableAutomaticRotation parameter is not configured.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the secret value. Valid values:
 	//
 	// *   text
 	// *   binary
 	//
 	// >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
-	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	// The name of the secret.
-	//
-	// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
-	//
-	// *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
-	// *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
-	// *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The type of the secret. Valid values:
-	//
-	// *   Generic: specifies a generic secret.
-	// *   Rds: specifies a managed ApsaraDB RDS secret.
-	// *   RAMCredentials: specifies a managed RAM secret.
-	// *   ECS: specifies a managed ECS secret.
-	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The tags of the secret.
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The initial version number. Version numbers are unique in each secret.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -2064,44 +2046,34 @@ func (s *CreateSecretShrinkRequest) SetVersionId(v string) *CreateSecretShrinkRe
 }
 
 type CreateSecretResponseBody struct {
-	// The Alibaba Cloud Resource Name (ARN) of the secret.
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// Indicates whether automatic rotation is enabled. Valid values:
-	//
-	// *   Enabled: indicates that automatic rotation is enabled.
-	// *   Disabled: indicates that automatic rotation is disabled.
-	// *   Invalid: indicates that the status of automatic rotation is abnormal. In this case, Secrets Manager cannot automatically rotate the secret.
-	//
-	// >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	// The ID of the dedicated KMS instance.
-	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
-	// The extended configuration of the secret.
-	//
-	// >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
-	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	// The time when the next rotation will be performed.
-	//
-	// >  This parameter is returned if automatic rotation is enabled.
-	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The interval for automatic rotation.
-	//
-	// The value is in the `integer[unit]` format. The value of the `unit` field is fixed as s. For example, if the value is 604800s, automatic rotation is performed at a 7-day interval.
-	//
-	// >  This parameter is returned if automatic rotation is enabled.
-	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	// The name of the secret.
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The type of the secret. Valid values:
 	//
 	// *   Generic: indicates a generic secret.
 	// *   Rds: indicates a managed ApsaraDB RDS secret.
 	// *   RAMCredentials: indicates a managed RAM secret.
 	// *   ECS: indicates a managed ECS secret.
+	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	DKMSInstanceId    *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
+	ExtendedConfig    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// The extended configuration of the secret.
+	//
+	// >  This parameter is returned if you set the SecretType parameter to Rds, RAMCredentials, or ECS.
+	NextRotationDate *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	// The time when the next rotation will be performed.
+	//
+	// >  This parameter is returned if automatic rotation is enabled.
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	// The interval for automatic rotation.
+	//
+	// The value is in the `integer[unit]` format. The value of the `unit` field is fixed as s. For example, if the value is 604800s, automatic rotation is performed at a 7-day interval.
+	//
+	// >  This parameter is returned if automatic rotation is enabled.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The ID of the dedicated KMS instance.
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The version number of the secret.
+	// The Alibaba Cloud Resource Name (ARN) of the secret.
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -5308,9 +5280,9 @@ func (s *GetSecretValueResponse) SetBody(v *GetSecretValueResponseBody) *GetSecr
 }
 
 type ImportKeyMaterialRequest struct {
-	// Use** GetParametersForImport** the Returned public key and the base64-encoded key material.
+	// Use **GetParametersForImport** the Returned public key and the base64-encoded key material.
 	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" xml:"EncryptedKeyMaterial,omitempty"`
-	// By calling** GetParametersForImport** the import token.
+	// By calling **GetParametersForImport** the import token.
 	ImportToken *string `json:"ImportToken,omitempty" xml:"ImportToken,omitempty"`
 	// The ID of the CMK to be imported.
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
@@ -5885,61 +5857,11 @@ func (s *ListKeyVersionsResponse) SetBody(v *ListKeyVersionsResponseBody) *ListK
 }
 
 type ListKeysRequest struct {
-	// The CMK filter. The filter consists of one or more key-value pairs. You can specify a maximum of 10 key-value pairs.
-	//
-	// *   Key
-	//
-	//     *   Description: the property that you want to filter.
-	//
-	//     *   Type: string.
-	//
-	//     *   Valid values:
-	//
-	//         *   KeyState: the status of the CMK.
-	//         *   KeySpec: the type of the CMK.
-	//         *   KeyUsage: the usage of the CMK.
-	//         *   ProtectionLevel: the protection level.
-	//         *   CreatorType: the type of the creator.
-	//
-	// *   Values
-	//
-	//     *   Description: the value to be included after filtering.
-	//
-	//     *   Format: string array.
-	//
-	//     *   Length: 0 to 10.
-	//
-	//     *   Valid values:
-	//
-	//         *   When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
-	//
-	//         *   When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
-	//
-	//             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
-	//
-	//         *   When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
-	//
-	//         *   When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
-	//
-	//             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
-	//
-	//         *   If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
-	//
-	// The logical relationship between different keys is AND, and the logical relationship between multiple items in the same key is OR. Example:
-	//
-	// `[ {"Key":"KeyState", "Values":["Enabled","Disabled"]}, {"Key":"KeyState", "Values":["PendingDeletion"]}, {"Key":"KeySpec", "Values":["Aliyun_AES_256"]}]`. In this example, the semantics are:`(KeyState=Enabled OR KeyState=Disabled OR KeyState=PendingDeletion) AND (KeySpec=Aliyun_AES_ 256)`.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1.
-	//
-	// Default value: 1.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 100.
-	//
-	// Default value: 10
+	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5967,15 +5889,14 @@ func (s *ListKeysRequest) SetPageSize(v int32) *ListKeysRequest {
 }
 
 type ListKeysResponseBody struct {
-	// An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
 	Keys *ListKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of CMKs.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// An array that consists of the CMKs of the current Alibaba Cloud account in the current region.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the CMK. The ID must be globally unique.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the CMK.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6030,10 +5951,8 @@ func (s *ListKeysResponseBodyKeys) SetKey(v []*ListKeysResponseBodyKeysKey) *Lis
 }
 
 type ListKeysResponseBodyKeysKey struct {
-	// The Alibaba Cloud Resource Name (ARN) of the CMK.
 	KeyArn *string `json:"KeyArn,omitempty" xml:"KeyArn,omitempty"`
-	// The ID of the CMK. The ID must be globally unique.
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyId  *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListKeysResponseBodyKeysKey) String() string {
@@ -6399,11 +6318,14 @@ func (s *ListSecretVersionIdsResponse) SetBody(v *ListSecretVersionIdsResponseBo
 }
 
 type ListSecretsRequest struct {
-	// Specifies whether to return the resource tags of the secret. Valid values:
+	// The number of entries to return on each page.
 	//
-	// *   true: returns the resource tags.
-	// *   false: does not return the resource tags. This is the default value.
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
 	FetchTags *string `json:"FetchTags,omitempty" xml:"FetchTags,omitempty"`
+	// The number of entries returned per page.
+	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](~~120090~~) operation.
 	//
 	// *   Key
@@ -6435,18 +6357,8 @@ type ListSecretsRequest struct {
 	//         *   If the Key field is set to TagValue, the value must be 1 to 256 characters in length and can contain letters, numbers, and special characters `/ _ - . + = @ :`.
 	//
 	// The logical relationship between values of the Values field in a key-value pair is OR. Example: `[ {"Key":"SecretName", "Values":["sec1","sec2"]}]`. In this example, the semantics are `SecretName=sec 1 OR SecretName=sec 2`.
-	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The number of the page to return.
-	//
-	// Pages start from page 1.
-	//
-	// Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// Valid values: 1 to 100.
-	//
-	// Default value: 10.
+	// The page number of the returned page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -6479,15 +6391,15 @@ func (s *ListSecretsRequest) SetPageSize(v int32) *ListSecretsRequest {
 }
 
 type ListSecretsResponseBody struct {
-	// The page number of the returned page.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of secrets.
-	SecretList *ListSecretsResponseBodySecretList `json:"SecretList,omitempty" xml:"SecretList,omitempty" type:"Struct"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of returned secrets.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of secrets.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the secret was updated.
+	SecretList *ListSecretsResponseBodySecretList `json:"SecretList,omitempty" xml:"SecretList,omitempty" type:"Struct"`
+	// The secret name.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6542,22 +6454,22 @@ func (s *ListSecretsResponseBodySecretList) SetSecret(v []*ListSecretsResponseBo
 }
 
 type ListSecretsResponseBodySecretListSecret struct {
-	// The time when the secret was created.
+	// The tag value.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the secret is scheduled to be deleted.
+	// The resource tags of the secret.
+	//
+	// This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
 	PlannedDeleteTime *string `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
-	// The secret name.
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The type of the secret. Valid values:
 	//
 	// *   Generic: indicates a generic secret.
 	// *   Rds: indicates a managed ApsaraDB RDS secret.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The time when the secret was created.
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The resource tags of the secret.
-	//
-	// This parameter is not returned if you set the FetchTags parameter to false or do not specify the FetchTags parameter.
+	// The tag key.
 	Tags *ListSecretsResponseBodySecretListSecretTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The time when the secret was updated.
+	// The time when the secret is scheduled to be deleted.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6617,9 +6529,7 @@ func (s *ListSecretsResponseBodySecretListSecretTags) SetTag(v []*ListSecretsRes
 }
 
 type ListSecretsResponseBodySecretListSecretTagsTag struct {
-	// The tag key.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6666,6 +6576,180 @@ func (s *ListSecretsResponse) SetStatusCode(v int32) *ListSecretsResponse {
 }
 
 func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
+	s.TagResource = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -7509,25 +7593,116 @@ func (s *TagResourceResponse) SetBody(v *TagResourceResponseBody) *TagResourceRe
 	return s
 }
 
+type TagResourcesRequest struct {
+	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourceRequest struct {
-	// The ID of the certificate.
-	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The ID of the customer master key (CMK). The ID must be globally unique.
-	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
-	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The name of the secret.
-	//
-	// >  You can configure only one of the KeyId, SecretName, and CertificateId parameters.
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	KeyId      *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// One or more tag keys. Separate multiple tag keys with commas (,).
-	//
-	// You need to specify only the tag keys, not the tag values.
-	//
-	// Each tag key must be 1 to 128 bytes in length.
-	TagKeys *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	TagKeys    *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
 func (s UntagResourceRequest) String() string {
@@ -7559,7 +7734,6 @@ func (s *UntagResourceRequest) SetTagKeys(v string) *UntagResourceRequest {
 }
 
 type UntagResourceResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7601,6 +7775,93 @@ func (s *UntagResourceResponse) SetStatusCode(v int32) *UntagResourceResponse {
 }
 
 func (s *UntagResourceResponse) SetBody(v *UntagResourceResponseBody) *UntagResourceResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -7949,9 +8210,8 @@ func (s *UpdateSecretRequest) SetSecretName(v string) *UpdateSecretRequest {
 type UpdateSecretRequestExtendedConfig struct {
 	// The custom data in the extended configuration of the secret.
 	//
-	// >
-	// *   If this parameter is specified, the existing extended configuration of the secret is updated.
-	// *   This parameter is unavailable for generic secrets.
+	// > *   If this parameter is specified, the existing extended configuration of the secret is updated.
+	// > *   This parameter is unavailable for generic secrets.
 	CustomData map[string]interface{} `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
 }
 
@@ -8002,9 +8262,8 @@ func (s *UpdateSecretShrinkRequest) SetSecretName(v string) *UpdateSecretShrinkR
 type UpdateSecretShrinkRequestExtendedConfig struct {
 	// The custom data in the extended configuration of the secret.
 	//
-	// >
-	// *   If this parameter is specified, the existing extended configuration of the secret is updated.
-	// *   This parameter is unavailable for generic secrets.
+	// > *   If this parameter is specified, the existing extended configuration of the secret is updated.
+	// > *   This parameter is unavailable for generic secrets.
 	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
 }
 
@@ -8171,23 +8430,19 @@ func (s *UpdateSecretRotationPolicyResponse) SetBody(v *UpdateSecretRotationPoli
 }
 
 type UpdateSecretVersionStageRequest struct {
-	// The version to which you want to apply the specified stage label.
-	//
-	// >
-	// *   You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
-	// *   If the VersionStage parameter is set to ACSCurrent or ACSPrevious, this parameter is required.
-	MoveToVersion *string `json:"MoveToVersion,omitempty" xml:"MoveToVersion,omitempty"`
 	// The version from which you want to remove the specified stage label.
 	//
 	// >  You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
-	RemoveFromVersion *string `json:"RemoveFromVersion,omitempty" xml:"RemoveFromVersion,omitempty"`
-	// The name of the secret.
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	MoveToVersion *string `json:"MoveToVersion,omitempty" xml:"MoveToVersion,omitempty"`
 	// The specified stage label. Valid values:
 	//
 	// *   ACSCurrent
 	// *   ACSPrevious
 	// *   Custom stage label
+	RemoveFromVersion *string `json:"RemoveFromVersion,omitempty" xml:"RemoveFromVersion,omitempty"`
+	// The operation that you want to perform. Set the value to **UpdateSecretVersionStage**.
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The name of the secret.
 	VersionStage *string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty"`
 }
 
@@ -8220,9 +8475,12 @@ func (s *UpdateSecretVersionStageRequest) SetVersionStage(v string) *UpdateSecre
 }
 
 type UpdateSecretVersionStageResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the secret.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version to which you want to apply the specified stage label.
+	//
+	// > * You must specify at least one of the RemoveFromVersion and MoveToVersion parameters.
+	// > * If the VersionStage parameter is set to ACSCurrent or ACSPrevious, this parameter is required.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -8570,17 +8828,7 @@ func (client *Client) AsymmetricEncrypt(request *AsymmetricEncryptRequest) (_res
 }
 
 /**
- * This operation supports only asymmetric keys for which the **Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
- * | KeySpec | Algorithm | Description |
- * | ------- | --------- | ----------- |
- * | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
- * | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
- * | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
- * | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
- * | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
- * | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
- * | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
- * >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+ * Generates a signature by using an asymmetric key.
  *
  * @param request AsymmetricSignRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8632,17 +8880,7 @@ func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, 
 }
 
 /**
- * This operation supports only asymmetric keys for which the **Usage** parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
- * | KeySpec | Algorithm | Description |
- * | ------- | --------- | ----------- |
- * | RSA_2048 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
- * | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
- * | RSA_3072 | RSA_PSS_SHA_256 | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
- * | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256 |
- * | EC_P256 | ECDSA_SHA_256 | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
- * | EC_P256K | ECDSA_SHA_256 | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
- * | EC_SM2 | SM2DSA | SM2 public key encryption algorithm based on elliptic curves cryptography (ECC) |
- * >  According to GB/T 32918.2 "Information security technology-Public key cryptographic algorithm SM2 based on elliptic curves-Part 2: Digital signature algorithm", when you calculate the SM2 signature, the **Digest** parameter is used to calculate the digest value of the combination of Z(A) and M, rather than the SM3 digest value. M indicates the original message to be signed. Z(A) indicates the hash value for User A. The hash value is defined in GB/T GB/T 32918.2. In this example, the asymmetric key whose ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` and the signature algorithm `RSA_PSS_SHA_256` are used to generate a signature for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=`.
+ * Generates a signature by using an asymmetric key.
  *
  * @param request AsymmetricSignRequest
  * @return AsymmetricSignResponse
@@ -9279,21 +9517,7 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 }
 
 /**
- * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
- * The following table describes different types of CMKs and the operations that are supported by the CMKs.
- * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
- * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
- * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
- * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
- * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
- * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
- * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
- * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
- * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
- * - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+ * Creates a customer master key (CMK).
  *
  * @param request CreateKeyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9337,6 +9561,10 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 		query["RotationInterval"] = request.RotationInterval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9361,21 +9589,7 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 }
 
 /**
- * A CMK can be symmetric or asymmetric. Symmetric CMKs are used to generate data keys that can be used to encrypt large amounts of data. You can also use symmetric CMKs to encrypt small volume of data that is less than 6 KB. For more information, see [GenerateDataKey](https://www.alibabacloud.com/help/en/key-management-service/latest/generatedatakey). Asymmetric CMKs are used to encrypt data, decrypt data, generate digital signatures, and verify digital signatures. However, you cannot use asymmetric CMKs to generate data keys.
- * The following table describes different types of CMKs and the operations that are supported by the CMKs.
- * | CMK category | CMK type | Description | Encryption and decryption | Signature generation and verification |
- * | ------------ | -------- | ----------- | ------------------------- | ------------------------------------- |
- * | Symmetric CMK | Aliyun_AES_256 | An advanced Encryption Standard (AES) CMK with a length of 256 bits. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_128 | An AES CMK with a length of 128 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_AES_192 | An AES CMK with a length of 192 bits. Only Dedicated KMS supports this CMK type. | Yes | No |
- * | Symmetric CMK | Aliyun_SM4 | SM4 CMK. | Yes | No |
- * | Asymmetric CMK | RSA_2048 | Rivest-Shamir-Adleman (RSA) CMK with a length of 2,048 bits. | Supported | Supported |
- * | Asymmetric CMK | RSA_3072 | RSA CMK with a length of 3,072 bits. | Supported | Supported |
- * | Asymmetric CMK | EC_P256 | National Institute of Standards and Technology (NIST)-recommended elliptic curve P-256 (secp256r1). | Not supported | Supported |
- * | Asymmetric CMK | EC_P256K | Standards for Efficient Cryptography Group (SECG) elliptic curve secp256k1 | Not supported | Supported |
- * | Asymmetric CMK | EC_SM2 | 256-bit elliptic curves over the prime field that is defined in GB/T 32918. | Supported | Supported |
- * > - If the value of the KeySpec parameter that is used to create a symmetric CMK is prefixed with `Aliyun_`, a standard cryptographic algorithm is used, but non-standard ciphertext is generated. An asymmetric CMK can be used to generate standard ciphertext or signatures.
- * - You can use an RSA CMK to perform one of the two types of operations: encrypt and decrypt data, and generate and verify signatures. You cannot use the RSA CMK to perform both two types of operations.
+ * Creates a customer master key (CMK).
  *
  * @param request CreateKeyRequest
  * @return CreateKeyResponse
@@ -9457,10 +9671,11 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 }
 
 /**
- * You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
- * You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
- * To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
- * In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+ * The name of the secret.
+ * The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+ * *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+ * *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+ * *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
  *
  * @param tmpReq CreateSecretRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9550,10 +9765,11 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, runti
 }
 
 /**
- * You must specify the secret name, the secret value that is stored in the initial version, and the version number. The initial version is labeled as ACSCurrent.
- * You can specify a symmetric customer master key (CMK) as the encryption key to encrypt the secret value. If you do not specify an encryption key, Secrets Manager creates a CMK to encrypt the secret value. This CMK is used as the default encryption key for all secrets that are created by your Alibaba Cloud account in the current region. Secrets Manager encrypts only the secret value of each version. Secrets Manager does not encrypt the metadata such as the secret name, version number, or state label.
- * To use a specified CMK to encrypt the secret value, you must have the `kms:GenerateDataKey` permission on the CMK.
- * In this example, a generic secret named `mydbconninfo` is created. The initial version number of the secret is specified in the `VersionId` parameter, and the value is `v1`. The secret value is specified in the `SecretData` parameter, and the value is `{"user":"root","passwd":"****"}`.
+ * The name of the secret.
+ * The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+ * *   If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
+ * *   If the SecretType parameter is set to RAMCredentials, set the SecretName parameter to `$Auto`. In this case, KMS automatically generates a secret name that starts with `acs/ram/user/`. The name includes the display name of RAM user.
+ * *   If the SecretType parameter is set to ECS, the name must start with `acs/ecs/`.
  *
  * @param request CreateSecretRequest
  * @return CreateSecretResponse
@@ -10608,9 +10824,8 @@ func (client *Client) GenerateDataKey(request *GenerateDataKeyRequest) (_result 
 /**
  * This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
  * The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
- * >
- * *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
- * *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+ * > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+ * > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
  *
  * @param tmpReq GenerateDataKeyWithoutPlaintextRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10670,9 +10885,8 @@ func (client *Client) GenerateDataKeyWithoutPlaintextWithOptions(tmpReq *Generat
 /**
  * This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
  * The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
- * >
- * *   This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
- * *   This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
+ * > * This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+ * > * This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
  *
  * @param request GenerateDataKeyWithoutPlaintextRequest
  * @return GenerateDataKeyWithoutPlaintextResponse
@@ -11024,15 +11238,14 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 }
 
 /**
- * Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.** Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+ * Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. **Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
  * *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
  * *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
- * >
- * *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
- * *   You can set the expiration time for the key material, or you can set it to never expire.
- * *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
- * *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
- * *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+ * > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+ * > *   You can set the expiration time for the key material, or you can set it to never expire.
+ * > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+ * > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+ * > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
  *
  * @param request ImportKeyMaterialRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11084,15 +11297,14 @@ func (client *Client) ImportKeyMaterialWithOptions(request *ImportKeyMaterialReq
 }
 
 /**
- * Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external.** Origin** set to** EXTERNAL**. This API is used to import the key material into the CMK.
+ * Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. **Origin** set to **EXTERNAL**. This API is used to import the key material into the CMK.
  * *   To view the CMK **Origin**, see [DescribeKey](~~28952~~).
  * *   Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
- * >
- * *   The key type of the pair is** Aliyun_AES\\_256** the key material must be 256 bits. The key type must be** Aliyun_SM4** the CMK and key material must be 128 bits.
- * *   You can set the expiration time for the key material, or you can set it to never expire.
- * *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
- * *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
- * *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
+ * > *   The key type of the pair is **Aliyun\\_AES\\_256** the key material must be 256 bits. The key type must be **Aliyun\\_SM4** the CMK and key material must be 128 bits.
+ * > *   You can set the expiration time for the key material, or you can set it to never expire.
+ * > *   You can reimport the key material and reset the expiration time for the specified CMK at any time, but the same key material must be imported.
+ * > *   After the imported key material expires or is deleted, the specified CMK is unavailable until the same key material are imported again.
+ * > *   A Key material can be imported to multiple cmks, but any Data or Data Key encrypted by one CMK cannot be decrypted by another CMK.
  *
  * @param request ImportKeyMaterialRequest
  * @return ImportKeyMaterialResponse
@@ -11439,8 +11651,9 @@ func (client *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest)
 }
 
 /**
- * This operation returns the metadata information about the secrets and does not return encrypted secret values.
- * In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+ * Specifies whether to return the resource tags of the secret. Valid values:
+ * *   true: returns the resource tags.
+ * *   false: does not return the resource tags. This is the default value.
  *
  * @param request ListSecretsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11492,8 +11705,9 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtim
 }
 
 /**
- * This operation returns the metadata information about the secrets and does not return encrypted secret values.
- * In this example, the secrets created by the current account in the current region are returned. The `PageNumber` parameter is set to `1`, and the `PageSize` parameter is set to `2`, which indicates that two secrets are to be returned on Page 1.
+ * Specifies whether to return the resource tags of the secret. Valid values:
+ * *   true: returns the resource tags.
+ * *   false: does not return the resource tags. This is the default value.
  *
  * @param request ListSecretsRequest
  * @return ListSecretsResponse
@@ -11502,6 +11716,66 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecretsResponse{}
 	_body, _err := client.ListSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12081,8 +12355,66 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 	return _result, _err
 }
 
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf****`.
+ * One or more tag keys. Separate multiple tag keys with commas (,).
+ * You need to specify only the tag keys, not the tag values.
+ * Each tag key must be 1 to 128 bytes in length.
  *
  * @param request UntagResourceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12134,7 +12466,9 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, ru
 }
 
 /**
- * In this example, the tags whose tag keys are tagkey1 and tagkey2 are removed from the CMK whose ID is `08c33a6f-4e0a-4a1b-a3fa-7ddf****`.
+ * One or more tag keys. Separate multiple tag keys with commas (,).
+ * You need to specify only the tag keys, not the tag values.
+ * Each tag key must be 1 to 128 bytes in length.
  *
  * @param request UntagResourceRequest
  * @return UntagResourceResponse
@@ -12143,6 +12477,66 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourceResponse{}
 	_body, _err := client.UntagResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12536,11 +12930,7 @@ func (client *Client) UpdateSecretRotationPolicy(request *UpdateSecretRotationPo
 }
 
 /**
- * You can use this operation to achieve the following purposes:
- * *   Use a specified stage label to mark a new secret version.
- * *   Remove a specific stage label from an existing secret version.
- * Limits: This operation is available only for generic secrets.
- * In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+ * Updates the stage label that marks a secret version.
  *
  * @param request UpdateSecretVersionStageRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12592,11 +12982,7 @@ func (client *Client) UpdateSecretVersionStageWithOptions(request *UpdateSecretV
 }
 
 /**
- * You can use this operation to achieve the following purposes:
- * *   Use a specified stage label to mark a new secret version.
- * *   Remove a specific stage label from an existing secret version.
- * Limits: This operation is available only for generic secrets.
- * In this example, the stage label that marks the version of the `secret001` secret is updated. The stage label `ACSCurrent` is used to mark the `002` version.
+ * Updates the stage label that marks a secret version.
  *
  * @param request UpdateSecretVersionStageRequest
  * @return UpdateSecretVersionStageResponse
