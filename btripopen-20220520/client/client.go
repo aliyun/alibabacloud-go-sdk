@@ -33334,9 +33334,10 @@ func (s *IsvRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *IsvRuleSaveHeade
 }
 
 type IsvRuleSaveRequest struct {
-	BookType *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
-	Status   *int32  `json:"status,omitempty" xml:"status,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BookType     *string                           `json:"book_type,omitempty" xml:"book_type,omitempty"`
+	BookuserList []*IsvRuleSaveRequestBookuserList `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty" type:"Repeated"`
+	Status       *int32                            `json:"status,omitempty" xml:"status,omitempty"`
+	UserId       *string                           `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s IsvRuleSaveRequest) String() string {
@@ -33352,12 +33353,75 @@ func (s *IsvRuleSaveRequest) SetBookType(v string) *IsvRuleSaveRequest {
 	return s
 }
 
+func (s *IsvRuleSaveRequest) SetBookuserList(v []*IsvRuleSaveRequestBookuserList) *IsvRuleSaveRequest {
+	s.BookuserList = v
+	return s
+}
+
 func (s *IsvRuleSaveRequest) SetStatus(v int32) *IsvRuleSaveRequest {
 	s.Status = &v
 	return s
 }
 
 func (s *IsvRuleSaveRequest) SetUserId(v string) *IsvRuleSaveRequest {
+	s.UserId = &v
+	return s
+}
+
+type IsvRuleSaveRequestBookuserList struct {
+	EntityId   *string `json:"entity_id,omitempty" xml:"entity_id,omitempty"`
+	EntityType *int32  `json:"entity_type,omitempty" xml:"entity_type,omitempty"`
+}
+
+func (s IsvRuleSaveRequestBookuserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveRequestBookuserList) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveRequestBookuserList) SetEntityId(v string) *IsvRuleSaveRequestBookuserList {
+	s.EntityId = &v
+	return s
+}
+
+func (s *IsvRuleSaveRequestBookuserList) SetEntityType(v int32) *IsvRuleSaveRequestBookuserList {
+	s.EntityType = &v
+	return s
+}
+
+type IsvRuleSaveShrinkRequest struct {
+	BookType           *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
+	BookuserListShrink *string `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty"`
+	Status             *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s IsvRuleSaveShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IsvRuleSaveShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IsvRuleSaveShrinkRequest) SetBookType(v string) *IsvRuleSaveShrinkRequest {
+	s.BookType = &v
+	return s
+}
+
+func (s *IsvRuleSaveShrinkRequest) SetBookuserListShrink(v string) *IsvRuleSaveShrinkRequest {
+	s.BookuserListShrink = &v
+	return s
+}
+
+func (s *IsvRuleSaveShrinkRequest) SetStatus(v int32) *IsvRuleSaveShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *IsvRuleSaveShrinkRequest) SetUserId(v string) *IsvRuleSaveShrinkRequest {
 	s.UserId = &v
 	return s
 }
@@ -49149,14 +49213,24 @@ func (client *Client) InvoiceSearch(request *InvoiceSearchRequest) (_result *Inv
 	return _result, _err
 }
 
-func (client *Client) IsvRuleSaveWithOptions(request *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers *IsvRuleSaveHeaders, runtime *util.RuntimeOptions) (_result *IsvRuleSaveResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &IsvRuleSaveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BookuserList)) {
+		request.BookuserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BookuserList, tea.String("bookuser_list"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BookType)) {
 		body["book_type"] = request.BookType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BookuserListShrink)) {
+		body["bookuser_list"] = request.BookuserListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
