@@ -42,6 +42,7 @@ type AddAddressBookRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The ECS tags that you want to match.
@@ -188,50 +189,50 @@ func (s *AddAddressBookResponse) SetBody(v *AddAddressBookResponseBody) *AddAddr
 type AddControlPolicyRequest struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values:
 	//
-	// * **accept**: allows the traffic.
-	// * **drop**: denies the traffic.
-	// * **log**: monitors the traffic.
+	// *   **accept**: allows the traffic.
+	// *   **drop**: denies the traffic.
+	// *   **log**: monitors the traffic.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The type of the application that the access control policy supports. Valid values:
+	// The application type supported by the access control policy. Valid values:
 	//
-	// * **FTP**
-	// * **HTTP**
-	// * **HTTPS**
-	// * **Memcache**
-	// * **MongoDB**
-	// * **MQTT**
-	// * **MySQL**
-	// * **RDP**
-	// * **Redis**
-	// * **SMTP**
-	// * **SMTPS**
-	// * **SSH**
-	// * **SSL_No_Cert**
-	// * **SSL**
-	// * **VNC**
-	// * **ANY**: all types of applications
+	// *   **FTP**
+	// *   **HTTP**
+	// *   **HTTPS**
+	// *   **Memcache**
+	// *   **MongoDB**
+	// *   **MQTT**
+	// *   **MySQL**
+	// *   **RDP**
+	// *   **Redis**
+	// *   **SMTP**
+	// *   **SMTPS**
+	// *   **SSH**
+	// *   **SSL_No_Cert**
+	// *   **SSL**
+	// *   **VNC**
+	// *   **ANY**
 	//
-	// > The value of this parameter depends on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY.
+	// > The value of this parameter is based on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY. You must specify at least one of the ApplicationNameList and ApplicationName parameters.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The types of the application that the access control policy supports.
+	// The application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port in the access control policy. Valid values:
 	//
-	// * If Proto is set to ICMP, the value of DestPort is empty.
+	// *   If Proto is set to ICMP, DestPort is automatically left empty.
 	//
 	// > If Proto is set to ICMP, access control does not take effect on the destination port.
 	//
-	// * If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, the value of DestPort is empty.
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
 	//
-	// > If DestPortType is set to group, you do not need to specify the destination port number. All ports that the access control policy controls are included in the destination port address book.
+	// > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
 	//
-	// * If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
+	// *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	// The name of the destination port address book in the access control policy.
 	//
-	// >  If DestPortType is set to group, you must specify the name of the destination port address book.
+	// > If DestPortType is set to group, you must specify the name of the destination port address book.
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
 	// The type of the destination port in the access control policy.
 	//
@@ -244,81 +245,82 @@ type AddControlPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// * If DestinationType is set to net, the value of this parameter is a CIDR block.
+	// *   If DestinationType is set to net, the value of this parameter is a CIDR block.
 	//
 	//     Example: 1.2.XX.XX/24
 	//
-	// * If DestinationType is set to group, the value of this parameter is an address book.
+	// *   If DestinationType is set to group, the value of this parameter is an address book name.
 	//
 	//     Example: db_group
 	//
-	// * If DestinationType is set to domain, the value of this parameter is a domain name.
+	// *   If DestinationType is set to domain, the value of this parameter is a domain name.
 	//
 	//     Example: \*.aliyuncs.com
 	//
-	// * If DestinationType is set to location, the value of this parameter is a location.
+	// *   If DestinationType is set to location, the value of this parameter is a location.
 	//
 	//     Example: \["BJ11", "ZB"]
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The type of the destination address in the access control policy. Valid values:
 	//
-	// * **net**: destination CIDR block
-	// * **group**: destination address book
-	// * **domain**: destination domain name
-	// * **location**: destination location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**: location
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The direction of the traffic to which the access control policy applies. Valid values:
 	//
-	// * **in**: inbound traffic
-	// * **out**: outbound traffic
+	// *   **in**: inbound traffic
+	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The IP version of the address in the access control policy.
+	// The IP version supported by the access control policy.
 	//
 	// Valid values:
 	//
-	// * **4**: IPv4
-	// * **6**: IPv6
+	// *   **4**: IPv4
+	// *   **6**: IPv6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
-	// * **zh**: Chinese (default)
-	// * **en**: English
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority.
+	// The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
-	// The type of the protocol in the access control policy. Valid values:
+	// The protocol type supported by the access control policy. Valid values:
 	//
-	// * **ANY**: any protocol type
-	// * **TCP**
-	// * **UDP**
-	// * **ICMP**
+	// *   **ANY**
+	// *   **TCP**
+	// *   **UDP**
+	// *   **ICMP**
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
 	//
-	// *   **true**: The access control policy is enabled.
-	// *   **false**: The access control policy is disabled.
+	// *   **true**: enables the access control policy.
+	// *   **false**: disables the access control policy.
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
-	// * If SourceType is set to net, the value of this parameter is a CIDR block.
+	// *   If SourceType is set to net, the value of this parameter is a CIDR block.
 	//
 	//     Example: 1.1.XX.XX/24
 	//
-	// * If SourceType is set to group, the value of this parameter is an address book.
+	// *   If SourceType is set to group, the value of this parameter is an address book name.
 	//
 	//     Example: db_group
 	//
-	// * If SourceType is set to location, the value of this parameter is a location.
+	// *   If SourceType is set to location, the value of this parameter is a location.
 	//
 	//     Example: \["BJ11", "ZB"]
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the source address book in the access control policy. Valid values:
+	// The type of the source address in the access control policy. Valid values:
 	//
-	// * **net**: source CIDR block
-	// * **group**: source address book
-	// * **location**: source location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -570,6 +572,7 @@ type BatchCopyVpcFirewallControlPolicyRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The ID of the policy group of the source VPC firewall. Valid values:
@@ -659,6 +662,351 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *Batc
 }
 
 func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirewallControlPolicyResponseBody) *BatchCopyVpcFirewallControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTrFirewallV2Request struct {
+	CenId                  *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	FirewallDescription    *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
+	FirewallName           *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	FirewallSubnetCidr     *string `json:"FirewallSubnetCidr,omitempty" xml:"FirewallSubnetCidr,omitempty"`
+	FirewallVpcCidr        *string `json:"FirewallVpcCidr,omitempty" xml:"FirewallVpcCidr,omitempty"`
+	FirewallVpcId          *string `json:"FirewallVpcId,omitempty" xml:"FirewallVpcId,omitempty"`
+	FirewallVswitchId      *string `json:"FirewallVswitchId,omitempty" xml:"FirewallVswitchId,omitempty"`
+	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionNo               *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RouteMode              *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
+	TrAttachmentSlaveCidr  *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	TransitRouterId        *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s CreateTrFirewallV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2Request) SetCenId(v string) *CreateTrFirewallV2Request {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallDescription(v string) *CreateTrFirewallV2Request {
+	s.FirewallDescription = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallName(v string) *CreateTrFirewallV2Request {
+	s.FirewallName = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallSubnetCidr(v string) *CreateTrFirewallV2Request {
+	s.FirewallSubnetCidr = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallVpcCidr(v string) *CreateTrFirewallV2Request {
+	s.FirewallVpcCidr = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallVpcId(v string) *CreateTrFirewallV2Request {
+	s.FirewallVpcId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetFirewallVswitchId(v string) *CreateTrFirewallV2Request {
+	s.FirewallVswitchId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetLang(v string) *CreateTrFirewallV2Request {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetRegionNo(v string) *CreateTrFirewallV2Request {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetRouteMode(v string) *CreateTrFirewallV2Request {
+	s.RouteMode = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetTrAttachmentMasterCidr(v string) *CreateTrFirewallV2Request {
+	s.TrAttachmentMasterCidr = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetTrAttachmentSlaveCidr(v string) *CreateTrFirewallV2Request {
+	s.TrAttachmentSlaveCidr = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Request) SetTransitRouterId(v string) *CreateTrFirewallV2Request {
+	s.TransitRouterId = &v
+	return s
+}
+
+type CreateTrFirewallV2ResponseBody struct {
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTrFirewallV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2ResponseBody) SetFirewallId(v string) *CreateTrFirewallV2ResponseBody {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2ResponseBody) SetRequestId(v string) *CreateTrFirewallV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTrFirewallV2Response struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTrFirewallV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2Response) SetHeaders(v map[string]*string) *CreateTrFirewallV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrFirewallV2Response) SetStatusCode(v int32) *CreateTrFirewallV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2Response) SetBody(v *CreateTrFirewallV2ResponseBody) *CreateTrFirewallV2Response {
+	s.Body = v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyRequest struct {
+	DestCandidateList []*CreateTrFirewallV2RoutePolicyRequestDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
+	FirewallId        *string                                                  `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang              *string                                                  `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PolicyDescription *string                                                  `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string                                                  `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType        *string                                                  `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	SrcCandidateList  []*CreateTrFirewallV2RoutePolicyRequestSrcCandidateList  `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetDestCandidateList(v []*CreateTrFirewallV2RoutePolicyRequestDestCandidateList) *CreateTrFirewallV2RoutePolicyRequest {
+	s.DestCandidateList = v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetFirewallId(v string) *CreateTrFirewallV2RoutePolicyRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetLang(v string) *CreateTrFirewallV2RoutePolicyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetPolicyDescription(v string) *CreateTrFirewallV2RoutePolicyRequest {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetPolicyName(v string) *CreateTrFirewallV2RoutePolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetPolicyType(v string) *CreateTrFirewallV2RoutePolicyRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequest) SetSrcCandidateList(v []*CreateTrFirewallV2RoutePolicyRequestSrcCandidateList) *CreateTrFirewallV2RoutePolicyRequest {
+	s.SrcCandidateList = v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyRequestDestCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequestDestCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequestDestCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequestDestCandidateList) SetCandidateId(v string) *CreateTrFirewallV2RoutePolicyRequestDestCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequestDestCandidateList) SetCandidateType(v string) *CreateTrFirewallV2RoutePolicyRequestDestCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyRequestSrcCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequestSrcCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyRequestSrcCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequestSrcCandidateList) SetCandidateId(v string) *CreateTrFirewallV2RoutePolicyRequestSrcCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyRequestSrcCandidateList) SetCandidateType(v string) *CreateTrFirewallV2RoutePolicyRequestSrcCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
+	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PolicyDescription       *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName              *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType              *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	SrcCandidateListShrink  *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetDestCandidateListShrink(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.DestCandidateListShrink = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetFirewallId(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetLang(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetPolicyDescription(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetPolicyName(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetPolicyType(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyShrinkRequest) SetSrcCandidateListShrink(v string) *CreateTrFirewallV2RoutePolicyShrinkRequest {
+	s.SrcCandidateListShrink = &v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyResponseBody struct {
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyResponseBody) SetRequestId(v string) *CreateTrFirewallV2RoutePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyResponseBody) SetTrFirewallRoutePolicyId(v string) *CreateTrFirewallV2RoutePolicyResponseBody {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type CreateTrFirewallV2RoutePolicyResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTrFirewallV2RoutePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTrFirewallV2RoutePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrFirewallV2RoutePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrFirewallV2RoutePolicyResponse) SetHeaders(v map[string]*string) *CreateTrFirewallV2RoutePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyResponse) SetStatusCode(v int32) *CreateTrFirewallV2RoutePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTrFirewallV2RoutePolicyResponse) SetBody(v *CreateTrFirewallV2RoutePolicyResponseBody) *CreateTrFirewallV2RoutePolicyResponse {
 	s.Body = v
 	return s
 }
@@ -1188,6 +1536,7 @@ type DeleteAddressBookRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -1281,6 +1630,7 @@ type DeleteControlPolicyRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the traffic.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -1360,6 +1710,81 @@ func (s *DeleteControlPolicyResponse) SetBody(v *DeleteControlPolicyResponseBody
 	return s
 }
 
+type DeleteFirewallV2RoutePoliciesRequest struct {
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s DeleteFirewallV2RoutePoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFirewallV2RoutePoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFirewallV2RoutePoliciesRequest) SetFirewallId(v string) *DeleteFirewallV2RoutePoliciesRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DeleteFirewallV2RoutePoliciesRequest) SetLang(v string) *DeleteFirewallV2RoutePoliciesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteFirewallV2RoutePoliciesRequest) SetTrFirewallRoutePolicyId(v string) *DeleteFirewallV2RoutePoliciesRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type DeleteFirewallV2RoutePoliciesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFirewallV2RoutePoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFirewallV2RoutePoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFirewallV2RoutePoliciesResponseBody) SetRequestId(v string) *DeleteFirewallV2RoutePoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFirewallV2RoutePoliciesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFirewallV2RoutePoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFirewallV2RoutePoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFirewallV2RoutePoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFirewallV2RoutePoliciesResponse) SetHeaders(v map[string]*string) *DeleteFirewallV2RoutePoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFirewallV2RoutePoliciesResponse) SetStatusCode(v int32) *DeleteFirewallV2RoutePoliciesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFirewallV2RoutePoliciesResponse) SetBody(v *DeleteFirewallV2RoutePoliciesResponseBody) *DeleteFirewallV2RoutePoliciesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceMembersRequest struct {
 	// The unique identifiers (UID) of members that you want to remove from Cloud Firewall.
 	MemberUids []*int64 `json:"MemberUids,omitempty" xml:"MemberUids,omitempty" type:"Repeated"`
@@ -1421,6 +1846,75 @@ func (s *DeleteInstanceMembersResponse) SetStatusCode(v int32) *DeleteInstanceMe
 }
 
 func (s *DeleteInstanceMembersResponse) SetBody(v *DeleteInstanceMembersResponseBody) *DeleteInstanceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTrFirewallV2Request struct {
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DeleteTrFirewallV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrFirewallV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrFirewallV2Request) SetFirewallId(v string) *DeleteTrFirewallV2Request {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DeleteTrFirewallV2Request) SetLang(v string) *DeleteTrFirewallV2Request {
+	s.Lang = &v
+	return s
+}
+
+type DeleteTrFirewallV2ResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTrFirewallV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrFirewallV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrFirewallV2ResponseBody) SetRequestId(v string) *DeleteTrFirewallV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTrFirewallV2Response struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTrFirewallV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTrFirewallV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrFirewallV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrFirewallV2Response) SetHeaders(v map[string]*string) *DeleteTrFirewallV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTrFirewallV2Response) SetStatusCode(v int32) *DeleteTrFirewallV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTrFirewallV2Response) SetBody(v *DeleteTrFirewallV2ResponseBody) *DeleteTrFirewallV2Response {
 	s.Body = v
 	return s
 }
@@ -1958,14 +2452,14 @@ type DescribeAssetListRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member that is added in Cloud Firewall.
+	// The UID of the member that is added to Cloud Firewall.
 	MemberUid      *int64  `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which Cloud Firewall is supported.
+	// The region ID of your Cloud Firewall.
 	//
-	// >  For more information about the regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	// > For more information about the regions, see [Supported regions](~~195657~~).
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The type of the asset. Valid values:
 	//
@@ -1975,20 +2469,18 @@ type DescribeAssetListRequest struct {
 	// *   **EcsPublicIP**: the public IP address of an ECS instance
 	// *   **EIP**: the EIP
 	// *   **EniEIP**: the EIP of an elastic network interface (ENI)
-	// *   **NatEIP**: the EIP of a Network Address Translation (NAT) gateway
+	// *   **NatEIP**: the EIP of a NAT gateway
 	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
 	// *   **SlbPublicIP**: the public IP address of an SLB instance
 	// *   **NatPublicIP**: the public IP address of a NAT gateway
 	// *   **HAVIP**: the high-availability virtual IP address (HAVIP)
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The instance ID or the IP address of the asset.
+	// The instance ID or IP address of the asset.
 	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
 	// *   **pass**: delivered
-	//
 	// *   **block**: undelivered
-	//
 	// *   **unsupport**: unsupported
 	//
 	// > If you do not specify this parameter, the assets on which security group policies in all states take effect are queried.
@@ -2000,14 +2492,14 @@ type DescribeAssetListRequest struct {
 	// *   **closed**: The firewall is disabled.
 	// *   **closing**: The firewall is being disabled.
 	//
-	// >  If you do not specify this parameter, the assets that are configured for firewalls in all states are queried.
+	// > If you do not specify this parameter, the assets that are configured for firewalls in all states are queried.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// This parameter is deprecated.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The edition of Cloud Firewall. Valid values:
 	//
 	// *   **buy**: a paid edition (default)
-	// *   **free**: a free edition
+	// *   **free**: Free Edition
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2119,11 +2611,11 @@ func (s *DescribeAssetListResponseBody) SetTotalCount(v int32) *DescribeAssetLis
 type DescribeAssetListResponseBodyAssets struct {
 	// The UID of the Alibaba Cloud account.
 	//
-	// >  The value of this parameter indicates the management account to which the member is added.
+	// > The value of this parameter indicates the management account to which the member is added.
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The instance ID of the asset that is bound to Cloud Firewall.
+	// The instance ID of the asset.
 	BindInstanceId *string `json:"BindInstanceId,omitempty" xml:"BindInstanceId,omitempty"`
-	// The instance name of the asset that is bound to Cloud Firewall.
+	// The instance name of the asset.
 	BindInstanceName *string `json:"BindInstanceName,omitempty" xml:"BindInstanceName,omitempty"`
 	CreateTimeStamp  *string `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	// The public IP address of the server.
@@ -2137,15 +2629,15 @@ type DescribeAssetListResponseBodyAssets struct {
 	// *   **4**: IPv4
 	// *   **6**: IPv6
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The UID of the member that is added in Cloud Firewall.
+	// The UID of the member that is added to Cloud Firewall.
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The instance name of the asset that is protected by Cloud Firewall.
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NewResourceTag *string `json:"NewResourceTag,omitempty" xml:"NewResourceTag,omitempty"`
 	// The remarks of the asset. Valid values:
 	//
-	// *   **REGION\_NOT\_SUPPORT**: The region is not supported.
-	// *   **NETWORK\_NOT\_SUPPORT**: The network is not supported.
+	// *   **REGION_NOT_SUPPORT**: The region is not supported.
+	// *   **NETWORK_NOT_SUPPORT**: The network is not supported.
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The status of the firewall. Valid values:
 	//
@@ -2183,7 +2675,7 @@ type DescribeAssetListResponseBodyAssets struct {
 	// *   **middle**: medium
 	// *   **hight**: high
 	//
-	// >  The value of this parameter is returned only when the UserType parameter is set to free.
+	// > The value of this parameter is returned only when the UserType parameter is set to free.
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The status of the security group policy. Valid values:
 	//
@@ -2191,7 +2683,7 @@ type DescribeAssetListResponseBodyAssets struct {
 	// *   **block**: undelivered
 	// *   **unsupport**: unsupported
 	SgStatus *string `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
-	// The time when the status of the security group was last checked. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the status of the security group policy was last checked. The value is a UNIX timestamp. Unit: seconds.
 	SgStatusTime *int64 `json:"SgStatusTime,omitempty" xml:"SgStatusTime,omitempty"`
 	// The status of traffic redirection for the asset. Valid values:
 	//
@@ -2865,6 +3357,7 @@ type DescribeDomainResolveRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -3179,6 +3672,267 @@ func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResp
 	return s
 }
 
+type DescribeInternetTrafficTrendRequest struct {
+	Direction  *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
+	// Deprecated
+	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
+	SrcPublicIP  *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TrafficType  *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+}
+
+func (s DescribeInternetTrafficTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetTrafficTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetDirection(v string) *DescribeInternetTrafficTrendRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetEndTime(v string) *DescribeInternetTrafficTrendRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetLang(v string) *DescribeInternetTrafficTrendRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetSourceCode(v string) *DescribeInternetTrafficTrendRequest {
+	s.SourceCode = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetSourceIp(v string) *DescribeInternetTrafficTrendRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetSrcPrivateIP(v string) *DescribeInternetTrafficTrendRequest {
+	s.SrcPrivateIP = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetSrcPublicIP(v string) *DescribeInternetTrafficTrendRequest {
+	s.SrcPublicIP = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetStartTime(v string) *DescribeInternetTrafficTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendRequest) SetTrafficType(v string) *DescribeInternetTrafficTrendRequest {
+	s.TrafficType = &v
+	return s
+}
+
+type DescribeInternetTrafficTrendResponseBody struct {
+	AvgInBps         *int64                                              `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
+	AvgOutBps        *int64                                              `json:"AvgOutBps,omitempty" xml:"AvgOutBps,omitempty"`
+	AvgSession       *int64                                              `json:"AvgSession,omitempty" xml:"AvgSession,omitempty"`
+	AvgTotalBps      *int64                                              `json:"AvgTotalBps,omitempty" xml:"AvgTotalBps,omitempty"`
+	DataList         []*DescribeInternetTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	MaxBandwidthTime *int64                                              `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
+	MaxInBps         *int64                                              `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
+	MaxOutBps        *int64                                              `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
+	MaxSession       *int64                                              `json:"MaxSession,omitempty" xml:"MaxSession,omitempty"`
+	MaxTotalBps      *int64                                              `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalBytes       *int64                                              `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalInBytes     *int64                                              `json:"TotalInBytes,omitempty" xml:"TotalInBytes,omitempty"`
+	TotalOutBytes    *int64                                              `json:"TotalOutBytes,omitempty" xml:"TotalOutBytes,omitempty"`
+	TotalSession     *int64                                              `json:"TotalSession,omitempty" xml:"TotalSession,omitempty"`
+}
+
+func (s DescribeInternetTrafficTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetTrafficTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetAvgInBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.AvgInBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetAvgOutBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.AvgOutBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetAvgSession(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.AvgSession = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetAvgTotalBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.AvgTotalBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetDataList(v []*DescribeInternetTrafficTrendResponseBodyDataList) *DescribeInternetTrafficTrendResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxBandwidthTime(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxBandwidthTime = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxInBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxInBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxOutBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxOutBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxSession(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxSession = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetMaxTotalBps(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.MaxTotalBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetRequestId(v string) *DescribeInternetTrafficTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetTotalBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.TotalBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetTotalInBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.TotalInBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetTotalOutBytes(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.TotalOutBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBody) SetTotalSession(v int64) *DescribeInternetTrafficTrendResponseBody {
+	s.TotalSession = &v
+	return s
+}
+
+type DescribeInternetTrafficTrendResponseBodyDataList struct {
+	InBps        *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	InBytes      *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	InPps        *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	NewConn      *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	OutBps       *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	OutBytes     *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	OutPps       *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	Time         *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s DescribeInternetTrafficTrendResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetTrafficTrendResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetInBps(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.InBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetInBytes(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetInPps(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.InPps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetNewConn(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.NewConn = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetOutBps(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.OutBps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetOutBytes(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetOutPps(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.OutPps = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetSessionCount(v int64) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.SessionCount = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponseBodyDataList) SetTime(v int32) *DescribeInternetTrafficTrendResponseBodyDataList {
+	s.Time = &v
+	return s
+}
+
+type DescribeInternetTrafficTrendResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInternetTrafficTrendResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInternetTrafficTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInternetTrafficTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInternetTrafficTrendResponse) SetHeaders(v map[string]*string) *DescribeInternetTrafficTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponse) SetStatusCode(v int32) *DescribeInternetTrafficTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInternetTrafficTrendResponse) SetBody(v *DescribeInternetTrafficTrendResponseBody) *DescribeInternetTrafficTrendResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInvadeEventListRequest struct {
 	// The IP address of the affected asset.
 	AssetsIP *string `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
@@ -3188,9 +3942,9 @@ type DescribeInvadeEventListRequest struct {
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
 	// The number of the page to return.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Default value: 1.
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query ends at the current time.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the breach awareness event.
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
@@ -3198,10 +3952,10 @@ type DescribeInvadeEventListRequest struct {
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The UUID of the breach awareness event.
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// Specifies whether to ignore the breach awareness event. Valid values:
+	// Specifies whether the breach awareness event is ignored. Valid values:
 	//
-	// *   **true**: ignores the breach awareness event.
-	// *   **false**: does not ignore the breach awareness event.
+	// *   **true**: The breach awareness event is ignored.
+	// *   **false**: The breach awareness event is not ignored.
 	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
@@ -3214,13 +3968,14 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// Default value: 6. Maximum value: 10.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of process statuses.
+	// The handling status of breach awareness events.
 	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
-	// The list of risk levels.
+	// The risk levels.
 	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the query starts from 30 days before the current time.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -3315,11 +4070,11 @@ func (s *DescribeInvadeEventListRequest) SetStartTime(v string) *DescribeInvadeE
 type DescribeInvadeEventListResponseBody struct {
 	// An array that consists of breach awareness events.
 	EventList []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// The ratio of high-risk events.
+	// The percentage of high-risk events.
 	HighLevelPercent *int32 `json:"HighLevelPercent,omitempty" xml:"HighLevelPercent,omitempty"`
-	// The ratio of low-risk events.
+	// The percentage of low-risk events.
 	LowLevelPercent *int32 `json:"LowLevelPercent,omitempty" xml:"LowLevelPercent,omitempty"`
-	// The ratio of medium-risk events.
+	// The percentage of medium-risk events.
 	MiddleLevelPercent *int32 `json:"MiddleLevelPercent,omitempty" xml:"MiddleLevelPercent,omitempty"`
 	// The pagination information.
 	PageInfo *DescribeInvadeEventListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
@@ -3372,17 +4127,17 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
 	// The type of the affected asset. Valid values:
 	//
-	// * **BastionHostIP**: the egress IP address of a bastion host
-	// * **BastionHostIngressIP**: the ingress IP address of a bastion host
-	// * **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-	// * **EcsPublicIP**: the public IP address of an ECS instance
-	// * **EIP**: the EIP
-	// * **EniEIP**: the EIP of an elastic network interface (ENI)
-	// * **NatEIP**: the EIP of a NAT gateway
-	// * **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
-	// * **SlbPublicIP**: the public IP address of an SLB instance
-	// * **NatPublicIP**: the public IP address of a NAT gateway
-	// * **HAVIP**: the high-availability virtual IP address (HAVIP)
+	// *   **BastionHostIP**: the egress IP address of a bastion host
+	// *   **BastionHostIngressIP**: the ingress IP address of a bastion host
+	// *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
+	// *   **EcsPublicIP**: the public IP address of an ECS instance
+	// *   **EIP**: the EIP
+	// *   **EniEIP**: the EIP of an elastic network interface (ENI)
+	// *   **NatEIP**: the EIP of a NAT gateway
+	// *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance
+	// *   **SlbPublicIP**: the public IP address of an SLB instance
+	// *   **NatPublicIP**: the public IP address of a NAT gateway
+	// *   **HAVIP**: the high-availability virtual IP address (HAVIP)
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
 	// The ID of the breach awareness event.
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
@@ -3417,17 +4172,17 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
 	// The type of the affected asset. Valid values:
 	//
-	// * **BastionHostIP**: the egress IP address of a bastion host
-	// * **BastionHostIngressIP**: the ingress IP address of a bastion host
-	// * **EcsEIP**: the EIP of an ECS instance
-	// * **EcsPublicIP**: the public IP address of an ECS instance
-	// * **EIP**: the EIP
-	// * **EniEIP**: the EIP of an ENI
-	// * **NatEIP**: the EIP of a NAT gateway
-	// * **SlbEIP**: the EIP of an SLB instance
-	// * **SlbPublicIP**: the public IP address of an SLB instance
-	// * **NatPublicIP**: the public IP address of a NAT gateway
-	// * **HAVIP**: the HAVIP
+	// *   **BastionHostIP**: the egress IP address of a bastion host
+	// *   **BastionHostIngressIP**: the ingress IP address of a bastion host
+	// *   **EcsEIP**: the EIP of an ECS instance
+	// *   **EcsPublicIP**: the public IP address of an ECS instance
+	// *   **EIP**: the EIP
+	// *   **EniEIP**: the EIP of an ENI
+	// *   **NatEIP**: the EIP of a NAT gateway
+	// *   **SlbEIP**: the EIP of an SLB instance
+	// *   **SlbPublicIP**: the public IP address of an SLB instance
+	// *   **NatPublicIP**: the public IP address of a NAT gateway
+	// *   **HAVIP**: the HAVIP
 	PublicIpType *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
 	// The risk level. Valid values:
 	//
@@ -4621,6 +5376,7 @@ type DescribePolicyAdvancedConfigRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -4722,6 +5478,7 @@ type DescribePolicyPriorUsedRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -4883,7 +5640,7 @@ type DescribeRiskEventGroupRequest struct {
 	// *   **true**: does not query the information about the geographical locations of IP addresses.
 	// *   **false**: queries the information about the geographical locations of IP addresses. This is the default value.
 	NoLocation *string `json:"NoLocation,omitempty" xml:"NoLocation,omitempty"`
-	// The order in which you want to sort the results. Valid values:
+	// The order in which you want to sort the query results. Valid values:
 	//
 	// *   **asc**: the ascending order.
 	// *   **desc**: the descending order. This is the default value.
@@ -5049,7 +5806,7 @@ func (s *DescribeRiskEventGroupRequest) SetVulLevel(v string) *DescribeRiskEvent
 }
 
 type DescribeRiskEventGroupResponseBody struct {
-	// An array that consists of the details of the intrusion events.
+	// The data returned.
 	DataList []*DescribeRiskEventGroupResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5369,7 +6126,7 @@ func (s *DescribeRiskEventGroupResponseBodyDataListResourcePrivateIPList) SetRes
 }
 
 type DescribeRiskEventGroupResponseBodyDataListVpcDstInfo struct {
-	// The ID of the ECS instance.
+	// The ID of instance N on which you want to run the command.
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The name of the ECS instance.
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
@@ -5415,7 +6172,7 @@ func (s *DescribeRiskEventGroupResponseBodyDataListVpcDstInfo) SetRegionNo(v str
 }
 
 type DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo struct {
-	// The ID of the ECS instance.
+	// The ID of instance N on which you want to run the command.
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
 	// The name of the ECS instance.
 	EcsInstanceName *string `json:"EcsInstanceName,omitempty" xml:"EcsInstanceName,omitempty"`
@@ -5485,6 +6242,836 @@ func (s *DescribeRiskEventGroupResponse) SetStatusCode(v int32) *DescribeRiskEve
 }
 
 func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupResponseBody) *DescribeRiskEventGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListRequest struct {
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetFirewallId(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetLang(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallPolicyBackUpAssociationListRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListResponseBody struct {
+	PolicyAssociationBackupConfigs []*DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs `json:"PolicyAssociationBackupConfigs,omitempty" xml:"PolicyAssociationBackupConfigs,omitempty" type:"Repeated"`
+	RequestId                      *string                                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) SetPolicyAssociationBackupConfigs(v []*DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) *DescribeTrFirewallPolicyBackUpAssociationListResponseBody {
+	s.PolicyAssociationBackupConfigs = v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) SetRequestId(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs struct {
+	CandidateId          *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateName        *string `json:"CandidateName,omitempty" xml:"CandidateName,omitempty"`
+	CandidateType        *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+	CurrentRouteTableId  *string `json:"CurrentRouteTableId,omitempty" xml:"CurrentRouteTableId,omitempty"`
+	OriginalRouteTableId *string `json:"OriginalRouteTableId,omitempty" xml:"OriginalRouteTableId,omitempty"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) SetCandidateId(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) SetCandidateName(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs {
+	s.CandidateName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) SetCandidateType(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs {
+	s.CandidateType = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) SetCurrentRouteTableId(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs {
+	s.CurrentRouteTableId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs) SetOriginalRouteTableId(v string) *DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs {
+	s.OriginalRouteTableId = &v
+	return s
+}
+
+type DescribeTrFirewallPolicyBackUpAssociationListResponse struct {
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrFirewallPolicyBackUpAssociationListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallPolicyBackUpAssociationListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponse) SetHeaders(v map[string]*string) *DescribeTrFirewallPolicyBackUpAssociationListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponse) SetStatusCode(v int32) *DescribeTrFirewallPolicyBackUpAssociationListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallPolicyBackUpAssociationListResponse) SetBody(v *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) *DescribeTrFirewallPolicyBackUpAssociationListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FirewallId  *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetCurrentPage(v int32) *DescribeTrFirewallV2RoutePolicyListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetFirewallId(v string) *DescribeTrFirewallV2RoutePolicyListRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetLang(v string) *DescribeTrFirewallV2RoutePolicyListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetPageSize(v int32) *DescribeTrFirewallV2RoutePolicyListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListResponseBody struct {
+	RequestId               *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrFirewallRoutePolicies []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies `json:"TrFirewallRoutePolicies,omitempty" xml:"TrFirewallRoutePolicies,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetRequestId(v string) *DescribeTrFirewallV2RoutePolicyListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetTrFirewallRoutePolicies(v []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) *DescribeTrFirewallV2RoutePolicyListResponseBody {
+	s.TrFirewallRoutePolicies = v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies struct {
+	DestCandidateList       []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
+	PolicyDescription       *string                                                                                    `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName              *string                                                                                    `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyStatus            *string                                                                                    `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PolicyType              *string                                                                                    `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	SrcCandidateList        []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList  `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
+	TrFirewallRoutePolicyId *string                                                                                    `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetDestCandidateList(v []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.DestCandidateList = v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetPolicyDescription(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetPolicyName(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetPolicyStatus(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetPolicyType(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetSrcCandidateList(v []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.SrcCandidateList = v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList) SetCandidateId(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList) SetCandidateType(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList) SetCandidateId(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList) SetCandidateType(v string) *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type DescribeTrFirewallV2RoutePolicyListResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrFirewallV2RoutePolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallV2RoutePolicyListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponse) SetHeaders(v map[string]*string) *DescribeTrFirewallV2RoutePolicyListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponse) SetStatusCode(v int32) *DescribeTrFirewallV2RoutePolicyListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallV2RoutePolicyListResponse) SetBody(v *DescribeTrFirewallV2RoutePolicyListResponseBody) *DescribeTrFirewallV2RoutePolicyListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTrFirewallsV2DetailRequest struct {
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2DetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2DetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2DetailRequest) SetFirewallId(v string) *DescribeTrFirewallsV2DetailRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailRequest) SetLang(v string) *DescribeTrFirewallsV2DetailRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeTrFirewallsV2DetailResponseBody struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	FirewallDescription  *string `json:"FirewallDescription,omitempty" xml:"FirewallDescription,omitempty"`
+	FirewallEniId        *string `json:"FirewallEniId,omitempty" xml:"FirewallEniId,omitempty"`
+	FirewallEniVpcId     *string `json:"FirewallEniVpcId,omitempty" xml:"FirewallEniVpcId,omitempty"`
+	FirewallEniVswitchId *string `json:"FirewallEniVswitchId,omitempty" xml:"FirewallEniVswitchId,omitempty"`
+	FirewallId           *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallName         *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	FirewallStatus       *string `json:"FirewallStatus,omitempty" xml:"FirewallStatus,omitempty"`
+	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteMode            *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2DetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2DetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetCenId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallDescription(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallDescription = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallEniId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallEniId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallEniVpcId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallEniVpcId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallEniVswitchId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallEniVswitchId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallName(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallStatus(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetFirewallSwitchStatus(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.FirewallSwitchStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetRegionNo(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetRequestId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetRouteMode(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTransitRouterId(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TransitRouterId = &v
+	return s
+}
+
+type DescribeTrFirewallsV2DetailResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrFirewallsV2DetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTrFirewallsV2DetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2DetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2DetailResponse) SetHeaders(v map[string]*string) *DescribeTrFirewallsV2DetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponse) SetStatusCode(v int32) *DescribeTrFirewallsV2DetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponse) SetBody(v *DescribeTrFirewallsV2DetailResponseBody) *DescribeTrFirewallsV2DetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTrFirewallsV2ListRequest struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FirewallId           *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallName         *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionNo             *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RouteMode            *string `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TransitRouterId      *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2ListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetCenId(v string) *DescribeTrFirewallsV2ListRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetCurrentPage(v int32) *DescribeTrFirewallsV2ListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetFirewallId(v string) *DescribeTrFirewallsV2ListRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetFirewallName(v string) *DescribeTrFirewallsV2ListRequest {
+	s.FirewallName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetFirewallSwitchStatus(v string) *DescribeTrFirewallsV2ListRequest {
+	s.FirewallSwitchStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetLang(v string) *DescribeTrFirewallsV2ListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetOwnerId(v string) *DescribeTrFirewallsV2ListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetPageSize(v int32) *DescribeTrFirewallsV2ListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetRegionNo(v string) *DescribeTrFirewallsV2ListRequest {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetRouteMode(v string) *DescribeTrFirewallsV2ListRequest {
+	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListRequest) SetTransitRouterId(v string) *DescribeTrFirewallsV2ListRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBody struct {
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *string                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VpcTrFirewalls []*DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls `json:"VpcTrFirewalls,omitempty" xml:"VpcTrFirewalls,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBody) SetRequestId(v string) *DescribeTrFirewallsV2ListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBody) SetTotalCount(v string) *DescribeTrFirewallsV2ListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBody) SetVpcTrFirewalls(v []*DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) *DescribeTrFirewallsV2ListResponseBody {
+	s.VpcTrFirewalls = v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
+	CenId                *string                                                       `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenName              *string                                                       `json:"CenName,omitempty" xml:"CenName,omitempty"`
+	FirewallId           *string                                                       `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallSwitchStatus *string                                                       `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
+	IpsConfig            *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
+	OwnerId              *int64                                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PrecheckStatus       *string                                                       `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
+	RegionNo             *string                                                       `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	RegionStatus         *string                                                       `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
+	ResultCode           *string                                                       `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	RouteMode            *string                                                       `json:"RouteMode,omitempty" xml:"RouteMode,omitempty"`
+	TransitRouterId      *string                                                       `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	VpcFirewallName      *string                                                       `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCenId(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.CenId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCenName(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.CenName = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetFirewallId(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetFirewallSwitchStatus(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.FirewallSwitchStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetIpsConfig(v *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.IpsConfig = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetOwnerId(v int64) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetPrecheckStatus(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.PrecheckStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetRegionNo(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetRegionStatus(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.RegionStatus = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetResultCode(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.ResultCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetRouteMode(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.RouteMode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetTransitRouterId(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetVpcFirewallName(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.VpcFirewallName = &v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig struct {
+	BasicRules     *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
+	RunMode        *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetBasicRules(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig {
+	s.BasicRules = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetEnableAllPatch(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig {
+	s.EnableAllPatch = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig) SetRunMode(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig {
+	s.RunMode = &v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrFirewallsV2ListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTrFirewallsV2ListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponse) SetHeaders(v map[string]*string) *DescribeTrFirewallsV2ListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponse) SetStatusCode(v int32) *DescribeTrFirewallsV2ListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2ListResponse) SetBody(v *DescribeTrFirewallsV2ListResponseBody) *DescribeTrFirewallsV2ListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTrFirewallsV2RouteListRequest struct {
+	CurrentPage             *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize                *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2RouteListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2RouteListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2RouteListRequest) SetCurrentPage(v string) *DescribeTrFirewallsV2RouteListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListRequest) SetFirewallId(v string) *DescribeTrFirewallsV2RouteListRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListRequest) SetLang(v string) *DescribeTrFirewallsV2RouteListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListRequest) SetPageSize(v string) *DescribeTrFirewallsV2RouteListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListRequest) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallsV2RouteListRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type DescribeTrFirewallsV2RouteListResponseBody struct {
+	FirewallRouteDetailList []*DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList `json:"FirewallRouteDetailList,omitempty" xml:"FirewallRouteDetailList,omitempty" type:"Repeated"`
+	RequestId               *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2RouteListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2RouteListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBody) SetFirewallRouteDetailList(v []*DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) *DescribeTrFirewallsV2RouteListResponseBody {
+	s.FirewallRouteDetailList = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBody) SetRequestId(v string) *DescribeTrFirewallsV2RouteListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList struct {
+	TrFirewallRouteDestination *string `json:"TrFirewallRouteDestination,omitempty" xml:"TrFirewallRouteDestination,omitempty"`
+	TrFirewallRouteNexthop     *string `json:"TrFirewallRouteNexthop,omitempty" xml:"TrFirewallRouteNexthop,omitempty"`
+	TrFirewallRoutePolicyId    *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+	TrFirewallRouteTableId     *string `json:"TrFirewallRouteTableId,omitempty" xml:"TrFirewallRouteTableId,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) SetTrFirewallRouteDestination(v string) *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList {
+	s.TrFirewallRouteDestination = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) SetTrFirewallRouteNexthop(v string) *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList {
+	s.TrFirewallRouteNexthop = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) SetTrFirewallRoutePolicyId(v string) *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList) SetTrFirewallRouteTableId(v string) *DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList {
+	s.TrFirewallRouteTableId = &v
+	return s
+}
+
+type DescribeTrFirewallsV2RouteListResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTrFirewallsV2RouteListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTrFirewallsV2RouteListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2RouteListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponse) SetHeaders(v map[string]*string) *DescribeTrFirewallsV2RouteListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponse) SetStatusCode(v int32) *DescribeTrFirewallsV2RouteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2RouteListResponse) SetBody(v *DescribeTrFirewallsV2RouteListResponseBody) *DescribeTrFirewallsV2RouteListResponse {
 	s.Body = v
 	return s
 }
@@ -6634,7 +8221,7 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	// *   **drop**: blocks the traffic.
 	// *   **log**: monitors the traffic.
 	//
-	// >  If you do not specify this parameter, access control policies are queried based on all actions.
+	// > If you do not specify this parameter, access control policies are queried based on all actions.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
 	// The unique ID of the access control policy.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
@@ -6644,7 +8231,7 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination address in the access control policy. Fuzzy match is supported.
 	//
-	// >  The value of this parameter can be a CIDR block, a domain name, or an address book name.
+	// > The value of this parameter can be a CIDR block or an address book name.
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The language of the content within the request and response.
 	//
@@ -6666,23 +8253,23 @@ type DescribeVpcFirewallControlPolicyRequest struct {
 	// *   **ICMP**
 	// *   **ANY**: all protocol types
 	//
-	// >  If you do not specify this parameter, access control policies are queried based on all protocol types.
+	// > If you do not specify this parameter, access control policies of all protocol types are queried.
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
+	// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after the policy is created. Valid values:
 	//
 	// *   **true**: The access control policy is enabled.
 	// *   **false**: The access control policy is disabled.
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The source address in the access control policy. Fuzzy match is supported.
 	//
-	// >  The value of this parameter can be a CIDR block or an address book name.
+	// > The value of this parameter can be a CIDR block or an address book name.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The instance ID of the VPC firewall. Valid values:
 	//
 	// *   If the VPC firewall protects the traffic between two VPCs that are connected by using a CEN instance, the value of this parameter must be the ID of the CEN instance.
 	// *   If the VPC firewall protects the traffic between two VPCs that are connected by using an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
 	//
-	// >  You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the IDs.
+	// > You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -6755,11 +8342,11 @@ func (s *DescribeVpcFirewallControlPolicyRequest) SetVpcFirewallId(v string) *De
 }
 
 type DescribeVpcFirewallControlPolicyResponseBody struct {
-	// The details of the access control policies.
+	// The information about the access control policies.
 	Policys []*DescribeVpcFirewallControlPolicyResponseBodyPolicys `json:"Policys,omitempty" xml:"Policys,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of the access control policies that are returned.
+	// The total number of access control policies returned.
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6820,7 +8407,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	// The name of the destination port address book in the access control policy.
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
-	// The ports in the destination port address book of the access control policy.
+	// An array that consists of the ports in the destination port address book of the access control policy.
 	DestPortGroupPorts []*string `json:"DestPortGroupPorts,omitempty" xml:"DestPortGroupPorts,omitempty" type:"Repeated"`
 	// The type of the destination port in the access control policy. Valid values:
 	//
@@ -6831,9 +8418,9 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	//
 	// *   If **DestinationType** is set to `net`, the value of this parameter is a CIDR block.
 	// *   If **DestinationType** is set to `domain`, the value of this parameter is a domain name.
-	// *   If **DestinationType** is set to `group`, the value of this parameter is the name of an address book name.
+	// *   If **DestinationType** is set to `group`, the value of this parameter is an address book name.
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The CIDR blocks in the destination address book of the access control policy.
+	// An array that consists of the CIDR blocks in the destination address book of the access control policy.
 	DestinationGroupCidrs []*string `json:"DestinationGroupCidrs,omitempty" xml:"DestinationGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the destination address book in the access control policy. Valid values:
 	//
@@ -6871,7 +8458,7 @@ type DescribeVpcFirewallControlPolicyResponseBodyPolicys struct {
 	// *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block.
 	// *   If **SourceType** is set to `group`, the value of this parameter is an address book name.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The CIDR blocks in the source address book of the access control policy.
+	// An array that consists of the CIDR blocks in the source address book of the access control policy.
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the source address in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
@@ -7618,7 +9205,7 @@ type DescribeVpcFirewallListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of VPC firewalls.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// An array that consists of the details about the VPC firewalls.
+	// An array that consists of the details about the VPC firewall.
 	VpcFirewalls []*DescribeVpcFirewallListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -8147,7 +9734,7 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	// *   **12**: mining
 	// *   **13**: reverse shell
 	//
-	// >  If you do not specify this parameter, the intrusion events of all attack types are queried.
+	// > If you do not specify this parameter, the intrusion events of all attack types are queried.
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The edition of Cloud Firewall.
 	BuyVersion *int64 `json:"BuyVersion,omitempty" xml:"BuyVersion,omitempty"`
@@ -8168,13 +9755,14 @@ type DescribeVulnerabilityProtectedListRequest struct {
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The number of entries to return on each page. Maximum value: 50.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The dimension based on which you want to sort the queried information. Set the value to **attackCnt**, which indicates the number of attacks.
+	// The sorting basis. Set the value to **attackCnt**, which indicates the number of attacks.
 	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the user. Set the value to **buy**, which indicates users of a paid edition of Cloud Firewall.
+	// The type of the user. Set the value to **buy**, which indicates user of a paid edition of Cloud Firewall.
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 	// The Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
 	VulnCveName *string `json:"VulnCveName,omitempty" xml:"VulnCveName,omitempty"`
@@ -8351,7 +9939,7 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	// *   **12**: mining
 	// *   **13**: reverse shell
 	//
-	// >  If no attack type is specified, the intrusion events of all attack types are queried.
+	// > If no attack type is specified, the intrusion events of all attack types are queried.
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// The IDs of associated basic protection policies.
 	BasicRuleIds *string `json:"BasicRuleIds,omitempty" xml:"BasicRuleIds,omitempty"`
@@ -8369,10 +9957,10 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The status of basic protection. Valid values:
 	//
-	// *   **true**: enabled
+	// *   **false**: enabled
 	// *   **false**: disabled
 	//
-	// >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	// > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
 	NeedOpenBasicRule *bool `json:"NeedOpenBasicRule,omitempty" xml:"NeedOpenBasicRule,omitempty"`
 	// The UUIDs of the basic protection policies for which you want to set the Current Action parameter to Block.
 	NeedOpenBasicRuleUuids *string `json:"NeedOpenBasicRuleUuids,omitempty" xml:"NeedOpenBasicRuleUuids,omitempty"`
@@ -8386,7 +9974,7 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnList struct {
 	// *   **true**: enabled
 	// *   **false**: disabled
 	//
-	// >  If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
+	// > If the value of this parameter is true, you must configure the intrusion prevention feature when you enable protection.
 	NeedOpenVirtualPatche *bool `json:"NeedOpenVirtualPatche,omitempty" xml:"NeedOpenVirtualPatche,omitempty"`
 	// The UUIDs of the virtual patching policies for which you want to set the Current Action parameter to Block.
 	NeedOpenVirtualPatcheUuids *string `json:"NeedOpenVirtualPatcheUuids,omitempty" xml:"NeedOpenVirtualPatcheUuids,omitempty"`
@@ -8553,7 +10141,7 @@ type DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList struct {
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
 	// The ID of the region in which Cloud Firewall is supported.
 	//
-	// >  For more information about the regions, see [Supported regions](~~195657~~).
+	// > For more information about the regions, see [Supported regions](~~195657~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the instance.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -8675,6 +10263,7 @@ type ModifyAddressBookRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The ECS tags that you want to match.
@@ -9062,6 +10651,7 @@ type ModifyControlPolicyPositionRequest struct {
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 	// The original priority of the IPv4 access control policy.
 	OldOrder *string `json:"OldOrder,omitempty" xml:"OldOrder,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -9142,6 +10732,93 @@ func (s *ModifyControlPolicyPositionResponse) SetStatusCode(v int32) *ModifyCont
 }
 
 func (s *ModifyControlPolicyPositionResponse) SetBody(v *ModifyControlPolicyPositionResponseBody) *ModifyControlPolicyPositionResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyFirewallV2RoutePolicySwitchRequest struct {
+	FirewallId                        *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ShouldRecover                     *string `json:"ShouldRecover,omitempty" xml:"ShouldRecover,omitempty"`
+	TrFirewallRoutePolicyId           *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+	TrFirewallRoutePolicySwitchStatus *string `json:"TrFirewallRoutePolicySwitchStatus,omitempty" xml:"TrFirewallRoutePolicySwitchStatus,omitempty"`
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetFirewallId(v string) *ModifyFirewallV2RoutePolicySwitchRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetLang(v string) *ModifyFirewallV2RoutePolicySwitchRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetShouldRecover(v string) *ModifyFirewallV2RoutePolicySwitchRequest {
+	s.ShouldRecover = &v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetTrFirewallRoutePolicyId(v string) *ModifyFirewallV2RoutePolicySwitchRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchRequest) SetTrFirewallRoutePolicySwitchStatus(v string) *ModifyFirewallV2RoutePolicySwitchRequest {
+	s.TrFirewallRoutePolicySwitchStatus = &v
+	return s
+}
+
+type ModifyFirewallV2RoutePolicySwitchResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchResponseBody) SetRequestId(v string) *ModifyFirewallV2RoutePolicySwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyFirewallV2RoutePolicySwitchResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFirewallV2RoutePolicySwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFirewallV2RoutePolicySwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchResponse) SetHeaders(v map[string]*string) *ModifyFirewallV2RoutePolicySwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchResponse) SetStatusCode(v int32) *ModifyFirewallV2RoutePolicySwitchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFirewallV2RoutePolicySwitchResponse) SetBody(v *ModifyFirewallV2RoutePolicySwitchResponseBody) *ModifyFirewallV2RoutePolicySwitchResponse {
 	s.Body = v
 	return s
 }
@@ -9247,6 +10924,7 @@ type ModifyPolicyAdvancedConfigRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -9317,6 +10995,261 @@ func (s *ModifyPolicyAdvancedConfigResponse) SetStatusCode(v int32) *ModifyPolic
 }
 
 func (s *ModifyPolicyAdvancedConfigResponse) SetBody(v *ModifyPolicyAdvancedConfigResponseBody) *ModifyPolicyAdvancedConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTrFirewallV2ConfigurationRequest struct {
+	FirewallId   *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s ModifyTrFirewallV2ConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2ConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2ConfigurationRequest) SetFirewallId(v string) *ModifyTrFirewallV2ConfigurationRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2ConfigurationRequest) SetFirewallName(v string) *ModifyTrFirewallV2ConfigurationRequest {
+	s.FirewallName = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2ConfigurationRequest) SetLang(v string) *ModifyTrFirewallV2ConfigurationRequest {
+	s.Lang = &v
+	return s
+}
+
+type ModifyTrFirewallV2ConfigurationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTrFirewallV2ConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2ConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2ConfigurationResponseBody) SetRequestId(v string) *ModifyTrFirewallV2ConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTrFirewallV2ConfigurationResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTrFirewallV2ConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTrFirewallV2ConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2ConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2ConfigurationResponse) SetHeaders(v map[string]*string) *ModifyTrFirewallV2ConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTrFirewallV2ConfigurationResponse) SetStatusCode(v int32) *ModifyTrFirewallV2ConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2ConfigurationResponse) SetBody(v *ModifyTrFirewallV2ConfigurationResponseBody) *ModifyTrFirewallV2ConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeRequest struct {
+	DestCandidateList       []*ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
+	FirewallId              *string                                                       `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string                                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SrcCandidateList        []*ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList  `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
+	TrFirewallRoutePolicyId *string                                                       `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetDestCandidateList(v []*ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.DestCandidateList = v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetFirewallId(v string) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetLang(v string) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetSrcCandidateList(v []*ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.SrcCandidateList = v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequest) SetTrFirewallRoutePolicyId(v string) *ModifyTrFirewallV2RoutePolicyScopeRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) SetCandidateId(v string) *ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList) SetCandidateType(v string) *ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList struct {
+	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList) SetCandidateId(v string) *ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList) SetCandidateType(v string) *ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList {
+	s.CandidateType = &v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeShrinkRequest struct {
+	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	Lang                    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SrcCandidateListShrink  *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetDestCandidateListShrink(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.DestCandidateListShrink = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetFirewallId(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.FirewallId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetLang(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetSrcCandidateListShrink(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.SrcCandidateListShrink = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest) SetTrFirewallRoutePolicyId(v string) *ModifyTrFirewallV2RoutePolicyScopeShrinkRequest {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeResponseBody struct {
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeResponseBody) SetRequestId(v string) *ModifyTrFirewallV2RoutePolicyScopeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeResponseBody) SetTrFirewallRoutePolicyId(v string) *ModifyTrFirewallV2RoutePolicyScopeResponseBody {
+	s.TrFirewallRoutePolicyId = &v
+	return s
+}
+
+type ModifyTrFirewallV2RoutePolicyScopeResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTrFirewallV2RoutePolicyScopeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTrFirewallV2RoutePolicyScopeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeResponse) SetHeaders(v map[string]*string) *ModifyTrFirewallV2RoutePolicyScopeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeResponse) SetStatusCode(v int32) *ModifyTrFirewallV2RoutePolicyScopeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTrFirewallV2RoutePolicyScopeResponse) SetBody(v *ModifyTrFirewallV2RoutePolicyScopeResponseBody) *ModifyTrFirewallV2RoutePolicyScopeResponse {
 	s.Body = v
 	return s
 }
@@ -9626,33 +11559,34 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// - **accept**: allows the traffic.
-	// - **drop**: denies the traffic.
-	// - **log**: monitors the traffic.
+	// *   **accept**: allows the traffic.
+	// *   **drop**: blocks the traffic.
+	// *   **log**: monitors the traffic.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The ID of the access control policy.
+	// The unique ID of the access control policy.
 	//
-	// If you want to modify the configurations of an access control policy, you must provide the ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcontrolpolicy#doc-api-Cloudfw-DescribeVpcFirewallControlPolicy) operation to query the ID.
+	// If you want to modify the configurations of an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](~~159758~~) operation to query the ID.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
-	// The type of the application that the access control policy supports.
+	// The application type in the access control policy.
 	//
 	// Valid values:
 	//
-	// - FTP
-	// - HTTP
-	// - HTTPS
-	// - MySQL
-	// - SMTP
-	// - SMTPS
-	// - RDP
-	// - VNC
-	// - SSH
-	// - Redis
-	// - MQTT
-	// - MongoDB
-	// - Memcache
-	// - SSL
-	// - ANY: all types of applications
+	// *   ANY
+	// *   FTP
+	// *   HTTP
+	// *   HTTPS
+	// *   MySQL
+	// *   SMTP
+	// *   SMTPS
+	// *   RDP
+	// *   VNC
+	// *   SSH
+	// *   Redis
+	// *   MQTT
+	// *   MongoDB
+	// *   Memcache
+	// *   SSL
+	// *   ANY: all application types
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -9662,76 +11596,80 @@ type ModifyVpcFirewallControlPolicyRequest struct {
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
 	// The type of the destination port in the access control policy.
 	//
-	// - **port**: port
-	// - **group**: port address book
+	// *   **port**: port
+	// *   **group**: port address book
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	// The destination address in the access control policy.
 	//
-	// - If **DestinationType** is set to `net`, the value of Destination is a CIDR block.
+	// *   If **DestinationType** is set to `net`, the value of this parameter must be a CIDR block.
 	//
-	// Example: 10.2.3.0/24
-	// - If **DestinationType** is set to `group`, the value of Destination is an address book.
+	//     Example: 10.2.3.0/24
 	//
-	// Example: db_group
-	// - If **DestinationType** is set to `domain`, the value of Destination is a domain name.
+	// *   If **DestinationType** is set to `group`, the value of this parameter must be an address book name.
 	//
-	// Example: *.aliyuncs.com
+	//     Example: db_group
+	//
+	// *   If **DestinationType** is set to `domain`, the value of this parameter must be a domain name.
+	//
+	//     Example: \*.aliyuncs.com
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The type of the destination address in the access control policy.
 	//
 	// Valid values:
 	//
-	// - **net**: destination CIDR block
-	// - **group**: destination address book
-	// - **domain**: destination domain name
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The natural language of the request and response.
+	// The language of the content within the response.
 	//
 	// Valid values:
 	//
-	// - **zh**: Chinese
-	// - **en**: English
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the protocol in the access control policy.
+	// The protocol type in the access control policy.
 	//
 	// Valid values:
 	//
-	// - ANY: all types of protocols
-	// - TCP
-	// - UDP
-	// - ICMP
+	// *   ANY: all protocol types
+	// *   TCP
+	// *   UDP
+	// *   ICMP
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// Indicates whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values:
+	// Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
 	//
-	// - **true**: The access control policy is enabled.
-	// - **false**: The access control policy is disabled.
+	// *   **true**: enables the access control policy.
+	// *   **false**: disables the access control policy.
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The source address in the access control policy.
 	//
 	// Valid values:
 	//
-	// - If **SourceType** is set to `net`, the value of Source is a CIDR block.
+	// *   If **SourceType** is set to `net`, the value of this parameter must be a CIDR block.
 	//
-	// Example: 10.2.4.0/24
-	// - If **SourceType** is set to `group`, the value of Source is an address book.
+	//     Example: 10.2.4.0/24
 	//
-	// Example: db_group
+	// *   If **SourceType** is set to `group`, the value of this parameter must be an address book name.
+	//
+	//     Example: db_group
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the source address in the access control policy.
 	//
 	// Valid values:
 	//
-	// - **net**: source CIDR block
-	// - **group**: source address book
+	// *   **net**: CIDR block
+	// *   **group**: address book
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The ID of the policy group to which the access control policy belongs. You can call the DescribeVpcFirewallAclGroupList operation to query the ID.
+	// The instance ID of the VPC firewall. You can call the [DescribeVpcFirewallAclGroupList](~~159760~~) operation to query the ID.
 	//
-	// - If the VPC firewall is used to protect a CEN instance, the value of this parameter is the ID of the CEN instance.
+	// *   If the VPC firewall is used to protect a CEN instance, the value of this parameter must be the ID of the CEN instance.
 	//
-	// Example: cen-ervw0g12b5jbw****
-	// - If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the instance ID of the VPC firewall.
+	//     Example: cen-ervw0g12b5jbw\*\*\*\*
 	//
-	// Example: vfw-a42bbb7b887148c9****
+	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter must be the instance ID of the VPC firewall.
+	//
+	//     Example: vfw-a42bbb7b887148c9\*\*\*\*
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
 }
 
@@ -9988,6 +11926,7 @@ type ModifyVpcFirewallDefaultIPSConfigRequest struct {
 	// *   **1**: block mode
 	// *   **0**: monitor mode
 	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The instance ID of the VPC firewall. Valid values:
@@ -10189,6 +12128,7 @@ type PutDisableAllFwSwitchRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -10281,6 +12221,7 @@ type PutDisableFwSwitchRequest struct {
 	//
 	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
 	ResourceTypeList []*string `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -10373,6 +12314,7 @@ type PutEnableAllFwSwitchRequest struct {
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -10479,6 +12421,7 @@ type PutEnableFwSwitchRequest struct {
 	//
 	// > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
 	ResourceTypeList []*string `json:"ResourceTypeList,omitempty" xml:"ResourceTypeList,omitempty" type:"Repeated"`
+	// Deprecated
 	// The source IP address of the request.
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
@@ -10785,7 +12728,7 @@ func (client *Client) AddAddressBook(request *AddAddressBookRequest) (_result *A
 }
 
 /**
- * You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+ * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -10895,7 +12838,7 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 }
 
 /**
- * You can call the AddControlPolicy operation to create an access control policy to allow, deny, or monitor traffic that passes through Cloud Firewall.
+ * You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -11046,6 +12989,176 @@ func (client *Client) BatchCopyVpcFirewallControlPolicy(request *BatchCopyVpcFir
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCopyVpcFirewallControlPolicyResponse{}
 	_body, _err := client.BatchCopyVpcFirewallControlPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2Request, runtime *util.RuntimeOptions) (_result *CreateTrFirewallV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallDescription)) {
+		query["FirewallDescription"] = request.FirewallDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallName)) {
+		query["FirewallName"] = request.FirewallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallSubnetCidr)) {
+		query["FirewallSubnetCidr"] = request.FirewallSubnetCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVpcCidr)) {
+		query["FirewallVpcCidr"] = request.FirewallVpcCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVpcId)) {
+		query["FirewallVpcId"] = request.FirewallVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallVswitchId)) {
+		query["FirewallVswitchId"] = request.FirewallVswitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteMode)) {
+		query["RouteMode"] = request.RouteMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrAttachmentMasterCidr)) {
+		query["TrAttachmentMasterCidr"] = request.TrAttachmentMasterCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrAttachmentSlaveCidr)) {
+		query["TrAttachmentSlaveCidr"] = request.TrAttachmentSlaveCidr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrFirewallV2"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTrFirewallV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTrFirewallV2(request *CreateTrFirewallV2Request) (_result *CreateTrFirewallV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTrFirewallV2Response{}
+	_body, _err := client.CreateTrFirewallV2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTrFirewallV2RoutePolicyWithOptions(tmpReq *CreateTrFirewallV2RoutePolicyRequest, runtime *util.RuntimeOptions) (_result *CreateTrFirewallV2RoutePolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTrFirewallV2RoutePolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestCandidateList)) {
+		request.DestCandidateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestCandidateList, tea.String("DestCandidateList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SrcCandidateList)) {
+		request.SrcCandidateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SrcCandidateList, tea.String("SrcCandidateList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestCandidateListShrink)) {
+		query["DestCandidateList"] = request.DestCandidateListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDescription)) {
+		query["PolicyDescription"] = request.PolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		query["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCandidateListShrink)) {
+		query["SrcCandidateList"] = request.SrcCandidateListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrFirewallV2RoutePolicy"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTrFirewallV2RoutePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTrFirewallV2RoutePolicy(request *CreateTrFirewallV2RoutePolicyRequest) (_result *CreateTrFirewallV2RoutePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTrFirewallV2RoutePolicyResponse{}
+	_body, _err := client.CreateTrFirewallV2RoutePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11502,6 +13615,58 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteFirewallV2RoutePoliciesWithOptions(request *DeleteFirewallV2RoutePoliciesRequest, runtime *util.RuntimeOptions) (_result *DeleteFirewallV2RoutePoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicyId)) {
+		query["TrFirewallRoutePolicyId"] = request.TrFirewallRoutePolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFirewallV2RoutePolicies"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFirewallV2RoutePoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFirewallV2RoutePolicies(request *DeleteFirewallV2RoutePoliciesRequest) (_result *DeleteFirewallV2RoutePoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFirewallV2RoutePoliciesResponse{}
+	_body, _err := client.DeleteFirewallV2RoutePoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the DeleteInstanceMembers operation to remove members from Cloud Firewall.
  * ## Limits
@@ -11556,6 +13721,54 @@ func (client *Client) DeleteInstanceMembers(request *DeleteInstanceMembersReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceMembersResponse{}
 	_body, _err := client.DeleteInstanceMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTrFirewallV2WithOptions(request *DeleteTrFirewallV2Request, runtime *util.RuntimeOptions) (_result *DeleteTrFirewallV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrFirewallV2"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTrFirewallV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTrFirewallV2(request *DeleteTrFirewallV2Request) (_result *DeleteTrFirewallV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTrFirewallV2Response{}
+	_body, _err := client.DeleteTrFirewallV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12223,6 +14436,86 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	return _result, _err
 }
 
+func (client *Client) DescribeInternetTrafficTrendWithOptions(request *DescribeInternetTrafficTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeInternetTrafficTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCode)) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcPrivateIP)) {
+		query["SrcPrivateIP"] = request.SrcPrivateIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcPublicIP)) {
+		query["SrcPublicIP"] = request.SrcPublicIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficType)) {
+		query["TrafficType"] = request.TrafficType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInternetTrafficTrend"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInternetTrafficTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInternetTrafficTrend(request *DescribeInternetTrafficTrendRequest) (_result *DescribeInternetTrafficTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInternetTrafficTrendResponse{}
+	_body, _err := client.DescribeInternetTrafficTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInvadeEventListWithOptions(request *DescribeInvadeEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeInvadeEventListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12798,6 +15091,306 @@ func (client *Client) DescribeRiskEventGroup(request *DescribeRiskEventGroupRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithOptions(request *DescribeTrFirewallPolicyBackUpAssociationListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallPolicyBackUpAssociationListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicyId)) {
+		query["TrFirewallRoutePolicyId"] = request.TrFirewallRoutePolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrFirewallPolicyBackUpAssociationList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTrFirewallPolicyBackUpAssociationListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallPolicyBackUpAssociationList(request *DescribeTrFirewallPolicyBackUpAssociationListRequest) (_result *DescribeTrFirewallPolicyBackUpAssociationListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTrFirewallPolicyBackUpAssociationListResponse{}
+	_body, _err := client.DescribeTrFirewallPolicyBackUpAssociationListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallV2RoutePolicyListWithOptions(request *DescribeTrFirewallV2RoutePolicyListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallV2RoutePolicyListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrFirewallV2RoutePolicyList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTrFirewallV2RoutePolicyListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallV2RoutePolicyList(request *DescribeTrFirewallV2RoutePolicyListRequest) (_result *DescribeTrFirewallV2RoutePolicyListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTrFirewallV2RoutePolicyListResponse{}
+	_body, _err := client.DescribeTrFirewallV2RoutePolicyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2DetailWithOptions(request *DescribeTrFirewallsV2DetailRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallsV2DetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrFirewallsV2Detail"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTrFirewallsV2DetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2Detail(request *DescribeTrFirewallsV2DetailRequest) (_result *DescribeTrFirewallsV2DetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTrFirewallsV2DetailResponse{}
+	_body, _err := client.DescribeTrFirewallsV2DetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2ListWithOptions(request *DescribeTrFirewallsV2ListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallsV2ListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallName)) {
+		query["FirewallName"] = request.FirewallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallSwitchStatus)) {
+		query["FirewallSwitchStatus"] = request.FirewallSwitchStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionNo)) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteMode)) {
+		query["RouteMode"] = request.RouteMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrFirewallsV2List"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTrFirewallsV2ListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2List(request *DescribeTrFirewallsV2ListRequest) (_result *DescribeTrFirewallsV2ListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTrFirewallsV2ListResponse{}
+	_body, _err := client.DescribeTrFirewallsV2ListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2RouteListWithOptions(request *DescribeTrFirewallsV2RouteListRequest, runtime *util.RuntimeOptions) (_result *DescribeTrFirewallsV2RouteListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicyId)) {
+		query["TrFirewallRoutePolicyId"] = request.TrFirewallRoutePolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTrFirewallsV2RouteList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTrFirewallsV2RouteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTrFirewallsV2RouteList(request *DescribeTrFirewallsV2RouteListRequest) (_result *DescribeTrFirewallsV2RouteListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTrFirewallsV2RouteListResponse{}
+	_body, _err := client.DescribeTrFirewallsV2RouteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeUserAssetIPTrafficInfoWithOptions(request *DescribeUserAssetIPTrafficInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeUserAssetIPTrafficInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13102,7 +15695,9 @@ func (client *Client) DescribeVpcFirewallCenList(request *DescribeVpcFirewallCen
 }
 
 /**
- * You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+ * You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13186,7 +15781,9 @@ func (client *Client) DescribeVpcFirewallControlPolicyWithOptions(request *Descr
 }
 
 /**
- * You can call the DescribeVpcFirewallControlPolicy operation to query the details of all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+ * You can call the DescribeVpcFirewallControlPolicy operation to query the information about all access control policies that are created for a specified VPC firewall. Different access control policies are used when a VPC firewall is used to protect traffic between two VPCs that are connected by using a Cloud Enterprise Network (CEN) instance or an Express Connect circuit.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallControlPolicyRequest
  * @return DescribeVpcFirewallControlPolicyResponse
@@ -13348,8 +15945,8 @@ func (client *Client) DescribeVpcFirewallDetail(request *DescribeVpcFirewallDeta
 
 /**
  * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13434,8 +16031,8 @@ func (client *Client) DescribeVpcFirewallListWithOptions(request *DescribeVpcFir
 
 /**
  * You can call the DescribeVpcFirewallList operation to query the details about VPC firewalls by page. Each VPC firewall protects traffic between two VPCs that are connected by using an Express Connect circuit.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ### Limits
+ * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DescribeVpcFirewallListRequest
  * @return DescribeVpcFirewallListResponse
@@ -13919,6 +16516,66 @@ func (client *Client) ModifyControlPolicyPosition(request *ModifyControlPolicyPo
 	return _result, _err
 }
 
+func (client *Client) ModifyFirewallV2RoutePolicySwitchWithOptions(request *ModifyFirewallV2RoutePolicySwitchRequest, runtime *util.RuntimeOptions) (_result *ModifyFirewallV2RoutePolicySwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShouldRecover)) {
+		query["ShouldRecover"] = request.ShouldRecover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicyId)) {
+		query["TrFirewallRoutePolicyId"] = request.TrFirewallRoutePolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicySwitchStatus)) {
+		query["TrFirewallRoutePolicySwitchStatus"] = request.TrFirewallRoutePolicySwitchStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFirewallV2RoutePolicySwitch"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyFirewallV2RoutePolicySwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyFirewallV2RoutePolicySwitch(request *ModifyFirewallV2RoutePolicySwitchRequest) (_result *ModifyFirewallV2RoutePolicySwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFirewallV2RoutePolicySwitchResponse{}
+	_body, _err := client.ModifyFirewallV2RoutePolicySwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call the ModifyInstanceMemberAttributes operation to update the information about members in Cloud Firewall.
  * ## Limits
@@ -14042,6 +16699,128 @@ func (client *Client) ModifyPolicyAdvancedConfig(request *ModifyPolicyAdvancedCo
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPolicyAdvancedConfigResponse{}
 	_body, _err := client.ModifyPolicyAdvancedConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyTrFirewallV2ConfigurationWithOptions(request *ModifyTrFirewallV2ConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyTrFirewallV2ConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallName)) {
+		query["FirewallName"] = request.FirewallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTrFirewallV2Configuration"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTrFirewallV2ConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTrFirewallV2Configuration(request *ModifyTrFirewallV2ConfigurationRequest) (_result *ModifyTrFirewallV2ConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTrFirewallV2ConfigurationResponse{}
+	_body, _err := client.ModifyTrFirewallV2ConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyTrFirewallV2RoutePolicyScopeWithOptions(tmpReq *ModifyTrFirewallV2RoutePolicyScopeRequest, runtime *util.RuntimeOptions) (_result *ModifyTrFirewallV2RoutePolicyScopeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyTrFirewallV2RoutePolicyScopeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestCandidateList)) {
+		request.DestCandidateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestCandidateList, tea.String("DestCandidateList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SrcCandidateList)) {
+		request.SrcCandidateListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SrcCandidateList, tea.String("SrcCandidateList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestCandidateListShrink)) {
+		query["DestCandidateList"] = request.DestCandidateListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCandidateListShrink)) {
+		query["SrcCandidateList"] = request.SrcCandidateListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrFirewallRoutePolicyId)) {
+		query["TrFirewallRoutePolicyId"] = request.TrFirewallRoutePolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTrFirewallV2RoutePolicyScope"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTrFirewallV2RoutePolicyScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTrFirewallV2RoutePolicyScope(request *ModifyTrFirewallV2RoutePolicyScopeRequest) (_result *ModifyTrFirewallV2RoutePolicyScopeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTrFirewallV2RoutePolicyScopeResponse{}
+	_body, _err := client.ModifyTrFirewallV2RoutePolicyScopeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14279,7 +17058,7 @@ func (client *Client) ModifyVpcFirewallConfigure(request *ModifyVpcFirewallConfi
 }
 
 /**
- * You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+ * You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -14377,7 +17156,7 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithOptions(request *ModifyV
 }
 
 /**
- * You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specific policy group. Different access control policies are used for the VPC firewall that is used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewall that is used to protect each Express Connect circuit.
+ * You can call the ModifyVpcFirewallControlPolicy operation to modify the configurations of an access control policy that is created for a VPC firewall in a specified policy group. Different access control policies are used for the VPC firewalls that are used to protect each Cloud Enterprise Network (CEN) instance and the VPC firewalls that are used to protect each Express Connect circuit.
  * ## Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
