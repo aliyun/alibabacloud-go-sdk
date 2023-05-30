@@ -2437,12 +2437,12 @@ func (s *CreateAliasHeaders) SetXFcTraceId(v string) *CreateAliasHeaders {
 }
 
 type CreateAliasRequest struct {
-	// The canary release version to which the alias points and the weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
 	//
-	// *   The canary release version takes effect only when the function is invoked.
+	// *   The additional version takes effect only when the function is invoked.
 	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
-	// The name of the alias.  The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).  The name cannot be **LATEST**.
+	// The name of the alias. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 128 characters in length. The name cannot be set to **LATEST**
 	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -2496,9 +2496,9 @@ func (s *CreateAliasRequest) SetVersionId(v string) *CreateAliasRequest {
 }
 
 type CreateAliasResponseBody struct {
-	// The canary release version to which the alias points and the weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
 	//
-	// *   The canary release version takes effect only when the function is invoked.
+	// *   The additional version takes effect only when the function is invoked.
 	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
 	// The name of the alias.
@@ -2790,15 +2790,11 @@ func (s *CreateCustomDomainResponse) SetBody(v *CreateCustomDomainResponseBody) 
 }
 
 type CreateFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The CRC-64 value of the function code package.
-	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request. The value is the same as that of the requestId parameter in the response.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId      *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateFunctionHeaders) String() string {
@@ -2835,62 +2831,29 @@ func (s *CreateFunctionHeaders) SetXFcTraceId(v string) *CreateFunctionHeaders {
 }
 
 type CreateFunctionRequest struct {
-	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// The code of the function. The code must be packaged into a ZIP file. Choose **code** or **customContainerConfig** for the function.
-	Code *Code `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of vCPUs of the function. The value must be a multiple of 0.05.
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image. Choose **code** or **customContainerConfig** for the function.
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom Domain Name System (DNS) configurations of the function.
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
-	// The configurations of the custom runtime.
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// The description of the function.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
-	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that you configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Overview](~~69777~~).
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The name of the function. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 64 characters in length.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
-	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period expires, the execution of the Initializer hook is terminated.
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the Initializer hook. For more information, see [Initializer hooks](~~157704~~).
-	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The number of requests that can be concurrently processed by a single instance.
-	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The lifecycle configurations of the instance.
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
-	//
-	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
-	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	// The instance type of the function. Valid values:
-	//
-	// *   **e1**: elastic instance
-	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
-	// *   **g1**: same as **fc.gpu.tesla.1**
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The information about layers.
-	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB. The value must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateFunctionRequest) String() string {
@@ -3017,70 +2980,33 @@ func (s *CreateFunctionRequest) SetTimeout(v int32) *CreateFunctionRequest {
 }
 
 type CreateFunctionResponseBody struct {
-	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// The CRC-64 value of the function code package.
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package that is returned by the system. Unit: bytes.
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// The number of vCPUs of the function. The value is a multiple of 0.05.
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom DNS configurations of the function.
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
-	// The configurations of the custom runtime.
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// The description of the function.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
-	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The unique ID that is generated by the system for the function.
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The value is a multiple of 1,024.
-	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	// The handler of the function.
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the Initializer hook. The format is determined by the programming language.
-	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The number of requests that can be concurrently processed by a single instance.
-	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The lifecycle configurations of the instance.
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
-	//
-	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
-	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	// The instance type of the function. Valid values:
-	//
-	// *   **e1**: elastic instance
-	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
-	// *   **g1**: same as **fc.gpu.tesla.1**
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The time when the function was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// An array that consists of the information of layers.
-	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size that is configured for the function. Unit: MB.
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateFunctionResponseBody) String() string {
@@ -3257,11 +3183,11 @@ func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateF
 
 type CreateLayerVersionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The description of the layer.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The checksum of the layer code package.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// The information about the layer code package.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -3294,11 +3220,11 @@ func (s *CreateLayerVersionHeaders) SetXFcTraceId(v string) *CreateLayerVersionH
 }
 
 type CreateLayerVersionRequest struct {
-	// The code of the layer.
+	// The name of the layer.
 	Code *Code `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of runtime environments that are supported by the layer.
+	// The name of the runtime. Valid values: **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **php7.2**, **go1**, **dotnetcore2.1** and **custom**.
 	CompatibleRuntime []*string `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
-	// The description of the layer.
+	// The name of the layer.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -3326,25 +3252,24 @@ func (s *CreateLayerVersionRequest) SetDescription(v string) *CreateLayerVersion
 }
 
 type CreateLayerVersionResponseBody struct {
-	// The access mode of the layer.
-	Acl *int32 `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The name of the layer.
+	// Creates a layer version.
+	Acl *int32  `json:"acl,omitempty" xml:"acl,omitempty"`
 	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
-	// The information about the layer code package.
+	// The access mode of the layer.
 	Code *OutputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	// The checksum of the layer code package.
+	// Example 1
 	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
 	// The size of the layer code package. Unit: Byte.
 	Codesize *int64 `json:"codesize,omitempty" xml:"codesize,omitempty"`
-	// The list of runtime environments that are supported by the layer.
+	// Luoni
 	CompatibleRuntime []*string `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
-	// The time when the layer version was created. The time follows the **yyyy-MM-ddTHH:mm:ssZ** format.
+	// Creates a layer version.
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the layer version.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the layer.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The list of runtime environments that are supported by the layer.
 	LayerName *string `json:"layerName,omitempty" xml:"layerName,omitempty"`
-	// The version of the layer.
+	// The time when the layer version was created. The time follows the **yyyy-MM-ddTHH:mm:ssZ** format.
 	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -3685,11 +3610,11 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 
 type CreateTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The time when the request is initiated on the client. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The custom request ID.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The ETag that is used to modify the trigger. This parameter is used to ensure that the modified trigger is consistent with the trigger to be modified.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -3722,14 +3647,12 @@ func (s *CreateTriggerHeaders) SetXFcTraceId(v string) *CreateTriggerHeaders {
 }
 
 type CreateTriggerRequest struct {
-	// The description of the trigger.
+	// The ID of your Alibaba Cloud account.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The role that is used by the event source such as OSS to invoke the function. For more information, see [Overview](~~53102~~).
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the event source for the trigger.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
 	// * OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
@@ -3739,9 +3662,9 @@ type CreateTriggerRequest struct {
 	// * Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
 	// * Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
 	// * MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// The type of the trigger. Valid values:
 	//
 	// *   **oss**: OSS event trigger. For more information, see [Overview](~~62922~~).
@@ -3751,6 +3674,8 @@ type CreateTriggerRequest struct {
 	// *   **tablestore**: Tablestore trigger. For more information, see [Overview](~~100092~~).
 	// *   **cdn_events**: CDN event trigger. For more information, see [Overview](~~73333~~).
 	// *   **mns_topic**: MNS topic trigger. For more information, see [Overview](~~97032~~).
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// The description of the trigger.
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 }
 
@@ -3798,31 +3723,30 @@ func (s *CreateTriggerRequest) SetTriggerType(v string) *CreateTriggerRequest {
 }
 
 type CreateTriggerResponseBody struct {
-	// The time when the trigger was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the trigger.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The ARN of the RAM role that is used by the event source to invoke the function.
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// The time when the trigger was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The version of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The ARN of the event source.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// The configurations of the trigger. The configurations vary based on the trigger type.
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The unique ID of the trigger.
-	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The time when the trigger was last modified.
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
+	// The version of the service.
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The ARN of the event source.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The configurations of the trigger. The configurations vary based on the trigger type.
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	// The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
+	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// The description of the trigger.
+	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 	// The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
@@ -3930,11 +3854,10 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 
 type CreateVpcBindingHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Binds a VPC.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// {"name":"CreateVpcBinding","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/bindings","deprecated":0,"method":"POST","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"A short description of struct\",\"description\":\"The name of the service. \",\"example\":\"demo-service\"},{\"name\":\"body\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"params\":[{\"name\":\"vpcId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of the VPC to be bound. \",\"example\":\"v-xxxx\"}],\"description\":\"The structure of the request. \"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format. \",\"example\":\"2022-01-0112:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The custom request ID. \",\"example\":\"asdf****\"}]","response_headers":"[]","response":"{}","body_style":"json","errors":"{}"}
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -3967,7 +3890,7 @@ func (s *CreateVpcBindingHeaders) SetXFcTraceId(v string) *CreateVpcBindingHeade
 }
 
 type CreateVpcBindingRequest struct {
-	// The ID of the VPC to be bound.
+	// Example 1
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -4009,15 +3932,12 @@ func (s *CreateVpcBindingResponse) SetStatusCode(v int32) *CreateVpcBindingRespo
 
 type DeleteAliasHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// If the ETag specified in the request matches the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, OSS returns 412 Precondition Failed.
-	// The ETag value of a resource is used to check whether the resource has changed. You can check data integrity by using the ETag value.
-	// Default value: null
+	// {"name":"DeleteAlias","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/aliases/{aliasName}","deprecated":0,"method":"DELETE","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the service.\",\"description\":\"The name of the service.\",\"example\":\"demo-service\"},{\"name\":\"aliasName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the alias.\",\"description\":\"The name of the alias.\",\"example\":\"test\"},{\"name\":\"If-Match\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"If the ETag specified in the request matches the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, OSS returns 412 Precondition Failed. \\nThe ETag value of a resource is used to check whether the resource has changed. You can check data integrity by using the ETag value. \\nDefault value: null\",\"example\":\"e19d5cd5af0378da05f63f891c7467af\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. \",\"example\":\"2020-12-1210:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The trace ID of the invocation request of Function Compute. \",\"example\":\"r9s89isisi****\"}]","response_headers":"[]","response":"{}","errors":"{}"}
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// 139490
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// Xiaoqi
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4079,11 +3999,10 @@ func (s *DeleteAliasResponse) SetStatusCode(v int32) *DeleteAliasResponse {
 
 type DeleteCustomDomainHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// 150868
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// Xiawan
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4140,14 +4059,12 @@ func (s *DeleteCustomDomainResponse) SetStatusCode(v int32) *DeleteCustomDomainR
 
 type DeleteFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ETag value of the resource. This value is used to ensure that the modified resource is consistent with the resource to be modified. The ETag value is returned in the responses of the CREATE, GET, and UPDATE operations.
+	// $.parameters[8].schema.description
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// {"name":"DeleteFunction","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/functions/{functionName}","deprecated":0,"method":"DELETE","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"If-Match\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The ETag value of the resource. This value is used to ensure that the modified resource is consistent with the resource to be modified. The ETag value is returned in the responses of the CREATE, GET, and UPDATE operations.\",\"description\":\"The ETag value of the resource. This value is used to ensure that the modified resource is consistent with the resource to be modified. The ETag value is returned in the responses of the CREATE, GET, and UPDATE operations. \",\"example\":\"e19d5cd5af0378da05f63f891c7467af\"},{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the service.\",\"description\":\"The name of the service. \",\"example\":\"demoService\"},{\"name\":\"functionName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the function.\",\"description\":\"The name of the function. \",\"example\":\"demoFunction\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The start time when the function is invoked. Specify the time in the yyyy-mm-ddhh:mm:ss format. \",\"example\":\"2022-01-01 12:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The trace ID of the request for Function Compute API. The value is the same as that of the requestId parameter in the response. \",\"example\":\"test-trace-id\"}]","response_headers":"[]","response":"{}","errors":"{}"}
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API. The value is the same as that of the requestId parameter in the response.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionHeaders) String() string {
@@ -4208,11 +4125,10 @@ func (s *DeleteFunctionResponse) SetStatusCode(v int32) *DeleteFunctionResponse 
 
 type DeleteFunctionAsyncInvokeConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// {"name":"DeleteFunctionAsyncInvokeConfig","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/functions/{functionName}/async-invoke-config","deprecated":0,"method":"DELETE","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the service.\",\"description\":\"The name of the service. \",\"example\":\"demo-service\"},{\"name\":\"functionName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the function.\",\"description\":\"The name of the function. \",\"example\":\"helloworld\"},{\"name\":\"qualifier\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The qualifier.\",\"description\":\"The qualifier. \",\"example\":\"test\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. \",\"example\":\"None\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The trace ID of the invocation request of Function Compute.\",\"example\":\"asdf*****\"}]","response_headers":"[]","response":"{}","errors":"{}"}
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// Jianyi
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4245,7 +4161,7 @@ func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *Delete
 }
 
 type DeleteFunctionAsyncInvokeConfigRequest struct {
-	// The qualifier.
+	// Deletes the asynchronous invocation configurations of a function in a service.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4287,14 +4203,12 @@ func (s *DeleteFunctionAsyncInvokeConfigResponse) SetStatusCode(v int32) *Delete
 
 type DeleteFunctionOnDemandConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// If the ETag specified in the request matches the ETag value of the OndemandConfig, FC returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, FC returns 412 Precondition Failed.
+	// Xiaoqi
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// 65332
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The start time when the function is invoked. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API, which is also the unique ID of the request.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionOnDemandConfigHeaders) String() string {
@@ -4331,7 +4245,7 @@ func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *DeleteFun
 }
 
 type DeleteFunctionOnDemandConfigRequest struct {
-	// The alias of the service or LATEST.
+	// Deletes the on-demand configuration of a function.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4373,11 +4287,10 @@ func (s *DeleteFunctionOnDemandConfigResponse) SetStatusCode(v int32) *DeleteFun
 
 type DeleteLayerVersionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// 320124
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API.
+	// Luoni
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4434,14 +4347,12 @@ func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionR
 
 type DeleteServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ETag value of the service. This value is used to ensure that the modified service is consistent with the service to be modified. The ETag value is returned in the responses of the [CreateService](~~175256~~), [UpdateService](~~188167~~), and [GetService](~~189225~~) operations.
+	// Examples
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Liuxia
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceHeaders) String() string {
@@ -4502,12 +4413,10 @@ func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
 
 type DeleteServiceVersionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Xiaoqi
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceVersionHeaders) String() string {
@@ -4563,14 +4472,10 @@ func (s *DeleteServiceVersionResponse) SetStatusCode(v int32) *DeleteServiceVers
 
 type DeleteTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// This parameter is used to ensure that the modified resource is consistent with the resource to be modified. You can obtain the parameter value from the responses of [CreateTrigger](~~415729~~), [GetTrigger](~~415732~~), and [UpdateTrigger](~~415731~~) operations.
-	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the request is initiated on the client. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteTriggerHeaders) String() string {
@@ -4631,11 +4536,10 @@ func (s *DeleteTriggerResponse) SetStatusCode(v int32) *DeleteTriggerResponse {
 
 type DeleteVpcBindingHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Deletes a bound VPC.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// {"name":"DeleteVpcBinding","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/bindings/{vpcId}","deprecated":0,"method":"DELETE","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The name of the service. \",\"example\":\"demoService\"},{\"name\":\"vpcId\",\"position\":\"Path\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of the VPC to be unbound. \",\"example\":\"vpc-xxxx\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format. \",\"example\":\"2022-01-0112:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The custom request ID. \",\"example\":\"asdf****\"}]","response_headers":"[]","response":"{}","errors":"{}"}
+	XFcDate    *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4692,12 +4596,9 @@ func (s *DeleteVpcBindingResponse) SetStatusCode(v int32) *DeleteVpcBindingRespo
 
 type DeregisterEventSourceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeregisterEventSourceHeaders) String() string {
@@ -4729,7 +4630,6 @@ func (s *DeregisterEventSourceHeaders) SetXFcTraceId(v string) *DeregisterEventS
 }
 
 type DeregisterEventSourceRequest struct {
-	// The version or alias of the service.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4773,9 +4673,9 @@ type GetAccountSettingsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// Example 1
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// Queries available zones within the current account.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -4808,10 +4708,9 @@ func (s *GetAccountSettingsHeaders) SetXFcTraceId(v string) *GetAccountSettingsH
 }
 
 type GetAccountSettingsResponseBody struct {
-	// The list of zones.
+	// Liuxia
 	AvailableAZs []*string `json:"availableAZs,omitempty" xml:"availableAZs,omitempty" type:"Repeated"`
-	// The default RAM role.
-	DefaultRole *string `json:"defaultRole,omitempty" xml:"defaultRole,omitempty"`
+	DefaultRole  *string   `json:"defaultRole,omitempty" xml:"defaultRole,omitempty"`
 }
 
 func (s GetAccountSettingsResponseBody) String() string {
@@ -4865,7 +4764,7 @@ type GetAliasHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The start time when the function is invoked. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The trace ID of the invocation request of Function Compute.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -4900,10 +4799,10 @@ func (s *GetAliasHeaders) SetXFcTraceId(v string) *GetAliasHeaders {
 }
 
 type GetAliasResponseBody struct {
-	// The canary release version to which the alias points and the weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
 	//
-	// - The canary release version takes effect only when the function is invoked.
-	// - The value consists of a version number and the corresponding weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
+	// *   The additional version takes effect only when the function is invoked.
+	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
 	// The name of the alias.
 	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
@@ -4915,10 +4814,10 @@ type GetAliasResponseBody struct {
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The canary release mode. Valid values:
 	//
-	// - **Random**: random canary release. This is the default value.
-	// - **Content**: rule-based canary release.
+	// *   **Random**: random canary release. This is the default value.
+	// *   **Content**: rule-based canary release.
 	ResolvePolicy *string `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
-	// Canary release rule. The traffic that meets the conditions of the canary release rule is diverted to the canary release instances.
+	// The canary release rule. Traffic that meets the canary release rule is routed to the canary release instance.
 	RoutePolicy *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
 	// The version to which the alias points.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
@@ -5155,11 +5054,11 @@ func (s *GetCustomDomainResponse) SetBody(v *GetCustomDomainResponseBody) *GetCu
 
 type GetFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	// The value that is used to ensure that the modified function is consistent with the function that is expected to be modified.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The definition of the function.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -5192,7 +5091,7 @@ func (s *GetFunctionHeaders) SetXFcTraceId(v string) *GetFunctionHeaders {
 }
 
 type GetFunctionRequest struct {
-	// The version or alias of the service.
+	// The ID of your Alibaba Cloud account.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5210,60 +5109,6 @@ func (s *GetFunctionRequest) SetQualifier(v string) *GetFunctionRequest {
 }
 
 type GetFunctionResponseBody struct {
-	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// The CRC-64 value of the function code package.
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package. Unit: byte.
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// The number of vCPUs of the function. The value must be a multiple of 0.05.
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
-	CustomContainerConfig *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom DNS configurations of the function.
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
-	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
-	// The configurations of the custom runtime.
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// The description of the function.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
-	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ID that is generated by the system for the function. Each function ID is unique in Function Compute.
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
-	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	// The handler of the function. For more information, see [Function handler](~~157704~~).
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the initializer function. The format of the value is determined by the programming language that you use. For more information, see [Initializer function](~~157704~~).
-	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The number of requests that can be concurrently processed by a single instance.
-	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The lifecycle configurations of the instance.
-	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the number of the soft concurrency, the instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
-	//
-	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
-	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	// The instance type of the function. Valid values:
-	//
-	// *   **e1**: elastic instance
-	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
-	// *   **g1**: same fc.gpu.tesla.1
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The time when the function was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The list of layers (ARN V1 version).
 	//
 	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file with the same name in the layer with a larger subscript. >
@@ -5271,16 +5116,66 @@ type GetFunctionResponseBody struct {
 	// **
 	//
 	// **Warning:** This parameter is to be deprecated. Use layersArnV2.
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	// The time when the function was created.
+	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	// The description of the function.
+	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	// The GPU memory capacity for the function. Unit: MB. The memory capacity must be a multiple of 1024 MB.
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The name of the layer resource (ARN V1 version).
+	CustomContainerConfig *CustomContainerConfigInfo `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	// The name of the layer resource (ARN V2 version).
+	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
 	// The list of layers (ARN V2 version).
 	//
 	// > If multiple layers exist, the layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name and a larger subscript in the layer.
-	LayersArnV2 []*string `json:"layersArnV2,omitempty" xml:"layersArnV2,omitempty" type:"Repeated"`
+	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// The environment variables that you configured for the function.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize    *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// The ID that is generated by the system for the function. Each function ID is unique in Function Compute.
+	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	// The handler of the function. For more information, see [Function handler](~~157704~~).
+	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	// The time when the function was last modified.
+	FunctionName  *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
 	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64 MB. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
+	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
+	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	// The instance type of the function. Valid values:
+	//
+	// *   **e1**: elastic instance
+	// *   **c1**: performance instance
+	// *   **fc.gpu.tesla.1**: GPU-accelerated instances (Tesla T4)
+	// *   **fc.gpu.ampere.1**: GPU-accelerated instances (Ampere A10)
+	// *   **g1**: same fc.gpu.tesla.1
+	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	// The configurations of the custom runtime.
+	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	// The lifecycle configurations of the instance.
+	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	// The custom DNS configurations of the function.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore2.1**, **custom**, and **custom-container**.
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The number of requests that can be concurrently processed by a single instance.
+	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	// The number of vCPUs of the function. The value must be a multiple of 0.05.
+	LayersArnV2 []*string `json:"layersArnV2,omitempty" xml:"layersArnV2,omitempty" type:"Repeated"`
 	// The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The timeout period for the execution of the initializer function. Unit: seconds. Default value: 3. Valid values: 1 to 300. When this period ends, the execution of the initializer function is terminated.
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// The handler of the initializer function. The format of the value is determined by the programming language that you use. For more information, see [Initializer function](~~157704~~).
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
@@ -5463,12 +5358,9 @@ func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionRe
 
 type GetFunctionAsyncInvokeConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the Function Compute is called. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionAsyncInvokeConfigHeaders) String() string {
@@ -5500,7 +5392,6 @@ func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *GetFuncti
 }
 
 type GetFunctionAsyncInvokeConfigRequest struct {
-	// The qualifier.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5518,27 +5409,15 @@ func (s *GetFunctionAsyncInvokeConfigRequest) SetQualifier(v string) *GetFunctio
 }
 
 type GetFunctionAsyncInvokeConfigResponseBody struct {
-	// The time when the desktop group was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configuration structure of the destination for asynchronous invocations.
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// The name of the function.
-	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// The time when the configuration was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The maximum validity period of a message.
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// The maximum number of retries allowed after an asynchronous invocation fails.
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// The version or alias of the service to which the function belongs.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The name of the service.
-	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Indicates whether the asynchronous task feature is enabled.
-	//
-	// *   **true**: The asynchronous task feature is enabled.
-	// *   **false**: The asynchronous task feature is disabled.
-	StatefulInvocation *bool `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	Function                  *string            `json:"function,omitempty" xml:"function,omitempty"`
+	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Service                   *string            `json:"service,omitempty" xml:"service,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
 func (s GetFunctionAsyncInvokeConfigResponseBody) String() string {
@@ -5625,12 +5504,9 @@ func (s *GetFunctionAsyncInvokeConfigResponse) SetBody(v *GetFunctionAsyncInvoke
 
 type GetFunctionCodeHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionCodeHeaders) String() string {
@@ -5662,7 +5538,6 @@ func (s *GetFunctionCodeHeaders) SetXFcTraceId(v string) *GetFunctionCodeHeaders
 }
 
 type GetFunctionCodeRequest struct {
-	// The version or alias of the service.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5680,10 +5555,8 @@ func (s *GetFunctionCodeRequest) SetQualifier(v string) *GetFunctionCodeRequest 
 }
 
 type GetFunctionCodeResponseBody struct {
-	// The CRC-64 value of the function code package.
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
-	// The URL of the function code package.
-	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s GetFunctionCodeResponseBody) String() string {
@@ -5845,11 +5718,11 @@ func (s *GetFunctionOnDemandConfigResponse) SetBody(v *GetFunctionOnDemandConfig
 
 type GetLayerVersionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// This parameter is returned only when the information about a specific layer version is queried.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The location of the layer code.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API.
+	// The structure of the layer code.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -6057,11 +5930,14 @@ func (s *GetProvisionConfigResponse) SetBody(v *GetProvisionConfigResponseBody) 
 
 type GetResourceTagsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// > **Note:** You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource. You can manage tags only for services for top level resources.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The tag dictionary. Valid values:
+	// - **key**: the key of the tag.
+	// - **value**: the value of the tag.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// Example 1
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -6094,9 +5970,8 @@ func (s *GetResourceTagsHeaders) SetXFcTraceId(v string) *GetResourceTagsHeaders
 }
 
 type GetResourceTagsRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
-	//
-	// > You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource. You can manage tags only for services for top level resources.
+	// The ARN of the resource.
+	// > **Note:** You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource.
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 }
 
@@ -6114,12 +5989,9 @@ func (s *GetResourceTagsRequest) SetResourceArn(v string) *GetResourceTagsReques
 }
 
 type GetResourceTagsResponseBody struct {
-	// The ARN of the resource.
-	//
-	// > You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource.
-	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// The tag dictionary.
-	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// 147258
+	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	Tags        map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s GetResourceTagsResponseBody) String() string {
@@ -6357,23 +6229,17 @@ func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceRespo
 
 type GetStatefulAsyncInvocationHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The list of events that trigger the asynchronous task.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The CRC-64 value of the function code package. This value is used to check data integrity. The value is automatically calculated by the tool.
+	// The structure of the asynchronous task.
 	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// Alibaba Cloud provides SDKs for multiple programming languages to help you integrate Alibaba Cloud services by using APIs. We recommend that you use an SDK to call API operations. This frees you from manual signature verification.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The invocation method.
-	//
-	// - **Sync**: synchronous invocation
-	// - **Async**: asynchronous invocation
+	// StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
 	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	// The method used to return logs. Valid values:
-	//
-	// - **Tail**: returns the last 4 KB of logs that are generated for the current request.
-	// - **None**: does not return logs for the current request. This is the default value.
+	// The latest version of Function Compute API.
 	XFcLogType *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// You can search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -6421,7 +6287,7 @@ func (s *GetStatefulAsyncInvocationHeaders) SetXFcTraceId(v string) *GetStateful
 }
 
 type GetStatefulAsyncInvocationRequest struct {
-	// The version or alias of the service to which the asynchronous task belongs.
+	// The ID of the instance that is used to run the asynchronous task.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6469,11 +6335,11 @@ func (s *GetStatefulAsyncInvocationResponse) SetBody(v *StatefulAsyncInvocation)
 
 type GetTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The time when the request is initiated on the client. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The custom request ID.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The ETag that is used to modify the trigger. This parameter is used to ensure that the modified trigger is consistent with the trigger to be modified.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -6506,20 +6372,18 @@ func (s *GetTriggerHeaders) SetXFcTraceId(v string) *GetTriggerHeaders {
 }
 
 type GetTriggerResponseBody struct {
-	// The time when the trigger was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the trigger.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The ARN of the RAM role that is used by the event source to invoke the function.
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The unique ID of the trigger.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The time when the trigger was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The ARN of the event source.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
 	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
@@ -6529,16 +6393,17 @@ type GetTriggerResponseBody struct {
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
 	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
 	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// The unique ID of the trigger.
-	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The name of the trigger.
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
+	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
 	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// The description of the trigger.
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	// The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
@@ -6659,7 +6524,8 @@ type InvokeFunctionHeaders struct {
 	//
 	// *   **Tail**: returns the last 4 KB of logs that are generated for the current request.
 	// *   **None**: No logs are returned for the current request. Default value: None.
-	XFcLogType *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcLogType                       *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcStatefulAsyncInvocationEnable *string `json:"X-Fc-Stateful-Async-Invocation-Enable,omitempty" xml:"X-Fc-Stateful-Async-Invocation-Enable,omitempty"`
 	// The ID of the asynchronous task. You must enable the asynchronous task feature in advance.
 	//
 	// > When you use an SDK to invoke a function, we recommend that you specify a business-related ID to facilitate subsequent operations. For example, you can use the video name as the invocation ID for a video-processing function. This way, you can use the ID to check whether the video is processed or terminate the processing of the video. The ID must start with a letter or an underscore (\_) and can contain letters, digits, underscores (\_), and hyphens (-). The ID can be up to 128 characters in length. If you do not specify the ID of the asynchronous invocation, Function Compute automatically generates an ID.
@@ -6698,6 +6564,11 @@ func (s *InvokeFunctionHeaders) SetXFcInvocationType(v string) *InvokeFunctionHe
 
 func (s *InvokeFunctionHeaders) SetXFcLogType(v string) *InvokeFunctionHeaders {
 	s.XFcLogType = &v
+	return s
+}
+
+func (s *InvokeFunctionHeaders) SetXFcStatefulAsyncInvocationEnable(v string) *InvokeFunctionHeaders {
+	s.XFcStatefulAsyncInvocationEnable = &v
 	return s
 }
 
@@ -6769,7 +6640,7 @@ type ListAliasesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The start time when the function is invoked. Specify the time in the yyyy-mm-ddhh:mm:ss format.
+	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The trace ID of the invocation request of Function Compute.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -6804,13 +6675,13 @@ func (s *ListAliasesHeaders) SetXFcTraceId(v string) *ListAliasesHeaders {
 }
 
 type ListAliasesRequest struct {
-	// The maximum number of resources to return.
+	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results.
+	// The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The prefix.
+	// The prefix that the names of returned resources must contain.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The starting position of the result list.
+	// The starting position of the result list. The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -6868,18 +6739,26 @@ func (s *ListAliasesResponseBody) SetNextToken(v string) *ListAliasesResponseBod
 }
 
 type ListAliasesResponseBodyAliases struct {
-	// The weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
+	//
+	// *   The additional version takes effect only when the function is invoked.
+	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
 	// The name of the alias.
 	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	// The creation time.
+	// The time when the ConfigMaps were created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The description of the alias.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The last update time.
-	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	ResolvePolicy    *string      `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
-	RoutePolicy      *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
+	// The time at which the system parameter was last modified.
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The canary release mode. Valid values:
+	//
+	// *   **Random**: random canary release. This is the default value.
+	// *   **Content**: rule-based canary release.
+	ResolvePolicy *string `json:"resolvePolicy,omitempty" xml:"resolvePolicy,omitempty"`
+	// The canary release rule. Traffic that meets the canary release rule is routed to the canary release instance.
+	RoutePolicy *RoutePolicy `json:"routePolicy,omitempty" xml:"routePolicy,omitempty"`
 	// The ID of the version.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
@@ -7179,11 +7058,11 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainsResponseBody) *L
 
 type ListEventSourcesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// $.parameters[7].schema.enumValueTitles
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// $.parameters[8].schema.description
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// $.parameters[8].schema.example
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -7216,7 +7095,7 @@ func (s *ListEventSourcesHeaders) SetXFcTraceId(v string) *ListEventSourcesHeade
 }
 
 type ListEventSourcesRequest struct {
-	// The version or alias of the service.
+	// $.parameters[7].schema.example
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -7234,7 +7113,7 @@ func (s *ListEventSourcesRequest) SetQualifier(v string) *ListEventSourcesReques
 }
 
 type ListEventSourcesResponseBody struct {
-	// The information about event sources.
+	// Queries all the event sources of a function.
 	EventSources []*ListEventSourcesResponseBodyEventSources `json:"eventSources,omitempty" xml:"eventSources,omitempty" type:"Repeated"`
 }
 
@@ -7252,9 +7131,8 @@ func (s *ListEventSourcesResponseBody) SetEventSources(v []*ListEventSourcesResp
 }
 
 type ListEventSourcesResponseBodyEventSources struct {
-	// The time when the event source was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The ARN of the event source.
+	// Jianyi
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 }
 
@@ -7306,25 +7184,13 @@ func (s *ListEventSourcesResponse) SetBody(v *ListEventSourcesResponseBody) *Lis
 }
 
 type ListFunctionAsyncInvokeConfigsHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The CRC-64 value of the function code package. This value is used to check data integrity. The value is automatically calculated by the tool.
-	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	// The time when the Function Compute is called. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The invocation method.
-	//
-	// *   **Sync**: synchronous
-	// *   **Async**: asynchronous
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	// The method used to return logs. Valid values:
-	//
-	// *   **Tail**: returns the last 4 KB of logs that are generated for the current request.
-	// *   **None**: No logs are returned for the current request. Default value: None.
-	XFcLogType *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
+	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
+	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListFunctionAsyncInvokeConfigsHeaders) String() string {
@@ -7371,9 +7237,7 @@ func (s *ListFunctionAsyncInvokeConfigsHeaders) SetXFcTraceId(v string) *ListFun
 }
 
 type ListFunctionAsyncInvokeConfigsRequest struct {
-	// The maximum number of resources to return.
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -7396,10 +7260,8 @@ func (s *ListFunctionAsyncInvokeConfigsRequest) SetNextToken(v string) *ListFunc
 }
 
 type ListFunctionAsyncInvokeConfigsResponseBody struct {
-	// The list of asynchronous invocation configurations.
-	Configs []*ListFunctionAsyncInvokeConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The token used to obtain more results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Configs   []*ListFunctionAsyncInvokeConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	NextToken *string                                              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListFunctionAsyncInvokeConfigsResponseBody) String() string {
@@ -7421,29 +7283,15 @@ func (s *ListFunctionAsyncInvokeConfigsResponseBody) SetNextToken(v string) *Lis
 }
 
 type ListFunctionAsyncInvokeConfigsResponseBodyConfigs struct {
-	// The time when the desktop group was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configuration structure of the destination for asynchronous invocations. If you have not configured this parameter, this parameter is null.
-	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// The name of the function.
-	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// The time when the configuration was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The maximum validity period of a message. If you have not configured this parameter, this parameter is null.
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// The maximum number of retries allowed after an asynchronous invocation fails. If you have not configured this parameter, this parameter is null.
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The name of the service.
-	Service *string `json:"service,omitempty" xml:"service,omitempty"`
-	// Indicates whether the asynchronous task feature is enabled.
-	//
-	// *   **true**: The asynchronous task feature is enabled.
-	// *   **false**: The asynchronous task feature is disabled.
-	//
-	// If you have not configured this parameter, this parameter is null.
-	StatefulInvocation *bool `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	Function                  *string            `json:"function,omitempty" xml:"function,omitempty"`
+	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	Qualifier                 *string            `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	Service                   *string            `json:"service,omitempty" xml:"service,omitempty"`
+	StatefulInvocation        *bool              `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
 func (s ListFunctionAsyncInvokeConfigsResponseBodyConfigs) String() string {
@@ -7694,7 +7542,7 @@ type ListFunctionsResponseBodyFunctions struct {
 	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	// The memory size that is configured for the function. Unit: MB.
 	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
+	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.10**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom.debian10**, **custom**, and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The timeout period for the execution of the function. Unit: seconds. Default value: 60. Valid values: 1 to 600. When this period expires, the execution of the function is terminated.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
@@ -7864,7 +7712,7 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 
 type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Queries the available instances of a function.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 }
 
@@ -7887,13 +7735,11 @@ func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 }
 
 type ListInstancesRequest struct {
-	// The IDs of the instance.
+	// The name of the service.
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-	// The maximum number of resources to return. Valid values: \[0,1000].
-	//
-	// The number of returned resources is less than or equal to the specified number.
+	// The ID of your Alibaba Cloud account.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The version or alias.
+	// The ID of the instance.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -7921,7 +7767,7 @@ func (s *ListInstancesRequest) SetQualifier(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	// The information about instances.
+	// 210234
 	Instances []*ListInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 }
 
@@ -7939,10 +7785,8 @@ func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyI
 }
 
 type ListInstancesResponseBodyInstances struct {
-	// The ID of the instance.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The version of the service to which the instance belongs. If the instance belongs to the LATEST alias, 0 is returned as the version.
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -8111,12 +7955,9 @@ func (s *ListLayerVersionsResponse) SetBody(v *ListLayerVersionsResponseBody) *L
 
 type ListLayersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListLayersHeaders) String() string {
@@ -8148,18 +7989,12 @@ func (s *ListLayersHeaders) SetXFcTraceId(v string) *ListLayersHeaders {
 }
 
 type ListLayersRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned configurations is less than or equal to the specified number.
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	Limit     *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Specifies whether to obtain the official public layer. When the official parameter is set to true, the public field does not take effect. The default value is false.
-	Official *bool `json:"official,omitempty" xml:"official,omitempty"`
-	// The name prefix of the layer. The names of returned resources must contain the prefix. If the name prefix is a, the names of returned resources must start with a.
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// Specifies whether to obtain only the common layer. Default value: false.
-	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
-	// The name of the start layer. The returned layers are sorted in alphabetical order, and the layers that include and follow the layer specified by the startKey parameter are returned.
-	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
+	Official  *bool   `json:"official,omitempty" xml:"official,omitempty"`
+	Prefix    *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Public    *bool   `json:"public,omitempty" xml:"public,omitempty"`
+	StartKey  *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
 func (s ListLayersRequest) String() string {
@@ -8201,10 +8036,8 @@ func (s *ListLayersRequest) SetStartKey(v string) *ListLayersRequest {
 }
 
 type ListLayersResponseBody struct {
-	// The information about layers.
-	Layers []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The name of the start layer for the next query, which is also the token used to obtain more results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Layers    []*Layer `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListLayersResponseBody) String() string {
@@ -8256,11 +8089,11 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 
 type ListOnDemandConfigsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// $.parameters[8].schema.description
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// $.parameters[8].schema.example
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// $.parameters[8].schema.enumValueTitles
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -8293,13 +8126,13 @@ func (s *ListOnDemandConfigsHeaders) SetXFcTraceId(v string) *ListOnDemandConfig
 }
 
 type ListOnDemandConfigsRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+	// The time when Function Compute API is called.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// The ID of your Alibaba Cloud account.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The prefix that the names of returned resources must contain. If the name prefix is a, the names of returned resources must start with a.
+	// The returned data.
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -8332,9 +8165,9 @@ func (s *ListOnDemandConfigsRequest) SetStartKey(v string) *ListOnDemandConfigsR
 }
 
 type ListOnDemandConfigsResponseBody struct {
-	// The information about the provisioned configuration.
+	// $.parameters[9].schema.enumValueTitles
 	Configs []*OnDemandConfig `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
+	// {"name":"ListOnDemandConfigs","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/on-demand-configs","deprecated":0,"method":"GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"prefix\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The prefix that the names of returned resources must contain. If the name prefix is a, the names of returned resources must start with a. \",\"description\":\"The prefix that the names of returned resources must contain. If the name prefix is a, the names of returned resources must start with a. \",\"example\":\"prefix_text\"},{\"name\":\"startKey\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned. \",\"description\":\"The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned. \",\"example\":\"nextservice\"},{\"name\":\"nextToken\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call. \",\"description\":\"The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call. \",\"example\":\"8bj81uI8n****\"},{\"name\":\"limit\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number. \",\"description\":\"The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number. \",\"example\":\"20\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. \",\"example\":\"2020-12-1210:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The trace ID of the invocation request of Function Compute. \",\"example\":\"rid281s******\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"configs\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"example\":\"[{\"maximumInstanceCount\": 10, \"resource\": \"services/serviceName-bb7f36eb-7f1b-4c42-8f64-401b32ecbf31.aliasName/functions/functionName\"}]\",\"description\":\"The information about the on-demand configuration. \",\"children\":[{\"name\":\"resource\",\"required\":false,\"checkBlank\":false,\"visibility\":\"public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The details of the function.\",\"description\":\"The description of the resource. \",\"example\":\"123#serviceName#alias#functionName\"},{\"name\":\"maximumInstanceCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"todo\",\"description\":\"The maximum number of on-demand instances. \",\"example\":\"10\"}],\"title\":\"The information about the provisioned configuration.\"},{\"name\":\"nextToken\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The token used to obtain more results. If this parameter is left empty, all the results are returned. \",\"description\":\"The token used to obtain more results. If this parameter is left empty, all the results are returned. \",\"example\":\"next_token\"}],\"title\":\"Schema of Response\",\"description\":\"The returned data. \"}","errors":"{}"}
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -8387,11 +8220,11 @@ func (s *ListOnDemandConfigsResponse) SetBody(v *ListOnDemandConfigsResponseBody
 
 type ListProvisionConfigsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The actual number of provisioned instances.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// Specifies whether to always allocate CPU to a function instance.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// The configurations of scheduled auto scaling.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -8424,13 +8257,13 @@ func (s *ListProvisionConfigsHeaders) SetXFcTraceId(v string) *ListProvisionConf
 }
 
 type ListProvisionConfigsRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+	// Queries provisioned instances.
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results.
+	// Alibaba Cloud provides SDKs for multiple programming languages to help you integrate Alibaba Cloud services by using APIs. We recommend that you use an SDK to call API operations. This frees you from manual signature verification.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The qualifier of the service to which resources belong. The qualifier must be aliasName and used together with the serviceName parameter.
+	// The token used to obtain more results.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The name of the service to which resources belong.
+	// It is a tool used to manage and configure Alibaba Cloud resources. After simple installation and configuration, you can use Alibaba Cloud CLI to manage multiple Alibaba Cloud services and migrate your data and business to the cloud with ease.
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
@@ -8463,9 +8296,9 @@ func (s *ListProvisionConfigsRequest) SetServiceName(v string) *ListProvisionCon
 }
 
 type ListProvisionConfigsResponseBody struct {
-	// The token used to obtain more results.
+	// The qualifier of the service to which resources belong. The qualifier must be aliasName and used together with the serviceName parameter.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The information about provisioned instances.
+	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
 	ProvisionConfigs []*ListProvisionConfigsResponseBodyProvisionConfigs `json:"provisionConfigs,omitempty" xml:"provisionConfigs,omitempty" type:"Repeated"`
 }
 
@@ -8488,19 +8321,23 @@ func (s *ListProvisionConfigsResponseBody) SetProvisionConfigs(v []*ListProvisio
 }
 
 type ListProvisionConfigsResponseBodyProvisionConfigs struct {
-	// Specifies whether to always allocate CPU to a function instance.
 	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	// The actual number of provisioned instances.
-	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// The error message returned if a provisioned instance fails to be created.
-	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
-	// The description of the resource.
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// The configurations of scheduled auto scaling.
-	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
 	// The expected number of provisioned instances.
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// 139490
+	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	// Details about the scheduled scaling policy. You can use the scheduled scaling policy to flexibly configure provisioned instances. You can specify the number of provisioned instances to the desired value at the scheduled time. This way, the number of provisioned instances can meet the concurrency requirements of your business.
+	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	ScheduledActions []*ScheduledActions `json:"scheduledActions,omitempty" xml:"scheduledActions,omitempty" type:"Repeated"`
+	// The configuration of metric-based auto scaling. Provisioned instances are scaled in or out every minute based on the concurrency utilization of provisioned instances.
+	//
+	// - If the metric value exceeds the value of the metricTarget parameter, the system scales out provisioned instances based on a progressive policy to make the metric value closer to the value of the metricTarget parameter.
+	// - When the metric value is smaller than the value of the metricTarget parameter, the system scales in provisioned instances based on a conservative policy to make the metric value close to the value of the metricTarget parameter.
+	//
+	// After you specify the maximum and minimum numbers of provisioned instances, the system scales in or out provisioned instances within the range from the minimum number to the maximum number. If the number of provisioned instances is beyond the range, the scaling stops.
 	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
-	// The configurations of metric-based auto scaling.
+	// Example 1
 	TargetTrackingPolicies []*TargetTrackingPolicies `json:"targetTrackingPolicies,omitempty" xml:"targetTrackingPolicies,omitempty" type:"Repeated"`
 }
 
@@ -8578,12 +8415,9 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsResponseBo
 
 type ListReservedCapacitiesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the Function Compute API is called. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListReservedCapacitiesHeaders) String() string {
@@ -8615,9 +8449,7 @@ func (s *ListReservedCapacitiesHeaders) SetXFcTraceId(v string) *ListReservedCap
 }
 
 type ListReservedCapacitiesRequest struct {
-	// The maximum number of resources to return. Valid values: \[1, 100].
-	Limit *string `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token that determines the start point of the query.
+	Limit     *string `json:"limit,omitempty" xml:"limit,omitempty"`
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -8640,9 +8472,7 @@ func (s *ListReservedCapacitiesRequest) SetNextToken(v string) *ListReservedCapa
 }
 
 type ListReservedCapacitiesResponseBody struct {
-	// The token used to obtain more results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The information about subscription instances.
+	NextToken          *string                 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ReservedCapacities []*OpenReservedCapacity `json:"reservedCapacities,omitempty" xml:"reservedCapacities,omitempty" type:"Repeated"`
 }
 
@@ -8699,7 +8529,7 @@ type ListServiceVersionsHeaders struct {
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -8732,15 +8562,13 @@ func (s *ListServiceVersionsHeaders) SetXFcTraceId(v string) *ListServiceVersion
 }
 
 type ListServiceVersionsRequest struct {
-	// The order in which the returned versions are sorted. Valid values:
-	//   - **FORWARD**: in ascending order.
-	//   - **BACKWARD**: in descending order. This is the default value.
+	// The name of the service.
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The description of the service version.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The starting position of the result list. The returned resources are sorted based on the version number, and the resources that include and follow the resource specified by the startKey parameter are returned.
+	// The time when the service version was created.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -8773,13 +8601,11 @@ func (s *ListServiceVersionsRequest) SetStartKey(v string) *ListServiceVersionsR
 }
 
 type ListServiceVersionsResponseBody struct {
-	// The order in which the returned versions are sorted. Valid values:
-	//   - **FORWARD**: in ascending order.
-	//   - **BACKWARD**: in descending order. This is the default value.
+	// The information about the version.
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// $.parameters[9].schema.description
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of versions.
+	// $.parameters[9].schema.enumValueTitles
 	Versions []*ListServiceVersionsResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -8807,14 +8633,13 @@ func (s *ListServiceVersionsResponseBody) SetVersions(v []*ListServiceVersionsRe
 }
 
 type ListServiceVersionsResponseBodyVersions struct {
-	// The time when the service version was created.
+	// $.parameters[10].schema.enumValueTitles
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the service version.
+	// Queries all the versions of a service.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time when the service version was last modified.
+	// Xiaoqi
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The version of the service.
-	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	VersionId        *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s ListServiceVersionsResponseBodyVersions) String() string {
@@ -9108,11 +8933,11 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 
 type ListStatefulAsyncInvocationFunctionsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// It is a tool used to manage and configure Alibaba Cloud resources. After simple installation and configuration, you can use Alibaba Cloud CLI to manage multiple Alibaba Cloud services and migrate your data and business to the cloud with ease.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API.
+	// The details of returned data.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9145,9 +8970,9 @@ func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetXFcTraceId(v string) *L
 }
 
 type ListStatefulAsyncInvocationFunctionsRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+	// The latest version of Function Compute API.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The starting position of the query. If this parameter is left empty, the query starts from the beginning. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// Alibaba Cloud provides SDKs for multiple programming languages to help you integrate Alibaba Cloud services by using APIs. We recommend that you use an SDK to call API operations. This frees you from manual signature verification.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -9170,9 +8995,9 @@ func (s *ListStatefulAsyncInvocationFunctionsRequest) SetNextToken(v string) *Li
 }
 
 type ListStatefulAsyncInvocationFunctionsResponseBody struct {
-	// The details of returned data.
+	// The trace ID of the request for Function Compute API.
 	Data []*AsyncConfigMeta `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
+	// 2022-01-28 18:04:38
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -9225,23 +9050,20 @@ func (s *ListStatefulAsyncInvocationFunctionsResponse) SetBody(v *ListStatefulAs
 
 type ListStatefulAsyncInvocationsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// It is a tool used to manage and configure Alibaba Cloud resources. After simple installation and configuration, you can use Alibaba Cloud CLI to manage multiple Alibaba Cloud services and migrate your data and business to the cloud with ease.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The CRC-64 value of the function code package. This value is used to check data integrity. The value is automatically calculated by the tool.
+	// Alibaba Cloud CLI
 	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// - **true**: returns the invocationPayload parameter in the response.
+	// - **false**: does not return the invocationPayload parameter in the response.
+	//
+	// > The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The invocation method.
-	//
-	// - **Sync**: synchronous invocation
-	// - **Async**: asynchronous invocation
+	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
 	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	// The method used to return logs. Valid values:
-	//
-	// - **Tail**: returns the last 4 KB of logs that are generated for the current request.
-	// - **None**: does not return logs for the current request. This is the default value.
+	// The time when Function Compute API is called.
 	XFcLogType *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// The CRC-64 value of the function code package. This value is used to check data integrity. The value is automatically calculated by the tool.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9289,39 +9111,23 @@ func (s *ListStatefulAsyncInvocationsHeaders) SetXFcTraceId(v string) *ListState
 }
 
 type ListStatefulAsyncInvocationsRequest struct {
-	// - **true**: returns the invocationPayload parameter in the response.
-	// - **false**: does not return the invocationPayload parameter in the response.
-	//
-	// > The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
+	// You can search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
 	IncludePayload *bool `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
-	// The name prefix of the asynchronous invocation. The names of returned resources must contain the prefix. For example, if invocationidPrefix is set to job, the names of returned resources must start with job.
+	// Alibaba Cloud provides SDKs for multiple programming languages to help you integrate Alibaba Cloud services by using APIs. We recommend that you use an SDK to call API operations. This frees you from manual signature verification.
 	InvocationIdPrefix *string `json:"invocationIdPrefix,omitempty" xml:"invocationIdPrefix,omitempty"`
-	// The maximum number of asynchronous invocations to return. Valid values: [1, 100]. Default value: 50.
+	// The list of events that trigger the asynchronous task.
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The token used to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
+	// The ID of the instance that is used to run the asynchronous task.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The version or alias of the service to which the asynchronous task belongs.
+	// The number of retries after the asynchronous task fails.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The order in which the returned asynchronous invocations are sorted. Valid values:
-	//
-	// - **asc**: in ascending order
-	// - **desc**: in descending order
+	// StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
 	SortOrderByTime *string `json:"sortOrderByTime,omitempty" xml:"sortOrderByTime,omitempty"`
-	// The start time of the asynchronous task.
+	// The structure of the asynchronous task.
 	StartedTimeBegin *int64 `json:"startedTimeBegin,omitempty" xml:"startedTimeBegin,omitempty"`
-	// The end time of the asynchronous task.
+	// The latest version of Function Compute API.
 	StartedTimeEnd *int64 `json:"startedTimeEnd,omitempty" xml:"startedTimeEnd,omitempty"`
-	// The status of the asynchronous task.
-	//
-	// - **Enqueued**: The asynchronous invocation is enqueued and is waiting to be executed.
-	// - **Succeeded**: The invocation is successful.
-	// - **Failed**: The invocation fails.
-	// - **Running**: The invocation is being executed.
-	// - **Stopped**: The invocation is terminated.
-	// - **Stopping**: The invocation is being terminated.
-	// - **Invalid**: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
-	// - **Expired**: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of messages expires.
-	// - **Retrying**: The asynchronous invocation is being retried due to an execution error.
+	// The request ID of the asynchronous task.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -9379,9 +9185,9 @@ func (s *ListStatefulAsyncInvocationsRequest) SetStatus(v string) *ListStatefulA
 }
 
 type ListStatefulAsyncInvocationsResponseBody struct {
-	// The information about asynchronous tasks.
+	// The version or alias of the service to which the asynchronous task belongs.
 	Invocations []*StatefulAsyncInvocation `json:"invocations,omitempty" xml:"invocations,omitempty" type:"Repeated"`
-	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
+	// The returned data.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -9434,11 +9240,11 @@ func (s *ListStatefulAsyncInvocationsResponse) SetBody(v *ListStatefulAsyncInvoc
 
 type ListTaggedResourcesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Queries all tagged services.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// {"name":"ListTaggedResources","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/tags","deprecated":0,"method":"GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"nextToken\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The token used to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results. \",\"example\":\"a-service\"},{\"name\":\"limit\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"description\":\"The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number. \",\"example\":\"20\"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format. \",\"example\":\"2022-01-01 12:00:00\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The custom request ID. \",\"example\":\"my-test-trace-id\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"nextToken\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The token used to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results. \",\"example\":\"a-service\"},{\"name\":\"resources\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"children\":[{\"name\":\"resourceArn\",\"required\":false,\"checkBlank\":false,\"visibility\":\"public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"resourceArn\",\"description\":\"The Alibaba Cloud Resource Name (ARN). \\n> You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource. You can manage tags only for services for top level resources. \",\"example\":\"acs:fc:cn-shanghai:188077086902****:services/demo\"},{\"name\":\"tags\",\"required\":false,\"checkBlank\":false,\"visibility\":\"public\",\"deprecated\":false,\"type\":\"Map\",\"keyType\":\"String\",\"value\":{\"type\":\"String\",\"required\":false,\"checkBlank\":false,\"visibility\":\"public\",\"deprecated\":false,\"description\":\"The tag dictionary. A tag consists of the following parameters:\\n  - **key**: the key of the tag. \\n  - **value**: the value of the tag. \",\"example\":\"{\\\"k1\\\":\\\"v1\\\" , \\\"k2\\\":\\\"v2\\\"}\"},\"title\":\"tags\",\"description\":\"The tag dictionary. \"}],\"description\":\"The information about tagged services.\"}],\"title\":\"Schema of Response\",\"description\":\"Schema of Response\"}","errors":"{}"}
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// 147258
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9471,7 +9277,7 @@ func (s *ListTaggedResourcesHeaders) SetXFcTraceId(v string) *ListTaggedResource
 }
 
 type ListTaggedResourcesRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+	// Example 1
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The token used to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
@@ -9496,9 +9302,7 @@ func (s *ListTaggedResourcesRequest) SetNextToken(v string) *ListTaggedResources
 }
 
 type ListTaggedResourcesResponseBody struct {
-	// The token used to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The information about tagged services.
+	NextToken *string     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Resources []*Resource `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
@@ -9551,11 +9355,11 @@ func (s *ListTaggedResourcesResponse) SetBody(v *ListTaggedResourcesResponseBody
 
 type ListTriggersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The time when the request is initiated on the client. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The custom request ID.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The returned data.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9588,13 +9392,13 @@ func (s *ListTriggersHeaders) SetXFcTraceId(v string) *ListTriggersHeaders {
 }
 
 type ListTriggersRequest struct {
-	// The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The token required to obtain more results. You do not need to provide this parameter in the first call. The tokens for subsequent queries are obtained from the returned results.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The prefix that the names of returned resources must contain.
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The returned resources are sorted in alphabetical order, and the resources that include and follow the resource specified by the startKey parameter are returned.
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The ID of your Alibaba Cloud account.
 	StartKey *string `json:"startKey,omitempty" xml:"startKey,omitempty"`
 }
 
@@ -9627,9 +9431,9 @@ func (s *ListTriggersRequest) SetStartKey(v string) *ListTriggersRequest {
 }
 
 type ListTriggersResponseBody struct {
-	// The token used to obtain more results. If this parameter is left empty, all the results are returned.
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The information about triggers.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The details of the trigger.
 	Triggers []*ListTriggersResponseBodyTriggers `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
 }
 
@@ -9652,20 +9456,18 @@ func (s *ListTriggersResponseBody) SetTriggers(v []*ListTriggersResponseBodyTrig
 }
 
 type ListTriggersResponseBodyTriggers struct {
-	// The time when the trigger was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the trigger.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The ARN of the RAM role that is used by the event source to invoke the function.
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The unique ID of the trigger.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The time when the trigger was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The ARN of the event source.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
 	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
@@ -9675,16 +9477,17 @@ type ListTriggersResponseBodyTriggers struct {
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
 	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
 	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// The unique ID of the trigger.
-	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 	// The name of the trigger.
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
+	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
 	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn\_events**, and **mns\_topic**.
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// The description of the trigger.
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	// The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
@@ -9792,11 +9595,11 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 
 type ListVpcBindingsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The time when Function Compute API is called. Specify the time in the yyyy-mm-ddhh:mm:ss format.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// Example 1
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
+	// Queries the list of VPCs.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9829,7 +9632,6 @@ func (s *ListVpcBindingsHeaders) SetXFcTraceId(v string) *ListVpcBindingsHeaders
 }
 
 type ListVpcBindingsResponseBody struct {
-	// The IDs of bound VPCs.
 	VpcIds []*string `json:"vpcIds,omitempty" xml:"vpcIds,omitempty" type:"Repeated"`
 }
 
@@ -9883,7 +9685,7 @@ type PublishServiceVersionHeaders struct {
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The start time when the function is invoked. Specify the time in the yyyy-mm-ddhh:mm:ss format.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// 2020-12-1210:00:00
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -9939,13 +9741,13 @@ func (s *PublishServiceVersionRequest) SetDescription(v string) *PublishServiceV
 }
 
 type PublishServiceVersionResponseBody struct {
-	// The time when the service version was created.
+	// The returned data.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the service version.
+	// The creation time.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time when the service version was last modified.
+	// The description of the service version.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The version of the service.
+	// The last update time.
 	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
@@ -10008,11 +9810,11 @@ func (s *PublishServiceVersionResponse) SetBody(v *PublishServiceVersionResponse
 
 type PutFunctionAsyncInvokeConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The name of the service.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The creation time.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
+	// The maximum number of retries allowed after an asynchronous invocation fails. Default value: 3. Valid values: 0 to 8.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -10045,18 +9847,15 @@ func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcTraceId(v string) *PutFuncti
 }
 
 type PutFunctionAsyncInvokeConfigRequest struct {
-	// The configuration structure of the destination for asynchronous invocation.
+	// You can search for API operations, call and debug API operations online, and dynamically generate executable sample code for SDKs.
 	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	// The maximum validity period of messages. Valid values: 1 to 2592000. Unit: seconds.
+	// Alibaba Cloud CLI
 	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// The maximum number of retries allowed after an asynchronous invocation fails. Default value: 3. Valid values: 0 to 8.
+	// The information about the asynchronous invocation configuration.
 	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// Specifies whether to enable the asynchronous task feature.
-	//
-	// - **true**: enables the asynchronous task feature.
-	// - **false**: does not enable the asynchronous task feature.
-	StatefulInvocation *bool `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 	// The version or alias of the service.
+	StatefulInvocation *bool `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
+	// The latest version of Function Compute API.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -10094,26 +9893,29 @@ func (s *PutFunctionAsyncInvokeConfigRequest) SetQualifier(v string) *PutFunctio
 }
 
 type PutFunctionAsyncInvokeConfigResponseBody struct {
-	// The creation time.
+	// Sat, 14 Jul 2017 07:02:38 GMT
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configuration structure of the destination for asynchronous invocation.
+	// The trace ID of the invocation request of Function Compute.
 	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
 	// The name of the function.
 	Function *string `json:"function,omitempty" xml:"function,omitempty"`
-	// The time when the configuration was last modified.
+	// The configuration structure of the destination for asynchronous invocation.
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The maximum validity period of messages.
-	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	// The maximum number of retries allowed after an asynchronous invocation fails.
-	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
-	// The qualifier.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The name of the service.
-	Service *string `json:"service,omitempty" xml:"service,omitempty"`
 	// Specifies whether to enable the asynchronous task feature.
 	//
 	// - **true**: enables the asynchronous task feature.
 	// - **false**: does not enable the asynchronous task feature.
+	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	// The ID of your Alibaba Cloud account.
+	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	// Specifies whether to enable the asynchronous task feature.
+	//
+	// - **true**: enables the asynchronous task feature.
+	// - **false**: does not enable the asynchronous task feature.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// Creates or modifies an asynchronous invocation configuration for a function.
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+	// Jianyi
 	StatefulInvocation *bool `json:"statefulInvocation,omitempty" xml:"statefulInvocation,omitempty"`
 }
 
@@ -10201,13 +10003,13 @@ func (s *PutFunctionAsyncInvokeConfigResponse) SetBody(v *PutFunctionAsyncInvoke
 
 type PutFunctionOnDemandConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// If the ETag specified in the request matches the ETag value of the OndemandConfig, FC returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, FC returns 412 Precondition Failed.
+	// The name of the service.
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The start time when the function is invoked. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// Example 1
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API, which is also the unique ID of the request.
+	// Creates function rules.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -10245,9 +10047,9 @@ func (s *PutFunctionOnDemandConfigHeaders) SetXFcTraceId(v string) *PutFunctionO
 }
 
 type PutFunctionOnDemandConfigRequest struct {
-	// The maximum number of on-demand instances. For more information, see [Instance scaling limits](~~185038~~).
+	// The maximum number of instances.
 	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
-	// The alias of the service or LATEST.
+	// The trace ID of the request for Function Compute API, which is also the unique ID of the request.
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -10270,10 +10072,8 @@ func (s *PutFunctionOnDemandConfigRequest) SetQualifier(v string) *PutFunctionOn
 }
 
 type PutFunctionOnDemandConfigResponseBody struct {
-	// The maximum number of instances.
-	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
-	// The description of the resource.
-	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	MaximumInstanceCount *int64  `json:"maximumInstanceCount,omitempty" xml:"maximumInstanceCount,omitempty"`
+	Resource             *string `json:"resource,omitempty" xml:"resource,omitempty"`
 }
 
 func (s PutFunctionOnDemandConfigResponseBody) String() string {
@@ -10325,12 +10125,9 @@ func (s *PutFunctionOnDemandConfigResponse) SetBody(v *PutFunctionOnDemandConfig
 
 type PutLayerACLHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request for Function Compute API.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PutLayerACLHeaders) String() string {
@@ -10362,10 +10159,6 @@ func (s *PutLayerACLHeaders) SetXFcTraceId(v string) *PutLayerACLHeaders {
 }
 
 type PutLayerACLRequest struct {
-	// Specifies whether the layer is public.
-	//
-	// *   **true**: Public.
-	// *   **false**: Not public.
 	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
 }
 
@@ -10573,12 +10366,10 @@ func (s *PutProvisionConfigResponse) SetBody(v *PutProvisionConfigResponseBody) 
 
 type RegisterEventSourceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// Jianyi
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the invocation request of Function Compute.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s RegisterEventSourceHeaders) String() string {
@@ -10610,9 +10401,9 @@ func (s *RegisterEventSourceHeaders) SetXFcTraceId(v string) *RegisterEventSourc
 }
 
 type RegisterEventSourceRequest struct {
-	// The Alibaba Cloud Resource Name (ARN) of the event source.
+	// {"name":"RegisterEventSource","product":"FC-Open","version":"2021-04-06","path":"/2021-04-06/services/{serviceName}/functions/{functionName}/event-sources","deprecated":0,"method":"POST","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"serviceName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the service.\",\"description\":\"The name of the service. \",\"example\":\"demo-service\"},{\"name\":\"functionName\",\"position\":\"Path\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The name of the function.\",\"description\":\"The name of the function. \",\"example\":\"demo-function\"},{\"name\":\"qualifier\",\"position\":\"Query\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The version or alias of the service.\",\"description\":\"The version or alias of the service. \",\"example\":\"LATEST\"},{\"name\":\"body\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"params\":[{\"name\":\"sourceArn\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The Alibaba Cloud Resource Name (ARN) of the event source.\",\"description\":\"The Alibaba Cloud Resource Name (ARN) of the event source.\",\"example\":\"acs:eventbridge:cn-shanghai:123456:eventbus/mns-test/rule/fc-test1/target/abc\"}],\"description\":\"The body of the request. \"},{\"name\":\"X-Fc-Account-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The ID of your Alibaba Cloud account. \",\"example\":\"188077086902****\"},{\"name\":\"X-Fc-Date\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The time when Function Compute API is called. \",\"example\":\"Sat, 14 Jul 2017 07:02:38 GMT\"},{\"name\":\"X-Fc-Trace-Id\",\"position\":\"Header\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"The trace ID of the invocation request of Function Compute. \",\"example\":\"asdf****\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"sourceArn\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The Alibaba Cloud Resource Name (ARN) of the event source.\",\"description\":\"The ARN of the event source. \",\"example\":\"acs:eventbridge:cn-shanghai:123456:eventbus/mns-test/rule/fc-test1/target/abc\"},{\"name\":\"createdTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"The creation time.\",\"description\":\"The time when the event source was created. \",\"example\":\"2016-08-15T16:06:05.000+0000\"}],\"title\":\"Schema of Response\",\"description\":\"The returned data. \"}","body_style":"json","errors":"{}"}
 	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// The version or alias of the service.
+	// asdf****
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -10635,10 +10426,8 @@ func (s *RegisterEventSourceRequest) SetQualifier(v string) *RegisterEventSource
 }
 
 type RegisterEventSourceResponseBody struct {
-	// The time when the event source was created.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The ARN of the event source.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	SourceArn   *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
 }
 
 func (s RegisterEventSourceResponseBody) String() string {
@@ -10690,12 +10479,9 @@ func (s *RegisterEventSourceResponse) SetBody(v *RegisterEventSourceResponseBody
 
 type ReleaseGPUInstanceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format of the value is: EEE,d MMM yyyy HH:mm:ss GMT.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ReleaseGPUInstanceHeaders) String() string {
@@ -10830,12 +10616,9 @@ func (s *StopStatefulAsyncInvocationResponse) SetStatusCode(v int32) *StopStatef
 
 type TagResourceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The custom request ID.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s TagResourceHeaders) String() string {
@@ -10867,12 +10650,8 @@ func (s *TagResourceHeaders) SetXFcTraceId(v string) *TagResourceHeaders {
 }
 
 type TagResourceRequest struct {
-	// The ARN of the resource.
-	//
-	// > You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource. You can manage tags only for services for top level resources.
-	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	// The tag dictionary.
-	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
+	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	Tags        map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s TagResourceRequest) String() string {
@@ -10920,7 +10699,7 @@ type UntagResourceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The ID of your Alibaba Cloud account.
 	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+	// The time when the function is invoked. The value is in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
 	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// The custom request ID.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
@@ -10956,10 +10735,11 @@ func (s *UntagResourceHeaders) SetXFcTraceId(v string) *UntagResourceHeaders {
 
 type UntagResourceRequest struct {
 	// Specifies whether to remove all tags. This parameter takes effect only when no tag key is specified. Valid values:
-	//   - **true**: removes all tags.
-	//   - **false**: does not remove all tags.
+	//
+	// *   **true**
+	// *   **false**
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// The ARN of the resource.
+	// The Alibaba Cloud Resource Name (ARN) of the resource.
 	//
 	// > You can use the value of this parameter to query the information about the resource, such as the account, service, and region information of the resource. You can manage tags only for services for top level resources.
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
@@ -11061,9 +10841,9 @@ func (s *UpdateAliasHeaders) SetXFcTraceId(v string) *UpdateAliasHeaders {
 }
 
 type UpdateAliasRequest struct {
-	// The canary release version to which the alias points and the weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
 	//
-	// *   The canary release version takes effect only when the function is invoked.
+	// *   The additional version takes effect only when the function is invoked.
 	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
 	// The description of the alias.
@@ -11113,9 +10893,9 @@ func (s *UpdateAliasRequest) SetVersionId(v string) *UpdateAliasRequest {
 }
 
 type UpdateAliasResponseBody struct {
-	// The canary release version to which the alias points and the weight of the canary release version.
+	// The additional version to which the alias points and the weight of the additional version.
 	//
-	// *   The canary release version takes effect only when the function is invoked.
+	// *   The additional version takes effect only when the function is invoked.
 	// *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight,omitempty" xml:"additionalVersionWeight,omitempty"`
 	// The name of the alias.
@@ -11400,17 +11180,12 @@ func (s *UpdateCustomDomainResponse) SetBody(v *UpdateCustomDomainResponseBody) 
 }
 
 type UpdateFunctionHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The parameter that is used to ensure that the modified resource is consistent with the resource to be modified. The value of this parameter is returned in the responses of the [CreateFunction](~~415747~~), [GetFunction](~~415750~~), and [UpdateFunction](~~415749~~) operations.
-	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	// The CRC-64 value of the function code package.
-	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	// The time on which the function is invoked. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	// The trace ID of the request. The value is the same as that of the requestId parameter in the response.
-	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch         *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId      *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateFunctionHeaders) String() string {
@@ -11452,63 +11227,28 @@ func (s *UpdateFunctionHeaders) SetXFcTraceId(v string) *UpdateFunctionHeaders {
 }
 
 type UpdateFunctionRequest struct {
-	// The number of requests that can be concurrently processed by a single instance.
-	InstanceConcurrency *int32 `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
-	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// The packaged code of the function. **Function code packages** can be provided with the following two methods. You must use only one of the methods in a request.
-	//
-	// *   Specify the name of the Object Storage Service (OSS) bucket and object where the code package is stored. The names are specified in the **ossBucketName** and **ossObjectName** parameters.
-	// *   Specify the Base64-encoded content of the ZIP file by using the **zipFile** parameter.
-	Code *Code `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of vCPUs of the function. The value must be a multiple of 0.05.
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The configuration of the custom container. After you configure the custom container, Function Compute can execute the function in a container created from a custom image.
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom DNS configurations of the function.
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configurations of the function. This parameter is applicable to only custom runtimes and custom containers.
+	InstanceConcurrency     *int32                   `json:"InstanceConcurrency,omitempty" xml:"InstanceConcurrency,omitempty"`
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	Code                    *Code                    `json:"code,omitempty" xml:"code,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
-	// The configurations of the custom runtime.
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// The description of the function.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
-	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
-	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	// The handler of the function. The format varies based on the programming language. For more information, see [Function handlers](~~157704~~).
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the Initializer hook. The format is determined by the programming language. For more information, see [Function handlers](~~157704~~).
-	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The lifecycle configurations of the instance.
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
-	//
-	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
-	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	// The instance type of the function. Valid values:
-	//
-	// *   **e1**: elastic instance
-	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
-	// *   **g1**: same as **fc.gpu.tesla.1**
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The information about layers.
-	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size for the function. Unit: MB. The memory size must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s UpdateFunctionRequest) String() string {
@@ -11630,70 +11370,33 @@ func (s *UpdateFunctionRequest) SetTimeout(v int32) *UpdateFunctionRequest {
 }
 
 type UpdateFunctionResponseBody struct {
-	// The port on which the HTTP server listens for the custom runtime or custom container runtime.
-	CaPort *int32 `json:"caPort,omitempty" xml:"caPort,omitempty"`
-	// The CRC-64 value of the function code package.
-	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	// The size of the function code package that is returned by the system. Unit: bytes.
-	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	// The number of vCPUs of the function. The value must be a multiple of 0.05.
-	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The time when the function was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image.
-	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	// The custom DNS configurations of the function.
-	CustomDNS *CustomDNS `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	// The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
+	CaPort                  *int32                   `json:"caPort,omitempty" xml:"caPort,omitempty"`
+	CodeChecksum            *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	CodeSize                *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CreatedTime             *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
 	CustomHealthCheckConfig *CustomHealthCheckConfig `json:"customHealthCheckConfig,omitempty" xml:"customHealthCheckConfig,omitempty"`
-	// The configurations of the custom runtime.
-	CustomRuntimeConfig *CustomRuntimeConfig `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	// The description of the function.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The disk size of the function. Unit: MB. Valid values: 512 and 10240.
-	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	// The environment variables that are configured for the function. You can obtain the values of the environment variables from the function. For more information, see [Environment variables](~~69777~~).
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The unique ID that is generated by the system for the function.
-	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	// The name of the function.
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The GPU memory capacity for the function. Unit: MB. The value must be a multiple of 1,024.
-	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	// The handler of the function.
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The timeout period for the execution of the Initializer hook. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the Initializer hook is terminated.
-	InitializationTimeout *int32 `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
-	// The handler of the Initializer hook. The format is determined by the programming language.
-	Initializer *string `json:"initializer,omitempty" xml:"initializer,omitempty"`
-	// The number of requests that can be concurrently processed by a single instance.
-	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The lifecycle configurations of the instance.
+	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
+	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	FunctionId              *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuMemorySize           *int32                   `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	InitializationTimeout   *int32                   `json:"initializationTimeout,omitempty" xml:"initializationTimeout,omitempty"`
+	Initializer             *string                  `json:"initializer,omitempty" xml:"initializer,omitempty"`
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	// The soft concurrency of the instance. You can use this parameter to implement graceful scale-up of instances. If the number of concurrent requests on an instance is greater than the value of soft concurrency, an instance scale-up is triggered. For example, if your instance requires a long time to start, you can specify a suitable soft concurrency to start the instance in advance.
-	//
-	// The value must be less than or equal to that of the **instanceConcurrency** parameter.
-	InstanceSoftConcurrency *int32 `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
-	// The instance type of the function. Valid values:
-	//
-	// *   **e1**: elastic instance
-	// *   **c1**: performance instance
-	// *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
-	// *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
-	// *   **g1**: same as **fc.gpu.tesla.1**
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The time when the function was last modified.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// An array that consists of the information of layers.
-	//
-	// > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
-	Layers []*string `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
-	// The memory size that is configured for the function. Unit: MB.
-	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	// The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom** and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The timeout period for the execution. Unit: seconds.
-	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	InstanceSoftConcurrency *int32                   `json:"instanceSoftConcurrency,omitempty" xml:"instanceSoftConcurrency,omitempty"`
+	InstanceType            *string                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	LastModifiedTime        *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Layers                  []*string                `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
+	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s UpdateFunctionResponseBody) String() string {
@@ -12118,13 +11821,13 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 
 type UpdateTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// This parameter is used to ensure that the modified resource is consistent with the resource to be modified. You can obtain the parameter value from the responses of [CreateTrigger](~~190054~~), [GetTrigger](~~190056~~), and [UpdateTrigger](~~190055~~) operations.
+	// The name of the service.
 	IfMatch *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	// The ID of your Alibaba Cloud account.
-	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The time when the request is initiated on the client. The format of the value is: **EEE,d MMM yyyy HH:mm:ss GMT**.
-	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
 	// The custom request ID.
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// The ETag that is used to modify the trigger. This parameter is used to ensure that the modified trigger is consistent with the trigger to be modified.
 	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
@@ -12162,12 +11865,10 @@ func (s *UpdateTriggerHeaders) SetXFcTraceId(v string) *UpdateTriggerHeaders {
 }
 
 type UpdateTriggerRequest struct {
-	// The description of the trigger.
+	// The ID of your Alibaba Cloud account.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The role that is used by the event source such as OSS to invoke the function. For more information, see [Overview](~~53102~~).
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
 	// The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
 	//
 	// *   OSS trigger: [OSSTriggerConfig](~~struct:OSSTriggerConfig~~).
@@ -12177,6 +11878,8 @@ type UpdateTriggerRequest struct {
 	// *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
 	// *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~struct:CDNEventsTriggerConfig~~).
 	// *   MNS topic trigger: [MnsTopicTriggerConfig](~~struct:MnsTopicTriggerConfig~~).
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The description of the trigger.
 	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
@@ -12209,31 +11912,30 @@ func (s *UpdateTriggerRequest) SetTriggerConfig(v string) *UpdateTriggerRequest 
 }
 
 type UpdateTriggerResponseBody struct {
-	// The time when the audio or video file was created.
-	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// The description of the trigger.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
-	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	// The ARN of the RAM role that is used by the event source to invoke the function.
-	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	// The last modification time.
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The version or alias of the service.
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// The ARN of the event source.
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// The configurations of the trigger. The configurations vary based on the trigger type.
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The unique ID of the trigger.
-	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// The name of the trigger.
-	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
-	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
-	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The last modification time.
+	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
+	// The version or alias of the service.
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The ARN of the event source.
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The configurations of the trigger. The configurations vary based on the trigger type.
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	// The name of the trigger.
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. For example, `{domainName}.cn-shanghai.fc.aliyuncs.com`.
+	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	// The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// The description of the trigger.
+	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 	// The private endpoint. In a VPC, you can access HTTP triggers by using HTTP or HTTPS.
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
 	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
@@ -14012,14 +13714,6 @@ func (client *Client) GetFunction(serviceName *string, functionName *string, req
 	return _result, _err
 }
 
-/**
- * StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
- *
- * @param request GetFunctionAsyncInvokeConfigRequest
- * @param headers GetFunctionAsyncInvokeConfigHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetFunctionAsyncInvokeConfigResponse
- */
 func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *string, functionName *string, request *GetFunctionAsyncInvokeConfigRequest, headers *GetFunctionAsyncInvokeConfigHeaders, runtime *util.RuntimeOptions) (_result *GetFunctionAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14071,12 +13765,6 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 	return _result, _err
 }
 
-/**
- * StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
- *
- * @param request GetFunctionAsyncInvokeConfigRequest
- * @return GetFunctionAsyncInvokeConfigResponse
- */
 func (client *Client) GetFunctionAsyncInvokeConfig(serviceName *string, functionName *string, request *GetFunctionAsyncInvokeConfigRequest) (_result *GetFunctionAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetFunctionAsyncInvokeConfigHeaders{}
@@ -14458,7 +14146,7 @@ func (client *Client) GetService(serviceName *string, request *GetServiceRequest
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The version or alias of the service to which the asynchronous task belongs.
  *
  * @param request GetStatefulAsyncInvocationRequest
  * @param headers GetStatefulAsyncInvocationHeaders
@@ -14529,7 +14217,7 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The version or alias of the service to which the asynchronous task belongs.
  *
  * @param request GetStatefulAsyncInvocationRequest
  * @return GetStatefulAsyncInvocationResponse
@@ -14633,6 +14321,10 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
 		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcStatefulAsyncInvocationEnable)) {
+		realHeaders["X-Fc-Stateful-Async-Invocation-Enable"] = util.ToJSONString(headers.XFcStatefulAsyncInvocationEnable)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcStatefulAsyncInvocationId)) {
@@ -14893,14 +14585,6 @@ func (client *Client) ListEventSources(serviceName *string, functionName *string
 	return _result, _err
 }
 
-/**
- * StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
- *
- * @param request ListFunctionAsyncInvokeConfigsRequest
- * @param headers ListFunctionAsyncInvokeConfigsHeaders
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListFunctionAsyncInvokeConfigsResponse
- */
 func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *string, functionName *string, request *ListFunctionAsyncInvokeConfigsRequest, headers *ListFunctionAsyncInvokeConfigsHeaders, runtime *util.RuntimeOptions) (_result *ListFunctionAsyncInvokeConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14968,12 +14652,6 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 	return _result, _err
 }
 
-/**
- * StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
- *
- * @param request ListFunctionAsyncInvokeConfigsRequest
- * @return ListFunctionAsyncInvokeConfigsResponse
- */
 func (client *Client) ListFunctionAsyncInvokeConfigs(serviceName *string, functionName *string, request *ListFunctionAsyncInvokeConfigsRequest) (_result *ListFunctionAsyncInvokeConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListFunctionAsyncInvokeConfigsHeaders{}
@@ -15066,8 +14744,8 @@ func (client *Client) ListFunctions(serviceName *string, request *ListFunctionsR
 }
 
 /**
- * The ListInstances operation allows you to query the available instances of a function.
- * Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+ * The maximum number of resources to return. Valid values: \\[0,1000].
+ * The number of returned resources is less than or equal to the specified number.
  *
  * @param request ListInstancesRequest
  * @param headers ListInstancesHeaders
@@ -15126,8 +14804,8 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 }
 
 /**
- * The ListInstances operation allows you to query the available instances of a function.
- * Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
+ * The maximum number of resources to return. Valid values: \\[0,1000].
+ * The number of returned resources is less than or equal to the specified number.
  *
  * @param request ListInstancesRequest
  * @return ListInstancesResponse
@@ -15662,7 +15340,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The metadata of the service and function to which the asynchronous task belongs.
  *
  * @param request ListStatefulAsyncInvocationFunctionsRequest
  * @param headers ListStatefulAsyncInvocationFunctionsHeaders
@@ -15725,7 +15403,7 @@ func (client *Client) ListStatefulAsyncInvocationFunctionsWithOptions(request *L
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The metadata of the service and function to which the asynchronous task belongs.
  *
  * @param request ListStatefulAsyncInvocationFunctionsRequest
  * @return ListStatefulAsyncInvocationFunctionsResponse
@@ -15743,7 +15421,7 @@ func (client *Client) ListStatefulAsyncInvocationFunctions(request *ListStateful
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The name of the service to which the asynchronous task belongs.
  *
  * @param request ListStatefulAsyncInvocationsRequest
  * @param headers ListStatefulAsyncInvocationsHeaders
@@ -15846,7 +15524,7 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 }
 
 /**
- * StatefulAsyncInvocation: asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The name of the service to which the asynchronous task belongs.
  *
  * @param request ListStatefulAsyncInvocationsRequest
  * @return ListStatefulAsyncInvocationsResponse
@@ -16126,7 +15804,7 @@ func (client *Client) PublishServiceVersion(serviceName *string, request *Publis
 }
 
 /**
- * StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The maximum validity period of messages.
  *
  * @param request PutFunctionAsyncInvokeConfigRequest
  * @param headers PutFunctionAsyncInvokeConfigHeaders
@@ -16203,7 +15881,7 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 }
 
 /**
- * StatefulAsyncInvocation specifies the configurations of the asynchronous task. Asynchronous tasks allow you to manage the states on the basis of common asynchronous invocations, which is more suitable for task scenarios.
+ * The maximum validity period of messages.
  *
  * @param request PutFunctionAsyncInvokeConfigRequest
  * @return PutFunctionAsyncInvokeConfigResponse
