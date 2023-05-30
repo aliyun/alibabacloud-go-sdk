@@ -777,19 +777,14 @@ type CreateApiRequest struct {
 	// Specifies whether to enable backend services.
 	BackendEnable *bool `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
 	// The IDof the backend service
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// The parameters of the API.
+	BackendId          *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
 	ConstantParameters *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
 	// The description of the API. The description can be up to 180 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// *   Specifies whether to set **DisableInternet** to **true** to limit API calls to within the VPC.
 	// *   If you set **DisableInternet** to **false**, the limit is lifted. The default value is false when you create an API.
-	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The sample error codes returned by the backend service.
-	//
-	// For more information, see [ErrorCodeSample](~~44392~~).
+	DisableInternet  *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	ErrorCodeSamples *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
-	// The sample error response from the backend service.
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
 	// *   Specifies whether to set **ForceNonceCheck** to **true** to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
 	// *   If you set **ForceNonceCheck** to **false**, the check is not performed. The default value is false when you create an API.
@@ -801,34 +796,22 @@ type CreateApiRequest struct {
 	// The configuration items of API requests sent by the consumer to API Gateway.
 	//
 	// For more information, see [RequestConfig](~~43985~~).
-	RequestConfig *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
-	// The parameters of API requests sent by the consumer to API Gateway.
-	//
-	// For more information, see [RequestParameter](~~43986~~).
+	RequestConfig     *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
 	RequestParameters *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
 	// The return description of the API.
-	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
-	// The return description of the API.
+	ResultBodyModel    *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
 	ResultDescriptions *string `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty"`
-	// The sample response from the backend service.
-	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	ResultSample       *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. Default value: JSON.
 	ResultType    *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The configuration items of API requests sent by API Gateway to the backend service.
 	//
 	// For more information, see [ServiceConfig](~~43987~~).
-	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// The parameters of API requests sent by API Gateway to the backend service.
-	//
-	// For more information, see [ServiceParameter](~~43988~~).
-	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
-	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
-	//
-	// For more information, see [ServiceParameterMap](~~43989~~).
+	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
-	// The common parameters of APIs in JSON format.
-	SystemParameters *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
+	SystemParameters     *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
 	// Specifies whether to make the API public. Valid values:
 	//
 	// *   **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
@@ -30590,24 +30573,12 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["BackendId"] = request.BackendId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
-		query["ConstantParameters"] = request.ConstantParameters
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisableInternet)) {
 		query["DisableInternet"] = request.DisableInternet
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ErrorCodeSamples)) {
-		query["ErrorCodeSamples"] = request.ErrorCodeSamples
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
-		query["FailResultSample"] = request.FailResultSample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ForceNonceCheck)) {
@@ -30626,20 +30597,8 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["RequestConfig"] = request.RequestConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RequestParameters)) {
-		query["RequestParameters"] = request.RequestParameters
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResultBodyModel)) {
 		query["ResultBodyModel"] = request.ResultBodyModel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResultDescriptions)) {
-		query["ResultDescriptions"] = request.ResultDescriptions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
-		query["ResultSample"] = request.ResultSample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
@@ -30654,18 +30613,6 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["ServiceConfig"] = request.ServiceConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
-		query["ServiceParameters"] = request.ServiceParameters
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceParametersMap)) {
-		query["ServiceParametersMap"] = request.ServiceParametersMap
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SystemParameters)) {
-		query["SystemParameters"] = request.SystemParameters
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
 		query["Visibility"] = request.Visibility
 	}
@@ -30674,8 +30621,46 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 		query["WebSocketApiType"] = request.WebSocketApiType
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConstantParameters)) {
+		body["ConstantParameters"] = request.ConstantParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorCodeSamples)) {
+		body["ErrorCodeSamples"] = request.ErrorCodeSamples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
+		body["FailResultSample"] = request.FailResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestParameters)) {
+		body["RequestParameters"] = request.RequestParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultDescriptions)) {
+		body["ResultDescriptions"] = request.ResultDescriptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
+		body["ResultSample"] = request.ResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParametersMap)) {
+		body["ServiceParametersMap"] = request.ServiceParametersMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemParameters)) {
+		body["SystemParameters"] = request.SystemParameters
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApi"),
