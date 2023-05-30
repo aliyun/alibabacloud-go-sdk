@@ -1,3 +1,8 @@
+2023-05-30 Version: v2.0.2
+- Adapt timeout.
+- Adapt rpc timeout.
+- VpcPeer Support ResourceGroup.
+
 2023-02-24 Version: v2.0.1
 - VpcPeer Support Tag.
 

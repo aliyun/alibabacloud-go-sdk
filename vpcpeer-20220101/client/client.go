@@ -16,6 +16,7 @@ type AcceptVpcPeerConnectionRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
@@ -39,6 +40,11 @@ func (s *AcceptVpcPeerConnectionRequest) SetDryRun(v bool) *AcceptVpcPeerConnect
 
 func (s *AcceptVpcPeerConnectionRequest) SetInstanceId(v string) *AcceptVpcPeerConnectionRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AcceptVpcPeerConnectionRequest) SetResourceGroupId(v string) *AcceptVpcPeerConnectionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -102,6 +108,7 @@ type CreateVpcPeerConnectionRequest struct {
 	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -150,6 +157,11 @@ func (s *CreateVpcPeerConnectionRequest) SetName(v string) *CreateVpcPeerConnect
 
 func (s *CreateVpcPeerConnectionRequest) SetRegionId(v string) *CreateVpcPeerConnectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateVpcPeerConnectionRequest) SetResourceGroupId(v string) *CreateVpcPeerConnectionRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -329,6 +341,7 @@ type GetVpcPeerConnectionAttributeResponseBody struct {
 	OwnerId           *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId          *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId   *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status            *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags              []*GetVpcPeerConnectionAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Vpc               *GetVpcPeerConnectionAttributeResponseBodyVpc          `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
@@ -409,6 +422,11 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetRegionId(v string) *GetVp
 
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetRequestId(v string) *GetVpcPeerConnectionAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetVpcPeerConnectionAttributeResponseBody) SetResourceGroupId(v string) *GetVpcPeerConnectionAttributeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -537,14 +555,192 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Deprecated
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Deprecated
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	MaxResults   *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetMaxResults(v int32) *ListTagResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	RegionNo     *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetRegionNo(v string) *ListTagResourcesResponseBodyTagResources {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListVpcPeerConnectionsRequest struct {
-	InstanceId *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name       *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken  *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags       []*ListVpcPeerConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcId      []*string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
+	InstanceId      *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults      *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name            *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken       *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListVpcPeerConnectionsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId           []*string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcPeerConnectionsRequest) String() string {
@@ -577,6 +773,11 @@ func (s *ListVpcPeerConnectionsRequest) SetNextToken(v string) *ListVpcPeerConne
 
 func (s *ListVpcPeerConnectionsRequest) SetRegionId(v string) *ListVpcPeerConnectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsRequest) SetResourceGroupId(v string) *ListVpcPeerConnectionsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -614,13 +815,14 @@ func (s *ListVpcPeerConnectionsRequestTags) SetValue(v string) *ListVpcPeerConne
 }
 
 type ListVpcPeerConnectionsShrinkRequest struct {
-	InstanceId  *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name        *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken   *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags        []*ListVpcPeerConnectionsShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VpcIdShrink *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	InstanceId      *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults      *int32                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name            *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken       *string                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListVpcPeerConnectionsShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcIdShrink     *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListVpcPeerConnectionsShrinkRequest) String() string {
@@ -653,6 +855,11 @@ func (s *ListVpcPeerConnectionsShrinkRequest) SetNextToken(v string) *ListVpcPee
 
 func (s *ListVpcPeerConnectionsShrinkRequest) SetRegionId(v string) *ListVpcPeerConnectionsShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsShrinkRequest) SetResourceGroupId(v string) *ListVpcPeerConnectionsShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -744,6 +951,7 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	Name              *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId           *int32                                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId          *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status            *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags              []*ListVpcPeerConnectionsResponseBodyVpcPeerConnectsTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Vpc               *ListVpcPeerConnectionsResponseBodyVpcPeerConnectsVpc          `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
@@ -819,6 +1027,11 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetOwnerId(v int32) 
 
 func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetRegionId(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetResourceGroupId(v string) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1121,6 +1334,221 @@ func (s *RejectVpcPeerConnectionResponse) SetBody(v *RejectVpcPeerConnectionResp
 	return s
 }
 
+type TagResourcesRequest struct {
+	ClientToken  *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetClientToken(v string) *TagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UnTagResourcesRequest struct {
+	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	ClientToken  *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UnTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetClientToken(v string) *UnTagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetRegionId(v string) *UnTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetResourceId(v []*string) *UnTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetResourceType(v string) *UnTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UnTagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagResourcesResponseBody) SetRequestId(v string) *UnTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnTagResourcesResponseBody) SetSuccess(v bool) *UnTagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnTagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagResourcesResponse) SetHeaders(v map[string]*string) *UnTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnTagResourcesResponse) SetStatusCode(v int32) *UnTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1184,6 +1612,10 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -1260,6 +1692,10 @@ func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -1404,6 +1840,70 @@ func (client *Client) GetVpcPeerConnectionAttribute(request *GetVpcPeerConnectio
 	return _result, _err
 }
 
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListVpcPeerConnectionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -1416,6 +1916,10 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
 		query["Tags"] = request.Tags
 	}
@@ -1593,6 +2097,130 @@ func (client *Client) RejectVpcPeerConnection(request *RejectVpcPeerConnectionRe
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectVpcPeerConnectionResponse{}
 	_body, _err := client.RejectVpcPeerConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnTagResources"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnTagResourcesResponse{}
+	_body, _err := client.UnTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
