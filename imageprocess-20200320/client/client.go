@@ -1837,6 +1837,334 @@ func (s *DetectKneeXRayResponse) SetBody(v *DetectKneeXRayResponseBody) *DetectK
 	return s
 }
 
+type DetectLiverSteatosisRequest struct {
+	DataFormat *string                               `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                               `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	URLList    []*DetectLiverSteatosisRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectLiverSteatosisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisRequest) SetDataFormat(v string) *DetectLiverSteatosisRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisRequest) SetOrgId(v string) *DetectLiverSteatosisRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisRequest) SetOrgName(v string) *DetectLiverSteatosisRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisRequest) SetSourceType(v string) *DetectLiverSteatosisRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisRequest) SetURLList(v []*DetectLiverSteatosisRequestURLList) *DetectLiverSteatosisRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectLiverSteatosisRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectLiverSteatosisRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisRequestURLList) SetURL(v string) *DetectLiverSteatosisRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type DetectLiverSteatosisAdvanceRequest struct {
+	DataFormat *string                                      `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	OrgId      *string                                      `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName    *string                                      `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	SourceType *string                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	URLList    []*DetectLiverSteatosisAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectLiverSteatosisAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisAdvanceRequest) SetDataFormat(v string) *DetectLiverSteatosisAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisAdvanceRequest) SetOrgId(v string) *DetectLiverSteatosisAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisAdvanceRequest) SetOrgName(v string) *DetectLiverSteatosisAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisAdvanceRequest) SetSourceType(v string) *DetectLiverSteatosisAdvanceRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisAdvanceRequest) SetURLList(v []*DetectLiverSteatosisAdvanceRequestURLList) *DetectLiverSteatosisAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectLiverSteatosisAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectLiverSteatosisAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectLiverSteatosisAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type DetectLiverSteatosisResponseBody struct {
+	Data      *DetectLiverSteatosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectLiverSteatosisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisResponseBody) SetData(v *DetectLiverSteatosisResponseBodyData) *DetectLiverSteatosisResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBody) SetMessage(v string) *DetectLiverSteatosisResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBody) SetRequestId(v string) *DetectLiverSteatosisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectLiverSteatosisResponseBodyData struct {
+	Detections []*DetectLiverSteatosisResponseBodyDataDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin     []*float32                                        `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	Spacing    []*float32                                        `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+}
+
+func (s DetectLiverSteatosisResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisResponseBodyData) SetDetections(v []*DetectLiverSteatosisResponseBodyDataDetections) *DetectLiverSteatosisResponseBodyData {
+	s.Detections = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyData) SetOrigin(v []*float32) *DetectLiverSteatosisResponseBodyData {
+	s.Origin = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyData) SetSpacing(v []*float32) *DetectLiverSteatosisResponseBodyData {
+	s.Spacing = v
+	return s
+}
+
+type DetectLiverSteatosisResponseBodyDataDetections struct {
+	LiverHU               *float32 `json:"LiverHU,omitempty" xml:"LiverHU,omitempty"`
+	LiverROI1             *float32 `json:"LiverROI1,omitempty" xml:"LiverROI1,omitempty"`
+	LiverROI2             *float32 `json:"LiverROI2,omitempty" xml:"LiverROI2,omitempty"`
+	LiverROI3             *float32 `json:"LiverROI3,omitempty" xml:"LiverROI3,omitempty"`
+	LiverSlice            *float32 `json:"LiverSlice,omitempty" xml:"LiverSlice,omitempty"`
+	LiverSpleenDifference *float32 `json:"LiverSpleenDifference,omitempty" xml:"LiverSpleenDifference,omitempty"`
+	LiverSpleenRatio      *float32 `json:"LiverSpleenRatio,omitempty" xml:"LiverSpleenRatio,omitempty"`
+	LiverVolume           *float32 `json:"LiverVolume,omitempty" xml:"LiverVolume,omitempty"`
+	Prediction            *string  `json:"Prediction,omitempty" xml:"Prediction,omitempty"`
+	Probability           *float32 `json:"Probability,omitempty" xml:"Probability,omitempty"`
+	ROI1Center            []*int64 `json:"ROI1Center,omitempty" xml:"ROI1Center,omitempty" type:"Repeated"`
+	ROI2Center            []*int64 `json:"ROI2Center,omitempty" xml:"ROI2Center,omitempty" type:"Repeated"`
+	ROI3Center            []*int64 `json:"ROI3Center,omitempty" xml:"ROI3Center,omitempty" type:"Repeated"`
+	Radius                *int64   `json:"Radius,omitempty" xml:"Radius,omitempty"`
+	SpleenCenter          []*int64 `json:"SpleenCenter,omitempty" xml:"SpleenCenter,omitempty" type:"Repeated"`
+	SpleenHU              *float32 `json:"SpleenHU,omitempty" xml:"SpleenHU,omitempty"`
+	SpleenROI             *float32 `json:"SpleenROI,omitempty" xml:"SpleenROI,omitempty"`
+	SpleenSlice           *float32 `json:"SpleenSlice,omitempty" xml:"SpleenSlice,omitempty"`
+	SpleenVolume          *float32 `json:"SpleenVolume,omitempty" xml:"SpleenVolume,omitempty"`
+}
+
+func (s DetectLiverSteatosisResponseBodyDataDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisResponseBodyDataDetections) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverHU(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverHU = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverROI1(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverROI1 = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverROI2(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverROI2 = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverROI3(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverROI3 = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverSlice(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverSlice = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverSpleenDifference(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverSpleenDifference = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverSpleenRatio(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverSpleenRatio = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetLiverVolume(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.LiverVolume = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetPrediction(v string) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.Prediction = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetProbability(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.Probability = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetROI1Center(v []*int64) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.ROI1Center = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetROI2Center(v []*int64) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.ROI2Center = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetROI3Center(v []*int64) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.ROI3Center = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetRadius(v int64) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.Radius = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetSpleenCenter(v []*int64) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.SpleenCenter = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetSpleenHU(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.SpleenHU = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetSpleenROI(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.SpleenROI = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetSpleenSlice(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.SpleenSlice = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponseBodyDataDetections) SetSpleenVolume(v float32) *DetectLiverSteatosisResponseBodyDataDetections {
+	s.SpleenVolume = &v
+	return s
+}
+
+type DetectLiverSteatosisResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectLiverSteatosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectLiverSteatosisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLiverSteatosisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLiverSteatosisResponse) SetHeaders(v map[string]*string) *DetectLiverSteatosisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponse) SetStatusCode(v int32) *DetectLiverSteatosisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectLiverSteatosisResponse) SetBody(v *DetectLiverSteatosisResponseBody) *DetectLiverSteatosisResponse {
+	s.Body = v
+	return s
+}
+
 type DetectLungNoduleRequest struct {
 	DataFormat *string  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	OrgId      *string  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
@@ -2275,9 +2603,10 @@ func (s *DetectLymphAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectLymp
 }
 
 type DetectLymphResponseBody struct {
-	Data      *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 提交异步任务后的提示信息。
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectLymphResponseBody) String() string {
@@ -2471,9 +2800,10 @@ func (s *DetectPancAdvanceRequestURLList) SetURLObject(v io.Reader) *DetectPancA
 }
 
 type DetectPancResponseBody struct {
-	Data      *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 提交异步任务后的提示信息。
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectPancResponseBody) String() string {
@@ -3421,6 +3751,321 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 	return s
 }
 
+type PredictCVDRequest struct {
+	DataFormat     *string                     `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                     `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                     `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                     `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*PredictCVDRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s PredictCVDRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDRequest) SetDataFormat(v string) *PredictCVDRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *PredictCVDRequest) SetDataSourceType(v string) *PredictCVDRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *PredictCVDRequest) SetOrgId(v string) *PredictCVDRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *PredictCVDRequest) SetOrgName(v string) *PredictCVDRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *PredictCVDRequest) SetURLList(v []*PredictCVDRequestURLList) *PredictCVDRequest {
+	s.URLList = v
+	return s
+}
+
+type PredictCVDRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s PredictCVDRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDRequestURLList) SetURL(v string) *PredictCVDRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type PredictCVDAdvanceRequest struct {
+	DataFormat     *string                            `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                            `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                            `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                            `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*PredictCVDAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s PredictCVDAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDAdvanceRequest) SetDataFormat(v string) *PredictCVDAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *PredictCVDAdvanceRequest) SetDataSourceType(v string) *PredictCVDAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *PredictCVDAdvanceRequest) SetOrgId(v string) *PredictCVDAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *PredictCVDAdvanceRequest) SetOrgName(v string) *PredictCVDAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *PredictCVDAdvanceRequest) SetURLList(v []*PredictCVDAdvanceRequestURLList) *PredictCVDAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type PredictCVDAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s PredictCVDAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDAdvanceRequestURLList) SetURLObject(v io.Reader) *PredictCVDAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type PredictCVDResponseBody struct {
+	Data      *PredictCVDResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PredictCVDResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDResponseBody) SetData(v *PredictCVDResponseBodyData) *PredictCVDResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PredictCVDResponseBody) SetMessage(v string) *PredictCVDResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PredictCVDResponseBody) SetRequestId(v string) *PredictCVDResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PredictCVDResponseBodyData struct {
+	Lesion *PredictCVDResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s PredictCVDResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDResponseBodyData) SetLesion(v *PredictCVDResponseBodyDataLesion) *PredictCVDResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type PredictCVDResponseBodyDataLesion struct {
+	CVDProbability *float32                                      `json:"CVDProbability,omitempty" xml:"CVDProbability,omitempty"`
+	FeatureScore   *PredictCVDResponseBodyDataLesionFeatureScore `json:"FeatureScore,omitempty" xml:"FeatureScore,omitempty" type:"Struct"`
+	ResultURL      []*string                                     `json:"ResultURL,omitempty" xml:"ResultURL,omitempty" type:"Repeated"`
+}
+
+func (s PredictCVDResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDResponseBodyDataLesion) SetCVDProbability(v float32) *PredictCVDResponseBodyDataLesion {
+	s.CVDProbability = &v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesion) SetFeatureScore(v *PredictCVDResponseBodyDataLesionFeatureScore) *PredictCVDResponseBodyDataLesion {
+	s.FeatureScore = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesion) SetResultURL(v []*string) *PredictCVDResponseBodyDataLesion {
+	s.ResultURL = v
+	return s
+}
+
+type PredictCVDResponseBodyDataLesionFeatureScore struct {
+	AortaCalciumScore    []*float64 `json:"AortaCalciumScore,omitempty" xml:"AortaCalciumScore,omitempty" type:"Repeated"`
+	AortaCalciumVolume   []*float64 `json:"AortaCalciumVolume,omitempty" xml:"AortaCalciumVolume,omitempty" type:"Repeated"`
+	AscAoMaxDiam         []*float64 `json:"AscAoMaxDiam,omitempty" xml:"AscAoMaxDiam,omitempty" type:"Repeated"`
+	AscendAortaLength    []*float64 `json:"AscendAortaLength,omitempty" xml:"AscendAortaLength,omitempty" type:"Repeated"`
+	CardioThoracicRatio  []*float64 `json:"CardioThoracicRatio,omitempty" xml:"CardioThoracicRatio,omitempty" type:"Repeated"`
+	CoronaryCalciumScore []*float64 `json:"CoronaryCalciumScore,omitempty" xml:"CoronaryCalciumScore,omitempty" type:"Repeated"`
+	CoronaryCalciumVol   []*float64 `json:"CoronaryCalciumVol,omitempty" xml:"CoronaryCalciumVol,omitempty" type:"Repeated"`
+	DeepFeature          []*float64 `json:"DeepFeature,omitempty" xml:"DeepFeature,omitempty" type:"Repeated"`
+	EatHUMean            []*float64 `json:"EatHUMean,omitempty" xml:"EatHUMean,omitempty" type:"Repeated"`
+	EatHUSTD             []*float64 `json:"EatHUSTD,omitempty" xml:"EatHUSTD,omitempty" type:"Repeated"`
+	EatVolume            []*float64 `json:"EatVolume,omitempty" xml:"EatVolume,omitempty" type:"Repeated"`
+	LeftLungLowattRatio  []*float64 `json:"LeftLungLowattRatio,omitempty" xml:"LeftLungLowattRatio,omitempty" type:"Repeated"`
+	MyoEpiRatio          []*float64 `json:"MyoEpiRatio,omitempty" xml:"MyoEpiRatio,omitempty" type:"Repeated"`
+	RightLungLowattRatio []*float64 `json:"RightLungLowattRatio,omitempty" xml:"RightLungLowattRatio,omitempty" type:"Repeated"`
+}
+
+func (s PredictCVDResponseBodyDataLesionFeatureScore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDResponseBodyDataLesionFeatureScore) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetAortaCalciumScore(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.AortaCalciumScore = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetAortaCalciumVolume(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.AortaCalciumVolume = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetAscAoMaxDiam(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.AscAoMaxDiam = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetAscendAortaLength(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.AscendAortaLength = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetCardioThoracicRatio(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.CardioThoracicRatio = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetCoronaryCalciumScore(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.CoronaryCalciumScore = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetCoronaryCalciumVol(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.CoronaryCalciumVol = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetDeepFeature(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.DeepFeature = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetEatHUMean(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.EatHUMean = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetEatHUSTD(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.EatHUSTD = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetEatVolume(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.EatVolume = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetLeftLungLowattRatio(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.LeftLungLowattRatio = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetMyoEpiRatio(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.MyoEpiRatio = v
+	return s
+}
+
+func (s *PredictCVDResponseBodyDataLesionFeatureScore) SetRightLungLowattRatio(v []*float64) *PredictCVDResponseBodyDataLesionFeatureScore {
+	s.RightLungLowattRatio = v
+	return s
+}
+
+type PredictCVDResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PredictCVDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PredictCVDResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PredictCVDResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PredictCVDResponse) SetHeaders(v map[string]*string) *PredictCVDResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PredictCVDResponse) SetStatusCode(v int32) *PredictCVDResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PredictCVDResponse) SetBody(v *PredictCVDResponseBody) *PredictCVDResponse {
+	s.Body = v
+	return s
+}
+
 type RunCTRegistrationRequest struct {
 	// DICOM。
 	DataFormat     *string                                  `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
@@ -3985,6 +4630,232 @@ func (s *RunMedQAResponse) SetBody(v *RunMedQAResponseBody) *RunMedQAResponse {
 	return s
 }
 
+type ScreenCRCRequest struct {
+	DataFormat     *string                    `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                    `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                    `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                    `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenCRCRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenCRCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCRequest) SetDataFormat(v string) *ScreenCRCRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenCRCRequest) SetDataSourceType(v string) *ScreenCRCRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenCRCRequest) SetOrgId(v string) *ScreenCRCRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenCRCRequest) SetOrgName(v string) *ScreenCRCRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenCRCRequest) SetURLList(v []*ScreenCRCRequestURLList) *ScreenCRCRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenCRCRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenCRCRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCRequestURLList) SetURL(v string) *ScreenCRCRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type ScreenCRCAdvanceRequest struct {
+	DataFormat     *string                           `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                           `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                           `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenCRCAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenCRCAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCAdvanceRequest) SetDataFormat(v string) *ScreenCRCAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenCRCAdvanceRequest) SetDataSourceType(v string) *ScreenCRCAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenCRCAdvanceRequest) SetOrgId(v string) *ScreenCRCAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenCRCAdvanceRequest) SetOrgName(v string) *ScreenCRCAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenCRCAdvanceRequest) SetURLList(v []*ScreenCRCAdvanceRequestURLList) *ScreenCRCAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenCRCAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenCRCAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCAdvanceRequestURLList) SetURLObject(v io.Reader) *ScreenCRCAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type ScreenCRCResponseBody struct {
+	Data      *ScreenCRCResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScreenCRCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCResponseBody) SetData(v *ScreenCRCResponseBodyData) *ScreenCRCResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ScreenCRCResponseBody) SetMessage(v string) *ScreenCRCResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ScreenCRCResponseBody) SetRequestId(v string) *ScreenCRCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScreenCRCResponseBodyData struct {
+	Lesion *ScreenCRCResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s ScreenCRCResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCResponseBodyData) SetLesion(v *ScreenCRCResponseBodyDataLesion) *ScreenCRCResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type ScreenCRCResponseBodyDataLesion struct {
+	CRCVolume        *string `json:"CRCVolume,omitempty" xml:"CRCVolume,omitempty"`
+	ColorectumVolume *string `json:"ColorectumVolume,omitempty" xml:"ColorectumVolume,omitempty"`
+	Mask             *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Probabilities    *string `json:"Probabilities,omitempty" xml:"Probabilities,omitempty"`
+}
+
+func (s ScreenCRCResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCResponseBodyDataLesion) SetCRCVolume(v string) *ScreenCRCResponseBodyDataLesion {
+	s.CRCVolume = &v
+	return s
+}
+
+func (s *ScreenCRCResponseBodyDataLesion) SetColorectumVolume(v string) *ScreenCRCResponseBodyDataLesion {
+	s.ColorectumVolume = &v
+	return s
+}
+
+func (s *ScreenCRCResponseBodyDataLesion) SetMask(v string) *ScreenCRCResponseBodyDataLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenCRCResponseBodyDataLesion) SetProbabilities(v string) *ScreenCRCResponseBodyDataLesion {
+	s.Probabilities = &v
+	return s
+}
+
+type ScreenCRCResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScreenCRCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScreenCRCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenCRCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenCRCResponse) SetHeaders(v map[string]*string) *ScreenCRCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScreenCRCResponse) SetStatusCode(v int32) *ScreenCRCResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScreenCRCResponse) SetBody(v *ScreenCRCResponseBody) *ScreenCRCResponse {
+	s.Body = v
+	return s
+}
+
 type ScreenChestCTRequest struct {
 	DataFormat *string                        `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
 	Mask       *int64                         `json:"Mask,omitempty" xml:"Mask,omitempty"`
@@ -4154,7 +5025,11 @@ type ScreenChestCTResponseBodyData struct {
 	ErrorMessage         *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LungNodule           *ScreenChestCTResponseBodyDataLungNodule           `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
 	NestedUrlList        map[string]interface{}                             `json:"NestedUrlList,omitempty" xml:"NestedUrlList,omitempty"`
+	PredictCVD           *ScreenChestCTResponseBodyDataPredictCVD           `json:"PredictCVD,omitempty" xml:"PredictCVD,omitempty" type:"Struct"`
+	ScreenCRC            *ScreenChestCTResponseBodyDataScreenCRC            `json:"ScreenCRC,omitempty" xml:"ScreenCRC,omitempty" type:"Struct"`
 	ScreenEc             *ScreenChestCTResponseBodyDataScreenEc             `json:"ScreenEc,omitempty" xml:"ScreenEc,omitempty" type:"Struct"`
+	ScreenGC             *ScreenChestCTResponseBodyDataScreenGC             `json:"ScreenGC,omitempty" xml:"ScreenGC,omitempty" type:"Struct"`
+	ScreenLC             *ScreenChestCTResponseBodyDataScreenLC             `json:"ScreenLC,omitempty" xml:"ScreenLC,omitempty" type:"Struct"`
 	URLList              map[string]interface{}                             `json:"URLList,omitempty" xml:"URLList,omitempty"`
 }
 
@@ -4221,8 +5096,28 @@ func (s *ScreenChestCTResponseBodyData) SetNestedUrlList(v map[string]interface{
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyData) SetPredictCVD(v *ScreenChestCTResponseBodyDataPredictCVD) *ScreenChestCTResponseBodyData {
+	s.PredictCVD = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetScreenCRC(v *ScreenChestCTResponseBodyDataScreenCRC) *ScreenChestCTResponseBodyData {
+	s.ScreenCRC = v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyData) SetScreenEc(v *ScreenChestCTResponseBodyDataScreenEc) *ScreenChestCTResponseBodyData {
 	s.ScreenEc = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetScreenGC(v *ScreenChestCTResponseBodyDataScreenGC) *ScreenChestCTResponseBodyData {
+	s.ScreenGC = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetScreenLC(v *ScreenChestCTResponseBodyDataScreenLC) *ScreenChestCTResponseBodyData {
+	s.ScreenLC = v
 	return s
 }
 
@@ -4439,10 +5334,11 @@ func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumVolume(v float32
 }
 
 type ScreenChestCTResponseBodyDataCalcBMD struct {
-	Detections []*ScreenChestCTResponseBodyDataCalcBMDDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
-	Origin     []*float32                                        `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
-	ResultURL  *string                                           `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
-	Spacing    []*float32                                        `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+	Detections        []*ScreenChestCTResponseBodyDataCalcBMDDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin            []*float32                                        `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	ResultURL         *string                                           `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+	SeriesInstanceUid *string                                           `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+	Spacing           []*float32                                        `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
 }
 
 func (s ScreenChestCTResponseBodyDataCalcBMD) String() string {
@@ -4465,6 +5361,11 @@ func (s *ScreenChestCTResponseBodyDataCalcBMD) SetOrigin(v []*float32) *ScreenCh
 
 func (s *ScreenChestCTResponseBodyDataCalcBMD) SetResultURL(v string) *ScreenChestCTResponseBodyDataCalcBMD {
 	s.ResultURL = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCalcBMD) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataCalcBMD {
+	s.SeriesInstanceUid = &v
 	return s
 }
 
@@ -4562,9 +5463,10 @@ func (s *ScreenChestCTResponseBodyDataCovid) SetSeriesInstanceUID(v string) *Scr
 }
 
 type ScreenChestCTResponseBodyDataDetectLiverSteatosis struct {
-	Detections []*ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
-	Origin     []*float32                                                     `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
-	Spacing    []*float32                                                     `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+	Detections        []*ScreenChestCTResponseBodyDataDetectLiverSteatosisDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	Origin            []*float32                                                     `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	SeriesInstanceUid *string                                                        `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+	Spacing           []*float32                                                     `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
 }
 
 func (s ScreenChestCTResponseBodyDataDetectLiverSteatosis) String() string {
@@ -4582,6 +5484,11 @@ func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetDetections(v []*S
 
 func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetOrigin(v []*float32) *ScreenChestCTResponseBodyDataDetectLiverSteatosis {
 	s.Origin = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLiverSteatosis) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataDetectLiverSteatosis {
+	s.SeriesInstanceUid = &v
 	return s
 }
 
@@ -5132,6 +6039,199 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) 
 	return s
 }
 
+type ScreenChestCTResponseBodyDataPredictCVD struct {
+	Lesion            *ScreenChestCTResponseBodyDataPredictCVDLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUid *string                                        `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVD) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVD) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVD) SetLesion(v *ScreenChestCTResponseBodyDataPredictCVDLesion) *ScreenChestCTResponseBodyDataPredictCVD {
+	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVD) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataPredictCVD {
+	s.SeriesInstanceUid = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataPredictCVDLesion struct {
+	CVDProbability *float64                                                   `json:"CVDProbability,omitempty" xml:"CVDProbability,omitempty"`
+	FeatureScore   *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore `json:"FeatureScore,omitempty" xml:"FeatureScore,omitempty" type:"Struct"`
+	ResultURL      []*string                                                  `json:"ResultURL,omitempty" xml:"ResultURL,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVDLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVDLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesion) SetCVDProbability(v float64) *ScreenChestCTResponseBodyDataPredictCVDLesion {
+	s.CVDProbability = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesion) SetFeatureScore(v *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) *ScreenChestCTResponseBodyDataPredictCVDLesion {
+	s.FeatureScore = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesion) SetResultURL(v []*string) *ScreenChestCTResponseBodyDataPredictCVDLesion {
+	s.ResultURL = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore struct {
+	AortaCalciumScore    []*float64 `json:"AortaCalciumScore,omitempty" xml:"AortaCalciumScore,omitempty" type:"Repeated"`
+	AortaCalciumVolume   []*float64 `json:"AortaCalciumVolume,omitempty" xml:"AortaCalciumVolume,omitempty" type:"Repeated"`
+	AscAoMaxDiam         []*float64 `json:"AscAoMaxDiam,omitempty" xml:"AscAoMaxDiam,omitempty" type:"Repeated"`
+	AscendAortaLength    []*float64 `json:"AscendAortaLength,omitempty" xml:"AscendAortaLength,omitempty" type:"Repeated"`
+	CardioThoracicRatio  []*float64 `json:"CardioThoracicRatio,omitempty" xml:"CardioThoracicRatio,omitempty" type:"Repeated"`
+	CoronaryCalciumVol   []*float64 `json:"CoronaryCalciumVol,omitempty" xml:"CoronaryCalciumVol,omitempty" type:"Repeated"`
+	DeepFeature          []*float64 `json:"DeepFeature,omitempty" xml:"DeepFeature,omitempty" type:"Repeated"`
+	EatHUMean            []*float64 `json:"EatHUMean,omitempty" xml:"EatHUMean,omitempty" type:"Repeated"`
+	EatHUSTD             []*float64 `json:"EatHUSTD,omitempty" xml:"EatHUSTD,omitempty" type:"Repeated"`
+	EatVolume            []*float64 `json:"EatVolume,omitempty" xml:"EatVolume,omitempty" type:"Repeated"`
+	LeftLungLowattRatio  []*float64 `json:"LeftLungLowattRatio,omitempty" xml:"LeftLungLowattRatio,omitempty" type:"Repeated"`
+	MyoEpiRatio          []*float64 `json:"MyoEpiRatio,omitempty" xml:"MyoEpiRatio,omitempty" type:"Repeated"`
+	RightLungLowattRatio []*float64 `json:"RightLungLowattRatio,omitempty" xml:"RightLungLowattRatio,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetAortaCalciumScore(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.AortaCalciumScore = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetAortaCalciumVolume(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.AortaCalciumVolume = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetAscAoMaxDiam(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.AscAoMaxDiam = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetAscendAortaLength(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.AscendAortaLength = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetCardioThoracicRatio(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.CardioThoracicRatio = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetCoronaryCalciumVol(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.CoronaryCalciumVol = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetDeepFeature(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.DeepFeature = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetEatHUMean(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.EatHUMean = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetEatHUSTD(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.EatHUSTD = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetEatVolume(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.EatVolume = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetLeftLungLowattRatio(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.LeftLungLowattRatio = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetMyoEpiRatio(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.MyoEpiRatio = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore) SetRightLungLowattRatio(v []*float64) *ScreenChestCTResponseBodyDataPredictCVDLesionFeatureScore {
+	s.RightLungLowattRatio = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenCRC struct {
+	Lesion            *ScreenChestCTResponseBodyDataScreenCRCLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUid *string                                       `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenCRC) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenCRC) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenCRC) SetLesion(v *ScreenChestCTResponseBodyDataScreenCRCLesion) *ScreenChestCTResponseBodyDataScreenCRC {
+	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenCRC) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataScreenCRC {
+	s.SeriesInstanceUid = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenCRCLesion struct {
+	ColorectumVolume *string   `json:"ColorectumVolume,omitempty" xml:"ColorectumVolume,omitempty"`
+	Mask             *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Probabilities    []*string `json:"Probabilities,omitempty" xml:"Probabilities,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenCRCLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenCRCLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenCRCLesion) SetColorectumVolume(v string) *ScreenChestCTResponseBodyDataScreenCRCLesion {
+	s.ColorectumVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenCRCLesion) SetMask(v string) *ScreenChestCTResponseBodyDataScreenCRCLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenCRCLesion) SetProbabilities(v []*string) *ScreenChestCTResponseBodyDataScreenCRCLesion {
+	s.Probabilities = v
+	return s
+}
+
 type ScreenChestCTResponseBodyDataScreenEc struct {
 	Lesion            *ScreenChestCTResponseBodyDataScreenEcLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
 	SeriesInstanceUid *string                                      `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
@@ -5193,6 +6293,210 @@ func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetMask(v string) *ScreenC
 
 func (s *ScreenChestCTResponseBodyDataScreenEcLesion) SetPossibilities(v []*string) *ScreenChestCTResponseBodyDataScreenEcLesion {
 	s.Possibilities = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenGC struct {
+	Lesion            *ScreenChestCTResponseBodyDataScreenGCLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUid *string                                      `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenGC) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenGC) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGC) SetLesion(v *ScreenChestCTResponseBodyDataScreenGCLesion) *ScreenChestCTResponseBodyDataScreenGC {
+	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGC) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataScreenGC {
+	s.SeriesInstanceUid = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenGCLesion struct {
+	GCVolume      *string   `json:"GCVolume,omitempty" xml:"GCVolume,omitempty"`
+	Mask          *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	NonGCVolume   *string   `json:"NonGCVolume,omitempty" xml:"NonGCVolume,omitempty"`
+	Probabilities []*string `json:"Probabilities,omitempty" xml:"Probabilities,omitempty" type:"Repeated"`
+	StomachVolume *string   `json:"StomachVolume,omitempty" xml:"StomachVolume,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenGCLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenGCLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGCLesion) SetGCVolume(v string) *ScreenChestCTResponseBodyDataScreenGCLesion {
+	s.GCVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGCLesion) SetMask(v string) *ScreenChestCTResponseBodyDataScreenGCLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGCLesion) SetNonGCVolume(v string) *ScreenChestCTResponseBodyDataScreenGCLesion {
+	s.NonGCVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGCLesion) SetProbabilities(v []*string) *ScreenChestCTResponseBodyDataScreenGCLesion {
+	s.Probabilities = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenGCLesion) SetStomachVolume(v string) *ScreenChestCTResponseBodyDataScreenGCLesion {
+	s.StomachVolume = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenLC struct {
+	Lesion            *ScreenChestCTResponseBodyDataScreenLCLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+	SeriesInstanceUid *string                                      `json:"SeriesInstanceUid,omitempty" xml:"SeriesInstanceUid,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLC) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLC) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLC) SetLesion(v *ScreenChestCTResponseBodyDataScreenLCLesion) *ScreenChestCTResponseBodyDataScreenLC {
+	s.Lesion = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLC) SetSeriesInstanceUid(v string) *ScreenChestCTResponseBodyDataScreenLC {
+	s.SeriesInstanceUid = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenLCLesion struct {
+	LesionList         []*ScreenChestCTResponseBodyDataScreenLCLesionLesionList       `json:"LesionList,omitempty" xml:"LesionList,omitempty" type:"Repeated"`
+	LiverVolume        *string                                                        `json:"LiverVolume,omitempty" xml:"LiverVolume,omitempty"`
+	Mask               *string                                                        `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	PatientLevelResult *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult `json:"PatientLevelResult,omitempty" xml:"PatientLevelResult,omitempty" type:"Struct"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesion) SetLesionList(v []*ScreenChestCTResponseBodyDataScreenLCLesionLesionList) *ScreenChestCTResponseBodyDataScreenLCLesion {
+	s.LesionList = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesion) SetLiverVolume(v string) *ScreenChestCTResponseBodyDataScreenLCLesion {
+	s.LiverVolume = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesion) SetMask(v string) *ScreenChestCTResponseBodyDataScreenLCLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesion) SetPatientLevelResult(v *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) *ScreenChestCTResponseBodyDataScreenLCLesion {
+	s.PatientLevelResult = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenLCLesionLesionList struct {
+	Diameter        []*float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty" type:"Repeated"`
+	KeySlice        *int64     `json:"KeySlice,omitempty" xml:"KeySlice,omitempty"`
+	Malignancy      *float32   `json:"Malignancy,omitempty" xml:"Malignancy,omitempty"`
+	RecistEndpoints []*float32 `json:"RecistEndpoints,omitempty" xml:"RecistEndpoints,omitempty" type:"Repeated"`
+	Type            *string    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Volume          *float32   `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesionLesionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesionLesionList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetDiameter(v []*float32) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.Diameter = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetKeySlice(v int64) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.KeySlice = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetMalignancy(v float32) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.Malignancy = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetRecistEndpoints(v []*float32) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.RecistEndpoints = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetType(v string) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.Type = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionLesionList) SetVolume(v float32) *ScreenChestCTResponseBodyDataScreenLCLesionLesionList {
+	s.Volume = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult struct {
+	BenignNonCystProb   *string `json:"BenignNonCystProb,omitempty" xml:"BenignNonCystProb,omitempty"`
+	CystProb            *string `json:"CystProb,omitempty" xml:"CystProb,omitempty"`
+	HCCProb             *string `json:"HCCProb,omitempty" xml:"HCCProb,omitempty"`
+	MalignantNonHCCProb *string `json:"MalignantNonHCCProb,omitempty" xml:"MalignantNonHCCProb,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) SetBenignNonCystProb(v string) *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult {
+	s.BenignNonCystProb = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) SetCystProb(v string) *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult {
+	s.CystProb = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) SetHCCProb(v string) *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult {
+	s.HCCProb = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult) SetMalignantNonHCCProb(v string) *ScreenChestCTResponseBodyDataScreenLCLesionPatientLevelResult {
+	s.MalignantNonHCCProb = &v
 	return s
 }
 
@@ -5377,6 +6681,546 @@ func (s *ScreenECResponse) SetStatusCode(v int32) *ScreenECResponse {
 }
 
 func (s *ScreenECResponse) SetBody(v *ScreenECResponseBody) *ScreenECResponse {
+	s.Body = v
+	return s
+}
+
+type ScreenGCRequest struct {
+	DataFormat     *string                   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenGCRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenGCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCRequest) SetDataFormat(v string) *ScreenGCRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenGCRequest) SetDataSourceType(v string) *ScreenGCRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenGCRequest) SetOrgId(v string) *ScreenGCRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenGCRequest) SetOrgName(v string) *ScreenGCRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenGCRequest) SetURLList(v []*ScreenGCRequestURLList) *ScreenGCRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenGCRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenGCRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCRequestURLList) SetURL(v string) *ScreenGCRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type ScreenGCAdvanceRequest struct {
+	DataFormat     *string                          `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                          `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                          `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                          `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenGCAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenGCAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCAdvanceRequest) SetDataFormat(v string) *ScreenGCAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenGCAdvanceRequest) SetDataSourceType(v string) *ScreenGCAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenGCAdvanceRequest) SetOrgId(v string) *ScreenGCAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenGCAdvanceRequest) SetOrgName(v string) *ScreenGCAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenGCAdvanceRequest) SetURLList(v []*ScreenGCAdvanceRequestURLList) *ScreenGCAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenGCAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenGCAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCAdvanceRequestURLList) SetURLObject(v io.Reader) *ScreenGCAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type ScreenGCResponseBody struct {
+	Data      *ScreenGCResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScreenGCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCResponseBody) SetData(v *ScreenGCResponseBodyData) *ScreenGCResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ScreenGCResponseBody) SetMessage(v string) *ScreenGCResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ScreenGCResponseBody) SetRequestId(v string) *ScreenGCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScreenGCResponseBodyData struct {
+	Lesion *ScreenGCResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s ScreenGCResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCResponseBodyData) SetLesion(v *ScreenGCResponseBodyDataLesion) *ScreenGCResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type ScreenGCResponseBodyDataLesion struct {
+	GCVolume      *string `json:"GCVolume,omitempty" xml:"GCVolume,omitempty"`
+	Mask          *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	NonGCVolume   *string `json:"NonGCVolume,omitempty" xml:"NonGCVolume,omitempty"`
+	Probabilities *string `json:"Probabilities,omitempty" xml:"Probabilities,omitempty"`
+	StomachVolume *string `json:"StomachVolume,omitempty" xml:"StomachVolume,omitempty"`
+}
+
+func (s ScreenGCResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCResponseBodyDataLesion) SetGCVolume(v string) *ScreenGCResponseBodyDataLesion {
+	s.GCVolume = &v
+	return s
+}
+
+func (s *ScreenGCResponseBodyDataLesion) SetMask(v string) *ScreenGCResponseBodyDataLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenGCResponseBodyDataLesion) SetNonGCVolume(v string) *ScreenGCResponseBodyDataLesion {
+	s.NonGCVolume = &v
+	return s
+}
+
+func (s *ScreenGCResponseBodyDataLesion) SetProbabilities(v string) *ScreenGCResponseBodyDataLesion {
+	s.Probabilities = &v
+	return s
+}
+
+func (s *ScreenGCResponseBodyDataLesion) SetStomachVolume(v string) *ScreenGCResponseBodyDataLesion {
+	s.StomachVolume = &v
+	return s
+}
+
+type ScreenGCResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScreenGCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScreenGCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenGCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenGCResponse) SetHeaders(v map[string]*string) *ScreenGCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScreenGCResponse) SetStatusCode(v int32) *ScreenGCResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScreenGCResponse) SetBody(v *ScreenGCResponseBody) *ScreenGCResponse {
+	s.Body = v
+	return s
+}
+
+type ScreenLCRequest struct {
+	DataFormat     *string                   `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                   `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenLCRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenLCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCRequest) SetDataFormat(v string) *ScreenLCRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenLCRequest) SetDataSourceType(v string) *ScreenLCRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenLCRequest) SetOrgId(v string) *ScreenLCRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenLCRequest) SetOrgName(v string) *ScreenLCRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenLCRequest) SetURLList(v []*ScreenLCRequestURLList) *ScreenLCRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenLCRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenLCRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCRequestURLList) SetURL(v string) *ScreenLCRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type ScreenLCAdvanceRequest struct {
+	DataFormat     *string                          `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	DataSourceType *string                          `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	OrgId          *string                          `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName        *string                          `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	URLList        []*ScreenLCAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenLCAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCAdvanceRequest) SetDataFormat(v string) *ScreenLCAdvanceRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ScreenLCAdvanceRequest) SetDataSourceType(v string) *ScreenLCAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenLCAdvanceRequest) SetOrgId(v string) *ScreenLCAdvanceRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ScreenLCAdvanceRequest) SetOrgName(v string) *ScreenLCAdvanceRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *ScreenLCAdvanceRequest) SetURLList(v []*ScreenLCAdvanceRequestURLList) *ScreenLCAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenLCAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenLCAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCAdvanceRequestURLList) SetURLObject(v io.Reader) *ScreenLCAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
+type ScreenLCResponseBody struct {
+	Data      *ScreenLCResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScreenLCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponseBody) SetData(v *ScreenLCResponseBodyData) *ScreenLCResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ScreenLCResponseBody) SetMessage(v string) *ScreenLCResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ScreenLCResponseBody) SetRequestId(v string) *ScreenLCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScreenLCResponseBodyData struct {
+	Lesion *ScreenLCResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s ScreenLCResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponseBodyData) SetLesion(v *ScreenLCResponseBodyDataLesion) *ScreenLCResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type ScreenLCResponseBodyDataLesion struct {
+	LesionList         []*ScreenLCResponseBodyDataLesionLesionList       `json:"LesionList,omitempty" xml:"LesionList,omitempty" type:"Repeated"`
+	LiverVolume        *float32                                          `json:"LiverVolume,omitempty" xml:"LiverVolume,omitempty"`
+	Mask               *string                                           `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	PatientLevelResult *ScreenLCResponseBodyDataLesionPatientLevelResult `json:"PatientLevelResult,omitempty" xml:"PatientLevelResult,omitempty" type:"Struct"`
+}
+
+func (s ScreenLCResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponseBodyDataLesion) SetLesionList(v []*ScreenLCResponseBodyDataLesionLesionList) *ScreenLCResponseBodyDataLesion {
+	s.LesionList = v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesion) SetLiverVolume(v float32) *ScreenLCResponseBodyDataLesion {
+	s.LiverVolume = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesion) SetMask(v string) *ScreenLCResponseBodyDataLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesion) SetPatientLevelResult(v *ScreenLCResponseBodyDataLesionPatientLevelResult) *ScreenLCResponseBodyDataLesion {
+	s.PatientLevelResult = v
+	return s
+}
+
+type ScreenLCResponseBodyDataLesionLesionList struct {
+	Diameter        []*float32 `json:"Diameter,omitempty" xml:"Diameter,omitempty" type:"Repeated"`
+	KeySlice        *int64     `json:"KeySlice,omitempty" xml:"KeySlice,omitempty"`
+	Malignancy      *float32   `json:"Malignancy,omitempty" xml:"Malignancy,omitempty"`
+	RecistEndpoints []*float32 `json:"RecistEndpoints,omitempty" xml:"RecistEndpoints,omitempty" type:"Repeated"`
+	Type            *string    `json:"Type,omitempty" xml:"Type,omitempty"`
+	Volume          *float32   `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s ScreenLCResponseBodyDataLesionLesionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponseBodyDataLesionLesionList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetDiameter(v []*float32) *ScreenLCResponseBodyDataLesionLesionList {
+	s.Diameter = v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetKeySlice(v int64) *ScreenLCResponseBodyDataLesionLesionList {
+	s.KeySlice = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetMalignancy(v float32) *ScreenLCResponseBodyDataLesionLesionList {
+	s.Malignancy = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetRecistEndpoints(v []*float32) *ScreenLCResponseBodyDataLesionLesionList {
+	s.RecistEndpoints = v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetType(v string) *ScreenLCResponseBodyDataLesionLesionList {
+	s.Type = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionLesionList) SetVolume(v float32) *ScreenLCResponseBodyDataLesionLesionList {
+	s.Volume = &v
+	return s
+}
+
+type ScreenLCResponseBodyDataLesionPatientLevelResult struct {
+	BenignNonCystProb   *string  `json:"BenignNonCystProb,omitempty" xml:"BenignNonCystProb,omitempty"`
+	CystProb            *float32 `json:"CystProb,omitempty" xml:"CystProb,omitempty"`
+	HCCProb             *float32 `json:"HCCProb,omitempty" xml:"HCCProb,omitempty"`
+	MalignantNonHCCProb *float32 `json:"MalignantNonHCCProb,omitempty" xml:"MalignantNonHCCProb,omitempty"`
+}
+
+func (s ScreenLCResponseBodyDataLesionPatientLevelResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponseBodyDataLesionPatientLevelResult) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponseBodyDataLesionPatientLevelResult) SetBenignNonCystProb(v string) *ScreenLCResponseBodyDataLesionPatientLevelResult {
+	s.BenignNonCystProb = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionPatientLevelResult) SetCystProb(v float32) *ScreenLCResponseBodyDataLesionPatientLevelResult {
+	s.CystProb = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionPatientLevelResult) SetHCCProb(v float32) *ScreenLCResponseBodyDataLesionPatientLevelResult {
+	s.HCCProb = &v
+	return s
+}
+
+func (s *ScreenLCResponseBodyDataLesionPatientLevelResult) SetMalignantNonHCCProb(v float32) *ScreenLCResponseBodyDataLesionPatientLevelResult {
+	s.MalignantNonHCCProb = &v
+	return s
+}
+
+type ScreenLCResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScreenLCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScreenLCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenLCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenLCResponse) SetHeaders(v map[string]*string) *ScreenLCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScreenLCResponse) SetStatusCode(v int32) *ScreenLCResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScreenLCResponse) SetBody(v *ScreenLCResponseBody) *ScreenLCResponse {
 	s.Body = v
 	return s
 }
@@ -7493,6 +9337,180 @@ func (client *Client) DetectKneeXRayAdvance(request *DetectKneeXRayAdvanceReques
 	return _result, _err
 }
 
+func (client *Client) DetectLiverSteatosisWithOptions(request *DetectLiverSteatosisRequest, runtime *util.RuntimeOptions) (_result *DetectLiverSteatosisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectLiverSteatosis"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectLiverSteatosisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectLiverSteatosis(request *DetectLiverSteatosisRequest) (_result *DetectLiverSteatosisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectLiverSteatosisResponse{}
+	_body, _err := client.DetectLiverSteatosisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectLiverSteatosisAdvance(request *DetectLiverSteatosisAdvanceRequest, runtime *util.RuntimeOptions) (_result *DetectLiverSteatosisResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	detectLiverSteatosisReq := &DetectLiverSteatosisRequest{}
+	openapiutil.Convert(request, detectLiverSteatosisReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := detectLiverSteatosisReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	detectLiverSteatosisResp, _err := client.DetectLiverSteatosisWithOptions(detectLiverSteatosisReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = detectLiverSteatosisResp
+	return _result, _err
+}
+
 func (client *Client) DetectLungNoduleWithOptions(request *DetectLungNoduleRequest, runtime *util.RuntimeOptions) (_result *DetectLungNoduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8585,6 +10603,180 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) PredictCVDWithOptions(request *PredictCVDRequest, runtime *util.RuntimeOptions) (_result *PredictCVDResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PredictCVD"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PredictCVDResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PredictCVD(request *PredictCVDRequest) (_result *PredictCVDResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PredictCVDResponse{}
+	_body, _err := client.PredictCVDWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PredictCVDAdvance(request *PredictCVDAdvanceRequest, runtime *util.RuntimeOptions) (_result *PredictCVDResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	predictCVDReq := &PredictCVDRequest{}
+	openapiutil.Convert(request, predictCVDReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := predictCVDReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	predictCVDResp, _err := client.PredictCVDWithOptions(predictCVDReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = predictCVDResp
+	return _result, _err
+}
+
 func (client *Client) RunCTRegistrationWithOptions(request *RunCTRegistrationRequest, runtime *util.RuntimeOptions) (_result *RunCTRegistrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8994,6 +11186,180 @@ func (client *Client) RunMedQAAdvance(request *RunMedQAAdvanceRequest, runtime *
 	return _result, _err
 }
 
+func (client *Client) ScreenCRCWithOptions(request *ScreenCRCRequest, runtime *util.RuntimeOptions) (_result *ScreenCRCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScreenCRC"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScreenCRCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScreenCRC(request *ScreenCRCRequest) (_result *ScreenCRCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScreenCRCResponse{}
+	_body, _err := client.ScreenCRCWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenCRCAdvance(request *ScreenCRCAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScreenCRCResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	screenCRCReq := &ScreenCRCRequest{}
+	openapiutil.Convert(request, screenCRCReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := screenCRCReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	screenCRCResp, _err := client.ScreenCRCWithOptions(screenCRCReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = screenCRCResp
+	return _result, _err
+}
+
 func (client *Client) ScreenChestCTWithOptions(request *ScreenChestCTRequest, runtime *util.RuntimeOptions) (_result *ScreenChestCTResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9217,6 +11583,354 @@ func (client *Client) ScreenEC(request *ScreenECRequest) (_result *ScreenECRespo
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenGCWithOptions(request *ScreenGCRequest, runtime *util.RuntimeOptions) (_result *ScreenGCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScreenGC"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScreenGCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScreenGC(request *ScreenGCRequest) (_result *ScreenGCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScreenGCResponse{}
+	_body, _err := client.ScreenGCWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenGCAdvance(request *ScreenGCAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScreenGCResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	screenGCReq := &ScreenGCRequest{}
+	openapiutil.Convert(request, screenGCReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := screenGCReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	screenGCResp, _err := client.ScreenGCWithOptions(screenGCReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = screenGCResp
+	return _result, _err
+}
+
+func (client *Client) ScreenLCWithOptions(request *ScreenLCRequest, runtime *util.RuntimeOptions) (_result *ScreenLCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		body["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScreenLC"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScreenLCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScreenLC(request *ScreenLCRequest) (_result *ScreenLCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ScreenLCResponse{}
+	_body, _err := client.ScreenLCWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenLCAdvance(request *ScreenLCAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScreenLCResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	screenLCReq := &ScreenLCRequest{}
+	openapiutil.Convert(request, screenLCReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := screenLCReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	screenLCResp, _err := client.ScreenLCWithOptions(screenLCReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = screenLCResp
 	return _result, _err
 }
 
