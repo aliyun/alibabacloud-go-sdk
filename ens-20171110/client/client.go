@@ -944,6 +944,76 @@ func (s *AddNetworkInterfaceToInstanceResponse) SetBody(v *AddNetworkInterfaceTo
 	return s
 }
 
+type AddSnatIpForSnatEntryRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+}
+
+func (s AddSnatIpForSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSnatIpForSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddSnatIpForSnatEntryRequest) SetSnatEntryId(v string) *AddSnatIpForSnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *AddSnatIpForSnatEntryRequest) SetSnatIp(v string) *AddSnatIpForSnatEntryRequest {
+	s.SnatIp = &v
+	return s
+}
+
+type AddSnatIpForSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddSnatIpForSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSnatIpForSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddSnatIpForSnatEntryResponseBody) SetRequestId(v string) *AddSnatIpForSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddSnatIpForSnatEntryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddSnatIpForSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddSnatIpForSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddSnatIpForSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddSnatIpForSnatEntryResponse) SetHeaders(v map[string]*string) *AddSnatIpForSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddSnatIpForSnatEntryResponse) SetStatusCode(v int32) *AddSnatIpForSnatEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddSnatIpForSnatEntryResponse) SetBody(v *AddSnatIpForSnatEntryResponseBody) *AddSnatIpForSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
 type AssignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -6278,6 +6348,76 @@ func (s *DeleteSnatEntryResponse) SetStatusCode(v int32) *DeleteSnatEntryRespons
 }
 
 func (s *DeleteSnatEntryResponse) SetBody(v *DeleteSnatEntryResponseBody) *DeleteSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSnatIpForSnatEntryRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+}
+
+func (s DeleteSnatIpForSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatIpForSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatIpForSnatEntryRequest) SetSnatEntryId(v string) *DeleteSnatIpForSnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *DeleteSnatIpForSnatEntryRequest) SetSnatIp(v string) *DeleteSnatIpForSnatEntryRequest {
+	s.SnatIp = &v
+	return s
+}
+
+type DeleteSnatIpForSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSnatIpForSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatIpForSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatIpForSnatEntryResponseBody) SetRequestId(v string) *DeleteSnatIpForSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSnatIpForSnatEntryResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSnatIpForSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSnatIpForSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatIpForSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatIpForSnatEntryResponse) SetHeaders(v map[string]*string) *DeleteSnatIpForSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnatIpForSnatEntryResponse) SetStatusCode(v int32) *DeleteSnatIpForSnatEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSnatIpForSnatEntryResponse) SetBody(v *DeleteSnatIpForSnatEntryResponseBody) *DeleteSnatIpForSnatEntryResponse {
 	s.Body = v
 	return s
 }
@@ -23001,6 +23141,147 @@ func (s *DescribeServcieScheduleResponse) SetBody(v *DescribeServcieScheduleResp
 	return s
 }
 
+type DescribeSnatAttributeRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+}
+
+func (s DescribeSnatAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatAttributeRequest) SetSnatEntryId(v string) *DescribeSnatAttributeRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+type DescribeSnatAttributeResponseBody struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// Id of the request
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnatEntryId   *string                                     `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatEntryName *string                                     `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp        *string                                     `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SnatIps       []*DescribeSnatAttributeResponseBodySnatIps `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
+	SourceCIDR    *string                                     `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	Status        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSnatAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetCreationTime(v string) *DescribeSnatAttributeResponseBody {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetNatGatewayId(v string) *DescribeSnatAttributeResponseBody {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetRequestId(v string) *DescribeSnatAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetSnatEntryId(v string) *DescribeSnatAttributeResponseBody {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetSnatEntryName(v string) *DescribeSnatAttributeResponseBody {
+	s.SnatEntryName = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetSnatIp(v string) *DescribeSnatAttributeResponseBody {
+	s.SnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetSnatIps(v []*DescribeSnatAttributeResponseBodySnatIps) *DescribeSnatAttributeResponseBody {
+	s.SnatIps = v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetSourceCIDR(v string) *DescribeSnatAttributeResponseBody {
+	s.SourceCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetStatus(v string) *DescribeSnatAttributeResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeSnatAttributeResponseBodySnatIps struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSnatAttributeResponseBodySnatIps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatAttributeResponseBodySnatIps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatAttributeResponseBodySnatIps) SetCreationTime(v string) *DescribeSnatAttributeResponseBodySnatIps {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBodySnatIps) SetIp(v string) *DescribeSnatAttributeResponseBodySnatIps {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBodySnatIps) SetStatus(v string) *DescribeSnatAttributeResponseBodySnatIps {
+	s.Status = &v
+	return s
+}
+
+type DescribeSnatAttributeResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSnatAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSnatAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatAttributeResponse) SetHeaders(v map[string]*string) *DescribeSnatAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponse) SetStatusCode(v int32) *DescribeSnatAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponse) SetBody(v *DescribeSnatAttributeResponseBody) *DescribeSnatAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSnatTableEntriesRequest struct {
 	NatGatewayId  *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -30424,6 +30705,76 @@ func (s *StartLoadBalancerListenerResponse) SetBody(v *StartLoadBalancerListener
 	return s
 }
 
+type StartSnatIpForSnatEntryRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+}
+
+func (s StartSnatIpForSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSnatIpForSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartSnatIpForSnatEntryRequest) SetSnatEntryId(v string) *StartSnatIpForSnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *StartSnatIpForSnatEntryRequest) SetSnatIp(v string) *StartSnatIpForSnatEntryRequest {
+	s.SnatIp = &v
+	return s
+}
+
+type StartSnatIpForSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartSnatIpForSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSnatIpForSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartSnatIpForSnatEntryResponseBody) SetRequestId(v string) *StartSnatIpForSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartSnatIpForSnatEntryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartSnatIpForSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartSnatIpForSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartSnatIpForSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartSnatIpForSnatEntryResponse) SetHeaders(v map[string]*string) *StartSnatIpForSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartSnatIpForSnatEntryResponse) SetStatusCode(v int32) *StartSnatIpForSnatEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartSnatIpForSnatEntryResponse) SetBody(v *StartSnatIpForSnatEntryResponseBody) *StartSnatIpForSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
 type StopEpnInstanceRequest struct {
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
 }
@@ -30725,6 +31076,76 @@ func (s *StopLoadBalancerListenerResponse) SetStatusCode(v int32) *StopLoadBalan
 }
 
 func (s *StopLoadBalancerListenerResponse) SetBody(v *StopLoadBalancerListenerResponseBody) *StopLoadBalancerListenerResponse {
+	s.Body = v
+	return s
+}
+
+type StopSnatIpForSnatEntryRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+}
+
+func (s StopSnatIpForSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSnatIpForSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopSnatIpForSnatEntryRequest) SetSnatEntryId(v string) *StopSnatIpForSnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *StopSnatIpForSnatEntryRequest) SetSnatIp(v string) *StopSnatIpForSnatEntryRequest {
+	s.SnatIp = &v
+	return s
+}
+
+type StopSnatIpForSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopSnatIpForSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSnatIpForSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopSnatIpForSnatEntryResponseBody) SetRequestId(v string) *StopSnatIpForSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopSnatIpForSnatEntryResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopSnatIpForSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopSnatIpForSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopSnatIpForSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopSnatIpForSnatEntryResponse) SetHeaders(v map[string]*string) *StopSnatIpForSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopSnatIpForSnatEntryResponse) SetStatusCode(v int32) *StopSnatIpForSnatEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopSnatIpForSnatEntryResponse) SetBody(v *StopSnatIpForSnatEntryResponseBody) *StopSnatIpForSnatEntryResponse {
 	s.Body = v
 	return s
 }
@@ -31570,6 +31991,54 @@ func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterface
 	runtime := &util.RuntimeOptions{}
 	_result = &AddNetworkInterfaceToInstanceResponse{}
 	_body, _err := client.AddNetworkInterfaceToInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddSnatIpForSnatEntryWithOptions(request *AddSnatIpForSnatEntryRequest, runtime *util.RuntimeOptions) (_result *AddSnatIpForSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddSnatIpForSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddSnatIpForSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddSnatIpForSnatEntry(request *AddSnatIpForSnatEntryRequest) (_result *AddSnatIpForSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddSnatIpForSnatEntryResponse{}
+	_body, _err := client.AddSnatIpForSnatEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34792,6 +35261,54 @@ func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnatEntryResponse{}
 	_body, _err := client.DeleteSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSnatIpForSnatEntryWithOptions(request *DeleteSnatIpForSnatEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteSnatIpForSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnatIpForSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSnatIpForSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSnatIpForSnatEntry(request *DeleteSnatIpForSnatEntryRequest) (_result *DeleteSnatIpForSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSnatIpForSnatEntryResponse{}
+	_body, _err := client.DeleteSnatIpForSnatEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38925,6 +39442,46 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 	return _result, _err
 }
 
+func (client *Client) DescribeSnatAttributeWithOptions(request *DescribeSnatAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeSnatAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSnatAttribute"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSnatAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSnatAttribute(request *DescribeSnatAttributeRequest) (_result *DescribeSnatAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSnatAttributeResponse{}
+	_body, _err := client.DescribeSnatAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatTableEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42928,6 +43485,54 @@ func (client *Client) StartLoadBalancerListener(request *StartLoadBalancerListen
 	return _result, _err
 }
 
+func (client *Client) StartSnatIpForSnatEntryWithOptions(request *StartSnatIpForSnatEntryRequest, runtime *util.RuntimeOptions) (_result *StartSnatIpForSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartSnatIpForSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartSnatIpForSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartSnatIpForSnatEntry(request *StartSnatIpForSnatEntryRequest) (_result *StartSnatIpForSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartSnatIpForSnatEntryResponse{}
+	_body, _err := client.StartSnatIpForSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopEpnInstanceWithOptions(request *StopEpnInstanceRequest, runtime *util.RuntimeOptions) (_result *StopEpnInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43119,6 +43724,54 @@ func (client *Client) StopLoadBalancerListener(request *StopLoadBalancerListener
 	runtime := &util.RuntimeOptions{}
 	_result = &StopLoadBalancerListenerResponse{}
 	_body, _err := client.StopLoadBalancerListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopSnatIpForSnatEntryWithOptions(request *StopSnatIpForSnatEntryRequest, runtime *util.RuntimeOptions) (_result *StopSnatIpForSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopSnatIpForSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopSnatIpForSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopSnatIpForSnatEntry(request *StopSnatIpForSnatEntryRequest) (_result *StopSnatIpForSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopSnatIpForSnatEntryResponse{}
+	_body, _err := client.StopSnatIpForSnatEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
