@@ -2069,6 +2069,7 @@ func (s *DescribeFileUploadSignedUrlRequest) SetSpaceId(v string) *DescribeFileU
 type DescribeFileUploadSignedUrlResponseBody struct {
 	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	OssCallbackUrl *string `json:"OssCallbackUrl,omitempty" xml:"OssCallbackUrl,omitempty"`
+	Overwrite      *bool   `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SignUrl        *string `json:"SignUrl,omitempty" xml:"SignUrl,omitempty"`
 }
@@ -2088,6 +2089,11 @@ func (s *DescribeFileUploadSignedUrlResponseBody) SetId(v string) *DescribeFileU
 
 func (s *DescribeFileUploadSignedUrlResponseBody) SetOssCallbackUrl(v string) *DescribeFileUploadSignedUrlResponseBody {
 	s.OssCallbackUrl = &v
+	return s
+}
+
+func (s *DescribeFileUploadSignedUrlResponseBody) SetOverwrite(v bool) *DescribeFileUploadSignedUrlResponseBody {
+	s.Overwrite = &v
 	return s
 }
 
@@ -5684,6 +5690,7 @@ func (s *ListWebHostingCustomDomainsResponseBody) SetRequestId(v string) *ListWe
 
 type ListWebHostingCustomDomainsResponseBodyData struct {
 	AccessControlAllowOrigin *string `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
+	AccessOriginControl      *bool   `json:"AccessOriginControl,omitempty" xml:"AccessOriginControl,omitempty"`
 	Cname                    *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	CreateTime               *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -5705,6 +5712,11 @@ func (s ListWebHostingCustomDomainsResponseBodyData) GoString() string {
 
 func (s *ListWebHostingCustomDomainsResponseBodyData) SetAccessControlAllowOrigin(v string) *ListWebHostingCustomDomainsResponseBodyData {
 	s.AccessControlAllowOrigin = &v
+	return s
+}
+
+func (s *ListWebHostingCustomDomainsResponseBodyData) SetAccessOriginControl(v bool) *ListWebHostingCustomDomainsResponseBodyData {
+	s.AccessOriginControl = &v
 	return s
 }
 
@@ -7085,6 +7097,7 @@ func (s *QuerySpaceSpecDetailResponse) SetBody(v *QuerySpaceSpecDetailResponseBo
 
 type QuerySpaceUsageRequest struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval  *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -7099,6 +7112,11 @@ func (s QuerySpaceUsageRequest) GoString() string {
 
 func (s *QuerySpaceUsageRequest) SetEndTime(v string) *QuerySpaceUsageRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySpaceUsageRequest) SetInterval(v int32) *QuerySpaceUsageRequest {
+	s.Interval = &v
 	return s
 }
 
@@ -7154,8 +7172,11 @@ func (s *QuerySpaceUsageResponseBody) SetStartTime(v string) *QuerySpaceUsageRes
 }
 
 type QuerySpaceUsageResponseBodySpaceUsageDataList struct {
-	CsUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
-	DbUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
+	CsUsage *QuerySpaceUsageResponseBodySpaceUsageDataListCsUsage `json:"CsUsage,omitempty" xml:"CsUsage,omitempty" type:"Struct"`
+	DbUsage *QuerySpaceUsageResponseBodySpaceUsageDataListDbUsage `json:"DbUsage,omitempty" xml:"DbUsage,omitempty" type:"Struct"`
+	// 标记该数据是否出账。
+	// - true：正常出账。
+	// - false：不出账，例如在空间停服的情况下，用量数据不用于出账。
 	EffectiveBillFlag *bool                                                 `json:"EffectiveBillFlag,omitempty" xml:"EffectiveBillFlag,omitempty"`
 	FcUsage           *QuerySpaceUsageResponseBodySpaceUsageDataListFcUsage `json:"FcUsage,omitempty" xml:"FcUsage,omitempty" type:"Struct"`
 	Timestamp         *string                                               `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
@@ -8081,6 +8102,7 @@ func (s *SaveWebHostingCustomDomainConfigResponse) SetBody(v *SaveWebHostingCust
 
 type SaveWebHostingCustomDomainCorsConfigRequest struct {
 	AccessControlAllowOrigin *string `json:"AccessControlAllowOrigin,omitempty" xml:"AccessControlAllowOrigin,omitempty"`
+	AccessOriginControl      *bool   `json:"AccessOriginControl,omitempty" xml:"AccessOriginControl,omitempty"`
 	DomainName               *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EnableCors               *bool   `json:"EnableCors,omitempty" xml:"EnableCors,omitempty"`
 	SpaceId                  *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
@@ -8096,6 +8118,11 @@ func (s SaveWebHostingCustomDomainCorsConfigRequest) GoString() string {
 
 func (s *SaveWebHostingCustomDomainCorsConfigRequest) SetAccessControlAllowOrigin(v string) *SaveWebHostingCustomDomainCorsConfigRequest {
 	s.AccessControlAllowOrigin = &v
+	return s
+}
+
+func (s *SaveWebHostingCustomDomainCorsConfigRequest) SetAccessOriginControl(v bool) *SaveWebHostingCustomDomainCorsConfigRequest {
+	s.AccessOriginControl = &v
 	return s
 }
 
@@ -12247,6 +12274,10 @@ func (client *Client) QuerySpaceUsageWithOptions(request *QuerySpaceUsageRequest
 		body["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		body["Interval"] = request.Interval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
 		body["SpaceId"] = request.SpaceId
 	}
@@ -12765,6 +12796,10 @@ func (client *Client) SaveWebHostingCustomDomainCorsConfigWithOptions(request *S
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AccessControlAllowOrigin)) {
 		body["AccessControlAllowOrigin"] = request.AccessControlAllowOrigin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessOriginControl)) {
+		body["AccessOriginControl"] = request.AccessOriginControl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
