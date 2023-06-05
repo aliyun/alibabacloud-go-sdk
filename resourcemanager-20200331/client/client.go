@@ -12936,31 +12936,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = tea.String("central")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":        tea.String("resourcemanager.ap-northeast-1.aliyuncs.com"),
-		"ap-south-1":            tea.String("resourcemanager.ap-south-1.aliyuncs.com"),
-		"ap-southeast-1":        tea.String("resourcemanager.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        tea.String("resourcemanager.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-3":        tea.String("resourcemanager.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":        tea.String("resourcemanager.ap-southeast-5.aliyuncs.com"),
-		"cn-beijing":            tea.String("resourcemanager.cn-beijing.aliyuncs.com"),
-		"cn-chengdu":            tea.String("resourcemanager.cn-chengdu.aliyuncs.com"),
-		"cn-hangzhou-finance":   tea.String("resourcemanager.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hongkong":           tea.String("resourcemanager.cn-hongkong.aliyuncs.com"),
-		"cn-huhehaote":          tea.String("resourcemanager.cn-huhehaote.aliyuncs.com"),
-		"cn-north-2-gov-1":      tea.String("resourcemanager.cn-north-2-gov-1.aliyuncs.com"),
-		"cn-qingdao":            tea.String("resourcemanager.cn-qingdao.aliyuncs.com"),
-		"cn-shanghai-finance-1": tea.String("resourcemanager.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           tea.String("resourcemanager.cn-shenzhen.aliyuncs.com"),
-		"cn-shenzhen-finance-1": tea.String("resourcemanager.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-wulanchabu":         tea.String("resourcemanager.cn-wulanchabu.aliyuncs.com"),
-		"cn-zhangjiakou":        tea.String("resourcemanager.cn-zhangjiakou.aliyuncs.com"),
-		"eu-central-1":          tea.String("resourcemanager.eu-central-1.aliyuncs.com"),
-		"eu-west-1":             tea.String("resourcemanager.eu-west-1.aliyuncs.com"),
-		"me-east-1":             tea.String("resourcemanager.me-east-1.aliyuncs.com"),
-		"us-east-1":             tea.String("resourcemanager.us-east-1.aliyuncs.com"),
-		"us-west-1":             tea.String("resourcemanager.us-west-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
