@@ -3438,6 +3438,241 @@ func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
 	return s
 }
 
+type GetLogsV2Headers struct {
+	CommonHeaders  map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AcceptEncoding *string            `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+}
+
+func (s GetLogsV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2Headers) SetCommonHeaders(v map[string]*string) *GetLogsV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
+	s.AcceptEncoding = &v
+	return s
+}
+
+type GetLogsV2Request struct {
+	Forward  *bool   `json:"forward,omitempty" xml:"forward,omitempty"`
+	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
+	Line     *int64  `json:"line,omitempty" xml:"line,omitempty"`
+	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
+	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
+	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	Session  *string `json:"session,omitempty" xml:"session,omitempty"`
+	Shard    *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
+	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
+	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
+}
+
+func (s GetLogsV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2Request) SetForward(v bool) *GetLogsV2Request {
+	s.Forward = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetFrom(v int32) *GetLogsV2Request {
+	s.From = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetLine(v int64) *GetLogsV2Request {
+	s.Line = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetOffset(v int64) *GetLogsV2Request {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetPowerSql(v bool) *GetLogsV2Request {
+	s.PowerSql = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetQuery(v string) *GetLogsV2Request {
+	s.Query = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetReverse(v bool) *GetLogsV2Request {
+	s.Reverse = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetSession(v string) *GetLogsV2Request {
+	s.Session = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetShard(v int32) *GetLogsV2Request {
+	s.Shard = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetTo(v int32) *GetLogsV2Request {
+	s.To = &v
+	return s
+}
+
+func (s *GetLogsV2Request) SetTopic(v string) *GetLogsV2Request {
+	s.Topic = &v
+	return s
+}
+
+type GetLogsV2ResponseBody struct {
+	Data []map[string]*string       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Meta *GetLogsV2ResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+}
+
+func (s GetLogsV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2ResponseBody) SetData(v []map[string]*string) *GetLogsV2ResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLogsV2ResponseBody) SetMeta(v *GetLogsV2ResponseBodyMeta) *GetLogsV2ResponseBody {
+	s.Meta = v
+	return s
+}
+
+type GetLogsV2ResponseBodyMeta struct {
+	AggQuery           *string                  `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	Count              *int32                   `json:"count,omitempty" xml:"count,omitempty"`
+	ElapsedMillisecond *int64                   `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
+	HasSQL             *bool                    `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	IsAccurate         *bool                    `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
+	Keys               []*string                `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	ProcessedBytes     *int64                   `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
+	ProcessedRows      *int32                   `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
+	Progress           *string                  `json:"progress,omitempty" xml:"progress,omitempty"`
+	TelementryType     *string                  `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
+	Terms              []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
+	WhereQuery         *string                  `json:"whereQuery,omitempty" xml:"whereQuery,omitempty"`
+}
+
+func (s GetLogsV2ResponseBodyMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2ResponseBodyMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetAggQuery(v string) *GetLogsV2ResponseBodyMeta {
+	s.AggQuery = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetCount(v int32) *GetLogsV2ResponseBodyMeta {
+	s.Count = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetElapsedMillisecond(v int64) *GetLogsV2ResponseBodyMeta {
+	s.ElapsedMillisecond = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetHasSQL(v bool) *GetLogsV2ResponseBodyMeta {
+	s.HasSQL = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetIsAccurate(v bool) *GetLogsV2ResponseBodyMeta {
+	s.IsAccurate = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetKeys(v []*string) *GetLogsV2ResponseBodyMeta {
+	s.Keys = v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetProcessedBytes(v int64) *GetLogsV2ResponseBodyMeta {
+	s.ProcessedBytes = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetProcessedRows(v int32) *GetLogsV2ResponseBodyMeta {
+	s.ProcessedRows = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetProgress(v string) *GetLogsV2ResponseBodyMeta {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetTelementryType(v string) *GetLogsV2ResponseBodyMeta {
+	s.TelementryType = &v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetTerms(v []map[string]interface{}) *GetLogsV2ResponseBodyMeta {
+	s.Terms = v
+	return s
+}
+
+func (s *GetLogsV2ResponseBodyMeta) SetWhereQuery(v string) *GetLogsV2ResponseBodyMeta {
+	s.WhereQuery = &v
+	return s
+}
+
+type GetLogsV2Response struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLogsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLogsV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsV2Response) SetHeaders(v map[string]*string) *GetLogsV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogsV2Response) SetStatusCode(v int32) *GetLogsV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogsV2Response) SetBody(v *GetLogsV2ResponseBody) *GetLogsV2Response {
+	s.Body = v
+	return s
+}
+
 type GetMachineGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -8016,6 +8251,104 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 	headers := make(map[string]*string)
 	_result = &GetLogsResponse{}
 	_body, _err := client.GetLogsWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, request *GetLogsV2Request, headers *GetLogsV2Headers, runtime *util.RuntimeOptions) (_result *GetLogsV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Forward)) {
+		body["forward"] = request.Forward
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
+		body["line"] = request.Line
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		body["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PowerSql)) {
+		body["powerSql"] = request.PowerSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		body["reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Session)) {
+		body["session"] = request.Session
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Shard)) {
+		body["shard"] = request.Shard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		body["to"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		body["topic"] = request.Topic
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AcceptEncoding)) {
+		realHeaders["Accept-Encoding"] = util.ToJSONString(headers.AcceptEncoding)
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogsV2"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/logs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLogsV2Response{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLogsV2(project *string, logstore *string, request *GetLogsV2Request) (_result *GetLogsV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetLogsV2Headers{}
+	_result = &GetLogsV2Response{}
+	_body, _err := client.GetLogsV2WithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
