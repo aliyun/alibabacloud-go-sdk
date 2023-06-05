@@ -26440,6 +26440,7 @@ type HotelOrderCreateRequestOccupantInfoList struct {
 	LastName       *string `json:"last_name,omitempty" xml:"last_name,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
 	Phone          *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RoomNo         *string `json:"room_no,omitempty" xml:"room_no,omitempty"`
 	StaffNo        *string `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
 	UserType       *int32  `json:"user_type,omitempty" xml:"user_type,omitempty"`
 }
@@ -26504,6 +26505,11 @@ func (s *HotelOrderCreateRequestOccupantInfoList) SetName(v string) *HotelOrderC
 
 func (s *HotelOrderCreateRequestOccupantInfoList) SetPhone(v string) *HotelOrderCreateRequestOccupantInfoList {
 	s.Phone = &v
+	return s
+}
+
+func (s *HotelOrderCreateRequestOccupantInfoList) SetRoomNo(v string) *HotelOrderCreateRequestOccupantInfoList {
+	s.RoomNo = &v
 	return s
 }
 
@@ -27404,6 +27410,7 @@ type HotelOrderDetailInfoResponseBodyModuleOccupantInfoList struct {
 	LastName           *string                                                                     `json:"last_name,omitempty" xml:"last_name,omitempty"`
 	Name               *string                                                                     `json:"name,omitempty" xml:"name,omitempty"`
 	Phone              *string                                                                     `json:"phone,omitempty" xml:"phone,omitempty"`
+	RoomNo             *string                                                                     `json:"room_no,omitempty" xml:"room_no,omitempty"`
 	Selected           *bool                                                                       `json:"selected,omitempty" xml:"selected,omitempty"`
 	StaffNo            *string                                                                     `json:"staff_no,omitempty" xml:"staff_no,omitempty"`
 	UserType           *int32                                                                      `json:"user_type,omitempty" xml:"user_type,omitempty"`
@@ -27479,6 +27486,11 @@ func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetName(v strin
 
 func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetPhone(v string) *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList {
 	s.Phone = &v
+	return s
+}
+
+func (s *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList) SetRoomNo(v string) *HotelOrderDetailInfoResponseBodyModuleOccupantInfoList {
+	s.RoomNo = &v
 	return s
 }
 
@@ -28863,6 +28875,7 @@ func (s *HotelOrderPreValidateResponseBodyModulePromotionInfoPromotionDetailInfo
 type HotelOrderPreValidateResponseBodyModuleRatePlanDaily struct {
 	Board                 *string `json:"board,omitempty" xml:"board,omitempty"`
 	DiscountPrice         *string `json:"discount_price,omitempty" xml:"discount_price,omitempty"`
+	MaxBookingNum         *string `json:"max_booking_num,omitempty" xml:"max_booking_num,omitempty"`
 	Price                 *int64  `json:"price,omitempty" xml:"price,omitempty"`
 	RateStartTime         *string `json:"rate_start_time,omitempty" xml:"rate_start_time,omitempty"`
 	RoomCount             *int32  `json:"room_count,omitempty" xml:"room_count,omitempty"`
@@ -28886,6 +28899,11 @@ func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetBoard(v string
 
 func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetDiscountPrice(v string) *HotelOrderPreValidateResponseBodyModuleRatePlanDaily {
 	s.DiscountPrice = &v
+	return s
+}
+
+func (s *HotelOrderPreValidateResponseBodyModuleRatePlanDaily) SetMaxBookingNum(v string) *HotelOrderPreValidateResponseBodyModuleRatePlanDaily {
+	s.MaxBookingNum = &v
 	return s
 }
 
